@@ -187,11 +187,12 @@
 ### Github上fork别人项目的操作
 
 **合并对方最新代码**
-> 1.首先fork一个项目, 然后clone自己所属的该项目下来,假设原作者A自己为B  
-> 2.进入项目目录,添加原作者项目的URL到该项目的远程分支列表中 `git add remote A A_URL`  
-> 3.fetch源到本地 `git fetch A`  
-> 4.合并两个分支代码 `git merge --no-ff A/master`  
-> 5.push即可  
+> 1. 首先fork一个项目, 然后clone自己所属的该项目下来,假设 原作者为A 自己为B  
+> 1. 添加原作者项目的URL 到该项目的远程分支列表中 `git add remote A A_URL`  
+> 1. fetch作者的代码到本地 `git fetch A`  
+> 1. 新建本地分支, 并与A的远程分支绑定 `git branch A A/master` 
+> 1. 合并两个分支代码 `git merge --no-ff A/master`  
+> 1. push即可  
 
 ### Github上PR
 > [Using git to prepare your PR to have a clean history](https://github.com/mockito/mockito/wiki/Using-git-to-prepare-your-PR-to-have-a-clean-history)
