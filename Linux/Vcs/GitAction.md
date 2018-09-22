@@ -115,8 +115,8 @@
 *本地已有代码关联远程空仓库*
 - 先在远程建立空仓库 一般各大平台也都有命令提示 
     - 传送门: [Gitee](https://gitee.com) | [Github](https://github.com/) | [Bitbucket](https://bitbucket.org/)  | [GitLab](https://gitlab.com/) ...
-```
-   	git remote add origin https://github.com/Kuangcp/StudentManager.git
+```sh
+   	git remote add origin  https://github.com/Kuangcp/StudentManager.git
    	git push -u origin master 
 ```
 - 说明下上面的命令 第一条是设置了一个远程仓库 仓库名为origin URL是后面那个,一般默认的远程仓库名都叫origin
@@ -162,6 +162,8 @@
 > `git config user.name ""`
 
 ### 【VI编辑器的使用】
+> [详情](/Linux/Tool/Vim.md)
+
 - 在pull或者合并分支的时候有时会遇到打开 VI编辑器 的状态  可以不输入(直接下面3,4步)
 `如果要输入解释的话就需要:`
 ```
@@ -197,7 +199,6 @@
 ### Github上PR
 > [Using git to prepare your PR to have a clean history](https://github.com/mockito/mockito/wiki/Using-git-to-prepare-your-PR-to-have-a-clean-history)
 
-- [ ] Learn
 ********************
 ### .gitingnore文件
 > [Github: gitignore](https://github.com/github/gitignore) | 一行是一个配置, 是独占一行的
