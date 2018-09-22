@@ -1,3 +1,4 @@
 *.bak
 .vscode/
 *.log
+code-workspace
