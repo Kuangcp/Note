@@ -37,7 +37,7 @@
             - [【“$”有两个主要的用途】](#“$”有两个主要的用途)
         - [9.4【OGNL标签】](#94ognl标签)
 
-`目录 end` |_2018-08-04_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Struts2笔记
 * 使用ognl表达式在页面debug，<s:debug></s:debug>

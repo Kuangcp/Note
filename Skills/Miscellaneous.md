@@ -1,11 +1,12 @@
 `目录 start`
  
+- [学习杂记](#学习杂记)
 - [首先我想说三句话：](#首先我想说三句话)
     - [学习方式](#学习方式)
     - [一些建议](#一些建议)
     - [无论做什么，原则最重要](#无论做什么原则最重要)
 
-`目录 end` |_2018-08-04_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 学习杂记
 

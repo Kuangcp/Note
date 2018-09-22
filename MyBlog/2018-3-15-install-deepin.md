@@ -2,7 +2,7 @@
  
 - [在公司电脑上安装deepin](#在公司电脑上安装deepin)
 
-`目录 end` |_2018-08-04_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 在公司电脑上安装deepin
 > 由于是全新的电脑, 默认开机在配置Windows10, 然后也配置用了下windows10, 被他的卡顿吓到了

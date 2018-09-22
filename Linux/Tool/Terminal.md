@@ -17,7 +17,7 @@
         - [分享](#分享)
             - [asciinema](#asciinema)
 
-`目录 end` |_2018-08-27_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Terminal
 > 终端模拟器是吸引我放弃习惯的Windows而转投Linux怀抱的主要原因

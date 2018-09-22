@@ -35,7 +35,7 @@
     - [7.构建工具对比](#7构建工具对比)
         - [7.1.Maven和Ant的区别一](#71maven和ant的区别一)
         - [7.2.Maven的优势](#72maven的优势)
-    - [8.发布构件](#8发布构件)
+    - [8.发布构件到公共仓库](#8发布构件到公共仓库)
     - [9.配置私服](#9配置私服)
         - [nexus](#nexus)
         - [码云](#码云)
@@ -44,7 +44,7 @@
                 - [Gradle](#gradle)
                 - [Maven](#maven)
 
-`目录 end` |_2018-08-14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)

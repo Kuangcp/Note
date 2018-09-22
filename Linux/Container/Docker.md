@@ -10,10 +10,10 @@
         - [安装包安装](#安装包安装)
         - [不加sudo执行docker命令](#不加sudo执行docker命令)
         - [卸载](#卸载)
-    - [【Windows】](#windows)
+    - [Windows](#windows)
 - [使用](#使用)
-    - [Docker镜像仓库](#docker镜像仓库)
-        - [在服务器上搭建私有仓库](#在服务器上搭建私有仓库)
+    - [镜像仓库](#镜像仓库)
+        - [搭建本地仓库](#搭建本地仓库)
     - [基础命令](#基础命令)
     - [镜像命令](#镜像命令)
     - [容器命令](#容器命令)
@@ -39,7 +39,7 @@
     - [Docker-Swarm](#docker-swarm)
 - [网络](#网络)
 
-`目录 end` |_2018-09-18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker
 > [官方文档](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -166,7 +166,7 @@ _Debian系_
 - 如果出现命令执行失败，可以登录docker的控制台直接执行 `boot2docker ssh`
 - 可以将镜像看成真正运行的程序，容器就是具体的一些配置，所以镜像是可以重复利用，容器出问题删掉就是了
 
-## Docker镜像仓库
+## 镜像仓库
 > 默认的DockerHub因为在国外所以网络不太稳定
 
 > Docker中国
