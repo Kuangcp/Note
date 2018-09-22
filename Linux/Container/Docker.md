@@ -19,9 +19,6 @@
     - [容器命令](#容器命令)
         - [docker create](#docker-create)
         - [docker run](#docker-run)
-- [Alpine](#alpine)
-- [Ubuntu](#ubuntu)
-- [Centos](#centos)
         - [docker exec](#docker-exec)
         - [docker commit](#docker-commit)
         - [docker port](#docker-port)
@@ -332,17 +329,17 @@ _ps_
 `修改容器时区设置`
 > [参考博客: Docker修改默认时区](https://www.jianshu.com/p/004ddf941aac) 
 ```sh
-# Alpine 
-RUN apk --no-cache add tzdata  && \
-    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    echo "Asia/Shanghai" > /etc/timezone
+    # Alpine 
+    RUN apk --no-cache add tzdata  && \
+        ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+        echo "Asia/Shanghai" > /etc/timezone
 
-# Ubuntu
-RUN echo "Asia/Shanghai" > /etc/timezone && \
-    dpkg-reconfigure -f noninteractive tzdata
+    # Ubuntu
+    RUN echo "Asia/Shanghai" > /etc/timezone && \
+        dpkg-reconfigure -f noninteractive tzdata
 
-# Centos
-RUN echo "Asia/shanghai" > /etc/timezone;
+    # Centos
+    RUN echo "Asia/shanghai" > /etc/timezone;
 ```
 
 - `docker create` 是创建一个容器，不会运行，`docker run`是运行命令在一个新容器里

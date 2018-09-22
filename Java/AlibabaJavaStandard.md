@@ -131,9 +131,12 @@
     - 方法调用的点符号与下文一起换行
     - 调用方法 多个参数，需在逗号后进行换行
     - 括号之前不要换行
+
 1. 方法参数在定义和传入时，多个参数逗号后边必须加空格
     - `method("a", "b", "c");`
+
 1. 编码统一采用`UTF-8` IDE中换行符采用unix格式`使用别的编码的话会开心死的`
+
 1. 没有必要增加若干空格来使某一行的字符与上一行对应位置的字符对齐。
     ```
     int a = 3;
@@ -147,23 +150,30 @@
 *********************************************
 ## OOP规约
 1. 避免使用对象来引用类的静态变量或方法。无谓增加编译器解析成本，直接用类名来访问即可。
+
 1. 所有的覆写方法，必须加注解 @Override 
+
 1. 相同参数类型，相同业务含义，才可以使用Java的可变参数。避免使用Object
     - 说明： 可变参数必须放置在参数列表的最后。 （ 提倡同学们尽量不用可变参数编程）
     - 正例： `public User getUsers(String type, Integer... ids) {...}`
+
 1. 外部正在调用或者二方库依赖的接口，不允许修改方法签名，避免对接口调用方产生影响。
     - 接口过时必须加 `@Deprecated` 注解，并清晰地说明采用的新接口或者新服务是什么。
+
 1. 不能使用过时的类或方法
     - 说明： `java.net.URLDecoder` 中的方法 `decode(String encodeStr)` 这个方法已经过时，
     - 应该使用双参数 `decode(String source, String encode)`。接口提供方既然明确是过时接口，
     - 那么有义务同时提供新的接口； 作为调用方来说，有义务去考证过时方法的新实现是什么。
+
 1. Object 的 equals 方法容易抛空指针异常，应使用常量或确定有值的对象来调用equals。
     - 使用` "t".equals(test)`方式
     - 推荐使用`java.util.Object#equals` (jdk7引入的工具类)
+
 1. 所有的相同类型的包装类对象之间的 *值的比较* ，全部使用equals方法比较，
     - 注意：对于 `Integer var = ?` 在-128 至 127 范围内的赋值， Integer 对象是在`IntegerCache.cache 产生`，会复用已有对象，
     - 这个区间内的 Integer 值可以直接使用==进行判断，但是这个区间之外的所有数据，都会在堆上产生，并不会复用已有对象，所以 `==` 就会失效
     - 这是一个大坑！，推荐统一使用 equals 方法进行判断。
+
 1. 关于基本数据类型与包装数据类型的使用标准如下：
     - 所有的 POJO 类属性必须使用包装数据类型。
     - RPC方法的返回值和参数必须使用包装数据类型
@@ -173,29 +183,39 @@
     - `反例`： 比如显示成交总额涨跌情况，即正负 x%， x 为基本数据类型，调用的 RPC 服务，调用
         - 不成功时，返回的是默认值，页面显示为 0%，这是不合理的，应该显示成中划线。所以包装
         - 数据类型的 null 值，能够表示额外的信息，如：远程调用失败，异常退出。
+
 1. 定义 `DO/DTO/VO`等POJO类时，不要设定任何属性的`默认值`
     - `反例`： POJO 类的 gmtCreate 默认值为 new Date();
         - 但是这个属性在数据提取时并没有置入具体值，在更新其它字段时又附带更新了此字段，导致创建时间被修改成当前时间。
+
 1. 序列化类新增属性时，不要修改`serialVersionUID`字段，避免反序列化失败
     - 如果要完全不兼容升级，为了避免反序列化混乱，就可以修改`serialVersionUID`的值
     - idea可以配置使用快捷键自动生成
     - `说明`： 注意 serialVersionUID 不一致会抛出序列化运行时异常。
+
 1. 构造方法里面禁止加入任何业务逻辑，如果有初始化逻辑，请放在 init 方法中。
+
 1. POJO 类必须写 toString 方法。 如果继承了另一个 POJO 类，注意在前面加一下 super.toString()。
     - 说明： 在方法执行抛出异常时，可以直接调用 POJO 的 toString()方法打印其属性值，便于排查问题
+
 1. 使用索引访问用 String 的 split 方法得到的数组时，需做最后一个分隔符后有无内容的检查，否则会有抛 `IndexOutOfBoundsException` 的风险。
     - `System.out.println("a,b,c,,".split(",").length);` 预期是大于3
+
 1. 当一个类有多个构造方法，或者多个重名方法，这些方法应该按顺序放置在一起，优于下条规则
+
 1. 类内方法的定义顺序依次是 共有方法或保护方法 -> 私有方法 -> setter/getter方法
     - 公有方法是类的调用者和维护者最关心的方法，首屏展示最好； 
     - 保护方法虽然只是子类关心，也可能是“模板设计模式”下的核心方法； 
     - 而私有方法外部一般不需要特别关心，是黑盒实现； 
     - 因为承载的信息价值较低，所有 Service 和 DAO 的 `getter/setter` 方法放在类体最后。
+
 1. setter 方法中，参数名称与类成员变量名称一致， this.成员名 = 参数名。
     - 在`getter/setter` 方法中， 不要增加业务逻辑，增加排查问题的难度。
+
 1. 循环体中的字符串的连接方式，使用`StringBuffer`的`append`方法进行扩展
     - 说明： 反编译出的字节码文件显示每次循环都会 new 出一个 StringBuilder 对象，然后进行append 操作，
     - 最后通过 toString 方法返回 String 对象，造成内存资源浪费。
+
 1. final 可以声明类、成员变量、方法、以及本地变量，下列情况使用 final 关键字：
     - 不允许被继承的类，如： String 类。
     - 不允许修改引用的域对象，如： POJO 类的域变量。
@@ -203,8 +223,10 @@
     - 不允许运行过程中重新赋值的局部变量。
     - 避免上下文重复使用一个变量，使用 final 描述可以强制重新定义一个变量，方便更好地进行重构。
     - 方法入参：对象参数前加final，表示不允许修改引用的指向
+
 1. 慎用Object的clone方法来拷贝对象
     - 说明： 对象的 clone 方法默认是浅拷贝，最好重写该方法，实现属性对象的拷贝。
+
 1. 类成员与方法访问控制从严：
     - 如果不允许外部直接通过new来创建对象，那么构造方法显式声明并private
     - ` 工具类`不允许有public或default构造方法
@@ -221,26 +243,31 @@
 **********************************************************
 ## 集合处理
 1. 关于HashCode 和equals的处理
-    - 只要重写equals，就必须重写HashCode
+    - 只要重写 equals，就必须重写 hashCode
     - 因为Set存储的是不重复的对象，依据hashCode和equals进行判断，所以Set存储的方法必须重写这两个方法
     - 如果自定义对象作为Map的键，那么必须重写HashCode和equals
     - `说明`： String 重写了 hashCode 和 equals 方法，所以我们可以非常愉快地使用 String 对象作为 key 来使用。
-1. ArrayList的subList 结果不可强转成ArrayList 否则会抛出 ClassCastException异常， 
+
+1. ArrayList 的 subList 结果不可强转成 ArrayList 否则会抛出 ClassCastException异常， 
     - 即 `java.util.RandomAccessSubList cannot be cast to java.util.ArrayList.`
-    - `说明`：subList返回的是ArrayList的内部类SubList，是ArrayList的一个视图，对于subList的所有操作最终都会反映到原列表上
-1. 在 `subList` 场景中，高度注意对原集合元素个数的修改，会导致子列表的遍历、增加、删除均产生 `ConcurrentModificationException` 异常。
+    - `说明`：subList返回的是 ArrayList 的内部类 SubList，并不是ArrayList, 而是ArrayList的一个视图，对于SubList的所有操作最终都会反映到原列表上
+
+1. 在 `SubList` 场景中，高度注意对原集合元素 **个数的修改**，会导致子列表的 **遍历、增加、删除均产生** `ConcurrentModificationException` 异常。
+
 1. 使用集合转数组的方法，必须使用集合的 `toArray(T[] array)` ，传入的是类型完全一样的数组，大小就是 `list.size() `
     - 使用 toArray 带参方法，入参分配的数组空间不够大时， toArray 方法内部将重新分配内存空间，并返回新数组地址；
     - 如果数组元素大于实际所需，下标为[ list.size() ]的数组元素将被置为 null，其它数组元素保持原值，因此最好将方法入参数组大小定义与集合元素个数一致。
     - `String[] array = new String[list.size()];`
     - `array = list.toArray(array);`
     - *注意*直接使用 toArray 无参方法存在问题，此方法返回值只能是 Object[]类，若强转其它类型数组将出现 ClassCastException 错误。
+
 1. 把数组转换成集合：使用工具类`Arrays.asList()`时，不能使用其修改集合相关的方法，其`add/remove/clear`方法会抛出`UnsupportedOperationException`异常。
     - *说明*：asList 的返回对象是一个 Arrays 内部类，并没有实现集合的修改方法。`Arrays.asList`体现的是适配器模式，只是转换接口，后台的数据仍是数组。
     - `String[] str = new String[] { "a", "b" };`
     - `List list = Arrays.asList(str);`
     - *第一种情况*： `list.add("c");`  运行时异常。
     - *第二种情况*： `str[0]= "gujin";` 那么 `list.get(0)` 也会随之修改。
+
 1. 泛型通配符`<? extends T>`来接收返回的数据，此写法的泛型集合不能使用 add 方法。
     - 而`<? super T>`不能使用 get 方法，做为接口调用赋值时易出错。
     - *说明*： 扩展说一下 `PECS(Producer Extends Consumer Super)`原则： 
