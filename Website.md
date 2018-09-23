@@ -77,6 +77,9 @@
 - [2](https://plus.likeso.ml/)
 - [3](http://www.kaseng.top/)
 
+> Chrome 插件
+- [插件网](https://extfans.com/)
+
 ******************************
 ## 特别网站
 - [ping domain true ip](ping.eu/ping/)
