@@ -182,103 +182,114 @@
 
 1. 所有的相同类型的包装类对象之间的 *值的比较* ，全部使用equals方法比较，
     - 注意：对于 `Integer var = ?` 在 -128 至 127 范围内的赋值， Integer 对象是在`IntegerCache.cache 产生`，会复用已有对象，
-    - 这个区间内的 Integer 值可以直接使用==进行判断，但是这个区间之外的所有数据，都会在堆上产生，并不会复用已有对象，所以 `==` 就会失效
-    - 这是一个大坑！，推荐统一使用 equals 方法进行判断。
+    - 这个区间内的 Integer 值可以直接使用 == 进行判断，但是这个区间之外的所有数据，都会在堆上产生，并不会复用已有对象，所以 `==` 就会失效
+    - 这是一个大坑！，**推荐统一使用 equals 方法进行判断**
 
 1. 关于基本数据类型与包装数据类型的使用标准如下：
     - 所有的 POJO 类属性必须使用包装数据类型。
-    - RPC方法的返回值和参数必须使用包装数据类型
+    - RPC 方法的 返回值 和 参数 必须使用包装数据类型
     - 所有的局部变量 推荐使用基本数据类型
     - `说明`： POJO 类属性没有初值是提醒使用者在需要使用时，必须自己显式地进行赋值，任何NPE 问题，或者入库检查，都由使用者来保证。
-    - `正例`： 数据库的查询结果可能是 null，因为自动拆箱，用基本数据类型接收有 NPE 风险。
-    - `反例`： 比如显示成交总额涨跌情况，即正负 x%， x 为基本数据类型，调用的 RPC 服务，调用
-        - 不成功时，返回的是默认值，页面显示为 0%，这是不合理的，应该显示成中划线。所以包装
-        - 数据类型的 null 值，能够表示额外的信息，如：远程调用失败，异常退出。
+        - 数据库的查询结果可能是 null，因为自动拆箱，用基本数据类型接收有 NPE 风险。
+    - `反例`： 比如显示成交总额涨跌情况，即正负 x%， x 为基本数据类型，调用的 RPC 服务，调用不成功时，返回的是默认值，
+        - 页面显示为 0%，这是不合理的，应该显示成中划线。所以包装数据类型的 null 值，能够表示额外的信息
+        - 如：远程调用失败，异常退出。
 
-1. 定义 `DO/DTO/VO`等POJO类时，不要设定任何属性的`默认值`
-    - `反例`： POJO 类的 gmtCreate 默认值为 new Date();
+1. 定义 `DO/DTO/VO`等POJO类时，不要给任何成员属性设定 **默认值**
+    - `反例`： POJO 类的 createTime属性 默认值为 new Date();
         - 但是这个属性在数据提取时并没有置入具体值，在更新其它字段时又附带更新了此字段，导致创建时间被修改成当前时间。
 
 1. 序列化类新增属性时，不要修改`serialVersionUID`字段，避免反序列化失败
-    - 如果要完全不兼容升级，为了避免反序列化混乱，就可以修改`serialVersionUID`的值
-    - idea可以配置使用快捷键自动生成
-    - `说明`： 注意 serialVersionUID 不一致会抛出序列化运行时异常。
+    - 如果完全不兼容升级，为了避免反序列化混乱，就需要修改`serialVersionUID`的值 `(idea可以配置使用快捷键自动生成)`
+    - `说明`： 当 serialVersionUID 不一致会抛出序列化运行时异常。
 
 1. 构造方法里面禁止加入任何业务逻辑，如果有初始化逻辑，请放在 init 方法中。
 
-1. POJO 类必须写 toString 方法。 如果继承了另一个 POJO 类，注意在前面加一下 super.toString()。
+1. POJO 类必须写 toString 方法。 如果继承了另一个 POJO 类，注意在前面加一下 super.toString() `lombok解救众生`
     - 说明： 在方法执行抛出异常时，可以直接调用 POJO 的 toString()方法打印其属性值，便于排查问题
 
 **`推荐`**
-1. 使用索引访问用 String 的 split 方法得到的数组时，需做最后一个分隔符后有无内容的检查，否则会有抛 `IndexOutOfBoundsException` 的风险。
-    - `System.out.println("a,b,c,,".split(",").length);` 预期是大于3
+1. 使用索引访问用 String 的 split 方法得到的数组时，需做最后一个分隔符后有无内容的检查，否则会有 `IndexOutOfBoundsException` 的风险。
+    - `System.out.println("a,b,c,,".split(",").length);` 预期是大于3,结果却是3
 
-1. 当一个类有多个构造方法，或者多个重名方法，这些方法应该按顺序放置在一起，优于下条规则
+1. 当一个类有多个构造方法，或者多个同名方法，这些方法应该按顺序放置在一起，优于下条规则
 
-1. 类内方法的定义顺序依次是 共有方法或保护方法 -> 私有方法 -> setter/getter方法
+1. 类内方法的定义顺序依次是 共有方法或保护方法 -> 私有方法 -> setter/getter方法(lombok可省)
     - 公有方法是类的调用者和维护者最关心的方法，首屏展示最好； 
-    - 保护方法虽然只是子类关心，也可能是“模板设计模式”下的核心方法； 
-    - 而私有方法外部一般不需要特别关心，是黑盒实现； 
-    - 因为承载的信息价值较低，所有 Service 和 DAO 的 `getter/setter` 方法放在类体最后。
+    - 保护方法虽然只是子类关心，也可能是 **模板设计模式** 下的核心方法； 
+    - 而私有方法外部一般不需要特别关心，是一个黑盒实现； 
+    - 因为承载的信息价值较低，所有 Service 和 DAO 的 `getter/setter` 方法放在类的最后, 用了lombok就省去了。
 
 1. setter 方法中，参数名称与类成员变量名称一致， this.成员名 = 参数名。
     - 在`getter/setter` 方法中， 不要增加业务逻辑，增加排查问题的难度。
 
 1. 循环体中的字符串的连接方式，使用`StringBuffer`的`append`方法进行扩展
-    - 说明： 反编译出的字节码文件显示每次循环都会 new 出一个 StringBuilder 对象，然后进行append 操作，
+    - 说明： 反编译出的字节码文件显示每次循环都会 new 出一个 StringBuilder 对象，然后进行 append 操作，
     - 最后通过 toString 方法返回 String 对象，造成内存资源浪费。
 
 1. final 可以声明类、成员变量、方法、以及本地变量，下列情况使用 final 关键字：
-    - 不允许被继承的类，如： String 类。
-    - 不允许修改引用的域对象，如： POJO 类的域变量。
-    - 不允许被重写的方法，如： POJO 类的 setter 方法。
-    - 不允许运行过程中重新赋值的局部变量。
-    - 避免上下文重复使用一个变量，使用 final 描述可以强制重新定义一个变量，方便更好地进行重构。
-    - 方法入参：对象参数前加final，表示不允许修改引用的指向
+    1. 不允许被继承的类，如： String 类。
+    1. 不允许修改引用的域对象，如： POJO 类的域变量。
+    1. 不允许被重写的方法，如： POJO 类的 setter 方法。
+    1. 不允许运行过程中重新赋值的局部变量。
+    1. 避免上下文重复使用一个变量，使用 final 描述可以强制重新定义一个变量，方便更好地进行重构。
+        - 这里就隐含了一个习惯, 不应该把一个变量到处传, 到处用,赋值, 很难追踪调试
 
-1. 慎用Object的clone方法来拷贝对象
+1. 慎用Object的clone方法来拷贝对象 `详见API`
     - 说明： 对象的 clone 方法默认是浅拷贝，最好重写该方法，实现属性对象的拷贝。
 
 1. 类成员与方法访问控制从严：
-    - 如果不允许外部直接通过new来创建对象，那么构造方法显式声明并private
-    - ` 工具类`不允许有public或default构造方法
-    - 类非static成员变量并且与子类共享，必须是protected
-    - 类非static成员变量并且仅在本类中使用，必须是private
-    - 若是static成员变量，必须考虑是否final
-    - 类static 成员变量如果仅在本类使用，必须是 private。
-    - 类成员方法只供类内部调用，必须是private
-    - 类成员方法只对继承类公开，那么限制为protected
-    - **注意** 说明： 任何类、方法、参数、变量，严控访问范围。过于宽泛的访问范围，不利于模块解耦。
+    1. 如果不允许外部直接通过 new 来创建对象，那么构造方法显式声明并 private
+    1. **工具类** 不允许有 public 或 default 的构造方法
+    1. 类非static成员变量 或者 成员方法 若 **只与** 子类共享，必须是 protected
+    1. 成员属性或方法 若 **仅** 本类中使用，必须是 private
+    1. 若是static成员变量，必须考虑是否final
+    1. 类static 成员变量如果仅在本类使用，必须是 private。
+    - **注意** 说明： 任何类、方法、参数、变量，都需要严控访问范围。过于宽泛的访问范围，不利于模块解耦。
         - 思考：如果是一个 private 的方法，想删除就删除，可是一个 public 的 service 方法，或者一个 public 的成员变量，删除一下，不得手心冒点汗吗？
         - 变量像自己的小孩，尽量在自己的视线内，变量作用域太大， 无限制的到处跑，那么你会担心的。
 
+> 验证循环中String的拼接
+```java
+public class test{
+	public void test(){
+		String target = "1";
+		for(int a=0; a<10; a++){
+			target += a;
+		}
+	}
+}
+// 1. javac test.java 编译
+// 2. javap -c -l test 反编译, 就能大致看到new StringBuilder了
+
+```
 **********************************************************
+
 ## 集合处理
-1. 关于HashCode 和equals的处理
+**`强制`**
+1. 关于 hashCode 和 equals 的处理, 遵循如下规则:
     - 只要重写 equals，就必须重写 hashCode
-    - 因为Set存储的是不重复的对象，依据hashCode和equals进行判断，所以Set存储的方法必须重写这两个方法
-    - 如果自定义对象作为Map的键，那么必须重写HashCode和equals
+    - 因为 Set 存储的是不重复的对象，依据 hashCode 和 equals 进行判断，所以 Set 存储的方法必须重写这两个方法
+    - 如果自定义对象作为 Map 的键，那么必须重写 hashCode 和 equals
     - `说明`： String 重写了 hashCode 和 equals 方法，所以我们可以非常愉快地使用 String 对象作为 key 来使用。
 
 1. ArrayList 的 subList 结果不可强转成 ArrayList 否则会抛出 ClassCastException异常， 
     - 即 `java.util.RandomAccessSubList cannot be cast to java.util.ArrayList.`
     - `说明`：subList返回的是 ArrayList 的内部类 SubList，并不是ArrayList, 而是ArrayList的一个视图，对于SubList的所有操作最终都会反映到原列表上
 
-1. 在 `SubList` 场景中，高度注意对原集合元素 **个数的修改**，会导致子列表的 **遍历、增加、删除均产生** `ConcurrentModificationException` 异常。
+1. 在 `subList` 场景中，高度注意对原集合元素 **个数的修改**，会导致子列表的 **遍历、增加、删除** 均会产生 `ConcurrentModificationException` 
 
-1. 使用集合转数组的方法，必须使用集合的 `toArray(T[] array)` ，传入的是类型完全一样的数组，大小就是 `list.size() `
-    - 使用 toArray 带参方法，入参分配的数组空间不够大时， toArray 方法内部将重新分配内存空间，并返回新数组地址；
-    - 如果数组元素大于实际所需，下标为[ list.size() ]的数组元素将被置为 null，其它数组元素保持原值，因此最好将方法入参数组大小定义与集合元素个数一致。
-    - `String[] array = new String[list.size()];`
-    - `array = list.toArray(array);`
-    - *注意*直接使用 toArray 无参方法存在问题，此方法返回值只能是 Object[]类，若强转其它类型数组将出现 ClassCastException 错误。
+1. 使用集合转数组的方法，必须使用集合的 `toArray(T[] array)` ，传入的是类型完全一样的数组，数组大小就是 `list.size() `
+    - 使用 toArray 带参方法，入参分配的数组空间不够大时， toArray 方法内部将重新分配内存空间，并返回新数组地址, 原数组不做更改；
+    - 如果数组元素大于实际所需，下标超出的数组元素将被置为 null，其它数组元素保持原值，因此最好将方法入参数组大小定义与集合元素个数一致。
+    - *注意* 直接使用 toArray 无参方法存在问题，此方法返回值只能是 Object[]类，若强转其它类型数组将出现 ClassCastException 错误。
 
 1. 把数组转换成集合：使用工具类`Arrays.asList()`时，不能使用其修改集合相关的方法，其`add/remove/clear`方法会抛出`UnsupportedOperationException`异常。
-    - *说明*：asList 的返回对象是一个 Arrays 内部类，并没有实现集合的修改方法。`Arrays.asList`体现的是适配器模式，只是转换接口，后台的数据仍是数组。
-    - `String[] str = new String[] { "a", "b" };`
-    - `List list = Arrays.asList(str);`
-    - *第一种情况*： `list.add("c");`  运行时异常。
-    - *第二种情况*： `str[0]= "gujin";` 那么 `list.get(0)` 也会随之修改。
+    - 因为 asList 的返回对象是一个继承于 AbstractList 的内部类 Arrays，实现集合的那些修改方法时 都是直接抛出异常
+    - `Arrays.asList`体现的是适配器模式，只是转换接口，后台的数据仍是固定长度的数组。
+    - 案例: `String[] str = new String[] { "a", "b" }; List list = Arrays.asList(str);`
+        - *第一种情况*： `list.add("c");`  运行时异常。
+        - *第二种情况*： `str[0]= "gujin";` 那么 `list.get(0)` 也会随之修改。
 
 1. 泛型通配符`<? extends T>`来接收返回的数据，此写法的泛型集合不能使用 add 方法。
     - 而`<? super T>`不能使用 get 方法，做为接口调用赋值时易出错。
@@ -286,6 +297,7 @@
         - 第一、 频繁往外读取内容的，适合用`<? extends T>`。 
         - 第二、 经常往里插入的，适合用`<? super T>`。
    - 说明：苹果装箱后返回一个`<? extends Fruits>`对象，此对象就不能往里加任何水果，包括苹果。
+
 1. 不要在 foreach 循环里进行元素的 `remove/add` 操作。 remove 元素请使用 Iterator方式，如果并发操作，需要对 Iterator 对象加锁。
 
 *正例：*
@@ -311,21 +323,24 @@
 ```
 *说明*： 以上代码的执行结果肯定会出乎大家的意料，那么试一下把“1”换成“2”，会是同样的结果吗？
 
-1. 在 JDK7 版本以上， Comparator 要满足自反性，传递性，对称性，不然 `Arrays.sort` ，`Collections.sort` 会报 `IllegalArgumentException` 异常。
+1. 在 JDK7 版本以上， Comparator 要满足自反性，传递性，对称性，不然 `Arrays.sort` ，`Collections.sort` 会报 `IllegalArgumentException` 
     - 1 ） 自反性： x ， y 的比较结果和 y ， x 的比较结果相反。
     - 2 ） 传递性： x > y , y > z ,则 x > z 。
     - 3 ） 对称性： x = y ,则 x , z 比较结果和 y ， z 比较结果相同。
 *反例： 下例中没有处理相等的情况，实际使用中可能会出现异常：*
 ```java
     new Comparator<Student>() {
-    @Override
-    public int compare(Student o1, Student o2) {
-        return o1.getId() > o2.getId() ? 1 : -1;
-    }
+        @Override
+        public int compare(Student o1, Student o2) {
+            return o1.getId() > o2.getId() ? 1 : -1;
+        }
     };
 ```
+
+TODO 待续
+
 1. 集合初始化时，尽量指定集合初始值大小。
-    - 说明： HashMap 使用 HashMap(int initialCapacity) 初始化
+    - HashMap 使用 HashMap(int initialCapacity) 初始化
     - 正例：`initialCapacity=(需要存储的元素个数/负载因子)+1`。注意负载因子（即 loaderfactor）默认为`0.75`，
         -  如果暂时无法确定初始值大小，请设置为 16（即默认值） 。
     - 反例： HashMap 需要放置 1024 个元素， 由于没有设置容量初始大小，随着元素不断增加，容量`7`次被迫扩大， resize 需要重建 hash 表，严重影响性能。
