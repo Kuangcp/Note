@@ -30,7 +30,7 @@
         - [Coding平台的WebIDE](#coding平台的webide)
     - [图形化管理工具](#图形化管理工具)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-25_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker 安装应用
 > [如何创建尽可能小的Docker容器教程](http://www.open-open.com/lib/view/open1419760974078.html)
@@ -104,6 +104,8 @@
 - [openJDK](https://hub.docker.com/_/openjdk/) 
 - [oracle-jdk8](https://hub.docker.com/r/frolvlad/alpine-oraclejdk8/)`非常精简`
     - [Github:](https://github.com/frol/docker-alpine-oraclejdk8)`可以学习一波Dockerfile`
+
+- [jdk-alpine-cst](https://hub.docker.com/r/mythkuang/jdk-alpine-cst/)`设置好CST时区的JDK基础镜像`
 
 > [参考博客: Java和Docker限制的那些事儿](http://www.techug.com/post/java-and-docker-memory-limits.html)`描述了一个天坑`
 
@@ -190,11 +192,11 @@
 所以在本机需要配置下 例如我的就是 6002映射到了22上
 `~/.ssh/config`
 ```conf
-Host git.kuangcp.com
-HostName 111.111.111.111
-User git
-Port 6002
-IdentityFile /home/kcp/.ssh/id_rsa
+    Host git.kuangcp.com
+    HostName 111.111.111.111
+    User git
+    Port 6002
+    IdentityFile /home/kcp/.ssh/id_rsa
 ```
 然后就能正常使用了
 

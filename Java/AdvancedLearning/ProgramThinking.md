@@ -3,6 +3,7 @@
 - [开发思想](#开发思想)
     - [抽象](#抽象)
     - [命令式编程和响应式编程](#命令式编程和响应式编程)
+        - [命令式编程](#命令式编程)
         - [响应式编程](#响应式编程)
     - [面向过程](#面向过程)
     - [面向对象](#面向对象)
@@ -34,7 +35,7 @@
         - [阿里巴巴的代码检查](#阿里巴巴的代码检查)
     - [配置文件](#配置文件)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-25_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 开发思想
 > 有关开发的理论性思想,编写,测试,部署等
@@ -55,6 +56,10 @@
 
 
 ## 命令式编程和响应式编程
+
+### 命令式编程
+> 编写改变状态的一条条命令
+
 ### 响应式编程
 > [ReactiveX](http://reactivex.io/intro.html)
 

@@ -24,6 +24,7 @@
         - [Integer](#integer)
         - [Long](#long)
         - [Boolean](#boolean)
+        - [Void](#void)
     - [枚举类型](#枚举类型)
     - [自动拆装箱](#自动拆装箱)
     - [内部类](#内部类)
@@ -44,7 +45,7 @@
     - [DAO](#dao)
 - [关键字](#关键字)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-25_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 基础语法
 
@@ -72,6 +73,7 @@
 
 ***********************
 # 数据类型
+> [official guide](https://docs.oracle.com/javase/tutorial/java/generics/types.html)
 
 ## 基础数据类型
 > 八种基本数据类型 byte char boolean short int long float double
@@ -104,7 +106,13 @@ Java8以前是使用 char数组 来存放String, Java8开始就是 byte数组 �
 
 **************************
 ## 包装类型
-> 基本类型和包装类型不能混为一谈 本质上的 class是不同的, 只不过自动拆装箱才让人感觉没差别
+> `wrapper class`基本类型和包装类型不能混为一谈 本质上的 class是不同的, 只不过自动拆装箱才让人感觉没差别
+
+Integer.TYPE == int.class
+Byte.TYPE == byte.class
+Boolean.TYPE == boolean.class
+Double.TYPE == double.class
+Void.TYPE == void.class
 
 ### String
 > 该类是final修饰的, 原因:[知乎问题](https://www.zhihu.com/question/31345592)
@@ -123,6 +131,55 @@ Java8以前是使用 char数组 来存放String, Java8开始就是 byte数组 �
 ### Integer
 ### Long
 ### Boolean
+
+### Void
+- void 的包装类型, 常用于反射时对应上 返回值为void的方法(总得有个类型 Void.TYPE) 该类型在 jdk1.1就有了, 1.5出了泛型后, 又多了一个用途(因为泛型不支持原始类型)
+
+> The Void class is an uninstantiable placeholder class to hold a reference to the Class object representing the Java keyword void.
+
+> [参考博客: What is the need of Void class in Java](https://stackoverflow.com/questions/2352447/what-is-the-need-of-void-class-in-java)
+
+> [参考博客: Uses for the Java Void Reference Type?](https://stackoverflow.com/questions/643906/uses-for-the-java-void-reference-type)
+
+1. 在AOP中, 增强根据切点的返回值类型, 做出不同的逻辑, 有可能用到Void
+1. Void 强调 the nothing, null 强调 nothing
+1. Void 作为方法的返回值时,只能返回 null 
+1.
+
+> 案例:  
+Future<Void>
+ResponseEntity<Void> [official api](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html)
+
+
+
+
+When you use the visitor pattern it can be cleaner to use Void instead of Object when you want to be sure that the return value will be null
+
+Example
+
+public interface LeavesVisitor<OUT>
+{
+   OUT visit(Leaf1 leaf);
+
+   OUT visit(Leaf2 leaf);
+}
+
+When you will implement your visitor you can explicitly set OUT to be Void so that you know your visitor will always return null, instead of using Object
+
+public class MyVoidVisitor implements LeavesVisitor<Void>
+{
+    Void visit(Leaf1 leaf){
+        //...do what you want on your leaf
+        return null;
+    }
+
+    Void visit(Leaf2 leaf){
+        //...do what you want on your leaf
+        return null;
+    }
+}
+
+
 ****************************
 ## 枚举类型
 > [official doc: enum](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html)
