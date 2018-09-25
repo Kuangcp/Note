@@ -29,12 +29,14 @@
 # Linux各个发行版本使用体验
 > 一边用一边记录吧 
 
+> [论最适合开发用的几款Linux桌面系统](https://www.lulinux.com/archives/3614)
 > [发行版热度对比](https://distrowatch.com/dwres.php?resource=popularity)
 > [Linux的发行版本及不同版本的联系和区别。](https://www.jianshu.com/p/c88a62ac8ca3?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
 > [Linux十大顶级发行版本](https://www.jianshu.com/p/13d399608880?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
 > [linux 的不同的发行版区别和联系](https://www.jianshu.com/p/b796ead65995?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
 
 - [谈 Linux，Windows 和 Mac](http://www.yinwang.org/blog-cn/2013/03/07/linux-windows-mac)
+
 ## 基础知识
 > 下载安装时要选平台 参考[相关博客](http://downtoearthlinux.com/posts/x86-i386-x86-64-x64-and-amd64-oh-my/)
 ```
@@ -42,8 +44,12 @@
     x86  =  32-bit  =  i386
 ```
 
-_查看发行版_
-- `lsb_release -a`  [查看更多方式](/Linux/Linux_File.md#查看发行版)
+> [查看发行版](/Linux/Base/LinuxDirectoryStructure.md#查看发行版)
+
+- [2018年wine QQ最完美解决方案（多Linux发行版通过测试并稳定运行）](https://www.lulinux.com/archives/1319)
+
+
+
 ## 服务器系统之争
 > [服务器操作系统应该选择 Debian/Ubuntu 还是 CentOS？](https://www.zhihu.com/question/19599986)  
 > [CentOS vs CoreOS – Which OS to choose for your Docker web hosting services](https://bobcares.com/blog/centos-vs-coreos-os-for-docker-web-hosting/2/)
@@ -51,6 +57,8 @@ _查看发行版_
 > 2018-04-01 17:17:19  
 > 个人来讲, 菜鸡一个,但是习惯了Ubuntu16,也尝试过centos7, 还行之匆匆的两个服务器都装了centos, 然后俩都出问题了,都不想去百度找解决方案了,正常操作都能报错? 很棒棒
 > 正在尝试Debian8 还是debian系习惯了
+
+**********************************************
 
 ## Debian系
 ### Debian

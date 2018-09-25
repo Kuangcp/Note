@@ -11,3 +11,4 @@
 > [参考博客: ArchLinux你可能需要知道的操作与软件包推荐](https://www.viseator.com/2017/07/02/arch_more/)
 > [参考博客: 长期使用Arch，Gentoo等滚动更新的发行版是怎样的一种体验？](https://www.zhihu.com/question/37720991?sort=created)
 
+- [什么Linux发行版软件最多？](https://www.lulinux.com/archives/2787)

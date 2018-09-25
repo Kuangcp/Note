@@ -50,11 +50,15 @@
 目前 Linux 大多采用 ext3 
 
 ### 桌面环境对比
+> [参考: Linux下15款桌面环境](https://www.lulinux.com/archives/444)
+
 - gnome 占用资源中等，个人对该桌面不感冒
 - xfce 占用资源少，操作类似于xp
 - kde 功能强大，占用资源中等
     - [知乎 KDE如何配置得漂亮大气？](https://www.zhihu.com/question/54147372)
 - dde deepin设计的桌面环境，小bug略多，但是美观操作方便, 但是扩展性不好
+
+- [dde kde gnome](https://bbs.deepin.org/forum.php?mod=viewthread&tid=38498)
 
 ***************************
 ### 文件管理器对比
@@ -249,7 +253,7 @@ _系统运行级别_
     - show 查询指定包的详情(已安装的版本信息)
 
 > snap
-- [official doc: snap](https://snapcraft.io/docs/core/usage) 
+- [official doc: snap](https://snapcraft.io/docs/core/usage) `提供一个类似容器的环境,将所有依赖打包，隔离运行`
 
 ### 源码编译安装
 1. make install 源代码安装
@@ -330,6 +334,10 @@ _系统运行级别_
 - `sudo hostname linux` 重启终端即可看到修改
 - 但是重启电脑会恢复原有名字修改如下文件永久： `sudo gedit /etc/hostname` 也许需要更改`/etc/hosts`
 - 立即生效,也要重新登录 `hostname -F /etc/hostname `
+
+## 字体渲染
+> [Debian8安装Infinality改善字体渲染，安装Ubuntu字体](https://www.linuxdashen.com/debian8%E5%AE%89%E8%A3%85infinality%E6%94%B9%E5%96%84%E5%AD%97%E4%BD%93%E6%B8%B2%E6%9F%93%EF%BC%8C%E5%AE%89%E8%A3%85ubuntu%E5%AD%97%E4%BD%93)
+> [一条命令搞定Linux字体渲染](https://www.lulinux.com/archives/278)
 
 *************************
 # 终端快捷键

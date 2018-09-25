@@ -56,8 +56,11 @@ update-alternatives 命令就是操作的这个目录, 实现的步骤往往是�
 > 具体配置文件的使用
 
 ### 查看发行版
-`cat /etc/issue` 通用
-`cat /etc/redhat-release` redhat系
+
+1. `cat /etc/issue` 通用
+1. `cat /etc/redhat-release` redhat系
+1. screenfetch `先安装`
+1. lsb_release -a
 
 _查看内核版本_
 `cat /proc/version`
