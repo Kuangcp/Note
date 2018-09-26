@@ -9,18 +9,18 @@
         - [复制粘贴](#复制粘贴)
         - [插入模式](#插入模式)
         - [命令模式](#命令模式)
+    - [vim-init](#vim-init)
+    - [spf13](#spf13)
+    - [SpaceVim](#spacevim)
+    - [space-vim](#space-vim)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Vim 
 > 学习曲线很高，但是学会熟练使用后就效率很高
 
+- [vim galore](https://github.com/mhinz/vim-galore)
 - [Vim galore 中文翻译](https://github.com/wsdjeg/vim-galore-zh_cn)
-
-- [Space Vim](https://github.com/topics/spacevim)`把Vim玩上天了`
-    - [GitBook : Space Vim Guide](https://legacy.gitbook.com/book/everettjf/spacevimtutorial/details)
-    - [quick start](https://spacevim.org/quick-start-guide/)
-    - [中文 文档](https://spacevim.org/cn/documentation/)
 
 ## Tips
 1. 误按 `Ctrl S` 终止屏幕输出（即停止回显）你敲的依然有效，只是看不见 `Ctrl Q` 即可恢复
@@ -56,6 +56,8 @@
     set nohls
     set backspace=2
     imap jj <Esc>
+    # 逗号后追加空格
+    inoremap , ,<space> 
 ```
 
 ## 基础操作
@@ -125,3 +127,20 @@
 - `:q!` 放弃所有修改，退出
 - `wq` `x` 先保存后退出
 
+## vim-init
+> [Github:](https://github.com/skywind3000/vim-init)
+
+## spf13
+- [official site](http://vim.spf13.com/)
+
+## SpaceVim
+> [参考博客: SpaceVim 中文手册](https://ruby-china.org/topics/32020)`主要看评论, 两个作者理念不同`
+> [参考博客: 如何评价Vim配置文件SpaceVim?](https://www.zhihu.com/question/54270182)
+
+- [Space Vim](https://github.com/topics/spacevim)`把Vim玩上天了`
+    - [GitBook : Space Vim Guide](https://legacy.gitbook.com/book/everettjf/spacevimtutorial/details)
+    - [quick start](https://spacevim.org/quick-start-guide/)
+    - [中文 文档](https://spacevim.org/cn/documentation/)
+
+## space-vim 
+> [Github:](https://github.com/liuchengxu/space-vim)

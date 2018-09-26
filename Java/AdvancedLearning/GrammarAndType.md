@@ -45,7 +45,7 @@
     - [DAO](#dao)
 - [关键字](#关键字)
 
-`目录 end` |_2018-09-25_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 基础语法
 
@@ -144,42 +144,37 @@ Void.TYPE == void.class
 1. 在AOP中, 增强根据切点的返回值类型, 做出不同的逻辑, 有可能用到Void
 1. Void 强调 the nothing, null 强调 nothing
 1. Void 作为方法的返回值时,只能返回 null 
-1.
 
-> 案例:  
-Future<Void>
-ResponseEntity<Void> [official api](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html)
+- 案例:  
+    - Future<Void>
+    - ResponseEntity<Void> 
+    - A `Consumer<T>` can be viewed as a `Function<T, Void>`.
+    - A `Supplier<T>` can be viewed as a `Function<Void, T>`
 
+> [official api](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html)
 
-
-
-When you use the visitor pattern it can be cleaner to use Void instead of Object when you want to be sure that the return value will be null
-
-Example
-
-public interface LeavesVisitor<OUT>
-{
+> When you use the visitor pattern it can be cleaner to use Void instead of Object when you want to be sure that the return value will be null. Example: 
+```java
+public interface LeavesVisitor<OUT>{
    OUT visit(Leaf1 leaf);
-
    OUT visit(Leaf2 leaf);
 }
+```
 
-When you will implement your visitor you can explicitly set OUT to be Void so that you know your visitor will always return null, instead of using Object
+> When you will implement your visitor you can explicitly set OUT to be Void so that you know your visitor will always return null, instead of using Object
 
-public class MyVoidVisitor implements LeavesVisitor<Void>
-{
+```java
+public class MyVoidVisitor implements LeavesVisitor<Void>{
     Void visit(Leaf1 leaf){
         //...do what you want on your leaf
         return null;
     }
-
     Void visit(Leaf2 leaf){
         //...do what you want on your leaf
         return null;
     }
 }
-
-
+```
 ****************************
 ## 枚举类型
 > [official doc: enum](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html)

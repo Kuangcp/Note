@@ -20,7 +20,7 @@
         - [娱乐](#娱乐)
     - [商业](#商业)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 > 只用来记录非技术类的文章,技术类的直接放到对应的笔记中去  
@@ -91,6 +91,8 @@
 - [人月神话](http://blog.sina.com.cn/s/articlelist_1228571733_0_1.html)
 - [杜琪 ](https://www.jianshu.com/u/28d7875c78df)`Java 服务端`
 - [恒宇少年 ](https://www.jianshu.com/u/092df3f77bca)
+
+- [wsdjeg](http://www.cnblogs.com/wsdjeg/)`SpaceVim作者`
 
 ************************
 ## 专栏
