@@ -95,8 +95,11 @@ http://static.javadoc.io/org.mockito/mockito-core/2.19.0/org/mockito/Mockito.htm
 >1. Don’t mock everything
 >1. Show love with your tests!
 
+1. **常规使用** when(mock.get(anyInt())).thenReturn(null);
+1. **对void方法的mock** doThrow(new RuntimeException()).when(mock).someVoidMethod(anyObject());
+1. **使用规则去校验** verify(mock).someMethod(contains("foo"));
 
-`when(player.hasEnoughScore(anyInt(), anyInt())).thenReturn(true);`
+> 切忌 不可对非Mock对象使用 mock 的系列方法, 不然会报出比较绕的错误
 
 ## DBUnit
 > 基于Junit的一个数据库测试框架, 方便测试dao层
