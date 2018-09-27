@@ -187,6 +187,10 @@ _如何将脑海中的思维火花转化为代码_
 - [业务分析三维度（场景+角色+时间）之程序员坐禅论道](http://www.cnblogs.com/bluedoctor/archive/2013/04/30/3051418.html#C5)
 
 ### 娱乐
+
+### 玩机
+> [华为全面屏手势](https://cn.club.vmall.com/forum.php?mod=viewthread&tid=16067108)
+
 ## 商业
 - [都说在做某界的 Airbnb，Airbnb 到底做了什么](http://daily.zhihu.com/story/4826947)
 

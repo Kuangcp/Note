@@ -77,3 +77,6 @@
 *********************
 ## Lettuce
 > [Official](https://lettuce.io/) | [Github:](https://github.com/lettuce-io/lettuce-core)
+
+和 Spring Netty 结合紧密， 适合 Spring 系， 没有Jedis简洁
+
