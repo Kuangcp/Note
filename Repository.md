@@ -217,6 +217,8 @@
 - [js代码块集合](https://github.com/Chalarangelo/30-seconds-of-code)
 - [flowchart](https://github.com/adrai/flowchart.js)`绘制svg flow图形`
 
+- [mathjax](https://github.com/mathjax/mathjax)`渲染数学公式`
+
 ### Vue
 - [iview](https://github.com/iview/iview)`vue 的前端组件` | [文档](https://www.iviewui.com/docs/guide/start)
 - [vue-rap](https://gitee.com/tengzhinei/Vue-rap) | [文档](https://www.kancloud.cn/tengzhinei/vue-rap)

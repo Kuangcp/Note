@@ -160,33 +160,39 @@
 - 停用环境 `deactivate`
 
 ### pip
-> [pip](https://pip.readthedocs.io/en/stable/) | Python的包管理器
+> [pip](https://pip.readthedocs.io/en/stable/) | [doc](https://pip.pypa.io/en/stable/reference/pip_install/) | [guide](https://packaging.python.org/tutorials/installing-packages/) 
 
-> [doc](https://pip.pypa.io/en/stable/reference/pip_install/)
+1. 作为Python的包管理器, 包的可执行文件默认在 /usr/local/bin 目录下
+    - TODO ~/.local 目录又是什么?
+    
+1. 也可以这样使用 `python -m pip install xxx`
+
+1. 安装指定版本的包 `install name==version` 
+
 #### Requirements files
 > [pip官方文档 Requirements files](https://pip.readthedocs.io/en/1.1/requirements.html)
 
 1. 导出 `pip freeze > requirements.txt` _这个命令会将当前环境安装的包全部列出来, 适合env环境下使用_
     - 如果没有使用虚拟环境, 然后只想导出某项目的依赖 [Github pipreqs](https://github.com/bndr/pipreqs)
     - 安装 : `pip install pipreqs` 然后 `pipreqs /path/to/project`
-2. 使用 `pip install -r requirements.txt`
+
+1. 使用 `pip install -r requirements.txt`
 
 #### 发布包到 pypi
 > [Official : about package](https://packaging.python.org/guides/distributing-packages-using-setuptools/?highlight=pypirc#id78)
 
-`$HOME/.pypirc`
-```
-[pypi]
-username = <username>
-password = <password>
-```
+1. edit `$HOME/.pypirc` to save authorization  info
+    ```
+        [pypi]
+        username = <username>
+        password = <password>
+    ```
+1. pip3 install wheel twine 
+1. rm -rf dist build *.egg-info
+1. python3 setup.py bdist_wheel
+1. twine upload dist/*
 
-pip3 install wheel twine 
-
-rm -rf dist build *.egg-info
-
-python3 setup.py bdist_wheel
-twine upload dist/*
+> [可以参考该项目: 终端内使用百度翻译](https://gitee.com/gin9/baidu-trans-cli)
 
 *******************************
 ## 变量
