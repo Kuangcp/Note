@@ -3,16 +3,10 @@
 * [ Introduction ](README.md)
 
 * [ Platform ](./Platform.md)
-* [ Process ](./Process.md)
+* [ Readme_kuang ](./Readme_kuang.md)
 * [ Repository ](./Repository.md)
 * [ SUMMARY ](./SUMMARY.md)
 * [ Website ](./Website.md)
-* 【 Article 】
-    * [ Font ](/Article/Font.md)
-    * [ HistoricalBias ](/Article/HistoricalBias.md)
-    * [ Memorandum ](/Article/Memorandum.md)
-    * [ NotCode ](/Article/NotCode.md)
-    * [ Science ](/Article/Science.md)
 * 【 Blog 】
     * [ Blog ](/Blog/Blog.md)
     * [ Java ](/Blog/Java.md)
@@ -21,6 +15,7 @@
     * [ View ](/Blog/View.md)
 * 【 Book 】
     * 【 Book/CS 】
+        * [ Algorithm ](/Book/CS/Algorithm.md)
         * [ NetworkBooks ](/Book/CS/NetworkBooks.md)
     * 【 Book/Database 】
     * 【 Book/Front 】
@@ -86,6 +81,7 @@
         * [ JDKAndJRE ](/Java/AdvancedLearning/JDKAndJRE.md)
         * [ JMS ](/Java/AdvancedLearning/JMS.md)
         * [ JVM ](/Java/AdvancedLearning/JVM.md)
+        * [ Java11 ](/Java/AdvancedLearning/Java11.md)
         * [ Java7 ](/Java/AdvancedLearning/Java7.md)
         * [ Java8 ](/Java/AdvancedLearning/Java8.md)
         * [ JavaPerformance ](/Java/AdvancedLearning/JavaPerformance.md)

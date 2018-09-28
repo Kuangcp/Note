@@ -1,16 +1,16 @@
 `目录 start`
  
-- [Jenkins](#jenkins)
-    - [安装](#安装)
-        - [直接运行jar](#直接运行jar)
-        - [Docker](#docker)
-    - [配置](#配置)
-        - [配置Gradle](#配置gradle)
-        - [配置Docker插件](#配置docker插件)
-    - [使用](#使用)
-        - [个人经验](#个人经验)
+1. [Jenkins](#jenkins)
+    1. [安装](#安装)
+        1. [直接运行jar](#直接运行jar)
+        1. [Docker](#docker)
+    1. [配置](#配置)
+        1. [配置Gradle](#配置gradle)
+        1. [配置Docker插件](#配置docker插件)
+    1. [使用](#使用)
+        1. [个人经验](#个人经验)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Jenkins
 > [官网](https://jenkins.io/)

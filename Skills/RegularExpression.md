@@ -1,12 +1,12 @@
 `目录 start`
  
-- [正则表达式学习](#正则表达式学习)
-    - [基本字符](#基本字符)
-    - [特殊字符](#特殊字符)
-        - [Python](#python)
-        - [Shell](#shell)
+1. [正则表达式学习](#正则表达式学习)
+    1. [基本字符](#基本字符)
+    1. [特殊字符](#特殊字符)
+        1. [Python](#python)
+        1. [Shell](#shell)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 正则表达式学习
 

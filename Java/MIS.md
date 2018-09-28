@@ -1,19 +1,19 @@
 `目录 start`
  
-- [完整的MIS构建经验](#完整的mis构建经验)
-    - [MVC](#mvc)
-        - [持久化层](#持久化层)
-            - [数据库设计](#数据库设计)
-            - [Domain对象设计](#domain对象设计)
-        - [控制层](#控制层)
-            - [权限控制](#权限控制)
-                - [Session和Token的对比](#session和token的对比)
-                - [统一授权](#统一授权)
-        - [视图层](#视图层)
-    - [分布式](#分布式)
-        - [CAP定理](#cap定理)
+1. [完整的MIS构建经验](#完整的mis构建经验)
+    1. [MVC](#mvc)
+        1. [持久化层](#持久化层)
+            1. [数据库设计](#数据库设计)
+            1. [Domain对象设计](#domain对象设计)
+        1. [控制层](#控制层)
+            1. [权限控制](#权限控制)
+                1. [Session和Token的对比](#session和token的对比)
+                1. [统一授权](#统一授权)
+        1. [视图层](#视图层)
+    1. [分布式](#分布式)
+        1. [CAP定理](#cap定理)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 完整的MIS构建经验
 

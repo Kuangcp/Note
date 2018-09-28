@@ -1,14 +1,14 @@
 `目录 start`
  
-- [流编辑器](#流编辑器)
-    - [grep](#grep)
-    - [tr](#tr)
-    - [cut](#cut)
-    - [paste](#paste)
-    - [sed](#sed)
-    - [awk](#awk)
+1. [流编辑器](#流编辑器)
+    1. [grep](#grep)
+    1. [tr](#tr)
+    1. [cut](#cut)
+    1. [paste](#paste)
+    1. [sed](#sed)
+    1. [awk](#awk)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 流编辑器
 > [参考博客: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)

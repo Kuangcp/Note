@@ -1,17 +1,17 @@
 `目录 start`
  
-- [Java8](#java8)
-    - [Optional](#optional)
-    - [Funcational](#funcational)
-    - [Lambda](#lambda)
-        - [利用Lambda开发DSL框架](#利用lambda开发dsl框架)
-    - [Stream](#stream)
-    - [集合](#集合)
-    - [时间处理](#时间处理)
-        - [Instant](#instant)
-        - [LocalDateTime](#localdatetime)
+1. [Java8](#java8)
+    1. [Optional](#optional)
+    1. [Funcational](#funcational)
+    1. [Lambda](#lambda)
+        1. [利用Lambda开发DSL框架](#利用lambda开发dsl框架)
+    1. [Stream](#stream)
+    1. [集合](#集合)
+    1. [时间处理](#时间处理)
+        1. [Instant](#instant)
+        1. [LocalDateTime](#localdatetime)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)

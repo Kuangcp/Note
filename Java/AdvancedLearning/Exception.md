@@ -1,18 +1,18 @@
 `目录 start`
  
-- [异常](#异常)
-    - [异常的继承关系](#异常的继承关系)
-    - [异常常见问题](#异常常见问题)
-        - [应该使用大块的try还是细颗粒度的try?](#应该使用大块的try还是细颗粒度的try)
-        - [try和for谁包住谁更好?](#try和for谁包住谁更好)
-    - [异常的处理](#异常的处理)
-        - [Web应用中全局异常统一处理](#web应用中全局异常统一处理)
-        - [Restful应用的全局异常统一处理](#restful应用的全局异常统一处理)
-        - [异常和日志的结合](#异常和日志的结合)
-        - [自定义异常](#自定义异常)
-            - [自定义异常的错误码](#自定义异常的错误码)
+1. [异常](#异常)
+    1. [异常的继承关系](#异常的继承关系)
+    1. [异常常见问题](#异常常见问题)
+        1. [应该使用大块的try还是细颗粒度的try?](#应该使用大块的try还是细颗粒度的try)
+        1. [try和for谁包住谁更好?](#try和for谁包住谁更好)
+    1. [异常的处理](#异常的处理)
+        1. [Web应用中全局异常统一处理](#web应用中全局异常统一处理)
+        1. [Restful应用的全局异常统一处理](#restful应用的全局异常统一处理)
+        1. [异常和日志的结合](#异常和日志的结合)
+        1. [自定义异常](#自定义异常)
+            1. [自定义异常的错误码](#自定义异常的错误码)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 异常
 > 相关博客:[Java异常浅谈](http://www.cnblogs.com/focusj/archive/2011/12/26/2301524.html)  

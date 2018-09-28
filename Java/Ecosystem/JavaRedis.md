@@ -1,12 +1,12 @@
 `目录 start`
  
-- [Java使用redis](#java使用redis)
-    - [Jedis](#jedis)
-        - [jedis遇到的异常](#jedis遇到的异常)
-        - [SpringBoot使用Redis](#springboot使用redis)
-    - [Lettuce](#lettuce)
+1. [Java使用redis](#java使用redis)
+    1. [Jedis](#jedis)
+        1. [jedis遇到的异常](#jedis遇到的异常)
+        1. [SpringBoot使用Redis](#springboot使用redis)
+    1. [Lettuce](#lettuce)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java使用redis
 ## Jedis

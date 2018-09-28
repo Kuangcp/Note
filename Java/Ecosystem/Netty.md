@@ -1,14 +1,14 @@
 `目录 start`
  
-- [Netty](#netty)
-    - [原理](#原理)
-        - [编解码相关](#编解码相关)
-            - [Protobuf](#protobuf)
-    - [使用](#使用)
-        - [源码](#源码)
-        - [配置环境](#配置环境)
+1. [Netty](#netty)
+    1. [原理](#原理)
+        1. [编解码相关](#编解码相关)
+            1. [Protobuf](#protobuf)
+    1. [使用](#使用)
+        1. [源码](#源码)
+        1. [配置环境](#配置环境)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Netty
 > [trustlin](https://github.com/trustin)`Netty mina 的作者`

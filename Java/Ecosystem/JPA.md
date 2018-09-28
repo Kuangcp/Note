@@ -1,12 +1,12 @@
 `目录 start`
  
-- [JPA](#jpa)
-    - [JPA和Mybatis](#jpa和mybatis)
-    - [配置](#配置)
-    - [使用](#使用)
-        - [注解](#注解)
+1. [JPA](#jpa)
+    1. [JPA和Mybatis](#jpa和mybatis)
+    1. [配置](#配置)
+    1. [使用](#使用)
+        1. [注解](#注解)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # JPA
 ## JPA和Mybatis

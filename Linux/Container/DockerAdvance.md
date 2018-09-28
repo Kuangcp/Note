@@ -1,13 +1,13 @@
 `目录 start`
  
-- [Docker Advance](#docker-advance)
-    - [AUFS](#aufs)
-    - [配置](#配置)
-        - [更改数据的存放目录](#更改数据的存放目录)
-        - [暴露出tcp端口](#暴露出tcp端口)
-        - [Tips](#tips)
+1. [Docker Advance](#docker-advance)
+    1. [AUFS](#aufs)
+    1. [配置](#配置)
+        1. [更改数据的存放目录](#更改数据的存放目录)
+        1. [暴露出tcp端口](#暴露出tcp端口)
+        1. [Tips](#tips)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker Advance
 

@@ -1,15 +1,15 @@
 `目录 start`
  
-- [Linux操作压缩文档](#linux操作压缩文档)
-    - [tar](#tar)
-        - [tar归档和压缩](#tar归档和压缩)
-    - [rar](#rar)
-    - [zip](#zip)
-    - [gz](#gz)
-    - [7Z](#7z)
-    - [总结](#总结)
+1. [Linux操作压缩文档](#linux操作压缩文档)
+    1. [tar](#tar)
+        1. [tar归档和压缩](#tar归档和压缩)
+    1. [rar](#rar)
+    1. [zip](#zip)
+    1. [gz](#gz)
+    1. [7Z](#7z)
+    1. [总结](#总结)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux操作压缩文档
 > Linux默认自带ZIP压缩，最大支持4GB压缩，RAR的压缩比大于4GB.

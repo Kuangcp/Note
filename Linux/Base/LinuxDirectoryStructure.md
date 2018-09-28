@@ -1,19 +1,19 @@
 `目录 start`
  
-- [Linux 目录结构](#linux-目录结构)
-    - [/root](#root)
-    - [/home](#home)
-    - [/proc](#proc)
-        - [网络](#网络)
-    - [/etc](#etc)
-        - [/etc/alternatives](#etcalternatives)
-        - [/etc/apt](#etcapt)
-        - [使用](#使用)
-        - [查看发行版](#查看发行版)
-        - [查看系统所有用户信息](#查看系统所有用户信息)
-    - [/tmp](#tmp)
+1. [Linux 目录结构](#linux-目录结构)
+    1. [/root](#root)
+    1. [/home](#home)
+    1. [/proc](#proc)
+        1. [网络](#网络)
+    1. [/etc](#etc)
+        1. [/etc/alternatives](#etcalternatives)
+        1. [/etc/apt](#etcapt)
+        1. [使用](#使用)
+        1. [查看发行版](#查看发行版)
+        1. [查看系统所有用户信息](#查看系统所有用户信息)
+    1. [/tmp](#tmp)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux 目录结构
 > Linux 系统目录结构的大致分布以及说明

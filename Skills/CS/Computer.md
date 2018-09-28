@@ -1,14 +1,14 @@
 `目录 start`
  
-- [计算机历史](#计算机历史)
-    - [起源](#起源)
-    - [硬件系统](#硬件系统)
-        - [CPU](#cpu)
-    - [操作系统](#操作系统)
-    - [编程语言](#编程语言)
-        - [语言的的演化](#语言的的演化)
+1. [计算机历史](#计算机历史)
+    1. [起源](#起源)
+    1. [硬件系统](#硬件系统)
+        1. [CPU](#cpu)
+    1. [操作系统](#操作系统)
+    1. [编程语言](#编程语言)
+        1. [语言的的演化](#语言的的演化)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 计算机历史
 

@@ -1,15 +1,15 @@
 `目录 start`
  
-- [配置文件](#配置文件)
-    - [conf或者ini](#conf或者ini)
-    - [properties](#properties)
-    - [XML](#xml)
-    - [YAML](#yaml)
-        - [Java使用](#java使用)
-    - [JSON](#json)
-        - [Jackson](#jackson)
+1. [配置文件](#配置文件)
+    1. [conf或者ini](#conf或者ini)
+    1. [properties](#properties)
+    1. [XML](#xml)
+    1. [YAML](#yaml)
+        1. [Java使用](#java使用)
+    1. [JSON](#json)
+        1. [Jackson](#jackson)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 配置文件
 

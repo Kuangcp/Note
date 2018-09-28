@@ -1,15 +1,15 @@
 `目录 start`
  
-- [代码的坏味道](#代码的坏味道)
-- [项目编码时优秀的习惯](#项目编码时优秀的习惯)
-    - [《代码整洁之道》](#《代码整洁之道》)
-        - [命名](#命名)
-        - [函数](#函数)
-        - [注释](#注释)
-        - [格式](#格式)
-        - [异常](#异常)
+1. [代码的坏味道](#代码的坏味道)
+1. [项目编码时优秀的习惯](#项目编码时优秀的习惯)
+    1. [《代码整洁之道》](#《代码整洁之道》)
+        1. [命名](#命名)
+        1. [函数](#函数)
+        1. [注释](#注释)
+        1. [格式](#格式)
+        1. [异常](#异常)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 代码的坏味道
 

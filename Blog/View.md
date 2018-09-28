@@ -1,15 +1,15 @@
 `目录 start`
  
-- [前端](#前端)
-    - [基础](#基础)
-        - [规范](#规范)
-    - [CSS](#css)
-    - [相关库](#相关库)
-        - [Jquery](#jquery)
-        - [Bootstrap](#bootstrap)
-        - [LayUI](#layui)
+1. [前端](#前端)
+    1. [基础](#基础)
+        1. [规范](#规范)
+    1. [CSS](#css)
+    1. [相关库](#相关库)
+        1. [Jquery](#jquery)
+        1. [Bootstrap](#bootstrap)
+        1. [LayUI](#layui)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 前端
 > 半学半就 [个人导航页](https://kuangcp.github.io/main.html)

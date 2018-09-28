@@ -1,3 +1,16 @@
+`目录 start`
+ 
+1. [Markdown](#markdown)
+    1. [基础格式](#基础格式)
+        1. [链接](#链接)
+        1. [图片](#图片)
+        1. [列表](#列表)
+        1. [头信息](#头信息)
+    1. [流程图](#流程图)
+    1. [Github](#github)
+
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+****************************************
 --- 
 layout: post
 title: "Markdown 基本语法与应用"
@@ -8,19 +21,6 @@ tags:
 - github
 ---
 
-`目录 start`
- 
-- [Markdown](#markdown)
-    - [基础格式](#基础格式)
-        - [链接](#链接)
-        - [图片](#图片)
-        - [列表](#列表)
-        - [头信息](#头信息)
-    - [流程图](#流程图)
-    - [Github](#github)
-
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
-****************************************
 # Markdown
 > [markup](https://github.com/github/markup)`丰富的标记性文本格式`  
 > [Markdown教程](http://www.markdown.cn/)  
@@ -68,6 +68,8 @@ echo hi
 1. b
 
 ### 头信息
+> 仅仅是github的语法, gitlab 当成了代码块进行渲染, gitee 则完全是乱的.
+
 ```yml
     --- 
     layout: post

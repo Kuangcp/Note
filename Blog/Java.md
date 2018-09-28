@@ -1,19 +1,19 @@
 `目录 start`
  
-- [Java](#java)
-    - [社区](#社区)
-    - [SE](#se)
-    - [JavaFx](#javafx)
-    - [爬虫](#爬虫)
-    - [Springboot](#springboot)
-    - [BuildTool](#buildtool)
-    - [Test](#test)
-    - [精彩系列](#精彩系列)
-        - [码农翻身](#码农翻身)
-        - [架构师](#架构师)
-    - [Java语言讨论](#java语言讨论)
+1. [Java](#java)
+    1. [社区](#社区)
+    1. [SE](#se)
+    1. [JavaFx](#javafx)
+    1. [爬虫](#爬虫)
+    1. [Springboot](#springboot)
+    1. [BuildTool](#buildtool)
+    1. [Test](#test)
+    1. [精彩系列](#精彩系列)
+        1. [码农翻身](#码农翻身)
+        1. [架构师](#架构师)
+    1. [Java语言讨论](#java语言讨论)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java
 > 和Java有关的博客和网页  

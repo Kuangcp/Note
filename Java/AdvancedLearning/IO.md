@@ -1,18 +1,18 @@
 `目录 start`
  
-- [IO操作的学习](#io操作的学习)
-    - [Java IO简史](#java-io简史)
-        - [Java1.0到1.3 BIO](#java10到13-bio)
-        - [Java1.4 NIO](#java14-nio)
-        - [Java1.7 AIO](#java17-aio)
-    - [关于普通IO的文件操作](#关于普通io的文件操作)
-        - [读取配置文件](#读取配置文件)
-            - [可执行jar读取外部配置文件](#可执行jar读取外部配置文件)
-            - [Maven项目](#maven项目)
-    - [NIO](#nio)
-        - [Buffer](#buffer)
+1. [IO操作的学习](#io操作的学习)
+    1. [Java IO简史](#java-io简史)
+        1. [Java1.0到1.3 BIO](#java10到13-bio)
+        1. [Java1.4 NIO](#java14-nio)
+        1. [Java1.7 AIO](#java17-aio)
+    1. [关于普通IO的文件操作](#关于普通io的文件操作)
+        1. [读取配置文件](#读取配置文件)
+            1. [可执行jar读取外部配置文件](#可执行jar读取外部配置文件)
+            1. [Maven项目](#maven项目)
+    1. [NIO](#nio)
+        1. [Buffer](#buffer)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # IO操作的学习
 > - [个人代码:IO流的相关学习](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/io)

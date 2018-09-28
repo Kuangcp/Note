@@ -1,18 +1,18 @@
 `目录 start`
  
-- [浏览器](#浏览器)
-    - [FireFox](#firefox)
-        - [开发版本](#开发版本)
-        - [必备插件](#必备插件)
-        - [配置](#配置)
-        - [使用](#使用)
-    - [seamonkey](#seamonkey)
-    - [Chrome](#chrome)
-        - [主题](#主题)
-    - [Vivaldi](#vivaldi)
-    - [Opera](#opera)
+1. [浏览器](#浏览器)
+    1. [FireFox](#firefox)
+        1. [开发版本](#开发版本)
+        1. [必备插件](#必备插件)
+        1. [配置](#配置)
+        1. [使用](#使用)
+    1. [seamonkey](#seamonkey)
+    1. [Chrome](#chrome)
+        1. [主题](#主题)
+    1. [Vivaldi](#vivaldi)
+    1. [Opera](#opera)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 浏览器
 ## FireFox

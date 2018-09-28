@@ -1,22 +1,22 @@
 `目录 start`
  
-- [系统常用基础命令](#系统常用基础命令)
-    - [输入输出](#输入输出)
-        - [重定向](#重定向)
-    - [管道](#管道)
-        - [xargs](#xargs)
-    - [time](#time)
-    - [date](#date)
-    - [grep](#grep)
-    - [定时任务](#定时任务)
-        - [crontab](#crontab)
-        - [Systemd](#systemd)
-- [实用的工具](#实用的工具)
-    - [终端工具](#终端工具)
-    - [图形化工具](#图形化工具)
-        - [剪贴板管理](#剪贴板管理)
+1. [系统常用基础命令](#系统常用基础命令)
+    1. [输入输出](#输入输出)
+        1. [重定向](#重定向)
+    1. [管道](#管道)
+        1. [xargs](#xargs)
+    1. [time](#time)
+    1. [date](#date)
+    1. [grep](#grep)
+    1. [定时任务](#定时任务)
+        1. [crontab](#crontab)
+        1. [Systemd](#systemd)
+1. [实用的工具](#实用的工具)
+    1. [终端工具](#终端工具)
+    1. [图形化工具](#图形化工具)
+        1. [剪贴板管理](#剪贴板管理)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 系统常用基础命令
 
