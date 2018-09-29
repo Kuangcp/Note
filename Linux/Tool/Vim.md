@@ -38,26 +38,28 @@
 ## 基本配置
 - 在文件 全局：`/etc/vim/vimrc` 先备份一下 `sudo cp /etc/vim/vimrc /etc/vim/vimrc.bak`
 	- 或者当前用户：`~/.vimrc` 中添加如下内容
-```sh
-    set showcmd		" Show (partial) command in status line.
-    set autowrite		" Automatically save before commands like :next and :make
-    set nocompatible
-    set number
-    filetype on 
-    syntax on
-    set history=1000
-    set autoindent
-    set smartindent
-    set tabstop=4
-    set shiftwidth=4
-    set showmatch
-    set guioptions=T
-    set ruler
-    set nohls
-    set backspace=2
-    imap jj <Esc>
-    # 逗号后追加空格
-    inoremap , ,<space> 
+```
+set showcmd		" Show (partial) command in status line.
+set autowrite		" Automatically save before commands like :next and :make
+set nocompatible
+set number
+filetype on 
+syntax on
+set history=1000
+set autoindent
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set showmatch
+set guioptions=T
+set ruler
+set nohls
+set backspace=2
+imap jk <Esc> 
+
+set relativenumber " 设置相对行号
+" 逗号后追加空格
+inoremap , ,<space>  
 ```
 
 ## 基础操作
@@ -65,11 +67,11 @@
 > [高效率编辑器 Vim——操作篇，非常适合 Vim 新手](https://linuxtoy.org/archives/efficient-editing-with-vim.html)
 
 ### 跳转
-- k j h l  上下左右
-- Ctrl+f 上翻一页
-- Ctrl+b 下翻一页
-- H M L  跳转到屏幕 顶 中 尾
-	- 2H 第二行 3L 倒数第三行
+- K J H L 上下左右
+- Ctrl+F  上翻一页
+- Ctrl+B  下翻一页
+- H M L   跳转到屏幕 顶 中 尾
+	- 2H  第二行 3L 倒数第三行
 
 - `*` 当光标在某单词上 会进行搜索跳转到下一个
 - `#` 与`*` 一样，不过是跳转到上一个
@@ -78,7 +80,9 @@
 - `g_` 跳转到最后一个不是空格的字符的位置
 - `gg` 跳转到文件第一行的起始位置
 - `G` 跳转到文件最后一行起始位置
+
 - `5gg`或`5G` `:5` 跳转到 5 行的起始位置
+- `number` 正数则是往下，负数则是往上 (相对)
 
 `行内移动`
 - `w` 右移到下一个字的开头

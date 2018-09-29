@@ -103,6 +103,9 @@
 ### windows
 - 直接搜索git-for-windows 建议使用360搜索,会有360的下载链接,无意间发现 毕竟官网的下载速度不敢恭维
 
+### GUI
+> [官方列表](https://git-scm.com/downloads/guis)
+
 **************
 ## 【简单使用】 
 
