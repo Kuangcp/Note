@@ -12,6 +12,7 @@
             1. [yml方式](#yml方式)
             1. [yml和Properties结合](#yml和properties结合)
         1. [应用配置文件](#应用配置文件)
+    1. [日志模块](#日志模块)
     1. [Web模块](#web模块)
         1. [Lisener](#lisener)
             1. [ServletContextListener](#servletcontextlistener)
@@ -30,7 +31,7 @@
             1. [gradle结合docker](#gradle结合docker)
         1. [热部署](#热部署)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-29_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SpringBoot
 > [首页](https://spring.io/projects/spring-boot#learn)
@@ -162,19 +163,19 @@ _目录结构最好如下_ `*Application类要处于所有用了Springboot注解
 > 依赖于 `org.springframework.boot:spring-boot-configuration-processor`
 配置对应的实体类
 ```java
-@Data
-@Component
-@ConfigurationProperties(prefix = "graduate.main")
-public class MainConfig {
-    private String delimiter;
-}
+    @Data
+    @Component
+    @ConfigurationProperties(prefix = "graduate.main")
+    public class MainConfig {
+        private String delimiter;
+    }
 ```
 应用配置类
 ```java
-@Configuration
-@EnableConfigurationProperties(MainConfig.class)
-public class AutoCustomConfig {
-}
+    @Configuration
+    @EnableConfigurationProperties(MainConfig.class)
+    public class AutoCustomConfig {
+    }
 ```
 application.yml
 ```yml
@@ -182,7 +183,19 @@ graduate:
   main:
     delimiter: ,
 ```
+
+********************
+
+## 日志模块
+默认可以通过 application.properties 配置框架的日志,以及应用具体到包和类的日志等级,日志文件等等
+
+> [参考博客: Spring boot——logback 基础使用篇（一）](https://www.cnblogs.com/lixuwu/p/5804793.html)
+
+> [参考博客: springboot use logback](https://springframework.guru/using-logback-spring-boot/)`能根据Profile配置,还能写if`
+
+使用 logback 则需要配置 logback.xml 或者 logback-spring.xml 建议使用后者
 ************
+
 ## Web模块
 ### Lisener
 #### ServletContextListener
