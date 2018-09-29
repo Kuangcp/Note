@@ -1,19 +1,19 @@
 `目录 start`
  
-- [问题解决方案](#问题解决方案)
-    - [终端](#终端)
-    - [JDK](#jdk)
-    - [IDE](#ide)
-        - [IDEA](#idea)
-    - [Docker](#docker)
-        - [内存高占用](#内存高占用)
-    - [Linux](#linux)
-        - [Deepin](#deepin)
-            - [输入法](#输入法)
-                - [fcitx](#fcitx)
-            - [Flash](#flash)
+1. [问题解决方案](#问题解决方案)
+    1. [终端](#终端)
+    1. [JDK](#jdk)
+    1. [IDE](#ide)
+        1. [IDEA](#idea)
+    1. [Docker](#docker)
+        1. [内存高占用](#内存高占用)
+    1. [Linux](#linux)
+        1. [Deepin](#deepin)
+            1. [输入法](#输入法)
+                1. [fcitx](#fcitx)
+            1. [Flash](#flash)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # 问题解决方案

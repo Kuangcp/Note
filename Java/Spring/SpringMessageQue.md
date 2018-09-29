@@ -1,9 +1,9 @@
 `目录 start`
  
-- [消息队列](#消息队列)
-    - [简单的Websocket方式](#简单的websocket方式)
+1. [消息队列](#消息队列)
+    1. [简单的Websocket方式](#简单的websocket方式)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 消息队列
 

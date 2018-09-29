@@ -1,20 +1,19 @@
 `目录 start`
  
-- [Java7](#java7)
-    - [异常处理](#异常处理)
-    - [TWR](#twr)
+1. [Java7](#java7)
+    1. [异常处理](#异常处理)
+    1. [TWR](#twr)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java7
-- [Java8](https://docs.oracle.com/javase/8/docs/api/)
+- [Official:api](https://docs.oracle.com/javase/7/docs/api/)
 
 _小特性_
 - | Switch 支持 String
 - | 二进制的实例化 原本是 `int x = Integer.parseInt("1010100", 2);`Java7之后`int x = 0b110110;`
 - | 数字下划线 `10_0100__1000__0011`
 - | 钻石语法: 泛型右部直接`<>`不用写类型变量
-
 
 ## 异常处理
 - | 异常处理

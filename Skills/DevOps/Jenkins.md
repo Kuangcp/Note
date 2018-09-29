@@ -1,16 +1,17 @@
 `目录 start`
  
-- [Jenkins](#jenkins)
-    - [安装](#安装)
-        - [直接运行jar](#直接运行jar)
-        - [Docker](#docker)
-    - [配置](#配置)
-        - [配置Gradle](#配置gradle)
-        - [配置Docker插件](#配置docker插件)
-    - [使用](#使用)
-        - [个人经验](#个人经验)
+1. [Jenkins](#jenkins)
+    1. [安装](#安装)
+        1. [直接运行jar](#直接运行jar)
+        1. [Docker](#docker)
+    1. [配置](#配置)
+        1. [配置Gradle](#配置gradle)
+        1. [配置Docker插件](#配置docker插件)
+    1. [使用](#使用)
+        1. [Pipeline](#pipeline)
+        1. [个人经验](#个人经验)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-29_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Jenkins
 > [官网](https://jenkins.io/)
@@ -56,6 +57,69 @@
 ***********************
 ## 使用
 
+### Pipeline
+```groovy
+pipeline {
+    agent {
+		label 'docker-slave'
+	}
+    stages {
+        stage('init') {
+            steps {
+                echo 'init..'
+				script {
+					echo "PATH = ${PATH}"
+					echo "env.version = ${env.version}"
+				}
+            }
+        }
+        stage('package') {
+                steps {
+                echo "start to build"
+                checkout changelog: false, poll: false, scm: [$class: 'SubversionSCM', additionalCredentials: [], excludedCommitMessages: '', excludedRegions: '', excludedRevprop: '', excludedUsers: '', filterChangelog: false, ignoreDirPropChanges: false, includedRegions: '', locations: [[cancelProcessOnExternalsFail: true, credentialsId: '22f6f4c9-f19e-4120-af4b-7946ea7cc2ef', depthOption: 'infinity', ignoreExternalsOption: true, local: '.', remote: 'http://192.168.10.200/svn/hecheng/dev/server/trunk']], quietOperation: true, workspaceUpdater: [$class: 'UpdateUpdater']]
+                 sh "mvn -B -V -U clean package -DskipTest=true"
+                }
+        }
+        stage('test') {
+            steps {
+                echo 'Testing..'
+                sh "mvn -B test"
+            }
+        }
+        stage('build docker image and publish into local registry') {
+            steps {
+                echo "starting to build docker image..."
+                script {		
+                /* This builds the actual image; synonymous to
+                * docker build on the command line */
+                sh "pwd && ls . && docker info"
+                withDockerRegistry(url: 'http://192.168.10.6:5000/') {
+                    def app = docker.build "192.168.10.6:5000/synthesizer-dev:${env.BUILD_ID}"
+                    app.push()
+                    echo "pushed into local registry"
+                    }
+                }
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'killing old server and start new server....'
+                script {
+                    sh "docker container rm -f synthesizer-dev  &&  docker run -d -p 3070:3070 -p 16888:16888 --name synthesizer-dev 192.168.10.6:5000/synthesizer-dev:${env.BUILD_ID}"
+                }
+            }
+        }
+        stage('clean local images') {
+            steps {
+                echo "cleaning dangling images..."
+                script {
+                    sh "docker images --filter \"dangling=true\" -q |xargs --no-run-if-empty docker rmi"
+                }
+            }
+        }	
+    }
+}
+```
 
 ### 个人经验
 > 从Gitlab私有库(Maven SpringBooot项目)建好一个任务, 并构建好镜像和容器, 更新容器

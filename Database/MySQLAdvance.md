@@ -1,10 +1,10 @@
 `目录 start`
  
-- [MySQL Advanced](#mysql-advanced)
-    - [部署](#部署)
-    - [性能调优](#性能调优)
+1. [MySQL Advanced](#mysql-advanced)
+    1. [部署](#部署)
+    1. [性能调优](#性能调优)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # MySQL Advanced
 

@@ -1,8 +1,8 @@
 `目录 start`
  
-- [为何要将Netty放在Tomcat下](#为何要将netty放在tomcat下)
+1. [为何要将Netty放在Tomcat下](#为何要将netty放在tomcat下)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 为何要将Netty放在Tomcat下
 > 2018-03-19 17:41:28

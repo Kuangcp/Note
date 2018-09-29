@@ -1,14 +1,14 @@
 `目录 start`
  
-- [集合](#集合)
-    - [集合继承和实现关系](#集合继承和实现关系)
-    - [Iterator](#iterator)
-    - [Map](#map)
-        - [HashMap 实现原理](#hashmap-实现原理)
-    - [List](#list)
-    - [Set](#set)
+1. [集合](#集合)
+    1. [集合继承和实现关系](#集合继承和实现关系)
+    1. [Iterator](#iterator)
+    1. [Map](#map)
+        1. [HashMap 实现原理](#hashmap-实现原理)
+    1. [List](#list)
+    1. [Set](#set)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 集合
 > 重要的知识点，面试必问，使用频率也很高

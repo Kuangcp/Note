@@ -1,13 +1,13 @@
 `目录 start`
  
-- [Java主要发行版本](#java主要发行版本)
-    - [Java7](#java7)
-    - [Java8](#java8)
-    - [Java9](#java9)
-    - [Java10](#java10)
-    - [Java11](#java11)
+1. [Java主要发行版本](#java主要发行版本)
+    1. [Java7](#java7)
+    1. [Java8](#java8)
+    1. [Java9](#java9)
+    1. [Java10](#java10)
+    1. [Java11](#java11)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)

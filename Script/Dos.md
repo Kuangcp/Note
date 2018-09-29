@@ -1,15 +1,15 @@
 `目录 start`
  
-- [DOS批处理](#dos批处理)
-    - [Tips](#tips)
-    - [基础命令](#基础命令)
-        - [常用基础](#常用基础)
-    - [基础语法](#基础语法)
-        - [变量](#变量)
-    - [服务](#服务)
-    - [实用性脚本](#实用性脚本)
+1. [DOS批处理](#dos批处理)
+    1. [Tips](#tips)
+    1. [基础命令](#基础命令)
+        1. [常用基础](#常用基础)
+    1. [基础语法](#基础语法)
+        1. [变量](#变量)
+    1. [服务](#服务)
+    1. [实用性脚本](#实用性脚本)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # DOS批处理
 

@@ -1,13 +1,13 @@
 `目录 start`
  
-- [NodeJs](#nodejs)
-    - [安装](#安装)
-    - [配置](#配置)
-        - [使用淘宝的镜像](#使用淘宝的镜像)
-    - [使用](#使用)
-        - [安装Vue](#安装vue)
+1. [NodeJs](#nodejs)
+    1. [安装](#安装)
+    1. [配置](#配置)
+        1. [使用淘宝的镜像](#使用淘宝的镜像)
+    1. [使用](#使用)
+        1. [安装Vue](#安装vue)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # NodeJs
 

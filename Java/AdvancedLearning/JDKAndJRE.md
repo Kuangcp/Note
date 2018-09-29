@@ -1,15 +1,15 @@
 `目录 start`
  
-- [JDK and JRE](#jdk-and-jre)
-- [JDK](#jdk)
-    - [目录结构](#目录结构)
-        - [jar](#jar)
-        - [jvisualvm](#jvisualvm)
-- [JRE](#jre)
-    - [目录结构](#目录结构)
-- [OpenJDK](#openjdk)
+1. [JDK and JRE](#jdk-and-jre)
+1. [JDK](#jdk)
+    1. [目录结构](#目录结构)
+        1. [jar](#jar)
+        1. [jvisualvm](#jvisualvm)
+1. [JRE](#jre)
+    1. [目录结构](#目录结构)
+1. [OpenJDK](#openjdk)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # JDK and JRE
 

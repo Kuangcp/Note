@@ -1,15 +1,15 @@
 `目录 start`
  
-- [Java的性能调优](#java的性能调优)
-    - [JVM参数配置](#jvm参数配置)
-    - [内存优化](#内存优化)
-        - [处理内存泄露问题](#处理内存泄露问题)
-        - [内存监测工具](#内存监测工具)
-            - [jvisualvm](#jvisualvm)
-            - [MAT](#mat)
-- [记录](#记录)
+1. [Java的性能调优](#java的性能调优)
+    1. [JVM参数配置](#jvm参数配置)
+    1. [内存优化](#内存优化)
+        1. [处理内存泄露问题](#处理内存泄露问题)
+        1. [内存监测工具](#内存监测工具)
+            1. [jvisualvm](#jvisualvm)
+            1. [MAT](#mat)
+1. [记录](#记录)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java的性能调优
 

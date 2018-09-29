@@ -1,22 +1,22 @@
 `目录 start`
  
-- [Scala](#scala)
-    - [安装](#安装)
-    - [基础了解](#基础了解)
-    - [Scala基础语法](#scala基础语法)
-    - [适合Scala使用的场景](#适合scala使用的场景)
-        - [Scala和Java的比较](#scala和java的比较)
-        - [Scala特性](#scala特性)
-            - [类型推断](#类型推断)
-            - [方法](#方法)
-            - [导入](#导入)
-            - [循环控制结构](#循环控制结构)
-            - [函数式编程](#函数式编程)
-        - [Scala对象模型](#scala对象模型)
-        - [数据结构和集合](#数据结构和集合)
-        - [actor](#actor)
+1. [Scala](#scala)
+    1. [安装](#安装)
+    1. [基础了解](#基础了解)
+    1. [Scala基础语法](#scala基础语法)
+    1. [适合Scala使用的场景](#适合scala使用的场景)
+        1. [Scala和Java的比较](#scala和java的比较)
+        1. [Scala特性](#scala特性)
+            1. [类型推断](#类型推断)
+            1. [方法](#方法)
+            1. [导入](#导入)
+            1. [循环控制结构](#循环控制结构)
+            1. [函数式编程](#函数式编程)
+        1. [Scala对象模型](#scala对象模型)
+        1. [数据结构和集合](#数据结构和集合)
+        1. [actor](#actor)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Scala
 

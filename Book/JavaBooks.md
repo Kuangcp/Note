@@ -1,15 +1,15 @@
 `目录 start`
  
-- [Java书籍](#java书籍)
-    - [视频](#视频)
-    - [未读](#未读)
-    - [已阅读](#已阅读)
-        - [《Java程序员修炼之道》](#《java程序员修炼之道》)
-        - [《Java8实战》](#《java8实战》)
-        - [《Netty权威指南》](#《netty权威指南》)
-            - [《Netty in Action 中译》](#《netty-in-action-中译》)
+1. [Java书籍](#java书籍)
+    1. [视频](#视频)
+    1. [未读](#未读)
+    1. [已阅读](#已阅读)
+        1. [《Java程序员修炼之道》](#《java程序员修炼之道》)
+        1. [《Java8实战》](#《java8实战》)
+        1. [《Netty权威指南》](#《netty权威指南》)
+            1. [《Netty in Action 中译》](#《netty-in-action-中译》)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # Java书籍

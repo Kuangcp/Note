@@ -1,20 +1,20 @@
 `目录 start`
  
-- [Vim](#vim)
-    - [Tips](#tips)
-    - [基本配置](#基本配置)
-    - [基础操作](#基础操作)
-        - [跳转](#跳转)
-        - [搜索匹配](#搜索匹配)
-        - [复制粘贴](#复制粘贴)
-        - [插入模式](#插入模式)
-        - [命令模式](#命令模式)
-    - [vim-init](#vim-init)
-    - [spf13](#spf13)
-    - [SpaceVim](#spacevim)
-    - [space-vim](#space-vim)
+1. [Vim](#vim)
+    1. [Tips](#tips)
+    1. [基本配置](#基本配置)
+    1. [基础操作](#基础操作)
+        1. [跳转](#跳转)
+        1. [搜索匹配](#搜索匹配)
+        1. [复制粘贴](#复制粘贴)
+        1. [插入模式](#插入模式)
+        1. [命令模式](#命令模式)
+    1. [vim-init](#vim-init)
+    1. [spf13](#spf13)
+    1. [SpaceVim](#spacevim)
+    1. [space-vim](#space-vim)
 
-`目录 end` |_2018-09-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Vim 
 > 学习曲线很高，但是学会熟练使用后就效率很高

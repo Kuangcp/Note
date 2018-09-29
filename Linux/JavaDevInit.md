@@ -1,20 +1,20 @@
 `目录 start`
  
-- [配置Deepin的Java开发环境](#配置deepin的java开发环境)
-    - [新增用户](#新增用户)
-    - [安装Docker](#安装docker)
-- [在Linux上配置Java环境](#在linux上配置java环境)
-    - [配置JDK](#配置jdk)
-        - [解压配置](#解压配置)
-        - [sdkman方式](#sdkman方式)
-        - [mythsdk](#mythsdk)
-    - [配置MySQL](#配置mysql)
-    - [配置Redis](#配置redis)
-        - [从源码编译运行并测试](#从源码编译运行并测试)
-    - [问题以及解决方案：](#问题以及解决方案)
-    - [双硬盘的折腾记录](#双硬盘的折腾记录)
+1. [配置Deepin的Java开发环境](#配置deepin的java开发环境)
+    1. [新增用户](#新增用户)
+    1. [安装Docker](#安装docker)
+1. [在Linux上配置Java环境](#在linux上配置java环境)
+    1. [配置JDK](#配置jdk)
+        1. [解压配置](#解压配置)
+        1. [sdkman方式](#sdkman方式)
+        1. [mythsdk](#mythsdk)
+    1. [配置MySQL](#配置mysql)
+    1. [配置Redis](#配置redis)
+        1. [从源码编译运行并测试](#从源码编译运行并测试)
+    1. [问题以及解决方案：](#问题以及解决方案)
+    1. [双硬盘的折腾记录](#双硬盘的折腾记录)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 配置Deepin的Java开发环境
 

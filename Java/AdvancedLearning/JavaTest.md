@@ -1,20 +1,20 @@
 `目录 start`
  
-- [Java的测试](#java的测试)
-    - [断言](#断言)
-        - [正式代码](#正式代码)
-        - [测试代码](#测试代码)
-    - [单元测试](#单元测试)
-- [实现方案](#实现方案)
-    - [使用Junit](#使用junit)
-        - [Idea上Junit的使用](#idea上junit的使用)
-    - [TestNG](#testng)
-    - [Mock框架](#mock框架)
-        - [Mockito](#mockito)
-    - [DBUnit](#dbunit)
-- [感悟](#感悟)
+1. [Java的测试](#java的测试)
+    1. [断言](#断言)
+        1. [正式代码](#正式代码)
+        1. [测试代码](#测试代码)
+    1. [单元测试](#单元测试)
+1. [实现方案](#实现方案)
+    1. [使用Junit](#使用junit)
+        1. [Idea上Junit的使用](#idea上junit的使用)
+    1. [TestNG](#testng)
+    1. [Mock框架](#mock框架)
+        1. [Mockito](#mockito)
+    1. [DBUnit](#dbunit)
+1. [感悟](#感悟)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java的测试
 > [测试的基础理论](/Skills/Base/Test.md)
@@ -95,9 +95,14 @@ http://static.javadoc.io/org.mockito/mockito-core/2.19.0/org/mockito/Mockito.htm
 >1. Don’t mock everything
 >1. Show love with your tests!
 
+1. **常规使用** when(mock.get(anyInt())).thenReturn(null);
+1. **对void方法的mock** doThrow(new RuntimeException()).when(mock).someVoidMethod(anyObject());
+1. **使用规则去校验** verify(mock).someMethod(contains("foo"));
 
-`when(player.hasEnoughScore(anyInt(), anyInt())).thenReturn(true);`
+> 切忌 不可对非Mock对象使用 mock 的系列方法, 不然会报出南辕北辙的错误,这是首先要排查的一点
 
+一般不用对 void 方法打桩, 事后 verify 就行  
+测试代码针对 mock  对象的 void 方法调用本来就没有什么效果，所以一般也无须用 doNothing(), 况且 void 提供不了返回值作进一步 mock，只需要在事后用 verify() 进行验证一下。
 ## DBUnit
 > 基于Junit的一个数据库测试框架, 方便测试dao层
 

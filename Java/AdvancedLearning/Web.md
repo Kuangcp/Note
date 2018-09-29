@@ -1,16 +1,16 @@
 `目录 start`
  
-- [Java Web](#java-web)
-    - [【JSP/Servlet】](#jspservlet)
-        - [Servlet](#servlet)
-        - [JSP](#jsp)
-            - [九大内置对象](#九大内置对象)
-            - [四个作用域](#四个作用域)
-    - [Spring系](#spring系)
-        - [缓存](#缓存)
-    - [Tips](#tips)
+1. [Java Web](#java-web)
+    1. [【JSP/Servlet】](#jspservlet)
+        1. [Servlet](#servlet)
+        1. [JSP](#jsp)
+            1. [九大内置对象](#九大内置对象)
+            1. [四个作用域](#四个作用域)
+    1. [Spring系](#spring系)
+        1. [缓存](#缓存)
+    1. [Tips](#tips)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java Web
 ## 【JSP/Servlet】

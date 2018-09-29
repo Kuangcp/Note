@@ -1,17 +1,17 @@
 `目录 start`
  
-- [线程的基础学习](#线程的基础学习)
-    - [TODO](#todo)
-    - [基础](#基础)
-    - [线程的意义](#线程的意义)
-    - [线程的生命周期](#线程的生命周期)
-        - [创建](#创建)
-        - [控制](#控制)
-        - [销毁](#销毁)
-    - [线程的优先级](#线程的优先级)
-    - [线程池](#线程池)
+1. [线程的基础学习](#线程的基础学习)
+    1. [TODO](#todo)
+    1. [基础](#基础)
+    1. [线程的意义](#线程的意义)
+    1. [线程的生命周期](#线程的生命周期)
+        1. [创建](#创建)
+        1. [控制](#控制)
+        1. [销毁](#销毁)
+    1. [线程的优先级](#线程的优先级)
+    1. [线程池](#线程池)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 线程的基础学习
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/threads)

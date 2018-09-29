@@ -1,15 +1,15 @@
 `目录 start`
  
-- [遇到的常见问题](#遇到的常见问题)
-    - [命令找不到](#命令找不到)
-    - [其他](#其他)
-        - [终端响铃](#终端响铃)
-        - [Ubuntu与Windows10时间相差8小时的解决](#ubuntu与windows10时间相差8小时的解决)
-        - [终端开启慢](#终端开启慢)
-        - [Deepin的NVIDIA驱动问题](#deepin的nvidia驱动问题)
-        - [笔记本突然断电导致开机报错](#笔记本突然断电导致开机报错)
+1. [遇到的常见问题](#遇到的常见问题)
+    1. [命令找不到](#命令找不到)
+    1. [其他](#其他)
+        1. [终端响铃](#终端响铃)
+        1. [Ubuntu与Windows10时间相差8小时的解决](#ubuntu与windows10时间相差8小时的解决)
+        1. [终端开启慢](#终端开启慢)
+        1. [Deepin的NVIDIA驱动问题](#deepin的nvidia驱动问题)
+        1. [笔记本突然断电导致开机报错](#笔记本突然断电导致开机报错)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 遇到的常见问题
 

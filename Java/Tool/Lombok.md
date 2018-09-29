@@ -1,21 +1,21 @@
 `目录 start`
  
-- [Lombok](#lombok)
-    - [何为Lombok](#何为lombok)
-    - [为什么要用](#为什么要用)
-    - [为什么不要用](#为什么不要用)
-    - [个人见解](#个人见解)
-- [配置](#配置)
-    - [Maven](#maven)
-        - [普通Java项目](#普通java项目)
-        - [Groovy和Java项目使用Lombok](#groovy和java项目使用lombok)
-- [使用](#使用)
-    - [注解使用](#注解使用)
-        - [POJO常用](#pojo常用)
-        - [日志相关](#日志相关)
-        - [异常相关](#异常相关)
+1. [Lombok](#lombok)
+    1. [何为Lombok](#何为lombok)
+    1. [为什么要用](#为什么要用)
+    1. [为什么不要用](#为什么不要用)
+    1. [个人见解](#个人见解)
+1. [配置](#配置)
+    1. [Maven](#maven)
+        1. [普通Java项目](#普通java项目)
+        1. [Groovy和Java项目使用Lombok](#groovy和java项目使用lombok)
+1. [使用](#使用)
+    1. [注解使用](#注解使用)
+        1. [POJO常用](#pojo常用)
+        1. [日志相关](#日志相关)
+        1. [异常相关](#异常相关)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Lombok
 

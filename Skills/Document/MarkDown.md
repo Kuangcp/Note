@@ -1,16 +1,26 @@
 `目录 start`
  
-- [Markdown](#markdown)
-    - [基础格式](#基础格式)
-        - [链接](#链接)
-        - [图片](#图片)
-        - [列表](#列表)
-        - [头信息](#头信息)
-    - [流程图](#流程图)
-    - [Github](#github)
+1. [Markdown](#markdown)
+    1. [基础格式](#基础格式)
+        1. [链接](#链接)
+        1. [图片](#图片)
+        1. [列表](#列表)
+        1. [头信息](#头信息)
+    1. [流程图](#流程图)
+    1. [Github](#github)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
+--- 
+layout: post
+title: "Markdown 基本语法与应用"
+date: 2018-09-27 21:26:29
+category: tool
+tags: 
+- markdown
+- github
+---
+
 # Markdown
 > [markup](https://github.com/github/markup)`丰富的标记性文本格式`  
 > [Markdown教程](http://www.markdown.cn/)  
@@ -37,9 +47,30 @@
 - **无序列表** : `- ` 或  `* `
 - **有序列表** : `1. ` (markdown渲染的时候会自动排序 1 也可以换成任意非0正整数)
 
-- 列表中还能嵌套 引用, 例如: `- > `
-### 头信息
+- 列表中还能嵌套 引用, 例如: `- > content` 或者 `>1. content`
+
+> 关于有序列表中的块状结构破坏有序性的问题
+- 当需要出现代码块, 图片, 表格 等块状结构时, 只需将整体进行缩进, 就可以保证后续的有序性  
+
+例如: 
+1. a
+```sh
+echo hi
 ```
+1. b
+
+就可以改良成: 
+1. a
+1. a
+    ```sh
+    echo hi
+    ```
+1. b
+
+### 头信息
+> 仅仅是github的语法, gitlab 当成了代码块进行渲染, gitee 则完全是乱的.
+
+```yml
     --- 
     layout: post
     title: "关于WEB开发中引入javascript文件方式的一点建议"
@@ -55,6 +86,9 @@
     - 建议
     ---
 ```
+- 可以有多种数据结构 yml  ini 
+    - 一般用于描述文件元信息; 静态博客生成器用于生成博客的标签等信息;
+
 ## 流程图
 ```flow
 st=>start: Start

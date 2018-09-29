@@ -1,16 +1,16 @@
 `目录 start`
  
-- [SSH](#ssh)
-    - [1.安装软件](#1安装软件)
-    - [2.复制粘贴建立密钥对](#2复制粘贴建立密钥对)
-    - [2.使用脚本更简单](#2使用脚本更简单)
-    - [3.遇到的问题](#3遇到的问题)
-    - [4.SSH配置文件](#4ssh配置文件)
-    - [5.多密钥对](#5多密钥对)
-    - [6.访问图形化](#6访问图形化)
-    - [7.ssh登录并执行一系列命令](#7ssh登录并执行一系列命令)
+1. [SSH](#ssh)
+    1. [1.安装软件](#1安装软件)
+    1. [2.复制粘贴建立密钥对](#2复制粘贴建立密钥对)
+    1. [2.使用脚本更简单](#2使用脚本更简单)
+    1. [3.遇到的问题](#3遇到的问题)
+    1. [4.SSH配置文件](#4ssh配置文件)
+    1. [5.多密钥对](#5多密钥对)
+    1. [6.访问图形化](#6访问图形化)
+    1. [7.ssh登录并执行一系列命令](#7ssh登录并执行一系列命令)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SSH
 > [Linux启动或禁止SSH用户及IP的登录](https://blog.csdn.net/linghe301/article/details/8211305)

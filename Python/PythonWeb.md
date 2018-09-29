@@ -1,13 +1,13 @@
 `目录 start`
  
-- [Web](#web)
-    - [简单Web服务器](#简单web服务器)
-    - [Django](#django)
-    - [Flask](#flask)
-        - [开发一个简易RESTful风格的服务器](#开发一个简易restful风格的服务器)
-        - [跨域](#跨域)
+1. [Web](#web)
+    1. [简单Web服务器](#简单web服务器)
+    1. [Django](#django)
+    1. [Flask](#flask)
+        1. [开发一个简易RESTful风格的服务器](#开发一个简易restful风格的服务器)
+        1. [跨域](#跨域)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # Web

@@ -1,57 +1,57 @@
 `目录 start`
  
-- [Python](#python)
-    - [简介](#简介)
-        - [关于Python2.x与3.x的使用](#关于python2x与3x的使用)
-    - [安装配置](#安装配置)
-        - [Docker](#docker)
-    - [基础](#基础)
-        - [代码风格](#代码风格)
-        - [基础语法](#基础语法)
-        - [基础数据类型](#基础数据类型)
-        - [virtualenv](#virtualenv)
-        - [pip](#pip)
-            - [Requirements files](#requirements-files)
-            - [发布包到 pypi](#发布包到-pypi)
-    - [变量](#变量)
-    - [基本运行结构](#基本运行结构)
-        - [序列](#序列)
-            - [列表](#列表)
-            - [元组](#元组)
-            - [字符串](#字符串)
-            - [字符串编码问题(python2问题)](#字符串编码问题python2问题)
-            - [字典（键值对）](#字典（键值对）)
-        - [运算符](#运算符)
-        - [模块](#模块)
-    - [输入输出](#输入输出)
-        - [输入](#输入)
-        - [输出](#输出)
-        - [读取命令行参数](#读取命令行参数)
-            - [docopt](#docopt)
-            - [Python Fire](#python-fire)
-    - [函数](#函数)
-    - [类](#类)
-            - [继承](#继承)
-    - [异常](#异常)
-    - [文件操作](#文件操作)
-        - [JSON](#json)
-        - [conf或者ini](#conf或者ini)
-    - [测试](#测试)
-    - [数据库](#数据库)
-        - [MySQL](#mysql)
-        - [Redis](#redis)
-    - [部署](#部署)
-        - [Docker部署](#docker部署)
-    - [绘图](#绘图)
-        - [matplotlib](#matplotlib)
-    - [常见函数](#常见函数)
-    - [常见库](#常见库)
-        - [内置库](#内置库)
-            - [时间处理](#时间处理)
-        - [三方库](#三方库)
-    - [QT](#qt)
+1. [Python](#python)
+    1. [简介](#简介)
+        1. [关于Python2.x与3.x的使用](#关于python2x与3x的使用)
+    1. [安装配置](#安装配置)
+        1. [Docker](#docker)
+    1. [基础](#基础)
+        1. [代码风格](#代码风格)
+        1. [基础语法](#基础语法)
+        1. [基础数据类型](#基础数据类型)
+        1. [virtualenv](#virtualenv)
+        1. [pip](#pip)
+            1. [Requirements files](#requirements-files)
+            1. [发布包到 pypi](#发布包到-pypi)
+    1. [变量](#变量)
+    1. [基本运行结构](#基本运行结构)
+        1. [序列](#序列)
+            1. [列表](#列表)
+            1. [元组](#元组)
+            1. [字符串](#字符串)
+            1. [字符串编码问题(python2问题)](#字符串编码问题python2问题)
+            1. [字典（键值对）](#字典（键值对）)
+        1. [运算符](#运算符)
+        1. [模块](#模块)
+    1. [输入输出](#输入输出)
+        1. [输入](#输入)
+        1. [输出](#输出)
+        1. [读取命令行参数](#读取命令行参数)
+            1. [docopt](#docopt)
+            1. [Python Fire](#python-fire)
+    1. [函数](#函数)
+    1. [类](#类)
+            1. [继承](#继承)
+    1. [异常](#异常)
+    1. [文件操作](#文件操作)
+        1. [JSON](#json)
+        1. [conf或者ini](#conf或者ini)
+    1. [测试](#测试)
+    1. [数据库](#数据库)
+        1. [MySQL](#mysql)
+        1. [Redis](#redis)
+    1. [部署](#部署)
+        1. [Docker部署](#docker部署)
+    1. [绘图](#绘图)
+        1. [matplotlib](#matplotlib)
+    1. [常见函数](#常见函数)
+    1. [常见库](#常见库)
+        1. [内置库](#内置库)
+            1. [时间处理](#时间处理)
+        1. [三方库](#三方库)
+    1. [QT](#qt)
 
-`目录 end` |_2018-09-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Python
 > [官网](https://www.python.org/)
@@ -160,33 +160,39 @@
 - 停用环境 `deactivate`
 
 ### pip
-> [pip](https://pip.readthedocs.io/en/stable/) | Python的包管理器
+> [pip](https://pip.readthedocs.io/en/stable/) | [doc](https://pip.pypa.io/en/stable/reference/pip_install/) | [guide](https://packaging.python.org/tutorials/installing-packages/) 
 
-> [doc](https://pip.pypa.io/en/stable/reference/pip_install/)
+1. 作为Python的包管理器, 包的可执行文件默认在 /usr/local/bin 目录下
+    - TODO ~/.local 目录又是什么?
+    
+1. 也可以这样使用 `python -m pip install xxx`
+
+1. 安装指定版本的包 `install name==version` 
+
 #### Requirements files
 > [pip官方文档 Requirements files](https://pip.readthedocs.io/en/1.1/requirements.html)
 
 1. 导出 `pip freeze > requirements.txt` _这个命令会将当前环境安装的包全部列出来, 适合env环境下使用_
     - 如果没有使用虚拟环境, 然后只想导出某项目的依赖 [Github pipreqs](https://github.com/bndr/pipreqs)
     - 安装 : `pip install pipreqs` 然后 `pipreqs /path/to/project`
-2. 使用 `pip install -r requirements.txt`
+
+1. 使用 `pip install -r requirements.txt`
 
 #### 发布包到 pypi
 > [Official : about package](https://packaging.python.org/guides/distributing-packages-using-setuptools/?highlight=pypirc#id78)
 
-`$HOME/.pypirc`
-```
-[pypi]
-username = <username>
-password = <password>
-```
+1. edit `$HOME/.pypirc` to save authorization  info
+    ```
+        [pypi]
+        username = <username>
+        password = <password>
+    ```
+1. pip3 install wheel twine 
+1. rm -rf dist build *.egg-info
+1. python3 setup.py bdist_wheel
+1. twine upload dist/*
 
-pip3 install wheel twine 
-
-rm -rf dist build *.egg-info
-
-python3 setup.py bdist_wheel
-twine upload dist/*
+> [可以参考该项目: 终端内使用百度翻译](https://gitee.com/gin9/baidu-trans-cli)
 
 *******************************
 ## 变量
