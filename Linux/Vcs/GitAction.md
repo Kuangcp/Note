@@ -345,7 +345,7 @@
 ```
 	edit  (1)
 		git add a.txt b.txt
-		看邮件(2)
+    看邮件(2)
 		git reset(3) 
 		git pull URL
 	1.1 编辑了两个文件并且添加到了index

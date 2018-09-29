@@ -56,6 +56,9 @@
     - +nocmd+nocomment+nostat 输出最核心内容
 
 `drill`
+
+- **whois**
+    - 查询域名详细信息
 ### 修改DNS
 - `sudo vim /etc/resolv.conf` 添加Google的DNS 
 ```

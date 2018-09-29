@@ -33,7 +33,6 @@
             1. [grep](#grep)
         1. [常用文件](#常用文件)
             1. [.gitignore](#gitignore)
-1. [注释](#注释)
             1. [gitattributes](#gitattributes)
         1. [Tools](#tools)
             1. [git-svn](#git-svn)
@@ -126,6 +125,9 @@
     - A 新添加到暂存区
     - M 修改过的文件
     - MM 修改了但是没有暂存
+
+#### stash
+> 把所有没有提交的修改暂存到stash里, 可用 `git stash pop` 恢复
 
 #### rm
 - 删除文件 `git rm 文件`
@@ -340,6 +342,7 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
     - 需要执行  `git reset HEAD` 来清除这种状态
 
 > 撤销当前对文件的所有修改 `git checkout -- 文件名` 就会使用上次提交的文件来覆盖当前文件
+> 撤销当前所有更改,回退到上次提及的状态 `git checkout .` 
 
 - [ ] 有没有 svn cat 类似的功能
 
@@ -401,15 +404,15 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 ### 常用文件
 #### .gitignore
 ```
-# 注释
-*/ 忽略所有文件
-build/ 所有build目录
-/build 只忽略当前目录的build, 子目录的不忽略
-*.iml 所有iml文件
-?.log 忽略所有 后缀为log, 文件名字只有一个字母
-!*.java 不忽略所有java文件
-a.[abc] 忽略 后缀为 a或者b或者c 的文件
-doc/*.txt 忽略 doc一级子目录的txt文件, 不忽略多级子目录中txt
+    # 注释
+    */ 忽略所有文件
+    build/ 所有build目录
+    /build 只忽略当前目录的build, 子目录的不忽略
+    *.iml 所有iml文件
+    ?.log 忽略所有 后缀为log, 文件名字只有一个字母
+    !*.java 不忽略所有java文件
+    a.[abc] 忽略 后缀为 a或者b或者c 的文件
+    doc/*.txt 忽略 doc一级子目录的txt文件, 不忽略多级子目录中txt
 
 ```
 
