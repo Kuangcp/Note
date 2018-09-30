@@ -1,7 +1,7 @@
-<center>
+<div align="center">
 
 # Common Notes
-> Transform this repo from an individual to a public maintenance 
+> Notes repository for public maintenance
 
 [![目录](https://img.shields.io/badge/note-Catalog-brightgreen.svg)](./SUMMARY.md)
 [![目录](https://img.shields.io/badge/doc-Note-brightgreen.svg)](https://gitee.com/gin9/Memo/wikis/pages)
@@ -13,4 +13,4 @@
 | [风之影](https://gitee.com/dragonhht/) | |
 | [达尔](https://gitee.com/44miao/)| |
 
-</center>
+</div>
