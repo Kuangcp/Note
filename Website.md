@@ -102,6 +102,12 @@
 - [手机参数对比网站](http://product.pconline.com.cn/mobile/pk/param/1062508_1091427_1101075_604928_1035872.html)
 
 - [文档汉化](http://doczh.cn/)
+
+## 库托管
+> [libraries.io](https://libraries.io/)
+
+*********************************
+
 # 社区网站
 - [掘金门户网](http://e.xitu.io)
 - [吾爱破解](https://www.52pojie.cn/)
@@ -130,6 +136,7 @@
 - [脚本之家](http://www.jb51.net/)`用windows的时候一直以为是下盗版软件的地方, 现在才知道还有各种编程学习资源`
 - [河东软件园](http://www.pc0359.cn/)`和上面一样`
 - [搜网盘](https://www.57fx.com/search/)
+
 ## 字典网站
 > [参考博客: 搜索列表](http://www.lingoes.cn/zh/translator/webengine.htm)
 
