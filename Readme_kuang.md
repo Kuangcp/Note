@@ -1,9 +1,13 @@
+[![Fork me on Gitee](https://gitee.com/gin9/Memo/widgets/widget_6.svg)](https://gitee.com/gin9/Memo) [![star](https://gitee.com/gin9/Memo/badge/star.svg?theme=dark)](https://gitee.com/gin9/Memo/stargazers)[![fork](https://gitee.com/gin9/Memo/badge/fork.svg?theme=dark)](https://gitee.com/gin9/Memo/members)
+
+
 [![GitBook](https://img.shields.io/badge/GitBook-online-brightgreen.svg)](https://legacy.gitbook.com/book/kuangcp/notes/details)
 [![目录](https://img.shields.io/badge/note-Catalog-brightgreen.svg)](./SUMMARY.md)
 [![目录](https://img.shields.io/badge/doc-Note-brightgreen.svg)](https://gitee.com/gin9/Notes/wikis/pages)
 [![码云](https://img.shields.io/badge/code-Gitee-red.svg)](https://gitee.com/gin9)
 [![CSDN](https://img.shields.io/badge/blog-CSDN-orange.svg)](http://blog.csdn.net/kcp606)
 [![JavaSE](https://img.shields.io/badge/note-JavaSE-blue.svg)](./Java/JavaSE.md)
+
 
 > 我曾七次鄙视自己的灵魂：  
 > 第一次,当它本可进取时，却故作谦卑；  
