@@ -652,11 +652,12 @@ fire.Fire(main)
     # 写 但是要有write节点
     cf.set('write', 'add', '12')
     cf.write(open(mainConf, 'r+'))
-    ```
-    _对应的conf_
-    ```conf
-        [redis]
-        host=127.0.0.1
+```
+
+_对应的conf_
+```conf
+    [redis]
+    host=127.0.0.1
 ```
 ******************************
 ## 测试
@@ -733,6 +734,9 @@ _or (if you need to use Python 2)_
 - `os` 操作系统相关API
     - 获取脚本绝对路径  `os.path.split(os.path.realpath(__file__))[0]`
     - 获取用户目录 `os.environ['HOME']` | `os.path.expandvars('$HOME')` | `os.path.expanduser('~')`
+
+- platform 操作系统信息
+    - 获取当前操作系统名称 platform.system() 
 
 - `subprocess` [代码](https://gitee.com/kcp1104/codes/9ytejo7fl2xmqsr5zwkv380)
 
