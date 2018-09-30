@@ -1,13 +1,14 @@
-[![Fork me on Gitee](https://gitee.com/gin9/Memo/widgets/widget_6.svg)](https://gitee.com/gin9/Memo) [![star](https://gitee.com/gin9/Memo/badge/star.svg?theme=dark)](https://gitee.com/gin9/Memo/stargazers)[![fork](https://gitee.com/gin9/Memo/badge/fork.svg?theme=dark)](https://gitee.com/gin9/Memo/members)
+<center> 
+
+[![star](https://gitee.com/gin9/Memo/badge/star.svg?theme=dark)](https://gitee.com/gin9/Memo/stargazers)[![Fork me on Gitee](https://gitee.com/gin9/Memo/widgets/widget_3.svg)](https://gitee.com/gin9/Memo)[![fork](https://gitee.com/gin9/Memo/badge/fork.svg?theme=dark)](https://gitee.com/gin9/Memo/members)
 
 
-[![GitBook](https://img.shields.io/badge/GitBook-online-brightgreen.svg)](https://legacy.gitbook.com/book/kuangcp/notes/details)
-[![目录](https://img.shields.io/badge/note-Catalog-brightgreen.svg)](./SUMMARY.md)
-[![目录](https://img.shields.io/badge/doc-Note-brightgreen.svg)](https://gitee.com/gin9/Notes/wikis/pages)
-[![码云](https://img.shields.io/badge/code-Gitee-red.svg)](https://gitee.com/gin9)
-[![CSDN](https://img.shields.io/badge/blog-CSDN-orange.svg)](http://blog.csdn.net/kcp606)
-[![JavaSE](https://img.shields.io/badge/note-JavaSE-blue.svg)](./Java/JavaSE.md)
 
+[![目录](https://img.shields.io/badge/note-Catalog-brightgreen.svg)](./SUMMARY.md) 
+[![目录](https://img.shields.io/badge/wiki-Note-brightgreen.svg)](https://gitee.com/gin9/Notes/wikis/pages) 
+[![JavaSE](https://img.shields.io/badge/note-JavaSE-blue.svg)](./Java/JavaSE.md) [![CSDN](https://img.shields.io/badge/blog-CSDN-blue.svg)](http://blog.csdn.net/kcp606)
+
+</center>
 
 > 我曾七次鄙视自己的灵魂：  
 > 第一次,当它本可进取时，却故作谦卑；  
@@ -118,6 +119,23 @@ _有自制力的人， 能够坚持的人才更有可能成功！_
 一年多，积累了很多读者，也通过写的东西造福了很多找工作的学生、迷茫的大学生、想转行的就业者，也让我有动力的不断继续更新下去。  
 > -- 知乎: 路人甲
 
+**************
+## 个人备忘
+- [阿里Java编程规范](Java/AlibabaJavaStandard.md)
+- [常用SDK自动下载配置工具 mythsdk](https://github.com/Kuangcp/Script/tree/master/python/mythsdk) 
+    - `功能仿sdkman，但简单，不过是提供自行搭建使用的，毕竟七牛云下载超量了是要收费的`
+- 克隆笔记仓库可以加上 `--depth 1` 参数, 减小克隆的大小
+- [notes](https://github.com/pimterry/notes)`终端内的note工具`
+
+## 涉及的工具 
+1. [创建 SUMMARY.md 目录文件脚本](create_tree.py)
+1. [统计仓库所有中文字数](wordRecord.sh) `count 命令是 go 写的工具 [项目地址](https://gitee.com/gin9/GoBase/tree/master/count)`
+1. [为每个md文件创建目录头部](https://gitee.com/gin9/script/blob/master/shell/text/deal_md.sh)
+
+***********************************
+
+<center>
+
 ## 【学习历程】
 
 |   时间   |  语言或工具  |
@@ -132,15 +150,4 @@ _有自制力的人， 能够坚持的人才更有可能成功！_
 | 2017.08 | 接触Docker |
 | 2018.07 | 接触Go |
 
-**************
-## 个人备忘
-- [阿里Java编程规范](Java/AlibabaJavaStandard.md)
-- [常用SDK自动下载配置工具 mythsdk](https://github.com/Kuangcp/Script/tree/master/python/mythsdk) 
-    - `功能仿sdkman，但简单，不过是提供自行搭建使用的，毕竟七牛云下载超量了是要收费的`
-- 克隆笔记仓库可以加上 `--depth 1` 参数, 减小克隆的大小
-- [notes](https://github.com/pimterry/notes)`终端内的note工具`
-
-## 涉及的工具 
-1. [创建 SUMMARY.md 目录文件脚本](create_tree.py)
-1. [统计仓库所有中文字数](wordRecord.sh) `count 命令是 go 写的工具 [项目地址](https://gitee.com/gin9/GoBase/tree/master/count)`
-1. [为每个md文件创建目录头部](https://gitee.com/gin9/script/blob/master/shell/text/deal_md.sh)
+</center>

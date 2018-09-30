@@ -1,7 +1,9 @@
 `目录 start`
  
 1. [Markdown](#markdown)
-    1. [基础格式](#基础格式)
+    1. [基本格式](#基本格式)
+        1. [居中](#居中)
+    1. [基本元素](#基本元素)
         1. [链接](#链接)
         1. [图片](#图片)
         1. [列表](#列表)
@@ -9,7 +11,7 @@
     1. [流程图](#流程图)
     1. [Github](#github)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 --- 
 layout: post
@@ -28,7 +30,16 @@ tags:
 > [ Markdown 编辑器语法指南](https://segmentfault.com/markdown)
 
 **************
-## 基础格式
+## 基本格式
+### 居中
+```
+<center> 
+
+</center>
+```
+> 注意这俩标签前后都需要一行空行
+
+## 基本元素
 
 ### 链接
 1. [name](url) 推荐
