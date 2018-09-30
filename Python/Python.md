@@ -9,6 +9,8 @@
         1. [代码风格](#代码风格)
         1. [基础语法](#基础语法)
         1. [基础数据类型](#基础数据类型)
+    1. [内置模块](#内置模块)
+        1. [http](#http)
         1. [virtualenv](#virtualenv)
         1. [pip](#pip)
             1. [Requirements files](#requirements-files)
@@ -31,7 +33,7 @@
             1. [Python Fire](#python-fire)
     1. [函数](#函数)
     1. [类](#类)
-            1. [继承](#继承)
+        1. [继承](#继承)
     1. [异常](#异常)
     1. [文件操作](#文件操作)
         1. [JSON](#json)
@@ -51,7 +53,7 @@
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-09-30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Python
 > [官网](https://www.python.org/)
@@ -149,10 +151,18 @@
     - 三引号 多行字符串
 - 空值 None
 
+******************
+
+## 内置模块
+python -m module_name
+
+### http
+- 快速启动一个 HTTP Web 服务器 `http.server [port]`
+
 ### virtualenv
 > [廖雪峰 virtualenv](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000)
 
-`sudo apt install python3-venv`
+**虽然也可以用apt安装 python-venv, 但是最好不要这样,避免后续模块升级后不必要的冲突**
 
 - 创建环境 `python3 -m venv web` 或者 `virtualenv --no-site-packages web` 不将系统中安装的包带入该环境
 - 启动环境 `source web/bin/activate`
@@ -162,9 +172,10 @@
 ### pip
 > [pip](https://pip.readthedocs.io/en/stable/) | [doc](https://pip.pypa.io/en/stable/reference/pip_install/) | [guide](https://packaging.python.org/tutorials/installing-packages/) 
 
-1. 作为Python的包管理器, 包的可执行文件默认在 /usr/local/bin 目录下
-    - TODO ~/.local 目录又是什么?
-    
+1. 作为Python的包管理器, 包的可执行文件默认在 /usr/local/bin 目录下(全局)
+    - 如果安装时加了该参数 --user 就是安装在 ~/.local/bin 目录下
+    - 升级pip `python -m pip install --upgrade pip`
+
 1. 也可以这样使用 `python -m pip install xxx`
 
 1. 安装指定版本的包 `install name==version` 
@@ -514,7 +525,7 @@ fire.Fire(main)
 
 - 导入和函数一样 注意继承中类的依赖
 
-#### 继承
+### 继承
 - Python是支持多重继承的
 
 - 同文件 父类定义要在子类之前
