@@ -14,7 +14,7 @@
     1. [SpaceVim](#spacevim)
     1. [space-vim](#space-vim)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Vim 
 > 学习曲线很高，但是学会熟练使用后就效率很高
@@ -49,11 +49,12 @@ set history=1000
 set autoindent
 set smartindent
 set tabstop=4
+set expandtab
 set shiftwidth=4
 set showmatch
 set guioptions=T
 set ruler
-set nohls
+set hls
 set backspace=2
 imap jk <Esc> 
 
@@ -98,7 +99,7 @@ inoremap , ,<space>
 - `/name`  正向搜索字符串 name
 	- `n` 搜索后跳下一个 
 	- `N` 搜索后跳上一个
-- `?name` 方向搜索字符串
+- `?name` 反向搜索字符串
 
 ### 复制粘贴
 > `:reg` 查看寄存器
