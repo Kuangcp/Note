@@ -117,7 +117,7 @@
 - `git config user.email ***`  和   `git config user.name ***` 这两个是必须的，
     - 如果想统一配置不想每个仓库单独配置就 `git config --global user.name` email同理
 - `git config http.postBuffer 524288000` 设置缓存区大小为 500m
-- `git config core.fileMode false` 忽略文件的mode变化，一般发生在文件的复制粘贴之后（跨系统?）
+- `git config core.fileMode false` 忽略文件的mode变化，一般发生在文件放在挂载盘的时(默认755)
 
 #### status
 - `-s --short` 简化输出

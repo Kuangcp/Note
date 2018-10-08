@@ -214,6 +214,9 @@ _Debian系_
 
 > [参考：Docker Registry V1 与 V2 的区别解析以及灵雀云的实时同步迁移实践](https://www.csdn.net/article/2015-09-09/2825651)
 
+
+> [Github:v1](https://github.com/docker/docker-registry) | [Github:v2](https://github.com/docker/distribution)
+
 > v1
 - 服务器上运行 并映射到本地目录 `docker run -d -p 5000:5000 -v /opt/data/registry:/tmp/registry registry`
 - 对服务器中docker已经有的镜像 设置别名 `docker tag 镜像 ip:port/镜像名`
@@ -232,7 +235,6 @@ _Debian系_
     - 或者配置 /etc/docker/daemon.json  `{ "insecure-registries":["IP:PORT"] }`
     - 重启Docker服务
 1. 配置 registry 为 HTTPS， 那么就需要配置SSL证书， 使用本地证书或者公网证书
-
 
 ********************************
 ## 基础命令
