@@ -119,6 +119,7 @@
 | -R | --root CHROOT_DIR        |  chroot 到的目录 |
 | -s | --shell SHELL            |  该用户帐号的新登录 shell |
 | -U | --unlock                 |  解锁用户帐号 |
+
 > [所有参数说明](https://gitee.com/kcp1104/codes/gca14wtqvm67l9j5r0deb56#usermod.md)
 
 ******
@@ -156,12 +157,13 @@
 - grpck 检查`/etc/group`文件是否正确
 - grpconv 注：通过/etc/group和/etc/gshadow 的文件内容来同步或创建/etc/gshadow ，如果/etc/gshadow 不存在则创建;
 -  注：通过/etc/group 和/etc/gshadow 文件内容来同步或创建/etc/group ，然后删除gshadow文件
+
 ### 时间管理
 > [同步Linux服务器时间](http://www.cnblogs.com/chenmh/p/5485829.html)
 
 **同步时间**
 1. 修改时区 `cp -y /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`
-2. 同步时间 `/usr/sbin/ntpdate -u cn.pool.ntp.org`
+2. 同步时间 `/usr/sbin/ntpdate -u cn.pool.ntp.org` | 没有就先安装 ntpdate 
 3. 查看硬件时间 `hwclock -r`
     - 如果不同步就需要写入时间 `hwclock -w` _因为系统重启是参考硬件时间的_
 
@@ -197,6 +199,7 @@ _系统运行级别_
     6        重新启动 
 ```
 ******************
+
 ## 软件管理
 ### 软件源列表
 - apt 的默认配置文件是 `/etc/apt/source.list`

@@ -62,6 +62,15 @@ template = ~/.gitmessage
 ```
 
 > 那么效果就是 git commit 不指定-m 参数就会调用该模板显示
+
+## 图形化工具
+> 诚然, 命令行是高效的, 从学Git开始就是用命令行, 这只是在单兵作战或者说没有使用多分支的情况下是没有问题的  
+> 当多人协作时, 需要Review代码时, 知道每个人每次提交更改了些什么, 图形化就很方便了
+
+### SourceTree
+> [Official site](https://sourcetreeapp.com) 仅支持 Windows 和 Mac
+
+
 *******************
 ## 小规模团队使用码云组织的总结
 > `master`发行分支 `dev`开发主分支 `dev-*`开发者分支 `fea-*`开发者自己的功能性分支
