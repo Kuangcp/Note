@@ -26,7 +26,7 @@
     1. [fte-terminal](#fte-terminal)
     1. [在线编辑器](#在线编辑器)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-15_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 文本编辑器
 ## Ghex
@@ -132,6 +132,7 @@ _个人配置_
 1. Material Icon Theme
 1. One Dark Pro
 1. snazzy operator
+1. Gruvbox Theme
 
 **工具**
 1. Beautify
