@@ -11,7 +11,7 @@
         1. [不加sudo执行docker命令](#不加sudo执行docker命令)
         1. [卸载](#卸载)
     1. [Windows](#windows)
-1. [使用](#使用)
+1. [初步使用](#初步使用)
     1. [镜像仓库](#镜像仓库)
         1. [搭建本地仓库](#搭建本地仓库)
     1. [基础命令](#基础命令)
@@ -22,10 +22,10 @@
         1. [docker exec](#docker-exec)
         1. [docker commit](#docker-commit)
         1. [docker port](#docker-port)
+    1. [端口映射](#端口映射)
+    1. [容器互联](#容器互联)
 1. [数据卷](#数据卷)
     1. [数据卷容器](#数据卷容器)
-1. [端口映射](#端口映射)
-1. [容器互联](#容器互联)
 1. [Dockerfile](#dockerfile)
     1. [dockerignore文件的使用](#dockerignore文件的使用)
     1. [使用启动脚本和多进程容器](#使用启动脚本和多进程容器)
@@ -36,7 +36,7 @@
     1. [Docker-Swarm](#docker-swarm)
 1. [网络](#网络)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-15_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker
 > [官方文档](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -159,7 +159,7 @@ _Debian系_
 - 安装完成后就会有三个图标在桌面上，然后进入Docker Quickstart Terminal后 `docker run hello-world` 有正常输出即可
 **************************************
 
-# 使用
+# 初步使用
 - 如果出现命令执行失败，可以登录docker的控制台直接执行 `boot2docker ssh`
 - 可以将镜像看成真正运行的程序，容器就是具体的一些配置，所以镜像是可以重复利用，容器出问题删掉就是了
 
@@ -263,6 +263,7 @@ _ps_
     - 查看所有容器 ：`docker ps -a`
     - 查看占用 :`docker ps -s`
     - [ps formatting](https://docs.docker.com/engine/reference/commandline/ps/#formatting)
+
 ```
 .ID 	    Container ID
 .Image 	    Image ID
@@ -308,7 +309,6 @@ _ps_
 > [Docker run 命令的使用方法](http://www.open-open.com/lib/view/open1422492851548.html)
 > 等价于 docker create 再 docker start
 
-
 - `docker run -d --name conrainer-name image-name touch a.md` ，如果镜像本地没有会自动pull
     - `--name` 配置容器名字
     - `-d` 后台启动程序
@@ -327,24 +327,6 @@ _ps_
     - `--rm` 容器运行结束退出就自动删除该容器 注意和`-d`不能共存
     - `--restart=always` 设置该容器随dokcer 服务自启动
     - `--hostname 容器hostname` 指定容器的hostname
-
-`修改容器时区设置`
-> [参考博客: Docker修改默认时区](https://www.jianshu.com/p/004ddf941aac) 
-```sh
-    # Alpine 
-    RUN apk --no-cache add tzdata  && \
-        ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-        echo "Asia/Shanghai" > /etc/timezone
-
-    # Ubuntu
-    RUN echo "Asia/Shanghai" > /etc/timezone && \
-        dpkg-reconfigure -f noninteractive tzdata
-
-    # Centos
-    RUN echo "Asia/shanghai" > /etc/timezone;
-```
-
-- `docker create` 是创建一个容器，不会运行，`docker run`是运行命令在一个新容器里
 
 ### docker exec
 - 登录容器：
@@ -366,39 +348,8 @@ _ps_
 ### docker port
 > 查看容器的端口映射情况， 输出是左容器右本机， 和使用相反
 
-*********************
-# 数据卷
-> [Docker 中管理数据](http://www.open-open.com/lib/view/open1403571027233.html)
-> [参考博客: 给一个正在运行的Docker容器动态添加Volume](http://www.open-open.com/lib/view/open1421996521062.html)
-
-- 数据卷是一个可供容器使用的特殊目录，它将宿主机操作系统目录映射进容器 类似于 mount操作
-    - 数据卷可以在容器之间共享重用
-    - 数据卷内数据的修改会立马生效，无论是容器内操作还是本地操作
-    - 对数据卷的更新不会影响镜像，解耦了应用和数据
-    - 卷会一直存在，直到没有容器使用，才可以安全的卸载
-
-- `docker run -v dir:dir[:ro]` 一般是创建容器时使用，和-p类似可以多个，左本机右容器 默认rw权限可以指定 ro只读
-    - 可以将一个文件挂载为数据卷，但是文件夹更好，文件可能会有问题出现
-
-## 数据卷容器
-- `docker run -it -v /test --name data ubuntu ` 运行一个挂载了数据卷的容器
-- 引用数据卷容器 来挂载数据卷：`docker run -it --volumes-from data --name db1 ubuntu`
-- 从已经挂载了数据卷容器的容器 来挂载数据卷：`docker run -it --volumes-from db1 --name db2 ubuntu`
-- 使用 `--volumes-from` 参数所挂载数据卷的容器并不需要保持在运行状态
-- 如果删除了挂载的容器，数据卷并不会自动删除，而是要在删除最后一个容器时 使用 `docker rm -v` 来声明删除容器并删除关联的数据卷
-
-`利用数据卷容器来迁移数据`
-- 备份：
-    - `docker run --volumes-from data -v $(pwd):/backup --name worker ubuntu tar cvf /backup/backup.tar /data`
-    - 先基于Ubuntu创建一个worker容器并引用了数据卷容器data，然后将当前目录作为数据卷挂载进去，并执行tar命令，打包到数据卷容器的目录下
-    - 实现了将当前目录归档到数据卷容器下
-- 恢复：
-    - 创建一个带有数据卷的容器（目标容器）`docker run -v /data --name reuse ubuntu /bin/bash`
-    - 解压当前目录的tar文件到数据卷容器中 `docker run --volumes-from reuse -v $(pwd):/backup busybox tar xvf /backup/backup.tar`
-    - 这个就是实现了将本地的归档数据放到指定的容器内，如果要从数据卷容器中恢复到别的容器就只要挂载对应的数据卷容器然后进目录直接解压即可
-
-**************************
-# 端口映射
+*************
+## 端口映射
 - 当不指定对应的参数容器默认不开放任何端口给外部，可以使用 -P -p 参数来开放
     - -P 随机映射一个 49000-49900 的端口到容器开放的端口
     - -p  `IP:HostPort:ContainerPort | IP::ContainerPort | HostPort:ContainerPort`
@@ -410,8 +361,7 @@ _ps_
     - 查看容器内5000对应的外端口 `docker port ubuntu17 5000`
     - 查看容器的具体信息 `docker inspect 容器id` 
 
-*****************
-# 容器互联
+## 容器互联
 > 让多个容器中应用快速安全交互的方式，特别注意这是双向互联的, 这是简单的做法, 高级做法是建立[网络](#网络)
 > 特别容易出现锁，一个没有启动，其他的都启动不了 尝试？ `sudo service docker restart`
 
@@ -448,6 +398,37 @@ server {
   }
 }
 ```
+
+*********************
+# 数据卷
+> [Docker 中管理数据](http://www.open-open.com/lib/view/open1403571027233.html)
+> [参考博客: 给一个正在运行的Docker容器动态添加Volume](http://www.open-open.com/lib/view/open1421996521062.html)
+
+- 数据卷是一个可供容器使用的特殊目录，它将宿主机操作系统目录映射进容器 类似于 mount操作
+    - 数据卷可以在容器之间共享重用
+    - 数据卷内数据的修改会立马生效，无论是容器内操作还是本地操作
+    - 对数据卷的更新不会影响镜像，解耦了应用和数据
+    - 卷会一直存在，直到没有容器使用，才可以安全的卸载
+
+- `docker run -v dir:dir[:ro]` 一般是创建容器时使用，和-p类似可以多个，左本机右容器 默认rw权限可以指定 ro只读
+    - 可以将一个文件挂载为数据卷，但是文件夹更好，文件可能会有问题出现
+
+## 数据卷容器
+- `docker run -it -v /test --name data ubuntu ` 运行一个挂载了数据卷的容器
+- 引用数据卷容器 来挂载数据卷：`docker run -it --volumes-from data --name db1 ubuntu`
+- 从已经挂载了数据卷容器的容器 来挂载数据卷：`docker run -it --volumes-from db1 --name db2 ubuntu`
+- 使用 `--volumes-from` 参数所挂载数据卷的容器并不需要保持在运行状态
+- 如果删除了挂载的容器，数据卷并不会自动删除，而是要在删除最后一个容器时 使用 `docker rm -v` 来声明删除容器并删除关联的数据卷
+
+`利用数据卷容器来迁移数据`
+- 备份：
+    - `docker run --volumes-from data -v $(pwd):/backup --name worker ubuntu tar cvf /backup/backup.tar /data`
+    - 先基于Ubuntu创建一个worker容器并引用了数据卷容器data，然后将当前目录作为数据卷挂载进去，并执行tar命令，打包到数据卷容器的目录下
+    - 实现了将当前目录归档到数据卷容器下
+- 恢复：
+    - 创建一个带有数据卷的容器（目标容器）`docker run -v /data --name reuse ubuntu /bin/bash`
+    - 解压当前目录的tar文件到数据卷容器中 `docker run --volumes-from reuse -v $(pwd):/backup busybox tar xvf /backup/backup.tar`
+    - 这个就是实现了将本地的归档数据放到指定的容器内，如果要从数据卷容器中恢复到别的容器就只要挂载对应的数据卷容器然后进目录直接解压即可
 ***********************
 # Dockerfile
 >[Dockerfile文件学习](/Linux/Container/DockerFile.md)
@@ -477,7 +458,7 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
 
 ***********************************
 # 网络
-> 远没有前面的容器互联那样的简单, 更多还需学习 
+> 远没有前面的容器互联那样的简单, 但是更为强大和健壮
 
 - [ ] 学习Docker中的网络
 

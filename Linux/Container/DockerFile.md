@@ -7,6 +7,7 @@
         1. [FROM](#from)
         1. [MAINTAINER](#maintainer)
         1. [RUN](#run)
+            1. [修改容器时区设置](#修改容器时区设置)
         1. [CMD](#cmd)
         1. [ENTRYPOINT](#entrypoint)
         1. [USER](#user)
@@ -24,7 +25,7 @@
         1. [打包最新版git](#打包最新版git)
         1. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-15_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Dockerfile
 ## 使用入门案例
@@ -90,6 +91,22 @@ _docker build_
 - 当RUN命令执行完毕后，就会生成一个新的文件层。这个文件层会保存在缓存中作为下一个指令的基础镜像存在，如果不需要缓存就加上 `--no-cache`
     - 所以就尽量是将所有的命令 放在一个RUN命令里减少镜像层数。
 
+#### 修改容器时区设置
+> [参考博客: Docker修改默认时区](https://www.jianshu.com/p/004ddf941aac) 
+
+```sh
+    # Alpine 
+    RUN apk --no-cache add tzdata  && \
+        ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+        echo "Asia/Shanghai" > /etc/timezone
+
+    # Ubuntu
+    RUN echo "Asia/Shanghai" > /etc/timezone && \
+        dpkg-reconfigure -f noninteractive tzdata
+
+    # Centos
+    RUN echo "Asia/shanghai" > /etc/timezone;
+```
 
 ### CMD
 > 指定 容器启动时默认执行的命令
