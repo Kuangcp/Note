@@ -1,21 +1,37 @@
 `目录 start`
  
 1. [Docker Advance](#docker-advance)
-    1. [AUFS](#aufs)
+    1. [文件系统](#文件系统)
+        1. [AUFS](#aufs)
+        1. [OverlayFS](#overlayfs)
     1. [配置](#配置)
         1. [更改数据的存放目录](#更改数据的存放目录)
-        1. [暴露出tcp端口](#暴露出tcp端口)
-        1. [Tips](#tips)
+        1. [提供底层接口访问](#提供底层接口访问)
+            1. [暴露守护进程端口](#暴露守护进程端口)
+            1. [持有套接字文件](#持有套接字文件)
+1. [Tips](#tips)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-16_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker Advance
 
-## AUFS
-> Docker 采用的是 AUFS 文件系统, go语言编写的程序
+## 文件系统
+> Docker支持 AUFS、Btrfs、Device mapper、OverlayFS、Overlay2FS、ZFS 
+
+### AUFS
+> Docker旧版本 采用的是 AUFS 文件系统
 
 > [参考博客: 剖析Docker文件系统：Aufs与Devicemapper](http://www.infoq.com/cn/articles/analysis-of-docker-file-system-aufs-and-devicemapper)
 > [参考博客: 理解Docker（7）：Docker 存储 - AUFS](http://www.cnblogs.com/sammyliu/p/5931383.html)
+
+> [参考博客: Docker: Just Stop Using AUFS](https://sthbrx.github.io/blog/2015/10/30/docker-just-stop-using-aufs/)
+
+### OverlayFS
+> 最新的Docker都是采用这种文件系统, 并具有 overlay overlay2 两代驱动
+
+> [参考博客: docker 存储驱动之overlay](https://blog.csdn.net/u010278923/article/details/79215828)
+
+****************
 
 ## 配置
 
@@ -58,7 +74,8 @@ DOCKER_OPTS="--graph=/opt/docker "
 
 ```
 
-### 暴露出tcp端口
+### 提供底层接口访问
+#### 暴露守护进程端口
 
 1. systemctl edit docker.service
 ```ini
@@ -73,7 +90,10 @@ ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
 
 > 而那些不是使用systemd管理服务的才要在 /etc/docker/ 下配置 daemon.json [official doc](https://docs.docker.com/engine/reference/commandline/dockerd/)
 
-### Tips
+#### 持有套接字文件
+> 将 `/var/run/docker.sock` 的访问权限 提供给使用方即可
+
+# Tips
 > WARNING: No swap limit support
 
 1. Edit the /etc/default/grub file.

@@ -23,7 +23,6 @@
         1. [docker commit](#docker-commit)
         1. [docker port](#docker-port)
     1. [端口映射](#端口映射)
-    1. [容器互联](#容器互联)
 1. [数据卷](#数据卷)
     1. [数据卷容器](#数据卷容器)
 1. [Dockerfile](#dockerfile)
@@ -35,13 +34,20 @@
     1. [Docker-Machine](#docker-machine)
     1. [Docker-Swarm](#docker-swarm)
 1. [网络](#网络)
+    1. [None](#none)
+    1. [Host](#host)
+    1. [Bridge](#bridge)
+    1. [User-defined](#user-defined)
+    1. [跨主机容器通信](#跨主机容器通信)
+        1. [overlay](#overlay)
 
-`目录 end` |_2018-10-15_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-16_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker
-> [官方文档](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
+> [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
 
 - [docker中文](http://www.docker.org.cn/)`社区`
+
 ## 简介
 - `Docker 是一个开源的应用容器引擎` 理解为加强版虚拟机
 - 让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
@@ -350,7 +356,7 @@ _ps_
 
 *************
 ## 端口映射
-- 当不指定对应的参数容器默认不开放任何端口给外部，可以使用 -P -p 参数来开放
+- 当不指定对应的参数容器默认不开放任何端口给外部，可以使用 `-P` 或 `-p` 参数来开放
     - -P 随机映射一个 49000-49900 的端口到容器开放的端口
     - -p  `IP:HostPort:ContainerPort | IP::ContainerPort | HostPort:ContainerPort`
         - 映射到指定IP的指定端口`IP:HostPort:ContainerPort` 
@@ -360,44 +366,6 @@ _ps_
 - 查看端口
     - 查看容器内5000对应的外端口 `docker port ubuntu17 5000`
     - 查看容器的具体信息 `docker inspect 容器id` 
-
-## 容器互联
-> 让多个容器中应用快速安全交互的方式，特别注意这是双向互联的, 这是简单的做法, 高级做法是建立[网络](#网络)
-> 特别容易出现锁，一个没有启动，其他的都启动不了 尝试？ `sudo service docker restart`
-
-- 例如: `创建一个MySQL容器供一个Ubuntu容器使用`
-1. 创建MySQL容器 `docker run --name mysql2 -e MYSQL_ROOT_PASSWORD=ad -d mysql`
-2. 创建Ubuntu容器 `docker run -d --name test --link mysql2:db ubuntu`
-    - link参数说明 ：`--link name:alias` 在父容器中会将该映射加入host文件，所以无需找ip，直接使用别名
-3. docker会连接两个容器，而不用通过暴露端口来实现，web容器的host文件以及环境变量都会追加上mysql2的配置
-4. 所以在Ubuntu容器中连接MySQL容器， `mysql -h db -u root -pad` 即可连接上mysql
-    - 如需看IP就 `cat /etc/hosts` 中myslq容器别名为db值的IP地址 
-    - 或者直接 `ping db` `apt install  inetutils-ping` `ifconfig就要安装net-tools`
-
-- 例如：`创建一个Nginx和一个Springboot搭建的web服务`
-    - 构建Springboot应用镜像，构建应用容器 开放8888端口
-    - 新建nginx容器：`docker run --name youhuigo -d -p 80:80 -v /home/kuang/nginx/conf/:/etc/nginx/conf.d/:ro --link you:web nginx`
-- 配置文件：`一样的cat /etc/hosts 查看容器的IP`， 其实最简单就是用link配置时的别名即可，因为Docker已经帮我们配置好了host。。。
-```conf
-upstream youhui {
-  server 172.17.0.4:8888;
-}
-
-server {
-  listen 80;
-  server_name youhui;
-
-  location / {
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
-    proxy_set_header Host $http_host;
-    proxy_set_header X-Nginx-Proxt true;
-
-    proxy_pass http://youhui;
-    proxy_redirect off;
-  }
-}
-```
 
 *********************
 # 数据卷
@@ -458,8 +426,73 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
 
 ***********************************
 # 网络
-> 远没有前面的容器互联那样的简单, 但是更为强大和健壮
+> [Official Doc](https://docs.docker.com/network/) 分为 none host brige user-defined 几种类型
 
-- [ ] 学习Docker中的网络
+## None
+> docker run -it --network none  busybox
+
+- 不联网的容器, ifconfig 可以看到只有 lo 
+
+## Host
+> docker run -it --network host busybox
+
+- 采用宿主机的网络, 也就是说和宿主机使用同一个网络环境, hostname都是host的
+    1. 特点是性能, 但是不够灵活, 要考虑和host上的端口冲突问题
+    1. 直接配置host的网络: 例如配置防火墙容器
+
+## Bridge
+> 安装 Docker 的时候, 都会创建一个 docker0 的网桥 Linux bridge
+
+- 如果没有指定 `--network` 或者使用 `--network default` 创建容器 都会默认挂载到 docker0 上
+- 通过 `docker network inspect bridge` 命令可以看到子网掩码是 `172.17.0.0/16` 网关是 172.17.0.1 
+    - 也就是说能容纳 2的16次幂 -2 个容器 (65534), 容器创建时会依次分配ip
+
+> 注意: 此方式下容器之间是互通的, 通常使用的 `--link containerName:aliasName` 也只不过是在 /etc/hosts 文件中添加了容器的 dns 而已
+
+- [ ] 验证
+
+> 特别容易出现锁，一个没有启动，其他的都启动不了 尝试？ `sudo service docker restart`
+
+- 例如: `创建一个MySQL容器供一个Ubuntu容器使用`
+1. 创建MySQL容器 `docker run --name mysql2 -e MYSQL_ROOT_PASSWORD=ad -d mysql`
+2. 创建Ubuntu容器 `docker run -d --name test --link mysql2:db ubuntu`
+    - link参数说明 ：`--link name:alias` 在父容器中会将该映射加入host文件，所以无需找ip，直接使用别名
+3. docker会连接两个容器，而不用通过暴露端口来实现，web容器的host文件以及环境变量都会追加上mysql2的配置
+4. 所以在Ubuntu容器中连接MySQL容器， `mysql -h db -u root -pad` 即可连接上mysql
+    - 如需看IP就 `cat /etc/hosts` 中myslq容器别名为db值的IP地址 
+    - 或者直接 `ping db` `apt install  inetutils-ping` `ifconfig就要安装net-tools`
+
+- 例如：`创建一个Nginx和一个Springboot搭建的web服务`
+    - 构建Springboot应用镜像，构建应用容器 开放8888端口
+    - 新建nginx容器：`docker run --name youhuigo -d -p 80:80 -v /home/kuang/nginx/conf/:/etc/nginx/conf.d/:ro --link you:web nginx`
+- 配置文件：`一样的cat /etc/hosts 查看容器的IP`， 其实最简单就是用link配置时的别名即可，因为Docker已经帮我们配置好了host。。。
+```conf
+upstream youhui {
+  server 172.17.0.4:8888;
+}
+
+server {
+  listen 80;
+  server_name youhui;
+
+  location / {
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Nginx-Proxt true;
+
+    proxy_pass http://youhui;
+    proxy_redirect off;
+  }
+}
+```
 
 > [weave](https://www.weave.works/) `能解决跨宿主机的容器互联问题`
+
+## User-defined 
+> Docker 提供三种 网络驱动 bridge overlay macvlan, 后两者可用于跨主机的容器通信
+
+## 跨主机容器通信
+
+### overlay
+> [参考博客: DOCKER的内置OVERLAY网络](http://dockone.io/article/2717)

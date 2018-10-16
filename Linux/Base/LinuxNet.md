@@ -1,12 +1,13 @@
 `目录 start`
  
 1. [【网络管理】](#网络管理)
+    1. [Tips](#tips)
+        1. [查看端口占用情况](#查看端口占用情况)
     1. [DNS](#dns)
         1. [修改DNS](#修改dns)
         1. [刷新本地缓存](#刷新本地缓存)
     1. [IPv4和IPv6](#ipv4和ipv6)
-    1. [Tips](#tips)
-        1. [查看端口占用情况](#查看端口占用情况)
+    1. [Bridge](#bridge)
     1. [基础命令工具](#基础命令工具)
         1. [1.ping](#1ping)
         1. [2.curl](#2curl)
@@ -32,9 +33,36 @@
         1. [防火墙](#防火墙)
             1. [iptables](#iptables)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-16_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 【网络管理】
+## Tips
+### 查看端口占用情况
+> netstat lsof fuser ps 都有一定效果 [ linux_performance ](./Linux/linux_performance.md)  
+
+> [参考博客: linux下常用命令查看端口占用](http://blog.csdn.net/ws379374000/article/details/74218530)
+
+_netstat工具_ 或者 更好用的 [iproute2](#3iproute2)
+
+- `lsof -i:端口号` 用于查看某一端口的占用情况，缺省端口号显示全部
+    - 或者 `cat /etc/services` 查看系统以及使用的端口
+
+- `netstat -tunlp | grep 端口号` 用于查看指定的端口号的进程情况
+    - `-t` (tcp) 仅显示tcp相关选项
+    - `-u` (udp)仅显示udp相关选项
+    - `-n` 拒绝显示别名，能显示数字的全部转化为数字
+    - `-l` 仅列出在Listen(监听)的服务状态
+    - `-p` 显示建立相关链接的程序名
+
+- 查询端口占用的pid 三种：
+    - `netstat -aonp |grep "^[a-z]\+[ ]\+0[ ]\+0[ ]\+[0-9\.]\+:80[ ]\+"|awk -F" "   {'print $0'}`
+    - `netstat -aonp |grep ":80[ ]\+"|awk -F" "   {'print $0'}`
+    - `sudo netstat -aonp |grep ":6379[ ]\+"|awk -F" "   {'print $0'}`
+    - `sudo kill -9 pid` 杀掉指定pid
+    - `ps aux` 查看当前执行中的程序
+
+- 似乎能看到更多 `netstat -tpanl | grep 127.0.0.1` 
+
 ## DNS
 - 域名和资源转换的服务
 - 解析域名的顺序一般是， 先在本机找，找不到去找上连DNS服务器， 然后根域DNS服务器
@@ -76,39 +104,23 @@
 - 零省略 ：如果有一位是 000C 可以直接写C
 - 零压缩 ：如果FE04:0:0:0:0:0:0:DA 写成 FE::DA
 
-*******************
-## Tips
-### 查看端口占用情况
-> netstat lsof fuser ps 都有一定效果 [ linux_performance ](./Linux/linux_performance.md)  
+## Bridge
+> 网桥, 通常使用 bridge-utils 的 brctl 进行管理
 
-> [参考博客: linux下常用命令查看端口占用](http://blog.csdn.net/ws379374000/article/details/74218530)
+- [ ]  Learn 
 
-_netstat工具_ 或者 更好用的 [iproute2](#3iproute2)
+**增加**
 
-- `lsof -i:端口号` 用于查看某一端口的占用情况，缺省端口号显示全部
-    - 或者 `cat /etc/services` 查看系统以及使用的端口
+**删除**
 
-- `netstat -tunlp | grep 端口号` 用于查看指定的端口号的进程情况
-    - `-t` (tcp) 仅显示tcp相关选项
-    - `-u` (udp)仅显示udp相关选项
-    - `-n` 拒绝显示别名，能显示数字的全部转化为数字
-    - `-l` 仅列出在Listen(监听)的服务状态
-    - `-p` 显示建立相关链接的程序名
-
-- 查询端口占用的pid 三种：
-    - `netstat -aonp |grep "^[a-z]\+[ ]\+0[ ]\+0[ ]\+[0-9\.]\+:80[ ]\+"|awk -F" "   {'print $0'}`
-    - `netstat -aonp |grep ":80[ ]\+"|awk -F" "   {'print $0'}`
-    - `sudo netstat -aonp |grep ":6379[ ]\+"|awk -F" "   {'print $0'}`
-    - `sudo kill -9 pid` 杀掉指定pid
-    - `ps aux` 查看当前执行中的程序
-
-- 似乎能看到更多 `netstat -tpanl | grep 127.0.0.1` 
-
+**配置开机启动**
 ***************************
 ## 基础命令工具
 > 参考书籍 《Linux 大棚命令百篇》
 
 ### 1.ping
+> inetutils-ping
+
 - ping URL ： Linux是默认无休止的
     - -c 次数
     - -q 安静模式 不输出
@@ -122,6 +134,7 @@ _netstat工具_ 或者 更好用的 [iproute2](#3iproute2)
 1. 不输出，重定向到*黑洞设备*  ` curl -s -o /dev/null URL`
 1. 格式化返回的json数据：`curl xxxx|python -m json.tool `
 1. 使用基础认证 发送JSON数据 `curl -i -H "Content-Type:application/json" -u admin:secret -X POST --data '{"title":"1","content":"1"}' http://tomcat.kcp/email/content`
+
 ```sh
     # 如果没有认证则会收到如下结果
 $ curl -i -u admin:secret -X POST http://tomcat.kcp/email/content
