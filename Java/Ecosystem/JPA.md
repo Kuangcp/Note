@@ -13,7 +13,10 @@
 > [技术专题讨论第二期总结：如何对 JPA 或者 MyBatis 进行技术选型](http://www.spring4all.com/article/391)
 
 ## 配置
+
 ## 使用
+ 
+> [参考博客: spring boot(五)：spring data jpa的使用](https://www.cnblogs.com/ityouknow/p/5891443.html)
 ### 注解
 > [Java、Hibernate(JPA)注解大全](http://www.cnblogs.com/zr520/p/5003478.html)
 > [jpa注解大全](http://www.cnblogs.com/cxyzl/archive/2012/12/05/2803548.html)

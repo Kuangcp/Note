@@ -1,54 +1,57 @@
 `目录 start`
  
 1. [Redis](#redis)
-    1. [Book](#book)
-    1. [【windows上的基本配置】](#windows上的基本配置)
-    1. [Linux下的使用](#linux下的使用)
+1. [Book](#book)
+1. [安装和配置](#安装和配置)
+    1. [Windows](#windows)
+    1. [Linux](#linux)
         1. [docker安装redis](#docker安装redis)
         1. [命令安装](#命令安装)
         1. [解压即用](#解压即用)
-    1. [redis配置文件](#redis配置文件)
-    1. [Redis命令行常规使用](#redis命令行常规使用)
-        1. [过期策略](#过期策略)
-        1. [数据类型](#数据类型)
-            1. [字符串 String](#字符串-string)
-            1. [列表 list](#列表-list)
-            1. [集合 set](#集合-set)
-            1. [有序集合 zset](#有序集合-zset)
-            1. [散列 hash](#散列-hash)
-            1. [HyperLogLog](#hyperloglog)
-            1. [GEO【地理位置】](#geo地理位置)
-        1. [Pub/Sub发布订阅](#pubsub发布订阅)
-        1. [事务](#事务)
-        1. [服务器](#服务器)
-        1. [Run Configuration](#run-configuration)
-    1. [数据安全和性能](#数据安全和性能)
-        1. [持久化策略](#持久化策略)
-        1. [复制](#复制)
-        1. [数据迁移](#数据迁移)
-    1. [【Redis的使用】](#redis的使用)
-        1. [作为日志记录](#作为日志记录)
-        1. [作为网站统计数据](#作为网站统计数据)
-        1. [存储配置信息](#存储配置信息)
-        1. [自动补全](#自动补全)
-        1. [构建锁](#构建锁)
-        1. [任务队列](#任务队列)
-    1. [编程语言的使用](#编程语言的使用)
-        1. [Java 使用](#java-使用)
-        1. [Python使用](#python使用)
-        1. [webdis](#webdis)
+    1. [Redis配置文件](#redis配置文件)
+1. [数据类型](#数据类型)
+    1. [字符串 String](#字符串-string)
+    1. [列表 list](#列表-list)
+    1. [集合 set](#集合-set)
+    1. [有序集合 zset](#有序集合-zset)
+    1. [散列 hash](#散列-hash)
+    1. [HyperLogLog](#hyperloglog)
+    1. [GEO【地理位置】](#geo地理位置)
+1. [Pub/Sub 发布和订阅](#pubsub-发布和订阅)
+1. [Redis常用命令](#redis常用命令)
+    1. [过期策略](#过期策略)
+    1. [事务](#事务)
+    1. [服务器](#服务器)
+    1. [Run Configuration](#run-configuration)
+1. [数据安全和性能](#数据安全和性能)
+    1. [持久化策略](#持久化策略)
+    1. [复制](#复制)
+    1. [数据迁移](#数据迁移)
+1. [Redis的应用场景](#redis的应用场景)
+    1. [作为日志记录](#作为日志记录)
+    1. [作为网站统计数据](#作为网站统计数据)
+    1. [存储配置信息](#存储配置信息)
+    1. [自动补全](#自动补全)
+    1. [构建锁](#构建锁)
+    1. [任务队列](#任务队列)
+1. [编程语言的使用](#编程语言的使用)
+    1. [Java 使用](#java-使用)
+    1. [Python使用](#python使用)
+1. [Project](#project)
+    1. [webdis](#webdis)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Redis
 > [Redis官网](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
 
 - [Redis中文文档](http://redisdoc.com/index.html)
 
-## Book 
+# Book 
 > [Redis设计与实现 第二版](http://www.shouce.ren/api/view/a/13483)
 
-## 【windows上的基本配置】
+# 安装和配置
+## Windows
 - 注册为服务
 	- `redis-server --service-install redis.windows.conf --loglevel verbose`
 - 使用cmder
@@ -57,7 +60,7 @@
 	- `requirepass redis1104`
 	- 客户端登录 `auth redis1104`
 
-## Linux下的使用
+## Linux
 ### docker安装redis
 > [docker-install-redis](/Linux/Container/DockerSoft.md#redis)
 
@@ -90,29 +93,17 @@
 ```
 
 ****************************
-## redis配置文件
+## Redis配置文件
 - [配置文件讲解](https://github.com/Kuangcp/Configs/blob/master/Database/redis/explain_redis.conf) | [原始配置文件](https://github.com/Kuangcp/Configs/blob/master/Database/redis/redis.conf)
+
 - `使用ing`[简化配置文件](https://github.com/Kuangcp/Configs/blob/master/Database/redis/simple_redis.conf) 
 
-********
-## Redis命令行常规使用
+**************************
 
-- 关闭数据库 `shutdown` 他会在关闭前保存数据
-- 保存内存中数据 `save`
-- 认证 `auth` 口令
-- 测试联通性 `ping` 连接成功会返回pong
-- 模糊删除 
-    - 删除 6666端口 的 2数据库中`detail-2018-07-0*`模式的数据: `./redis-cli -p 6666 -n 2 keys "detail-2018-07-0*" | xargs  ./redis-cli -p 6666 -n 2 del`
+# 数据类型
+> [社区: 中文文档](http://redisdoc.com/index.html)
 
-### 过期策略
-- `expire key seconds` 设置键的过期时间
-- `PTTL/TTL key ` 查看键剩余过期时间（生存时间） ms/s
-    -  -1表示永久 -2表示没有该key
-
-### 数据类型
-> [中文文档](http://redisdoc.com/index.html)
-
-#### 字符串 String
+## 字符串 String
 > 字符串就是字节组成的序列 可以放字节串，整数，浮点数
 
 - `set key newval nx `存在则set失败
@@ -131,7 +122,7 @@
 - `persist key` 去除超时时间
 - `ttl key` 查看剩余存活时间 -1表示永久 -2表示没有该key
 
-#### 列表 list
+## 列表 list
 - `rpush key val val val `右/尾添加元素 lpush是左/头，若表不存在就新建
 - `rpushx key value` 若表不存在就什么都不做，否则尾插元素
 - `rpop key` 从list右/尾端中删除元素返回元素值 没有了就返回null
@@ -149,7 +140,7 @@
     - `bpoplpush`
     - `brpoplpush` 阻塞式先右弹再左进
 
-#### 集合 set
+## 集合 set
 - `SADD key member [member ...]`
 - `SCARD key` 返回集合 key 的基数(集合中元素的数量)。
 - `SDIFF key [key ...]`  返回一个集合的全部成员，该集合是所有给定集合之间的差集。不存在的 key 被视为空集。
@@ -166,7 +157,7 @@
 - `SUNIONSTORE destination key [key ...]`
 - `SSCAN key cursor [MATCH pattern] [COUNT count]` 参考 SCAN 命令
 
-#### 有序集合 zset
+## 有序集合 zset
 > 元素是键值对，键是member成员，值是score分值必须是浮点数
 
 - _zadd_ 将一个给定分值的成员添加到有序集合里
@@ -195,7 +186,7 @@
 - ZLEXCOUNT
 - ZREMRANGEBYLEX
 
-#### 散列 hash
+## 散列 hash
 > (类似Map 嵌套，一个内置的微型redis)
 
 - HDEL 删除散列中指定的K
@@ -214,12 +205,12 @@
 - HSCAN
 - HSTRLEN
 
-#### HyperLogLog
+## HyperLogLog
 - PFADD
 - PFCOUNT
 - PFMERGE
 
-#### GEO【地理位置】
+## GEO【地理位置】
 - GEOADD
 - GEOPOS
 - GEODIST
@@ -228,7 +219,7 @@
 - GEOHASH
 
 ***************
-### Pub/Sub发布订阅
+# Pub/Sub 发布和订阅
 
 - `PSUBSCRIBE pattern [pattern ...]`
     - 订阅一个或多个符合给定模式的频道。每个模式以 * 作为匹配符，比如 it* 匹配所有以 it 开头的频道( it.news 、 it.blog 、 it.tweets 等等)，
@@ -250,7 +241,23 @@
     - 那么客户端使用 SUBSCRIBE 命令订阅的所有频道都会被退订。在这种情况下，命令会返回一个信息，告知客户端所有被退订的频道。
 
 **************
-### 事务
+
+******************************
+# Redis常用命令
+
+- 关闭数据库 `shutdown` 该命令会在关闭数据库前保存数据
+- 保存内存中数据到文件 `save`
+- 认证 `auth 口令` 
+- 测试联通性 `ping` 连接成功会返回pong
+- 模糊删除 
+    - 删除 6666端口 的 2数据库中`detail-2018-07-0*`模式的数据: `./redis-cli -p 6666 -n 2 keys "detail-2018-07-0*" | xargs  ./redis-cli -p 6666 -n 2 del`
+
+## 过期策略
+- `expire key seconds` 设置键的过期时间
+- `PTTL/TTL key ` 查看键剩余过期时间（生存时间） ms/s
+    -  -1 表示永久 -2 表示没有该key
+
+## 事务
 
 - `DISCARD` 取消事务，放弃执行事务块内的所有命令。
 - `EXEC`
@@ -264,7 +271,7 @@
     - 监视一个(或多个) key ，如果在事务执行之前这个(或这些) key 被其他命令所改动，那么事务将被打断。
 
 *************
-### 服务器
+## 服务器
 
 - BGREWRITEAOF
 - BGSAVE
@@ -282,6 +289,7 @@
 - FLUSHALL
 - FLUSHDB
 - INFO
+    - [参考: redis info 命令查看redis使用情况](https://blog.csdn.net/kexiaoling/article/details/51810919)
 - LASTSAVE
 - MONITOR
 - PSYNC
@@ -293,44 +301,53 @@
 - TIME
 *****************************
 	
-### Run Configuration	
+## Run Configuration	
 - *slaveof*
     - `redis-server --port 9999 --slaveof 127.0.0.1 6379` 启动一个9999端口作为6379的从服务器进行同步
     - 或者服务启动后执行 `slaveof host port`（如果已经是从服务器，就丢去旧服务器的数据集，转而对新的主服务器进行同步）
     - 从服务变成主服务 `slaveof no one` (同步的数据集不会丢失，迅速替换主服务器)
+
 - *loglevel*
     - `./redis-server /etc/redis/6379.conf --loglevel debug	`
 
-***********
-## 数据安全和性能
-### 持久化策略
-### 复制
+***********************
+# 数据安全和性能
+## 持久化策略
+## 复制
 
-### 数据迁移
+## 数据迁移
 - 使用主从复制来进行数据, 或者自己写Py脚本?
 
-*******
-## 【Redis的使用】
-### 作为日志记录
-### 作为网站统计数据
-### 存储配置信息
-### 自动补全
+****************
+# Redis的应用场景
+## 作为日志记录
+## 作为网站统计数据
+## 存储配置信息
+## 自动补全
 - 搜索建议
 
-### 构建锁
+## 构建锁
 
-### 任务队列
+## 任务队列
 - 发送邮件
 
-## 编程语言的使用
-***************************
-### Java 使用
+*******************************
+
+# 编程语言的使用
+
+## Java 使用
+> [详细](/Java/Ecosystem/JavaRedis.md)
+
 *******************
-### Python使用
+
+## Python使用
 > pip install redis 该模块和redis命令的用法几乎一模一样, 上手很快
 - [redis文档](https://pypi.python.org/pypi/redis/) `python操作redis的库的文档`
 
-### webdis
+# Project
+> 衍生项目 
+
+## webdis
 > 将redis变为一个简单的web接口  
 
 > [官网](http://webd.is/) | [Github地址](https://github.com/nicolasff/webdis)

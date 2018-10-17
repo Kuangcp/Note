@@ -129,8 +129,8 @@ utf8mb4 才是真正意义上的 utf8 `5.5.3才开始支持`
 
 1. 只导出数据库的结构 `mysqldump -uroot -pmysql -d dbname > /data/backup/sql/dbname.sql`  
     - 导出具体的表就在数据库名后加上 表名
-2. 导出结构和数据就去掉-d参数, 导出具体的表同理
-3. 导入就是执行这个SQL文件就行了 `source /path/to/dbname.sql`
+1. 导出结构和数据就去掉-d参数, 导出具体的表同理
+1. 导入其实就是执行SQL文件 `source /path/to/dbname.sql`
 
 > [java操作：mysql数据库导入、导出](https://blog.csdn.net/EASYgoing00/article/details/72885280)  主要的思想是Java调用系统命令行执行命令后得到导出文件， 然后读取导出的文件 进一步操作
 

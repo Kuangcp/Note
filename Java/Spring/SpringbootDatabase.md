@@ -53,6 +53,19 @@
 ### JPA
 > 连接池:1.x 默认是tomcat-jdbc连接池 2.x 是 HikariPool
 
+> [参考博客: spring boot2 整合（二）JPA](https://www.jianshu.com/p/3b31270a44b1)
+#### Configuration
+> [Official Doc](https://docs.spring.io/spring-boot/docs/2.0.6.RELEASE/reference/htmlsingle/#howto-configure-jpa-properties)
+**`ddl-auto`**
+- JPA 默认是该配置 `spring.jpa.hibernate.ddl-auto`
+- 但是如上配置没有生效的话就要用 这个 `spring.jpa.properties.hibernate.hbm2ddl.auto` 
+    1. none 什么都不做
+    1. create-only 
+    1. create 先删除, 然后建立新的表
+    1. create-drop 先删除, 然后建立新的表, 然后在SessionFactory实例关闭后再删除
+    1. update 创建和修改
+    1. validate 校验是否一致, 不一致就报错,启动失败
+
 - [Blog: 原生SQL的写法](http://blog.csdn.net/Amy_Queen/article/details/72454099)
 
 - [ ] 怎么映射视图到实体上?
@@ -60,6 +73,7 @@
 ### Mybatis
 
 > [IDEA下创建Springboot，thymeleaf，Mybatis，Postgresql，Gradle项目](https://blog.csdn.net/juewang_love/article/details/53769906)
+
 #### 自定义查询
 ##### HQL
 - 使用Hibernate语法模式,将对象和数据库的表看成一个实体,方便书写SQL,但是在Controller层和Service层

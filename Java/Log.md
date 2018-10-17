@@ -353,6 +353,11 @@ _4.另外还有SocketAppender、SMTPAppender、DBAppender、SyslogAppender、Sif
     - [Github: CorrectLog.java](https://github.com/kuangcp/JavaBase/blob/master/java-classfile/src/main/java/log/CorrectLog.java)
 
 1. 在Springboot中还能指定包的日志等级 `logging.level.com.github.kuangcp.service = DEBUG`
+
+### MDC 
+> 使用 ThreadLocal 存储一些信息, 然后能在xml的pattern中直接引用, 省去了重复手动写 log
+
+- [ ] TODO 
 ************
 ## apache 体系
 - [apache的简单示例](https://github.com/Kuangcp/Notes/blob/master/ConfigFiles/Log/log4j.xml)
