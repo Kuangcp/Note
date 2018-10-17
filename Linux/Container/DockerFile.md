@@ -25,7 +25,7 @@
         1. [打包最新版git](#打包最新版git)
         1. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-`目录 end` |_2018-10-15_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Dockerfile
 ## 使用入门案例
@@ -101,12 +101,14 @@ _docker build_
         echo "Asia/Shanghai" > /etc/timezone
 
     # Ubuntu
-    RUN echo "Asia/Shanghai" > /etc/timezone && \
+    RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+        echo "Asia/Shanghai" > /etc/timezone && \
         dpkg-reconfigure -f noninteractive tzdata
 
     # Centos
     RUN echo "Asia/shanghai" > /etc/timezone;
 ```
+> 对于 alpine 以及 Ubuntu ln -s 建立到时间文件的软链接就已经够了, 但是确保没问题就最好还是修改下 时区文件
 
 ### CMD
 > 指定 容器启动时默认执行的命令

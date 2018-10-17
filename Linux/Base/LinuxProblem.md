@@ -9,13 +9,13 @@
         1. [Deepin的NVIDIA驱动问题](#deepin的nvidia驱动问题)
         1. [笔记本突然断电导致开机报错](#笔记本突然断电导致开机报错)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 遇到的常见问题
 
 ## 命令找不到
-- `sudo找不到` 就安装 sudo
-- locale-gen 安装locales 使用`locale-gen --purge`命令进行更新编码
+- `sudo找不到` 安装 sudo
+- `locale-gen 找不到` 安装 locales 使用`locale-gen --purge`命令进行更新编码
 
 > Linux上的报错, 提示说找不到共享库 | [参考解决方式 ](http://www.cnblogs.com/Anker/p/3209876.html)
 

@@ -192,6 +192,7 @@
     * 【 Python/Tool 】
         * [ PyCharm ](/Python/Tool/PyCharm.md)
     * [ Python ](/Python/Python.md)
+    * [ PythonExcel ](/Python/PythonExcel.md)
     * [ PythonGUI ](/Python/PythonGUI.md)
     * [ PythonGame ](/Python/PythonGame.md)
     * [ PythonNet ](/Python/PythonNet.md)

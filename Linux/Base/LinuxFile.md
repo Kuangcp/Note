@@ -3,7 +3,6 @@
 1. [【文件管理】](#文件管理)
     1. [Tips](#tips)
         1. [设置交换分区](#设置交换分区)
-1. [完整命令: root身份运行](#完整命令-root身份运行)
             1. [清空交换内存](#清空交换内存)
         1. [清除缓存](#清除缓存)
         1. [善用*shrc文件](#善用shrc文件)
@@ -32,7 +31,7 @@
     1. [系统日志](#系统日志)
     1. [应用日志](#应用日志)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 【文件管理】
 > Linux中认为万物皆文件
@@ -54,8 +53,8 @@
 - `建议，笔记本的硬盘低于 7200 转的不要设置太高的交换分区使用，大大影响性能，因为交换分区就是在硬盘上，频繁的交换数据`
 
 ```sh
-# 完整命令: root身份运行
-dd if=/dev/zero of=/swapfile bs=1024k count=4096 && mkswap /swapfile && swapon /swapfile && echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+    # 完整命令: root身份运行
+    dd if=/dev/zero of=/swapfile bs=1024k count=4096 && mkswap /swapfile && swapon /swapfile && echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
 ```
 #### 清空交换内存
 - 1.关闭交换分区 `sudo swapoff 交换分区文件`

@@ -35,7 +35,7 @@
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux 性能分析和管理
 ## 运行状况信息
@@ -219,7 +219,7 @@
 - 创建一个0填充的1g文件 `dd if=/dev/zero bs=1024 count=1000000 of=./1gb.file` 
     - 就能看到硬盘的显著变化 `df -h`
 - 然后写一个简单的程序一直占用他, 例如 python
-    - `rm -rf` 删除他,ls 文件不见了, 但是硬盘的占用还在
+    - 删除`rm -f 1gb.file` 再ls 一下也能发现文件不见了, 但是对硬盘的占用还在
 - 原因就是,Linux系统中,rm命令删除文件实际上只是减少文件的link数, 当link数为0时,文件才会被删掉,当进程打开某文件,该文件link就加1, 因为脚本一直占用着文件,所以删除没有看到硬盘的占用下降,只是目录中找不到该文件而已
 - `lsof | grep 1gb.file`或者 `lsof 1gb.file` 就能找到占用该文件的进程了,杀掉就能真正的删除文件了
     - 可以试试两个多个Python脚本同时占用, 那么要将进程全部杀掉,才有用
