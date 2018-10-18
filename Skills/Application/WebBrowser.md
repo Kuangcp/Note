@@ -12,7 +12,7 @@
     1. [Vivaldi](#vivaldi)
     1. [Opera](#opera)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 浏览器
 ## FireFox
@@ -58,6 +58,8 @@
     1. [剪贴板](https://key.saka.io/tutorial/clipboard): 复制当前页面的URL:`yy`
         - 当前标签页打开链接 `yf`| 后台打开 `yb` | 新窗口打开 `yn` | 隐私窗口 `y shift-n`
 
+1. 附加组件管理器: 只有正式版会内置该插件, 别的版本都没有, 插件的功能是 地址栏二维码,拖拽链接,
+    - 如果想在开发版以及Nightly上用上该插件, 只需要去 ~/.mozilla/ 下找到正式版的配置文件里的 extension 目录就能找到 cpmanager.xpi 了, 拖入浏览器就可以了
 1. `Greasemonkey` 传说中的油猴, 可以自己写脚本 [wiki](https://wiki.greasespot.net/User_Script_Hosting)
 1. `New Tab Tools` 新建标签页的自定义工具 有一定bug
 1. `cliget` 能将下载中的任务转化为 curl wget命令 牛

@@ -82,3 +82,6 @@
 > [参考博客: 这9个Linux命令非常危险 请大家慎用](https://www.jb51.net/LINUXjishu/498660.html)
 
 > [参考博客: 关于 Linux 你可能不是非常了解的七件事](https://linux.cn/article-8934-1.html)
+
+## 练习打字
+1. gtypist  

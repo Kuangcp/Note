@@ -33,7 +33,7 @@
     1. [Search](#search)
     1. [Control](#control)
 
-`目录 end` |_2018-10-17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -162,7 +162,6 @@
 > [同步Linux服务器时间](http://www.cnblogs.com/chenmh/p/5485829.html)
 
 - Linux 的时间由两部分组成, 时区和时间: /etc/timezone 和 /etc/localtime
-
 
 **同步时间**
 1. 修改时区 `cp -y /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`
