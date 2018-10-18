@@ -40,12 +40,12 @@
 1. [Project](#project)
     1. [webdis](#webdis)
 
-`目录 end` |_2018-10-17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Redis
-> [Redis官网](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
+> [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
 
-- [Redis中文文档](http://redisdoc.com/index.html)
+- [Redis Official doc zh](http://redisdoc.com/index.html)
 
 # Book 
 > [Redis设计与实现 第二版](http://www.shouce.ren/api/view/a/13483)
@@ -73,13 +73,14 @@
 
 ### 解压即用
 > [下载我打包好的(仅适用于Linux平台)](https://github.com/Kuangcp/Configs/tree/master/Database/redis)  
-> [4.0.2](http://cloud.kuangcp.top/redis-4.0.2.zip) | [3.2.8](http://cloud.kuangcp.top/redis-3.2.8.zip)  
+> [5.0.0](https://bin-1253378665.cos.ap-guangzhou.myqcloud.com/redis/redis-5.0.0.tar.gz)  | [4.0.2](http://cloud.kuangcp.top/redis-4.0.2.zip) | [3.2.8](http://cloud.kuangcp.top/redis-3.2.8.zip)
 
 `个人配置步骤:`
-- 官网下载源码，执行`make`进行编译，编译完成后，复制src目录中的`redis-cli redis-server`就可以用了，redis-benchmark可选，测性能
-    - 再复制下面的简化配置文件，或者使用源码中根目录下的配置文件自己配置下
+1. 从源码编译: 官网下载源码，src下执行`make`进行编译，编译完成后，复制src目录中的`redis-cli redis-server`就可以用了，`redis-benchmark` 可选，测性能
+1. 配置文件: 再复制下面的简化配置文件，或者使用源码中根目录下的配置文件自己配置下
     - [简化配置文件](https://raw.githubusercontent.com/Kuangcp/Configs/master/Database/redis/simple_redis.conf)
-- 再创建以下两个脚本就可以便捷的使用redis了
+1. 再创建以下两个脚本就可以便捷的使用redis了
+
 `server_redis.sh`
 ```sh
     basepath=$(cd `dirname $0`; pwd)
