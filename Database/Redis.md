@@ -23,24 +23,13 @@
     1. [事务](#事务)
     1. [服务器](#服务器)
     1. [Run Configuration](#run-configuration)
-1. [数据安全和性能](#数据安全和性能)
-    1. [持久化策略](#持久化策略)
-    1. [复制](#复制)
-    1. [数据迁移](#数据迁移)
-1. [Redis的应用场景](#redis的应用场景)
-    1. [作为日志记录](#作为日志记录)
-    1. [作为网站统计数据](#作为网站统计数据)
-    1. [存储配置信息](#存储配置信息)
-    1. [自动补全](#自动补全)
-    1. [构建锁](#构建锁)
-    1. [任务队列](#任务队列)
 1. [编程语言的使用](#编程语言的使用)
     1. [Java 使用](#java-使用)
     1. [Python使用](#python使用)
 1. [Project](#project)
     1. [webdis](#webdis)
 
-`目录 end` |_2018-10-18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-19_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -310,27 +299,6 @@
 
 - *loglevel*
     - `./redis-server /etc/redis/6379.conf --loglevel debug	`
-
-***********************
-# 数据安全和性能
-## 持久化策略
-## 复制
-
-## 数据迁移
-- 使用主从复制来进行数据, 或者自己写Py脚本?
-
-****************
-# Redis的应用场景
-## 作为日志记录
-## 作为网站统计数据
-## 存储配置信息
-## 自动补全
-- 搜索建议
-
-## 构建锁
-
-## 任务队列
-- 发送邮件
 
 *******************************
 

@@ -37,6 +37,7 @@
     * [ PostgreSQL ](/Database/PostgreSQL.md)
     * [ PostgreSQLAdvance ](/Database/PostgreSQLAdvance.md)
     * [ Redis ](/Database/Redis.md)
+    * [ RedisAdvance ](/Database/RedisAdvance.md)
     * [ SQL ](/Database/SQL.md)
     * [ SQLServer ](/Database/SQLServer.md)
 * 【 Distributed 】
@@ -80,6 +81,7 @@
         * [ JDBC ](/Java/AdvancedLearning/JDBC.md)
         * [ JDKAndJRE ](/Java/AdvancedLearning/JDKAndJRE.md)
         * [ JMS ](/Java/AdvancedLearning/JMS.md)
+        * [ JMX ](/Java/AdvancedLearning/JMX.md)
         * [ JVM ](/Java/AdvancedLearning/JVM.md)
         * [ Java11 ](/Java/AdvancedLearning/Java11.md)
         * [ Java7 ](/Java/AdvancedLearning/Java7.md)
