@@ -4,12 +4,12 @@
     1. [JVM参数配置](#jvm参数配置)
     1. [内存优化](#内存优化)
         1. [处理内存泄露问题](#处理内存泄露问题)
-        1. [内存监测工具](#内存监测工具)
-            1. [jvisualvm](#jvisualvm)
-            1. [MAT](#mat)
+    1. [内存监测工具](#内存监测工具)
+        1. [jvisualvm](#jvisualvm)
+        1. [MAT](#mat)
 1. [记录](#记录)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-19_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java的性能调优
 
@@ -24,11 +24,37 @@
 ### 处理内存泄露问题
 > [参考博客: java内存泄漏的定位与分析](https://blog.csdn.net/lc0817/article/details/67014499)
 
-### 内存监测工具
-#### jvisualvm
-> [详情](/Java/AdvancedLearning/JDKAndJRE.md#jvisualvm)
+## 内存监测工具
+### jvisualvm
 
-#### MAT
+> Local
+
+> [使用 VisualVM 进行性能分析及调优](https://www.ibm.com/developerworks/cn/java/j-lo-visualvm/index.html)
+> [参考博客: JVisualVM简介与内存泄漏实战分析](http://www.cnblogs.com/belen/p/5573501.html)
+
+********************
+
+> Remote 
+-  通常使用两种方式连接远程JVM: JMX jstatd
+
+> [参考博客: JVisualVM远程监控](https://blog.csdn.net/ericzx2008/article/details/23097403)
+
+**`jmx`**
+
+**`jstatd`**
+
+1. vim jstatd.all.policy 
+    ```
+    grant codebase "file:${java.home}/../lib/tools.jar" {
+       permission java.security.AllPermission;
+
+    };
+    ```
+1. jstatd -J-Djava.security.policy=jstatd.all.policy  -p 12028 -J-Djava.rmi.server.logCalls=true
+1. open jvisualvm create a remote with jstatd by above port 12028
+
+
+### MAT
 > Memory Analyzer tool(MAT) [官网](http://www.eclipse.org/mat/)
 
 > [参考博客: JAVA Shallow heap & Retained heap](http://www.cnblogs.com/lipeineng/p/5824799.html)

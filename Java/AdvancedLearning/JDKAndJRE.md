@@ -1,65 +1,70 @@
 `目录 start`
  
-1. [JDK and JRE](#jdk-and-jre)
-1. [JDK](#jdk)
-    1. [目录结构](#目录结构)
-        1. [jar](#jar)
-        1. [jvisualvm](#jvisualvm)
-1. [JRE](#jre)
-    1. [目录结构](#目录结构)
+1. [Oracle](#oracle)
+    1. [Oracle JDK](#oracle-jdk)
+    1. [Oracle JRE](#oracle-jre)
 1. [OpenJDK](#openjdk)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-19_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-# JDK and JRE
+# Oracle
+## Oracle JDK
 
-# JDK
-> 指的是Oracle JDK 
-
-## 目录结构
+> 以下是Java8的结构
 ```
-├── bin/
-├── COPYRIGHT
-├── include/
-├── javafx-src.zip
-├── jre/
-├── lib/
-├── LICENSE
-├── man/
-├── README.html
-├── release
-├── src.zip
-├── THIRDPARTYLICENSEREADME-JAVAFX.txt
-└── THIRDPARTYLICENSEREADME.txt
+    ├── bin/
+    ├── COPYRIGHT
+    ├── include/
+    ├── javafx-src.zip
+    ├── jre/
+    ├── lib/
+    ├── LICENSE
+    ├── man/
+    ├── README.html
+    ├── release
+    ├── src.zip
+    ├── THIRDPARTYLICENSEREADME-JAVAFX.txt
+    └── THIRDPARTYLICENSEREADME.txt
 ```
 
+- bin目录下常用工具: 
+    - java javac javap jar 
+    - jconsole jmap jmc jps jstack jstat jstatd jvisualvm
 
-### jar
+>  [Useage: Java 性能分析](/Java/AdvancedLearning/JavaPerformance.md)
 
-### jvisualvm
+*********************
 
-> [使用 VisualVM 进行性能分析及调优](https://www.ibm.com/developerworks/cn/java/j-lo-visualvm/index.html)
-> [参考博客: JVisualVM简介与内存泄漏实战分析](http://www.cnblogs.com/belen/p/5573501.html)
-
+> 以下是Java11的目录结构
+```
+    ├── bin
+    ├── conf
+    ├── include
+    ├── jmods
+    ├── legal
+    ├── lib
+    ├── README.html
+    └── release
+```
 
 *******************
-# JRE
+## Oracle JRE
+> Java11 开始, 已去掉了JRE
 
-## 目录结构
-
+> 以下是Java8的结构
 ```
-├── bin/
-├── COPYRIGHT
-├── lib/
-├── LICENSE
-├── plugin/
-├── README
-├── THIRDPARTYLICENSEREADME-JAVAFX.txt
-├── THIRDPARTYLICENSEREADME.txt
-└── Welcome.html
+    ├── bin/
+    ├── COPYRIGHT
+    ├── lib/
+    ├── LICENSE
+    ├── plugin/
+    ├── README
+    ├── THIRDPARTYLICENSEREADME-JAVAFX.txt
+    ├── THIRDPARTYLICENSEREADME.txt
+    └── Welcome.html
 ```
 
 *********************************************************
+
 # OpenJDK
 > [官网](http://openjdk.java.net/) | [openJDK下载地址](https://adoptopenjdk.net/nightly.html)
-
