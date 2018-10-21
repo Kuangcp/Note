@@ -25,7 +25,7 @@
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-21_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -116,8 +116,8 @@ func main() {
 - 安装完后就会在GOPATH中能找到这些工具对应的命令了, 由于 golang.org 被墙 
     - 所以 只有这几个工具不能直接 go get : guru gorename imports(goreturns要用到) lint golint 
 
-https://github.com/golang/tools 是 tools 的Github地址,  
-https://github.com/golang/lint 是 lint 和 golint 的Github地址, 
+> https://github.com/golang/tools 是 tools 的Github地址,  
+> https://github.com/golang/lint 是 lint 和 golint 的Github地址, 
 
 
 1. `mkdir -p src/golang.org/x/tools`

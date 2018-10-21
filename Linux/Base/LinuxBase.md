@@ -33,7 +33,7 @@
     1. [Search](#search)
     1. [Control](#control)
 
-`目录 end` |_2018-10-18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-21_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -184,13 +184,13 @@
 
 #### 自启服务管理
 > /etc/init.d/ 是服务的存放目录
-1. 列出所有服务的状态 service --status-all
+1. 列出所有服务的状态 `service --status-all`
 
 1. 移除MySQL的自启 `sudo update-rc.d -f mysql remove`
 2. 设置MySQL随机启动 `sudo update-rc.d mysql defaults`
 3. 设定MySQL启动顺序 `update-rc.d mysql defaults 90` 数字越小, 启动顺序越前
 
-- sysv-rc-conf  略微图形化的管理服务的开机自启
+- sysv-rc-conf  略微图形化的管理服务的开机自启 
 - chkconfig 简单的输出服务自启状态
 
 _系统运行级别_

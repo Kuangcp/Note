@@ -29,7 +29,7 @@
 1. [Project](#project)
     1. [webdis](#webdis)
 
-`目录 end` |_2018-10-19_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-21_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -150,15 +150,16 @@
 ## 有序集合 zset
 > 元素是键值对，键是member成员，值是score分值必须是浮点数
 
-- _zadd_ 将一个给定分值的成员添加到有序集合里
-- ZCARD
-- ZCOUNT
-- _zincrby_ 自增
+- ZADD 将一个给定分值的成员添加到有序集合里
+- ZCARD 获取有序集合的成员数
+- ZCOUNT min max 计算在有序集合中指定区间分数的成员数
+- ZINCRBY key increment member 自增
 
-- _zrange_ 根据元素在有序集合中的位置，从有序集合中从小到大获取多个元素
+- ZRANGE 根据元素在有序集合中的位置，从有序集合中从小到大获取多个元素
     - `zrange name 0 -1 withscores` 获取所有并获取分值
     - `zrange name 0 3 withscores`  获取分数最少的4个键值对
-- _zrevrange_ 相反的, 从大到小
+
+- ZREVRANGE 相反的, 从大到小
 
 - _zrangebyscore_ 获取有序集合在给定范围中的所有元素
     - `zrangebyscore name 0 200 withscores`

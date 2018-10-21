@@ -1,12 +1,18 @@
 `目录 start`
  
+1. [JDK And JRE](#jdk-and-jre)
 1. [Oracle](#oracle)
     1. [Oracle JDK](#oracle-jdk)
     1. [Oracle JRE](#oracle-jre)
 1. [OpenJDK](#openjdk)
 
-`目录 end` |_2018-10-19_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-21_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
+# JDK And JRE
+> LTS: 8 11
+
+但是11发布后, Oracle修改了使用协议, JDK商用需付费, 仅个人开发演示免费 [License](https://www.oracle.com/technetwork/java/javase/terms/license/javase-license.html)
+
 # Oracle
 ## Oracle JDK
 
@@ -67,4 +73,6 @@
 *********************************************************
 
 # OpenJDK
-> [官网](http://openjdk.java.net/) | [openJDK下载地址](https://adoptopenjdk.net/nightly.html)
+> [Official Site](http://openjdk.java.net/) | [Open JDK下载地址](https://adoptopenjdk.net/nightly.html)
+
+> [Open JDK 11: Download](http://jdk.java.net/11/)
