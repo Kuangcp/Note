@@ -10,11 +10,16 @@
 
 - [Mysql Redis UDF 复制](http://www.cnblogs.com/zhxilin/archive/2016/09/30/5923671.html)
 
+
+> [参考博客: shell 下执行mysql 命令](http://www.cnblogs.com/wangkangluo1/archive/2012/04/27/2472898.html)
+- 将需要执行的SQL写入文件 并将结果输出到文件 `mysql -u root -h 192.168.10.201 -p123 < query.sql  > result.log`
+
 ## 部署
 > 第一次看到MySQL内存上3G, 资源占用这么大, 还导致了内存不够, 直接MySQL自己退出了
 
 
 ## 性能调优
-查看SQL运行效率: `explain` + SQL
+- 分析SQL运行效率: `explain` + SQL
+- 查看所有连接 `show processlist;`
 
 > [MySQL下INNODB引擎的SELECT COUNT(*)性能优化及思考](http://www.piaoyi.org/database/MySQL-INNODB-SELECT-COUNT.html)
