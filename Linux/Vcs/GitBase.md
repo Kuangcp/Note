@@ -10,7 +10,6 @@
         1. [仓库基本命令](#仓库基本命令)
             1. [config](#config)
             1. [status](#status)
-            1. [stash](#stash)
             1. [rm](#rm)
             1. [commit](#commit)
                 1. [提交行为准则](#提交行为准则)
@@ -126,9 +125,6 @@
     - A 新添加到暂存区
     - M 修改过的文件
     - MM 修改了但是没有暂存
-
-#### stash
-> 把所有没有提交的修改暂存到stash里, 可用 `git stash pop` 恢复
 
 #### rm
 - 删除文件 `git rm 文件`
@@ -309,6 +305,7 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 > 将当前修改缓存起来, 减少不必要的残缺提交  stash命令的缓存都是基于某个提交上的修改, 是一个栈的形式 
 
 > [参考博客: Git Stash的用法](http://www.cppblog.com/deercoder/archive/2011/11/13/160007.html)`底下的评论也很有价值, 值得思考`
+> [参考博客: git-stash用法小结](https://www.cnblogs.com/tocy/p/git-stash-reference.html)
 
 > git stash --help 查看完整的使用说明
 
@@ -322,6 +319,8 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
     - 将指定的stash 应用到工作目录, 不丢弃原有的stash
 - drop
     - 丢弃指定的stash, 如果想丢弃当前项目所有更改就可以将所有更改 save stash 然后 drop
+- clear 
+    - 清除所有 stash 
 
 1. 如果需要恢复 `stash@{0}: On feature-test: test` 
     - 就在 feature-test 分支上建立新分支, 然后 apply stash@{0}
