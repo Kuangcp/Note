@@ -32,7 +32,7 @@
     1. [工具](#工具)
         1. [shyaml](#shyaml)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 学习Shell
 > 首先语法不像别的语言可读性好，比如Python，然后方言众多，学习比Python2，3还恶心  
@@ -167,6 +167,7 @@ _判断变量是否为数值_
 ### 字符串
 - [字符串截取](https://www.2cto.com/os/201305/208219.html) | [Blog:变量字符串截取](http://www.jb51.net/article/56563.htm) | [Shell正则](http://man.linuxde.net/docs/shell_regex.html)
 
+- [ ] 重新整理
 ```sh
   ${varible##*string} 从左向右截取最后一个string后的字符串
   ${varible#*string}  从左向右截取第一个string后的字符串

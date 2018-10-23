@@ -10,6 +10,7 @@
         1. [仓库基本命令](#仓库基本命令)
             1. [config](#config)
             1. [status](#status)
+            1. [stash](#stash)
             1. [rm](#rm)
             1. [commit](#commit)
                 1. [提交行为准则](#提交行为准则)
@@ -22,7 +23,7 @@
             1. [diff](#diff)
             1. [tag](#tag)
         1. [分支操作](#分支操作)
-            1. [开发流程的常用分支操作](#开发流程的常用分支操作)
+            1. [stash](#stash)
             1. [clone](#clone)
             1. [branch](#branch)
             1. [checkout](#checkout)
@@ -42,7 +43,7 @@
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. --[git-scm.com](https://git-scm.com/)
@@ -282,15 +283,6 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 
 ******
 ### 分支操作
-> [stash的争论](http://www.cppblog.com/deercoder/archive/2011/11/13/160007.html)
-
-#### 开发流程的常用分支操作
-- 一般的开发过程中会使用到三种临时分支（用完就删）和两个主分支 master develop
-    - 功能分支 `feature-*` 
-    - 预发布分支 `release`
-    - 修复bug `fixbug`
-
-*******
 - `git checkout -b feature-x develop` 从develop的分支生成一个功能分支，并切换过去
 - 完成功能后：`git checkout develop `
     - 合并： `git merge --no-ff feature-x`
@@ -309,6 +301,34 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 - `git checkout develop` `　git merge --no-ff fixbug-0.1` 再合并到develop分支
 - 删除分支 `git branch -d fixbug-0.1` 
 - 删除远程没有本地有的分支`git fetch -p`
+
+***********
+
+#### stash
+> [Official Doc](https://git-scm.com/docs/git-stash)  
+> 将当前修改缓存起来, 减少不必要的残缺提交  stash命令的缓存都是基于某个提交上的修改, 是一个栈的形式 
+
+> [参考博客: Git Stash的用法](http://www.cppblog.com/deercoder/archive/2011/11/13/160007.html)`底下的评论也很有价值, 值得思考`
+
+> git stash --help 查看完整的使用说明
+
+- list
+    - 输出大致为: `stash@{num}: On branchName : comment`
+- save
+    - save comment 
+- pop 
+    - 将最近的stash pop出来, 应用到工作目录中, 原有的 stash 就丢弃了
+- apply 
+    - 将指定的stash 应用到工作目录, 不丢弃原有的stash
+- drop
+    - 丢弃指定的stash, 如果想丢弃当前项目所有更改就可以将所有更改 save stash 然后 drop
+
+1. 如果需要恢复 `stash@{0}: On feature-test: test` 
+    - 就在 feature-test 分支上建立新分支, 然后 apply stash@{0}
+    - 不推荐用 pop, 当stash多了以后 人不一定都记得每个stash都改了啥, 可能会有冲突以及修改覆盖的问题
+    - 最好用新分支装起来, 然后合并分支, 或者是 cherry-pick, 修改也不会丢失
+     
+**************************
 
 #### clone
 - `git clone branchname URL` 克隆指定分支
@@ -337,7 +357,7 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 - `git checkout 文件名 文件名` git会在索引中找文件，有就取出，没有就从最新的commit回找，取出第一个找到的版本，
     - 每个文件都是这样，也就是说如果有被删除的文件，是可以通过此来找回的
     - `git checkout . `取出文档库中所有文件的最新版本
-- `git checkout commit 节点标识符或者标签 文件名 文件名。。。` 
+- `git checkout commit 节点标识符或者标签 文件名 文件名 ...` 
     - 取出指定节点状态的某文件，而且执行完命令后，取出的那个状态会成为head状态，
     - 需要执行  `git reset HEAD` 来清除这种状态
 
@@ -435,7 +455,8 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 ## 各个VCS工具的区别以及优缺点
 
 ### Git
-> 分布式的去中心化的, 个人也是习惯性用Git了
+> 分布式的去中心化的, 大多数操作是本地化操作, 速度快, 更方便
+- 最大的区别是其他的 VCS 都是 一个增量式的文件集合, git 是文件的一系列快照, 类似于 AUFS 文件系统一层一层一样
 
 ### SVN
 > [Svn笔记](/Linux/Svn.md)

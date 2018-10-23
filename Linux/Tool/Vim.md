@@ -14,7 +14,7 @@
     1. [SpaceVim](#spacevim)
     1. [space-vim](#space-vim)
 
-`目录 end` |_2018-10-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Vim 
 > 学习曲线很高，但是学会熟练使用后就效率很高
@@ -66,6 +66,8 @@ inoremap , ,<space>
 ## 基础操作
 > [参考博客](http://www.jianshu.com/p/bcbe916f97e1)  
 > [高效率编辑器 Vim——操作篇，非常适合 Vim 新手](https://linuxtoy.org/archives/efficient-editing-with-vim.html)
+
+- v 可视化操作
 
 ### 跳转
 - K J H L 上下左右
