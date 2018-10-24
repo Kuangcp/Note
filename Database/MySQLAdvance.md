@@ -23,3 +23,9 @@
 - 查看所有连接 `show processlist;`
 
 > [MySQL下INNODB引擎的SELECT COUNT(*)性能优化及思考](http://www.piaoyi.org/database/MySQL-INNODB-SELECT-COUNT.html)
+
+
+## SQL 片段
+
+1. 拼接删除库下所有表的SQL `select concat('drop table ',table_name,';') from information_schema.TABLES where table_schema='DATABASE_NAME';`
+

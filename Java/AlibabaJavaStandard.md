@@ -29,7 +29,7 @@
 `目录 end` |_2018-10-21_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 阿里巴巴Java开发手册终极版
-> [p3c](https://github.com/alibaba/p3c)`含该手册PDF`
+> [Github: p3c](https://github.com/alibaba/p3c)`含该手册PDF GitBook等版本` | [《阿里巴巴Java开发手册》详尽](https://yq.aliyun.com/articles/656256?spm=a2c4e.11155472.0.0.7ba85338l1Ef0N)
 
 > [FindBugs、PMD和CheckStyle对比](https://blog.csdn.net/ml5271169588/article/details/6975701)
 
