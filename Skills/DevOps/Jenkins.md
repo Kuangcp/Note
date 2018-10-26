@@ -11,7 +11,7 @@
         1. [Pipeline](#pipeline)
         1. [个人经验](#个人经验)
 
-`目录 end` |_2018-09-29_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Jenkins
 > [官网](https://jenkins.io/)
@@ -48,11 +48,16 @@
 ********************************
 ## 配置
 
+- 配置时区 [Official Wiki](https://wiki.jenkins.io/display/JENKINS/Change+time+zone)
+
+> [参考博客: Jenkins修改时区（Docker）](https://blog.csdn.net/k_zombie/article/details/50754253)
+
+或者在 Script Console 中 运行 System.setProperty('org.apache.commons.jelly.tags.fmt.timeZone', 'Asia/Shanghai');
+
 ### 配置Gradle
 > 系统管理 -> Global Tool Configuration 下 配置gradle, 然后新建项目的时候选择新建的gradle配置, 执行构建的时候才会去下载Gradle
 
 ### 配置Docker插件
-
 
 ***********************
 ## 使用

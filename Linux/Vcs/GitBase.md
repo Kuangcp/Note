@@ -19,6 +19,7 @@
             1. [push](#push)
             1. [log](#log)
                 1. [对比两个分支的差异](#对比两个分支的差异)
+                1. [查看文件的修改记录](#查看文件的修改记录)
             1. [diff](#diff)
             1. [tag](#tag)
         1. [分支操作](#分支操作)
@@ -42,7 +43,7 @@
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-`目录 end` |_2018-10-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. --[git-scm.com](https://git-scm.com/)
@@ -218,10 +219,11 @@
 > 更多说明 查看 `git help log` | [官网文档](https://www.git-scm.com/docs/git-log)
 
 - `-p` 显示每次提交的内容差异 `git log -p -2` 仅显示最近两次提交的差异
-- `--stat` 查看提交对仓库修改的总览
+- 查看每一次提交的修改内容 `--stat` 
 - `---pretty=[online/short/full/fuller/format]` 使用预定义格式显示
     - format 是可以自定义格式和占位符
-- `--graph` 图形的样子显示分支图
+- 图形的样子显示分支图 `--graph` 
+- 显示每个分支最近的提交 `--simplify-by-decoration`
 
 - `git log --author='A' `输出所有A开头的作者日志
 - `git log 文件名 文件名` 输出更改指定文件的所有commit 要文件在当前路径才可
@@ -247,6 +249,10 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 - 不知道谁提交的多谁提交的少，单纯想知道有什么不一样：`git log dev...master`
 - 在上述情况下，再显示出每个提交是在哪个分支上:`git log --left-right dev...master`
     - 注意 commit 后面的箭头，根据我们在 –left-right dev…master 的顺序，左箭头 < 表示是 dev 的，右箭头 > 表示是 master的。
+
+##### 查看文件的修改记录
+1. git log fileName 或者 git log --pretty=oneline fileName 更容易看到 sha-1 值
+1. git show sha-1 就能看到该次提交的所有修改
 
 #### diff
 - `--cached` 查看已暂存起来的变化 等同于`--staged`

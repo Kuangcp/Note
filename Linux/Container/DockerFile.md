@@ -25,7 +25,7 @@
         1. [打包最新版git](#打包最新版git)
         1. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-`目录 end` |_2018-10-17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Dockerfile
 ## 使用入门案例
@@ -109,6 +109,12 @@ _docker build_
     RUN echo "Asia/shanghai" > /etc/timezone;
 ```
 > 对于 alpine 以及 Ubuntu ln -s 建立到时间文件的软链接就已经够了, 但是确保没问题就最好还是修改下 时区文件
+
+**************
+
+> 关于Java的时区问题
+1. `docker run ... -e JAVA_OPTS=-Duser.timezone=Asia/Shanghai `
+1. java读取的是 /etc/timezone 文件 所以修改为 Asia/Shanghai 就可以了
 
 ### CMD
 > 指定 容器启动时默认执行的命令

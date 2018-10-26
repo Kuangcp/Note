@@ -31,7 +31,7 @@
     1. [系统日志](#系统日志)
     1. [应用日志](#应用日志)
 
-`目录 end` |_2018-10-17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 【文件管理】
 > Linux中认为万物皆文件
@@ -147,6 +147,7 @@
 
 **实践**
 1. 递归删除目录下所有run后缀的文件 `find . -name "*.run"  | xargs rm -f`
+    - 递归当前文件夹下所有 log 找到 ERROR日志 `find -name "*.log" | xargs grep ERROR`
 1. 查找文件内容 `find etc/  |xargs grep -i java`
 
 ### 查看文件
