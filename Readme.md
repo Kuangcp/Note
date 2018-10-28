@@ -18,6 +18,8 @@ Notes repository for public maintenance
 ****************************
 
 ## 其他笔记仓库
+- [笔记](https://github.com/dragonhht/Notes)
+
 - [巨人工作记录](https://ztgame.shenyu.me/)`笔记 基于 GitBook`
 - [daydayup](https://github.com/ITDragonBlog/daydayup)
 - [某研究生在校阅读笔记](https://github.com/lanxuezaipiao/ReadingNotes)

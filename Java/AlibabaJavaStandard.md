@@ -1013,66 +1013,86 @@
     | VO | View Object | 显示层对象, 通常是Web向模板引擎传输的对象 |
     | Qurey | | 数据查询对象, 各层接收上层的查询请求, 注意超过2个参数的查询封装, 禁止使用Map类来传输 |
 
-
 ## 二方库依赖
-
+**`强制`**
 1. 定义 GAV 遵从以下规则: 
-    - **GroupID** 格式:  com .{公司/ BU }.业务线. [ 子业务线 ] , 最多 4 级。
-        - {公司/ BU } 例如:  alibaba / taobao / tmall / aliexpress 等 BU 一级 ;  子业务线可选。
-        - com . taobao . jstorm 或  com.alibaba.dubbo.register 
+    - **GroupID** 格式:  `com.{公司/BU}.业务线.[子业务线]`, 最多 4 级。
+        - {公司/BU} 例如:  alibaba/taobao/tmall/aliexpress 等 BU; 子业务线可选。
+        - 正例: com.taobao.jstorm 或  com.alibaba.dubbo.register 
     - **ArtifactID** 格式: 产品线名-模块名。语义不重复不遗漏, 先到仓库中心去查证一下。
-        -  dubbo - client /  fastjson - api /  jstorm - tool
-    -   **Version** : 详细规定参考下方。
+        -  正例: dubbo-client /  fastjson-api /  jstorm-tool
+    - **Version** : 详细规定参考下方。
 
 1. 二方库版本号命名方式: 主版本号.次版本号.修订号
-    - 1 ） 主版本号 主版本号: 当做了不兼容的 API 修改, 或者增加了能改变产品方向的新功能。
-    - 2 ） 次版本号 次版本号: 当做了向下兼容的功能性新增 （ 新增类、接口等 ） 。
-    - 3 ） 修订号 修订号: 修复 bug , 没有修改方法签名的功能加强, 保持  API 兼容性。
-    - 起始版本号必须为:  1.0.0 , 而不是 0.0.1
+    1. 主版本号: 产品方向改变, 或者大规模API不兼容, 或者架构不兼容升级. 
+    1. 次版本号: 保持相对兼容性, 增加主要功能特性, 影响范围极小的API不兼容修改.
+    1. 修订号: 保持完全兼容性, 修复 bug, 新增次要功能特性等
+    - 说明: 注意起始版本号必须为:  1.0.0 , 而不是 0.0.1, 正式发布的类库必须先去中央仓库进行查证, 使版本号有延续性, 正式版本号不允许覆盖升级
+    - 如当前版本 1.3.3 那么下一个合理的版本号 1.3.4 或者 1.4.0 或 2.0.0
 
-1. 线上应用不要依赖 SNAPSHOT 版本 （ 安全包除外 ）;  正式发布的类库必须使用 RELEASE版本号升级+1 的方式, 且版本号不允许覆盖升级, 必须去中央仓库进行查证。
-    - 不依赖 SNAPSHOT 版本是保证应用发布的幂等性。另外, 也可以加快编译时的打包构建。
+1. 线上应用不要依赖 SNAPSHOT 版本（安全包除外）; 
+    - 不依赖 SNAPSHOT 版本是保证应用发布的幂等性. 另外, 也可以加快编译时的打包构建.
 
-1. 二方库的新增或升级, 保持除功能点之外的其它 jar 包仲裁结果不变。如果有改变, 必须明确评估和验证, 
-    - 建议进行 dependency : resolve 前后信息比对, 如果仲裁结果完全不一致, 那么通过 dependency : tree 命令, 找出差异点, 进行< excludes >排除 jar 包。
+1. 二方库的新增或升级, 保持除功能点之外的其它 jar 包仲裁结果不变。
+    - 如果有改变, 必须明确评估和验证, 建议进行 dependency:resolve 前后信息比对, 
+    - 如果仲裁结果完全不一致, 那么通过 dependency:tree 命令, 找出差异点, 进行`<excludes>`排除 jar 包。
 
 1. 二方库里可以定义枚举类型, 参数可以使用枚举类型, 但是接口返回值不允许使用枚举类型或者包含枚举类型的 POJO 对象。
 
 1. 依赖于一个二方库群时, 必须定义一个统一版本变量, 避免版本号不一致。
-    - 依赖 springframework - core ,- context ,- beans , 它们都是同一个版本, 可以定义一个变量来保存版本: 
-    - ${ spring . version }, 定义依赖的时候, 引用该版本。
+    - 说明: 依赖 springframework-core, -context, -beans, 它们都是同一个版本
+    - 可以定义一个变量来保存版本: ${spring.version}, 定义依赖的时候, 引用该版本。
 
 1. 禁止在子项目的 pom 依赖中出现相同的 GroupId , 相同的 ArtifactId , 但是不同的Version 。
+    - 在本地调试时会使用各子项目指定的版本号, 但是合并成一个war, 只能有一个版本号出现在最后的lib目录中, 可能出现线下调试是正确的, 发布到线上却出故障的问题.
 
-1. 在本地调试时会使用各子项目指定的版本号, 但是合并成一个 war , 只能有一个版本号出现在最后的 lib 目录中。
-    - 曾经出现过线下调试是正确的, 发布到线上出故障的先例。
+**`推荐`**
+1. 所有 pom 文件中的依赖声明放在 `<dependencies>` 语句块中, 所有版本仲裁放在`<dependencyManagement>` 语句块中。
+    - `<dependencyManagement>` 里只是声明版本, 并不实现引入, 因此子项目需要显式的声明依赖,  version 和 scope 都读取自父 pom 。
+    - 而 `<dependencies>` 所有声明在主 pom 的 `<dependencies>` 里的依赖都会自动引入, 并默认被所有的子项目继承。
 
-1. 所有 pom 文件中的依赖声明放在< dependencies >语句块中, 所有版本仲裁放在< dependencyManagement >语句块中。
-    - < dependencyManagement >里只是声明版本, 并不实现引入, 因此子项目需要显式的声明依赖,  version 和 scope 都读取自父 pom 。
-    - 而< dependencies >所有声明在主 pom 的< dependencies >里的依赖都会自动引入, 并默认被所有的子项目继承。
+1. 二方库不要有配置项, 最低限度不要再增加配置项。
 
-1. 二方库尽量不要有配置项, 最低限度不要再增加配置项。
-
+**`参考`**
 1. 为避免应用二方库的依赖冲突问题, 二方库发布者应当遵循以下原则: 
-    - 1 ） **精简可控原则**。移除一切不必要的 API 和依赖, 只包含  Service API 、必要的领域模型对象、 Utils 类、常量、枚举等。
-        - 如果依赖其它二方库, 尽量是 provided 引入, 让二方库使用者去依赖具体版本号 ;  无 log 具体实现, 只依赖日志框架。
-    - 2 ） **稳定可追溯原则**。每个版本的变化应该被记录, 二方库由谁维护, 源码在哪里, 都需要能方便查到。除非用户主动升级版本, 否则公共二方库的行为不应该发生变化。
-
+    1. **精简可控原则** 移除一切不必要的 API 和依赖, 只包含 Service API、必要的领域模型对象、 Utils类、常量、枚举等。
+        - 如果依赖其它二方库, 尽量是 provided 引入, 让二方库使用者去依赖具体版本号; 无 log 具体实现的依赖, 只依赖日志框架(例如不依赖Logback而是依赖SLF4J)。
+    1. **稳定可追溯原则** 每个版本的变化应该被记录, 二方库由谁维护, 源码在哪里, 都需要能方便查到。除非用户主动升级版本, 否则公共二方库的行为不应该发生变化。
 
 ## 服务器规约
+**`推荐`**
+1. 高并发服务器建议调小 TCP 协议的 time_wait 超时时间。
+    - 说明: 操作系统默认 240 秒后, 才会关闭处于 time_wait 状态的连接, 在高并发访问下, 服务器端会因为处于 time_wait 的连接数太多,可能无法建立新的连接, 所以需要在服务器上调小此等待值。
+    - 正例: 在 linux 服务器上请通过变更 `/etc/sysctl.conf` 文件去修改该缺省值 （ 秒 ）
+        - `net.ipv4.tcp_fin_timeout = 30`
 
-1. 高并发服务器建议调小 TCP 协议的 time _ wait 超时时间。
-    - 操作系统默认 240 秒后, 才会关闭处于 time _ wait 状态的连接, 
-    - 在高并发访问下, 服务器端会因为处于 time _ wait 的连接数太多, 可能无法建立新的连接, 所以需要在服务器上调小此等待值。
-        - 在 linux 服务器上请通过变更/ etc / sysctl . conf 文件去修改该缺省值 （ 秒 ） : net . ipv 4. tcp _ fin _ timeout = 30
+1. 调大服务器所支持的最大文件句柄数 （File Descriptor, 简写为 fd） 。
+    - 说明: 主流操作系统的设计是将 TCP/UDP 连接采用与文件一样的方式去管理, 即一个连接对应于一个 fd 。
+        - 主流的 linux 服务器默认所支持最大 fd 数量为 1024, 当并发连接数很大时很容易因为 fd 不足而出现“ open too many files ”错误, 导致新的连接无法建立。 
+        - 建议将 linux服务器所支持的最大句柄数调高数倍 （与服务器的内存数值相关）
 
-1. 调大服务器所支持的最大文件句柄数 （File Descriptor , 简写为 fd） 。
-    - 主流操作系统的设计是将 TCP / UDP 连接采用与文件一样的方式去管理, 即一个连接对应于一个 fd 。
-    - 主流的 linux 服务器默认所支持最大 fd 数量为 1024, 当并发连接数很大时很容易因为 fd 不足而出现“ open too many files ”错误, 导致新的连接无法建立。 
-    - 建议将 linux服务器所支持的最大句柄数调高数倍 （ 与服务器的内存数量相关 ）
-
-1. 给 JVM 设置- XX :+ HeapDumpOnOutOfMemoryError 参数, 让 JVM 碰到 OOM 场景时输出dump 信息。
+1. 给 JVM 设置 `-XX:+HeapDumpOnOutOfMemoryError` 参数, 让 JVM 碰到 OOM 场景时输出dump 信息。
     - OOM 的发生是有概率的, 甚至有规律地相隔数月才出现一例, 出现时的现场信息对查错非常有价值。
 
+1. 在线上生产环境, JVM 的 Xms 和 Xmx 设置一样的内存容量, 避免在GC后调整堆大小带来的压力
+
 1. 服务器内部重定向使用 forward;  外部重定向地址使用 URL 拼装工具类来生成, 否则会带来 URL 维护不一致的问题和潜在的安全风险。
+
+
+# 专有名词
+1. POJO (Plain Ordinary Java Object): 在手册中, POJO专指只有 setter/getter/toString 的简单类, 包括 DO/DTO/BO/VO等.
+
+1. GAV (GroupId, AritifactId, Version): Maven 坐标, 是用来唯一标识 jar 包.
+
+1. OOP(Object Oriented Programming): 泛指类,对象的编程处理方式
+
+1. ORM(Object Relation Mapping): 对象关系映射, 对象领域模型与底层数据之间的转换, 本文泛指 iBATIS Mybatis 等框架
+
+1. NPE(java.lang.NullPointerException): 空指针异常
+
+1. SOA(Service-Oriented Architecture): 面向服务架构, 它可以根据需求通过网络对松散耦合的粗粒度应用组件进行分布式部署, 组合和使用, 有利于提升组件可重用性, 可维护性.
+
+1. 一方库: 本工程内部子项目模块依赖的库 jar包
+1. 二方库: 公司内部发布到中央仓库, 可供公司内部其他应用依赖的库 jar包
+1. 三方库: 公司之外的开源库 jar包
 
