@@ -13,6 +13,7 @@
 
 # 基于Git进行团队开发
 > [在阿里，我们如何管理代码分支？](https://blog.csdn.net/maoreyou/article/details/79877829)
+> [版本控制最佳实践](https://www.git-tower.com/blog/version-control-best-practices/)
 
 - [ ] 整理和学习这几种管理方式
 

@@ -1,6 +1,7 @@
 `目录 start`
  
 1. [Linux系统](#linux系统)
+    1. [安装Linux发行版](#安装linux发行版)
     1. [系统管理](#系统管理)
         1. [窗口管理器](#窗口管理器)
         1. [文件系统对比](#文件系统对比)
@@ -12,13 +13,14 @@
         1. [时间管理](#时间管理)
         1. [服务管理](#服务管理)
             1. [自启服务管理](#自启服务管理)
-    1. [软件管理](#软件管理)
-        1. [软件源列表](#软件源列表)
-        1. [包管理器](#包管理器)
-        1. [源码编译安装](#源码编译安装)
     1. [终端命令](#终端命令)
         1. [Shell内建命令](#shell内建命令)
-    1. [安装Linux发行版](#安装linux发行版)
+1. [终端快捷键](#终端快捷键)
+    1. [Delete](#delete)
+    1. [Convert](#convert)
+    1. [Jump](#jump)
+    1. [Search](#search)
+    1. [Control](#control)
 1. [Tips](#tips)
     1. [一行执行多条命令](#一行执行多条命令)
     1. [让命令在后台运行](#让命令在后台运行)
@@ -26,17 +28,27 @@
         1. [关闭ssh回话仍能运行](#关闭ssh回话仍能运行)
     1. [修改主机名](#修改主机名)
     1. [字体渲染](#字体渲染)
-1. [终端快捷键](#终端快捷键)
-    1. [Delete](#delete)
-    1. [Convert](#convert)
-    1. [Jump](#jump)
-    1. [Search](#search)
-    1. [Control](#control)
 
-`目录 end` |_2018-10-21_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
+
+## 安装Linux发行版
+- 下载指定的镜像包，使用对应的刻录软件刻录U盘(Windows就是软碟通,Linux没怎么用过,只用过深度的U盘启动盘制作工具挺好的)
+- 进入U盘安装模式，分区：
+    - 分配 1/5 的 `/` ext4
+    - 分配 3/5 的 `/home` ext4
+    - 分配 500-1000m 的 `/boot/efi` fat32格式
+- 如果是双系统:
+    - 如果新手直接全部` / `就行了，再加个交换分区 
+    - 如果为了日后重装系统方便,那么分两个区 `/` 和 `/home`
+        - 这样的话,就建议大量软件使用解压版,这样重装系统带来的影响最小,那么`/home`就要分大一点
+        - 例如我: `/`只用了22G `/home`用了40G(公司的Deepin分了100G /home 用了75G了)
+
+> 新手的话特别注意不要随意用sudo然后更改配置文件，容易导致系统crash（除非你明确的知道这个更改操作的作用）
+
+*****************************************************
 
 ## 系统管理
 > sudo 其实是软件 早该意识到的，所有的命令都是可执行文件  
@@ -202,75 +214,6 @@ _系统运行级别_
     2~5      多用户状态
     6        重新启动 
 ```
-******************
-
-## 软件管理
-### 软件源列表
-- apt 的默认配置文件是 `/etc/apt/source.list`
-    - 以及 sources.list.d/ 目录下的 *.list 文件 (最好将list文件都进行备份 备份文件为 *.save)
-
-- [参考博客 阿里云的软件源](https://hacpai.com/article/1482807364546?p=1&m=0)
-- [wiki-源列表说明](http://wiki.ubuntu.com.cn/%E6%BA%90%E5%88%97%E8%A1%A8)
-
-1. 源 URL 后的单词: 
-    1. main: 完全的自由软件。
-    1. restricted: 不完全的自由软件。
-    1. universe: Ubuntu官方不提供支持与补丁，全靠社区支持。
-    1. multiverse: 非自由软件，完全不提供支持和补丁。
-
-1. 添加私有源ppa
-    - 若不能添加私有源ppa：
-        - debain：`sudo apt install software-properties-common python-software-properties`
-        - Ubuntu `sudo apt install python-software-properties`
-    - 添加：`sudo add-apt-repository ppa:dotcloud/lxc-docker `
-	- 删除ppa : `cd  /etc/apt/sources.list.d/` 打开该目录下文件把对应的ppa的一行注释掉或删掉就行了
-
-
-1. 添加一个源列表
-
-- 例如添加 nginx: 新建文件 `/etc/apt/sources.list.d/nginx.list` 
-```
-    deb http://nginx.org/packages/mainline/debian/ jessie nginx
-    deb-src http://nginx.org/packages/mainline/debian/ jessie nginx
-```
-- `curl http://nginx.org/keys/nginx_signing.key | apt-key add -`
-    - 把签名添加进来才能正常 apt update
-
-### 包管理器
-> dpkg
-1. 查看已安装的应用 `dpkg --list`
-1. 显示已安装包的详情 `dpkg -s package`
-1. 安装deb包
-	- ` sudo  dpkg  -i  *.deb`
-
-> apt-get / apt 
-1. `install 包名`  安装指定包的最新版
-    - `-y` 参数可以省去确认
-    - `-s` 模拟安装
-    - `package=version` 安装指定版本的包
-1. list 列出所有可安装的包
-    - package 列出已安装的 该package 的信息 `加上 -a`: 所有版本
-
-1. 只卸载程序，保留配置文件 `sudo apt remove 应用名`
-1. 彻底卸载应用 `sudo apt--purge remove 应用名`
-
-- apt-cache showpkg/policy/madison/show package
-    - showpkg (特别详细) 列出所有版本以及来源, MD5 ...
-    - policy (基本信息) 列出所有版本以及来源
-    - madison (简略显示) 内容同上
-    - show 查询指定包的详情(已安装的版本信息)
-
-> snap
-- [official doc: snap](https://snapcraft.io/docs/core/usage) `提供一个类似容器的环境,将所有依赖打包，隔离运行`
-
-### 源码编译安装
-1. make install 源代码安装
-    - 1.解压缩 `tar -zxf nagios-4.0.2.tar.gz ` 
-    - 2.进入目录 `cd nagios-4.0.2`
-    - 3.配置 `./configure --prefix=/usr/local/nagios  ` 
-    - 4.编译 `make all`
-    - 5.安装 `make install && make install-init && make install-commandmode && make install-config`
-
 **********************************************
 ## 终端命令
 > /bin/* 系统自带的命令
@@ -285,67 +228,7 @@ _系统运行级别_
 - where 查找命令的位置 (Zsh中内建命令)
 
 > [更多常用工具列表](/Linux/Tool/Terminal.md)
-*****************************************************
-## 安装Linux发行版
-- 下载指定的镜像包，使用对应的刻录软件刻录U盘(Windows就是软碟通,Linux没怎么用过,只用过深度的U盘启动盘制作工具挺好的)
-- 进入U盘安装模式，分区：
-    - 分配 1/5 的 `/` ext4
-    - 分配 3/5 的 `/home` ext4
-    - 分配 500-1000m 的 `/boot/efi` fat32格式
-- 如果是双系统:
-    - 如果新手直接全部` / `就行了，再加个交换分区 
-    - 如果为了日后重装系统方便,那么分两个区 `/` 和 `/home`
-        - 这样的话,就建议大量软件使用解压版,这样重装系统带来的影响最小,那么`/home`就要分大一点
-        - 例如我: `/`只用了22G `/home`用了40G(公司的Deepin分了100G /home 用了75G了)
 
-> 新手的话特别注意不要随意用sudo然后更改配置文件，容易导致系统crash（除非你明确的知道这个更改操作的作用）
-
-*****************************************************
-# Tips
-> man help 后接使用的命令，就可以得到用户手册和帮助文档
-
-## 一行执行多条命令 
-- ` && ` 第2条命令只有在第1条命令成功执行之后才执行 根据命令产生的退出码判断是否执行成功（0成功，非0失败）
-- `|| ` 执行不成功（产生了一个非0的退出码）时，才执行后面的命令
-- ` ; ` 顺序执行多条命令，当;号前的命令执行完（不管是否执行成功），才执行;后的命令。 
-- ` & `  并行执行命令，没有顺序
-
-- [tty 虚拟终端等概念](https://www.ibm.com/developerworks/cn/linux/l-cn-termi-hanzi/)
-
-- Centos上which并不是命令, 而是别名!
-    - `which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'`
-
-**************
-## 让命令在后台运行
-> [原博客](https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/)
-
-- 命令后接 & （只是让进程躲到当前终端的后台去了 hup信号仍然影响）
-
-`nohup， disown, screen, setid `
-- 运行的命令不因 用户注销，网络中断等因素而中断
-    - 让进程对hup信号免疫 nohup disown
-    - 让进程在新的会话中运行 setid screen
-
-### 关闭ssh回话不能运行
-> 1.没有使用任何修饰原有命令  
-> 2.只在原有命令后加&
-
-### 关闭ssh回话仍能运行
-- 使用`nohup`就能屏蔽hup信号，默认输出到 nohup.out `nohup 命令 &`
-    - 将所有输出重定向到空设备  `nohup 命令>/dev/null 2>&1`
-    - 例如 在当前目录后台打开文件管理器 `(dde-file-manager . &) >/dev/null 2>&1`
-
-- `(命令 &)` 屏蔽了hup信号
-
-*************
-## 修改主机名
-- `sudo hostname linux` 重启终端即可看到修改
-- 但是重启电脑会恢复原有名字修改如下文件永久： `sudo gedit /etc/hostname` 也许需要更改`/etc/hosts`
-- 立即生效,也要重新登录 `hostname -F /etc/hostname `
-
-## 字体渲染
-> [Debian8安装Infinality改善字体渲染，安装Ubuntu字体](https://www.linuxdashen.com/debian8%E5%AE%89%E8%A3%85infinality%E6%94%B9%E5%96%84%E5%AD%97%E4%BD%93%E6%B8%B2%E6%9F%93%EF%BC%8C%E5%AE%89%E8%A3%85ubuntu%E5%AD%97%E4%BD%93)
-> [一条命令搞定Linux字体渲染](https://www.lulinux.com/archives/278)
 
 *************************
 # 终端快捷键
@@ -416,3 +299,50 @@ _系统运行级别_
 |Ctrl |Z|暂停程序 |
 | Ctrl | S | 停止回显当前Shell |
 | Ctrl | Q | 恢复回显当前Shell |
+*****************************************************
+# Tips
+> man help 后接使用的命令，就可以得到用户手册和帮助文档
+
+## 一行执行多条命令 
+- ` && ` 第2条命令只有在第1条命令成功执行之后才执行 根据命令产生的退出码判断是否执行成功（0成功，非0失败）
+- `|| ` 执行不成功（产生了一个非0的退出码）时，才执行后面的命令
+- ` ; ` 顺序执行多条命令，当;号前的命令执行完（不管是否执行成功），才执行;后的命令。 
+- ` & `  并行执行命令，没有顺序
+
+- [tty 虚拟终端等概念](https://www.ibm.com/developerworks/cn/linux/l-cn-termi-hanzi/)
+
+- Centos上which并不是命令, 而是别名!
+    - `which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'`
+
+**************
+## 让命令在后台运行
+> [原博客](https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/)
+
+- 命令后接 & （只是让进程躲到当前终端的后台去了 hup信号仍然影响）
+
+`nohup， disown, screen, setid `
+- 运行的命令不因 用户注销，网络中断等因素而中断
+    - 让进程对hup信号免疫 nohup disown
+    - 让进程在新的会话中运行 setid screen
+
+### 关闭ssh回话不能运行
+> 1.没有使用任何修饰原有命令  
+> 2.只在原有命令后加&
+
+### 关闭ssh回话仍能运行
+- 使用`nohup`就能屏蔽hup信号，默认输出到 nohup.out `nohup 命令 &`
+    - 将所有输出重定向到空设备  `nohup 命令>/dev/null 2>&1`
+    - 例如 在当前目录后台打开文件管理器 `(dde-file-manager . &) >/dev/null 2>&1`
+
+- `(命令 &)` 屏蔽了hup信号
+
+*************
+## 修改主机名
+- `sudo hostname linux` 重启终端即可看到修改
+- 但是重启电脑会恢复原有名字修改如下文件永久： `sudo gedit /etc/hostname` 也许需要更改`/etc/hosts`
+- 立即生效,也要重新登录 `hostname -F /etc/hostname `
+
+## 字体渲染
+> [Debian8安装Infinality改善字体渲染，安装Ubuntu字体](https://www.linuxdashen.com/debian8%E5%AE%89%E8%A3%85infinality%E6%94%B9%E5%96%84%E5%AD%97%E4%BD%93%E6%B8%B2%E6%9F%93%EF%BC%8C%E5%AE%89%E8%A3%85ubuntu%E5%AD%97%E4%BD%93)
+> [一条命令搞定Linux字体渲染](https://www.lulinux.com/archives/278)
+

@@ -158,6 +158,7 @@
         * [ LinuxCompressFile ](/Linux/Base/LinuxCompressFile.md)
         * [ LinuxDirectoryStructure ](/Linux/Base/LinuxDirectoryStructure.md)
         * [ LinuxFile ](/Linux/Base/LinuxFile.md)
+        * [ LinuxManual ](/Linux/Base/LinuxManual.md)
         * [ LinuxNet ](/Linux/Base/LinuxNet.md)
         * [ LinuxPerformance ](/Linux/Base/LinuxPerformance.md)
         * [ LinuxProblem ](/Linux/Base/LinuxProblem.md)
@@ -174,9 +175,11 @@
         * [ Kubernetes ](/Linux/Container/Kubernetes.md)
     * 【 Linux/Debian 】
         * [ Debian ](/Linux/Debian/Debian.md)
+        * [ DebianBase ](/Linux/Debian/DebianBase.md)
         * [ Ubuntu ](/Linux/Debian/Ubuntu.md)
     * 【 Linux/Tool 】
         * [ Caddy ](/Linux/Tool/Caddy.md)
+        * [ IME ](/Linux/Tool/IME.md)
         * [ Nginx ](/Linux/Tool/Nginx.md)
         * [ Terminal ](/Linux/Tool/Terminal.md)
         * [ Vim ](/Linux/Tool/Vim.md)

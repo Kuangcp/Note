@@ -3,17 +3,25 @@
 1. [Java的性能调优](#java的性能调优)
     1. [JVM参数配置](#jvm参数配置)
     1. [内存优化](#内存优化)
-        1. [处理内存泄露问题](#处理内存泄露问题)
-    1. [内存监测工具](#内存监测工具)
+1. [主要指标分析](#主要指标分析)
+    1. [命令](#命令)
+        1. [jps](#jps)
+        1. [jstat](#jstat)
+        1. [jinfo](#jinfo)
+        1. [jmap](#jmap)
+        1. [jstack](#jstack)
+    1. [图形化](#图形化)
         1. [jvisualvm](#jvisualvm)
         1. [MAT](#mat)
-1. [记录](#记录)
 
-`目录 end` |_2018-10-19_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-10-30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java的性能调优
+> 调优, 分析
 
 ## JVM参数配置
+
+*********************
 
 ## 内存优化
 
@@ -21,11 +29,68 @@
 
 - [GC 性能优化 专栏](https://blog.csdn.net/column/details/14851.html)
 
-### 处理内存泄露问题
-> [参考博客: java内存泄漏的定位与分析](https://blog.csdn.net/lc0817/article/details/67014499)
+*********************
+# 主要指标分析
+## JDK自带工具
+> 都是jdk的bin目录下的工具
 
-## 内存监测工具
+### jps
+> 主要用来输出JVM中运行的进程状态信息
+- option:
+    - -q 忽略输出的类名、Jar名以及传递给main方法的参数，只输出pid。
+    - -m 输出传递给main方法的参数，如果是内嵌的JVM则输出为null。
+    - -l 输出应用程序主类的完整包名，或者是应用程序JAR文件的完整路径。
+    - -v 输出传给JVM的参数。
+    - -V 输出通过标记的文件传递给JVM的参数（.hotspotrc文件，或者是通过参数-XX:Flags=指定的文件）
+
+### jstat
+- option:
+    - -gcutil 统计heap的gc情况
+    - -t 在第一列输出时间戳。该时间戳从jvm启动开始
+    - -h3 每隔N行输出一次列表头
+    - $PID 进程号
+    - interval 输出间隔时间，单位毫秒
+    - count 输出次数
+
+- Demo:
+    - jstat -gcutil -t -h5 7919 1000 50
+
+### jinfo 
+> 观察运行中的java程序的运行环境参数：参数包括Java System属性和JVM命令行参数
+- Demo:
+    - jinfo 14352
+    - jinfo -sysprops 14352
+    - jinfo -flags 14352
+    - jinfo -flag MaxPermSize 14352
+
+### jmap 
+> 用来查看堆内存使用状况
+- Demo:
+    - jmap -histo $PID 展示class的内存情况
+    - jmap -heap $PID 展示Java堆详细信息
+    - jmap -dump:live,format=b,file=heapLive.hprof 2576
+
+### jstack 
+> jstack [option] pid  主要用来查看某个Java进程内的线程堆栈信息
+- Option:
+    - -F: 强制产生一个线程dump
+    - -m: 打印java和native frames
+    - -l: 打印关于锁的附加信息
+- Demo:
+    - jstack -F $PID
+
+********************
+
+## 开源项目
+
+> [arthas](https://github.com/alibaba/arthas)
+> [vjtools](https://github.com/vipshop/vjtools)
+
+************************
+
+## 图形化
 ### jvisualvm
+> [参考博客: java内存泄漏的定位与分析](https://blog.csdn.net/lc0817/article/details/67014499)
 
 > Local
 
@@ -53,29 +118,15 @@
 1. jstatd -J-Djava.security.policy=jstatd.all.policy  -p 12028 -J-Djava.rmi.server.logCalls=true
 1. open jvisualvm create a remote with jstatd by above port 12028
 
+**************
 
 ### MAT
-> Memory Analyzer tool(MAT) [官网](http://www.eclipse.org/mat/)
+> Memory Analyzer tool(MAT) [Official Site](http://www.eclipse.org/mat/)
 
 > [参考博客: JAVA Shallow heap & Retained heap](http://www.cnblogs.com/lipeineng/p/5824799.html)
 
+### IBM Heap Analyzer
+> [Official Site](https://www.ibm.com/developerworks/community/alphaworks/tech/heapanalyzer)
+
 **************
-
-# 记录
-
-1. 表象
-    - 使用Tomcat进行部署的, 然后机器上两个Tomcat都僵死了, 进程还在, 但已经不能提供服务了, 日志也停止了记录
-1. 分析
-    - 由于第一次遇到这种情况, 没有把现场保留, 直接就重启Tomcat了, 然后老大经过分析 一个堆栈快照文件(?), 发现有几个对象大量存在, 没有被GC
-    - 然后启动本地Tomcat, 用 jvisualvm 进行调试, 发现有几个类的实例一直无法释放, 
-    - 初步 分析这几个类的 **生命周期** , 以为是项目中使用的缓存, 没有好好清理, 又因为项目中缓存种类比较多, 调试分析了比较久
-    - 最后是老大, 看到有个注册定时任务的地方, 当中的代码有比较严重的 隐患 
-1. 原因
-    - 在一个方法中调用了一个异步的定时任务, 并且声明了一个final 变量 给这个任务操作, 并且任务中的代码没有做好安全防护(try catch), 直接就一溜写下去
-    - 这里就存在一个隐患了, 如果任务执行失败抛出异常 主线程并不能收到错误提示, 后面的资源回收就无法执行, 然后该任务在定时的报错, 自己和所持有的final 变量也无法释放
-    - 主线程也不知情.......
-1. 结论
-    - final 使用时, 要考虑为什么要用, 
-    - 如果是有了异步的行为, 就要将异步中的代码好好审视, 不能没有忽视代码所有可能的异常
-
 
