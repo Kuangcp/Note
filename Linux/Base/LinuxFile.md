@@ -373,8 +373,8 @@
 - last 查看用户最后登录时间
 
 ## 系统日志
-- 查看系统启动日志 `less /var/log/boot.log` 
-- 查看系统消息日志 `less /var/log/messages`
+- 系统启动日志 `/var/log/boot.log` 
+- 系统消息日志 `/var/log/messages`
 
 `journalctl -xe`
 ## 应用日志

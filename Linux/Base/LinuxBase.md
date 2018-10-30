@@ -158,6 +158,8 @@
 - grpconv 注：通过/etc/group和/etc/gshadow 的文件内容来同步或创建/etc/gshadow ，如果/etc/gshadow 不存在则创建;
 -  注：通过/etc/group 和/etc/gshadow 文件内容来同步或创建/etc/group ，然后删除gshadow文件
 
+*******************************
+
 ### 时间管理
 > [同步Linux服务器时间](http://www.cnblogs.com/chenmh/p/5485829.html)
 

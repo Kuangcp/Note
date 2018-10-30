@@ -117,6 +117,11 @@
 > 便捷的文本复制
 - `cat README.md | xclip -sel clip` 将文件复制到剪贴板
 
+#### uniq
+> report or omit repeated lines
+
+1. 统计出现次数 `cat log.log | grep WARN | awk '{print $5}' | sort | uniq -c`
+
 ***********
 ### 文件操作
 #### zssh
