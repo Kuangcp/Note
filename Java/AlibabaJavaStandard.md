@@ -28,25 +28,27 @@
 
 `目录 end` |_2018-10-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-# 阿里巴巴Java开发手册终极版
+# 阿里巴巴Java开发手册
 > [Github: p3c](https://github.com/alibaba/p3c)`含该手册PDF GitBook等版本` | [《阿里巴巴Java开发手册》详尽](https://yq.aliyun.com/articles/656256?spm=a2c4e.11155472.0.0.7ba85338l1Ef0N)
 
 > [FindBugs、PMD和CheckStyle对比](https://blog.csdn.net/ml5271169588/article/details/6975701)
 
+
 # 编程规约
 ## 命名规约
 **`强制`**
-1. 所有命名不能以`美元符和下划线`开始和结尾
+1. 所有命名不能以`美元符和下划线`开始和结束
 
 1. 禁止拼音混合英文, 更不允许直接使用中文的方式。
+    - 正确的英文拼写和语法可以让阅读者易于理解，避免歧义。注意，即使纯拼音命名方式也要避免采用。
 
-1. 类用UserDao `UpperCamelCase风格` 但以下情形例外:  DO / BO / DTO / VO / AO 例如: `UserDO`
+1. 类名用`UpperCamelCase风格` 但以下情形例外:  DO / BO / DTO / VO / AO / PO / UID 例如: `UserDO`
 
-1. 方法, 变量, 参数用userDao `lowerCamelCase风格`
+1. 方法名、参数名、成员变量、局部变量 都统一使用 `lowerCamelCase风格`
 
 1. 常量名全部大写, 下划线隔开, 力求语义表达完整清楚, 不要嫌名字长(枚举类中的也是)。
 
-1. 抽象类使用`Abstract或者Base`开头, 异常类使用Exception结尾
+1. 抽象类使用`Abstract或者Base`开头, 异常类使用Exception结尾 测试类命名以它要测试的类的名称开始，以Test结尾
 
 1. 数组定义 `String[] name` 而不是 `String name[]`
 
@@ -61,6 +63,7 @@
 **`推荐`**
 1. 为了达到代码自解释的目标, 任何自定义编程元素在命名时, 使用尽量完整的单词组合来表达其意。
     - 正例:  从远程仓库拉取代码的类命名为 PullCodeFromRemoteRepository。
+
 1. 如果使用到了设计模式, 建议在类名中体现出具体模式。将设计模式体现在名字中, 有利于阅读者快速理解架构设计理念`LoginProxy`
 
 1. 接口类中的方法和属性不要加任何修饰符号（ public 也不要加） , 保持代码的简洁性, 并加上有效的 Javadoc 注释。
@@ -77,22 +80,22 @@
 **`参考`**
 
 1. 枚举类名建议带上 Enum 后缀, 枚举成员名称需要全大写, 单词间用下划线隔开。
-    - 说明:  枚举其实就是特殊的常量类, 且构造方法被默认强制是私有。
+    - 说明:  枚举其实就是特殊的常量类, 域成员均为常量, 且构造方法被默认强制是私有。
     - 正例:  枚举名字为 `ProcessStatusEnum` 的成员名称:  `SUCCESS`或者`UNKOWN_REASON`
 
 1. MVC各层命名规约
     - Service/Dao层
         - 获取单个对象 get 做前缀
-        - 获取多个对象 list 
+        - 获取多个对象 list, 复数形式结尾
         - 获取统计值的方法 count 
         - 插入 save
         - 删除 remove
         - 修改 update
    - 领域模型
-       - 数据对象 ***DO*** 是数据表名
-       - 数据传输对象 ***DTO*** 是业务领域相关的名称
-       - 展示对象 ***VO*** 是网页名称 使用了模板框架
-       - POJO是 ***DO DTO BO VO*** 统称
+       - 数据对象 ***xxxDO*** xxx是数据表名
+       - 数据传输对象 ***xxxDTO*** xxx是业务领域相关的名称
+       - 展示对象 ***xxxVO*** xxx是网页名称 使用了模板框架
+       - POJO是 ***DO DTO BO VO*** 统称, 禁止命名为 xxxPOJO
        - 有关这些缩写的详细说明  [详细定义和解释](/Java/AdvancedLearning/GrammarAndType.md#object)
 
 

@@ -11,8 +11,8 @@
 
 > 参考项目 [AnnotationDemo](https://github.com/zhuifengshen/AnnotationDemo)
 
-注解定义包含四个元注解，分别为@Target,@Retention,@Documented,@Inherited。各元注解的作用如下：
-- ① @Target
+- 注解定义包含四个元注解，分别为@Target,@Retention,@Documented, @Inherited。各元注解的作用如下：
+1. @Target
     - 表示该注解用于什么地方，可能的 ElemenetType 参数包括：
     - ElemenetType.CONSTRUCTOR 构造器声明。
     - ElemenetType.FIELD 域声明（包括 enum 实例）。
@@ -22,16 +22,17 @@
     - ElemenetType.PARAMETER 参数声明。
     - ElemenetType.TYPE 类，接口（包括注解类型）或enum声明。
 
-- ② @Retention
+1. @Retention
     - 表示在什么级别保存该注解信息。可选的 RetentionPolicy 参数包括：
     - RetentionPolicy.SOURCE 注解将被编译器丢弃。
     - RetentionPolicy.CLASS 注解在class文件中可用，但会被VM丢弃。
     - RetentionPolicy.RUNTIME VM将在运行期也保留注释，因此可以通过反射机制读取注解的信息。
-> 举一个例子，如@Override里面的Retention设为SOURCE，编译成功了就不要这一些检查的信息，相反，@Deprecated里面的Retention设为RUNTIME，表示除了在编译时会警告我们使用了哪个被Deprecated的方法，在执行的时候也可以查出该方法是否被Deprecated。
 
-- ③ @Documented
+    > 举一个例子，如@Override里面的Retention设为SOURCE，编译成功了就不要这一些检查的信息，相反，@Deprecated里面的Retention设为RUNTIME，表示除了在编译时会警告我们使用了哪个被Deprecated的方法，在执行的时候也可以查出该方法是否被Deprecated。
+
+1. @Documented
     - 将此注解包含在 javadoc 中
-- ④ @Inherited
+1. @Inherited
     - 允许子类继承父类中的注解
 
 ## 读取
