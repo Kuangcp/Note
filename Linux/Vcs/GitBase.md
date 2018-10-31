@@ -43,13 +43,14 @@
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-`目录 end` |_2018-10-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
-> Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. --[git-scm.com](https://git-scm.com/)
+> Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
 
 > [Github:git](https://github.com/git/git)  
 > [official doc: git](https://git-scm.com/docs) 
+> [Gitee: about git](https://gitee.com/all-about-git)  
 > [Git官网中文教程](https://git-scm.com/book/zh/v2) | [对应的仓库](https://github.com/progit/progit2)  
 
 ***************************
@@ -137,11 +138,15 @@
 - `git commit -am "init" `: a git库已有文件的修改进行添加, m 注释
     - `git add * ` 如果有新建立文件就要add 再之后commit就不要a参数了 `git commit -m ""`
     - 如果只是修改文件没有新建 `git commit -am ""`
+
 - `git commit ` 会自动进入VI编辑器
     - 第一行：用一行文字简述提交的更改内容
     - 第二行：空行
     - 第三行：记述更改的原因和详细内容
     - 使用下面方法关闭退出
+
+- [ ] 使用 --amend 参数重写历史commit [Official Doc](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2)
+
 
 ##### 提交行为准则
 > [参考博客: SVN提交更新的一个准则](http://www.cnblogs.com/chenlong828/archive/2008/09/22/1296193.html)

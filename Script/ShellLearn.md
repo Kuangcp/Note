@@ -32,7 +32,7 @@
     1. [工具](#工具)
         1. [shyaml](#shyaml)
 
-`目录 end` |_2018-10-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 学习Shell
 > 首先语法不像别的语言可读性好，比如Python，然后方言众多，学习比Python2，3还恶心  
@@ -40,6 +40,7 @@
 > [Shell 教程](http://www.runoob.com/linux/linux-shell.html)
 
 ## shell类别
+
 - sh
   - 大多Linux都支持的shell类别
 - bash
@@ -51,7 +52,9 @@
 - fish
 
 > [linux shell dash&bash](http://blog.csdn.net/zengqiang1/article/details/61916697)
+> [参考博客: 常见shell类型](http://www.cnblogs.com/happycxz/p/7840077.html)
 
+> [Github: zsh guide](https://github.com/goreliu/zshguide)  
 *****************
 ## Shell内建命令
 - [ ] 学习内建命令的使用
@@ -321,10 +324,12 @@ _判断文件_
 
 学习怎么使用的话, 可以看上面的博客(虽然有点简陋), 但是如果是 oh-my-zsh 的用户, 可以直接看别人的插件, 模仿就行了, 例如 redis-cli 插件的自动补全, 就很简单直接
 1. `#compdef redis-cli rec` 这第一行很重要, 定义了是对哪个命令或脚本的自动补全
+
 *****************
 ## 常用模块
 ### 时间
 > [shell处理时间格式](http://blog.csdn.net/superbfly/article/details/52453334)
+
 *********************************
 ## 工具
 > [更多工具](/Skills/Soft_Manual.md#终端工具)

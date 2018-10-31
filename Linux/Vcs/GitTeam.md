@@ -5,10 +5,13 @@
         1. [Git Flow](#git-flow)
         1. [本地和远程](#本地和远程)
         1. [模板化提交信息](#模板化提交信息)
+    1. [图形化工具](#图形化工具)
+        1. [SourceTree](#sourcetree)
+        1. [git-cola](#git-cola)
     1. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
         1. [最终方案](#最终方案)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # 基于Git进行团队开发
@@ -51,7 +54,6 @@
 
 - [分支图复杂的一个项目](https://github.com/Netflix/eureka/network) `只是演示分支的复杂度`
 
-
 ### 模板化提交信息
 > git commit message 的模板化
 
@@ -71,8 +73,11 @@ template = ~/.gitmessage
 ### SourceTree
 > [Official site](https://sourcetreeapp.com) 仅支持 Windows 和 Mac
 
+### git-cola
+> [Github: repo](https://github.com/git-cola/git-cola)`轻量, 简洁, 跨平台, 正是我想要的`
 
 *******************
+
 ## 小规模团队使用码云组织的总结
 > `master`发行分支 `dev`开发主分支 `dev-*`开发者分支 `fea-*`开发者自己的功能性分支
 

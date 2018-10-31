@@ -43,6 +43,7 @@
 * 【 Distributed 】
     * 【 Distributed/Middlewave 】
         * [ Apollo ](/Distributed/Middlewave/Apollo.md)
+    * [ RPC ](/Distributed/RPC.md)
 * 【 FrontEnd 】
     * 【 FrontEnd/Frame 】
         * [ LayUI ](/FrontEnd/Frame/LayUI.md)
@@ -208,6 +209,7 @@
     * [ Scala ](/Scala/Scala.md)
 * 【 Script 】
     * [ Dos ](/Script/Dos.md)
+    * [ LinuxBash ](/Script/LinuxBash.md)
     * [ ShellLearn ](/Script/ShellLearn.md)
 * 【 Skills 】
     * 【 Skills/Application 】

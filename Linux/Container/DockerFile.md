@@ -21,11 +21,12 @@
         1. [WORKDIR](#workdir)
         1. [STOPSIGNAL](#stopsignal)
         1. [ONBUILD](#onbuild)
-    1. [Dockerfile案例](#dockerfile案例)
+1. [Practice](#practice)
+    1. [Exercises](#exercises)
         1. [打包最新版git](#打包最新版git)
         1. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-`目录 end` |_2018-10-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Dockerfile
 ## 使用入门案例
@@ -210,7 +211,8 @@ _docker build_
 - 注入下游镜像。如果生成的镜像是作为另一个镜像的基础镜像，则该指令定义了需要被执行的那些指令
 
 ******************************************
-## Dockerfile案例
+
+# Practice
 - [alpine构建ssh](/Linux/Docker/alpine/Dockerfile)
 - [docker-wordpress-nginx](https://github.com/eugeneware/docker-wordpress-nginx)
 - [rails-meets-docker](https://github.com/gemnasium/rails-meets-docker)
@@ -218,6 +220,7 @@ _docker build_
 - [官方文档 dockerfile](https://www.docker.io/learn/dockerfile/)
 - [官方文档 builder](http://docs.docker.io/reference/builder/)
 
+## Exercises
 ### 打包最新版git
 - 注意其运行环境是容器内，不是宿主机，入口点的命令运行完了就退出了，不能当成宿主机上的git使用，只能说是学习一些操作
     - 所以不可能说在容器中安装软件然后在宿主机上交互运行
@@ -242,3 +245,7 @@ _docker build_
     USER mythos
     WORKDIR /home/mythos
 ```
+**************************
+> [参考博客: 在 Docker 上开发应用 - 编写 Dockerfile 的最佳实践](https://blog.csdn.net/kikajack/article/details/79366043) | [英文原文](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+
+

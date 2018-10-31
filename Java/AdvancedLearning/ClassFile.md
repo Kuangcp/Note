@@ -8,8 +8,7 @@
             1. [Class对象](#class对象)
             1. [类加载器](#类加载器)
         1. [方法句柄](#方法句柄)
-        1. [检查类文件](#检查类文件)
-            1. [javap](#javap)
+    1. [查看class文件](#查看class文件)
         1. [常量池](#常量池)
         1. [字节码](#字节码)
             1. [运行时环境](#运行时环境)
@@ -33,7 +32,7 @@
             1. [Thrift](#thrift)
             1. [Marshalling](#marshalling)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java基础
 ## 【类和字节码】
@@ -90,12 +89,13 @@
 
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p118.jpg)
 
-******
-### 检查类文件
-#### javap
-> JDK内置命令, 用来探视类文件内部和反编译class文件
+*****************
 
-****
+## 查看class文件
+> javap: JDK内置命令, 用来探视类文件内部和反编译class文件
+
+******************
+
 ### 常量池
 > 常量池是为类文件中的其他常量元素提供快捷访问方式的区域。对于JVM来说常量池相当于符号表
 > [参考博客](http://www.cnblogs.com/LeonNew/p/5314731.html)
@@ -103,8 +103,9 @@
 - `javap -v class文件` 输出很多额外信息，# 开头的就是常量池信息
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p120.jpg)
 
-*****
+**************
 ### 字节码
+> [参考博客: 学会阅读Java字节码](https://www.cnblogs.com/beautiful-code/p/6425376.html)
 
 - 字节码是程序的中间表达形式，源码和机器码之间的产物
 - 字节码是由源文件执行javac产生的
