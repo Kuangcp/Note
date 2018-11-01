@@ -2,6 +2,7 @@
  
 1. [Web安全](#web安全)
     1. [Authenticate](#authenticate)
+    1. [Verfication](#verfication)
     1. [SSL和TSL](#ssl和tsl)
     1. [ARP断网攻击](#arp断网攻击)
     1. [SYNFlood攻击](#synflood攻击)
@@ -9,8 +10,9 @@
         1. [XSS](#xss)
     1. [JWT](#jwt)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
+
 # Web安全
 > 关注常见的比如 XSS CSRF SQL注入 上传等问题的原理和修复方案。还有密码安全也基本上是面试必考点。
 > 作为开发人员，需要详细了解安全问题的原理。 比如XSS的原理是因为用户将它的数据变成了代码，在页面中跑起来了，所以就可以为所欲为。 CSRF则是当用户不知情时，被黑客的网页通过图片、表单等请求时，
@@ -19,9 +21,18 @@
 > 反向代理服务器，构建在web服务器与 客户端之间，保护web服务器，服务器发送到客户端的请求被代理
 
 ## Authenticate
-
 > [WWW-Authenticate](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/WWW-Authenticate)
 
+****************************
+
+## Verfication 
+> 最简单的就是 数字验证码了
+
+**`CAPTCHA`**
+> CAPTCHA 全称 “全自动区分计算机和人类的图灵测试”（Completely Automated Public Turing Test to Tell Computers and Humans Apart）  
+> 它是一种区分用户是计算机还是人的计算程序，这种程序生成人类能很容易通过但计算机通不过的测试，并进行判定，人/机进行测试的过程称为一次“挑战”。
+
+**********************
 ## SSL和TSL
 > [SSL/TLS协议运行机制的概述](http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html)
 

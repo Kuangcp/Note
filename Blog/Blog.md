@@ -21,7 +21,7 @@
         1. [玩机](#玩机)
     1. [商业](#商业)
 
-`目录 end` |_2018-10-16_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 > 只用来记录非技术类的文章,技术类的直接放到对应的笔记中去  
@@ -141,8 +141,8 @@ _如何将脑海中的思维火花转化为代码_
 比如用 js 做日历，可以先实现一个只能打印字符串日历的版本（这涉及到日期的计算，简单格式化输出），然后思考怎么把字符串适配到 html 上？或者服务端的话输出为 json ？
 或者其实可以跳过序列化这一步？等等。可以学习一下 TDD ，一边写代码一边写测试，切忌自以为思考完所有细节一气呵成实现完毕，这样的话基本上写代码：调试找 bug = 1:10
 
-
 ***************
+> [参考博客: 2018开发者技能报告，让你更了解自己的行业。](https://mp.weixin.qq.com/s?__biz=MzU3OTYxOTU4NA==&mid=2247483877&idx=1&sn=bf8d6078770992004e7ac10e606112c7&chksm=fd621f8aca15969c2094683eb3d233f6e98ebda1028ce57081faef013f02e742c57c21f6a919&scene=21#wechat_redirect)
 ## 操作系统
 ### Windows
 
@@ -169,7 +169,7 @@ _如何将脑海中的思维火花转化为代码_
 ***************
 ## 团队开发
 - [团队开发工作流项目](http://www.cnblogs.com/foundation/archive/2009/10/17/1584875.html)
-> [参考博客: 有人向我反馈了一个bug](http://www.techug.com/post/when_someone_gives_you_a_bug.html)
+- [参考博客: 有人向我反馈了一个bug](http://www.techug.com/post/when_someone_gives_you_a_bug.html)
 
 ***************
 ## 毕业

@@ -18,7 +18,7 @@
     1. [数据迁移](#数据迁移)
     1. [错误分析](#错误分析)
 
-`目录 end` |_2018-10-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Redis常用命令
 
@@ -90,6 +90,9 @@
 - TIME
 
 # Redis的应用场景
+
+> [参考博客: 为什么我们做分布式使用Redis？](https://my.oschina.net/u/3971241/blog/2221560)`缓存的场景和应对措施`
+
 ## 作为日志记录
 ## 作为网站统计数据
 ## 存储配置信息
