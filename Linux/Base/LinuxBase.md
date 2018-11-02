@@ -29,7 +29,7 @@
     1. [修改主机名](#修改主机名)
     1. [字体渲染](#字体渲染)
 
-`目录 end` |_2018-10-30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-02_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -224,11 +224,7 @@ _系统运行级别_
 - md5sum 报文摘要算法 
 
 ### Shell内建命令
-- whence 查看命令的真实面貌 (zsh中的内建命令)
-- where 查找命令的位置 (Zsh中内建命令)
-
 > [更多常用工具列表](/Linux/Tool/Terminal.md)
-
 
 *************************
 # 终端快捷键

@@ -187,12 +187,6 @@
         * [ Terminal ](/Linux/Tool/Terminal.md)
         * [ Vim ](/Linux/Tool/Vim.md)
         * [ Zsh ](/Linux/Tool/Zsh.md)
-    * 【 Linux/Vcs 】
-        * [ GitAction ](/Linux/Vcs/GitAction.md)
-        * [ GitAdvance ](/Linux/Vcs/GitAdvance.md)
-        * [ GitBase ](/Linux/Vcs/GitBase.md)
-        * [ GitTeam ](/Linux/Vcs/GitTeam.md)
-        * [ Svn ](/Linux/Vcs/Svn.md)
     * [ JavaDevInit ](/Linux/JavaDevInit.md)
 * 【 MyBlog 】
     * [ 2018-3-15-install-deepin ](/MyBlog/2018-3-15-install-deepin.md)
@@ -250,6 +244,12 @@
         * [ Junit5 ](/Skills/Test/Junit5.md)
         * [ TestNG ](/Skills/Test/TestNG.md)
         * [ TestTheory ](/Skills/Test/TestTheory.md)
+    * 【 Skills/Vcs 】
+        * [ GitAction ](/Skills/Vcs/GitAction.md)
+        * [ GitAdvance ](/Skills/Vcs/GitAdvance.md)
+        * [ GitBase ](/Skills/Vcs/GitBase.md)
+        * [ GitTeam ](/Skills/Vcs/GitTeam.md)
+        * [ Svn ](/Skills/Vcs/Svn.md)
     * 【 Skills/Work 】
         * [ InterviewSkill ](/Skills/Work/InterviewSkill.md)
         * [ PomodoroTechnique ](/Skills/Work/PomodoroTechnique.md)

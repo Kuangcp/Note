@@ -24,7 +24,7 @@
     1. [Tips](#tips)
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-02_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # IDEA 使用笔记
@@ -39,10 +39,11 @@
 
 - 在新版中提供的load unload 模块功能,必须要重启idea, 才能让maven生效 emmm
 
-
 ## 常用技巧
 1. 鼠标方法上悬停显示javadoc  勾选 General -> show quick documentation on mouse move 
 1. 自定义 TODO 等标签 Editor -> TODO, 照已有的 TODO FIXME 新建一个即可 
+
+> [W3C idea 教程](https://www.w3cschool.cn/intellij_idea_doc/intellij_idea_doc-q3ke2coy.html)
 
 ### Tomcat的使用
 > 直接配置解压的即可, 然后Idea会在 用户目录下的Idea主目录中配置一个专门放Tomcat的配置和日志等文件, 和原Tomcat进行了隔离, 这样就不会影响到该Tomcat.
