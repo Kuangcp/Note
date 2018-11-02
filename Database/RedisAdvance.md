@@ -32,6 +32,8 @@
 
 - 查看所有连接 client list 
 
+> [redis-stat](https://github.com/junegunn/redis-stat)
+
 ## Run Configuration	
 - *slaveof*
     - `redis-server --port 9999 --slaveof 127.0.0.1 6379` 启动一个9999端口作为6379的从服务器进行同步

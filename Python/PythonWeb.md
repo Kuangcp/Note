@@ -38,16 +38,11 @@
 ### 跨域
 > [解决方式](https://blog.csdn.net/yannanxiu/article/details/53036508)
 `pip install flask-cors`
+
 ```python
-from flask_cors import *
+    from flask_cors import *
 
-app = Flask(__name__)
-CORS(app, supports_credentials=True)
+    app = Flask(__name__)
+    CORS(app, supports_credentials=True)
 ```
-
-
-
-
-
-
 
