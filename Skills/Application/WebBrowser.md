@@ -17,7 +17,7 @@
 # 浏览器
 ## FireFox
 > [所有桌面版](https://www.mozilla.org/zh-CN/firefox/channel/desktop/) | [所有正式版](https://www.mozilla.org/en-US/firefox/releases/)
-> [正式版本和夜更新版FTP下载地址](http://ftp.mozilla.org/pub/firefox) | [所有开发者版本](http://ftp.mozilla.org/pub/devedition/releases/)
+> [正式版本和夜更新版FTP下载地址](http://ftp.mozilla.org/pub/firefox/) | [所有开发者版本](http://ftp.mozilla.org/pub/devedition/releases/)
 
 `57为全新的Quantum版本， 因为插件标准的缘故和之前的56版本插件不兼容`
 
