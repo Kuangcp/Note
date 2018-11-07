@@ -175,7 +175,7 @@
     - `--numbered` 按提交数排序
     - `-s` 只显示每个提交者以及提交数量
 
-**彩色输出Log**
+**`彩色输出Log`**
 ```sh
 alias glogc="git log --graph --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset | %C(bold cyan)<%an>%Creset %C(yellow)%d%Creset %s ' --abbrev-commit --date=short" # 彩色输出
 alias gloga='git log --oneline --decorate --graph --all' # 简短彩色输出
@@ -197,7 +197,14 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 1. git show sha-1的值 就能看到该次提交的所有修改
 
 #### diff
-- `--cached` 查看已暂存起来的变化 等同于`--staged`
+- Git 工作原理是 index stage work 三个概念逻辑上的区域
+    - index 已经 commit 的内容, 不可更改历史commit 
+    - stage 执行 add 命令, 将文件缓存到该区
+    - work 默认目录, 修改的就是该分区
+
+- 默认是将 work 区 和 index 区 进行比较
+- `--cached` stage 区 和 index 区 进行比较, 等同于`--staged`
+
 ```
     git diff [options] [<commit>] [--] [<path>...]
     git diff [options] --cached [<commit>] [--] [<path>...]
@@ -275,10 +282,10 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
     - 不推荐用 pop, 当stash多了以后 人不一定都记得每个stash都改了啥, 可能会有冲突以及修改覆盖的问题
     - 最好用新分支装起来, 然后合并分支, 或者是 cherry-pick, 修改也不会丢失
      
-**************************
+********************
 
 #### clone
-- `git clone branchname URL` 克隆指定分支
+- `git clone branchname URL` 克隆远程仓库的指定分支
 - `git clone URL 目录` 克隆下来后更名为指定目录
 - `git clone --depth 1 URL` 只克隆最近一次提交的历史, 能大大减小拉取的大小, 但是如果要用到之前的提交历史就还是要下拉下来的 类似于懒加载
     - 但是在新建一个远程仓库后, 推送时会报错:`shallow update not allowed` 因为本地库是残缺的
@@ -289,8 +296,8 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
     您正处于分离头指针状态。您可以查看、做试验性的修改及提交，并且您可以通过另外的检出分支操作丢弃在这个状态下所做的任何提交。
     如果您想要通过创建分支来保留在此状态下所做的提交，您可以通过在检出命令添加参数 -b 来实现（现在或稍后）。例如：
     git checkout -b <new-branch-name>
+    按提示执行命令即可解决
 ```
-按他提示去执行命令就行了
 
 #### branch 
 - 列出远程分支 -r / --remote
@@ -298,19 +305,20 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 - 删除分支 -d
 
 #### checkout
-> [官方文档 : git checkout](https://git-scm.com/docs/git-checkout)
+> [Official Doc: git checkout](https://git-scm.com/docs/git-checkout)
 
-- `git checkout 文件名 文件名` git会在索引中找文件，有就取出，没有就从最新的commit回找，取出第一个找到的版本，
-    - 每个文件都是这样，也就是说如果有被删除的文件，是可以通过此来找回的
-    - `git checkout . `取出文档库中所有文件的最新版本
-- `git checkout commit 节点标识符或者标签 文件名 文件名 ...` 
+> alias gch='git checkout'
+
+- `gch .` 取出最近的一次提交, 覆盖掉 work 区下当前目录(递归)下所有已更改(包括删除操作), 且未进入 stage 的内容, 已经进入 stage 区的文件内容则不受影响
+    - `gch 文件1 文件2...` 同上, 但是只操作指定的文件
+
+- `gch [commit-hash] 文件1 文件2...` 根据指定的 commit 对应hash值, 作如上操作, 但是区别在于 从 index 直接覆盖掉 stage 区, 并丢弃 work 区
+    - `gch [commit-hash] .` **`如在项目根目录执行该命令, 会将当前项目的所有未提交修改全部丢失, 不可恢复!!!!`**
+
+- [ ] 验证
+- `git checkout [commit-hash] 节点标识符或者标签 文件名 文件名 ...` 
     - 取出指定节点状态的某文件，而且执行完命令后，取出的那个状态会成为head状态，
     - 需要执行  `git reset HEAD` 来清除这种状态
-
-> 撤销当前对文件的所有修改 `git checkout -- 文件名` 就会使用上次提交的文件来覆盖当前文件
-> 撤销当前所有更改,回退到上次提及的状态 `git checkout .` 
-
-- [ ] 有没有 svn cat 类似的功能
 
 #### fetch
 > 访问远程仓库, 拉取本地没有的数据
