@@ -48,6 +48,8 @@
 
 - [docker中文](http://www.docker.org.cn/)`社区`
 
+- [Gitbook: docker 从入门到实践](https://yeasy.gitbooks.io/docker_practice/content/)
+
 ## 简介
 - `Docker 是一个开源的应用容器引擎` 理解为加强版虚拟机
 - 让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
@@ -252,15 +254,16 @@ _登录镜像仓库_
 - 登录百度云： `docker login --username=[username] hub.baidubce.com`
 
 ## 镜像命令
+- 查看所有 ： `docker images`
+    - docker images -a 查看所有镜像(包括中间镜像)
 - 搜索 ： `docker search 镜像名`
 - 安装 ： `docker pull 镜像名`
-- 查看所有 ： `docker images`
 - 删除 ： `docker rmi 镜像名`
 - 查看详细： `docker inspect [-f {{".Architesture"}}]`  -f 查看JSON格式的具体节点的数据值
 - 查看历史：`docker history imagename`
 - 添加标签（别名）： `docker tag originname newname`
 - 导出镜像文件：`docker save -o ubuntu.tar  ubuntu:14.04`
-    - 导入镜像文件： `docker load --input ubuntu.tar`或 `docker load < ubuntu.tar`
+    - 导入镜像文件： `docker load --input ubuntu.tar` 或 `docker load < ubuntu.tar`
 - 上传镜像： `docker push mythos/test:lastest`
 
 ## 容器命令
@@ -271,19 +274,19 @@ _ps_
     - [ps formatting](https://docs.docker.com/engine/reference/commandline/ps/#formatting)
 
 ```
-.ID 	    Container ID
-.Image 	    Image ID
-.Command 	Quoted command
-.CreatedAt 	Time when the container was created.
-.RunningFor Elapsed time since the container was started.
-.Ports 	    Exposed ports.
-.Status 	Container status.
-.Size 	    Container disk size.
-.Names 	    Container names.
-.Labels 	All labels assigned to the container.
-.Label 	    Value of a specific label for this container. For example '{{.Label "com.docker.swarm.cpu"}}'
-.Mounts 	Names of the volumes mounted in this container.
-.Networks 	Names of the networks attached to this container.
+    .ID 	    Container ID
+    .Image 	    Image ID
+    .Command 	Quoted command
+    .CreatedAt 	Time when the container was created.
+    .RunningFor Elapsed time since the container was started.
+    .Ports 	    Exposed ports.
+    .Status 	Container status.
+    .Size 	    Container disk size.
+    .Names 	    Container names.
+    .Labels 	All labels assigned to the container.
+    .Label 	    Value of a specific label for this container. For example '{{.Label "com.docker.swarm.cpu"}}'
+    .Mounts 	Names of the volumes mounted in this container.
+    .Networks 	Names of the networks attached to this container.
 ```
 - 查看所有容器的状态：`docker stats` 能看到正在运行的容器内存 cpu io net等信息
     - `-a` 所有容器

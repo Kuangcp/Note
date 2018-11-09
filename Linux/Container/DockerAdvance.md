@@ -31,6 +31,8 @@
 
 > [参考博客: docker 存储驱动之overlay](https://blog.csdn.net/u010278923/article/details/79215828)
 
+> 查看占用大小 docker system df 
+
 ****************
 
 ## 配置

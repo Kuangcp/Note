@@ -116,3 +116,8 @@ template = ~/.gitmessage
 `只有一方修改`
 - 主分支进行修改了开发分支没有动，那么开发分支 直接下拉 `git pull origin master`下拉修改代码即可
 - 如果是开发分支修改，主分支没有动，那么管理员负责切换到开发分支 然后pull 然后merge 然后 push 然后切换开发分支 然后 pull 
+
+- [处理冲突](http://blog.jobbole.com/97911/)
+
+
+
