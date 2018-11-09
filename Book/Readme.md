@@ -40,7 +40,8 @@
 - [经典编程书籍大全](https://github.com/jobbole/awesome-programming-books)
 - [bookstack](https://www.bookstack.cn/)
 - [b-ok](http://b-ok.xyz)
-
+- [http://it-ebooks.info/](http://it-ebooks.info/)
+- [http://www.pdfiles.com/](http://www.pdfiles.com/)
 
 > [jb51 编程专区](https://www.jb51.net/books/list422_1.html)
 > [3322.cc电子书专区](http://www.3322.cc/sort/132-1.html)
