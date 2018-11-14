@@ -13,7 +13,7 @@
                 1. [fcitx](#fcitx)
             1. [Flash](#flash)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # 问题解决方案
@@ -26,11 +26,11 @@
 - [参考博客: Suppressing the “Picked up _JAVA_OPTIONS” message](https://superuser.com/questions/585695/suppressing-the-picked-up-java-options-message)
 - [参考博客: 理解环境变量 JAVA_TOOL_OPTIONS](https://segmentfault.com/a/1190000008545160)
 
-但是又不能直接 unset 这个变量似乎是用来解决字体锯齿问题的, 所以需要如下配置
+但是又不能直接 unset, 这个变量似乎是用来解决字体锯齿问题的, 所以需要如下配置
 ```sh
-_SILENT_JAVA_OPTIONS="$_JAVA_OPTIONS"
-unset _JAVA_OPTIONS
-alias java='java "$_SILENT_JAVA_OPTIONS"'
+    _SILENT_JAVA_OPTIONS="$_JAVA_OPTIONS"
+    unset _JAVA_OPTIONS
+    alias java='java "$_SILENT_JAVA_OPTIONS"'
 ```
 只需将该配置加到  `/etc/profile` 文件尾部, 这样的话, 终端不会有如上提示, 但是IDEA中输出控制台仍带有该提示, 这时候可以在IDEA的启动脚本 `bin/idea.sh` 中也添加如上配置即可(在最后一段之前)
 

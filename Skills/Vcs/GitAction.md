@@ -6,6 +6,7 @@
     1. [【安装】](#安装)
         1. [Linux(debian系)](#linuxdebian系)
         1. [windows](#windows)
+        1. [GUI](#gui)
     1. [【简单使用】](#简单使用)
         1. [配置GPG](#配置gpg)
         1. [实验楼上使用Github](#实验楼上使用github)
@@ -19,7 +20,7 @@
         1. [终端中显示当前分支](#终端中显示当前分支)
         1. [命令的自动补全](#命令的自动补全)
     1. [搭建Git服务器](#搭建git服务器)
-        1. [【使用git daemon搭建本地简易Git_Server】](#使用git-daemon搭建本地简易git_server)
+        1. [使用git daemon搭建简易 Server](#使用git-daemon搭建简易-server)
         1. [【HTTP访问Git服务器】](#http访问git服务器)
             1. [【配置HTTPS】](#配置https)
             1. [【使用SSH登录GitServer】](#使用ssh登录gitserver)
@@ -35,7 +36,7 @@
         1. [8.Reset一个单独的文件](#8reset一个单独的文件)
         1. [9.保留working_tree并且丢弃一些commit](#9保留working_tree并且丢弃一些commit)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -258,37 +259,36 @@
 
 ***************************************************
 ## 搭建Git服务器
-### 【使用git daemon搭建本地简易Git_Server】
-> daemon可能要安装一下 `sudo apt install git-daemon`
+### 使用git daemon搭建简易 Server
 
-- 先创建一个目录结构
-- Repository
-    - Project1
-        - .git
-    - Project2
-    - Project3
-    - 每个Project下都有`.git` 文件夹
-- Repository目录下执行：`git daemon --export-all --base-path='Repository目录' --port=8096`
+*`目录结构`*
+```
+    ├── a
+    │   └── .git
+    └── b
+        └── .git
+```
+> 也就是说在仓库目录的父级目录 作为基础目录 (base-path)
+
+- `git daemon --export-all --base-path='BASE_PATH' --port=8080` 在 BASE_PATH 启动一个Git守护进程
     - `--export-all` 开放当前目录下所有项目
     - `--enable=receive-pack` 为了安全，默认是仓库不能被修改，添加这个参数就可以push了
     - `--base-path=''` 指定开放的基本目录（指定开放别的路径）
-    - `--port=8096` 指定开放的端口
+    - `--port=8080` 指定开放的端口
     - `--verbose` 启动看到的日志信息更多
-    - `&` 末尾加上表示后台运行，默认是阻塞了当前git bash命令行
 
-- 使用退出程序的操作即可， Ctrl+Shift+C 放在了后台就jobs或者ps 然后kill
-- 在需要克隆的目录下` git clone git://localhost:8096/Project1` 
+- 克隆: `git clone git://localhost:8080/a` 
 
 ### 【HTTP访问Git服务器】
 - 安装Apache： Web服务器
 - 配置Apache服务器的开放的目录以及Git的路径 
 ```xml
-<Location /git>
-    AuthType Basic 
-    AuthName "GIT Repository" 
-    AuthUserFile "/home/mythos/GitRemoteRepo/htpassed"
-    Require valid-user
-</Location>
+    <Location /git>
+        AuthType Basic 
+        AuthName "GIT Repository" 
+        AuthUserFile "/home/mythos/GitRemoteRepo/htpassed"
+        Require valid-user
+    </Location>
 ```
 - 切换到Apache的bin目录下：`htpasswd -cmb /home/mythos/GitRemoteRepo/htpsswd 账号名 密码`
 - 到仓库目录下 `git init --bare 程序项目名称`
