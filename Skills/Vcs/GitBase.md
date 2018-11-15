@@ -82,6 +82,8 @@
 - `git config core.fileMode false` 忽略文件的mode变化，一般发生在文件放在挂载盘的时(默认755)
 
 #### status
+> git status --help 查看详细介绍
+
 - `-s --short` 简化输出
     - ?? 表示新添加未跟踪
     - A 新添加到暂存区

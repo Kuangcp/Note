@@ -24,7 +24,7 @@
     1. [Tips](#tips)
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
 
-`目录 end` |_2018-11-02_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-15_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # IDEA 使用笔记
@@ -265,6 +265,8 @@ _例如修改为如下_
 #### View 
 | Ctrl | Shift | Alt | Key | Action |
 |:----:|:----:|:----:|:----:|:----|
+|C|S| | **左/右** | 调节以上工具窗口与编辑器窗口的分隔线位置
+| |S|A| **H** | 显示/隐藏 所有工具窗口
 |C| | | **H** | 生成类结构图并显示
 | | |A| **H** | 类结构图窗口
 | | |A| **A** | 目录结构窗口
@@ -279,7 +281,6 @@ _例如修改为如下_
 | | |A| **3** | 数据库工具窗口
 | | |A| **.** | 终端窗口
 | |S|A| **V** | 数据库 Console 窗口
-|C|S| | **左/右** | 调节以上工具窗口与编辑器窗口的分隔线位置
 
 > 在任一工具窗口, 按`ESC`都会让焦点回到编辑器 `Shift ESC` 就能关闭工具窗口并让焦点回到编辑器
 > 以上的窗口都是默认显示小bar的, 我为了窗口更大就设置为了默认隐藏, 如果想显示, 可以双击Alt, 在第二下按住不动, 鼠标就能进行点击了  
