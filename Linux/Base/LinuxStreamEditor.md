@@ -88,12 +88,14 @@ so，也不需要和其他的对比了，其他都是拆分，而paste是合并�
     y ：转换（transform）字元。
 ```
 
-> 1. 截取指定行数到新文件 `sed -n ‘开始行数，结束行数p’ info.log > newFile.log`
-> 2. 修改配置文件中name的值为123 `sed -i "s/name=.*/name=123/g" config.conf`
+>1. 截取指定行数到新文件 `sed -n ‘开始行数，结束行数p’ info.log > newFile.log`
+>1. 修改配置文件中name的值为123 `sed -i "s/name=.*/name=123/g" config.conf`
+>1. CRLF -> LF `sed -i 's/\r//g' file` 配合git 就是 `git ls-files| sed -i 's/\r//g' `
 
 > [参考博客: linux sed 命令单行任务快速参考](http://www.techug.com/post/linux-sed1line.html)
 
 ## awk
 > awk有3个不同版本: awk、nawk和gawk，未作特别说明，一般指gawk，gawk 是 AWK 的 GNU 版本。
 
+1. 截取输出 cat log.log | awk '{print $2}' 
 

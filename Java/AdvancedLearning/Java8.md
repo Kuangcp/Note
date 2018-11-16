@@ -11,7 +11,7 @@
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-16_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)
@@ -21,6 +21,10 @@
 - [Oracle:Java8故障排除指南](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/)
 
 ## Optional
+> 能够显式的在方法签名上就表明返回值可能为 "空", 约束调用方需判断才能使用, 但是这个并不是万能的, 例如集合类型的返回的时候, 就不用 Optional 包住 显得繁琐, 直接返回 new 空集合即可
+> 如果Optional约束了返回值, 就在语义上表明该方法的返回值可能为空, 如果这个方法是初始化方法等具有特殊含义的方法, 不能返回空, 那就不能使用Optional, 这样虽然安全了, 但是将该方法的语义混淆了
+> 所以 不仅不能用 Optional, 还需在方法中加上 断言, 以尽早暴露该方法的异常, 之后在调用的时候, 虽然该方法在设计上是不能返回空, 但是还是有可能返回空, 为了健壮性, 需要调用方做非空检查
+
 ## Funcational
 
 > [参考  Java8函数接口实现回调及Groovy闭包的代码示例](http://www.cnblogs.com/lovesqcc/p/6083759.html)

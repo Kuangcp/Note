@@ -165,6 +165,7 @@
         * [ LinuxPerformance ](/Linux/Base/LinuxPerformance.md)
         * [ LinuxProblem ](/Linux/Base/LinuxProblem.md)
         * [ LinuxStreamEditor ](/Linux/Base/LinuxStreamEditor.md)
+        * [ LinuxUI ](/Linux/Base/LinuxUI.md)
         * [ ReleaseExperience ](/Linux/Base/ReleaseExperience.md)
         * [ Ssh ](/Linux/Base/Ssh.md)
     * 【 Linux/Centos 】
