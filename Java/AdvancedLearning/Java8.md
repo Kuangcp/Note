@@ -1,17 +1,17 @@
 `目录 start`
  
 1. [Java8](#java8)
-    1. [Optional](#optional)
     1. [Funcational](#funcational)
     1. [Lambda](#lambda)
         1. [利用Lambda开发DSL框架](#利用lambda开发dsl框架)
     1. [Stream](#stream)
+    1. [Optional](#optional)
     1. [集合](#集合)
     1. [时间处理](#时间处理)
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-`目录 end` |_2018-11-16_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)
@@ -20,10 +20,8 @@
 > [Java8 tools](https://docs.oracle.com/javase/8/docs/technotes/tools/)`介绍目录 bin/* 下的工具`
 - [Oracle:Java8故障排除指南](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/)
 
-## Optional
-> 能够显式的在方法签名上就表明返回值可能为 "空", 约束调用方需判断才能使用, 但是这个并不是万能的, 例如集合类型的返回的时候, 就不用 Optional 包住 显得繁琐, 直接返回 new 空集合即可
-> 如果Optional约束了返回值, 就在语义上表明该方法的返回值可能为空, 如果这个方法是初始化方法等具有特殊含义的方法, 不能返回空, 那就不能使用Optional, 这样虽然安全了, 但是将该方法的语义混淆了
-> 所以 不仅不能用 Optional, 还需在方法中加上 断言, 以尽早暴露该方法的异常, 之后在调用的时候, 虽然该方法在设计上是不能返回空, 但是还是有可能返回空, 为了健壮性, 需要调用方做非空检查
+**`参考书籍`**
+>1. Java8 in action 
 
 ## Funcational
 
@@ -57,9 +55,41 @@
 > [参考博客: Java 8 中的 Streams API 详解](https://www.ibm.com/developerworks/cn/java/j-lo-java8streamapi/)
 
 1. filter 满足该条件的元素保留下来
-1. map 将一个流中的每个元素通过一种映射得到新的元素组成的流
+1. map 将一个流中的每个元素通过 一种映射 得到新的元素组成的流
 1. collect 将流收集起来
 1. forEach 遍历流
+1. flatMap 使用流时， flatMap方法接受一个函数作为参数，这个函数的返回值是另一个流。这个方法会应用到流中的每一个元素，最终形成一个新的流的流。
+
+## Optional
+- 能够显式的在方法签名上就表明返回值可能为 "空" (下文中的空都指 Optional.empty())
+    - 增强了建模的表达能力 域模型中使用Optional，将允许缺失或者暂无定义的变量值用特殊的形式标记出来
+    - 约束调用方需判断才能使用, 但是这个并不是万能的, 例如集合类型的返回的时候, 就不用 Optional 包住 显得繁琐, 直接返回 new 空集合即可
+
+- 如果Optional约束了返回值, 就在语义上表明该方法的返回值可能为空, 如果这个方法是初始化方法等具有特殊含义的方法, 不能返回空, 那就不能使用Optional
+    - 这样虽然代码安全了, 但是将该方法的语义混淆了.所以 不仅不能用 Optional, 还需在方法中加上 断言 以尽早暴露该方法的异常
+    - 虽然该方法在设计上是不能返回空, 但是还是有可能返回空, 为了健壮性, 还是需要调用方做非空检查
+
+- 常用方法
+    - `of(T value)` 封装对象到Optional内部, 若对象为null会立即抛出 NPE
+    - `ofNullable(T value)` 同上但是允许放入null
+    - `get()` 获取封装内的对象值, 但是若Optional为空 抛出 NoSuchElementException 异常
+    - `orElse(T other)` 当Optional为空时提供默认值
+    - `orElseGet(Supplier<? extends T> other)` 延迟提供默认值, 当为空执行传入的函数得到默认值
+    - `orElseThrow(Supplier<? extends X> exceptionSupplier)` 与 get() 一致,但是可以自定义异常
+    - `ifPresent(Consumer<? super T>)` 当不为空执行传入的函数
+
+**`Tips`**
+1. 注意: Optional 无法序列化, 也就是说不能作为 PO 的字段, 但是可以在get上下功夫, 手动声明 Optional 式的方法
+
+**Optional类和Stream接口的相似之处**
+1. map
+    1. 使用 map 从 Optional 对象中提取和转换值: 可以将 Optional 看成只有一个元素的集合, 像Stream一样的使用 map
+    1. 处理两个Optional对象: `person.flatMap(p -> car.map(c -> findCheapestInsurance(p, c)));` 原始的写法就是要判断两个对象同时存在(person 和 car )才调用find...方法
+1. flatMap
+    1. 流式获取 Optional 约束的属性 `Optional<String> name = a.flatMap(A::getB).flatMap(B::getC).map(C::getName)`
+    - 其中 C是B的成员属性, B是A的成员属性, 且都是 Optional 的, 如果直接使用 map 就会发生 Optional 嵌套, 所以需要 flatMap 
+1. filter 
+    1. persion 存在且满足条件就返回自身否则返回空 `person.filter(o -> "name".equals(o.getName()))`
 
 ## 集合
 _集合的Lambda迭代方式_

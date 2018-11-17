@@ -38,7 +38,7 @@
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -289,8 +289,9 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 #### clone
 - `git clone branchname URL` 克隆远程仓库的指定分支
 - `git clone URL 目录` 克隆下来后更名为指定目录
-- `git clone --depth 1 URL` 只克隆最近一次提交的历史, 能大大减小拉取的大小, 但是如果要用到之前的提交历史就还是要下拉下来的 类似于懒加载
-    - 但是在新建一个远程仓库后, 推送时会报错:`shallow update not allowed` 因为本地库是残缺的
+- `git clone --depth 1 URL` 只克隆最近一次提交的历史, 能大大减小拉取的大小 (Shallow Clone)
+    - 但是如果要用到之前的提交历史就还是要下拉下来的 类似于懒加载
+    - 且在新建一个远程仓库后, 推送时会报错:`shallow update not allowed` 因为本地库是残缺的
     - 所以需要新建一个目录, 把原仓库全拉下来, 再添加远程进行推送, 然后删除该目录, 残缺版的仓库也能正常向新远程推送提交了
 
 > 克隆在指定tag状态的仓库 `git clone URL --branch=name ` 然后 Git会提示 
