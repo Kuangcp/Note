@@ -44,7 +44,7 @@
     1. [实践](#实践)
         1. [经验之谈](#经验之谈)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 设计模式之禅
 ## 软件设计的一些原则
@@ -253,6 +253,8 @@ Meyer氏提出的DBC概念的描述，对于类的一个方法，都有一个前
 
 ***************************************
 ## 设计模式
+> [java design patterns](https://java-design-patterns.com/)
+
 ### 基础
 > [设计模式基础](http://www.cnblogs.com/x-xk/archive/2013/01/21/2864916.html)  
 [参考博客: GoF解释](http://www.baike.com/wiki/GoF)  

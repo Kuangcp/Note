@@ -3,6 +3,8 @@
 1. [Java8](#java8)
     1. [Funcational](#funcational)
     1. [Lambda](#lambda)
+        1. [行为参数化](#行为参数化)
+        1. [Lambda基础](#lambda基础)
         1. [利用Lambda开发DSL框架](#利用lambda开发dsl框架)
     1. [Stream](#stream)
     1. [Optional](#optional)
@@ -29,15 +31,24 @@
 > [参考  Java8函数接口实现回调及Groovy闭包的代码示例](http://www.cnblogs.com/lovesqcc/p/6083759.html)
 > [Function接口 – Java8中java.util.function包下的函数式接口](http://ifeve.com/jjava-util-function-java8/)
 
-- 常用函数接口主要有:
-    1. Consumer (接收单参数无返回值的函数或lambda表达式)， 方法是 void accept(T t);
-    1. BiConsumer (接收双参数无返回值的函数或 lambda表达式)，方法是 void accept(T t, U u) ;
-    1. Function (接收单参数有返回值的函数或lambda表达式)， 方法是 R apply(T t);
-    1. BiFunction (接收双参数有返回值的函数或lambda表达式)，方法是 R apply(T t, U u);
-    1. Predicate （接收单参数返回布尔值的函数或lambda表达式），方法是 boolean test(T t);
-    1. Supplier (无参数返回值的函数或 lambda)， 方法是 T get();
+**`@FunctionalInterface`**
+- An informative annotation type used to indicate that an interface type declaration is intended to be a functional interface as defined by the Java Language Specification.
 
-> 接受原子类型参数的函数接口，这里不一一列举了。可参考 java8 package java.util.function;
+- 这个标注用于表示该接口会设计成一个函数式接口。如果你用@FunctionalInterface定义了一个接口，而它却不是函数式接口的话，编译器将返回一个提示原因的错误。
+
+- 如果使用此批注类型对类型进行批注，则编译器需要生成错误消息，除非：
+    - 类型是接口类型，而不是注释类型，枚举或类。
+    - 带注释的类型满足功能接口的要求。
+- 但是，无论接口声明中是否存在功能接口注释，编译器都会将满足功能接口定义的任何接口视为 FunctionalInterface。
+
+- 函数式接口很有用，抽象方法的签名可以描述Lambda表达式的签名。函数式接口的抽象方法的签名称为函数描述符。
+- 常用函数接口: (详细可参考 java.util.function; 包下的类)
+    1. **Consumer** (接收`单参数无返回值`的函数或lambda表达式)， 方法是 `void accept(T t);`
+    1. **BiConsumer** (接收`双参数无返回值`的函数或 lambda表达式)，方法是 `void accept(T t, U u);`
+    1. **Function** (接收`单参数有返回值`的函数或lambda表达式)， 方法是 `R apply(T t);`
+    1. **BiFunction** (接收`双参数有返回值`的函数或lambda表达式)，方法是 `R apply(T t, U u);`
+    1. **Predicate** （接收`单参数返回布尔值`的函数或lambda表达式），方法是 `boolean test(T t);`
+    1. **Supplier** (无参数返回值的函数或 lambda)， 方法是 `T get();`
 
 - 为什么要使用 Function 以及闭包呢？
     - 在语法上比定义回调接口、创建匿名类更加简洁；
@@ -46,14 +57,143 @@
 *******************************
 
 ## Lambda
+
 > [参考博客: 你真的了解lambda吗？一文让你明白lambda用法与源码分析 ](https://mp.weixin.qq.com/s?__biz=MzAxODcyNjEzNQ==&mid=2247485682&idx=1&sn=f3fb281b49a029b607f9377853a644bf&chksm=9bd0a56aaca72c7c8beebbea8f9471446cb444bd8e1e7d21016e906d1227e8f87770e2f8f31e&mpshare=1&scene=1&srcid=0810geQnLXB2oMjfoAOEJ39L#rd)
 > [参考博客: 级联 lambda 表达式的函数重用与代码简短问题](http://www.techug.com/post/java-lambda.html)
 
 - [ ] 排序 Comparator 
 > [参考博客: Java8：Lambda表达式增强版Comparator和排序](http://www.importnew.com/15259.html)
 
+### 行为参数化
+>1. 行为参数化，就是一个方法接受多个不同的行为作为参数，并在内部使用它们， 完成不同行为的能力。
+>1. 行为参数化可让代码更好地适应不断变化的要求，减轻未来的工作量。
+>1. 传递代码，就是将新行为作为参数传递给方法。但在Java 8之前这实现起来很啰嗦。为接
+>1. 声明许多只用一次的实体类而造成的啰嗦代码，在Java 8之前可以用匿名类来减少。
+>1. Java API包含很多可以用不同行为进行参数化的方法，包括排序、线程和GUI处理。
 
+> 这种模式可以把一个行为（一段代码）封装起来，并通过传递和使用创建的行为, 将方法的行为参数化。前面提到过，这种做法类似于策略设计模式  
+> Java API中的很多方法都可以用不同的行为来参数化。这些方法往往与匿名类一起使用
 
+### Lambda基础
+- 可以把Lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常列表。
+    - `匿名`  我们说匿名，是因为它不像普通的方法那样有一个明确的名称：写得少而想得多！
+    - `函数`  我们说它是函数，是因为Lambda函数不像方法那样属于某个特定的类。但和方法签名的组成是一致的
+    - `传递`  Lambda表达式可以作为参数传递给方法或存储在变量中。
+    - `简洁`  无需像匿名类那样写很多模板代码。
+
+- Lambda基础语法: `(parameters) -> expression` 或者 `(parameters) -> { statements; }`
+
+例如 `() -> void` 是一个参数列表为空 返回值为void的函数, Runnable 的 run 方法
+```java
+    public Callable<String> fetch() {
+        // 返回的方法的方法签名是 () -> String
+        return () -> "Tricky example ;-)";
+    }
+
+    // 方法签名为 () -> void
+    execute(() -> {});
+    public void execute(Runnable r){
+        r.run();
+    }
+```
+
+**`实践`**
+- 资源处理（例如处理文件或数据库）时一个常见的模式就是打开一个资源，做一些处理，然后关闭资源。这个设置和清理阶段总是很类似
+    - 并且会围绕着执行处理的那些重要代码。这就是所谓的环绕执行（execute around） 模式
+```java
+    // 简单的从文件读取一行
+    public static String processFile() throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
+            return br.readLine();
+        }
+    }
+
+    // 如果将行为参数化, 就能通用的完成需求
+    @FunctionalInterface
+    public interface BufferedReaderProcessor {
+    String process(BufferedReader b) throws IOException;
+    }
+    public static String processFile(BufferedReaderProcessor p) throws IOException {}
+    // 处理一行
+    String twoLines =processFile((BufferedReader br) -> br.readLine());
+    // 处理两行
+    String result = processFile((BufferedReader br) -> br.readLine() + br.readLine());
+```
+
+### 原始类型特化 
+> Primitive Specializations
+
+> Java类型要么是引用类型（比如Byte、 Integer、 Object、 List） ，要么是原始类型（比如int、 double、 byte、 char）。
+但是泛型（比如Consumer<T>中的T）只能绑定到引用类型。这是由泛型内部的实现方式造成的。
+因此，在Java里有一个将原始类型转换为对应的引用类型的机制。这个机制叫作装箱（boxing） 。
+相反的操作，也就是将引用类型转换为对应的原始类型，叫作拆箱（unboxing）。 Java还有一个自动装箱机制来帮助程序员执行这一任务：装箱和拆箱操作是自动完成的。但这在性能方面是要付出代价的。装箱后的值本质上就是把原始类型包裹起来，并保存在堆里。因此，装箱后的值需要更多的内存，
+并需要额外的内存搜索来获取被包裹的原始值。Java 8为我们前面所说的函数式接口带来了一个专门的版本，以便在输入和输出都是原始类型时避免自动装箱的操作。
+比如，在下面的代码中，使用IntPredicate就避免了对值1000进行装箱操作，但要是用Predicate<Integer>就会把参数1000装箱到一个Integer对象中 -- Java8 in action
+
+一般来说，针对专门的输入参数类型的函数式接口的名称都要加上对应的原始类型前缀，比如DoublePredicate、 IntConsumer、 LongBinaryOperator、 IntFunction等。 
+Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 IntToDoubleFunction等。
+请记得这只是一个起点。如果有需要，你可以自己设计一个。请记住， (T,U) -> R的表达方式展示了应当如何思考一个函数描述符。
+表的左侧代表了参数类型。这里它代表一个函数，具有两个参数，分别为泛型T和U，返回类型为R。
+
+| 函数式接口 | 函数描述符 | 原始类型特化 |
+|:----|:----|:----|
+| Predicate< T > | T->boolean | IntPredicate<br/>LongPredicate<br/> DoublePredicate|
+| Consumer< T > | T->void | IntConsumer<br/>LongConsumer<br/> DoubleConsumer |
+| Function<T,R> | T->R | IntFunction< R > <br/> IntToDoubleFunction <br/> IntToLongFunction <br/> LongFunction< R > <br/> LongToDoubleFunction <br/> LongToIntFunction <br/> DoubleFunction< R > <br/>ToIntFunction< T ><br/>ToDoubleFunction< T ><br/>ToLongFunction< T >|
+| Supplier< T > | ()->T | BooleanSupplier<br/>IntSupplier<br/> LongSupplier<br/> DoubleSupplier|
+| UnaryOperator< T > | T->T |IntUnaryOperator<br/>LongUnaryOperator<br/>DoubleUnaryOperator|
+| BinaryOperator< T > | (T,T)-> T | IntBinaryOperator<br/>LongBinaryOperator<br/>DoubleBinaryOperator|
+| BiPredicate<L,R> | (L,R)->boolean | |
+| BiConsumer<T,U> | (T,U)->void | ObjIntConsumer< T ><br/>ObjLongConsumer< T ><br/>ObjDoubleConsumer< T >|
+| BiFunction<T,U,R> | (T,U)->R | ToIntBiFunction<T,U><br/>ToLongBiFunction<T,U><br/>ToDoubleBiFunction<T,U>|
+
+**`Lambdas及函数式接口的例子`**
+| 使用案例 | Lambda例子 | 对应的函数式接口 |
+|:----|:----|:----|
+| 布尔表达式 | (List<String> list) -> list.isEmpty() | Predicate<List< String >>|
+| 创建对象 |() -> new Apple(10) |Supplier< Apple >
+| 消费一个对象 | (Apple a) ->System.out.println(a.getWeight())|Consumer< Apple >|
+| 从一个对象中 选择/提取 | (String s) -> s.length() | Function<String, Integer> 或 ToIntFunction< String >
+| 合并两个值 | (int a, int b) -> a * b |  IntBinaryOperator|
+| 比较两个对象 | (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()) | Comparator< Apple > 或 BiFunction<Apple, Apple, Integer> 或 ToIntBiFunction<Apple, Apple>
+
+- 请注意，任何函数式接口都不允许抛出受检异常（checked exception）。如果你需要Lambda 表达式来抛出异常，有两种办法：
+    - 定义一个自己的函数式接口，并声明受检异常，
+    - 或者把Lambda 包在一个try/catch块中。
+- 比如，在3.3节我们介绍了一个新的函数式接口BufferedReaderProcessor，它显式声明了一个IOException：
+    ```java
+        @FunctionalInterface
+        public interface BufferedReaderProcessor {
+            String process(BufferedReader b) throws IOException;
+        }
+        BufferedReaderProcessor p = (BufferedReader br) -> br.readLine();
+    ```
+- 但是你可能是在使用一个接受函数式接口的API，比如Function<T, R>，没有办法自己创建一个。这种情况下， 你可以显式捕捉受检异常：
+    ```java
+        Function<BufferedReader, String> f = (BufferedReader b) -> {
+            try {
+                return b.readLine();
+            } catch(IOException e) {
+                throw new RuntimeException(e);
+            }
+        };
+    ```
+
+### 类型检查、类型推断以及限制
+当我们第一次提到Lambda表达式时，说它可以为函数式接口生成一个实例。然而， Lambda 表达式本身并不包含它在实现哪个函数式接口的信息。
+
+#### 类型检查
+> Lambda的类型是从使用Lambda的上下文推断出来的。上下文（比如，接受它传递的方法的参数，或接受它的值的局部变量）中Lambda表达式需要的类型称为目标类型。
+> 请注意，如果Lambda表达式抛出一个异常，那么抽象方法所声明的throws语句也必须与之匹配。
+
+#### 同样的Lambda 不同的函数式接口
+> 有了目标类型的概念，同一个Lambda表达式就可以与不同的函数式接口联系起来，只要它们的抽象方法签名能够兼容。
+
+- 比如，前面提到的Callable和PrivilegedAction，这两个接口 都代表着什么也不接受且返回一个泛型T的函数。 因此，下面两个赋值是有效的：
+    ```java
+        Callable<Integer> c = () -> 42;
+        PrivilegedAction<Integer> p = () -> 42;
+    ```
 
 ### 利用Lambda开发DSL框架
 - [ ] 可以将mythpoi改造一下
