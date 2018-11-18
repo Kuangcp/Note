@@ -5,6 +5,17 @@
     1. [Lambda](#lambda)
         1. [行为参数化](#行为参数化)
         1. [Lambda基础](#lambda基础)
+        1. [原始类型特化](#原始类型特化)
+        1. [类型检查、类型推断以及限制](#类型检查、类型推断以及限制)
+            1. [类型检查](#类型检查)
+            1. [同样的Lambda 不同的函数式接口](#同样的lambda-不同的函数式接口)
+            1. [类型推断](#类型推断)
+            1. [使用局部变量](#使用局部变量)
+        1. [方法引用](#方法引用)
+        1. [复合 Lambda 表达式](#复合-lambda-表达式)
+            1. [比较器复合](#比较器复合)
+            1. [谓词复合](#谓词复合)
+            1. [函数复合](#函数复合)
         1. [利用Lambda开发DSL框架](#利用lambda开发dsl框架)
     1. [Stream](#stream)
     1. [Optional](#optional)
@@ -13,7 +24,7 @@
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-`目录 end` |_2018-11-18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-19_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)
@@ -48,7 +59,8 @@
     1. **Function** (接收`单参数有返回值`的函数或lambda表达式)， 方法是 `R apply(T t);`
     1. **BiFunction** (接收`双参数有返回值`的函数或lambda表达式)，方法是 `R apply(T t, U u);`
     1. **Predicate** （接收`单参数返回布尔值`的函数或lambda表达式），方法是 `boolean test(T t);`
-    1. **Supplier** (无参数返回值的函数或 lambda)， 方法是 `T get();`
+    1. **BiPredicate** （接收`双参数返回布尔值`的函数或lambda表达式），方法是 `boolean test(T t, U u);`
+    1. **Supplier** (无参数但具有返回值的函数或 lambda表达式)， 方法是 `T get();`
 
 - 为什么要使用 Function 以及闭包呢？
     - 在语法上比定义回调接口、创建匿名类更加简洁；
@@ -58,10 +70,23 @@
 
 ## Lambda
 
+1. Lambda表达式可以理解为一种匿名函数：它没有名称，但有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常的列表。
+1. Lambda表达式让你可以简洁地传递代码。
+1. 函数式接口就是仅仅声明了一个抽象方法的接口。
+1. 只有在接受函数式接口的地方才可以使用Lambda表达式。
+1. Lambda表达式允许你直接内联，为函数式接口的抽象方法提供实现，并且将整个表达式作为函数式接口的一个实例。
+1. Java 8自带一些常用的函数式接口，放在java.util.function包里，包括`Predicate<T>、 Function<T,R>、 Supplier<T>、 Consumer<T>和BinaryOperator<T>`
+1. 为了避免装箱操作，对`Predicate<T>`和`Function<T, R>`等通用函数式接口的原始类型特化： IntPredicate、 IntToLongFunction等。
+1. 环绕执行模式（即在方法所必需的代码中间，你需要执行点儿什么操作，比如资源分配和清理）可以配合Lambda提高灵活性和可重用性。
+1. Lambda表达式所需要代表的类型称为目标类型。
+1. 方法引用让你重复使用现有的方法实现并直接传递它们。
+1. Comparator、 Predicate和Function等函数式接口都有几个可以用来结合Lambda表达式的默认方法。
+
 > [参考博客: 你真的了解lambda吗？一文让你明白lambda用法与源码分析 ](https://mp.weixin.qq.com/s?__biz=MzAxODcyNjEzNQ==&mid=2247485682&idx=1&sn=f3fb281b49a029b607f9377853a644bf&chksm=9bd0a56aaca72c7c8beebbea8f9471446cb444bd8e1e7d21016e906d1227e8f87770e2f8f31e&mpshare=1&scene=1&srcid=0810geQnLXB2oMjfoAOEJ39L#rd)
 > [参考博客: 级联 lambda 表达式的函数重用与代码简短问题](http://www.techug.com/post/java-lambda.html)
 
-- [ ] 排序 Comparator 
+- [ ] 学习常见排序 Comparator int float double time string...
+
 > [参考博客: Java8：Lambda表达式增强版Comparator和排序](http://www.importnew.com/15259.html)
 
 ### 行为参数化
@@ -189,12 +214,168 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 #### 同样的Lambda 不同的函数式接口
 > 有了目标类型的概念，同一个Lambda表达式就可以与不同的函数式接口联系起来，只要它们的抽象方法签名能够兼容。
 
-- 比如，前面提到的Callable和PrivilegedAction，这两个接口 都代表着什么也不接受且返回一个泛型T的函数。 因此，下面两个赋值是有效的：
-    ```java
-        Callable<Integer> c = () -> 42;
-        PrivilegedAction<Integer> p = () -> 42;
-    ```
+比如，前面提到的Callable和PrivilegedAction，这两个接口 都代表着什么也不接受且返回一个泛型T的函数。 因此，下面两个赋值是有效的：
+```java
+    Callable<Integer> c = () -> 42;
+    PrivilegedAction<Integer> p = () -> 42;
+```
 
+**`特殊的void兼容规则`**
+如果一个Lambda的主体是一个语句表达式， 它就和一个返回void的函数描述符兼容（当然需要参数列表也兼容）。
+例如，以下两行都是合法的，尽管List的add方法返回了一个 boolean，而不是Consumer上下文（T -> void） 所要求的void：
+```java
+    // Predicate返回了一个boolean
+    Predicate<String> p = s -> list.add(s);
+    // Consumer返回了一个void
+    Consumer<String> b = s -> list.add(s);
+```
+
+1. `Object o = () -> {System.out.println("Tricky example"); };` 不能通过编译
+    - Lambda表达式的上下文是Object（目标类型）。但Object不是一个函数式接口。
+    - 为了解决这个问题，你可以把目标类型改成Runnable，它的函数描述符是() -> void
+
+既可以利用目标类型来检查一个Lambda是否可以用于某个特定的上下文. 也可以用来做一些略有不同的事：推断Lambda参数的类型。
+
+#### 类型推断
+> 你还可以进一步简化你的代码。 Java编译器会从上下文（目标类型）推断出用什么函数式接口来配合Lambda表达式，
+> 这意味着它也可以推断出适合Lambda的签名，因为函数描述符可以通过目标类型来得到。  
+> 这样做的好处在于，编译器可以了解Lambda表达式的参数类型，这样就可以在Lambda语法中省去标注参数类型。
+
+```java
+    // 无类型推断
+    Comparator<Apple> c = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
+    // 有类型推断
+    Comparator<Apple> c = (a1, a2) -> a1.getWeight().compareTo(a2.getWeight());
+```
+
+#### 使用局部变量
+我们迄今为止所介绍的所有Lambda表达式都只用到了其主体里面的参数。但Lambda表达式也允许使用自由变量（不是参数，而是在外层作用域中定义的变量），
+就像匿名类一样。 它们被称作捕获Lambda。例如，下面的Lambda捕获了portNumber变量：
+```java
+    int portNumber = 1337;
+    Runnable r = () -> System.out.println(portNumber);
+```
+尽管如此，还有一点点小麻烦：关于能对这些变量做什么有一些限制。 Lambda可以没有限制地捕获（也就是在其主体中引用）实例变量和静态变量。
+但局部变量必须显式声明为final，或事实上是final。
+换句话说， Lambda表达式只能捕获指派给它们的局部变量一次。（注：捕获实例变量可以被看作捕获最终局部变量this。）
+
+例如，下面的代码无法编译，因为portNumber 变量被赋值两次：
+```java
+    int portNumber = 1337;
+    Runnable r = () -> System.out.println(portNumber);
+    portNumber = 31337;
+```
+**`对局部变量的限制`**
+- 你可能会问自己，为什么局部变量有这些限制。
+    1. 第一，实例变量和局部变量背后的实现有一个关键不同。实例变量都存储在堆中，而局部变量则保存在栈上。
+        - 如果Lambda可以直接访问局部变量，而且Lambda是在一个线程中使用的，则使用Lambda的线程，可能会在分配该变量的线程将这个变量收回之后，去访问该变量。
+        - 因此， Java在访问自由局部变量时，实际上是在访问它的副本，而不是访问原始变量。如果局部变量仅仅赋值一次那就没有什么区别了——因此就有了这个限制。
+    1. 第二，这一限制不鼓励你使用改变外部变量的典型命令式编程模式（这种模式会阻碍很容易做到的并行处理）。
+
+**`闭包`**
+
+你可能已经听说过闭包（closure，不要和Clojure编程语言混淆）这个词，你可能会想Lambda是否满足闭包的定义。
+用科学的说法来说，闭包就是一个函数的实例，且它可以无限制地访问那个函数的非本地变量。例如，闭包可以作为参数传递给另一个函数。
+它也可以访问和修改其作用域之外的变量。现在， Java 8的Lambda和匿名类可以做类似于闭包的事情：
+它们可以作为参数传递给方法，并且可以访问其作用域之外的变量。但有一个限制：它们不能修改定义Lambda的方法的局部变量的内容。
+这些变量必须是隐式最终的。可以认为Lambda是对值封闭，而不是对变量封闭。如前所述，这种限制存在的原因在于局部变量保存在栈上，
+并且隐式表示它们仅限于其所在线程。如果允许捕获可改变的局部变量，就会引发造成线程不安全的新的可能性，
+而这是我们不想看到的（实例变量可以，因为它们保存在堆中，而堆是在线程之间共享的） 。
+
+### 方法引用
+> 通过 :: 操作符 简化代码
+
+| Lambda | 方法引用 |
+|:----|:----|
+| (Apple a) -> a.getWeight() | Apple::getWeight
+| () -> Thread.currentThread().dumpStack() | Thread.currentThread()::dumpStack
+| (str, i) -> str.substring(i) | String::substring
+| (String s) -> System.out.println(s) | System.out::println
+
+- 构建方法引用
+    1. 指向静态方法的方法引用（例如Integer的parseInt方法，写作Integer::parseInt）
+    1. 指向任意类型实例方法的方法引用 （ 例 如 String 的 length 方 法 ， 写作String::length）。
+    1. 指向现有对象的实例方法的方法引用
+        - 假设你有一个局部变量expensiveTransaction 用于存放Transaction类型的对象，它支持实例方法getValue，
+        - 那么你就可以写expensiveTransaction::getValue
+
+**`构造函数的引用`**
+1. 空构造函数 等价于 `() -> T` 
+    - 例如 Supplier<Apple> c1 = Apple::new;
+    - Apple a1 = c1.get(); 使用接口的get方法实例化Apple对象
+
+不将构造函数实例化却能够引用它，这个功能有一些有趣的应用。例如，你可以使用Map来将构造函数映射到字符串值。
+你可以创建一个giveMeFruit方法，给它一个String和一个Integer，它就可以创建出不同重量的各种水果：
+```java
+    static Map<String, Function<Integer, Fruit>> map = new HashMap<>();
+    static {
+        map.put("apple", Apple::new);
+        map.put("orange", Orange::new);
+    // etc...
+    }
+    public static Fruit giveMeFruit(String fruit, Integer weight){
+        return map.get(fruit.toLowerCase()).apply(weight);
+    }
+```
+
+> 利用JDK提供的函数式接口 可以实现将一个,两个参数的构造函数转变为构造函数引用, 那么可以自定义实现三个参数的接口
+```java
+    public interface TriFunction<T, U, V, R>{
+        R apply(T t, U u, V v);
+    }
+    TriFunction<Integer, Integer, Integer, Color> colorFactory = Color::new;
+```
+
+### 复合 Lambda 表达式
+在实践中，这意味着你可以把多个简单的Lambda复合成复杂的表达式。比如，你可以让两个谓词之间做一个or操作，组合成一个更大的谓词。
+而且，你还可以让一个函数的结果成为另一个函数的输入。
+窍门在于，我们即将介绍的方法都是**默认方法**，也就是说它们不是抽象方法。
+
+#### 比较器复合
+1. 单一属性比较 `Comparator<Apple> c = Comparator.comparing(Apple::getWeight);`
+    - 顺序(小到大) 逆序则再调用下 reversed()
+1. 按重量排序, 重量一致则再按国家排序 `inventory.sort(comparing(Apple::getWeight).thenComparing(Apple::getCountry));`
+
+#### 谓词复合
+> 谓词接口包括三个方法： negate、 and和or，让你可以重用已有的Predicate来创建更复杂的谓词。  
+> 请注意， and和or方法是按照在表达式链中的位置，从左向右确定优先级的。因此， a.or(b).and(c)可以看作(a || b) && c。
+
+1. 不红 `Predicate<Apple> notRedApple = redApple.negate();`
+1. 红且重`Predicate<Apple> redAndHeavyApple = redApple.and(a -> a.getWeight() > 150);`
+1. 红且重或者是绿的 Predicate<Apple> redAndHeavyAppleOrGreen = redApple.and(a -> a.getWeight() > 150).or(a -> "green".equals(a.getColor()));
+
+#### 函数复合
+可以把Function接口所代表的Lambda表达式复合起来。 Function接口为此配了andThen和compose两个默认方法，它们都会返回Function的一个实例。
+
+```java
+    Function<Integer, Integer> f = x -> x + 1;
+    Function<Integer, Integer> g = x -> x * 2;
+    Function<Integer, Integer> h = f.andThen(g); // g(f(x))
+    int result = h.apply(1);
+
+    Function<Integer, Integer> f = x -> x + 1;
+    Function<Integer, Integer> g = x -> x * 2;
+    Function<Integer, Integer> h = f.compose(g); // f(g(x))
+    int result = h.apply(1);
+```
+
+> 使用场景 用String表示的一封信做文本转换：现在你可以通过复合这些工具方法来创建各种转型流水线了  
+> 比如创建一个流水线：先加上抬头，然后进行拼写检查，最后加上一个落款，
+```java
+    Function<String, String> addHeader = Letter::addHeader;
+    Function<String, String> transformationPipeline = addHeader
+        .andThen(Letter::checkSpelling)
+        .andThen(Letter::addFooter);
+```
+
+和数学对比
+例如 根据给定的某个函数 以及上下限, 求积分: 定义函数 integrate `integrate(f, 3, 7)`
+
+```java
+    public double integrate(DoubleFunction<Double> f, double a, double b) {
+        return (f.apply(a) + f.apply(b)) * (b-a) / 2.0;
+    }
+```
 ### 利用Lambda开发DSL框架
 - [ ] 可以将mythpoi改造一下
 
