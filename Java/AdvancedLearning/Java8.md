@@ -301,8 +301,8 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 
 **`构造函数的引用`**
 1. 空构造函数 等价于 `() -> T` 
-    - 例如 Supplier<Apple> c1 = Apple::new;
-    - Apple a1 = c1.get(); 使用接口的get方法实例化Apple对象
+    - 例如 `Supplier<Apple> c1 = Apple::new;`
+    - 之后 `Apple a1 = c1.get();` 调用接口的get方法实例化Apple对象
 
 不将构造函数实例化却能够引用它，这个功能有一些有趣的应用。例如，你可以使用Map来将构造函数映射到字符串值。
 你可以创建一个giveMeFruit方法，给它一个String和一个Integer，它就可以创建出不同重量的各种水果：
@@ -332,7 +332,7 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 窍门在于，我们即将介绍的方法都是**默认方法**，也就是说它们不是抽象方法。
 
 #### 比较器复合
-1. 单一属性比较 `Comparator<Apple> c = Comparator.comparing(Apple::getWeight);`
+1. 单一属性比较 `Comparator<Apple> c = Comparator.comparing(Apple::getWeight);` (实用的**Comparator.comparing**方法)
     - 顺序(小到大) 逆序则再调用下 reversed()
 1. 按重量排序, 重量一致则再按国家排序 `inventory.sort(comparing(Apple::getWeight).thenComparing(Apple::getCountry));`
 
@@ -342,7 +342,7 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 
 1. 不红 `Predicate<Apple> notRedApple = redApple.negate();`
 1. 红且重`Predicate<Apple> redAndHeavyApple = redApple.and(a -> a.getWeight() > 150);`
-1. 红且重或者是绿的 Predicate<Apple> redAndHeavyAppleOrGreen = redApple.and(a -> a.getWeight() > 150).or(a -> "green".equals(a.getColor()));
+1. 红且重或者是绿的 `Predicate<Apple> redAndHeavyAppleOrGreen = redApple.and(a -> a.getWeight() > 150).or(a -> "green".equals(a.getColor()));`
 
 #### 函数复合
 可以把Function接口所代表的Lambda表达式复合起来。 Function接口为此配了andThen和compose两个默认方法，它们都会返回Function的一个实例。
@@ -368,7 +368,7 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
         .andThen(Letter::addFooter);
 ```
 
-和数学对比
+**`和数学对比`**
 例如 根据给定的某个函数 以及上下限, 求积分: 定义函数 integrate `integrate(f, 3, 7)`
 
 ```java

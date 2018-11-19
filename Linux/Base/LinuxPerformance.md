@@ -158,7 +158,6 @@
 - ![p163](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p163.jpg)
 - ![p164](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p164.jpg)
 
-
 ## 进程管理
 > 按程序名字找到id `ps -ef | grep "$NAME" | grep -v "grep" | awk '{print $2}'`
 
@@ -225,7 +224,7 @@
     - 可以试试两个多个Python脚本同时占用, 那么要将进程全部杀掉,才有用
 
 ### fuser
-> 和lsof功能差不多,但是这个是符合posix标准的命令 POSIX:可移植操作系统接口
+> 和lsof功能差不多,但是这个是符合posix标准的命令 (POSIX:可移植操作系统接口)
 
 - `fuser -v /home/kuang/sdk` 列出正在打开这个目录的进程(和lsof一样不关注子文件夹)
 - 输出信息 详解:
@@ -350,9 +349,7 @@
 ### killall
 > 通过名字来发送信号,其他和kill是一致的
 
-- 杀掉指定名字 不需要sudo `killall -9 name`
-
-- [ ] 确定使用注意事项, 避免误杀
+- 杀掉指定名字 不需要sudo `killall -9 name` 要十分谨慎的使用, 避免误杀进程
 
 ### 作业控制
 > 在Linux中, 作业是由一个或多个进程构成的, 作业控制就是对作业的行为进行控制, 前后台的切换, 终止等操作
@@ -509,5 +506,4 @@
 |shutdown| 可用于关机，重启，支持定时和通知|
 |reboot|重启系统|
 |halt|停止系统|
-
 

@@ -27,9 +27,8 @@
         1. [关闭ssh回话不能运行](#关闭ssh回话不能运行)
         1. [关闭ssh回话仍能运行](#关闭ssh回话仍能运行)
     1. [修改主机名](#修改主机名)
-    1. [字体渲染](#字体渲染)
 
-`目录 end` |_2018-11-02_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-19_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -337,8 +336,4 @@ _系统运行级别_
 - `sudo hostname linux` 重启终端即可看到修改
 - 但是重启电脑会恢复原有名字修改如下文件永久： `sudo gedit /etc/hostname` 也许需要更改`/etc/hosts`
 - 立即生效,也要重新登录 `hostname -F /etc/hostname `
-
-## 字体渲染
-> [Debian8安装Infinality改善字体渲染，安装Ubuntu字体](https://www.linuxdashen.com/debian8%E5%AE%89%E8%A3%85infinality%E6%94%B9%E5%96%84%E5%AD%97%E4%BD%93%E6%B8%B2%E6%9F%93%EF%BC%8C%E5%AE%89%E8%A3%85ubuntu%E5%AD%97%E4%BD%93)
-> [一条命令搞定Linux字体渲染](https://www.lulinux.com/archives/278)
 
