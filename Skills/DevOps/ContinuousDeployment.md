@@ -11,3 +11,7 @@
 
 # Continuous Deployment
 
+
+# BUG 跟踪
+- [bugzilla](https://bugzilla.readthedocs.io/en/latest/installing/quick-start.html)
+- redmine 

@@ -53,24 +53,31 @@
 > sudo 其实是软件 早该意识到的，所有的命令都是可执行文件  
 > [笔记: 发行版之别](/Linux/Release_Experience.md)
 
-### 窗口管理器
-- [awesome window manager](https://awesomewm.org/) `平铺式的`
-
 ### 文件系统对比
 > [参考博客: 如何选择文件系统：EXT4、Btrfs 和 XFS ](https://linux.cn/article-7083-1.html)
 
 目前 Linux 大多采用 ext3 
 
 ### 桌面环境对比
+> [Arch Doc: desktop environment](https://wiki.archlinux.org/index.php/Desktop_environment_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 > [参考: Linux下15款桌面环境](https://www.lulinux.com/archives/444)
 
-- gnome 占用资源中等，个人对该桌面不感冒
-- xfce 占用资源少，操作类似于xp
-- kde 功能强大，占用资源中等
+1. **gnome** 占用资源中等，个人对该桌面不感冒
+1. **xfce** 占用资源少，操作类似于xp
+1. **kde** 功能强大，占用资源中等
+    - [Arch Doc: KDE](https://wiki.archlinux.org/index.php/KDE)
     - [知乎 KDE如何配置得漂亮大气？](https://www.zhihu.com/question/54147372)
-- dde deepin设计的桌面环境，小bug略多，但是美观操作方便, 但是扩展性不好
+1. **dde** deepin设计的桌面环境，小bug略多，但是美观操作方便
 
 - [dde kde gnome](https://bbs.deepin.org/forum.php?mod=viewthread&tid=38498)
+
+> [X窗口系统的协议和架构](http://www.cnblogs.com/noble/p/4144098.html)
+> [Arch Doc: Xorg](https://wiki.archlinux.org/index.php/Xorg_(简体中文))
+
+### 窗口管理器对比
+> [Arch Doc: window manager](https://wiki.archlinux.org/index.php/Window_manager_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+
+- [awesome window manager](https://awesomewm.org/) `平铺式的`
 
 ***************************
 ### 文件管理器对比
@@ -87,7 +94,7 @@
 
 *******************************
 ### 终端模拟器对比
-> [详细](/Skills/Soft/Terminal.md)
+> [详细](/Linux/Tool/Terminal.md)
 
 **************************************
 ### 用户管理
@@ -189,7 +196,7 @@
     - `00 10 * * * root /usr/sbin/ntpdate -u cn.pool.ntp.org > /dev/null 2>&1; /sbin/hwclock -w `
 
 ### 服务管理
-> 采用 systemd 方式进行管理
+> 采用 systemd 方式进行管理 [Arch Doc: systemd](https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
 - systemctl start/stop/restart/reload/edit ... 详情见 man systemctl
 
