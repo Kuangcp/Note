@@ -5,7 +5,7 @@
 
 [![目录](https://img.shields.io/badge/note-Catalog-brightgreen.svg)](./SUMMARY.md) 
 [![目录](https://img.shields.io/badge/wiki-Note-brightgreen.svg)](https://gitee.com/gin9/Notes/wikis/pages) 
-[![JavaSE](https://img.shields.io/badge/note-JavaSE-blue.svg)](./Java/JavaSE.md) [![CSDN](https://img.shields.io/badge/blog-CSDN-blue.svg)](http://blog.csdn.net/kcp606)
+[![JavaSE](https://img.shields.io/badge/note-JavaSE-blue.svg)](./Java/) [![CSDN](https://img.shields.io/badge/blog-CSDN-blue.svg)](http://blog.csdn.net/kcp606)
 
 </div>
 
