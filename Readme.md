@@ -4,7 +4,7 @@
 
 
 [![目录](https://img.shields.io/badge/note-Catalog-brightgreen.svg)](./SUMMARY.md) 
-[![目录](https://img.shields.io/badge/wiki-Note-brightgreen.svg)](https://gitee.com/gin9/Notes/wikis/pages) 
+[![目录](https://img.shields.io/badge/wiki-Note-brightgreen.svg)](https://gitee.com/gin9/Memo/wikis/pages) 
 [![JavaSE](https://img.shields.io/badge/note-JavaSE-blue.svg)](./Java/) [![CSDN](https://img.shields.io/badge/blog-CSDN-blue.svg)](http://blog.csdn.net/kcp606)
 
 </div>
@@ -44,6 +44,8 @@
 > 如果你觉得自己是周围人中活的最不容易的, 相信我, 那一定是错觉.  
 
 > 掩盖复杂性并不能让事情变得简单  
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=29717271&auto=1&height=66"></iframe>
 
 ************************************
 ## 其他笔记仓库
