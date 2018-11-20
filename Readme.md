@@ -45,8 +45,6 @@
 
 > 掩盖复杂性并不能让事情变得简单  
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=29717271&auto=1&height=66"></iframe>
-
 ************************************
 ## 其他笔记仓库
 - [笔记](https://github.com/dragonhht/Notes)

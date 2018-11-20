@@ -3,7 +3,7 @@
 * [ Introduction ](README.md)
 
 * [ Platform ](./Platform.md)
-* [ Readme_kuang ](./Readme_kuang.md)
+* [ Readme_back ](./Readme_back.md)
 * [ Repository ](./Repository.md)
 * [ SUMMARY ](./SUMMARY.md)
 * [ Website ](./Website.md)
@@ -142,7 +142,6 @@
         * [ Tomcat ](/Java/Tool/Tomcat.md)
     * [ AlibabaJavaStandard ](/Java/AlibabaJavaStandard.md)
     * [ EE ](/Java/EE.md)
-    * [ JavaSE ](/Java/JavaSE.md)
     * [ LittleKnowledgePoint ](/Java/LittleKnowledgePoint.md)
     * [ Log ](/Java/Log.md)
     * [ MIS ](/Java/MIS.md)
