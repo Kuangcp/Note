@@ -101,7 +101,7 @@ func main() {
 ## 基本开发环境搭建
 > [Github:Golang](https://github.com/golang)
 
-入门时使用VSCode是比较方便的, VSCode 会推荐我们安装如下工具
+入门时使用 VSCode 是比较方便的, VSCode 会推荐我们安装如下工具
 1. tools _工具集_
     1. guru `golang.org/x/tools/cmd/guru`
     1. gorename `golang.org/x/tools/cmd/gorename`
@@ -110,23 +110,34 @@ func main() {
 1. go-outline `github.com/ramya-rao-a/go-outline`
 1. go-symbols `github.com/acroca/go-symbols`
 1. goreturns `github.com/sqs/goreturns`
+1. dep `github.com/golang/dep`
 
-- [ ] godep 同样的方式
+由于 golang.org 用的是Google的服务器, 所以..., 这几个工具不能直接安装  guru gorename imports(goreturns要用到) lint golint 
+但是本质上都是获取源码而已, 所以可以从github获取
 
-- 安装完后就会在GOPATH中能找到这些工具对应的命令了, 由于 golang.org 被墙 
-    - 所以 只有这几个工具不能直接 go get : guru gorename imports(goreturns要用到) lint golint 
+**汇总一下命令**
+```sh
+    cd $GOPATH
+    mkdir -p src/golang.org/x/tools
+    git clone --deepth 1 https://github.com/golang/tools src/golang.org/x/tools
 
-> https://github.com/golang/tools 是 tools 的Github地址,  
-> https://github.com/golang/lint 是 lint 和 golint 的Github地址, 
+    mkdir -p src/golang.org/x/lint
+    git clone --deepth 1 https://github.com/golang/lint  src/golang.org/x/lint
 
+    mkdir -p src/github.com/golang/dep
+    git clone --deepth 1 https://github.com/golang/dep src/github.com/golang/dep
 
-1. `mkdir -p src/golang.org/x/tools`
-1. `mkdir -p src/golang.org/x/lint`
-1. 将 https://github.com/golang/tools clone所有内容 放到 src/golang.org/x/tools 下
-1. 将 https://github.com/golang/lint  clone所有内容 放到 src/golang.org/x/lint 下
-1. 此时再执行 go get 那五个工具即可全部安装成功
+    go get golang.org/x/tools/cmd/guru 
+    go get golang.org/x/tools/cmd/gorename 
+    go get golang.org/x/lint
+    go get golang.org/x/lint/golint
+    go get github.com/ramya-rao-a/go-outline
+    go get github.com/acroca/go-symbols
+    go get github.com/sqs/goreturns
+    go get github.com/golang/dep
+```
 
-问题又来了, Github 由于飘忽不定的被墙, 网速特别慢, 就可以利用码云来加速下载
+> 可以利用码云来加速下载
 1. lint https://gitee.com/gin9/golang-lint.git
 1. tools https://gitee.com/gin9/golang-tools.git 
 
