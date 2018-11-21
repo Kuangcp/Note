@@ -22,13 +22,16 @@
             1. [只能遍历一次](#只能遍历一次)
             1. [外部迭代和内部迭代](#外部迭代和内部迭代)
         1. [Stream操作](#stream操作)
+            1. [中间操作](#中间操作)
+            1. [终端操作](#终端操作)
+            1. [使用Stream](#使用stream)
     1. [Optional](#optional)
     1. [集合](#集合)
     1. [时间处理](#时间处理)
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-`目录 end` |_2018-11-19_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-21_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)
@@ -421,20 +424,48 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 - 使用Collection接口需要用户去做迭代（比如用for-each），这称为外部迭代。  
 - 相反，Streams库使用内部迭代——它帮你把迭代做了，还把得到的流值存在了某个地方，你只要给出一个函数声明迭代中执行的操作即可。
 
-- [ ] complete
 - 外部迭代
+    - 显式的迭代集合, 命令式的执行操作, 
+- 内部迭代
+    - 将迭代的细节隐藏起来, 方便优化
 
 ### Stream操作
 
+#### 中间操作
+| 操作 | 返回类型 | 操作参数 | 函数操作符 |
+|:----|:----|:----|:----|
+| filter | Stream<T> | Predicate<T> | T -> boolean |
+| map | Stream<R> |  | Function<T, R> | T -> R |
+| limit | Stream<T> |  |
+| sorted | Stream<T> | Comparator<T> | (T, T) -> int | 
+| distinct | Stream<T> |  |  |
+
+诸如 filter 或 sorted 等中间操作会返回另一个流。这让多个操作可以连接起来形成一个查询。
+重要的是，除非流水线上触发一个终端操作，否则中间操作不会执行任何处理
+因为中间操作一般都可以合并起来，在终端操作时一次性全部处理 (循环合并)
+
 1. filter 满足该条件的元素保留下来
 1. map 将一个流中的每个元素通过 一种映射 得到新的元素组成的流
-1. collect 将流收集起来
-1. forEach 遍历流
 1. flatMap 使用流时， flatMap方法接受一个函数作为参数，这个函数的返回值是另一个流。这个方法会应用到流中的每一个元素，最终形成一个新的流的流。
+ 
+#### 终端操作
 
+| 操作 | 目的 |
+|:----|:----|
+| forEach | 消费流中的每个元素并对其应用 Lambda。这一操作返回 void  |
+| count | 返回流中元素的个数。这一操作返回 long |
+| collect | 把流归约成一个集合，比如List、Map甚至是Integer |
+
+#### 使用Stream
+- 流的使用一般包括三件事：
+    - 一个数据源（如集合）来执行一个查询；
+    - 一个中间操作链，形成一条流的流水线；
+    - 一个终端操作，执行流水线，并能生成结果。
+
+流的流水线背后的理念类似于构建器模式
 
 因为filter、sorted、map 和collect 等操作是与具体线程模型无关的高层次构件, 所以它们的内部实现可以是单线程的，也可能透明地充分利用你的多核架构
-
+流中的元素是按需计算的
 ****************************************
 
 ## Optional

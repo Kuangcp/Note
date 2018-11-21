@@ -44,7 +44,7 @@
     1. [实践](#实践)
         1. [经验之谈](#经验之谈)
 
-`目录 end` |_2018-11-18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-21_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 设计模式之禅
 ## 软件设计的一些原则
@@ -122,6 +122,7 @@ KISS原则在设计上可能最被推崇的，在家装设计，界面设计 ，
 - 关于开发封闭原则，其核心的思想是：模块是可扩展的，而不可修改的。也就是说，`对扩展是开放的，而对修改是封闭的。`
     - 对扩展开放，意味着有新的需求或变化时，可以对现有代码进行扩展，以适应新的情况。
     - 对修改封闭，意味着类一旦设计完成，就可以独立完成其工作，而不要对类进行任何修改。
+
 #### 里氏代换原则
 `Liskov substitution principle (LSP) `
 - 软件工程大师Robert C. Martin把里氏代换原则最终简化为一句话：`“Subtypes must be substitutable for their base types”。`
