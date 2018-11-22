@@ -48,6 +48,28 @@
 
 - [2018年wine QQ最完美解决方案（多Linux发行版通过测试并稳定运行）](https://www.lulinux.com/archives/1319)
 
+### 安装系统
+> 制作U盘启动盘
+
+- Manjaro
+    - rufus: 在windows上制作, 选用dd模式
+- Deepin
+    1. 系统内置的 启动盘制作工具, 或者官网下Windows版
+    2. 或者用软碟通
+- Ubuntu
+    1. 软碟通
+
+> 系统安装
+- 现在大多电脑都是预装win10, 所以为了方便, 双系统更好用
+1. 首先一点就是引导模式 现在大多是 UEFI, 所以为了不影响 windows, 关闭 UEFI, 使用 Legacy模式安装Linux 这样的话, 打开UEFI就进了Windows 关闭就进了Linux 对Windows没造成任何影响
+1. 在Windows上 我的电脑-> 硬盘管理 -> 选择一个分区,压缩出空闲空间出来 用于安装Linux(日常用最少80g 尽管系统最低占用大概10g左右)
+1. 将U盘插上, 进入系统安装的引导, 选好语言, 用户 密码什么的
+1. 分区 分为 / 和 /home 就行了, / 40g 其余给/home (个人分100g才够用) 千万注意不要选错分区
+1. 引导会自动追加到硬盘引导分区, 不会覆盖原有系统, 目前 manjaro deepin windows10 三系统双硬盘并存
+1. 安装完成, 重启前拔掉U盘 即可
+
+> [参考博客: 迁移到 GRUB 2](https://www.ibm.com/developerworks/cn/linux/l-grub2/)
+
 ## 服务器系统之争
 > [服务器操作系统应该选择 Debian/Ubuntu 还是 CentOS？](https://www.zhihu.com/question/19599986)  
 > [CentOS vs CoreOS – Which OS to choose for your Docker web hosting services](https://bobcares.com/blog/centos-vs-coreos-os-for-docker-web-hosting/2/)
