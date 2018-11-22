@@ -463,6 +463,47 @@ Function接口还有针对输出参数类型的变种： ToIntFunction< T >、 I
     - 一个终端操作，执行流水线，并能生成结果。
     > 流的流水线背后的理念类似于构建器模式 在构建器模式中有一个调用链用来设置一套配置（对流来说这就是一个中间操作链），接着是调用 build方法 （对流来说就是终端操作）
 
+#### 筛选
+1. 利用 filter 使用谓词 Predicate 筛选
+1. 去重 distinct()
+1. 截断 limit(n) 只能按流的长度单向截断
+1. 跳过元素 skip(n)
+
+#### 映射
+- 流支持map方法，它会接受一个函数作为参数。这个函数会被应用到每个元素上，并将其映射成一个新的元素
+    - （使用映射一词，是因为它和转换类似，但其中的细微差别在于它是“创建一个新版本”而不是去“修改”）
+
+```java
+List<Integer> dishNameLengths = menu.stream() 
+        .map(Dish::getName) .map(String::length) .collect(toList()); 
+```
+**`flatMap`**
+```java
+List<String> uniqueCharacters = words.stream() 
+        .map(w -> w.split(""))  // Stream<Arrays>
+        .flatMap(Arrays::stream) // 扁平化流 (合并)
+        .distinct() 
+        .collect(Collectors.toList()); 
+```
+
+**使用流的方式嵌套迭代**
+```java
+// 给定两个数字列表，如何返回所有的数对呢？例如，给定列表[1, 2, 3]和列表[3, 4]，应该返回[(1, 3), (1, 4), (2, 3), (2, 4), (3, 3), (3, 4)]
+List<Integer> numbers1 = Arrays.asList(1, 2, 3); 
+List<Integer> numbers2 = Arrays.asList(3, 4); 
+List<int[]> pairs = numbers1.stream() 
+    .flatMap(i -> 
+        numbers2.stream() .map(j -> new int[]{i, j})
+    ).collect(toList()); 
+```
+
+#### 查找和匹配
+> allMatch、anyMatch、noneMatch、findFirst findAny
+
+- [ ] compelte
+
+#### 规约
+
 ****************************************
 
 ## Optional
