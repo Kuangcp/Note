@@ -33,30 +33,26 @@
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
 
-## 安装Linux发行版
-- 下载指定的镜像包，使用对应的刻录软件刻录U盘(Windows就是软碟通,Linux没怎么用过,只用过深度的U盘启动盘制作工具挺好的)
-- 进入U盘安装模式，分区：
-    - 分配 1/5 的 `/` ext4
-    - 分配 3/5 的 `/home` ext4
-    - 分配 500-1000m 的 `/boot/efi` fat32格式
-- 如果是双系统:
-    - 如果新手直接全部` / `就行了，再加个交换分区 
-    - 如果为了日后重装系统方便,那么分两个区 `/` 和 `/home`
-        - 这样的话,就建议大量软件使用解压版,这样重装系统带来的影响最小,那么`/home`就要分大一点
-        - 例如我: `/`只用了22G `/home`用了40G(公司的Deepin分了100G /home 用了75G了)
-
 > 新手的话特别注意不要随意用sudo然后更改配置文件，容易导致系统crash（除非你明确的知道这个更改操作的作用）
+
+- [运维生存时间](http://www.ttlsa.com)`含大量运维干货`
+- [撸Linux](https://www.lulinux.com/)`非理性言论?`
+- [Linux命令大全](http://man.linuxde.net/) `Linux命令教程`
+- [RUNOOB.COM](http://www.runoob.com) `各种技术学习 文档资源`
+- [Linux中国开源社区](https://linux.cn/)
+- [LinuxTOY 是一个致力于提供 Linux 相关资讯的专题站点。](https://linuxtoy.org/)
+    - [内容Github源](https://github.com/LinuxTOY/linuxtoy.org)
 
 *****************************************************
 
 ## 系统管理
 > sudo 其实是软件 早该意识到的，所有的命令都是可执行文件  
-> [笔记: 发行版之别](/Linux/Release_Experience.md)
+> [笔记: 发行版之别](/Linux/ReleaseExperience.md)
 
 ### 文件系统对比
 > [参考博客: 如何选择文件系统：EXT4、Btrfs 和 XFS ](https://linux.cn/article-7083-1.html)
 
-目前 Linux 大多采用 ext3 
+目前 Linux 大多采用 ext3,往 ext4 过渡
 
 ### 桌面环境对比
 > [Arch Doc: desktop environment](https://wiki.archlinux.org/index.php/Desktop_environment_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))

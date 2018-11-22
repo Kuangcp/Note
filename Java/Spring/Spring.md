@@ -191,6 +191,9 @@ public class A{
   private B b;
   }
 ```
+
+- [ ] look up 方法注入
+
 **********************
 ## AOP
 > Aspect Oriented Programming  面向切面编程

@@ -27,7 +27,6 @@
 `目录 end` |_2018-11-21_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux各个发行版本使用体验
-> 一边用一边记录吧 
 
 > [论最适合开发用的几款Linux桌面系统](https://www.lulinux.com/archives/3614)
 > [发行版热度对比](https://distrowatch.com/dwres.php?resource=popularity)
@@ -39,10 +38,8 @@
 
 ## 基础知识
 > 下载安装时要选平台 参考[相关博客](http://downtoearthlinux.com/posts/x86-i386-x86-64-x64-and-amd64-oh-my/)
-```
-    x86-64  =  64-bit  =  x64  =  amd64
-    x86  =  32-bit  =  i386
-```
+>> 64: x86-64 =  x64  =  amd64  
+>> 32: x86  =  i386
 
 > [查看发行版](/Linux/Base/LinuxDirectoryStructure.md#查看发行版)
 
@@ -128,6 +125,10 @@ _服务器_
 
 - 2018-09-02 21:44:21 ` Driver 'pcspkr' is already registered, aborting,`
     >- [参考博客: 社区帖子](https://bbs.deepin.org/forum.php?mod=viewthread&tid=166517&highlight=pcspkr)
+
+- 2018-11-22 10:19:27 
+    - 升级到 15.8 后 xorg 和 deepin-wm 内存泄露, 显卡是 GTX1060x 笔记本的 820m 没有这种情况出现
+    - 用上半天, 这俩内存能占用到 3个g
 
 #### 关于显卡
 > [参考博客: 显卡驱动作死录](https://www.jianshu.com/p/f53c8223bac6)

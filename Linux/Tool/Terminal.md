@@ -132,7 +132,7 @@
 ***********
 ### 分享
 #### asciinema
-> 终端录制工具
+- [asciinema](https://asciinema.org) `终端屏幕录制和分享网`
 
 - 执行 `asciinema`或`asciinema rec` 即可开始录制
 - 要注册就运行 `asciinema auth` 进入输出的网址，填邮箱和名字即可（每次登录都要这样。或者使用邮件来确认，麻烦ing）

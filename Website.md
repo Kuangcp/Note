@@ -152,6 +152,9 @@
 
 *********************************
 # 学习网站
+
+- [杭电ACM题库](http://acm.hdu.edu.cn/listproblem.php?vol=1)
+
 ## 并发
 - [并发编程网 http://ifeve.com](http://ifeve.com/)
 - [IBM社区](https://www.ibm.com/developerworks/cn/)
@@ -172,17 +175,6 @@
 
 #### Elixir
 > [官网](https://elixir-lang.org/)
-
-## Linux
-- [运维生存时间](http://www.ttlsa.com)`含大量运维干货`
-- [撸Linux](https://www.lulinux.com/)`非理性言论?`
-- [杭电ACM题库](http://acm.hdu.edu.cn/listproblem.php?vol=1)
-- [Linux命令大全](http://man.linuxde.net/) `Linux命令教程`
-- [RUNOOB.COM](http://www.runoob.com) `各种技术学习 文档资源`
-- [asciinema](https://asciinema.org) `终端屏幕录制和分享网`
-- [Linux中国开源社区](https://linux.cn/)
-- [LinuxTOY 是一个致力于提供 Linux 相关资讯的专题站点。](https://linuxtoy.org/)
-    - [内容Github源](https://github.com/LinuxTOY/linuxtoy.org)
 
 ### Go
 - [go](http://www.runoob.com/go/go-tutorial.html)

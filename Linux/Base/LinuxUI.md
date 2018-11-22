@@ -10,6 +10,7 @@
 
 # UI
 ## Font
+> [笔记: 字体](/FrontEnd/Font.md)  
 > 只需将字体 复制 到 ~/.local/share/fonts/ 目录下
 
 ### 字体渲染
