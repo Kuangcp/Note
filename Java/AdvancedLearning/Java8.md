@@ -82,8 +82,8 @@
 1. 函数式接口就是仅仅声明了一个抽象方法的接口。
 1. 只有在接受函数式接口的地方才可以使用Lambda表达式。
 1. Lambda表达式允许你直接内联，为函数式接口的抽象方法提供实现，并且将整个表达式作为函数式接口的一个实例。
-1. Java 8自带一些常用的函数式接口，放在java.util.function包里，包括`Predicate<T>、 Function<T,R>、 Supplier<T>、 Consumer<T>和BinaryOperator<T>`
-1. 为了避免装箱操作，对`Predicate<T>`和`Function<T, R>`等通用函数式接口的原始类型特化： IntPredicate、 IntToLongFunction等。
+1. Java 8自带一些常用的函数式接口，放在java.util.function包里，包括`Predicate< T >、 Function<T,R>、 Supplier< T >、 Consumer< T >和BinaryOperator< T >`
+1. 为了避免装箱操作，对`Predicate< T >`和`Function<T, R>`等通用函数式接口的原始类型特化： IntPredicate、 IntToLongFunction等。
 1. 环绕执行模式（即在方法所必需的代码中间，你需要执行点儿什么操作，比如资源分配和清理）可以配合Lambda提高灵活性和可重用性。
 1. Lambda表达式所需要代表的类型称为目标类型。
 1. 方法引用让你重复使用现有的方法实现并直接传递它们。
@@ -156,14 +156,14 @@
 > Primitive Specializations
 
 > Java类型要么是引用类型（比如Byte、 Integer、 Object、 List） ，要么是原始类型（比如int、 double、 byte、 char）。
-但是泛型（比如Consumer<T>中的T）只能绑定到引用类型。这是由泛型内部的实现方式造成的。
+但是泛型（比如Consumer< T >中的T）只能绑定到引用类型。这是由泛型内部的实现方式造成的。
 因此，在Java里有一个将原始类型转换为对应的引用类型的机制。这个机制叫作装箱（boxing） 。
 相反的操作，也就是将引用类型转换为对应的原始类型，叫作拆箱（unboxing）。 Java还有一个自动装箱机制来帮助程序员执行这一任务：装箱和拆箱操作是自动完成的。但这在性能方面是要付出代价的。装箱后的值本质上就是把原始类型包裹起来，并保存在堆里。因此，装箱后的值需要更多的内存，
 并需要额外的内存搜索来获取被包裹的原始值。Java 8为我们前面所说的函数式接口带来了一个专门的版本，以便在输入和输出都是原始类型时避免自动装箱的操作。
 比如，在下面的代码中，使用IntPredicate就避免了对值1000进行装箱操作，但要是用Predicate<Integer>就会把参数1000装箱到一个Integer对象中 -- Java8 in action
 
 一般来说，针对专门的输入参数类型的函数式接口的名称都要加上对应的原始类型前缀，比如DoublePredicate、 IntConsumer、 LongBinaryOperator、 IntFunction等。 
-Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 IntToDoubleFunction等。
+Function接口还有针对输出参数类型的变种： ToIntFunction< T >、 IntToDoubleFunction等。
 请记得这只是一个起点。如果有需要，你可以自己设计一个。请记住， (T,U) -> R的表达方式展示了应当如何思考一个函数描述符。
 表的左侧代表了参数类型。这里它代表一个函数，具有两个参数，分别为泛型T和U，返回类型为R。
 
@@ -425,20 +425,21 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 - 相反，Streams库使用内部迭代——它帮你把迭代做了，还把得到的流值存在了某个地方，你只要给出一个函数声明迭代中执行的操作即可。
 
 - 外部迭代
-    - 显式的迭代集合, 命令式的执行操作, 
+    - 显式的迭代集合, 命令式的执行操作
 - 内部迭代
     - 将迭代的细节隐藏起来, 方便优化
 
 ### Stream操作
+因为filter、sorted、map 和collect 等操作是与具体线程模型无关的高层次构件, 所以它们的内部实现可以是单线程的，也可能透明地充分利用你的多核架构
 
 #### 中间操作
 | 操作 | 返回类型 | 操作参数 | 函数操作符 |
 |:----|:----|:----|:----|
-| filter | Stream<T> | Predicate<T> | T -> boolean |
-| map | Stream<R> |  | Function<T, R> | T -> R |
-| limit | Stream<T> |  |
-| sorted | Stream<T> | Comparator<T> | (T, T) -> int | 
-| distinct | Stream<T> |  |  |
+| filter | Stream< T > | Predicate< T > | T -> boolean |
+| map | Stream< R > |  | Function<T, R> | T -> R |
+| limit | Stream< T > |  |
+| sorted | Stream< T > | Comparator< T > | (T, T) -> int | 
+| distinct | Stream< T > |  |  |
 
 诸如 filter 或 sorted 等中间操作会返回另一个流。这让多个操作可以连接起来形成一个查询。
 重要的是，除非流水线上触发一个终端操作，否则中间操作不会执行任何处理
@@ -447,30 +448,26 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 1. filter 满足该条件的元素保留下来
 1. map 将一个流中的每个元素通过 一种映射 得到新的元素组成的流
 1. flatMap 使用流时， flatMap方法接受一个函数作为参数，这个函数的返回值是另一个流。这个方法会应用到流中的每一个元素，最终形成一个新的流的流。
- 
-#### 终端操作
 
+#### 终端操作
 | 操作 | 目的 |
 |:----|:----|
 | forEach | 消费流中的每个元素并对其应用 Lambda。这一操作返回 void  |
 | count | 返回流中元素的个数。这一操作返回 long |
 | collect | 把流归约成一个集合，比如List、Map甚至是Integer |
 
-#### 使用Stream
+### 使用Stream
 - 流的使用一般包括三件事：
     - 一个数据源（如集合）来执行一个查询；
     - 一个中间操作链，形成一条流的流水线；
     - 一个终端操作，执行流水线，并能生成结果。
+    > 流的流水线背后的理念类似于构建器模式 在构建器模式中有一个调用链用来设置一套配置（对流来说这就是一个中间操作链），接着是调用 build方法 （对流来说就是终端操作）
 
-流的流水线背后的理念类似于构建器模式
-
-因为filter、sorted、map 和collect 等操作是与具体线程模型无关的高层次构件, 所以它们的内部实现可以是单线程的，也可能透明地充分利用你的多核架构
-流中的元素是按需计算的
 ****************************************
 
 ## Optional
 >1. null引用在历史上被引入到程序设计语言中，目的是为了表示变量值的缺失。
->1. Java 8中引入了一个新的类java.util.Optional<T>，对存在或缺失的变量值进行建模。
+>1. Java 8中引入了一个新的类java.util.Optional< T >，对存在或缺失的变量值进行建模。
 >1. 你可以使用静态工厂方法Optional.empty、 Optional.of以及Optional.ofNullable创建Optional对象。
 >1. Optional类支持多种方法，比如map、 flatMap、 filter，它们在概念上与Stream类中对应的方法十分相似。
 >1. 使用Optional会迫使你更积极地解引用Optional对象，以应对变量值缺失的问题，最终，你能更有效地防止代码中出现不期而至的空指针异常。
