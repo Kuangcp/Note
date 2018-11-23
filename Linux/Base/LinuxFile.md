@@ -7,6 +7,7 @@
         1. [清除缓存](#清除缓存)
         1. [善用*shrc文件](#善用shrc文件)
             1. [善用alias](#善用alias)
+            1. [desktop文件](#desktop文件)
     1. [基本命令](#基本命令)
         1. [查找文件](#查找文件)
         1. [查看文件](#查看文件)
@@ -31,7 +32,7 @@
     1. [系统日志](#系统日志)
     1. [应用日志](#应用日志)
 
-`目录 end` |_2018-10-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 【文件管理】
 > Linux中认为万物皆文件
@@ -104,7 +105,7 @@
     - 在别名文件目录时, 建立链接就可以用了 `ln -s `pwd`/.bash_aliases ~/.bash_aliases` 
 
 *************************
-`自定义桌面快捷方式文件`
+#### desktop文件
 ```conf
 	[Desktop Entry] #每个desktop文件都以这个标签开始，说明这是一个Desktop Entry文件
 	Version = 1.0 #标明Desktop Entry的版本（可选）
@@ -112,14 +113,14 @@
 	GenericName = Web Browser #程序通用名称（可选）
 	Comment = A Web Browser #程序描述（可选）
 	Exec = firefox %u #程序的启动命令（必选），可以带参数运行,当下面的Type为Application，此项有效
-	Icon = firefox #设置快捷方式的图标（可选）
+	Icon = firefox #设置快捷方式的图标 svg(更好) png
 	Terminal = false #是否在终端中运行（可选），当Type为Application，此项有效
 	Type = Application #desktop的类型（必选），常见值有“Application”和“Link”
 	Categories = GNOME;Application;Network; #注明在菜单栏中显示的类别（可选）
 ```
-- [示例文件](https://github.com/Kuangcp/Notes/tree/master/ConfigFiles/Linux/VSCode.desktop)
-- 如要将快捷方式放在启动菜单内 将desktop文件放在 `/usr/share/applications/` 目录下即可
-- 注意：目录不能有空格 等特殊字符
+- [示例文件](https://github.com/Kuangcp/Configs/blob/master/Linux/desktop/VSCode.desktop)
+- 如要将快捷方式放在启动菜单内 将 desktop 文件复制到 `/usr/share/applications/` 目录下即可
+    - 注意：目录不能有空格 等特殊字符
 
 **************************************
 ## 基本命令 
