@@ -8,8 +8,11 @@
         1. [终端开启慢](#终端开启慢)
         1. [Deepin的NVIDIA驱动问题](#deepin的nvidia驱动问题)
         1. [笔记本突然断电导致开机报错](#笔记本突然断电导致开机报错)
+            1. [输入法](#输入法)
+                1. [fcitx](#fcitx)
+            1. [Flash](#flash)
 
-`目录 end` |_2018-10-17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 遇到的常见问题
 
@@ -38,7 +41,7 @@
 
 ### 终端开启慢 
 - 检查 .bashrc 文件 看是否有可疑脚本,
-    -  这次就是因为sdkman的原因导致巨慢,那上次搞得我新建用户,重装系统是什么原因呢?
+    -  这次就是因为 sdkman 的原因导致巨慢,那上次搞得我新建用户,重装系统是什么原因呢?
 
 ### Deepin的NVIDIA驱动问题
 - [论坛博客](https://bbs.deepin.org/forum.php?mod=viewthread&tid=132312)
@@ -50,3 +53,21 @@
 1. 根据报错提示的分区, 进行修复, 由于我的Linux是ext3文件系统
 1. `fsck.ext3 -y /dev/sda9` **分区根据实际情况**
 1. 完成后重启即可
+
+#### 输入法
+##### fcitx
+- fcitx单核满载:三种（搜狗拼音导致）
+    - 杀掉，fcitx -r
+    - 先把进程杀掉再fcitx-autostart &
+    - fcitx再fcitx-qimpanel 
+`相关网页：`
+- [某引擎搜索结果页](https://ausdn.com/s/ubuntu+cpu+fcitx)| [几种方式](https://www.findhao.net/res/786)| [卸载搜狗安装拼音](http://tieba.baidu.com/p/3863217434)
+- [知乎问题](https://www.zhihu.com/question/19839748) | [ubuntu论坛](http://forum.ubuntu.com.cn/viewtopic.php?f=122&t=173730&p=1299087) | [ubuntu论坛](http://forum.ubuntu.com.cn/viewtopic.php?f=8&t=194486&start=0)
+
+- 输入法没有显示打字窗口
+    - 直接杀掉 sogou-qimpanel 然后点击图标进行启动
+
+#### Flash
+- 点击[官网下载地址](https://get.adobe.com/cn/flashplayer/)下载,然后解压,
+- 将文件复制进火狐插件目录:`sudo cp libflashplayer.so  /usr/lib64/mozilla/plugins`
+- 添加其他用户可执行权限`chmod 755 /usr/lib64/mozilla/plugins/libflashplayer.so`

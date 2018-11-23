@@ -27,7 +27,7 @@
         1. [maven配置](#maven配置)
     1. [Web开发上的一些优秀的习惯](#web开发上的一些优秀的习惯)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -96,6 +96,7 @@ _其他,可选_
 - bean扫描
     - ComponentScan 扫描指定包下Spring注解的类
 
+> [参考博客: Why field injection is evil](http://olivergierke.de/2013/11/why-field-injection-is-evil/)
 ***********************
 ###  xml方式
 - 只用到bean的头，主要配置内容：`<bean><property></property></bean>`

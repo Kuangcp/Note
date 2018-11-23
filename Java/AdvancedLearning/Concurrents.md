@@ -20,7 +20,7 @@
             1. [CountDownLatch 锁存器](#countdownlatch-锁存器)
             1. [ConcurrentHashMap](#concurrenthashmap)
             1. [CopyOnWriteArrayList](#copyonwritearraylist)
-    1. [【Queue】](#queue)
+    1. [Queue](#queue)
         1. [BlockingQueue](#blockingqueue)
         1. [TransferQueue](#transferqueue)
     1. [【控制执行】](#控制执行)
@@ -29,7 +29,7 @@
     1. [【分支合并框架】](#分支合并框架)
     1. [【Java内存模型】](#java内存模型)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/concurrents)  
@@ -310,21 +310,20 @@ if (!stop)
 
 ***********************
 
-## 【Queue】
-
-- Queue接口全是泛型的，这样就更为方便， 自己再封装一个层
+## Queue
+> Queue接口全是泛型的，这样就更为方便， 自己再封装一个层
 
 `BlockingQueue<Pro<Author>>`
 ```java
-public class Pro<T>{
-    private T pro;
-    public T getPro(){
-        return pro;
+    public class Pro<T>{
+        private T pro;
+        public T getPro(){
+            return pro;
+        }
+        public Pro(T pro){
+            this.pro = pro;
+        }
     }
-    public Pro(T pro){
-        this.pro = pro;
-    }
-}
 ```
 - 有了这层间接引用， 不用牺牲所包含类型（Author）在概念上的完整性，就能够添加额外的元数据了。方便统一性的修改
     - 用上额外元数据的用例：
@@ -427,7 +426,7 @@ public class Pro<T>{
     - 如果思考的结果是肯定的，就可以适用，如果思考结果是不确定的，用其他的同步方式更合适
 
 ## 【Java内存模型】
-> Java Memory Model   JMM
+> Java Memory Model -- JMM
 
 - 同步动作和被称为偏序的数据结构描述JMM， 
 - JMM 的主要规则：

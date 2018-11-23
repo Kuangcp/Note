@@ -20,7 +20,7 @@
     1. [资源文件](#资源文件)
         1. [图片](#图片)
 
-`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # JavaScript
 
@@ -108,6 +108,7 @@ function testRole() {
 
 ## 常用库和框架
 - lozad.js 懒加载
+[网页底部的浏览 ](https://www.logicbig.com/tutorials/java-ee-tutorial/jpa/group-by-criteria.html) 
 
 ### Jquery
 > jquery有是slim版(没有ajax的精简版 ) [JQuery官网](http://jquery.com/) | [Jquery教程](http://www.w3school.com.cn/jquery/index.asp)
@@ -146,6 +147,7 @@ $(".submit").on('click', function () {
 ### echarts
 > [官网](http://echarts.baidu.com/index.html) | 做图表展示很简单
 
+***************************************
 
 ## 资源文件
 ### 图片

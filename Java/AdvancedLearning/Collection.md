@@ -8,7 +8,7 @@
     1. [List](#list)
     1. [Set](#set)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 集合
 > 重要的知识点，面试必问，使用频率也很高
@@ -36,11 +36,11 @@
 
 ********************
 ## Map
-
+- [ ] HashMap HashTable 键为null的问题
 
 ### HashMap 实现原理
 - [HashMap 实现原理](http://www.importnew.com/27043.html)
-
+- [HashMap 怎么 hash？又如何 map？](https://my.oschina.net/editorial-story/blog/2396106)
 - [ ] 整理实现
 
 主要看 addVal 方法 以及 resize方法的实现

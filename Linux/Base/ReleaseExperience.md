@@ -2,6 +2,7 @@
  
 1. [Linux各个发行版本使用体验](#linux各个发行版本使用体验)
     1. [基础知识](#基础知识)
+        1. [安装系统](#安装系统)
     1. [服务器系统之争](#服务器系统之争)
     1. [Debian系](#debian系)
         1. [Debian](#debian)
@@ -24,7 +25,7 @@
     1. [Mageia](#mageia)
     1. [CDLinux](#cdlinux)
 
-`目录 end` |_2018-11-21_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux各个发行版本使用体验
 
@@ -98,6 +99,8 @@ _服务器_
 
 ### Deepin
 > [官方wiki](wiki.deepin.org)
+> [参考博客: 一些工具](https://bbs.deepin.org/forum.php?mod=viewthread&tid=143022z)
+- [FAQ](https://bbs.deepin.org/forum.php?mod=viewthread&tid=146921&extra=page%3D1)
 
 - 优点:
     - 界面美观,自带CrossOver深度家族的软件也挺好用,自定义命令的快捷键

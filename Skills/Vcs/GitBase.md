@@ -38,7 +38,7 @@
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-`目录 end` |_2018-11-18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -80,6 +80,10 @@
     - 如果想统一配置不想每个仓库单独配置就 `git config --global user.name` email同理
 - `git config http.postBuffer 524288000` 设置缓存区大小为 500m
 - `git config core.fileMode false` 忽略文件的mode变化，一般发生在文件放在挂载盘的时(默认755)
+
+- [ ] 自己整理下配置项
+> [参考博客: CRLF和LF](https://www.tuicool.com/articles/IJjQVb)
+> [参考博客: git 换行符LF与CRLF转换问题](https://www.cnblogs.com/sdgf/p/6237847.html)
 
 #### status
 > git status --help 查看详细介绍
@@ -403,7 +407,7 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 ### Submodules
 > [官方文档](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 > [git submodule的使用](https://blog.csdn.net/wangjia55/article/details/24400501)
-
+> [参考博客: Git Submodule使用完整教程](http://www.kafeitu.me/git/2012/03/27/git-submodule.html)
 - 能够在一个git仓库中将一个文件夹作为一些独立的子仓库进行管理
 
 ***************************************************

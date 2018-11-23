@@ -14,7 +14,7 @@
     1. [DBUnit](#dbunit)
 1. [感悟](#感悟)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java的测试
 > [测试的基础理论](/Skills/Base/Test.md)
@@ -86,8 +86,11 @@ http://static.javadoc.io/org.mockito/mockito-core/2.19.0/org/mockito/Mockito.htm
 ### Mockito
 > [Officail Site](http://site.mockito.org/) | [Github:mockito](https://github.com/mockito/mockito)
 > [Mockito Tutorial](https://www.tutorialspoint.com/mockito/index.htm)
+> [Unit tests with Mockito - Tutorial](http://www.vogella.com/tutorials/Mockito/article.html)
 
 > [参考博客: TDD：什么是桩（stub）和模拟（mock）？](http://www.cnblogs.com/happyframework/p/3595547.html)
+> [参考博客: mockito](http://www.testclass.net/mockito/)
+> [mockito](http://static.javadoc.io/org.mockito/mockito-core/2.19.0/org/mockito/Mockito.html#1)
 
 > 官网提示:
 >1. Do not mock types you don’t own

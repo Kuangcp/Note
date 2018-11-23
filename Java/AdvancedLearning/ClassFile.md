@@ -32,7 +32,7 @@
             1. [Thrift](#thrift)
             1. [Marshalling](#marshalling)
 
-`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java基础
 ## 【类和字节码】
@@ -184,6 +184,9 @@ Window ==> Preferences ==> Java ==> Compiler ==> Error/Warnings ==>Potential pro
 > [Google 开源技术protobuf ](https://blog.csdn.net/hguisu/article/details/20721109)
 > [Google Protocol Buffer 的使用和原理](https://www.ibm.com/developerworks/cn/linux/l-cn-gpb/index.html)
 
+> [参考博客: 数据交换利器 Protobuf 技术浅析](http://blog.jobbole.com/107405/)
+> [参考博客: Protobuf3语言指南](https://blog.csdn.net/u011518120/article/details/54604615)
+
 - 他将数据结构以 proto后缀的文件进行描述, 通过代码生成工具, 可以生成对应数据结构的POJO对象和Protobuf相关的方法和属性
     - 特点:
         - 结构化数据存储格式: XML JSON等
@@ -201,7 +204,6 @@ Window ==> Preferences ==> Java ==> Compiler ==> Error/Warnings ==>Potential pro
 > 只是编解码的工具, 不支持读半包, 粘包拆包
 
 ##### proto文件定义
-> [参考博客: 数据交换利器 Protobuf 技术浅析](http://blog.jobbole.com/107405/)
 
 ```
 // 用户数据信息

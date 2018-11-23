@@ -15,8 +15,9 @@
     1. [终端工具](#终端工具)
     1. [图形化工具](#图形化工具)
         1. [剪贴板管理](#剪贴板管理)
+    1. [练习打字](#练习打字)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 系统常用基础命令
 
@@ -34,7 +35,9 @@
 - [ ] 学习管道的使用
 
 ### xargs
-- [ ] xargs 让命令更为灵活
+> 常在管道中使用 能将输入流转为 命令 的参数
+
+- 输出所有的md文件的内容 `find . -name "*.md" | xargs cat | less`
 
 ***************************
 ## time
@@ -69,6 +72,8 @@
 *******************************************
 
 # 实用的工具
+> [命令行：增强版 ](https://linux.cn/article-10171-1.html)
+
 ## 终端工具
 > [详细](/Skills/Application/Terminal.md)
 

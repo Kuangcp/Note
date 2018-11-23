@@ -33,7 +33,7 @@
         1. [防火墙](#防火墙)
             1. [iptables](#iptables)
 
-`目录 end` |_2018-10-16_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 【网络管理】
 ## Tips
@@ -130,6 +130,7 @@ _netstat工具_ 或者 更好用的 [iproute2](#3iproute2)
     - -f 暴力尽可能大量包的传送 至少每秒100个
     - 注意：得到的结果中的 mdev 表示ICMP包的RTT偏离平均值的程度，mdev 越大表示网速不稳定 Linux有，mac下叫stddev win系列没有
 
+> [prettyping](http://denilson.sa.nom.br/prettyping/)
 ### 2.curl
 1. 不输出，重定向到*黑洞设备*  ` curl -s -o /dev/null URL`
 1. 格式化返回的json数据：`curl xxxx|python -m json.tool `

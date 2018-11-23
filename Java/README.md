@@ -25,7 +25,6 @@
 - [openjdk](http://openjdk.java.net/)`开源的JDK`
 - [oracle-jdk download](http://www.oracle.com/technetwork/java/javase/downloads/index.html) | [oracle-jdk中文版下载页面](http://www.oracle.com/technetwork/cn/java/javase/downloads/index.html)
 
-
 >- [JDK and JRE](/Java/AdvancedLearning/JDKAndJRE.md)
 >- [Java 发行版大致特性](/Java/AdvancedLearning/JavaReleaseVersion.md)  
 >- [Java7](/Java/AdvancedLearning/Java7.md)
