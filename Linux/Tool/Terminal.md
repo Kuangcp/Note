@@ -12,12 +12,13 @@
             1. [todo.txt-cli](#todotxt-cli)
         1. [文本操作](#文本操作)
             1. [xclip](#xclip)
+            1. [uniq](#uniq)
         1. [文件操作](#文件操作)
             1. [zssh](#zssh)
         1. [分享](#分享)
             1. [asciinema](#asciinema)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-25_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Terminal
 > 终端模拟器是吸引我放弃习惯的Windows而转投Linux怀抱的主要原因
@@ -75,6 +76,8 @@
 
 - ag `快速当前目录下, 全文内容搜索, 快到可怕` ubuntu:silversearcher-ag  alpine:the_silver_searcher
     - [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
+
+- when-changed 监控文件变化 执行命令 pip install when-changed
 
 ### 效率工具
 > 提高工作和开发效率
