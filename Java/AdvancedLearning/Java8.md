@@ -24,14 +24,26 @@
         1. [Stream操作](#stream操作)
             1. [中间操作](#中间操作)
             1. [终端操作](#终端操作)
-            1. [使用Stream](#使用stream)
+        1. [使用Stream](#使用stream)
+            1. [筛选](#筛选)
+            1. [映射](#映射)
+            1. [查找和匹配](#查找和匹配)
+            1. [归约](#归约)
+                1. [求和](#求和)
+                1. [极值](#极值)
+                1. [归约的优势与并行化](#归约的优势与并行化)
+                1. [总结](#总结)
+            1. [数值流](#数值流)
+                1. [原始类型特化](#原始类型特化)
+                1. [数值范围](#数值范围)
+            1. [构建流](#构建流)
     1. [Optional](#optional)
     1. [集合](#集合)
     1. [时间处理](#时间处理)
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-`目录 end` |_2018-11-21_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-25_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)
@@ -433,17 +445,8 @@ Function接口还有针对输出参数类型的变种： ToIntFunction< T >、 I
 因为filter、sorted、map 和collect 等操作是与具体线程模型无关的高层次构件, 所以它们的内部实现可以是单线程的，也可能透明地充分利用你的多核架构
 
 #### 中间操作
-| 操作 | 返回类型 | 操作参数 | 函数操作符 |
-|:----|:----|:----|:----|
-| filter | Stream< T > | Predicate< T > | T -> boolean |
-| map | Stream< R > |  | Function<T, R> | T -> R |
-| limit | Stream< T > |  |
-| sorted | Stream< T > | Comparator< T > | (T, T) -> int | 
-| distinct | Stream< T > |  |  |
-
-诸如 filter 或 sorted 等中间操作会返回另一个流。这让多个操作可以连接起来形成一个查询。
-重要的是，除非流水线上触发一个终端操作，否则中间操作不会执行任何处理
-因为中间操作一般都可以合并起来，在终端操作时一次性全部处理 (循环合并)
+诸如 filter 或 sorted  map flatMap limit distinct 等中间操作会返回另一个流。这让多个操作可以连接起来形成一个查询。 
+重要的是，除非流水线上触发一个终端操作，否则中间操作不会执行任何处理因为中间操作一般都可以合并起来，在终端操作时一次性全部处理 (循环合并)
 
 1. filter 满足该条件的元素保留下来
 1. map 将一个流中的每个元素通过 一种映射 得到新的元素组成的流
@@ -500,9 +503,107 @@ List<int[]> pairs = numbers1.stream()
 #### 查找和匹配
 > allMatch、anyMatch、noneMatch、findFirst findAny
 
-- [ ] compelte
+- 都是接受一个 谓词 函数, 都用到了我们所谓的短路,不需要处理所有的流，这就是大家熟悉的Java中&&和||运算符短路在流中的版本
+    - allMatch、anyMatch、noneMatch 是 匹配 返回值是boolean
+    - findFirst findAny 是查找 返回 ``Optional<T>`` findFirst 针对有序的流
+        - 如果你不关心返回的元素是哪个，请使用 findAny ，因为它在使用并行流时限制较少。
 
-#### 规约
+#### 归约
+- 如何把一个流中的元素组合起来，使用 reduce 操作来表达更复杂的查询 此类查询需要将流中所有元素反复结合起来，得到一个值
+- 这样的查询可以被归类为归约操作（将流归约成一个值）。用函数式编程语言的术语来说，这称为折叠（fold）
+
+> map 和 reduce 的连接通常称为 map-reduce 模式，因 Google 用它来进行网络搜索而出名，因为它很容易并行化。
+
+##### 求和
+
+```java
+    int sum = 0; 
+    for (int x : numbers){
+        sum += x;
+    }
+
+    // reduce 参数: 初始值 函数
+    int sum = numbers.stream().reduce(0, (a, b) -> a + b);
+
+    int sum = numbers.stream().reduce(0, Integer::sum);
+
+    // 无初始值 返回 Optional 对象
+    Optional<Integer> sum = numbers.stream().reduce((a, b) -> (a + b));
+```
+
+##### 极值
+
+```java
+    // 最大值
+    Optional<Integer> max = numbers.stream().reduce(Integer::max);
+
+    // 最小值
+    Optional<Integer> min = numbers.stream().reduce(Integer::min);
+    Optional<Integer> min = numbers.stream().reduce((x, y) -> x < y ? x : y);
+```
+
+##### 归约的优势与并行化
+相比于前面写的逐步迭代求和，使用 reduce 的好处在于，这里的迭代被内部迭代抽象掉了，这让内部实现得以选择并行执行reduce 操作。  
+而迭代式求和例子要更新共享变量 sum ，这不是那么容易并行化的。如果你加入了同步，很可能会发现线程竞争抵消了并行本应带来的性能提升！  
+这种计算的并行化需要另一种办法：将输入分块，分块求和，最后再合并起来。
+
+`int sum = numbers.parallelStream().reduce(0, Integer::sum); `
+
+但要并行执行这段代码也要付一定代价，传递给 reduce 的Lambda不能更改状态（如实例变量），而且操作必须满足结合律才可以按任意顺序执行。
+
+##### 总结
+| 操作 | 类型 | 返回类型 | 参数 | 函数描述符 |
+|:----|:----|:----|:----|:----|
+| filter  | 中间 | `Stream<T>` | `Predicate<T>` | T -> boolean |
+|distinct|中间 有状态 无界|`Stream<T>`|||
+|skip|中间 有状态 有界|`Stream<T>`|long||
+|limit|中间 有状态 有界|`Stream<T>`|long||
+|map|中间|`Stream<R>`|`Function<T, R>`| T -> R|
+|flatMap|中间|`Stream<R>`|`Function<T, Stream<R>>`| T -> `Stream<R>`|
+|sorted|中间 有状态 无界|`Stream<T>`|`Comparator<T>`|(T,T) -> int|
+|anyMatch|终端|boolean|`Predicate<T>`| T -> boolean |
+|noneMatch|终端|boolean|`Predicate<T>`|T -> boolean|
+|allMatch|终端|boolean|`Predicate<T>`|T->boolean|
+|findAny|终端|`Optional<T>`|||
+|findFirst|终端|`Optional<T>`|||
+|forEach|终端|void|`Consumer<T>`| T -> void|
+|collect|终端|R|`Collector<T, A, R>`||
+|reduce|终端 有状态 有界|`Optional<T>`|`BinaryOprator<T>`|(T, T) -> T|
+|count|终端|long|||
+
+> joining 替换 字符串直接拼接
+
+```java
+    // 该方案 效率不高, 所有字符串被反复连接, 每次迭代都需创建新String对象
+    strings.stream().sorted().reduce("", (a,b) -> a+b);
+    // joining 内部会使用 StringBuilder
+    strings.stream().sorted().collect(Collectors.joining());
+```
+
+#### 数值流
+
+##### 原始类型特化
+Java8 引入了三个原始类型特化流接口来解决这个问题： IntStream、DoubleStream 和 LongStream，分别将流中的元素特化为int、long和double，从而避免了暗含的装箱成本。
+
+**映射到数值流**
+```java
+    // 例如求和, 里面有一个隐含的拆箱操作 再求和
+    numbers.parallelStream().reduce(0, Integer::sum);
+
+    // 请注意，如果流是空的，sum默认返回 0
+    numbers.parallelStream().mapToInt(Integer::intValue).sum() 
+```
+
+**映射到对象流**
+使用 boxed() 方法即可
+
+**默认值OptionalInt**
+```java
+    OptionalInt maxCalories = menu.stream().mapToInt(Dish::getCalories).max(); 
+```
+##### 数值范围
+
+#### 构建流
 
 ****************************************
 
