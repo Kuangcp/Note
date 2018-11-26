@@ -43,7 +43,7 @@
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-`目录 end` |_2018-11-25_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)
@@ -94,8 +94,8 @@
 1. 函数式接口就是仅仅声明了一个抽象方法的接口。
 1. 只有在接受函数式接口的地方才可以使用Lambda表达式。
 1. Lambda表达式允许你直接内联，为函数式接口的抽象方法提供实现，并且将整个表达式作为函数式接口的一个实例。
-1. Java 8自带一些常用的函数式接口，放在java.util.function包里，包括`Predicate< T >、 Function<T,R>、 Supplier< T >、 Consumer< T >和BinaryOperator< T >`
-1. 为了避免装箱操作，对`Predicate< T >`和`Function<T, R>`等通用函数式接口的原始类型特化： IntPredicate、 IntToLongFunction等。
+1. Java 8自带一些常用的函数式接口，放在java.util.function包里，包括`Predicate<T>、 Function<T,R>、 Supplier<T>、Consumer<T> 和BinaryOperator<T>`
+1. 为了避免装箱操作，对`Predicate<T>`和`Function<T, R>`等通用函数式接口的原始类型特化： IntPredicate、 IntToLongFunction等。
 1. 环绕执行模式（即在方法所必需的代码中间，你需要执行点儿什么操作，比如资源分配和清理）可以配合Lambda提高灵活性和可重用性。
 1. Lambda表达式所需要代表的类型称为目标类型。
 1. 方法引用让你重复使用现有的方法实现并直接传递它们。
@@ -168,43 +168,43 @@
 > Primitive Specializations
 
 > Java类型要么是引用类型（比如Byte、 Integer、 Object、 List） ，要么是原始类型（比如int、 double、 byte、 char）。
-但是泛型（比如Consumer< T >中的T）只能绑定到引用类型。这是由泛型内部的实现方式造成的。
+但是泛型（比如`Consumer<T>`中的T）只能绑定到引用类型。这是由泛型内部的实现方式造成的。
 因此，在Java里有一个将原始类型转换为对应的引用类型的机制。这个机制叫作装箱（boxing） 。
 相反的操作，也就是将引用类型转换为对应的原始类型，叫作拆箱（unboxing）。 Java还有一个自动装箱机制来帮助程序员执行这一任务：装箱和拆箱操作是自动完成的。但这在性能方面是要付出代价的。装箱后的值本质上就是把原始类型包裹起来，并保存在堆里。因此，装箱后的值需要更多的内存，
 并需要额外的内存搜索来获取被包裹的原始值。Java 8为我们前面所说的函数式接口带来了一个专门的版本，以便在输入和输出都是原始类型时避免自动装箱的操作。
 比如，在下面的代码中，使用IntPredicate就避免了对值1000进行装箱操作，但要是用Predicate<Integer>就会把参数1000装箱到一个Integer对象中 -- Java8 in action
 
 一般来说，针对专门的输入参数类型的函数式接口的名称都要加上对应的原始类型前缀，比如DoublePredicate、 IntConsumer、 LongBinaryOperator、 IntFunction等。 
-Function接口还有针对输出参数类型的变种： ToIntFunction< T >、 IntToDoubleFunction等。
+Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 IntToDoubleFunction等。
 请记得这只是一个起点。如果有需要，你可以自己设计一个。请记住， (T,U) -> R的表达方式展示了应当如何思考一个函数描述符。
 表的左侧代表了参数类型。这里它代表一个函数，具有两个参数，分别为泛型T和U，返回类型为R。
 
 | 函数式接口 | 函数描述符 | 原始类型特化 |
 |:----|:----|:----|
-| Predicate< T > | T->boolean | IntPredicate<br/>LongPredicate<br/> DoublePredicate|
-| Consumer< T > | T->void | IntConsumer<br/>LongConsumer<br/> DoubleConsumer |
-| Function<T,R> | T->R | IntFunction< R > <br/> IntToDoubleFunction <br/> IntToLongFunction <br/> LongFunction< R > <br/> LongToDoubleFunction <br/> LongToIntFunction <br/> DoubleFunction< R > <br/>ToIntFunction< T ><br/>ToDoubleFunction< T ><br/>ToLongFunction< T >|
-| Supplier< T > | ()->T | BooleanSupplier<br/>IntSupplier<br/> LongSupplier<br/> DoubleSupplier|
-| UnaryOperator< T > | T->T |IntUnaryOperator<br/>LongUnaryOperator<br/>DoubleUnaryOperator|
-| BinaryOperator< T > | (T,T)-> T | IntBinaryOperator<br/>LongBinaryOperator<br/>DoubleBinaryOperator|
+| `Predicate<T>` | T->boolean | IntPredicate<br/>LongPredicate<br/> DoublePredicate|
+| `Consumer<T>` | T->void | IntConsumer<br/>LongConsumer<br/> DoubleConsumer |
+| Function<T,R> | T->R | `IntFunction<R>` <br/> IntToDoubleFunction <br/> IntToLongFunction <br/> `LongFunction<R>`<br/> LongToDoubleFunction <br/> LongToIntFunction <br/> `DoubleFunction<R>` <br/>`ToIntFunction<T>`<br/>`ToDoubleFunction<T>`<br/>`ToLongFunction<T>`|
+| `Supplier<T>` | ()->T | BooleanSupplier<br/>IntSupplier<br/> LongSupplier<br/> DoubleSupplier|
+| `UnaryOperator<T>` | T->T |IntUnaryOperator<br/>LongUnaryOperator<br/>DoubleUnaryOperator|
+| `BinaryOperator<T>` | (T,T)-> T | IntBinaryOperator<br/>LongBinaryOperator<br/>DoubleBinaryOperator|
 | BiPredicate<L,R> | (L,R)->boolean | |
-| BiConsumer<T,U> | (T,U)->void | ObjIntConsumer< T ><br/>ObjLongConsumer< T ><br/>ObjDoubleConsumer< T >|
+| BiConsumer<T,U> | (T,U)->void | `ObjIntConsumer<T>`<br/>`ObjLongConsumer<T>`<br/>`ObjDoubleConsumer<T>`|
 | BiFunction<T,U,R> | (T,U)->R | ToIntBiFunction<T,U><br/>ToLongBiFunction<T,U><br/>ToDoubleBiFunction<T,U>|
 
 **`Lambdas及函数式接口的例子`**
 | 使用案例 | Lambda例子 | 对应的函数式接口 |
 |:----|:----|:----|
-| 布尔表达式 | (List<String> list) -> list.isEmpty() | Predicate<List< String >>|
-| 创建对象 |() -> new Apple(10) |Supplier< Apple >
-| 消费一个对象 | (Apple a) ->System.out.println(a.getWeight())|Consumer< Apple >|
-| 从一个对象中 选择/提取 | (String s) -> s.length() | Function<String, Integer> 或 ToIntFunction< String >
+| 布尔表达式 | (List<String> list) -> list.isEmpty() | `Predicate<List<String>>`|
+| 创建对象 |() -> new Apple(10) |`Supplier<Apple>`
+| 消费一个对象 | (Apple a) ->System.out.println(a.getWeight())|`Consumer<Apple>`|
+| 从一个对象中 选择/提取 | (String s) -> s.length() | Function<String, Integer> 或 `ToIntFunction<String>`
 | 合并两个值 | (int a, int b) -> a * b |  IntBinaryOperator|
 | 比较两个对象 | (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()) | Comparator< Apple > 或 BiFunction<Apple, Apple, Integer> 或 ToIntBiFunction<Apple, Apple>
 
 - 请注意，任何函数式接口都不允许抛出受检异常（checked exception）。如果你需要Lambda 表达式来抛出异常，有两种办法：
     - 定义一个自己的函数式接口，并声明受检异常，
     - 或者把Lambda 包在一个try/catch块中。
-- 比如，在3.3节我们介绍了一个新的函数式接口BufferedReaderProcessor，它显式声明了一个IOException：
+- 比如函数式接口BufferedReaderProcessor，它显式声明了一个IOException：
     ```java
         @FunctionalInterface
         public interface BufferedReaderProcessor {
@@ -554,19 +554,19 @@ List<int[]> pairs = numbers1.stream()
 ##### 总结
 | 操作 | 类型 | 返回类型 | 参数 | 函数描述符 |
 |:----|:----|:----|:----|:----|
-| filter  | 中间 | `Stream<T>` | `Predicate<T>` | T -> boolean |
+| filter  | 中间 | `Stream<T>` | ``Predicate<T>`` | T -> boolean |
 |distinct|中间 有状态 无界|`Stream<T>`|||
 |skip|中间 有状态 有界|`Stream<T>`|long||
 |limit|中间 有状态 有界|`Stream<T>`|long||
 |map|中间|`Stream<R>`|`Function<T, R>`| T -> R|
 |flatMap|中间|`Stream<R>`|`Function<T, Stream<R>>`| T -> `Stream<R>`|
 |sorted|中间 有状态 无界|`Stream<T>`|`Comparator<T>`|(T,T) -> int|
-|anyMatch|终端|boolean|`Predicate<T>`| T -> boolean |
-|noneMatch|终端|boolean|`Predicate<T>`|T -> boolean|
-|allMatch|终端|boolean|`Predicate<T>`|T->boolean|
+|anyMatch|终端|boolean|``Predicate<T>``| T -> boolean |
+|noneMatch|终端|boolean|``Predicate<T>``|T -> boolean|
+|allMatch|终端|boolean|``Predicate<T>``|T->boolean|
 |findAny|终端|`Optional<T>`|||
 |findFirst|终端|`Optional<T>`|||
-|forEach|终端|void|`Consumer<T>`| T -> void|
+|forEach|终端|void|``Consumer<T>``| T -> void|
 |collect|终端|R|`Collector<T, A, R>`||
 |reduce|终端 有状态 有界|`Optional<T>`|`BinaryOprator<T>`|(T, T) -> T|
 |count|终端|long|||
@@ -609,7 +609,7 @@ Java8 引入了三个原始类型特化流接口来解决这个问题： IntStre
 
 ## Optional
 >1. null引用在历史上被引入到程序设计语言中，目的是为了表示变量值的缺失。
->1. Java 8中引入了一个新的类java.util.Optional< T >，对存在或缺失的变量值进行建模。
+>1. Java 8中引入了一个新的类java.util.Optional<T>，对存在或缺失的变量值进行建模。
 >1. 你可以使用静态工厂方法Optional.empty、 Optional.of以及Optional.ofNullable创建Optional对象。
 >1. Optional类支持多种方法，比如map、 flatMap、 filter，它们在概念上与Stream类中对应的方法十分相似。
 >1. 使用Optional会迫使你更积极地解引用Optional对象，以应对变量值缺失的问题，最终，你能更有效地防止代码中出现不期而至的空指针异常。

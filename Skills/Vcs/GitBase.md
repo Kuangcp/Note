@@ -38,7 +38,7 @@
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -47,6 +47,11 @@
 > [official doc: git](https://git-scm.com/docs) 
 > [Gitee: about git](https://gitee.com/all-about-git)  
 > [Git官网中文教程](https://git-scm.com/book/zh/v2) | [对应的仓库](https://github.com/progit/progit2)  
+
+- index stage work 三个概念上的区域
+    - index 已经 commit 的内容, 不可更改历史commit 
+    - stage 执行 add 命令, 将文件缓存到该区
+    - work 默认目录, 修改的就是该分区
 
 **********************
 ## Git常用命令
@@ -111,7 +116,8 @@
     - 第三行：记述更改的原因和详细内容
     - 使用下面方法关闭退出
 
-- [ ] 使用 --amend 参数重写历史commit [Official Doc](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2)
+- `--amend` 追加文件到上次commit [Official Doc](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2)
+    - 如果上次提交漏了文件, 只需把漏的文件加入到 index区中, 然后执行 git commit --amend 即可
 
 #### remote
 > [官方文档](https://git-scm.com/docs/git-remote)
@@ -203,11 +209,6 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 1. git show sha-1的值 就能看到该次提交的所有修改
 
 #### diff
-- Git 工作原理是 index stage work 三个概念逻辑上的区域
-    - index 已经 commit 的内容, 不可更改历史commit 
-    - stage 执行 add 命令, 将文件缓存到该区
-    - work 默认目录, 修改的就是该分区
-
 - 默认是将 work 区 和 index 区 进行比较
 - `--cached` stage 区 和 index 区 进行比较, 等同于`--staged`
 
