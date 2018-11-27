@@ -210,12 +210,61 @@ func walkfunc(path string, info os.FileInfo, err error) error {
 ```
 
 ## JSON
+> `结构体必须是大写字母开头的成员才会被处理(大写字母开头才有对外权限)`
+
 > [参考博客: Go操作JSON](https://blog.csdn.net/u011304970/article/details/70769949)
 > [参考博客: go and json](https://eager.io/blog/go-and-json/)
-> [参考博客: 在Go语言中使用JSON](https://blog.csdn.net/tiaotiaoyly/article/details/38942311) `结构体必须是大写字母开头的成员才会被JSON处理到，小写字母开头的成员不会有影响。`
+> [参考博客: 在Go语言中使用JSON](https://blog.csdn.net/tiaotiaoyly/article/details/38942311) 
 
 > [website: json to go struct](https://mholt.github.io/json-to-go/)
 
+```go
+	type GridConfig struct {
+        ID   int   `json:"id"`
+        Row  int   `json:"row"`
+        Col  int   `json:"col"`
+        Data []int `json:"data"`
+    }
+
+// 第一种
+func (*GenerateGrid) ReadConfig() []GridConfig {
+	var datas []GridConfig
+	fp, _ := os.Open("grid.json")
+	dec := json.NewDecoder(fp)
+	for {
+		err := dec.Decode(&datas)
+		if err != nil {
+			fmt.Println(err)
+			break
+		}
+		//use v
+		// fmt.Printf("%+v", datas)
+		for _, line := range datas {
+			fmt.Println(" ", line)
+		}
+	}
+
+    // 第二种方式
+	var datas []GridConfig
+	raw, err := ioutil.ReadFile("./grid.json")
+	// fmt.Println(raw)
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
+	err = json.Unmarshal(raw, &datas)
+	if err != nil {
+		fmt.Println("error:", err)
+
+	}
+	for _, line := range datas {
+		fmt.Println(" ", line)
+	}
+
+	return datas
+}
+
+```
 # Tips
 ## 通过字符串调用指定函数
 > [参考博客: Go 根据字符串调用指定函数](https://blog.csdn.net/HOOKTTG/article/details/52184500)

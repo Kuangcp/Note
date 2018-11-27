@@ -643,7 +643,7 @@ Java8 引入了三个原始类型特化流接口来解决这个问题： IntStre
     1. persion 存在且满足条件就返回自身否则返回空 `person.filter(o -> "name".equals(o.getName()))`
 
 **`Tips`**
-1. 注意: Optional 无法序列化, 也就是说不能作为 PO 的字段, 但是可以在get上下功夫, 手动声明 Optional 式的方法
+1. **注意**: Optional 无法序列化, 也就是说不能作为 PO 的字段, 但是可以在get上下功夫: `public Optional<String> getName(){return this.name}`
 
 1. 异常与Optional的对比
     - 当一个方法由于某些原因无法返回期望值, 常见的做法是抛出异常, 或者返回null(不建议). 但是这时候多了一个选择, 返回Optional
