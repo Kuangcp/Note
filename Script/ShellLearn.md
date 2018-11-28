@@ -17,7 +17,7 @@
         1. [字符串](#字符串)
         1. [数组](#数组)
     1. [结构](#结构)
-        1. [参数读取](#参数读取)
+        1. [传递参数](#传递参数)
         1. [判断](#判断)
             1. [if](#if)
             1. [case](#case)
@@ -32,7 +32,7 @@
     1. [工具](#工具)
         1. [shyaml](#shyaml)
 
-`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 学习Shell
 > 首先语法不像别的语言可读性好，比如Python，然后方言众多，学习比Python2，3还恶心  
@@ -66,21 +66,25 @@
 1. 获取当前shell脚本的绝对路径 ```basepath=$(cd `dirname $0`; pwd)```
 1. 命令嵌套 只要在 命令中用 两个反引号 `` 将子命令包住即可
 1. 检查当前用户为Root用户
-```sh
-  if [ $(id -u) != "0" ]; then
-      printf $red"Please use root to run this script\n"$end
-      exit 1
-  fi
-```
+    ```sh
+        if [ $(id -u) != "0" ]; then
+            printf $red"Please use root to run this script\n"$end
+            exit 1
+        fi
+    ```
 1. kill 脚本进程
-```sh
-  id=`ps -ef | grep "WithRedis.py" | grep -v "grep" | grep -v "\-d" | awk '{print $2}'`
-  if [ "${id}1" = "1" ];then
-      printf $red"not exist background running script\n"$end
-  else
-      kill -9 $id
-  fi
-```
+    ```sh
+        id=`ps -ef | grep "WithRedis.py" | grep -v "grep" | grep -v "\-d" | awk '{print $2}'`
+        if [ "${id}1" = "1" ];then
+            printf $red"not exist background running script\n"$end
+        else
+            kill -9 $id
+        fi
+    ```
+1. 得到脚本绝对路径; 如果只是执行 pwd 只是得到执行脚本时的当前绝对路径而已
+    ```sh
+        basepath=$(cd \`dirname $0\`; pwd) 
+    ```
 
 *******************
 ## 执行
@@ -217,17 +221,21 @@ _字符串拆分成数组_
 
 *********************
 ## 结构
-### 参数读取
+
+### 传递参数
 > [参考博客](http://www.cnblogs.com/FrankTan/archive/2010/03/01/1634516.html) `命令行选项 参数处理`
 
-- 只是 $1 $2 ....
-    - 脚本退出运行 `exit 0`
+| 参数 | 说明 |
+|:----:|:----|
+| `$#` | 传递到脚本的参数个数
+| `$*` | 以一个单字符串显示所有向脚本传递的参数。以"$1 $2 … $n"的形式输出所有参数。
+| `$$` | 脚本运行的当前进程ID号
+| `$!` | 后台运行的最后一个进程的ID号
+| `$@` | 与$*相同，但是使用时加引号 以"$1" "$2" … "$n" 的形式输出所有参数。
+| `$-` | 显示Shell使用的当前选项，与set命令功能相同。
+| `$?` | 显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误。
 
-> 得到脚本绝对路径; 如果只是执行 pwd 只是得到执行脚本时的当前绝对路径而已
-```sh
-basepath=$(cd \`dirname $0\`; pwd) 
-```
-
+> 读取脚本参数 
 ```sh
   # 1. 简单的方式
   case $1 in 
@@ -238,6 +246,7 @@ basepath=$(cd \`dirname $0\`; pwd)
       echo "default"
     ;;
   esac
+
   # 2. 规范化的参数
   while getopts "hup:" opt; do
     case "$opt" in

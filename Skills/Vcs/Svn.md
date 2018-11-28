@@ -14,7 +14,7 @@
         1. [处理冲突](#处理冲突)
             1. [树冲突](#树冲突)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SVN
 > 传统的中心化版本控制工具,能够精确控制每个目录的权限, Apache顶级项目  
@@ -88,6 +88,10 @@
 - `svn log | less` 这样能更为方便和干净
 - `svn cat -r 版本号 文件` 输出某个版本的某文件(文件必须在本地存在)
 - `svn diff -r 版本号:版本号 文件` 对比两个版本的某文件
+
+> svn st 
+  
+![svn code](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/svn/svn_codes.png)
 
 ### 处理冲突
 > 冲突的产生: 因为多个开发人员进行修改了同一个文件夹(修改,删除文件夹), 同一个文件. 
