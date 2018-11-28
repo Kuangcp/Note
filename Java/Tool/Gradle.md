@@ -13,7 +13,7 @@
 1. [关键配置文件](#关键配置文件)
     1. [build.gradle](#buildgradle)
         1. [初始化一个新项目](#初始化一个新项目)
-        1. [dependency](#dependency)
+        1. [依赖定义](#依赖定义)
         1. [统一依赖管理](#统一依赖管理)
         1. [配置Wrapper](#配置wrapper)
         1. [插件](#插件)
@@ -28,7 +28,7 @@
     1. [构建Docker镜像](#构建docker镜像)
         1. [第二种插件方式](#第二种插件方式)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Gradle
 > [官方 guide](https://gradle.org/guides/?q=JVM) | [其他 tutorial](https://www.tutorialspoint.com/gradle/index.htm)  
@@ -95,6 +95,7 @@
 > [Docker 文档](https://docs.docker.com/samples/library/gradle/)
 
 ****************************
+
 ## 配置镜像源
 **阿里云**
 > [参考博客: 配置Gradle的镜像为阿里云镜像](https://tvzr.com/change-the-mirror-of-gradle-to-aliyun.html)
@@ -164,12 +165,11 @@ _Hello World_
 ### 初始化一个新项目
 > [doc:building java application](https://guides.gradle.org/building-java-applications/)
 
-### dependency
+### 依赖定义
 - 和Maven用的是同一种方式 groupId artifactId version 
 - 使用本地依赖 `compile files('lib/ojdbc-14.jar')` 相对的根目录是src同级目录
 
-[Official doc: dependency management](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_plugin_and_dependency_management)
-
+> [Official doc: dependency management](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_plugin_and_dependency_management)  
 > 4.10  Deprecated: `compile runtime testCompile testRuntime`
 
 - `compile(Deprecated)`
@@ -223,8 +223,39 @@ _Hello World_
 - `default extends runtime`
     - The default configuration used by a project dependency on this project. Contains the artifacts - and dependencies required by this project at runtime.
 
+> 依赖排除以及指定依赖版本
+```groovy
+    // 依赖排除
+    compile(''){
+        exclude group: '' // 按group排除
+        exclude module: '' // 按 artifact 排除
+        exclude grop: '', module: '' // 按 group artifact 排除
+    }
+    // 全局依赖排除
+    all*.exclude group:'org.unwanted', module: 'iAmBuggy'
 
+    // 禁用依赖传递
+    compile('com.zhyea:ar4j:1.0') {
+	    transitive = false
+    }
+    
+    configurations.all {
+        transitive = false
+    }
 
+    // 强制使用指定版本的依赖
+    compile('com.zhyea:ar4j:1.0') {
+        force = true
+    }
+    // 始终使用最新的依赖,  若 1.+ 则是 1.xx版本的最新版
+    compile 'com.zhyea:ar4j:+'
+    
+    configurations.all {
+        resolutionStrategy {
+            force 'org.hamcrest:hamcrest-core:1.3'
+        }
+    }
+```
 
 ### 统一依赖管理
 新建一个文件 _dependency.gradle_
@@ -240,7 +271,6 @@ _Hello World_
 ```
 - 在 build.gradle 中引入 `apply from: 'dependency.gradle'`
 - 使用依赖时 只需 `compile libs['junit']` 即使在子模块中也是如此使用
-
 
 ### 配置Wrapper
 > 在使用IDE生成项目的时候，可以选择gradle的执行目录，可以选`gradle wrapper` 也可以选自己下载解压的完整包
