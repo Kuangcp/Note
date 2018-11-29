@@ -2,11 +2,13 @@
  
 1. [Python](#python)
     1. [简介](#简介)
-        1. [关于Python2.x与3.x的使用](#关于python2x与3x的使用)
+        1. [关于Python2与3的使用](#关于python2与3的使用)
     1. [安装配置](#安装配置)
-        1. [Docker](#docker)
+        1. [Docker安装](#docker安装)
+        1. [sys.path](#syspath)
     1. [基础](#基础)
         1. [代码风格](#代码风格)
+        1. [包](#包)
         1. [基础语法](#基础语法)
         1. [基础数据类型](#基础数据类型)
     1. [内置模块](#内置模块)
@@ -53,10 +55,11 @@
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-`目录 end` |_2018-09-30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-11-29_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Python
-> [官网](https://www.python.org/)
+> [Official Site](https://www.python.org/)  
+> [Doc: Python2](https://docs.python.org/2/) | [Doc: Python3](https://docs.python.org/3/)
 
 > [Python初学者（零基础学习Python、Python入门）书籍、视频、资料、社区推荐](https://github.com/Yixiaohan/codeparkshare)
 > [参考博客: Python3的主要应用](http://www.techug.com/post/what-can-you-do-with-python-the-3-main-applications.html)
@@ -65,14 +68,13 @@
 
 > [Anaconda](https://docs.anaconda.com/anaconda/install/linux)`一站式集成环境`
 
-- [Python2](https://docs.python.org/2/) | [Python3](https://docs.python.org/3/)
 - [python-gtk3](https://python-gtk-3-tutorial.readthedocs.io/en/latest/introduction.html) `python-gtk3的开发`
 - [httpie](http://python.ctolib.com/httpie.html) `好用的类curl工具 文档` 
 - [一译](http://python.usyiyi.cn/)`翻译了大量Python文档`
 
 ## 简介
 
-### 关于Python2.x与3.x的使用
+### 关于Python2与3的使用
 > 摘自 Python核心编程 第三版 Wesley Chun著
 
 - print 变为 print()
@@ -91,9 +93,39 @@
 1. sudo apt update 
 1. sudo apt install python3.6
 
-### Docker
+### Docker安装
 > [docker hub](https://hub.docker.com/_/python/)
 
+### sys.path
+> [Doc: Python path](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH)
+
+- sys.path 是 指定模块的搜索路径的字符串列表。`类似于Java的 ClassPath, Go的 GOPATH, 让解释器知道去哪找包`
+    - 查看系统的 sys.path 进入交互解释器
+    ```python
+        import sys
+        print("\n".join(sys.path))
+    ```
+**修改sys.path**
+1. 代码中直接添加, 执行就生效, 程序结束就失效
+    ```python
+        #  假如有如下两个文件 在不同的包下
+        # /src/configs/config.py
+        # /src/common/Database.py
+
+        parent_path = os.path.dirname(sys.path[0])
+        # 避免重复添加
+        if parent_path not in sys.path:
+            sys.path.append(parent_path)
+        import configs.config
+    ```
+1. 添加 *.pth 文件
+    - 在 /usr/local/lib/ 目录下有众多 Python 版本
+    - 例如在 2.7 添加 python2.7/site-packages/test.pth 写入工程目录即可
+        - python3.x 则是在 dist-packages 目录下
+1. 修改环境变量
+    - 修改或添加 环境变量 PYTHONPATH 路径用分号分隔
+
+******************************
 
 ## 基础
 ### 代码风格
@@ -132,6 +164,12 @@
     
     命名空间是一种绝妙的理念，我们应当多加利用（倡导与号召）
 ```
+
+### 包 
+> [official tutorial](https://docs.python.org/3/tutorial/modules.html#packages)
+
+When importing the package, Python searches through the directories on `sys.path` looking for the package subdirectory.
+
 ### 基础语法
 - 缩进来表示代码块的嵌套关系
 - 单行注释：`#` 多行注释： `""" """`
