@@ -119,7 +119,7 @@
         import configs.config
     ```
 1. 添加 *.pth 文件
-    - 在 /usr/local/lib/ 目录下有众多 Python 版本
+    - 在 `/usr/local/lib/` 目录下有众多 Python 版本
     - 例如在 2.7 添加 python2.7/site-packages/test.pth 写入工程目录即可
         - python3.x 则是在 dist-packages 目录下
 1. 修改环境变量
