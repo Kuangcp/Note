@@ -80,7 +80,8 @@
 
 > 部分提交 [参考](https://blog.mimvp.com/article/15666.html)
 
-`svn ci readme.md src/* -m "1.update readme 2.add src change"`
+- 提交指定文件以及目录 `svn ci readme.md src/* -m "1.update readme 2.add src change"`
+- `svn ci -m "msg"` 提交所有已添加到版本库的操作(新建, 修改, 删除)
 
 ### 查看仓库
 > [查看最后修改的文件](https://java-er.com/blog/svn-last-files/) | [svn历史版本对比以及还原到历史版本](http://www.cnblogs.com/simonote/articles/3086717.html)
