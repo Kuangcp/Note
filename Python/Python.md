@@ -129,6 +129,8 @@
 
 ## 基础
 ### 代码风格
+> [PEP8](https://www.python.org/dev/peps/pep-0008/) `官方建议`
+
 - 一行只写一句
 - 表达式尽量不要省略括号，有助于理解
 - 函数的行数不要超过100行
@@ -169,6 +171,8 @@
 > [official tutorial](https://docs.python.org/3/tutorial/modules.html#packages)
 
 When importing the package, Python searches through the directories on `sys.path` looking for the package subdirectory.
+
+> 1. 注意不能出现 import 循环依赖 `A.py import B.py` then `B.py import A.py`  
 
 ### 基础语法
 - 缩进来表示代码块的嵌套关系
