@@ -55,7 +55,7 @@
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-`目录 end` |_2018-11-29_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-12-06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -482,14 +482,14 @@ def show_help():
 > 不过要自己书写帮助文档输出,小量参数的话,开发十分的便利 可以和类一起,也可以和方法一起
 
 ```python
-import fire
-def main(action=None):
-    print(action)
-    if action == '-h':
-        show_help()
-       
-fire.Fire(main)
-// 使用时 py filename.py -h  
+    import fire
+    def main(action=None):
+        print(action)
+        if action == '-h':
+            show_help()
+        
+    fire.Fire(main)
+    # 使用时 py filename.py -h  
 ```
 *****************************************
 ## 函数
@@ -518,6 +518,7 @@ fire.Fire(main)
     -  导入指定的函数 `from create import create_aliens, type_button` 多个就，分隔 同理 as给函数加别名 * 通配所有
 - 注意：递归深度，Python中递归默认深度是 989， 要么更改实现，要么就 `sys.setrecursionlimit(10000000)`
 
+> [参考博客: Magic Method](https://segmentfault.com/a/1190000007256392) `__xxx__ 方法`
 
 *******************
 ## 类
@@ -599,13 +600,13 @@ fire.Fire(main)
     - 有异常就执行 except， except 超类Exception，也可以多个except （和Java一致）
     - 最终执行finally 和 Java的结构是一致的
 
-| except 分句使用形式 |  说明 |
-| :--- | :---|
-|except | 捕获所有类型|
-|except name| 只捕获指定类型|
-|except name, value|捕获指定类型，并获得抛出的异常对象|
-|except (name1, name2)|捕获列出的异常|
-|except (name1, name2), value |捕获列出的异常，获得抛出的异常对象|
+    | except 分句使用形式 |  说明 |
+    | :--- | :---|
+    |except | 捕获所有类型|
+    |except name| 只捕获指定类型|
+    |except name, value|捕获指定类型，并获得抛出的异常对象|
+    |except (name1, name2)|捕获列出的异常|
+    |except (name1, name2), value |捕获列出的异常，获得抛出的异常对象|
 
 - raise 语句 和Java的throw关键字 一致 ， 不过raise只是抛出一个通用异常类型 Exception
 - dir(exceptions) 查看所有异常类型
@@ -629,7 +630,9 @@ fire.Fire(main)
 |EOPError|文件结束标识错误|
 
 *****************
+
 ## 文件操作
+
 - 注意路径，Windows系统中要使用反斜杠 \ 
 - 最简单：`file = open('')` 只读打开
 - `使用with来操作 好处是Python自动关闭文件`
@@ -679,15 +682,23 @@ fire.Fire(main)
 
 ### JSON
 ```python
-    alien = {'color': 'green', 'age': '23'}
-    files = 'a.json'
-    with open(files, 'w') as o:
-        json.dump(alien, o)
-    data = json.load(files)
-    # 引用
-    data['root']['name']
+    import json
+    file_name='result.json'
+    
+    def write_json():
+        global file_name
+        person = {'color': 'green', 'age': '23'}
+        with open(file_name, 'w') as o:
+            json.dump(person, o)
+
+    def read_json():
+        global file_name
+        with open(file_name) as file:
+            datas = json.load(file)
+            for data in datas :
+                # 引用的时候就当做是字典
+                print(data, datas[data])
 ```
-- json.dump()持久化 和 load() 装载
 
 ### conf或者ini
 > [参考博客: python操作ini文件](https://www.oschina.net/code/snippet_782578_14344)

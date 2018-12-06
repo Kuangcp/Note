@@ -1,13 +1,14 @@
 `目录 start`
  
-- [字体](#字体)
-    - [资源](#资源)
-        - [终端中常用字体](#终端中常用字体)
-    - [操作系统默认字体](#操作系统默认字体)
-    - [编辑器](#编辑器)
-    - [终端](#终端)
+1. [字体](#字体)
+    1. [资源](#资源)
+        1. [终端中常用字体](#终端中常用字体)
+    1. [操作系统默认字体](#操作系统默认字体)
+    1. [编辑器](#编辑器)
+    1. [终端](#终端)
+    1. [符号](#符号)
 
-`目录 end` |_2018-09-06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-12-06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 字体
 
@@ -45,4 +46,24 @@
 - Droid Sans Mono for Powerline
 - Roboto Mono for Powerline Bold
 - Hack
+
+
+## 符号
+> [符号](http://www.bangnishouji.com/fuhao/)
+
+**制表符**
+```
+    ┌ 	┬ 	┐ 	  	┏ 	┳ 	┓ 	  	╒ 	╤ 	╕ 	  	╭ 	─ 	╮
+    ├ 	┼ 	┤ 	  	┣ 	╋ 	┫ 	  	╞ 	╪ 	╡ 	  	│ 	╳ 	│
+    └ 	┴ 	┘ 	  	┗ 	┻ 	┛ 	  	╘ 	╧ 	╛ 	  	╰ 	─ 	╯
+    ┏ 	┳ 	┓ 	  	┏ 	━ 	┓ 	  	┎ 	┰ 	┒ 	  	┍ 	┯ 	┑
+    ┣ 	╋ 	┫ 	  	┃ 	  	┃ 	  	┠ 	╂ 	┨ 	  	┝ 	┿ 	┥
+    ┗ 	┻ 	┛ 	  	┗ 	━ 	┛ 	  	┖ 	┸ 	┚ 	  	┕ 	┷ 	┙
+    ┏ 	┱ 	┐ 	  	┌ 	┲ 	┓ 	  	┌ 	┬ 	┐ 	  	┏ 	┳ 	┓
+    ┡ 	╃ 	┤ 	  	├ 	╄ 	┩ 	  	┟ 	╁ 	┧ 	  	┞ 	┴ 	┦
+    └ 	┴ 	┘ 	  	└ 	┴ 	┘ 	  	┗ 	╁ 	┛ 	  	└ 	┴ 	┘
+    ─ 	━ 	┄ 	┅ 	┈ 	┈ 	╲ 	  	  	  	  	  	  	  	 
+    │ 	┃ 	┆ 	┇ 	┊ 	┋ 	╱ 	  	  	  	  	  	  	  	 
+```
+
 
