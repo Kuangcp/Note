@@ -56,6 +56,7 @@
     * [ JavaScript ](/FrontEnd/JavaScript.md)
     * [ LearnPS ](/FrontEnd/LearnPS.md)
     * [ ResponseCode ](/FrontEnd/ResponseCode.md)
+    * [ SVG ](/FrontEnd/SVG.md)
     * [ ViewSolution ](/FrontEnd/ViewSolution.md)
 * 【 Functional 】
     * [ Clojure ](/Functional/Clojure.md)
@@ -199,6 +200,7 @@
     * 【 Python/Tool 】
         * [ PyCharm ](/Python/Tool/PyCharm.md)
     * [ Python ](/Python/Python.md)
+    * [ PythonConcurrent ](/Python/PythonConcurrent.md)
     * [ PythonExcel ](/Python/PythonExcel.md)
     * [ PythonGUI ](/Python/PythonGUI.md)
     * [ PythonGame ](/Python/PythonGame.md)

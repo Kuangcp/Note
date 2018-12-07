@@ -79,6 +79,8 @@
 
 - when-changed 监控文件变化 执行命令 pip install when-changed
 
+- dircolors [Linux dircolors命令](http://www.runoob.com/linux/linux-comm-dircolors.html)`用于设置 ls 命令输出时的色彩`
+    
 ### 效率工具
 > 提高工作和开发效率
 
@@ -127,6 +129,9 @@
 
 ***********
 ### 文件操作
+#### iconv 
+> 可以将一种已知的字符集文件转换成另一种已知的字符集文件
+
 #### zssh
 > 便捷的文件传输
 
