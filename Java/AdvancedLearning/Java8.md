@@ -37,13 +37,23 @@
                 1. [原始类型特化](#原始类型特化)
                 1. [数值范围](#数值范围)
             1. [构建流](#构建流)
+                1. [由值创建流](#由值创建流)
+                1. [由数组创建流](#由数组创建流)
+                1. [由文件生成流](#由文件生成流)
+                1. [由函数生成流：创建无限流](#由函数生成流创建无限流)
+        1. [使用流收集数据](#使用流收集数据)
+            1. [预定义收集器](#预定义收集器)
+                1. [汇总](#汇总)
+                1. [规约](#规约)
+                1. [分组](#分组)
+                    1. [多级分组](#多级分组)
     1. [Optional](#optional)
     1. [集合](#集合)
     1. [时间处理](#时间处理)
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-`目录 end` |_2018-11-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-12-09_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)
@@ -583,7 +593,7 @@ List<int[]> pairs = numbers1.stream()
 #### 数值流
 
 ##### 原始类型特化
-Java8 引入了三个原始类型特化流接口来解决这个问题： IntStream、DoubleStream 和 LongStream，分别将流中的元素特化为int、long和double，从而避免了暗含的装箱成本。
+Java8 引入了三个原始类型特化流接口来解决这个问题： `IntStream、DoubleStream 和 LongStream`，分别将流中的元素特化为int、long和double，从而避免了暗含的装箱成本。
 
 **映射到数值流**
 ```java
@@ -602,8 +612,140 @@ Java8 引入了三个原始类型特化流接口来解决这个问题： IntStre
     OptionalInt maxCalories = menu.stream().mapToInt(Dish::getCalories).max(); 
 ```
 ##### 数值范围
+IntStream和LongStream 的 range() 或者 rangeClose() 方法能产生一个数值流
+> 例如 IntStream.rangeClose(1,100).filter(num->num%2==0).count() 统计100以内的偶数
 
+> **获取勾股数流**
+```java
+    Stream<int[]> pythagoreanTriples = IntStream.rangeClosed(1, 100).boxed() .flatMap(a -> 
+        IntStream.rangeClosed(a, 100) 
+                .filter(b -> Math.sqrt(a*a + b*b) % 1 == 0) 
+                .mapToObj(b -> new int[]{a, b, (int)Math.sqrt(a * a + b * b)}) 
+            ); 
+    
+    pythagoreanTriples.limit(5) .forEach(t -> System.out.println(t[0] + ", " + t[1] + ", " + t[2])); 
+```
 #### 构建流
+> 从值序列、数组、文件来创建流，甚至由函数创建无限流
+
+##### 由值创建流
+`Stream<String> stream = Stream.of("Java 8 ", "Lambdas ", "In ", "Action"); `
+
+##### 由数组创建流
+```java
+    int[] numbers = {2, 3, 5, 7, 11, 13}; 
+    int sum = Arrays.stream(numbers).sum(); 
+```
+
+##### 由文件生成流
+Java中用于处理文件等I/O操作的NIO  API（非阻塞I/O）已更新，以便利用Stream  API。java.nio.file.Files中的很多静态方法都会返回一个流。
+
+```java
+    long uniqueWords = 0; 
+    try(Stream<String> lines = Files.lines(Paths.get("data.txt"), Charset.defaultCharset())){ 
+        uniqueWords = lines.flatMap(line -> Arrays.stream(line.split(" "))).distinct() .count(); 
+    }catch(IOException e){} 
+```
+
+##### 由函数生成流：创建无限流
+> Stream API提供了两个静态方法来从函数生成流：Stream.iterate和Stream.generate。这两个操作可以创建所谓的 无限流  
+> 同样，你不能对无限流做排序或归约，因为所有元素都需要处理，而这永远也完不成！
+
+**`迭代`**
+```java
+    Stream.iterate(0, n -> n + 2).limit(10).forEach(System.out::println); 
+
+    // 获取斐波那契序列 元组
+    Stream.iterate(new int[]{0, 1}, t -> new int[]{t[1], t[0]+t[1]}) 
+      .limit(20) 
+      .forEach(t -> System.out.println("(" + t[0] + "," + t[1] +")")); 
+```
+
+**`生成`**
+```java
+    Stream.generate(Math::random).limit(5).forEach(System.out::println); 
+    // 很重要的一点是，在并行代码中使用有状态的供应源是不安全的。因此下面的代码仅仅是为了内容完整，应尽量避免使用！
+    IntSupplier fib = new IntSupplier(){ 
+        private int previous = 0; 
+        private int current = 1; 
+        public int getAsInt(){ 
+            int oldPrevious = this.previous; 
+            int nextValue = this.previous + this.current; 
+            this.previous = this.current; 
+            this.current = nextValue; 
+            return oldPrevious; 
+        } 
+    }; 
+    IntStream.generate(fib).limit(10).forEach(System.out::println); 
+```
+
+### 使用流收集数据
+> 函数式编程相对于指令式编程的一个主要优势：你只需指出希望的结果——“做什么”，而不用操心执行的步骤——“如何做”
+
+
+#### 预定义收集器
+Collectors所提供的工厂方法 它们主要提供了三大功能：将流元素归约和汇总为一个值 元素分组 元素分区
+
+- toList toMap toSet 等方法
+
+##### 汇总
+> Collectors类专门为汇总提供了一个工厂方法：Collectors.summingInt 它可接受一个把对象映射为求和所需int的函数，并返回一个收集器；该收集器在传递给普通的collect方法后即执行我们需要的汇总操作  
+> 求平均数 Collectors.averagingInt
+> summarizing操作你可以得出元素的个数，并得到总和、平均值、最大值和最小值
+
+```java
+IntSummaryStatistics menuStatistics = menu.stream().collect(summarizingInt(Dish::getCalories)); 
+// toString(): IntSummaryStatistics{count=9, sum=4300, min=120, average=477.777778, max=800} 
+```
+**`连接字符串`**
+joining工厂方法返回的收集器会把对流中每一个对象应用toString方法得到的所有字符串连接成一个字符串。
+`String shortMenu = menu.stream().collect(joining()); `
+
+##### 规约
+事实上，我们已经讨论的所有收集器，都是一个可以用reducing工厂方法定义的归约过程的特殊情况而已。Collectors.reducing工厂方法是所有这些特殊情况的一般化。
+
+- 例如 计算总热量 `int totalCalories = menu.stream().collect(reducing(0, Dish::getCalories, (i, j) -> i + j));`
+    - 第一个参数: 规约操作的起始值 也是当流为空时的返回值
+    - 第二个参数: 转换函数
+    - 第三个参数: BinaryOperator  将两个项目累积成一个同类型的值
+
+你可以把单参数reducing工厂方法创建的收集器看作三参数方法的特殊情况，它把流中的第一个项目作为起点，把恒等函数（即一个函数仅仅是返回其输入参数）作为一个转换函数。
+这也意味着，要是把单参数reducing收集器传递给空流的collect方法，收集器就没有起点;它将因此而返回一个Optional<Dish>对象。
+
+> 1. 收集框架的灵活性：以不同的方法执行同样的操作
+
+1. 使用Integer的sum方法简化以上的求和 `int totalCalories = menu.stream().collect(reducing(0, Dish::getCalories,Integer::sum));`
+1. 将对象映射为 int 然后规约求和 `int totalCalories = menu.stream().map(Dish::getCalories).reduce(Integer::sum).get(); `
+1. 或者转为 IntStream `int totalCalories = menu.stream().mapToInt(Dish::getCalories).sum(); `
+
+> 2. 根据情况选择最佳解决方案  
+
+函数式编程（特别是Java 8的Collections框架中加入的基于函数式风格原理设计的新API）通常提供了多种方法来执行同一个操作。
+这个例子还说明，收集器在某种程度上比Stream接口上直接提供的方法用起来更复杂，但好处在于它们能提供更高水平的抽象和概括，也更容易重用和自定义。
+
+##### 分组
+一个常见的数据库操作是根据一个或多个属性对集合中的项目进行分组。
+
+- 使用 groupingBy `Map<Dish.Type, List<Dish>> dishesByType = menu.stream().collect(groupingBy(Dish::getType));`
+    - groupingBy 方法的入参为一个 Function 一般称为分类函数
+
+```java
+    // 实现复杂的分类函数
+    public enum CaloricLevel { DIET, NORMAL, FAT } 
+    Map<CaloricLevel, List<Dish>> dishesByCaloricLevel = menu.stream().collect( 
+            groupingBy(dish -> { 
+                if (dish.getCalories() <= 400){
+                    return CaloricLevel.DIET; 
+                } 
+                else if (dish.getCalories() <= 700){ 
+                    return CaloricLevel.NORMAL; 
+                }else{
+                    return CaloricLevel.FAT; 
+                }
+            })); 
+```
+
+###### 多级分组
 
 ****************************************
 
