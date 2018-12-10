@@ -47,13 +47,17 @@
                 1. [规约](#规约)
                 1. [分组](#分组)
                     1. [多级分组](#多级分组)
+                    1. [按子组收集数据](#按子组收集数据)
     1. [Optional](#optional)
+        1. [Optional类和Stream接口的相似之处](#optional类和stream接口的相似之处)
+        1. [Tips](#tips)
+        1. [实践:读取Properties某属性](#实践读取properties某属性)
     1. [集合](#集合)
     1. [时间处理](#时间处理)
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-`目录 end` |_2018-12-09_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-12-10_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)
@@ -746,6 +750,91 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 ```
 
 ###### 多级分组
+> 要实现多级分组，我们可以使用一个由双参数版本的 Collectors.groupingBy 工厂方法创建的收集器，它除了普通的分类函数之外，还可以接受collector类型的第二个参数。
+
+```java
+    Map<Dish.Type, Map<CaloricLevel, List<Dish>>> dishesByTypeCaloricLevel = 
+    menu.stream().collect( 
+        groupingBy(Dish::getType,  
+            groupingBy(dish -> {  
+                if (dish.getCalories() <= 400){
+                    return CaloricLevel.DIET; 
+                }else if (dish.getCalories() <= 700) {
+                    return CaloricLevel.NORMAL;
+                }else{ 
+                    return CaloricLevel.FAT; 
+                }
+            } ) 
+        ) 
+    ); 
+```
+
+###### 按子组收集数据
+> 可以把第二个groupingBy收集器传递给外层收集器来实现多级分组。但进一步说，传递给第一个groupingBy的第二个收集器可以是任何类型 
+>> 例如: `Map<Dish.Type, Long> typesCount = menu.stream().collect(groupingBy(Dish::getType, counting())); `
+
+```java
+    Map<Dish.Type, Optional<Dish>> mostCaloricByType = menu.stream()
+            .collect(groupingBy(
+                Dish::getType,
+                maxBy(
+                    comparingInt(Dish::getCalories)
+                )
+            )); 
+```
+- 这个分组的结果显然是一个map，以Dish的类型作为键，以包装了该类型中热量最高的Dish的Optional<Dish>作为值
+    - 但是这里的 Optional 存在的意义不大, 因为先有的类型 进行分组, 才会进行 maxBy 所以值是一定存在的
+
+> 1. 把收集器的结果转换为另一种类型
+
+因为前述例子中的Optional存在意义不是很大, 所以 把收集器返回的结果转换为另一种类型，你可以使用Collectors.collectingAndThen工厂方法返回的收集器
+
+```java
+    Map<Dish.Type, Dish> mostCaloricByType = menu.stream()
+                .collect(groupingBy(
+                    Dish::getType,
+                    collectingAndThen(
+                        maxBy(comparingInt(Dish::getCalories)),
+                        Optional::get)
+                    ));  
+```
+- 这个工厂方法接受两个参数——要转换的收集器以及转换函数，并返回另一个收集器。
+- 这个收集器相当于旧收集器的一个包装，collect操作的最后一步就是将返回值用转换函数做一个映射。
+- 在这里，被包起来的收集器就是用maxBy建立的那个，而转换函数Optional::get则把返回的Optional中的值提取出来。
+- 前面已经说过，这个操作放在这里是安全的，因为reducing收集器永远都不会返回Optional.empty()。
+
+> 2. 与 groupingBy 联合使用的其他收集器的例子
+
+一般来说，通过groupingBy工厂方法的第二个参数传递的收集器将会对分到同一组中的所有流元素执行进一步归约操作。
+```java
+    // 对每一组Dish求和
+    Map<Dish.Type, Integer> totalCaloriesByType = menu.stream().collect(groupingBy(Dish::getType, 
+                summingInt(Dish::getCalories))); 
+```
+然而常常和groupingBy联合使用的另一个收集器是mapping方法生成的。这个方法接受两个参数：一个函数对流中的元素做变换，另一个则将变换的结果对象收集起来。
+其目的是在累加之前对每个输入元素应用一个映射函数，这样就可以让接受特定类型元素的收集器适应不同类型的对象。我们来看一个使用这个收集器的实际例子。
+比方说你想要知道，对于每种类型的Dish，菜单中都有哪些CaloricLevel。我们可以把groupingBy和mapping收集器结合起来，如下所示：
+```java
+    Map<Dish.Type, Set<CaloricLevel>> caloricLevelsByType = menu.stream().collect( 
+        groupingBy(Dish::getType, mapping(dish -> {
+            if (dish.getCalories() <= 400) return CaloricLevel.DIET; 
+            else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL; 
+            else return CaloricLevel.FAT; 
+        }, toSet()))); 
+```
+这里，就像我们前面见到过的，传递给映射方法的转换函数将Dish映射成了它的CaloricLevel：生成的CaloricLevel流传递给一个toSet收集器，它和toList类似，
+不过是把流中的元素累积到一个Set而不是List中，以便仅保留各不相同的值。如先前的示例所示，这个映射收集器将会收集分组函数生成的各个子流中的元素
+```java
+    // 可以给它传递一个构造函数引用来要求 HashSet
+    Map<Dish.Type, Set<CaloricLevel>> caloricLevelsByType = menu.stream().collect( 
+        groupingBy(Dish::getType, mapping(dish -> { 
+            if (dish.getCalories() <= 400) return CaloricLevel.DIET; 
+            else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL; 
+            else return CaloricLevel.FAT; 
+        },toCollection(HashSet::new) ))); 
+```
+
+##### 分区
 
 ****************************************
 
@@ -773,8 +862,7 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
     - `orElseThrow(Supplier<? extends X> exceptionSupplier)` 与 get() 一致,但是可以自定义异常
     - `ifPresent(Consumer<? super T>)` 当不为空执行传入的函数
 
-
-**`Optional类和Stream接口的相似之处`**
+### Optional类和Stream接口的相似之处
 1. map
     1. 使用 map 从 Optional 对象中提取和转换值: 可以将 Optional 看成只有一个元素的集合, 像Stream一样的使用 map
     1. 处理两个Optional对象: `person.flatMap(p -> car.map(c -> findCheapestInsurance(p, c)));` 原始的写法就是要判断两个对象同时存在(person 和 car )才调用find...方法
@@ -784,7 +872,7 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 1. filter 
     1. persion 存在且满足条件就返回自身否则返回空 `person.filter(o -> "name".equals(o.getName()))`
 
-**`Tips`**
+### Tips
 1. **注意**: Optional 无法序列化, 也就是说不能作为 PO 的字段, 但是可以在get上下功夫: `public Optional<String> getName(){return this.name}`
 
 1. 异常与Optional的对比
@@ -795,7 +883,7 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
     - OptionalInt OptionalLong OptionalDouble, 因为他们不支持 Stream 操作
     - 即使 OptionalInt 能简化 Optional<Integer>
 
-**`演练`**
+### 实践:读取Properties某属性
 > 从properties文件中读取某个属性, 正整数就返回该值, 否则返回0  
 
 ```java
