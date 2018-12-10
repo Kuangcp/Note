@@ -35,8 +35,11 @@
 `目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java基础
-## 【类和字节码】
+## 类和字节码
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/java-classfile/src/main/java/com/github/kuangcp) 
+
+**`相关项目`**
+> [Apache bcel](http://commons.apache.org/proper/commons-bcel/index.html)
 
 ### 类加载和类对象
 - 一个`.class`文件定义了JVM中的类型，包括了域,方法，继承信息，注解和其他元数据
@@ -338,3 +341,24 @@ _也可以使用该脚本更新协议_
 
 #### Marshalling
 > JBOSS 内部使用的编解码框架
+
+
+## 热更新
+> 通过替换 class 实现不停机热更新
+
+> [Spring hot swapping](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-hotswapping.html)
+
+1. Instrumentation
+1. 自定义类加载器
+1. OSGI 热插拔接口
+
+[Instrumentation 新功能](https://www.ibm.com/developerworks/cn/java/j-lo-jse61/index.html)
+[基于Java Instrument的Agent实现](https://www.jianshu.com/p/b72f66da679f)
+[Java 5 特性 Instrumentation 实践](https://www.ibm.com/developerworks/cn/java/j-lo-instrumentation/)
+[java组件中的热插拔（osgi)](https://blog.csdn.net/javierhui111/article/details/3830833)
+[agentmain 方式 ](https://www.cnblogs.com/cm4j/p/hot_deploy.html)
+
+相关项目: 
+
+[game-hot-update](https://github.com/youxijishu/game-hot-update) https://www.cnblogs.com/wgslucky/p/9127681.html
+[groovy hotswap demo](https://github.com/chaopeng/groovy-hotswap-demo)

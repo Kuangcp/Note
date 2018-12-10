@@ -3,12 +3,13 @@
 1. [计算机历史](#计算机历史)
     1. [起源](#起源)
     1. [硬件系统](#硬件系统)
+        1. [硬盘](#硬盘)
         1. [CPU](#cpu)
     1. [操作系统](#操作系统)
     1. [编程语言](#编程语言)
         1. [语言的的演化](#语言的的演化)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-12-10_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 计算机历史
 
@@ -16,6 +17,9 @@
 
 ## 硬件系统
 > [博客:【不周山之读薄 CSAPP】零 系列概览 ](http://wdxtub.com/2016/04/16/thin-csapp-0/) `CSAPP:深入理解计算机系统`
+
+### 硬盘
+> 存储单位 kb kilobyte; kib kibibyte 的区别: [wikipedia](https://en.wikipedia.org/wiki/Kilobyte)
 
 ### CPU
 > [码农翻身:CPU阿甘](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513017&idx=1&sn=5550ee714abd36d0b580713f673e670b&scene=21#wechat_redirect) `梳理了CPU 内存 操作系统 BIOS 硬盘之间的关系和特性`

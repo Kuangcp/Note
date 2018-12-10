@@ -9,7 +9,7 @@
     1. [7Z](#7z)
     1. [总结](#总结)
 
-`目录 end` |_2018-12-07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-12-10_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux操作压缩文档
 > Linux默认自带ZIP压缩，最大支持4GB压缩，RAR的压缩比大于4GB.
@@ -97,7 +97,7 @@
 
 ***************************
 ## gz
-> gunzip 
+> gzip gunzip 
 
 - [ ] gunzip 命令的学习
 ***************************

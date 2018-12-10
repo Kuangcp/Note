@@ -26,7 +26,7 @@
         1. [打包最新版git](#打包最新版git)
         1. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+`目录 end` |_2018-12-10_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Dockerfile
 ## 使用入门案例
@@ -124,12 +124,14 @@ _docker build_
     - `CMD ["executable","param1","param2"]` (like an exec, preferred form) `推荐`
     - `CMD ["param1","param2"]` (as default parameters to ENTRYPOINT) 作为默认参数提供给ENTRYPOINT
     - `CMD command param1 param2` (as a shell) 作为shell命令 依靠`bin/sh -C`执行
+
 - 一个Dockerfile里只能有一个CMD，如果有多个，只有最后一个生效。
 - 如果用户在`docker run` 中带了运行的命令，就会覆盖CMD命令
-- 与RUN命令一样如果要环境变量就要使用 `sh -C`
+- 与RUN命令一样如果要环境变量就要使用 `sh -C` : `CMD ["sh", "-C", "echo $HOME"]`
 
 ### ENTRYPOINT
-- `容器入口点` 命令设置在容器启动时执行命令 一般用来做初始化容器，或者运行持久软件
+> `容器入口点` 命令设置在容器启动时执行命令 一般用来做初始化容器，或者运行持久软件  
+
 - `ENTRYPOINT echo "Welcome!"` 那么每次启动容器都有这个输出
 - `ENTRYPOINT cmd param1 param2 ...`
 - `ENTRYPOINT ["cmd", "param1", "param2"...]`

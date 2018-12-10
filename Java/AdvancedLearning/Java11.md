@@ -9,8 +9,9 @@
 ****************************************
 # Java11 
 > [Official:doc](https://docs.oracle.com/en/java/javase/11/) | [Official:api](https://docs.oracle.com/en/java/javase/11/docs/api/index.html)
+> [Tool reference](https://docs.oracle.com/en/java/javase/11/tools/tools-and-command-reference.html)
 
-应该就是真正意义上的 Java9 了, 原先发布的 9 和 10 都不是 LTS
+应该就是真正意义上的 Java9 了, 原先发布的 9 和 10 都不是 LTS, 并且很多原先属于9的特性也是推迟到了这个版本
 
 ## 安装配置
 > [Official site](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
