@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Vim](#vim)
     1. [Tips](#tips)
     1. [基本配置](#基本配置)
@@ -14,7 +14,7 @@
     1. [SpaceVim](#spacevim)
     1. [space-vim](#space-vim)
 
-`目录 end` |_2018-11-02_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Vim 
 > 学习曲线很高，但是学会熟练使用后就效率很高
@@ -22,9 +22,12 @@
 - [vim galore](https://github.com/mhinz/vim-galore)
 - [Vim galore 中文翻译](https://github.com/wsdjeg/vim-galore-zh_cn)
 
+> [bytefluent.com/vivify](http://bytefluent.com/vivify/)方便的自制主题
+
 ## Tips
 1. 误按 `Ctrl S` 终止屏幕输出（即停止回显）你敲的依然有效，只是看不见 `Ctrl Q` 即可恢复
 
+1. /usr/share/vim/vim80/macros/less.sh vim版less 具备语法高亮 路径中间是依据vim版本来的,按实际情况改动
 **************
 `vim输出的信息`
 ```
@@ -62,7 +65,13 @@ set relativenumber " 设置相对行号
 " 逗号后追加空格
 inoremap , ,<space>  
 ```
-
+**~/.gvimrc**
+```
+:set guifont=IBM\ Plex\ Mono\ 12
+colorscheme desert
+syntax enable
+syntax on
+```
 ## 基础操作
 > [参考博客](http://www.jianshu.com/p/bcbe916f97e1)  
 > [高效率编辑器 Vim——操作篇，非常适合 Vim 新手](https://linuxtoy.org/archives/efficient-editing-with-vim.html)

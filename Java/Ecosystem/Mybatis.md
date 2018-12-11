@@ -1,23 +1,23 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Mybatis](#mybatis)
     1. [Mybatis](#mybatis)
         1. [xml文件配置：](#xml文件配置)
             1. [主配置文件：](#主配置文件)
                 1. [操作配置文件：](#操作配置文件)
         1. [导入JAR包：](#导入jar包)
-        1. [创建SqlSessionFactory类 内容：](#创建sqlsessionfactory类-内容)
-            1. [maven Spring-mybaits 配置](#maven-spring-mybaits-配置)
+        1. [创建SqlSessionFactory类](#创建sqlsessionfactory类)
+            1. [maven](#maven)
                 1. [**SessionFactory类，使用Spring注入一个工厂类，然后使用本地线程组，节省Session开销**](#sessionfactory类使用spring注入一个工厂类然后使用本地线程组节省session开销)
         1. [流程控制](#流程控制)
-            1. [foreach 循环语句](#foreach-循环语句)
-                1. [collection 有 arry list map 几种 还有item是必写，其他的是可选的](#collection-有-arry-list-map-几种-还有item是必写其他的是可选的)
-            1. [if 判断语句:](#if-判断语句)
-            1. [set 方便书写update语句](#set-方便书写update语句)
-            1. [choose 相当于switch语句](#choose-相当于switch语句)
-                1. [$和的区别：](#$和的区别)
+            1. [foreach](#foreach)
+                1. [collection](#collection)
+            1. [if](#if)
+            1. [set](#set)
+            1. [choose](#choose)
+            1. [$和    的区别：](#$和#的区别)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Mybatis
 > 一个灵活的数据库中间件框架

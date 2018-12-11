@@ -1,10 +1,10 @@
-`目录 start`
- 
+**目录 start**
+
 1. [面试技巧](#面试技巧)
     1. [铺垫](#铺垫)
     1. [简历](#简历)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 面试技巧
 > [参考博客: 面试的时候问：你的期望薪资多少？怎么谈？](http://blog.csdn.net/Z1XpIYDj9sn/article/details/79049373)

@@ -1,7 +1,7 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Redis常用命令](#redis常用命令)
-    1. [Run Configuration](#run-configuration)
+    1. [Run](#run)
     1. [过期策略](#过期策略)
     1. [事务](#事务)
     1. [服务器](#服务器)
@@ -18,7 +18,7 @@
     1. [数据迁移](#数据迁移)
     1. [错误分析](#错误分析)
 
-`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Redis常用命令
 

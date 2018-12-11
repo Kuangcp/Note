@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [CSS](#css)
     1. [选择器](#选择器)
         1. [类选择器](#类选择器)
@@ -12,7 +12,7 @@
     1. [案例](#案例)
         1. [复选框](#复选框)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # CSS
 ## 选择器

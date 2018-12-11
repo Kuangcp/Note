@@ -1,32 +1,32 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Tomcat](#tomcat)
     1. [Tips](#tips)
     1. [原理](#原理)
     1. [配置运行](#配置运行)
-        1. [配置解压版 Tomcat](#配置解压版-tomcat)
+        1. [配置解压版](#配置解压版)
             1. [IDE中配置运行](#ide中配置运行)
         1. [编码](#编码)
         1. [虚拟目录](#虚拟目录)
             1. [默认主页](#默认主页)
             1. [虚拟主机](#虚拟主机)
-            1. [配置 GZip压缩](#配置-gzip压缩)
+            1. [配置](#配置)
             1. [配置IO方式](#配置io方式)
-    1. [Tomcat Native](#tomcat-native)
+    1. [Tomcat](#tomcat)
     1. [Web容器和Web服务器的区别](#web容器和web服务器的区别)
         1. [【web容器】](#web容器)
             1. [【Web服务器】](#web服务器)
-            1. [【应用程序服务器（The Application Server）】](#应用程序服务器（the-application-server）)
+            1. [【应用程序服务器（The](#应用程序服务器（the)
             1. [【serverlet】](#serverlet)
             1. [【Tomcat】](#tomcat)
             1. [【Tomcat与Web服务器、应用服务器的关系】](#tomcat与web服务器、应用服务器的关系)
-    1. [一、Tomcat 与应用服务器](#一、tomcat-与应用服务器)
-    1. [二、Tomcat 与 Web 服务器](#二、tomcat-与-web-服务器)
+    1. [一、Tomcat](#一、tomcat)
+    1. [二、Tomcat](#二、tomcat)
 1. [优化](#优化)
     1. [Tomcat僵死问题](#tomcat僵死问题)
 1. [Tomcat和Jetty](#tomcat和jetty)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Tomcat
 > [官方网站](http://tomcat.apache.org/)

@@ -1,10 +1,11 @@
-`目录 start`
- 
+**目录 start**
+
 1. [常用的网站](#常用的网站)
     1. [软件下载站](#软件下载站)
     1. [国内镜像源站点](#国内镜像源站点)
         1. [镜像站点](#镜像站点)
     1. [特别网站](#特别网站)
+    1. [库托管](#库托管)
 1. [社区网站](#社区网站)
     1. [娱乐](#娱乐)
 1. [资源网](#资源网)
@@ -17,7 +18,6 @@
         1. [Python](#python)
         1. [Erlang](#erlang)
             1. [Elixir](#elixir)
-    1. [Linux](#linux)
         1. [Go](#go)
     1. [Git](#git)
         1. [Github相关](#github相关)
@@ -51,7 +51,7 @@
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 常用的网站
 ## 软件下载站
@@ -77,8 +77,6 @@
 - [2](https://plus.likeso.ml/)
 - [3](http://www.kaseng.top/)
 
-> Chrome 插件
-- [插件网](https://extfans.com/)
 
 ******************************
 ## 特别网站

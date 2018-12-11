@@ -1,8 +1,8 @@
-`目录 start`
- 
+**目录 start**
+
 1. [基于Git进行团队开发](#基于git进行团队开发)
     1. [基础思想](#基础思想)
-        1. [Git Flow](#git-flow)
+        1. [Git](#git)
         1. [本地和远程](#本地和远程)
         1. [模板化提交信息](#模板化提交信息)
     1. [图形化工具](#图形化工具)
@@ -11,7 +11,7 @@
     1. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
         1. [最终方案](#最终方案)
 
-`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # 基于Git进行团队开发

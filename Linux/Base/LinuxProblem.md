@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [遇到的常见问题](#遇到的常见问题)
     1. [命令找不到](#命令找不到)
     1. [其他](#其他)
@@ -12,7 +12,7 @@
                 1. [fcitx](#fcitx)
             1. [Flash](#flash)
 
-`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 遇到的常见问题
 
@@ -39,7 +39,7 @@
 ### Ubuntu与Windows10时间相差8小时的解决
 - `timedatectl set-local-rtc true `
 
-### 终端开启慢 
+### 终端开启慢
 - 检查 .bashrc 文件 看是否有可疑脚本,
     -  这次就是因为 sdkman 的原因导致巨慢,那上次搞得我新建用户,重装系统是什么原因呢?
 
@@ -59,7 +59,7 @@
 - fcitx单核满载:三种（搜狗拼音导致）
     - 杀掉，fcitx -r
     - 先把进程杀掉再fcitx-autostart &
-    - fcitx再fcitx-qimpanel 
+    - fcitx再fcitx-qimpanel
 `相关网页：`
 - [某引擎搜索结果页](https://ausdn.com/s/ubuntu+cpu+fcitx)| [几种方式](https://www.findhao.net/res/786)| [卸载搜狗安装拼音](http://tieba.baidu.com/p/3863217434)
 - [知乎问题](https://www.zhihu.com/question/19839748) | [ubuntu论坛](http://forum.ubuntu.com.cn/viewtopic.php?f=122&t=173730&p=1299087) | [ubuntu论坛](http://forum.ubuntu.com.cn/viewtopic.php?f=8&t=194486&start=0)

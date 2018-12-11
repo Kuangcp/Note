@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Spring](#spring)
     1. [配置使用](#配置使用)
         1. [通过构建工具](#通过构建工具)
@@ -11,16 +11,16 @@
     1. [Spring技巧](#spring技巧)
         1. [获取Context上下文环境](#获取context上下文环境)
             1. [在JSP或Servlet中获取](#在jsp或servlet中获取)
-        1. [Spring 和 ServletContextList](#spring-和-servletcontextlist)
+        1. [Spring](#spring)
 1. [基础](#基础)
     1. [生命周期](#生命周期)
-    1. [IOC/DI 控制反转](#iocdi-控制反转)
+    1. [IOC/DI](#iocdi)
     1. [Scheduling](#scheduling)
     1. [Websocket](#websocket)
         1. [maven配置](#maven配置)
     1. [Web开发上的一些优秀的习惯](#web开发上的一些优秀的习惯)
 
-`目录 end` |_2018-11-25_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)

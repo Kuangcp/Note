@@ -1,10 +1,10 @@
-`目录 start`
- 
+**目录 start**
+
 1. [网络](#网络)
     1. [基础](#基础)
         1. [ISO七层模型和TCP/IP五层模型](#iso七层模型和tcpip五层模型)
         1. [TCP和UDP](#tcp和udp)
-        1. [IPv4 & IPv6](#ipv4-&-ipv6)
+        1. [IPv4](#ipv4)
         1. [ARP](#arp)
         1. [网络延迟](#网络延迟)
             1. [TTFB](#ttfb)
@@ -15,7 +15,7 @@
         1. [HTTP的返回码](#http的返回码)
         1. [HTTP的缓存](#http的缓存)
         1. [Session和Cookie](#session和cookie)
-        1. [HTTP1.1 和 HTTP2](#http11-和-http2)
+        1. [HTTP1.1](#http11)
         1. [HTTPS](#https)
             1. [HSTS](#hsts)
         1. [CORS](#cors)
@@ -24,7 +24,7 @@
     1. [WebDAV](#webdav)
     1. [WebAssembly](#webassembly)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 网络
 

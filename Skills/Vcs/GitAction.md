@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [GitInAction](#gitinaction)
     1. [Tips](#tips)
     1. [配置记住密码](#配置记住密码)
@@ -20,7 +20,7 @@
         1. [终端中显示当前分支](#终端中显示当前分支)
         1. [命令的自动补全](#命令的自动补全)
     1. [搭建Git服务器](#搭建git服务器)
-        1. [使用git daemon搭建简易 Server](#使用git-daemon搭建简易-server)
+        1. [使用git](#使用git)
         1. [【HTTP访问Git服务器】](#http访问git服务器)
             1. [【配置HTTPS】](#配置https)
             1. [【使用SSH登录GitServer】](#使用ssh登录gitserver)
@@ -36,7 +36,7 @@
         1. [8.Reset一个单独的文件](#8reset一个单独的文件)
         1. [9.保留working_tree并且丢弃一些commit](#9保留working_tree并且丢弃一些commit)
 
-`目录 end` |_2018-11-14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -395,7 +395,7 @@
 ```
 
 ### 6.在被污染的working_tree中回滚merge或者pull
-```
+<!-- ``` -->
 		git pull (1)
 		git reset --merge ORIG_HEAD (2)
 	6.1 即使在本地已经更改了tree，导致了index的变化，也可以放心的pull，前提是你知道将要pull的内容不会覆盖你的working tree中的内容

@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Nginx](#nginx)
     1. [Nginx的安装](#nginx的安装)
         1. [命令安装](#命令安装)
@@ -18,7 +18,7 @@
             1. [静态服务器将后台反代理](#静态服务器将后台反代理)
     1. [问题](#问题)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Nginx
 

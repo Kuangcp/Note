@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [测试](#测试)
     1. [为何要使用测试](#为何要使用测试)
     1. [基础知识](#基础知识)
@@ -18,13 +18,13 @@
                 1. [公司层面](#公司层面)
             1. [相关问题](#相关问题)
         1. [【冒烟测试】](#冒烟测试)
-    1. [TDD 测试驱动开发](#tdd-测试驱动开发)
+    1. [TDD](#tdd)
         1. [什么是TDD](#什么是tdd)
         1. [TDD实践](#tdd实践)
     1. [Mock](#mock)
     1. [BDD](#bdd)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 测试
  > [参考博客: 测试的道理](http://www.yinwang.org/blog-cn/2016/09/14/tests)

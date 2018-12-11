@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Java8](#java8)
     1. [Funcational](#funcational)
     1. [Lambda](#lambda)
@@ -8,11 +8,11 @@
         1. [原始类型特化](#原始类型特化)
         1. [类型检查、类型推断以及限制](#类型检查、类型推断以及限制)
             1. [类型检查](#类型检查)
-            1. [同样的Lambda 不同的函数式接口](#同样的lambda-不同的函数式接口)
+            1. [同样的Lambda](#同样的lambda)
             1. [类型推断](#类型推断)
             1. [使用局部变量](#使用局部变量)
         1. [方法引用](#方法引用)
-        1. [复合 Lambda 表达式](#复合-lambda-表达式)
+        1. [复合](#复合)
             1. [比较器复合](#比较器复合)
             1. [谓词复合](#谓词复合)
             1. [函数复合](#函数复合)
@@ -48,6 +48,7 @@
                 1. [分组](#分组)
                     1. [多级分组](#多级分组)
                     1. [按子组收集数据](#按子组收集数据)
+                1. [分区](#分区)
     1. [Optional](#optional)
         1. [Optional类和Stream接口的相似之处](#optional类和stream接口的相似之处)
         1. [Tips](#tips)
@@ -57,7 +58,7 @@
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-`目录 end` |_2018-12-10_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)

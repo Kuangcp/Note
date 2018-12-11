@@ -1,4 +1,4 @@
-`目录 start`
+**目录 start**
 
 1. [软考知识点](#软考知识点)
     1. [【1.计算机组成与结构】](#1计算机组成与结构)
@@ -66,7 +66,7 @@
     1. [【16.Java程序设计】](#16java程序设计)
     1. [大学生们，你们知道软考的意义吗？（转）](#大学生们你们知道软考的意义吗（转）)
 
-`目录 end`|_2018-12-11 12:22_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 软考知识点
 ## 【1.计算机组成与结构】

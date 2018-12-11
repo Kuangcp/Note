@@ -1,15 +1,15 @@
-`目录 start`
- 
+**目录 start**
+
 1. [算法](#算法)
     1. [时间复杂度](#时间复杂度)
     1. [匹配算法](#匹配算法)
     1. [排序算法](#排序算法)
     1. [安全](#安全)
         1. [密码学](#密码学)
-            1. [Diffie-Hellman Key Exchange算法](#diffie-hellman-key-exchange算法)
+            1. [Diffie-Hellman](#diffie-hellman)
 1. [实际问题](#实际问题)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 算法
 

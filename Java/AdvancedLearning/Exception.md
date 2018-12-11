@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [异常](#异常)
     1. [异常的继承关系](#异常的继承关系)
     1. [异常常见问题](#异常常见问题)
@@ -12,7 +12,7 @@
         1. [自定义异常](#自定义异常)
             1. [自定义异常的错误码](#自定义异常的错误码)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 异常
 > 相关博客:[Java异常浅谈](http://www.cnblogs.com/focusj/archive/2011/12/26/2301524.html)  

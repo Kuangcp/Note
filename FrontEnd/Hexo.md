@@ -1,7 +1,7 @@
-`目录 start`
- 
+**目录 start**
+
 1. [配置Hexo的Github博客](#配置hexo的github博客)
-    1. [安装 hexo](#安装-hexo)
+    1. [安装](#安装)
         1. [主配置文件](#主配置文件)
         1. [插件](#插件)
     1. [文章相关](#文章相关)
@@ -10,8 +10,8 @@
             1. [categories](#categories)
         1. [新建文章](#新建文章)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
-****************************************
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+
 # 配置Hexo的Github博客
 > 参考 [博客](http://stonebegin.com/hexo+github.html) | [部署Hexo](http://letus.club/2016/04/04/deploy-hexo-and-change-theme/)
 

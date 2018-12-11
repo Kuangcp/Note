@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [浏览器](#浏览器)
     1. [FireFox](#firefox)
         1. [开发版本](#开发版本)
@@ -9,10 +9,11 @@
     1. [seamonkey](#seamonkey)
     1. [Chrome](#chrome)
         1. [主题](#主题)
+        1. [插件](#插件)
     1. [Vivaldi](#vivaldi)
     1. [Opera](#opera)
 
-`目录 end` |_2018-10-18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 浏览器
 ## FireFox
@@ -101,12 +102,23 @@
 ## Chrome
 - 的确快,几乎没有各种兼容和诡异问题，就是内存占用高, 还有就是主题被墙,fq才能配置好
 
+- [插件网](https://extfans.com/)
+- [chromefor](https://www.chromefor.com/)
+- [52crx](https://52crx.com/)
+
 ### 主题
 1. Aero Trans Brushed Metal Theme
 1. Material Dark
 1. Morpheon Dark
 1. 炭黑+銀色金屬
 1. Modern Flat
+
+### 插件 
+1. Saka key
+1. crxMouse 
+1. TabsFolder
+1. Chrome Download Manager
+
 ************
 
 ## Vivaldi

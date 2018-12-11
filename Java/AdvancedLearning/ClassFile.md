@@ -1,7 +1,7 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Java基础](#java基础)
-    1. [【类和字节码】](#类和字节码)
+    1. [类和字节码](#类和字节码)
         1. [类加载和类对象](#类加载和类对象)
             1. [类加载器](#类加载器)
             1. [加载和连接](#加载和连接)
@@ -31,8 +31,9 @@
                 1. [对于Java的使用](#对于java的使用)
             1. [Thrift](#thrift)
             1. [Marshalling](#marshalling)
+    1. [热更新](#热更新)
 
-`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java基础
 ## 类和字节码

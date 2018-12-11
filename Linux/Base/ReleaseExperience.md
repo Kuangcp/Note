@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Linux各个发行版本使用体验](#linux各个发行版本使用体验)
     1. [基础知识](#基础知识)
         1. [安装系统](#安装系统)
@@ -7,7 +7,7 @@
     1. [Debian系](#debian系)
         1. [Debian](#debian)
         1. [Ubuntu](#ubuntu)
-        1. [Ubuntu Mint](#ubuntu-mint)
+        1. [Ubuntu](#ubuntu)
         1. [Deepin](#deepin)
             1. [关于显卡](#关于显卡)
             1. [双系统安装](#双系统安装)
@@ -25,7 +25,7 @@
     1. [Mageia](#mageia)
     1. [CDLinux](#cdlinux)
 
-`目录 end` |_2018-11-23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux各个发行版本使用体验
 

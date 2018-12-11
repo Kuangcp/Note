@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Python](#python)
     1. [简介](#简介)
         1. [关于Python2与3的使用](#关于python2与3的使用)
@@ -15,8 +15,8 @@
         1. [http](#http)
         1. [virtualenv](#virtualenv)
         1. [pip](#pip)
-            1. [Requirements files](#requirements-files)
-            1. [发布包到 pypi](#发布包到-pypi)
+            1. [Requirements](#requirements)
+            1. [发布包到](#发布包到)
     1. [变量](#变量)
     1. [基本运行结构](#基本运行结构)
         1. [序列](#序列)
@@ -32,7 +32,7 @@
         1. [输出](#输出)
         1. [读取命令行参数](#读取命令行参数)
             1. [docopt](#docopt)
-            1. [Python Fire](#python-fire)
+            1. [Python](#python)
     1. [函数](#函数)
     1. [类](#类)
         1. [继承](#继承)
@@ -55,7 +55,7 @@
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-`目录 end` |_2018-12-07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  

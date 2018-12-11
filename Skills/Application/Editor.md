@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [文本编辑器](#文本编辑器)
     1. [Ghex](#ghex)
     1. [Kate/KWrite(Kate的轻量版)](#katekwritekate的轻量版)
@@ -26,7 +26,7 @@
     1. [fte-terminal](#fte-terminal)
     1. [在线编辑器](#在线编辑器)
 
-`目录 end` |_2018-10-16_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 文本编辑器
 ## Ghex

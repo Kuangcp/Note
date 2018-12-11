@@ -1,11 +1,11 @@
-`目录 start`
- 
+**目录 start**
+
 1. [JavaEE](#javaee)
     1. [2.【几大框架简述】](#2几大框架简述)
-    1. [9 【SpringMVC】](#9-springmvc)
-        1. [9.1 必要JAR包：](#91-必要jar包)
-        1. [9.2 实现逻辑](#92-实现逻辑)
-        1. [9.3 controller的配置](#93-controller的配置)
+    1. [9](#9)
+        1. [9.1](#91)
+        1. [9.2](#92)
+        1. [9.3](#93)
             1. [9.3.1类型转换（也可以使用Hibernate的convert）](#931类型转换（也可以使用hibernate的convert）)
                 1. [SpringMVC的内置代理](#springmvc的内置代理)
                 1. [Hibernate的covert包](#hibernate的covert包)
@@ -17,9 +17,9 @@
     1. [10.【SSH框架的整合】](#10ssh框架的整合)
     1. [11.【SSM框架的整合】](#11ssm框架的整合)
     1. [12.【Redis的使用】](#12redis的使用)
-        1. [12.1 【Java 使用 redis 配置】](#121-java-使用-redis-配置)
+        1. [12.1](#121)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # JavaEE
 

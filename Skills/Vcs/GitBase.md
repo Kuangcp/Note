@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Git基础](#git基础)
     1. [Git常用命令](#git常用命令)
         1. [fork相关操作](#fork相关操作)
@@ -38,7 +38,7 @@
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-`目录 end` |_2018-11-26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -393,13 +393,24 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
     !*.java 不忽略所有java文件
     a.[abc] 忽略 后缀为 a或者b或者c 的文件
     doc/*.txt 忽略 doc一级子目录的txt文件, 不忽略多级子目录中txt
-
 ```
 
 ### gitattributes
+
 > [gitattributes](http://schacon.github.io/git/gitattributes.html)
 
+1. 配置文件的换行符 eol
+1. working-tree-encoding
+1. ident
+1. filter
+1. merge
+1. whitespace
+1. export-ignore
+1. delta 
+1. encoding
+
 *****************
+
 ## Tools
 
 ### git-svn
@@ -447,3 +458,4 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 
 ## repos的使用
 > 综合各个VCS的管理方式
+

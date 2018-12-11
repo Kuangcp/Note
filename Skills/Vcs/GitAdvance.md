@@ -1,13 +1,13 @@
-`目录 start`
- 
-1. [Git Advance](#git-advance)
+**目录 start**
+
+1. [Git](#git)
     1. [版本控制系统(VCS)](#版本控制系统vcs)
     1. [Tips](#tips)
         1. [清理仓库大文件](#清理仓库大文件)
             1. [gc](#gc)
     1. [提交行为准则](#提交行为准则)
 
-`目录 end` |_2018-11-01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git Advance
 

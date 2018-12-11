@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Maven](#maven)
     1. [1.安装](#1安装)
         1. [1.1.Maven常用命令](#11maven常用命令)
@@ -18,7 +18,7 @@
         1. [3.2.Maven多配置环境](#32maven多配置环境)
         1. [3.3.部署](#33部署)
     1. [4.maven的依赖](#4maven的依赖)
-        1. [4.1 依赖的范围](#41-依赖的范围)
+        1. [4.1](#41)
             1. [依赖的传递](#依赖的传递)
         1. [4.2.处理项目间依赖方法](#42处理项目间依赖方法)
         1. [4.3.依赖冲突](#43依赖冲突)
@@ -31,7 +31,7 @@
         1. [5.2.加入Servlet的API包](#52加入servlet的api包)
     1. [6.常用插件](#6常用插件)
         1. [6.1.lombok](#61lombok)
-        1. [6.2 protobuf](#62-protobuf)
+        1. [6.2](#62)
     1. [7.构建工具对比](#7构建工具对比)
         1. [7.1.Maven和Ant的区别一](#71maven和ant的区别一)
         1. [7.2.Maven的优势](#72maven的优势)
@@ -44,7 +44,7 @@
                 1. [Gradle](#gradle)
                 1. [Maven](#maven)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)

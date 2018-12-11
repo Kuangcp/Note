@@ -1,11 +1,10 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Linux系统](#linux系统)
-    1. [安装Linux发行版](#安装linux发行版)
     1. [系统管理](#系统管理)
-        1. [窗口管理器](#窗口管理器)
         1. [文件系统对比](#文件系统对比)
         1. [桌面环境对比](#桌面环境对比)
+        1. [窗口管理器对比](#窗口管理器对比)
         1. [文件管理器对比](#文件管理器对比)
         1. [终端模拟器对比](#终端模拟器对比)
         1. [用户管理](#用户管理)
@@ -28,7 +27,7 @@
         1. [关闭ssh回话仍能运行](#关闭ssh回话仍能运行)
     1. [修改主机名](#修改主机名)
 
-`目录 end` |_2018-11-19_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异

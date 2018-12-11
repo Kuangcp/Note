@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [如何使用Junit](#如何使用junit)
     1. [在Maven项目中](#在maven项目中)
     1. [编码规范](#编码规范)
@@ -11,7 +11,7 @@
     1. [测试套件](#测试套件)
     1. [分类测试](#分类测试)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 如何使用Junit
 > [Official doc: 4.12](https://github.com/junit-team/junit4/blob/master/doc/ReleaseNotes4.12.md)

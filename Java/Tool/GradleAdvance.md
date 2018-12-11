@@ -1,32 +1,32 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Gradle进阶知识](#gradle进阶知识)
-    1. [Gradle 使用和配置](#gradle-使用和配置)
+    1. [Gradle](#gradle)
         1. [主配置目录](#主配置目录)
-    1. [Gradle 构建块](#gradle-构建块)
+    1. [Gradle](#gradle)
     1. [task](#task)
         1. [task的依赖关系](#task的依赖关系)
-        1. [终结器 task](#终结器-task)
+        1. [终结器](#终结器)
         1. [Groovy的POGO类管理配置文件上的版本号](#groovy的pogo类管理配置文件上的版本号)
-        1. [task 的inputs 和 outputs](#task-的inputs-和-outputs)
+        1. [task](#task)
         1. [编写和使用自定义task](#编写和使用自定义task)
             1. [声明task规则](#声明task规则)
     1. [增量式构建特性](#增量式构建特性)
 1. [测试模块](#测试模块)
     1. [单元测试](#单元测试)
         1. [使用JUnit](#使用junit)
-        1. [使用其他框架 TestNG Spock](#使用其他框架-testng-spock)
+        1. [使用其他框架](#使用其他框架)
     1. [配置测试执行](#配置测试执行)
 1. [多语言编程](#多语言编程)
     1. [处理javascript](#处理javascript)
         1. [压缩javascript](#压缩javascript)
-        1. [Java 和 Groovy的联合编译](#java-和-groovy的联合编译)
-        1. [Java 和 Scala](#java-和-scala)
-    1. [Jenkin 使用](#jenkin-使用)
+        1. [Java](#java)
+        1. [Java](#java)
+    1. [Jenkin](#jenkin)
         1. [下载安装和配置](#下载安装和配置)
 1. [发布自己的构件](#发布自己的构件)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Gradle进阶知识
 > [gradle api ](https://docs.gradle.org/4.9/dsl/org.gradle.api.Project.html) `所有{}结构 以及配置`

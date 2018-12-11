@@ -1,12 +1,12 @@
-`目录 start`
- 
+**目录 start**
+
 1. [番茄工作法](#番茄工作法)
     1. [规则](#规则)
     1. [工作流程](#工作流程)
         1. [细节](#细节)
     1. [相关软件](#相关软件)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 番茄工作法
 > 参考: [知乎:分秒时](https://www.zhihu.com/question/20189826/answer/14283234)  

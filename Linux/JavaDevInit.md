@@ -1,4 +1,4 @@
-`目录 start`
+**目录 start**
 
 1. [配置Deepin的Java开发环境](#配置deepin的java开发环境)
     1. [新增用户](#新增用户)
@@ -14,7 +14,7 @@
     1. [问题以及解决方案：](#问题以及解决方案)
     1. [双硬盘的折腾记录](#双硬盘的折腾记录)
 
-`目录 end`|_2018-12-11 11:43_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 配置Deepin的Java开发环境
 

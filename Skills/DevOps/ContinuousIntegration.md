@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [持续集成](#持续集成)
     1. [Jenkins](#jenkins)
     1. [GoCD](#gocd)
@@ -10,7 +10,7 @@
     1. [sonarqube](#sonarqube)
         1. [小型项目目前使用的方案](#小型项目目前使用的方案)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 持续集成
 > 参考博客: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  

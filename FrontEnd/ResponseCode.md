@@ -1,18 +1,18 @@
-`目录 start`
- 
+**目录 start**
+
 1. [HTTP状态码大全](#http状态码大全)
     1. [标准扩展码](#标准扩展码)
-        1. [1xx Informational 信息化](#1xx-informational-信息化)
-        1. [2xx Success 成功](#2xx-success-成功)
-        1. [3xx Redirection 重定向](#3xx-redirection-重定向)
-        1. [4xx Client Error 客户端错误](#4xx-client-error-客户端错误)
-        1. [5xx Server Error 服务器错误](#5xx-server-error-服务器错误)
+        1. [1xx](#1xx)
+        1. [2xx](#2xx)
+        1. [3xx](#3xx)
+        1. [4xx](#4xx)
+        1. [5xx](#5xx)
     1. [非官方扩展码](#非官方扩展码)
     1. [互联网信息服务扩展状态码](#互联网信息服务扩展状态码)
-    1. [NGINX 扩展状态码](#nginx-扩展状态码)
+    1. [NGINX](#nginx)
     1. [七牛扩展状态码](#七牛扩展状态码)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # HTTP状态码大全
 > [HTTP状态码](http://www.runoob.com/http/http-status-codes.html)

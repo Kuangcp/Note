@@ -1,10 +1,10 @@
-`目录 start`
- 
-1. [IDEA 使用笔记](#idea-使用笔记)
+**目录 start**
+
+1. [IDEA](#idea)
     1. [常识](#常识)
     1. [常用技巧](#常用技巧)
         1. [Tomcat的使用](#tomcat的使用)
-        1. [导出为可运行的JAR包 普通Java项目](#导出为可运行的jar包-普通java项目)
+        1. [导出为可运行的JAR包](#导出为可运行的jar包)
         1. [Springboot热加载](#springboot热加载)
         1. [Debug](#debug)
     1. [常用配置](#常用配置)
@@ -22,9 +22,9 @@
     1. [常用插件](#常用插件)
     1. [启动配置](#启动配置)
     1. [Tips](#tips)
-        1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
+        1. [Error:Cannot](#errorcannot)
 
-`目录 end` |_2018-11-15_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # IDEA 使用笔记

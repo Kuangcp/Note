@@ -1,5 +1,5 @@
-`目录 start`
- 
+**目录 start**
+
 1. [Redis](#redis)
 1. [Book](#book)
 1. [安装和配置](#安装和配置)
@@ -10,21 +10,21 @@
         1. [解压即用](#解压即用)
     1. [Redis配置文件](#redis配置文件)
 1. [数据类型](#数据类型)
-    1. [字符串 String](#字符串-string)
-    1. [列表 list](#列表-list)
-    1. [集合 set](#集合-set)
-    1. [有序集合 zset](#有序集合-zset)
-    1. [散列 hash](#散列-hash)
+    1. [字符串](#字符串)
+    1. [列表](#列表)
+    1. [集合](#集合)
+    1. [有序集合](#有序集合)
+    1. [散列](#散列)
     1. [HyperLogLog](#hyperloglog)
     1. [GEO【地理位置】](#geo地理位置)
-1. [Pub/Sub 发布和订阅](#pubsub-发布和订阅)
+1. [Pub/Sub](#pubsub)
 1. [编程语言的使用](#编程语言的使用)
-    1. [Java 使用](#java-使用)
+    1. [Java](#java)
     1. [Python使用](#python使用)
 1. [Project](#project)
     1. [webdis](#webdis)
 
-`目录 end` |_2018-10-22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
