@@ -72,7 +72,8 @@
 - `svn propedit svn:ignore 项目文件夹` 会打开默认配置,  和gitignore一样的配置, 然后保存即可
     - 文件夹就是项目, 所以要在项目根目录的上级目录执行这条命令
     - 如果上面没有调起编辑器, 就要在 .bashrc 中 `export SVN_EDITOR=vim`
-- 然后提交到仓库, 即可完成 忽略文件的配置, 为了可见性, 一般和.gitignore一样的配置即可
+
+- 然后提交到仓库( svn co -m "xxx" ), 即可完成 忽略文件的配置, 为了可见性, 一般和.gitignore一样的配置即可
     - 导入忽略文件 `svn propset -F .svnignore .`
 
 ### 提交
