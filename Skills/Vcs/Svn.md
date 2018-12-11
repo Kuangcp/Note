@@ -63,14 +63,14 @@
 - _更新本地代码_ `svn up`  
 > svn update如果后面没有目录，默认将当前目录以及子目录下的所有文件都更新到最新版本
 
-- _删除文件_ `svn remove path`
+- _删除文件_ `svn remove|rm path`
 
 > [参考博客: svn下忽略文件和文件夹](http://blog.sina.com.cn/s/blog_6e165cc101017m0j.html)
 > [参考博客: svn 忽略文件、文件夹](https://ztgame.shenyu.me/svn/svn-ignore.html)
 
 ### 配置忽略文件
 - `svn propedit svn:ignore 项目文件夹` 会打开默认配置,  和gitignore一样的配置, 然后保存即可
-    - 文件夹就是项目, 所以要在项目根目录的上级目录之心这个命令
+    - 文件夹就是项目, 所以要在项目根目录的上级目录执行这条命令
     - 如果上面没有调起编辑器, 就要在 .bashrc 中 `export SVN_EDITOR=vim`
 - 然后提交到仓库, 即可完成 忽略文件的配置, 为了可见性, 一般和.gitignore一样的配置即可
     - 导入忽略文件 `svn propset -F .svnignore .`
