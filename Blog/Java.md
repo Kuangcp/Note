@@ -20,6 +20,7 @@
 ## 社区
 - [并发编程网 Java](http://ifeve.com/category/java/)
 - [InfoQ Java](http://www.infoq.com/cn/java)
+- [IBM Java](https://www.ibm.com/developerworks/cn/java/)
 
 ## SE
 - [ 菜鸟入门：Java程序员学习之路 ](http://blog.csdn.net/zzp16/article/details/5614588)

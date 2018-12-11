@@ -23,6 +23,7 @@
 
 > [Groovy创始人：Java面临终结 Scala将取而代之](http://developer.51cto.com/art/200907/134785.htm)
 
+> [参考博客: 20 Best Scala Books To Go From Beginner To Expert](https://whatpixel.com/best-scala-books/)
 ## 安装
 - 通过sdkman安装，或者下载解压配置环境变量 [sdkman使用](/Skills/usually_app.md)
 

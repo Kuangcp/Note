@@ -17,11 +17,11 @@
     1. [基础命令](#基础命令)
     1. [镜像命令](#镜像命令)
     1. [容器命令](#容器命令)
-        1. [docker](#docker)
-        1. [docker](#docker)
-        1. [docker](#docker)
-        1. [docker](#docker)
-        1. [docker](#docker)
+        1. [create](#create)
+        1. [run](#run)
+        1. [exec](#exec)
+        1. [commit](#commit)
+        1. [port](#port)
     1. [端口映射](#端口映射)
 1. [数据卷](#数据卷)
     1. [数据卷容器](#数据卷容器)
@@ -41,7 +41,7 @@
     1. [跨主机容器通信](#跨主机容器通信)
         1. [overlay](#overlay)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 21:25_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -311,10 +311,10 @@ _ps_
     - 导入： `docker import [-c |--change=[]] [-m | --message=[]] file|URL - [repository]:[tag]`
     - -c | --change=[] 选项在导入的同时执行对容器就行修改的Dockerfile指令。
 
-### docker create
+### create
 > [官方文档](https://docs.docker.com/engine/reference/commandline/create)
 
-### docker run 
+### run 
 > [Docker run 命令的使用方法](http://www.open-open.com/lib/view/open1422492851548.html)
 > 等价于 docker create 再 docker start
 
@@ -337,7 +337,7 @@ _ps_
     - `--restart=always` 设置该容器随dokcer 服务自启动
     - `--hostname 容器hostname` 指定容器的hostname
 
-### docker exec
+### exec
 - 登录容器：
     - `docker exec -it 容器name或id bash `
     - `docker attach 容器id` 这个命令虽然简单，但是退出会话就自动关闭了容器
@@ -351,10 +351,10 @@ _ps_
     - PID=${docker-pid 容器id}
     - nsenter --target $PID --mount --uts --ipc --net --pid
 
-### docker commit
+### commit
 - `docker commit 容器id 镜像name` 将容器为id的当前容器 保存为name镜像
 
-### docker port
+### port
 > 查看容器的端口映射情况， 输出是左容器右本机， 和使用相反
 
 *************

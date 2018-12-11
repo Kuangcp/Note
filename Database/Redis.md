@@ -10,21 +10,21 @@
         1. [解压即用](#解压即用)
     1. [Redis配置文件](#redis配置文件)
 1. [数据类型](#数据类型)
-    1. [字符串](#字符串)
-    1. [列表](#列表)
-    1. [集合](#集合)
-    1. [有序集合](#有序集合)
-    1. [散列](#散列)
+    1. [字符串String](#字符串string)
+    1. [列表List](#列表list)
+    1. [集合Set](#集合set)
+    1. [有序集合Zset](#有序集合zset)
+    1. [散列Hash](#散列hash)
     1. [HyperLogLog](#hyperloglog)
-    1. [GEO【地理位置】](#geo地理位置)
-1. [Pub/Sub](#pubsub)
+    1. [GEO地理位置](#geo地理位置)
+1. [Pub/Sub发布和订阅](#pubsub发布和订阅)
 1. [编程语言的使用](#编程语言的使用)
-    1. [Java](#java)
+    1. [Java使用](#java使用)
     1. [Python使用](#python使用)
 1. [Project](#project)
     1. [webdis](#webdis)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 21:23_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -88,7 +88,7 @@
 # 数据类型
 > [社区: 中文文档](http://redisdoc.com/index.html)
 
-## 字符串 String
+## 字符串String
 > 字符串就是字节组成的序列 可以放字节串，整数，浮点数
 
 - `set key newval nx `存在则set失败
@@ -107,7 +107,7 @@
 - `persist key` 去除超时时间
 - `ttl key` 查看剩余存活时间 -1表示永久 -2表示没有该key
 
-## 列表 list
+## 列表List
 - `rpush key val val val `右/尾添加元素 lpush是左/头，若表不存在就新建
 - `rpushx key value` 若表不存在就什么都不做，否则尾插元素
 - `rpop key` 从list右/尾端中删除元素返回元素值 没有了就返回null
@@ -125,7 +125,7 @@
     - `bpoplpush`
     - `brpoplpush` 阻塞式先右弹再左进
 
-## 集合 set
+## 集合Set
 - `SADD key member [member ...]`
 - `SCARD key` 返回集合 key 的基数(集合中元素的数量)。
 - `SDIFF key [key ...]`  返回一个集合的全部成员，该集合是所有给定集合之间的差集。不存在的 key 被视为空集。
@@ -142,7 +142,7 @@
 - `SUNIONSTORE destination key [key ...]`
 - `SSCAN key cursor [MATCH pattern] [COUNT count]` 参考 SCAN 命令
 
-## 有序集合 zset
+## 有序集合Zset
 > 元素是键值对，键是member成员，值是score分值必须是浮点数
 
 - ZADD 将一个给定分值的成员添加到有序集合里
@@ -172,7 +172,7 @@
 - ZLEXCOUNT
 - ZREMRANGEBYLEX
 
-## 散列 hash
+## 散列Hash
 > (类似Map 嵌套，一个内置的微型redis)
 
 - HDEL 删除散列中指定的K
@@ -196,7 +196,7 @@
 - PFCOUNT
 - PFMERGE
 
-## GEO【地理位置】
+## GEO地理位置
 - GEOADD
 - GEOPOS
 - GEODIST
@@ -205,7 +205,7 @@
 - GEOHASH
 
 ***************
-# Pub/Sub 发布和订阅
+# Pub/Sub发布和订阅
 
 - `PSUBSCRIBE pattern [pattern ...]`
     - 订阅一个或多个符合给定模式的频道。每个模式以 * 作为匹配符，比如 it* 匹配所有以 it 开头的频道( it.news 、 it.blog 、 it.tweets 等等)，
@@ -230,7 +230,7 @@
 
 # 编程语言的使用
 
-## Java 使用
+## Java使用
 > [详细](/Java/Ecosystem/JavaRedis.md)
 
 *******************

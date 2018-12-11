@@ -2,30 +2,30 @@
 
 1. [HTTP状态码大全](#http状态码大全)
     1. [标准扩展码](#标准扩展码)
-        1. [1xx](#1xx)
-        1. [2xx](#2xx)
-        1. [3xx](#3xx)
-        1. [4xx](#4xx)
-        1. [5xx](#5xx)
+        1. [1xx-Informational-信息化](#1xx-informational-信息化)
+        1. [2xx-Success-成功](#2xx-success-成功)
+        1. [3xx-Redirection-重定向](#3xx-redirection-重定向)
+        1. [4xx-ClientError-客户端错误](#4xx-clienterror-客户端错误)
+        1. [5xx-ServerError-服务器错误](#5xx-servererror-服务器错误)
     1. [非官方扩展码](#非官方扩展码)
     1. [互联网信息服务扩展状态码](#互联网信息服务扩展状态码)
-    1. [NGINX](#nginx)
+    1. [NGINX-扩展状态码](#nginx-扩展状态码)
     1. [七牛扩展状态码](#七牛扩展状态码)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-11 21:20_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # HTTP状态码大全
 > [HTTP状态码](http://www.runoob.com/http/http-status-codes.html)
 > [HTTP状态码百度百科](https://baike.baidu.com/item/HTTP%E7%8A%B6%E6%80%81%E7%A0%81)
 ## 标准扩展码
 
-### 1xx Informational 信息化
+### 1xx-Informational-信息化
 ```
 100 Continue 继续
 101 Switching Protocols 交换协议
 102 Processing 继续处理
 ```
-### 2xx Success 成功
+### 2xx-Success-成功
 ```
 200 OK
 201 Created 创建
@@ -38,7 +38,7 @@
 208 Already Reported 已报告
 226 IMIM Used 使用的
 ```
-### 3xx Redirection 重定向
+### 3xx-Redirection-重定向
 > [HTTP返回码中301与302的区别  ](http://blog.163.com/darkness@yeah/blog/static/131774484201221495129735/)
 
 ```
@@ -52,7 +52,7 @@
 307 Temporary Redirect 临时重定向
 308 Permanent Redirect 永久重定向
 ```
-### 4xx Client Error 客户端错误
+### 4xx-ClientError-客户端错误
 ```
 400 Bad Request 错误的请求
 401 Unauthorized 未授权
@@ -84,7 +84,7 @@
 451 Unavailable For Legal Reasons 不可出于法律原因
 ```
 
-### 5xx Server Error 服务器错误
+### 5xx-ServerError-服务器错误
 ```
 500 Internal Server Error 内部服务器错误
 501 Not Implemented 未执行
@@ -118,7 +118,7 @@
 451 Redirect 重定向
 ```
 
-## NGINX 扩展状态码
+## NGINX-扩展状态码
 ```
 444 No Response 没有响应
 495 SSL Certificate Error 证书错误
@@ -143,3 +143,4 @@
 640 调用列举资源 (list) 接口时，指定非法的marker参数。
 701 在断点续上传过程中，后续上传接收地址不正确或ctx信息已过期。
 ```
+

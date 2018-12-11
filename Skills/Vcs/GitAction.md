@@ -101,6 +101,18 @@
 - `sudo apt update`
 - `sudo apt install git`
 
+- 从源码安装 [Github:git](https://github.com/git/git)
+    - make prefix=/usr/local all 
+    - sudo makeprefix=/usr/local install 
+
+- 安装文档(可选):
+    - sudo apt-get installasciidoc
+    - make prefix=/usr/local docinfo
+    - sudo makeprefix=/usr/local install
+
+- 卸载
+    - sudo find /usr/local -depth -iname 'git*' -exec rm -fr {} \;
+
 ### windows
 - 直接搜索git-for-windows 建议使用360搜索,会有360的下载链接,无意间发现 毕竟官网的下载速度不敢恭维
 
