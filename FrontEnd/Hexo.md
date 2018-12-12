@@ -1,6 +1,6 @@
 **目录 start**
 
-1. [配置Hexo的Github博客](#配置hexo的github博客)
+1. [Hexo](#hexo)
     1. [安装](#安装)
         1. [主配置文件](#主配置文件)
         1. [插件](#插件)
@@ -10,9 +10,11 @@
             1. [categories](#categories)
         1. [新建文章](#新建文章)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-12 15:41_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 
-# 配置Hexo的Github博客
+# Hexo
+> [Official Doc](https://hexo.io/zh-cn/docs/index.html)
+
 > 参考 [博客](http://stonebegin.com/hexo+github.html) | [部署Hexo](http://letus.club/2016/04/04/deploy-hexo-and-change-theme/)
 
 - [ ] 在docker中下拉笔记仓库, 然后构建, 然后推送到github的page上
