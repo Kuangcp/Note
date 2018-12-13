@@ -1,11 +1,11 @@
 **目录 start**
-
+ 
 1. [Thymeleaf](#thymeleaf)
     1. [流程控制](#流程控制)
         1. [if](#if)
     1. [集合处理](#集合处理)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 11:58_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Thymeleaf
 > 辣鸡
@@ -24,4 +24,7 @@
 
 ## 集合处理
 
-- 判断list大小：`th:if="${#lists.size(topicList) == 0}"`
+- 判断list大小：
+```
+th:if="${#lists.size(topicList) == 0}"
+```

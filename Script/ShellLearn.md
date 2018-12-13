@@ -1,5 +1,5 @@
 **目录 start**
-
+ 
 1. [学习Shell](#学习shell)
     1. [shell类别](#shell类别)
     1. [Shell内建命令](#shell内建命令)
@@ -32,7 +32,7 @@
     1. [工具](#工具)
         1. [shyaml](#shyaml)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 11:58_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 学习Shell
 > 首先语法不像别的语言可读性好，比如Python，然后方言众多，学习比Python2，3还恶心  
@@ -208,7 +208,7 @@ _判断变量是否为数值_
       echo $x
   }
 ```
-_求长_ `${#var}`
+_求长_ ```${#var}```
 
 _字符串拆分成数组_
 > [修改分隔符](http://www.cnblogs.com/FlyFive/p/3640243.html) | [三种方法概述](https://blog.csdn.net/bitcarmanlee/article/details/50973454)
