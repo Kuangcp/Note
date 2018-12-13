@@ -2,7 +2,7 @@
 title: 2018-3-15-install-deepin.md
 date: 
 tags: 
-catagroies: 
+categories: 
 ---
 
 **目录 start**

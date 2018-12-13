@@ -2,7 +2,7 @@
 title: SQLServer.md
 date: 
 tags: 
-catagroies: 
+categories: 
 ---
 
 **目录 start**

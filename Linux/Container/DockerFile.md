@@ -2,7 +2,7 @@
 title: DockerFile.md
 date: 
 tags: 
-catagroies: 
+categories: 
 ---
 
 **目录 start**

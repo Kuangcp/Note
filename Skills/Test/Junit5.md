@@ -2,7 +2,7 @@
 title: Junit5.md
 date: 
 tags: 
-catagroies: 
+categories: 
 ---
 
 **目录 start**

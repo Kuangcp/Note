@@ -2,7 +2,7 @@
 title: why-put-netty-in-tomcat.md
 date: 
 tags: 
-catagroies: 
+categories: 
 ---
 
 **目录 start**

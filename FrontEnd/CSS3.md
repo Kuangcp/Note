@@ -2,7 +2,7 @@
 title: CSS3.md
 date: 
 tags: 
-catagroies: 
+categories: 
 ---
 
 **目录 start**

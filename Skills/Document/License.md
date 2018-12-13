@@ -2,7 +2,7 @@
 title: License.md
 date: 
 tags: 
-catagroies: 
+categories: 
 ---
 
 # License 

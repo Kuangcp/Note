@@ -2,7 +2,7 @@
 title: Problem.md
 date: 
 tags: 
-catagroies: 
+categories: 
 ---
 
 **目录 start**

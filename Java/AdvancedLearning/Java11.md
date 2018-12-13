@@ -2,7 +2,7 @@
 title: Java11.md
 date: 
 tags: 
-catagroies: 
+categories: 
 ---
 
 **目录 start**

@@ -2,7 +2,7 @@
 title: Hexo.md
 date: 
 tags: 
-catagroies: 
+categories: 
 ---
 
 **目录 start**
@@ -70,6 +70,11 @@ catagroies:
 ### 配置
 #### tags
 `source/tags/index.md` yml 语法
+```yml
+    tags:
+        - 1
+        - 2
+```
 
 #### categories
 `source/categories/index.md`
