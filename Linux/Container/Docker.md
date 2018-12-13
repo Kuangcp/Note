@@ -1,15 +1,17 @@
 **目录 start**
-
+ 
 1. [Docker](#docker)
     1. [简介](#简介)
     1. [个人理解](#个人理解)
     1. [学习资源](#学习资源)
 1. [安装与卸载](#安装与卸载)
     1. [Linux](#linux)
-        1. [包管理器安装](#包管理器安装)
         1. [安装包安装](#安装包安装)
+        1. [Ubuntu](#ubuntu)
+        1. [Debian](#debian)
+            1. [Centos](#centos)
+            1. [Arch](#arch)
         1. [不加sudo执行docker命令](#不加sudo执行docker命令)
-        1. [卸载](#卸载)
     1. [Windows](#windows)
 1. [初步使用](#初步使用)
     1. [镜像仓库](#镜像仓库)
@@ -41,7 +43,7 @@
     1. [跨主机容器通信](#跨主机容器通信)
         1. [overlay](#overlay)
 
-**目录 end**|_2018-12-11 21:25_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 11:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -88,52 +90,9 @@
 > [daocloud安装帮助](http://get.daocloud.io/#install-docker) | [Docker 加速器](http://guide.daocloud.io/dcs/daocloud-9153151.html)
 
 ## Linux
-> [Official doc](https://docs.docker.com/install/linux/docker-ce/)
+> [Official doc](https://docs.docker.com/install/linux/docker-ce/) `所有的发行版`
 
-### 包管理器安装
-如果装 docker.io 则是旧版本 docker-ce 才是新的, 
-
-`snap`
-- 安装snap `sudo apt install snapd`
-- 查看适用于当前系统的包：`snap install find`
-- 安装： `snap install docker`
-
-> Ubuntu
-- [Official: Ubuntu安装最新版](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1)
-- `sudo apt install docker-ce`
-    - 关闭服务则是标准服务操作, service docker stop 
-
-> debian 8
-> [参考](http://www.docker.org.cn/book/install/install-docker-on-debian-8.0-jessie-34.html)
-- `sudo echo "deb http://http.debian.net/debian jessie-backports main" >> /etc/apt/sources.list`
-- `sudo apt-get install docker-ce`
-
-1. sudo apt-get install \
-     apt-transport-https \
-     ca-certificates \
-     curl \
-     gnupg2 \
-     lsb-release \
-     software-properties-common
-
-> 阿里云镜像源
-1. curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/debian/gpg | sudo apt-key add -
-1. sudo add-apt-repository \
-    "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/debian \
-    $(lsb_release -cs) stable"
-> 官方源
-1. curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-1. sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/debian \
-    $(lsb_release -cs) stable"
-
-> yum
-- `sudo yum install docker`
-    - Ubuntu的话,Docker没有启动, 只要一执行Docker相关命令就会自动启动, 但是Centos要手动启动
-    - `service docker start`  设置开机启动: `chkconfig docker on`
-
-> arch 
-- `pacman -S docker`
+> docker.io 是旧版本 现在新的Docker分为 docker-ce  docker-ee
 
 ### 安装包安装
 > [官方文件地址](https://download.docker.com/linux/)
@@ -146,16 +105,62 @@ _Debian系_
 - 双击或者`sudo dpkg -i deb文件`
 - 测试安装成功 `sudo docker run hello-world`
 
+### Ubuntu
+- [Official: Ubuntu安装最新版](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1)
+- `sudo apt install docker-ce`
+    - 关闭服务则是标准服务操作, service docker stop 
+
+`snap`
+- 安装snap `sudo apt install snapd`
+- 查看适用于当前系统的包：`snap install find`
+- 安装： `snap install docker`
+### Debian
+> [参考](http://www.docker.org.cn/book/install/install-docker-on-debian-8.0-jessie-34.html)
+- `sudo echo "deb http://http.debian.net/debian jessie-backports main" >> /etc/apt/sources.list`
+- `sudo apt-get install docker-ce`
+
+1. `前置软件` sudo apt-get install \
+     apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg2 \
+     lsb-release \
+     software-properties-common
+
+
+> [使用清华大学镜像源安装](https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/)
+
+> 使用阿里云镜像源
+1. curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/debian/gpg | sudo apt-key add -
+1. sudo add-apt-repository \
+    "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/debian \
+    $(lsb_release -cs) stable"
+
+> 1. 特别注意 `lsb_release -cs` 命令的执行结果, 本应该获取到的是发行代号 jessie stretch 等等, 但是Deepin15.8执行结果是 unstable ...
+> 1. 所以要手动添加 或修改为 jessie `deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/debian jessie stable`
+
+**********************
+
+> 使用官方源
+1. curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+1. sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/debian \
+    $(lsb_release -cs) stable"
+
+#### Centos
+- `sudo yum install docker`
+    - Ubuntu的话,Docker没有启动, 只要一执行Docker相关命令就会自动启动, 但是Centos要手动启动
+    - `service docker start`  设置开机启动: `chkconfig docker on`
+
+#### Arch
+- `pacman -S docker`
+
 ### 不加sudo执行docker命令
 > [官方文档](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user)
 
 - 如果没有docker组，添加组 `sudo groupadd docker `
 - 将当前用户加入用户组 `sudo gpasswd -a $USER docker`
 - 然后重新注销登录，或者退出会话重新登录即可
-
-### 卸载
-- `sudo apt-get purge docker-ce`
-- `sudo rm -rf /var/lib/docker`
 
 ## Windows
 > Windows上本质是用了VirtualBox创建虚拟机来跑Docker, 屎一般的体验, 然而Win10的WSL因为不能模拟aufs 以及 cgroup 所以能装不能用  
@@ -168,8 +173,7 @@ _Debian系_
 **************************************
 
 # 初步使用
-- 如果出现命令执行失败，可以登录docker的控制台直接执行 `boot2docker ssh`
-- 可以将镜像看成真正运行的程序，容器就是具体的一些配置，所以镜像是可以重复利用，容器出问题删掉就是了
+> docker 所有的数据默认存储在 `/var/lib/docker`
 
 ## 镜像仓库
 > 默认的DockerHub因为在国外所以网络不太稳定
@@ -181,11 +185,10 @@ _Debian系_
 1. 使用指定的URL `docker pull registry.docker-cn.com/myname/myrepo:mytag`
 2. 仅仅配置当前守护进程, 重启就失效了`docker --registry-mirror=https://registry.docker-cn.com daemon`
 3. 修改 `/etc/docker/daemon.json`文件, 永久性更改
+```json
+    {"registry-mirrors": ["https://registry.docker-cn.com"]}
 ```
-{
-  "registry-mirrors": ["https://registry.docker-cn.com"]
-}
-```
+
 > 时速云
 - `sudo docker pull index.tenxcloud.com/<namespace>/<repository>:<tag>`
 - 下载后可以用别名 `docker tag index.tenxcloud.com/docker_library/node:lastest node:lastest`
@@ -221,7 +224,6 @@ _Debian系_
 > [Official doc](https://docs.docker.com/registry/#requirements)
 
 > [参考：Docker Registry V1 与 V2 的区别解析以及灵雀云的实时同步迁移实践](https://www.csdn.net/article/2015-09-09/2825651)
-
 
 > [Github:v1](https://github.com/docker/docker-registry) | [Github:v2](https://github.com/docker/distribution)
 

@@ -1,5 +1,5 @@
 **目录 start**
-
+ 
 1. [Python](#python)
     1. [简介](#简介)
         1. [关于Python2与3的使用](#关于python2与3的使用)
@@ -15,8 +15,8 @@
         1. [http](#http)
         1. [virtualenv](#virtualenv)
         1. [pip](#pip)
-            1. [Requirements](#requirements)
-            1. [发布包到](#发布包到)
+            1. [Requirements files](#requirements-files)
+            1. [发布包到 pypi](#发布包到-pypi)
     1. [变量](#变量)
     1. [基本运行结构](#基本运行结构)
         1. [序列](#序列)
@@ -32,7 +32,7 @@
         1. [输出](#输出)
         1. [读取命令行参数](#读取命令行参数)
             1. [docopt](#docopt)
-            1. [Python](#python)
+            1. [Python Fire](#python-fire)
     1. [函数](#函数)
     1. [类](#类)
         1. [继承](#继承)
@@ -55,7 +55,7 @@
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 11:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -665,14 +665,19 @@ def show_help():
 
 `b 表示字节流（二进制文件） 不加表示字符流（文本文件）`
 
-|方式   |意义   |当存在   |当不存在   |
-|:-----:|:-----:|:------:|:-----:|
+|字符流方式   |意义   |当存在   |当不存在   |
+|:-----|:-----|:------|:-----|
 |r   |只读打开   |打开   |返回空指针 |
 |w   |只写打开新  |打开删空 |新建打开  |
 |a   |追加打开   |打开   |新建打开  |
 |r+  |读打开可写  |打开   |返回空指针  |
 |w+  |写打开新可读 |打开删空 |新建打开  |
 |a+  |追加打开可读 |打开   |新建打开  |
+
+****************
+
+|字节流方式   |意义   |当存在   |当不存在   |
+|:-----|:-----|:------|:-----|
 |rb  |只读打开   |打开   |返回空指针 |
 |wb  |只写打开新  |打开删空 |新建打开  |
 |ab  |追加打开   |打开   |新建打开  |
