@@ -1,8 +1,10 @@
 ---
-title: PythonGUI.md
-date: 
+title: PythonGUI
+date: 2018-12-13 16:02:20
 tags: 
+    - GUI
 categories: 
+    - Python
 ---
 
 **目录 start**

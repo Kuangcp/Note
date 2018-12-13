@@ -1,8 +1,11 @@
 ---
 title: Java8.md
-date: 
+date: 2018-12-13 16:05:51
 tags: 
+    - Java8
+    - Basic
 categories: 
+    - Java
 ---
 
 **目录 start**

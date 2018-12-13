@@ -1,8 +1,10 @@
 ---
-title: JVM.md
+title: JVM
 date: 
 tags: 
+    - JVM
 categories: 
+    - Java
 ---
 
 **目录 start**

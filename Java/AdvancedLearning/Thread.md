@@ -1,8 +1,10 @@
 ---
-title: Thread.md
+title: Thread
 date: 
 tags: 
+    - Thread
 categories: 
+    - Java
 ---
 
 **目录 start**

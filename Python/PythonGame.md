@@ -1,8 +1,10 @@
 ---
-title: PythonGame.md
-date: 
+title: PythonGame
+date: 2018-12-13 16:01:52
 tags: 
+    - Game
 categories: 
+    - Python
 ---
 
 **目录 start**

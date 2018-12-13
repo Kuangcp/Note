@@ -1,8 +1,11 @@
 ---
-title: Python.md
-date: 
+title: Python 基础
+date: 2018-12-13 16:00:45
 tags: 
+    - Basic
 categories: 
+    - 编程语言
+    - Python
 ---
 
 **目录 start**

@@ -69,16 +69,26 @@ categories:
 ## 文章相关
 ### 配置
 #### tags
-`source/tags/index.md` yml 语法
-```yml
-    tags:
-        - 1
-        - 2
+> `source/tags/index.md`
+
+```
+---
+title: "tags"
+type: tags
+layout: "tags"
+---
 ```
 
 #### categories
-`source/categories/index.md`
+> `source/categories/index.md`
 
+```yml
+---
+title: "categories"
+type: categories
+layout: "categories"
+---
+```
 ### 新建文章
 - `hexo new "postName"` #postName是文章的名字
     - 文章的开头具有 时间，标题，分类， 标签等信息
