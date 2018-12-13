@@ -17,7 +17,7 @@ categories:
             1. [categories](#categories)
         1. [新建文章](#新建文章)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 20:53_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Hexo
 > [Official Doc](https://hexo.io/zh-cn/docs/index.html)
@@ -54,11 +54,13 @@ categories:
     - theme 填写`/thems`文件夹下的`主题文件夹名字` [官方主题](https://hexo.io/themes/)    
     - 选好对应的主题只要 `git clone` 在`/themes`文件夹下即可
     - 例如 next主题 [官方使用文档](http://theme-next.iissnan.com/getting-started.html)
-    
+
 - Deployment
     - type: git
     - repo: 仓库URL
     - branch: master 分支，一般是master
+
+- 安装 工具 `npm install hexo-deployer-git --save`
 
 > [更多发布方式](https://hexo.io/docs/deployment.html)   
 ### 插件

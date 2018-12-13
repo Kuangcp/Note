@@ -1,22 +1,27 @@
 ---
-title: Python 操作 Offices
+title: Python 操作 Offices文档
 date: 
 tags: 
-    - Office
+    - Offices
 categories: 
     - Python
 ---
 
 **目录 start**
  
-1. [Handle Excel](#handle-excel)
+1. [Offices文档](#offices文档)
+    1. [Word](#word)
+    1. [Excel](#excel)
     1. [xlrd](#xlrd)
     1. [pandas](#pandas)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 20:53_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-# Handle Excel 
+# Offices文档
+## Word
 
+## Excel 
+> [](http://www.python-excel.org/)
 > [参考: Python-Excel 模块哪家强？](https://zhuanlan.zhihu.com/p/23998083)
 
 ## xlrd 
@@ -25,14 +30,13 @@ categories:
 ```python
 import xlrd 
 
-data = xlrd.open_workbook('vip-config.xlsx')
+data = xlrd.open_workbook('monster.xlsx')
 table = data.sheets()[0]   
 nrows = table.nrows
 for i in range(nrows):
-    if i == 3:
-        continue;
     for cell in table.row_values(i):
-        print(cell)
+        print(cell, ' | ', end='')
+    print()
 ```
 
 ## pandas 

@@ -14,7 +14,7 @@ categories:
     1. [使用](#使用)
         1. [安装Vue](#安装vue)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 20:53_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # NodeJs
 
@@ -24,8 +24,8 @@ categories:
 3. 执行 node --version 和 npm -v 查看是否配置成功
 4. 添加node的真正解压目录到环境变量中， 之后安装的模块才能被找到
 ```sh
-NODE_HOME=/home/kcp/Application/sdk/node-v8.11.1-linux-x64
-export PATH=$PATH:$NODE_HOME/bin
+    NODE_HOME=/home/kcp/Application/sdk/node-v8.11.1-linux-x64
+    export PATH=$PATH:$NODE_HOME/bin
 ```
 
 ## 配置

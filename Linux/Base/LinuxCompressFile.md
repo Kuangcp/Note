@@ -12,11 +12,12 @@ categories:
         1. [tar归档和压缩](#tar归档和压缩)
     1. [rar](#rar)
     1. [zip](#zip)
-    1. [gz](#gz)
+    1. [gzip](#gzip)
+    1. [xz](#xz)
     1. [7Z](#7z)
     1. [总结](#总结)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 20:53_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux操作压缩文档
 > Linux默认自带ZIP压缩，最大支持4GB压缩，RAR的压缩比大于4GB.
@@ -103,10 +104,28 @@ categories:
     - -O 指定编码
 
 ***************************
-## gz
-> gzip gunzip 
+## gzip
+> gzip gunzip. 常见压缩包格式: .tar.gz .tgz 
 
-- [ ] gunzip 命令的学习
+由于只能操作单个文件, 所以一般是借助于 tar 归档后再压缩
+
+> 压缩
+- gzip 文件
+
+> 解压
+- gzip -d 文件 或者 gunzip 文件
+
+## xz 
+> xz. 常见压缩包格式: .xz .txz .lzma .tlz
+
+和 gzip 类似, 只能操作单个文件, 但是压缩率高于 gzip, 伴随的是压缩时间要长一些
+
+> 压缩
+- xz 文件
+
+> 解压
+- xz -d 文件
+
 ***************************
 ## 7Z
 > 安装 apt install p7zip-full 或者 p7zip 
