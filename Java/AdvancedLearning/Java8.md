@@ -3,7 +3,7 @@ title: Java8.md
 date: 2018-12-13 16:05:51
 tags: 
     - Java8
-    - Basic
+    - 基础
 categories: 
     - Java
 ---

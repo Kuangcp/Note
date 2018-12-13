@@ -2,9 +2,8 @@
 title: Python 基础
 date: 2018-12-13 16:00:45
 tags: 
-    - Basic
+    - 基础
 categories: 
-    - 编程语言
     - Python
 ---
 
