@@ -1,11 +1,18 @@
-**目录 start**
+---
+title: ViewSolution.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [与前端有关的问题](#与前端有关的问题)
     1. [资源文件](#资源文件)
         1. [图片](#图片)
             1. [使用图片还是BASE64](#使用图片还是base64)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 与前端有关的问题
 

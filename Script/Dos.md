@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: Dos.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [DOS批处理](#dos批处理)
     1. [Tips](#tips)
     1. [基础命令](#基础命令)
@@ -9,7 +16,7 @@
     1. [服务](#服务)
     1. [实用性脚本](#实用性脚本)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # DOS批处理
 

@@ -1,6 +1,13 @@
-**目录 start**
+---
+title: Web.md
+date: 
+tags: 
+catagroies: 
+---
 
-1. [Java](#java)
+**目录 start**
+ 
+1. [Java Web](#java-web)
     1. [【JSP/Servlet】](#jspservlet)
         1. [Servlet](#servlet)
         1. [JSP](#jsp)
@@ -10,7 +17,7 @@
         1. [缓存](#缓存)
     1. [Tips](#tips)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java Web
 ## 【JSP/Servlet】

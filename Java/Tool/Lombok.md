@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: Lombok.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [Lombok](#lombok)
     1. [何为Lombok](#何为lombok)
     1. [为什么要用](#为什么要用)
@@ -15,7 +22,7 @@
         1. [日志相关](#日志相关)
         1. [异常相关](#异常相关)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Lombok
 

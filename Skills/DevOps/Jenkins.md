@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: Jenkins.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [Jenkins](#jenkins)
     1. [安装](#安装)
         1. [直接运行jar](#直接运行jar)
@@ -11,7 +18,7 @@
         1. [Pipeline](#pipeline)
         1. [个人经验](#个人经验)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Jenkins
 > [官网](https://jenkins.io/)

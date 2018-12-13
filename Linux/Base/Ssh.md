@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: Ssh.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [SSH](#ssh)
     1. [1.安装软件](#1安装软件)
     1. [2.复制粘贴建立密钥对](#2复制粘贴建立密钥对)
@@ -10,7 +17,7 @@
     1. [6.访问图形化](#6访问图形化)
     1. [7.ssh登录并执行一系列命令](#7ssh登录并执行一系列命令)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SSH
 > [Linux启动或禁止SSH用户及IP的登录](https://blog.csdn.net/linghe301/article/details/8211305)

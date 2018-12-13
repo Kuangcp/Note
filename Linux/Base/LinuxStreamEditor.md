@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: LinuxStreamEditor.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [流编辑器](#流编辑器)
     1. [grep](#grep)
     1. [tr](#tr)
@@ -8,7 +15,7 @@
     1. [sed](#sed)
     1. [awk](#awk)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 流编辑器
 > [参考博客: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)

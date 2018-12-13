@@ -1,9 +1,16 @@
+---
+title: LinuxBash.md
+date: 
+tags: 
+catagroies: 
+---
+
 **目录 start**
+ 
+1. [Linux Bash](#linux-bash)
 
-1. [Linux](#linux)
-
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
-# Linux Bash
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+****************************************
 
 - [ ] 从ShellLearn 中整理过来
 

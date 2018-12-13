@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: Zsh.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [Zsh](#zsh)
     1. [为什么要使用](#为什么要使用)
     1. [安装](#安装)
@@ -9,7 +16,7 @@
             1. [主题](#主题)
                 1. [自己定制](#自己定制)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Zsh
 > [arch zsh wiki](https://wiki.archlinux.org/index.php/Zsh)

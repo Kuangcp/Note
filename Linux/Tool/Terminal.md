@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: Terminal.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [Terminal](#terminal)
     1. [终端模拟器对比](#终端模拟器对比)
     1. [终端工具命令](#终端工具命令)
@@ -19,7 +26,7 @@
         1. [分享](#分享)
             1. [asciinema](#asciinema)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Terminal
 > 终端模拟器是吸引我放弃习惯的Windows而转投Linux怀抱的主要原因

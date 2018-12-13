@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: Problem.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [问题解决方案](#问题解决方案)
     1. [Linux](#linux)
     1. [JDK](#jdk)
@@ -8,7 +15,7 @@
     1. [Docker](#docker)
         1. [内存高占用](#内存高占用)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # 问题解决方案

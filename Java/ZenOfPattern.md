@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: ZenOfPattern.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [设计模式之禅](#设计模式之禅)
     1. [软件设计的一些原则](#软件设计的一些原则)
         1. [思维原则](#思维原则)
@@ -12,7 +19,7 @@
             1. [查询与命令分离](#查询与命令分离)
             1. [够用原则](#够用原则)
             1. [最少知识原则](#最少知识原则)
-        1. [面向对象的S.O.L.I.D](#面向对象的solid)
+        1. [面向对象的S.O.L.I.D 原则](#面向对象的solid-原则)
             1. [单一职责原则](#单一职责原则)
             1. [开闭原则](#开闭原则)
             1. [里氏代换原则](#里氏代换原则)
@@ -44,7 +51,7 @@
     1. [实践](#实践)
         1. [经验之谈](#经验之谈)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 设计模式之禅
 ## 软件设计的一些原则

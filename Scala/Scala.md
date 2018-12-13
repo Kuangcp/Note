@@ -1,3 +1,10 @@
+---
+title: Scala.md
+date: 
+tags: 
+catagroies: 
+---
+
 **目录 start**
  
 1. [Scala](#scala)
@@ -16,7 +23,7 @@
         1. [数据结构和集合](#数据结构和集合)
         1. [actor](#actor)
 
-**目录 end**|_2018-12-13 11:17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Scala
 > [Official tour](https://docs.scala-lang.org/tour/tour-of-scala.html)

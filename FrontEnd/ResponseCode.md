@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: ResponseCode.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [HTTP状态码大全](#http状态码大全)
     1. [标准扩展码](#标准扩展码)
         1. [1xx-Informational-信息化](#1xx-informational-信息化)
@@ -12,7 +19,7 @@
     1. [NGINX-扩展状态码](#nginx-扩展状态码)
     1. [七牛扩展状态码](#七牛扩展状态码)
 
-**目录 end**|_2018-12-11 21:20_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # HTTP状态码大全
 > [HTTP状态码](http://www.runoob.com/http/http-status-codes.html)

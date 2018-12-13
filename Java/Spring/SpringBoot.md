@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: SpringBoot.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [SpringBoot](#springboot)
     1. [思考](#思考)
     1. [参考教程](#参考教程)
@@ -31,7 +38,7 @@
             1. [gradle结合docker](#gradle结合docker)
         1. [热部署](#热部署)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SpringBoot
 > [首页](https://spring.io/projects/spring-boot#learn)

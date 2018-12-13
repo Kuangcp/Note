@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: Redis.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [Redis](#redis)
 1. [Book](#book)
 1. [安装和配置](#安装和配置)
@@ -24,7 +31,7 @@
 1. [Project](#project)
     1. [webdis](#webdis)
 
-**目录 end**|_2018-12-11 21:23_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 

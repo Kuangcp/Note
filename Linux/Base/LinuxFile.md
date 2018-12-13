@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: LinuxFile.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [【文件管理】](#文件管理)
     1. [Tips](#tips)
         1. [设置交换分区](#设置交换分区)
@@ -32,7 +39,7 @@
     1. [系统日志](#系统日志)
     1. [应用日志](#应用日志)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 【文件管理】
 > Linux中认为万物皆文件

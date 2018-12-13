@@ -1,28 +1,35 @@
-**目录 start**
+---
+title: Log.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [日志系统](#日志系统)
-    1. [slf4j](#slf4j)
+    1. [slf4j 体系](#slf4j-体系)
         1. [Log4j](#log4j)
             1. [问题](#问题)
         1. [Log4j2](#log4j2)
         1. [LogBack](#logback)
             1. [Gradle中使用](#gradle中使用)
             1. [配置理解](#配置理解)
-                1. [根节点](#根节点)
+                1. [根节点 <configuration> 属性](#根节点-<configuration>-属性)
                 1. [子节点](#子节点)
                     1. [设置上下文名称：<contextName>](#设置上下文名称<contextname>)
-                    1. [设置变量：](#设置变量)
+                    1. [设置变量： <property>](#设置变量-<property>)
                     1. [获取时间戳字符串：<timestamp>](#获取时间戳字符串<timestamp>)
                 1. [设置loger：](#设置loger)
                 1. [详解<appender>](#详解<appender>)
     1. [实践经验](#实践经验)
         1. [MDC](#mdc)
-    1. [apache](#apache)
+    1. [apache 体系](#apache-体系)
 1. [分析日志](#分析日志)
     1. [Linux上查看日志](#linux上查看日志)
     1. [lnav](#lnav)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 日志系统
 > [码农翻身: 一个著名的日志系统是怎么设计出来的？ ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45&chksm=80d67bacb7a1f2ba38aa37620d273dfd7d7227667df556d36c84d125cafd73fef16464288cf9&scene=21#wechat_redirect)`深刻的理解了日志系统的来源以及相关关系`  

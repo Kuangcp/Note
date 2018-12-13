@@ -1,11 +1,18 @@
-**目录 start**
+---
+title: MySQLAdvance.md
+date: 
+tags: 
+catagroies: 
+---
 
-1. [MySQL](#mysql)
+**目录 start**
+ 
+1. [MySQL Advanced](#mysql-advanced)
     1. [部署](#部署)
     1. [性能调优](#性能调优)
-    1. [SQL](#sql)
+    1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # MySQL Advanced
 

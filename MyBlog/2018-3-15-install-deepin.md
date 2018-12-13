@@ -1,8 +1,15 @@
-**目录 start**
+---
+title: 2018-3-15-install-deepin.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [在公司电脑上安装deepin](#在公司电脑上安装deepin)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 在公司电脑上安装deepin
 > 由于是全新的电脑, 默认开机在配置Windows10, 然后也配置用了下windows10, 被他的卡顿吓到了

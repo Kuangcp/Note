@@ -1,6 +1,13 @@
-**目录 start**
+---
+title: LinuxPerformance.md
+date: 
+tags: 
+catagroies: 
+---
 
-1. [Linux](#linux)
+**目录 start**
+ 
+1. [Linux 性能分析和管理](#linux-性能分析和管理)
     1. [运行状况信息](#运行状况信息)
         1. [工具](#工具)
     1. [内存情况](#内存情况)
@@ -35,7 +42,7 @@
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux 性能分析和管理
 ## 运行状况信息

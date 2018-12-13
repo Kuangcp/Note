@@ -1,7 +1,14 @@
-**目录 start**
+---
+title: SpringbootDatabase.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [数据库模块](#数据库模块)
-    1. [Relational](#relational)
+    1. [Relational Database](#relational-database)
         1. [多数据源配置](#多数据源配置)
         1. [连接池](#连接池)
             1. [c3p0](#c3p0)
@@ -22,13 +29,13 @@
             1. [【特别注意】](#特别注意)
         1. [Jpa数据分页](#jpa数据分页)
         1. [数据库上的事务支持](#数据库上的事务支持)
-    1. [Non](#non)
+    1. [Non Relational database](#non-relational-database)
         1. [JPA](#jpa)
             1. [Redis的简单使用](#redis的简单使用)
             1. [关于StringRedisTemplate的方法使用](#关于stringredistemplate的方法使用)
             1. [消息订阅和发布](#消息订阅和发布)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 数据库模块
 > 主要是采用的JPA，极大的缩减了代码量，但是要注意不要过度依赖框架，丧失了基本的能力

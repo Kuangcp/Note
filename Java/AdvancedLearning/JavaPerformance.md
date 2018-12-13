@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: JavaPerformance.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [Java的性能调优](#java的性能调优)
     1. [JVM参数配置](#jvm参数配置)
     1. [内存优化](#内存优化)
@@ -14,9 +21,9 @@
     1. [图形化](#图形化)
         1. [jvisualvm](#jvisualvm)
         1. [MAT](#mat)
-        1. [IBM](#ibm)
+        1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # Java的性能调优

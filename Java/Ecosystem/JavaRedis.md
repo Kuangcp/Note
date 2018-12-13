@@ -1,12 +1,19 @@
-**目录 start**
+---
+title: JavaRedis.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [Java使用redis](#java使用redis)
     1. [Jedis](#jedis)
         1. [jedis遇到的异常](#jedis遇到的异常)
         1. [SpringBoot使用Redis](#springboot使用redis)
     1. [Lettuce](#lettuce)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java使用redis
 ## Jedis

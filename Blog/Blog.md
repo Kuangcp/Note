@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: Blog.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [博客](#博客)
     1. [个人博客网](#个人博客网)
     1. [博客能人](#博客能人)
@@ -21,7 +28,7 @@
         1. [玩机](#玩机)
     1. [商业](#商业)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 > 只用来记录非技术类的文章,技术类的直接放到对应的笔记中去  

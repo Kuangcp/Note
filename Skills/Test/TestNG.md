@@ -1,10 +1,17 @@
-**目录 start**
+---
+title: TestNG.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [TestNG](#testng)
     1. [使用](#使用)
         1. [基本注解](#基本注解)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # TestNG
 > [Official Doc](http://testng.org/doc/documentation-main.html) 

@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: LinuxBase.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [Linux系统](#linux系统)
     1. [系统管理](#系统管理)
         1. [文件系统对比](#文件系统对比)
@@ -27,7 +34,7 @@
         1. [关闭ssh回话仍能运行](#关闭ssh回话仍能运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异

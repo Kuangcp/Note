@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: HTML5.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [HTML5](#html5)
     1. [参考资料](#参考资料)
     1. [特俗字符](#特俗字符)
@@ -24,7 +31,7 @@
     1. [XML文件头含义](#xml文件头含义)
     1. [XML的元素](#xml的元素)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # HTML5
 ## 参考资料

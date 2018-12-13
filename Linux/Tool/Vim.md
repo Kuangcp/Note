@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: Vim.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [Vim](#vim)
     1. [Tips](#tips)
     1. [基本配置](#基本配置)
@@ -14,7 +21,7 @@
     1. [SpaceVim](#spacevim)
     1. [space-vim](#space-vim)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Vim 
 > 学习曲线很高，但是学会熟练使用后就效率很高

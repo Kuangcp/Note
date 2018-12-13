@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: Concurrent.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [并发](#并发)
     1. [同步](#同步)
         1. [锁](#锁)
@@ -7,7 +14,7 @@
     1. [线程和进程](#线程和进程)
     1. [协程](#协程)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 并发
 > 无关语言 涉及 同步 异步 线程 协程

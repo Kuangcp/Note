@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: LinuxProblem.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [遇到的常见问题](#遇到的常见问题)
     1. [命令找不到](#命令找不到)
     1. [其他](#其他)
@@ -12,7 +19,7 @@
                 1. [fcitx](#fcitx)
             1. [Flash](#flash)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 遇到的常见问题
 

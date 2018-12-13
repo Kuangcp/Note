@@ -1,12 +1,19 @@
-**目录 start**
+---
+title: RESTful.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [RESTful风格](#restful风格)
     1. [Rest](#rest)
-        1. [资源](#资源)
-        1. [表现层](#表现层)
-        1. [状态转化](#状态转化)
+        1. [资源 Resources](#资源-resources)
+        1. [表现层 Representation](#表现层-representation)
+        1. [状态转化 State Transfer](#状态转化-state-transfer)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # RESTful风格
 > 要理解RESTful架构，最好的方法就是去理解Representational State Transfer这个词组到底是什么意思，它的每一个词代表了什么涵义。

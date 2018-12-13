@@ -1,8 +1,21 @@
+---
+title: LearnPS.md
+date: 
+tags: 
+catagroies: 
+---
+
 **目录 start**
+ 
+1. [快捷键](#快捷键)
+        1. [Ctrl](#ctrl)
+        1. [Alt](#alt)
+    1. [钢笔抠图技巧](#钢笔抠图技巧)
+    1. [Banner案例](#banner案例)
+    1. [形状和路径](#形状和路径)
+    1. [形状层编辑：](#形状层编辑)
 
-
-
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 #快捷键
 

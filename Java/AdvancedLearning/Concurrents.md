@@ -1,11 +1,18 @@
-**目录 start**
+---
+title: Concurrents.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [Java并发](#java并发)
     1. [Java内存模型](#java内存模型)
     1. [【理论知识】](#理论知识)
         1. [可能的问题](#可能的问题)
         1. [好的习惯](#好的习惯)
-    1. [【块结构并发】](#块结构并发)
+    1. [【块结构并发】 Java5之前](#块结构并发-java5之前)
         1. [synchronized](#synchronized)
             1. [正确使用锁](#正确使用锁)
         1. [volatile](#volatile)
@@ -17,7 +24,7 @@
             1. [读写锁](#读写锁)
         1. [具体实现](#具体实现)
             1. [线程锁](#线程锁)
-            1. [CountDownLatch](#countdownlatch)
+            1. [CountDownLatch 锁存器](#countdownlatch-锁存器)
             1. [ConcurrentHashMap](#concurrenthashmap)
             1. [CopyOnWriteArrayList](#copyonwritearraylist)
     1. [Queue](#queue)
@@ -29,7 +36,7 @@
     1. [【分支合并框架】](#分支合并框架)
     1. [【Java内存模型】](#java内存模型)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/concurrents)  

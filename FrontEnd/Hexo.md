@@ -1,7 +1,14 @@
-**目录 start**
+---
+title: Hexo.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [Hexo](#hexo)
-    1. [安装](#安装)
+    1. [安装 hexo](#安装-hexo)
         1. [主配置文件](#主配置文件)
         1. [插件](#插件)
     1. [文章相关](#文章相关)
@@ -10,8 +17,8 @@
             1. [categories](#categories)
         1. [新建文章](#新建文章)
 
-**目录 end**|_2018-12-12 15:41_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
-
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+****************************************
 # Hexo
 > [Official Doc](https://hexo.io/zh-cn/docs/index.html)
 

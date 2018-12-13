@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: Hibernate.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [Hibernate](#hibernate)
     1. [Hibernate基础配置](#hibernate基础配置)
         1. [JDBC和Hibernate比较](#jdbc和hibernate比较)
@@ -14,7 +21,7 @@
         1. [非普通类型](#非普通类型)
     1. [Hibernate实体关联配置](#hibernate实体关联配置)
         1. [一对多的配置](#一对多的配置)
-            1. [**注意](#注意)
+            1. [**注意 ：**](#注意-)
         1. [多对多的配置](#多对多的配置)
             1. [学生方配置](#学生方配置)
             1. [课程方配置](#课程方配置)
@@ -24,13 +31,13 @@
             1. [删除记录](#删除记录)
         1. [继承关系的配置](#继承关系的配置)
         1. [Hibernate异常](#hibernate异常)
-            1. [could](#could)
+            1. [could not find a getter for](#could-not-find-a-getter-for)
             1. [个人总结](#个人总结)
         1. [Hibernate对象的状态](#hibernate对象的状态)
             1. [Session的方法](#session的方法)
             1. [特别注意](#特别注意)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Hibernate
 ## Hibernate基础配置

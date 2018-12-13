@@ -1,6 +1,13 @@
-**目录 start**
+---
+title: LinuxDirectoryStructure.md
+date: 
+tags: 
+catagroies: 
+---
 
-1. [Linux](#linux)
+**目录 start**
+ 
+1. [Linux 目录结构](#linux-目录结构)
     1. [/root](#root)
     1. [/home](#home)
     1. [/proc](#proc)
@@ -13,7 +20,7 @@
         1. [查看系统所有用户信息](#查看系统所有用户信息)
     1. [/tmp](#tmp)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux 目录结构
 > Linux 系统目录结构的大致分布以及说明

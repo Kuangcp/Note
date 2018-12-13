@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: GitBase.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [Git基础](#git基础)
     1. [Git常用命令](#git常用命令)
         1. [fork相关操作](#fork相关操作)
@@ -38,7 +45,7 @@
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)

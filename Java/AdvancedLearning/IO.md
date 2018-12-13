@@ -1,10 +1,17 @@
-**目录 start**
+---
+title: IO.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [IO操作的学习](#io操作的学习)
-    1. [Java](#java)
-        1. [Java1.0到1.3](#java10到13)
-        1. [Java1.4](#java14)
-        1. [Java1.7](#java17)
+    1. [Java IO简史](#java-io简史)
+        1. [Java1.0到1.3 BIO](#java10到13-bio)
+        1. [Java1.4 NIO](#java14-nio)
+        1. [Java1.7 AIO](#java17-aio)
     1. [关于普通IO的文件操作](#关于普通io的文件操作)
         1. [读取配置文件](#读取配置文件)
             1. [可执行jar读取外部配置文件](#可执行jar读取外部配置文件)
@@ -12,7 +19,7 @@
     1. [NIO](#nio)
         1. [Buffer](#buffer)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # IO操作的学习
 > - [个人代码:IO流的相关学习](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/io)

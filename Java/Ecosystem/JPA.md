@@ -1,12 +1,19 @@
-**目录 start**
+---
+title: JPA.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [JPA](#jpa)
     1. [JPA和Mybatis](#jpa和mybatis)
     1. [配置](#配置)
     1. [使用](#使用)
         1. [注解](#注解)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # JPA
 ## JPA和Mybatis

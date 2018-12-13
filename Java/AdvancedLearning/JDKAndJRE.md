@@ -1,12 +1,19 @@
-**目录 start**
+---
+title: JDKAndJRE.md
+date: 
+tags: 
+catagroies: 
+---
 
-1. [JDK](#jdk)
+**目录 start**
+ 
+1. [JDK And JRE](#jdk-and-jre)
 1. [Oracle](#oracle)
-    1. [Oracle](#oracle)
-    1. [Oracle](#oracle)
+    1. [Oracle JDK](#oracle-jdk)
+    1. [Oracle JRE](#oracle-jre)
 1. [OpenJDK](#openjdk)
 
-**目录 end**|_2018-12-11 20:47_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # JDK And JRE
 > LTS: 8 11

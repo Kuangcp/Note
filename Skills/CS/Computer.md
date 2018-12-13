@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: Computer.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [计算机历史](#计算机历史)
     1. [起源](#起源)
     1. [硬件系统](#硬件系统)
@@ -9,7 +16,7 @@
     1. [编程语言](#编程语言)
         1. [语言的的演化](#语言的的演化)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 计算机历史
 

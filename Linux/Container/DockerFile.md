@@ -1,5 +1,12 @@
-**目录 start**
+---
+title: DockerFile.md
+date: 
+tags: 
+catagroies: 
+---
 
+**目录 start**
+ 
 1. [Dockerfile](#dockerfile)
     1. [使用入门案例](#使用入门案例)
     1. [Tips](#tips)
@@ -26,7 +33,7 @@
         1. [打包最新版git](#打包最新版git)
         1. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-**目录 end**|_2018-12-11 20:48_|[码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Dockerfile
 ## 使用入门案例
