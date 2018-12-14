@@ -1,8 +1,10 @@
 ---
-title: JavaTest.md
+title: Java的测试
 date: 
 tags: 
+    - 测试
 categories: 
+    - Java
 ---
 
 **目录 start**

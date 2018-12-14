@@ -1,8 +1,10 @@
 ---
-title: Collection.md
+title: Java的集合
 date: 
 tags: 
+    - 数据结构
 categories: 
+    - Java
 ---
 
 **目录 start**

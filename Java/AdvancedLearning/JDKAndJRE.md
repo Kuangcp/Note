@@ -1,8 +1,10 @@
 ---
-title: JDKAndJRE.md
+title: Java的JDK以及JRE
 date: 
 tags: 
+    - JDK
 categories: 
+    - Java
 ---
 
 **目录 start**

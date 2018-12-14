@@ -1,5 +1,5 @@
 ---
-title: JMX.md
+title: JMX
 date: 
 tags: 
 categories: 

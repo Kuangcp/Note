@@ -1,8 +1,10 @@
 ---
-title: JDBC.md
+title: JDBC
 date: 
 tags: 
+    - 数据库
 categories: 
+    - Java
 ---
 
 **目录 start**

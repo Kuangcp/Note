@@ -1,8 +1,9 @@
 ---
-title: JavaReleaseVersion.md
+title: Java主要发行版
 date: 
 tags: 
 categories: 
+    - Java
 ---
 
 **目录 start**

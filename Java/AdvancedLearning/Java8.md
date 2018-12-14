@@ -1,5 +1,5 @@
 ---
-title: Java8.md
+title: Java8
 date: 2018-12-13 16:05:51
 tags: 
     - Java8

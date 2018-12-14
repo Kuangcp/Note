@@ -2,7 +2,9 @@
 title: FPBase.md
 date: 
 tags: 
-categories: 
+    - 函数式编程
+categories:
+    - 思想
 ---
 
 **目录 start**

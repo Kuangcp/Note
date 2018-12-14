@@ -2,7 +2,10 @@
 title: Clojure.md
 date: 
 tags: 
+    - 基础
+    - 函数式编程
 categories: 
+    - Clojure
 ---
 
 **目录 start**

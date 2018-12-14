@@ -2,7 +2,9 @@
 title: GoDatabase.md
 date: 
 tags: 
+    - 数据库
 categories: 
+    - Go
 ---
 
 **目录 start**

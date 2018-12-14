@@ -2,7 +2,9 @@
 title: JavaScript.md
 date: 
 tags: 
+    - 基础
 categories: 
+    - JavaScript
 ---
 
 **目录 start**

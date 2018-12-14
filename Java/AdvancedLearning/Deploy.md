@@ -1,8 +1,10 @@
 ---
-title: Deploy.md
+title: Java应用的部署
 date: 
 tags: 
+    - 部署
 categories: 
+    - Java
 ---
 
 **目录 start**

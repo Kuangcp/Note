@@ -1,8 +1,10 @@
 ---
-title: ExtendsAndInterface.md
+title: Java中的继承与接口
 date: 
 tags: 
+    - 接口
 categories: 
+    - Java
 ---
 
 **目录 start**

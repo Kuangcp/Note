@@ -1,8 +1,11 @@
 ---
 title: GoBase.md
-date: 
+date: 2018-12-14 09:25:49
 tags: 
+    - 基础
+    - 函数式编程
 categories: 
+    - Go
 ---
 
 **目录 start**

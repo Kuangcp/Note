@@ -1,5 +1,5 @@
 ---
-title: Thread
+title: Java线程
 date: 
 tags: 
     - Thread

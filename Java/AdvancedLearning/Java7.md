@@ -1,8 +1,11 @@
 ---
-title: Java7.md
+title: Java7
 date: 
 tags: 
+    - Java7
+    - 基础
 categories: 
+    - Java
 ---
 
 **目录 start**

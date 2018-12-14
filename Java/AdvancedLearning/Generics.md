@@ -1,8 +1,10 @@
 ---
-title: Generics.md
+title: Java泛型
 date: 
 tags: 
+    - 泛型
 categories: 
+    - Java
 ---
 
 **目录 start**

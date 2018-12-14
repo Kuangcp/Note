@@ -2,7 +2,10 @@
 title: Kotlin.md
 date: 
 tags: 
+    - 基础
+    - 函数式编程
 categories: 
+    - Kotlin
 ---
 
 **目录 start**

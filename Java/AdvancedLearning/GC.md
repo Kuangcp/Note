@@ -1,8 +1,10 @@
 ---
-title: GC.md
+title: Java GC
 date: 
 tags: 
+    - GC
 categories: 
+    - Java
 ---
 
 **目录 start**

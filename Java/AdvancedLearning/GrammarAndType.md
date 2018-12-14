@@ -1,8 +1,11 @@
 ---
-title: GrammarAndType.md
+title: Java基础语法
 date: 
 tags: 
+    - 基础
+    - 语法
 categories: 
+    - Java
 ---
 
 **目录 start**
