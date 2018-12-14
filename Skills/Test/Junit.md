@@ -118,21 +118,21 @@ _一个基本的JUnit测试_
 > 使用 Hamcrest 工具能让断言更为简洁强大
 
 1. 直接使用关键字 assert, 例如 `assert a == null` **(不推荐, 因为断言不通过时没有详细报错)**
-2. 静态导入 `import static org.junit.Assert.*`, 使用其大量工具方法, 完整方法请查看源码
+2. 静态导入 `import static org.junit.Assert.*`, 使用其大量工具方法: 
 
-    | 方法签名 | 用法 |
-    |:----|:----|
-    | assertNull(java.lang.Object object) | 检查对象是否为空  |
-    | assertNotNull(java.lang.Object object) | 检查对象是否不为空  |
-    | assertEquals(double expected, double actual, double delta)| 检查 指定精度 的double值是否相等  |
-    | assertNotEquals(double expected, double actual, double delta)| 检查 指定精度 的double值是否不相等 |
-    | assertFalse(boolean condition)| 检查条件是否为假  |
-    | assertTrue(boolean condition)| 检查条件是否为真  |
-    | assertSame(java.lang.Object expected, java.lang.Object actual)| 检查两个对象引用是否引用同一对象（即地址是否相等）  |
-    | assertNotSame(java.lang.Object unexpected, java.lang.Object actual)| 检查两个对象引用是否不引用统一对象(即地址不等)  |
-    | assertArrayEquals(Object[] a, Object[] b)| 检查两个数组是否相等 |
-    | assertThat(T, Matcher<? super T>)| 检查泛型是否匹配, 以及一系列复杂的表达式 |
-    | fail(String string)| 依据入参并宣告测试失败 |
+| 方法签名 | 用法 |
+|:----|:----|
+| assertNull(java.lang.Object object) | 检查对象是否为空  |
+| assertNotNull(java.lang.Object object) | 检查对象是否不为空  |
+| assertEquals(double expected, double actual, double delta)| 检查 指定精度 的double值是否相等  |
+| assertNotEquals(double expected, double actual, double delta)| 检查 指定精度 的double值是否不相等 |
+| assertFalse(boolean condition)| 检查条件是否为假  |
+| assertTrue(boolean condition)| 检查条件是否为真  |
+| assertSame(java.lang.Object expected, java.lang.Object actual)| 检查两个对象引用是否引用同一对象（即地址是否相等）  |
+| assertNotSame(java.lang.Object unexpected, java.lang.Object actual)| 检查两个对象引用是否不引用统一对象(即地址不等)  |
+| assertArrayEquals(Object[] a, Object[] b)| 检查两个数组是否相等 |
+| assertThat(T, Matcher<? super T>)| 检查泛型是否匹配, 以及一系列复杂的表达式 |
+| fail(String string)| 依据入参并宣告测试失败 |
 
 
 ```java
