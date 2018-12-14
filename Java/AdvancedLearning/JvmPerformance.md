@@ -13,6 +13,7 @@ categories:
 1. [Java的性能调优](#java的性能调优)
     1. [JVM参数配置](#jvm参数配置)
     1. [内存优化](#内存优化)
+        1. [堆外内存](#堆外内存)
 1. [主要指标分析](#主要指标分析)
     1. [JDK自带工具](#jdk自带工具)
         1. [jps](#jps)
@@ -26,7 +27,7 @@ categories:
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # Java的性能调优
@@ -41,6 +42,14 @@ categories:
 - [Blog:java优化占用内存的方法(一)](http://blog.csdn.net/zheng0518/article/details/48182437)
 
 - [GC 性能优化 专栏](https://blog.csdn.net/column/details/14851.html)
+- [Java调优经验谈](http://www.importnew.com/22336.html)
+- [你能不能谈谈，java GC是在什么时候，对什么东西，做了什么事情？” ](http://itindex.net/detail/54188-java-gc-%E4%B8%9C%E8%A5%BF)
+
+### 堆外内存
+
+堆外内存堆外内存主要是JNI、Deflater/Inflater、DirectByteBuffer（nio中会用到）使用的。
+
+- [how to see memory useage of nio buffers](https://stackoverflow.com/questions/2689914/how-to-see-the-memory-usage-of-nio-buffers)
 
 *********************
 # 主要指标分析

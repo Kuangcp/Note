@@ -68,7 +68,7 @@ categories:
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)
@@ -217,6 +217,7 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 | BiFunction<T,U,R> | (T,U)->R | ToIntBiFunction<T,U><br/>ToLongBiFunction<T,U><br/>ToDoubleBiFunction<T,U>|
 
 **`Lambdas及函数式接口的例子`**
+
 | 使用案例 | Lambda例子 | 对应的函数式接口 |
 |:----|:----|:----|
 | 布尔表达式 | (List<String> list) -> list.isEmpty() | `Predicate<List<String>>`|

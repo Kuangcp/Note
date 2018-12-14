@@ -1,8 +1,10 @@
 ---
-title: TestTheory.md
+title: 测试理论
 date: 
 tags: 
+    - 测试
 categories: 
+    - 测试
 ---
 
 **目录 start**
@@ -31,7 +33,7 @@ categories:
     1. [Mock](#mock)
     1. [BDD](#bdd)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 测试
  > [参考博客: 测试的道理](http://www.yinwang.org/blog-cn/2016/09/14/tests)

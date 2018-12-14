@@ -58,7 +58,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 常用的网站
 ## 软件下载站
@@ -159,6 +159,9 @@ categories:
 # 学习网站
 
 - [杭电ACM题库](http://acm.hdu.edu.cn/listproblem.php?vol=1)
+- [hackerrank](https://www.hackerrank.com)
+- [leetcode 中国](http://leetcode-cn.com/)
+- [lintcode](http://www.lintcode.com)
 
 ## 并发
 - [并发编程网 http://ifeve.com](http://ifeve.com/)

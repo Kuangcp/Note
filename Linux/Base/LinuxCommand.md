@@ -24,7 +24,7 @@ categories:
         1. [剪贴板管理](#剪贴板管理)
     1. [练习打字](#练习打字)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 系统常用基础命令
 
@@ -71,7 +71,21 @@ categories:
 > [参考博客 shell定时任务crontab](http://www.cnblogs.com/taosim/articles/2007056.html)
 `minute hour day-of-month month-of-year day-of-week commands  `
 
-> cron 脚本中的操作命令 最好都使用绝对路径
+> cron 脚本中的操作命令 最好都使用绝对路径, 必须注意环境变量问题
+
+```sh
+    SHELL=/bin/sh
+    PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+    # Example of job definition:
+    # .---------------- minute (0 - 59)
+    # |  .------------- hour (0 - 23)
+    # |  |  .---------- day of month (1 - 31)
+    # |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+    # |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+    # |  |  |  |  |
+    # *  *  *  *  * user-name command to be executed
+```
 
 ### Systemd
 > [参考博客: Systemd 定时器教程](http://www.ruanyifeng.com/blog/2018/03/systemd-timer.html) `配置和使用上比Crontab更繁杂, 但是有更多的可控制项`

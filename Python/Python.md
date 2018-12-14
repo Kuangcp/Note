@@ -64,7 +64,7 @@ categories:
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -531,7 +531,7 @@ def show_help():
 
 *******************
 ## 类
-`Python 不存在多态，存在鸭子类型` [博客介绍](http://blog.csdn.net/shangzhihaohao/article/details/7065675)
+`Python 不存在多态，存在鸭子类型` [博客介绍](http://blog.csdn.net/shangzhihaohao/article/details/7065675) | [python中的多态与鸭子类型](https://www.jianshu.com/p/650485b78d11)
 - 写在一个py文件里，默认构造器，可以加参数 `def __init__(self):`
 
 - 属性：

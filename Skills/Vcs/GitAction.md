@@ -1,8 +1,9 @@
 ---
-title: GitAction.md
+title: Git实践
 date: 
 tags: 
 categories: 
+    - Git
 ---
 
 **目录 start**
@@ -43,7 +44,7 @@ categories:
         1. [8.Reset一个单独的文件](#8reset一个单独的文件)
         1. [9.保留working_tree并且丢弃一些commit](#9保留working_tree并且丢弃一些commit)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)

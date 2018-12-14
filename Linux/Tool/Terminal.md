@@ -17,6 +17,7 @@ categories:
             1. [tmux](#tmux)
             1. [notes](#notes)
             1. [todo.txt-cli](#todotxt-cli)
+            1. [starDict](#stardict)
         1. [文本操作](#文本操作)
             1. [xclip](#xclip)
             1. [uniq](#uniq)
@@ -26,7 +27,7 @@ categories:
         1. [分享](#分享)
             1. [asciinema](#asciinema)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Terminal
 > 终端模拟器是吸引我放弃习惯的Windows而转投Linux怀抱的主要原因
@@ -123,6 +124,9 @@ categories:
 #### todo.txt-cli
 > 终端内的 todo 
 > [Github](https://github.com/todotxt/todo.txt-cli)
+
+#### starDict
+> 终端内字典
 
 *************
 ### 文本操作

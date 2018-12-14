@@ -42,7 +42,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux 性能分析和管理
 ## 运行状况信息
@@ -53,6 +53,8 @@ categories:
 - `cat /proc/loadavg ` 
     - 运行结果 : 1,5,15分钟的平均负载 | 当前运行的进程/总进程 | 最近一个启动的进程的id
 > 常规: 单核:平均负载0.7以下是安全的,大于就需要优化了,多核则是 0.7*N(核心数)
+
+- Glances [Linux 系统实时监控的瑞士军刀 —— Glances ](https://linux.cn/article-2782-1.html)
 
 ### 工具
 > [vector](https://github.com/Netflix/vector)
