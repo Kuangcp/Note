@@ -1,8 +1,10 @@
 ---
-title: ShellLearn.md
-date: 
+title: Shell学习
+date: 2018-12-15 12:10:46
 tags: 
+    - Shell
 categories: 
+    - Linux
 ---
 
 **目录 start**

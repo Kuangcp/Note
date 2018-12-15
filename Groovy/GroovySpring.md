@@ -1,8 +1,9 @@
 ---
-title: GroovySpring.md
-date: 
+title: GroovySpring
+date: 2018-12-15 12:13:46
 tags: 
     - Spring
+    - Groovy
 categories: 
     - Groovy
 ---

@@ -1,8 +1,10 @@
 ---
-title: Zsh.md
-date: 
+title: Zsh
+date: 2018-12-15 12:06:10
 tags: 
+    - Zsh
 categories: 
+    - Linux
 ---
 
 **目录 start**

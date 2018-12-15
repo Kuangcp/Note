@@ -1,8 +1,10 @@
 ---
-title: LinuxProblem.md
-date: 
+title: Linux遇到问题总结
+date: 2018-12-15 11:16:42
 tags: 
+    - 工具使用经验
 categories: 
+    - Linux
 ---
 
 **目录 start**

@@ -1,8 +1,10 @@
 ---
-title: DockerFile.md
-date: 
+title: DockerFile
+date: 2018-12-15 11:27:03
 tags: 
+    - DockerFile
 categories: 
+    - Docker
 ---
 
 **目录 start**

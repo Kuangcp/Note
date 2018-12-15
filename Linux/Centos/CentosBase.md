@@ -1,8 +1,11 @@
 ---
-title: CentosBase.md
-date: 
+title: Centos
+date: 2018-12-15 11:24:04
 tags: 
+    - 基础
+    - Centos
 categories: 
+    - Linux
 ---
 
 **目录 start**

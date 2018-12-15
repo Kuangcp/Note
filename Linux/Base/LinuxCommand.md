@@ -1,8 +1,10 @@
 ---
-title: LinuxCommand.md
-date: 
+title: Linux常用命令
+date: 2018-12-15 11:11:55
 tags: 
+    - 工具
 categories: 
+    - Linux
 ---
 
 **目录 start**

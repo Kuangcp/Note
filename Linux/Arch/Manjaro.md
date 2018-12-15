@@ -1,8 +1,11 @@
 ---
-title: Manjaro.md
+title: Manjaro
 date: 
 tags: 
+   - Arch
+   - Manjaro
 categories: 
+   - Linux
 ---
 
 **目录 start**

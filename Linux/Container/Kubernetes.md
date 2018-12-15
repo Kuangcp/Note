@@ -1,8 +1,10 @@
 ---
-title: Kubernetes.md
-date: 
+title: Kubernetes
+date: 2018-12-15 11:28:19
 tags: 
+    - 基础
 categories: 
+    - Kubernetes
 ---
 
 **目录 start**

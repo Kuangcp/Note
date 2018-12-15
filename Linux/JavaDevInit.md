@@ -1,8 +1,10 @@
 ---
-title: JavaDevInit.md
-date: 
+title: Java初始化环境搭建
+date: 2018-12-15 12:01:26
 tags: 
+    - 工具使用经验
 categories: 
+    - 基础
 ---
 
 **目录 start**

@@ -1,8 +1,11 @@
 ---
-title: Arch.md
+title: Arch
 date: 
 tags: 
+    - Arch
+    - 基础
 categories: 
+    - Linux
 ---
 
 **目录 start**

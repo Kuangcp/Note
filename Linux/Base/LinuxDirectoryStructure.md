@@ -1,8 +1,10 @@
 ---
-title: LinuxDirectoryStructure.md
-date: 
+title: Linux目录结构
+date: 2018-12-15 11:14:08
 tags: 
+    - 基础
 categories: 
+    - Linux
 ---
 
 **目录 start**

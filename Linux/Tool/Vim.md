@@ -1,8 +1,10 @@
 ---
-title: Vim.md
-date: 
+title: Vim
+date: 2018-12-15 12:05:58
 tags: 
+    - Vim
 categories: 
+    - 工具
 ---
 
 **目录 start**

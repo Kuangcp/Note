@@ -1,8 +1,10 @@
 ---
-title: LinuxBase.md
-date: 
+title: Linux基础
+date: 2018-12-15 11:11:23
 tags: 
+    - 基础
 categories: 
+    - Linux
 ---
 
 **目录 start**

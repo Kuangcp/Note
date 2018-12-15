@@ -1,8 +1,10 @@
 ---
-title: LinuxManual.md
-date: 
+title: Linux 命令手册
+date: 2018-12-15 11:15:10
 tags: 
+    - 基础
 categories: 
+    - Linux
 ---
 
 **目录 start**
@@ -15,3 +17,5 @@ categories:
 
 
 troff
+
+man 

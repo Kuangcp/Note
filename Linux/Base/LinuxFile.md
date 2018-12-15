@@ -1,8 +1,10 @@
 ---
-title: LinuxFile.md
-date: 
+title: Linux文件系统
+date: 2018-12-15 11:14:54
 tags: 
+    - 基础
 categories: 
+    - Linux
 ---
 
 **目录 start**

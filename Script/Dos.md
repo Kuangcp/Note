@@ -1,8 +1,10 @@
 ---
-title: Dos.md
-date: 
+title: Dos
+date: 2018-12-15 12:10:06
 tags: 
+    - DOS
 categories: 
+    - Windows
 ---
 
 **目录 start**

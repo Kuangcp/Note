@@ -1,5 +1,5 @@
 ---
-title: GoRestful.md
+title: GoRestful
 date: 2018-12-14 09:26:23
 tags: 
     - Web

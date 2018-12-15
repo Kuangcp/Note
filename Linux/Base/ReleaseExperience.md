@@ -1,8 +1,10 @@
 ---
-title: ReleaseExperience.md
-date: 
+title: Linux发行版
+date: 2018-12-15 11:19:21
 tags: 
+    - 工具使用经验
 categories: 
+    - Linux
 ---
 
 **目录 start**

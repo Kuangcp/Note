@@ -1,8 +1,10 @@
 ---
-title: Ubuntu.md
-date: 
+title: Ubuntu
+date: 2018-12-15 11:30:32
 tags: 
+    - Ubuntu
 categories: 
+    - Linux
 ---
 
 **目录 start**

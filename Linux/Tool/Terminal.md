@@ -1,8 +1,10 @@
 ---
-title: Terminal.md
-date: 
+title: 终端工具
+date: 2018-12-15 12:05:21
 tags: 
+    - 工具使用经验
 categories: 
+    - 工具
 ---
 
 **目录 start**

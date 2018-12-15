@@ -1,8 +1,10 @@
 ---
-title: Nginx.md
-date: 
+title: Nginx
+date: 2018-12-15 12:05:09
 tags: 
+    - Nginx
 categories: 
+    - 工具
 ---
 
 **目录 start**

@@ -1,8 +1,10 @@
 ---
-title: PyCharm.md
-date: 
+title: PyCharm
+date: 2018-12-15 12:08:04
 tags: 
+    - IDE
 categories: 
+    - 工具
 ---
 
 **目录 start**

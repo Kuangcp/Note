@@ -1,8 +1,10 @@
 ---
-title: LinuxBash.md
-date: 
+title: LinuxBash
+date: 2018-12-15 12:10:18
 tags: 
+    - Bash
 categories: 
+    - Linux
 ---
 
 **目录 start**

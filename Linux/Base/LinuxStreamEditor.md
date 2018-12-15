@@ -1,8 +1,10 @@
 ---
-title: LinuxStreamEditor.md
-date: 
+title: Linux流编辑器
+date: 2018-12-15 11:17:35
 tags: 
+    - 工具
 categories: 
+    - Linux
 ---
 
 **目录 start**

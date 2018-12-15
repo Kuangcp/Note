@@ -1,8 +1,11 @@
 ---
-title: LinuxNet.md
-date: 
+title: Linux网络管理
+date: 2018-12-15 11:15:55
 tags: 
+    - 基础
+    - 网络
 categories: 
+    - Linux
 ---
 
 **目录 start**
