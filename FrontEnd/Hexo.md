@@ -1,5 +1,5 @@
 ---
-title: Hexo.md
+title: Hexo
 date: 2018-12-14 09:21:42
 tags: 
     - Hexo

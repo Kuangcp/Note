@@ -1,8 +1,11 @@
 ---
-title: MySQL.md
-date: 
+title: MySQL
+date: 2018-12-16 17:24:50
 tags: 
+    - MySQL
+    - 基础
 categories: 
+    - 数据库
 ---
 
 **目录 start**

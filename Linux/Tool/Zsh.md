@@ -2,7 +2,7 @@
 title: Zsh
 date: 2018-12-15 12:06:10
 tags: 
-    - Zsh
+    - Shell
 categories: 
     - Linux
 ---

@@ -1,8 +1,7 @@
 ---
 title: JDBC
-date: 
+date: 2018-12-16 17:28:17
 tags: 
-    - 数据库
 categories: 
     - Java
 ---

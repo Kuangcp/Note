@@ -1,8 +1,10 @@
 ---
-title: Redis.md
-date: 
+title: Redis
+date: 2018-12-16 17:28:55
 tags: 
+    - Redis
 categories: 
+    - 数据库
 ---
 
 **目录 start**

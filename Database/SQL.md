@@ -1,8 +1,10 @@
 ---
-title: SQL.md
-date: 
+title: SQL基础
+date: 2018-12-16 17:29:28
 tags: 
+    - SQL
 categories: 
+    - 数据库
 ---
 
 **目录 start**

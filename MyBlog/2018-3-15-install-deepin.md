@@ -3,6 +3,7 @@ title: 2018-3-15-install-deepin.md
 date: 2018-03-15 16:11:42
 tags: 
     - 工具使用经验
+    - Blog
 categories: 
     - Blog
 ---

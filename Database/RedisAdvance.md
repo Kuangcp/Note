@@ -1,8 +1,10 @@
 ---
-title: RedisAdvance.md
-date: 
+title: Redis进阶
+date: 2018-12-16 17:29:06
 tags: 
+    - Redis
 categories: 
+    - 数据库
 ---
 
 **目录 start**

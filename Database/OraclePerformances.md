@@ -1,8 +1,10 @@
 ---
-title: OraclePerformances.md
-date: 
+title: Oracle性能优化
+date: 2018-12-16 17:26:53
 tags: 
+    - Oracle
 categories: 
+    - 数据库
 ---
 
 **目录 start**

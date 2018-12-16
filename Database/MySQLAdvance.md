@@ -1,8 +1,10 @@
 ---
-title: MySQLAdvance.md
-date: 
+title: MySQL进阶
+date: 2018-12-16 17:26:16
 tags: 
+    - MySQL
 categories: 
+    - 数据库
 ---
 
 **目录 start**

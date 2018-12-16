@@ -1,8 +1,11 @@
 ---
-title: GraphQL.md
+title: GraphQL
 date: 
 tags: 
+    - GraphQL
+    - 基础
 categories: 
+    - 数据库
 ---
 
 **目录 start**

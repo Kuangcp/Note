@@ -2,7 +2,7 @@
 title: LinuxBash
 date: 2018-12-15 12:10:18
 tags: 
-    - Bash
+    - Shell
 categories: 
     - Linux
 ---

@@ -1,8 +1,11 @@
 ---
-title: MangoDB.md
-date: 
+title: MangoDB
+date: 2018-12-16 17:26:05
 tags: 
+    - MangoDB
+    - 基础
 categories: 
+    - 数据库
 ---
 
 **目录 start**
