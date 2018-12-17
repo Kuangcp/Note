@@ -27,7 +27,7 @@ categories:
             1. [静态服务器将后台反代理](#静态服务器将后台反代理)
     1. [问题](#问题)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-17 20:45_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Nginx
 
@@ -133,7 +133,9 @@ server {
 ```
 再在 `/etc/hosts`文件中配置下域名即可访问
 
-> 在服务器中配置， 出现403错误， 将 /etc/nginx/nginx.conf 中第一行的 user 改成 root
+> 在服务器中配置， 出现403错误, 将 /etc/nginx/nginx.conf 中第一行的 `user nginx;` 改成 root
+
+
 #### 反向代理多个服务
 - 修改默认配置文件 `/etc/nginx/nginx.conf`
   - 或者更好的就是在 `/etc/nginx/conf.d/`下新建 *.conf 文件，文件名任意

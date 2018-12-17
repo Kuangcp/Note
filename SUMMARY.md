@@ -139,6 +139,7 @@
         * [ Gradle ](/Java/Tool/Gradle.md)
         * [ GradleAdvance ](/Java/Tool/GradleAdvance.md)
         * [ IDEA ](/Java/Tool/IDEA.md)
+        * [ Jacoco ](/Java/Tool/Jacoco.md)
         * [ Jetty ](/Java/Tool/Jetty.md)
         * [ Lombok ](/Java/Tool/Lombok.md)
         * [ Maven ](/Java/Tool/Maven.md)
@@ -181,7 +182,6 @@
         * [ Kubernetes ](/Linux/Container/Kubernetes.md)
     * 【 Linux/Debian 】
         * [ Debian ](/Linux/Debian/Debian.md)
-        * [ DebianBase ](/Linux/Debian/DebianBase.md)
         * [ Ubuntu ](/Linux/Debian/Ubuntu.md)
     * 【 Linux/Tool 】
         * [ Caddy ](/Linux/Tool/Caddy.md)
@@ -194,7 +194,6 @@
     * [ JavaDevInit ](/Linux/JavaDevInit.md)
 * 【 MyBlog 】
     * [ 2018-3-15-install-deepin ](/MyBlog/2018-3-15-install-deepin.md)
-    * [ why-put-netty-in-tomcat ](/MyBlog/why-put-netty-in-tomcat.md)
 * 【 Python 】
     * 【 Python/Tool 】
         * [ PyCharm ](/Python/Tool/PyCharm.md)
