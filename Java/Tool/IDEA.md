@@ -1,8 +1,11 @@
 ---
-title: IDEA.md
-date: 
+title: IDEA
+date: 2018-11-14 21:29:09
 tags: 
+    - IDEA
+    - 工具使用经验
 categories: 
+    - Java
 ---
 
 **目录 start**

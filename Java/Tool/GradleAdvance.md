@@ -1,8 +1,10 @@
 ---
-title: GradleAdvance.md
-date: 
+title: Gradle进阶
+date: 2018-12-11 21:29:29
 tags: 
+    - Gradle
 categories: 
+    - Java
 ---
 
 **目录 start**

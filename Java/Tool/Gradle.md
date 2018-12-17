@@ -1,8 +1,10 @@
 ---
-title: Gradle.md
-date: 
+title: Gradle
+date: 2018-12-12 21:29:59
 tags: 
+    - Gradle
 categories: 
+    - Java
 ---
 
 **目录 start**
