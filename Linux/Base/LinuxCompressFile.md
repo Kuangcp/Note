@@ -24,9 +24,26 @@ categories:
 # Linux操作压缩文档
 > Linux默认自带ZIP压缩，最大支持4GB压缩，RAR的压缩比大于4GB.
 
+| 文件名模式 | 解压方式 |
+|:----|:----|
+| *.tar |  用 tar -xvf 解压 |
+|*.tar.gz 和 *.tgz| 用 tar -xzf 解压|
+|*.tar.xz | 用 tar -xJf 解压|
+|*.tar.Z| 用tar -xZf 解压|
+|*.tar.bz2|用tar -xjf 解压|
+|-|-|
+| *.gz|用 gzip -d 或者 gunzip 解压|
+|*.bz2|用 bzip2 -d或者用bunzip2 解压|
+|*.Z|用 uncompress 解压|
+|*.xz|用 xz -d 解压|
+|*.rar|用 unrar e 解压|
+|*.zip|用 unzip 解压|
+
+*********************************
+
 ## tar
 
-1  `这五个是独立的参数, 五个参数之间互斥`
+1  `这五个是独立的参数, 五个参数 有且仅有一个`
 - c : 打包 压缩
 - x : 解压
 - t : 查看内容 不解压
@@ -35,9 +52,6 @@ categories:
 
 2 `可选参数`  
 2.1 `下面的参数是根据需要在压缩或解压档案时可选的。`
-- z：有gzip属性的
-- j：有bz2属性的
-- Z：有compress属性的
 - v：显示所有过程
 - O：将文件解开到标准输出
 
@@ -62,18 +76,23 @@ categories:
 
 ********************
 ### tar归档和压缩
+
+| 字母 | 压缩方式 |
+|:----:|:----:|
+| z | gz |
+| Z | Z |
+| j | bz2 |
+| J | xz |
+
+**************************
+
 > 压缩
 - tar -cf a.tar *.txt **仅仅归档,没有压缩**
-    1. `-czf` tar.gz **gz压缩**
-    1. `-cjf` tar.bz2 
-    1. `-cZf` tar.Z
-    1. `-cJf` tar.xz
+    - tar -czf a.tar.gz *.txt`归档, 并使用gz格式压缩归档包, 以此类推`
 
 > 解压
-- `tar -xf file.tar`      // 解压 .tar
-- `tar -xzf file.tar.gz`  // 解压 .tar.gz 或者 .tgz
-- `tar -xjf file.tar.bz2` // 解压 .tar.bz2
-- `tar -xZf file.tar.Z `  // 解压 .tar.Z
+- `tar -xf file.tar`      // 解压 .tar 归档文件
+    - tar -xzf a.tar.gz `解压使用gz格式压缩的压缩包, 以此类推`
 
 ****************
 ## rar
@@ -144,16 +163,3 @@ categories:
 
 - [ ] 7z命令的 学习使用
 
-***************
-## 总结
-| 文件名模式 | 解压方式 |
-|:----|:----|
-| *.tar |  用 tar -xvf 解压 |
-| *.gz|用 gzip -d或者gunzip 解压|
-|*.tar.gz和*.tgz| 用 tar -xzf 解压|
-|*.bz2|用 bzip2 -d或者用bunzip2 解压|
-|*.tar.bz2|用tar -xjf 解压|
-|*.Z|用 uncompress 解压|
-|*.tar.Z| 用tar -xZf 解压|
-|*.rar|用 unrar e 解压|
-|*.zip|用 unzip 解压|
