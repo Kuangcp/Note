@@ -437,6 +437,8 @@ A 项目 compile
 ### 6.2 protobuf
 > [maven 插件 ](https://www.xolstice.org/protobuf-maven-plugin/) `本质还是要使用系统安装的protoc, 然后插件实现了自动编译文件`
 
+- [protoc-jar](https://github.com/os72/protoc-jar-maven-plugin)`自动识别平台, 使用对应的编译器编译得到java文件, 但是目前还有一些bug`
+
 ****************************
 
 ## 7.构建工具对比
