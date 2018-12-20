@@ -1,8 +1,8 @@
 ---
-title: GitTeam.md
-date: 
+title: Git在团队协作时的使用
+date: 2018-12-20 10:29:41
 tags: 
-    - 团队
+    - 软件工程
 categories: 
     - Git
 ---
@@ -20,7 +20,7 @@ categories:
     1. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
         1. [最终方案](#最终方案)
 
-**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-20 10:44_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # 基于Git进行团队开发

@@ -1,8 +1,10 @@
 ---
-title: Lombok.md
-date: 
+title: Lombok
+date: 2018-12-20 10:25:56
 tags: 
+    - Lombok
 categories: 
+    - Java
 ---
 
 **目录 start**
@@ -22,7 +24,7 @@ categories:
         1. [日志相关](#日志相关)
         1. [异常相关](#异常相关)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-20 10:44_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Lombok
 

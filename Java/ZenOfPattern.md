@@ -1,8 +1,10 @@
 ---
-title: ZenOfPattern.md
-date: 
+title: 设计模式
+date: 2018-12-20 10:43:55
 tags: 
+    - 设计模式
 categories: 
+    - 基础
 ---
 
 **目录 start**
@@ -51,7 +53,7 @@ categories:
     1. [实践](#实践)
         1. [经验之谈](#经验之谈)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-20 10:44_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 设计模式之禅
 ## 软件设计的一些原则

@@ -1,6 +1,6 @@
 ---
 title: JavaWeb
-date: 
+date: 2018-12-20 10:30:43
 tags: 
     - Web
 categories: 
@@ -22,7 +22,7 @@ categories:
 **目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java Web
-## 【JSP/Servlet】
+## JSP/Servlet
 
 ### Servlet
 ### JSP
@@ -43,14 +43,31 @@ categories:
 #### 四个作用域
 > [参考博客: JSP的四大作用域](http://www.cnblogs.com/featherfly/p/3513656.html)
 ```
-application 在所有应用程序中有效
-session 在当前会话中有效
-request 在当前请求中有效
-page 在当前页面有效
+    application 在所有应用程序中有效
+    session 在当前会话中有效
+    request 在当前请求中有效
+    page 在当前页面有效
 ```
-**************************
-## Spring系
 
+### 框架
+* MVC设计模式：
+    * M
+        * hibernarte （相应操作的SQL语句由Hibernate框架生成）
+        * mybatis（SQL用户根据需要去写的）
+        * JPA 和Hibernate是相同的内核，由Hibernate派生而来
+    * C
+        * struts1.x
+        * struts2.x
+        * springmvc  
+        * spring  模块的整合
+    * V:
+        视图层
+- **再度理解** Dao service模式的概念
+    * dao : 基础单笔业务的功能模块
+    * service : 将单个的dao组合一起，得到复杂的业务逻辑
+    * 如果要实现AOP或者规范化，dao和service分别要有接口的存在（为了多态，代理，严谨）
+
+**************************
 ### 缓存 
 
 _如何做Etag缓存_
@@ -61,6 +78,7 @@ _如何做Etag缓存_
 5. 还有另一种做法就是 自己针对内容进行hash code编码
 
 **************************** 
+
 ## Tips
 - 1、JSP页面上的SQL标签以及EL标签是优先于文件头的那些JavaServlet语句运行的，所以要保证非法进入页面时重定向的问题
 - 2、如果想要获取异常来据此返回参数到页面弹窗提示，那么就要对一层层的方法调用，进行查找，所有的try catch 块 都要检查
@@ -94,4 +112,4 @@ _如何做Etag缓存_
 
 1. RPC RMI
     - RPC Remote Process Calls 
-    - RMI Remote Methos Invocation 
+    - RMI Remote Method Invocation 

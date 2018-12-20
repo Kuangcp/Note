@@ -1,8 +1,10 @@
 ---
-title: AlibabaJavaStandard.md
-date: 
+title: 阿里巴巴开发手册
+date: 2018-12-20 10:26:58
 tags: 
+    - 软件工程
 categories: 
+    - Java
 ---
 
 **目录 start**
@@ -34,7 +36,7 @@ categories:
     1. [服务器规约](#服务器规约)
 1. [专有名词](#专有名词)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-20 10:44_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 阿里巴巴Java开发手册
 > [Github: p3c](https://github.com/alibaba/p3c)`含该手册PDF GitBook等版本` | [《阿里巴巴Java开发手册》详尽](https://yq.aliyun.com/articles/656256?spm=a2c4e.11155472.0.0.7ba85338l1Ef0N)

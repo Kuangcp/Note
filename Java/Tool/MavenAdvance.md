@@ -1,8 +1,10 @@
 ---
-title: MavenAdvance.md
-date: 
+title: Maven进阶
+date: 2018-12-20 10:25:45
 tags: 
-categories: 
+    - Maven
+categories:
+    - Java
 ---
 
 **目录 start**
@@ -10,7 +12,7 @@ categories:
 1. [Maven Advance](#maven-advance)
     1. [Maven plugin](#maven-plugin)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-20 10:44_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Maven Advance
 

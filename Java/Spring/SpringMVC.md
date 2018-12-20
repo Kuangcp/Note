@@ -22,10 +22,13 @@ categories:
             1. [中文编码问题](#中文编码问题)
         1. [创建Controller](#创建controller)
     1. [使用](#使用)
-        1. [自定义拦截器](#自定义拦截器)
+        1. [配置类型转换](#配置类型转换)
+        1. [拦截器](#拦截器)
+            1. [拦截器机制](#拦截器机制)
+            1. [自定义拦截器](#自定义拦截器)
         1. [Q&A](#q&a)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-20 10:44_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # SpringMVC
@@ -37,6 +40,12 @@ categories:
 
 ### 原理
 > 统一使用一个Servlet 进行请求的收发, 通过配置的URL对应的方法, 进行调用, 然后返回视图解析器进行渲染
+
+- 核心类是DispatchServlet 由它来接收各种请求
+- 发出request请求，到controller解析器，得到Model和view等的名字
+- 发送到controller执行，返回view名字
+- 发送到视图解析器
+- 执行视图返回到dispatchServlet
 
 ************************
 ## API 
@@ -178,6 +187,17 @@ public class ExceptionHandler implements HandlerExceptionResolver {
         return new ModelAndView("error", model);
     }
 }
+
+// 或者是在 Controller 层直接处理
+    @ControllerAdvice
+    public class ExceptionHandle{
+    @EXceptionHandler({Exception.class})
+    public ModelAndView dealException(Exception e){
+        ModelAndView view = new ModelAndView("exception";
+        Exception e = new Exception("错误信息");
+        view.addObject("",e.getMessage());
+        return view;
+    }
 ```
 > 但如果是前后端分离的话， 就只能统一处理异常然后然后对应的错误码和提示信息了 
 > [参考博客](http://www.cnblogs.com/exmyth/p/5601288.html)
@@ -247,7 +267,37 @@ public class Hi {
 > 在Springboot框架中，static templates 文件夹下分别代表了tomcat管理的静态文件和MVC负责跳转的HTML文件或JSP文件
 > 在static中对于路径的使用一定要带上应用路径，而在templates中就只要写相对路径即可
 
-### 自定义拦截器
+### 配置类型转换
+
+```xml
+    <mvc:annotation-driven conversion-service="conversionService" />
+    <!--配置ConversionService -->
+    <bean id="conversionService"
+        class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <ref bean="DateConverter" />
+            </set>
+        </property>
+    </bean>
+```
+### 拦截器
+#### 拦截器机制
+implements HandleInterceptor 有三个方法
+
+preHandle 返回true就继续往后，false就被拦截
+PostHandle 在渲染视图之前，
+afterCompletion 渲染视图之后调用，释放资源
+
+```xml
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <bean class=""></bean>
+            <mvc:mapping path="/**"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+```
+#### 自定义拦截器
 - [相关博客](http://www.jianshu.com/p/f14ed6ca4e56)|[相关博客](http://blog.csdn.net/catoop/article/details/50501696)
 
 `定义拦截器类`
