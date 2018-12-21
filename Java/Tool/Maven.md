@@ -264,6 +264,12 @@ mvn install:install-file
 
 - [ ] 子项目编译打包各自独立，怎么整合成一个
 
+### 测试
+> mvn test 
+
+- 跳过测试 -DskipTests
+- 执行指定测试类 -Dtest=类名
+
 ### 3.3.部署
 > [Java项目部署方式整理](/Java/AdvancedLearning/Deploy.md)
 

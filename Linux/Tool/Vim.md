@@ -115,6 +115,10 @@ syntax on
 
 `fg` 在光标所在处(如果是有效的目录或者文件,就能直接跳转过去)
 
+#### 高级跳转
+- fg 如果光标所在处是一个完整的路径,就跳转到该文件 
+    - `Ctrl Shift 6` 或者 `:e#` 跳回来 | [参考 stackoverflow](https://stackoverflow.com/questions/133626/how-do-you-return-from-gf-in-vim) 
+
 ### 搜索匹配
 - `/name`  正向搜索字符串 name
 	- `n` 搜索后跳下一个 

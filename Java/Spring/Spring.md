@@ -1,8 +1,10 @@
 ---
-title: Spring.md
-date: 
+title: Spring
+date: 2018-12-21 10:46:01
 tags: 
+    - Spring
 categories: 
+    - Java
 ---
 
 **目录 start**
@@ -87,7 +89,12 @@ _其他,可选_
     - `@Resource([value=]"id")` 按名字注入
     - `@Autowried` 根据类型自动注入（只对单例起作用）和 `Resource(类名首字母小写)` 等价
     - `@Qualifier("id") `自动注入后的进一步精确（多个的情况：）
+
 - **注意 :** 关于自动注入, 在属性上打 @Autowried 注解是不建议的, 作者建议采用构造器方式:  [Why field injection is evil](http://olivergierke.de/2013/11/why-field-injection-is-evil/)
+    - 如果使用了 lombok 那么可以在类上使用 
+        - `@RequiredArgsConstructor(onConstructor = @__(@Autowired))`
+        - 然后注入的属性打上 `@NonNull` 注解
+        - 本质上是帮你自动生成了一个将所有 `@NonNull` 注解属性作为参数的构造器
 
 - AOP
     - @Aspect 注明是切面类

@@ -1,8 +1,10 @@
 ---
-title: SpringMVC.md
-date: 
+title: SpringMVC
+date: 2018-12-21 10:53:11
 tags: 
+    - Spring
 categories: 
+    - Java
 ---
 
 **目录 start**
@@ -336,6 +338,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter{
     }
 }
 ```
+
+#### WebSocket 
+- [Springboot中使用Websocket进行消息推送](https://gitee.com/kcp1104/codes/14ipgcbjyenxqu6tf9d0543)
+- [SpringBoot 使用WebSocket](https://blog.csdn.net/kangkanglou/article/details/78253747)
+- [SpringBoot系列 - 集成WebSocket实时通信](https://www.xncoding.com/2017/07/15/spring/sb-websocket.html)
 
 ### Q&A
 > URL 中带了 jsessionid 参数，导致页面各种问题

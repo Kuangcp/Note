@@ -146,8 +146,12 @@ categories:
     
 ### 组件测试
 > 其他名称是模块或程序测试。它与单元测试类似，但包含更高级别的集成。对软件模块进行缺陷测试，以验证其各自的功能。
+
 ### 集成测试
 > 这可以在集成模块时识别错误。不同的集成测试是自下而上，自顶向下和功能增量。
+
+> [The correct way to use integration tests in your build process](https://zeroturnaround.com/rebellabs/the-correct-way-to-use-integration-tests-in-your-build-process/)
+
 ### 系统测试
 > 使用此方法在不同环境中对项目的组件进行整体测试。它属于黑盒方法，是该过程中的最终测试之一。它确定系统是否能够满足业务和用户需求。
 ### Alpha测试
@@ -180,6 +184,8 @@ categories:
 
 ### 回归测试
 > 当系统进行修改时，回归测试会监控意外行为。它指出了对模块或组件的不利影响。
+
+> [wiki: regression testing](https://en.wikipedia.org/wiki/Regression_testing)
 
 ### 破坏性测试
 > 测试人员输入异常条目并识别软件管理意外输入的能力。这向开发人员展示了程序在错误管理方面的稳健性。

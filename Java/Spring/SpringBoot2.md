@@ -1,8 +1,10 @@
 ---
-title: SpringBoot2.md
-date: 
+title: SpringBoot2 新特性
+date: 2018-12-21 10:49:53
 tags: 
+    - SpringBoot
 categories: 
+    - Java
 ---
 
 **目录 start**
