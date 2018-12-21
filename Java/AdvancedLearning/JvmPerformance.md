@@ -143,9 +143,13 @@ categories:
 **************
 
 ### MAT
-> Memory Analyzer tool(MAT) [Official Site](http://www.eclipse.org/mat/)
+> Memory Analyzer tool(MAT) | [Official Site](http://www.eclipse.org/mat/)
 
 > [参考博客: JAVA Shallow heap & Retained heap](http://www.cnblogs.com/lipeineng/p/5824799.html)
+
+> [ Official Doc: OQL Syntax](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Freference%2Foqlsyntax.html)
+
+他的 OQL 比较方便, 像写 SQL 一样去查询对象
 
 ### IBM Heap Analyzer
 > [Official Site](https://www.ibm.com/developerworks/community/alphaworks/tech/heapanalyzer)
