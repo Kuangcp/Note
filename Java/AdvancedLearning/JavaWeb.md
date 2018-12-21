@@ -10,16 +10,16 @@ categories:
 **目录 start**
  
 1. [Java Web](#java-web)
-    1. [【JSP/Servlet】](#jspservlet)
+    1. [JSP/Servlet](#jspservlet)
         1. [Servlet](#servlet)
         1. [JSP](#jsp)
             1. [九大内置对象](#九大内置对象)
             1. [四个作用域](#四个作用域)
-    1. [Spring系](#spring系)
+        1. [框架](#框架)
         1. [缓存](#缓存)
     1. [Tips](#tips)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-21 11:22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java Web
 ## JSP/Servlet
@@ -29,27 +29,33 @@ categories:
 > [参考博客: JSP面试题及答案](http://www.cnblogs.com/iOS-mt/p/5717631.html)
 
 #### 九大内置对象
-```
-   request            请求对象　                类型 javax.servlet.ServletRequest        作用域 Request
-   response          响应对象                   类型 javax.servlet.SrvletResponse       作用域  Page
-   pageContext    页面上下文对象       类型 javax.servlet.jsp.PageContext      作用域    Page
-　　session            会话对象                   类型 javax.servlet.http.HttpSession       作用域    Session
-　　application       应用程序对象          类型 javax.servlet.ServletContext          作用域    Application
-　　out                   输出对象                   类型 javax.servlet.jsp.JspWriter             作用域    Page
-　　config              配置对象                  类型 javax.servlet.ServletConfig            作用域    Page
-　　page               页面对象                  类型 javax.lang.Object                            作用域    Page
-　　exception        例外对象                 类型 javax.lang.Throwable                     作用域    page 来源: 
-```
+
+| 对象 | 说明 | 类型 | 作用域 |
+|:----|:----|:----|:----|
+| request     |       请求对象　   |             类型 javax.servlet.ServletRequest    |    作用域 Request
+| response    |      响应对象     |              类型 javax.servlet.SrvletResponse   |    作用域  Page
+| pageContext |   页面上下文对象     |  类型 javax.servlet.jsp.PageContext |     作用域    Page
+| session     |       会话对象    |               类型 javax.servlet.http.HttpSession|       作用域    Session
+| application |      应用程序对象   |       类型 javax.servlet.ServletContext          |作用域    Application
+| out         |          输出对象 |                  类型 javax.servlet.jsp.JspWriter|             作用域    Page
+| config      |        配置对象   |               类型 javax.servlet.ServletConfig   |         作用域    Page
+| page        |       页面对象    |              类型 javax.lang.Object              |              作用域    Page
+| exception   |     例外对象      |           类型 javax.lang.Throwable              |       作用域    page  
+
 #### 四个作用域
 > [参考博客: JSP的四大作用域](http://www.cnblogs.com/featherfly/p/3513656.html)
-```
-    application 在所有应用程序中有效
-    session 在当前会话中有效
-    request 在当前请求中有效
-    page 在当前页面有效
-```
+
+| 域 | 说明 |
+|:----|:----|
+| application | 在所有应用程序中有效
+| session | 在当前会话中有效
+| request | 在当前请求中有效
+| page | 在当前页面有效
+
+***********************
 
 ### 框架
+
 * MVC设计模式：
     * M
         * hibernarte （相应操作的SQL语句由Hibernate框架生成）

@@ -127,7 +127,6 @@
         * [ SpringBoot2 ](/Java/Spring/SpringBoot2.md)
         * [ SpringCloud ](/Java/Spring/SpringCloud.md)
         * [ SpringMVC ](/Java/Spring/SpringMVC.md)
-        * [ SpringMessageQue ](/Java/Spring/SpringMessageQue.md)
         * [ SpringSecurity ](/Java/Spring/SpringSecurity.md)
         * [ SpringTest ](/Java/Spring/SpringTest.md)
         * [ SpringWebFlux ](/Java/Spring/SpringWebFlux.md)
