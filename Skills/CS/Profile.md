@@ -1,8 +1,10 @@
 ---
-title: Profile.md
+title: 多种配置文件格式
 date: 2018-11-21 10:56:52
 tags: 
+    - 基础
 categories: 
+    - 基础知识
 ---
 
 **目录 start**

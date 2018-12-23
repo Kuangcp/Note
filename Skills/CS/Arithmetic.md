@@ -1,8 +1,10 @@
 ---
-title: Arithmetic.md
+title: 算法基础
 date: 2018-11-21 10:56:52
 tags: 
+    - 基础
 categories: 
+    - 算法
 ---
 
 **目录 start**

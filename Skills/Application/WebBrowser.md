@@ -102,6 +102,8 @@ categories:
 ### 使用
 1. 地址栏 `@bing` @baidu... 即可使用指定的搜索引擎进行搜索
 1. 地址栏 `* Java` 即可在所有书签中搜索 Java
+
+> 看视频的时候高内存, 高CPU 负载, 对比之下Chrome就好的多
 *********************
 ## seamonkey
 > Mozilla基金会另一个项目 [seamonkey](https://www.seamonkey-project.org/) 亮点在于内置IRC

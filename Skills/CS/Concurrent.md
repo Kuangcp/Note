@@ -1,8 +1,10 @@
 ---
-title: Concurrent.md
+title: 并发
 date: 2018-11-21 10:56:52
 tags: 
+    - 基础
 categories: 
+    - 计算机科学
 ---
 
 **目录 start**

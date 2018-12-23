@@ -1,8 +1,10 @@
 ---
-title: Computer.md
+title: 计算机组成
 date: 2018-11-21 10:56:52
 tags: 
+    - 基础
 categories: 
+    - 计算机科学
 ---
 
 **目录 start**
