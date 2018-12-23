@@ -5,6 +5,15 @@ tags:
 categories: 
     - 基础知识
 ---
+ 
+1. [字符编码](#字符编码)
+    1. [ascii](#ascii)
+    1. [ANSI](#ansi)
+    1. [Unicode](#unicode)
+        1. [UTF](#utf)
+            1. [UTF-8](#utf-8)
+            1. [UTF-16](#utf-16)
+    1. [汉字编码发展史](#汉字编码发展史)
 
 **目录 start**
  
@@ -17,7 +26,7 @@ categories:
             1. [UTF-16](#utf-16)
     1. [汉字编码发展史](#汉字编码发展史)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-23 22:40_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 字符编码
 

@@ -14,6 +14,7 @@ categories:
     1. [基本配置](#基本配置)
     1. [基础操作](#基础操作)
         1. [跳转](#跳转)
+            1. [高级跳转](#高级跳转)
         1. [搜索匹配](#搜索匹配)
         1. [复制粘贴](#复制粘贴)
         1. [插入模式](#插入模式)
@@ -23,7 +24,7 @@ categories:
     1. [SpaceVim](#spacevim)
     1. [space-vim](#space-vim)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-23 22:40_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Vim 
 > 学习曲线很高，但是学会熟练使用后就效率很高
@@ -50,6 +51,7 @@ categories:
 ## 基本配置
 - 在文件 全局：`/etc/vim/vimrc` 先备份一下 `sudo cp /etc/vim/vimrc /etc/vim/vimrc.bak`
 	- 或者当前用户：`~/.vimrc` 中添加如下内容
+
 ```
 set showcmd		" Show (partial) command in status line.
 set autowrite		" Automatically save before commands like :next and :make
@@ -74,6 +76,9 @@ set relativenumber " 设置相对行号
 " 逗号后追加空格
 inoremap , ,<space>  
 ```
+**********************************************
+> GVim
+
 **~/.gvimrc**
 ```
 :set guifont=IBM\ Plex\ Mono\ 12
@@ -81,12 +86,15 @@ colorscheme desert
 syntax enable
 syntax on
 ```
+
 ## 基础操作
 > [参考博客](http://www.jianshu.com/p/bcbe916f97e1)  
 > [高效率编辑器 Vim——操作篇，非常适合 Vim 新手](https://linuxtoy.org/archives/efficient-editing-with-vim.html)
 
 - v 可视化操作
+
 > [参考博客: vim中执行shell命令小结](https://blog.csdn.net/topgun_chenlingyun/article/details/8013115)
+
 ### 跳转
 - K J H L 上下左右
 - Ctrl+F  上翻一页
