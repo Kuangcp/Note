@@ -18,16 +18,17 @@ categories:
         1. [安装包安装](#安装包安装)
         1. [Ubuntu](#ubuntu)
         1. [Debian](#debian)
-            1. [Centos](#centos)
-            1. [Arch](#arch)
+        1. [Centos](#centos)
+        1. [Arch](#arch)
         1. [不加sudo执行docker命令](#不加sudo执行docker命令)
     1. [Windows](#windows)
 1. [初步使用](#初步使用)
     1. [镜像仓库](#镜像仓库)
-        1. [搭建本地仓库](#搭建本地仓库)
+        1. [搭建本地镜像仓库](#搭建本地镜像仓库)
     1. [基础命令](#基础命令)
     1. [镜像命令](#镜像命令)
     1. [容器命令](#容器命令)
+        1. [ps](#ps)
         1. [create](#create)
         1. [run](#run)
         1. [exec](#exec)
@@ -36,9 +37,6 @@ categories:
     1. [端口映射](#端口映射)
 1. [数据卷](#数据卷)
     1. [数据卷容器](#数据卷容器)
-1. [Dockerfile](#dockerfile)
-    1. [dockerignore文件的使用](#dockerignore文件的使用)
-    1. [使用启动脚本和多进程容器](#使用启动脚本和多进程容器)
 1. [容器编排](#容器编排)
     1. [Docker-Compose](#docker-compose)
         1. [安装](#安装)
@@ -51,8 +49,10 @@ categories:
     1. [User-defined](#user-defined)
     1. [跨主机容器通信](#跨主机容器通信)
         1. [overlay](#overlay)
+1. [Dockerfile](#dockerfile)
+    1. [dockerignore文件的使用](#dockerignore文件的使用)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-25 18:18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -123,6 +123,7 @@ _Debian系_
 - 安装snap `sudo apt install snapd`
 - 查看适用于当前系统的包：`snap install find`
 - 安装： `snap install docker`
+
 ### Debian
 > [参考](http://www.docker.org.cn/book/install/install-docker-on-debian-8.0-jessie-34.html)
 - `sudo echo "deb http://http.debian.net/debian jessie-backports main" >> /etc/apt/sources.list`
@@ -135,7 +136,6 @@ _Debian系_
      gnupg2 \
      lsb-release \
      software-properties-common
-
 
 > [使用清华大学镜像源安装](https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/)
 
@@ -156,12 +156,12 @@ _Debian系_
    "deb [arch=amd64] https://download.docker.com/linux/debian \
     $(lsb_release -cs) stable"
 
-#### Centos
+### Centos
 - `sudo yum install docker`
     - Ubuntu的话,Docker没有启动, 只要一执行Docker相关命令就会自动启动, 但是Centos要手动启动
     - `service docker start`  设置开机启动: `chkconfig docker on`
 
-#### Arch
+### Arch
 - `pacman -S docker`
 
 ### 不加sudo执行docker命令
@@ -181,7 +181,7 @@ _Debian系_
 - 安装完成后就会有三个图标在桌面上，然后进入Docker Quickstart Terminal后 `docker run hello-world` 有正常输出即可
 **************************************
 
-# 初步使用
+# 基础管理
 > docker 所有的数据默认存储在 `/var/lib/docker`
 
 ## 镜像仓库
@@ -229,7 +229,7 @@ _Debian系_
     - docker软件源地址：https://mirror.baidubce.com
 
 ********************************
-### 搭建本地仓库
+### 搭建本地镜像仓库
 > [Official doc](https://docs.docker.com/registry/#requirements)
 
 > [参考：Docker Registry V1 与 V2 的区别解析以及灵雀云的实时同步迁移实践](https://www.csdn.net/article/2015-09-09/2825651)
@@ -277,28 +277,9 @@ _登录镜像仓库_
     - 导入镜像文件： `docker load --input ubuntu.tar` 或 `docker load < ubuntu.tar`
 - 上传镜像： `docker push mythos/test:lastest`
 
-## 容器命令
-_ps_
-- 查看当前运行的容器：`docker ps `
-    - 查看所有容器 ：`docker ps -a`
-    - 查看占用 :`docker ps -s`
-    - [ps formatting](https://docs.docker.com/engine/reference/commandline/ps/#formatting)
+************************
 
-```
-    .ID 	    Container ID
-    .Image 	    Image ID
-    .Command 	Quoted command
-    .CreatedAt 	Time when the container was created.
-    .RunningFor Elapsed time since the container was started.
-    .Ports 	    Exposed ports.
-    .Status 	Container status.
-    .Size 	    Container disk size.
-    .Names 	    Container names.
-    .Labels 	All labels assigned to the container.
-    .Label 	    Value of a specific label for this container. For example '{{.Label "com.docker.swarm.cpu"}}'
-    .Mounts 	Names of the volumes mounted in this container.
-    .Networks 	Names of the networks attached to this container.
-```
+## 容器命令
 - 查看所有容器的状态：`docker stats` 能看到正在运行的容器内存 cpu io net等信息
     - `-a` 所有容器
     - `--no-stream` 不阻塞标准输出流，只输出一次信息
@@ -321,6 +302,28 @@ _ps_
     - 导出： `docker export -o test.tar 容器名` `docker export 容器name > test.tar`
     - 导入： `docker import [-c |--change=[]] [-m | --message=[]] file|URL - [repository]:[tag]`
     - -c | --change=[] 选项在导入的同时执行对容器就行修改的Dockerfile指令。
+
+### ps
+- 查看当前运行的容器：`docker ps `
+    - 查看所有容器 ：`docker ps -a`
+    - 查看占用 :`docker ps -s`
+    - [ps formatting](https://docs.docker.com/engine/reference/commandline/ps/#formatting)
+
+```
+    .ID 	    Container ID
+    .Image 	    Image ID
+    .Command 	Quoted command
+    .CreatedAt 	Time when the container was created.
+    .RunningFor Elapsed time since the container was started.
+    .Ports 	    Exposed ports.
+    .Status 	Container status.
+    .Size 	    Container disk size.
+    .Names 	    Container names.
+    .Labels 	All labels assigned to the container.
+    .Label 	    Value of a specific label for this container. For example '{{.Label "com.docker.swarm.cpu"}}'
+    .Mounts 	Names of the volumes mounted in this container.
+    .Networks 	Names of the networks attached to this container.
+```
 
 ### create
 > [官方文档](https://docs.docker.com/engine/reference/commandline/create)
@@ -382,6 +385,7 @@ _ps_
     - 查看容器的具体信息 `docker inspect 容器id` 
 
 *********************
+
 # 数据卷
 > [Docker 中管理数据](http://www.open-open.com/lib/view/open1403571027233.html)
 > [参考博客: 给一个正在运行的Docker容器动态添加Volume](http://www.open-open.com/lib/view/open1421996521062.html)
@@ -411,25 +415,20 @@ _ps_
     - 创建一个带有数据卷的容器（目标容器）`docker run -v /data --name reuse ubuntu /bin/bash`
     - 解压当前目录的tar文件到数据卷容器中 `docker run --volumes-from reuse -v $(pwd):/backup busybox tar xvf /backup/backup.tar`
     - 这个就是实现了将本地的归档数据放到指定的容器内，如果要从数据卷容器中恢复到别的容器就只要挂载对应的数据卷容器然后进目录直接解压即可
-***********************
-# Dockerfile
->[Dockerfile文件学习](/Linux/Container/DockerFile.md)
-
-## dockerignore文件的使用
-- .dockerignore文件是依据 Go的PathMatch规范来的，使用和.gitignore类似
-
-## 使用启动脚本和多进程容器
 
 ******************************************************
+
 # 容器编排
 ## Docker-Compose
 > 声明式环境，管理多容器， 并处理好相关资源的关系
 
-案例 [1](https://github.com/fecshop/yii2_fecshop_docker/blob/master/docker-compose.yml)
+> 案例 [1](https://github.com/fecshop/yii2_fecshop_docker/blob/master/docker-compose.yml)
+
 ### 安装
 > sudo pip install -U docker-compose
 
 ***********
+
 ## Docker-Machine
 > 创建一个docker集群环境 [官方文档安装](https://docs.docker.com/machine/install-machine)
 
@@ -439,6 +438,7 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
 ## Docker-Swarm
 
 ***********************************
+
 # 网络
 > [Official Doc](https://docs.docker.com/network/) 分为 none host brige user-defined 几种类型
 
@@ -480,25 +480,25 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
     - 构建Springboot应用镜像，构建应用容器 开放8888端口
     - 新建nginx容器：`docker run --name youhuigo -d -p 80:80 -v /home/kuang/nginx/conf/:/etc/nginx/conf.d/:ro --link you:web nginx`
 - 配置文件：`一样的cat /etc/hosts 查看容器的IP`， 其实最简单就是用link配置时的别名即可，因为Docker已经帮我们配置好了host。。。
-```conf
-upstream youhui {
-  server 172.17.0.4:8888;
-}
+```
+    upstream youhui {
+        server 172.17.0.4:8888;
+    }
 
-server {
-  listen 80;
-  server_name youhui;
+    server {
+        listen 80;
+        server_name youhui;
 
-  location / {
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
-    proxy_set_header Host $http_host;
-    proxy_set_header X-Nginx-Proxt true;
+        location / {
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
+            proxy_set_header Host $http_host;
+            proxy_set_header X-Nginx-Proxt true;
 
-    proxy_pass http://youhui;
-    proxy_redirect off;
-  }
-}
+            proxy_pass http://youhui;
+            proxy_redirect off;
+        }
+    }
 ```
 
 > [weave](https://www.weave.works/) `能解决跨宿主机的容器互联问题`
@@ -510,3 +510,10 @@ server {
 
 ### overlay
 > [参考博客: DOCKER的内置OVERLAY网络](http://dockone.io/article/2717)
+
+***********************
+# Dockerfile
+>[Dockerfile文件学习](/Linux/Container/DockerFile.md)
+
+## dockerignore文件的使用
+- .dockerignore文件是依据 Go 的 PathMatch 规范来的，使用和.gitignore类似
