@@ -77,26 +77,26 @@ docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub 
 ***********************************
 
 ## 安装
-> [下载](https://golang.google.cn/dl/)|[官方教程](https://golang.google.cn/doc/install) | [参考 教程](http://www.runoob.com/go/go-environment.html) | [_](http://cloud.kuangcp.top/go-1.10.3.tar.gz)
-
+> [下载](https://golang.google.cn/dl/)|[官方教程](https://golang.google.cn/doc/install) | [参考 教程](http://www.runoob.com/go/go-environment.html) | [_](http://cloud.kuangcp.top/go-1.10.3.tar.gz)  
 
 1. sudo tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
-2. *shrc或者 /etc/profile 中添加
-```sh
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/Code/go # workspace
-export GOBIN=$GOPATH/bin # 'go install' command install dir
-export PATH=$PATH:$GOBIN:$GOPATH:$GOROOT/bin
-```
-> **查看版本** `go version`正常输出go的版本则是配置成功  
-3. 在 /home/kcp/code/go 下 新建 test.go
-```go
-package main
-import "fmt"
-func main() {
-    fmt.Printf("hello, world\n")
-}
-```
+    - 升级时,只需再执行一次该命令即可
+1. `*shrc` 或者 `/etc/profile` 中添加
+	```sh
+        export GOROOT=/usr/local/go
+        export GOPATH=$HOME/Code/go # workspace
+        export GOBIN=$GOPATH/bin # 'go install' command install dir
+        export PATH=$PATH:$GOBIN:$GOPATH:$GOROOT/bin
+	```
+    > **查看版本** `go version`正常输出go的版本则是配置成功  
+1. 在 `/home/kcp/code/go` 下 新建 test.go
+    ```go
+        package main
+        import "fmt"
+        func main() {
+            fmt.Printf("hello, world\n")
+        }
+    ```
 4. go run test.go 或者 go build
 
 ### Docker
@@ -105,8 +105,8 @@ func main() {
 > [Docker image](https://hub.docker.com/_/golang/) `这里的镜像都是用于 从源码编译构建成可执行文件的 环境`   
 > [go 的 Docker镜像的讨论](https://gocn.vip/question/153)
 
-1. 实际运行的时候, 如果不需要调用外部Linux命令 就直接 `from scratch`
-1. 需要则 `from alpine` 更精简一点 更好是使用 `frolvlad/alpine-glibc`
+1. 实际运行的时候, 如果不需要调用外部Linux命令 就直接使用空镜像 `from scratch`
+1. 需要外部命令则 `from alpine` 更精简一点 更好是使用 `frolvlad/alpine-glibc`
 
 *****************************************
 
