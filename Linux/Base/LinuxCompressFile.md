@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
-
+ 
 1. [Linux操作压缩文档](#linux操作压缩文档)
     1. [tar](#tar)
         1. [tar归档和压缩](#tar归档和压缩)
@@ -17,9 +17,8 @@ categories:
     1. [gzip](#gzip)
     1. [xz](#xz)
     1. [7Z](#7z)
-    1. [总结](#总结)
 
-**目录 end**|_2018-12-13 20:53_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-25 09:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux操作压缩文档
 > Linux默认自带ZIP压缩，最大支持4GB压缩，RAR的压缩比大于4GB.
@@ -85,6 +84,7 @@ categories:
 | J | xz |
 
 **************************
+本质上 tar 的压缩和解压都是调用对应的软件完成的, 例如 `tar cJf a.tar.xz a/` 就是先tar归档一下, 然后调用 xz 完成压缩
 
 > 压缩
 - tar -cf a.tar *.txt **仅仅归档,没有压缩**

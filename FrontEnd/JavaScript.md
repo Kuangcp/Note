@@ -29,7 +29,7 @@ categories:
     1. [资源文件](#资源文件)
         1. [图片](#图片)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-25 09:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # JavaScript
 
@@ -43,22 +43,22 @@ categories:
 ## 函数
 ### 函数传值
 ```js
-function handlerGet(url, role, success, fail) {
-  var request = $.ajax({
-    method: 'GET',
-    url : 'xxx'+url
-  });
-  request.done(success);
-  request.fail(fail);
-}
-function testRole() {
-    handlerGet('/world', 'student',
-        function (data) {
-            layer.msg('获取成功');
-        }, function (data) {
-            layer.msg('身份认证已过期， 请重新登录');
-        })
-}
+    function handlerGet(url, role, success, fail) {
+    var request = $.ajax({
+        method: 'GET',
+        url : 'xxx'+url
+    });
+    request.done(success);
+    request.fail(fail);
+    }
+    function testRole() {
+        handlerGet('/world', 'student',
+            function (data) {
+                layer.msg('获取成功');
+            }, function (data) {
+                layer.msg('身份认证已过期， 请重新登录');
+            })
+    }
 ```
 **********************
 ## JSON
@@ -137,20 +137,20 @@ _原生方式异步提交_
 
 #### form插件
 ```js
-// 使用jquery 的 form插件进行异步提交
-$(".submit").on('click', function () {
-    console.log('dfs')
-    // var jk = $("#contents").submit()
-    var options = {
-        // target:'#contents', //后台将把传递过来的值赋给该元素
-        url:'../teacher/topic/add', //提交给哪个执行
-        type:'POST',
-        success: function(data){
-            console.log(data)
-        } //显示操作提示
-    };
-    $('#contents').ajaxSubmit(options);
-})
+    // 使用jquery 的 form插件进行异步提交
+    $(".submit").on('click', function () {
+        console.log('dfs')
+        // var jk = $("#contents").submit()
+        var options = {
+            // target:'#contents', //后台将把传递过来的值赋给该元素
+            url:'../teacher/topic/add', //提交给哪个执行
+            type:'POST',
+            success: function(data){
+                console.log(data)
+            } //显示操作提示
+        };
+        $('#contents').ajaxSubmit(options);
+    })
 ```
 
 ### echarts
