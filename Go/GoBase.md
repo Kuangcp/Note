@@ -38,7 +38,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-26 17:03_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -55,7 +55,9 @@ Go 语言被设计成一门应用于搭载 Web 服务器，存储集群或类似
 > [参考博客: why is go popular in china](http://herman.asia/why-is-go-popular-in-china)
 > [参考博客: 我为什么放弃Go语言](https://blog.csdn.net/liigo/article/details/23699459)
 > [参考博客: 使用Go语言工作400天后的感受](https://blog.csdn.net/erlib/article/details/50998026)
+> [Golang vs Rust vs Dlang 哪个更有前途](https://www.zhihu.com/question/27226962)`大致就是go偏向Java Python Rust 偏向 C++ 的领域`
 
+> go相关应用 
 docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub influxdb caddy beego martini cayley nsq codis delve cobra shadowsocks-go phcolus 
 **************************************
 

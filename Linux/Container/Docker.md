@@ -22,7 +22,7 @@ categories:
         1. [Arch](#arch)
         1. [不加sudo执行docker命令](#不加sudo执行docker命令)
     1. [Windows](#windows)
-1. [初步使用](#初步使用)
+1. [基础管理](#基础管理)
     1. [镜像仓库](#镜像仓库)
         1. [搭建本地镜像仓库](#搭建本地镜像仓库)
     1. [基础命令](#基础命令)
@@ -52,7 +52,7 @@ categories:
 1. [Dockerfile](#dockerfile)
     1. [dockerignore文件的使用](#dockerignore文件的使用)
 
-**目录 end**|_2018-12-25 18:18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-26 17:03_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -106,13 +106,13 @@ categories:
 ### 安装包安装
 > [官方文件地址](https://download.docker.com/linux/)
 
-_Debian系_
-- [deb包选择](https://download.docker.com/linux/debian/dists/)
-- 进去后选择debain的版本，deepin15.4 的版本是stretch 然后pool/stable/amd64/选版本即可 
-- 例如：[Deepin 15.4直接点这里](https://download.docker.com/linux/debian/dists/stretch/pool/stable/amd64/)
-- `这两种方式装的是同一个版本号` 
-- 双击或者`sudo dpkg -i deb文件`
-- 测试安装成功 `sudo docker run hello-world`
+- _Debian系_
+    - [deb包选择](https://download.docker.com/linux/debian/dists/)
+    - 进去后选择debain的版本，deepin15.4 的版本是stretch 然后pool/stable/amd64/选版本即可 
+    - 例如：[Deepin 15.4直接点这里](https://download.docker.com/linux/debian/dists/stretch/pool/stable/amd64/)
+    - `这两种方式装的是同一个版本号` 
+    - 双击或者`sudo dpkg -i deb文件`
+    - 测试安装成功 `sudo docker run hello-world`
 
 ### Ubuntu
 - [Official: Ubuntu安装最新版](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1)

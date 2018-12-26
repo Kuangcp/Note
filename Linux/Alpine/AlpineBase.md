@@ -11,16 +11,20 @@ categories:
 **目录 start**
  
 1. [Alpine](#alpine)
+    1. [BusyBox](#busybox)
+        1. [ls](#ls)
+        1. [ps](#ps)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-26 17:03_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Alpine 
 > 精简的linux 适合用于Docker 基础镜像
 
 ## BusyBox
+> 里面各种工具的实现能满足大部分需求, 但是有些参数和原始的工具有些差异
 
 ### ls
-> 这个ls的实现能满足大部分需求, 但是有些参数和真正的ls有些差异  
-
 真正的 ls 属于`coreutils`包 
 
+### ps
+真正的 ps 属于 `procps` 包
