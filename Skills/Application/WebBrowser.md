@@ -21,7 +21,7 @@ categories:
     1. [Vivaldi](#vivaldi)
     1. [Opera](#opera)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-27 20:22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 浏览器
 ## FireFox
@@ -102,6 +102,7 @@ categories:
 ### 使用
 1. 地址栏 `@bing` @baidu... 即可使用指定的搜索引擎进行搜索
 1. 地址栏 `* Java` 即可在所有书签中搜索 Java
+1. 地址栏 `% Java` 就可以在已打开的标签页中搜索Java
 
 > 看视频的时候高内存, 高CPU 负载, 对比之下Chrome就好的多
 *********************
