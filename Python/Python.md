@@ -114,6 +114,7 @@ categories:
         import sys
         print("\n".join(sys.path))
     ```
+
 **修改sys.path**
 1. 代码中直接添加, 执行就生效, 程序结束就失效
     ```python
@@ -127,10 +128,12 @@ categories:
             sys.path.append(parent_path)
         import configs.config
     ```
+
 1. 添加 *.pth 文件
-    - 在 `/usr/local/lib/` 目录下有众多 Python 版本
-    - 例如在 2.7 添加 python2.7/site-packages/test.pth 写入工程目录即可
+    - 在 `/usr/local/lib/` 目录下有多个 Python 版本,配置自己需要的版本
+    - 例如在 python2.7/site-packages 中添加 test.pth 文件,文件内容为项目的绝对路径
         - python3.x 则是在 dist-packages 目录下
+
 1. 修改环境变量
     - 修改或添加 环境变量 PYTHONPATH 路径用分号分隔
 
