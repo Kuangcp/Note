@@ -64,7 +64,7 @@ categories:
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-28 00:20_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -255,6 +255,10 @@ python -m module_name
 1. twine upload dist/*
 
 > [可以参考该项目: 终端内使用百度翻译](https://gitee.com/gin9/baidu-trans-cli)
+
+由于Readme 使用的是 [reStructuredText](https://rest-sphinx-memo.readthedocs.io/en/latest/ReST.html) 语法(要求严格,所以需要借助工具)
+> 1. pip install collective.checkdocs Pygments
+> 1. python3 setup.py checkdocs
 
 *******************************
 ## 变量
