@@ -2,6 +2,7 @@
 title: 编辑器
 date: 2018-12-15 12:11:10
 tags: 
+    - 编辑器
 categories: 
     - 工具
 ---
@@ -10,7 +11,7 @@ categories:
  
 1. [文本编辑器](#文本编辑器)
     1. [Ghex](#ghex)
-    1. [Kate/KWrite(Kate的轻量版)](#katekwritekate的轻量版)
+    1. [Kate](#kate)
     1. [Geany](#geany)
     1. [scite](#scite)
     1. [textadept](#textadept)
@@ -34,18 +35,21 @@ categories:
     1. [fte-terminal](#fte-terminal)
     1. [在线编辑器](#在线编辑器)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-28 18:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 文本编辑器
 ## Ghex
 - 十六进制文件编辑器
 
 ************************************
-## Kate/KWrite(Kate的轻量版)
+## Kate
+> [Official site](https://kate-editor.org/) 相关: KWrite(Kate的轻量版)
+ 
 - [安装markdown预览插件](https://github.com/antonizoon/kate-markdown)
 - 码Python也挺方便，也有常用快捷键，自动提示，终端整合，而且是自动切目录
 
 *********************************
+
 ## Geany
 - 码C 编译方便 有Ctag辅助
 
