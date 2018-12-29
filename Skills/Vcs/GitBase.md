@@ -16,6 +16,7 @@ categories:
             1. [config](#config)
             1. [status](#status)
             1. [rm](#rm)
+            1. [revert](#revert)
             1. [commit](#commit)
             1. [remote](#remote)
             1. [submodule](#submodule)
@@ -26,6 +27,13 @@ categories:
                 1. [查看文件的修改记录](#查看文件的修改记录)
             1. [diff](#diff)
             1. [tag](#tag)
+            1. [reset](#reset)
+                1. [回滚add操作](#回滚add操作)
+                1. [回滚最近一次commit](#回滚最近一次commit)
+                1. [回滚最近几次的commit并添加到一个新建的分支上去](#回滚最近几次的commit并添加到一个新建的分支上去)
+                1. [回滚merge和pull操作](#回滚merge和pull操作)
+                1. [在index已有修改的状态回滚merge或者pull](#在index已有修改的状态回滚merge或者pull)
+                1. [被中断的工作流程](#被中断的工作流程)
         1. [分支操作](#分支操作)
             1. [stash](#stash)
             1. [clone](#clone)
@@ -47,7 +55,7 @@ categories:
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-29 21:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -112,6 +120,11 @@ categories:
 - 删除文件 `git rm 文件`
 - 从git仓库中删除文件, 但是文件系统中保留文件 `git rm --cached 文件`
     - 如果仅仅是想从仓库中剔除, 那么执行完命令还要在 `.gitignore` 文件中注明, 不然又add回去了
+
+#### revert 
+1. 取消所有暂存 `git revert .`
+
+1. 回滚代码至指定提交 `git revert --no-commit 032ac94ad...HEAD` `git commit -m "rolled back"`
 
 #### commit
 - [官方文档](https://git-scm.com/docs/git-commit)
@@ -248,7 +261,67 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 - 删除本地标签 `git tag -d tagname` 
 - 删除远程的tag `git push origin --delete tag <tagname>` 
 
-******
+#### reset
+> git reset -h 
+```
+用法：git reset [--mixed | --soft | --hard | --merge | --keep] [-q] [<提交>]
+  或：git reset [-q] [<树或提交>] [--] <路径>...
+  或：git reset --patch [<树或提交>] [--] [<路径>...]
+
+    -q, --quiet           安静模式，只报告错误
+    --mixed               重置 HEAD 和索引
+    --soft                只重置 HEAD
+    --hard                重置 HEAD、索引和工作区
+    --merge               重置 HEAD、索引和工作区
+    --keep                重置 HEAD 但保存本地变更
+    --recurse-submodules[=<reset>]  control recursive updating of submodules
+    -p, --patch           交互式挑选数据块
+    -N, --intent-to-add   将删除的路径标记为稍后添加
+
+```
+
+> [参考: 使用reset回滚代码](https://www.v2ex.com/t/296286)
+
+##### 回滚add操作
+- 当执行了 git add 命令, 将文件存入暂存区
+- 可以使用 `git reset 文件` 将指定文件 或者 `git reset .` 当前目录(递归) 都取消暂存
+- 文件内容没有改变, 这个用于选指定文件提交时
+
+##### 回滚最近一次commit
+
+1. `git reset --soft HEAD^` 撤销最近那次 commit 行为
+1. 修改代码的内容
+1. `git commit -c ORIG_HEAD` 使用撤销的那次 commit 的注释进行提交
+
+> 注意 reset 操作会将老的HEAD会备份到文件 .git/ORIG_HEAD 中，命令中就是引用了这个老的相关信息
+> -c 参数是复用指定节点的提交信息
+
+##### 回滚最近几次的commit并添加到一个新建的分支上去
+1. 新建分支 `git branch feature/new`
+1. 删除master分支最近3次提交 `git reset --hard HEAD^3`
+1. 切换到新分支上 `git checkout feature/new` 
+
+> 相当于是将master上这三次的修改都转移到了这个分支上, master 从来没有过这三次提交一样
+> 如果没有在 执行 reset --hard 之前新建分支的话, 这三次提交就永远删除了
+
+> 注意: 这个操作在多人的协作中, reset --hard 比较危险, 可能引起别人分支的混乱
+
+##### 回滚merge和pull操作
+1. 执行了merge 或者 pull 操作后 
+1. `git reset --hard ORIG_HEAD`
+
+##### 在index已有修改的状态回滚merge或者pull
+1. `git pull`
+1. `reset --merge ORIG_HEAD` 
+
+> 使用 --hard 会直接回滚,直接丢失当前未提交的所有更改
+
+##### 被中断的工作流程
+> 在开发一个功能的时候, 突然有别的需求插进来了, 就可以通过 commit 一次, 然后回滚该次 commit 的方式  
+> 将工作状态暂存, 且不会产生垃圾提交
+
+**************************
+
 ### 分支操作
 - `git checkout -b feature-x develop` 从develop的分支生成一个功能分支，并切换过去
 - 完成功能后：`git checkout develop `

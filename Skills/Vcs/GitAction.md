@@ -33,18 +33,8 @@ categories:
             1. [【配置HTTPS】](#配置https)
             1. [【使用SSH登录GitServer】](#使用ssh登录gitserver)
     1. [基础命令概述](#基础命令概述)
-    1. [reset使用方式](#reset使用方式)
-        1. [1.回滚add操作](#1回滚add操作)
-        1. [2.回滚最近一次commit](#2回滚最近一次commit)
-        1. [3.回滚最近几次的commit并添加到一个新建的分支上去](#3回滚最近几次的commit并添加到一个新建的分支上去)
-        1. [4.永久删除最近几次](#4永久删除最近几次)
-        1. [5.回滚merge和pull操作](#5回滚merge和pull操作)
-        1. [6.在被污染的working_tree中回滚merge或者pull](#6在被污染的working_tree中回滚merge或者pull)
-        1. [7.被中断的工作流程](#7被中断的工作流程)
-        1. [8.Reset一个单独的文件](#8reset一个单独的文件)
-        1. [9.保留working_tree并且丢弃一些commit](#9保留working_tree并且丢弃一些commit)
 
-**目录 end**|_2018-12-28 18:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-29 21:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -358,109 +348,3 @@ categories:
            [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
            <command> [<args>]
 ```
-
-**************************
-## reset使用方式
-- [ ] 完善
-### 1.回滚add操作
-```
-	edit  (1)
-		git add a.txt b.txt
-    看邮件(2)
-		git reset(3) 
-		git pull URL
-	1.1 编辑了两个文件并且添加到了index
-	1.2 接收邮件，发现某人要你pull，有一些改变需要你merge 下来
-	1.3 然而你已经把index给改变了，因为当前的index 和 HEAD commit不匹配了，但是你知道，即将pull的东西不会影响
-		到a.txt 和 b.txt，因此你可以revert这两个文件的改变，revert后，那些改变依然在working directory中，因此需要执行git reset
-	1.4 然后，执行了pull后 自动merge，两个文件依然在working directory中
-```
-### 2.回滚最近一次commit
-```
-	git commit ...
-		git reset --soft HEAD^(1)
-		edit (2)
-		git commit -a -c ORIG_HEAD(3)
-	2.1 当提交后，你发现提交的代码不完善，需要重新编辑一下，执行 1 语句让working directory和reset之前一样，不做改变
-	2.2 对working tree下的文件做修改
-	2.3 然后使用reset之前那次commit的注释等相关信息都重新提交，注意老的HEAD会被备份到文件.git/ORIG_HEAD中，命令中就是引用了这个老的相关信息
-		-a 表示自动将所有的修改的和删除的文件都放进 stage area（理解为代码区，未被git跟踪的文件不受影响）
-		-c 表示 拿已经提交的commit对象中的信息来做这次的提交
-	这条命令就是，将所有更改的文件加入到stage area中，并使用上次的提交信息来提交
-```
-### 3.回滚最近几次的commit并添加到一个新建的分支上去
-```
-		git branch myth/test (1)
-		git reset --hard HEAD^3 (2)
-		git checkout myth/test (3)
-	3.1 你已经提交了好几个commit，但是觉得不够成熟和完善，不足以添加到master分支上，所以在当前HEAD创建一个新分支
-	3.2 然后回滚掉最近三次提交（删除）
-	3.3 切换到新分支上就能对代码进行润色了，等待之后的merge
-```
-### 4.永久删除最近几次
-- `commit git reset --hard HEAD~3`
-
-### 5.回滚merge和pull操作
-```
-		git pull URL (1)
-		git reset --hard (2)
-		git pull .topic/branch (3)
-		git reset --hard ORIG_HEAD (4)
-	5.1 从origin上拉下来一些更新，但是产生了许多冲突，暂时又没时间去解决这些冲突，所以想撤销pull操作，等待以后来pull
-	5.2 由于pull操作产生了冲突，因此所有pull下来的改变尚未提交，仍然在stage area中，这种情况下 
-		git reset --hard 与 git reset --hard HEAD 效果一样
-			都是清除那些使index和working directory乱套的东西
-	5.3 将topic/branch 合并到当前的branch，这次没有冲突，并且合并后的更改自动提交
-	5.4 但是此时又觉得将topic/branch合并过来又太早了，决定回滚merge操作，执行4语句  之前有说过，git reset操作会备份一个ORIG_HEAD，
-			pull和merge操作同样会，为了回滚操作
-```
-
-### 6.在被污染的working_tree中回滚merge或者pull
-<!-- ``` -->
-		git pull (1)
-		git reset --merge ORIG_HEAD (2)
-	6.1 即使在本地已经更改了tree，导致了index的变化，也可以放心的pull，前提是你知道将要pull的内容不会覆盖你的working tree中的内容
-	6.2 git pull 之后，你发现这次pull的有问题，想要撤销操作，如果使用git reset --hard ORIG_HEAD也可以，但是这会删除add的代码
-			使用 git reset --merge ORIG_HEAD 就可以避免回滚操作时删除add的代码
-```	
-
-### 7.被中断的工作流程
-```
-在实际开发中经常出现这样的情形：你正在开发一个大的feature，此时来了一个紧急的BUG需要修复，但是目前在working tree 中的内容还不足以commit
-		，但是又必须切换到另外的branch去 fix bug
-		git checkout feature;
-		码代码
-		git commit -a -m "暂时中断OO" (1)
-		git checkout master 
-		修复bug
-		git commit ;
-		git checkout feature
-		git reset --soft HEAD^ #go back to OO's state (2)
-		git reset (3)
-	7.1 属于临时提交。随便加点注释
-	7.2 这次reset删除了OO的commit，并且把working tree设置成提交OO之前的状态
-	7.3 此时，在index中仍然留有OO提交时所做的uncommit changes，git reset 将会清理index成为尚未提交时的状态，便于之后的工作
-```
-
-### 8.Reset一个单独的文件
-```
-git reset -- a.txt (1)	
-git commit -am "Commit files inindex"  (2)
-		git add a.txt  (3)
-	8.1 把文件单独从index中去除
-	8.2 将index中的文件提交
-	8.3 再次添加回文件
-```
-### 9.保留working_tree并且丢弃一些commit
-```
-	git tag start
-		git checkout -b branch 1
-		编写
-		git commit .... (1)
-		编写
-		git checkout -b branch2 (2)
-		git reset --keep start (3)
-```
-- 9.1 这次是把branch1中的改变提交了
-- 9.2 此时发现，之前的提交不属于这个branch，此时你新建了branch2，并切换到了该branch上
-- 9.3 此时你可以使用reset --keep 把在start之后的commit清除掉，但是保持了working tree的不变

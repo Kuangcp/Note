@@ -29,7 +29,7 @@ categories:
         1. [分享](#分享)
             1. [asciinema](#asciinema)
 
-**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-29 21:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Terminal
 > 终端模拟器是吸引我放弃习惯的Windows而转投Linux怀抱的主要原因
@@ -55,6 +55,9 @@ categories:
 - which 命令的位置
 - false 以失败码退出程序
 - `stty -a` 查看键映射
+
+- 终端内执行循环
+    - `for i in $(seq 1 10); do echo $i; done` 语法和Shell差不多, 但是需要在循环体的每一句加上`;`
 
 ### Shell内建命令
 - whence 查看命令的真实面貌 (zsh中的内建命令)

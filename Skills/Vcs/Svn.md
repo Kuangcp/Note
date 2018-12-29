@@ -22,8 +22,9 @@ categories:
         1. [查看仓库](#查看仓库)
         1. [处理冲突](#处理冲突)
             1. [树冲突](#树冲突)
+        1. [回滚到指定版本](#回滚到指定版本)
 
-**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-29 21:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SVN
 > 传统的中心化版本控制工具,能够精确控制每个目录的权限, Apache顶级项目  
@@ -116,3 +117,10 @@ categories:
 1. 标记冲突已解决(使用本地的状态, 本地该文件的状态是Delete, 提交后服务端对应的文件就会被删除)
     - `svn resolve --accept=working file/dir`
 
+### 回滚到指定版本
+
+```sh
+    svn update 
+    svn merge -r 100:99 .
+    svn co -m "rolled back to r99"
+```

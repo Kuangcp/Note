@@ -59,7 +59,7 @@ categories:
     1. [系统日志](#系统日志)
     1. [应用日志](#应用日志)
 
-**目录 end**|_2018-12-28 18:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-29 21:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 【文件管理】
 > Linux中认为万物皆文件
@@ -241,6 +241,8 @@ categories:
 - [ less命令简介](https://blog.csdn.net/caihaijiang/article/details/6113419)
 - h 查看帮助文档 z/b 上下翻页 g/G 文件首/尾 
 - F 监听文件
+
+- 当打开多个文件时 :n :p 表示 next pre　也就是　下一个，上一个文件
 
 #### tail
 - tail命令用于输入文件中的尾部内容。tail命令默认在屏幕上显示指定文件的末尾10行。 来自: http://man.linuxde.net/tail

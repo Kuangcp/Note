@@ -68,7 +68,7 @@ categories:
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2018-12-29 21:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)
@@ -703,6 +703,8 @@ Java中用于处理文件等I/O操作的NIO  API（非阻塞I/O）已更新，�
 Collectors所提供的工厂方法 它们主要提供了三大功能：将流元素归约和汇总为一个值 元素分组 元素分区
 
 - toList toMap toSet 等方法
+
+- [ ] toMap 当 key 重复时会抛出异常
 
 ##### 汇总
 > Collectors类专门为汇总提供了一个工厂方法：Collectors.summingInt 它可接受一个把对象映射为求和所需int的函数，并返回一个收集器；该收集器在传递给普通的collect方法后即执行我们需要的汇总操作  
