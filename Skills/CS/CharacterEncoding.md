@@ -26,7 +26,7 @@ categories:
             1. [UTF-16](#utf-16)
     1. [汉字编码发展史](#汉字编码发展史)
 
-**目录 end**|_2018-12-23 22:40_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-03 18:20_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 字符编码
 
@@ -74,6 +74,12 @@ Unicode 是一个囊括了世界上所有字符的字符集，其中每一个字
 > UTF: UCS Transformation Format, UCS: Unicode Character Set
 
 它是将Unicode编码规则和计算机的实际编码对应起来的一个规则。现在流行的UTF有2种：UTF-8和UTF-16.
+
+*******************
+
+> 关于 BOM
+- [wiki: bom](https://en.wikipedia.org/wiki/Byte_order_mark)
+- [知乎: 「带 BOM 的 UTF-8」和「无 BOM 的 UTF-8」有什么区别？](https://www.zhihu.com/question/20167122)
 
 #### UTF-8
 > UTF-8 是一种Unicode的实现方式, 是一种变长编码方案(1-6), 在表示中文时是采用三字节的方式, 已基本覆盖WEB领域

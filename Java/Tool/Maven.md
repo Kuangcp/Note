@@ -25,6 +25,7 @@ categories:
     1. [3.构建](#3构建)
         1. [3.1.使用maven构建多模块的项目](#31使用maven构建多模块的项目)
         1. [3.2.Maven多配置环境](#32maven多配置环境)
+        1. [测试](#测试)
         1. [3.3.部署](#33部署)
     1. [4.maven的依赖](#4maven的依赖)
         1. [4.1 依赖的范围](#41-依赖的范围)
@@ -53,7 +54,7 @@ categories:
                 1. [Gradle](#gradle)
                 1. [Maven](#maven)
 
-**目录 end**|_2018-12-20 10:44_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-03 18:20_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -267,8 +268,8 @@ mvn install:install-file
 ### 测试
 > mvn test 
 
-- 跳过测试 -DskipTests
-- 执行指定测试类 -Dtest=类名
+- 跳过测试 `mvn test -DskipTests`
+- 执行指定测试类 `mvn test -Dtest=类名`
 
 ### 3.3.部署
 > [Java项目部署方式整理](/Java/AdvancedLearning/Deploy.md)

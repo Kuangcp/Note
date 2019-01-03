@@ -23,8 +23,9 @@ categories:
         1. [处理冲突](#处理冲突)
             1. [树冲突](#树冲突)
         1. [回滚到指定版本](#回滚到指定版本)
+        1. [Tips](#tips)
 
-**目录 end**|_2018-12-29 21:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-03 18:20_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SVN
 > 传统的中心化版本控制工具,能够精确控制每个目录的权限, Apache顶级项目  
@@ -124,3 +125,13 @@ categories:
     svn merge -r 100:99 .
     svn co -m "rolled back to r99"
 ```
+
+### Tips
+
+1. 表现: IDEA 报错 uncongnized character scheme in 2019-01-03_15:25:42.log 
+1. 后果: svn 所有操作都无响应, 相当于 idea的 svn 功能废了
+1. 解决方案: 直接删除 .svn 目录, svn co 另一个目录, 把那份 .svn 目录拿过来
+1. 分析: 很有可能文件名, 或者日志内容具有 svn 不认识的编码, 导致的问题
+
+**********
+
