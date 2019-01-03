@@ -17,6 +17,7 @@ categories:
         1. [nmap](#nmap)
         1. [apache benchmark](#apache-benchmark)
     1. [日常工具](#日常工具)
+        1. [图片查看](#图片查看)
         1. [百度网盘](#百度网盘)
         1. [输入法](#输入法)
             1. [搜狗输入法](#搜狗输入法)
@@ -35,7 +36,7 @@ categories:
     1. [安全工具](#安全工具)
         1. [gpg](#gpg)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-03 14:13_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 软件使用记事
 ## 【包管理】
@@ -93,6 +94,9 @@ categories:
 
 ************************************
 ## 日常工具
+### 图片查看
+1. Viewnior  轻量简洁
+
 ### 百度网盘
 - [百度网盘命令客户端](https://github.com/iikira/BaiduPCS-Go) `Go语言实现`
 
