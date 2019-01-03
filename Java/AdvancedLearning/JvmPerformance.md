@@ -151,6 +151,8 @@ categories:
 
 他的 OQL 比较方便, 像写 SQL 一样去查询对象
 
+注意: 有这样的一种场景, 从数据库获取大量的数据创建为对象, 导致瞬间的OOM 这时候即使使用 jmap 去 dump 了快照, 也看不到占用大量内存的对象, 很有可能这些对象就是gc不可达的, 而mat只能分析可达对象
+
 ### IBM Heap Analyzer
 > [Official Site](https://www.ibm.com/developerworks/community/alphaworks/tech/heapanalyzer)
 
