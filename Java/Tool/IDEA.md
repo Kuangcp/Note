@@ -34,7 +34,7 @@ categories:
     1. [Tips](#tips)
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
 
-**目录 end**|_2018-12-28 18:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-04 15:37_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # IDEA 使用笔记
@@ -189,7 +189,9 @@ _例如修改为如下_
 |:----:|:----:|:----:|:----:|:----|
 | | |A| **Enter** | 自动修复|
 |C| | | **Q**  | 显示javadoc|
-|C| | | **B** | 显示定义处或者调用处|
+|C| | | **B** | 显示定义或者调用|
+|C| |A| **B** | 显示其实现|
+| | |A| **U** | 面板显示调用处 |
 |C|S| | **T** | 自动创建或跳转 Test|
 |C|S| | **F7** | 高亮显示光标所在元素所有出现过的地方(就是搜索)|
 |C| |A| **L** | 快速格式化代码 |
@@ -278,6 +280,7 @@ _例如修改为如下_
 |:----:|:----:|:----:|:----:|:----|
 |C|S| | **左/右** | 调节以上工具窗口与编辑器窗口的分隔线位置|
 | |S|A| **H** | 显示/隐藏 所有工具窗口|
+|C| |A| **;** | 关闭活跃中的Tab|
 |C| | | **H** | 生成类结构图并显示|
 | | |A| **H** | 类结构图窗口|
 | | |A| **A** | 目录结构窗口|

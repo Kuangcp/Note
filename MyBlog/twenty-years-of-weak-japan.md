@@ -11,10 +11,11 @@ categories:
  
 1. [日本失落的二十年](#日本失落的二十年)
 
-**目录 end**|_2018-12-23 22:40_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-04 15:37_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 日本失落的二十年
 
+> [为何中国不学当年日本那样主动刺破房地产泡沫？](https://www.cnblogs.com/findumars/p/9249102.html)  
 > [参考: 日本失去的20年](https://wenku.baidu.com/view/5bc3e1add15abe23482f4dbd.html)  
 > [找回“失去的20年”？日本股市创27年新高，但一个数字不容乐观](http://www.nbd.com.cn/articles/2018-09-29/1259326.html)
 

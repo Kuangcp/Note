@@ -10,17 +10,14 @@ categories:
 **目录 start**
  
 1. [Linux系统](#linux系统)
-    1. [系统管理](#系统管理)
-        1. [文件系统对比](#文件系统对比)
-        1. [桌面环境对比](#桌面环境对比)
-        1. [窗口管理器对比](#窗口管理器对比)
-        1. [文件管理器对比](#文件管理器对比)
-        1. [终端模拟器对比](#终端模拟器对比)
-        1. [用户管理](#用户管理)
-        1. [用户组管理](#用户组管理)
-        1. [时间管理](#时间管理)
-        1. [服务管理](#服务管理)
-            1. [自启服务管理](#自启服务管理)
+    1. [用户](#用户)
+    1. [用户组](#用户组)
+    1. [进程](#进程)
+        1. [孤儿进程](#孤儿进程)
+        1. [僵尸进程](#僵尸进程)
+    1. [时间](#时间)
+    1. [服务](#服务)
+        1. [自启服务](#自启服务)
     1. [终端命令](#终端命令)
         1. [Shell内建命令](#shell内建命令)
 1. [终端快捷键](#终端快捷键)
@@ -29,6 +26,12 @@ categories:
     1. [Jump](#jump)
     1. [Search](#search)
     1. [Control](#control)
+    1. [对比](#对比)
+        1. [文件系统对比](#文件系统对比)
+        1. [桌面环境对比](#桌面环境对比)
+        1. [窗口管理器对比](#窗口管理器对比)
+        1. [文件管理器对比](#文件管理器对比)
+        1. [终端模拟器对比](#终端模拟器对比)
 1. [Tips](#tips)
     1. [一行执行多条命令](#一行执行多条命令)
     1. [让命令在后台运行](#让命令在后台运行)
@@ -36,7 +39,7 @@ categories:
         1. [关闭ssh回话仍能运行](#关闭ssh回话仍能运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-04 15:37_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -51,57 +54,10 @@ categories:
 - [LinuxTOY 是一个致力于提供 Linux 相关资讯的专题站点。](https://linuxtoy.org/)
     - [内容Github源](https://github.com/LinuxTOY/linuxtoy.org)
 
-*****************************************************
-
-## 系统管理
-> sudo 其实是软件 早该意识到的，所有的命令都是可执行文件  
 > [笔记: 发行版之别](/Linux/ReleaseExperience.md)
 
-### 文件系统对比
-> [参考博客: 如何选择文件系统：EXT4、Btrfs 和 XFS ](https://linux.cn/article-7083-1.html)
-
-目前 Linux 大多采用 ext3,往 ext4 过渡
-
-### 桌面环境对比
-> [Arch Doc: desktop environment](https://wiki.archlinux.org/index.php/Desktop_environment_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
-> [参考: Linux下15款桌面环境](https://www.lulinux.com/archives/444)
-
-1. **gnome** 占用资源中等，个人对该桌面不感冒
-1. **xfce** 占用资源少，操作类似于xp
-1. **kde** 功能强大，占用资源中等
-    - [Arch Doc: KDE](https://wiki.archlinux.org/index.php/KDE)
-    - [知乎 KDE如何配置得漂亮大气？](https://www.zhihu.com/question/54147372)
-1. **dde** deepin设计的桌面环境，小bug略多，但是美观操作方便
-
-- [dde kde gnome](https://bbs.deepin.org/forum.php?mod=viewthread&tid=38498)
-
-> [X窗口系统的协议和架构](http://www.cnblogs.com/noble/p/4144098.html)
-> [Arch Doc: Xorg](https://wiki.archlinux.org/index.php/Xorg_(简体中文))
-
-### 窗口管理器对比
-> [Arch Doc: window manager](https://wiki.archlinux.org/index.php/Window_manager_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
-
-- [awesome window manager](https://awesomewm.org/) `平铺式的`
-
-***************************
-### 文件管理器对比
-> 有单窗口，双列，命令，简洁轻量，笨重完整 各种各样的选择
-
-- `nautilus` Gnome默认 挺好用，但是不能自动挂载分区
-- `deepin-filemanager` deepin默认，较为方便，但是打开手机会卡根本打不开
-- `pcmanfm` 左边侧栏目录树 会同步nautilus的配置`5m`
-- `rox-filer` 特别小，单击打开，迅速定位文件，适合找东西用
-- `thunar` 解决了nautilus的缺点，内存也很省 `21M`
-- `dolphin` 多标签页，目录树方式查看
-- `nemo` mint默认的，功能齐全，会同步nautilus的配置，同样有目录树而且是两边都有 `21M`
-- `tuxcmd` Tux Commander 双列，小，直接的目录树，学习成本高点 `2M`
-
-*******************************
-### 终端模拟器对比
-> [详细](/Linux/Tool/Terminal.md)
-
 **************************************
-### 用户管理
+## 用户
 - 添加用户 `sudo adduser username` 
     - 对比 `useradd`只是新建一个用户不会创建主目录
 - 添加到sudo组 ，使用命令更安全：`sudo gpasswd -a $USER sudo` 但是要注销或者重启才生效貌似
@@ -158,8 +114,8 @@ categories:
 - chfn 注：更改用户信息工具
 - visudo 注：visodo 是编辑 /etc/sudoers 的命令;也可以不用这个命令，直接用vi 来编辑 /etc/sudoers 的效果是一样的;
 
-### 用户组管理
-> [相关总结网页](http://www.runoob.com/linux/linux-user-manage.html)
+## 用户组
+> [相关 博客](http://www.runoob.com/linux/linux-user-manage.html)
 
 - 修改用户至指定组 `sudo usermod -G 用户组 用户`
 - _显示用户所在组_ `groups`
@@ -180,9 +136,18 @@ categories:
 - grpconv 注：通过/etc/group和/etc/gshadow 的文件内容来同步或创建/etc/gshadow ，如果/etc/gshadow 不存在则创建;
 -  注：通过/etc/group 和/etc/gshadow 文件内容来同步或创建/etc/group ，然后删除gshadow文件
 
+****************************
+
+## 进程
+- [ ] 学习
+
+### 孤儿进程
+
+### 僵尸进程
+
 *******************************
 
-### 时间管理
+## 时间
 > [同步Linux服务器时间](http://www.cnblogs.com/chenmh/p/5485829.html)
 
 - Linux 的时间由两部分组成, 时区和时间: /etc/timezone 和 /etc/localtime
@@ -199,14 +164,14 @@ categories:
 2. 配置定时任务 `crontab -e`
     - `00 10 * * * root /usr/sbin/ntpdate -u cn.pool.ntp.org > /dev/null 2>&1; /sbin/hwclock -w `
 
-### 服务管理
+## 服务
 > 采用 systemd 方式进行管理 [Arch Doc: systemd](https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
 - systemctl start/stop/restart/reload/edit ... 详情见 man systemctl
 
 - 修改服务的配置 `systemctl edit docker.service` 当发现文件不存在时,这个是创建文件 对应的文件是 `/etc/systemd/system/docker.service.d/`
 
-#### 自启服务管理
+### 自启服务
 > /etc/init.d/ 是服务的存放目录
 1. 列出所有服务的状态 `service --status-all`
 
@@ -226,12 +191,15 @@ _系统运行级别_
 ```
 **********************************************
 ## 终端命令
-> /bin/* 系统自带的命令
+> /bin/* 系统自带的命令  
 例如 which命令, 查找到命令的位置
 
 > /usr/bin/* 用户安装终端应用的目录 以下往往是系统自带的
 - wc -l file _统计文件行数_
 - md5sum 报文摘要算法 
+
+1. sudo 命令是需要安装的... 
+    1. `alias sudo='sudo'` 能够在别名上使用 sudo *神奇*
 
 ### Shell内建命令
 > [更多常用工具列表](/Linux/Tool/Terminal.md)
@@ -305,7 +273,55 @@ _系统运行级别_
 |Ctrl |Z|暂停程序 |
 | Ctrl | S | 停止回显当前Shell |
 | Ctrl | Q | 恢复回显当前Shell |
+
+## 对比
+### 文件系统对比
+> [参考博客: 如何选择文件系统：EXT4、Btrfs 和 XFS ](https://linux.cn/article-7083-1.html)
+
+目前 Linux 大多采用 ext3,往 ext4 过渡
+
+以及 zfs 的优劣
+
+### 桌面环境对比
+> [Arch Doc: desktop environment](https://wiki.archlinux.org/index.php/Desktop_environment_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+> [参考: Linux下15款桌面环境](https://www.lulinux.com/archives/444)
+
+1. **gnome** 占用资源中等，个人对该桌面不感冒
+1. **xfce** 占用资源少，操作类似于xp
+1. **kde** 功能强大，占用资源中等
+    - [Arch Doc: KDE](https://wiki.archlinux.org/index.php/KDE)
+    - [知乎 KDE如何配置得漂亮大气？](https://www.zhihu.com/question/54147372)
+1. **dde** deepin设计的桌面环境，小bug略多，但是美观操作方便
+
+- [dde kde gnome](https://bbs.deepin.org/forum.php?mod=viewthread&tid=38498)
+
+> [X窗口系统的协议和架构](http://www.cnblogs.com/noble/p/4144098.html)
+> [Arch Doc: Xorg](https://wiki.archlinux.org/index.php/Xorg_(简体中文))
+
+### 窗口管理器对比
+> [Arch Doc: window manager](https://wiki.archlinux.org/index.php/Window_manager_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+
+- [awesome window manager](https://awesomewm.org/) `平铺式的`
+
+***************************
+### 文件管理器对比
+> 有单窗口，双列，命令，简洁轻量，笨重完整 各种各样的选择
+
+- `nautilus` Gnome默认 挺好用，但是不能自动挂载分区
+- `deepin-filemanager` deepin默认，较为方便，但是打开手机会卡根本打不开
+- `pcmanfm` 左边侧栏目录树 会同步nautilus的配置`5m`
+- `rox-filer` 特别小，单击打开，迅速定位文件，适合找东西用
+- `thunar` 解决了nautilus的缺点，内存也很省 `21M`
+- `dolphin` 多标签页，目录树方式查看
+- `nemo` mint默认的，功能齐全，会同步nautilus的配置，同样有目录树而且是两边都有 `21M`
+- `tuxcmd` Tux Commander 双列，小，直接的目录树，学习成本高点 `2M`
+
+*******************************
+### 终端模拟器对比
+> [详细](/Linux/Tool/Terminal.md)
+
 *****************************************************
+
 # Tips
 > man help 后接使用的命令，就可以得到用户手册和帮助文档
 
@@ -322,7 +338,7 @@ _系统运行级别_
 
 **************
 ## 让命令在后台运行
-> [原博客](https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/)
+> [参考 Linux 技巧：让进程在后台可靠运行的几种方法 ](https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/)
 
 - 命令后接 & （只是让进程躲到当前终端的后台去了 hup信号仍然影响）
 
@@ -332,15 +348,16 @@ _系统运行级别_
     - 让进程在新的会话中运行 setid screen
 
 ### 关闭ssh回话不能运行
-> 1.没有使用任何修饰原有命令  
-> 2.只在原有命令后加&
+1. 没有使用任何修饰原有命令  
+1. 只在原有命令后加&
 
 ### 关闭ssh回话仍能运行
-- 使用`nohup`就能屏蔽hup信号，默认输出到 nohup.out `nohup 命令 &`
-    - 将所有输出重定向到空设备  `nohup 命令>/dev/null 2>&1`
-    - 例如 在当前目录后台打开文件管理器 `(dde-file-manager . &) >/dev/null 2>&1`
+> 两种方式
 
-- `(命令 &)` 屏蔽了hup信号
+1. 使用`nohup`就能屏蔽hup信号，标准输出会输出到当前目录下的nohup.out文件. `nohup 命令 &`
+    1. 将所有输出重定向到空设备  `nohup 命令>/dev/null 2>&1`
+    1. 例如 在当前目录后台打开文件管理器 `(dde-file-manager . &) >/dev/null 2>&1`
+1. `(命令 &)` 屏蔽了hup信号
 
 *************
 ## 修改主机名
