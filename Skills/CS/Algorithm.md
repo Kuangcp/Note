@@ -2,14 +2,14 @@
 title: 数据结构和算法
 date: 2018-11-21 10:56:52
 tags: 
-    - 算法
 categories: 
-    - 基础
+    - 算法
 ---
 
 **目录 start**
  
 1. [数据结构和算法](#数据结构和算法)
+    1. [相关书籍和资源](#相关书籍和资源)
     1. [基础概念](#基础概念)
         1. [时间复杂度](#时间复杂度)
             1. [时间复杂度分析](#时间复杂度分析)
@@ -21,12 +21,18 @@ categories:
         1. [线性表](#线性表)
             1. [数组](#数组)
             1. [链表](#链表)
+    1. [匹配算法](#匹配算法)
+    1. [排序算法](#排序算法)
+1. [密码学](#密码学)
+    1. [Diffie-Hellman Key Exchange算法](#diffie-hellman-key-exchange算法)
+1. [实际问题](#实际问题)
 
-**目录 end**|_2019-01-05 18:02_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-05 21:33_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 数据结构和算法
 > 数据结构是指一组数据的存储结构 算法就是操作数据的方法 数据结构和算法是相辅相成的，数据结构是为算法服务的，而算法要作用在特定的数据结构之上
 
+## 相关书籍和资源
 算法的乐趣
 
 算法导论(英文原版更好)
@@ -34,6 +40,9 @@ categories:
 算法 [official site](https://algs4.cs.princeton.edu/home/)
 
 > [Github:TheAlgorithms](https://github.com/TheAlgorithms) `有各种编程语言的算法实现`
+> [《编程之法》](https://github.com/julycoding/The-Art-Of-Programming-By-July)
+
+**********************
 
 > 常用数据结构  
 >> 常用数据结构: 数组、链表、栈、队列、散列表、二叉树、堆、跳表、图、Trie树
@@ -43,6 +52,8 @@ categories:
 
 ## 基础概念
 ### 时间复杂度
+> [Java中的实践](http://www.baeldung.com/java-algorithm-complexity)
+
 所有代码的执行时间 T(n) 与每行代码的执行次数 n 成正比。
 
 - T(n) = O(f(n))
@@ -175,7 +186,7 @@ O(nlogn) 也是一种非常常见的算法时间复杂度。比如，归并排�
 
 均摊时间复杂度就是一种特殊的平均时间复杂度，我们没必要花太多精力去区分它们。你最应该掌握的是它的分析方法，摊还分析.
 
-```c
+```C
     // 全局变量，大小为 10 的数组 array，长度 len，下标 i。
     int array[] = new int[10]; 
     int len = 10;
@@ -183,20 +194,20 @@ O(nlogn) 也是一种非常常见的算法时间复杂度。比如，归并排�
 
     // 往数组中添加一个元素
     void add(int element) {
-    if (i >= len) { // 数组空间不够了
-        // 重新申请一个 2 倍大小的数组空间
-        int new_array[] = new int[len*2];
-        // 把原来 array 数组中的数据依次 copy 到 new_array
-        for (int j = 0; j < len; ++j) {
-        new_array[j] = array[j];
+        if (i >= len) { // 数组空间不够了
+            // 重新申请一个 2 倍大小的数组空间
+            int new_array[] = new int[len*2];
+            // 把原来 array 数组中的数据依次 copy 到 new_array
+            for (int j = 0; j < len; ++j) {
+            new_array[j] = array[j];
+            }
+            // new_array 复制给 array，array 现在大小就是 2 倍 len 了
+            array = new_array;
+            len = 2 * len;
         }
-        // new_array 复制给 array，array 现在大小就是 2 倍 len 了
-        array = new_array;
-        len = 2 * len;
-    }
-    // 将 element 放到下标为 i 的位置，下标 i 加一
-    array[i] = element;
-    ++i;
+        // 将 element 放到下标为 i 的位置，下标 i 加一
+        array[i] = element;
+        ++i;
     }
 ```
 > 最好是O(1)，最差是O(n), 均摊是O(1)
@@ -258,3 +269,40 @@ Java 中 ArrayList 和 数组的对比
 对于业务开发，直接使用容器就足够了，省时省力。毕竟损耗一丢丢性能，完全不会影响到系统整体的性能。但如果你是做一些非常底层的开发，比如开发网络框架，性能的优化需要做到极致，这个时候数组就会优于容器，成为首选。
 
 #### 链表
+
+*****************
+
+分治算法
+动态规划 最值 极值
+不直接找问题, 而是根据你的输入, 和答案之前关系的规律
+
+柯里化, continuation 高阶函数, 尾递归
+
+*********************
+## 匹配算法
+- [字符串相似度匹配](http://zjwyhll.blog.163.com/blog/static/75149781201281142630851/)
+
+## 排序算法
+> [参考博客: 九种排序算法的可视化及比较](https://zhuanlan.zhihu.com/p/34421623?group_id=955945213303250944)
+
+*********
+# 密码学
+
+## Diffie-Hellman Key Exchange算法
+> Whitfield Diffie 和 Martin Hellman ，他们于２０１５年获得了计算机科学领域的最高奖：图灵奖
+
+![码农翻身](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/arithmetic/Diffie-HellmanKeyExchange.png)
+
+`最后神奇的魔法发生了， 我们两个得到了同样的值 s = 10！`
+-  这个s 的值只有我们两个才知道，  其实就是密钥了， 可以用来做加密解密了（ 当然，这只是一个例子，实际的密钥不会这么短）， 我们俩的通讯从此就安全了。
+    -  “数学家小帅哥说了， 原因很简单，(gｘ mod p)ｙ mod p　和　(gｙ mod p)ｘ mod p　是相等的！ ”
+    -  “那黑客不能从公开传输的 p = 17, g = 3, a = 6 , b = 12 推算出s = 10 吗？” 我问道。
+    -  “当然不能， 不过前提是需要使用非常大的p , x, y,  这样以来，即使黑客动用地球上所有的计算资源， 也推算不出来。 ”
+
+# 实际问题
+例如存储一个部门关系, 上下级, 以及同级要有序, 并且, 这个关系树是能随意调整结构的, 每个节点和节点之间任意断开和连接
+
+name/id, parent, index
+
+
+

@@ -11,6 +11,7 @@ categories:
 **目录 start**
  
 1. [网络](#网络)
+    1. [相关书籍和资源](#相关书籍和资源)
     1. [基础](#基础)
         1. [ISO七层模型和TCP/IP五层模型](#iso七层模型和tcpip五层模型)
         1. [TCP和UDP](#tcp和udp)
@@ -34,9 +35,15 @@ categories:
     1. [WebDAV](#webdav)
     1. [WebAssembly](#webassembly)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-05 21:33_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 网络
+
+## 相关书籍和资源
+> [Real time Webservice](http://ceur-ws.org/Vol-601/EOMAS10_paper13.pdf)
+
+- webapi的设计与开发
+- 网络是怎样连接的
 
 ## 基础
 > [码农翻身:小白科普：从输入网址到最后浏览器呈现页面内容，中间发生了什么？](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514196&idx=1&sn=ca26d258fcc4a35fc6d9a539b7d71dd7&chksm=80d67c97b7a1f58198b2e6ae436f73c677c0df4c05c2a8a4aad2b9e2d523da57dd5cd3d0a8ee&mpshare=1&scene=1&srcid=0122nnRpNb6OvRJubkSfKfsZ&pass_ticket=%2B%2FAmfhAaNv2sKw6192eqEL9hoW%2F6BrLxlzHIsKC0k6lPQsM4%2FFo08R%2FZowzw3821#rd) | 
