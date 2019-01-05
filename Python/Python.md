@@ -64,7 +64,7 @@ categories:
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-**目录 end**|_2018-12-28 00:20_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-05 18:02_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -131,8 +131,8 @@ categories:
 
 1. 添加 *.pth 文件
     - 在 `/usr/local/lib/` 目录下有多个 Python 版本,配置自己需要的版本
-    - 例如在 python2.7/site-packages 中添加 test.pth 文件,文件内容为项目的绝对路径
-        - python3.x 则是在 dist-packages 目录下
+    - 例如在 `python2.7/site-packages` 中添加 test.pth 文件,文件内容为项目的绝对路径
+        - python3.x 则是在 `dist-packages` 目录下
 
 1. 修改环境变量
     - 修改或添加 环境变量 PYTHONPATH 路径用分号分隔

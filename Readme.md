@@ -127,6 +127,7 @@ _有自制力的人， 能够坚持的人才更有可能成功！_
     - `功能仿sdkman，但简单，不过是提供自行搭建使用的，毕竟七牛云下载超量了是要收费的`
 - 克隆笔记仓库可以加上 `--depth 1` 参数, 减小克隆的大小
 - [notes](https://github.com/pimterry/notes)`终端内的note工具`
+- [提高英语能力](https://byoungd.gitbooks.io/english-level-up-tips-for-chinese/content/)
 
 ## 涉及的工具 
 1. [创建 SUMMARY.md 目录文件脚本](create_tree.py)
