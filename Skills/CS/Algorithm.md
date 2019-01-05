@@ -27,18 +27,32 @@ categories:
     1. [Diffie-Hellman Key Exchange算法](#diffie-hellman-key-exchange算法)
 1. [实际问题](#实际问题)
 
-**目录 end**|_2019-01-05 21:33_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-06 00:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 数据结构和算法
 > 数据结构是指一组数据的存储结构 算法就是操作数据的方法 数据结构和算法是相辅相成的，数据结构是为算法服务的，而算法要作用在特定的数据结构之上
 
 ## 相关书籍和资源
-算法的乐趣
+- 大话数据结构
+- 算法图解
+- 算法的乐趣
 
-算法导论(英文原版更好)
+- 算法 [official site](https://algs4.cs.princeton.edu/home/)
+- 算法导论(英文原版更好) 麻省理工有公开课
+- 数据结构与算法分析 C C++ Java 三种语言版本
+- 数据结构 严蔚敏
+- 数据结构与算法解析  高一凡
 
-算法 [official site](https://algs4.cs.princeton.edu/home/)
+- 剑指Offer
+- 编程珠玑 对大量数据问题的算法研究
+- 编程之美 微软面试官所著,难度较高
 
+- 计算机程序设计艺术
+- 算法帝国
+- 数学之美
+- 算法之美
+
+> [王争的课程对应源码](https://github.com/wangzheng0822/algo)`这里主要也是他的课程内容`
 > [Github:TheAlgorithms](https://github.com/TheAlgorithms) `有各种编程语言的算法实现`
 > [《编程之法》](https://github.com/julycoding/The-Art-Of-Programming-By-July)
 
@@ -269,6 +283,7 @@ Java 中 ArrayList 和 数组的对比
 对于业务开发，直接使用容器就足够了，省时省力。毕竟损耗一丢丢性能，完全不会影响到系统整体的性能。但如果你是做一些非常底层的开发，比如开发网络框架，性能的优化需要做到极致，这个时候数组就会优于容器，成为首选。
 
 #### 链表
+> 单链表 双向链表 循环链表
 
 *****************
 

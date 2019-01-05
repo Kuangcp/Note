@@ -27,16 +27,15 @@ categories:
         1. [convert](#convert)
         1. [todo.txt](#todotxt)
             1. [todo.txt-cli](#todotxt-cli)
-    1. [【IDE】](#ide)
+    1. [IDE](#ide)
         1. [Idea](#idea)
-        1. [eclipse](#eclipse)
+        1. [Eclipse](#eclipse)
     1. [绘图工具](#绘图工具)
-        1. [在线版](#在线版)
-        1. [安装版](#安装版)
+        1. [思维导图](#思维导图)
     1. [安全工具](#安全工具)
         1. [gpg](#gpg)
 
-**目录 end**|_2019-01-03 14:13_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-06 00:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 软件使用记事
 ## 【包管理】
@@ -147,25 +146,26 @@ _批量修改_
 - [todo.txt-cli](https://github.com/todotxt/todo.txt-cli)
 
 ******************************
-## 【IDE】
+## IDE
 ### Idea
-> [更多](/Java/Tool/IDEA.md)
+> [详细内容](/Java/Tool/IDEA.md)
 
-### eclipse
-
-【eclipse EE Mars】
-* 这里的Tomcat是使用了你所导入的必要执行文件，但是运行的必要配置文件在eclipse Server项目里另有一份
-* 而且运行时也是使用这份配置文件，这样的结果是可以使用一份Tomcat目录，在eclipse配置运行多个Tomcat
-* 但是奇怪的是 访问不了Tomcat主页即：localhost:8080 所以也就不能管理Tomcat 查看运行状态
-
-资源下载 archive.eclipse.org/eclipse/downloads/ 
+### Eclipse
+> [详细内容](/Java/Tool/Eclipse.md)
 
 ***********************************************
 ## 绘图工具
-### 在线版
-- [processon](https://www.processon.com/)
+### 思维导图
+> [参考博客: 这 7 款开源思维导图工具真的很神奇](https://blog.csdn.net/zuochao_2013/article/details/68928381)
 
-### 安装版
+1. [processon](https://www.processon.com/)`免费额度比较小, 但是使用很方便`
+1. [Kity Minder](https://github.com/fex-team/kityminder)`也就是百度脑图`
+    - [DesktopNaotu](https://github.com/NaoTu/DesktopNaotu)`桌面版,适合我使用`
+1. [my-mind](https://github.com/ondras/my-mind)`简单轻巧`
+1. FreeMind 
+1. [freeplane](https://github.com/freeplane/freeplane)`Java编写的, FreeMind衍生`
+1. XMind 收费,占用资源大, 文件是二进制,不方便做版本控制
+
 *****************
 ## 安全工具
 ### gpg
