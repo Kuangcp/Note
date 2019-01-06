@@ -25,11 +25,15 @@
 - [openjdk](http://openjdk.java.net/)`开源的JDK`
 - [oracle-jdk download](http://www.oracle.com/technetwork/java/javase/downloads/index.html) | [oracle-jdk中文版下载页面](http://www.oracle.com/technetwork/cn/java/javase/downloads/index.html)
 
+> [wiki: java](https://en.wikipedia.org/wiki/Java_%28programming_language%29)
+
 >- [JDK and JRE](/Java/AdvancedLearning/JDKAndJRE.md)
 >- [Java 发行版大致特性](/Java/AdvancedLearning/JavaReleaseVersion.md)  
 >- [Java7](/Java/AdvancedLearning/Java7.md)
 >- [Java8](/Java/AdvancedLearning/Java8.md)
 >- [Java11](/Java/AdvancedLearning/Java11.md)
+
+> [Java核心知识思维导图](https://gitee.com/gin9/MindMap)
 
 ## 规范
 >- [阿里巴巴Java开发手册](https://github.com/alibaba/p3c)

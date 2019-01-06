@@ -15,10 +15,12 @@ categories:
     1. [Java10](#java10)
     1. [Java11](#java11)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-06 19:57_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)
+
+> [参考博客: Java5、6、7、8、9的新特性](https://blog.csdn.net/shengzhu1/article/details/75702797)
 
 ## Java7
 > [详情](/Java/AdvancedLearning/Java7.md)
@@ -27,7 +29,6 @@ categories:
 1. 新的语言小特性:TWR(try with resources)
 1. 类文件格式的变化:注解
 1. JVM的新特性: 动态调用
-
 
 ## Java8
 > [详情](/Java/AdvancedLearning/Java8.md)
@@ -43,11 +44,19 @@ categories:
 ## Java9
 > [参考博客: Java9 新特性汇总](http://www.infoq.com/cn/news/2014/09/java9)  
 > [参考博客: Java9 新特性 详解](https://my.oschina.net/u/3209213/blog/1622984)
+> [参考博客: Java 9 新特性概述](https://www.ibm.com/developerworks/cn/java/the-new-features-of-Java-9/index.html)
+> [参考博客: Java 9 新特性 ](http://www.runoob.com/java/java9-new-features.html)
 
-1. 模块化
+> [参考博客: 深入解读 Java 9 新特性 ](https://mp.weixin.qq.com/s?__biz=MzAwMDU1MTE1OQ==&mid=2653549131&idx=1&sn=77997b94cc91fb7cbead6b7888f26474&chksm=813a63d3b64deac5506a5c0080718eb759720ec17538223af71b865f260428cc7c644d2d97de&scene=21#wechat_redirect)
+
+1. Jigsaw 模块化
 
 ## Java10 
+> [参考博客: Java10的新特性](https://segmentfault.com/a/1190000014076481)
+
 1. 类型推断
 
-## Java11
+> [参考博客: Oracle 发布多语种虚拟机平台 GraalVM 1.0](https://www.infoq.cn/article/2018%2F05%2Foracle-graalvm-v1)
 
+## Java11
+> [参考博客: Java11的新特性](https://segmentfault.com/a/1190000016527932#articleHeader5)

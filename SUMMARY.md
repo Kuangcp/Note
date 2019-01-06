@@ -14,9 +14,6 @@
     * [ Solution ](/Blog/Solution.md)
     * [ View ](/Blog/View.md)
 * 【 Book 】
-    * 【 Book/CS 】
-        * [ Algorithm ](/Book/CS/Algorithm.md)
-        * [ NetworkBooks ](/Book/CS/NetworkBooks.md)
     * 【 Book/Database 】
     * 【 Book/Front 】
     * 【 Book/Math 】
@@ -80,7 +77,6 @@
         * [ ExtendsAndInterface ](/Java/AdvancedLearning/ExtendsAndInterface.md)
         * [ GC ](/Java/AdvancedLearning/GC.md)
         * [ Generics ](/Java/AdvancedLearning/Generics.md)
-        * [ GrammarAndType ](/Java/AdvancedLearning/GrammarAndType.md)
         * [ IO ](/Java/AdvancedLearning/IO.md)
         * [ JDBC ](/Java/AdvancedLearning/JDBC.md)
         * [ JDKAndJRE ](/Java/AdvancedLearning/JDKAndJRE.md)
@@ -90,7 +86,7 @@
         * [ Java11 ](/Java/AdvancedLearning/Java11.md)
         * [ Java7 ](/Java/AdvancedLearning/Java7.md)
         * [ Java8 ](/Java/AdvancedLearning/Java8.md)
-        * [ JavaDealWithTime ](/Java/AdvancedLearning/JavaDealWithTime.md)
+        * [ JavaDateTime ](/Java/AdvancedLearning/JavaDateTime.md)
         * [ JavaReleaseVersion ](/Java/AdvancedLearning/JavaReleaseVersion.md)
         * [ JavaTest ](/Java/AdvancedLearning/JavaTest.md)
         * [ JavaWeb ](/Java/AdvancedLearning/JavaWeb.md)
@@ -99,6 +95,7 @@
         * [ ProgramThinking ](/Java/AdvancedLearning/ProgramThinking.md)
         * [ Reflect ](/Java/AdvancedLearning/Reflect.md)
         * [ Socket ](/Java/AdvancedLearning/Socket.md)
+        * [ SyntaxAndType ](/Java/AdvancedLearning/SyntaxAndType.md)
         * [ Thread ](/Java/AdvancedLearning/Thread.md)
         * [ WebPerformance ](/Java/AdvancedLearning/WebPerformance.md)
     * 【 Java/Android 】
@@ -192,6 +189,7 @@
     * [ JavaDevInit ](/Linux/JavaDevInit.md)
 * 【 MyBlog 】
     * [ 2018-3-15-install-deepin ](/MyBlog/2018-3-15-install-deepin.md)
+    * [ twenty-years-of-weak-japan ](/MyBlog/twenty-years-of-weak-japan.md)
 * 【 Python 】
     * 【 Python/Tool 】
         * [ PyCharm ](/Python/Tool/PyCharm.md)
@@ -206,7 +204,6 @@
 * 【 Scala 】
     * [ SBT ](/Scala/SBT.md)
     * [ Scala ](/Scala/Scala.md)
-    * [ test. ](/Scala/test.log)
 * 【 Script 】
     * [ Dos ](/Script/Dos.md)
     * [ LinuxBash ](/Script/LinuxBash.md)
@@ -217,8 +214,9 @@
         * [ VirtualBox ](/Skills/Application/VirtualBox.md)
         * [ WebBrowser ](/Skills/Application/WebBrowser.md)
     * 【 Skills/CS 】
-        * [ Arithmetic ](/Skills/CS/Arithmetic.md)
+        * [ Algorithm ](/Skills/CS/Algorithm.md)
         * [ CharacterEncoding ](/Skills/CS/CharacterEncoding.md)
+        * [ CompilingPrinciple ](/Skills/CS/CompilingPrinciple.md)
         * [ Computer ](/Skills/CS/Computer.md)
         * [ Concurrent ](/Skills/CS/Concurrent.md)
         * [ Network ](/Skills/CS/Network.md)

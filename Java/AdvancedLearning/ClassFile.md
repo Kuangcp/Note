@@ -9,57 +9,55 @@ categories:
 
 **目录 start**
  
-1. [Java基础](#java基础)
-    1. [类和字节码](#类和字节码)
-        1. [类加载和类对象](#类加载和类对象)
-            1. [类加载器](#类加载器)
-            1. [加载和连接](#加载和连接)
-            1. [Class对象](#class对象)
-            1. [类加载器](#类加载器)
-        1. [方法句柄](#方法句柄)
-    1. [查看class文件](#查看class文件)
-        1. [常量池](#常量池)
-        1. [字节码](#字节码)
-            1. [运行时环境](#运行时环境)
-            1. [操作码介绍](#操作码介绍)
-            1. [加载和存储操作码](#加载和存储操作码)
-            1. [数学运算操作码](#数学运算操作码)
-            1. [执行控制操作码](#执行控制操作码)
-            1. [调用操作码](#调用操作码)
-            1. [平台操作码](#平台操作码)
-            1. [操作码的快捷形式](#操作码的快捷形式)
-            1. [invokedynamic](#invokedynamic)
-    1. [序列化](#序列化)
-        1. [serialVersionUID](#serialversionuid)
-        1. [其他业内主流编解码框架](#其他业内主流编解码框架)
-            1. [MessagePack](#messagepack)
-            1. [Protobuf](#protobuf)
-                1. [proto文件定义](#proto文件定义)
-                1. [Linux上安装](#linux上安装)
-                1. [通过Docker使用](#通过docker使用)
-                1. [对于Java的使用](#对于java的使用)
-            1. [Thrift](#thrift)
-            1. [Marshalling](#marshalling)
-    1. [热更新](#热更新)
+1. [类和字节码](#类和字节码)
+    1. [类加载和类对象](#类加载和类对象)
+        1. [类加载器](#类加载器)
+        1. [加载和连接](#加载和连接)
+        1. [Class对象](#class对象)
+        1. [类加载器](#类加载器)
+    1. [方法句柄](#方法句柄)
+1. [分析class文件](#分析class文件)
+    1. [常量池](#常量池)
+    1. [字节码](#字节码)
+        1. [运行时环境](#运行时环境)
+        1. [操作码介绍](#操作码介绍)
+        1. [加载和存储操作码](#加载和存储操作码)
+        1. [数学运算操作码](#数学运算操作码)
+        1. [执行控制操作码](#执行控制操作码)
+        1. [调用操作码](#调用操作码)
+        1. [平台操作码](#平台操作码)
+        1. [操作码的快捷形式](#操作码的快捷形式)
+        1. [invokedynamic](#invokedynamic)
+1. [序列化](#序列化)
+    1. [serialVersionUID](#serialversionuid)
+    1. [其他业内主流编解码框架](#其他业内主流编解码框架)
+        1. [MessagePack](#messagepack)
+        1. [Protobuf](#protobuf)
+            1. [proto文件定义](#proto文件定义)
+            1. [Linux上安装](#linux上安装)
+            1. [通过Docker使用](#通过docker使用)
+            1. [对于Java的使用](#对于java的使用)
+        1. [Thrift](#thrift)
+        1. [Marshalling](#marshalling)
+1. [热更新](#热更新)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-06 19:57_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-# Java基础
-## 类和字节码
+# 类和字节码
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/java-classfile/src/main/java/com/github/kuangcp) 
 
 **`相关项目`**
 > [Apache bcel](http://commons.apache.org/proper/commons-bcel/index.html)
 
-### 类加载和类对象
+## 类加载和类对象
 - 一个`.class`文件定义了JVM中的类型，包括了域,方法，继承信息，注解和其他元数据
 
-#### 类加载器
+### 类加载器
 - [ ] TODO 学习类加载器
 > [类装载器、双亲委托模型、命名空间、安全性](https://blog.csdn.net/yuan22003/article/details/6839335\)
 > [java ClassLoader类解析-双亲委托机制](https://blog.csdn.net/wangyang1354/article/details/49448007)
 
-#### 加载和连接
+### 加载和连接
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p107.jpg)
 
 [参考博客: 第七章.虚拟机类加载机制](http://ifeve.com/%e7%ac%ac%e4%b8%83%e7%ab%a0-%e8%99%9a%e6%8b%9f%e6%9c%ba%e7%b1%bb%e5%8a%a0%e8%bd%bd%e6%9c%ba%e5%88%b6/)
@@ -82,12 +80,12 @@ categories:
         - 当需要加载的类全部加载解析完毕后，VM就可以初始化最初那个加载的类了。
         - 这时所有的静态变量都可以进行初始化，所有静态代码块都会运行，这一步完成后，类就能使用了
 
-#### Class对象
+### Class对象
 - 加载和连接过程的最终结果是一个Class对象，Class对象可以和反射API一起实现对方法，域构造方法等类成员的间接访问
 
 > 所以一个类的定义就会有一个Class对象, 但是这个对象的类型呢?怎么判断, Class对象的类型就是他的值么?
 
-#### 类加载器
+### 类加载器
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p110.jpg)
 
 - Java平台经典类加载器：
@@ -97,19 +95,19 @@ categories:
     - 定制类载器： 为了企业框架定制的加载器
     
 *****
-### 方法句柄
+## 方法句柄
 > 主要用于反射 用到再学
 
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p118.jpg)
 
-*****************
+**************************
 
-## 查看class文件
+# 分析class文件
 > javap: JDK内置命令, 用来探视类文件内部和反编译class文件
 
 ******************
 
-### 常量池
+## 常量池
 > 常量池是为类文件中的其他常量元素提供快捷访问方式的区域。对于JVM来说常量池相当于符号表
 > [参考博客](http://www.cnblogs.com/LeonNew/p/5314731.html)
 
@@ -117,7 +115,7 @@ categories:
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p120.jpg)
 
 **************
-### 字节码
+## 字节码
 > [参考博客: 学会阅读Java字节码](https://www.cnblogs.com/beautiful-code/p/6425376.html)
 
 - 字节码是程序的中间表达形式，源码和机器码之间的产物
@@ -135,13 +133,13 @@ categories:
     - 静态属性信息
     - 静态方法信息
 
-#### 运行时环境
+### 运行时环境
 > 因为JVM没有CPU那样的寄存器，所以是采用的堆栈来计算的，称为操作数栈或者计算堆栈
 
 - 当一个类被链接进运行时环境时，字节码会受到检查，其中很多验证都可以归结为对栈中类型模式的分析
 - 方法需要一块内存区域作为计算堆栈来计算新值，另外每个运行的线程都需要一个调用堆栈来记录当前正在执行的方法，这两个栈会有交互
 
-#### 操作码介绍
+### 操作码介绍
 - 字节码由操作码 opcode 序列构成，每个指令后可能会带参数，操作码希望看到栈处于指定状态中，然后他对栈进行操作处理，把参数移走，放入结果
 - 操作码表有四列：
     - 名称：操作码类型的通用名称
@@ -151,22 +149,23 @@ categories:
     - 描述：描述操作码的用处
 
 
-[ ] 下面的内容需要继续阅读Java7程序员修炼之道
-#### 加载和存储操作码
-#### 数学运算操作码
-#### 执行控制操作码
-#### 调用操作码
-#### 平台操作码
-#### 操作码的快捷形式
+- [ ] 下面的内容需要继续阅读Java7程序员修炼之道
 
-#### invokedynamic
+### 加载和存储操作码
+### 数学运算操作码
+### 执行控制操作码
+### 调用操作码
+### 平台操作码
+### 操作码的快捷形式
+
+### invokedynamic
 > 这个特性是针对 框架开发和非Java语言准备的
 
 ****************
-## 序列化
+# 序列化
 > [码农翻身:序列化： 一个老家伙的咸鱼翻身](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513589&idx=1&sn=d402d623d9121453f1e570395c7f99d7&chksm=80d67a36b7a1f32054d4c779dd26e8f97a075cf4d9ed1281f16d09f1df50a29319cd37520377&scene=21#wechat_redirect) `对象转化为二进制流`
 
-### serialVersionUID
+## serialVersionUID
 > 简单的说就是类的版本控制, 标明类序列化时的版本, 版本一致表明这两个类定义一致  
 > 在进行反序列化时, JVM会把传来的字节流中的serialVersionUID与本地相应实体（类）的serialVersionUID进行比较，如果相同就认为是一致的，可以进行反序列化，否则就会出现序列化版本不一致的异常。(InvalidCastException)  
 [参考博客](http://swiftlet.net/archives/1268)
@@ -183,13 +182,13 @@ Window ==> Preferences ==> Java ==> Compiler ==> Error/Warnings ==>Potential pro
 
 ******************************
 
-### 其他业内主流编解码框架
+## 其他业内主流编解码框架
 > 因为Java序列化的性能和存储开销都表现不好,而且不能跨语言, 所以一般不使用Java的序列化而是使用以下流行的库
 
-#### MessagePack
+### MessagePack
 > [Github:msgpack](https://github.com/msgpack) | [参考博客: MessagePack：一种高效二进制序列化格式](http://hao.jobbole.com/messagepack/)
 
-#### Protobuf
+### Protobuf
 > Google开源的库 全称 `Google Protocol Buffers` |  [Github : Protobuf](https://github.com/google/protobuf)
 
 > [参考博客: Protobuf语言指南](http://www.cnblogs.com/dkblog/archive/2012/03/27/2419010.html) `较为详细, 只是版本有点旧`
@@ -216,7 +215,7 @@ Window ==> Preferences ==> Java ==> Compiler ==> Error/Warnings ==>Potential pro
 
 > 只是编解码的工具, 不支持读半包, 粘包拆包
 
-##### proto文件定义
+#### proto文件定义
 
 ```
 // 用户数据信息
@@ -297,7 +296,7 @@ _导入另一个proto定义_
 ***********************
 >- 使用上, 因为有多个消息类型, 那么会采用一个数值id作为code, 进行对应 方便沟通
 
-##### Linux上安装
+#### Linux上安装
 > 只是安装2.5版本 [参考博客: linux下Google的Protobuf安装及使用笔记](http://www.cnblogs.com/brainy/archive/2012/05/13/2498671.html) | [参考:proto buffer 安装 及 调用](http://dofound.blog.163.com/blog/static/1711432462013524111644655/)
 
 - [下载2.5](https://github.com/google/protobuf/releases/tag/v2.5.0) 并解压 
@@ -310,8 +309,8 @@ _导入另一个proto定义_
 >> 当然,可以将这个环境变量的设置加在 .zshrc 或者 .bashrc 里  
 >> 不然就会报错: `protoc: error while loading shared libraries: libprotobuf.so.8: cannot open shared object file: No such file or directory`
 
-##### 通过Docker使用
-##### 对于Java的使用
+#### 通过Docker使用
+#### 对于Java的使用
 > [Google Protocol Buffer 的使用和原理](https://www.ibm.com/developerworks/cn/linux/l-cn-gpb/index.html) `C++ 但是原理差不多`
 
 `生成Java文件`  
@@ -344,17 +343,17 @@ _也可以使用该脚本更新协议_
 ```
 *********************
 
-#### Thrift
+### Thrift
 > [官网](https://thrift.apache.org/)源于Facebook, 支持多种语言: C++ C# Cocoa Erlang Haskell Java Ocami Perl PHP Python Ruby Smalltalk
 
 - 它支持数据(对象)序列化和多种类型的RPC服务, Thrift适用于静态的数据交换, 需要预先确定好他的数据结构, 当数据结构发生变化时,需要重新编辑IDL文件
 
-#### Marshalling
+### Marshalling
 > JBOSS 内部使用的编解码框架
 
 
-## 热更新
-> 通过替换 class 实现不停机热更新
+# 热更新
+> 通过替换 class 实现不停机热更新, 但是还有有局限性, 类结构, 方法签名不能有改变
 
 > [Spring hot swapping](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-hotswapping.html)
 
