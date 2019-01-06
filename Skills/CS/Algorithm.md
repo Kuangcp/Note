@@ -27,10 +27,12 @@ categories:
     1. [Diffie-Hellman Key Exchange算法](#diffie-hellman-key-exchange算法)
 1. [实际问题](#实际问题)
 
-**目录 end**|_2019-01-06 00:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-07 00:34_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 数据结构和算法
 > 数据结构是指一组数据的存储结构 算法就是操作数据的方法 数据结构和算法是相辅相成的，数据结构是为算法服务的，而算法要作用在特定的数据结构之上
+
+> [相关思维导图](https://gitee.com/gin9/MindMap)
 
 ## 相关书籍和资源
 - 大话数据结构
@@ -56,13 +58,19 @@ categories:
 > [Github:TheAlgorithms](https://github.com/TheAlgorithms) `有各种编程语言的算法实现`
 > [《编程之法》](https://github.com/julycoding/The-Art-Of-Programming-By-July)
 
+> [清华大学 邓俊辉 数据结构 C++实现](https://dsa.cs.tsinghua.edu.cn/~deng/ds/dsacpp/index.htm)
+
 **********************
 
-> 常用数据结构  
->> 常用数据结构: 数组、链表、栈、队列、散列表、二叉树、堆、跳表、图、Trie树
+离散数学基础: 集合、偏序集、良序、数学归纳法、级数、递归、递推 
+概率基础: 随机分布、概率、伯努利实验、数学期望、期望值的线性率
 
-> 常用算法  
->> 递归、排序、二分查找、搜索、哈希算法、贪心算法、分治算法、回溯算法、动态规划、字符串匹配算法。
+- 常用数据结构:
+    - 数组、链表、栈、队列、散列表、二叉树、堆、跳表、图、Trie树
+- 常用算法  
+    - 递归、排序、二分查找、搜索、哈希算法、贪心算法、分治算法、回溯算法、动态规划、字符串匹配算法。
+
+*******************
 
 ## 基础概念
 ### 时间复杂度
@@ -89,8 +97,8 @@ categories:
     - 对数阶 O(log n)
     - 线性阶 O(n)
     - 线性对数阶 O(n log n)
-    - 平方阶 O(n ** 2) 立方阶O(n ** 3 )  k次方阶 O(n ** k) `用python的写法表示幂`
-    - 指数阶 O(2 ** n)
+    - 平方阶 O(n^2) 立方阶O(n^3 )  k次方阶 O(n^k) `用 ^ 表示次方`
+    - 指数阶 O(2^n)
     - 阶乘阶 O(n!)
 
 > O(1)
