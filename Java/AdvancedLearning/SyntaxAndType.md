@@ -242,13 +242,18 @@ _获取指定时间_ [获取指定时间的时间戳](https://blog.csdn.net/jsso
 ******************
 # 类的结构
 ## 修饰符
-> [参考博客: java 权限修饰符](https://blog.csdn.net/yan8024/article/details/6426451)
 
 ### 权限修饰符
-- `public`   **任意范围**;
-- `protected`  **子类** 与 **同包**;  子类可以是任意包下
-- `缺省(package private)` **同包**;  限定了同一个包下, 才能访问 所修饰的属性
-- `private`  只能 **当前类** 或者 **内部类** 访问
+> [参考博客: java 权限修饰符](https://blog.csdn.net/yan8024/article/details/6426451)
+
+| 权限修饰符 | 范围 | 注释 |
+|:----|:----|:----|
+| public | 任意范围 |  |
+| protected | 子类/同包 | 子类是可以在任意包的 |
+| default | 同包 | 同一个包下(也有说是:package private, 缺省) |
+| private | 当前类 | 内部类从属于当前类 |
+
+> 同包是指 `package XXX;` 是一致的, `package a;` 与 `package a.b;` 不是同包  
 
 ### 其他
 
@@ -309,15 +314,16 @@ _获取指定时间_ [获取指定时间的时间戳](https://blog.csdn.net/jsso
 *************************
 # 关键字
 >  Java关键字和保留字
-```
-abstract class    extends implements null      strictfp     true
-assert   const    false   import     package   super        try
-boolean  continue final   instanceof private   switch       void
-break    default  finally int        protected synchronized volatile
-byte     do       float   interface  public    this         while
-case     double   for     long       return    throw
-catch    else     goto    native     short     throws
-char     enum     if      new        static    transient
-```
+
+|||||||||
+|:----|:----|:----|:----|:----|:----|:----|:----|
+| abstract | class    | extends | implements | null      | strictfp     | true
+| assert   | const    | false   | import     | package   | super        | try
+| boolean  | continue | final   | instanceof | private   | switch       | void
+| break    | default  | finally | int        | protected | synchronized | volatile
+| byte     | do       | float   | interface  | public    | this         | while
+| case     | double   | for     | long       | return    | throw
+| catch    | else     | goto    | native     | short     | throws
+| char     | enum     | if      | new        | static    | transient
 
 - [ ]  transient 序列化时不进行序列化
