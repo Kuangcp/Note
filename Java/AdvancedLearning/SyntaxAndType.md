@@ -26,7 +26,7 @@ categories:
         1. [long](#long)
         1. [float](#float)
         1. [double](#double)
-    1. [包装类型](#包装类型)
+    1. [封装类型](#封装类型)
         1. [String](#string)
             1. [StringBuffer和StringBuilder](#stringbuffer和stringbuilder)
         1. [Float](#float)
@@ -55,7 +55,7 @@ categories:
     1. [DAO](#dao)
 1. [关键字](#关键字)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-07 23:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 基础语法
 
@@ -115,7 +115,7 @@ Java8以前是使用 char数组 来存放String, Java8开始就是 byte数组 �
 ### double
 
 **************************
-## 包装类型
+## 封装类型
 > `wrapper class`基本类型和包装类型不能混为一谈 本质上的 class是不同的, 只不过自动拆装箱才让人感觉没差别
 
 Integer.TYPE == int.class
@@ -165,25 +165,25 @@ Void.TYPE == void.class
 
 > When you use the visitor pattern it can be cleaner to use Void instead of Object when you want to be sure that the return value will be null. Example: 
 ```java
-public interface LeavesVisitor<OUT>{
-   OUT visit(Leaf1 leaf);
-   OUT visit(Leaf2 leaf);
-}
+    public interface LeavesVisitor<OUT>{
+    OUT visit(Leaf1 leaf);
+    OUT visit(Leaf2 leaf);
+    }
 ```
 
 > When you will implement your visitor you can explicitly set OUT to be Void so that you know your visitor will always return null, instead of using Object
 
 ```java
-public class MyVoidVisitor implements LeavesVisitor<Void>{
-    Void visit(Leaf1 leaf){
-        //...do what you want on your leaf
-        return null;
+    public class MyVoidVisitor implements LeavesVisitor<Void>{
+        Void visit(Leaf1 leaf){
+            //...do what you want on your leaf
+            return null;
+        }
+        Void visit(Leaf2 leaf){
+            //...do what you want on your leaf
+            return null;
+        }
     }
-    Void visit(Leaf2 leaf){
-        //...do what you want on your leaf
-        return null;
-    }
-}
 ```
 ****************************
 ## 枚举类型
@@ -199,23 +199,41 @@ public class MyVoidVisitor implements LeavesVisitor<Void>{
 
 - 简单单例
 ```java
-public enum Tool{
-    INSTANCE(12); 
-    private int num; 
-    Tool(int num){
-        this.num = num;
+    public enum Tool{
+        INSTANCE(12); 
+        private int num; 
+        Tool(int num){
+            this.num = num;
+        }
+        public getNum(){
+            return num;
+        }
     }
-    public getNum(){
-        return num;
-    }
-}
-// 使用的时候
-Tool.INSTANCE.getNum();
+    // 使用的时候
+    Tool.INSTANCE.getNum();
 ```
 
 ****************************
+
 ## 自动拆装箱
 > 基本数据类型和包装类型在Java中是可以视为等价的, 就是因为自动拆装箱的存在
+
+| 基本数据类型 | 封装类型 |
+|:----|:----|
+| byte | Byte |
+| char | Character |
+| boolean | Boolean |
+| short | Short |
+| int | Integer |
+| long | Long |
+| float | Float |
+| double | Double |
+
+> 存在的意义: TODO 
+
+> 实现方式
+
+> 弊端
 
 ***************************
 ## 内部类
@@ -230,12 +248,17 @@ _但是内部类的属性不能用static修饰_
 
 **************************
 ## 类型强转
+> 数学运算时,数据类型自动往大数据类型转: int float double
+
 - Double -> int 直接(int)num;
 
+- int/Integer -> Long 不能隐式转, 需要 Long.valueOf()
+
 **********************
+
 ## 时间类型
 
-1. 最早常用是 Date 然后 Calendar 然后 Instant LocalDateTime ...
+1. 最早常用是 Date 然后 Calendar 然后Java8: Instant LocalDateTime ...
 
 _获取指定时间_ [获取指定时间的时间戳](https://blog.csdn.net/jssongwei/article/details/71403354)
 
