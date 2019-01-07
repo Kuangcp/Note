@@ -15,7 +15,7 @@ categories:
         1. [Linux](#linux)
     1. [新特性](#新特性)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-07 12:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java11 
 > [Official:doc](https://docs.oracle.com/en/java/javase/11/) | [Official:api](https://docs.oracle.com/en/java/javase/11/docs/api/index.html)
@@ -28,9 +28,9 @@ categories:
 
 ### Linux
 ```sh
-JAVA_HOME=/path/to/java11
-export CLASSPATH=.:${JAVA_HOME}/lib
-export PATH=${JAVA_HOME}/bin:$PATH
+    JAVA_HOME=/path/to/java11
+    export CLASSPATH=.:${JAVA_HOME}/lib
+    export PATH=${JAVA_HOME}/bin:$PATH
 ```
 
 ## 新特性

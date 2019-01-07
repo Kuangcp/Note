@@ -31,7 +31,7 @@ categories:
             1. [less](#less)
             1. [tail](#tail)
             1. [head](#head)
-        1. [比较两个文件](#比较两个文件)
+        1. [比较文件内容](#比较文件内容)
             1. [不同](#不同)
                 1. [diff](#diff)
             1. [相同](#相同)
@@ -46,6 +46,7 @@ categories:
             1. [合并文件](#合并文件)
 1. [磁盘](#磁盘)
     1. [文件系统](#文件系统)
+        1. [fsck](#fsck)
     1. [安装系统时基本分区](#安装系统时基本分区)
     1. [设备列表](#设备列表)
     1. [常用命令](#常用命令)
@@ -59,7 +60,7 @@ categories:
     1. [系统日志](#系统日志)
     1. [应用日志](#应用日志)
 
-**目录 end**|_2018-12-29 21:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-07 12:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 【文件管理】
 > Linux中认为万物皆文件
@@ -265,9 +266,10 @@ categories:
 #### head  
 - 查看文件头部, 默认前十行 使用 -n 指定行数
 
-### 比较两个文件
+### 比较文件内容
 #### 不同
 - `grep -vwf 文件1 文件2`
+
 ##### diff
 > [参考博客](http://www.cnblogs.com/chenjianhong/archive/2012/09/26/4144940.html)
 
@@ -332,6 +334,11 @@ categories:
 > [参考博客: Linux 文件系统剖析](https://www.ibm.com/developerworks/cn/linux/l-linux-filesystem/index.htmlQ)
 > [参考博客: 详解NTFS文件系统](http://www.blogfshare.com/detail-ntfs-filesys.html)
 > [参考博客: 使用 FUSE 开发自己的文件系统](https://www.ibm.com/developerworks/cn/linux/l-fuse/)
+
+### fsck
+> check and repair a Linux filesystem
+
+当系统突然断电而导致文件系统不一致时, 可使用该命令进行修复, 例如:`fsck.ext4 -vy /dev/sdaXX`
 
 ## 安装系统时基本分区
 - / 根目录, 操作系统安装的目录
