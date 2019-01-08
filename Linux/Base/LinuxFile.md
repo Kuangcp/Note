@@ -233,6 +233,11 @@ categories:
 
 带行号输出 `cat -n file` 或者 `nl file`但是空行不会编号, 除非这样: `nl -b a file`
 
+- [ ] 需要解决该问题  ls | xargs cat | grep "ERROR"
+```
+匹配到二进制文件 (标准输入)
+xargs: cat：因信号 13 而终止
+```
 #### nl
 - [参考博客: 每天一个linux命令(11)：nl命令](http://www.cnblogs.com/peida/archive/2012/11/01/2749048.html#/)
 
