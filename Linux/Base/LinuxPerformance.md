@@ -44,7 +44,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-09 00:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux 性能分析和管理
 ## 运行状况信息
@@ -281,6 +281,8 @@ categories:
         - e 显示全部进程, 包含了未在终端运行的进程
         - F 显示详尽的进程信息
         
+> Debian 上 `ps -ef` 和 `ps ef` 执行效果不一样
+
 - `-o` 输出指定列 `ps -eo pid,user,cmd,start` 
     - `man ps` 可以看到可以指定的列 
     - 若要取别名 `pid=进程号`

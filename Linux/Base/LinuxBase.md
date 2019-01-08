@@ -39,7 +39,7 @@ categories:
         1. [关闭ssh回话仍能运行](#关闭ssh回话仍能运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2019-01-07 23:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-09 00:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -139,16 +139,26 @@ categories:
 ****************************
 
 ## 进程
-- [ ] 学习
+> 参考 深入理解计算机系统 书籍
 
 > [参考博客: 孤儿进程与僵尸进程[总结]](http://www.cnblogs.com/Anker/p/3271773.html)
 
 ### 孤儿进程
-> 一个父进程退出，而它的一个或多个子进程还在运行，那么那些子进程将成为孤儿进程。孤儿进程将被init进程(进程号为1)所收养，并由init进程对它们完成状态收集工作。
+> 一个父进程退出，而它的子进程还在运行，那么那些子进程将成为孤儿进程。孤儿进程将被init进程(进程号为1)所收养，并由init进程对它们完成状态收集工作。
+
+> 注意, 也有意外, 并不总是被 init 进程收养 [Ubuntu15.04 删除/sbin/upstart与孤儿进程收养的问题](https://blog.csdn.net/chilumanxi/article/details/47066331)
 
 ### 僵尸进程
-> 一个进程使用fork创建子进程，如果子进程退出，而父进程并没有调用wait或waitpid获取子进程的状态信息，那么子进程的进程描述符仍然保存在系统中。这种进程称之为僵死进程。
+> 一个进程使用fork创建子进程，如果子进程退出，而父进程并没有调用wait或waitpid获取子进程的状态信息，那么子进程的进程描述符仍然保存在系统中, 这种进程称之为僵死进程。
 
+- 危害:
+    - 占用系统内存 pid等资源, 无法被回收
+
+> 常规解决方案
+1. `处理信号`: 子进程退出时向父进程发送SIGCHILD信号，父进程处理SIGCHILD信号。在信号处理函数中调用wait进行处理僵尸进程。
+1. `fork两次`: 原理是将子进程成为孤儿进程，从而其的父进程变为init进程，通过init进程可以处理僵尸进程。
+
+> 暴力方案: 直接 kill 掉父进程, 父进程和僵死状态的子进程就一起被回收了
 *******************************
 
 ## 时间
