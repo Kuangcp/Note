@@ -16,7 +16,7 @@ categories:
     1. [容器编排](#容器编排)
 1. [Kubeless](#kubeless)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-09 19:01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Kubernetes
 > 又称K8s [Official site](https://kubernetes.io/) | [Github:](https://github.com/kubernetes/kubernetes)
@@ -26,7 +26,7 @@ categories:
 [Kubernetes 学习笔记 ](http://wdxtub.com/2017/06/05/k8s-note/)
 
 > [参考博客: Kubernetes会不会被自身的复杂性压垮？](http://www.infoq.com/cn/articles/will-kubernetes-collapse-under-the-weight-of-its-complexity)
-
+> [参考博客: 一文带你看透kubernetes 容器编排系统](https://my.oschina.net/qcloudcommunity/blog/2998211)
 
 ## 安装
 > [official doc](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
