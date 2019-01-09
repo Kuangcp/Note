@@ -27,7 +27,7 @@ categories:
     1. [Diffie-Hellman Key Exchange算法](#diffie-hellman-key-exchange算法)
 1. [实际问题](#实际问题)
 
-**目录 end**|_2019-01-07 00:34_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-10 00:10_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 数据结构和算法
 > 数据结构是指一组数据的存储结构 算法就是操作数据的方法 数据结构和算法是相辅相成的，数据结构是为算法服务的，而算法要作用在特定的数据结构之上
@@ -59,6 +59,13 @@ categories:
 > [《编程之法》](https://github.com/julycoding/The-Art-Of-Programming-By-July)
 
 > [清华大学 邓俊辉 数据结构 C++实现](https://dsa.cs.tsinghua.edu.cn/~deng/ds/dsacpp/index.htm)
+
+> [DataStructures.pdf](http://www-bcf.usc.edu/~dkempe/teaching/DataStructures.pdf)
+> [notes.pdf](http://www.cs.yale.edu/homes/aspnes/classes/223/notes.pdf)
+> [notes](http://web.stanford.edu/class/archive/cs/cs103/cs103.1164/notes/)
+> [data structures.pdf](https://inst.eecs.berkeley.edu/~cs61b/fa18/materials/book2/data-structures.pdf)
+> [Data structure.pdf](https://www.cs.auckland.ac.nz/textbookCS220/ebook/DGW2.pdf)
+> [algorithms](http://jeffe.cs.illinois.edu/teaching/algorithms/)
 
 **********************
 

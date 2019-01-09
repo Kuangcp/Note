@@ -39,7 +39,7 @@ categories:
         1. [关闭ssh回话仍能运行](#关闭ssh回话仍能运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2019-01-09 00:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-10 00:10_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -154,7 +154,7 @@ categories:
 - 危害:
     - 占用系统内存 pid等资源, 无法被回收
 
-> 常规解决方案
+> 常规解决方案 [Github: 代码示例](https://github.com/Kuangcp/LearnC/tree/master/exception/process)
 1. `处理信号`: 子进程退出时向父进程发送SIGCHILD信号，父进程处理SIGCHILD信号。在信号处理函数中调用wait进行处理僵尸进程。
 1. `fork两次`: 原理是将子进程成为孤儿进程，从而其的父进程变为init进程，通过init进程可以处理僵尸进程。
 

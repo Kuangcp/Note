@@ -19,8 +19,9 @@ categories:
             1. [暴露守护进程端口](#暴露守护进程端口)
             1. [持有套接字文件](#持有套接字文件)
 1. [Tips](#tips)
+    1. [孤儿进程以及僵死进程](#孤儿进程以及僵死进程)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-10 00:10_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker Advance
 
@@ -112,4 +113,10 @@ ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
   - GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"
 1. sudo update-grub
 1. Reboot your system.
+
+## 孤儿进程以及僵死进程
+> [进程相关知识](/Linux/Base/LinuxBase.md#进程)  
+
+> [参考博客: Docker和孤儿进程、僵尸进程 ](https://yq.aliyun.com/articles/61894)
+> 简而言之: docker 1.11版之前, kill 掉一个进程,成为孤儿进程后, 就直接成了僵死进程, 之后就不会了  
 
