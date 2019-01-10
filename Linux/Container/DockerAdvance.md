@@ -123,3 +123,5 @@ ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
 > Docker1.11之前的版本，孤儿进程是否有可能成为僵尸进程取决于容器内pid为1的进程是否在子进程退出时调用wait/waitpid  
 > Docker1.11版本之后孤儿进程不会成为僵尸进程
 
+- [ ] 疑问: docker 1.13.1 ulimit -u 查看到的是进程数无限制, 然后制造 僵死进程, 发现在宿主机也能看到僵死进程, 那不是会把宿主机搞挂
+
