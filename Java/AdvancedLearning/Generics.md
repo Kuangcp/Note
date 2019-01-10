@@ -221,7 +221,7 @@ categories:
 ##### 应用
 > [参考博客: 使用通配符简化泛型使用](https://www.ibm.com/developerworks/cn/java/j-jtp04298.html)
 
-- 示例1:`public static <T extends Comparable<T>> T min(T[] list);`
+- 场景1:`public static <T extends Comparable<T>> T min(T[] list);`
     - 限定了入参和返回值是 是实现了Comparable接口的某个类型 因为Comparable也是一个泛型类, 所以也进行限定类型
     - 这样的写法要比 T extends Comparable 更为彻底
     - 例如计算一个String数组的最小值 T 就是 String类型的, String是Comparable<String>的子类型
@@ -229,12 +229,14 @@ categories:
         - 因此GregorianCalendar实现的是`Comparable<Calendar>`, 而不是Comparable<GregorianCalendar>
         - 这种情况下 `public static <T extends Comparable<? super T>> T min(T[] list)` 就是安全的
 
-- 示例2: `public static <T extends ExcelTransform> List<T> importExcel(Class<T> target)`
+- 场景2: `public static <T extends ExcelTransform> List<T> importExcel(Class<T> target)`
     - 该方法实现了, 传入继承了ExcelTransform接口的类对象, 得到该类的List集合
     - `<T extends ExcelTransform> boolean` 这样写编译没报错, 那么就是说, 就是一个泛型的定义, 后面进行引用, 省的重复写
     - 简单的写法就是 `public static <T> List<T> importExcel(Class<T> target)`
 
-- 示例3: Spring4.x 添加的泛型依赖注入 , 使用的JPA就是依赖该技术   [spring学习笔记（14）——泛型依赖注入](http://blog.csdn.net/u010837612/article/details/45582043)
+- 场景3: Spring4.x 添加的泛型依赖注入 , 使用的JPA就是依赖该技术   [spring学习笔记（14）——泛型依赖注入](http://blog.csdn.net/u010837612/article/details/45582043)
+
+- 场景4: 泛型嵌套以及传递问题 [实际代码](https://github.com/Kuangcp/JavaBase/tree/master/java-generic/src/main/java/com/github/kuangcp/nesting)
 
 > 对于应用程序员, 可能很快的学会掩盖这些声明, 想当然地认为库程序员做的都是正确的, 如果是一名库程序员, 一定要习惯于通配符  
 > 否则还要用户在代码中随意地添加强制类型转换直至可以通过编译.
@@ -286,7 +288,8 @@ categories:
 ```
 
 ### 反射和泛型
-> [官方Java7的Class文档](https://docs.oracle.com/javase/7/docs/api/java/lang/Class.html) | []()
+> [Official Doc: Class](https://docs.oracle.com/javase/7/docs/api/java/lang/Class.html) | []()
+
 > 现在Class类是泛型的, 例如String.class实际上是Class<String>类的对象(事实上是唯一的对象)  
 > 类型参数十分有用, 这是因为他允许Class<T>方法的返回类型更加具有针对性.下面Class<T>的方法就使用了类型参数
 ```java
