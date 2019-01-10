@@ -95,6 +95,7 @@ categories:
 ## 日常工具
 ### 图片查看
 1. Viewnior  轻量简洁
+1. Eye of GNOME Image Viewer 功能比上面多了一点
 
 ### 百度网盘
 - [百度网盘命令客户端](https://github.com/iikira/BaiduPCS-Go) `Go语言实现`
