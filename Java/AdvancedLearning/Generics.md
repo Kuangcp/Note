@@ -23,7 +23,7 @@ categories:
             1. [通配符捕获](#通配符捕获)
         1. [反射和泛型](#反射和泛型)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-11 16:27_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 泛型
 > [开始学习的兴趣来源](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514015&idx=1&sn=12409f705c6d266e4cd062e78ce50be0&chksm=80d67c5cb7a1f54a68ed83580b63b4acded0df525bb046166db2c00623a6bba0de3c5ad71884&scene=21#wechat_redirect)
@@ -237,6 +237,7 @@ categories:
 - 场景3: Spring4.x 添加的泛型依赖注入 , 使用的JPA就是依赖该技术   [spring学习笔记（14）——泛型依赖注入](http://blog.csdn.net/u010837612/article/details/45582043)
 
 - 场景4: 泛型嵌套以及传递问题 [实际代码](https://github.com/Kuangcp/JavaBase/tree/master/java-generic/src/main/java/com/github/kuangcp/nesting)
+    - 本来的设想是只要声明了具有泛型约束的类, 就应该不用再声明该类中的泛型类型, 但是由于Java的泛型只是在编译前存在, 编译后就被擦除了, 所以没法做到这样简洁的约束
 
 > 对于应用程序员, 可能很快的学会掩盖这些声明, 想当然地认为库程序员做的都是正确的, 如果是一名库程序员, 一定要习惯于通配符  
 > 否则还要用户在代码中随意地添加强制类型转换直至可以通过编译.

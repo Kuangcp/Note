@@ -13,8 +13,10 @@ categories:
     1. [用户](#用户)
     1. [用户组](#用户组)
     1. [进程](#进程)
-        1. [孤儿进程](#孤儿进程)
-        1. [僵尸进程](#僵尸进程)
+        1. [孤儿进程和僵死进程](#孤儿进程和僵死进程)
+            1. [孤儿进程](#孤儿进程)
+            1. [僵尸进程](#僵尸进程)
+        1. [线程](#线程)
     1. [时间](#时间)
     1. [服务](#服务)
         1. [自启服务](#自启服务)
@@ -39,7 +41,7 @@ categories:
         1. [关闭ssh回话仍能运行](#关闭ssh回话仍能运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2019-01-10 00:10_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-11 16:27_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -145,6 +147,9 @@ categories:
 1. 设置最大值 `ulimit -u 5120`
 1. pid_t来表示一个进程的pid，因此能表示的进程的范围一定不会超过pid_t类型的大小
     - 查看 pid 范围 `cat /proc/sys/kernel/pid_max`
+
+> [doc: fork](http://pubs.opengroup.org/onlinepubs/7908799/xsh/fork.html)
+> [fork bomb](https://en.wikipedia.org/wiki/Fork_bomb)
 
 ### 孤儿进程和僵死进程
 > [参考博客: 孤儿进程与僵尸进程[总结]](http://www.cnblogs.com/Anker/p/3271773.html)

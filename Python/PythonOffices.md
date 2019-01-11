@@ -12,10 +12,10 @@ categories:
 1. [Offices文档](#offices文档)
     1. [Word](#word)
     1. [Excel](#excel)
-    1. [xlrd](#xlrd)
-    1. [pandas](#pandas)
+        1. [xlrd](#xlrd)
+        1. [pandas](#pandas)
 
-**目录 end**|_2018-12-13 20:53_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-11 16:27_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Offices文档
 ## Word
@@ -24,7 +24,7 @@ categories:
 > [](http://www.python-excel.org/)
 > [参考: Python-Excel 模块哪家强？](https://zhuanlan.zhihu.com/p/23998083)
 
-## xlrd 
+### xlrd 
 > [Github addr](https://github.com/python-excel/xlrd)
 
 ```python
@@ -39,5 +39,5 @@ for i in range(nrows):
     print()
 ```
 
-## pandas 
+### pandas 
 > [Official Site](http://pandas.pydata.org/)

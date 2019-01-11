@@ -11,6 +11,9 @@ categories:
 **目录 start**
  
 1. [Java8](#java8)
+    1. [接口的变化](#接口的变化)
+        1. [default方法](#default方法)
+        1. [static方法](#static方法)
     1. [Funcational](#funcational)
     1. [Lambda](#lambda)
         1. [行为参数化](#行为参数化)
@@ -68,7 +71,7 @@ categories:
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-**目录 end**|_2019-01-07 12:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-11 16:27_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [doc: API](https://docs.oracle.com/javase/8/docs/api/) | [doc下载](https://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html)
@@ -84,6 +87,18 @@ categories:
 1. Java8 in action 
 
 *****************************
+## 接口的变化
+
+### default方法
+> 接口中也能写具有方法体的方法了
+
+1. 调用方式: `接口.super.方法`
+
+### static方法
+
+1. 调用方式: static 方法 `接口.方法`
+
+*************************
 
 ## Funcational
 > [参考  Java8函数接口实现回调及Groovy闭包的代码示例](http://www.cnblogs.com/lovesqcc/p/6083759.html)
