@@ -14,13 +14,15 @@ categories:
         1. [Git Flow](#git-flow)
         1. [本地和远程](#本地和远程)
         1. [模板化提交信息](#模板化提交信息)
-    1. [图形化工具](#图形化工具)
-        1. [SourceTree](#sourcetree)
-        1. [git-cola](#git-cola)
-    1. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
-        1. [最终方案](#最终方案)
+1. [Client](#client)
+    1. [git-cola](#git-cola)
+    1. [GitBlade](#gitblade)
+    1. [GitAhead](#gitahead)
+    1. [SourceTree](#sourcetree)
+1. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
+    1. [最终方案](#最终方案)
 
-**目录 end**|_2018-12-20 10:44_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-11 19:45_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # 基于Git进行团队开发
@@ -75,19 +77,35 @@ template = ~/.gitmessage
 
 > 那么效果就是 git commit 不指定-m 参数就会调用该模板显示
 
-## 图形化工具
+*******************************
+
+# Client
 > 诚然, 命令行是高效的, 从学Git开始就是用命令行, 这只是在单兵作战或者说没有使用多分支的情况下是没有问题的  
 > 当多人协作时, 需要Review代码时, 知道每个人每次提交更改了些什么, 图形化就很方便了
 
-### SourceTree
-> [Official site](https://sourcetreeapp.com) 仅支持 Windows 和 Mac
+> [guis](https://git-scm.com/downloads/guis)
+> [client on linux ](https://unix.stackexchange.com/questions/144100/is-there-a-usable-gui-front-end-to-git-on-linux)
 
-### git-cola
+## git-cola
 > [Github: repo](https://github.com/git-cola/git-cola)`轻量, 简洁, 跨平台, 正是我想要的`
+
+- 简单小巧, 基本够用
+
+## GitBlade
+
+- 功能强大
+
+## GitAhead
+> [Github](https://github.com/gitahead/gitahead) 
+
+- 美观够用
+
+## SourceTree
+> [Official site](https://sourcetreeapp.com) 仅支持 Windows 和 Mac
 
 *******************
 
-## 小规模团队使用码云组织的总结
+# 小规模团队使用码云组织的总结
 > `master`发行分支 `dev`开发主分支 `dev-*`开发者分支 `fea-*`开发者自己的功能性分支
 
 - 在码云上创建私有仓库，然后管理成员，将开发者一一邀请进来，然后这时候就有了一个问题：
@@ -116,7 +134,7 @@ template = ~/.gitmessage
     - 这是为什么？？？？
 
 
-### 最终方案
+## 最终方案
 `双方都有修改`
 - 开发人员提交完后，主分支管理人员切换到开发人员的分支然后 `git pull 开发人员分支`，然后切换回主分支上 `git merge --no-ff 开发人员分支`（填写注释） 然后push
     - 然后切换到开发人员分支上执行 `git merge master 然后 git push` 还是`git pull origin master`
@@ -127,6 +145,4 @@ template = ~/.gitmessage
 - 如果是开发分支修改，主分支没有动，那么管理员负责切换到开发分支 然后pull 然后merge 然后 push 然后切换开发分支 然后 pull 
 
 - [处理冲突](http://blog.jobbole.com/97911/)
-
-
 
