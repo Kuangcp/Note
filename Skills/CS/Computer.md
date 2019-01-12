@@ -12,13 +12,16 @@ categories:
 1. [计算机历史](#计算机历史)
     1. [起源](#起源)
     1. [硬件系统](#硬件系统)
+        1. [内存](#内存)
         1. [硬盘](#硬盘)
         1. [CPU](#cpu)
     1. [操作系统](#操作系统)
     1. [编程语言](#编程语言)
         1. [语言的的演化](#语言的的演化)
+    1. [通用概念](#通用概念)
+        1. [缓存](#缓存)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-12 21:57_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 计算机历史
 
@@ -26,6 +29,8 @@ categories:
 
 ## 硬件系统
 > [博客:【不周山之读薄 CSAPP】零 系列概览 ](http://wdxtub.com/2016/04/16/thin-csapp-0/) `CSAPP:深入理解计算机系统`
+
+### 内存
 
 ### 硬盘
 > 存储单位 kb kilobyte; kib kibibyte 的区别: [wikipedia](https://en.wikipedia.org/wiki/Kilobyte)
@@ -39,4 +44,9 @@ categories:
 ## 编程语言
 ### 语言的的演化
 > [码农翻身:一个翻译家族的发家史](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513576&idx=1&sn=0fd7ba43902ff7b10376810118f68d62&chksm=80d67a2bb7a1f33d90a95be040987bc03033b0174cef6ccb9018203673c8c1fe192103d3ae41&scene=21#wechat_redirect) `低级语言到高级语言的演化`
+
+## 通用概念
+
+### 缓存
+> 常见缓存淘汰策略 先进先出策略 FIFO（First In，First Out）、最少使用策略 LFU（Least Frequently Used）、最近最少使用策略 LRU（Least Recently Used）
 

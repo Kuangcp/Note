@@ -21,13 +21,14 @@ categories:
         1. [线性表](#线性表)
             1. [数组](#数组)
             1. [链表](#链表)
+            1. [数组和链表对比](#数组和链表对比)
     1. [匹配算法](#匹配算法)
     1. [排序算法](#排序算法)
 1. [密码学](#密码学)
     1. [Diffie-Hellman Key Exchange算法](#diffie-hellman-key-exchange算法)
 1. [实际问题](#实际问题)
 
-**目录 end**|_2019-01-10 00:10_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-12 21:57_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 数据结构和算法
 > 数据结构是指一组数据的存储结构 算法就是操作数据的方法 数据结构和算法是相辅相成的，数据结构是为算法服务的，而算法要作用在特定的数据结构之上
@@ -252,7 +253,7 @@ O(nlogn) 也是一种非常常见的算法时间复杂度。比如，归并排�
 > 数组, 链表, 队列, 栈 
 
 #### 数组
-> 一组连续的内存空间,存放一组相同数据类型的数据
+> 一组连续的内存空间,存放一组相同数据类型的数据, 由于CPU访问存储器的[局部性原理](https://stackoverflow.com/questions/11227809/why-is-it-faster-to-process-a-sorted-array-than-an-unsorted-array/11227902#11227902), 所以数组比链表高效
 
 访问: 根据下标任意访问的时间复杂度为O（1）, 
 插入: 从最好O(1) 最坏O(n) 平均O(n)
@@ -299,6 +300,14 @@ Java 中 ArrayList 和 数组的对比
 
 #### 链表
 > 单链表 双向链表 循环链表
+
+
+#### 数组和链表对比
+
+| 操作\时间复杂度 | 数组 | 链表 |
+|:----:|:----:|:----:|
+| 插入/删除 | O(n) | O(1) |
+| 随机访问 | O(1) | O(n) |
 
 *****************
 

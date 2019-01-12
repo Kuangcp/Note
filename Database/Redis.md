@@ -10,7 +10,7 @@ categories:
 **目录 start**
  
 1. [Redis](#redis)
-1. [Book](#book)
+    1. [Book](#book)
 1. [安装和配置](#安装和配置)
     1. [Windows](#windows)
     1. [Linux](#linux)
@@ -32,15 +32,16 @@ categories:
     1. [Python使用](#python使用)
 1. [Project](#project)
     1. [webdis](#webdis)
+1. [使用](#使用)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-12 21:57_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
 
 - [Redis Official doc zh](http://redisdoc.com/index.html)
 
-# Book 
+## Book 
 > [Redis设计与实现 第二版](http://www.shouce.ren/api/view/a/13483)
 
 # 安装和配置
@@ -256,3 +257,5 @@ categories:
 
 > [官网](http://webd.is/) | [Github地址](https://github.com/nicolasff/webdis)
 
+# 使用
+> [Redis的n种妙用，不仅仅是缓存 ](https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650123010&idx=2&sn=c17bd9192daa15c00502b7e27acacc61&chksm=f36bb623c41c3f35060bf244eddddc25ea6e2b96900f57299e0d8ffe548a08823b057dee5baf&mpshare=1&scene=1&srcid=0109PazxT49BtR2oCJ6Od32h&pass_ticket=ZX4WKje%2FJzbdB6LEivhrNCtzmljNugDZul02fl5SX4snt5QLMa6Cle9o1I5CumfQ#rd)
