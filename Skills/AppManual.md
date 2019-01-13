@@ -15,10 +15,12 @@ categories:
 1. [【常用工具】](#常用工具)
     1. [网络工具](#网络工具)
         1. [nmap](#nmap)
+        1. [whatportis](#whatportis)
         1. [apache benchmark](#apache-benchmark)
     1. [日常工具](#日常工具)
-        1. [图片查看](#图片查看)
-        1. [百度网盘](#百度网盘)
+        1. [图片查看工具](#图片查看工具)
+        1. [BaiduPCS](#baidupcs)
+        1. [you-get](#you-get)
         1. [输入法](#输入法)
             1. [搜狗输入法](#搜狗输入法)
             1. [rime](#rime)
@@ -27,6 +29,7 @@ categories:
         1. [convert](#convert)
         1. [todo.txt](#todotxt)
             1. [todo.txt-cli](#todotxt-cli)
+        1. [termux](#termux)
     1. [IDE](#ide)
         1. [Idea](#idea)
         1. [Eclipse](#eclipse)
@@ -35,7 +38,7 @@ categories:
     1. [安全工具](#安全工具)
         1. [gpg](#gpg)
 
-**目录 end**|_2019-01-06 00:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-13 22:48_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 软件使用记事
 ## 【包管理】
@@ -85,6 +88,9 @@ categories:
     - -sR
     - -n `最简单直接的参数`
 
+### whatportis
+> whatportis 是一款可以通过服务查询默认端口，或者是通过端口查询默认服务的工具
+
 ### apache benchmark
 > 压力测试工具
 
@@ -93,13 +99,20 @@ categories:
 
 ************************************
 ## 日常工具
-### 图片查看
+### 图片查看工具
 1. Viewnior  轻量简洁
 1. Eye of GNOME Image Viewer 功能比上面多了一点
 
-### 百度网盘
+### BaiduPCS
 - [百度网盘命令客户端](https://github.com/iikira/BaiduPCS-Go) `Go语言实现`
 
+### you-get
+是一款命令行工具，用来下载网页中的视频、音频、图片，支持众多网站，包含 41 家国内主流视频、音乐网站，  
+如 网易云音乐、AB站、
+百度贴吧、斗鱼、熊猫、爱奇艺、凤凰视频、酷狗音乐、乐视、荔枝 FM、秒拍、腾讯视频、优酷土豆、央视网、芒果 TV
+等等，只需一个命令就能直接下载视频、音频以及图片回来，并且可以自动合并视频。
+
+而对于有弹幕的网站，比如 B 站，还可以将弹幕下载回来
 ### 输入法
 #### 搜狗输入法
 > 唯一一个大厂支持Linux 
@@ -146,6 +159,11 @@ _批量修改_
 
 - [todo.txt-cli](https://github.com/todotxt/todo.txt-cli)
 
+### termux
+> [wiki FAQ](https://wiki.termux.com/wiki/FAQ)
+
+> [参考博客: Hello，Termux](https://tonybai.com/2017/11/09/hello-termux/)
+> [参考博客: Termux：让Android手机摇身一变成为高级Linux终端](https://www.asmodeus.cn/archives/769)
 ******************************
 ## IDE
 ### Idea

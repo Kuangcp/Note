@@ -19,12 +19,13 @@ categories:
         1. [复制粘贴](#复制粘贴)
         1. [插入模式](#插入模式)
         1. [命令模式](#命令模式)
+    1. [语言插件](#语言插件)
     1. [vim-init](#vim-init)
     1. [spf13](#spf13)
     1. [SpaceVim](#spacevim)
     1. [space-vim](#space-vim)
 
-**目录 end**|_2018-12-23 22:40_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-13 22:48_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Vim 
 > 学习曲线很高，但是学会熟练使用后就效率很高
@@ -164,6 +165,12 @@ syntax on
 - `:q!` 放弃所有修改，退出
 - `wq` `x` 先保存后退出
 
+********************
+## 语言插件
+> vim-python   
+> vim-go 
+
+****************
 ## vim-init
 > [Github:](https://github.com/skywind3000/vim-init)
 

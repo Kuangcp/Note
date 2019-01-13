@@ -60,11 +60,11 @@ categories:
     1. [常见函数](#常见函数)
     1. [常见库](#常见库)
         1. [内置库](#内置库)
-            1. [时间处理](#时间处理)
+        1. [时间处理](#时间处理)
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-**目录 end**|_2019-01-05 18:02_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-13 22:48_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -825,10 +825,13 @@ _or (if you need to use Python 2)_
 
 - `subprocess` [代码](https://gitee.com/kcp1104/codes/9ytejo7fl2xmqsr5zwkv380)
 
-#### 时间处理
+### 时间处理
 
 _time_
-> [参考博客: Python 日期和时间](http://www.runoob.com/python/python-date-time.html)
+> [菜鸟教程: Python 日期和时间](http://www.runoob.com/python/python-date-time.html)
+
+1. 格式化当前时间 `time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())`
+
 ### 三方库
 - `redis` 和Redis命令完美融合
 - `httpie` HTTP方便的交互 [doc](https://httpie.org/doc)
