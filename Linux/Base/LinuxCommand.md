@@ -29,6 +29,7 @@ categories:
 **目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 系统常用基础命令
+> [Linux 命令大全](http://man.linuxde.net/)
 
 ## 输入输出
 
@@ -112,3 +113,4 @@ categories:
 
 ## 练习打字
 1. gtypist  
+
