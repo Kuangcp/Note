@@ -71,7 +71,7 @@ categories:
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-**目录 end**|_2019-01-11 16:27_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-13 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [doc: API](https://docs.oracle.com/javase/8/docs/api/) | [doc下载](https://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html)
@@ -956,13 +956,31 @@ _集合的Lambda迭代方式_
 
 对集合中的对象进行求和
 *******************************
+
 ## 时间处理
+1. SimpleDateFormat  `YYYY-MM-dd HH:MM:SS`
+    - 线程不安全, Java8 中使用 DateTimeFormatter 更好
+
+### ZoneId
+>  time-zone ID
+
+### Clock
+> 具有时区信息的时间类
+
+a clock can be used instead of System.currentTimeMillis() and TimeZone.getDefault(). 
+
+### Duration
+This class models a quantity or amount of time in terms of seconds and nanoseconds.   
+It can be accessed using other duration-based units, such as minutes and hours.
+
+### Period
+类似于Duration, 不同点是 date-based 
 
 ### Instant 
 - [ ] 暂时没有学会怎么用上
 
 ### LocalDateTime
-> 方便的新时间处理类, 用于替代Date
+> 方便的新时间处理类, 用于替代Java5的Date, LocalDate LocalTime 组合起来就是 LocalDateTime
 
 ```java
     // LocalDateTime 获取毫秒以及秒  也可以手动指定中国的时区 ZoneOffset.of("+8")

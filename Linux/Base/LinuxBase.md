@@ -28,12 +28,12 @@ categories:
     1. [Jump](#jump)
     1. [Search](#search)
     1. [Control](#control)
-    1. [对比](#对比)
-        1. [文件系统对比](#文件系统对比)
-        1. [桌面环境对比](#桌面环境对比)
-        1. [窗口管理器对比](#窗口管理器对比)
-        1. [文件管理器对比](#文件管理器对比)
-        1. [终端模拟器对比](#终端模拟器对比)
+1. [对比](#对比)
+    1. [文件系统对比](#文件系统对比)
+    1. [桌面环境对比](#桌面环境对比)
+    1. [窗口管理器对比](#窗口管理器对比)
+    1. [文件管理器对比](#文件管理器对比)
+    1. [终端模拟器对比](#终端模拟器对比)
 1. [Tips](#tips)
     1. [一行执行多条命令](#一行执行多条命令)
     1. [让命令在后台运行](#让命令在后台运行)
@@ -41,7 +41,7 @@ categories:
         1. [关闭ssh回话仍能运行](#关闭ssh回话仍能运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2019-01-11 16:27_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-13 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -304,15 +304,15 @@ _系统运行级别_
 | Ctrl | S | 停止回显当前Shell |
 | Ctrl | Q | 恢复回显当前Shell |
 
-## 对比
-### 文件系统对比
+# 对比
+## 文件系统对比
 > [参考博客: 如何选择文件系统：EXT4、Btrfs 和 XFS ](https://linux.cn/article-7083-1.html)
 
 目前 Linux 大多采用 ext3,往 ext4 过渡
 
 以及 zfs 的优劣
 
-### 桌面环境对比
+## 桌面环境对比
 > [Arch Doc: desktop environment](https://wiki.archlinux.org/index.php/Desktop_environment_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 > [参考: Linux下15款桌面环境](https://www.lulinux.com/archives/444)
 
@@ -328,13 +328,13 @@ _系统运行级别_
 > [X窗口系统的协议和架构](http://www.cnblogs.com/noble/p/4144098.html)
 > [Arch Doc: Xorg](https://wiki.archlinux.org/index.php/Xorg_(简体中文))
 
-### 窗口管理器对比
+## 窗口管理器对比
 > [Arch Doc: window manager](https://wiki.archlinux.org/index.php/Window_manager_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
 - [awesome window manager](https://awesomewm.org/) `平铺式的`
 
 ***************************
-### 文件管理器对比
+## 文件管理器对比
 > 有单窗口，双列，命令，简洁轻量，笨重完整 各种各样的选择
 
 - `nautilus` Gnome默认 挺好用，但是不能自动挂载分区
@@ -347,7 +347,7 @@ _系统运行级别_
 - `tuxcmd` Tux Commander 双列，小，直接的目录树，学习成本高点 `2M`
 
 *******************************
-### 终端模拟器对比
+## 终端模拟器对比
 > [详细](/Linux/Tool/Terminal.md)
 
 *****************************************************

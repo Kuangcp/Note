@@ -9,7 +9,7 @@ categories:
 
 **目录 start**
  
-1. [【文件管理】](#文件管理)
+1. [文件管理](#文件管理)
     1. [Tips](#tips)
         1. [设置交换分区](#设置交换分区)
             1. [清空交换内存](#清空交换内存)
@@ -44,6 +44,7 @@ categories:
             1. [rm](#rm)
             1. [mv](#mv)
             1. [合并文件](#合并文件)
+    1. [默认编码](#默认编码)
 1. [磁盘](#磁盘)
     1. [文件系统](#文件系统)
         1. [fsck](#fsck)
@@ -60,9 +61,9 @@ categories:
     1. [系统日志](#系统日志)
     1. [应用日志](#应用日志)
 
-**目录 end**|_2019-01-07 12:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-13 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-# 【文件管理】
+# 文件管理
 > Linux中认为万物皆文件
 
 - 清空文件内容 `true > a.txt ` 
@@ -331,6 +332,15 @@ xargs: cat：因信号 13 而终止
 1. 最简单就是 `cat file1 file2 > result`
 
 ******************************************
+## 默认编码
+> 查看当前编码  locale 或者 echo $LANG
+
+1. 修改编码 `/etc/profile` 
+```sh
+LC_ALL="zh_CN.UTF-8"
+export LANG="zh_CN.UTF-8"
+```
+
 ******************************************
 # 磁盘
 > 附: [Linux系统基本目录结构](/Linux/Base/LinuxDirectoryStructure.md)

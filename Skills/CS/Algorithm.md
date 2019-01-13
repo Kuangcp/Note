@@ -28,7 +28,7 @@ categories:
     1. [Diffie-Hellman Key Exchange算法](#diffie-hellman-key-exchange算法)
 1. [实际问题](#实际问题)
 
-**目录 end**|_2019-01-12 21:57_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-13 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 数据结构和算法
 > 数据结构是指一组数据的存储结构 算法就是操作数据的方法 数据结构和算法是相辅相成的，数据结构是为算法服务的，而算法要作用在特定的数据结构之上
@@ -301,6 +301,7 @@ Java 中 ArrayList 和 数组的对比
 #### 链表
 > 单链表 双向链表 循环链表
 
+> [Github: C语言代码实现](https://github.com/Kuangcp/LearnC/tree/master/algorithm/linked_lists)`个人`
 
 #### 数组和链表对比
 

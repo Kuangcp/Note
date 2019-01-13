@@ -30,7 +30,7 @@ categories:
         1. [玩机](#玩机)
     1. [商业](#商业)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-13 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 > 只用来记录非技术类的文章,技术类的直接放到对应的笔记中去  
@@ -103,6 +103,8 @@ categories:
 - [恒宇少年 ](https://www.jianshu.com/u/092df3f77bca)
 
 - [wsdjeg](http://www.cnblogs.com/wsdjeg/)`SpaceVim作者`
+
+- [Dale](https://www.cnblogs.com/Anker/)`Linux方面`
 
 ************************
 ## 专栏
