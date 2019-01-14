@@ -25,8 +25,9 @@ categories:
     1. [图形化工具](#图形化工具)
         1. [剪贴板管理](#剪贴板管理)
     1. [练习打字](#练习打字)
+1. [Tips](#tips)
 
-**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-14 10:45_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -114,3 +115,13 @@ categories:
 ## 练习打字
 1. gtypist  
 
+# Tips
+
+> `sudo echo "Text I want to write" > /path/to/file` not work
+> [参考博客: "sudo echo" does not work together in Ubuntu ](https://blogs.oracle.com/joshis/sudo-echo-does-not-work-together-in-ubuntu-another-waste-of-time-issue)
+> [stack over flow](https://stackoverflow.com/questions/84882/sudo-echo-something-etc-privilegedfile-doesnt-work-is-there-an-alterna)
+
+- `sudo sh -c 'echo "Text I want to write" >> /path/to/file'`
+- `echo "Text I want to write" | sudo tee -a /path/to/file > /dev/null`
+
+***************

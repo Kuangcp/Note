@@ -1,8 +1,9 @@
 ---
-title: RegularExpression.md
+title: 正则表达式
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
+    - 基础知识
 ---
 
 **目录 start**
@@ -10,10 +11,15 @@ categories:
 1. [正则表达式学习](#正则表达式学习)
     1. [基本字符](#基本字符)
     1. [特殊字符](#特殊字符)
+    1. [零宽断言](#零宽断言)
+        1. [先行断言](#先行断言)
+        1. [后发断言](#后发断言)
+        1. [负向零宽断言](#负向零宽断言)
+    1. [编程语言](#编程语言)
         1. [Python](#python)
         1. [Shell](#shell)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-14 10:45_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 正则表达式学习
 > [shell regex](http://man.linuxde.net/docs/shell_regex.html)
@@ -49,9 +55,24 @@ categories:
 > 构造正则表达式的方法和创建数学表达式的方法一样。也就是用多种元字符与操作符将小的表达式结合在一起来创建更大的表达式。
 > 正则表达式的组件可以是单个的字符、字符集合、字符范围、字符间的选择或者所有这些组件的任意组合。 
 
+## 零宽断言
+> 用于查找在某些内容(但并不包括这些内容)之前或之后的东西，也就是说它们像\b,^,$那样用于指定一个位置，这个位置应该满足一定的条件(即断言)，因此它们也被称为零宽断言
 
+> [参考博客: 零宽断言](https://www.cnblogs.com/shangdawei/p/4673117.html)
+
+### 先行断言
+(?=exp)也叫零宽度正预测先行断言
+
+### 后发断言
+(?<=exp)也叫零宽度正回顾后发断言
+
+### 负向零宽断言
+
+***************************
+
+## 编程语言
 ### Python
-- ![re.jpg](https://raw.githubusercontent.com/Kuangcp/ImageRepos/masters/Tech/python/re.jpg)
+- ![re.jpg](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/python/re.jpg)
 
 ### Shell
 - [Shell正则表达式](http://man.linuxde.net/docs/shell_regex.html)

@@ -15,9 +15,8 @@ categories:
     1. [Docker](#docker)
         1. [内存高占用](#内存高占用)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-14 10:45_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-
 # 问题解决方案
 ## Linux 
 > [详细](/Linux/Base/LinuxProblem.md)
@@ -31,9 +30,9 @@ categories:
 
 但是又不能直接 unset, 这个变量似乎是用来解决字体锯齿问题的, 所以需要如下配置
 ```sh
-_SILENT_JAVA_OPTIONS="$_JAVA_OPTIONS"
-unset _JAVA_OPTIONS
-alias java='java "$_SILENT_JAVA_OPTIONS"'
+    _SILENT_JAVA_OPTIONS="$_JAVA_OPTIONS"
+    unset _JAVA_OPTIONS
+    alias java='java "$_SILENT_JAVA_OPTIONS"'
 ```
 - 只需将该配置加到  `/etc/profile` 文件尾部, 这样的话, 终端不会有如上提示
 - 但是IDEA中输出控制台仍带有该提示, 在 `bin/idea.sh` 中也添加如上配置即可(在最后一段之前)

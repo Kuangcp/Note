@@ -14,9 +14,10 @@ categories:
     1. [Tips](#tips)
         1. [清理仓库大文件](#清理仓库大文件)
             1. [gc](#gc)
+        1. [CRLF与LF](#crlf与lf)
     1. [提交行为准则](#提交行为准则)
 
-**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-14 10:45_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git Advance
 
@@ -60,6 +61,16 @@ categories:
 - `--auto` 启用自动垃圾回收模式
 - `--force` 强制执行 gc 即使另外一个 gc 正在执行
 
+### CRLF与LF
+> 由于系统的不同 Windows是 CRLF *nix 是 LF Mac 是 CR | [wiki: CRLF](https://en.wikipedia.org/wiki/Newline)  
+
+```sh
+    git config --global core.autocrlf false 
+    git config --global core.safecrlf true
+```
+
+>1. CRLF -> LF `sed -i 's/\r//g' file` 配合git 就是 `git ls-files| sed -i 's/\r//g' `
+
 ## 提交行为准则
 > [参考博客: SVN提交更新的一个准则](http://www.cnblogs.com/chenlong828/archive/2008/09/22/1296193.html)
 1. 提交之前先更新
@@ -77,10 +88,10 @@ categories:
 1. 提前协调好项目组成员的工作计划
     - 在自己准备开始进行某项功能的修改之前，先给工作小组的成员谈谈自己的修改计划，让大家都能了解你的思想，了解你即将对软件作出的修改，这样能尽可能的减少在开发过程中可能出现的冲突，提高开发效率。同时你也能够在和成员的交流中发现自己之前设计的不足，完善你的设计。
 1. 对提交的信息采用明晰的标注
-    - +) 表示增加了功能
-    - *) 表示对某些功能进行了更改
-    - -) 表示删除了文件，或者对某些功能进行了裁剪，删除，屏蔽。
-    - b) 表示修正了具体的某个bug
+    - `+)` 表示增加了功能
+    - `*)` 表示对某些功能进行了更改
+    - `-)` 表示删除了文件，或者对某些功能进行了裁剪，删除，屏蔽。
+    - `b)` 表示修正了具体的某个bug
 
 - [ ] cherry pick 
 

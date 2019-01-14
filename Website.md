@@ -1,5 +1,5 @@
 ---
-title: Website.md
+title: 常用网站
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -17,6 +17,7 @@ categories:
     1. [娱乐](#娱乐)
 1. [资源网](#资源网)
     1. [字典网站](#字典网站)
+        1. [英文字典](#英文字典)
     1. [图书馆](#图书馆)
 1. [学习网站](#学习网站)
     1. [并发](#并发)
@@ -58,7 +59,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-14 10:45_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 常用的网站
 ## 软件下载站
@@ -148,9 +149,10 @@ categories:
 - [海词词典](http://dict.cn/)
 - [汉典](http://www.zdic.net/)
 
-**英文字典**
+### 英文字典
 - [https://www.merriam-webster.com](https://www.merriam-webster.com)
 - [https://www.dictionary.com](https://www.dictionary.com)
+- [https://www.macmillandictionary.com/](https://www.macmillandictionary.com/)
 
 ## 图书馆
 - [维基教科书](https://zh.wikibooks.org)
