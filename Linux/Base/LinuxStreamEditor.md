@@ -17,7 +17,7 @@ categories:
     1. [sed](#sed)
     1. [awk](#awk)
 
-**目录 end**|_2018-12-21 11:22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-15 15:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 流编辑器
 > [参考博客: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
@@ -110,4 +110,6 @@ so，也不需要和其他的对比了，其他都是拆分，而paste是合并�
 1. 截取输出 cat log.log | awk '{print $2}' 
 1. 只输出某列之后的列 忽略第一列:`awk '{$1="";print $0}'` 忽略1到4: `awk '{ for(i=1; i<=4; i++){ $i="" }; print $0 }'`
 1. 按列求和 `awk '{sum += $1};END {print sum}'`
+
+> [参考博客: awk 入门教程](http://www.ruanyifeng.com/blog/2018/11/awk.html)
 

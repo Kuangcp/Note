@@ -227,6 +227,7 @@ categories:
 - [开源中国](http://tool.oschina.net/)
 - [脚本之家](http://tools.jb51.net/)
 - [tool.lu](https://tool.lu/)`小而全`
+- [codeif](https://unbug.github.io/codelf/)`搜索变量类等命名单词`
 
 ************************************
 ************************************

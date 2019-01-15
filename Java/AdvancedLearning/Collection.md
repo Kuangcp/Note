@@ -17,7 +17,7 @@ categories:
     1. [List](#list)
     1. [Set](#set)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-15 15:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 集合
 > 重要的知识点，面试必问，使用频率也很高
@@ -45,7 +45,7 @@ categories:
 
 ********************
 ## Map
-- [ ] HashMap HashTable 键为null的问题
+- HashMap 键能为null, HashTable则不可以
 
 ### HashMap 实现原理
 - [HashMap 实现原理](http://www.importnew.com/27043.html)
@@ -65,6 +65,7 @@ Node数组 大小 是 使用容量达到0.75 就扩容(翻倍), 初始化大小�
     - 如果是1 1+oldCap(16)
 
 链表就是内部类 Node list方式, 然后 如果节点大于8就转红黑树, 当减少到6后退回到list方式
+
 ********************************************
 
 ## List
@@ -93,5 +94,4 @@ List接口有众多实现, 最常用的ArrayList LinkedList
     - 因为有一个类是SortSet，顾名思义，所以是有序的，要继续多学习和使用Java原生的集合对象了
 
 > [3分钟搞掂Set集合](https://segmentfault.com/a/1190000014391402?utm_source=channel-hottest)
-
 

@@ -1,5 +1,5 @@
 ---
-title: Repository.md
+title: 开源项目
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -7,12 +7,12 @@ categories:
 
 **目录 start**
  
-1. [【GitRepos】](#gitrepos)
+1. [GitRepos](#gitrepos)
     1. [【Organization】](#organization)
     1. [User](#user)
     1. [翻译和搬运](#翻译和搬运)
     1. [【算法】](#算法)
-    1. [【Java】](#java)
+    1. [Java](#java)
         1. [综合索引](#综合索引)
         1. [源码学习](#源码学习)
         1. [Java8](#java8)
@@ -44,11 +44,11 @@ categories:
     1. [工作](#工作)
         1. [简历](#简历)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-15 15:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
-# 【GitRepos】
-> 收集的一些优秀的git仓库, 一般是参考学习为主, 用为主的工具放在了AppList下
+# GitRepos
+> 收集的一些优秀的git仓库, 参考学习为主
 
 ## 【Organization】
 - [ApacheCN](https://github.com/apachecn)`含有一些学习的文档和视频资料`
@@ -85,7 +85,7 @@ categories:
 - [interview](https://github.com/kdn251/interviews)`面试所需算法练习`
 
 ***********************************
-## 【Java】
+## Java
 ### 综合索引
 > [Java资源大全中文版](https://github.com/jobbole/awesome-java-cn)
 

@@ -17,7 +17,6 @@ categories:
         1. [vmstat](#vmstat)
         1. [mpstat](#mpstat)
         1. [top](#top)
-        1. [htop](#htop)
         1. [iostat](#iostat)
     1. [进程管理](#进程管理)
         1. [pidof](#pidof)
@@ -44,7 +43,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2019-01-09 00:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-15 15:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux 性能分析和管理
 ## 运行状况信息
@@ -144,10 +143,9 @@ categories:
     - 分别表示 CPU总的中断数, 展示每一个CPU的中断数 SUM和CPU数据综合展示
 
 ### top
-> 感觉 htop 就是基于这个开发的, 使用htop更简单些, 这个强大但是好多参数
+> 来源 procps, 用于查看 进程详细信息, CPU占用率 内存 网络等...
 
-### htop
-> 其中主要是看 RES 真实内存, VIRT 是虚拟内存(也就是进程和线程以为自己能拥有的内存大小)
+> [github: htop](https://github.com/hishamhm/htop)
 
 ### iostat
 - 执行`iostat`输出信息:
