@@ -59,7 +59,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2019-01-14 10:45_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-16 00:00_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 常用的网站
 ## 软件下载站
@@ -108,6 +108,7 @@ categories:
 - [手机参数对比网站](http://product.pconline.com.cn/mobile/pk/param/1062508_1091427_1101075_604928_1035872.html)
 
 - [文档汉化](http://doczh.cn/)
+- [www.differencebetween.com](https://www.differencebetween.com/)
 
 ## 库托管
 > [libraries.io](https://libraries.io/)

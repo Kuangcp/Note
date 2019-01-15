@@ -13,10 +13,11 @@ categories:
         1. [和其他思想的对比](#和其他思想的对比)
     1. [函数式特性](#函数式特性)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-16 00:00_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 函数式编程思想
 > [码农翻身:函数式编程圣经](http://mp.weixin.qq.com/s/0gErQ3tjDLZuD1bYOhi0mQ)
+> [解道: 面向函数范式编程](https://www.jdon.com/functional.html)
 
 ### 和其他思想的对比
 

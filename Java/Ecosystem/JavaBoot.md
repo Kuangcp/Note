@@ -1,8 +1,9 @@
 ---
-title: JavaBoot.md
+title: Java快速开发框架
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
+    - Java
 ---
 
 **目录 start**
@@ -17,5 +18,9 @@ categories:
 # 关于Java的快速开发框架
 
 ## Springboot
+> 基于Spring
+
 ## Jboot
+> 基于JFinal
+
 ## NuzBoot
