@@ -32,9 +32,10 @@ categories:
             1. [tail](#tail)
             1. [head](#head)
         1. [比较文件内容](#比较文件内容)
-            1. [不同](#不同)
-                1. [diff](#diff)
-            1. [相同](#相同)
+            1. [diff](#diff)
+            1. [meld](#meld)
+            1. [kdiff3](#kdiff3)
+            1. [vimdiff](#vimdiff)
         1. [文件管理命令](#文件管理命令)
             1. [rename](#rename)
             1. [chown](#chown)
@@ -43,7 +44,7 @@ categories:
             1. [cp](#cp)
             1. [rm](#rm)
             1. [mv](#mv)
-            1. [合并文件](#合并文件)
+            1. [文件的分割与合并](#文件的分割与合并)
     1. [默认编码](#默认编码)
 1. [磁盘](#磁盘)
     1. [文件系统](#文件系统)
@@ -61,7 +62,7 @@ categories:
     1. [系统日志](#系统日志)
     1. [应用日志](#应用日志)
 
-**目录 end**|_2019-01-13 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-15 15:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -273,13 +274,21 @@ xargs: cat：因信号 13 而终止
 - 查看文件头部, 默认前十行 使用 -n 指定行数
 
 ### 比较文件内容
-#### 不同
 - `grep -vwf 文件1 文件2`
 
-##### diff
-> [参考博客](http://www.cnblogs.com/chenjianhong/archive/2012/09/26/4144940.html)
+> [阮一峰: 读懂diff](http://www.ruanyifeng.com/blog/2012/08/how_to_read_diff.html)
 
-#### 相同
+#### diff
+> [参考博客 linux下比较两个文本文件的不同——diff命令](http://www.cnblogs.com/chenjianhong/archive/2012/09/26/4144940.html)
+
+#### meld
+> [Github: meld](https://github.com/GNOME/meld)
+
+> 可用于 git svn 查看差异, 或者简单的两个文件查看差异
+
+#### kdiff3
+
+#### vimdiff
 
 ### 文件管理命令
 #### rename

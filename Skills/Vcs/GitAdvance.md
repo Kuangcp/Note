@@ -17,7 +17,7 @@ categories:
         1. [CRLF与LF](#crlf与lf)
     1. [提交行为准则](#提交行为准则)
 
-**目录 end**|_2019-01-14 10:45_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-15 15:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git Advance
 
@@ -30,6 +30,8 @@ categories:
 - `git ls-files` 列出文件列表
     - `git ls-files | xargs wc -l` 计算文件中程序代码行数 通过工具：`xargs` `wc` (中文命名的文件编码问题无法计算行数)
     - `git ls-files | xargs cat | wc -l` 计算行数总和
+
+- [git bisect 命令教程](http://www.ruanyifeng.com/blog/2018/12/git-bisect.html)
 - [二分查找捉虫记](http://www.worldhello.net/2016/02/29/git-bisect-on-git.html)`通过分析提交历史查到哪次提交引起的Bug然后检出,修复`
 
 - [API: github开发接口](https://developer.github.com/v3/)
@@ -68,6 +70,8 @@ categories:
     git config --global core.autocrlf false 
     git config --global core.safecrlf true
 ```
+> [参考博客: CRLF和LF](https://www.tuicool.com/articles/IJjQVb)
+> [参考博客: git 换行符LF与CRLF转换问题](https://www.cnblogs.com/sdgf/p/6237847.html)
 
 >1. CRLF -> LF `sed -i 's/\r//g' file` 配合git 就是 `git ls-files| sed -i 's/\r//g' `
 
