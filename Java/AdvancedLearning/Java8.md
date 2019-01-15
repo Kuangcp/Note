@@ -898,9 +898,12 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 1. map
     1. 使用 map 从 Optional 对象中提取和转换值: 可以将 Optional 看成只有一个元素的集合, 像Stream一样的使用 map
     1. 处理两个Optional对象: `person.flatMap(p -> car.map(c -> findCheapestInsurance(p, c)));` 原始的写法就是要判断两个对象同时存在(person 和 car )才调用find...方法
+
 1. flatMap
     1. 流式获取 Optional 约束的属性 `Optional<String> name = a.flatMap(A::getB).flatMap(B::getC).map(C::getName)`
-    - 其中 C是B的成员属性, B是A的成员属性, 且都是 Optional 的, 如果直接使用 map 就会发生 Optional 嵌套, 所以需要 flatMap 
+    - 其中 `Optional<C> c;` 是B的成员属性 `Optional<B> b;` 是A的成员属性
+    - 如果直接使用 map 就会发生 `Optional<Optional<T>>` 嵌套, 所以需要使用 flatMap 
+
 1. filter 
     1. persion 存在且满足条件就返回自身否则返回空 `person.filter(o -> "name".equals(o.getName()))`
 
