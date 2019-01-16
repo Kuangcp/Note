@@ -21,7 +21,7 @@ categories:
         1. [非普通类型](#非普通类型)
     1. [Hibernate实体关联配置](#hibernate实体关联配置)
         1. [一对多的配置](#一对多的配置)
-            1. [**注意 ：**](#注意-)
+            1. [注意](#注意)
         1. [多对多的配置](#多对多的配置)
             1. [学生方配置](#学生方配置)
             1. [课程方配置](#课程方配置)
@@ -37,7 +37,7 @@ categories:
             1. [Session的方法](#session的方法)
             1. [特别注意](#特别注意)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-16 16:01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Hibernate
 ## Hibernate基础配置
@@ -164,7 +164,7 @@ sessionFactory实例化，高位就会加一，生成算法是：hi*(max lo +1)+
 * 多方维护：一方中set标签加inverse="true"一方就不会维护，代码一定要多方执行set**(*)
 * 一方维护：一方代码一定要执行**.add*()
 
-####  **注意 ：**
+#### 注意
 - 1.在一的一方，修改xml文件，添加一个set 属性，表示 多方 的一个集合
 ```xml
     <set name="类中属性名（集合）" inverse="true">

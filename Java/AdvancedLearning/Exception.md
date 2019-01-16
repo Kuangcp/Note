@@ -11,6 +11,7 @@ categories:
  
 1. [异常](#异常)
     1. [异常的继承关系](#异常的继承关系)
+    1. [常见异常](#常见异常)
     1. [异常常见问题](#异常常见问题)
         1. [应该使用大块的try还是细颗粒度的try?](#应该使用大块的try还是细颗粒度的try)
         1. [try和for谁包住谁更好?](#try和for谁包住谁更好)
@@ -21,7 +22,7 @@ categories:
         1. [自定义异常](#自定义异常)
             1. [自定义异常的错误码](#自定义异常的错误码)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-16 16:01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 异常
 > 相关博客:[Java异常浅谈](http://www.cnblogs.com/focusj/archive/2011/12/26/2301524.html)  
@@ -34,6 +35,10 @@ categories:
 Err错误，一般是指与虚拟机相关的问题，如系统崩溃，虚拟机错误，动态链接失败等，这种错误无法恢复或不可能捕获，将导致应用程序中断，通常应用程序无法处理这些错误;  
 因此应用程序不应该使用catch块来捕获Error对象,在定义该方法时，也无须在其throws子句中声明该方法可能抛出Error及任何子类。  
 所以异常处理更多的是指Exception类,而经常处理的一般是RunTimeException 而Exception又分为2种:_校验异常_ 和 _运行时异常_  
+
+## 常见异常
+> [ConcurrentModificationException](https://docs.oracle.com/javase/8/docs/api/java/util/ConcurrentModificationException.html)
+- 常发生于集合并发修改和迭代时
 
 ****************************
 ## 异常常见问题

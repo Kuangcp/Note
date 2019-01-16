@@ -13,11 +13,12 @@ categories:
     1. [集合继承和实现关系](#集合继承和实现关系)
     1. [Iterator](#iterator)
     1. [Map](#map)
-        1. [HashMap 实现原理](#hashmap-实现原理)
+        1. [HashMap](#hashmap)
+        1. [ConcurrentHashMap](#concurrenthashmap)
     1. [List](#list)
     1. [Set](#set)
 
-**目录 end**|_2019-01-15 15:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-16 16:01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 集合
 > 重要的知识点，面试必问，使用频率也很高
@@ -47,7 +48,8 @@ categories:
 ## Map
 - HashMap 键能为null, HashTable则不可以
 
-### HashMap 实现原理
+### HashMap
+
 - [HashMap 实现原理](http://www.importnew.com/27043.html)
 - [HashMap 怎么 hash？又如何 map？](https://my.oschina.net/editorial-story/blog/2396106)
 - [ ] 整理实现
@@ -65,6 +67,13 @@ Node数组 大小 是 使用容量达到0.75 就扩容(翻倍), 初始化大小�
     - 如果是1 1+oldCap(16)
 
 链表就是内部类 Node list方式, 然后 如果节点大于8就转红黑树, 当减少到6后退回到list方式
+
+> 发生 ConcurrentModificationException 时:
+1. 使用 synchronized 限制迭代或修改方法
+1. 使用 ConcurrentHashMap 
+
+### ConcurrentHashMap
+> 避免 ConcurrentModificationException 
 
 ********************************************
 

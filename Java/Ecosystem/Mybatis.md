@@ -15,16 +15,15 @@ categories:
         1. [导入JAR包：](#导入jar包)
         1. [创建SqlSessionFactory类 内容：](#创建sqlsessionfactory类-内容)
             1. [maven Spring-mybaits 配置](#maven-spring-mybaits-配置)
-                1. [**SessionFactory类，使用Spring注入一个工厂类，然后使用本地线程组，节省Session开销**](#sessionfactory类使用spring注入一个工厂类然后使用本地线程组节省session开销)
         1. [流程控制](#流程控制)
             1. [foreach 循环语句](#foreach-循环语句)
-                1. [collection 有 arry list map 几种 还有item是必写，其他的是可选的](#collection-有-arry-list-map-几种-还有item是必写其他的是可选的)
+                1. [collection](#collection)
             1. [if 判断语句:](#if-判断语句)
             1. [set 方便书写update语句](#set-方便书写update语句)
             1. [choose 相当于switch语句](#choose-相当于switch语句)
-                1. [$和的区别：](#$和的区别)
+                1. [$ 和  的区别：](#$-和--的区别)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-16 16:01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Mybatis
 > 一个灵活的数据库中间件框架
@@ -164,12 +163,11 @@ categories:
        </bean>
 ```
 
-#####  **SessionFactory类，使用Spring注入一个工厂类，然后使用本地线程组，节省Session开销**
+> **SessionFactory类，使用Spring注入一个工厂类，然后使用本地线程组，节省Session开销**
 
 ```java
-
     @Component
-    public class MybatisSessionFactory {
+    public class MybatisSessionFactory {注意
        @Autowired
        private  SqlSessionFactory sessionFactory;
        // 日志
@@ -216,7 +214,10 @@ categories:
         ${params}
     </foreach>
 ```
-##### collection 有 arry list map 几种 还有item是必写，其他的是可选的
+##### collection
+
+有 arry list map 几种 还有item是必写，其他的是可选的
+
 #### if 判断语句:
 - `<if test=""></if>`
 
@@ -228,11 +229,14 @@ categories:
 #### choose 相当于switch语句
 - `<choose><when test=""></when></choose>`
 
-#### $和#的区别：
+#### $ 和 # 的区别：
 - \$ 会有SQL注入的漏洞，#则没有
 - 使用$ 是SQL进行String的拼接，使用#是preparstatement的预处理然后注入
 - 使用#的时候出现这个问题
+
+```
 2017-01-22 11:16:11.046 [main] DEBUG myth.book.getAll_Param_BookType - ==>  Preparing: select * from book_type where ? and ? and 1=1; 
 2017-01-22 11:16:11.136 [main] DEBUG myth.book.getAll_Param_BookType - ==> Parameters:  book_type<10 (String),  'father_type='2 (String)
+```
 - 条件不能使用数值，
     条件是单独使用时也是String但是是有效的
