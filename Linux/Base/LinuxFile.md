@@ -62,7 +62,7 @@ categories:
     1. [系统日志](#系统日志)
     1. [应用日志](#应用日志)
 
-**目录 end**|_2019-01-15 15:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-16 21:31_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -70,6 +70,8 @@ categories:
 - 清空文件内容 `true > a.txt ` 
 - 安装上传下载文件的工具 `sudo apt install lrzsz`
 - `cat ~/.ssh/id_rsa.pub | xsel -b` 将文件复制到剪贴板
+
+*************************
 
 ## Tips
 ### 设置交换分区
