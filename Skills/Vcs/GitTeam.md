@@ -9,10 +9,11 @@ categories:
 
 **目录 start**
  
-1. [基于Git进行团队开发](#基于git进行团队开发)
+1. [使用Git进行团队协作](#使用git进行团队协作)
     1. [基础思想](#基础思想)
         1. [Git Flow](#git-flow)
         1. [本地和远程](#本地和远程)
+    1. [提交准则](#提交准则)
         1. [模板化提交信息](#模板化提交信息)
 1. [Client](#client)
     1. [git-cola](#git-cola)
@@ -22,10 +23,10 @@ categories:
 1. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
     1. [最终方案](#最终方案)
 
-**目录 end**|_2019-01-11 19:45_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-17 15:13_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
-# 基于Git进行团队开发
+# 使用Git进行团队协作
 > [在阿里，我们如何管理代码分支？](https://blog.csdn.net/maoreyou/article/details/79877829)
 > [版本控制最佳实践](https://www.git-tower.com/blog/version-control-best-practices/)
 
@@ -44,7 +45,6 @@ categories:
 - [参考博客:  Git 在团队中的最佳实践--如何正确使用Git Flow](http://www.cnblogs.com/cnblogsfans/p/5075073.html)
     - [参考博客: Getting Started – Git-Flow](https://yakiloo.com/getting-started-git-flow/)
 
-`规范的分支图`
 ![规范的分支图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Git/git-team-model.png)
 
 - Git Flow常用的分支
@@ -64,6 +64,32 @@ categories:
     - 一个本地库是能够绑定多个远程的
 
 - [分支图复杂的一个项目](https://github.com/Netflix/eureka/network) `只是演示分支的复杂度`
+
+***********************
+
+## 提交准则
+> [参考博客: SVN提交更新的一个准则](http://www.cnblogs.com/chenlong828/archive/2008/09/22/1296193.html)
+1. 提交之前先更新
+    - SVN更新的原则是要随时更新，随时提交。当完成了一个小功能，能够通过编译并且并且自己测试之后，谨慎地提交。
+    - 如果提交过程中产生了冲突，则需要同之前的开发人员联系，两个人一起协商解决冲突，解决冲突之后，需要两人一起测试保证解决冲突之后，程序不会影响其他功能。
+    - 如果提交过程中产生了更新，则也是需要重新编译并且完成自己的一些必要测试，再进行提交。
+1. 保持原子性的提交
+    - 每次提交的间歇尽可能地短，以一个小时，两个小时的开发工作为宜。如在更改UI界面的时候，可以每完成一个UI界面的修改或者设计，就提交一次。在开发功能模块的时候，可以每完成一个小细节功能的测试，就提交一次，在修改bug的时候，每修改掉一个bug并且确认修改了这个bug，也就提交一次。我们提倡多提交，也就能多为代码添加上保险。
+1. 提交时注意不要提交本地自动生成的文件
+    - 对于Java来说, IDE自身配置文件, 和字节码文件是无需提交的 例如 .idea目录 iml文件 
+1. 不要提交不能通过编译的代码
+    - 代码在提交之前，首先要确认自己能够在本地编译。如果在代码中使用了第三方类库，要考虑到项目组成员中有些成员可能没有安装相应的第三方类库，项目经理在准备项目工作区域的时候，需要考虑到这样的情况，确保开发小组成员在签出代码之后能够在统一的环境中进行编译。
+1. 不要提交自己不明白的代码
+    - 提交之后, 你的代码将被项目成员所分享。如果提交了你不明白的代码，你看不懂，别人也看不懂，如果在以后出现了问题将会成为项目质量的隐患。因此在引入任何第三方代码之前，确保你对这个代码有一个很清晰的了解。
+1. 提前协调好项目组成员的工作计划
+    - 在自己准备开始进行某项功能的修改之前，先给工作小组的成员谈谈自己的修改计划，让大家都能了解你的思想，了解你即将对软件作出的修改，这样能尽可能的减少在开发过程中可能出现的冲突，提高开发效率。同时你也能够在和成员的交流中发现自己之前设计的不足，完善你的设计。
+1. 对提交的信息采用明晰的标注
+    - `+)` 表示增加了功能
+    - `*)` 表示对某些功能进行了更改
+    - `-)` 表示删除了文件，或者对某些功能进行了裁剪，删除，屏蔽。
+    - `b)` 表示修正了具体的某个bug
+
+> [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)
 
 ### 模板化提交信息
 > git commit message 的模板化
