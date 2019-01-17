@@ -727,12 +727,13 @@ Collectors所提供的工厂方法 它们主要提供了三大功能：将流元
 ##### 汇总
 > Collectors类专门为汇总提供了一个工厂方法：Collectors.summingInt 它可接受一个把对象映射为求和所需int的函数，并返回一个收集器；该收集器在传递给普通的collect方法后即执行我们需要的汇总操作  
 > 求平均数 Collectors.averagingInt
-> summarizing操作你可以得出元素的个数，并得到总和、平均值、最大值和最小值
 
+> `summarizing` 操作你可以得出元素的个数，并得到总和、平均值、最大值和最小值
 ```java
-IntSummaryStatistics menuStatistics = menu.stream().collect(summarizingInt(Dish::getCalories)); 
-// toString(): IntSummaryStatistics{count=9, sum=4300, min=120, average=477.777778, max=800} 
+    IntSummaryStatistics menuStatistics = menu.stream().collect(summarizingInt(Dish::getCalories)); 
+    // toString(): IntSummaryStatistics{count=9, sum=4300, min=120, average=477.777778, max=800} 
 ```
+
 **`连接字符串`**
 joining工厂方法返回的收集器会把对流中每一个对象应用toString方法得到的所有字符串连接成一个字符串。
 `String shortMenu = menu.stream().collect(joining()); `
