@@ -9,43 +9,8 @@
 
 </div>
 
-# 收集的笔记仓库
-- [笔记](https://github.com/dragonhht/Notes)
+# 目录
 
-- [CS Notes](https://github.com/CyC2018/CS-Notes)
-- [note of interview ](https://github.com/zhengjianglong915/note-of-interview)
-- [skill tree](https://github.com/linw7/Skill-Tree)
-
-- [巨人工作记录](https://ztgame.shenyu.me/)`笔记 基于 GitBook`
-- [某研究生在校阅读笔记](https://github.com/lanxuezaipiao/ReadingNotes)
-
-- [书写规范和建议](https://github.com/sparanoid/chinese-copywriting-guidelines)`比较全面,闲暇可以参考`
-- [阮一峰的博客](https://github.com/ruanyf/articles)`Github账号每日都有提交....`
-
-### Linux 
-- [judasn](https://github.com/judasn/hexo-blog)`善于归纳的人 相关:Javaer眼中的Linux`
-
-### Java
-- [Java guide](https://github.com/Snailclimb/JavaGuide)
-- [Java工程师成神之路](https://github.com/hollischuang/toBeTopJavaer)
-- [唯品会的规范文档](https://github.com/vipshop/vjtools)`规范这种东西, 各有各家的说法, 适合自己就好`
-- [daydayup](https://github.com/ITDragonBlog/daydayup)
-
-### Python
-- [老齐的笔记](https://github.com/qiwsir/ITArticles)`跟老齐学Python的轻松入门 作者`
-
-### 前端
-- [CSS 魔法](https://github.com/cssmagic/blog)
-- [cain-note](https://github.com/james-cain/cain-note)`像是培训机构的资料和他本人的学习笔记,偏向前端`
-- [梁少锋的博客笔记](https://github.com/youngwind/blog)`前端相关`
-- [HstarDoc](https://github.com/hstarorg/HstarDoc)`前端的大量文档`
-
-*****************************************
-
-# Summary
-
-* 【 C 】
-    * [ C语言基础 ](/C/CBase.md) 
 * 【 Database 】
     * [ 数据库使用经验 ](/Database/Experience.md)
     * [ GraphQL ](/Database/GraphQL.md)
@@ -60,10 +25,6 @@
     * [ Redis进阶 ](/Database/RedisAdvance.md)
     * [ SQL基础 ](/Database/SQL.md)
     * [ SQLServer ](/Database/SQLServer.md)
-* 【 Distributed 】
-    * 【 Distributed/Middlewave 】
-        * [ Apollo ](/Distributed/Middlewave/Apollo.md)
-    * [ RPC ](/Distributed/RPC.md)
 * 【 FrontEnd 】
     * 【 FrontEnd/Frame 】
         * [ LayUI ](/FrontEnd/Frame/LayUI.md)
@@ -269,3 +230,35 @@
         * [ WorkThinking ](/Skills/Work/WorkThinking.md)
     * [ 正则表达式 ](/Skills/RegularExpression.md)
     * [ 软考相关 ](/Skills/SoftwareDesignEngineer.md)
+
+
+# 其他笔记仓库
+- [笔记](https://github.com/dragonhht/Notes)
+
+- [CS Notes](https://github.com/CyC2018/CS-Notes)
+- [note of interview ](https://github.com/zhengjianglong915/note-of-interview)
+- [skill tree](https://github.com/linw7/Skill-Tree)
+
+- [巨人工作记录](https://ztgame.shenyu.me/)`笔记 基于 GitBook`
+- [某研究生在校阅读笔记](https://github.com/lanxuezaipiao/ReadingNotes)
+
+- [书写规范和建议](https://github.com/sparanoid/chinese-copywriting-guidelines)`比较全面,闲暇可以参考`
+- [阮一峰的博客](https://github.com/ruanyf/articles)`Github账号每日都有提交....`
+
+### Linux 
+- [judasn](https://github.com/judasn/hexo-blog)`善于归纳的人 相关:Javaer眼中的Linux`
+
+### Java
+- [Java guide](https://github.com/Snailclimb/JavaGuide)
+- [Java工程师成神之路](https://github.com/hollischuang/toBeTopJavaer)
+- [唯品会的规范文档](https://github.com/vipshop/vjtools)`规范这种东西, 各有各家的说法, 适合自己就好`
+- [daydayup](https://github.com/ITDragonBlog/daydayup)
+
+### Python
+- [老齐的笔记](https://github.com/qiwsir/ITArticles)`跟老齐学Python的轻松入门 作者`
+
+### 前端
+- [CSS 魔法](https://github.com/cssmagic/blog)
+- [cain-note](https://github.com/james-cain/cain-note)`像是培训机构的资料和他本人的学习笔记,偏向前端`
+- [梁少锋的博客笔记](https://github.com/youngwind/blog)`前端相关`
+- [HstarDoc](https://github.com/hstarorg/HstarDoc)`前端的大量文档`
