@@ -30,6 +30,8 @@ categories:
 > [在阿里，我们如何管理代码分支？](https://blog.csdn.net/maoreyou/article/details/79877829)
 > [版本控制最佳实践](https://www.git-tower.com/blog/version-control-best-practices/)
 
+> [阮一峰 Git 使用规范流程](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html)
+
 - [ ] 整理和学习这几种管理方式
 
 > Github gitee gitlab bitbucket 等各大平台都是这样一种模式:   

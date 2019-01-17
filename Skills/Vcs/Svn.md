@@ -123,7 +123,7 @@ categories:
 ```sh
     svn update 
     svn merge -r 100:99 .
-    svn co -m "rolled back to r99"
+    svn ci -m "rolled back to r99"
 ```
 
 ### Tips
