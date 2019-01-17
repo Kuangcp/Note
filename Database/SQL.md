@@ -18,4 +18,7 @@ categories:
 
 > [soar](https://github.com/XiaoMi/soar)`SQL Optimizer And Rewriter `
 
+## 范式
+- [ ] 学习
+
 

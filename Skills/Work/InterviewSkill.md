@@ -17,6 +17,10 @@ categories:
 > [参考博客: 面试的时候问：你的期望薪资多少？怎么谈？](http://blog.csdn.net/Z1XpIYDj9sn/article/details/79049373)
 > [一个两年Java的面试总结](https://segmentfault.com/a/1190000013550405#articleHeader5)
 
+> [参考博客: 反问](http://www.ruanyifeng.com/blog/2012/08/questions_you_need_to_ask_in_an_interview.html)
+
+- [ ] 重新整理
+
 ## 铺垫
 - 很多同学是0基础开始学习java开发：
 	* java开发，我到底能不能学好？

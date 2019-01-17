@@ -3,7 +3,6 @@
 * [ Introduction ](README.md)
 
 * [ Platform ](./Platform.md)
-* [ Readme_back ](./Readme_back.md)
 * [ Repository ](./Repository.md)
 * [ SUMMARY ](./SUMMARY.md)
 * [ Website ](./Website.md)
@@ -93,7 +92,6 @@
         * [ JavaWeb ](/Java/AdvancedLearning/JavaWeb.md)
         * [ JvmPerformance ](/Java/AdvancedLearning/JvmPerformance.md)
         * [ MultipleLanguage ](/Java/AdvancedLearning/MultipleLanguage.md)
-        * [ ProgramThinking ](/Java/AdvancedLearning/ProgramThinking.md)
         * [ Reflection ](/Java/AdvancedLearning/Reflection.md)
         * [ Socket ](/Java/AdvancedLearning/Socket.md)
         * [ SyntaxAndType ](/Java/AdvancedLearning/SyntaxAndType.md)
@@ -208,7 +206,6 @@
 * 【 Scala 】
     * [ SBT ](/Scala/SBT.md)
     * [ Scala ](/Scala/Scala.md)
-    * [ test. ](/Scala/test.log)
 * 【 Script 】
     * [ Dos ](/Script/Dos.md)
     * [ LinuxBash ](/Script/LinuxBash.md)
@@ -223,9 +220,9 @@
         * [ CharacterEncoding ](/Skills/CS/CharacterEncoding.md)
         * [ CompilingPrinciple ](/Skills/CS/CompilingPrinciple.md)
         * [ Computer ](/Skills/CS/Computer.md)
-        * [ Concurrent ](/Skills/CS/Concurrent.md)
         * [ Network ](/Skills/CS/Network.md)
         * [ Profile ](/Skills/CS/Profile.md)
+        * [ ProgramThinking ](/Skills/CS/ProgramThinking.md)
         * [ Time ](/Skills/CS/Time.md)
         * [ WebSecurity ](/Skills/CS/WebSecurity.md)
     * 【 Skills/Councurrency 】
