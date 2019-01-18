@@ -13,10 +13,12 @@ categories:
     1. [书籍](#书籍)
     1. [发行版本列表](#发行版本列表)
     1. [安装配置](#安装配置)
-        1. [SDKMAN方式](#sdkman方式)
+        1. [SDKMAN安装](#sdkman安装)
         1. [Chocolate](#chocolate)
         1. [Docker安装](#docker安装)
-    1. [使用](#使用)
+        1. [手动配置](#手动配置)
+        1. [使用Wrapper](#使用wrapper)
+    1. [CUI使用](#cui使用)
         1. [命令行选项](#命令行选项)
         1. [守护进程](#守护进程)
     1. [配置镜像源](#配置镜像源)
@@ -28,10 +30,8 @@ categories:
         1. [protobuf-gradle-plugin](#protobuf-gradle-plugin)
 1. [关键配置文件](#关键配置文件)
     1. [build.gradle](#buildgradle)
-        1. [初始化一个新项目](#初始化一个新项目)
-        1. [依赖定义](#依赖定义)
-        1. [统一依赖管理的一种策略](#统一依赖管理的一种策略)
-        1. [配置Wrapper](#配置wrapper)
+        1. [依赖管理](#依赖管理)
+            1. [统一依赖管理的一种策略](#统一依赖管理的一种策略)
         1. [插件](#插件)
     1. [setting.gradle](#settinggradle)
         1. [Gradle多模块的构建](#gradle多模块的构建)
@@ -43,7 +43,7 @@ categories:
     1. [构建Docker镜像](#构建docker镜像)
         1. [第二种插件方式](#第二种插件方式)
 
-**目录 end**|_2019-01-18 15:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-18 21:31_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # Gradle
@@ -100,9 +100,24 @@ categories:
 
 1. 解压到任意目录, 并将 bin 目录加入 环境变量即可
 
+### 使用Wrapper
+> 类似于 Maven 的 mvnw 脚本
+
+> 在使用IDE生成项目的时候，可以选择gradle的执行目录，可以选`gradle wrapper` 也可以选自己下载解压的完整包  
+> 如果使用的不是这个wrapper，那么别人在下载项目后，运行gradle命令就要先安装gradle，使用wrapper更好
+
+```groovy
+   task wrapper(type: Wrapper){
+      gradleVersion = '4.8'
+      distributionUrl = '限定访问内网的URL'
+      distributionPath = '包装器被解压缩放的相对路径'
+   }
+```
+- 运行 gradle wrapper 一次即可开始使用包装器的脚本来构建项目了
+- 生成gradle包管理器：`gradle wrapper --gradle-version 2.0`
 ***************************************
 
-## 使用
+## CUI使用
 ### 命令行选项
 - `tasks` : 输出所有建立的task
 - `properties` : 输出所有可用的配置属性
@@ -181,15 +196,7 @@ _~/.gradle/init.gradle_
 
 ## 常用插件
 ### Lombok
-> [使用Lombok的正确方式](https://stackoverflow.com/questions/50519138/annotationprocessor-gradle-4-7-configuration-doesnt-run-lombok) | [gradle lombok plugin](https://projectlombok.org/setup/gradle)
-
-[官方文档](https://docs.gradle.org/4.7-rc-1/userguide/java_plugin.html#sec:java_compile_avoidance)
-```groovy
-  annotationProcessor 'org.projectlombok:lombok:1.18.2'
-  compileOnly 'org.projectlombok:lombok:1.18.2'
-  testAnnotationProcessor 'org.projectlombok:lombok:1.18.2'
-  testCompileOnly 'org.projectlombok:lombok:1.18.2'
-```
+> [详细](/Java/Tool/Lombok.md)
 
 ### Maven 
     - `apply plugin: "maven"` 然后就能执行 install等命令了
@@ -210,7 +217,7 @@ _~/.gradle/init.gradle_
 
 # 关键配置文件
 ## build.gradle
-_Hello World_
+> _Hello World_
 ```groovy
    task helloworld{
       doLast {
@@ -224,12 +231,16 @@ _Hello World_
 ```
 -  运行：`gradle -q helloworld`
 
-### 初始化一个新项目
-> [doc:building java application](https://guides.gradle.org/building-java-applications/)
+**************************
+> 初始化新项目  
+> [doc:building java application](https://guides.gradle.org/building-java-applications/)  
+>> 或者直接使用 gradle init 交互式新建一个项目
 
-或者直接使用 gradle init 交互式新建一个项目
+********************************
 
-### 依赖定义
+> [SourceSet](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.SourceSet.html)
+
+### 依赖管理
 - 和Maven用的是同一种方式 groupId artifactId version 
 - 使用本地依赖 `compile files('lib/ojdbc-14.jar')` 相对的根目录是src同级目录
 
@@ -321,7 +332,7 @@ _Hello World_
     }
 ```
 
-### 统一依赖管理的一种策略
+#### 统一依赖管理的一种策略
 1. 新建一个文件 _dependency.gradle_
     ```groovy
         ext {
@@ -337,20 +348,6 @@ _Hello World_
 1. 在 build.gradle 中引入 `apply from: 'dependency.gradle'`
 
 1. 使用依赖时 只需 `compile libs['junit']` 即使在子模块中也是如此使用
-
-### 配置Wrapper
-> 在使用IDE生成项目的时候，可以选择gradle的执行目录，可以选`gradle wrapper` 也可以选自己下载解压的完整包  
-> 如果使用的不是这个wrapper，那么别人在下载项目后，运行gradle命令就要先安装gradle，使用wrapper更好
-
-```groovy
-   task wrapper(type: Wrapper){
-      gradleVersion = '4.8'
-      distributionUrl = '限定访问内网的URL'
-      distributionPath = '包装器被解压缩放的相对路径'
-   }
-```
-- 运行 gradle wrapper 一次即可开始使用包装器的脚本来构建项目了
-- 生成gradle包管理器：`gradle wrapper --gradle-version 2.0`
 
 ### 插件
 > 引入一个插件有多种方式

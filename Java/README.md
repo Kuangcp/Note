@@ -76,4 +76,4 @@
 > [google: style guide](https://google.github.io/styleguide/javaguide.html)  
 > [Java8 api 中文版 Google翻译](https://blog.fondme.cn/posts/21004/)  
 > [Java成神之路](https://github.com/hollischuang/toBeTopJavaer)  
-
+> [Java之美 从菜鸟到高手演变 系列](https://blog.csdn.net/zhangerqing/article/details/8245560)

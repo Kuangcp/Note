@@ -54,7 +54,7 @@ categories:
                 1. [Gradle](#gradle)
                 1. [Maven](#maven)
 
-**目录 end**|_2019-01-03 18:20_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-18 21:31_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -432,16 +432,7 @@ A 项目 compile
 
 ## 6.常用插件
 ### 6.1.lombok
-> 极大的简化了bean的代码量
-
-```xml
-    <dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
-        <version>1.16.10</version>
-        <scope>provided</scope>
-    </dependency>
-```
+> [详细](/Java/Tool/Lombok.md)
 
 ### 6.2 protobuf
 > [maven 插件 ](https://www.xolstice.org/protobuf-maven-plugin/) `本质还是要使用系统安装的protoc, 然后插件实现了自动编译文件`
