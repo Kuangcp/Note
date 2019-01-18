@@ -4,7 +4,7 @@ date: 2018-11-21 10:56:52
 tags: 
     - Advanced
 categories: 
-    - Git
+    - 版本控制
 ---
 
 **目录 start**
@@ -16,7 +16,7 @@ categories:
             1. [gc](#gc)
         1. [CRLF与LF](#crlf与lf)
 
-**目录 end**|_2019-01-17 15:13_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-18 15:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git Advance
 

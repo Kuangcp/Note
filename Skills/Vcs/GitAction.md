@@ -1,9 +1,9 @@
 ---
-title: Git实践
+title: Git技巧
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
-    - Git
+    - 版本控制
 ---
 
 **目录 start**
@@ -34,7 +34,7 @@ categories:
             1. [【使用SSH登录GitServer】](#使用ssh登录gitserver)
     1. [基础命令概述](#基础命令概述)
 
-**目录 end**|_2018-12-29 21:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-18 15:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)

@@ -1,10 +1,10 @@
 ---
-title: Svn.md
+title: SVN
 date: 2018-11-21 10:56:52
 tags: 
     - 基础
 categories: 
-    - Svn
+    - 版本控制
 ---
 
 **目录 start**
@@ -25,7 +25,7 @@ categories:
         1. [回滚到指定版本](#回滚到指定版本)
         1. [Tips](#tips)
 
-**目录 end**|_2019-01-03 18:20_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-18 15:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SVN
 > 传统的中心化版本控制工具,能够精确控制每个目录的权限, Apache顶级项目  

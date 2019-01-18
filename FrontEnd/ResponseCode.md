@@ -1,5 +1,5 @@
 ---
-title: ResponseCode.md
+title: 状态码
 date: 2018-11-21 10:56:52
 tags: 
     - 基础
@@ -21,11 +21,12 @@ categories:
     1. [NGINX-扩展状态码](#nginx-扩展状态码)
     1. [七牛扩展状态码](#七牛扩展状态码)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-18 15:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # HTTP状态码大全
 > [HTTP状态码](http://www.runoob.com/http/http-status-codes.html)
 > [HTTP状态码百度百科](https://baike.baidu.com/item/HTTP%E7%8A%B6%E6%80%81%E7%A0%81)
+
 ## 标准扩展码
 
 ### 1xx-Informational-信息化

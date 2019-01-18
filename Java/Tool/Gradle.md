@@ -15,21 +15,27 @@ categories:
     1. [安装配置](#安装配置)
         1. [SDKMAN方式](#sdkman方式)
         1. [Chocolate](#chocolate)
+        1. [Docker安装](#docker安装)
+    1. [使用](#使用)
         1. [命令行选项](#命令行选项)
         1. [守护进程](#守护进程)
-        1. [Docker安装](#docker安装)
     1. [配置镜像源](#配置镜像源)
+    1. [常用插件](#常用插件)
+        1. [Lombok](#lombok)
+        1. [Maven](#maven)
+        1. [shadowJar](#shadowjar)
+        1. [docker](#docker)
+        1. [protobuf-gradle-plugin](#protobuf-gradle-plugin)
 1. [关键配置文件](#关键配置文件)
     1. [build.gradle](#buildgradle)
         1. [初始化一个新项目](#初始化一个新项目)
         1. [依赖定义](#依赖定义)
-        1. [统一依赖管理](#统一依赖管理)
+        1. [统一依赖管理的一种策略](#统一依赖管理的一种策略)
         1. [配置Wrapper](#配置wrapper)
         1. [插件](#插件)
-            1. [常用插件](#常用插件)
     1. [setting.gradle](#settinggradle)
         1. [Gradle多模块的构建](#gradle多模块的构建)
-            1. [另一种方式](#另一种方式)
+            1. [另一种多模块的构建方式](#另一种多模块的构建方式)
 1. [部署](#部署)
     1. [War包](#war包)
     1. [Jar包](#jar包)
@@ -37,14 +43,14 @@ categories:
     1. [构建Docker镜像](#构建docker镜像)
         1. [第二种插件方式](#第二种插件方式)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-18 15:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-# Gradle
-> [官方 guide](https://gradle.org/guides/?q=JVM) | [其他 tutorial](https://www.tutorialspoint.com/gradle/index.htm)  
-> [参考博客: 零散知识点总结(1) - Gradle 使用配置总结](https://www.jianshu.com/p/47cbbb4eab13)
 
-**个人看法**
-> [参考: Gradle在大型Java项目上的应用](www.infoq.com/cn/articles/Gradle-application-in-large-Java-projects)
+# Gradle
+> [Official Guide](https://gradle.org/guides/?q=JVM) | [tutorials](https://www.tutorialspoint.com/gradle/index.htm)  
+
+> [参考博客: 零散知识点总结(1) - Gradle 使用配置总结](https://www.jianshu.com/p/47cbbb4eab13)
+******************************
 
 **优缺点**
 > [Gradle大吐槽](https://blog.csdn.net/MCL529/article/details/79341706)
@@ -59,20 +65,23 @@ categories:
 1. 内存占用巨大,存在内存泄露问题, 以至于在IDEA上不敢使用自动导入, 不然每动一下build.gradle 就会卡半天, 8G内存都不够用!!
 2. 编译速度慢, 如果和Maven进行对比, 编译速度和资源占用确实慢
 
+**个人看法**
+> [参考: Gradle在大型Java项目上的应用](www.infoq.com/cn/articles/Gradle-application-in-large-Java-projects)
+
 ********************
 ## 书籍
 > [Gradle in Action 中译](http://www.jb51.net/books/527811.html) `如果没有一点Groovy基础, 阅读自定义Task等一些高自定义的地方还是比较困惑`
 
 ## 发行版本列表
-> [官方网址](http://services.gradle.org/) 有各个版本的下载以及版本发行说明
 > [Github地址](https://github.com/gradle/gradle/releases)`查看简洁的 Release Note 更方便`
 
 ## 安装配置
-> 和maven使用同一个本地库 只要加上 M2_HOME 环境变量即可, 值和 MAVEN_HOME 一样, 并没有用
+> 注意 Gradle 会默认使用Maven的本地库, 但是是复制过来使用而不是共用   
+> 会将 `~/.m2/repository` 复制到 `~/.gradle/caches/modules-2/files-2.1/`, 目录结构也发生改变  
+- [Gradle 使用Maven的本地仓库](https://blog.csdn.net/kcp606/article/details/81636426)
 
-### SDKMAN方式
-- 先安装sdkman
-- 使用Bash运行`curl -s "https://get.sdkman.io" | bash`
+### SDKMAN安装
+- 先安装sdkman `curl -s "https://get.sdkman.io" | bash`
 - `sdk install gradle` 即可安装
 
 ### Chocolate
@@ -83,25 +92,36 @@ categories:
 1. 执行“开始/运行”命令（或者WIN + R），输入“regedit”，打开注册表。
 2. 展开注册表到下面的分支[HKEY＿LOCAL＿MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion]，在右侧窗口中找到名为“ProgramFilesDir”的字符串，双击把数值“C:\Program Files”修改为“D：\ProgramFiles”，确定退出后,即可更改常用软件的安装路径了。
 
+### Docker安装
+> [Docker 文档](https://docs.docker.com/samples/library/gradle/) `虽然在开发时感觉意义不大, 还要把项目映射进去..`
+
+### 手动配置
+> [官方下载网址](http://services.gradle.org/) 有各个版本的下载以及版本发行说明
+
+1. 解压到任意目录, 并将 bin 目录加入 环境变量即可
+
+***************************************
+
+## 使用
 ### 命令行选项
-- `gradle 构建文件中的task名`： 直接运行task
+- `tasks` : 输出所有建立的task
+- `properties` : 输出所有可用的配置属性
+- 执行 task `gradle taskName`
+- 交互式新建项目 `gradle init`
+
 - `-b，--build-file test.gradle` 指定运行脚本文件
 - `--offline` 离线模式
 - `-P ,--project-prop`:配置参数 -Pmyprop=value
 - `-i,--info` : 打印info级别的输出
 - `-s,--stacktrace`: 输出错误栈
 - `-q,--quiet`:减少构建出错时打印的错误信息
-- `tasks` : 输出所有建立的task
-- `properties` : 输出所有可用的配置属性
 
 ### 守护进程
-- 命令加上 `--daemon`就会开启一个守护进程，只会开启一次，
+
+- 命令加上 `--daemon`就会开启一个守护进程，只会开启一次
 - 守护进程会在空闲3小时后销毁
 - 手动关闭 `gadle --stop `
 - 构建时不采用守护进程 `--no--daemon`
-
-### Docker安装
-> [Docker 文档](https://docs.docker.com/samples/library/gradle/)
 
 ****************************
 
@@ -109,16 +129,17 @@ categories:
 **阿里云**
 > [参考博客: 配置Gradle的镜像为阿里云镜像](https://tvzr.com/change-the-mirror-of-gradle-to-aliyun.html)
 
-_当前项目的build.gradle_
+> **当前项目的build.gradle**
 ```Groovy
   repositories {
+    mavenLocal()
     def aliyun = "http://maven.aliyun.com/nexus/content/groups/public/"
     def abroad = "http://central.maven.org/maven2/"
     maven {
       url = aliyun
       artifactUrls abroad
     }
-    // 马云上自己的库
+    // 码云上自己的仓库
     maven {
       url = "https://gitee.com/gin9/MavenRepos/raw/master"
     }
@@ -126,33 +147,65 @@ _当前项目的build.gradle_
     jcenter()
   }
 ```
-**全局的配置**
+
+> **全局的配置文件**
 _~/.gradle/init.gradle_
 ```Groovy
-allprojects{
-    repositories {
-        def ALIYUN_REPOSITORY_URL = 'http://maven.aliyun.com/nexus/content/groups/public'
-        def ALIYUN_JCENTER_URL = 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
-        all { ArtifactRepository repo ->
-            if(repo instanceof MavenArtifactRepository){
-                def url = repo.url.toString()
-                if (url.startsWith('https://repo1.maven.org/maven2')) {
-                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_REPOSITORY_URL."
-                    remove repo
-                }
-                if (url.startsWith('https://jcenter.bintray.com/')) {
-                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL."
-                    remove repo
+    allprojects{
+        repositories {
+            def ALIYUN_REPOSITORY_URL = 'http://maven.aliyun.com/nexus/content/groups/public'
+            def ALIYUN_JCENTER_URL = 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+            all { 
+                ArtifactRepository repo ->
+                if(repo instanceof MavenArtifactRepository){
+                    def url = repo.url.toString()
+                    if (url.startsWith('https://repo1.maven.org/maven2')) {
+                        project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_REPOSITORY_URL."
+                        remove repo
+                    }
+                    if (url.startsWith('https://jcenter.bintray.com/')) {
+                        project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL."
+                        remove repo
+                    }
                 }
             }
-        }
-        maven {
-        	url ALIYUN_REPOSITORY_URL
-            url ALIYUN_JCENTER_URL
+            maven {
+                url ALIYUN_REPOSITORY_URL
+                url ALIYUN_JCENTER_URL
+            }
         }
     }
-}
 ```
+
+******************************
+
+## 常用插件
+### Lombok
+> [使用Lombok的正确方式](https://stackoverflow.com/questions/50519138/annotationprocessor-gradle-4-7-configuration-doesnt-run-lombok) | [gradle lombok plugin](https://projectlombok.org/setup/gradle)
+
+[官方文档](https://docs.gradle.org/4.7-rc-1/userguide/java_plugin.html#sec:java_compile_avoidance)
+```groovy
+  annotationProcessor 'org.projectlombok:lombok:1.18.2'
+  compileOnly 'org.projectlombok:lombok:1.18.2'
+  testAnnotationProcessor 'org.projectlombok:lombok:1.18.2'
+  testCompileOnly 'org.projectlombok:lombok:1.18.2'
+```
+
+### Maven 
+    - `apply plugin: "maven"` 然后就能执行 install等命令了
+    - gradle 4.8 用不了 [需要这种方式](https://blog.csdn.net/mxw2552261/article/details/78640338)
+
+### shadowJar 
+> 打包为 fat jar 也就是包含所有依赖jar的jar包
+
+### docker
+> 提供Docker 的 API
+1. 引入 `apply plugin: 'docker'`
+    - buildscript dependencies 中添加`classpath('se.transmode.gradle:gradle-docker:1.2')`
+
+### protobuf-gradle-plugin
+> [Github: protobuf-gradle-plugin](https://github.com/google/protobuf-gradle-plugin)
+
 ************************
 
 # 关键配置文件
@@ -173,6 +226,8 @@ _Hello World_
 
 ### 初始化一个新项目
 > [doc:building java application](https://guides.gradle.org/building-java-applications/)
+
+或者直接使用 gradle init 交互式新建一个项目
 
 ### 依赖定义
 - 和Maven用的是同一种方式 groupId artifactId version 
@@ -266,24 +321,27 @@ _Hello World_
     }
 ```
 
-### 统一依赖管理
-新建一个文件 _dependency.gradle_
-```groovy
-    ext {
-        ver = [
-            junit     : '4.12',
-        ]
-        libs = [
-            "junit"   : "junit:junit:$ver.junit",
-        ]
-    }
-```
-- 在 build.gradle 中引入 `apply from: 'dependency.gradle'`
-- 使用依赖时 只需 `compile libs['junit']` 即使在子模块中也是如此使用
+### 统一依赖管理的一种策略
+1. 新建一个文件 _dependency.gradle_
+    ```groovy
+        ext {
+            ver = [
+                junit     : '4.12',
+            ]
+            libs = [
+                "junit"   : "junit:junit:$ver.junit",
+            ]
+        }
+    ```
+
+1. 在 build.gradle 中引入 `apply from: 'dependency.gradle'`
+
+1. 使用依赖时 只需 `compile libs['junit']` 即使在子模块中也是如此使用
 
 ### 配置Wrapper
-> 在使用IDE生成项目的时候，可以选择gradle的执行目录，可以选`gradle wrapper` 也可以选自己下载解压的完整包
+> 在使用IDE生成项目的时候，可以选择gradle的执行目录，可以选`gradle wrapper` 也可以选自己下载解压的完整包  
 > 如果使用的不是这个wrapper，那么别人在下载项目后，运行gradle命令就要先安装gradle，使用wrapper更好
+
 ```groovy
    task wrapper(type: Wrapper){
       gradleVersion = '4.8'
@@ -295,48 +353,24 @@ _Hello World_
 - 生成gradle包管理器：`gradle wrapper --gradle-version 2.0`
 
 ### 插件
-有多种方式:
+> 引入一个插件有多种方式
 
 ```groovy
-// 1
-apply plugin: 'java'
-// 2
-apply{
-    'java'
-}
-// 3
-plugins{
-    id 'java'
-}
-```
-#### 常用插件
-- lombok
-> [使用Lombok的正确方式](https://stackoverflow.com/questions/50519138/annotationprocessor-gradle-4-7-configuration-doesnt-run-lombok) | [gradle lombok plugin](https://projectlombok.org/setup/gradle)
-
-[官方文档](https://docs.gradle.org/4.7-rc-1/userguide/java_plugin.html#sec:java_compile_avoidance)
-```groovy
-  annotationProcessor 'org.projectlombok:lombok:1.18.2'
-  compileOnly 'org.projectlombok:lombok:1.18.2'
-  testAnnotationProcessor 'org.projectlombok:lombok:1.18.2'
-  testCompileOnly 'org.projectlombok:lombok:1.18.2'
+    // 1
+    apply plugin: 'java'
+    // 2
+    apply{
+        'java'
+    }
+    // 3 Gradle5 推荐
+    plugins{
+        id 'java'
+    }
 ```
 
-***************
-
-- maven 
-    - `apply plugin: "maven"` 然后就能执行 install等命令了
-    - gradle 4.8 用不了 [需要这种方式](https://blog.csdn.net/mxw2552261/article/details/78640338)
-
-- shadowJar 含依赖的jar进行打包
-
-- docker 提供Docker操作
-    - `apply plugin: 'docker'`
-    - buildscript dependencies 中添加`classpath('se.transmode.gradle:gradle-docker:1.2')`
-
-****************
 ## setting.gradle
 > 项目的配置信息, 一般存在这个文件的时候, Gradle就会认为当前目录是作为一个完整的根项目的, 并在当前目录添加 .gradle 目录  
-> 一般默认内容为 `rootProject.name = ''`
+> 文件缺省内容为 `rootProject.name = 'xxx'`
 
 ### Gradle多模块的构建
 > [官网文档 creating multi project builds ](https://guides.gradle.org/creating-multi-project-builds/)
@@ -351,7 +385,7 @@ _如果要添加一个项目也简单_
 1. 最后就是手动的新建项目结构
 
 **********************************
-#### 另一种方式
+#### 另一种多模块的构建方式
 > [参考博客:重拾后端之Spring Boot（六） -- 热加载、容器和多项目](https://www.jianshu.com/p/ac4c00a63750)
 > 直接在build.gradle中配置 
 
