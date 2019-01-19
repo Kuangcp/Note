@@ -1,8 +1,9 @@
 ---
-title: MarkDown.md
+title: MarkDown基本语法
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
+    - 基础知识
 ---
 
 **目录 start**
@@ -18,31 +19,27 @@ categories:
     1. [流程图](#流程图)
     1. [Github](#github)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-19 16:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
---- 
-layout: post
-title: "Markdown 基本语法与应用"
-date: 2018-09-27 21:26:29
-category: tool
-tags: 
-- markdown
-- github
----
-
 # Markdown
-> [markup](https://github.com/github/markup)`丰富的标记性文本格式`  
+> [Github: markdown](https://guides.github.com/features/mastering-markdown/) 
+> [ Markdown 编辑器语法指南](https://segmentfault.com/markdown)
 > [Markdown教程](http://www.markdown.cn/)  
 > [CSDN的Markdown案例](https://github.com/kuangcp/Notes/blob/master/Article/CSDN的Markdown案例.md)
-> [ Markdown 编辑器语法指南](https://segmentfault.com/markdown)
+
+> [Github: markup](https://github.com/github/markup)`丰富的标记性文本格式` |
+
+> [Github: emoji character](https://www.webfx.com/tools/emoji-cheat-sheet/)
 
 **************
+
 ## 基本格式
 ### 居中
 ```
-<center> 
+    <center> 
 
-</center>
+    </center>
+
 ```
 > 注意这俩标签前后都需要一行空行
 
@@ -155,6 +152,6 @@ _md文件的头属性_
 ```
 
 ```diff
-+ fsd
-- 发的所发生的
++ python
+- java
 ```

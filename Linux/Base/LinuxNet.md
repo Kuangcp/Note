@@ -43,7 +43,7 @@ categories:
         1. [防火墙](#防火墙)
             1. [iptables](#iptables)
 
-**目录 end**|_2018-12-13 20:53_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-19 16:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 【网络管理】
 ## Tips
@@ -438,6 +438,8 @@ _ss_
 ### telnet
 > [linux telnet命令参数](http://www.linuxso.com/command/telnet.html)  
 > [每天一个linux命令（58）：telnet命令](http://www.cnblogs.com/peida/archive/2013/03/13/2956992.html)
+
+- 测试连通性 `telnet ip port` 如果端口开放则提示 Connected, 否则会提示 refused 
 
 ***********
 ### VPN

@@ -30,7 +30,7 @@ categories:
         1. [玩机](#玩机)
     1. [商业](#商业)
 
-**目录 end**|_2019-01-13 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-19 16:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 > 只用来记录非技术类的文章,技术类的直接放到对应的笔记中去  
@@ -39,11 +39,16 @@ categories:
 # 博客
 
 ## 个人博客网
+- [解道](https://www.jdon.com/)
 - [王垠](http://www.yinwang.org/)
 - [ciaoshen](http://www.ciaoshen.com/)`肉身翻墙? Java大佬`
 - [阮一峰](http://www.ruanyifeng.com/blog/)`一个勤奋的布道者,Github每天都有提交`
 - [酷壳](https://coolshell.cn/)`左耳朵耗子个人博客网 阿里架构师`
 - [程序员DD](http://blog.didispace.com/)`翟永超 Spring4all社区创立者`
+- [纯洁的微笑](http://www.ityouknow.com/)`Java丰富技术栈 云收藏的开发者`
+
+- [java3y](https://zhongfucheng.bitcron.com/)`技术比较全面`
+
 - [冰封千里](http://ice1000.org/)`Javaer,JavaFX和JVM类语言擅长`
 - [hushuang.me](https://hushuang.me/)
 - [猛禽](http://my.csdn.net/Raptor) `一个坚持了17年博客的程序员`
@@ -51,29 +56,20 @@ categories:
 - [David's blog](blog.weisiliang.com)`Java程序员`
 - [http://blog.leapoahead.com](http://blog.leapoahead.com)`经验之谈`
 - [Java和Vue前后端](http://blog.exrick.cn/)
-
 - [Web程序猿](https://imququ.com/)
 - [letus.club](http://letus.club/)
 - [海底苍鹰(tank)](http://blog.51yip.com/) `前端和Linux`
 - [彭鑫](http://www.worldhello.net)`Git权威指南作者,Git比较熟练`
 - [Chenxu](https://www.dogxu.cn)`使用Github page 以及Https 全免费搭建`
-
 - [Romeng's blog](https://www.romeng.men/)`edu邮箱,VPS等`
 - [如有乐享](https://51.ruyo.net/)`突破限制的 教程资源比较多`
-
 - [javabolg](https://javablog.net/)`nutz作者的博客`
-
 - [chenssy ](http://cmsblogs.com/)`技术较新 Java博客网`
-- [java3y](https://zhongfucheng.bitcron.com/)`技术比较全面`
-
 - [tengj](http://tengj.top/)`SpringBoot了解深入`
 - [dreamlikes](http://dreamlikes.cn/)`Java后台开发`
-
 - [张子阳的博客](http://www.tracefact.net/) `有技术,有推荐的书`
 - [绿色记忆](https://blog.gmem.cc/) `技术涉猎广泛`
-
 - [嘟嘟独立博客](http://tengj.top/)`SpringBoot系`
-- [ityouknow](http://www.ityouknow.com/)`Java丰富技术栈 云收藏的开发者`
 - [会飞的污熊](https://www.xncoding.com/)`github 搭建静态博客, 内容多`
 - [yscoder](https://yscoder.github.io/)`indigo主题的作者 hexo`
 - [晓风轻技术小站](https://xwjie.github.io/)`程序员你为什么这么累？ 作者`
@@ -87,6 +83,7 @@ categories:
 
 - [漠然](https://mritd.me/)`容器 kubernetes方面`
 - [senra](http://www.senra.me/) `服务器, 容器等方面`
+
 ## 博客能人
 - [赵劼](http://www.cnblogs.com/JeffreyZhao/) `对函数式编程，并行程序开发，代码之美以及程序员能力与修养等相关问题`
 - [进击的Java新人](https://zhuanlan.zhihu.com/hinus)

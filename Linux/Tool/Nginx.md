@@ -27,7 +27,7 @@ categories:
             1. [静态服务器将后台反代理](#静态服务器将后台反代理)
     1. [问题](#问题)
 
-**目录 end**|_2018-12-17 20:45_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-19 16:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Nginx
 
@@ -266,7 +266,7 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
     default upgrade;
     ''  close;
   }
-  upstream youhui {
+  upstream back_end {
     server 127.0.0.1:8888;
   }
   server {
@@ -282,9 +282,9 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
       proxy_set_header Upgrade $http_upgrade;
       proxy_set_header Connection $connection_upgrade;
 
-      proxy_pass http://youhui;
+      proxy_pass http://back_end;
       proxy_redirect off;
-    proxy_read_timeout 300s;
+      proxy_read_timeout 300s;
     }
   }
 ```
