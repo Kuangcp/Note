@@ -46,6 +46,7 @@ categories:
 - [酷壳](https://coolshell.cn/)`左耳朵耗子个人博客网 阿里架构师`
 - [程序员DD](http://blog.didispace.com/)`翟永超 Spring4all社区创立者`
 - [纯洁的微笑](http://www.ityouknow.com/)`Java丰富技术栈 云收藏的开发者`
+- [Hollis](http://www.hollischuang.com/)
 
 - [java3y](https://zhongfucheng.bitcron.com/)`技术比较全面`
 
