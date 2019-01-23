@@ -199,7 +199,9 @@ _例如修改为如下_
 |C| | | **Esc** | 格式化并优化导入|
 | | |A| **Esc** | 停止正在运行的运行项|
 | | |A| **1** | 运行上次的运行项|
+| |S|A| **1** | 显示运行项面板|
 | | |A| **2** | Debug上次的运行项|
+| |S|A| **2** | 显示Debug运行项面板|
 | | | | **F10** | 运行光标所在处的运行项|
 | |S|A| **F10** | 运行选择的运行项|
 | |S|A| **F9** | Debug选择的运行项|
@@ -334,6 +336,7 @@ _例如修改为如下_
 1. http-client
     - https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html
 
+1. FindBugs
 1. Docker
 1. Kubernates
 1. Maven helper
