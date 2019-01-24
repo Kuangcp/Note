@@ -83,7 +83,7 @@ _netstat工具_ 或者 更好用的 [iproute2](#3iproute2)
      - 递归加迭代， 区别在于，先迭代根， 得到下级一级服务器节点后，下级就是递归的入口和出口
 - 授权和非授权， 还是上面那个URL， 其他的都不是授权的， 只有离URL最近的DNS才是授权的 即 `bupt.deu.cn` 
 
-`nslookup ` 强大的调试DNS工具
+> `nslookup ` 强大的调试DNS工具
 - nslookup - 8.8.8.8 进入循环模式， 方便调试 8.8.8.8 是Google开放的DNS 备选 8.8.4.4
     - 结果解释：Non-authoritative answer: 表示这是从缓存得到的结果，不一定准确
     - Server：上连DNS服务器的IP， Address：`上连DNS的IP#端口` 通常是53
@@ -93,10 +93,12 @@ _netstat工具_ 或者 更好用的 [iproute2](#3iproute2)
     - +short 精简输出
     - +nocmd+nocomment+nostat 输出最核心内容
 
-`drill`
+> `drill`  
+> host domain  
 
 - **whois**
     - 查询域名详细信息
+
 ### 修改DNS
 - `sudo vim /etc/resolv.conf` 添加Google的DNS 
 ```
@@ -106,6 +108,7 @@ _netstat工具_ 或者 更好用的 [iproute2](#3iproute2)
 
 ### 刷新本地缓存
 > [参考博客](https://linux.cn/article-3341-1.html)
+
 ******************
 ## IPv4和IPv6
 - IPv4 只有32bit IPv6 有128bit
