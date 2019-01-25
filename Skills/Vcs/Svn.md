@@ -25,11 +25,15 @@ categories:
         1. [回滚到指定版本](#回滚到指定版本)
         1. [Tips](#tips)
 
-**目录 end**|_2019-01-18 15:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-25 19:23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SVN
 > 传统的中心化版本控制工具,能够精确控制每个目录的权限, Apache顶级项目  
 > [SVN 官网](http://subversion.apache.org/) | [SVN中文网](http://www.svn.org.cn) [Subversion 与版本控制 书籍](http://svnbook.red-bean.com/)
+
+> [参考博客: SVN与Git比较的优缺点差异](https://www.cnblogs.com/Sungeek/p/9152223.html)
+
+> svn 不能提交单个文件里的部分提交, 要么就整个文件提交, 要么不提交, git则可以
 
 ## 服务端安装
 > 安装 svnadmin

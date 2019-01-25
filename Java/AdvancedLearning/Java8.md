@@ -66,12 +66,15 @@ categories:
         1. [Optional类和Stream接口的相似之处](#optional类和stream接口的相似之处)
         1. [Tips](#tips)
         1. [实践:读取Properties某属性](#实践读取properties某属性)
-    1. [集合](#集合)
     1. [时间处理](#时间处理)
+        1. [ZoneId](#zoneid)
+        1. [Clock](#clock)
+        1. [Duration](#duration)
+        1. [Period](#period)
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-**目录 end**|_2019-01-13 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-25 19:23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [doc: API](https://docs.oracle.com/javase/8/docs/api/) | [doc下载](https://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html)
@@ -952,13 +955,7 @@ public int readDuration(Properties props, String name) {
         .orElse(0);
 }
 ```
-***********************************
-## 集合
 
-_集合的Lambda迭代方式_
-- [参考博客: List、Map的循环迭代](http://blog.csdn.net/xf_87/article/details/53931207)
-
-对集合中的对象进行求和
 *******************************
 
 ## 时间处理
@@ -976,6 +973,8 @@ a clock can be used instead of System.currentTimeMillis() and TimeZone.getDefaul
 ### Duration
 This class models a quantity or amount of time in terms of seconds and nanoseconds.   
 It can be accessed using other duration-based units, such as minutes and hours.
+
+> [How to model java.time.duration in Mysql Database](https://stackoverflow.com/questions/28427525/how-to-model-java-time-duration-in-mysql-database)
 
 ### Period
 类似于Duration, 不同点是 date-based 

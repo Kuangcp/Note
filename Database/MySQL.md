@@ -68,11 +68,11 @@ categories:
         1. [【授权】](#授权)
 1. [查询](#查询)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-25 19:23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # Mysql
-> [MySQL官方下载地址](https://dev.mysql.com/downloads/mysql/) | [doc](https://dev.mysql.com/doc/)
+> [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
 
 ## 安装
 ### Ubuntu安装配置MySQL
