@@ -41,6 +41,7 @@ categories:
 > [学生授权申请方式](https://sales.jetbrains.com/hc/zh-cn/articles/207154369) | [click](http://idea.lanyus.com/)
 > [rover12421博客](http://ju.outofmemory.cn/feed/2608/?page=1) | [IDEA主题](http://www.riaway.com/index.php)
 
+> [Doc: Gradle](https://www.jetbrains.com/help/idea/gradle.html)
 ## 常识
 -  project 就是一个工作空间，一个Module就是一个项目
 - 新建一个empty项目可以作为一个工作空间，放很多module,新建的时候不要选中任何目录，*光标选中JRE库*，再菜单栏点击File然后new，
@@ -341,6 +342,7 @@ _例如修改为如下_
 1. Kubernates
 1. Maven helper
 1. rainbow brackets 将括号变成彩色, 更方便查看
+1. grep console 控制台搜索工具
 
 **************************
 
