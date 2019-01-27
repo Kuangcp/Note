@@ -24,11 +24,9 @@ categories:
             1. [log](#log)
                 1. [对比两个分支的差异](#对比两个分支的差异)
                 1. [查看文件的修改记录](#查看文件的修改记录)
-            1. [reflog](#reflog)
             1. [blame](#blame)
             1. [diff](#diff)
             1. [tag](#tag)
-            1. [grep](#grep)
             1. [reset](#reset)
                 1. [回滚add操作](#回滚add操作)
                 1. [回滚最近一次commit](#回滚最近一次commit)
@@ -54,6 +52,10 @@ categories:
             1. [rebase](#rebase)
             1. [cherry-pick](#cherry-pick)
         1. [子模块](#子模块)
+        1. [其他](#其他)
+            1. [grep](#grep)
+            1. [archive](#archive)
+            1. [reflog](#reflog)
     1. [常用文件](#常用文件)
         1. [.gitignore](#gitignore)
         1. [gitattributes](#gitattributes)
@@ -65,7 +67,7 @@ categories:
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-01-27 21:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-27 23:39_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -194,7 +196,8 @@ TODO 存疑
 #### revert 
 1. 取消所有暂存 `git revert .`
 
-1. 回滚代码至指定提交 `git revert --no-commit 032ac94ad...HEAD` `git commit -m "rolled back"`
+1. 回滚代码至指定提交 `git revert --no-commit 032ac94ad...HEAD`
+    - `git commit -m "rolled back"`
 
 #### show
 > 展示提交信息
@@ -242,11 +245,11 @@ TODO 存疑
 1. git log fileName 或者 git log --pretty=oneline fileName 更容易看到 sha-1 值
 1. git show sha-1的值 就能看到该次提交的所有修改
 
-#### reflog
-- 查看仓库的操作日志 `git reflog`
-
 **************************
 #### blame
+> 查看文件修改记录 追责
+
+`git blame file`
 
 *****************************
 #### diff
@@ -280,14 +283,6 @@ TODO 存疑
 - 删除本地标签 `git tag -d tagname` 
 - 删除远程的tag `git push origin --delete tag <tagname>` 
 
-#### grep  
-- 搜索文字 `git grep docker`
-    - `-n`搜索并显示行号 
-    - `--name-only` 只显示文件名，不显示内容
-    - `-c` 查看每个文件里有多少行匹配内容(line matches):
-    - 查找git仓库里某个特定版本里的内容, 在命令行末尾加上标签名(tag reference):  `git grep xmmap v1.5.0`
-    - `git grep --all-match -e '#define' -e SORT_DIRENT` 匹配两个字符串
-    
 *******************
 
 #### reset
@@ -561,6 +556,21 @@ TODO 存疑
 ************************
 ### 子模块
 - [ ] 学习
+
+### 其他
+#### grep  
+- 搜索文字 `git grep docker`
+    - `-n`搜索并显示行号 
+    - `--name-only` 只显示文件名，不显示内容
+    - `-c` 查看每个文件里有多少行匹配内容(line matches):
+    - 查找git仓库里某个特定版本里的内容, 在命令行末尾加上标签名(tag reference):  `git grep xmmap v1.5.0`
+    - `git grep --all-match -e '#define' -e SORT_DIRENT` 匹配两个字符串
+    
+#### archive
+1. 将某版本打包成压缩包 `git archive -v --format=zip v0.1 > v0.1.zip`
+
+#### reflog
+- 查看仓库的操作日志 `git reflog`
 
 *************
 ## 常用文件

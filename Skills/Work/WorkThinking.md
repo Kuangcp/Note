@@ -1,5 +1,5 @@
 ---
-title: WorkThinking.md
+title: 工作中的思考
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -7,14 +7,14 @@ categories:
 
 **目录 start**
  
-1. [工作思考](#工作思考)
+1. [工作中的思考](#工作中的思考)
     1. [如何学习](#如何学习)
     1. [如何完成任务](#如何完成任务)
     1. [交流](#交流)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-27 23:39_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-# 工作思考
+# 工作中的思考
 
 > [参考博客: 如何提升你的能力？给年轻程序员的几条建议](http://tech.glowing.com/cn/advices-to-junior-developers/)
 
