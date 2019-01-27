@@ -13,11 +13,13 @@ categories:
         1. [基于TCP](#基于tcp)
         1. [基于UDP](#基于udp)
     1. [邮件](#邮件)
+    1. [WebAPI](#webapi)
+        1. [JSON](#json)
     1. [Web工具](#web工具)
 1. [爬虫](#爬虫)
-        1. [安装所需模块](#安装所需模块)
+    1. [安装所需模块](#安装所需模块)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-27 21:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 网络编程
 ## Socket
@@ -30,14 +32,29 @@ categories:
 
 ## 邮件
 
+## WebAPI
+### JSON
+```python
+    import requests
+    import json
+
+    def main():
+        url = "https://xxxx.com/user/get"
+        request = requests.get(url)
+        re_dict = json.loads(request.text)
+        for i in range(len(re_dict)):
+            event = re_dict[i]
+            print(event['project']['path'])
+```
+
 ## Web工具
-- `pip3 install httpie` 我的用不了，奇怪？？ 这个`sudo apt install httpie`才能用
+- `pip install httpie` 
     - `http --json URL` 格式化输出json
-    - URL会转小写。。。
+
 - `curl URL|python -m json.tool ` 格式化输出JSON
 
 # 爬虫
-### 安装所需模块
+## 安装所需模块
 
 `解析HTML`
 - bs4 ：`sudo pip3 install bs4`

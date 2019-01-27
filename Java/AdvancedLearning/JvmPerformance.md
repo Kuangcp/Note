@@ -20,14 +20,16 @@ categories:
         1. [jstat](#jstat)
         1. [jinfo](#jinfo)
         1. [jmap](#jmap)
+        1. [jhat](#jhat)
         1. [jstack](#jstack)
     1. [开源项目](#开源项目)
+        1. [Arthas](#arthas)
     1. [图形化](#图形化)
         1. [jvisualvm](#jvisualvm)
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-27 21:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # Java的性能调优
@@ -75,7 +77,7 @@ categories:
     - count 输出次数
 
 - Demo:
-    - jstat -gcutil -t -h5 7919 1000 50
+    - `jstat -gcutil -t -h5 7919 1000 50`
 
 ### jinfo 
 > 观察运行中的java程序的运行环境参数：参数包括Java System属性和JVM命令行参数
@@ -92,6 +94,11 @@ categories:
     - jmap -heap $PID 展示Java堆详细信息
     - jmap -dump:live,format=b,file=heapLive.hprof 2576
 
+### jhat
+>  Java Head Analyse Tool
+
+用于分析 jmap 转储出来的堆文件, 分析完后启动一个WebServer 通过浏览器查看
+
 ### jstack 
 > jstack [option] pid  主要用来查看某个Java进程内的线程堆栈信息
 - Option:
@@ -105,8 +112,12 @@ categories:
 
 ## 开源项目
 
-> [arthas](https://github.com/alibaba/arthas)
-> [vjtools](https://github.com/vipshop/vjtools)
+### Arthas
+> [Github: Arthas](https://github.com/alibaba/arthas)`阿里巴巴`
+
+**********************
+
+> [vjtools](https://github.com/vipshop/vjtools)`唯品会`
 
 ************************
 
@@ -132,10 +143,10 @@ categories:
 
 1. vim jstatd.all.policy 
     ```
-    grant codebase "file:${java.home}/../lib/tools.jar" {
-       permission java.security.AllPermission;
+        grant codebase "file:${java.home}/../lib/tools.jar" {
+            permission java.security.AllPermission;
 
-    };
+        };
     ```
 1. jstatd -J-Djava.security.policy=jstatd.all.policy  -p 12028 -J-Djava.rmi.server.logCalls=true
 1. open jvisualvm create a remote with jstatd by above port 12028
@@ -155,6 +166,4 @@ categories:
 
 ### IBM Heap Analyzer
 > [Official Site](https://www.ibm.com/developerworks/community/alphaworks/tech/heapanalyzer)
-
-**************
 

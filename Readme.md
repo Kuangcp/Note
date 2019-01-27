@@ -250,9 +250,9 @@
 
 ### Java
 - [Java guide](https://github.com/Snailclimb/JavaGuide)
-- [Java工程师成神之路](https://github.com/hollischuang/toBeTopJavaer)
+- [Java工程师成神之路](https://github.com/hollischuang/toBeTopJavaer)`Hollis`
 - [唯品会的规范文档](https://github.com/vipshop/vjtools)`规范这种东西, 各有各家的说法, 适合自己就好`
-- [daydayup](https://github.com/ITDragonBlog/daydayup)
+- [daydayup](https://github.com/ITDragonBlog/daydayup)`Java架构师成长之路`
 
 ### Python
 - [老齐的笔记](https://github.com/qiwsir/ITArticles)`跟老齐学Python的轻松入门 作者`

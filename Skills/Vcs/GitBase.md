@@ -10,23 +10,25 @@ categories:
 **目录 start**
  
 1. [Git基础](#git基础)
+    1. [开源许可证](#开源许可证)
     1. [Git常用命令](#git常用命令)
-        1. [fork相关操作](#fork相关操作)
-        1. [仓库基本命令](#仓库基本命令)
+        1. [基本命令](#基本命令)
             1. [config](#config)
-            1. [status](#status)
+            1. [clone](#clone)
+            1. [add](#add)
             1. [rm](#rm)
-            1. [revert](#revert)
+            1. [status](#status)
             1. [commit](#commit)
-            1. [remote](#remote)
-            1. [submodule](#submodule)
+            1. [revert](#revert)
             1. [show](#show)
-            1. [push](#push)
             1. [log](#log)
                 1. [对比两个分支的差异](#对比两个分支的差异)
                 1. [查看文件的修改记录](#查看文件的修改记录)
+            1. [reflog](#reflog)
+            1. [blame](#blame)
             1. [diff](#diff)
             1. [tag](#tag)
+            1. [grep](#grep)
             1. [reset](#reset)
                 1. [回滚add操作](#回滚add操作)
                 1. [回滚最近一次commit](#回滚最近一次commit)
@@ -34,16 +36,24 @@ categories:
                 1. [回滚merge和pull操作](#回滚merge和pull操作)
                 1. [在index已有修改的状态回滚merge或者pull](#在index已有修改的状态回滚merge或者pull)
                 1. [被中断的工作流程](#被中断的工作流程)
-        1. [分支操作](#分支操作)
+            1. [gc](#gc)
+        1. [远程](#远程)
+            1. [Github上的fork](#github上的fork)
+            1. [Github上PR](#github上pr)
+            1. [remote](#remote)
+            1. [push](#push)
+            1. [pull](#pull)
+            1. [fetch](#fetch)
+        1. [分支](#分支)
             1. [stash](#stash)
-            1. [clone](#clone)
             1. [branch](#branch)
             1. [checkout](#checkout)
             1. [fetch](#fetch)
             1. [pull](#pull)
             1. [merge](#merge)
             1. [rebase](#rebase)
-            1. [grep](#grep)
+            1. [cherry-pick](#cherry-pick)
+        1. [子模块](#子模块)
     1. [常用文件](#常用文件)
         1. [.gitignore](#gitignore)
         1. [gitattributes](#gitattributes)
@@ -55,7 +65,7 @@ categories:
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-01-18 15:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-27 21:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -65,10 +75,19 @@ categories:
 > [Gitee: about git](https://gitee.com/all-about-git)  
 > [Git官网中文教程](https://git-scm.com/book/zh/v2) | [对应的仓库](https://github.com/progit/progit2)  
 
+TODO 存疑
+
 - index stage work 三个概念上的区域
-    - index 已经 commit 的内容, 不可更改历史commit 
-    - stage 执行 add 命令, 将文件缓存到该区
-    - work 默认目录, 修改的就是该分区
+    - index: 已经 commit 的内容, 不可更改历史commit 
+    - stage: 执行 add 命令, 将文件缓存到该区
+    - work: 工作目录, 日常做修改的就是该分区
+
+## 开源许可证
+- 关于许可证 [Github许可证网](https://choosealicense.com/licenses/)
+    - 新建项目的时候可以选择 添加.gitignore和许可证类别 许可证大致分为 MIT Apache2.0 GPL 
+    - `MIT` 简单宽松的许可证，任何人可以拿代码做任何事与我无关` eg: jQuery、Rails` 
+    - `Apache` 关注于专利，这类似于MIT许可证，但它同时还包含了贡献者向用户提供专利授权相关的条款。 `Apache、SVN和NuGet`
+    - `GPL` 关注于共享改进，这是一种copyleft许可证，要求修改项目代码的用户再次分发源码或二进制代码时，必须公布他的相关修改。 `Linux、Git`
 
 **********************
 ## Git常用命令
@@ -83,25 +102,16 @@ categories:
 
 - [tig](http://jonas.nitro.dk/tig/manual.html) `tig命令，git的加强版`
 
-### fork相关操作
-> 在 Github Gitee Gitlab 等平台, 命令的方式管理fork的仓库
-
-- 其实可以把别人的fork或者原仓库, 当成一个分支就行了, 将分支关联远程URL即可: --set-upstream 参数
-    - 然后就能下拉 合并别人的仓库了
-
-> 如果没有一个Github 码云这样的平台, 而只是单独的两个点, 两个用户或者IP之间要使用同一个仓库进行开发  
-> 两个人互为对方的远程库, 互为服务器即可完成, 即使使用的是动态IP, 应该也不会受太大影响???
-
 ***************
 
-### 仓库基本命令
+### 基本命令
 > 使用 `git help 加上命令`, 就能看到命令对应的文档
 
 #### config
-> 三种配置方式 作用范围越大, 优先级越低
-- --system 作用所有用户, 对应文件 /etc/gitconfig
-- --global 作用当前用户, 对应文件 ~/.gitconfig 
-- --local(默认) 作用当前项目, 对应文件 .git/gitconfig
+- 三种配置方式 作用范围越大, 优先级越低
+    - `--system` 作用所有用户, 对应文件 `/etc/gitconfig`
+    - `--global` 作用当前用户, 对应文件 `~/.gitconfig` 
+    - `--local`(缺省) 作用当前项目, 对应文件 `./.git/gitconfig`
 
 - `git config user.email ***`  和   `git config user.name ***` 这两个是必须的，
 - `git config http.postBuffer 524288000` 设置缓存区大小为 500m
@@ -128,6 +138,32 @@ categories:
 
 > 可用于上面的diff 或 merge 的[工具 详细](/Linux/Base/LinuxFile.md#比较文件内容)
 
+#### clone
+- `git clone branchname URL` 克隆远程仓库的指定分支
+- `git clone URL 目录` 克隆下来后更名为指定目录
+- `git clone --depth 1 URL` 只克隆最近一次提交的历史, 能大大减小拉取的大小 (Shallow Clone)
+    - 但是如果要用到之前的提交历史就还是要下拉下来的 类似于懒加载
+    - 且在新建一个远程仓库后, 推送时会报错:`shallow update not allowed` 因为本地库是残缺的
+    - 所以需要新建一个目录, 把原仓库全拉下来, 再添加远程进行推送, 然后删除该目录, 残缺版的仓库也能正常向新远程推送提交了
+
+> 克隆在指定tag状态的仓库 `git clone URL --branch=name ` 然后 Git会提示 
+```
+    您正处于分离头指针状态。您可以查看、做试验性的修改及提交，并且您可以通过另外的检出分支操作丢弃在这个状态下所做的任何提交。
+    如果您想要通过创建分支来保留在此状态下所做的提交，您可以通过在检出命令添加参数 -b 来实现（现在或稍后）。例如：
+    git checkout -b <new-branch-name>
+    按提示执行命令即可解决
+```
+
+#### add 
+- 添加文件或目录 `git add file dir ...`
+- 添加当前文件夹以及子文件夹 `git add .`
+- 交互式添加每个文件的每部分修改 `git add -p`
+
+#### rm
+- 删除文件 `git rm file1 file2 ...`
+- 仅从git仓库中删除文件, 但是文件系统中保留文件 `git rm --cached 文件`
+    - 如果仅仅是想从仓库中剔除, 那么执行完命令还要在 `.gitignore` 文件中注明, 不然又add回去了
+
 #### status
 > git status --help 查看详细介绍
 
@@ -137,18 +173,9 @@ categories:
     - M 修改过的文件
     - MM 修改了但是没有暂存
 
-#### rm
-- 删除文件 `git rm 文件`
-- 从git仓库中删除文件, 但是文件系统中保留文件 `git rm --cached 文件`
-    - 如果仅仅是想从仓库中剔除, 那么执行完命令还要在 `.gitignore` 文件中注明, 不然又add回去了
-
-#### revert 
-1. 取消所有暂存 `git revert .`
-
-1. 回滚代码至指定提交 `git revert --no-commit 032ac94ad...HEAD` `git commit -m "rolled back"`
-
 #### commit
-- [官方文档](https://git-scm.com/docs/git-commit)
+> [Official Doc](https://git-scm.com/docs/git-commit)
+
 - `git commit -am "init" `: a git库已有文件的修改进行添加, m 注释
     - `git add * ` 如果有新建立文件就要add 再之后commit就不要a参数了 `git commit -m ""`
     - 如果只是修改文件没有新建 `git commit -am ""`
@@ -164,55 +191,16 @@ categories:
     - 注意: 如果没有将前一个提交推送到远程, 那么没有任何影响, 
     - 如果已经推送上去了, 就相当于该次 --amend 操作是新开了个分支完成的修改, git log 里会出现一个分支的环
 
-#### remote
-> [官方文档](https://git-scm.com/docs/git-remote)
+#### revert 
+1. 取消所有暂存 `git revert .`
 
-1. **常用参数**
-    - `add name URL地址` 添加远程关联仓库 不唯一，可以关联多个, 一般默认是origin
-    - `set-url name URL地址` 修改关联仓库的URL
-    - `rm URL` 删除和远程文档库的关系
-    - `rename origin myth` 更改远程文档库的名称
-    - `show origin` 查看远程分支的状态和信息
-
-1. 删除远程库某分支`git push 远程名称 --delete 分支名称` 
-1. `git ls-remote` 显示本地仓库跟踪的那个远程仓库
-1. `git remote -v` 查看关联远程仓库的详情(push和pull的地址)
-
-- [删除，重命名远程分支](http://zengrong.net/post/1746.htm)
-
-#### submodule
-> 子模块
-
-- [ ] 学习
+1. 回滚代码至指定提交 `git revert --no-commit 032ac94ad...HEAD` `git commit -m "rolled back"`
 
 #### show
 > 展示提交信息
 
 - 显示当前提交的差异 `git show HEAD` HEAD替换成commit的sha值就是显示指定提交的修改
 - `git show -h` 查看更多
-
-#### push
-- _常用参数_
-    - `-h` 查看所有参数和说明
-    - `-q` 控制台不输出任何信息
-    - `-f` 强制 **使用这个参数时要再三考虑清楚**
-    - `--all` 推送所有引用
-    - `-u` upstream 设置 git pull/status 的上游
-        - `git push origin master`和`git push -u origin master` 区别在于 前者是使用该远程和分支进行推送
-        - 后者也是推送, 并设置origin为默认推送的远程, 以后push就不用注明远程名了(多远程的情况下要注意)
-    - `-d` 删除引用
-    - `--tags` 推送标签（不能使用 --all or --mirror）
-
-- 出现 `RPC failed; result=22, HTTP code = 411` 的错误
-    - 就是因为一次提交的文件太大，需要改大缓冲区 
-    - > 例如改成500m  `git config http.postBuffer 524288000`
-
-- 提交本地所有分支 `git push --all` pull时同理
-- 删除远程分支 `git push 远程名称 --delete 分支名称`
-
-- _第一次与远程建立连接_
-    - `git push -u origin master ` | `git push --set-uptream master` | `git push -all` 
-    - 这几个都是可以的,最后那个简单, 还能将别的分支一起推上去
 
 #### log
 > 更多说明 查看 `git help log` | [Official Doc](https://www.git-scm.com/docs/git-log)
@@ -232,14 +220,15 @@ categories:
     - `--numbered` 按提交数排序
     - `-s` 只显示每个提交者以及提交数量
 
-**`彩色输出Log`**
+> **`彩色输出Log`**
 ```sh
-alias glogc="git log --graph --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset | %C(bold cyan)<%an>%Creset %C(yellow)%d%Creset %s ' --abbrev-commit --date=short" # 彩色输出
-alias gloga='git log --oneline --decorate --graph --all' # 简短彩色输出
-alias glo='git log --oneline --decorate' # 最简单
-alias glol='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'
-alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
+    alias glogc="git log --graph --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset | %C(bold cyan)<%an>%Creset %C(yellow)%d%Creset %s ' --abbrev-commit --date=short" # 彩色输出
+    alias gloga='git log --oneline --decorate --graph --all' # 简短彩色输出
+    alias glo='git log --oneline --decorate' # 最简单
+    alias glol='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'
+    alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
 ```
+
 ##### 对比两个分支的差异
 > [参考博客](http://blog.csdn.net/u011240877/article/details/52586664)
 
@@ -253,6 +242,13 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 1. git log fileName 或者 git log --pretty=oneline fileName 更容易看到 sha-1 值
 1. git show sha-1的值 就能看到该次提交的所有修改
 
+#### reflog
+- 查看仓库的操作日志 `git reflog`
+
+**************************
+#### blame
+
+*****************************
 #### diff
 - 默认是将 work 区 和 index 区 进行比较
 - `--cached` stage 区 和 index 区 进行比较, 等同于`--staged`
@@ -283,6 +279,16 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 
 - 删除本地标签 `git tag -d tagname` 
 - 删除远程的tag `git push origin --delete tag <tagname>` 
+
+#### grep  
+- 搜索文字 `git grep docker`
+    - `-n`搜索并显示行号 
+    - `--name-only` 只显示文件名，不显示内容
+    - `-c` 查看每个文件里有多少行匹配内容(line matches):
+    - 查找git仓库里某个特定版本里的内容, 在命令行末尾加上标签名(tag reference):  `git grep xmmap v1.5.0`
+    - `git grep --all-match -e '#define' -e SORT_DIRENT` 匹配两个字符串
+    
+*******************
 
 #### reset
 > git reset -h 
@@ -343,8 +349,82 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 > 将工作状态暂存, 且不会产生垃圾提交
 
 **************************
+#### gc
+> 只能压缩一部分空间
 
-### 分支操作
+`git gc -h`:
+- `--aggressive` 默认使用较快速的方式检查文档库,并完成清理,当需要比较久的时间,偶尔使用即可
+- `--prune[=<日期>]` 清除未引用的对
+- `--auto` 启用自动垃圾回收模式
+- `--force` 强制执行 gc 即使另外一个 gc 正在执行
+
+***************************
+### 远程
+> 大部分命令都是本地的, 所以执行效率很高, 但是协同开发肯定需要有同步的操作了
+
+> 其实单独的两个主机也能完成同步, 两个IP之间要使用同一个仓库进行开发  
+> 两个人互为对方的远程库(使用 git daemon 即可搭建简易服务端), 互为服务器即可完成(即使使用的是动态IP, 应该也不会受太大影响???)
+
+#### Github上的fork
+**合并对方最新代码**
+> 1. 首先fork一个项目, 然后clone自己所属的该项目下来,假设 原作者为A 自己为B  
+> 1. 添加原作者项目的URL 到该项目的远程分支列表中 `git add remote A A_URL`  
+> 1. fetch作者的代码到本地 `git fetch A`  
+> 1. 新建本地分支, 并与A的远程分支绑定 `git branch A A/master` 
+> 1. 合并两个分支代码 `git merge --no-ff A/master`  
+> 1. push即可  
+
+#### Github上PR
+> [Using git to prepare your PR to have a clean history](https://github.com/mockito/mockito/wiki/Using-git-to-prepare-your-PR-to-have-a-clean-history)
+
+#### remote
+> [Official Doc](https://git-scm.com/docs/git-remote)
+
+1. **常用参数**
+    - `add name URL地址` 添加远程关联仓库 不唯一，可以关联多个, 一般默认是origin
+    - `set-url name URL地址` 修改关联仓库的URL
+    - `rm URL` 删除和远程文档库的关系
+    - `rename origin myth` 更改远程文档库的名称
+    - `show origin` 查看远程分支的状态和信息
+
+1. 删除远程库某分支`git push 远程名称 --delete 分支名称` 
+1. 显示本地仓库跟踪的那个远程仓库 `git ls-remote` 
+1. 查看关联远程仓库的详情(push和pull的地址) `git remote -v` 
+
+- [参考: 删除，重命名远程分支](http://zengrong.net/post/1746.htm)
+
+#### push
+- _常用参数_
+    - `-h` 查看所有参数和说明
+    - `-q` 控制台不输出任何信息
+    - `-f` 强制 **使用这个参数时要再三考虑清楚**
+    - `--all` 推送所有引用
+    - `-u` upstream 设置 git pull/status 的上游
+        - `git push origin master`和`git push -u origin master` 区别在于 前者是使用该远程和分支进行推送
+        - 后者也是推送, 并设置origin为默认推送的远程, 以后push就不用注明远程名了(多远程的情况下要注意)
+    - `-d` 删除引用
+    - `--tags` 推送标签（不能使用 --all or --mirror）
+
+- 出现 `RPC failed; result=22, HTTP code = 411` 的错误
+    - 就是因为一次提交的文件太大，需要改大缓冲区 
+    - > 例如改成500m  `git config http.postBuffer 524288000`
+
+- 提交本地所有分支 `git push --all` pull时同理
+- 删除远程分支 `git push 远程名称 --delete 分支名称`
+
+- _第一次与远程建立连接_
+    - `git push -u origin master ` | `git push --set-uptream master` | `git push -all` 
+    - 这几个都是可以的,最后那个简单, 还能将别的分支一起推上去
+
+#### pull
+
+#### fetch 
+
+***********************
+
+### 分支
+> Git 的分支是轻量型的, 能够快速创建和销毁
+
 - `git checkout -b feature-x develop` 从develop的分支生成一个功能分支，并切换过去
 - 完成功能后：`git checkout develop `
     - 合并： `git merge --no-ff feature-x`
@@ -395,22 +475,6 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
      
 ********************
 
-#### clone
-- `git clone branchname URL` 克隆远程仓库的指定分支
-- `git clone URL 目录` 克隆下来后更名为指定目录
-- `git clone --depth 1 URL` 只克隆最近一次提交的历史, 能大大减小拉取的大小 (Shallow Clone)
-    - 但是如果要用到之前的提交历史就还是要下拉下来的 类似于懒加载
-    - 且在新建一个远程仓库后, 推送时会报错:`shallow update not allowed` 因为本地库是残缺的
-    - 所以需要新建一个目录, 把原仓库全拉下来, 再添加远程进行推送, 然后删除该目录, 残缺版的仓库也能正常向新远程推送提交了
-
-> 克隆在指定tag状态的仓库 `git clone URL --branch=name ` 然后 Git会提示 
-```
-    您正处于分离头指针状态。您可以查看、做试验性的修改及提交，并且您可以通过另外的检出分支操作丢弃在这个状态下所做的任何提交。
-    如果您想要通过创建分支来保留在此状态下所做的提交，您可以通过在检出命令添加参数 -b 来实现（现在或稍后）。例如：
-    git checkout -b <new-branch-name>
-    按提示执行命令即可解决
-```
-
 #### branch 
 > 查看所有参数 `git branch --help`
 
@@ -419,13 +483,13 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 - 列出远程分支 `-r / --remote`
 - 查看分支详细信息 `-vv` 本地分支和远程分支的关联状态
 - 查看包含指定 commit(可以多个) 的分支 `--contains [<commit>]` 
-    - 对应的则是不包含 `--no-contains [<commit>]`
-    - commit 缺省则是 HEAD 
+    - 对应的则是不包含 `--no-contains [<commit>]` commit 缺省为 HEAD(也就是最近的一次提交) 
 
 - 创建分支 `git branch name`
     - 创建分支并跟踪远程 `-t <remote>/<branch>`
 - 删除分支 -d
     - 如果该分支没有被完全合并, 就会提醒使用 `-D` 强制删除. 等价于 `--delete --force`
+
 - 设置当前分支跟踪的远程分支 `--set-upstream-to=<remote>/<branch> <branch>`
 
 #### checkout
@@ -433,13 +497,16 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
 
 > alias gch='git checkout'
 
+1. 切换分支 `gch feature/a`
+1. 切换分支并设置该分支的远程分支 `gch feature/a origin/feature/a`
+
+> 撤销文件修改
 - `gch .` 取出最近的一次提交, 覆盖掉 work 区下当前目录(递归)下所有已更改(包括删除操作), 且未进入 stage 的内容, 已经进入 stage 区的文件内容则不受影响
     - `gch 文件1 文件2...` 同上, 但是只操作指定的文件
 
 - `gch [commit-hash] 文件1 文件2...` 根据指定的 commit 对应hash值, 作如上操作, 但是区别在于 从 index 直接覆盖掉 stage 区, 并丢弃 work 区
     - `gch [commit-hash] .` **`如在项目根目录执行该命令, 会将当前项目的所有未提交修改全部丢失, 不可恢复!!!!`**
 
-- [ ] 验证
 - `git checkout [commit-hash] 节点标识符或者标签 文件名 文件名 ...` 
     - 取出指定节点状态的某文件，而且执行完命令后，取出的那个状态会成为head状态，
     - 需要执行  `git reset HEAD` 来清除这种状态
@@ -488,27 +555,33 @@ alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s
     - `git rebase --abort` 放弃rebase
     - `git rebase --continue` 修改好冲突后继续
 
-#### grep  
-- 搜索文字 `git grep docker`
-    - `-n`搜索并显示行号 
-    - `--name-only` 只显示文件名，不显示内容
-    - `-c` 查看每个文件里有多少行匹配内容(line matches):
-    - 查找git仓库里某个特定版本里的内容, 在命令行末尾加上标签名(tag reference):  `git grep xmmap v1.5.0`
-    - `git grep --all-match -e '#define' -e SORT_DIRENT` 匹配两个字符串
-    
+#### cherry-pick
+- [ ] 
+
+************************
+### 子模块
+- [ ] 学习
+
 *************
 ## 常用文件
 ### .gitignore
-```
-    # 注释
-    */ 忽略所有文件
-    build/ 所有build目录
-    /build 只忽略当前目录的build, 子目录的不忽略
-    *.iml 所有iml文件
-    ?.log 忽略所有 后缀为log, 文件名字只有一个字母
-    !*.java 不忽略所有java文件
-    a.[abc] 忽略 后缀为 a或者b或者c 的文件
-    doc/*.txt 忽略 doc一级子目录的txt文件, 不忽略多级子目录中txt
+> [Github: gitignore](https://github.com/github/gitignore) | 一行是一个配置, 是独占一行的
+
+- 使用 `#` 注释一行
+- `test.txt`  忽略该文件
+- `*.html`  忽略所有HTML后缀文件
+- `*[o/a]`  忽略所有o和a后缀的文件
+- `!foo.html`  不忽略该文件
+
+```conf
+    */ #忽略所有文件
+    build/ #所有build目录
+    /build #只忽略当前目录的build, 子目录的不忽略
+    *.iml #所有iml文件
+    ?.log #忽略所有 后缀为log, 文件名字只有一个字母
+    !*.java #不忽略所有java文件
+    a.[abc] #忽略 后缀为 a或者b或者c 的文件
+    doc/*.txt #忽略 doc一级子目录的txt文件, 不忽略多级子目录中txt
 ```
 
 ### gitattributes

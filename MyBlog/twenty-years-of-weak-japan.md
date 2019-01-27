@@ -11,13 +11,14 @@ categories:
  
 1. [日本失落的二十年](#日本失落的二十年)
 
-**目录 end**|_2019-01-07 00:34_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-27 21:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 日本失落的二十年
 
 > [为何中国不学当年日本那样主动刺破房地产泡沫？](https://www.cnblogs.com/findumars/p/9249102.html)  
 > [参考: 日本失去的20年](https://wenku.baidu.com/view/5bc3e1add15abe23482f4dbd.html)  
 > [找回“失去的20年”？日本股市创27年新高，但一个数字不容乐观](http://www.nbd.com.cn/articles/2018-09-29/1259326.html)
+> [日本，失落的二十年？](https://www.jianshu.com/p/a212fb7c5ac2)
 
 泡沫破裂致“失去的 20 年”  日本的房地产泡沫起因，普遍认为始于 1985 年“广场协议”签订后的日元 升值， 给日本经济带来繁荣的制造业出口， 陷入了困境， 要保持日本经济继续高 速增长，必须寻找新的经济增长点，房地产成了不二选择。  
 于是， 日本政府开始加速全面推行住宅商品化， 商业银行大量为居民购房发 放贷款，贷款利率大幅下调。日本的房价、地价开始急速攀升。 

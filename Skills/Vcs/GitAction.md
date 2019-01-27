@@ -1,5 +1,5 @@
 ---
-title: Git技巧
+title: Git小技巧
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -9,22 +9,18 @@ categories:
 **目录 start**
  
 1. [GitInAction](#gitinaction)
-    1. [Tips](#tips)
-    1. [配置记住密码](#配置记住密码)
-    1. [【安装】](#安装)
+    1. [安装](#安装)
         1. [Linux(debian系)](#linuxdebian系)
         1. [windows](#windows)
         1. [GUI](#gui)
-    1. [【简单使用】](#简单使用)
+    1. [配置记住密码](#配置记住密码)
+    1. [简单使用](#简单使用)
         1. [配置GPG](#配置gpg)
         1. [实验楼上使用Github](#实验楼上使用github)
         1. [码云](#码云)
-    1. [【git初始化配置】](#git初始化配置)
+    1. [git初始化配置](#git初始化配置)
         1. [【VI编辑器的使用】](#vi编辑器的使用)
     1. [【配置SSH连接上Github】](#配置ssh连接上github)
-        1. [Github上fork别人项目的操作](#github上fork别人项目的操作)
-        1. [Github上PR](#github上pr)
-        1. [.gitingnore文件](#gitingnore文件)
         1. [终端中显示当前分支](#终端中显示当前分支)
         1. [命令的自动补全](#命令的自动补全)
     1. [搭建Git服务器](#搭建git服务器)
@@ -32,64 +28,18 @@ categories:
         1. [【HTTP访问Git服务器】](#http访问git服务器)
             1. [【配置HTTPS】](#配置https)
             1. [【使用SSH登录GitServer】](#使用ssh登录gitserver)
-    1. [基础命令概述](#基础命令概述)
+    1. [Tips](#tips)
+        1. [清理仓库大文件](#清理仓库大文件)
+        1. [CRLF与LF](#crlf与lf)
 
-**目录 end**|_2019-01-18 15:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-27 21:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
 
 > [Github: lazygit](https://github.com/jesseduffield/lazygit)`命令行的简易图形化`
 
-## Tips
-1. 虽然在物理上本地仓库中所有文件是放在一起的，但是分支之间是互不能访问以及操作的
-2. 在本地的每次commit都是有index的，上传到github可以不用那么频繁，反正都是有记录的
-3. 出现了冲突，从而无法自动merge：
-```
-    git pull 对方的分支
-    git checkout 自己的分支
-    git merge --no-ff 对方的分支
-    git push （自己的源+分支）origin master
-```
-4. 切记：避免隐私的配置文件上传github时，将配置分离出来配置.gitignore中忽略掉配置文件，然后建立模板文件夹放待配置的文件即可
-    -  `大意的后果`：[程序员复仇记 | 这些年，GitHub 上泄露了些什么？](https://zhuanlan.zhihu.com/p/33424997)
-    - [不小心把密码上传到 GitHub 了，怎么办](https://www.bennythink.com/git-password.html)
-5. `cat ~/.ssh/id_rsa.pub | xclip -sel clip` 复制公钥
-6. Linux下当大量文件出现mode的变化（因为你的目录移动，文件权限变化等影响的）可以设置忽略掉 `git config core.fileMode false`
-    * 当将目录备份出去，然后重装系统粘贴回来，权限就变了，mode也变了，可以设置忽略掉改变
-7. git的输出中文乱码 执行 `git config --global core.quotepath false`即可
-
-## 配置记住密码
--  `Windows下记住密码` ： 
-    * 新建环境变量 HOME 值：`%USERPROFILE%`
-    * 在C盘User下你的当前用户目录下新建` _netrc `文本文件： 
-        * `machine https://github.com/Kuangcp/`
-        * `login ***`
-        * `password ***` 
-    * 成功配置，测试便知
-
-- `Linux下记住密码`：(如果使用了多个github账号，设置这个后只能使用一个账号的自动登录，另一个账号将完全连不上github，ssh也只能一个账号配一个，不能多个账号用一个ssh)
-    * `touch .git-credentials`
-    * `vim .git-credentials`
-    * 输入： ` http://{username}:{password}@github.com` 或者是https开头
-    * `git config --global credential.helper store`
-    * `~/.gitconfig` 文件中多了以下内容即可
-        * [credential]
-        * helper = store
-
-- `ssh 方法：（推荐）`
-    - `ssh-keygen` 不设置密码
-    - `cat ~/.ssh/id_rsa.pub | xclip -sel clip`  添加即可
-
-*********
-- 关于许可证 [Github许可证网](https://choosealicense.com/licenses/)
-    - 新建项目的时候可以选择 添加.gitignore和许可证类别 许可证大致分为 MIT Apache2.0 GPL 
-    - `MIT` 简单宽松的许可证，任何人可以拿代码做任何事与我无关` eg: jQuery、Rails` 
-    - `Apache` 关注于专利，这类似于MIT许可证，但它同时还包含了贡献者向用户提供专利授权相关的条款。 `Apache、SVN和NuGet`
-    - `GPL` 关注于共享改进，这是一种copyleft许可证，要求修改项目代码的用户再次分发源码或二进制代码时，必须公布他的相关修改。 `Linux、Git`
-
-**********
-## 【安装】 
+## 安装
 ### Linux(debian系)
 - `sudo apt-get install git`
 
@@ -117,8 +67,32 @@ categories:
 ### GUI
 > [官方列表](https://git-scm.com/downloads/guis)
 
+*******************
+
+## 配置记住密码
+-  `Windows下记住密码` ： 
+    * 新建环境变量 HOME 值：`%USERPROFILE%`
+    * 在C盘User下你的当前用户目录下新建` _netrc `文本文件： 
+        * `machine https://github.com/Kuangcp/`
+        * `login ***`
+        * `password ***` 
+    * 成功配置，测试便知
+
+- `Linux下记住密码`：(如果使用了多个github账号，设置这个后只能使用一个账号的自动登录，另一个账号将完全连不上github，ssh也只能一个账号配一个，不能多个账号用一个ssh)
+    * `touch .git-credentials`
+    * `vim .git-credentials`
+    * 输入： ` http://{username}:{password}@github.com` 或者是https开头
+    * `git config --global credential.helper store`
+    * `~/.gitconfig` 文件中多了以下内容即可
+        * [credential]
+        * helper = store
+
+- `ssh 方法：（推荐）`
+    - `ssh-keygen` 不设置密码
+    - `cat ~/.ssh/id_rsa.pub | xclip -sel clip`  添加即可
+
 **************
-## 【简单使用】 
+## 简单使用
 
 *Github下拉到eclipse*
 - 1.在GitHub上新建一个项目，不勾选初始化，复制下URL
@@ -166,7 +140,7 @@ categories:
 - [如何进行减少提交历史数量以及修改自己的commit中的邮箱](http://git.mydoc.io/?t=83152)
 - [改写历史，永久删除git库的物理文件 ](https://my.oschina.net/jfinal/blog/215624?fromerr=ZTZ6c38X)
 ********************************
-## 【git初始化配置】 
+## git初始化配置
 ```sh
 	git config --global user.name " "
 	git config --global user.email " "
@@ -195,49 +169,11 @@ categories:
     - 通过 用户名/仓库名 #编号 来指定仓库的指定Issue
 - 【将Bash和GitHub绑定起来】：
     - 1.在GItHub上设置SSH key， 有一个即可
-    - 2.$ssh-keygen -t rsa -C "xxx@outlook.com" 生成一个具有指定邮箱的rsa密钥对,然后复制到平台上
+    - 2.$ssh-keygen -t rsa -C "xxx@xxx" 生成一个具有指定邮箱的rsa密钥对,然后复制到平台上
     - 3.设置密钥对密码. 当然为了偷懒就不设置,不然每次提交都要输入....
     - 4.测试SSH连接  $ssh -T git@github.com 输入 密钥对 密码
-        - 询问将github的ip加入已知列表中 选择yes
+        - 询问将github的ip加入已知列表中 输入yes
 
-### Github上fork别人项目的操作
-
-**合并对方最新代码**
-> 1. 首先fork一个项目, 然后clone自己所属的该项目下来,假设 原作者为A 自己为B  
-> 1. 添加原作者项目的URL 到该项目的远程分支列表中 `git add remote A A_URL`  
-> 1. fetch作者的代码到本地 `git fetch A`  
-> 1. 新建本地分支, 并与A的远程分支绑定 `git branch A A/master` 
-> 1. 合并两个分支代码 `git merge --no-ff A/master`  
-> 1. push即可  
-
-### Github上PR
-> [Using git to prepare your PR to have a clean history](https://github.com/mockito/mockito/wiki/Using-git-to-prepare-your-PR-to-have-a-clean-history)
-
-********************
-### .gitingnore文件
-> [Github: gitignore](https://github.com/github/gitignore) | 一行是一个配置, 是独占一行的
-
-- 使用 `#` 注释一行
-- `test.txt`  忽略该文件
-- `*.html`  忽略所有HTML后缀文件
-- `*[o/a]`  忽略所有o和a后缀的文件
-- `!foo.html`  不忽略该文件
-
-`示例文件`
-```conf
-    # maven #
-    target/
-    # IDEA #
-    .idea/
-    *.iml
-    out/
-    # eclipse #
-    bin/
-    .settings/
-    .metadata/
-    .classpath
-    .project
-```
 ********************
 ### 终端中显示当前分支
 > 使用 .git-prompt.sh 在Bash下显示当前分支   Windows环境不用看,安装的Git-for-windows软件已经会显示分支名了
@@ -258,6 +194,9 @@ categories:
     }
     PROMPT_COMMAND="set_bash_prompt; $PROMPT_COMMAND"
 ```
+
+如果使用 zsh 加上 oh-my-zsh 这就是换个主题的事 下面的自动补全也是默认就有
+
 ********************
 ### 命令的自动补全
 > [git自动补全脚本GitHub地址](https://github.com/git/git/tree/master/contrib/completion)
@@ -322,29 +261,63 @@ categories:
 #### 【使用SSH登录GitServer】
 - [ ] 实践一下
 
-*********************
-## 基础命令概述
-- `git touch file1 file2 ` 新建三个文件
-- `echo "  ">>file1 ` 修改文件file1
-- `git rm 文件名 ` ： 删除文件至缓存区
-- `git commit -am " " `从缓存提交（切记要先 commit 才能 push）
-- `git diff`  ： 查看当前工作树和暂存区的差别
-- `git diff --cached `：查看缓存中文件修改的痕迹和对比 输入q 退出
-- `git log --graph `：查看（图形化）提交日志 输入q退出
-- `git banrch `分支名 ：创建新的分支
-- `git branch -a`查看当前分支信息
-- `git checkout -b`：创建一个分支，并立即切换
-- `git checkout -b feature-D origin/feature-D` 新建一个分支来接收同步后面那个远程仓库的分支
-- `git pull `：获取最新的远程仓库分支
-- `git pull origin feature-D `：只把本地的feature-D分支更新到最新
-- `git reset --hard 哈希值`：数据库的回滚操作似的
-- `git reflog `  查看仓库的操作日志
-- `git mv -k oldName  newName` :更改文件名字
+******************
+
+## Tips
+1. 虽然在物理上本地仓库中所有文件是放在一起的，但是分支之间是互不能访问以及操作的
+2. 在本地的每次commit都是有index的，上传到github可以不用那么频繁，反正都是有记录的
+3. 出现了冲突，从而无法自动merge：
+```
+    git pull 对方的分支
+    git checkout 自己的分支
+    git merge --no-ff 对方的分支
+    git push （自己的源+分支）origin master
+```
+4. 切记：避免隐私的配置文件上传github时，将配置分离出来配置.gitignore中忽略掉配置文件，然后建立模板文件夹放待配置的文件即可
+    -  `大意的后果`：[程序员复仇记 | 这些年，GitHub 上泄露了些什么？](https://zhuanlan.zhihu.com/p/33424997)
+    - [不小心把密码上传到 GitHub 了，怎么办](https://www.bennythink.com/git-password.html)
+5. `cat ~/.ssh/id_rsa.pub | xclip -sel clip` 复制公钥
+6. Linux下当大量文件出现mode的变化（因为你的目录移动，文件权限变化等影响的）可以设置忽略掉 `git config core.fileMode false`
+    * 当将目录备份出去，然后重装系统粘贴回来，权限就变了，mode也变了，可以设置忽略掉改变
+7. git的输出中文乱码 执行 `git config --global core.quotepath false`即可
+
+- `git ls-files` 列出文件列表
+    - `git ls-files | xargs wc -l` 计算文件中程序代码行数 通过工具：`xargs` `wc` (中文命名的文件编码问题无法计算行数)
+    - `git ls-files | xargs cat | wc -l` 计算行数总和
+
+- [git bisect 命令教程](http://www.ruanyifeng.com/blog/2018/12/git-bisect.html)
+- [二分查找捉虫记](http://www.worldhello.net/2016/02/29/git-bisect-on-git.html)`通过分析提交历史查到哪次提交引起的Bug然后检出,修复`
+
+- [API: github开发接口](https://developer.github.com/v3/)
+
+### 清理仓库大文件
+- [official:7.6 Git 工具 - 重写历史](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2)
+
+> [Tool: bfg-cleaner](https://rtyley.github.io/bfg-repo-cleaner/)
+
+> [参考博客 从git中永久删除文件以节省空间](http://blog.csdn.net/meteor1113/article/details/4407209) | 
+> [参考博客4 减小磁盘占用](http://zhongmingmao.me/2017/04/19/git-reduce/)  
+> [删除仓库的某个时间点之前的历史记录，减少.git 目录大小](https://www.v2ex.com/t/297802)  
+> [如何清洗 Git Repo 代码仓库](http://www.open-open.com/lib/view/open1414632626075.html)  
+
+> [参考博客: 寻找并删除Git记录中的大文件](https://www.tuicool.com/articles/vAVVZrA)
+1. 找出大文件 `git rev-list --objects --all | grep "$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -10 | awk '{print$1}')"`
+1. 删除文件, 重写提交 `git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch 文件的路径' --prune-empty --tag-name-filter cat -- --all`
+1. 强制推送 `git push origin --force --all`
+    - `git push origin --force --tags`
+1. 使用`git pull rebase`来更新分支，而不是 `git merge` 不然大文件又从别的分支回来了
+
+> 要注意, 所有的分支都必须pull rebase , 只要还有一个人留有对大文件的引用, 大文件就一直在仓库
+
+### CRLF与LF
+> 由于系统的不同 Windows是 CRLF *nix 是 LF Mac 是 CR | [wiki: CRLF](https://en.wikipedia.org/wiki/Newline)  
 
 ```sh
-	usage: git [--version] [--help] [-C <path>] [-c name=value]
-           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
-           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
-           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
-           <command> [<args>]
+    git config --global core.autocrlf false 
+    git config --global core.safecrlf true
 ```
+> [参考博客: CRLF和LF](https://www.tuicool.com/articles/IJjQVb)
+> [参考博客: git 换行符LF与CRLF转换问题](https://www.cnblogs.com/sdgf/p/6237847.html)
+
+>1. CRLF -> LF `sed -i 's/\r//g' file` 配合git 就是 `git ls-files| sed -i 's/\r//g' `
+

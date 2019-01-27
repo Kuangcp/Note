@@ -40,7 +40,7 @@ categories:
     1. [WebDAV](#webdav)
     1. [WebAssembly](#webassembly)
 
-**目录 end**|_2019-01-27 16:10_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-27 21:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 网络
 
@@ -110,13 +110,13 @@ ISO制定的OSI参考模型的过于庞大、复杂招致了许多批评。与�
 ### 正向代理
 > 客户端使用代理隐藏自身, 去访问明确的服务端
 
-- 应用: 科学上网 
+- 应用: 科学上网, VPN, 
 - 安全: 正向代理允许客户端通过它访问任意网站并且隐蔽客户端自身，因此你必须采取安全措施来确保仅为经过授权的客户端提供服务
 
 ### 反向代理
 > 服务端使用代理隐藏自身, 客户端明确访问的实际上是代理
 
-- 应用: 保护和隐藏原始资源服务器, 负载均衡, 加密和SSL加速 缓存静态内容
+- 应用: 保护和隐藏原始资源服务器, 负载均衡, 加密和SSL加速, 缓存静态内容, 安全(DDos的防护)
 - 安全: 对外是透明的，访问者并不知道自己访问的是代理。对访问者而言，他以为访问的就是原始服务器
 
 ### 透明代理
