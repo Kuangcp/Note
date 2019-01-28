@@ -59,7 +59,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2019-01-18 21:31_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-28 19:34_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 常用的网站
 ## 软件下载站
@@ -231,7 +231,6 @@ categories:
 - [codeif](https://unbug.github.io/codelf/)`搜索变量类等命名单词`
 
 ************************************
-************************************
 # 工具软件
 
 ## IDE
@@ -335,13 +334,11 @@ yed astah dia
 - [ckeditor](https://ckeditor.com/)`开源中国在用的富文本编辑器`
     - [github地址](https://github.com/ckeditor/ckeditor-dev)
 
-
 ## 模拟器
 - [genymotion](https://www.genymotion.com/) `安卓模拟器`
 
 ## Other
 - [crash](http://www.crashub.org/)`Java中的Shell环境`
-
 
 # 安卓手机
 

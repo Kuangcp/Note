@@ -28,7 +28,7 @@ categories:
     1. [Diffie-Hellman Key Exchange算法](#diffie-hellman-key-exchange算法)
 1. [实际问题](#实际问题)
 
-**目录 end**|_2019-01-13 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-28 19:34_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 数据结构和算法
 > 数据结构是指一组数据的存储结构 算法就是操作数据的方法 数据结构和算法是相辅相成的，数据结构是为算法服务的，而算法要作用在特定的数据结构之上
@@ -68,6 +68,7 @@ categories:
 > [Data structure.pdf](https://www.cs.auckland.ac.nz/textbookCS220/ebook/DGW2.pdf)
 > [algorithms](http://jeffe.cs.illinois.edu/teaching/algorithms/)
 
+> [TheAlgorithms-Java ](https://github.com/TheAlgorithms/Java)
 **********************
 
 离散数学基础: 集合、偏序集、良序、数学归纳法、级数、递归、递推 

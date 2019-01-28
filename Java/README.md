@@ -71,6 +71,7 @@
 >- [模式之禅](/Java/ZenOfPattern.md)
 
 ## 相关资源
+> [Github Topic: Java](https://github.com/topics/java)  
 > [architect-awesome](https://github.com/xingshaocheng/architect-awesome)  
 > [Java资源大全](http://www.codeceo.com/article/java-resource-collection.html)  
 > [google: style guide](https://google.github.io/styleguide/javaguide.html)  
