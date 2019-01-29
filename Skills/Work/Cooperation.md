@@ -1,8 +1,9 @@
 ---
-title: 团队协作
+title: 开发中的团队协作
 date: 2019-01-27 23:37:38
 tags: 
 categories: 
+    - 团队
 ---
 
 **目录 start**
@@ -11,7 +12,7 @@ categories:
     1. [代码规范](#代码规范)
     1. [Code Review](#code-review)
 
-**目录 end**|_2019-01-27 23:39_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-29 23:37_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 协作 
 

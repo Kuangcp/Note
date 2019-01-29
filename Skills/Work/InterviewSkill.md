@@ -1,5 +1,5 @@
 ---
-title: InterviewSkill.md
+title: 面试技巧
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -11,7 +11,7 @@ categories:
     1. [铺垫](#铺垫)
     1. [简历](#简历)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-29 23:37_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 面试技巧
 > [参考博客: 面试的时候问：你的期望薪资多少？怎么谈？](http://blog.csdn.net/Z1XpIYDj9sn/article/details/79049373)
@@ -183,3 +183,4 @@ _面试：（站在自己的角度看面试，成功都是站在对方角度看�
 		* 和主要领导搞好关系的同时，要注意不要让直接领导感觉到
 		* 直接领导搞好关系到什么程度？就是让直接领导把你当自己人
 	* HR、行政：尽量不要与这些人有交集
+

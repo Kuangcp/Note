@@ -1,5 +1,5 @@
 ---
-title: AppManual.md
+title: 常用工具手册
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -39,7 +39,7 @@ categories:
     1. [安全工具](#安全工具)
         1. [gpg](#gpg)
 
-**目录 end**|_2019-01-16 16:01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-01-29 23:37_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 软件使用记事
 ## 【包管理】
