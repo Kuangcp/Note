@@ -12,8 +12,6 @@ categories:
  
 1. [AOP](#aop)
     1. [动态代理](#动态代理)
-        1. [asm](#asm)
-        1. [cglib](#cglib)
     1. [基本概念](#基本概念)
     1. [基本配置](#基本配置)
     1. [注意](#注意)
@@ -21,7 +19,7 @@ categories:
         1. [2 Spring AOP中使用@AspectJ还是XML？](#2-spring-aop中使用@aspectj还是xml)
         1. [3 混合切面类型](#3-混合切面类型)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-01 17:18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # AOP
 > Aspect Oriented Programming  面向切面编程
@@ -29,12 +27,7 @@ categories:
 ## 动态代理
 > 这是AOP的起源, 最初是JDK的动态Proxy -> cglib/asm 
 
-> [参考博客: Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）](https://blog.csdn.net/luanlouis/article/details/24589193)
-
-### asm
-
-### cglib
-> 基于asm
+> [笔记: 代理](/Java/AdvancedLearning/Proxy.md)
 
 ## 基本概念
 | 英文 | 解释 |

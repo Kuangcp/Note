@@ -15,11 +15,12 @@ categories:
     1. [Hotspot JVM](#hotspot-jvm)
     1. [OpenJ9](#openj9)
 
-**目录 end**|_2019-01-28 19:34_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-01 17:18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
 
+> [Java Language and Virtual Machine Specifications](https://docs.oracle.com/javase/specs/)
 
 ## JMM
 > [github:jvm学习仓库](https://github.com/xwjie/jvm)

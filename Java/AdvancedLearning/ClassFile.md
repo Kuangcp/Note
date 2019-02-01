@@ -39,9 +39,10 @@ categories:
             1. [对于Java的使用](#对于java的使用)
         1. [Thrift](#thrift)
         1. [Marshalling](#marshalling)
+1. [字节码相关框架](#字节码相关框架)
 1. [热更新](#热更新)
 
-**目录 end**|_2019-01-06 19:57_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-01 17:18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 类和字节码
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/java-classfile/src/main/java/com/github/kuangcp) 
@@ -350,6 +351,11 @@ _也可以使用该脚本更新协议_
 
 ### Marshalling
 > JBOSS 内部使用的编解码框架
+
+*****************************************
+# 字节码相关框架
+
+**************************************
 
 
 # 热更新
