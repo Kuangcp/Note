@@ -350,3 +350,13 @@ _获取指定时间_ [获取指定时间的时间戳](https://blog.csdn.net/jsso
 | char     | enum     | if      | new        | static    | transient
 
 - [ ]  transient 序列化时不进行序列化
+
+## try 
+> try catch finally 
+
+- [StackOverFlow: Try-catch-finally in java](https://stackoverflow.com/questions/7143788/try-catch-finally-in-java)
+
+- There are at least 3 OTHER cases where the finally block is not executed: 
+    1. if the try block or a catch block goes into an infinite loop, or blocks for ever
+    1. if something (e.g. a JNI bug) causes the JVM to crash
+    1. if there is a machine outage (power failure, hardware error, etc). 
