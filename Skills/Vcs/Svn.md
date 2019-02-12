@@ -25,7 +25,7 @@ categories:
         1. [回滚到指定版本](#回滚到指定版本)
         1. [Tips](#tips)
 
-**目录 end**|_2019-01-25 19:23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-12 14:57_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SVN
 > 传统的中心化版本控制工具,能够精确控制每个目录的权限, Apache顶级项目  
@@ -84,6 +84,15 @@ categories:
 > [参考博客: svn 忽略文件、文件夹](https://ztgame.shenyu.me/svn/svn-ignore.html)
 
 ### 配置忽略文件
+> svn:ignore 和 svn:global-ignores
+
+1. 作用范围
+    - svn:ignore：只对当前目录有效； 
+    - global-ignores：是全局有效，就是所有目前都有效；
+1. 配置方式
+    - svn:ignore：必须在项目的每个工作目录都要设置；相同配置时,优先级高于全局的
+    - global-ignores：只需要配置一次；
+
 - `svn propedit svn:ignore 项目文件夹` 会打开默认配置,  和gitignore一样的配置, 然后保存即可
     - 文件夹就是项目, 所以要在项目根目录的上级目录执行这条命令
     - 如果上面没有调起编辑器, 就要在 .bashrc 中 `export SVN_EDITOR=vim`

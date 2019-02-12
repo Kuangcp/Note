@@ -17,7 +17,7 @@ categories:
     1. [sed](#sed)
     1. [awk](#awk)
 
-**目录 end**|_2019-01-15 15:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-12 14:57_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 流编辑器
 > [参考博客: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
@@ -81,9 +81,9 @@ so，也不需要和其他的对比了，其他都是拆分，而paste是合并�
     b ：label 将执行的指令跳至由 : 建立的参考位置。
     D ：删除 pattern space 内第一个 newline 字母 前的资料。
     g ：拷贝资料从 hold space。
-    G ：添加资料从 hold space 至 pattern space 。
-    h ：拷贝资料从 pattern space 至 hold space 。
-    H ：添加资料从 pattern space 至 hold space 。
+    G ：添加资料从 hold space 至 pattern space
+    h ：拷贝资料从 pattern space 至 hold space
+    H ：添加资料从 pattern space 至 hold space
     l ：印出 l 资料中的 nonprinting character 用 ASCII 码。
     i ：插入添加使用者输入的资料行。
     n ：读入下一笔资料。
@@ -101,6 +101,7 @@ so，也不需要和其他的对比了，其他都是拆分，而paste是合并�
 >1. 修改配置文件中name的值为123 `sed -i "s/name=.*/name=123/g" config.conf`
 >1. CRLF -> LF `sed -i 's/\r//g' file` 配合git 就是 `git ls-files| sed -i 's/\r//g' `
 >1. 去除换行符 `sed ':label;N;s/\n/ /;b label'` [参考](http://www.cnblogs.com/lykm02/p/4479098.html)
+>1. 注意特殊字符的转义 `git ls-files | xargs  sed -i '/s/@a.*/\//g'`
 
 > [参考博客: linux sed 命令单行任务快速参考](http://www.techug.com/post/linux-sed1line.html)
 
