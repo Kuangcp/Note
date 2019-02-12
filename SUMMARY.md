@@ -192,6 +192,7 @@
     * [ 12306 ](/MyBlog/12306.md)
     * [ 2018-3-15-install-deepin ](/MyBlog/2018-3-15-install-deepin.md)
     * [ twenty-years-of-weak-japan ](/MyBlog/twenty-years-of-weak-japan.md)
+    * [ use-maven-create-web-project ](/MyBlog/use-maven-create-web-project.md)
 * 【 Python 】
     * 【 Python/Tool 】
         * [ PyCharm ](/Python/Tool/PyCharm.md)
@@ -207,6 +208,7 @@
 * 【 Scala 】
     * [ SBT ](/Scala/SBT.md)
     * [ Scala ](/Scala/Scala.md)
+    * [ test. ](/Scala/test.log)
 * 【 Script 】
     * [ Dos ](/Script/Dos.md)
     * [ LinuxBash ](/Script/LinuxBash.md)
@@ -258,8 +260,8 @@
         * [ Svn ](/Skills/Vcs/Svn.md)
     * 【 Skills/Work 】
         * [ Cooperation ](/Skills/Work/Cooperation.md)
+        * [ EffectiveWork ](/Skills/Work/EffectiveWork.md)
         * [ InterviewSkill ](/Skills/Work/InterviewSkill.md)
-        * [ PomodoroTechnique ](/Skills/Work/PomodoroTechnique.md)
         * [ WorkThinking ](/Skills/Work/WorkThinking.md)
     * [ AppManual ](/Skills/AppManual.md)
     * [ CelebrityQuotes ](/Skills/CelebrityQuotes.md)

@@ -16,7 +16,7 @@ categories:
     1. [开始使用](#开始使用)
     1. [安装SpringBootCLI](#安装springbootcli)
     1. [测试模块](#测试模块)
-    1. [配置文件](#配置文件)
+    1. [Profils](#profils)
         1. [多种配置文件并切换](#多种配置文件并切换)
             1. [yml方式](#yml方式)
             1. [yml和Properties结合](#yml和properties结合)
@@ -40,7 +40,7 @@ categories:
             1. [gradle结合docker](#gradle结合docker)
         1. [热部署](#热部署)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-12 16:36_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SpringBoot
 > [首页](https://spring.io/projects/spring-boot#learn)
@@ -120,7 +120,8 @@ _目录结构最好如下_ `*Application类要处于所有用了Springboot注解
 - 使用Selenium来测试HTML页面，模拟浏览器的动作，查看系统运行状态
 
 ***********
-## 配置文件
+## Profils
+> [Spring Profiles](https://www.baeldung.com/spring-profiles)
 
 > 配置文件(`application.properties或者yml`)加载顺序 [官方文档说明](https://docs.spring.io/spring-boot/docs/1.5.9.RELEASE/reference/htmlsingle/#boot-features-external-config-application-property-files)
 >> 1.当前Jar/War目录下的/config目录 `file:./config/`  
