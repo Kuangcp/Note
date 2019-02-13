@@ -573,7 +573,7 @@ TODO 存疑
 - 查看仓库的操作日志 `git reflog`
 
 *************
-## 常用文件
+## 配置文件
 ### .gitignore
 > [Github: gitignore](https://github.com/github/gitignore) | 一行是一个配置, 是独占一行的
 

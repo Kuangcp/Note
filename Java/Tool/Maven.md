@@ -242,6 +242,8 @@ mvn install:install-file
 ```
 
 ### Profiles
+> [Official Doc](http://maven.apache.org/guides/introduction/introduction-to-profiles.html)
+
 `简单配置`
 ```xml
     <profiles>

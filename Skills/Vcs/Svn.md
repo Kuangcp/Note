@@ -63,6 +63,8 @@ categories:
 **Ubuntu**
 > `sudo apt install subversion` 安装后可使用的命令就是svn
 
+### GUI
+
 *********************************
 ## 使用
 > [参考博客: linux-svn命令](http://blog.csdn.net/gexiaobaohelloworld/article/details/7752862) | [SVN常用命令](http://www.cnblogs.com/SanMaoSpace/p/5102878.html)

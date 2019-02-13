@@ -107,21 +107,18 @@ template = ~/.gitmessage
 
 *******************************
 
-# Client
+# GUI
 > 诚然, 命令行是高效的, 从学Git开始就是用命令行, 这只是在单兵作战或者说没有使用多分支的情况下是没有问题的  
 > 当多人协作时, 需要Review代码时, 知道每个人每次提交更改了些什么, 图形化就很方便了
 
-> [guis](https://git-scm.com/downloads/guis)
+> [guis](https://git-scm.com/downloads/guis)  
 > [client on linux ](https://unix.stackexchange.com/questions/144100/is-there-a-usable-gui-front-end-to-git-on-linux)
 
 ## git-cola
 > [Github: repo](https://github.com/git-cola/git-cola)`轻量, 简洁, 跨平台, 正是我想要的`
 
-- 简单小巧, 基本够用
-
 ## GitBlade
-
-- 功能强大
+- 功能强大 付费软件
 
 ## GitAhead
 > [Github](https://github.com/gitahead/gitahead) 

@@ -12,30 +12,32 @@ categories:
 1. [Gradle](#gradle)
     1. [书籍](#书籍)
     1. [发行版本列表](#发行版本列表)
-    1. [安装配置](#安装配置)
-        1. [SDKMAN安装](#sdkman安装)
-        1. [Chocolate](#chocolate)
-        1. [Docker安装](#docker安装)
-        1. [手动配置](#手动配置)
-        1. [使用Wrapper](#使用wrapper)
+1. [安装](#安装)
+    1. [SDKMAN安装](#sdkman安装)
+    1. [Chocolate](#chocolate)
+    1. [Docker安装](#docker安装)
+    1. [手动配置](#手动配置)
+    1. [使用Wrapper](#使用wrapper)
     1. [CUI使用](#cui使用)
         1. [命令行选项](#命令行选项)
         1. [守护进程](#守护进程)
-    1. [配置镜像源](#配置镜像源)
-    1. [常用插件](#常用插件)
-        1. [Lombok](#lombok)
-        1. [Maven](#maven)
-        1. [shadowJar](#shadowjar)
-        1. [docker](#docker)
-        1. [protobuf-gradle-plugin](#protobuf-gradle-plugin)
-1. [关键配置文件](#关键配置文件)
+1. [配置](#配置)
+    1. [全局配置文件](#全局配置文件)
     1. [build.gradle](#buildgradle)
+        1. [SourceSet](#sourceset)
         1. [依赖管理](#依赖管理)
+            1. [依赖排除以及指定依赖版本](#依赖排除以及指定依赖版本)
             1. [统一依赖管理的一种策略](#统一依赖管理的一种策略)
+        1. [配置镜像源](#配置镜像源)
         1. [插件](#插件)
+            1. [Lombok](#lombok)
+            1. [Maven](#maven)
+            1. [shadowJar](#shadowjar)
+            1. [docker](#docker)
+            1. [protobuf-gradle-plugin](#protobuf-gradle-plugin)
     1. [setting.gradle](#settinggradle)
-        1. [Gradle多模块的构建](#gradle多模块的构建)
-            1. [另一种多模块的构建方式](#另一种多模块的构建方式)
+1. [Gradle多模块的构建](#gradle多模块的构建)
+    1. [另一种多模块的构建方式](#另一种多模块的构建方式)
 1. [部署](#部署)
     1. [War包](#war包)
     1. [Jar包](#jar包)
@@ -43,7 +45,7 @@ categories:
     1. [构建Docker镜像](#构建docker镜像)
         1. [第二种插件方式](#第二种插件方式)
 
-**目录 end**|_2019-01-18 21:31_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-13 17:29_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # Gradle
@@ -75,16 +77,16 @@ categories:
 ## 发行版本列表
 > [Github地址](https://github.com/gradle/gradle/releases)`查看简洁的 Release Note 更方便`
 
-## 安装配置
+# 安装
 > 注意 Gradle 会默认使用Maven的本地库, 但是是复制过来使用而不是共用   
 > 会将 `~/.m2/repository` 复制到 `~/.gradle/caches/modules-2/files-2.1/`, 目录结构也发生改变  
 - [Gradle 使用Maven的本地仓库](https://blog.csdn.net/kcp606/article/details/81636426)
 
-### SDKMAN安装
+## SDKMAN安装
 - 先安装sdkman `curl -s "https://get.sdkman.io" | bash`
 - `sdk install gradle` 即可安装
 
-### Chocolate
+## Chocolate
 - windows 上安装 chocolate
 - PowerShell中运行 `wr https://chocolatey.org/install.ps1 -UseBasicParsing | iex`
 - 若操作系统默认禁止执行脚本，执行一次`set-executionpolicy remotesigned`后脚本顺利执行
@@ -92,15 +94,15 @@ categories:
 1. 执行“开始/运行”命令（或者WIN + R），输入“regedit”，打开注册表。
 2. 展开注册表到下面的分支[HKEY＿LOCAL＿MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion]，在右侧窗口中找到名为“ProgramFilesDir”的字符串，双击把数值“C:\Program Files”修改为“D：\ProgramFiles”，确定退出后,即可更改常用软件的安装路径了。
 
-### Docker安装
+## Docker安装
 > [Docker 文档](https://docs.docker.com/samples/library/gradle/) `虽然在开发时感觉意义不大, 还要把项目映射进去..`
 
-### 手动配置
+## 手动配置
 > [官方下载网址](http://services.gradle.org/) 有各个版本的下载以及版本发行说明
 
 1. 解压到任意目录, 并将 bin 目录加入 环境变量即可
 
-### 使用Wrapper
+## 使用Wrapper
 > 类似于 Maven 的 mvnw 脚本
 
 > 在使用IDE生成项目的时候，可以选择gradle的执行目录，可以选`gradle wrapper` 也可以选自己下载解压的完整包  
@@ -116,7 +118,6 @@ categories:
 - 运行 gradle wrapper 一次即可开始使用包装器的脚本来构建项目了
 - 生成gradle包管理器：`gradle wrapper --gradle-version 2.0`
 ***************************************
-
 ## CUI使用
 ### 命令行选项
 - `tasks` : 输出所有建立的task
@@ -138,32 +139,10 @@ categories:
 - 手动关闭 `gadle --stop `
 - 构建时不采用守护进程 `--no--daemon`
 
-****************************
+************************
 
-## 配置镜像源
-**阿里云**
-> [参考博客: 配置Gradle的镜像为阿里云镜像](https://tvzr.com/change-the-mirror-of-gradle-to-aliyun.html)
-
-> **当前项目的build.gradle**
-```Groovy
-  repositories {
-    mavenLocal()
-    def aliyun = "http://maven.aliyun.com/nexus/content/groups/public/"
-    def abroad = "http://central.maven.org/maven2/"
-    maven {
-      url = aliyun
-      artifactUrls abroad
-    }
-    // 码云上自己的仓库
-    maven {
-      url = "https://gitee.com/gin9/MavenRepos/raw/master"
-    }
-    mavenCentral()
-    jcenter()
-  }
-```
-
-> **全局的配置文件**
+# 配置
+## 全局配置文件
 _~/.gradle/init.gradle_
 ```Groovy
     allprojects{
@@ -191,31 +170,6 @@ _~/.gradle/init.gradle_
         }
     }
 ```
-
-******************************
-
-## 常用插件
-### Lombok
-> [详细](/Java/Tool/Lombok.md)
-
-### Maven 
-    - `apply plugin: "maven"` 然后就能执行 install等命令了
-    - gradle 4.8 用不了 [需要这种方式](https://blog.csdn.net/mxw2552261/article/details/78640338)
-
-### shadowJar 
-> 打包为 fat jar 也就是包含所有依赖jar的jar包
-
-### docker
-> 提供Docker 的 API
-1. 引入 `apply plugin: 'docker'`
-    - buildscript dependencies 中添加`classpath('se.transmode.gradle:gradle-docker:1.2')`
-
-### protobuf-gradle-plugin
-> [Github: protobuf-gradle-plugin](https://github.com/google/protobuf-gradle-plugin)
-
-************************
-
-# 关键配置文件
 ## build.gradle
 > _Hello World_
 ```groovy
@@ -229,20 +183,18 @@ _~/.gradle/init.gradle_
       println 'Hello world!'
    }
 ```
--  运行：`gradle -q helloworld`
+运行：`gradle -q helloworld`
 
 **************************
-> 初始化新项目  
-> [doc:building java application](https://guides.gradle.org/building-java-applications/)  
->> 或者直接使用 gradle init 交互式新建一个项目
+> 初始化新项目  [doc:building java application](https://guides.gradle.org/building-java-applications/) 或者直接使用 gradle init 交互式新建一个项目
 
 ********************************
 
+### SourceSet
 > [SourceSet](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.SourceSet.html)
 
 ### 依赖管理
-- 和Maven用的是同一种方式 groupId artifactId version 
-- 使用本地依赖 `compile files('lib/ojdbc-14.jar')` 相对的根目录是src同级目录
+- 和Maven用的是同一种方式: groupId artifactId version 
 
 > [Official doc: dependency management](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_plugin_and_dependency_management)  
 > 4.10  Deprecated: `compile runtime testCompile testRuntime`
@@ -298,7 +250,12 @@ _~/.gradle/init.gradle_
 - `default extends runtime`
     - The default configuration used by a project dependency on this project. Contains the artifacts - and dependencies required by this project at runtime.
 
-> 依赖排除以及指定依赖版本
+> 使用本地依赖 `compile files('lib/ojdbc-14.jar')`  lib 与 src 为同级目录  
+> 项目间依赖 `compile project(':projectName')`
+
+***************
+
+#### 依赖排除以及指定依赖版本
 ```groovy
     // 依赖排除
     compile(''){
@@ -331,8 +288,11 @@ _~/.gradle/init.gradle_
         }
     }
 ```
+******************
 
 #### 统一依赖管理的一种策略
+> [完整示例 JavaBase](https://github.com/Kuangcp/JavaBase)
+
 1. 新建一个文件 _dependency.gradle_
     ```groovy
         ext {
@@ -344,10 +304,31 @@ _~/.gradle/init.gradle_
             ]
         }
     ```
-
 1. 在 build.gradle 中引入 `apply from: 'dependency.gradle'`
-
 1. 使用依赖时 只需 `compile libs['junit']` 即使在子模块中也是如此使用
+
+###  配置镜像源
+**阿里云**
+> [参考博客: 配置Gradle的镜像为阿里云镜像](https://tvzr.com/change-the-mirror-of-gradle-to-aliyun.html)
+
+> **当前项目的build.gradle**
+```Groovy
+  repositories {
+    mavenLocal()
+    def aliyun = "http://maven.aliyun.com/nexus/content/groups/public/"
+    def abroad = "http://central.maven.org/maven2/"
+    maven {
+      url = aliyun
+      artifactUrls abroad
+    }
+    // 码云上自己的仓库
+    maven {
+      url = "https://gitee.com/gin9/MavenRepos/raw/master"
+    }
+    mavenCentral()
+    jcenter()
+  }
+```
 
 ### 插件
 > 引入一个插件有多种方式
@@ -365,26 +346,45 @@ _~/.gradle/init.gradle_
     }
 ```
 
+#### Lombok
+> [详细](/Java/Tool/Lombok.md)
+
+#### Maven 
+- `apply plugin: "maven"` 然后就能执行 install等命令了
+- gradle 4.8 用不了 [需要这种方式](https://blog.csdn.net/mxw2552261/article/details/78640338)
+
+#### shadowJar 
+> 打包为 fat jar 也就是包含所有依赖jar的jar包
+
+#### docker
+> 提供Docker 的 API
+1. 引入 `apply plugin: 'docker'`
+    - buildscript dependencies 中添加`classpath('se.transmode.gradle:gradle-docker:1.2')`
+
+#### protobuf-gradle-plugin
+> [Github: protobuf-gradle-plugin](https://github.com/google/protobuf-gradle-plugin)
+
 ## setting.gradle
 > 项目的配置信息, 一般存在这个文件的时候, Gradle就会认为当前目录是作为一个完整的根项目的, 并在当前目录添加 .gradle 目录  
-> 文件缺省内容为 `rootProject.name = 'xxx'`
 
-### Gradle多模块的构建
-> [官网文档 creating multi project builds ](https://guides.gradle.org/creating-multi-project-builds/)
+- 必须: `rootProject.name = '项目名'`
+- 配置子项目 `include('A','B')`
 
-> 采用一个文件统一管理依赖, 然后各个子项目独立引用 | [完整示例 JavaBase](https://github.com/Kuangcp/JavaBase)`统一配置依赖, 管理多模块` 
+***************
 
-_如果要添加一个项目也简单_
-1. 直接新建一个目录 test
-1. 目录下新建空的文件 build.gradle
-1. 在根项目的 setting.gradle 中的include 加入 test (可以和文件夹不同名, build.gradle配置下就行了, 建议同名)
-1. gradle build 整个项目, 就完成了
-1. 最后就是手动的新建项目结构
+# Gradle多模块的构建
+> [Official Doc: creating multi project builds ](https://guides.gradle.org/creating-multi-project-builds/)
+
+> 手动增加一个子项目
+1. mkdir test
+1. gradle init 然后删除自动创建的 setting.gradle 
+1. setting.gradle 中的include 加入 test(项目名不是目录名)
 
 **********************************
-#### 另一种多模块的构建方式
-> [参考博客:重拾后端之Spring Boot（六） -- 热加载、容器和多项目](https://www.jianshu.com/p/ac4c00a63750)
-> 直接在build.gradle中配置 
+
+## 另一种多模块的构建方式
+> [参考博客:重拾后端之Spring Boot（六） -- 热加载、容器和多项目](https://www.jianshu.com/p/ac4c00a63750)  
+> 全部在父项目`build.gradle`中配置 
 
 ```groovy
     // 一个典型的根项目的构建文件结构
@@ -399,13 +399,11 @@ _如果要添加一个项目也简单_
         version = "0.0.1"
     }
     //  * 对于子项目的特殊配置
-    project(':common') {
-    }
-    project(':api') {
-    }
-    project(':report') {
-    }
+    project(':common') {}
+    project(':api') {}
+    project(':report') {}
 ```
+
 ```groovy
     project(':common') {
         dependencies {
@@ -442,7 +440,6 @@ _如果要添加一个项目也简单_
 ## Jar包
 - Gradle默认是只会打包源码，并不会打包依赖（为了更方便依赖的作用）
     - [shadow插件官网文档](http://imperceptiblethoughts.com/shadow/)
-- 添加 `apply plugin: "maven"` 然后就能和mvn install 一样的执行 gradle install 了
 
 ## 上传至构建仓库
 > 特别注意使用gpg, 如果按这下面的一堆文档跟着做的话你要保证你的gpg小于等于2.0版本, 不然就卡在这里了
