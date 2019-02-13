@@ -34,6 +34,7 @@ categories:
     1. [窗口管理器对比](#窗口管理器对比)
     1. [文件管理器对比](#文件管理器对比)
     1. [终端模拟器对比](#终端模拟器对比)
+    1. [包管理](#包管理)
 1. [Tips](#tips)
     1. [一行执行多条命令](#一行执行多条命令)
     1. [让命令在后台运行](#让命令在后台运行)
@@ -41,7 +42,7 @@ categories:
         1. [关闭ssh回话仍能运行](#关闭ssh回话仍能运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2019-01-13 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-13 23:16_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -349,6 +350,9 @@ _系统运行级别_
 *******************************
 ## 终端模拟器对比
 > [详细](/Linux/Tool/Terminal.md)
+
+## 包管理
+> [A universal app store for Linux](https://snapcraft.io/)
 
 *****************************************************
 

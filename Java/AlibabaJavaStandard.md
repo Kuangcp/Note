@@ -36,7 +36,7 @@ categories:
     1. [服务器规约](#服务器规约)
 1. [专有名词](#专有名词)
 
-**目录 end**|_2018-12-20 10:44_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-13 23:16_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 阿里巴巴Java开发手册
 > [Github: p3c](https://github.com/alibaba/p3c)`含该手册PDF GitBook等版本` | [《阿里巴巴Java开发手册》详尽](https://yq.aliyun.com/articles/656256?spm=a2c4e.11155472.0.0.7ba85338l1Ef0N)
@@ -623,18 +623,18 @@ categories:
 
 1. 有 try 块放到了事务代码中,  catch 异常后, 如果需要回滚事务, 一定要注意手动回滚事务。
 
-1.  finally 块必须对资源对象、流对象进行关闭, 有异常也要做 try-catch 。
+1. finally 块必须对资源对象、流对象进行关闭, 有异常也要做 try-catch 。
     - 对于 JDK7及以上, 可以使用 try-with-resources 方式。
 
-1.  不能在 finally 块中使用 return ,  finally 块中的 return 返回后方法结束执行, 不会再执行 try 块中的 return 语句。
-    - ? try 还没走完就进了 finally ? 
+1. 不能在 finally 块中使用 return, finally 块中的 return 返回后方法结束执行, 不会再执行 try 块中的 return 语句。
+    - 这种返回语句可能会掩盖抛出的异常，并极大地使调试复杂化
 
-1.  捕获与抛出的异常, 必须是完全匹配, 或者捕获的异常是抛出的异常的父类。
+1. 捕获与抛出的异常, 必须是完全匹配, 或者捕获的异常是抛出的异常的父类。
     - 说明: 如果预期对方抛的是绣球, 实际接到的是铅球, 就会产生意外情况。
 
 **`推荐`**
-1.  方法的返回值可以为 null, 不强制返回空集合, 或者空对象等, 必须添加注释充分说明什么情况下会返回 null 值。**调用方**需要进行 null 判断防止 NPE 问题。
-    -  本规约明确 **防止 NPE 是调用者的责任**。即使被调用方法返回空集合或者空对象, 对调用者来说, 也并非高枕无忧, 必须考虑到远程调用失败, 运行时异常等场景返回 null 的情况。
+1. 方法的返回值可以为 null, 不强制返回空集合, 或者空对象等, 必须添加注释充分说明什么情况下会返回 null 值。**调用方**需要进行 null 判断防止 NPE 问题。
+    - 本规约明确 **防止 NPE 是调用者的责任**。即使被调用方法返回空集合或者空对象, 对调用者来说, 也并非高枕无忧, 必须考虑到远程调用失败, 运行时异常等场景返回 null 的情况。
 
 1. 防止 NPE, 是程序员的基本修养, 注意 NPE 产生的场景: 
     1. 返回类型为基本数据类型, return包装类型的对象时, 自动拆箱有可能产生 NPE.
