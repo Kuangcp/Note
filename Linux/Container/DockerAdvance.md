@@ -21,7 +21,7 @@ categories:
 1. [Tips](#tips)
     1. [孤儿进程以及僵死进程](#孤儿进程以及僵死进程)
 
-**目录 end**|_2019-01-10 00:10_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-13 17:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker Advance
 
@@ -46,6 +46,7 @@ categories:
 ****************
 
 ## 配置
+> [官方检查配置的脚本](https://github.com/moby/moby/blob/master/contrib/check-config.sh)
 
 ### 更改数据的存放目录
 
@@ -91,9 +92,9 @@ DOCKER_OPTS="--graph=/opt/docker "
 
 1. systemctl edit docker.service
 ```ini
-[Service]
-ExecStart=
-ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock 
+    [Service]
+    ExecStart=
+    ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock 
 ```
 > 以上所处文件为: /etc/systemd/system/docker.service.d/override.conf 
 >> 注意: `-H unix:///var/run/docker.sock` 如果少了这个配置, Docker客户端就失效了, 什么都干不了

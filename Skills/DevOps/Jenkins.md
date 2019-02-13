@@ -18,7 +18,7 @@ categories:
         1. [Pipeline](#pipeline)
         1. [个人经验](#个人经验)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-13 17:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Jenkins
 > [官网](https://jenkins.io/)
@@ -32,17 +32,22 @@ categories:
 直接下载最新LTS版本, java -jar XXX.war 就可以运行了
 
 ### Docker
-> [DockerHub : official ](https://hub.docker.com/_/jenkins/) | [长期支持版](https://hub.docker.com/r/jenkins/jenkins/)[长期支持版文档](https://github.com/jenkinsci/docker/blob/master/README.md)
+> [Dockerhub: official](https://hub.docker.com/_/jenkins/) `已废弃? 版本太老了` 
 
-- `sudo docker pull jenkins` 下拉镜像(600M+) `jenkins:alpine` 更小点(200M+)
-- `sudo docker run --name myjenkins -p 8080:8080 -p 50000:50000 -v /home/kcp/docker/jenkins:/var/jenkins_home jenkins` 构建容器
-- 确保目录是开放了权限的, `chmod 777 jenkins` 最简单直接
-- 容器启动后, 第一次访问需要初始化, 之后就是正常的容器的启动关闭了
+> [Dockerhub: LTS](https://hub.docker.com/r/jenkins/jenkins/) | [长期支持版文档](https://github.com/jenkinsci/docker/blob/master/README.md)  
 
-- [h1kkan/jenkins-docker](https://hub.docker.com/r/h1kkan/jenkins-docker/) `由于官方镜像更新太慢,这个镜像有最新的版本`
+- `docker pull jenkins/jenkins` 下拉镜像(600M+)
+    - Alpine版: `jenkins/jenkins:alpine` 更小点(200M+)
+- 构建容器 `sudo docker run --name myjenkins -p 8080:8080 -p 50000:50000 -v /home/kcp/docker/jenkins:/var/jenkins_home jenkins`
+- 确保 `/home/kcp/docker/jenkins` 目录是开放了权限的, `chmod 777 jenkins` 最简单直接
+- 容器启动后, 第一次访问需要配置管理员账号, 插件等等, 配置完成之后就可以任意重启容器了
 
-> 但是以上镜像都太大,更新不一定及时, 所以完全可以自动手动构建镜像
-1. 现取[下载](https://jenkins.io/download/)好想要的版本的jar, 然后在一个空目录下 新建一个文件 jenkins.dockerfile
+********************************
+
+**`手动构建镜像`**
+> 但是以上镜像都太大,更新不一定及时, 所以完全可以手动构建镜像
+
+1. 去 [下载](https://jenkins.io/download/) 对应版本的war, 然后在一个空目录下 新建一个文件 `jenkins.dockerfile`
 ```Dockerfile
     FROM frolvlad/alpine-oraclejdk8:slim
     COPY . . 
@@ -50,16 +55,18 @@ categories:
     EXPOSE 5000
     CMD ["java", "-jar", "jenkins.war"]
 ```
-1. `docker build -t jenkins:xxx -f jenkins.dockerfile .` 注意最后有一个点, 是表明当前目录
+1. 构建镜像 `docker build -t jenkins:xxx -f jenkins.dockerfile .`
 
 ********************************
+
+- [h1kkan/jenkins-docker](https://hub.docker.com/r/h1kkan/jenkins-docker/) `依据LTS的war包加上一些常用插件的镜像版本`
+
 ## 配置
 
-- 配置时区 [Official Wiki](https://wiki.jenkins.io/display/JENKINS/Change+time+zone)
+`配置时区`
 
-> [参考博客: Jenkins修改时区（Docker）](https://blog.csdn.net/k_zombie/article/details/50754253)
-
-或者在 Script Console 中 运行 System.setProperty('org.apache.commons.jelly.tags.fmt.timeZone', 'Asia/Shanghai');
+[Official Wiki](https://wiki.jenkins.io/display/JENKINS/Change+time+zone) | [参考博客: Jenkins修改时区（Docker）](https://blog.csdn.net/k_zombie/article/details/50754253)  
+或者在 Script Console 中 运行 `System.setProperty('org.apache.commons.jelly.tags.fmt.timeZone', 'Asia/Shanghai');`
 
 ### 配置Gradle
 > 系统管理 -> Global Tool Configuration 下 配置gradle, 然后新建项目的时候选择新建的gradle配置, 执行构建的时候才会去下载Gradle
@@ -70,6 +77,8 @@ categories:
 ## 使用
 
 ### Pipeline
+Jenkins 通过配置好的 slave 镜像启动对应容器, 在slave 容器中完成构建过程, 然后更换应用容器 销毁slave容器
+
 ```groovy
 pipeline {
     agent {
@@ -133,6 +142,12 @@ pipeline {
 }
 ```
 
+slave 配置
+```
+    /home/ai/rs/jenkins-slave/m2:/home/jenkins/.m2
+    /var/run/docker.sock:/var/run/docker.sock
+    /usr/bin/docker:/usr/bin/docker
+```
 ### 个人经验
 > 从Gitlab私有库(Maven SpringBooot项目)建好一个任务, 并构建好镜像和容器, 更新容器
 > 做法是在运行Docker的服务器上建立一个目录专门用来更新该项目, 然后在Jenkins构建完成后将 jar 包传过去, 执行该目录下的脚本完成容器和镜像的更迭

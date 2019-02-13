@@ -54,8 +54,9 @@ categories:
     1. [POJO](#pojo)
     1. [DAO](#dao)
 1. [关键字](#关键字)
+    1. [try](#try)
 
-**目录 end**|_2019-01-07 23:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-13 17:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 基础语法
 
@@ -287,6 +288,8 @@ _获取指定时间_ [获取指定时间的时间戳](https://blog.csdn.net/jsso
 ## 方法
 方法的签名: 
 - [ ] 方法签名的详解
+
+>1. 关于方法上参数使用 final 修饰的作用: 明确该方法内部不能对参数进行修改, 避免bug
 
 **************
 # Object 
