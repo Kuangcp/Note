@@ -1,5 +1,5 @@
 ---
-title: Java主要发行版
+title: Java主要发行版概述
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -15,7 +15,7 @@ categories:
     1. [Java10](#java10)
     1. [Java11](#java11)
 
-**目录 end**|_2019-01-06 19:57_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-14 14:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)

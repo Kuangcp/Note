@@ -1,5 +1,5 @@
 ---
-title: MultipleLanguage
+title: JVM上的多语言
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -19,10 +19,11 @@ categories:
         1. [JVM对备选语言的支持](#jvm对备选语言的支持)
         1. [编译器小说](#编译器小说)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-14 14:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # JVM上的多语言使用
 
+> 参考 Java程序员修炼之道
 
 ## 语言生态学
 - 大致讨论 解释型和编译型， 动态和静态， 命令式和函数式
