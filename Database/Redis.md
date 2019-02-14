@@ -27,22 +27,28 @@ categories:
     1. [HyperLogLog](#hyperloglog)
     1. [GEO地理位置](#geo地理位置)
 1. [Pub/Sub发布和订阅](#pubsub发布和订阅)
-1. [编程语言的使用](#编程语言的使用)
-    1. [Java使用](#java使用)
-    1. [Python使用](#python使用)
+1. [客户端](#客户端)
+    1. [库](#库)
+        1. [Java](#java)
+        1. [Python使用](#python使用)
+    1. [GUI](#gui)
 1. [Project](#project)
     1. [webdis](#webdis)
 1. [使用](#使用)
 
-**目录 end**|_2019-01-12 21:57_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-13 23:16_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
 
 - [Redis Official doc zh](http://redisdoc.com/index.html)
 
+> [参考博客: nodejs + redis/mysql 连接池问题](https://www.cnblogs.com/laozhbook/p/nodejs_redis_connection_pool.html)`单线程问题`
+
 ## Book 
 > [Redis设计与实现 第二版](http://www.shouce.ren/api/view/a/13483)
+
+***********************
 
 # 安装和配置
 ## Windows
@@ -238,16 +244,23 @@ categories:
 
 *******************************
 
-# 编程语言的使用
+# 客户端
+## 库
+> [program language client](http://www.redis.com.cn/clients)
 
-## Java使用
+### Java
 > [详细](/Java/Ecosystem/JavaRedis.md)
 
 *******************
 
-## Python使用
+### Python使用
 > pip install redis 该模块和redis命令的用法几乎一模一样, 上手很快
 - [redis文档](https://pypi.python.org/pypi/redis/) `python操作redis的库的文档`
+
+## GUI
+> [Redis Desktop Manager](https://github.com/uglide/RedisDesktopManager/)
+
+*********
 
 # Project
 > 衍生项目 
