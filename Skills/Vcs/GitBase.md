@@ -331,7 +331,7 @@ TODO 存疑
 
 ##### 回滚merge和pull操作
 1. 执行了merge 或者 pull 操作后 
-1. `git reset --hard ORIG_HEAD`
+1. `git reset --hard ORIG_HEAD` 注意: 该命令会将 index 和 stage 的修改清空
 
 ##### 在index已有修改的状态回滚merge或者pull
 1. `git pull`
