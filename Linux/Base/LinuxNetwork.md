@@ -10,7 +10,7 @@ categories:
 
 **目录 start**
  
-1. [【网络管理】](#网络管理)
+1. [Linux网络管理](#linux网络管理)
     1. [Tips](#tips)
         1. [查看端口占用情况](#查看端口占用情况)
     1. [DNS](#dns)
@@ -18,15 +18,16 @@ categories:
     1. [IPv4和IPv6](#ipv4和ipv6)
     1. [Bridge](#bridge)
     1. [基础命令工具](#基础命令工具)
-        1. [1.ping](#1ping)
-        1. [2.curl](#2curl)
-        1. [3.iproute2](#3iproute2)
-        1. [4.tcpdump](#4tcpdump)
-        1. [5.netcat](#5netcat)
-        1. [6.scp](#6scp)
-        1. [7.rsync](#7rsync)
-        1. [8.wget](#8wget)
-    1. [【常用网络服务】](#常用网络服务)
+        1. [ping](#ping)
+        1. [traceroute](#traceroute)
+        1. [curl](#curl)
+        1. [iproute2](#iproute2)
+        1. [tcpdump](#tcpdump)
+        1. [netcat](#netcat)
+        1. [scp](#scp)
+        1. [rsync](#rsync)
+        1. [wget](#wget)
+    1. [常用服务](#常用服务)
         1. [邮件服务器postfix和devecot](#邮件服务器postfix和devecot)
         1. [FTP](#ftp)
             1. [基础](#基础)
@@ -42,9 +43,9 @@ categories:
         1. [防火墙](#防火墙)
             1. [iptables](#iptables)
 
-**目录 end**|_2019-01-27 16:10_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-15 11:11_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-# 【网络管理】
+# Linux网络管理
 ## Tips
 ### 查看端口占用情况
 > netstat lsof fuser ps 都有一定效果 [ linux_performance ](./Linux/linux_performance.md)  
@@ -129,7 +130,7 @@ _netstat工具_ 或者 更好用的 [iproute2](#3iproute2)
 ## 基础命令工具
 > 参考书籍 《Linux 大棚命令百篇》
 
-### 1.ping
+### ping
 > inetutils-ping
 
 - ping URL ： Linux是默认无休止的
@@ -142,7 +143,13 @@ _netstat工具_ 或者 更好用的 [iproute2](#3iproute2)
     - 注意：得到的结果中的 mdev 表示ICMP包的RTT偏离平均值的程度，mdev 越大表示网速不稳定 Linux有，mac下叫stddev win系列没有
 
 > [prettyping](http://denilson.sa.nom.br/prettyping/)
-### 2.curl
+
+### traceroute
+> [参考博客: traceroute/tracert--获取网络路由路径](https://www.cnblogs.com/embedded-linux/p/6937929.html)
+
+1. Debian系查看路由路径 `traceroute -I stackoverflow.com`
+
+### curl
 1. 不输出，重定向到*黑洞设备*  ` curl -s -o /dev/null URL`
 1. 格式化返回的json数据：`curl xxxx|python -m json.tool `
 1. 使用基础认证 发送JSON数据 `curl -i -H "Content-Type:application/json" -u admin:secret -X POST --data '{"title":"1","content":"1"}' http://tomcat.kcp/email/content`
@@ -170,20 +177,19 @@ $ curl -i -u admin:secret -X POST http://tomcat.kcp/email/content
 > [参考博客: curl返回常见错误码](http://www.cnblogs.com/wainiwann/p/3492939.html)
 - [56错误码](https://stackoverflow.com/questions/10285700/curl-error-recv-failure-connection-reset-by-peer-php-curl)
 > [参考博客: 使用cURL和用户名和密码？](http://www.cnblogs.com/seasonzone/p/7527218.html)
-### 3.iproute2
+
+### iproute2
 > 代替 netstat 的强大工具
 
-`替代方案`
-
-|   用途    | net-tool |     iproute2     |
-| :-----: | :------: | :--------------: |
+|   用途        | net-tool |     iproute2     |
+| :-----       | :------  | :-------------- |
 | 地址和链路配置 | ifconfig | ip addr, ip link |
-|   路由表   |  route   |     ip route     |
-|  ARP表   |   arp    |     ip neigh     |
-|  VLAN   | vconfig  |     ip link      |
-|   隧道    | iptunnel |    ip tunnel     |
-|   组播    | ipmaddr  |     ip maddr     |
-|   统计    | netstat  |        ss        |
+|   路由表      |  route   |     ip route     |
+|  ARP表       |   arp     |     ip neigh     |
+|  VLAN        | vconfig  |     ip link      |
+|   隧道       | iptunnel  |    ip tunnel     |
+|   组播       | ipmaddr   |     ip maddr     |
+|   统计       | netstat   |        ss        |
 
 _ss_
 > [参考博客: Linux网络状态工具ss命令使用详解](http://www.ttlsa.com/linux-command/ss-replace-netstat/)
@@ -193,12 +199,11 @@ _ss_
 - 查看打开的端口以及进程pid `ss -pl`
 - 查看所有socket连接 `ss -a`
 - 隧道术： 网络协议的数据包被封装在另一种网络协议的数据包之中 `这是VPN的技术理论基础`
-> 别说的那么神乎其神, 用的时候, 连个Tomcat开的8080都查不到
 
 `net-tools 和 iproute 对应关系`
 
-|      作用      |               net-tools用法                |                iproute2用法                |
-| :----------: | :--------------------------------------: | :--------------------------------------: |
+|      作用     |               net-tools用法                |                iproute2用法                |
+| :---------- | :-------------------------------------- | :-------------------------------------- |
 |  展示本机所有网络接口  |                 ifconfig                 |              ip link [show]              |
 | 开启/停止某个网络接口  |          ifconfig ech0 up/down           |           ip link up/down eth0           |
 | 给网络接口设置/删除IP | ipconfig eth0 10.0.0.0.1/24 / ifconfig eth0 0 |   ip addr add/del 10.0.0.1/24 dev eth0   |
@@ -212,7 +217,7 @@ _ss_
 - 默认网关： 如果主机找不到准发规则， 就把数据包发给默认的网关
 - 增加/删除一条路由规则 `ip route add/del 192.168.2.0/24 via 192.168.1.254`
 
-### 4.tcpdump
+### tcpdump
 - `tcpdump -i eth0 -nn -X 'port 53' -c 1` root用户才有运行权限
     - -i 指定监听的网络接口（网卡）
     - -nn 将协议号或端口号，显示数字，而不是名称例如：21 而不显示 FTP
@@ -229,7 +234,7 @@ _ss_
 
 - 列出可以选择的抓包对象 `tcpdump -D`（USB设备也能抓？）
 
-### 5.netcat
+### netcat
 > sudo apt install netcat  
 
 - 开始监听端口 ： `nc -l 11044`
@@ -255,7 +260,7 @@ _ss_
     - 客户端 `nc -n host port | tar -xvPf -`
     - 这是未压缩的， 压缩再加上参数即可 例如 `gzip -czvPf -xzvPf`
 
-### 6.scp
+### scp
 > scp命令用于在Linux下进行远程拷贝文件的命令，和它类似的命令有cp，认证用的是ssh 所以也能使用sshpass
 
 ```
@@ -279,9 +284,8 @@ _ss_
 
 > 注: scp rcp wget rsync 几种传输文件的方式
 
-### 7.rsync 
-> 同步命令 (个人倾向于本地和远程， 书上称为源端和目的端) [命令参数详解](http://man.linuxde.net/rsync)
-> | [本地和VPS0之间同步数据](https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps)
+### rsync 
+> 同步命令 (个人倾向于本地和远程， 书上称为源端和目的端)  [命令参数详解](http://man.linuxde.net/rsync) | [本地和VPS0之间同步数据](https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps)
 
 - 同步到 `rsync file user@host:path` 上， 是将这里的file文件覆盖远程的目录下的file文件，不像git那样
     - 同步当前目录 将file 换成 \`ls\`
@@ -308,7 +312,7 @@ _ss_
 - `--partial` 断点续传 可以简写-P
 - `--progress` 显示传输进度信息
 
-### 8.wget
+### wget
 > 特性和优势：支持 HTTP HTTPS FTP协议  
 > - 能够跟踪 HTML 和 XHTML 即可以下载整站，但是注意wget会不停的去下载HTML中的外链，无休无止  
 > - 遵守 robots.txt 标准的工具  
@@ -365,7 +369,8 @@ _ss_
     - `-P .`： 保存所有文件和目录 到当前目录
 
 ****************************
-## 【常用网络服务】
+## 常用服务
+
 ### 邮件服务器postfix和devecot
 
 ### FTP
@@ -383,7 +388,7 @@ _ss_
 > 或者安装ES文件浏览器, 也带有FTP服务器, 但是不稳定, 切出去就停了, 而且不能选择上SDK卡
 
 ##### 电脑
-> 安装FileZila 建立连接, 然后就能方便的用鼠标进行传输了
+> 安装FileZila 配置正确的ip 端口 用户名 口令 完成连接
 
 #### 配置FTP服务器
 - `sudo apt-get install vsftpd -y`
@@ -437,6 +442,8 @@ _ss_
 > [详细](/Linux/Base/Ssh.md)
 
 ### telnet
+> 远程控制服务器的一种协议和SSH类似
+
 > [linux telnet命令参数](http://www.linuxso.com/command/telnet.html)  
 > [每天一个linux命令（58）：telnet命令](http://www.cnblogs.com/peida/archive/2013/03/13/2956992.html)
 
