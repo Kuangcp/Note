@@ -68,33 +68,6 @@ categories:
 ## Shell内建命令
 - [ ] 学习内建命令的使用
 
-****************
-## Tips
-> 常用代码片段 
-
-1. 获取当前shell脚本的绝对路径 ```basepath=$(cd `dirname $0`; pwd)```
-1. 命令嵌套 只要在 命令中用 两个反引号 `` 将子命令包住即可
-1. 检查当前用户为Root用户
-    ```sh
-        if [ $(id -u) != "0" ]; then
-            printf $red"Please use root to run this script\n"$end
-            exit 1
-        fi
-    ```
-1. kill 脚本进程
-    ```sh
-        id=`ps -ef | grep "WithRedis.py" | grep -v "grep" | grep -v "\-d" | awk '{print $2}'`
-        if [ "${id}1" = "1" ];then
-            printf $red"not exist background running script\n"$end
-        else
-            kill -9 $id
-        fi
-    ```
-1. 得到脚本绝对路径; 如果只是执行 pwd 只是得到执行脚本时的当前绝对路径而已
-    ```sh
-        basepath=$(cd \`dirname $0\`; pwd) 
-    ```
-
 *******************
 ## 执行
 - [source命令](http://blog.csdn.net/xiaolang85/article/details/7861441) | [点和source命令](http://www.cnblogs.com/my_life/articles/4323528.html)
@@ -183,19 +156,16 @@ _判断变量是否为数值_
 ### 字符串
 - [字符串截取](https://www.2cto.com/os/201305/208219.html) | [Blog:变量字符串截取](http://www.jb51.net/article/56563.htm) | [Shell正则](http://man.linuxde.net/docs/shell_regex.html)
 
-- [ ] 重新整理
-```sh
-  ${varible##*string} 从左向右截取最后一个string后的字符串
-  ${varible#*string}  从左向右截取第一个string后的字符串
-  ${varible%%string*} 从右向左截取最后一个string后的字符串
-  ${varible%string*}  从右向左截取第一个string后的字符串
+| Pattern | 描述 ||
+|:----|:----|:---|
+| `${varible#*str}`  | 截取 第一个   |str `后` 的字符串 |
+| `${varible##*str}` | 截取 最后一个 |str `后` 的字符串 |
+| `${varible%%str*}` | 截取 第一个   |str `前` 的字符串 |
+| `${varible%str*} ` | 截取 最后一个 |str `前` 的字符串 |
 
-  vars=${vars%%#*} # 截取#左边
-  vars=${vars#*cd} # 截取最左的cd的右边
-  vars=${vars%\'*} # 截取 右边引号 之左
-```
+******************
 
-`获取命令的输出`
+**`获取命令的输出`**
 - 使用  保存结果的变量名=`需要执行的linux命令` 这种方式来获取命令的输出时，注意的情况总结如下：
 - 1）保证反单引号内的命令执行时成功的，也就是所命令执行后$?的输出必须是0，否则获取不到命令的输出
 - 2）即便是命令的返回值是0，也需要保证结果是通过标准输出来输出的，而不是标准错误输出，否则需要重定向
@@ -355,3 +325,30 @@ _判断文件_
 ### shyaml
 > [参考](https://linuxtoy.org/archives/shyaml.html)
 
+*************
+
+# Tips
+## 常用代码片段 
+
+1. 获取当前shell脚本的绝对路径 ```basepath=$(cd `dirname $0`; pwd)```
+1. 命令嵌套 只要在 命令中用 两个反引号 `` 将子命令包住即可
+1. 检查当前用户为Root用户
+    ```sh
+        if [ $(id -u) != "0" ]; then
+            printf $red"Please use root to run this script\n"$end
+            exit 1
+        fi
+    ```
+1. kill 脚本进程
+    ```sh
+        id=`ps -ef | grep "WithRedis.py" | grep -v "grep" | grep -v "\-d" | awk '{print $2}'`
+        if [ "${id}1" = "1" ];then
+            printf $red"not exist background running script\n"$end
+        else
+            kill -9 $id
+        fi
+    ```
+1. 得到脚本绝对路径; 如果只是执行 pwd 只是得到执行脚本时的当前绝对路径而已
+    ```sh
+        basepath=$(cd \`dirname $0\`; pwd) 
+    ```
