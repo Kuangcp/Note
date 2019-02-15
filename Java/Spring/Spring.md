@@ -27,9 +27,11 @@ categories:
     1. [Scheduling](#scheduling)
     1. [Websocket](#websocket)
         1. [maven配置](#maven配置)
-    1. [Web开发上的一些优秀的习惯](#web开发上的一些优秀的习惯)
+    1. [Utils](#utils)
+        1. [ReflectionUtils](#reflectionutils)
+1. [Web开发的最佳实践](#web开发的最佳实践)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-15 15:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -233,7 +235,12 @@ public class A{
 ```
 - [ ] Spring方式, 现在用boot用多了, 都忘了怎么配置Spring了
 
+## Utils
+### ReflectionUtils
+
 ****************
-## Web开发上的一些优秀的习惯
+
+# Web开发的最佳实践
+
 - 使用AOP来简化开发MVC的代码
 - 繁杂的代码如何简化

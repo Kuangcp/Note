@@ -10,11 +10,15 @@ categories:
 **目录 start**
  
 1. [反射](#反射)
-    1. [获取属性](#获取属性)
-    1. [获得方法](#获得方法)
-        1. [性能问题](#性能问题)
+    1. [基础类](#基础类)
+        1. [AccessibleObject](#accessibleobject)
+        1. [Modifier](#modifier)
+    1. [使用](#使用)
+        1. [获取属性](#获取属性)
+        1. [获取方法](#获取方法)
+1. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-15 15:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
@@ -29,8 +33,12 @@ categories:
 
 > [参考博客: java反射的性能问题](http://www.cnblogs.com/zhishan/p/3195771.html)
 
-## AccessibleObject
-> AccessibleObject 类是 Field、Method 和 Constructor 对象的基类。它提供了将反射的对象标记为在使用时取消默认 Java 语言访问控制检查的能力。
+## 基础类
+> Field Method ...
+
+### AccessibleObject
+> The AccessibleObject class is the base class for Field, Method and Constructor objects. It provides the ability to flag a reflected object as suppressing default Java language access control checks when it is used.  
+> AccessibleObject 类是 Field、Method 和 Constructor 对象的基类。它提供了将反射的对象标记为 具有在使用时禁止默认Java语言访问控制检查的能力。
 
 对于公共成员、默认（打包）访问成员、受保护成员和私有成员，在分别使用 Field、Method 或 Constructor 对象来设置或获得字段、调用方法，或者创建和初始化类的新实例的时候，会执行访问检查。  
 在反射对象中设置 accessible 标志允许具有足够特权的复杂应用程序（比如 Java Object Serialization 或其他持久性机制）以某种通常禁止使用的方式来操作对象。  
@@ -47,9 +55,12 @@ categories:
 
 - [ ] 仍然存疑, 什么情况下才是 默认可访问的
 
-*****************************
+### Modifier
+> The Modifier class provides static methods and constants to decode class and member access modifiers. 
 
-## 获取属性
+*****************************
+## 使用
+### 获取属性
 > _通过属性名得到对象属性的值_
 ```java
     // 1. 通过描述对象获取值, 但是该属性要有对应的正确的 set get 方法
@@ -69,8 +80,10 @@ categories:
     System.out.println(f.get(a));
 ```
 
-## 获取方法
+### 获取方法
 
-### 性能问题
+**********************
+
+# 反射的性能问题
 > [参考博客: java反射的性能问题 ](http://www.cnblogs.com/zhishan/p/3195771.html)
 

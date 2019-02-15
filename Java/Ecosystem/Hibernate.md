@@ -1,8 +1,9 @@
 ---
-title: Hibernate.md
+title: Hibernate
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
+    - Java
 ---
 
 **目录 start**
@@ -30,31 +31,31 @@ categories:
             1. [添加记录](#添加记录)
             1. [删除记录](#删除记录)
         1. [继承关系的配置](#继承关系的配置)
-        1. [Hibernate异常](#hibernate异常)
-            1. [could not find a getter for](#could-not-find-a-getter-for)
-            1. [个人总结](#个人总结)
-        1. [Hibernate对象的状态](#hibernate对象的状态)
-            1. [Session的方法](#session的方法)
-            1. [特别注意](#特别注意)
+    1. [Hibernate对象的状态](#hibernate对象的状态)
+        1. [Session的方法](#session的方法)
+        1. [特别注意](#特别注意)
+1. [常见Hibernate异常](#常见hibernate异常)
+    1. [could not find a getter](#could-not-find-a-getter)
+    1. [个人总结](#个人总结)
 
-**目录 end**|_2019-01-16 16:01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-15 15:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Hibernate
 ## Hibernate基础配置
 ### JDBC和Hibernate比较
 * JDBC
-    *   使用其简洁精悍，最快，但是使用时接收数据以及多方面的比较麻烦
+    * 使用其简洁精悍，最快，但是使用时接收数据以及多方面的比较麻烦
 * Hibernate
-    *   单表操作是很便捷的，但是涉及到多表复杂操作时比较麻烦
+    * 单表操作是很便捷的，但是涉及到多表复杂操作时比较麻烦
 
 #### 配置流程
 > 如果后续需要添加表的话，就这个顺序
-- **1 :**  先有数据库和表，建立cfg.xml文件配置好数据库的基本参数
-- **2 :**  使用工具建立POJO持久类
-- **3 :**  导入Hibernate所必需JAR包，最好使用Myeclipse的配置，自己导包总有一堆错误
-- **4 :**  使用MyEclipse自动创建hbm.xml文件，还有各种文件。配置好hbm文件里关于表间关系的映射，或者在Myeclipse配置时手动选择
-- **5 :**  配置好DAO类中事务开启和关闭，以及各种所必需的配置，若表没有设立主键，那么POJO类需要继承自动生成的抽象类（含有主键）
-- **6 :**  调用DAO或者自己的Utils类，通过Hibernate来操作数据库
+1. 先有数据库和表，建立cfg.xml文件配置好数据库的基本参数
+1. 使用工具建立POJO持久类
+1. 导入Hibernate所必需JAR包，最好使用Myeclipse的配置，自己导包总有一堆错误
+1. 使用MyEclipse自动创建hbm.xml文件，还有各种文件。配置好hbm文件里关于表间关系的映射，或者在Myeclipse配置时手动选择
+1. 配置好DAO类中事务开启和关闭，以及各种所必需的配置，若表没有设立主键，那么POJO类需要继承自动生成的抽象类（含有主键）
+1. 调用DAO或者自己的Utils类，通过Hibernate来操作数据库
 
 ### Hibernate必需JAR
 > Hibernate 3.6
@@ -255,25 +256,8 @@ sessionFactory实例化，高位就会加一，生成算法是：hi*(max lo +1)+
         </union-subclass>
 ```
 *******************************************************
-### Hibernate异常
-#### could not find a getter for
-原因：1 可能真的没写get方法，或者get方法不合规范 setget方法中不允许两个连续大写字母
-        2 *.hmb.xml文件中的属性名和pojo持久类中属性名不一致（一定不能在表名中添加下划线）
-        3 方法名写错（基本不可能，都是自动生成的）
-        
-#### 个人总结
-当使用了没有 主键的表，使用Myeclipse自动创建配置文件，使用自己的Table2Class来生成POJO持久类，
-就要继承对应的自动创建的抽象类，因为没有主键的表默认是将所有列看成一个主键，并且还会有添加一个id属性，
-这样也说明还有一点就是，这种表的字段不能有叫做id的列
 
-是不是可以不用手动去使用那个类，好像这里自动生成的一切都有，
-
-自动生成会生成：
-    对应POJO的抽象类，hbm配置文件，以及默认的几个类，HibernateSessionFactory，IBaseHibernateDao，
-    对应的Dao（添加的时候默认是没有使用事务，所以需要手动修改）,添加，删除，都是依据主键的，
-    至少要初始化主键，当然还得满足数据库的要求
-
-### Hibernate对象的状态
+## Hibernate对象的状态
 > 主要是对象内存和Session中的状态区别，而不是Session和数据库
 
 -  `临时态`：刚实例化对象。对象在数据库中不存在，Session中也不存在
@@ -284,7 +268,11 @@ sessionFactory实例化，高位就会加一，生成算法是：hi*(max lo +1)+
     * 游离态delete后就成了删除态
     * 持久态delete后就成了删除态
 
-#### Session的方法
+> [参考博客: merge attachDirty attachClean用法](http://www.cnblogs.com/zhangzhangkai/p/3434491.html)
+
+- [ ] 分析: JDK源码 DefaultMergeEventListener中的onMerge方法
+
+### Session的方法
 - save
 - update
 - delete 
@@ -297,7 +285,7 @@ sessionFactory实例化，高位就会加一，生成算法是：hi*(max lo +1)+
 - clear 全部清除 
 - close
 
-#### 特别注意
+### 特别注意
 * 一个对象（内存）不能存在于多个Session中，一个存，一个改的情况是会错误的
 * 但是数据库中同一条记录可以实例化为多个对象（内存），那么这些对象（内存）放在不同的Session中是可以的
 
@@ -309,3 +297,24 @@ sessionFactory实例化，高位就会加一，生成算法是：hi*(max lo +1)+
     * 在你确定OID是一定有的时候使用load提高效率，但是实际开发过程中用的少，因为实际上没有这么确定。
 
 * 懒加载如果Session关闭了或者是对象游离态。就会有懒加载初始化的异常
+
+*************
+
+# 常见Hibernate异常
+## could not find a getter
+> 原因：
+
+1. 可能真的没写get方法，或者get方法不合规范 setget方法中不允许两个连续大写字母
+2. *.hmb.xml文件中的属性名和pojo持久类中属性名不一致（一定不能在表名中添加下划线）
+
+## 个人总结
+当使用了没有 主键的表，使用Myeclipse自动创建配置文件，使用自己的Table2Class来生成POJO持久类，
+就要继承对应的自动创建的抽象类，因为没有主键的表默认是将所有列看成一个主键，并且还会有添加一个id属性，
+这样也说明还有一点就是，这种表的字段不能有叫做id的列
+
+是不是可以不用手动去使用那个类，好像这里自动生成的一切都有，
+
+自动生成会生成：
+    对应POJO的抽象类，hbm配置文件，以及默认的几个类，HibernateSessionFactory，IBaseHibernateDao，
+    对应的Dao（添加的时候默认是没有使用事务，所以需要手动修改）,添加，删除，都是依据主键的，
+    至少要初始化主键，当然还得满足数据库的要求
