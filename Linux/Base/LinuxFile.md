@@ -62,7 +62,7 @@ categories:
     1. [系统日志](#系统日志)
     1. [应用日志](#应用日志)
 
-**目录 end**|_2019-01-16 21:31_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-16 09:59_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -96,16 +96,20 @@ categories:
 
 ### 清除缓存
 > [参考: 如何在 Linux 中清除缓存（Cache）？](https://linux.cn/article-5627-1.html) `注意要切换到root再运行命令`  
-> 仅清除页面缓存（PageCache） `sync; echo 1 > /proc/sys/vm/drop_caches`  
-> 清除目录项和inode `sync; echo 2 > /proc/sys/vm/drop_caches`  
-> 清除页面缓存，目录项和inode `sync; echo 3 > /proc/sys/vm/drop_caches`  
+> [参考博客: Linux 内存中的Cache，真的能被回收么？](https://www.cnblogs.com/276815076/p/5478966.html)  
 
-- 有时候, 因为缓存的问题会引发一些很诡异的问题, 有应用缓存和系统缓存的分别
+> `/proc/sys/vm/drop_caches`
+> 设置值 `sync; echo 1 > /proc/sys/vm/drop_caches`
+
+| 值 | 作用 |
+|:----|:----|
+| 1 | 仅清除 PageCache |
+| 2 | 表示清除回收slab分配器中的对象（包括目录项缓存和inode缓存） |
+| 3 | 表示清除page cache和slab分配器中的缓存对象 |
+
+- 曾经因为缓存的问题会引发一些很诡异的问题
     - 例如构建工具Maven, 也会因为在一个项目空间下, 多个同名项目的缓存问题 
-        - (巨诡异 `if(true){}` 都能不执行, 一个变量的值莫名其妙的时刻被修改 )
-    - 然后操作系统的缓存问题也有出现:
-        - 例如 启动一个web项目, 运行到某一行, 突然运行不下去了, 前端阻塞在了等待请求这里 重新编译 和请求target目录都没有用, 重启IDEA也没有用
-        - 然后找到了上面的博客, 清除了下缓存就OK了
+        - 巨诡异 `if(true){}` 都能不执行, if 和 else 同时执行
 
 ### 善用*shrc文件
 > 注意加载顺序 /etc/profile -> ~/.*shrc `各种sh的rc文件` bash zsh ash

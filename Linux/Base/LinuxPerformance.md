@@ -13,6 +13,7 @@ categories:
     1. [运行状况信息](#运行状况信息)
         1. [工具](#工具)
     1. [内存情况](#内存情况)
+        1. [free](#free)
     1. [性能监测](#性能监测)
         1. [vmstat](#vmstat)
         1. [mpstat](#mpstat)
@@ -43,7 +44,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2019-02-16 09:42_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-16 09:59_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux性能分析和管理
 ## 运行状况信息
@@ -67,7 +68,7 @@ categories:
 对于Linux来说, 都是有内存就去分配, 然后就用, 只有内存不够了才会去回收, 对于服务器来说, 交换内存会带来性能的明显下降 一般是不会配置的  
 空闲内存, 已使用, buffers, cached 共同构成了整个内存容量
 
-> `free`
+### free
 - 直接运行得到的就是内存情况,默认是kb为单位,可以指定 -b -m -g (后两种不推荐,因为向下取整的特性)
     - -h 人类可读形式 推荐,能快速看到大略,精准的话还是用 -b
 
