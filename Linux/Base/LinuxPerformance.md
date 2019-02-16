@@ -23,6 +23,7 @@ categories:
         1. [pidof](#pidof)
         1. [sar](#sar)
         1. [lsof](#lsof)
+            1. [删除文件相关情况](#删除文件相关情况)
         1. [fuser](#fuser)
         1. [ps](#ps)
         1. [kill](#kill)
@@ -44,7 +45,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2019-02-16 09:59_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-16 15:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux性能分析和管理
 ## 运行状况信息
@@ -227,7 +228,9 @@ categories:
     - :service 服务名 可以多个 逗号分隔
     - :port 端口 可以多个 逗号分隔
 
-**删除文件的问题，利用lsof解决**
+#### 删除文件相关情况
+
+> 真正删除文件
 - 创建一个0填充的1g文件 `dd if=/dev/zero bs=1024 count=1000000 of=./1gb.file` 
     - 就能看到硬盘的显著变化 `df -h`
 - 然后写一个简单的程序一直占用他, 例如 python
@@ -235,6 +238,16 @@ categories:
 - 原因就是,Linux系统中,rm命令删除文件实际上只是减少文件的link数, 当link数为0时,文件才会被删掉,当进程打开某文件,该文件link就加1, 因为脚本一直占用着文件,所以删除没有看到硬盘的占用下降,只是目录中找不到该文件而已
 - `lsof | grep 1gb.file`或者 `lsof 1gb.file` 就能找到占用该文件的进程了,杀掉就能真正的删除文件了
     - 可以试试两个多个Python脚本同时占用, 那么要将进程全部杀掉,才有用
+
+> 恢复删除的文件(仍被其他进程引用的情况)  
+
+1. echo "1 2 3" >> test.log
+1. less test.log `打开后不退出`
+1. rm test.log
+1. sudo lsof | grep test.log `找出持有该文件的进程id`
+    > less      12008                    kcp    4r      REG                8,3        40239    4990940 /home/kcp/test/test.log (deleted)
+1. ls -l /proc/12008/fd/ `查询持有的文件,找到对应的数字软链接,这里找到的是4`
+1. cp /proc/12008/fd/4 test.log.save `复制回来`
 
 ### fuser
 > 和lsof功能差不多,但是这个是符合posix标准的命令 (POSIX:可移植操作系统接口)
