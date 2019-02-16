@@ -16,6 +16,7 @@ categories:
         1. [孤儿进程和僵死进程](#孤儿进程和僵死进程)
             1. [孤儿进程](#孤儿进程)
             1. [僵尸进程](#僵尸进程)
+        1. [守护进程](#守护进程)
         1. [线程](#线程)
     1. [时间](#时间)
     1. [服务](#服务)
@@ -42,7 +43,7 @@ categories:
         1. [关闭ssh回话仍能运行](#关闭ssh回话仍能运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2019-02-13 23:16_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-16 09:42_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -172,6 +173,11 @@ categories:
 1. `fork两次`: 原理是将子进程成为孤儿进程，从而其的父进程变为init进程，通过init进程可以处理僵尸进程。
 
 > 暴力方案: 直接 kill 掉父进程, 父进程和僵死状态的子进程就一起被回收了
+
+### 守护进程
+> [参考博客: 守护进程](https://blog.csdn.net/lianghe_work/article/details/47659889)
+
+**********************
 
 ### 线程
 1. 查看创建一个线程占用内存大小 `ulimit -s`

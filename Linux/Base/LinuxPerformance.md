@@ -9,7 +9,7 @@ categories:
 
 **目录 start**
  
-1. [Linux 性能分析和管理](#linux-性能分析和管理)
+1. [Linux性能分析和管理](#linux性能分析和管理)
     1. [运行状况信息](#运行状况信息)
         1. [工具](#工具)
     1. [内存情况](#内存情况)
@@ -26,13 +26,13 @@ categories:
         1. [ps](#ps)
         1. [kill](#kill)
         1. [killall](#killall)
-        1. [作业控制](#作业控制)
         1. [trap](#trap)
-    1. [后台运行](#后台运行)
-        1. [nohup](#nohup)
-        1. [disown](#disown)
-        1. [setid](#setid)
-        1. [screen](#screen)
+        1. [作业控制](#作业控制)
+        1. [进程到守护进程的转变](#进程到守护进程的转变)
+            1. [nohup](#nohup)
+            1. [disown](#disown)
+            1. [setid](#setid)
+            1. [screen](#screen)
     1. [系统管理](#系统管理)
         1. [uname](#uname)
         1. [who](#who)
@@ -43,9 +43,9 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2019-01-15 15:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-16 09:42_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-# Linux 性能分析和管理
+# Linux性能分析和管理
 ## 运行状况信息
 > 系统实时状态信息
 
@@ -55,32 +55,33 @@ categories:
     - 运行结果 : 1,5,15分钟的平均负载 | 当前运行的进程/总进程 | 最近一个启动的进程的id
 > 常规: 单核:平均负载0.7以下是安全的,大于就需要优化了,多核则是 0.7*N(核心数)
 
-- Glances [Linux 系统实时监控的瑞士军刀 —— Glances ](https://linux.cn/article-2782-1.html)
-
 ### 工具
 > [vector](https://github.com/Netflix/vector)
 > [CPU-X ](http://x0rg.github.io/CPU-X/) | [Github:repo](https://github.com/X0rg/CPU-X)`简洁而详细`    
 
-## 内存情况
-> 对于Linux来说, 都是有内存就去分配, 然后就用, 只有内存不够了才会去回收, 对于服务器来说, 交换内存会带来性能的明显下降 一般是不会配置的
+- Glances [Linux 系统实时监控的瑞士军刀 —— Glances ](https://linux.cn/article-2782-1.html)
 
+**********************
+
+## 内存情况
+对于Linux来说, 都是有内存就去分配, 然后就用, 只有内存不够了才会去回收, 对于服务器来说, 交换内存会带来性能的明显下降 一般是不会配置的  
 空闲内存, 已使用, buffers, cached 共同构成了整个内存容量
 
-`free`
-- 直接运行得到的就是内存情况,默认是kb为单位,可以指定 -b -m -g (后两种不推荐,因为向下取整的特性,出来的数据有点诡异,)
+> `free`
+- 直接运行得到的就是内存情况,默认是kb为单位,可以指定 -b -m -g (后两种不推荐,因为向下取整的特性)
     - -h 人类可读形式 推荐,能快速看到大略,精准的话还是用 -b
-- 运行结果解析:
-    - 注意: 如果是新版的free, shared 那一栏总是为0, 因为shared本就是说明进程共享内存容量,
-        - free认为不能显示数有效信息, 就抛弃了这个指标,总是显示为0
-    - buffers,cached:
-        - `buffers` 是为了写时,解决内存和硬盘巨大速度差存在的缓冲区(块设备IO相关的缓存页)
-        - `cache` 是为了读时,为了尽量减少内存从硬盘读数据的次数,缓冲区(普通文件相关的缓存页)
-        - `cached` 就是cache内存区域已经使用量
-    - `used` 内存已使用量(不含buff/cache), free空闲内存, available 可用内存
-    
-- 设置交换分区:可以单独建立一个分区,也可以使用交换文件,
-    - 交换文件的设置在[Linux_file](/Linux/linux_file.md)中,
-    - 分区的设置就不多讲了, 主要是fdisk
+
+**`输出解析`**
+
+- `used` 内存已使用量(不含buff/cache), `free` 空闲内存, `available` 可用内存
+- buffers,cached:
+    - `buffers` 是为了写时,解决内存和硬盘巨大速度差存在的缓冲区(块设备IO相关的缓存页)
+    - `cache` 是为了读时,为了尽量减少内存从硬盘读数据的次数,缓冲区(普通文件相关的缓存页)
+    - `cached` 就是cache内存区域已经使用量
+
+>- 注意: 如果是新版的free, shared 那一栏总是为0, 因为shared本就是说明进程共享内存容量, free认为不能显示数有效信息, 就抛弃了这个指标,总是显示为0
+
+**************************
 
 ## 性能监测
 ### vmstat
@@ -166,6 +167,8 @@ categories:
 - ![p162](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p162.jpg)   
 - ![p163](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p163.jpg)
 - ![p164](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p164.jpg)
+
+****************************
 
 ## 进程管理
 > 按程序名字找到id `ps -ef | grep "$NAME" | grep -v "grep" | awk '{print $2}'`
@@ -362,6 +365,27 @@ categories:
 
 - 杀掉指定名字 不需要sudo `killall -9 name` 要十分谨慎的使用, 避免误杀进程
 
+### trap
+> 捕捉信号并响应
+`trap "commands" signal-list`
+
+> 用途
+- 动态读取并更新配置文件
+- 定期清除临时文件
+- 忽略信号对程序可能的影响 `trap "" 2`: 忽略 `Ctrl+C`
+- 可以针对用户的退出操作，询问用户是否真的确认要退出
+
+```sh
+    #!/bin/bash
+    trap 'echo "hello"' 2
+    tail -f ~/.bashrc
+```
+- 监控文件的变化，当按下快捷键Ctrl+C 就会执行trap中的命令
+- 屏蔽信号
+    - `trap "" INT` 屏蔽中断信号
+    - `trap INT` 恢复
+
+*************
 ### 作业控制
 > 在Linux中, 作业是由一个或多个进程构成的, 作业控制就是对作业的行为进行控制, 前后台的切换, 终止等操作
 
@@ -383,40 +407,24 @@ categories:
 `指定作业`
 
 | 符号 | 含义 | 示例|
-|:---|:---|:---:|
-| %Number | 根据编号来指定作业 | fg %1 |
-| %String| 匹配命令以String开头的作业,如果匹配到多个就会报错 | kill %deng |
-|%?String|命令行中含有String字符串的作业,如果是通过管道连接的多个命令,则仅匹配第一个命令| kill %?ng |
-|%%|指代作业列表中最近一个被切换到后台的作业| kill %% |
-|%+|和%%作用完全相同| kill %+ |
-|%-|排在%%所指代的作业前面的那个作业| kill %- |
+|:---|:---|:---|
+| %Number  | 根据编号来指定作业 | fg %1 |
+| %String  | 匹配命令以String开头的作业,如果匹配到多个就会报错 | kill %deng |
+| %?String |命令行中含有String字符串的作业,如果是通过管道连接的多个命令,则仅匹配第一个命令| kill %?ng |
+|  %%      |指代作业列表中最近一个被切换到后台的作业| kill %% |
+|  %+      |和%%作用完全相同| kill %+ |
+|  %-      |排在%%所指代的作业前面的那个作业| kill %- |
 
-> 也就是说,这个匹配也是只能匹配一个作业,不能通配
+> 也就是说,这个匹配也是只能匹配一个作业,不能通配使用
 
-### trap
-> 捕捉信号并响应， 格式：trap "commands" signal-list
-> 动态读取并更新配置文件
-> 定期清除临时文件
-> 忽略信号对程序可能的影响 `trap "" 2`: 忽略 `Ctrl+C`
-> 可以针对用户的退出操作，询问用户是否真的确认要退出
+### 进程到守护进程的转变
+> 使得普通命令启动的进程变成类似于守护进程的进程
 
-```sh
-    #!/bin/bash
-    trap 'echo "hello"' 2
-    tail -f ~/.bashrc
-```
-- 监控文件的变化，当按下快捷键Ctrl+C 就会执行trap中的命令
-- 屏蔽信号
-    - `trap "" INT` 屏蔽中断信号
-    - `trap INT` 恢复
+两种方案: 
+- 让进程对hup信号免疫 nohup disown
+- 让进程在新的会话中运行 setid screen
 
-*************
-## 后台运行
-- 运行的命令不因 用户注销，网络中断等因素而中断
-    - 让进程对hup信号免疫 nohup disown
-    - 让进程在新的会话中运行 setid screen
-
-### nohup
+#### nohup
 - 在命令前 加上hohup 
     - 忽略所有hup信号 并将标准输出重定向到 nohup.out 若当前目录不可写，就会重定向到 $HOME/nohup.out 
 - nohup 命令>result.txt 2>&1
@@ -430,14 +438,14 @@ categories:
     - 126 指定命令能找到，但是不能调用
     - 127 找不到指定命令
 
-### disown
+#### disown
 - 执行中的命令，Ctrl+Z 暂停到后台去了 jobs查看作业编号
 - `disown %作业号` 就能在后台运行，且屏蔽hup信号了
 
-### setid
+#### setid
 - 命令前 `setid 命令` 就会让进程在一个新的会话运行
 
-### screen
+#### screen
 > 在一个真实的终端运行多个伪终端，认为是开启了多个新会话 [命令参考](http://man.linuxde.net/screen)
 
 - 会话恢复
@@ -500,6 +508,7 @@ categories:
 - 运行 `dmidecode -t `就会提示你后接类别
 
 ### lsmod
+
 ### chroot
 > change root directory 更改root目录 最古老的容器技术
 
