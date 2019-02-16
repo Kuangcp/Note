@@ -62,7 +62,7 @@ categories:
     1. [系统日志](#系统日志)
     1. [应用日志](#应用日志)
 
-**目录 end**|_2019-02-16 09:59_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-16 14:55_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -103,7 +103,7 @@ categories:
 
 | 值 | 作用 |
 |:----|:----|
-| 1 | 仅清除 PageCache |
+| 1 | 仅清除 page cache |
 | 2 | 表示清除回收slab分配器中的对象（包括目录项缓存和inode缓存） |
 | 3 | 表示清除page cache和slab分配器中的缓存对象 |
 
