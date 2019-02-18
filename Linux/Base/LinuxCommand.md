@@ -27,7 +27,7 @@ categories:
     1. [练习打字](#练习打字)
 1. [Tips](#tips)
 
-**目录 end**|_2019-01-14 10:45_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-18 21:30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -63,11 +63,14 @@ categories:
 - 将秒时间戳转换为日期 `date --date='@1524738626'`
 
 ## grep
+> g (globally) search for a re (regular expression ) and p (print ) the results.
+
 > egrep [相关网页](http://man.linuxde.net/grep) 与 grep -E 等价
 
 - 正则 `grep -E "[1-9]+"` 注意` [] 和 ()`的区别 `[]` 是里面单个字符 `()`是里面的全部
 
-- -o 一行内多次匹配 `grep -o 的 total.md | wc -l` 统计所有`的`的数量
+- -o 一行内多次匹配 
+    - 统计所有 `main` 数量 `grep -o main test.log | wc -l` 
 - -i 忽略大小写
 
 ## 定时任务

@@ -21,6 +21,7 @@ categories:
         1. [iostat](#iostat)
     1. [进程管理](#进程管理)
         1. [pidof](#pidof)
+        1. [pgrep](#pgrep)
         1. [sar](#sar)
         1. [lsof](#lsof)
             1. [删除文件相关情况](#删除文件相关情况)
@@ -45,7 +46,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2019-02-16 15:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-18 21:30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux性能分析和管理
 ## 运行状况信息
@@ -176,11 +177,18 @@ categories:
 > 按程序名字找到id `ps -ef | grep "$NAME" | grep -v "grep" | awk '{print $2}'`
 
 ### pidof
+> find the process ID of a running program
+
 - 查询ssh服务启动的进程的pid `pidof sshd`
 - 找出shell脚本执行的pid, `pidof -x 脚本文件名`
 - -s 只显示一个pid, 有的软件会有多个进程,就有多个pid
 - 忽略指定的pid `-o pid`
 - ![p167](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p167.jpg)
+
+### pgrep 
+> pgrep, pkill - look up or signal processes based on name and other attributes
+
+1. pgrep java 
 
 ### sar
 - 默认持续执行除非Ctrl C退出,指定参数后就和vmstat一样 `sar 2 3` 
@@ -289,18 +297,16 @@ categories:
     - 虽然执行结果看起来是一模一样的, 但是 `ps -aux ` 其实应该理解为 `ps -a -u x` 显示用户名为 x 的用户的所有进程
     - 当 x 用户不存在时ps就将其理解为 `ps aux`
     - 原因,因为他的三种格式:
-        - BSD 选项前不加短横线 - `ps aux`
-        - UNIX 选项前加短横线 - `ps -aux `
-        - GNU 选项前加双短横线 -- `ps --format`
+        - BSD 选项前 不加短横线 `ps aux`
+        - UNIX 选项前 加短横线 `ps -aux `
+        - GNU 选项前 加双短横线  `ps --format`
     - BSD格式的 `ps aux` 等价于 `ps -eF`
         - e 显示全部进程, 包含了未在终端运行的进程
         - F 显示详尽的进程信息
         
 > Debian 上 `ps -ef` 和 `ps ef` 执行效果不一样
 
-- `-o` 输出指定列 `ps -eo pid,user,cmd,start` 
-    - `man ps` 可以看到可以指定的列 
-    - 若要取别名 `pid=进程号`
+- `-o` 输出指定列 `ps -eo pid,user,cmd,start ... ` 更多需要查看手册 `man ps`
 
 - ![p200](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p200.jpg)
 
@@ -310,7 +316,7 @@ categories:
         - -U 实际用户 RUID 
         - -u 有效用户 EUID
         - u 按用户名和进程号的顺序来显示进程, 多列构成
-    - 根据命令名称查找pid `ps -C sshd` 这个实用!!! 
+    - 根据命令名称查找pid `ps -C sshd` 
     
 - 排序 :
     - `ps aux --sort -pcpu/+pcpu/` 按CPU使用率,进行降序/升序排列
@@ -329,7 +335,8 @@ categories:
 
 **实践**
 1. 列出Java进程 `ps aux | grep RSS | grep -v "grep" && ps aux | egrep -v "grep" | grep -i java` 
-1. 统计所有java进程内存使用 `ps aux|grep java | grep -v grep | awk "{sum+=$6};END {print sum "K " sum/1024"M "}"` 
+1. 统计所有java进程内存使用 `ps aux|grep java | grep -v grep | awk '{sum+=$6};END {print sum "K " sum/1024"M "}'` 
+    - `ps -a -x -o rss,comm | grep java | awk '{sum+=$1};END {print sum "K " sum/1024"M "}'`
 1. 按内存排序 列出所有进程 `ps aux | grep -v RSS | awk "{print $6 "\t" $11 }" | sort --human-numeric-sort -r | less`
 
 ### kill

@@ -9,7 +9,6 @@ categories:
 
 **目录 start**
  
-1. [Java性能调优](#java性能调优)
 1. [Web性能](#web性能)
     1. [性能基准](#性能基准)
     1. [测试工具](#测试工具)
@@ -21,15 +20,15 @@ categories:
         1. [MySQL](#mysql)
             1. [主从复制以及读写分离](#主从复制以及读写分离)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-18 21:30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-# JavaWeb性能调优
-> [查看详情>>](/Java/JavaPerformance.md)
-
 # Web性能
 
 ## 性能基准
 > [参考博客: 系统吞吐量（TPS）、用户并发量、性能测试概念和公式](http://www.cnblogs.com/freeton/archive/2013/05/31/3109815.html)
+
+`超出应用性能上限的表现`
+1. 对于web后端来说就是请求过多, 数据库连接池不够用, 线程池大量等待的线程, 请求非常缓慢, 直接返回 5xx 错误码...
 
 ## 测试工具
 ### 压力测试
