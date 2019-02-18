@@ -208,7 +208,6 @@ categories:
 - [习题的一些Python](https://github.com/qiwsir/StarterLearningPython.git )
 - [区块链Python](https://github.com/dvf/blockchain)`附加Python中Docker的用法`
 - [pyspider](https://github.com/binux/pyspider)`爬虫框架`
-- [httpie]()https://github.com/jakubroztocil/httpie
 ***********
 ## 【Linux】
 - [Java程序员眼中的Linux](https://github.com/judasn/Linux-Tutorial)
