@@ -1,5 +1,5 @@
 ---
-title: 应用容器化
+title: Docker的应用
 date: 2018-12-15 11:27:31
 tags: 
     - 工具使用经验
@@ -36,10 +36,9 @@ categories:
         1. [Gitea](#gitea)
             1. [配置](#配置)
     1. [在线IDE](#在线ide)
-        1. [Coding平台的WebIDE](#coding平台的webide)
     1. [图形化管理工具](#图形化管理工具)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-19 17:26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker 安装应用
 > [如何创建尽可能小的Docker容器教程](http://www.open-open.com/lib/view/open1419760974078.html)
@@ -117,6 +116,9 @@ categories:
 - [jdk-alpine-cst](https://hub.docker.com/r/mythkuang/jdk-alpine-cst/)`设置好CST时区的JDK基础镜像`
 
 > [参考博客: Java和Docker限制的那些事儿](http://www.techug.com/post/java-and-docker-memory-limits.html)`描述了一个天坑`
+
+- openjdk:8-jdk-alpine
+- frolvlad/alpine-oraclejdk8:slim
 
 #### Jib
 > [参考博客: GOOGLE JIB](https://my.oschina.net/u/3666671/blog/1845065) | [Github:jib](https://github.com/GoogleContainerTools/jib)
@@ -210,7 +212,8 @@ categories:
 然后就能正常使用了
 
 ## 在线IDE
-### Coding平台的WebIDE
+- Coding平台的WebIDE
+- eclipse che
 
 ## 图形化管理工具
 DockerUI

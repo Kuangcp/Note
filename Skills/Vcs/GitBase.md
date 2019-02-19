@@ -35,6 +35,7 @@ categories:
                 1. [在index已有修改的状态回滚merge或者pull](#在index已有修改的状态回滚merge或者pull)
                 1. [被中断的工作流程](#被中断的工作流程)
             1. [gc](#gc)
+            1. [clean](#clean)
         1. [远程](#远程)
             1. [Github上的fork](#github上的fork)
             1. [Github上PR](#github上pr)
@@ -56,7 +57,7 @@ categories:
             1. [grep](#grep)
             1. [archive](#archive)
             1. [reflog](#reflog)
-    1. [常用文件](#常用文件)
+    1. [配置文件](#配置文件)
         1. [.gitignore](#gitignore)
         1. [gitattributes](#gitattributes)
     1. [Tools](#tools)
@@ -67,7 +68,7 @@ categories:
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-01-27 23:39_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-19 17:26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -345,13 +346,15 @@ TODO 存疑
 
 **************************
 #### gc
-> 只能压缩一部分空间
 
 `git gc -h`:
 - `--aggressive` 默认使用较快速的方式检查文档库,并完成清理,当需要比较久的时间,偶尔使用即可
 - `--prune[=<日期>]` 清除未引用的对
 - `--auto` 启用自动垃圾回收模式
 - `--force` 强制执行 gc 即使另外一个 gc 正在执行
+
+#### clean
+> Remove untracked files from the working tree `git clean --help`
 
 ***************************
 ### 远程
