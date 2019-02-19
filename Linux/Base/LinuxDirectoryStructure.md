@@ -14,6 +14,8 @@ categories:
     1. [/home](#home)
     1. [/proc](#proc)
         1. [网络](#网络)
+    1. [/usr](#usr)
+        1. [/usr/local](#usrlocal)
     1. [/etc](#etc)
         1. [/etc/alternatives](#etcalternatives)
         1. [/etc/apt](#etcapt)
@@ -22,7 +24,7 @@ categories:
         1. [查看系统所有用户信息](#查看系统所有用户信息)
     1. [/tmp](#tmp)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-19 10:36_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux 目录结构
 > Linux 系统目录结构的大致分布以及说明
@@ -40,6 +42,21 @@ categories:
 ### 网络
 1. ARP: /proc/net/arp cat该文件, 如果发现里面有重复的mac地址, 并且有机器伪装成了网关的mac 就说明遭受了ARP攻击 `或者 arp -a`
     - arping 10.91.255.254 能查看到真实的mac地址
+
+***************
+
+## /usr
+
+### /usr/local
+> 全局配置, 对应的局部配置目录是 `~/.local`, 惯例是局部覆盖全局配置
+
+```
+    ├── bin 可执行文件(Python安装应用的目录)
+    ├── lib 库
+    └── share 应用的配置
+```
+
+- share 目录下 存放大量应用配置: 主题,图标,字体,desktop文件 什么的
 
 ************************
 ## /etc
