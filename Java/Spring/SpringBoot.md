@@ -40,7 +40,7 @@ categories:
             1. [gradle结合docker](#gradle结合docker)
         1. [热部署](#热部署)
 
-**目录 end**|_2019-02-12 16:36_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-19 17:41_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SpringBoot
 > [首页](https://spring.io/projects/spring-boot#learn)
@@ -382,18 +382,17 @@ private Connector createHttpConnector() {
     - gradle:`gradle jar` 然后 `gradle bootRepackage` 也生成可执行jar
 
 ### 构建docker镜像
-> 方便监控应用状态，cpu 内存 流量, [官方文档](https://spring.io/guides/gs/spring-boot-docker/)
+> [Official Doc: spring boot docker](https://spring.io/guides/gs/spring-boot-docker/)
 
 #### 手动方式
 - 先构建得到war或jar，然后根据dockerfile构建一个镜像
 ```Dockerfile
-FROM frolvlad/alpine-oraclejdk8:slim
-ADD weixin-1.0.0.war app.war
-ENTRYPOINT ["java","-jar","/app.war"]
+    FROM frolvlad/alpine-oraclejdk8:slim
+    ADD weixin-1.0.0.war app.war
+    ENTRYPOINT ["java","-jar","/app.war"]
 ```
 
 #### gradle结合docker
-
 
 ### 热部署
 > [参考博客: SpringBoot热部署](https://nilzzzz.github.io/2017/11/SpringBoot1/)

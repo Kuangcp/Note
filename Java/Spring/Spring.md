@@ -25,13 +25,14 @@ categories:
     1. [生命周期](#生命周期)
     1. [IOC/DI 控制反转](#iocdi-控制反转)
     1. [Scheduling](#scheduling)
+    1. [Events](#events)
     1. [Websocket](#websocket)
         1. [maven配置](#maven配置)
     1. [Utils](#utils)
         1. [ReflectionUtils](#reflectionutils)
 1. [Web开发的最佳实践](#web开发的最佳实践)
 
-**目录 end**|_2019-02-15 15:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-19 17:41_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -174,12 +175,16 @@ _其他,可选_
     }
 ``` 
 
+****************
+
 # 基础
 ## 生命周期
-@PreDestroy
+@PreDestroy  
 @PostConstruct
 
 - [ ] 完善
+
+********
 
 ##  IOC/DI 控制反转
 - DI 译为依赖注入 所有的bean都在IOC容器中（单例的）多例的不在该容器中进行管理
@@ -191,15 +196,17 @@ _其他,可选_
    - **动态代理**
        - 针对一个方面编写一个InvocationHandler，然后借用JDK反射包中的Proxy类为各种接口动态生成相应的代理类 
 
-属性上 @Autowired 即可, 但是现在不建议直接在属性上使用注解, 而是建议在构造器上, 为了避免 手动使用new 实例化Bean, 然后里面本该注入的属性全部为null
-可以用lombok来协助
+属性上 @Autowired 即可, 但是现在不建议直接在属性上使用注解, 而是建议用在构造器上  
+这是为了避免NPE: 当手动使用 new 实例化Bean, 里面本该注入的属性是会为null
+
+`使用Lombok简化该方式`
 ```java
-@Component
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class A{
-  @NonNull
-  private B b;
-  }
+    @Component
+    @RequiredArgsConstructor(onConstructor = @__(@Autowired))
+    public class A{
+        @NonNull
+        private B b;
+    }
 ```
 
 - [ ] look up 方法注入
@@ -216,8 +223,13 @@ public class A{
 其主体是 TaskExecutor 和 TaskScheduler 组成的, 也就是调度和执行
 
 - [cron maker](http://www.cronmaker.com/)
-- []()
+
 *******************
+
+## Events
+> [参考博客: Spring Events](https://www.baeldung.com/spring-events)
+
+********************
 ## Websocket
 ### maven配置
 
