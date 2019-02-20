@@ -8,11 +8,11 @@ categories:
 **目录 start**
  
 1. [软件使用记事](#软件使用记事)
-    1. [【包管理】](#包管理)
+    1. [包管理](#包管理)
         1. [使用sdkman](#使用sdkman)
-    1. [【服务管理】](#服务管理)
+    1. [服务管理](#服务管理)
         1. [oneinstack](#oneinstack)
-1. [【常用工具】](#常用工具)
+1. [常用工具](#常用工具)
     1. [网络工具](#网络工具)
         1. [nmap](#nmap)
         1. [whatportis](#whatportis)
@@ -39,10 +39,10 @@ categories:
     1. [安全工具](#安全工具)
         1. [gpg](#gpg)
 
-**目录 end**|_2019-01-29 23:37_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-20 09:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 软件使用记事
-## 【包管理】
+## 包管理
 ### 使用sdkman
 > 但是总会莫名其妙的冒出问题，sdk命令掉线始终连不上网，终端打开巨慢
 
@@ -60,7 +60,7 @@ categories:
 - 移除 `sdk uninstall scala 2.11.6`
 
 ******************
-## 【服务管理】
+## 服务管理
 ### oneinstack
 > 一键配置环境 [官方文档](https://oneinstack.com/install/)
 
@@ -76,7 +76,7 @@ categories:
 - `sudo ./install.sh` #注：请勿sh install.sh或者bash install.sh这样执行
 
 ******************
-# 【常用工具】
+# 常用工具
 > 基本是Linux工具，因为主力是用Linux
 
 ## 网络工具

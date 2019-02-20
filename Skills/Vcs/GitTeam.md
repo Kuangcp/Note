@@ -15,7 +15,7 @@ categories:
         1. [本地和远程](#本地和远程)
     1. [提交准则](#提交准则)
         1. [模板化提交信息](#模板化提交信息)
-1. [Client](#client)
+1. [GUI](#gui)
     1. [git-cola](#git-cola)
     1. [GitBlade](#gitblade)
     1. [GitAhead](#gitahead)
@@ -23,7 +23,7 @@ categories:
 1. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
     1. [最终方案](#最终方案)
 
-**目录 end**|_2019-01-18 15:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-20 09:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # 使用Git进行团队协作
@@ -71,6 +71,7 @@ categories:
 
 ## 提交准则
 > [参考博客: SVN提交更新的一个准则](http://www.cnblogs.com/chenlong828/archive/2008/09/22/1296193.html)
+
 1. 提交之前先更新
     - SVN更新的原则是要随时更新，随时提交。当完成了一个小功能，能够通过编译并且并且自己测试之后，谨慎地提交。
     - 如果提交过程中产生了冲突，则需要同之前的开发人员联系，两个人一起协商解决冲突，解决冲突之后，需要两人一起测试保证解决冲突之后，程序不会影响其他功能。
@@ -99,8 +100,8 @@ categories:
 1. 新建 ~/.gitmessage 文件
 2. ~/.gitconfig 中添加
 ```
-[commit]
-template = ~/.gitmessage
+    [commit]
+    template = ~/.gitmessage
 ```
 
 > 那么效果就是 git commit 不指定-m 参数就会调用该模板显示

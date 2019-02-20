@@ -3,6 +3,7 @@ title: 高效工作
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
+    - 团队协作
 ---
 
 **目录 start**
@@ -14,7 +15,7 @@ categories:
             1. [细节](#细节)
         1. [相关软件](#相关软件)
 
-**目录 end**|_2019-02-01 21:29_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-20 09:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 高效工作
 > [知乎: 超强的学习能力是怎样练就的？](https://www.zhihu.com/question/35103080/answer/414223605)

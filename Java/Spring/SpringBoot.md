@@ -13,14 +13,15 @@ categories:
     1. [思考](#思考)
     1. [参考教程](#参考教程)
         1. [系列](#系列)
-    1. [开始使用](#开始使用)
-    1. [安装SpringBootCLI](#安装springbootcli)
+    1. [简易使用](#简易使用)
+    1. [使用SpringBootCLI](#使用springbootcli)
     1. [测试模块](#测试模块)
     1. [Profils](#profils)
         1. [多种配置文件并切换](#多种配置文件并切换)
             1. [yml方式](#yml方式)
-            1. [yml和Properties结合](#yml和properties结合)
+            1. [yml和properties结合](#yml和properties结合)
         1. [应用配置文件](#应用配置文件)
+    1. [Events](#events)
     1. [日志模块](#日志模块)
     1. [Web模块](#web模块)
         1. [Lisener](#lisener)
@@ -32,7 +33,7 @@ categories:
     1. [HTTPS的配置](#https的配置)
     1. [线程池](#线程池)
     1. [项目部署](#项目部署)
-        1. [生成指定文件](#生成指定文件)
+        1. [编译打包jar/war](#编译打包jarwar)
             1. [war](#war)
             1. [jar](#jar)
         1. [构建docker镜像](#构建docker镜像)
@@ -40,7 +41,7 @@ categories:
             1. [gradle结合docker](#gradle结合docker)
         1. [热部署](#热部署)
 
-**目录 end**|_2019-02-19 17:41_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-20 09:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SpringBoot
 > [首页](https://spring.io/projects/spring-boot#learn)
@@ -63,13 +64,13 @@ categories:
 
 - [为什么说 Java 程序员到了必须掌握 Spring Boot 的时候？](http://www.ityouknow.com/springboot/2018/06/12/spring-boo-java-simple.html)
 
-> [Guide](https://spring.io/guides/gs/actuator-service/)
-
 ## 参考教程
 - [SpringBoot中文索引](http://springboot.fun/)
 - [参考博客: Spring Boot 入门系列](http://www.spring4all.com/article/246)
 - [Springboot探索](https://juejin.im/post/598dd709f265da3e213f0c57)
 - [SpringBoot入门](http://blog.csdn.net/jsyxcjw/article/details/46763639)
+
+> [Guide](https://spring.io/guides/gs/actuator-service/)
 
 ### 系列
 - [一系列专栏](https://github.com/guoxiaoxu/guo-projects/tree/master/guns-admin/note)
@@ -77,7 +78,9 @@ categories:
 - [SpringBoot系列文章](http://www.ityouknow.com/spring-boot)
 - [恒宇少年](https://www.jianshu.com/u/092df3f77bca)`大量Boot博客`
 
-## 开始使用
+******************
+
+## 简易使用
 > 使用Idea的话就可以直接创建项目 使用别的可以下载zip进行导入 | [官方初始项目构建 下载地址](http://start.spring.io/)
 
 _目录结构最好如下_ `*Application类要处于所有用了Springboot注解的类的顶级目录, 这样默认才能扫描到`
@@ -91,7 +94,7 @@ _目录结构最好如下_ `*Application类要处于所有用了Springboot注解
     ├── ServletInitializer.java
     └── util/
 ```
-## 安装SpringBootCLI
+## 使用SpringBootCLI
 - 使用 SDKMAN 进行安装
     - 使用git bash运行  `curl -s get.sdkman.io | bash`
     - `source "/Users/{yourname}/.sdkman/bin/sdkman-init.sh" `根据实际目录去运行
@@ -120,10 +123,11 @@ _目录结构最好如下_ `*Application类要处于所有用了Springboot注解
 - 使用Selenium来测试HTML页面，模拟浏览器的动作，查看系统运行状态
 
 ***********
+
 ## Profils
 > [Spring Profiles](https://www.baeldung.com/spring-profiles)
 
-> 配置文件(`application.properties或者yml`)加载顺序 [官方文档说明](https://docs.spring.io/spring-boot/docs/1.5.9.RELEASE/reference/htmlsingle/#boot-features-external-config-application-property-files)
+> 配置文件(`application.properties或者yml`) 加载顺序 [官方文档说明](https://docs.spring.io/spring-boot/docs/1.5.9.RELEASE/reference/htmlsingle/#boot-features-external-config-application-property-files)
 >> 1.当前Jar/War目录下的/config目录 `file:./config/`  
 >> 2.当前目录 `file:./`  
 >> 3.classpath 里的/config目录 `classpath:/config/`  
@@ -160,7 +164,7 @@ _目录结构最好如下_ `*Application类要处于所有用了Springboot注解
 ```
 - 或者 多文件放 `application-{profile}.yml`
 
-#### yml和Properties结合
+#### yml和properties结合
 - 格式：`application-{profile}.properties`
 - 将上面的开发部分，发行部分的配置创建两个配置文件 `application-dev.properties` 和 `application-prod.properties`
 - 在主配置文件`application.yml`中指明
@@ -169,8 +173,10 @@ _目录结构最好如下_ `*Application类要处于所有用了Springboot注解
       profiles:
         active: dev或者是prod
 ```
+
 ### 应用配置文件
-> 依赖于 `org.springframework.boot:spring-boot-configuration-processor`
+> 依赖于 `org.springframework.boot:spring-boot-configuration-processor`  
+
 配置对应的实体类
 ```java
     @Data
@@ -196,6 +202,24 @@ graduate:
 
 ********************
 
+## Events 
+> [Note: Spring Events](/Java/Spring/Spring.md#Events)
+
+配置成异步并使用线程池
+```java
+@Configuration
+public class AsynchronousSpringEventsConfig {
+  @Bean(name = "applicationEventMulticaster")
+  public ApplicationEventMulticaster simpleApplicationEventMulticaster() {
+    SimpleApplicationEventMulticaster eventMulticaster = new SimpleApplicationEventMulticaster();
+
+    SimpleAsyncTaskExecutor taskExecutor = new SimpleAsyncTaskExecutor();
+    eventMulticaster.setTaskExecutor(taskExecutor);
+    return eventMulticaster;
+  }
+}
+```
+
 ## 日志模块
 默认可以通过 application.properties 配置框架的日志,以及应用具体到包和类的日志等级,日志文件等等
 
@@ -204,7 +228,6 @@ graduate:
 > [参考博客: springboot use logback](https://springframework.guru/using-logback-spring-boot/)`能根据Profile配置,还能写if`
 
 使用 logback 则需要配置 logback.xml 或者 logback-spring.xml 建议使用后者
-************
 
 ## Web模块
 ### Lisener
@@ -275,6 +298,7 @@ public class CorsConfig {
     }
 }
 ```
+
 ## 全局异常处理
 1. 新建类, 加上注解 ControllerAdvice
 2. 方法上使用注解 `ExceptionHandler(Exception.class)` 处理所有异常
@@ -362,7 +386,7 @@ private Connector createHttpConnector() {
 
 ***************************************
 ## 项目部署
-### 生成指定文件
+### 编译打包jar/war
 #### war
 - 部署为war必须的类，一般在创建项目时选war就会自动生成，选jar就要手动添加
 ```java

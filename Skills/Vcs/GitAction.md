@@ -19,31 +19,31 @@ categories:
         1. [实验楼上使用Github](#实验楼上使用github)
         1. [码云](#码云)
     1. [git初始化配置](#git初始化配置)
-        1. [【VI编辑器的使用】](#vi编辑器的使用)
-    1. [【配置SSH连接上Github】](#配置ssh连接上github)
+    1. [Github用法](#github用法)
         1. [终端中显示当前分支](#终端中显示当前分支)
         1. [命令的自动补全](#命令的自动补全)
-    1. [搭建Git服务器](#搭建git服务器)
-        1. [使用git daemon搭建简易 Server](#使用git-daemon搭建简易-server)
-        1. [【HTTP访问Git服务器】](#http访问git服务器)
-            1. [【配置HTTPS】](#配置https)
-            1. [【使用SSH登录GitServer】](#使用ssh登录gitserver)
+    1. [Git服务器](#git服务器)
+        1. [使用 git daemon 搭建简易 Server](#使用-git-daemon-搭建简易-server)
+        1. [HTTP 方式的 Git 服务器](#http-方式的-git-服务器)
+            1. [配置HTTPS](#配置https)
+            1. [使用SSH登录GitServer](#使用ssh登录gitserver)
     1. [Tips](#tips)
         1. [清理仓库大文件](#清理仓库大文件)
         1. [CRLF与LF](#crlf与lf)
 
-**目录 end**|_2019-01-27 21:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-20 09:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
 
 > [Github: lazygit](https://github.com/jesseduffield/lazygit)`命令行的简易图形化`
+> [Github: Git History](https://githistory.xyz/)  
 
 ## 安装
 ### Linux(debian系)
 - `sudo apt-get install git`
 
-`安装最新版本Git`
+> 安装最新版本Git
 - `sudo add-apt-repository ppa:git-core/ppa` 
     - 如果命令找不到就先安装这个 `sudo apt-get install software-properties-common`
 - `sudo apt update`
@@ -59,10 +59,10 @@ categories:
     - sudo makeprefix=/usr/local install
 
 - 卸载
-    - sudo find /usr/local -depth -iname 'git*' -exec rm -fr {} \;
+    - sudo find /usr/local -depth -iname 'git*' -exec rm -rf {} \;
 
 ### windows
-- 直接搜索git-for-windows 建议使用360搜索,会有360的下载链接,无意间发现 毕竟官网的下载速度不敢恭维
+- 搜索下载 git-for-windows 
 
 ### GUI
 > [官方列表](https://git-scm.com/downloads/guis)
@@ -146,33 +146,15 @@ categories:
 	git config --global user.email " "
 	git config --global color.ui  auto 
 ```
-> 如果是多个账号使用同一台电脑就不要配置这个，单独配置每个仓库下的用户名，邮箱即可<br/>
+> 如果是多个账号使用同一台电脑就不要配置这个，单独配置每个仓库下的用户名，邮箱即可  
 > `git config user.name ""`
 
-### 【VI编辑器的使用】
-> [详情](/Linux/Tool/Vim.md)
-
-- 在pull或者合并分支的时候有时会遇到打开 VI编辑器 的状态  可以不输入(直接下面3,4步)
-`如果要输入解释的话就需要:`
-```
-    1.按键盘字母 i 进入insert模式
-    2.修改最上面那行黄色合并信息,可以不修改
-    3.按键盘左上角"Esc"
-    4.输入`:wq`,按回车键即可 或者 :x
-```
-
-## 【配置SSH连接上Github】 
+## Github用法
 > 其他平台类似
 
-- 【Markdown语法】: 
+- 网页上Markdown语法 
     - @用户名， @组织名 ；#编号 会连接到该仓库对应的Issue编号 。
     - 通过 用户名/仓库名 #编号 来指定仓库的指定Issue
-- 【将Bash和GitHub绑定起来】：
-    - 1.在GItHub上设置SSH key， 有一个即可
-    - 2.$ssh-keygen -t rsa -C "xxx@xxx" 生成一个具有指定邮箱的rsa密钥对,然后复制到平台上
-    - 3.设置密钥对密码. 当然为了偷懒就不设置,不然每次提交都要输入....
-    - 4.测试SSH连接  $ssh -T git@github.com 输入 密钥对 密码
-        - 询问将github的ip加入已知列表中 输入yes
 
 ********************
 ### 终端中显示当前分支
@@ -180,7 +162,7 @@ categories:
 
 - `wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -O ~/.git-prompt.sh` 下载脚本
 - `chmod +x ~/.git-prompt.sh` 赋予可执行权限
-- 在 .bash_alases文件中添加
+> 在 .bash_alases文件中添加
 ```conf
     lightgreen='\[\033[1;32m\]'
     lightcyan='\[\033[1;36m\]'
@@ -207,8 +189,8 @@ categories:
 - 双击tab可以得到命令建议
 
 ***************************************************
-## 搭建Git服务器
-### 使用git daemon搭建简易 Server
+## Git服务器
+### 使用 git daemon 搭建简易 Server
 
 *`目录结构`*
 ```
@@ -228,7 +210,7 @@ categories:
 
 - 克隆: `git clone git://localhost:8080/a` 
 
-### 【HTTP访问Git服务器】
+### HTTP 方式的 Git 服务器
 - 安装Apache： Web服务器
 - 配置Apache服务器的开放的目录以及Git的路径 
 ```xml
@@ -243,7 +225,7 @@ categories:
 - 到仓库目录下 `git init --bare 程序项目名称`
 - `git clone http://localhost/git/程序项目名称` 输入用户名密码即可
 
-#### 【配置HTTPS】
+#### 配置HTTPS
 - 切换到Apache主目录下 `bin\openssl genrsa -des3 -out server.key 2048 -config conf\openssl.cnf` 输入密码
 - `bin\openssl req -new -key server.key -out server.csr -config conf\openssl.cnf` 输入之前密码
 - `bin\openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt` 输入之前密码
@@ -258,7 +240,7 @@ categories:
 - 因为是自己建立的SSL证书 所以要去掉SSL验证 `git -c http.sslVerify=false clone URL `
 - 或者直接改配置文件，省的每次输这么多 `git config http.sslVerify false`
 
-#### 【使用SSH登录GitServer】
+#### 使用SSH登录GitServer
 - [ ] 实践一下
 
 ******************
