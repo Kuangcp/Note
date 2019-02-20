@@ -23,7 +23,9 @@ categories:
 > themes icons fonts 
 
 - 所有用户通用, 安装新的后需要重启 `/usr/share/themes`
-- 当前用户, 直接复制进来立即生效:  `~/.local/share/themes` 或者 ~/.themes
+- 当前用户, 直接复制进来立即生效:  `~/.themes` 或者 `~/.local/share/themes`
+
+- [ ] 问题: Deepin上 全放 ~/.local/share/themes 会有bug, 只能全放 ~/.themes
 
 ## Font
 > [笔记: 字体](/FrontEnd/Font.md)  
@@ -37,7 +39,6 @@ categories:
 *******************
 
 ## Theme
-
 
 > [参考博客: 10 Great Linux GTK Themes For 2018 ](https://www.maketecheasier.com/gtk-themes-for-linux/)
 
