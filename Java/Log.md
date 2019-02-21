@@ -1,5 +1,5 @@
 ---
-title: Log
+title: Java 中的 Log
 date: 2018-12-20 10:42:15
 tags: 
     - Log
@@ -10,34 +10,38 @@ categories:
 **目录 start**
  
 1. [日志系统](#日志系统)
-    1. [slf4j 体系](#slf4j-体系)
-        1. [Log4j](#log4j)
-            1. [问题](#问题)
-        1. [Log4j2](#log4j2)
-        1. [LogBack](#logback)
-            1. [Gradle中使用](#gradle中使用)
-            1. [配置理解](#配置理解)
-                1. [根节点 <configuration> 属性](#根节点-<configuration>-属性)
-                1. [子节点](#子节点)
-                    1. [设置上下文名称：<contextName>](#设置上下文名称<contextname>)
-                    1. [设置变量： <property>](#设置变量-<property>)
-                    1. [获取时间戳字符串：<timestamp>](#获取时间戳字符串<timestamp>)
-                1. [设置loger：](#设置loger)
-                1. [详解<appender>](#详解<appender>)
-    1. [实践经验](#实践经验)
+    1. [概念](#概念)
+        1. [slf4j 接口](#slf4j-接口)
         1. [MDC](#mdc)
-    1. [apache 体系](#apache-体系)
+1. [Log4j](#log4j)
+    1. [问题](#问题)
+1. [Log4j2](#log4j2)
+1. [LogBack](#logback)
+    1. [Gradle中使用](#gradle中使用)
+    1. [配置理解](#配置理解)
+        1. [根节点 <configuration> 属性](#根节点-<configuration>-属性)
+        1. [子节点](#子节点)
+        1. [设置上下文名称：<contextName>](#设置上下文名称<contextname>)
+        1. [设置变量： <property>](#设置变量-<property>)
+        1. [获取时间戳字符串：<timestamp>](#获取时间戳字符串<timestamp>)
+        1. [设置loger](#设置loger)
+        1. [详解<appender>](#详解<appender>)
+    1. [Logback MDC](#logback-mdc)
+1. [实践经验](#实践经验)
 1. [分析日志](#分析日志)
     1. [Linux上查看日志](#linux上查看日志)
     1. [lnav](#lnav)
 
-**目录 end**|_2018-12-20 10:44_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-21 14:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 日志系统
 > [码农翻身: 一个著名的日志系统是怎么设计出来的？ ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45&chksm=80d67bacb7a1f2ba38aa37620d273dfd7d7227667df556d36c84d125cafd73fef16464288cf9&scene=21#wechat_redirect)`深刻的理解了日志系统的来源以及相关关系`  
 
-## slf4j 体系
-> SLF4J是一套简单的日志`外观模式`的Java API，帮助在项目部署时对接各种日志实现。 只是接口设计, 以下是具体实现库
+## 概念
+### slf4j 接口
+> SLF4J是一套简单的日志`外观模式`的Java API，帮助在项目部署时对接各种日志实现。 
+
+只是接口设计, 具体实现库:  Log4j Log4j2 Logback
 
 > [lombok+slf4j+logback SLF4J和Logback日志框架详解](http://www.cnblogs.com/diegodu/p/6098084.html)
 
@@ -49,38 +53,41 @@ categories:
     - 在Groovy中
         - Log4j不能在Groovy中获取到正确的 类,方法,方法所在行 直接输出?
         - LogBack可以拿到正确的值, 但是在闭包中, 方法是混乱的
-        
+
+### MDC 
+> 使用 ThreadLocal 存储一些信息, 然后能在xml的pattern中直接引用, 省去了重复手动写 log
+
 ****************************
-### Log4j
+# Log4j
 > [Log4J使用笔记](http://www.cnblogs.com/eflylab/archive/2007/01/11/618001.html)
 > [log4j.properties配置详解](http://www.cnblogs.com/ITEagle/archive/2010/04/23/1718365.html)
 
-#### 问题
+## 问题
 > `log4j:WARN No appenders could be found for logger` 这是路径下没有对应的配置文件, 那么这时就有了神奇的事情, maven项目按道理是resources下就行了, 
 > 但如果你项目配置文件自己新建目录然后再复制过去什么的, 这么瞎搞的话,虽然在ide是能运行的, 但是一大包就没用了, 那么直接把log的配置单独放在 src/main/java 下就行了
 
-### Log4j2
+# Log4j2
 > [官方文档, 配置详解](https://logging.apache.org/log4j/2.x/manual/configuration.html)
 > 听说是为了解决Log4j无法在多环境使用的问题 , 也就是类似于 SpringBoot 多profile的功能
 
 **************************
-### LogBack
+# LogBack
 
 - [logback简单示例](https://github.com/Kuangcp/Notes/blob/master/ConfigFiles/Log/logback.xml)
 
 > [xml to groovy config](https://logback.qos.ch/translator/asGroovy.html)
 
 
-#### Gradle中使用
+## Gradle中使用
 1. 添加依赖 `  testCompile 'ch.qos.logback:logback-classic:1.2.3'`
     - `compile 'org.projectlombok:lombok:1.16.16'`
 2. 类上加注解 `@Slf4j` 然后 就能用了
 
 
-#### 配置理解
+## 配置理解
 > [参考博客](http://www.cnblogs.com/lixuwu/p/5811273.html)
 
-##### 根节点 <configuration> 属性
+### 根节点 <configuration> 属性
 - _scan_ : 当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。
 - _scanPeriod_ : 设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。
 - _debug_ : 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
@@ -90,8 +97,8 @@ categories:
         <!-- 其他配置省略--> 
     </configuration> 
 ```
-##### 子节点
-###### 设置上下文名称：<contextName>
+### 子节点
+### 设置上下文名称：<contextName>
 每个logger都关联到logger上下文，默认上下文名称为“default”。但可以使用`<contextName>`设置成其他名字，用于区分不同应用程序的记录。一旦设置，不能修改。
 ```xml
     <configuration scan="true" scanPeriod="60 seconds" debug="false">
@@ -99,7 +106,7 @@ categories:
       <!-- 其他配置省略-->
     </configuration> 
 ```
-###### 设置变量： <property>
+### 设置变量： <property>
 用来定义变量值的标签，`<property>` 有两个属性，name和value；其中name的值是变量的名称，value的值时变量定义的值。通过`<property>`定义的值会被插入到logger上下文中。
 定义变量后，可以通过`${}`来使用变量。例如使用`<property>`定义上下文名称，然后在`<contentName>`设置logger上下文时使用。
 ```xml
@@ -109,7 +116,7 @@ categories:
       <!-- 其他配置省略-->
     </configuration>
 ```
-###### 获取时间戳字符串：<timestamp>
+### 获取时间戳字符串：<timestamp>
 两个属性 key:标识此`<timestamp>` 的名字；datePattern：设置将当前时间（解析配置文件的时间）转换为字符串的模式，遵循`java.txt.SimpleDateFormat`的格式。
 例如将解析配置文件的时间作为上下文名称：
 ```xml
@@ -120,7 +127,7 @@ categories:
     </configuration>
 ```
 ************
-##### 设置loger：
+### 设置loger
 - `<loger>`
     - 用来设置某一个包或者具体的某一个类的日志打印级别、以及指定`<appender>`。`<loger>`仅有一个name属性，一个可选的level和一个可选的addtivity属性。
     - `name:`
@@ -232,7 +239,7 @@ additivity属性为false，表示此loger的打印信息不再向上级传递，
 如果将`<logger name="logback.LogbackDemo" level="INFO" additivity="false">` 修改为 `<logger name="logback.LogbackDemo" level="INFO" additivity="true">`那打印结果将是什么呢？
 没错，日志打印了两次，想必大家都知道原因了，因为打印信息向上级传递，logger本身打印一次，root接到后又打印一次
 
-##### 详解<appender>
+### 详解<appender>
 > <appender>是<configuration>的子节点，是负责写日志的组件。
 > <appender>有两个必要属性name和class。name指定appender名称，class指定appender的全限定名。
 
@@ -356,21 +363,27 @@ _4.另外还有SocketAppender、SMTPAppender、DBAppender、SyslogAppender、Sif
 
 ![模式图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/pattern_type.jpg)
 
-## 实践经验
+## Logback MDC
+> [MDC](https://logback.qos.ch/manual/mdc.html)
+
+`简单使用`
+1. 在合适的地方 MDC.put("appName", "myth");
+1. 在合适的地方清除 MGC.clear();
+1. logback.xml中的  pattern 里通过 %X{appName} 引用到
+
+> 对于一个请求来讲, 请求的入口处 设置 MDC, 请求结束后清除 MDC  
+> 由于这个是利用 TreadLocal 实现的, 所以需要做清理, 而且没有并发问题
+*********************
+
+# 实践经验
 > [Java 调整格式日志输出](https://www.jb51.net/article/88937.htm)
 
 1. 日志记录方式, 注意格式的正确, 否则, 错误会被隐藏
     - [Github: CorrectLog.java](https://github.com/kuangcp/JavaBase/blob/master/java-classfile/src/main/java/log/CorrectLog.java)
 
-1. 在Springboot中还能指定包的日志等级 `logging.level.com.github.kuangcp.service = DEBUG`
+1. 在Springboot中指定包的日志等级 `logging.level.com.github.kuangcp.service = DEBUG`
 
-### MDC 
-> 使用 ThreadLocal 存储一些信息, 然后能在xml的pattern中直接引用, 省去了重复手动写 log
-
-- [ ] TODO 
-************
-## apache 体系
-- [apache的简单示例](https://github.com/Kuangcp/Notes/blob/master/ConfigFiles/Log/log4j.xml)
+********************
 
 # 分析日志
 ## Linux上查看日志
@@ -379,4 +392,3 @@ _4.另外还有SocketAppender、SMTPAppender、DBAppender、SyslogAppender、Sif
 ## lnav
 > 一个专门用于浏览日志文件的软件  | [官网](http://lnav.org/) | [文档](http://lnav.readthedocs.io/en/latest/)
 > [博客: LNAV：基于 Ncurses 的日志文件阅读器 ](https://linux.cn/article-6677-1.html)
-

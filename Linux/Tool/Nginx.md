@@ -25,9 +25,10 @@ categories:
         1. [负载均衡](#负载均衡)
         1. [跨域问题的配置](#跨域问题的配置)
             1. [静态服务器将后台反代理](#静态服务器将后台反代理)
-    1. [问题](#问题)
+1. [Nginx Plus](#nginx-plus)
+1. [问题](#问题)
 
-**目录 end**|_2019-01-19 16:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-21 14:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Nginx
 
@@ -326,6 +327,14 @@ server {
 > 由于我原先用了nginx反向代理tomcat， 配置一个修改本地host得到的域名， 然后填在这里就没用了， 所以最好使用真实IP或者外网可访问的域名
 
 ****************************
-## 问题
+# Nginx Plus
+> 对标 F5 BIG-IP
+
+> [5-reasons-switch-f5-big-ip-to-nginx-plus](https://www.nginx.com/blog/5-reasons-switch-f5-big-ip-to-nginx-plus/)
+
+*****************
+
+# 问题
 - 文件上传报错 413 
-  - http{}中添加 `client_max_body_size 80M;`
+  - http{} 中添加 `client_max_body_size 80M;`
+
