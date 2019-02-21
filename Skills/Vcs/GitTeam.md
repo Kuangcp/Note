@@ -118,6 +118,11 @@ categories:
 ## git-cola
 > [Github: repo](https://github.com/git-cola/git-cola)`轻量, 简洁, 跨平台, 正是我想要的`
 
+从源码安装是最快最简单的, 而且能安装到最新的
+
+1. git clone --depth 1 git://github.com/git-cola/git-cola.git
+1. sudo make prefix=/usr install
+
 ## GitBlade
 - 功能强大 付费软件
 
