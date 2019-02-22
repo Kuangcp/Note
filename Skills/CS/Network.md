@@ -31,16 +31,20 @@ categories:
         1. [HTTP的返回码](#http的返回码)
         1. [HTTP的缓存](#http的缓存)
         1. [Session和Cookie](#session和cookie)
-        1. [HTTP1.1 和 HTTP2](#http11-和-http2)
-        1. [HTTPS](#https)
-            1. [HSTS](#hsts)
-        1. [CORS](#cors)
+    1. [HTTP各个实现版本](#http各个实现版本)
+        1. [HTTP1.0](#http10)
+        1. [HTTP1.1](#http11)
+        1. [HTTP2](#http2)
+        1. [HTTP3](#http3)
+    1. [HTTPS](#https)
+        1. [HSTS](#hsts)
+    1. [CORS](#cors)
     1. [Websocket](#websocket)
         1. [WSS](#wss)
     1. [WebDAV](#webdav)
     1. [WebAssembly](#webassembly)
 
-**目录 end**|_2019-01-27 21:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-22 15:15_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 网络
 
@@ -138,6 +142,7 @@ HTTP/1.1协议中共定义了八种方法（有时也叫“动作”）来表明
 　　方法名称是区分大小写的。当某个请求所针对的资源不支持对应的请求方法的时候，服务器应当返回状态码405（Method Not Allowed）；当服务器不认识或者不支持对应的请求方法的时候，应当返回状态码501（Not Implemented）。
 
 - [ ] Header中一些主要属性的含义和使用场景
+
 ### HTTP的返回码
 > [完整列表 ](/FrontEnd/ResponseCode.md)
 
@@ -145,7 +150,10 @@ HTTP/1.1协议中共定义了八种方法（有时也叫“动作”）来表明
 
 ### Session和Cookie
 
-### HTTP1.1 和 HTTP2
+## HTTP各个实现版本
+### HTTP1.0
+
+### HTTP1.1
 > 目前大多国内厂商默认的还是1.1, aws和google使用了2 而且2一般也都会使用上https
 
 HTTP2的特点:
@@ -154,19 +162,25 @@ HTTP2的特点:
 
 [参考博客: HTTP/2](http://www.hollischuang.com/archives/2066)
 
-### HTTPS
+### HTTP2
+
+### HTTP3
+
+## HTTPS
 > [SSL/TSL](/Skills/CS/WebSecurity.md#ssl和tsl)
 
-#### HSTS
+### HSTS
 > HTTP Strict Transport Security 强制让客户端使用HTTPS进行通信
 
-### CORS
+## CORS
 > 跨域
 
 > [mozilla CORS](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS)
 > [阮一峰 跨域资源共享 CORS 详解](http://www.ruanyifeng.com/blog/2016/04/cors.html)
 > [CORS详解.md](https://github.com/hstarorg/HstarDoc/blob/master/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/CORS%E8%AF%A6%E8%A7%A3.md)
+
 **********************************
+
 ## Websocket
 > 本质就是TCP的简单封装, 不像HTTP那样应答模式, 一次连接后就保持全双工模式
 

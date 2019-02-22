@@ -22,7 +22,7 @@ categories:
             1. [yml和properties结合](#yml和properties结合)
         1. [应用配置文件](#应用配置文件)
     1. [Events](#events)
-    1. [日志模块](#日志模块)
+    1. [Logging](#logging)
     1. [Web模块](#web模块)
         1. [Lisener](#lisener)
             1. [ServletContextListener](#servletcontextlistener)
@@ -41,7 +41,7 @@ categories:
             1. [gradle结合docker](#gradle结合docker)
         1. [热部署](#热部署)
 
-**目录 end**|_2019-02-20 09:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-22 15:15_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SpringBoot
 > [首页](https://spring.io/projects/spring-boot#learn)
@@ -160,7 +160,7 @@ _目录结构最好如下_ `*Application类要处于所有用了Springboot注解
     ---
     spring:
       profiles: production
-      //一系列配置
+      // 一系列配置
 ```
 - 或者 多文件放 `application-{profile}.yml`
 
@@ -199,7 +199,6 @@ graduate:
   main:
     delimiter: ,
 ```
-
 ********************
 
 ## Events 
@@ -207,27 +206,35 @@ graduate:
 
 配置成异步并使用线程池
 ```java
-@Configuration
-public class AsynchronousSpringEventsConfig {
-  @Bean(name = "applicationEventMulticaster")
-  public ApplicationEventMulticaster simpleApplicationEventMulticaster() {
-    SimpleApplicationEventMulticaster eventMulticaster = new SimpleApplicationEventMulticaster();
+    @Configuration
+    public class AsynchronousSpringEventsConfig {
+        @Bean(name = "applicationEventMulticaster")
+        public ApplicationEventMulticaster simpleApplicationEventMulticaster() {
+            SimpleApplicationEventMulticaster eventMulticaster = new SimpleApplicationEventMulticaster();
 
-    SimpleAsyncTaskExecutor taskExecutor = new SimpleAsyncTaskExecutor();
-    eventMulticaster.setTaskExecutor(taskExecutor);
-    return eventMulticaster;
-  }
-}
+            SimpleAsyncTaskExecutor taskExecutor = new SimpleAsyncTaskExecutor();
+            eventMulticaster.setTaskExecutor(taskExecutor);
+            return eventMulticaster;
+        }
+    }
 ```
 
-## 日志模块
+***************
+
+## Logging
 默认可以通过 application.properties 配置框架的日志,以及应用具体到包和类的日志等级,日志文件等等
 
 > [参考博客: Spring boot——logback 基础使用篇（一）](https://www.cnblogs.com/lixuwu/p/5804793.html)
-
-> [参考博客: springboot use logback](https://springframework.guru/using-logback-spring-boot/)`能根据Profile配置,还能写if`
+> [参考博客: springboot use logback](https://springframework.guru/using-logback-spring-boot/)`能根据Profile配置,还能写if`  
+> [spring boot logging](https://www.baeldung.com/spring-boot-logging)
 
 使用 logback 则需要配置 logback.xml 或者 logback-spring.xml 建议使用后者
+
+- [ ] 思考: 能否不同的包使用不同的pattern [pattern](https://stackoverflow.com/questions/30571319/spring-boot-logging-pattern)
+
+配置 pattern 并引用 MDC `logging.pattern.level=%X{mdcData}%5p`
+
+***********
 
 ## Web模块
 ### Lisener
