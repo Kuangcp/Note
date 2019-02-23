@@ -52,7 +52,7 @@ categories:
             1. [merge](#merge)
             1. [rebase](#rebase)
             1. [cherry-pick](#cherry-pick)
-        1. [子模块](#子模块)
+        1. [Submodules](#submodules)
         1. [其他](#其他)
             1. [grep](#grep)
             1. [archive](#archive)
@@ -60,15 +60,12 @@ categories:
     1. [配置文件](#配置文件)
         1. [.gitignore](#gitignore)
         1. [gitattributes](#gitattributes)
-    1. [Tools](#tools)
-        1. [git-svn](#git-svn)
-        1. [Submodules](#submodules)
-    1. [各个VCS工具的区别以及优缺点](#各个vcs工具的区别以及优缺点)
+    1. [常见VCS工具](#常见vcs工具)
         1. [Git](#git)
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-02-19 17:26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-23 11:58_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -363,6 +360,8 @@ TODO 存疑
 > 其实单独的两个主机也能完成同步, 两个IP之间要使用同一个仓库进行开发  
 > 两个人互为对方的远程库(使用 git daemon 即可搭建简易服务端), 互为服务器即可完成(即使使用的是动态IP, 应该也不会受太大影响???)
 
+- 指定本地开发分支和远程的绑定关系 `git branch --set-upstream dev origin/dev` 而且 一个本地库是能够绑定多个远程的
+
 #### Github上的fork
 **合并对方最新代码**
 > 1. 首先fork一个项目, 然后clone自己所属的该项目下来,假设 原作者为A 自己为B  
@@ -557,8 +556,14 @@ TODO 存疑
 - [ ] 
 
 ************************
-### 子模块
-- [ ] 学习
+### Submodules
+> [官方文档](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
+> [git submodule的使用](https://blog.csdn.net/wangjia55/article/details/24400501)
+> [参考博客: Git Submodule使用完整教程](http://www.kafeitu.me/git/2012/03/27/git-submodule.html)
+
+- 能够在一个git仓库中将一个文件夹作为一些独立的子仓库进行管理
+
+***************
 
 ### 其他
 #### grep  
@@ -598,7 +603,6 @@ TODO 存疑
 ```
 
 ### gitattributes
-
 > [gitattributes](http://schacon.github.io/git/gitattributes.html)
 
 1. 配置文件的换行符 eol
@@ -612,21 +616,7 @@ TODO 存疑
 1. encoding
 
 *****************
-
-## Tools
-
-### git-svn
-> [git-svn 文档](https://git-scm.com/docs/git-svn)
-
-### Submodules
-> [官方文档](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
-> [git submodule的使用](https://blog.csdn.net/wangjia55/article/details/24400501)
-> [参考博客: Git Submodule使用完整教程](http://www.kafeitu.me/git/2012/03/27/git-submodule.html)
-- 能够在一个git仓库中将一个文件夹作为一些独立的子仓库进行管理
-
-***************************************************
-## 各个VCS工具的区别以及优缺点
-
+## 常见VCS工具
 ### Git
 > 分布式的去中心化的, 大多数操作是本地化操作, 速度快, 更方便
 - 最大的区别是其他的 VCS 都是 一个增量式的文件集合, git 是文件的一系列快照, 类似于 AUFS 文件系统一层一层那样
@@ -638,6 +628,7 @@ TODO 存疑
 2. 允许部分的进行修改, 下拉, 提交. 而对于Git来说一个仓库就是一个整体(Git submodule 目前也能完成, 但是还是没有SVN灵活)
 3. 优点: 能够精确控制每个目录的每个人的访问权限
 
+************************
 **`git和SVN一起用`**
 可以通过 git-svn 使用Git的命令与SVN服务器进行交互
 > [Official doc: git-svn](https://git-scm.com/docs/git-svn)
@@ -645,8 +636,6 @@ TODO 存疑
 > 但是个人目前在用的方式是直接 git 和 svn 一起用  
 > [参考博客: 为啥要同时用 SVN 和 Git 管理项目](https://www.cnblogs.com/dasusu/p/7774469.html)
 
-1. IDEA中移除git相关插件, 防止混乱, 而且最好是先把SVN项目拉下来,
-    - 达到 先让IDEA使用SVN管理项目 的目的 然后 git init 
 1. 避免LRLF LF 问题
 ```sh
     git config --global core.autocrlf false
@@ -657,6 +646,7 @@ TODO 存疑
 - 至此, 就能和团队保持一致的使用SVN, 然后自己多任务开发时, 又能使用git优秀的分支模型
 - 当然该场景是有限的, 也就是说只有你一个人在用git 而且团队中使用SVN时没有使用SVN的分支模型, 这个是没有问题的
     - 如果SVN也用了分支, 那么就要命了, 这么多分支和状态, 要靠大脑记住实时的状态就....
+*********************
 
 ## repos的使用
 > 综合各个VCS的管理方式

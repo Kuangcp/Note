@@ -12,7 +12,7 @@ categories:
 1. [使用Git进行团队协作](#使用git进行团队协作)
     1. [基础思想](#基础思想)
         1. [Git Flow](#git-flow)
-        1. [本地和远程](#本地和远程)
+        1. [Github Flow](#github-flow)
     1. [提交准则](#提交准则)
         1. [模板化提交信息](#模板化提交信息)
 1. [GUI](#gui)
@@ -23,7 +23,7 @@ categories:
 1. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
     1. [最终方案](#最终方案)
 
-**目录 end**|_2019-02-20 09:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-23 11:58_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # 使用Git进行团队协作
@@ -61,9 +61,8 @@ categories:
     - Hotfix分支
         - 当我们在Production发现新的Bug时候，我们需要创建一个Hotfix, 完成Hotfix后，我们合并回Master和Develop分支，所以Hotfix的改动会进入下一个Release
 
-### 本地和远程
-- 指定本地开发分支和远程的绑定关系 `git branch --set-upstream dev origin/dev` master同理
-    - 一个本地库是能够绑定多个远程的
+### Github Flow
+> [Understanding the GitHub flow](https://guides.github.com/introduction/flow/?from=singlemessage)
 
 - [分支图复杂的一个项目](https://github.com/Netflix/eureka/network) `只是演示分支的复杂度`
 
