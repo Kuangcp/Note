@@ -101,6 +101,8 @@ so，也不需要和其他的对比了，其他都是拆分，而paste是合并�
 
 > [参考博客: linux sed 命令单行任务快速参考](http://www.techug.com/post/linux-sed1line.html)
 
+> 替换满足特定条件的一行里面的多个字符串 `log.debug("who={}", who);` 把这个Java的log 里面的 who删除
+
 ## awk
 > awk有3个不同版本: awk、nawk和gawk，未作特别说明，一般指gawk，gawk 是 AWK 的 GNU 版本。
 
