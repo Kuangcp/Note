@@ -2,6 +2,7 @@
 title: Hibernate
 date: 2018-11-21 10:56:52
 tags: 
+    - ORM
 categories: 
     - Java
 ---
@@ -38,7 +39,7 @@ categories:
     1. [could not find a getter](#could-not-find-a-getter)
     1. [个人总结](#个人总结)
 
-**目录 end**|_2019-02-15 15:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-24 22:34_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Hibernate
 ## Hibernate基础配置

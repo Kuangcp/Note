@@ -1,8 +1,9 @@
 ---
-title: Jenkins.md
+title: Jenkins
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
+    - DevOps
 ---
 
 **目录 start**
@@ -18,7 +19,7 @@ categories:
         1. [Pipeline](#pipeline)
         1. [个人经验](#个人经验)
 
-**目录 end**|_2019-02-13 17:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-24 22:34_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Jenkins
 > [官网](https://jenkins.io/)

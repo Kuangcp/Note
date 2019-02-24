@@ -17,7 +17,7 @@ categories:
     1. [sonarqube](#sonarqube)
         1. [小型项目目前使用的方案](#小型项目目前使用的方案)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-24 22:34_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 持续集成
 > 参考博客: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  
@@ -42,6 +42,10 @@ categories:
 ## Drone 
 > [官网](https://drone.io/)
 
+一个原生支持 docker 的 CI
+
+> [参考博客: Drone 一个原生支持 docker 的 CI](https://aisensiy.github.io/2017/08/04/drone-best-ci/)  
+> [参考博客: Drone CI + GitLab持续集成的基础设施搭建](https://zmcdbp.com/drone-ci-gitlab-base-build/) | [参考博客: Drone CI的持续集成的基本使用](https://zmcdbp.com/drone-ci-basic-use/)
 
 *******************
 ## flow.ci

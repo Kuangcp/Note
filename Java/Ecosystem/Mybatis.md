@@ -1,8 +1,10 @@
 ---
-title: Mybatis.md
+title: Mybatis
 date: 2018-11-21 10:56:52
 tags: 
+    - ORM
 categories: 
+    - Java
 ---
 
 **目录 start**
@@ -23,11 +25,13 @@ categories:
             1. [choose 相当于switch语句](#choose-相当于switch语句)
                 1. [$ 和  的区别：](#$-和--的区别)
 
-**目录 end**|_2019-01-16 16:01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-24 22:34_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Mybatis
 > 一个灵活的数据库中间件框架
+> [参考博客: 如何在MyBatis中优雅的使用枚举](https://segmentfault.com/a/1190000010755321)
 
+- [ ] 系统学习
 
 ## Mybatis
 ### xml文件配置：
