@@ -17,21 +17,21 @@ categories:
 
 **目录 end**|_2019-01-13 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-# C
+# C语言
 > 个人入门编程语言, 个人觉得比用Python入门更好点, Python入门简单是不错, 但是后面如果要入手别的语言, 有C语言基础更好  
-> 可惜学校教师以及个人没有规范化学习和开发的习惯, 所以代码是很混乱的, 也没能发挥出从C入门的优势  
+
+> 可惜学校以及个人没有规范化学习和开发的习惯, 所以现在回头看, 那时候的代码是很混乱的, 也没能发挥出从C入门的优势  
+> [个人浅略的学习记录 所有C源码](https://github.com/Kuangcp/LearnC)  
 
 ## 资源
 
+**************************
+
+# 基础
 > 语言规范 
 - [C语言代码规范（编程规范）](http://c.biancheng.net/view/158.html)
 
-**************************
-
-- [个人浅略的学习记录](https://github.com/Kuangcp/LearnC)
-
 ## 数据类型
-
 
 ## 函数
 
@@ -44,3 +44,12 @@ categories:
 - 入参: 为空或者接收参数
     1. `int main(){return 0;}` 有隐式的入参 void
     1. `int main(int argc, char *args[]){return 0;}`
+
+# 高级
+
+## 使用C实现元组
+> [making a tuple in c](https://stackoverflow.com/questions/22727404/making-a-tuple-in-c)
+
+## 使用C实现面向对象思想
+> [C语言：春节回家过年，我发现只有我没有对象！](https://mp.weixin.qq.com/s/TPZ7yO0sVoneY1ezGtWK2g)
+
