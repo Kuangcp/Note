@@ -19,7 +19,7 @@ categories:
 **目录 end**|_2019-01-09 19:01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Kubernetes
-> 又称K8s [Official site](https://kubernetes.io/) | [Github:](https://github.com/kubernetes/kubernetes)
+> 又称 k8s [Official site](https://kubernetes.io/) | [Github:](https://github.com/kubernetes/kubernetes)
 
 ## 相关博客
 > [浅谈k8s+docker 资源监控](https://segmentfault.com/a/1190000003898140) | [基于Kubernetes构建Docker集群管理详解](http://www.csdn.net/article/2014-12-24/2823292-Docker-Kubernetes)  

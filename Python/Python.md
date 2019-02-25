@@ -750,7 +750,7 @@ _对应的conf_
 - 类继承 unittest.TestCase, 所有test_开头的方法都将自动运行
 - 断言 self.assertEqual assertNotEquals assertIn(item, list)
 - 直接运行 unittest.main()
-- 输出结果，`. 测试通过` `E 测试运行错误` `F 测试断言不通过`
+- 输出结果: `. 测试通过` `E 测试运行错误` `F 测试断言不通过`
 
 ************
 ## 数据库
