@@ -454,6 +454,11 @@ export LANG="zh_CN.UTF-8"
 - 系统启动日志 `/var/log/boot.log` 
 - 系统消息日志 `/var/log/messages`
 
-`journalctl -xe`
+### Systemd
+> 通常使用 journalctl 查询 Systemd 的日志
+
+- message catalog: `journalctl -xe` 
+- 内核模块的日志 `journalctl -u systemd-modules-load.service`
+
 ## 应用日志
 > [处理Apache日志的Bash脚本](http://www.ruanyifeng.com/blog/2012/01/a_bash_script_of_apache_log_analysis.html)

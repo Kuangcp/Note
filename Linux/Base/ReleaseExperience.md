@@ -160,6 +160,15 @@ _服务器_
 但是和我笔记本完美兼容的是 大黄蜂方案, 也就是之前安装的 `nvidia-driver`, `nvidia-setting`, `bumblebee-nvidia` 这一系列包
 PRIME方案切换后差点把内核挂了, 一顿瞎操作把系统救活了
 
+> Enable Window effect 失败
+尝试切换显卡驱动方案为闭源驱动, 重启下就挂掉了, [社区相关问题](https://bbs.deepin.org/forum.php?mod=viewthread&tid=159333) 
+```
+    Failed to find module 'mincores'
+    Failed to insert 'bbswitch': No such device
+```
+最后的解决方案是从 4.2 内核启动, 切换回了开源驱动  
+版本: Deepin15.9.1 , 不知道哪一个版本升级了内核, 而且新旧内核都保留下来了, 所以有两个内核 4.16 4.2 , 幸好有两个内核
+
 #### 双系统安装
 - 首先进入BIOS关闭 安全启动, 选择引导方式为Legacy关闭UEFI win8以上则要关闭快速启动, 
     - 制作启动U盘, 然后选择从U盘启动, 进行安装, 分区 / 和 /home / 30-40g就足够, 如果你所用的软件都习惯性解压运行的话
