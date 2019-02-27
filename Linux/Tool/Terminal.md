@@ -110,11 +110,11 @@ categories:
 - `ls -l ~/.local/share/autojump/` 统计信息的目录，清除就相当于卸载重装了
 
 #### tmux
-> 好用的管理会话的软件, 在服务器上是很有用的
+> 好用的管理会话的软件 [arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
 - [ ] 学习使用 
 
-> [tmux 入门](http://blog.jobbole.com/87278/)
+> [tmux 入门](http://blog.jobbole.com/87278/) | [tmux简洁教程及config关键配置](https://www.jianshu.com/p/fd3bbdba9dc9)
 
 - 新建会话 `tmux new -s myth`  
 - 连接会话 `tmux a -t test`

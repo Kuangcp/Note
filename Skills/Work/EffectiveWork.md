@@ -29,6 +29,9 @@ categories:
 > [知乎: 超强的学习能力是怎样练就的？](https://www.zhihu.com/question/35103080/answer/414223605)
 > [百度脑图: 思维导图](https://gitee.com/gin9/MindMap/blob/master/Skill/EffictiveLearn.km)
 
+
+`不能用战略的懒惰， 掩盖战术的勤奋`
+
 > TODO 工具
 1. 滴答清单
 1. Todoist
