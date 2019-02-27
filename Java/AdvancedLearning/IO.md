@@ -14,14 +14,14 @@ categories:
         1. [BIO](#bio)
         1. [NIO](#nio)
         1. [AIO](#aio)
-    1. [关于普通IO的文件操作](#关于普通io的文件操作)
+    1. [基本文件IO操作](#基本文件io操作)
         1. [读取配置文件](#读取配置文件)
             1. [可执行jar读取外部配置文件](#可执行jar读取外部配置文件)
             1. [Maven项目](#maven项目)
 1. [NIO](#nio)
     1. [Buffer](#buffer)
 
-**目录 end**|_2019-02-14 14:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-27 19:09_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # IO操作的学习
 > - [个人代码:IO流的相关学习](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/io)
@@ -48,7 +48,9 @@ categories:
 - 引入了新的异步通道的概念, 以及异步文件通道和异步套接字通道的实现
 
 
-## 关于普通IO的文件操作
+## 基本文件IO操作
+> [参考博客: Read a text file from Java classpath](https://www.java-success.com/read-a-text-file-from-java-classpath/)
+
 ### 读取配置文件
 - maven格式路径，会从resources下获取文件例如 /a.xml
 - `InputStream is = this.getClass().getResourceAsStream(path);`

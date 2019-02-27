@@ -41,7 +41,7 @@ categories:
             1. [gradle结合docker](#gradle结合docker)
         1. [热部署](#热部署)
 
-**目录 end**|_2019-02-22 15:15_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-27 19:09_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SpringBoot
 > [首页](https://spring.io/projects/spring-boot#learn)
@@ -127,15 +127,15 @@ _目录结构最好如下_ `*Application类要处于所有用了Springboot注解
 ## Profils
 > [Spring Profiles](https://www.baeldung.com/spring-profiles)
 
-> 配置文件(`application.properties或者yml`) 加载顺序 [官方文档说明](https://docs.spring.io/spring-boot/docs/1.5.9.RELEASE/reference/htmlsingle/#boot-features-external-config-application-property-files)
->> 1.当前Jar/War目录下的/config目录 `file:./config/`  
->> 2.当前目录 `file:./`  
->> 3.classpath 里的/config目录 `classpath:/config/`  
->> 4.classpath 根目录 `classpath:/`  
+> 配置文件(`application.properties或者yml`) 加载顺序 | [官方文档说明](https://docs.spring.io/spring-boot/docs/1.5.9.RELEASE/reference/htmlsingle/#boot-features-external-config-application-property-files)  
+>1. 当前Jar/War目录下的/config目录 `./config/`  
+>1. 当前目录 `./`  
+>1. classpath 里的/config目录 `classpath:/config/`  
+>1. classpath 根目录 `classpath:/`  
 
 > 自定义配置文件名就要运行时加参数  
->> `java -jar myproject.jar --spring.config.name=myproject`  
->> `java -jar myproject.jar --spring.config.location=classpath:/default.properties,classpath:/override.properties` <br/>
+>1. `java -jar myproject.jar --spring.config.name=myproject`  
+>1. `java -jar myproject.jar --spring.config.location=classpath:/default.properties,classpath:/override.properties`
 
 - [配置文件的使用](http://www.itwendao.com/article/detail/391009.html)
 - [Spring boot配置文件 application.properties](https://www.tuicool.com/articles/veUjQba)
@@ -145,6 +145,8 @@ _目录结构最好如下_ `*Application类要处于所有用了Springboot注解
 
 - [自定义配置文件](http://www.cnblogs.com/java-zhao/p/5542154.html)`将应用配置外置并注入成bean`
 - [配置文件外置](http://www.cnblogs.com/xiaoqi/p/6955288.html)
+
+> [参考博客: Spring Boot(五) - 外化配置](https://www.hifreud.com/2017/06/23/spring-boot-05-Externalized-Configuration/)
 
 ### 多种配置文件并切换
 #### yml方式
