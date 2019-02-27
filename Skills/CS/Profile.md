@@ -24,10 +24,10 @@ categories:
 
 ## conf或者ini
 ```
-[main]
-debug=true
-[client]
-timeOut=10
+    [main]
+    debug=true
+    [client]
+    timeOut=10
 ```
 
 ## properties
