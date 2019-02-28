@@ -28,15 +28,15 @@ categories:
 > [Github addr](https://github.com/python-excel/xlrd)
 
 ```python
-import xlrd 
+    import xlrd 
 
-data = xlrd.open_workbook('monster.xlsx')
-table = data.sheets()[0]   
-nrows = table.nrows
-for i in range(nrows):
-    for cell in table.row_values(i):
-        print(cell, ' | ', end='')
-    print()
+    data = xlrd.open_workbook('monster.xlsx')
+    table = data.sheets()[0]   
+    nrows = table.nrows
+    for i in range(nrows):
+        for cell in table.row_values(i):
+            print(cell, ' | ', end='')
+        print()
 ```
 
 ### pandas 
