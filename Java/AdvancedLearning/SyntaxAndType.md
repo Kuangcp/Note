@@ -40,6 +40,8 @@ categories:
     1. [内部类](#内部类)
     1. [类型强转](#类型强转)
     1. [时间类型](#时间类型)
+    1. [模仿](#模仿)
+        1. [元组](#元组)
 1. [类的结构](#类的结构)
     1. [修饰符](#修饰符)
         1. [权限修饰符](#权限修饰符)
@@ -56,7 +58,7 @@ categories:
 1. [关键字](#关键字)
     1. [try](#try)
 
-**目录 end**|_2019-02-13 17:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-28 17:43_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 基础语法
 
@@ -303,6 +305,10 @@ _获取指定时间_ [获取指定时间的时间戳](https://blog.csdn.net/jsso
 
 > [参考博客:  java的(PO,VO,TO,BO,DAO,POJO)解释](http://www.cnblogs.com/yxnchinahlj/archive/2012/02/24/2366110.html)
 > | [VO DAO BO 等缩写的意义](https://zhuanlan.zhihu.com/p/35762537?group_id=969493512006373376)
+
+- [ ] 原因? 场景是 类继承了一个实现了自定义接口的自定义抽象类
+
+Warning:(18, 1) java: Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
 
 ## VO
 > (value object) 值对象

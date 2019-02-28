@@ -21,7 +21,7 @@ categories:
 1. [NIO](#nio)
     1. [Buffer](#buffer)
 
-**目录 end**|_2019-02-27 19:09_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-28 17:43_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # IO操作的学习
 > - [个人代码:IO流的相关学习](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/io)
@@ -46,7 +46,6 @@ categories:
 > Java1.7 引入; 真正的异步非阻塞IO, NIO2.0
 
 - 引入了新的异步通道的概念, 以及异步文件通道和异步套接字通道的实现
-
 
 ## 基本文件IO操作
 > [参考博客: Read a text file from Java classpath](https://www.java-success.com/read-a-text-file-from-java-classpath/)

@@ -16,7 +16,7 @@ categories:
         1. [需用户安装](#需用户安装)
         1. [效率工具](#效率工具)
             1. [Autojump](#autojump)
-            1. [tmux](#tmux)
+            1. [z.lua](#zlua)
             1. [notes](#notes)
             1. [todo.txt-cli](#todotxt-cli)
             1. [starDict](#stardict)
@@ -29,7 +29,7 @@ categories:
         1. [分享](#分享)
             1. [asciinema](#asciinema)
 
-**目录 end**|_2018-12-29 21:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-28 17:43_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Terminal
 > 终端模拟器是吸引我放弃习惯的Windows而转投Linux怀抱的主要原因
@@ -109,18 +109,8 @@ categories:
     - `jco c` 打开子目录
 - `ls -l ~/.local/share/autojump/` 统计信息的目录，清除就相当于卸载重装了
 
-#### tmux
-> 好用的管理会话的软件 [arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
-
-- [ ] 学习使用 
-
-> [tmux 入门](http://blog.jobbole.com/87278/) | [tmux简洁教程及config关键配置](https://www.jianshu.com/p/fd3bbdba9dc9)
-
-- 新建会话 `tmux new -s myth`  
-- 连接会话 `tmux a -t test`
-- 显示所有 `tmux ls` 
-- `Ctrl B`  再 `C`  新建一个窗口 `Ctrl B` `数字键`切换指定窗口
-- 断开会话但是后台运行 `ctrl+B D`
+#### z.lua
+与 Autojump 类似, 性能更好
 
 #### notes
 > 管理笔记

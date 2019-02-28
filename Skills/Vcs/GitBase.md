@@ -65,7 +65,7 @@ categories:
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-02-24 22:34_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-02-28 17:43_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -442,6 +442,9 @@ TODO 存疑
 - 删除远程没有本地有的分支`git fetch -p`
 
 ***********
+> 场景: 一个特性分支本不该合并入主开发分支, 但是已经并入了,并且并入后又做了很多其他修改, 这时候怎么影响最小地撤销这次错误的合并
+
+- [ ] 
 
 #### stash
 > [Official Doc](https://git-scm.com/docs/git-stash)  
