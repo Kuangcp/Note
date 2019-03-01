@@ -26,13 +26,20 @@ categories:
 
 ## 使用
 > 基本使用
+
 **Gradle使用**
 ```groovy
-testCompile group: 'org.testng', name: 'testng', version: '6.14.3'
+    testCompile group: 'org.testng', name: 'testng', version: '6.14.3'
 ```
-然后和Junit使用是一致的, 在方法上打上 @Test 注解即可运行`注意Test注解的包为 import org.testng.annotations.Test;`
-
+然后和Junit使用是一致的, 在方法上打上 @Test 注解即可运行, 注意Test注解的包为 `import org.testng.annotations.Test;`
 
 ### 基本注解
 1. @Test
+    - threadPoolSize
+    - invocationCount
+    - timeOut
+    - invocationTimeOut
+
+> 测试方法中使用多线程, 和Junit是一致的, 只要主线程退出了, 其中创建的线程也会立即退出  
+> 但是 TestNG 并行执行测试方法会更方便
 
