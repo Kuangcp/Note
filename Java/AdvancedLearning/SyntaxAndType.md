@@ -48,6 +48,7 @@ categories:
         1. [其他](#其他)
     1. [成员属性](#成员属性)
     1. [方法](#方法)
+1. [抽象类](#抽象类)
 1. [Object](#object)
     1. [VO](#vo)
     1. [PO](#po)
@@ -58,7 +59,7 @@ categories:
 1. [关键字](#关键字)
     1. [try](#try)
 
-**目录 end**|_2019-02-28 17:43_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-01 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 基础语法
 
@@ -240,14 +241,10 @@ Void.TYPE == void.class
 
 ***************************
 ## 内部类
-> 其域可以和其他常见类型一样, 作为类的成员, 也可作为方法的局部变量, 其中包含的各种变量的域都是按原规则生效的
+> 就是一种特殊的成员变量, 其特征和成员属性是一致的
 
-_但是内部类的属性不能用static修饰_
-归根结底，还是类与对象的区别，静态属性不依赖于对象，因为它保存在jvm的静态区，所以访问修改的时候不需要依赖当前有没有存活的对象，在虚拟机加载的时候也是优先于实例生成的。
-而实例对象则是保存在jvm的堆内存中，想要访问内部类，必须先实例化外部类，然后通过外部类才能访问内部类。内部类其实也可以认为是外部类的一个成员变量，只要是成员变量，
-各个对象都是不依赖的，静态属性的出现破坏了这一逻辑，所以java语言在语义层面不允许我们那么做，这其实不是技术问题，是一个语言的逻辑和语义问题。
-
-> [参考博客: 关于Java内部类字段和方法不能使用static修饰的原因](https://my.oschina.net/u/1027043/blog/1823113)
+- https://www.tutorialspoint.com/java/java_innerclasses.htm
+- https://www.geeksforgeeks.org/anonymous-inner-class-java/
 
 **************************
 ## 类型强转
@@ -300,11 +297,15 @@ _获取指定时间_ [获取指定时间的时间戳](https://blog.csdn.net/jsso
 
 >1. 关于方法上参数使用 final 修饰的作用: 明确该方法内部不能对参数进行修改, 避免bug
 
+************
+
+# 抽象类
+1. Concrete and Abstract Class
+
 **************
 # Object 
 
-> [参考博客:  java的(PO,VO,TO,BO,DAO,POJO)解释](http://www.cnblogs.com/yxnchinahlj/archive/2012/02/24/2366110.html)
-> | [VO DAO BO 等缩写的意义](https://zhuanlan.zhihu.com/p/35762537?group_id=969493512006373376)
+> [参考博客:  java的(PO,VO,TO,BO,DAO,POJO)解释](http://www.cnblogs.com/yxnchinahlj/archive/2012/02/24/2366110.html) | [VO DAO BO 等缩写的意义](https://zhuanlan.zhihu.com/p/35762537?group_id=969493512006373376)
 
 - [ ] 原因? 场景是 类继承了一个实现了自定义接口的自定义抽象类
 
