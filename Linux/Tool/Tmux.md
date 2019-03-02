@@ -1,8 +1,9 @@
 ---
-title: Tmux.md
+title: Tmux
 date: 2019-02-28 17:43:53
 tags: 
 categories: 
+    - 工具
 ---
 
 **目录 start**
@@ -10,20 +11,22 @@ categories:
 1. [Tmux](#tmux)
     1. [键绑定](#键绑定)
         1. [切换](#切换)
+    1. [插件](#插件)
+        1. [tmux-resurrect](#tmux-resurrect)
 
-**目录 end**|_2019-02-28 17:43_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-02 09:31_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Tmux
-> 好用的管理会话的软件 [arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+> [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
 > [tmux 入门](http://blog.jobbole.com/87278/) | [tmux简洁教程及config关键配置](https://www.jianshu.com/p/fd3bbdba9dc9)
-
-> [自定义配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf)
 
 - 新建会话 `tmux new -s myth`  
 - 连接会话 `tmux a -t test`
 - 显示所有 `tmux ls` 
+- 重新加载配置文件 `tmux source ~/.tmux.conf`
 
+> [自定义配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf)
 *************
 
 > 开启鼠标选择与复制
@@ -40,3 +43,11 @@ categories:
 - prefix w 切换 panel 或者 window
 
 
+## 插件
+- [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) `查看Readme下载安装`
+
+> [参考博客: 保存和恢复 Tmux 会话 ](https://liam.page/2016/09/10/tmux-plugin-resurrect/)
+
+### tmux-resurrect
+
+> [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)
