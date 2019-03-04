@@ -51,3 +51,7 @@ categories:
 ### tmux-resurrect
 
 > [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)
+
+prefix c-s 保存
+prefix c-r 加载
+

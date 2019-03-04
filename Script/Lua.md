@@ -14,11 +14,11 @@ categories:
 ****************************************
 # Lua
 
-> [Official ](https://www.lua.org/) | [wiki: lua](https://en.wikipedia.org/wiki/Lua_(programming_language))
+> [Official ](https://www.lua.org/) | [wiki: lua](https://en.wikipedia.org/wiki/Lua)
 
 > [Lua 菜鸟教程](http://www.runoob.com/lua/lua-tutorial.html)
 
-因为该项目 [z.lua](https://github.com/skywind3000/z.lua) 安装了Lua, 他的执行速度确实非常快
+因为该项目 [z.lua](https://github.com/skywind3000/z.lua) 而安装了Lua, 他的执行速度确实非常快
 
 ## 安装
 > [doc: install](https://www.lua.org/start.html#installing)  
@@ -28,4 +28,3 @@ categories:
 
 `luac`
 > [doc: luac](https://www.lua.org/manual/5.3/luac.html)
-

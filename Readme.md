@@ -244,6 +244,7 @@
 
 - [书写规范和建议](https://github.com/sparanoid/chinese-copywriting-guidelines)`比较全面,闲暇可以参考`
 - [阮一峰的博客](https://github.com/ruanyf/articles)`Github账号每日都有提交....`
+- [interview](https://github.com/hadyang/interview)
 
 ### Linux 
 - [judasn](https://github.com/judasn/hexo-blog)`善于归纳的人 相关:Javaer眼中的Linux`
