@@ -416,6 +416,9 @@ TODO 存疑
 #### pull
 
 #### fetch 
+> 拉取代码
+
+- 拉取远程origin的dev分支并在本地创建dev分支相关联 `git fetch origin dev:dev`
 
 ***********************
 

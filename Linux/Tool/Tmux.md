@@ -21,6 +21,8 @@ categories:
 
 > [tmux 入门](http://blog.jobbole.com/87278/) | [tmux简洁教程及config关键配置](https://www.jianshu.com/p/fd3bbdba9dc9)
 
+> [参考博客: 文本三巨头：zsh、tmux 和 vim](http://blog.jobbole.com/86571/)
+
 - 新建会话 `tmux new -s myth`  
 - 连接会话 `tmux a -t test`
 - 显示所有 `tmux ls` 
