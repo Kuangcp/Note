@@ -2,24 +2,24 @@
 title: Java并发
 date: 2018-11-21 10:56:52
 tags: 
-    - Concurrent
+    - Concurrency
 categories: 
     - Java
 ---
 
 **目录 start**
  
-1. [Java并发](#java并发)
+1. [Java并发1](#java并发1)
     1. [Java内存模型](#java内存模型)
-    1. [【理论知识】](#理论知识)
+    1. [理论知识](#理论知识)
         1. [可能的问题](#可能的问题)
         1. [好的习惯](#好的习惯)
-    1. [【块结构并发】 Java5之前](#块结构并发-java5之前)
+    1. [块结构并发 Java5之前](#块结构并发-java5之前)
         1. [synchronized](#synchronized)
             1. [正确使用锁](#正确使用锁)
         1. [volatile](#volatile)
             1. [正确使用](#正确使用)
-    1. [【现代并发】JUC](#现代并发juc)
+    1. [现代并发JUC包](#现代并发juc包)
         1. [概念](#概念)
             1. [CAS指令](#cas指令)
             1. [原子类](#原子类)
@@ -35,12 +35,12 @@ categories:
     1. [【控制执行】](#控制执行)
         1. [任务建模](#任务建模)
             1. [ScheduleThreadPoolExecutor](#schedulethreadpoolexecutor)
-    1. [【分支合并框架】](#分支合并框架)
-    1. [【Java内存模型】](#java内存模型)
+    1. [分支合并框架](#分支合并框架)
+    1. [Java内存模型](#java内存模型)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-05 22:02_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-# Java并发
+# Java并发1
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/concurrents)  
 > 主要知识来源 Java程序员修炼之道  | [并发编程网](http://ifeve.com/)  
 > 该模块最早在1.5引入,由[Doug Lea](http://g.oswego.edu/)开发 |  [doug lea博客中文版](http://ifeve.com/doug-lea/)
@@ -50,7 +50,7 @@ categories:
 
 ## Java内存模型
 
-## 【理论知识】
+## 理论知识
 `线程模型`
 - 共享的，默认可见的可变状态
 - 抢占式线程调度
@@ -95,7 +95,7 @@ categories:
     - 内存的局部性
     - 算法设计
     
-## 【块结构并发】 Java5之前
+## 块结构并发 Java5之前
 - 同步和锁 synchronized：
     - 只能锁定对象，不能锁定原始类型
     - 锁的范围要尽可能的小
@@ -227,7 +227,7 @@ if (!stop)
         - final声明的对象的引用是不可变的， 但是如果引用的是对象，该对象自身的属性的引用是可变的
     - 不可变对象的使用十分广泛，但是开发效率不行，每修改对象的状态都要构建一个新对象
 
-## 【现代并发】JUC
+## 现代并发JUC包
 > 简称为J.U.C (java.util.concurrent) | [The j.u.c Synchronizer Framework中文翻译版](http://ifeve.com/aqs/)
 - 建议通过使用`线程池`,`Task(Runnable/Callable)`,`读写锁`,`原子类`和`线程安全容器`来代替传统的同步锁,wait和notify
     - 提升并发访问的性能, 降低多线程编程的难度, Netty就是这么做的
@@ -395,7 +395,7 @@ if (!stop)
 
 **************************
 
-## 【分支合并框架】 
+## 分支合并框架
 - 引入一种新的执行者服务，称为 ForkJoinPool
 - ForkJoinPool 服务处理一种比线程更小的并发单元 ForkJoinTask
     - ForkJoinTask是一种由ForkJoinPool以更轻量的方式所调度的抽象
@@ -434,7 +434,7 @@ if (!stop)
     - 对于子任务来说，分而治之是不是很自然的事？子任务是不是会创建更多的子任务，而且他们要比派生出他们的任务粒度更细？
     - 如果思考的结果是肯定的，就可以适用，如果思考结果是不确定的，用其他的同步方式更合适
 
-## 【Java内存模型】
+## Java内存模型
 > Java Memory Model -- JMM
 
 - 同步动作和被称为偏序的数据结构描述JMM， 

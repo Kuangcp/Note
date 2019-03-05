@@ -234,6 +234,8 @@ python -m module_name
 
 1. 安装指定版本的包 `install name==version` 
 
+> [修改Pip 管理工具默认下载源](https://blog.csdn.net/JQ_AK47/article/details/77944444)
+
 #### Requirements files
 > [pip官方文档 Requirements files](https://pip.readthedocs.io/en/1.1/requirements.html)
 
