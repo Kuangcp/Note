@@ -22,12 +22,15 @@ categories:
         1. [Systemd](#systemd)
 1. [实用的工具](#实用的工具)
     1. [终端工具](#终端工具)
+    1. [检测工具](#检测工具)
+        1. [硬盘](#硬盘)
+            1. [smartmontools](#smartmontools)
     1. [图形化工具](#图形化工具)
         1. [剪贴板管理](#剪贴板管理)
     1. [练习打字](#练习打字)
 1. [Tips](#tips)
 
-**目录 end**|_2019-02-18 21:30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-05 08:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -104,6 +107,16 @@ categories:
 
 ## 终端工具
 > [详细](/Skills/Application/Terminal.md)
+
+***********
+
+## 检测工具
+### 硬盘
+#### smartmontools
+
+- 检测健康状况 `smartctl -Hc /dev/sda9`
+
+************
 
 ## 图形化工具
 ### 剪贴板管理

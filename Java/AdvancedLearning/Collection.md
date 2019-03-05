@@ -18,7 +18,7 @@ categories:
     1. [List](#list)
     1. [Set](#set)
 
-**目录 end**|_2019-01-16 16:01_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-05 08:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 集合
 > 重要的知识点，面试必问，使用频率也很高
@@ -49,10 +49,10 @@ categories:
 - HashMap 键能为null, HashTable则不可以
 
 ### HashMap
+> [API: HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)
 
 - [HashMap 实现原理](http://www.importnew.com/27043.html)
 - [HashMap 怎么 hash？又如何 map？](https://my.oschina.net/editorial-story/blog/2396106)
-- [ ] 整理实现
 
 主要看 addVal 方法 以及 resize方法的实现
 HashMap的数据结构是 数组加单链表 (数组是只放一个Node对象, 单链表是为了放通过hash计算得到的index一致的元素包装成的Node对象)

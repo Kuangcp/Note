@@ -48,6 +48,8 @@ categories:
         1. [其他](#其他)
     1. [成员属性](#成员属性)
     1. [方法](#方法)
+        1. [equals](#equals)
+        1. [hashcode](#hashcode)
 1. [抽象类](#抽象类)
 1. [Object](#object)
     1. [VO](#vo)
@@ -59,7 +61,7 @@ categories:
 1. [关键字](#关键字)
     1. [try](#try)
 
-**目录 end**|_2019-03-01 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-05 08:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 基础语法
 
@@ -280,12 +282,14 @@ _获取指定时间_ [获取指定时间的时间戳](https://blog.csdn.net/jsso
 |:----|:----|:----|
 | public | 任意范围 |  |
 | protected | 子类/同包 | 子类是可以在任意包的 |
-| default | 同包 | 同一个包下(也有说是:package private, 缺省) |
-| private | 当前类 | 内部类从属于当前类 |
+| package private | 同包 | 顾名思义就是包级别的private(缺省) |
+| private | 当前类 | 当前类级别private, 内部类从属于当前类 |
 
-> 同包是指 `package XXX;` 是一致的, `package a;` 与 `package a.b;` 不是同包  
+> 同包是指 `package xxx;` 是一致的; 而 `package a;` 与 `package a.b;` 不是同包  
 
 ### 其他
+
+***************
 
 ## 成员属性
 作为Java的bean, 或者大多数情况下, 属性都是私有的, 然后提供setter getter 方法,而且 一般来说, setter和getter方法是不能包含逻辑的, 也就是简单的赋值 取值
@@ -296,6 +300,24 @@ _获取指定时间_ [获取指定时间的时间戳](https://blog.csdn.net/jsso
 - [ ] 方法签名的详解
 
 >1. 关于方法上参数使用 final 修饰的作用: 明确该方法内部不能对参数进行修改, 避免bug
+
+### equals
+> [Java提高篇——equals()与hashCode()方法详解](http://www.cnblogs.com/Qian123/p/5703507.html)
+
+> [参考博客: equals()和hashCode()区别？](https://www.cnblogs.com/jesonjason/p/5492208.html)
+
+Object中equals是比较内存地址， hashcode是比较散列函数的值， 后者性能更好，但是可能出现哈希碰撞  
+equals相等hashcode一定相等，equals不等 hashcode可能一致可能不一致
+
+> 重写equals方法
+
+Double、Integer、Math String 都是重写了equals方法， 因此比较的都是值不是内存地址
+### hashcode
+
+java.lnag.Object中对hashCode的约定：
+1. 在一个应用程序执行期间，如果一个对象的equals方法做比较所用到的信息没有被修改的话，则对该对象调用hashCode方法多次，它必须始终如一地返回同一个整数。
+2. 如果两个对象根据equals(Object o)方法是相等的，则调用这两个对象中任一对象的hashCode方法必须产生相同的整数结果。
+3. 如果两个对象根据equals(Object o)方法是不相等的，则调用这两个对象中任一个对象的hashCode方法，不要求产生不同的整数结果。但如果能不同，则可能提高散列表的性能。
 
 ************
 

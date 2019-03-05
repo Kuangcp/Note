@@ -12,7 +12,6 @@ categories:
 1. [学习Shell](#学习shell)
     1. [shell类别](#shell类别)
     1. [Shell内建命令](#shell内建命令)
-    1. [Tips](#tips)
     1. [执行](#执行)
     1. [输入输出](#输入输出)
         1. [输入](#输入)
@@ -40,8 +39,10 @@ categories:
         1. [时间](#时间)
     1. [工具](#工具)
         1. [shyaml](#shyaml)
+1. [Tips](#tips)
+    1. [常用代码片段](#常用代码片段)
 
-**目录 end**|_2019-01-13 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-05 08:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -158,10 +159,10 @@ _判断变量是否为数值_
 
 | Pattern | 描述 ||
 |:----|:----|:---|
-| `${varible#*str}`  | 截取 第一个   |str `后` 的字符串 |
-| `${varible##*str}` | 截取 最后一个 |str `后` 的字符串 |
-| `${varible%%str*}` | 截取 第一个   |str `前` 的字符串 |
-| `${varible%str*} ` | 截取 最后一个 |str `前` 的字符串 |
+| `${varible#*str}`  | 截取 `首个` |str `后` 的字符串 |
+| `${varible##*str}` | 截取 `最末` |str `后` 的字符串 |
+| `${varible%%str*}` | 截取 `首个` |str `前` 的字符串 |
+| `${varible%str*}` | 截取 `最末` |str `前` 的字符串 |
 
 ******************
 

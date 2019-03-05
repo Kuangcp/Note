@@ -15,6 +15,7 @@ categories:
         1. [查看端口占用情况](#查看端口占用情况)
     1. [DNS](#dns)
         1. [修改DNS](#修改dns)
+    1. [Route](#route)
     1. [IPv4和IPv6](#ipv4和ipv6)
     1. [Bridge](#bridge)
     1. [基础命令工具](#基础命令工具)
@@ -43,7 +44,7 @@ categories:
         1. [防火墙](#防火墙)
             1. [iptables](#iptables)
 
-**目录 end**|_2019-02-15 11:11_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-05 08:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux网络管理
 ## Tips
@@ -107,6 +108,11 @@ _netstat工具_ 或者 更好用的 [iproute2](#3iproute2)
 ```
 > 刷新本地缓存
 1. sudo /etc/init.d/nscd restart 或者 service nscd restart , 其实就是重启 nscd 服务
+
+**********************
+
+## Route
+> [参考博客: 路由表的建立算法和有关的刷新协议](https://blog.csdn.net/qq_34328833/article/details/60583183)
 
 ******************
 ## IPv4和IPv6
