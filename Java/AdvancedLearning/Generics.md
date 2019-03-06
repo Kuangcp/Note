@@ -193,10 +193,15 @@ categories:
 **************************************************************************
 
 ## 通配符类型
-### 子类型限定的通配符 extends
-> 通配符上限  顾名思义,就是限定为该类及其子类, 例如: `Pair<? extends Human>` 表示任何Pair泛型类型并且他的类型变量要为Human的子类  
+- [ ] extends super 泛型约束仍然有问题
 
-> 例如编写一个方法 `public static void printMessage(Pair<Human> human){}`  
+### 子类型限定的通配符 extends
+> 通配符上限  顾名思义,就是限定为该类及其子类
+
+- 例如: 
+    - `Pair<? extends Human>` 表示任何Pair泛型类型并且他的类型变量要为Human的子类  
+    - 编写一个方法 `public static void printMessage(Pair<Human> human){}`  
+
 > 正如上面所说, Pair<Student>类型的变量是不能放入这个方法的,因为泛型变量是没有继承关系, 这时候就可以使用这个通配符:  
 >> `public static void printMessage(Pair<? extends Human>)` 可以get不能set
 ```java
