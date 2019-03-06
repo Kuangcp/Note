@@ -100,7 +100,10 @@ categories:
         first = new T();
         second = new T();
     }
-    first = T.class.newInstance() //非法 T.class是不合法的
+    
+    //非法 T.class是不合法的
+    first = T.class.newInstance() 
+
     //要实例化一个Pair<T>的对象就要如下:
     public static <T> Pair<T> initPair(Class<T> c){
         try{
@@ -150,6 +153,7 @@ categories:
 - 很有可能是桥方法有关,不可能有两个一样的桥方法(因为两个接口其实是一个接口的不同参数化,桥方法的方法签名是一致的)
 
 *******************************************
+
 ## 泛型类型的继承规则
 
 > 例如 父子类: Human Student  那么 Pair<Human> Pair<Student> 是继承(inherit)关系么,答案是否定的!!
@@ -157,6 +161,7 @@ categories:
 ```java
     Pair<Human> humans = new Pair<Human>(man, woman);
     Pair<Student> classmates = humans;// illegal, but suppose it wasn't
+
     classmates.setSecond(junior) // 如果上面合法,那么这里是肯定可以执行的, 因为泛型类型变成了Student
     //那么就有了问题了,原有的人类类型限制的对象中,出现了小学生
     //所以不允许这样的类型变量约束的类进行多态
@@ -166,6 +171,7 @@ categories:
     Student[] students = humans;
     students[0] = junior ;// 虚拟机将抛出 ArrayStoreException 异常
 ```
+> 为何 `List<Object> list = Arrays.asList("1","2");` 能通过编译
 
 ******************
 > 永远可以将参数化类型转换为一个原始类型, Pair<Human> 是原始类型Pair的一个子类型,转换成原始类型也会产生错误  

@@ -449,6 +449,11 @@ TODO 存疑
 
 - [ ] 
 
+#### show-branch 
+> 按颜色列出分支上的提交和图示
+
+- [ ] 理解 图示 
+
 #### stash
 > [Official Doc](https://git-scm.com/docs/git-stash)  
 > 将当前修改缓存起来, 减少不必要的残缺提交  stash命令的缓存都是基于某个提交上的修改, 是一个栈的形式 
