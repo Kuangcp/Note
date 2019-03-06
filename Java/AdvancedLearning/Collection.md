@@ -48,12 +48,13 @@ categories:
 ## Map
 - HashMap 键能为null, HashTable则不可以
 
+> [参考博客: Java Map 集合类简介 ](https://www.oracle.com/technetwork/cn/articles/maps1-100947-zhs.html)
+
 ### HashMap
 > [API: HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)
 
 - [HashMap 实现原理](http://www.importnew.com/27043.html)
 - [HashMap 怎么 hash？又如何 map？](https://my.oschina.net/editorial-story/blog/2396106)
-
 
 主要看 addVal 方法 以及 resize方法的实现
 HashMap的数据结构是 数组加单链表 (数组是只放一个Node对象, 单链表是为了放通过hash计算得到的index一致的元素包装成的Node对象)
