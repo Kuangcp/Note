@@ -500,12 +500,38 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 1. map 将一个流中的每个元素通过 一种映射 得到新的元素组成的流
 1. flatMap 使用流时， flatMap方法接受一个函数作为参数，这个函数的返回值是另一个流。这个方法会应用到流中的每一个元素，最终形成一个新的流的流。
 
+| 操作 | 类型 | 返回类型 | 参数 | 函数描述符 |
+|:----|:----|:----|:----|:----|
+| filter  | 无状态 | `Stream<T>` | `Predicate<T>` | T -> boolean |
+| peek | 无状态 | `Stream<T>` | `Consumer<T>` | T -> void |
+| unordered | 无状态 | `Stream<T>` |  | T -> boolean |
+| map/mapToXxx|无状态|`Stream<R>`|`Function<T, R>`| T -> R|
+| flatMap/flatMapToXxx|无状态|`Stream<R>`|`Function<T, Stream<R>>`| T -> `Stream<R>`|
+| sorted| 有状态 无界|`Stream<T>`|`Comparator<T>`|(T,T) -> int|
+| skip| 有状态 有界|`Stream<T>`|long||
+| limit| 有状态 有界|`Stream<T>`|long||
+| distinct| 有状态 无界|`Stream<T>`|||
+
 #### 终端操作
-| 操作 | 目的 |
-|:----|:----|
-| forEach | 消费流中的每个元素并对其应用 Lambda。这一操作返回 void  |
-| count | 返回流中元素的个数。这一操作返回 long |
-| collect | 把流归约成一个集合，比如List、Map甚至是Integer |
+> 非短路操作
+
+| 操作 | 类型 | 返回类型 | 参数 | 函数描述符 | 目的 | 
+|:----|:----|:----|:----|:----|:---|
+| forEach/forEachOrdered |无状态|void|``Consumer<T>``| T -> void| 消费流中的元素 |
+|collect|无状态|R|`Collector<T, A, R>`||
+|reduce|有状态 有界|`Optional<T>`|`BinaryOprator<T>`|(T, T) -> T| 把流归约成一个集合，比如List、Map甚至是Integer|
+|count|无状态|long||| 返回流中元素的个数|
+| toArray ||
+| min/max/count ||
+
+> 短路操作
+
+| 操作 | 返回类型 | 参数 | 函数描述符 | 目的 |
+|:----|:----|:----|:----|:----|
+| allMatch/anyMatch/noneMatch |boolean|``Predicate<T>``| T -> boolean | |
+| findFirst/findAny |`Optional<T>`|||
+
+**********
 
 ### 使用Stream
 - 流的使用一般包括三件事：
@@ -599,26 +625,9 @@ List<int[]> pairs = numbers1.stream()
 
 但要并行执行这段代码也要付一定代价，传递给 reduce 的Lambda不能更改状态（如实例变量），而且操作必须满足结合律才可以按任意顺序执行。
 
-##### 总结
-| 操作 | 类型 | 返回类型 | 参数 | 函数描述符 |
-|:----|:----|:----|:----|:----|
-| filter  | 中间 | `Stream<T>` | ``Predicate<T>`` | T -> boolean |
-|distinct|中间 有状态 无界|`Stream<T>`|||
-|skip|中间 有状态 有界|`Stream<T>`|long||
-|limit|中间 有状态 有界|`Stream<T>`|long||
-|map|中间|`Stream<R>`|`Function<T, R>`| T -> R|
-|flatMap|中间|`Stream<R>`|`Function<T, Stream<R>>`| T -> `Stream<R>`|
-|sorted|中间 有状态 无界|`Stream<T>`|`Comparator<T>`|(T,T) -> int|
-|anyMatch|终端|boolean|``Predicate<T>``| T -> boolean |
-|noneMatch|终端|boolean|``Predicate<T>``|T -> boolean|
-|allMatch|终端|boolean|``Predicate<T>``|T->boolean|
-|findAny|终端|`Optional<T>`|||
-|findFirst|终端|`Optional<T>`|||
-|forEach|终端|void|``Consumer<T>``| T -> void|
-|collect|终端|R|`Collector<T, A, R>`||
-|reduce|终端 有状态 有界|`Optional<T>`|`BinaryOprator<T>`|(T, T) -> T|
-|count|终端|long|||
+***************************
 
+##### 总结
 > joining 替换 字符串直接拼接
 
 ```java

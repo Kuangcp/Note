@@ -58,10 +58,20 @@ categories:
 ### Modifier
 > The Modifier class provides static methods and constants to decode class and member access modifiers. 
 
+`去除属性上的final修饰符`
+```java
+    Field modifiersField = Field.class.getDeclaredField("modifiers");
+    modifiersField.setAccessible(true);
+    modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+```
+
+Java的访问权限信息啥的都是以2的N次幂来作为表示的
 *****************************
 ## 使用
-### 获取属性
-> _通过属性名得到对象属性的值_
+> [Github: 反射获取属性](https://github.com/Kuangcp/JavaBase/blob/master/java-class/src/test/java/com/github/kuangcp/reflects/ObtainFieldsTest.java)
+
+### 属性
+> _获取以及修改属性的值_
 ```java
     // 1. 通过描述对象获取值, 但是该属性要有对应的正确的 set get 方法
     PropertyDescriptor propertyDescriptor = new PropertyDescriptor("age", A.class);
@@ -71,16 +81,19 @@ categories:
     // 2. 直接通过Field对象
     // set
     A a = new A();
-    Field field = a.getClass().getDeclaredField("x");
+    Field field = a.getClass().getDeclaredField("age");
     field.setAccessible(true);
     field.set(a, 1);
     // get
-    Field f = a.getClass().getDeclaredField("x");
-    f.setAccessible(true);
-    System.out.println(f.get(a));
+    field.setAccessible(true);
+    System.out.println(field.get(a));
 ```
 
-### 获取方法
+> [doc: java8](https://docs.oracle.com/javase/8/docs/api/) `Field.set()`的文档
+
+被final修饰过的变量，只是说栈存储的地址不能再改变，但是却没有说地址指向的内容不能改变，所以反射可以破final，因为它修改该了以前地址的具体内容，但是没有改地址的信息。
+
+### 方法
 
 **********************
 
