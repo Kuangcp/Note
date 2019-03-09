@@ -53,7 +53,7 @@ categories:
                 1. [由值创建流](#由值创建流)
                 1. [由数组创建流](#由数组创建流)
                 1. [由文件生成流](#由文件生成流)
-                1. [由函数生成流：创建无限流](#由函数生成流创建无限流)
+                1. [无限流](#无限流)
         1. [使用流收集数据](#使用流收集数据)
             1. [预定义收集器](#预定义收集器)
                 1. [汇总](#汇总)
@@ -75,7 +75,7 @@ categories:
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-**目录 end**|_2019-02-14 14:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-09 11:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [doc: API](https://docs.oracle.com/javase/8/docs/api/) | [doc下载](https://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html)
@@ -694,8 +694,8 @@ Java中用于处理文件等I/O操作的NIO  API（非阻塞I/O）已更新，�
     }catch(IOException e){} 
 ```
 
-##### 由函数生成流：创建无限流
-> Stream API提供了两个静态方法来从函数生成流：Stream.iterate和Stream.generate。这两个操作可以创建所谓的 无限流  
+##### 无限流
+> Stream API提供了两个静态方法来 **从函数生成流**：`Stream.iterate` 和 `Stream.generate`。这两个操作可以创建所谓的 无限流  
 > 同样，你不能对无限流做排序或归约，因为所有元素都需要处理，而这永远也完不成！
 
 **`迭代`**
