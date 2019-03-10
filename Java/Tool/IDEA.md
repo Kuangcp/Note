@@ -325,15 +325,13 @@ _例如修改为如下_
 1. TestMe
     - 快速创建测试类
 
-1. TestNG
-    - TestNG 测试框架的集成
+1. TestNG 测试框架的集成
 
 1. lombok
     - 插件商店中搜索 lombok 安装重启idea即可
     - 配置 Build,Execution > Compiler > Annotation Processors 勾选上即可使用lombok的注解
 
-1. Jrebel
-    - 热部署插件, 需要付费
+1. Jrebel 热部署插件, 需要付费
     
 1. GoogleTranslation
     - **Ctrl Alt 1** 快速翻译选中的单词和语句
@@ -341,6 +339,7 @@ _例如修改为如下_
 1. http-client
     - https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html
 
+1. emacsIdeas 快捷键 跳转
 1. FindBugs
 1. Docker
 1. Kubernates

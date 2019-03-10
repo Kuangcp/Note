@@ -40,6 +40,8 @@ categories:
 
 ## 个人博客网
 - [Paul Graham](http://www.paulgraham.com/hackpaint.html)
+- [java-success](https://www.java-success.com/)
+
 - [解道](https://www.jdon.com/)
 - [王垠](http://www.yinwang.org/)
 - [ciaoshen](http://www.ciaoshen.com/)`肉身翻墙? Java大佬`

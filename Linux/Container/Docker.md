@@ -303,6 +303,8 @@ _登录镜像仓库_
     - 导入： `docker import [-c |--change=[]] [-m | --message=[]] file|URL - [repository]:[tag]`
     - -c | --change=[] 选项在导入的同时执行对容器就行修改的Dockerfile指令。
 
+> [Attach a volume to a container while it is running](http://jpetazzo.github.io/2015/01/13/docker-mount-dynamic-volumes/)
+
 ### ps
 - 查看当前运行的容器：`docker ps `
     - 查看所有容器 ：`docker ps -a`

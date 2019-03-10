@@ -25,6 +25,7 @@ categories:
 
 > [字符编码](http://blog.jobbole.com/39309/)
 > [参考博客: Ansi,UTF8,Unicode,ASCII编码的区别](https://blog.csdn.net/xiongxiao/article/details/3741731)
+> [参考博客: 字符编码的前世今生](https://tgideas.qq.com/webplat/info/news_version3/804/808/811/m579/201307/218730.shtml)
 
 - 字符内码(charcter code)指的是用来代表字符的内码.读者在输入和存储文档时都要使用内码,内码分为
     - 单字节内码 -- Single-Byte character sets (SBCS), 也就是第一个字节 0-127 

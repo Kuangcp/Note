@@ -23,10 +23,10 @@ categories:
 
 **目录 end**|_2019-02-28 17:43_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-# IO操作的学习
+# Java IO
 > - [个人代码:IO流的相关学习](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/io)
 
-## Java IO简史
+## Java IO 简史
 > [BIO NIO AIO演变](http://www.cnblogs.com/itdragon/p/8337234.html)
 
 ### BIO
@@ -47,17 +47,56 @@ categories:
 
 - 引入了新的异步通道的概念, 以及异步文件通道和异步套接字通道的实现
 
-## 基本文件IO操作
-> [参考博客: Read a text file from Java classpath](https://www.java-success.com/read-a-text-file-from-java-classpath/)
+**************
+## 字节流 
+> OutputStream InputStream
 
-### 读取配置文件
+ByteArrayOutputStream, FileOutputStream, FilterOutputStream, ObjectOutputStream, OutputStream, PipedOutputStream
+
+> [参考博客:  FilterInputStream 与 装饰者模式](https://blog.csdn.net/zhao123h/article/details/52826682)
+
+- FilterInputStream
+    - DataInputStream
+    - BufferedInputStream
+
+`序列化以及反序列化一个对象`
+```java
+    TargetObject targetObject = new TargetObject("name");
+
+    ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
+    ObjectOutputStream output = new ObjectOutputStream(byteOutput);
+    output.writeObject(targetObject);
+
+    ByteArrayInputStream byteInput = new ByteArrayInputStream(byteOutput.toByteArray());
+
+    ObjectInputStream input = new ObjectInputStream(byteInput);
+    TargetObject result = (TargetObject) input.readObject();
+    assertThat(result.getName(), equalTo("name"));
+```
+
+***************
+
+## 字符流
+> Reader Writer
+
+Reader类的核心就是read()这个方法，由于这里直接操作InputStream进行read()，因此可以读取出2个字节，java中每两个字节转成一个字符。
+这就是Reader可以读取字符的原因，只不过是利用InputStream先将字节读取出来，再按照一定的编码方式转码.
+
+***************
+
+## 应用
+### 文件IO
+> [参考博客: Read a text file from Java classpath](https://www.java-success.com/read-a-text-file-from-java-classpath/)
+> [Java：利用I/O流读取文件内容](https://blog.csdn.net/xuehyunyu/article/details/77873420)
+
+#### 读取配置文件
 - maven格式路径，会从resources下获取文件例如 /a.xml
 - `InputStream is = this.getClass().getResourceAsStream(path);`
     - 读取properties文件 ：`new Properties().load(is);`
     - 按行读取文件 `BufferedReader bf = new BufferedReader(new InputStreamReader(is));`
 
 **************
-#### 可执行jar读取外部配置文件
+##### 可执行jar读取外部配置文件
 ```java
     Properties properties = new Properties();
     File file = new File("something.properties");
@@ -68,7 +107,7 @@ categories:
 ``` 
 - 只要配置文件和打包的jar同级即可
 
-#### Maven项目
+##### Maven项目
 _读取resource目录下配置文件_
 ```java
     ClassLoader classLoader = MainConfig.class.getClassLoader();
@@ -79,11 +118,15 @@ _读取resource目录下配置文件_
 ```
 - 这样也可以, 但是会有诡异的问题, 打包后运行是正常的, idea中运行就不正常, `new File("src/main/resources/excel.main.yml")` 
 
+### 网络IO
+> [参考博客:网络IO之阻塞、非阻塞、同步、异步总结 ](https://www.cnblogs.com/Anker/p/3254269.html)
+
+> [参考博客: Java IO: 网络](http://ifeve.com/java-io-network/)
+当两个进程之间建立了网络连接之后，他们通信的方式如同操作文件一样：利用InputStream读取数据，利用OutputStream写入数据。换句话来说，Java网络API用来在不同进程之间建立网络连接，而Java IO则用来在建立了连接之后的进程之间交换数据。
+
 **********************************
 # NIO
-> [NIO](http://ifeve.com/overview/) 
-
-过程繁杂,又有各种并发 难以调试
+> [Java NIO 系列教程](http://ifeve.com/java-nio-all/) 
 
 ## Buffer
 > [Java NIO系列教程（三） Buffer](http://ifeve.com/buffers/)
