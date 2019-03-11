@@ -17,6 +17,7 @@ categories:
         1. [循环](#循环)
     1. [用户输入输出](#用户输入输出)
 1. [数据类型](#数据类型)
+    1. [自动拆装箱](#自动拆装箱)
     1. [基础数据类型](#基础数据类型)
         1. [byte](#byte)
         1. [char](#char)
@@ -36,7 +37,6 @@ categories:
         1. [Boolean](#boolean)
         1. [Void](#void)
     1. [枚举类型](#枚举类型)
-    1. [自动拆装箱](#自动拆装箱)
     1. [内部类](#内部类)
     1. [类型强转](#类型强转)
     1. [时间类型](#时间类型)
@@ -45,9 +45,12 @@ categories:
 1. [类的结构](#类的结构)
     1. [修饰符](#修饰符)
         1. [权限修饰符](#权限修饰符)
-        1. [其他](#其他)
+        1. [final](#final)
+        1. [static](#static)
+        1. [abstract](#abstract)
     1. [成员属性](#成员属性)
     1. [方法](#方法)
+        1. [方法的传参方式](#方法的传参方式)
         1. [equals](#equals)
         1. [hashcode](#hashcode)
 1. [抽象类](#抽象类)
@@ -61,7 +64,7 @@ categories:
 1. [关键字](#关键字)
     1. [try](#try)
 
-**目录 end**|_2019-03-05 08:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-11 23:27_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 基础语法
 
@@ -90,6 +93,27 @@ categories:
 ***********************
 # 数据类型
 > [official guide](https://docs.oracle.com/javase/tutorial/java/generics/types.html)
+
+## 自动拆装箱
+> 在日常Java开发中, 基本数据类型和包装类型是可以视为等价的(唯一差别就是包装类型能表达null), 就是因为自动拆装箱的存在
+
+| 基本数据类型 | 封装类型 |
+|:----|:----|
+| byte | Byte |
+| char | Character |
+| boolean | Boolean |
+| short | Short |
+| int | Integer |
+| long | Long |
+| float | Float |
+| double | Double |
+| void | Void |
+
+> 存在的意义: TODO 
+
+> 实现方式
+
+> 弊端
 
 ## 基础数据类型
 > 八种基本数据类型 byte char boolean short int long float double
@@ -219,27 +243,6 @@ Void.TYPE == void.class
     Tool.INSTANCE.getNum();
 ```
 
-****************************
-
-## 自动拆装箱
-> 基本数据类型和包装类型在Java中是可以视为等价的, 就是因为自动拆装箱的存在
-
-| 基本数据类型 | 封装类型 |
-|:----|:----|
-| byte | Byte |
-| char | Character |
-| boolean | Boolean |
-| short | Short |
-| int | Integer |
-| long | Long |
-| float | Float |
-| double | Double |
-
-> 存在的意义: TODO 
-
-> 实现方式
-
-> 弊端
 
 ***************************
 ## 内部类
@@ -287,7 +290,9 @@ _获取指定时间_ [获取指定时间的时间戳](https://blog.csdn.net/jsso
 
 > 同包是指 `package xxx;` 是一致的; 而 `package a;` 与 `package a.b;` 不是同包  
 
-### 其他
+### final
+### static 
+### abstract 
 
 ***************
 
@@ -300,6 +305,19 @@ _获取指定时间_ [获取指定时间的时间戳](https://blog.csdn.net/jsso
 - [ ] 方法签名的详解
 
 >1. 关于方法上参数使用 final 修饰的作用: 明确该方法内部不能对参数进行修改, 避免bug
+
+### 方法的传参方式
+> [Java 有值类型吗？](http://www.yinwang.org/blog-cn/2016/06/08/java-value-type)
+
+`值类型`: 存储在线程栈里的数据类型，如int型, 以及对象的引用变量  
+`引用类型` :存储在托管堆里的数据类型，如Date型，或自定义class对象；
+
+- `值传递`: 每次传递变量时，都是对栈里的原始值进行拷贝，如栈地址0001处存放一个整数值4，值传递时，先copy整数值4，将之存放在栈地址0002处的内存空间，再将栈地址0002进行传递；
+- `引用传递`: 每次传递变量时，直接传递栈地址，如栈地址0001处存放一个整数值4，引用传递时，直接传递栈地址0001，而不做复制。
+
+> 总结: Java只有值传递
+- 值传递  会创建副本(copy) 所以 函数无法改变原始对象
+- 引用传递 不创建副本, 所以 函数中可以改变原始对象
 
 ### equals
 > [Java提高篇——equals()与hashCode()方法详解](http://www.cnblogs.com/Qian123/p/5703507.html)

@@ -9,19 +9,23 @@ categories:
 
 **目录 start**
  
-1. [IO操作的学习](#io操作的学习)
-    1. [Java IO简史](#java-io简史)
+1. [Java IO](#java-io)
+    1. [Java IO 简史](#java-io-简史)
         1. [BIO](#bio)
         1. [NIO](#nio)
         1. [AIO](#aio)
-    1. [基本文件IO操作](#基本文件io操作)
-        1. [读取配置文件](#读取配置文件)
-            1. [可执行jar读取外部配置文件](#可执行jar读取外部配置文件)
-            1. [Maven项目](#maven项目)
+    1. [字节流](#字节流)
+    1. [字符流](#字符流)
+    1. [应用](#应用)
+        1. [文件IO](#文件io)
+            1. [读取配置文件](#读取配置文件)
+                1. [可执行jar读取外部配置文件](#可执行jar读取外部配置文件)
+                1. [Maven项目](#maven项目)
+        1. [网络IO](#网络io)
 1. [NIO](#nio)
     1. [Buffer](#buffer)
 
-**目录 end**|_2019-02-28 17:43_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-11 23:27_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java IO
 > - [个人代码:IO流的相关学习](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/io)
@@ -53,7 +57,7 @@ categories:
 
 ByteArrayOutputStream, FileOutputStream, FilterOutputStream, ObjectOutputStream, OutputStream, PipedOutputStream
 
-> [参考博客:  FilterInputStream 与 装饰者模式](https://blog.csdn.net/zhao123h/article/details/52826682)
+> [参考博客:  FilterInputStream 与 装饰器模式](https://blog.csdn.net/zhao123h/article/details/52826682)
 
 - FilterInputStream
     - DataInputStream
