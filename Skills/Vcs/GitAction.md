@@ -31,7 +31,7 @@ categories:
         1. [清理仓库大文件](#清理仓库大文件)
         1. [CRLF与LF](#crlf与lf)
 
-**目录 end**|_2019-02-20 09:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-14 14:17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -294,10 +294,14 @@ categories:
 ### CRLF与LF
 > 由于系统的不同 Windows是 CRLF *nix 是 LF Mac 是 CR | [wiki: CRLF](https://en.wikipedia.org/wiki/Newline)  
 
+Git提供了一个“换行符自动转换”功能。这个功能默认处于“自动模式”，当你在签出文件时，它试图将 UNIX 换行符（LF）替换为 Windows 的换行符（CRLF）；  
+当你在提交文件时，它又试图将 CRLF 替换为 LF。Git 的“换行符自动转换”功能听起来似乎很智能、很贴心，因为它试图一方面保持仓库内文件的一致性（UNIX 风格），一方面又保证本地文件的兼容性（Windows 风格）。但遗憾的是，这个功能是有 bug 的
+
 ```sh
     git config --global core.autocrlf false 
     git config --global core.safecrlf true
 ```
+
 > [参考博客: CRLF和LF](https://www.tuicool.com/articles/IJjQVb)
 > [参考博客: git 换行符LF与CRLF转换问题](https://www.cnblogs.com/sdgf/p/6237847.html)
 
