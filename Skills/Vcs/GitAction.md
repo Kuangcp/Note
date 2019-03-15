@@ -31,7 +31,7 @@ categories:
         1. [清理仓库大文件](#清理仓库大文件)
         1. [CRLF与LF](#crlf与lf)
 
-**目录 end**|_2019-03-14 14:17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-16 00:37_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -201,14 +201,14 @@ categories:
 ```
 > 也就是说在仓库目录的父级目录 作为基础目录 (base-path)
 
-- `git daemon --export-all --base-path='BASE_PATH' --port=8080` 在 BASE_PATH 启动一个Git守护进程
+- `git daemon --export-all --base-path=$(pwd) --port=8080` 在 当前目录 启动一个Git守护进程
+    - `--enable=receive-pack` 为了安全，默认是仓库不能被修改， 添加这个参数就可以push了
     - `--export-all` 开放当前目录下所有项目
-    - `--enable=receive-pack` 为了安全，默认是仓库不能被修改，添加这个参数就可以push了
     - `--base-path=''` 指定开放的基本目录（指定开放别的路径）
     - `--port=8080` 指定开放的端口
     - `--verbose` 启动看到的日志信息更多
 
-- 克隆: `git clone git://localhost:8080/a` 
+- 克隆 `git clone git://localhost:8080/a` 
 
 ### HTTP 方式的 Git 服务器
 - 安装Apache： Web服务器

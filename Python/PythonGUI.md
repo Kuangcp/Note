@@ -18,7 +18,7 @@ categories:
 
 **目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
-# 【GUI】
+# GUI
 ## GTK3
 > [教程](https://python-gtk-3-tutorial.readthedocs.io/en/latest/) | [pygtk](http://www.pygtk.org/)  
 > [pygtk wiki ](https://wiki.python.org/moin/PyGtk)
