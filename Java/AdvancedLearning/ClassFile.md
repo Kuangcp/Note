@@ -240,40 +240,40 @@ message Article {
 
 _复杂类型_  
 > 定义了enum枚举类型，嵌套的消息。甚至对原有的消息进行了扩展，也可以对字段设置默认值。添加注释等
-```
-package "com.github.kuangcp";
-message Article {
-  required int32 article_id = 1;
-  optional string article_excerpt = 2;
-  repeated string article_picture = 3;
-  optional int32  article_pagecount = 4 [default = 0];
-  enum ArticleType {
-    NOVEL = 0;
-    PROSE = 1;
-    PAPER = 2;
-    POETRY = 3;
-  }
-  optional ArticleType article_type = 5 [default = NOVEL];
-  message Author {
-    required string name = 1; //作者的名字
-    optional string phone = 2;
-  }
-  optional Author author = 6;
-  repeated int32 article_numberofwords = 7 [packed=true];
-  reserved  9, 10, 12 to 15;
-  extensions 100 to 1000;
-}
-extend Article {
-  optional int32 followers_count = 101;
-  optional int32 likes_count= 102;
-}
-message Other {
-  optional string other_info = 1;
-  oneof test_oneof {
-    string code1 = 2;
-    string code2 = 3;
-  }
-}
+```protobuf
+    package "com.github.kuangcp";
+    message Article {
+    required int32 article_id = 1;
+    optional string article_excerpt = 2;
+    repeated string article_picture = 3;
+    optional int32  article_pagecount = 4 [default = 0];
+    enum ArticleType {
+        NOVEL = 0;
+        PROSE = 1;
+        PAPER = 2;
+        POETRY = 3;
+    }
+    optional ArticleType article_type = 5 [default = NOVEL];
+    message Author {
+        required string name = 1; //作者的名字
+        optional string phone = 2;
+    }
+    optional Author author = 6;
+    repeated int32 article_numberofwords = 7 [packed=true];
+    reserved  9, 10, 12 to 15;
+    extensions 100 to 1000;
+    }
+    extend Article {
+    optional int32 followers_count = 101;
+    optional int32 likes_count= 102;
+    }
+    message Other {
+    optional string other_info = 1;
+    oneof test_oneof {
+        string code1 = 2;
+        string code2 = 3;
+    }
+    }
 ```
 > 此外reserved关键字主要用于保留相关编号标签，主要是防止在更新proto文件删除了某些字段，而未来的使用者定义新的字段时重新使用了该编号标签。这会引起一些问题在获取老版本的消息时，譬如数据冲突，隐藏的一些bug等。所以一定要用reserved标记这些编号标签以保证不会被使用
 
@@ -299,28 +299,25 @@ _导入另一个proto定义_
 #### Linux上安装Protobuf
 > [参考博客: linux下Google的Protobuf安装及使用笔记](http://www.cnblogs.com/brainy/archive/2012/05/13/2498671.html) | [参考:proto buffer 安装 及 调用](http://dofound.blog.163.com/blog/static/1711432462013524111644655/)
 
-`编译安装`
-- [下载2.5](https://github.com/google/protobuf/releases/tag/v2.5.0) 并解压 
+- `下载二进制(推荐)` [各个版本,平台的 protoc](https://repo1.maven.org/maven2/com/google/protobuf/protoc/)
+
+- `编译安装`
+    - [下载2.5](https://github.com/google/protobuf/releases/tag/v2.5.0) 并解压 
     - 进入目录  `./configure` 
     -  `make` `make check` `sudo make install`
     - `protoc --version` 
 
 > 注意: ./configure 时, 默认会安装在/usr/local目录下，可以加`--prefix=/usr`来指定安装到/usr/lib下  
->> 如果不加, 上述参数就要执行 `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib`  
->> 当然,可以将这个环境变量的设置加在 .zshrc 或者 .bashrc 里  
->> 不然就会报错: `protoc: error while loading shared libraries: libprotobuf.so.8: cannot open shared object file: No such file or directory`
+>- 如果不加, 上述参数就要执行 `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib`  
+>- 当然,可以将这个环境变量的设置加在 .zshrc 或者 .bashrc 里  
+>- 不然就会报错: `protoc: error while loading shared libraries: libprotobuf.so.8: cannot open shared object file: No such file or directory`
 
-*****************
-`下载二进制` 
-
-- 最简单的方式 [各个版本,平台的 protoc](https://repo1.maven.org/maven2/com/google/protobuf/protoc/)
-
-#### 对于Java的使用
+#### Java中的使用
 > [Google Protocol Buffer 的使用和原理](https://www.ibm.com/developerworks/cn/linux/l-cn-gpb/index.html) `C++ 但是原理差不多`  
 > [protobuf-gradle-plugin](https://github.com/google/protobuf-gradle-plugin)
 
 `生成Java文件`  
-touch _hi.proto_
+_hi.proto_
 ```protobuf
 package lm;
 message helloworld{
@@ -347,6 +344,12 @@ _也可以使用该脚本更新协议_
     // 填充信息
     msg.setId(12);
 ```
+
+#### Python中的使用
+protoc 2.6.0 起才支持Python3, 低版本生成的都是python2
+
+示例 : `protoc --python_out=. *.proto`
+
 *********************
 
 ### Thrift
