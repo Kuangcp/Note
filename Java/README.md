@@ -20,7 +20,10 @@
 
 *************************************
 # Java
-> [Oracle: java tutorial](https://docs.oracle.com/javase/tutorial/java/)`入门时首先通读一遍` | [Oracle JavaSE](http://www.oracle.com/technetwork/java/javase/overview/index.html)   
+> [Oracle: java tutorial](https://docs.oracle.com/javase/tutorial/java/)`入门时首先通读一遍`  
+> [java turtorials](https://www.geeksforgeeks.org/java-tutorials/)`能在线运行`
+
+> [Oracle JavaSE](http://www.oracle.com/technetwork/java/javase/overview/index.html)     
 > [openjdk](http://openjdk.java.net/)|  [oracle-jdk download](http://www.oracle.com/technetwork/java/javase/downloads/index.html)  
 
 > [wiki: java language](https://en.wikipedia.org/wiki/Java_%28programming_language%29)  
