@@ -31,7 +31,7 @@ categories:
         1. [清理仓库大文件](#清理仓库大文件)
         1. [CRLF与LF](#crlf与lf)
 
-**目录 end**|_2019-02-20 09:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-16 00:37_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -201,14 +201,14 @@ categories:
 ```
 > 也就是说在仓库目录的父级目录 作为基础目录 (base-path)
 
-- `git daemon --export-all --base-path='BASE_PATH' --port=8080` 在 BASE_PATH 启动一个Git守护进程
+- `git daemon --export-all --base-path=$(pwd) --port=8080` 在 当前目录 启动一个Git守护进程
+    - `--enable=receive-pack` 为了安全，默认是仓库不能被修改， 添加这个参数就可以push了
     - `--export-all` 开放当前目录下所有项目
-    - `--enable=receive-pack` 为了安全，默认是仓库不能被修改，添加这个参数就可以push了
     - `--base-path=''` 指定开放的基本目录（指定开放别的路径）
     - `--port=8080` 指定开放的端口
     - `--verbose` 启动看到的日志信息更多
 
-- 克隆: `git clone git://localhost:8080/a` 
+- 克隆 `git clone git://localhost:8080/a` 
 
 ### HTTP 方式的 Git 服务器
 - 安装Apache： Web服务器
@@ -294,10 +294,14 @@ categories:
 ### CRLF与LF
 > 由于系统的不同 Windows是 CRLF *nix 是 LF Mac 是 CR | [wiki: CRLF](https://en.wikipedia.org/wiki/Newline)  
 
+Git提供了一个“换行符自动转换”功能。这个功能默认处于“自动模式”，当你在签出文件时，它试图将 UNIX 换行符（LF）替换为 Windows 的换行符（CRLF）；  
+当你在提交文件时，它又试图将 CRLF 替换为 LF。Git 的“换行符自动转换”功能听起来似乎很智能、很贴心，因为它试图一方面保持仓库内文件的一致性（UNIX 风格），一方面又保证本地文件的兼容性（Windows 风格）。但遗憾的是，这个功能是有 bug 的
+
 ```sh
     git config --global core.autocrlf false 
     git config --global core.safecrlf true
 ```
+
 > [参考博客: CRLF和LF](https://www.tuicool.com/articles/IJjQVb)
 > [参考博客: git 换行符LF与CRLF转换问题](https://www.cnblogs.com/sdgf/p/6237847.html)
 

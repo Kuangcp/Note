@@ -44,7 +44,7 @@ categories:
         1. [防火墙](#防火墙)
             1. [iptables](#iptables)
 
-**目录 end**|_2019-03-05 08:07_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-16 00:37_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux网络管理
 ## Tips
@@ -496,8 +496,6 @@ _客户端_
     - -j 指定是ACCEPT还是DROP，接收还是抛弃
 
 _有时候会发生这样的事情_
-1. 服务器的服务是正常启动的, 但是客户端连不上, 然后使用curl 去访问那个端口, 报错说 curl: (7) Failed to connect to 192.168.10.201 port 16888: 没有到主机的路由
+1. 服务器的服务是正常启动的, 但是客户端连不上, 然后使用curl 去访问那个端口, 报错说 curl: (7) Failed to connect to xxxx port 8080: 没有到主机的路由
 2. 那么这时候就要检查防火墙了
-
-
 

@@ -14,11 +14,11 @@ categories:
         1. [AccessibleObject](#accessibleobject)
         1. [Modifier](#modifier)
     1. [使用](#使用)
-        1. [获取属性](#获取属性)
-        1. [获取方法](#获取方法)
+        1. [属性](#属性)
+        1. [方法](#方法)
 1. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2019-02-15 15:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-15 10:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
@@ -56,7 +56,35 @@ categories:
 - [ ] 仍然存疑, 什么情况下才是 默认可访问的
 
 ### Modifier
-> The Modifier class provides static methods and constants to decode class and member access modifiers. 
+> The Modifier class provides static methods and constants to decode class and member access modifiers.   
+> [API: modifier](https://docs.oracle.com/javase/8/docs/api/index.html?java/lang/reflect/Modifier.html)
+
+`Java的访问权限信息啥的都是以2的N次幂来作为表示的 一共有12个常用修饰符 也就使用了12位来标记`
+```java
+    // 公共的, 意义一致
+    PUBLIC           = 0x00000001;
+    PRIVATE          = 0x00000002;
+    PROTECTED        = 0x00000004;
+    STATIC           = 0x00000008;
+    FINAL            = 0x00000010;
+    SYNCHRONIZED     = 0x00000020;
+    VOLATILE         = 0x00000040;
+    TRANSIENT        = 0x00000080;
+    NATIVE           = 0x00000100;
+    INTERFACE        = 0x00000200;
+    ABSTRACT         = 0x00000400;
+    STRICT           = 0x00000800;
+
+    // 不公开, 意义依据方法或者属性不定
+    BRIDGE    = 0x00000040;
+    VARARGS   = 0x00000080;
+    SYNTHETIC = 0x00001000;
+    ANNOTATION  = 0x00002000;
+    ENUM      = 0x00004000;
+    MANDATED  = 0x00008000;
+```
+- 判断属性是否被 final 修饰 `(field.getModifiers() & Modifier.FINAL) != 0`
+- 移除 final 修饰符 `field.getModifiers() & ~Modifier.FINAL`
 
 `去除属性上的final修饰符`
 ```java
@@ -65,7 +93,6 @@ categories:
     modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
 ```
 
-Java的访问权限信息啥的都是以2的N次幂来作为表示的
 *****************************
 ## 使用
 > [Github: 反射获取属性](https://github.com/Kuangcp/JavaBase/blob/master/java-class/src/test/java/com/github/kuangcp/reflects/ObtainFieldsTest.java)

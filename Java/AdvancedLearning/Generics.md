@@ -15,16 +15,22 @@ categories:
     1. [约束和局限性](#约束和局限性)
     1. [泛型类型的继承规则](#泛型类型的继承规则)
     1. [通配符类型](#通配符类型)
-        1. [子类型限定的通配符 extends](#子类型限定的通配符-extends)
-        1. [超类型限定的通配符 super](#超类型限定的通配符-super)
-            1. [应用](#应用)
+        1. [子类 类型限定的通配符 extends](#子类-类型限定的通配符-extends)
+        1. [基类 类型限定的通配符 super](#基类-类型限定的通配符-super)
         1. [无限定通配符](#无限定通配符)
         1. [通配符捕获](#通配符捕获)
     1. [反射和泛型](#反射和泛型)
 
-**目录 end**|_2019-01-28 14:25_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-14 14:17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 泛型
+> [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
+
+> 泛型程序设计划分为三个熟练级别 基本级别就是仅仅使用泛型类,典型的是像ArrayList这样的集合--不必考虑他们的工作方式和原因,大多数人会停留在这个级别.直到出现了什么问题. 当把不同的泛型类混合在一起的时候,或是对类型参数一无所知的遗留代码进行对接时,可能会看到含糊不清的错误消息.如果这样的话,就需要系统的进行学习Java泛型来系统地解决问题.  
+> 泛型类可以看作普通类的工厂  -- Java核心技术卷 2004(1.5)  
+
+***************
+
 > [开始学习的兴趣来源](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514015&idx=1&sn=12409f705c6d266e4cd062e78ce50be0&chksm=80d67c5cb7a1f54a68ed83580b63b4acded0df525bb046166db2c00623a6bba0de3c5ad71884&scene=21#wechat_redirect)
 
 [参考博客: Java总结篇系列：Java泛型](http://www.cnblogs.com/lwbqqyumidi/p/3837629.html)  
@@ -32,14 +38,10 @@ categories:
 那么参数化类型怎么理解呢？顾名思义，就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参），然后在使用/调用时传入具体的类型（类型实参）。  
 [参考博客: Java深度历险（五）——Java泛型](http://www.infoq.com/cn/articles/cf-java-generics)
 
-> 泛型程序设计划分为三个熟练级别 基本级别就是仅仅使用泛型类,典型的是像ArrayList这样的集合--不必考虑他们的工作方式和原因,大多数人会停留在这个级别.直到出现了什么问题. 当把不同的泛型类混合在一起的时候,或是对类型参数一无所知的遗留代码进行对接时,可能会看到含糊不清的错误消息.如果这样的话,就需要系统的进行学习Java泛型来系统地解决问题.  
-> 泛型类可以看作普通类的工厂  -- Java核心技术卷 2004(1.5)  
-
 ## 简单使用
 >- [简单泛型类示例](https://github.com/Kuangcp/JavaBase/blob/master/src/main/java/com/generic/simple/Pair.java)
 
 例如该行定义 : `public abstract class RoomCache<P extends PlayerBO, M extends MemberBO, V extends VideoDataBO<M>, R extends RoomBO<M, V>> extends AbstractCache<PlatformRoomId, R> {}`
-
 - 类型变量使用大写的一个字母这是代表:
     - `E` 集合的元素类型 
     - `K V` 表示表的关键字和值的类型 
@@ -51,6 +53,31 @@ categories:
     Type superClass = getClass().getGenericSuperclass();
     type = ((ParameterizedType) superClass).getActualTypeArguments()[1];
 ```
+
+> [参考博客: 使用通配符简化泛型使用](https://www.ibm.com/developerworks/cn/java/j-jtp04298.html)
+
+- 场景1:`public static <T extends Comparable<T>> T min(T[] list);`
+    - 限定了入参和返回值是 是实现了Comparable接口的某个类型 因为Comparable也是一个泛型类, 所以也进行限定类型
+    - 这样的写法要比 T extends Comparable 更为彻底
+    - 例如计算一个String数组的最小值 T 就是 String类型的, String是Comparable<String>的子类型
+        - 但是当处理GregorianCalendar, GregorianCalendar是Calendar的子类, 并且Calendar实现了`Comparable<Calendar>`
+        - 因此GregorianCalendar实现的是`Comparable<Calendar>`, 而不是Comparable<GregorianCalendar>
+        - 这种情况下 `public static <T extends Comparable<? super T>> T min(T[] list)` 就是安全的
+
+- 场景2: `public static <T extends ExcelTransform> List<T> importExcel(Class<T> target)`
+    - 该方法实现了, 传入继承了ExcelTransform接口的类对象, 得到该类的List集合
+    - `<T extends ExcelTransform> boolean` 这样写编译没报错, 那么就是说, 就是一个泛型的定义, 后面进行引用, 省的重复写
+    - 简单的写法就是 `public static <T> List<T> importExcel(Class<T> target)`
+
+- 场景3: Spring4.x 添加的泛型依赖注入 , 使用的JPA就是依赖该技术   [spring学习笔记（14）——泛型依赖注入](http://blog.csdn.net/u010837612/article/details/45582043)
+
+- 场景4: 泛型嵌套以及传递问题 [实际代码](https://github.com/Kuangcp/JavaBase/tree/master/java-generic/src/main/java/com/github/kuangcp/nesting)
+    - 本来的设想是只要声明了具有泛型约束的类, 就应该不用再声明该类中的泛型类型, 但是由于Java的泛型只是在编译前存在, 编译后就被擦除了, 所以没法做到这样简洁的约束
+
+> 对于应用程序员, 可能很快的学会掩盖这些声明, 想当然地认为库程序员做的都是正确的, 如果是一名库程序员, 一定要习惯于通配符  
+> 否则还要用户在代码中随意地添加强制类型转换直至可以通过编译.
+
+*********************
 
 ## 类型擦除
 - 不同于C++的泛型,C++是将模板类组合出来的生成一个新的类,Java则是进行类型擦除,然后再类型强转
@@ -193,9 +220,21 @@ categories:
 **************************************************************************
 
 ## 通配符类型
-- [ ] extends super 泛型约束仍然有问题
+> [Guidelines for Wildcard Use](https://docs.oracle.com/javase/tutorial/java/generics/wildcardGuidelines.html)
 
-### 子类型限定的通配符 extends
+- `<T> 可以看作 <T extends Object>`
+- `<?> 可以看作 <? extends Object>`
+
+- ? extends : 数据的提供方 也就是需要 get 操作
+- ? super : 数据的存储方 也就是需要 set 操作
+
+- 限定通配符总是包括自己
+- 如果你既想存，又想取，那就别用通配符
+- 不能同时声明泛型通配符上界和下界
+
+> `注意` 通配符的泛型约束一般是出现在基础库的API上(接口上, 方法上) 普通逻辑代码是不会用通配的
+
+### 子类 类型限定的通配符 extends
 > 通配符上限  顾名思义,就是限定为该类及其子类
 
 - 例如: 
@@ -216,9 +255,10 @@ categories:
     // 使用get方法就不会有问题, 泛型起作用了.将get返回值赋值给Human的引用也是完全合法的,这就是引入该统通配符的关键之处
 ```
 
-### 超类型限定的通配符 super
+### 基类 类型限定的通配符 super
 > 通配符下限  顾名思义就是限定为父类, 通配符限定和类型变量限定十分相似, 但是可以指定一个超类型限定(supertype bound)  
 > `? super Student` 这个通配符就限定为Student的所有超类型(super关键字已经十分准确的描述了这种关系)  
+
 >> 带有超类型限定的通配符的行为和前者相反,可以为方法提供参数,但不能使用返回值即 可以 set 但是不能get
 
 ```java
@@ -234,32 +274,8 @@ categories:
 >> 子类型限定: <? extends Human> 是限定了不能set,但是保证了get  
 >> 超类型限定: <? super Student> 限定了不能正确get,但是保证了set.  
 
-#### 应用
-> [参考博客: 使用通配符简化泛型使用](https://www.ibm.com/developerworks/cn/java/j-jtp04298.html)
-
-- 场景1:`public static <T extends Comparable<T>> T min(T[] list);`
-    - 限定了入参和返回值是 是实现了Comparable接口的某个类型 因为Comparable也是一个泛型类, 所以也进行限定类型
-    - 这样的写法要比 T extends Comparable 更为彻底
-    - 例如计算一个String数组的最小值 T 就是 String类型的, String是Comparable<String>的子类型
-        - 但是当处理GregorianCalendar, GregorianCalendar是Calendar的子类, 并且Calendar实现了`Comparable<Calendar>`
-        - 因此GregorianCalendar实现的是`Comparable<Calendar>`, 而不是Comparable<GregorianCalendar>
-        - 这种情况下 `public static <T extends Comparable<? super T>> T min(T[] list)` 就是安全的
-
-- 场景2: `public static <T extends ExcelTransform> List<T> importExcel(Class<T> target)`
-    - 该方法实现了, 传入继承了ExcelTransform接口的类对象, 得到该类的List集合
-    - `<T extends ExcelTransform> boolean` 这样写编译没报错, 那么就是说, 就是一个泛型的定义, 后面进行引用, 省的重复写
-    - 简单的写法就是 `public static <T> List<T> importExcel(Class<T> target)`
-
-- 场景3: Spring4.x 添加的泛型依赖注入 , 使用的JPA就是依赖该技术   [spring学习笔记（14）——泛型依赖注入](http://blog.csdn.net/u010837612/article/details/45582043)
-
-- 场景4: 泛型嵌套以及传递问题 [实际代码](https://github.com/Kuangcp/JavaBase/tree/master/java-generic/src/main/java/com/github/kuangcp/nesting)
-    - 本来的设想是只要声明了具有泛型约束的类, 就应该不用再声明该类中的泛型类型, 但是由于Java的泛型只是在编译前存在, 编译后就被擦除了, 所以没法做到这样简洁的约束
-
-> 对于应用程序员, 可能很快的学会掩盖这些声明, 想当然地认为库程序员做的都是正确的, 如果是一名库程序员, 一定要习惯于通配符  
-> 否则还要用户在代码中随意地添加强制类型转换直至可以通过编译.
-
 ### 无限定通配符
-> TODO 对其使用场景 尚有疑问,以后再解
+> [Unbounded Wildcards](https://docs.oracle.com/javase/tutorial/java/generics/unboundedWildcards.html)
 
 ```java
     // 例如 Pair<?>
@@ -270,7 +286,7 @@ categories:
 - 例如 [这个hasNull()方法](https://github.com/Kuangcp/JavaBase/blob/master/src/test/java/com/generic/simple/PairTest.java)用来测试一个pair是否包含了指定的对象, 他不需要实际的类型.
 
 ### 通配符捕获
-> TODO 学习和理解使用场景
+> [Wildcard Capture and Helper Methods](https://docs.oracle.com/javase/tutorial/java/generics/capture.html)
 
 - 如果编写一个交换的方法  
 ```java
@@ -303,6 +319,8 @@ categories:
     // 在这里,通配符捕获机制是不可避免的, 但是这种捕获只有在许多限制情况下才是合法的.
     // 对于编译器而言, 必须能够确信通配符表达的是单个, 确定的类型.
 ```
+
+*******************
 
 ## 反射和泛型
 > [Official Doc: Class](https://docs.oracle.com/javase/7/docs/api/java/lang/Class.html) | []()

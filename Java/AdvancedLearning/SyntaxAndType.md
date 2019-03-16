@@ -54,6 +54,7 @@ categories:
         1. [equals](#equals)
         1. [hashcode](#hashcode)
 1. [抽象类](#抽象类)
+1. [继承和接口](#继承和接口)
 1. [Object](#object)
     1. [VO](#vo)
     1. [PO](#po)
@@ -64,7 +65,7 @@ categories:
 1. [关键字](#关键字)
     1. [try](#try)
 
-**目录 end**|_2019-03-16 21:58_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-15 10:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 基础语法
 
@@ -325,15 +326,16 @@ _获取指定时间_ [获取指定时间的时间戳](https://blog.csdn.net/jsso
 
 ### equals
 > [Java提高篇——equals()与hashCode()方法详解](http://www.cnblogs.com/Qian123/p/5703507.html)
-
 > [参考博客: equals()和hashCode()区别？](https://www.cnblogs.com/jesonjason/p/5492208.html)
 
 Object中equals是比较内存地址， hashcode是比较散列函数的值， 后者性能更好，但是可能出现哈希碰撞  
 equals相等hashcode一定相等，equals不等 hashcode可能一致可能不一致
 
-> 重写equals方法
+> 重写equals方法  
+> [参考博客: 关于重写entity的equals()和hashCode()方法的必要性](https://blog.csdn.net/hiroyuki/article/details/6247244) 
 
-Double、Integer、Math String 都是重写了equals方法， 因此比较的都是值不是内存地址
+Double, Integer, Math, String 都是重写了equals方法， 因此比较的都是值不是内存地址
+
 ### hashcode
 
 java.lnag.Object中对hashCode的约定：
@@ -345,6 +347,11 @@ java.lnag.Object中对hashCode的约定：
 
 # 抽象类
 1. Concrete and Abstract Class
+
+******************
+
+# 继承和接口
+> [Lesson: Interfaces and Inheritance](https://docs.oracle.com/javase/tutorial/java/IandI/index.html)
 
 **************
 # Object 

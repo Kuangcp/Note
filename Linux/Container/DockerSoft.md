@@ -38,7 +38,7 @@ categories:
     1. [在线IDE](#在线ide)
     1. [图形化管理工具](#图形化管理工具)
 
-**目录 end**|_2019-02-19 17:26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-15 10:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker 安装应用
 > [https://docs.docker.com/samples/](https://docs.docker.com/samples/)  
@@ -141,9 +141,13 @@ categories:
 
 ### MySQL
 - [官方文档](https://hub.docker.com/_/mysql/)
-- `docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag`
+
+- 简单启动 `docker run --name some-mysql -p 3360:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag`
+    - 默认配置文件是 `/etc/mysql/conf.d/docker.cnf`
+
 - 挂载自定义配置文件 主要是配置编码 以及设定时区
     - `docker run --name mysql-5.6 -v 配置文件目录:/etc/mysql/conf.d  -e MYSQL_ROOT_PASSWORD=mythos1104 -e TZ=Asia/Shanghai -p 3360:3306 -d mysql:5.6`
+
 - 连接`mysql -h 127.0.0.1 -P 3360 -uroot -pmythos1104`
 
 ### MongoDB
@@ -152,7 +156,7 @@ categories:
 ### Redis
 > [Official](https://hub.docker.com/_/redis/)
 
-- 获取镜像：`docker pull redis ` 如果使用`redis:alpine`镜像可以更小，但是稳定就。。
+- 获取镜像：`docker pull redis ` 如果使用`redis:alpine`镜像可以更小
 - 运行默认配置的容器：`docker run --name test-redis -d redis`
 - 使用本地配置文件启动redis容器
 - `sudo docker run -v /myredis/conf/redis.conf:/usr/local/etc/redis/redis.conf --name myredis redis redis-server /usr/local/etc/redis/redis.conf`
