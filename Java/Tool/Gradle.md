@@ -45,7 +45,7 @@ categories:
     1. [构建Docker镜像](#构建docker镜像)
         1. [第二种插件方式](#第二种插件方式)
 
-**目录 end**|_2019-02-13 17:29_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-16 21:58_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # Gradle
@@ -193,67 +193,61 @@ _~/.gradle/init.gradle_
 ### SourceSet
 > [SourceSet](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.SourceSet.html)
 
+***************
+
 ### 依赖管理
-- 和Maven用的是同一种方式: groupId artifactId version 
+和Maven用的是同一种方式: groupId artifactId version 
 
-> [Official doc: dependency management](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_plugin_and_dependency_management)  
-> 4.10  Deprecated: `compile runtime testCompile testRuntime`
+> 注意: Java项目中 compile 在 Gradle 已弃用, 取而代之的是新增的多种定义方式 implementation api 等等  
+> 明确了各种定义方式在项目中依赖的范围, 看起来更完美, 但是复杂度大大提高了
 
-- `compile(Deprecated)`
-  - Compile time dependencies. Superseded by implementation.
+所以依据个人使用爱好, 简单易用就 compile testCompile 到底, 强迫症就 好好看官方文档 所有定义方式过一遍....
 
-- `implementation extends compile`
-    - Implementation only dependencies.
+在定义项目时
+- 可以直接使用简单原始的 [Java plugin](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_plugin_and_dependency_management)
 
-- `compileOnly`
-    - Compile time only dependencies, not used at runtime.
+- 也可以根据使用场景的不同使用不同的方案 [Building Java & JVM projects](https://docs.gradle.org/5.2/userguide/building_java_projects.html)
+    1. `Java libraries` 适用于: Java 库. 
+    1. `Java applications` 适用于: 可执行jar
+    1. `Java web applications` 适用于: Java Web项目, 打包成 war
+    1. `Java EE applications` 适用于: Java EE, 打包成 ear
+    1. `Java Platforms` 适用于: Java套件, 本身不包含任何代码, 只是一组依赖的聚合
 
-- `compileClasspath extends compile, compileOnly, implementation`
-    - Compile classpath, used when compiling source. Used by task compileJava.
-
-- `annotationProcessor`
-    - Annotation processors used during compilation.
-
-- `runtime(Deprecated) extends compile`
-    - Runtime dependencies. Superseded by runtimeOnly.
-
-- `runtimeOnly`
-    - Runtime only dependencies.
-
-- `runtimeClasspath extends runtimeOnly, runtime, implementation`
-    - Runtime classpath contains elements of the implementation, as well as runtime only elements.
-
-- `testCompile(Deprecated) extends compile`
-    - Additional dependencies for compiling tests. Superseded by testImplementation.
-
-- `testImplementation extends testCompile, implementation`
-    - Implementation only dependencies for tests.
-
-- `testCompileOnly`
-    - Additional dependencies only for compiling tests, not used at runtime.
-
-- `testCompileClasspath extends testCompile, testCompileOnly, testImplementation`
-    - Test compile classpath, used when compiling test sources. Used by task compileTestJava.
-
-- `testRuntime(Deprecated) extends runtime, testCompile`
-    - Additional dependencies for running tests only. Used by task test. Superseded by testRuntimeOnly.
-
-- `testRuntimeOnly extends runtimeOnly`
-    - Runtime only dependencies for running tests. Used by task test.
-
-- `testRuntimeClasspath extends testRuntimeOnly, testRuntime, testImplementation`
-    - Runtime classpath for running tests.
-
-- `archives`
-    - Artifacts (e.g. jars) produced by this project. Used by tasks uploadArchives.
-
-- `default extends runtime`
-    - The default configuration used by a project dependency on this project. Contains the artifacts - and dependencies required by this project at runtime.
-
-> 使用本地依赖 `compile files('lib/ojdbc-14.jar')`  lib 与 src 为同级目录  
-> 项目间依赖 `compile project(':projectName')`
 
 ***************
+> Java
+
+`implementation`  
+Gradle 中取代 compile 的方式, 使用范围比 compile 略小, 比如
+- B 项目中定义依赖: implementation A
+- C 项目中定义依赖: implementation B
+
+此时 C 项目不能在代码中使用 A 中的类, 因为在 C 项目中 A 是声明为 runtime的, 也就是只在运行时会用到  
+如果 B 使用的 compile, 那么 C 就能直接访问 A 中的类, 但是这是官方不推荐的
+
+******************
+
+> Java Libraries  
+
+`新增了 api 等定义方式`  [Java Library plugin](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_configurations_graph)
+
+`api`
+使用这种方式就可以更好的实现上文的需求, B 项目会被引用, 那么他就应该是一个库, 所以要考虑到 B 依赖的项目 是否也会被引用
+- B 项目中定义依赖: api A 
+
+C 项目就能使用 A 中的类了
+
+***************
+> Java applications
+
+就是 Java 上加上了 MainClass 的配置, 使得打包的jar包可执行
+
+**************
+其他依赖方式: 
+>1. 使用本地jar依赖 `implementation files('lib/ojdbc-14.jar')`  lib 与 src 为同级目录  
+>1. 项目间依赖 `implementation project(':projectName')`
+
+*********************
 
 #### 依赖排除以及指定依赖版本
 ```groovy
@@ -305,7 +299,7 @@ _~/.gradle/init.gradle_
         }
     ```
 1. 在 build.gradle 中引入 `apply from: 'dependency.gradle'`
-1. 使用依赖时 只需 `compile libs['junit']` 即使在子模块中也是如此使用
+1. 使用依赖时 只需 `implementation libs['junit']` 即使在子模块中也是如此使用
 
 ###  配置镜像源
 **阿里云**

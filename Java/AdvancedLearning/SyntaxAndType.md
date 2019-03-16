@@ -64,7 +64,7 @@ categories:
 1. [关键字](#关键字)
     1. [try](#try)
 
-**目录 end**|_2019-03-11 23:27_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-16 21:58_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 基础语法
 
@@ -97,7 +97,7 @@ categories:
 ## 自动拆装箱
 > 在日常Java开发中, 基本数据类型和包装类型是可以视为等价的(唯一差别就是包装类型能表达null), 就是因为自动拆装箱的存在
 
-| 基本数据类型 | 封装类型 |
+| 基本数据类型 | 封装类型 | 默认值 |
 |:----|:----|
 | byte | Byte |
 | char | Character |
@@ -111,9 +111,13 @@ categories:
 
 > 存在的意义: TODO 
 
-> 实现方式
+- 存储方式及位置的不同，基本类型是直接存储变量的值保存在堆栈中能高效的存取，封装类型需要通过引用指向实例，具体的实例保存在堆中。
+- 初始值的不同，封装类型的初始值为null，基本类型的的初始值视具体的类型而定，比如int类型的初始值为0，boolean类型为false；
+- 使用方式的不同, 在泛型时只能使用封装类型, 基本类型无法表达null
 
 > 弊端
+
+性能问题
 
 ## 基础数据类型
 > 八种基本数据类型 byte char boolean short int long float double
