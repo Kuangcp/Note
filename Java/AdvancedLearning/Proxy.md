@@ -15,7 +15,7 @@ categories:
         1. [cglib](#cglib)
         1. [ASM](#asm)
 
-**目录 end**|_2019-02-01 17:18_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-17 14:30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java中的代理
 
@@ -31,6 +31,7 @@ categories:
 就是我们经常提到的静态代理和动态代理中主要用到的类。静态代理和动态代理的主要区别就是代理类创建的时间不同。
 
 静态代理通常只代理一个类，动态代理是代理一个接口下的多个实现类。静态代理事先知道要代理的是什么，而动态代理不知道要代理什么东西，只有在运行时才知道。
+
 ## 静态代理
 > 静态代理类：由程序员创建或由特定工具自动生成源代码，再对其编译。在程序运行前，代理类的.class文件就已经存在了。
 

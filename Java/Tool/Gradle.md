@@ -45,7 +45,7 @@ categories:
     1. [构建Docker镜像](#构建docker镜像)
         1. [第二种插件方式](#第二种插件方式)
 
-**目录 end**|_2019-03-16 21:58_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-17 14:30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # Gradle
@@ -212,7 +212,6 @@ _~/.gradle/init.gradle_
     1. `Java web applications` 适用于: Java Web项目, 打包成 war
     1. `Java EE applications` 适用于: Java EE, 打包成 ear
     1. `Java Platforms` 适用于: Java套件, 本身不包含任何代码, 只是一组依赖的聚合
-
 
 ***************
 > Java
