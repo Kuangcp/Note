@@ -47,7 +47,7 @@ categories:
             1. [Gradle](#gradle)
             1. [Maven](#maven)
 
-**目录 end**|_2019-02-12 16:36_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-18 00:48_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -377,7 +377,8 @@ A 项目 compile
 
 > [将项目发布到 maven 中央仓库踩过的坑](http://blog.csdn.net/h3243212/article/details/72374363)
 
-> [发布Maven构件到中央仓库](https://www.xncoding.com/2018/01/27/tool/maven-central.html)
+> [发布Maven构件到中央仓库](https://www.xncoding.com/2018/01/27/tool/maven-central.html)  
+> [android-library-publish-to-jcenter](https://github.com/panpf/android-library-publish-to-jcenter)
 
 *********************
 # 配置私服

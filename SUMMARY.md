@@ -87,13 +87,13 @@
         * [ Java11 ](/Java/AdvancedLearning/Java11.md)
         * [ Java7 ](/Java/AdvancedLearning/Java7.md)
         * [ Java8 ](/Java/AdvancedLearning/Java8.md)
+        * [ JavaNetwork ](/Java/AdvancedLearning/JavaNetwork.md)
         * [ JavaReleaseVersion ](/Java/AdvancedLearning/JavaReleaseVersion.md)
         * [ JavaWeb ](/Java/AdvancedLearning/JavaWeb.md)
         * [ JvmPerformance ](/Java/AdvancedLearning/JvmPerformance.md)
         * [ MultipleLanguage ](/Java/AdvancedLearning/MultipleLanguage.md)
         * [ Proxy ](/Java/AdvancedLearning/Proxy.md)
         * [ Reflection ](/Java/AdvancedLearning/Reflection.md)
-        * [ Socket ](/Java/AdvancedLearning/Socket.md)
         * [ SyntaxAndType ](/Java/AdvancedLearning/SyntaxAndType.md)
         * [ Thread ](/Java/AdvancedLearning/Thread.md)
         * [ WebPerformance ](/Java/AdvancedLearning/WebPerformance.md)
@@ -230,11 +230,9 @@
         * [ CharacterEncoding ](/Skills/CS/CharacterEncoding.md)
         * [ CompilingPrinciple ](/Skills/CS/CompilingPrinciple.md)
         * [ Computer ](/Skills/CS/Computer.md)
-        * [ Network ](/Skills/CS/Network.md)
         * [ Profile ](/Skills/CS/Profile.md)
         * [ ProgramThinking ](/Skills/CS/ProgramThinking.md)
         * [ Time ](/Skills/CS/Time.md)
-        * [ WebSecurity ](/Skills/CS/WebSecurity.md)
     * 【 Skills/Councurrency 】
         * [ Concurrency ](/Skills/Councurrency/Concurrency.md)
     * 【 Skills/DevOps 】
@@ -248,6 +246,10 @@
         * [ RequirementsDocument ](/Skills/Document/RequirementsDocument.md)
     * 【 Skills/Ecology 】
         * [ MSA ](/Skills/Ecology/MSA.md)
+    * 【 Skills/Network 】
+        * [ HTTP ](/Skills/Network/HTTP.md)
+        * [ Network ](/Skills/Network/Network.md)
+        * [ WebSecurity ](/Skills/Network/WebSecurity.md)
     * 【 Skills/SoftwareEngineering 】
         * [ CodeExcellentCode ](/Skills/SoftwareEngineering/CodeExcellentCode.md)
     * 【 Skills/Spider 】
