@@ -21,7 +21,7 @@ categories:
         1. [Gradle](#gradle)
 1. [配置文件](#配置文件)
 
-**目录 end**|_2018-12-14 20:38_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-17 15:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 部署运行
 > 传统的可执行jar, war 以及Docker镜像
@@ -75,26 +75,26 @@ _MANIFEST.MF示例_
 
 **不依赖Jar的项目**
 1. 依据模板新建项目 `gradle init --type java-application` 
-```groovy
-// 主要是如下配置
-plugins {
-    // Apply the java plugin to add support for Java
-    id 'java'
-    // Apply the application plugin to add support for building an application
-    id 'application'
-}
-// Define the main class for the application
-mainClassName = 'App'
-```
-2. add this config to build.gradle
-```groovy
-    jar {
-        manifest {
-            attributes 'Main-Class': 'base.Main'
+    ```groovy
+        // 主要是如下配置
+        plugins {
+            // Apply the java plugin to add support for Java
+            id 'java'
+            // Apply the application plugin to add support for building an application
+            id 'application'
         }
-    }
-```
-3. run : `gradle clean jar && java -jar file`   
+        // Define the main class for the application
+        mainClassName = 'App'
+    ```
+1. add this config to build.gradle
+    ```groovy
+        jar {
+            manifest {
+                attributes 'Main-Class': 'base.Main'
+            }
+        }
+    ```
+1. run : `gradle clean jar && java -jar file`   
 
 **依赖Jar的项目**
 > 有好几种插件可以实现 1.[shadow插件官网文档](http://imperceptiblethoughts.com/shadow/) 
@@ -104,7 +104,9 @@ mainClassName = 'App'
 *************************
 
 ## 打包war
-> 最终将生成的war放到tomcat的webapps目录下即可
+> 供 Servlet 容器直接运行
+
+> 最终将生成的war 放到 tomcat 的 webapps 目录下或者Jetty的 webapps 目录下
 
 ********************
 

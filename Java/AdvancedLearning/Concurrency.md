@@ -38,7 +38,7 @@ categories:
     1. [分支合并框架](#分支合并框架)
     1. [Java内存模型](#java内存模型)
 
-**目录 end**|_2019-03-05 22:02_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-17 15:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java并发1
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/concurrents)  
@@ -121,7 +121,16 @@ categories:
     - 所有方法经证明都可在有限时间内终止
     - 所有方法都是同步的
     - 当处于非一致的状态时，不会调用其他实例的方法，以及调用非私有方法
-  
+
+- 不可变性：
+    - 这些对象或者没有状态（属性）或者只有final域。因为他们的状态不可变，所以是安全而又活泼，不会出现不一致的情况
+    - 初始化就会遇上问题，如果是需要初始化很多属性，可以采用工厂模式，但是构建器模式更好。
+        - 一个是实现了构建器泛型接口的内部静态类，另一个是构建不可变类实例的私有构造方法 
+        - [思想实现代码](./src/main/java/com/concurrents/old/BuildFactory.java)
+    - 不可变对象中的final域特别要注意：
+        - final声明的对象的引用是不可变的， 但是如果引用的是对象，该对象自身的属性的引用是可变的
+    - 不可变对象的使用十分广泛，但是开发效率不行，每修改对象的状态都要构建一个新对象
+
 ### synchronized
 - 在synchronized代码块执行完成后，对锁定对象所做的所有修改全部会在线程释放锁之前同步到内存中
     - 保证了在同一时刻,只有一个线程可以执行某一个方法或者代码块.
@@ -166,20 +175,21 @@ public int current(){
 ### volatile
 > [Java多线程i++线程安全问题，volatile和AtomicInteger解释？](https://segmentfault.com/q/1010000006733274)
 
-- 线程所读的值在使用之前总会从内存中读出来
+- 线程所读的值在使用之前总会从内存中读入线程缓存
 - 线程所写的值总会在指令完成之前同步回内存中
     - 可以把围绕该域的操作看成成是一个小的同步块
     - volatile 变量不会引入线程锁，所以不可能发生死锁
     - [ ] TODO 矛盾
-    - volatile 变量是真正线程安全的，但只有写入时不依赖当前状态（读取的状态）的变量才应该声明为volatile变量
+    - volatile 变量是真正线程安全的，但`只有写入时不依赖当前状态（读取的状态）的变量才应该声明为volatile变量`
 
-#### 正确使用
-> 打开Netty中NioEventLoop的源码 有一个属性 `private volatile int ioRatio = 50;` 该变量是用于控制IO操作和其他任务运行比例的
 - volatile是Java提供的最轻量级的同步机制,Java内存模型为volatile专门定义了一些特殊的访问规则:
     - 当一个变量被volatile修饰后:
-        - 线程可见性: 当一个线程修改了被volatile修饰的变量后,无论是否加锁,其他线程都能立即看到最新的修改
-        - 禁止指令重排序优化, 普通的变量仅仅保证在该方法的执行过程中, 所有依赖赋值结果的地方都能获取正确的结果
-            - 而不能保证变量赋值操作的顺序和程序代码的执行顺序一致
+    - `线程可见性`  当一个线程修改了被volatile修饰的变量后,无论是否加锁,其他线程都能立即看到最新的修改
+    - `禁止指令重排序优化` 普通的变量仅仅保证在该方法的执行过程中, 所有依赖赋值结果的地方都能获取正确的结果
+        - 而不能保证变量赋值操作的顺序和程序代码的执行顺序一致
+#### 正确使用
+> 打开Netty中NioEventLoop的源码 有一个属性 `private volatile int ioRatio = 50;` 该变量是用于控制IO操作和其他任务运行比例的
+
 ```java
 public class ResortJavaDemo {
     private static boolean stop;
@@ -218,14 +228,6 @@ if (!stop)
 >> 如果有多个线程并发`写`操作,仍然需要使用`锁`或者`线程安全的容器`或者`原子变量`来代替
 
 ****************************
-- 不可变性：
-    - 这些对象或者没有状态（属性）或者只有final域。因为他们的状态不可变，所以是安全而又活泼，不会出现不一致的情况
-    - 初始化就会遇上问题，如果是需要初始化很多属性，可以采用工厂模式，但是构建器模式更好。
-        - 一个是实现了构建器泛型接口的内部静态类，另一个是构建不可变类实例的私有构造方法 
-        - [思想实现代码](./src/main/java/com/concurrents/old/BuildFactory.java)
-    - 不可变对象中的final域特别要注意：
-        - final声明的对象的引用是不可变的， 但是如果引用的是对象，该对象自身的属性的引用是可变的
-    - 不可变对象的使用十分广泛，但是开发效率不行，每修改对象的状态都要构建一个新对象
 
 ## 现代并发JUC包
 > 简称为J.U.C (java.util.concurrent) | [The j.u.c Synchronizer Framework中文翻译版](http://ifeve.com/aqs/)
