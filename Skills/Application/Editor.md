@@ -218,6 +218,9 @@ strict-ssl=false
 ## Nano
 - 模式没有vi系列复杂，使用简单，安装占用小
 
+## Micro
+> [Github: micro](https://github.com/zyedidia/micro)
+
 ************
 ## fte-terminal
 - 文件树浏览，快速打开文件进行修改是比较方便的
