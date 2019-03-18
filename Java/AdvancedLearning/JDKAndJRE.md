@@ -42,14 +42,6 @@ categories:
     └── THIRDPARTYLICENSEREADME.txt
 ```
 
-- bin目录下常用工具: 
-    - java javac javap jar 
-    - jconsole jmap jmc jps jstack jstat jstatd jvisualvm
-
->  [Useage: Java 性能分析](/Java/AdvancedLearning/JavaPerformance.md)
-
-*********************
-
 > 以下是Java11的目录结构
 ```
     ├── bin
@@ -61,6 +53,22 @@ categories:
     ├── README.html
     └── release
 ```
+
+- bin目录下常用工具: 
+    - java javac javap jar 
+    - jconsole jmap jmc jps jstack jstat jstatd jvisualvm
+
+>  [Useage: Java 性能分析](/Java/AdvancedLearning/JavaPerformance.md)
+
+### java
+
+#### 环境变量的使用
+> java [-options] -jar jarfile [args...]
+
+> [What is the java -D command-line option good for? ](https://coderanch.com/t/178539/certification/java-command-line-option-good)
+
+- 传入 `java -Dkey=true -jar xxx.jar` -D 参数先于 -jar
+- 获取 `System.getProperty("key", "defaultvalue");`
 
 *******************
 ## Oracle JRE

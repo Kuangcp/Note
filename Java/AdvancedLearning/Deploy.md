@@ -70,6 +70,8 @@ _MANIFEST.MF示例_
 - Springboot项目能够做到, 其实就是Main方法, 然后配置了一个Servlet的加载类就可以当war用了
     - [通过Maven构建打包Spring boot，并将config配置文件提取到jar文件外](http://lib.csdn.net/article/java/65574)
 
+> [一个项目生成若干不同内容的Jar](https://stackoverflow.com/questions/2424015/maven-best-practice-for-generating-multiple-jars-with-different-filtered-classes)
+
 ### Gradle
 > [参考博客: Building Java Applications](https://guides.gradle.org/building-java-applications/)
 
