@@ -95,7 +95,7 @@ _重启_
 - 重启MySQL ：`sudo systemctl restart mysql`
 
 ### Docker安装
->[Docker安装MySQL](/Linux/Container/Container/DockerSoft.md#mysql) | [博客：Mysql有没有必要Docker化](http://www.infoq.com/cn/articles/can-mysql-run-in-docker?utm_campaign=rightbar_v2&utm_source=infoq&utm_medium=articles_link&utm_content=link_text)
+>[Docker安装MySQL](/Linux/Container/DockerSoft.md##MySQL) | [博客：Mysql有没有必要Docker化](http://www.infoq.com/cn/articles/can-mysql-run-in-docker?utm_campaign=rightbar_v2&utm_source=infoq&utm_medium=articles_link&utm_content=link_text)
 
 ### 图形化客户端
 > windows上就直接 MySQL-Font HeidiSQL Linux就终端了..虽然wine也能装这俩 | [10个Mysql图形客户端](http://www.linuxidc.com/Linux/2015-01/111421.htm)
