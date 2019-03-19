@@ -16,10 +16,8 @@ categories:
     1. [配置记住密码](#配置记住密码)
     1. [简单使用](#简单使用)
         1. [配置GPG](#配置gpg)
-        1. [实验楼上使用Github](#实验楼上使用github)
         1. [码云](#码云)
     1. [git初始化配置](#git初始化配置)
-    1. [Github用法](#github用法)
         1. [终端中显示当前分支](#终端中显示当前分支)
         1. [命令的自动补全](#命令的自动补全)
     1. [Git服务器](#git服务器)
@@ -31,7 +29,7 @@ categories:
         1. [清理仓库大文件](#清理仓库大文件)
         1. [CRLF与LF](#crlf与lf)
 
-**目录 end**|_2019-03-16 00:37_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-19 18:05_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -125,15 +123,6 @@ categories:
 
 - 能够提高安全性,但是麻烦,不过向来这两者就是不可兼得的.
 
-*********************
-### 实验楼上使用Github
-> 方便学习使用 
-
-- `git clone URL` 复制下来，默认是master
-- `git branch 新分支名` 新建一个分支，切换过去，使用的就是这个新分支放代码
-- `git push origin 新分支名` add commit 之后就push
-- `git fetch origin 已有分支` 下拉别的分支代码
-
 ### 码云
 > [帮助文档](http://git.mydoc.io/) 
 
@@ -148,13 +137,6 @@ categories:
 ```
 > 如果是多个账号使用同一台电脑就不要配置这个，单独配置每个仓库下的用户名，邮箱即可  
 > `git config user.name ""`
-
-## Github用法
-> 其他平台类似
-
-- 网页上Markdown语法 
-    - @用户名， @组织名 ；#编号 会连接到该仓库对应的Issue编号 。
-    - 通过 用户名/仓库名 #编号 来指定仓库的指定Issue
 
 ********************
 ### 终端中显示当前分支

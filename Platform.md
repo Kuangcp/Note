@@ -12,6 +12,7 @@ categories:
     1. [Gitee](#gitee)
         1. [URL规则](#url规则)
     1. [Github](#github)
+        1. [.gitattributes](#gitattributes)
         1. [URL规则](#url规则)
         1. [MarkDown规则](#markdown规则)
         1. [wiki](#wiki)
@@ -62,7 +63,7 @@ categories:
 1. [测试平台](#测试平台)
 1. [培训](#培训)
 
-**目录 end**|_2019-01-15 15:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-19 18:05_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 
 # 代码托管平台
@@ -90,6 +91,19 @@ categories:
     - 再进行`git push -u origin master` 才能正确提交代码，如果不pull，提交是注定失败的，还会扰乱分支图
 
 - [少有人知的 GitHub 使用技巧](https://segmentfault.com/a/1190000000475547)
+
+- 网页上Markdown语法 
+    - @用户名， @组织名 ；#编号 会连接到该仓库对应的Issue编号 。
+    - 通过 用户名/仓库名 #编号 来指定仓库的指定Issue
+
+### .gitattributes
+> 修改文件后缀到编程语言的映射
+```conf
+    # Auto detect text files and perform LF normalization
+    * text=auto
+    *.sh linguist-language=java
+    *.py linguist-language=java
+```
 ### URL规则
 > github仓库的URL规则
 >> git.io 是短网址服务

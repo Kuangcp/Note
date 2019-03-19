@@ -44,7 +44,7 @@ categories:
         1. [防火墙](#防火墙)
             1. [iptables](#iptables)
 
-**目录 end**|_2019-03-16 00:37_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-19 18:05_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux网络管理
 ## Tips
@@ -156,6 +156,8 @@ _netstat工具_ 或者 更好用的 [iproute2](#3iproute2)
 1. Debian系查看路由路径 `traceroute -I stackoverflow.com`
 
 ### curl
+> [Official site](https://curl.haxx.se/)
+
 1. 不输出，重定向到*黑洞设备*  ` curl -s -o /dev/null URL`
 1. 格式化返回的json数据：`curl xxxx|python -m json.tool `
 1. 使用基础认证 发送JSON数据 `curl -i -H "Content-Type:application/json" -u admin:secret -X POST --data '{"title":"1","content":"1"}' http://tomcat.kcp/email/content`

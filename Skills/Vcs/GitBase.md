@@ -37,13 +37,12 @@ categories:
             1. [gc](#gc)
             1. [clean](#clean)
         1. [远程](#远程)
-            1. [Github上的fork](#github上的fork)
-            1. [Github上PR](#github上pr)
             1. [remote](#remote)
             1. [push](#push)
             1. [pull](#pull)
             1. [fetch](#fetch)
         1. [分支](#分支)
+            1. [show-branch](#show-branch)
             1. [stash](#stash)
             1. [branch](#branch)
             1. [checkout](#checkout)
@@ -65,7 +64,7 @@ categories:
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-02-28 17:43_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-19 18:05_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -362,7 +361,10 @@ TODO 存疑
 
 - 指定本地开发分支和远程的绑定关系 `git branch --set-upstream dev origin/dev` 而且 一个本地库是能够绑定多个远程的
 
-#### Github上的fork
+*****************
+
+> Github上的fork
+
 **合并对方最新代码**
 > 1. 首先fork一个项目, 然后clone自己所属的该项目下来,假设 原作者为A 自己为B  
 > 1. 添加原作者项目的URL 到该项目的远程分支列表中 `git add remote A A_URL`  
@@ -371,8 +373,13 @@ TODO 存疑
 > 1. 合并两个分支代码 `git merge --no-ff A/master`  
 > 1. push即可  
 
-#### Github上PR
-> [Using git to prepare your PR to have a clean history](https://github.com/mockito/mockito/wiki/Using-git-to-prepare-your-PR-to-have-a-clean-history)
+************************
+
+> Github上PR  
+
+[Using git to prepare your PR to have a clean history](https://github.com/mockito/mockito/wiki/Using-git-to-prepare-your-PR-to-have-a-clean-history)
+
+********************
 
 #### remote
 > [Official Doc](https://git-scm.com/docs/git-remote)

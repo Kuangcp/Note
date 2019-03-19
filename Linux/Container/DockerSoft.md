@@ -38,7 +38,7 @@ categories:
     1. [在线IDE](#在线ide)
     1. [图形化管理工具](#图形化管理工具)
 
-**目录 end**|_2019-03-18 00:48_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-19 18:05_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Docker 安装应用
 > [https://docs.docker.com/samples/](https://docs.docker.com/samples/)  
@@ -140,13 +140,13 @@ categories:
 - [社区文档](https://hub.docker.com/r/wnameless/oracle-xe-11g/)`简单粗暴`
 
 ### MySQL
-- [官方文档](https://hub.docker.com/_/mysql/)
+- [Docker hub: Mysql](https://hub.docker.com/_/mysql/)
 
 - 简单启动 `docker run --name some-mysql -p 3360:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag`
     - 默认配置文件是 `/etc/mysql/conf.d/docker.cnf`
 
 - 挂载自定义配置文件 主要是配置编码 以及设定时区
-    - `docker run --name mysql-5.6 -v 配置文件目录:/etc/mysql/conf.d  -e MYSQL_ROOT_PASSWORD=mythos1104 -e TZ=Asia/Shanghai -p 3360:3306 -d mysql:5.6`
+    - `docker run --name mysql-5.7 -v 配置文件目录:/etc/mysql/conf.d  -e MYSQL_ROOT_PASSWORD=mythos1104 -e TZ=Asia/Shanghai -p 3360:3306 -d mysql:5.7`
 
 - 连接`mysql -h 127.0.0.1 -P 3360 -uroot -pmythos1104`
 
