@@ -53,7 +53,7 @@
         * [ 注解 ](/Java/AdvancedLearning/Annotation.md)
         * [ 类文件 ](/Java/AdvancedLearning/ClassFile.md)
         * [ 集合 ](/Java/AdvancedLearning/Collection.md)
-        * [ 并发 ](/Java/AdvancedLearning/Concurrents.md)
+        * [ 并发 ](/Java/AdvancedLearning/Concurrency.md)
         * [ 部署 ](/Java/AdvancedLearning/Deploy.md)
         * [ 异常 ](/Java/AdvancedLearning/Exception.md)
         * [ 继承与接口 ](/Java/AdvancedLearning/ExtendsAndInterface.md)
