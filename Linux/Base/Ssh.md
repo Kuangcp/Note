@@ -10,7 +10,7 @@ categories:
 **目录 start**
  
 1. [SSH](#ssh)
-    1. [1.安装软件](#1安装软件)
+    1. [1.安装](#1安装)
     1. [2.复制粘贴建立密钥对](#2复制粘贴建立密钥对)
     1. [2.使用脚本更简单](#2使用脚本更简单)
     1. [3.遇到的问题](#3遇到的问题)
@@ -18,8 +18,9 @@ categories:
     1. [5.多密钥对](#5多密钥对)
     1. [6.访问图形化](#6访问图形化)
     1. [7.ssh登录并执行一系列命令](#7ssh登录并执行一系列命令)
+        1. [环境变量问题](#环境变量问题)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-20 17:29_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SSH
 > [Linux启动或禁止SSH用户及IP的登录](https://blog.csdn.net/linghe301/article/details/8211305)
@@ -27,27 +28,28 @@ categories:
 > [SSH原理与运用（一）：远程登录](http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html)
 > [SSH原理与运用（二）：远程操作与端口转发](http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html)
 
-- `ssh user@host` 默认22端口登录系统  
-- `ssh -p port user@host` 指定端口登录  
-- `ssh -T user@host` 测试能否登录上    
+- 默认22端口登录系统`ssh user@host`   
+- 指定端口登录 `ssh -p port user@host`   
+- 测试能否登录上 `ssh -T user@host`     
 
 > `ssh -i 私钥绝对路径 user@host` 采用指定私钥登录(一般默认是`.ssh/id_rsa`)  
 >> 私钥一定要是 600 权限
 >> 去除私钥的口令 `openssl rsa -in ~/.ssh/id_rsa -out ~/.ssh/id_rsa_new` _在GitForWindows里面虽然有openssl,但是这个命令却执行不了_
 
-> 使用密码方式免去密码登录(因为一些奇怪的需求, 又想省事)
->> 1. 安装sshpass [完整教程](https://linux.cn/article-8086-1.html)
->> 2. sshpass -p '密码' 后接正常的ssh命令 ssh user@host
+使用密码方式免去密码登录
+>1. 安装sshpass [完整教程](https://linux.cn/article-8086-1.html)
+>2. sshpass -p '密码' 后接正常的ssh命令 ssh user@host
 
 > ssh登录然后执行一系列命令, sudo会执行不了 需要加 -t 参数才行 
 
+******************
 
-## 1.安装软件
-_客户端安装软件_
+## 1.安装
+_客户端_
 - `sudo spt-get install openssh-client`
-- 生成密钥对 `ssh-keygen` 可以设置密码，为了方便也可以全部采用默认
+- 生成密钥对 `ssh-keygen` 可以设置密码，为了方便也可以全部采用默认(不安全)
 
-_服务端安装软件_
+_服务端_
 - 安装：`sudo apt-get install openssh-server`
 - 启动：`sudo /etc/init.d/ssh start` 或者 `service ssh start` 
 - 更改配置文件修改默认端口 `/etc/ssh/sshd_config`
@@ -87,7 +89,9 @@ _服务器端_
     echo "PermitRootLogin yes" >> /etc/ssh/sshd_config ;\
 ```
 - 或者尝试 `echo "sshd: ALL" >> /etc/hosts.allow && service sshd restart`
+
 ********
+
 _这是什么问题,这么6的么, 配置好了公钥_
 ```sh
 $ ssh -p 8888 git@184.170.220.117
@@ -111,6 +115,7 @@ _emmm.出现这样的输出竟然是连接上了,,,_
         IdentityFile  ~/.ssh/id_rsa.pub
         IdentitiesOnly yes
 ```
+
 _参数解释_
 ```
     HostName 指定登录的主机名或IP地址
@@ -125,6 +130,7 @@ _参数解释_
     - 不觉得有多方便，还不如 alias进行配置
 
 > 修改欢迎信息 /etc/motd
+
 ## 5.多密钥对
 > [参考博客](http://blog.csdn.net/black_ox/article/details/17753943)   
 
@@ -139,6 +145,7 @@ _参数解释_
         - `git remote set-url origin git@rusher_gitlab:Rusher/helloworld`
     - 如果是root用户的项目:
         - `git remote set-url origin git@root_gitlab:root/helloworld`
+
 _config_
 ```
     Host default
@@ -163,3 +170,6 @@ _config_
     ssh user@host 'cmd \
         && cmd \'
 ```
+
+### 环境变量问题
+
