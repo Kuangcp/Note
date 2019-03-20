@@ -34,7 +34,7 @@ categories:
     1. [Mageia](#mageia)
     1. [CDLinux](#cdlinux)
 
-**目录 end**|_2019-01-07 12:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-20 17:29_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux各个发行版本使用体验
 
@@ -119,11 +119,14 @@ _服务器_
     - 蓝牙模块时隐时现
 
 `遇到的bug记录`
-- 2018-01-09 19:29:25 休眠结束系统卡死,然后重启输入法没有窗口,然后升级到最新重启还是没有,杀掉搜狗进程再启动解决
+- 休眠结束系统卡死,然后重启输入法没有窗口 2018-01-09 19:29:25 
+    - 杀掉搜狗进程再启动解决
 
-- 2018-03-15 09:25:47 [公司电脑安装Windows10 和 Deepin双系统](/MyBlog/2018-3-15-install-deepin.md)
+- 2018-03-15 09:25:47 
+    [公司电脑安装Windows10 和 Deepin双系统](/MyBlog/2018-3-15-install-deepin.md)
 
-- 2018-05-24 15:08:49 `Gtk-WARNING **: 无法在模块路径中找到主题引擎：“adwaita”`， 安装 这个包 gnome-themes-standard
+- `Gtk-WARNING **: 无法在模块路径中找到主题引擎：“adwaita”` 2018-05-24 15:08:49 
+    - 安装 这个包 gnome-themes-standard
 
 - 2018-06-15 19:50:40 deepin-wm 进程, 也就是Deepin的桌面管理器, 启动久了之后就会发生内存占用非常大的情况, 关闭窗口特效, 再打开就好了
 
@@ -146,6 +149,10 @@ _服务器_
     - 因为公司周末断电,系统没有关机, 导致无法开机, 直接黑屏, 原因应该是突然断电导致文件系统不一致 
     - 解决方案, 用U盘进系统, 挂载系统分区, 使用 fsck 工具修复文件系统 `fsck.ext4 -vy /dev/sdaXXX`
     - 由于我装了三个系统, windows10 deepin manjaro, 所以直接进manjaro, 执行的命令
+
+- deepin-wm 有内存泄露, 打算关闭开启窗口效果来解决, 但是关掉后就打不开了 failed to enable... 2019-03-20 17:20:07
+    - [issue](https://github.com/linuxdeepin/developer-center/issues/444)
+    - `(killall deepin-wm-switcher; deepin-wm --replace &)` 这样就能守护进程方式在运行了
 
 #### 关于显卡
 > [参考博客: 显卡驱动作死录](https://www.jianshu.com/p/f53c8223bac6)
