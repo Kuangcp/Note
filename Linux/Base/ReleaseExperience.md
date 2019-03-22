@@ -34,7 +34,7 @@ categories:
     1. [Mageia](#mageia)
     1. [CDLinux](#cdlinux)
 
-**目录 end**|_2019-03-20 17:29_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-22 23:35_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Linux各个发行版本使用体验
 
@@ -156,6 +156,9 @@ _服务器_
 
 #### 关于显卡
 > [参考博客: 显卡驱动作死录](https://www.jianshu.com/p/f53c8223bac6)
+
+> [How to enable hibernate in Deepin? ](https://bbs.deepin.org/forum.php?mod=viewthread&tid=145013)
+> [ PowerManagement/Hibernate](https://help.ubuntu.com/community/PowerManagement/Hibernate)
 
 > 个人折腾的整理
 当前系统为 Deepin15.7 已经支持多种解决方案了, 还有一个 `深度显卡驱动管理器`
