@@ -66,7 +66,7 @@ categories:
 1. [关键字](#关键字)
     1. [try](#try)
 
-**目录 end**|_2019-03-18 00:48_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-23 17:03_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 基础语法
 
@@ -259,6 +259,8 @@ Void.TYPE == void.class
     Tool.INSTANCE.getNum();
 ```
 
+> [参考博客: 关于java枚举类型的疑问 ](https://segmentfault.com/q/1010000000306839)
+> [compilation-error-switch-with-enum](https://stackoverflow.com/questions/5551568/compilation-error-switch-with-enum)
 
 ***************************
 ## 内部类

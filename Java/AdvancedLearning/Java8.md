@@ -19,6 +19,7 @@ categories:
         1. [行为参数化](#行为参数化)
         1. [Lambda基础](#lambda基础)
         1. [原始类型特化](#原始类型特化)
+        1. [函数式接口](#函数式接口)
         1. [类型检查、类型推断以及限制](#类型检查、类型推断以及限制)
             1. [类型检查](#类型检查)
             1. [同样的Lambda 不同的函数式接口](#同样的lambda-不同的函数式接口)
@@ -75,7 +76,7 @@ categories:
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-**目录 end**|_2019-03-09 11:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-23 17:03_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [doc: API](https://docs.oracle.com/javase/8/docs/api/) | [doc下载](https://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html)
@@ -217,14 +218,19 @@ categories:
 > Java类型要么是引用类型（比如Byte、 Integer、 Object、 List） ，要么是原始类型（比如int、 double、 byte、 char）。
 但是泛型（比如`Consumer<T>`中的T）只能绑定到引用类型。这是由泛型内部的实现方式造成的。
 因此，在Java里有一个将原始类型转换为对应的引用类型的机制。这个机制叫作装箱（boxing） 。
-相反的操作，也就是将引用类型转换为对应的原始类型，叫作拆箱（unboxing）。 Java还有一个自动装箱机制来帮助程序员执行这一任务：装箱和拆箱操作是自动完成的。但这在性能方面是要付出代价的。装箱后的值本质上就是把原始类型包裹起来，并保存在堆里。因此，装箱后的值需要更多的内存，
-并需要额外的内存搜索来获取被包裹的原始值。Java 8为我们前面所说的函数式接口带来了一个专门的版本，以便在输入和输出都是原始类型时避免自动装箱的操作。
+相反的操作，也就是将引用类型转换为对应的原始类型，叫作拆箱（unboxing）。 Java还有一个自动装箱机制来帮助程序员执行这一任务：装箱和拆箱操作是自动完成的。
+但这在性能方面是要付出代价的。装箱后的值本质上就是把原始类型包裹起来，并保存在堆里。因此，装箱后的值需要更多的内存，并需要额外的内存搜索来获取被包裹的原始值。
+Java 8为我们前面所说的函数式接口带来了一个专门的版本，以便在输入和输出都是原始类型时避免自动装箱的操作。
 比如，在下面的代码中，使用IntPredicate就避免了对值1000进行装箱操作，但要是用Predicate<Integer>就会把参数1000装箱到一个Integer对象中 -- Java8 in action
 
 一般来说，针对专门的输入参数类型的函数式接口的名称都要加上对应的原始类型前缀，比如DoublePredicate、 IntConsumer、 LongBinaryOperator、 IntFunction等。 
 Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 IntToDoubleFunction等。
+
+### 函数式接口
+
 请记得这只是一个起点。如果有需要，你可以自己设计一个。请记住， (T,U) -> R的表达方式展示了应当如何思考一个函数描述符。
 表的左侧代表了参数类型。这里它代表一个函数，具有两个参数，分别为泛型T和U，返回类型为R。
+
 
 | 函数式接口 | 函数描述符 | 原始类型特化 |
 |:----|:----|:----|
@@ -272,6 +278,7 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
     ```
 
 ### 类型检查、类型推断以及限制
+
 当我们第一次提到Lambda表达式时，说它可以为函数式接口生成一个实例。然而， Lambda 表达式本身并不包含它在实现哪个函数式接口的信息。
 
 #### 类型检查

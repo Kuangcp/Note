@@ -18,9 +18,10 @@ categories:
     1. [5.多密钥对](#5多密钥对)
     1. [6.访问图形化](#6访问图形化)
     1. [7.ssh登录并执行一系列命令](#7ssh登录并执行一系列命令)
-        1. [环境变量问题](#环境变量问题)
+1. [Tips](#tips)
+    1. [通过SSH执行命令时的环境变量问题](#通过ssh执行命令时的环境变量问题)
 
-**目录 end**|_2019-03-20 17:29_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-23 17:03_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SSH
 > [Linux启动或禁止SSH用户及IP的登录](https://blog.csdn.net/linghe301/article/details/8211305)
@@ -171,5 +172,13 @@ _config_
         && cmd \'
 ```
 
-### 环境变量问题
+# Tips
+## 通过SSH执行命令时的环境变量问题
+
+- [ ] 根本原因是登录Shell 等区别和机制的不同
+
+> [参考博客: ssh连接远程主机执行脚本的环境变量问题](https://blog.csdn.net/whitehack/article/details/51705889)
+
+- 手动加载环境变量 `ssh name@host "source ~/.bashrc && java -version"`
+
 
