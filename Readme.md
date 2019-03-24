@@ -136,7 +136,7 @@
         * [ LinuxDirectoryStructure ](/Linux/Base/LinuxDirectoryStructure.md)
         * [ LinuxFile ](/Linux/Base/LinuxFile.md)
         * [ LinuxManual ](/Linux/Base/LinuxManual.md)
-        * [ LinuxNet ](/Linux/Base/LinuxNet.md)
+        * [ LinuxNet ](/Linux/Base/LinuxNetwork.md)
         * [ LinuxPerformance ](/Linux/Base/LinuxPerformance.md)
         * [ LinuxProblem ](/Linux/Base/LinuxProblem.md)
         * [ LinuxStreamEditor ](/Linux/Base/LinuxStreamEditor.md)

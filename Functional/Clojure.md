@@ -22,6 +22,9 @@ categories:
 ## 安装
 - [Clojure官网下载地址](https://clojure.org/community/downloads)
     - 解压后运行jar包进入REPL `java -cp clojure-1.8.0.jar clojure.main`
+- Linux 下推荐 [leiningen](https://leiningen.org/)
+    - Arch  
+    `yay -S leiningen`
 
 ## 基础
 
