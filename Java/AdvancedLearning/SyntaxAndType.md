@@ -124,6 +124,8 @@ categories:
 ## 基础数据类型
 > 八种基本数据类型 byte char boolean short int long float double
 
+> [The Java™ Tutorials: Primitive Data Types](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)  
+
 > [参考博客: Java 有值类型吗？](http://www.yinwang.org/blog-cn/2016/06/08/java-value-type)
 
 确实, 这样来看Java没有值类型才是更统一的, 不过有没有对程序都是一样的, 因为Java没有解引用, 基本数据类型又没有成员, 所以值还是引用, 没差
@@ -180,12 +182,14 @@ Void.TYPE == void.class
 ### Double
 ### Integer
 
+> [BigInteger](https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html)
+
 ### Long
 > [Unsigned arithmetic in Java](https://www.javamex.com/java_equivalents/unsigned_arithmetic.shtml)  
 > [Java equivalent of unsigned long long?](https://stackoverflow.com/questions/508630/java-equivalent-of-unsigned-long-long)
 
 无符号Long:  `Long.parseUnsignedLong();` `Long.toUnsignedString();` 
-
+> [参考博客: Java 中的无符号类型是怎么回事儿？](https://www.cnblogs.com/yuanyq/p/java_unsigned_types.html)
 ### Boolean
 
 ### Void
