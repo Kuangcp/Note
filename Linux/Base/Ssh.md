@@ -47,7 +47,7 @@ categories:
 
 ## 1.安装
 _客户端_
-- `sudo spt-get install openssh-client`
+- `sudo apt-get install openssh-client`
 - 生成密钥对 `ssh-keygen` 可以设置密码，为了方便也可以全部采用默认(不安全)
 
 _服务端_

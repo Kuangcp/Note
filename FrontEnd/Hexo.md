@@ -28,7 +28,8 @@ categories:
 > 参考 [博客](http://stonebegin.com/hexo+github.html) | [部署Hexo](http://letus.club/2016/04/04/deploy-hexo-and-change-theme/)
 
 - [ ] 在docker中下拉笔记仓库, 然后构建, 然后推送到github的page上
-- [ ] 其实可以更为简单, 使用travi.ci 进行构建和发布 [参考 ](https://notes.iissnan.com/2016/publishing-github-pages-with-travis-ci/)
+- [ ] 其实可以更为简单, 使用 travis.ci 进行构建和发布 [参考](https://notes.iissnan.com/2016/publishing-github-pages-with-travis-ci/)  
+travis 令人发指的缺点是 Git Commit 信息无法自定义
 
 ## 安装 hexo
 1. `npm install -g hexo`
@@ -54,7 +55,7 @@ categories:
     - 后面默认。
 
 - Extensions
-    - theme 填写`/thems`文件夹下的`主题文件夹名字` [官方主题](https://hexo.io/themes/)    
+    - theme 填写`/themes`文件夹下的`主题文件夹名字` [官方主题](https://hexo.io/themes/)    
     - 选好对应的主题只要 `git clone` 在`/themes`文件夹下即可
     - 例如 next主题 [官方使用文档](http://theme-next.iissnan.com/getting-started.html)
 
