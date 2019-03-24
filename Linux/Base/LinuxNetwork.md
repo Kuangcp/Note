@@ -482,6 +482,27 @@ _客户端_
 - `sslocal -c /etc/ss/json`
 - 设置代理是1080端口即可
 
+
+#### proxychains
+- 安装
+    - [编译安装](https://github.com/rofl0r/proxychains-ng)
+    - 包管理器  
+        ```shell
+        sudo pacman -S community/proxychains-ng # Arch
+        sudo apt install proxychains  # apt
+        ```
+- 配置
+配合楼上的 shadowsocks，修改文件 `/etc/proxychains.conf`
+    ```properties
+    [ProxyList]
+    # add proxy here ...
+    # meanwile
+    # defaults set to "tor"
+    # socks4        127.0.0.1 9050
+    socks5  127.0.0.1  1080
+    ```
+
+
 ### 防火墙
 
 #### iptables
