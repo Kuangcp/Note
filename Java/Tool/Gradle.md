@@ -27,7 +27,7 @@ categories:
         1. [SourceSet](#sourceset)
         1. [依赖管理](#依赖管理)
             1. [依赖排除以及指定依赖版本](#依赖排除以及指定依赖版本)
-            1. [统一依赖管理的一种策略](#统一依赖管理的一种策略)
+            1. [统一管理依赖](#统一管理依赖)
         1. [配置镜像源](#配置镜像源)
         1. [插件](#插件)
             1. [Lombok](#lombok)
@@ -45,13 +45,15 @@ categories:
     1. [构建Docker镜像](#构建docker镜像)
         1. [第二种插件方式](#第二种插件方式)
 
-**目录 end**|_2019-03-17 14:30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-28 00:38_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 
 # Gradle
 > [Official Guide](https://gradle.org/guides/?q=JVM) | [tutorials](https://www.tutorialspoint.com/gradle/index.htm)  
 
 > [参考博客: 零散知识点总结(1) - Gradle 使用配置总结](https://www.jianshu.com/p/47cbbb4eab13)
+
+> [Github: Gradle samples](https://github.com/gradle/gradle/tree/master/subprojects/docs/src/samples)
 ******************************
 
 **优缺点**
@@ -283,22 +285,22 @@ C 项目就能使用 A 中的类了
 ```
 ******************
 
-#### 统一依赖管理的一种策略
+#### 统一管理依赖
 > [完整示例 JavaBase](https://github.com/Kuangcp/JavaBase)
 
 1. 新建一个文件 _dependency.gradle_
     ```groovy
-        ext {
+        rootProject.ext {
             ver = [
                 junit     : '4.12',
             ]
             libs = [
-                "junit"   : "junit:junit:$ver.junit",
+                "junit"   : "junit:junit:$rootProject.ver.junit",
             ]
         }
     ```
 1. 在 build.gradle 中引入 `apply from: 'dependency.gradle'`
-1. 使用依赖时 只需 `implementation libs['junit']` 即使在子模块中也是如此使用
+1. 使用依赖时 只需 `implementation rootProject.libs['junit']` 即使在子模块中也是如此使用
 
 ###  配置镜像源
 **阿里云**
@@ -435,6 +437,8 @@ C 项目就能使用 A 中的类了
     - [shadow插件官网文档](http://imperceptiblethoughts.com/shadow/)
 
 ## 上传至构建仓库
+> [Official Doc](https://docs.gradle.org/current/userguide/publishing_overview.html)
+
 > 特别注意使用gpg, 如果按这下面的一堆文档跟着做的话你要保证你的gpg小于等于2.0版本, 不然就卡在这里了
 
 > [参考项目 ](https://github.com/haiyangwu/sonatype)

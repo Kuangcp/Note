@@ -21,9 +21,11 @@ categories:
     1. [NGINX-扩展状态码](#nginx-扩展状态码)
     1. [七牛扩展状态码](#七牛扩展状态码)
 
-**目录 end**|_2019-03-17 14:30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-28 00:38_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # HTTP状态码大全
+> [wiki: http status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)  
+
 > [HTTP状态码](http://www.runoob.com/http/http-status-codes.html)
 > [HTTP状态码百度百科](https://baike.baidu.com/item/HTTP%E7%8A%B6%E6%80%81%E7%A0%81)
 

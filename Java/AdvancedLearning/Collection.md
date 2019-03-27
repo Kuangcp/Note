@@ -18,7 +18,7 @@ categories:
     1. [List](#list)
     1. [Set](#set)
 
-**目录 end**|_2019-03-05 22:02_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-28 00:38_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 集合
 > 重要的知识点，面试必问，使用频率也很高
@@ -46,7 +46,7 @@ categories:
 
 ********************
 ## Map
-- HashMap 键能为null, HashTable则不可以
+> HashMap 键能为null, HashTable则不可以, 而且HashTable是线程安全的(靠 synchronized 关键字实现) 
 
 > [参考博客: Java Map 集合类简介 ](https://www.oracle.com/technetwork/cn/articles/maps1-100947-zhs.html)
 
