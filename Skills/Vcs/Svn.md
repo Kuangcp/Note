@@ -15,6 +15,7 @@ categories:
         1. [备份和恢复](#备份和恢复)
             1. [远程](#远程)
     1. [客户端安装](#客户端安装)
+        1. [GUI](#gui)
     1. [使用](#使用)
         1. [添加文件](#添加文件)
         1. [配置忽略文件](#配置忽略文件)
@@ -23,9 +24,9 @@ categories:
         1. [处理冲突](#处理冲突)
             1. [树冲突](#树冲突)
         1. [回滚到指定版本](#回滚到指定版本)
-        1. [Tips](#tips)
+1. [Tips](#tips)
 
-**目录 end**|_2019-02-12 14:57_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-27 10:20_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # SVN
 > 传统的中心化版本控制工具,能够精确控制每个目录的权限, Apache顶级项目  
@@ -141,7 +142,12 @@ categories:
     svn ci -m "rolled back to r99"
 ```
 
-### Tips
+# Tips
+> 删除认证信息
+
+`rm -rf ~/.subversion/auth`
+
+***********************
 
 1. 表现: IDEA 报错 uncongnized character scheme in 2019-01-03_15:25:42.log 
 1. 后果: svn 所有操作都无响应, 相当于 idea的 svn 功能废了
