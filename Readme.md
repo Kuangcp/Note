@@ -74,7 +74,7 @@
         * [ JVM性能分析与优化 ](/Java/AdvancedLearning/JvmPerformance.md)
         * [ JVM多语言 ](/Java/AdvancedLearning/MultipleLanguage.md)
         * [ 反射 ](/Java/AdvancedLearning/Reflection.md)
-        * [ 网络编程 ](/Java/AdvancedLearning/Socket.md)
+        * [ 网络编程 ](/Java/AdvancedLearning/JavaNetwork.md)
         * [ 基础语法和数据类型 ](/Java/AdvancedLearning/SyntaxAndType.md)
         * [ 线程 ](/Java/AdvancedLearning/Thread.md)
     * 【 Java/Ecosystem 】
@@ -214,8 +214,8 @@
     * 【 Skills/Test 】
         * [ Cucumber ](/Skills/Test/Cucumber.md)
         * [ Hamcrest ](/Skills/Test/Hamcrest.md)
-        * [ Junit ](/Skills/Test/Junit.md)
-        * [ Junit5 ](/Skills/Test/Junit5.md)
+        * [ Junit ](/Java/Test/Junit.md)
+        * [ Junit5 ](/Java/Test/Junit5.md)
         * [ TestNG ](/Skills/Test/TestNG.md)
         * [ 测试理论 ](/Skills/Test/TestTheory.md)
     * 【 Skills/Vcs 】
