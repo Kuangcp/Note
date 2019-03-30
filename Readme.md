@@ -214,8 +214,8 @@
     * 【 Skills/Test 】
         * [ Cucumber ](/Skills/Test/Cucumber.md)
         * [ Hamcrest ](/Skills/Test/Hamcrest.md)
-        * [ Junit ](/Skills/Test/Junit.md)
-        * [ Junit5 ](/Skills/Test/Junit5.md)
+        * [ Junit ](/Java/Test/Junit.md)
+        * [ Junit5 ](/Java/Test/Junit5.md)
         * [ TestNG ](/Skills/Test/TestNG.md)
         * [ 测试理论 ](/Skills/Test/TestTheory.md)
     * 【 Skills/Vcs 】
