@@ -195,6 +195,18 @@ _~/.gradle/init.gradle_
 ### SourceSet
 > [SourceSet](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.SourceSet.html)
 
+```groovy
+    sourceSets{
+        main{
+            proto{
+                srcDir 'proto/proto'
+            }
+            java{
+                srcDir 'out/build/generated/main'
+            }
+        }
+    }
+```
 ***************
 
 ### 依赖管理
