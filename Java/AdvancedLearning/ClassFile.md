@@ -28,6 +28,8 @@ categories:
         1. [平台操作码](#平台操作码)
         1. [操作码的快捷形式](#操作码的快捷形式)
         1. [invokedynamic](#invokedynamic)
+    1. [反编译](#反编译)
+        1. [Jad](#jad)
 1. [序列化](#序列化)
     1. [serialVersionUID](#serialversionuid)
     1. [其他业内主流编解码框架](#其他业内主流编解码框架)
@@ -35,13 +37,14 @@ categories:
         1. [Protobuf](#protobuf)
             1. [proto文件定义](#proto文件定义)
             1. [Linux上安装Protobuf](#linux上安装protobuf)
-            1. [对于Java的使用](#对于java的使用)
+            1. [Java中的使用](#java中的使用)
+            1. [Python中的使用](#python中的使用)
         1. [Thrift](#thrift)
         1. [Marshalling](#marshalling)
 1. [字节码相关框架](#字节码相关框架)
 1. [热更新](#热更新)
 
-**目录 end**|_2019-02-19 17:26_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-31 21:54_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 类和字节码
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/java-classfile/src/main/java/com/github/kuangcp) 
@@ -160,6 +163,10 @@ categories:
 
 ### invokedynamic
 > 这个特性是针对 框架开发和非Java语言准备的
+
+## 反编译
+### Jad
+> [https://varaneckas.com/jad/](https://varaneckas.com/jad/)
 
 ****************
 # 序列化

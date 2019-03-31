@@ -17,14 +17,16 @@ categories:
             1. [fcitx](#fcitx)
         1. [Flash](#flash)
     1. [驱动问题](#驱动问题)
-        1. [Deepin的NVIDIA驱动问题](#deepin的nvidia驱动问题)
+        1. [显卡](#显卡)
+            1. [Nvidia](#nvidia)
+            1. [Deepin的NVIDIA驱动问题](#deepin的nvidia驱动问题)
     1. [配置问题](#配置问题)
         1. [Ubuntu与Windows10时间相差8小时的解决](#ubuntu与windows10时间相差8小时的解决)
         1. [终端开启慢](#终端开启慢)
     1. [数据问题](#数据问题)
         1. [笔记本突然断电导致开机报错](#笔记本突然断电导致开机报错)
 
-**目录 end**|_2019-01-16 21:31_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-03-31 21:54_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 遇到的常见问题
 
@@ -69,7 +71,23 @@ categories:
 ******************************************************
 
 ## 驱动问题
-### Deepin的NVIDIA驱动问题
+### 显卡
+- 查看显卡列表  `lspci -vnn | grep '\''[030[02]\]'`
+- 测试显卡 FPS `glxgears`
+
+#### Nvidia
+> [NVIDIA](https://wiki.archlinux.org/index.php/NVIDIA_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.AE.89.E8.A3.85)
+
+驱动有: Nouveau, bumblebee, NV_Prime  
+
+> [Bumblebee ](https://wiki.archlinux.org/index.php/Bumblebee_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))  
+
+大多数笔记本都是 Intel集显和 Nvidia 或者 AMD 双显卡, 双显卡的管理就成了问题(指的是Linux下)
+> [参考博客: 使用 Bumblebee 控制 NVIDIA 双显卡](https://www.cnblogs.com/congbo/archive/2012/09/12/2682105.html)
+
+
+
+#### Deepin的NVIDIA驱动问题
 - [论坛博客](https://bbs.deepin.org/forum.php?mod=viewthread&tid=132312)
     - `sudo apt-get install bumblebee-nvidia nvidia-driver nvidia-settings`
 
