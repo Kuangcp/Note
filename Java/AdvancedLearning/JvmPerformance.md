@@ -12,6 +12,7 @@ categories:
  
 1. [Java的性能调优](#java的性能调优)
     1. [JVM参数配置](#jvm参数配置)
+        1. [IDEA参数调优](#idea参数调优)
     1. [内存优化](#内存优化)
         1. [堆外内存](#堆外内存)
 1. [主要指标分析](#主要指标分析)
@@ -29,13 +30,31 @@ categories:
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2019-01-27 21:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-03 00:22_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 
 # Java的性能调优
-> 调优, 分析
 
 ## JVM参数配置
+
+### IDEA参数调优
+```conf
+    -server
+    -Xms600m  # 最小堆
+    -Xmx600m  # 最大堆 配成一样是为了避免扩容
+    -Xmn256m  # 新生代
+    -XX:MetaspaceSize=350m # 只是一个阈值, 达到该阈值才进行 GC
+    -XX:MaxMetaspaceSize=350m # 最大值
+
+    -Xnoclassgc 
+    -Xverify:none # 不进行字节码校验
+    -XX:+AggressiveOpts # 激进式优化
+
+    -XX:ReservedCodeCacheSize=320m # 编译时代码缓存 IDEA 警告不能低于240M
+```
+
+> [参考博客: Java’s -XX:+AggressiveOpts: Can it slow you down?](https://www.opsian.com/blog/aggressive-opts/)  
+> [参考博客: JVM参数MetaspaceSize的误解 ](https://mp.weixin.qq.com/s/jqfppqqd98DfAJHZhFbmxA?)
 
 *********************
 

@@ -29,7 +29,6 @@ categories:
         1. [double](#double)
     1. [封装类型](#封装类型)
         1. [String](#string)
-            1. [StringBuffer和StringBuilder](#stringbuffer和stringbuilder)
         1. [Float](#float)
         1. [Double](#double)
         1. [Integer](#integer)
@@ -66,7 +65,7 @@ categories:
 1. [关键字](#关键字)
     1. [try](#try)
 
-**目录 end**|_2019-03-23 17:03_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-03 00:22_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 基础语法
 
@@ -121,6 +120,8 @@ categories:
 
 性能问题
 
+自动装箱都是通过包装类的valueOf()方法来实现的.自动拆箱都是通过包装类对象的xxxValue()来实现的。
+
 ## 基础数据类型
 > 八种基本数据类型 byte char boolean short int long float double
 
@@ -158,25 +159,46 @@ Java8 以上可以使用无符号的 long, 值范围: 0, 2^64-1
 ## 封装类型
 > `wrapper class`基本类型和包装类型不能混为一谈 本质上的 class是不同的, 只不过自动拆装箱才让人感觉没差别
 
-Integer.TYPE == int.class
-Byte.TYPE == byte.class
-Boolean.TYPE == boolean.class
-Double.TYPE == double.class
-Void.TYPE == void.class
+|  |  |
+|:----|:----|
+| Integer.TYPE | int.class |
+| Byte.TYPE    | byte.class |
+| Boolean.TYPE | boolean.class |
+| Double.TYPE  | double.class |
+| Void.TYPE    | void.class |
+
+***************************
+
+> 封装类型的缓存行为 
+
+对于 Integer, 有 IntegerCache 类缓存 [-128, 127] 范围内的值. 可以通过 `-XX:AutoBoxCacheMax` 修改上限值  
+且 Byte Short Long Character 都有对应的缓存对象和缓存值范围, 但是只有Integer的缓存范围可变  
+
+Byte, Short, Long有固定范围: [-128, 127]   
+对于Character, 范围是 ‘\u0000’ 至 ‘\u007f’ 即 [0,127]  
+
+true 和 false 也是缓存了的
+
+> 可能造成的困惑
+```java
+    assert Integer.valueOf(1) == Integer.valueOf(1);
+    assert Integer.valueOf(128) != Integer.valueOf(128);
+```
 
 ### String
 > 该类是final修饰的, 原因:[知乎问题](https://www.zhihu.com/question/31345592)
 
-字符串对象是不可变的，这意味着一旦创建，它们的值就不能更改。 String类在技术上不是原始数据类型，但考虑到语言给予它的特殊支持，您可能倾向于将其视为这样。
+字符串对象是不可变的，这意味着一旦创建，它们的值就不能更改。 String类在技术上不是基本数据类型，但考虑到语言给予它的特殊支持，您可能倾向于将其视为基本数据类型。
 
-- 常量池的实现
+- 常量池
+    - 字符串常量池存在于方法区 
+    - [String：字符串常量池](https://segmentfault.com/a/1190000009888357)
 
 - 常见编码转换
     - 一般Windows文件默认编码：`str = new String(str.getBytes("iso8859-1"), "gb2312"); ` 
     - properties文件中获取中文 `str = new String(str.getBytes("utf-8"), "utf-8");`
 
-#### StringBuffer和StringBuilder
-> [参考博客](https://blog.csdn.net/rmn190/article/details/1492013)
+> [字符串拼接](/Java/AdvancedLearning/Basic/StringConcat.md)
 
 ### Float
 ### Double

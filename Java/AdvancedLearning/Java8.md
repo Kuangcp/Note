@@ -63,6 +63,7 @@ categories:
                     1. [多级分组](#多级分组)
                     1. [按子组收集数据](#按子组收集数据)
                 1. [分区](#分区)
+            1. [自定义收集器](#自定义收集器)
         1. [高效处理数据](#高效处理数据)
     1. [Optional](#optional)
         1. [Optional类和Stream接口的相似之处](#optional类和stream接口的相似之处)
@@ -76,7 +77,7 @@ categories:
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-**目录 end**|_2019-03-23 17:03_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-03 00:22_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [doc: API](https://docs.oracle.com/javase/8/docs/api/) | [doc下载](https://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html)
@@ -888,6 +889,9 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 ```
 
 ##### 分区
+
+#### 自定义收集器
+> [参考博客: 自定义收集器深度剖析：](http://www.cnblogs.com/webor2006/p/8353314.html)
 
 ************
 

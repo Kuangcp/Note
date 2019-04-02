@@ -12,16 +12,16 @@
 ****************************************
 # 计算机基础
 
->- [算法](/Skills/CS/Arithmetic.md)  
->- [计算机相关](/Skills/CS/Computer.md)  
->- [并发理论](/Skills/CS/Concurrent.md)  
->- [网络](/Skills/CS/Network.md)  
->- [测试理论](/Skills/CS/TestTheory.md)  
+>- [算法](/Skills/CS/Algorithm.md)  
+>- [计算机基础](/Skills/CS/Computer.md)  
+>- [并发相关](Skills/Councurrency/)  
+>- [计算机网络](Skills/Network/)  
+>- [测试理论](/Skills/Test/TestTheory.md)  
 
 *************************************
 # Java
 > [Oracle: java tutorial](https://docs.oracle.com/javase/tutorial/java/)`入门时首先通读一遍`  
-> [java turtorials](https://www.geeksforgeeks.org/java-tutorials/)`能在线运行`
+> [java turtorials](https://www.geeksforgeeks.org/java-tutorials/)`能在线运行简易Java代码`
 
 > [Oracle JavaSE](http://www.oracle.com/technetwork/java/javase/overview/index.html)     
 > [openjdk](http://openjdk.java.net/)|  [oracle-jdk download](http://www.oracle.com/technetwork/java/javase/downloads/index.html)  

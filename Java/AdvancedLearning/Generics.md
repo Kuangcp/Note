@@ -21,7 +21,7 @@ categories:
         1. [通配符捕获](#通配符捕获)
     1. [反射和泛型](#反射和泛型)
 
-**目录 end**|_2019-03-14 14:17_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-03 00:22_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 泛型
 > [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
@@ -96,21 +96,21 @@ categories:
 > 以下代码示例:涉及的类Pair在上述的代码中已经定义, Human和Student是继承关系
 > 并且因为看的 Java核心技术卷 比较老 jdk是1.5的所以没有用7的菱形语法简化泛型 7可以省去右边的类型: `Pair<Double> pair = new Pair<>();`
 
-- | _不能使用基本类型实例化类型参数_
+- _不能使用基本类型实例化类型参数_
     - 也就是说没有`Pair<double>`只有`Pair<Double>`
     - 因为类型擦除后,类型是Object并不能放double的值, 但是这样做与Java语言中基本类型的独立状态相一致.
     - 当包装器类型(wrapper type)不能接受替换时,可以使用独立的类和方法处理他们  
-- | _运行时类型查询(eq或者instanceof)只适用于原始类型_
+- _运行时类型查询(eq或者instanceof)只适用于原始类型_
     - 比如`Pair<T>` 和`Pair<String>`是等价的,因为类型擦除
     - `Pair<String> pair1` `Pair<Date> pair2` pair1.getClass()和pair2.getClass()是等价的都是返回Pair.class
-- | _不能抛出也不能捕获泛型类实例_
+- _不能抛出也不能捕获泛型类实例_
     - 错误的示例:
         - `public class Problem<T> extends Exception{}`
         - `public static <T extends Throwable> void doWork(){try{}catch(T t){}}`
     - 正确示例:
         - 在异常声明中使用类型变量 
         - `public static <T extends Throwable> void doWork() throws T{.. catch(){throw t;}}`
-- | _参数化类型的数组不合法_
+- _参数化类型的数组不合法_
     - 例:`Pair<String>[] list = new Pair<String>[10];`
     - 因为擦除后 list是Pair[]类型,然后就能转成Object[], 就失去了泛型的作用
     - 如果要使用的话最好直接使用集合 ArrayList:` ArrayList<Pair<String>>`,安全又高效
@@ -120,7 +120,7 @@ categories:
     array[0] = new Pair<Date>(); //通过数组存储的检测,但实际上类型错误了,所以禁止使用参数化类型的数组
 ```
 
-- | _不能实例化类型变量(T)_
+- _不能实例化类型变量(T)_
     - 非法 `new T(){}`
 ```java
     public Pair(){
@@ -144,7 +144,7 @@ categories:
     // 因为Class本身是泛型, String.class其实是Class<String>的实例
     // 也不能实例化为一个数组 new T[5]
 ```
-- | _泛型类的静态上下文中类型变量无效_
+- _泛型类的静态上下文中类型变量无效_
     - 不能在静态域中使用类型变量 如下:
     - 如果这段代码能执行,那就可以声明一个 Singleton<Random> 共享随机数生成类,
     - 但是声明之后,类型擦除,就只剩下了Singleton类,并不能做对应的事情,所以禁止这样的写法
@@ -154,7 +154,7 @@ categories:
         return first;
     }
 ```
-- | _注意泛型擦除后的冲突_
+- _注意泛型擦除后的冲突_
     - 当类型擦除时,不能创建引发冲突的相关条件
     - 例如 新实现一个类型变量约束的equals方法就会和Object原方法冲突 补救方法就是重命名该方法了
     
@@ -225,8 +225,8 @@ categories:
 - `<T> 可以看作 <T extends Object>`
 - `<?> 可以看作 <? extends Object>`
 
-- ? extends : 数据的提供方 也就是需要 get 操作
-- ? super : 数据的存储方 也就是需要 set 操作
+- `? extends` : 数据的提供方 执行 get 操作
+- `? super` : 数据的存储方 执行 set 操作
 
 - 限定通配符总是包括自己
 - 如果你既想存，又想取，那就别用通配符
