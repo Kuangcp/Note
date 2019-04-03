@@ -109,17 +109,17 @@ categories:
 
 ## 编程语言开发环境
 ### Java
-- [Official:Java](https://hub.docker.com/_/java/) `Oracle`
-- [openJDK](https://hub.docker.com/_/openjdk/) 
-- [oracle-jdk8](https://hub.docker.com/r/frolvlad/alpine-oraclejdk8/)`非常精简`
-    - [Github:](https://github.com/frol/docker-alpine-oraclejdk8)`可以学习一波Dockerfile`
+- [Official:Java](https://hub.docker.com/_/java/) `Oracle` | [Official: OpenJDK](https://hub.docker.com/_/openjdk/)`从7开始` 
 
-- [jdk-alpine-cst](https://hub.docker.com/r/mythkuang/jdk-alpine-cst/)`设置好CST时区的JDK基础镜像`
+- [frolvlad alpine-java](https://hub.docker.com/r/frolvlad/alpine-java)`非常精简`
+    - `个人基于以上镜像 设置好CST中国时区`[jdk-alpine-cst](https://hub.docker.com/r/mythkuang/jdk-alpine-cst/)
+    - `可以学习一波Dockerfile` [Github: Dockerfile](https://github.com/frol/docker-alpine-java)
+
+> 个人习惯
+- Java7 `docker pull java:7u121-jdk-alpine`
+- Java8 `docker pull frolvlad/alpine-java:jdk8.202.08-slim`
 
 > [参考博客: Java和Docker限制的那些事儿](http://www.techug.com/post/java-and-docker-memory-limits.html)`描述了一个天坑`
-
-- openjdk:8-jdk-alpine
-- frolvlad/alpine-oraclejdk8:slim
 
 #### Jib
 > [参考博客: GOOGLE JIB](https://my.oschina.net/u/3666671/blog/1845065) | [Github:jib](https://github.com/GoogleContainerTools/jib)
