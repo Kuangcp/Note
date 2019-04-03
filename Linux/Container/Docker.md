@@ -31,6 +31,7 @@ categories:
         1. [ps](#ps)
         1. [create](#create)
         1. [run](#run)
+            1. [资源限制](#资源限制)
         1. [exec](#exec)
         1. [commit](#commit)
         1. [port](#port)
@@ -52,7 +53,7 @@ categories:
 1. [Dockerfile](#dockerfile)
     1. [dockerignore文件的使用](#dockerignore文件的使用)
 
-**目录 end**|_2018-12-26 17:03_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-04 01:17_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -343,7 +344,6 @@ _登录镜像仓库_
     - `-p` 端口映射左本机右容器：`-p 44:22`主机容器端口相同就：`-p 22` 将容器所有EXPOSE的端口映射到宿主机随机端口`-P`
     - `-f` 文件？
     - `--env name="tanky"` 设置环境变量
-    - `--memory` 限制最大内存
     - `--cpu-shares` 设置CPU的相对权重，只在link之间容器的权重比例
     - `--cpuset-cpus` 限制只能运行在某标号的CPU上
     - `--user` -u 限制用户
@@ -352,6 +352,15 @@ _登录镜像仓库_
     - `--rm` 容器运行结束退出就自动删除该容器 注意和`-d`不能共存
     - `--restart=always` 设置该容器随dokcer 服务自启动
     - `--hostname 容器hostname` 指定容器的hostname
+
+#### 资源限制
+
+> **`内存限制`**
+- 限制最大内存100M `--memory 100M` 或者 `-m 100M`
+- 配置交换内存不受限制 `--memory-swap -1`
+    - 不配置该项 或者 该项小于 --memory 则都是采用默认值, --memory 的两倍
+
+> [参考博客: Docker 资源限制之内存](https://blog.opskumu.com/docker-memory-limit.html)
 
 ### exec
 - 登录容器：

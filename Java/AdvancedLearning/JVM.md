@@ -11,8 +11,15 @@ categories:
  
 1. [JVM](#jvm)
     1. [运行时数据区](#运行时数据区)
+        1. [程序计数器](#程序计数器)
+        1. [Java虚拟机栈](#java虚拟机栈)
+        1. [本地方法栈](#本地方法栈)
+        1. [Java堆](#java堆)
+        1. [方法区](#方法区)
+            1. [运行时常量池](#运行时常量池)
+        1. [直接内存](#直接内存)
         1. [堆和栈](#堆和栈)
-    1. [内存分配策略](#内存分配策略)
+    1. [堆上的内存分配策略](#堆上的内存分配策略)
     1. [GC](#gc)
         1. [判断存活算法](#判断存活算法)
             1. [引用计数算法](#引用计数算法)
@@ -34,7 +41,7 @@ categories:
     1. [Hotspot JVM](#hotspot-jvm)
     1. [OpenJ9](#openj9)
 
-**目录 end**|_2019-04-03 00:22_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-04 01:17_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -46,6 +53,21 @@ categories:
 
 ## 运行时数据区
 ![JMM](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Java/Jvm/JMM.png)
+
+### 程序计数器
+
+### Java虚拟机栈
+> HotSpot 中不区分Java虚拟机栈和本地方法栈, 虽然 -Xoss 设置本地方法栈大小 存在但是是无效的, 只能通过 -Xss 设置
+
+- 如果线程请求的栈深度大于虚拟机所允许的最大深度, 将抛出 StackOverFlowError 
+- 如果虚拟机在扩展栈时, 无法申请到足够的内存, 则抛出 OutOfMemoryError 异常
+
+### 本地方法栈
+
+### Java堆
+### 方法区
+#### 运行时常量池
+### 直接内存
 
 ### 堆和栈
 > [参考博客: Java中堆内存和栈内存详解](http://www.cnblogs.com/whgw/archive/2011/09/29/2194997.html)
@@ -69,8 +91,21 @@ categories:
 JVM是基于堆栈的虚拟机.JVM为每个新创建的线程都分配一个堆栈.也就是说,对于一个Java程序来说，它的运行就是通过对堆栈的操作来完成的。  
 堆栈以帧为单位保存线程的状态。JVM对堆栈只进行两种操作:以帧为单位的压栈和出栈操作。 
 
-## 内存分配策略
-> 各种变量 
+*******************
+
+## 堆上的内存分配策略
+- 对象的内存分配, 粗略讲就是在堆上分配(但也可能经过JIT编译后被拆散成标量类型并间接地栈上分配)   
+- 对象主要分配在Eden; 如果启动了本地线程分配缓冲, 则优先在TLAB上分配; 也有直接分配在老年代的 (长字符串以及数组)
+
+- 如果对象在 Eden 出生, 并经过一次 MinorGC后存活, 并能被 Survivor 容纳, 将被移入 Survivor 且年龄为1.
+    - 对象在 Survivor 每经过一次 MinorGC 年龄加1, 当达到 MaxTenuringThreshold(默认15) 就会移入老年代
+- 如果 Survivor 空间中相同年龄所有对象大小的总和大于 Survivor 空间的一半, 年龄大于等于该年龄的对象都将进入老年代, 无需等到设置的 MaxTenuringThreshold
+
+> 堆内存配置
+
+新生代一般设置为整个堆空间的1/3到1/4左右最合适。  
+新生代内存不能过大也不能过小, 过大则老年代内存过小, 导致频繁 FullGC, 过小则导致对象全在老年代分配, 也将导致频繁FullGC
+***********
 
 1. `类变量`（static修饰的变量）：在程序加载时系统就为它在堆中开辟了内存，堆中的内存地址存放于栈以便于高速访问。  
     - 生命周期: 从应用进程启动一直到进程停止
@@ -82,15 +117,27 @@ JVM是基于堆栈的虚拟机.JVM为每个新创建的线程都分配一个堆�
 ## GC
 > Garbage Collection
 
-> 新生代GC Minor GC 
+`新生代GC Minor GC`  
+发生在新生代的垃圾收集动作, 因为大多数对象都是存活时间很短, 所以 Minor GC 非常频繁, 一般回收速度也比较快.   
+扫描过后将 Eden 和 现在使用的 Survivor 两个区中的存活对象 全搬去空闲的 Survivor.   
+如果 存活的对象内存大小大于 Survivor 区大小, 则需要`分配担保机制`提前将对象转移到老年代中
 
-发生在新生代的垃圾收集动作, 因为大多数对象都是存活时间很短, 所以 Minor GC 非常频繁, 一般回收速度也比较快
-
-> 老年代GC Major GC / Full GC  
-
+`老年代GC Major GC`  
 发生在老年代的GC, 出现了 Major GC, 往往会伴随至少一次 Minor GC. Major GC 的速度一般会比 Minor GC 慢10倍以上.
 
+*************
+
 ![Generation](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Java/Jvm/Generation.png)
+
+> [参考博客: JVM中新生代为什么要有两个Survivor（form,to）？](https://www.zhihu.com/question/44929481)  
+> [参考博客: 为什么新生代内存需要有两个Survivor区](https://blog.csdn.net/antony9118/article/details/51425581)  
+
+> [聊聊JVM的年轻代](http://ifeve.com/jvm-yong-generation/)  
+> 我是一个普通的java对象，我出生在Eden区，在Eden区我还看到和我长的很像的小兄弟，我们在Eden区中玩了挺长时间。  
+有一天Eden区中的人实在是太多了，我就被迫去了Survivor区的“From”区，自从去了Survivor区，我就开始漂了，  
+有时候在Survivor的“From”区，有时候在Survivor的“To”区，居无定所。  
+直到我18岁的时候，爸爸说我成人了，该去社会上闯闯了。于是我就去了年老代那边，年老代里，人很多，并且年龄都挺大的，我在这里也认识了很多人。  
+在年老代里，我生活了20年(每次GC加一岁)，然后被回收。  
 
 ### 判断存活算法
 #### 引用计数算法
@@ -108,6 +155,19 @@ GC Roots 对象包含:
 - 本地方法栈中 JNI (Native 方法) 引用的对象
 
 ### GC算法
+> [参考博客: Major GC和Full GC的区别是什么？](https://www.zhihu.com/question/41922036)
+
+*****
+
+- [ ] HotSpot 上 一次 Full GC: 针对 新生代 老生代 元空间 的全局范围的GC, 将会 STW(Stop The World)
+
+> https://www.zhihu.com/question/41922036/answer/93079526
+
+- 最简单的分代式GC策略，按HotSpot VM的serial GC的实现来看，触发条件是：
+    - young GC：当young gen 中的 eden gen 分配满的时候触发。注意young GC中有部分存活对象会晋升到old gen，所以young GC后old gen的占用量通常会有所升高。
+    - full GC：当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC
+    - （因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC）；
+    - 或者，如果有perm gen的话，要在perm gen分配空间但已经没有足够空间时，也要触发一次full GC；或者System.gc()、heap dump带GC，默认也是触发full GC。
 
 #### 标记清除算法
 > 首先标记出所有需要回收的对象, 在标记完成后统一回收
@@ -116,7 +176,6 @@ GC Roots 对象包含:
 1. 效率问题: 标记和清除两个过程的效率不高
 1. 空间问题: 容易引起内存碎片化问题, 碎片太多可能导致后期需要分配较大对象时找不到足够大的连续内存
     - 并因此触发一次垃圾收集动作
-
 
 #### 复制算法
 > 将内存按容量划分为等大的两块, 每次只使用其中的一块, 当这块的内存用到需要回收了, 就将需要存活的对象复制到另一块上去, 将该块全部清理掉  
@@ -130,18 +189,60 @@ GC Roots 对象包含:
 适用于老年代
 
 ### 垃圾回收器
+> [参考博客: JVM系列篇：深入剖析G1收集器](https://my.oschina.net/u/3959491/blog/3029276)
+
+> JVM垃圾收集器发展历程
+
+- 第一阶段，Serial（串行）收集器
+    - 在jdk1.3.1之前，java虚拟机仅仅能使用Serial收集器。 Serial收集器是一个单线程的收集器，但它的“单线程”的意义并不仅仅是说明它只会使用一个CPU或一条收集线程去完成垃圾收集工作，更重要的是在它进行垃圾收集时，必须暂停其他所有的工作线程，直到它收集结束。
+- 第二阶段，Parallel（并行）收集器
+    - Parallel收集器也称吞吐量收集器，相比Serial收集器，Parallel最主要的优势在于使用多线程去完成垃圾清理工作，这样可以充分利用多核的特性，大幅降低gc时间。
+- 第三阶段，CMS（并发）收集器
+    - CMS收集器在Minor GC时会暂停所有的应用线程，并以多线程的方式进行垃圾回收。在Full GC时不再暂停应用线程，而是使用若干个后台线程定期的对老年代空间进行扫描，及时回收其中不再使用的对象。
+- 第四阶段，G1（并发）收集器
+    - G1收集器（或者垃圾优先收集器）的设计初衷是为了尽量缩短处理超大堆（大于4GB）时产生的停顿。相对于CMS的优势而言是内存碎片的产生率大大降低。
+
+*******************
+
+> JVM垃圾收集器种类
+1. 新生代
+    - Serial (第一代)
+    - PraNew (第二代)
+    - Parallel Scavenge (第三代)
+    - G1收集器(第四代)
+
+2. 老年代
+    - Serial Old (第一代)
+    - Parallel Old (第二代)
+    - CMS (第三代)
+    - G1收集器 (第四代)
+***************
+
 #### Serial
+> 单线程垃圾收集器
+
 #### ParNew
+> Serial 收集器的多线程版本
+
 #### Parallel Scavenge
+> 并行多线程收集器, 目标是可控制的吞吐量
+
 #### Serial Old
 #### Parallel Old
 #### CMS
+> Concurrent Mark Sweep 
+
 #### G1
+> 面向服务端应用的垃圾收集器, JDK7发布
+
+- 并行和并发
+- 分代收集
+- 空间整合
+- 可预测的停顿
+
 #### ZGC
+> JDK11 
 
-*****
-
-- HotSpot 上 Full GC: 
 ********************************
 
 # JVM不同实现

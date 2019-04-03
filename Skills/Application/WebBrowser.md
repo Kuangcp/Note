@@ -14,14 +14,15 @@ categories:
         1. [必备插件](#必备插件)
         1. [配置](#配置)
         1. [使用](#使用)
-    1. [seamonkey](#seamonkey)
+        1. [Tips](#tips)
+    1. [Seamonkey](#seamonkey)
     1. [Chrome](#chrome)
         1. [主题](#主题)
         1. [插件](#插件)
     1. [Vivaldi](#vivaldi)
     1. [Opera](#opera)
 
-**目录 end**|_2018-12-27 20:22_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-04 01:17_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 浏览器
 ## FireFox
@@ -106,12 +107,18 @@ categories:
 1. 地址栏 `* Java` 即可在所有书签中搜索 Java
 1. 地址栏 `% Java` 就可以在已打开的标签页中搜索Java
 
-> 看视频的时候高内存, 高CPU 负载, 对比之下Chrome就好的多
+### Tips
+> 在B站看视频 看久了就会发现内存爆炸, 曾经全屏看LOL直播连续6个小时, 然后结束的时候发现出不去了, 要等好久  
+> 等了半天打开htop一看firefox 占用内存 6g, 负载 297, 怪不得风扇转这么大声...  
+> 原以为是Firefox 的问题, 用 Chrome 看B站一样的场景, 看了没多久就是CPU负载高 内存泄露严重, 所以是操作系统问题还是B站问题....
+
 *********************
-## seamonkey
+
+## Seamonkey
 > Mozilla基金会另一个项目 [seamonkey](https://www.seamonkey-project.org/) 亮点在于内置IRC
 
 ****************************************
+
 ## Chrome
 - 的确快,几乎没有各种兼容和诡异问题，就是内存占用高, 还有就是主题被墙,fq才能配置好
 
