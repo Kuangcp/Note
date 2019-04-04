@@ -15,7 +15,7 @@ categories:
     1. [基础操作](#基础操作)
         1. [跳转](#跳转)
             1. [高级跳转](#高级跳转)
-        1. [搜索匹配](#搜索匹配)
+        1. [搜索和替换](#搜索和替换)
         1. [复制粘贴](#复制粘贴)
         1. [插入模式](#插入模式)
         1. [命令模式](#命令模式)
@@ -25,7 +25,7 @@ categories:
     1. [SpaceVim](#spacevim)
     1. [space-vim](#space-vim)
 
-**目录 end**|_2019-01-13 22:48_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-05 01:20_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Vim 
 > 学习曲线很高，但是学会熟练使用后就效率很高
@@ -128,11 +128,25 @@ syntax on
 - fg 如果光标所在处是一个完整的路径,就跳转到该文件 
     - `Ctrl Shift 6` 或者 `:e#` 跳回来 | [参考 stackoverflow](https://stackoverflow.com/questions/133626/how-do-you-return-from-gf-in-vim) 
 
-### 搜索匹配
+### 搜索和替换
 - `/name`  正向搜索字符串 name
 	- `n` 搜索后跳下一个 
 	- `N` 搜索后跳上一个
 - `?name` 反向搜索字符串
+
+> 替换  `:[range]s/pattern/string/[c,e,g,i]`
+
+| 参数 | 含义 |
+|:----|:----|
+| range | 指的是范围 1,5 指的是1-5行; `1,$`或是`1,%` 则是第一行到最后一行; `.,5`当期行到第5行
+| pattern |	就是要被替换掉的字串，可以用 regexp 來表示。
+| string | 匹配到 pattern 的字符串替换为 string
+| c | confirm，每次替换前先询问
+| e | 不显示error
+| g | global 全局
+| i | ignore 不分大小写。
+
+> % 是目前編輯的文章，# 是前一次編輯的文章, . 表示当前行
 
 ### 复制粘贴
 > `:reg` 查看寄存器

@@ -15,10 +15,11 @@ categories:
         1. [Modifier](#modifier)
     1. [使用](#使用)
         1. [属性](#属性)
+            1. [修改 final 修饰的属性](#修改-final-修饰的属性)
         1. [方法](#方法)
 1. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2019-03-15 10:14_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-05 01:20_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
@@ -119,6 +120,10 @@ categories:
 > [doc: java8](https://docs.oracle.com/javase/8/docs/api/) `Field.set()`的文档
 
 被final修饰过的变量，只是说栈存储的地址不能再改变，但是却没有说地址指向的内容不能改变，所以反射可以破final，因为它修改该了以前地址的具体内容，但是没有改地址的信息。
+
+#### 修改 final 修饰的属性
+
+final修饰的类，变量，方法, 表示不可继承，不可修改，不可重写(override)
 
 ### 方法
 

@@ -34,7 +34,7 @@ categories:
     1. [Mageia](#mageia)
     1. [CDLinux](#cdlinux)
 
-**目录 end**|_2019-03-22 23:35_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-05 01:20_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Linux各个发行版本使用体验
 
@@ -153,6 +153,8 @@ _服务器_
 - deepin-wm 有内存泄露, 打算关闭开启窗口效果来解决, 但是关掉后就打不开了 failed to enable... 2019-03-20 17:20:07
     - [issue](https://github.com/linuxdeepin/developer-center/issues/444)
     - `(killall deepin-wm-switcher; deepin-wm --replace &)` 这样就能守护进程方式在运行了
+
+- fcitx + sogou 输入法经常出现 单CPU 100%满载, 在搜狗输入法 中打开 fcitx 设置, 插件中 关闭 搜狗云 插件, 即可解决问题
 
 #### 关于显卡
 > [参考博客: 显卡驱动作死录](https://www.jianshu.com/p/f53c8223bac6)

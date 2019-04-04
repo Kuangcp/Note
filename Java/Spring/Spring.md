@@ -32,7 +32,7 @@ categories:
         1. [ReflectionUtils](#reflectionutils)
 1. [Web开发的最佳实践](#web开发的最佳实践)
 
-**目录 end**|_2019-02-20 09:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-05 01:20_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -227,12 +227,16 @@ _其他,可选_
 *******************
 
 ## Events
-> [参考博客: Spring Events](https://www.baeldung.com/spring-events)
+> [Spring Events](https://www.baeldung.com/spring-events)
 
 > [Synchronous and Asynchronous Spring Events in One Application](https://www.keyup.eu/en/blog/101-synchronous-and-asynchronous-spring-events-in-one-application)  
 > [@EventListener with @Async in Spring](https://stackoverflow.com/questions/37179426/eventlistener-with-async-in-spring)
 
-********************
+异步事件处理
+- 类上 @EnableAsync 方法上 @Async 并指定配置的线程池名字
+
+> [参考博客: spring线程池(同步、异步）](http://www.cnblogs.com/duanxz/p/9435343.html)
+
 ## Websocket
 ### maven配置
 
