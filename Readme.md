@@ -9,8 +9,6 @@
 
 </div>
 
-# 目录
-
 ## 基础
 * [ 算法 ](/Skills/CS/Algorithm.md)
 * [ 字符编码 ](/Skills/CS/CharacterEncoding.md)
@@ -19,13 +17,14 @@
 * [ 正则表达式 ](/Skills/RegularExpression.md)
 * [ 软考相关 ](/Skills/SoftwareDesignEngineer.md)
 * [ 日期与时间 ](/Skills/CS/Time.md)
-
+*********
 * [ Git实践细节 ](/Skills/Vcs/GitAction.md)
 * [ Git进阶 ](/Skills/Vcs/GitAdvance.md)
 * [ Git基础 ](/Skills/Vcs/GitBase.md)
 * [ Git协作 ](/Skills/Vcs/GitTeam.md)
 * [ Svn ](/Skills/Vcs/Svn.md)
 
+********************
 * [ 编辑器对比 ](/Skills/Application/Editor.md)
 * [ Web浏览器对比 ](/Skills/Application/WebBrowser.md)
 
@@ -48,18 +47,17 @@
 * [ Java开发环境搭建 ](/Linux/JavaDevInit.md)
 
 * [ Linux基础 ](/Linux/Base/LinuxBase.md)
-* [ LinuxFile ](/Linux/Base/LinuxFile.md)
+* [ Linux文件管理 ](/Linux/Base/LinuxFile.md)
+* [ Linux处理压缩文件 ](/Linux/Base/LinuxCompressFile.md)
 * [ Shell学习 ](/Script/ShellLearn.md)
-* [ LinuxCommand ](/Linux/Base/LinuxCommand.md)
-* [ LinuxCompressFile ](/Linux/Base/LinuxCompressFile.md)
-* [ LinuxDirectoryStructure ](/Linux/Base/LinuxDirectoryStructure.md)
-* [ LinuxManual ](/Linux/Base/LinuxManual.md)
-* [ LinuxNet ](/Linux/Base/LinuxNetwork.md)
-* [ LinuxPerformance ](/Linux/Base/LinuxPerformance.md)
-* [ LinuxStreamEditor ](/Linux/Base/LinuxStreamEditor.md)
-* [ LinuxUI ](/Linux/Base/LinuxUI.md)
-* [ ReleaseExperience ](/Linux/Base/ReleaseExperience.md)
-* [ Ssh ](/Linux/Base/Ssh.md)
+* [ Linux工具命令 ](/Linux/Base/LinuxCommand.md)
+* [ Linux目录结构 ](/Linux/Base/LinuxDirectoryStructure.md)
+* [ Linux网络 ](/Linux/Base/LinuxNetwork.md)
+* [ Linux性能 ](/Linux/Base/LinuxPerformance.md)
+* [ 流编辑器 ](/Linux/Base/LinuxStreamEditor.md)
+* [ Linux美化 ](/Linux/Base/LinuxUI.md)
+* [ Linux各种发行版 ](/Linux/Base/ReleaseExperience.md)
+* [ SSH ](/Linux/Base/Ssh.md)
 * [ Nginx ](/Linux/Tool/Nginx.md)
 
 ## 容器
@@ -90,12 +88,12 @@
 - [某研究生在校阅读笔记](https://github.com/lanxuezaipiao/ReadingNotes)
 
 - [书写规范和建议](https://github.com/sparanoid/chinese-copywriting-guidelines)`比较全面,闲暇可以参考`
-- [阮一峰的博客](https://github.com/ruanyf/articles)`Github账号每日都有提交....`
-- [interview](https://github.com/hadyang/interview)
-- [ZXBlog](https://github.com/ZXZxin/ZXBlog)
+- [阮一峰的博客](https://githuUIb.com/ruanyf/articles)`Github账号每日都有提交....`UI
+- [interview](https://github.cUIom/hadyang/interview)
+- [ZXBlog](https://github.com/UIZXZxin/ZXBlog)
 
 ### Linux 
-- [judasn](https://github.com/judasn/hexo-blog)`善于归纳的人 相关:Javaer眼中的Linux`
+- [judasn](https://github.com/judasn/hexo-blog) `善于归纳的人 相关:Javaer眼中的Linux`
 
 ### Java
 - [Java guide](https://github.com/Snailclimb/JavaGuide)
