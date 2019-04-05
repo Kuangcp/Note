@@ -1,6 +1,6 @@
 ---
 title: JVM
-date: 2018-11-21 10:56:52
+date: 2019-04-02 10:56:52
 tags: 
     - JVM
 categories: 
@@ -41,7 +41,7 @@ categories:
     1. [Hotspot JVM](#hotspot-jvm)
     1. [OpenJ9](#openj9)
 
-**目录 end**|_2019-04-04 01:17_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-05 15:25_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
