@@ -17,3 +17,6 @@ categories:
 
 > [参考博客: Linux安装搜狗拼音和谷歌拼音输入法](https://www.jianshu.com/p/429b8f75af2c)
 
+
+## Tips 
+- fcitx + sogou 输入法经常出现 单CPU 100%满载, 在搜狗输入法 中打开 fcitx 设置, 插件中 关闭 搜狗云 插件, 即可解决问题

@@ -69,6 +69,8 @@
     * [ GroovySpring ](/Groovy/GroovySpring.md)
 * 【 Java 】
     * 【 Java/AdvancedLearning 】
+        * 【 Java/AdvancedLearning/Basic 】
+            * [ StringConcat ](/Java/AdvancedLearning/Basic/StringConcat.md)
         * [ Annotation ](/Java/AdvancedLearning/Annotation.md)
         * [ ClassFile ](/Java/AdvancedLearning/ClassFile.md)
         * [ Collection ](/Java/AdvancedLearning/Collection.md)
@@ -76,7 +78,6 @@
         * [ Deploy ](/Java/AdvancedLearning/Deploy.md)
         * [ Exception ](/Java/AdvancedLearning/Exception.md)
         * [ ExtendsAndInterface ](/Java/AdvancedLearning/ExtendsAndInterface.md)
-        * [ GC ](/Java/AdvancedLearning/GC.md)
         * [ Generics ](/Java/AdvancedLearning/Generics.md)
         * [ IO ](/Java/AdvancedLearning/IO.md)
         * [ JDBC ](/Java/AdvancedLearning/JDBC.md)
@@ -239,6 +240,7 @@
         * [ ContinuousDelivery ](/Skills/DevOps/ContinuousDelivery.md)
         * [ ContinuousDeployment ](/Skills/DevOps/ContinuousDeployment.md)
         * [ ContinuousIntegration ](/Skills/DevOps/ContinuousIntegration.md)
+        * [ ELK ](/Skills/DevOps/ELK.md)
         * [ Jenkins ](/Skills/DevOps/Jenkins.md)
     * 【 Skills/Document 】
         * [ License ](/Skills/Document/License.md)
@@ -268,7 +270,6 @@
         * [ Cooperation ](/Skills/Work/Cooperation.md)
         * [ EffectiveWork ](/Skills/Work/EffectiveWork.md)
         * [ InterviewSkill ](/Skills/Work/InterviewSkill.md)
-        * [ WorkThinking ](/Skills/Work/WorkThinking.md)
     * [ AppManual ](/Skills/AppManual.md)
     * [ CelebrityQuotes ](/Skills/CelebrityQuotes.md)
     * [ Miscellaneous ](/Skills/Miscellaneous.md)

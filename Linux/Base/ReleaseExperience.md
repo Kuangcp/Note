@@ -154,8 +154,6 @@ _服务器_
     - [issue](https://github.com/linuxdeepin/developer-center/issues/444)
     - `(killall deepin-wm-switcher; deepin-wm --replace &)` 这样就能守护进程方式在运行了
 
-- fcitx + sogou 输入法经常出现 单CPU 100%满载, 在搜狗输入法 中打开 fcitx 设置, 插件中 关闭 搜狗云 插件, 即可解决问题
-
 #### 关于显卡
 > [参考博客: 显卡驱动作死录](https://www.jianshu.com/p/f53c8223bac6)
 

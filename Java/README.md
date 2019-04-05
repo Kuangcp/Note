@@ -20,11 +20,10 @@
 
 *************************************
 # Java
-> [Oracle: java tutorial](https://docs.oracle.com/javase/tutorial/java/)`入门时首先通读一遍`  
-> [java turtorials](https://www.geeksforgeeks.org/java-tutorials/)`能在线运行简易Java代码`
+[Oracle JavaSE Overview](http://www.oracle.com/technetwork/java/javase/overview/index.html) | [openjdk ](http://openjdk.java.net/)   
 
-> [Oracle JavaSE](http://www.oracle.com/technetwork/java/javase/overview/index.html)     
-> [openjdk](http://openjdk.java.net/)|  [oracle-jdk download](http://www.oracle.com/technetwork/java/javase/downloads/index.html)  
+> [Oracle: java tutorial](https://docs.oracle.com/javase/tutorial/java/) `入门时首先通读一遍`  
+> [java turtorials](https://www.geeksforgeeks.org/java-tutorials/) `能在线运行简易Java代码`
 
 > [wiki: java language](https://en.wikipedia.org/wiki/Java_%28programming_language%29)  
 
@@ -32,15 +31,16 @@
 
 | 基础 | 进阶 |
 |:----|:----|
-| [基础语法](/Java/AdvancedLearning/GrammarAndType.md)  | [JDBC](/Java/AdvancedLearning/JDBC.md)
-| [继承和接口](/Java/AdvancedLearning/ExtendsAndInterface.md)  | [网络编程](/Java/AdvancedLearning/Socket.md)
-| [异常](/Java/AdvancedLearning/Exception.md)  | [类文件和反射](/Java/AdvancedLearning/ClassFile.md)
+| [基础语法](/Java/AdvancedLearning/GrammarAndType.md)  | [反射](/Java/AdvancedLearning/Reflection.md)
+| [继承和接口](/Java/AdvancedLearning/ExtendsAndInterface.md)  | [JVM](/Java/AdvancedLearning/JVM.md)
+| [异常](/Java/AdvancedLearning/Exception.md)  | [字节码](/Java/AdvancedLearning/ClassFile.md)
 | [泛型](/Java/AdvancedLearning/Generics.md)  | [测试](/Java/AdvancedLearning/JavaTest.md)
 | [集合](/Java/AdvancedLearning/Collection.md)  | [打包部署](/Java/AdvancedLearning/Deploy.md)
 | [线程](/Java/AdvancedLearning/Thread.md)  | [持续集成 CI](/Skills/DevOps/ContinuousIntegration.md)
 | [并发](/Java/AdvancedLearning/Concurrents.md)  | [持续交付 CD](/Skills/DevOps/ContinuousDelivery.md)
-| [IO](/Java/AdvancedLearning/IO.md)  | [JMS](/Java/AdvancedLearning/JMS.md)
-| [注解](/Java/AdvancedLearning/Annotation.md)  | [JVM上的多语言](/Java/AdvancedLearning/MultipleLanguage.md)
+| [IO](/Java/AdvancedLearning/IO.md)  | [网络编程](/Java/AdvancedLearning/Socket.md)
+| [注解](/Java/AdvancedLearning/Annotation.md)  | 
+| [JDBC](/Java/AdvancedLearning/JDBC.md) |
 
 ## JDK
 >- [JDK and JRE](/Java/AdvancedLearning/JDKAndJRE.md)
