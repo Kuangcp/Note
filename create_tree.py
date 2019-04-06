@@ -102,11 +102,11 @@ def main(verb=None):
     # 追加到SUMMARY
     if verb == "-a":
         readAll()
-        subprocess.call('mv SUMMARY.md SUMMARY.md.bak',shell=True)
+        subprocess.call('mv SUMMARY.md SUMMARY.md.bak', shell=True)
         with open('SUMMARY.md','w+') as dest:
             dest.write('# Summary\n\n* [ Introduction ](README.md)\n\n')
             for res in result:
                 dest.write(res+'\n')
-        logInfo('重新生成目录树完成!')
+        logInfo('complete refresh catalog file')
 
 fire.Fire(main)

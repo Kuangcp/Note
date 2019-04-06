@@ -18,11 +18,10 @@ categories:
             1. [僵尸进程](#僵尸进程)
         1. [守护进程](#守护进程)
         1. [线程](#线程)
+    1. [环境变量](#环境变量)
     1. [时间](#时间)
     1. [服务](#服务)
         1. [自启服务](#自启服务)
-    1. [终端命令](#终端命令)
-        1. [Shell内建命令](#shell内建命令)
 1. [终端快捷键](#终端快捷键)
     1. [Delete](#delete)
     1. [Convert](#convert)
@@ -39,16 +38,17 @@ categories:
 1. [Tips](#tips)
     1. [一行执行多条命令](#一行执行多条命令)
     1. [让命令在后台运行](#让命令在后台运行)
-        1. [关闭ssh回话不能运行](#关闭ssh回话不能运行)
-        1. [关闭ssh回话仍能运行](#关闭ssh回话仍能运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2019-02-16 09:42_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-06 17:05_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
 
 > 新手的话特别注意不要随意用sudo然后更改配置文件，容易导致系统crash（除非你明确的知道这个更改操作的作用）
+
+- [Arch wiki](https://wiki.archlinux.org/)
+- [Deepin wiki](https://wiki.deepin.org/)
 
 - [运维生存时间](http://www.ttlsa.com)`含大量运维干货`
 - [撸Linux](https://www.lulinux.com/)`非理性言论?`
@@ -57,8 +57,6 @@ categories:
 - [Linux中国开源社区](https://linux.cn/)
 - [LinuxTOY 是一个致力于提供 Linux 相关资讯的专题站点。](https://linuxtoy.org/)
     - [内容Github源](https://github.com/LinuxTOY/linuxtoy.org)
-
-> [笔记: 发行版之别](/Linux/ReleaseExperience.md)
 
 **************************************
 ## 用户
@@ -177,13 +175,14 @@ categories:
 ### 守护进程
 > [参考博客: 守护进程](https://blog.csdn.net/lianghe_work/article/details/47659889)
 
-**********************
 
 ### 线程
 1. 查看创建一个线程占用内存大小 `ulimit -s`
 
-*******************************
+************************
+## 环境变量
 
+************************
 ## 时间
 > [同步Linux服务器时间](http://www.cnblogs.com/chenmh/p/5485829.html)
 
@@ -226,22 +225,8 @@ _系统运行级别_
     2~5      多用户状态
     6        重新启动 
 ```
-**********************************************
-## 终端命令
-> /bin/* 系统自带的命令  
-例如 which命令, 查找到命令的位置
 
-> /usr/bin/* 用户安装终端应用的目录 以下往往是系统自带的
-- wc -l file _统计文件行数_
-- md5sum 报文摘要算法 
-
-1. sudo 命令是需要安装的... 
-    1. `alias sudo='sudo'` 能够在别名上使用 sudo *神奇*
-
-### Shell内建命令
-> [更多常用工具列表](/Linux/Tool/Terminal.md)
-
-*************************
+************************
 # 终端快捷键
 
 - `鼠标中键` 粘贴鼠标左键已选择的文本 **VSCode中也适用**
@@ -311,6 +296,7 @@ _系统运行级别_
 | Ctrl | S | 停止回显当前Shell |
 | Ctrl | Q | 恢复回显当前Shell |
 
+**********************
 # 对比
 ## 文件系统对比
 > [参考博客: 如何选择文件系统：EXT4、Btrfs 和 XFS ](https://linux.cn/article-7083-1.html)
@@ -387,11 +373,11 @@ _系统运行级别_
     - 让进程对hup信号免疫 nohup disown
     - 让进程在新的会话中运行 setid screen
 
-### 关闭ssh回话不能运行
+**`关闭ssh回话不能运行`**
 1. 没有使用任何修饰原有命令  
 1. 只在原有命令后加&
 
-### 关闭ssh回话仍能运行
+**`关闭ssh回话仍能运行`**
 > 两种方式
 
 1. 使用`nohup`就能屏蔽hup信号，标准输出会输出到当前目录下的nohup.out文件. `nohup 命令 &`

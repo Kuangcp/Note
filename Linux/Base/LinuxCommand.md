@@ -38,7 +38,7 @@ categories:
         1. [Shell内建命令](#shell内建命令)
 1. [Tips](#tips)
 
-**目录 end**|_2019-04-05 15:25_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-06 17:05_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -149,6 +149,10 @@ categories:
 
 ## 其他工具
 > 最终都会安装到 /usr/bin/*  目录下
+
+
+- sudo 命令是需要安装的... 
+    1. `alias sudo='sudo'` 能够在别名上使用 sudo *神奇*
 
 - md5sum 报文摘要算法 Message-Digest Algorithm 5 的实现 
     - `md5sum file` 计算出md5值

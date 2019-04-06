@@ -36,22 +36,28 @@ categories:
         1. [契约式设计](#契约式设计)
         1. [无环依赖原则](#无环依赖原则)
 1. [设计模式](#设计模式)
-    1. [策略模式](#策略模式)
-    1. [1.创建型设计模式](#1创建型设计模式)
-    1. [2.结构型设计模式](#2结构型设计模式)
-    1. [3.行为设计模式](#3行为设计模式)
-    1. [【常见设计模式】](#常见设计模式)
-        1. [适配器模式](#适配器模式)
+    1. [设计模式概览](#设计模式概览)
+        1. [创建型设计模式](#创建型设计模式)
+        1. [结构型设计模式](#结构型设计模式)
+        1. [行为设计模式](#行为设计模式)
+    1. [常见设计模式](#常见设计模式)
+        1. [工厂模式](#工厂模式)
+        1. [抽象工厂模式](#抽象工厂模式)
+        1. [单例模式](#单例模式)
+        1. [建造者模式](#建造者模式)
+        1. [原型模式](#原型模式)
+        1. [策略模式](#策略模式)
         1. [中介者模式](#中介者模式)
         1. [观察者模式](#观察者模式)
-            1. [单例模式](#单例模式)
-            1. [装饰器模式](#装饰器模式)
-        1. [原型模式](#原型模式)
-        1. [生成器模式](#生成器模式)
+        1. [状态模式](#状态模式)
+        1. [命令模式](#命令模式)
+        1. [适配器模式](#适配器模式)
+        1. [装饰器模式](#装饰器模式)
+        1. [桥接模式](#桥接模式)
 1. [实践](#实践)
     1. [经验之谈](#经验之谈)
 
-**目录 end**|_2019-04-06 00:10_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-06 17:05_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 软件设计的一些原则
 
@@ -262,7 +268,9 @@ Meyer氏提出的DBC概念的描述，对于类的一个方法，都有一个前
 无环依赖原则（ADP）为我们解决包之间的关系耦合问题。在设计模块时，不能有循环依赖。
 
 ***************************************
+
 # 设计模式
+
 > [java design patterns](https://java-design-patterns.com/)
 > [菜鸟教程: 设计模式简介](http://www.runoob.com/design-pattern/design-pattern-intro.html)
 
@@ -275,20 +283,12 @@ Meyer氏提出的DBC概念的描述，对于类的一个方法，都有一个前
 [参考博客: 23中设计模式类图和原理详解](http://blog.csdn.net/tingting256/article/details/52534663) 
 [参考博客: 23种设计模式类图总结 ](http://blog.csdn.net/qq_25827845/article/details/52510803) 
 
-## 策略模式
-> 定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法的变化独立于使用算法的用户。  
-[参考博客: 设计模式 ( 十八 ) 策略模式Strategy（对象行为型） ](http://blog.csdn.net/hguisu/article/details/7558249)
-[参考博客: Java消除ifelse](http://www.cnblogs.com/zdd-java/p/6143935.html)
-
-也就是说将一种需求的多种实现算法分别封装起来, 然后利用多态, 让调用方选择任一实现
-
-
 > [如何正确地使用设计模式？](https://www.zhihu.com/question/23757906)  
-> [](https://www.zhihu.com/question/23757237)
+> [设计模式有何不妥，所谓的荼毒体现在哪？](https://www.zhihu.com/question/23757237)
 
-如果你用的语言能把类型像变量一样赋值并传来传去，很多创建型模式就没用了。
-如果你用的语言能把函数像变量一样赋值并传来传去，很多行为模式就没用了。
-如果你用的语言 style 反对叠床架屋的 class hierarchy，很多结构模式就没用了。
+如果你用的语言能把类型像变量一样赋值并传来传去，很多创建型模式就没用了。  
+如果你用的语言能把函数像变量一样赋值并传来传去，很多行为模式就没用了。  
+如果你用的语言 style 反对叠床架屋的 class hierarchy，很多结构模式就没用了。  
 
 模式和重构之间存在着天然联系，模式是你想到达的目的地，而重构则是从其他地方到达这个目的地的条条道路——Martin Fowler《重构》
 
@@ -320,145 +320,89 @@ Meyer氏提出的DBC概念的描述，对于类的一个方法，都有一个前
 
 另外，个人感觉不能说设计模式是荼毒，他应该是每一个大师成长的必经之路，也是成长的途径之一。但是反过来不能一味的依赖这些内容，更多的是自己要勤于思考，培养自己的思维方式，形成自己的一套方法论。+看到问题首先想到那句台词，这里改编一下“根本没有设计模式，或者万物都是设计模式”！！！
 
-## 1.创建型设计模式
+## 设计模式概览
+### 创建型设计模式
+这些设计模式提供了一种在创建对象的同时隐藏创建逻辑的方式，而不是使用 new 关键字直接实例化对象。  
+这使得程序在判断针对某个给定实例需要创建哪些对象时更加灵活。
+
 > 单例模式(Singleton)  
-原型模式(Prototype)  
-建造者(Builder)  
-抽象工厂(Abstract Factory)  
-工厂方法(Factory Method)   
-
-* 抽象了实例化过程，它们帮助一个系统独立于如何创建，组合和表示它的那些对象。
-* 一个类创建型模型使用继承改变被实例化的类，而一个对象创建型模型将实例化委托给另一个对象
-* 将一组固定行为的硬编码转移为定义一个较小的基本行为集，这些行为可以被组合成任意数目的更复杂性的行为。这样创建有特定行为的对象要求的不仅仅是实例化一个类
-
-_Builder_
-- 生成器 Builder，是一种对象构建模式，模式通常包含Builder，ConcreteBuilder。Director 和 Product四部分
-
-_Abstract Factory_
-- 提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类
-
-_Factory Method_
-- 定义一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method 使一个类的实例化延迟到其子类
-
-_Prototype_
-- 用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。 
-
-_Singleton_
 - 保证一个类仅有一个实例，并提供一个访问它的全局访问点。
 
-## 2.结构型设计模式
+> 原型模式(Prototype)  
+- 用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。 
+
+> 建造者(Builder)  
+- Builder，是一种对象构建模式，模式通常包含Builder，ConcreteBuilder。Director 和 Product四部分.
+
+> 抽象工厂(Abstract Factory)  
+- 提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类
+
+> 工厂方法(Factory Method)   
+- 定义一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method 使一个类的实例化延迟到其子类
+
+### 结构型设计模式
+这些设计模式关注类和对象的组合。结构型模式采用继承机制来组合接口或实现, 使对象获得新功能的方式。  
+结构型设计模式不是对接口和实现进行组合，而是描述了如何对一些对象进行组合，从而实现新功能.
+
 > 适配器模式(**Adapter**)  
-桥接模式(**Bridge**)  
-组合模式(**Compontent**)  
-代理模式(**Proxy**)  
-享元模式(**Flyweight**)  
-外观模式(**Facade**)  
-装饰模式(**Decorator**)  
 
-* 结构型设计模式涉及如何组合类和对象以获得更大的结构
-* 结构型模式采用继承机制来组合接口或实现。
-* 结构型对象模式不是对接口和实现进行组合，而是描述了如何对一些对象进行组合，从而实现新功能
- 
-****
- 
-* **Composite模式**
-它将对象组合成树形结构以表示“部分-整体”
-* **Flyweight模式**
-该模式为共享对象定义了一个结构，强调对象的空间效率，自由共享
-* **Facade模式**（外观模式）
-描述了如何用单个对象表示整个子系统（外部与其内部通信必须通过一个统一的对象进行交互），模式中的facade用来表示一组对象，
-外观设计模式提供一个高层次的接口是的子系统易于使用。
-**适用情况:**
->  1.为复杂的子系统提供一个简单的接口
->  2.客户程序与抽象类的实现部分有很大依赖性
->  3.构建一个层次结构的子系统时，适用外观模式定义子系统每层的入口
+> 桥接模式(**Bridge**)  
+- 将对象的抽象和实现分离，从而可以独立的改变他们。
 
-* **Bridge模式** 将对象的抽象和实现分离，从而可以独立的改变他们。
-* **Decorator模式**
-描述如何动态地为对象添加职责，模式采用递归方式组合对象，从而允许添加任意多的对象职责。
+> 组合模式(**Composite**)  
+- 它将对象组合成树形结构以表示“部分-整体”
 
-## 3.行为设计模式
+> 代理模式(**Proxy**)  
+> 享元模式(**Flyweight**)  
+- 该模式为共享对象定义了一个结构，强调对象的空间效率，自由共享
+
+> 外观模式(**Facade**)  
+- 描述了如何用单个对象表示整个子系统（外部与其内部通信必须通过一个统一的对象进行交互），模式中的facade用来表示一组对象，外观设计模式提供一个高层次的接口是的子系统易于使用。
+
+> 装饰模式(**Decorator**)  
+- 描述如何动态地为对象添加职责，模式采用递归方式组合对象，从而允许添加任意多的对象职责。
+
+### 行为设计模式
+行为设计模式涉及算法和对象间职责的分配，行为模式描述对象和类的模式以及其通信模式, 行为模式使用继承机制在类间派发行为
+
 > 策略模式(**Strategy**)  
-命令模式(**Command**)  
-状态模式(**State**)  
-解释器模式(**Interpreter**)  
-模板方法(**Template Method**)  
-责任链模式(**Chain of Responsibility**)  
-迭代器模式(**Iterator**)  
-中介者模式(**Mediator**)  
-备忘录模式(**Memento**)  
-观察者模式(**Observe**)  
-访问者模式(**Visitor**)  
-
-* 行为设计模式涉及算法和对象间职责的分配，行为模式描述对象和类的模式以及其通信模式
-* 行为模式使用继承机制在类间派发行为
+> 命令模式(**Command**)  
+> 状态模式(**State**)  
+> 解释器模式(**Interpreter**)  
+> 模板方法(**Template Method**)  
+> 责任链模式(**Chain of Responsibility**)  
+> 迭代器模式(**Iterator**)  
+> 中介者模式(**Mediator**)  
+> 备忘录模式(**Memento**)  
+> 观察者模式(**Observe**)  
+> 访问者模式(**Visitor**)  
 
 ****************************************
 
-## 【常见设计模式】
-
-### 适配器模式
-- **适配器 模式**（Adapter）：适配器是的一个接口与其他接口兼容，从而给出了多个不同接口的同一抽象。一般分类结构和对象结构两种：
-- *类适配器*：适配器类继承被适配类，实现某个接口，在客户端类中可以根据需求来建立子类
-- *对象适配器*：适配器不是继承，是使用直接关联，或称委托方式
-![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/UML/Adapter.png)
-
-### 中介者模式
-- **中介者 模式**：包装了一系列对象相互作用的方式，使得对象间的相互作用是独立变化，但是与中介者紧密联系
-
-### 观察者模式
-- **观察者 模式 Observer**：一个目标物件管理相依于它的管理物件，并且在它本身的状态发生改变时发出通知，这种模式常用来实现事件处理系统。（也称发布-订阅，模型-视图，源-收听者模式）
-    - 观察者（接口）：更新信息，展示信息，给 **被观察者（形参）** 注册上观察者
-    - 被观察者（接口）：发出更新通知（遍历观察者集合并注册），当自身发生改动时发出通知消息
-
-![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/Observer.png)
-
-#### 单例模式
-> Singleton 一个类只有一个实例易于外界访问 Spring将该模式运用的出神入化
-
-- [单例模式与高并发](http://www.cnblogs.com/atwanli/articles/5104898.html)当某个单例对象中含有不具有并发性的对象 就会发生并发问题, 由于只有一个对象, 为了确保数据一致, 就需要加锁, 这样就带来了严重的性能下降, 而Spring是怎么做的呢
-    - [参考博客 Spring如何处理线程并发](https://blog.csdn.net/java_fancy/article/details/7439657)
-    - [参考博客: springmvc是单例的，开发的时候会不会影响性能呢？](https://bbs.csdn.net/topics/390873889)
-    - [参考博客: Spring并发访问的线程安全性问题](http://www.xuebuyuan.com/1628190.html) `Controller或者Service层中定义共享对象, 但是使用线程安全对象`
-
-> [参考博客: 单例模式和Static的区别! ](https://bbs.csdn.net/topics/310136305) 
-- [ ] `static 有可能被实例化多个出来么`
-
-#### 装饰器模式
-- **装饰器模式** 创建一个新类为某一个类动态添加新功能或增强原有的功能，避免代码重复或具体子类的数量增加
-
-![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/Decorator.png)
-
-- **策略模式** 优点：灵活添加同一问题的不同解决方案
-- **状态模式** 允许对象在内部状态时变更其行为，并且修改其类：
-    - 环境类（Context）：定义客户感兴趣的接口，维护一个子类的实例，这个实例就是当前状态
-    - 抽象状态类（State）：定义一个接口以封装与Context的一个特定状态相关的行为
-    - 具体状态类（concreteState）：每一子类实现与Context的一个状态相关的行为
-    - **例题**：纸巾售卖机:有四个状态!
-        - 【状态图】
-        - ![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/State_zhijin.png)
-        - 【类图】
-        - ![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/State_zhijin2.png)
-    - **例题**：TCP连接状态:![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/State_TCP.png)
-- **命令模式 command**：
-    - 行为请求者 与 请求实现者 之间 紧耦合 的关系
-    - **将一个请求封装成一个对象**，从而可用不同的请求对客户进行参数化，支持可撤销的操作
-    - 下例：使用了接口来实现多态，子类是多个的，方法同名并功能多样的
-        - 代码复用好，代码结构清晰【参数类表最好不要出现标志变量，最好分离出另一个方法】
-
-![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/Command.png)
-
-- **桥接模式** ： 便于扩展，实现与抽象分离（解耦）对一个模块修改不影响别的模块
-
-![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/Bridge.png)
-
-- **抽象工厂模式** ： 提供一个创建一系列相关实例相互依赖的对象。
+## 常见设计模式
+### 工厂模式
+### 抽象工厂模式
+- 提供一个创建一系列相关实例相互依赖的对象。
     - 当一个系统要独立于它的产品的创建，组合和表示时
     - 当一个系统要由多个产品系列中的一个来配置时
     - 当需强调一系列相关的产品对象的设计以便进行联合使用时
     - 想提供一组对象而不显示他们的实现过程，只显示他们的接口
     
 ![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/AbstractFactory.png)
+
+### 单例模式
+> Singleton 一个类只有一个实例供外界访问 Spring将该模式运用的出神入化
+
+- 当某个单例对象中含有不具有并发性的对象 就会发生并发问题, 由于只有一个对象, 为了确保数据一致, 就需要加锁, 这样就带来了严重的性能下降 而Spring是怎么做的呢
+    - [参考博客 Spring如何处理线程并发](https://blog.csdn.net/java_fancy/article/details/7439657)
+    - [参考博客: springmvc是单例的，开发的时候会不会影响性能呢？](https://bbs.csdn.net/topics/390873889)
+    - [参考博客: Spring并发访问的线程安全性问题](http://www.xuebuyuan.com/1628190.html) `Controller或者Service层中定义共享对象, 但是使用线程安全对象`
+
+### 建造者模式
+
+![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/Builder.png)
+
+使用场景: Protobuf消息类的创建都是使用的建造者模式
 
 ### 原型模式
 > struts2 就是采用该模式
@@ -468,10 +412,70 @@ _Singleton_
     
 ![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/Clone.png) 
 
-### 生成器模式
-- **生成器模式**：
+************
 
-![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/Builder.png)
+### 策略模式
+> 定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法的变化独立于使用算法的用户。  
+[参考博客: 设计模式 ( 十八 ) 策略模式Strategy（对象行为型） ](http://blog.csdn.net/hguisu/article/details/7558249)
+[参考博客: Java消除ifelse](http://www.cnblogs.com/zdd-java/p/6143935.html)
+
+也就是说将一种需求的多种实现算法分别封装起来, 然后利用多态, 让调用方选择任一实现
+
+优点：灵活添加同一问题的不同解决方案
+
+### 中介者模式
+
+包装了一系列对象相互作用的方式，使得对象间的相互作用是独立变化，但是与中介者紧密联系
+
+### 观察者模式
+一个目标物件管理相依于它的管理物件，并且在它本身的状态发生改变时发出通知，这种模式常用来实现事件处理系统。（也称发布-订阅，模型-视图，源-收听者模式）
+- 观察者（接口）：更新信息，展示信息，给 **被观察者（形参）** 注册上观察者
+- 被观察者（接口）：发出更新通知（遍历观察者集合并注册），当自身发生改动时发出通知消息
+
+![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/Observer.png)
+
+### 状态模式
+允许对象在内部状态时变更其行为，并且修改其类：
+- 环境类（Context）：定义客户感兴趣的接口，维护一个子类的实例，这个实例就是当前状态
+- 抽象状态类（State）：定义一个接口以封装与Context的一个特定状态相关的行为
+- 具体状态类（concreteState）：每一子类实现与Context的一个状态相关的行为
+
+- **例题**：纸巾售卖机:有四个状态!
+    - 【状态图】
+    - ![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/State_zhijin.png)
+    - 【类图】
+    - ![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/State_zhijin2.png)
+
+- **例题**：TCP连接状态:![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/State_TCP.png)
+
+### 命令模式
+- 行为请求者 与 请求实现者 之间 紧耦合 的关系
+- **将一个请求封装成一个对象**，从而可用不同的请求对客户进行参数化，支持可撤销的操作
+- 下例：使用了接口来实现多态，子类是多个的，方法同名并功能多样的
+    - 代码复用好，代码结构清晰【参数类表最好不要出现标志变量，最好分离出另一个方法】
+
+![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/Command.png)
+
+********************************
+### 适配器模式
+
+适配器是的一个接口与其他接口兼容，从而给出了多个不同接口的同一抽象。一般分类结构和对象结构两种：
+- *类适配器*：适配器类继承被适配类，实现某个接口，在客户端类中可以根据需求来建立子类
+- *对象适配器*：适配器不是继承，是使用直接关联，或称委托方式
+
+![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/UML/Adapter.png)
+
+### 装饰器模式
+创建一个新类为某一个类动态添加新功能或增强原有的功能，避免代码重复或具体子类的数量增加
+
+![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/Decorator.png)
+
+### 桥接模式
+便于扩展，实现与抽象分离（解耦）对一个模块修改不影响别的模块
+
+![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/Bridge.png)
+
+*********************
 
 # 实践
 ## 经验之谈
