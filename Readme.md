@@ -107,6 +107,7 @@
 
 ### Python
 - [老齐的笔记](https://github.com/qiwsir/ITArticles)`跟老齐学Python的轻松入门 作者`
+- [Python Tutorial vamei](https://github.com/Vamei/Python-Tutorial-Vamei)
 
 ### 前端
 - [CSS 魔法](https://github.com/cssmagic/blog)

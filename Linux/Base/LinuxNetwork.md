@@ -41,10 +41,11 @@ categories:
         1. [telnet](#telnet)
         1. [VPN](#vpn)
             1. [shadowsocks](#shadowsocks)
+            1. [proxychains](#proxychains)
         1. [防火墙](#防火墙)
             1. [iptables](#iptables)
 
-**目录 end**|_2019-03-19 18:05_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-11 15:12_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Linux网络管理
 ## Tips
@@ -375,6 +376,8 @@ _ss_
     - -p: 下载所有为了html页面显示正常的文件
     - –convert-links: 下载后，转换成本地的链接
     - `-P .`： 保存所有文件和目录 到当前目录
+
+- 获取API返回数据 `wget -q url -O -`
 
 ****************************
 ## 常用服务

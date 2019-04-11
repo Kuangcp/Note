@@ -41,7 +41,7 @@ categories:
     1. [Hotspot JVM](#hotspot-jvm)
     1. [OpenJ9](#openj9)
 
-**目录 end**|_2019-04-06 00:10_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-11 15:12_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -157,6 +157,7 @@ NIO 会经常使用, 提高性能
 `老年代GC Major GC`  
 发生在老年代的GC, 出现了 Major GC, 往往会伴随至少一次 Minor GC. Major GC 的速度一般会比 Minor GC 慢10倍以上.
 
+> [What causes a full GC to run?](https://stackoverflow.com/questions/42226785/what-causes-a-full-gc-to-run)
 *************
 
 ![Generation](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Java/Jvm/Generation.png)

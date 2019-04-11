@@ -19,6 +19,9 @@ categories:
         1. [守护进程](#守护进程)
         1. [线程](#线程)
     1. [环境变量](#环境变量)
+        1. [全局环境变量](#全局环境变量)
+        1. [局部环境变量](#局部环境变量)
+        1. [加载环境变量](#加载环境变量)
     1. [时间](#时间)
     1. [服务](#服务)
         1. [自启服务](#自启服务)
@@ -40,7 +43,7 @@ categories:
     1. [让命令在后台运行](#让命令在后台运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2019-04-06 17:05_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-11 15:12_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -181,6 +184,19 @@ categories:
 
 ************************
 ## 环境变量
+
+### 全局环境变量
+### 局部环境变量
+### 加载环境变量
+ 
+1. /etc/profile
+1. $HOME/.bash_profile
+1. $HOME/.bashrc
+1. $HOME/.bash_login
+1. $HOME/.profile
+
+> [千万别混淆 Bash/Zsh 的四种运行模式](https://zhuanlan.zhihu.com/p/47819029)
+> [	ssh连接远程主机执行脚本的环境变量问题](https://blog.csdn.net/whitehack/article/details/51705889)
 
 ************************
 ## 时间
