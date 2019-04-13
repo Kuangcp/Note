@@ -2,10 +2,8 @@
 
 * [ Introduction ](README.md)
 
-* [ Platform ](./Platform.md)
 * [ Repository ](./Repository.md)
 * [ SUMMARY ](./SUMMARY.md)
-* [ Website ](./Website.md)
 * 【 Blog 】
     * [ Blog ](/Blog/Blog.md)
     * [ Java ](/Blog/Java.md)
@@ -82,7 +80,6 @@
         * [ IO ](/Java/AdvancedLearning/IO.md)
         * [ JDBC ](/Java/AdvancedLearning/JDBC.md)
         * [ JDKAndJRE ](/Java/AdvancedLearning/JDKAndJRE.md)
-        * [ JMS ](/Java/AdvancedLearning/JMS.md)
         * [ JMX ](/Java/AdvancedLearning/JMX.md)
         * [ JVM ](/Java/AdvancedLearning/JVM.md)
         * [ Java11 ](/Java/AdvancedLearning/Java11.md)
@@ -92,9 +89,11 @@
         * [ JavaReleaseVersion ](/Java/AdvancedLearning/JavaReleaseVersion.md)
         * [ JavaWeb ](/Java/AdvancedLearning/JavaWeb.md)
         * [ JvmPerformance ](/Java/AdvancedLearning/JvmPerformance.md)
+        * [ MQ ](/Java/AdvancedLearning/MQ.md)
         * [ MultipleLanguage ](/Java/AdvancedLearning/MultipleLanguage.md)
         * [ Proxy ](/Java/AdvancedLearning/Proxy.md)
         * [ Reflection ](/Java/AdvancedLearning/Reflection.md)
+        * [ Serialize ](/Java/AdvancedLearning/Serialize.md)
         * [ SyntaxAndType ](/Java/AdvancedLearning/SyntaxAndType.md)
         * [ Thread ](/Java/AdvancedLearning/Thread.md)
         * [ WebPerformance ](/Java/AdvancedLearning/WebPerformance.md)
@@ -117,6 +116,7 @@
         * [ Solr ](/Java/Ecosystem/Solr.md)
         * [ Vertx ](/Java/Ecosystem/Vertx.md)
     * 【 Java/MSA 】
+    * 【 Java/Pattern 】
     * 【 Java/Spring 】
         * [ Spring ](/Java/Spring/Spring.md)
         * [ Spring5 ](/Java/Spring/Spring5.md)
@@ -151,10 +151,10 @@
         * [ MavenAdvance ](/Java/Tool/MavenAdvance.md)
         * [ Tomcat ](/Java/Tool/Tomcat.md)
     * [ AlibabaJavaStandard ](/Java/AlibabaJavaStandard.md)
+    * [ DesignPattern ](/Java/DesignPattern.md)
     * [ Log ](/Java/Log.md)
     * [ MIS ](/Java/MIS.md)
     * [ RESTful ](/Java/RESTful.md)
-    * [ ZenOfPattern ](/Java/ZenOfPattern.md)
 * 【 Linux 】
     * 【 Linux/Alpine 】
         * [ AlpineBase ](/Linux/Alpine/AlpineBase.md)
@@ -191,7 +191,6 @@
         * [ HAProxy ](/Linux/Tool/HAProxy.md)
         * [ IME ](/Linux/Tool/IME.md)
         * [ Nginx ](/Linux/Tool/Nginx.md)
-        * [ Terminal ](/Linux/Tool/Terminal.md)
         * [ Tmux ](/Linux/Tool/Tmux.md)
         * [ Vim ](/Linux/Tool/Vim.md)
         * [ Zsh ](/Linux/Tool/Zsh.md)
@@ -273,8 +272,10 @@
     * [ AppManual ](/Skills/AppManual.md)
     * [ CelebrityQuotes ](/Skills/CelebrityQuotes.md)
     * [ Miscellaneous ](/Skills/Miscellaneous.md)
+    * [ Platform ](/Skills/Platform.md)
     * [ Problem ](/Skills/Problem.md)
     * [ RegularExpression ](/Skills/RegularExpression.md)
     * [ SoftwareDesignEngineer ](/Skills/SoftwareDesignEngineer.md)
+    * [ Website ](/Skills/Website.md)
 * 【 Windows 】
     * [ WindowsWithHibernate ](/Windows/WindowsWithHibernate.md)
