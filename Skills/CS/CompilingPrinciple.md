@@ -21,5 +21,19 @@ categories:
 ### JIT
 > Just in time 
 
+在运行时才将源码编译成机器码
+
 ### AOT
 > Ahead of time 
+
+预先将所源码编译成机器码
+
+## AST
+> Abstract Syntax Tree 
+
+用处: 错误提示、自动补全、重构、语法检查, 代码混淆, 静态代码分析, 自动生成测试代码 ...
+
+> [参考博客: 从现在起-彻底学会 js ast](https://segmentfault.com/a/1190000017992387)
+> [参考博客: Java代码分析器(一): JDT入门](https://segmentfault.com/a/1190000000609246)
+
+- [Github: java parser](https://github.com/javaparser/javaparser)`Java生成AST`

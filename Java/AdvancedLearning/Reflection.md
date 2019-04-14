@@ -1,5 +1,5 @@
 ---
-title: Java反射
+title: Java反射原理以及使用
 date: 2018-11-21 10:56:52
 tags: 
     - Reflect
@@ -34,12 +34,20 @@ categories:
 
 > [参考博客: java反射的性能问题](http://www.cnblogs.com/zhishan/p/3195771.html)
 
+## 概念
+
+在运行时 反射使程序能够在运行时探知类的结构信息:构造器,方法,字段... 并且依赖这些结构信息完成相应的操作,比如创建对象,方法调用,字段赋值...  
+这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。
+
+## 实现原理
+
 ## 基础类
-> Field Method ...
+> Java 反射的实现类
 
 ### AccessibleObject
 > The AccessibleObject class is the base class for Field, Method and Constructor objects. It provides the ability to flag a reflected object as suppressing default Java language access control checks when it is used.  
-> AccessibleObject 类是 Field、Method 和 Constructor 对象的基类。它提供了将反射的对象标记为 具有在使用时禁止默认Java语言访问控制检查的能力。
+
+> AccessibleObject 类是 Field、Method 和 Constructor 对象的基类。它提供了将反射的对象标记为 具有在使用时禁止Java语言的`默认访问控制检查`的能力。
 
 对于公共成员、默认（打包）访问成员、受保护成员和私有成员，在分别使用 Field、Method 或 Constructor 对象来设置或获得字段、调用方法，或者创建和初始化类的新实例的时候，会执行访问检查。  
 在反射对象中设置 accessible 标志允许具有足够特权的复杂应用程序（比如 Java Object Serialization 或其他持久性机制）以某种通常禁止使用的方式来操作对象。  
@@ -55,6 +63,11 @@ categories:
 > 默认情况下，`内核API`和`扩展目录`的代码具有该权限，而`类路径`或`通过URLClassLoader加载`的应用程序不拥有此权限。
 
 - [ ] 仍然存疑, 什么情况下才是 默认可访问的
+
+### Class
+### Field
+### Method
+### Constructor
 
 ### Modifier
 > The Modifier class provides static methods and constants to decode class and member access modifiers.   
@@ -95,11 +108,35 @@ categories:
 ```
 
 *****************************
-## 使用
-> [Github: 反射获取属性](https://github.com/Kuangcp/JavaBase/blob/master/java-class/src/test/java/com/github/kuangcp/reflects/ObtainFieldsTest.java)
 
-### 属性
-> _获取以及修改属性的值_
+## 使用
+> 具有的功能
+1. 在运行时判断任意一个对象所属的类；
+1. 在运行时构造任意一个类的对象；
+1. 在运行时判断任意一个类所具有的成员变量和方法；
+1. 在运行时调用任意一个对象的方法；
+1. 生成动态代理。
+
+### 获取到Class对象
+> 所有的反射操作的入口都是从Class对象开始的, 获取Class对象有多种方式:
+
+1）通过类加载器加载class文件
+
+Class<?> clazz = Thread.currentThread().getContextClassLoader().
+        loadClass("com.takumiCX.reflect.ClassTest");
+
+2）通过静态方法Class.forName()获取,需要传入类的全限定名字符串作参数
+
+Class<?> clazz = Class.forName("com.takumiCX.reflect.ClassTest");
+
+3）通过类.class获得类的Class对象
+
+Class<ClassTest> clazz = ClassTest.class;
+
+除了获得的Class对象的泛型类型信息不一样外,还有一个不同点值得注意。只有“2”在获得class对象的同时会引起类的初始化,而1和3都不会。
+
+************************
+
 ```java
     // 1. 通过描述对象获取值, 但是该属性要有对应的正确的 set get 方法
     PropertyDescriptor propertyDescriptor = new PropertyDescriptor("age", A.class);
@@ -107,25 +144,19 @@ categories:
     Object result = method.invoke(object);
 
     // 2. 直接通过Field对象
-    // set
     A a = new A();
     Field field = a.getClass().getDeclaredField("age");
     field.setAccessible(true);
     field.set(a, 1);
-    // get
+    
     field.setAccessible(true);
     System.out.println(field.get(a));
 ```
+- [Github: 更多反射Demo](https://github.com/Kuangcp/JavaBase/tree/master/java-class/src/test/java/com/github/kuangcp/reflects)
 
-> [doc: java8](https://docs.oracle.com/javase/8/docs/api/) `Field.set()`的文档
-
+正常情况下 final修饰的类，变量，方法, 表示不可继承，不可修改，不可重写(override), 但是使用反射能在一定程度上进行修改
 被final修饰过的变量，只是说栈存储的地址不能再改变，但是却没有说地址指向的内容不能改变，所以反射可以破final，因为它修改该了以前地址的具体内容，但是没有改地址的信息。
-
-#### 修改 final 修饰的属性
-
-final修饰的类，变量，方法, 表示不可继承，不可修改，不可重写(override)
-
-### 方法
+> 参考 [doc: java8](https://docs.oracle.com/javase/8/docs/api/) `Field.set()`的文档
 
 **********************
 
