@@ -111,29 +111,26 @@ categories:
 
 ## 使用
 > 具有的功能
-1. 在运行时判断任意一个对象所属的类；
+1. 在运行时获取任意一个类所具有的成员变量和方法以及泛型类型；
 1. 在运行时构造任意一个类的对象；
-1. 在运行时判断任意一个类所具有的成员变量和方法；
 1. 在运行时调用任意一个对象的方法；
 1. 生成动态代理。
+
+> 泛型擦除的存在, 但是泛型如果被用来进行声明, 类上,字段上,方法参数和方法返回值上,这些属于类的结构信息其实是会被编译进Class文件中的;  
+> 而泛型如果被用来使用,常见的方法体中带泛型的局部变量,其类型信息不会被编译进Class文件中。  
+> 前者因为存在于Class文件中，所以运行时通过反射还是能够获得其类型信息的;
 
 ### 获取到Class对象
 > 所有的反射操作的入口都是从Class对象开始的, 获取Class对象有多种方式:
 
-1）通过类加载器加载class文件
+1. 通过类加载器加载class文件
+    - `Class<?> clazz = Thread.currentThread().getContextClassLoader().loadClass("com.takumiCX.reflect.ClassTest");`
+1. 通过静态方法Class.forName()获取,需要传入类的全限定名字符串作参数
+    - `Class<?> clazz = Class.forName("com.takumiCX.reflect.ClassTest");`
+1. 通过类.class获得类的Class对象
+    - `Class<ClassTest> clazz = ClassTest.class;`
 
-Class<?> clazz = Thread.currentThread().getContextClassLoader().
-        loadClass("com.takumiCX.reflect.ClassTest");
-
-2）通过静态方法Class.forName()获取,需要传入类的全限定名字符串作参数
-
-Class<?> clazz = Class.forName("com.takumiCX.reflect.ClassTest");
-
-3）通过类.class获得类的Class对象
-
-Class<ClassTest> clazz = ClassTest.class;
-
-除了获得的Class对象的泛型类型信息不一样外,还有一个不同点值得注意。只有“2”在获得class对象的同时会引起类的初始化,而1和3都不会。
+除了获得的Class对象的泛型类型信息不一样外,还有一个不同点值得注意。只有 forName() 在获得class对象的同时会引起类的初始化
 
 ************************
 
@@ -163,3 +160,6 @@ Class<ClassTest> clazz = ClassTest.class;
 # 反射的性能问题
 > [参考博客: java反射的性能问题 ](http://www.cnblogs.com/zhishan/p/3195771.html)
 
+> [性能测试对比: 反射 setter cglib](https://github.com/Kuangcp/JavaBase/blob/master/java-class/src/test/java/com/github/kuangcp/reflects/ReflectPerformanceTest.java)
+
+Spring 中的 IOC 主要是依据反射来实现的, 只在启动阶段性能有所损耗, 关注性能以及热点代码最好避免使用反射

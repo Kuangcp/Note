@@ -23,9 +23,8 @@ categories:
 **目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
 ****************************************
 # 线程的基础学习
-> [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/threads)
+> [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/java-thread/src/main/java/com/github/kuangcp)
 
-## TODO
 - [ ] 线程的多种创建方式
 - [ ] 线程池的创建方式
 - [ ] 线程的状态转化
@@ -65,7 +64,7 @@ _Thread类的target属性_
     - init方法在Thread类的构造方法里被调用
 
 ### 控制
-- 当调用 `Thread.join()` 时，_调用线程_将阻塞，直到_目标线程_完成为止。 
+- 当调用 `join()` 时，`当前调用线程`将会阻塞，直到`目标线程`完成为止。 
 
 ### 销毁
 

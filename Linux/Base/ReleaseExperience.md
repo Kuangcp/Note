@@ -157,9 +157,6 @@ _服务器_
 #### 关于显卡
 > [参考博客: 显卡驱动作死录](https://www.jianshu.com/p/f53c8223bac6)
 
-> [How to enable hibernate in Deepin? ](https://bbs.deepin.org/forum.php?mod=viewthread&tid=145013)
-> [ PowerManagement/Hibernate](https://help.ubuntu.com/community/PowerManagement/Hibernate)
-
 > 个人折腾的整理
 当前系统为 Deepin15.7 已经支持多种解决方案了, 还有一个 `深度显卡驱动管理器`
 1. Intel默认驱动(也就是集显) 
@@ -178,6 +175,18 @@ PRIME方案切换后差点把内核挂了, 一顿瞎操作把系统救活了
 ```
 最后的解决方案是从 4.2 内核启动, 切换回了开源驱动  
 版本: Deepin15.9.1 , 不知道哪一个版本升级了内核, 而且新旧内核都保留下来了, 所以有两个内核 4.16 4.2 , 幸好有两个内核
+
+#### 系统休眠
+分为 睡眠 Suspend 和 休眠 Hibernate
+
+> [How to enable hibernate in Deepin? ](https://bbs.deepin.org/forum.php?mod=viewthread&tid=145013)
+> [ PowerManagement/Hibernate](https://help.ubuntu.com/community/PowerManagement/Hibernate)
+
+- 睡眠：所有当前数据保存到内存中，电源只给内存供电。
+- 休眠：所有当前数据保存到硬盘中，电源全部断开。
+- 重启：所有当前数据关闭，全新冷启动系统。
+- 关机：开启快速启动时，所有当前的用户数据关闭，只保存系统核心数据到硬盘中方便下次快速启动系统，电源全部断开；
+    - 关闭快速启动时，等同于重启。
 
 #### 双系统安装
 - 首先进入BIOS关闭 安全启动, 选择引导方式为Legacy关闭UEFI win8以上则要关闭快速启动, 
