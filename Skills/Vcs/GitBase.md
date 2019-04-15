@@ -19,6 +19,7 @@ categories:
             1. [rm](#rm)
             1. [status](#status)
             1. [commit](#commit)
+            1. [rebase](#rebase)
             1. [revert](#revert)
             1. [show](#show)
             1. [log](#log)
@@ -51,7 +52,7 @@ categories:
             1. [merge](#merge)
             1. [rebase](#rebase)
             1. [cherry-pick](#cherry-pick)
-        1. [Submodules](#submodules)
+        1. [Submodule](#submodule)
         1. [其他](#其他)
             1. [grep](#grep)
             1. [archive](#archive)
@@ -64,7 +65,7 @@ categories:
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-03-19 18:05_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-16 00:36_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -189,6 +190,9 @@ TODO 存疑
     - 如果上次提交漏了文件, 只需把漏的文件加入到 index区中, 然后执行 git commit --amend 即可
     - 注意: 如果没有将前一个提交推送到远程, 那么没有任何影响, 
     - 如果已经推送上去了, 就相当于该次 --amend 操作是新开了个分支完成的修改, git log 里会出现一个分支的环
+
+#### rebase
+> [Official Doc](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
 
 #### revert 
 1. 取消所有暂存 `git revert .`
@@ -571,7 +575,7 @@ TODO 存疑
     - `git rebase --continue` 修改好冲突后继续
 
 #### cherry-pick
-- [ ] 
+- [ ] learn 
 
 ************************
 ### Submodule
@@ -583,6 +587,17 @@ TODO 存疑
 - 能够在一个git仓库中将一个文件夹作为一些独立的子仓库进行管理
 
 - 添加子模块 `git submodule add url dir` 目录为可选项
+
+当主仓库 clone 时 只会将子模块作为空目录克隆下来
+- 读取 .gitmodules 文件完成子模块的注册 `git submodule init`
+- 拉取子模块代码 `git submodule update`
+
+以上两条命令等价于 `git submodule update --init --recursive`
+
+删除子模块
+1. 删除.gitsubmodule里相关部分
+1. 删除.git/config 文件里相关字段
+1. 删除子仓库目录
 
 ***************
 

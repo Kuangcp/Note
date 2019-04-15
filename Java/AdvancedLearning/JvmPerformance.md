@@ -38,6 +38,8 @@ categories:
 ## JVM参数配置
 > [参考博客: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)
 
+- [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`
+
 ### IDEA参数调优
 ```conf
     -server

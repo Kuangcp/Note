@@ -15,12 +15,13 @@ categories:
         1. [Java虚拟机栈](#java虚拟机栈)
         1. [本地方法栈](#本地方法栈)
         1. [Java堆](#java堆)
-            1. [堆上的内存分配策略](#堆上的内存分配策略)
+            1. [堆内存分配策略](#堆内存分配策略)
         1. [方法区](#方法区)
             1. [运行时常量池](#运行时常量池)
         1. [直接内存](#直接内存)
     1. [元空间](#元空间)
 1. [GC](#gc)
+    1. [GC 术语](#gc-术语)
     1. [判断存活算法](#判断存活算法)
         1. [引用计数算法](#引用计数算法)
         1. [可达性分析算法](#可达性分析算法)
@@ -28,7 +29,7 @@ categories:
         1. [标记清除算法](#标记清除算法)
         1. [复制算法](#复制算法)
         1. [标记整理算法](#标记整理算法)
-    1. [垃圾回收器](#垃圾回收器)
+    1. [垃圾收集器](#垃圾收集器)
         1. [Serial](#serial)
         1. [ParNew](#parnew)
         1. [Parallel Scavenge](#parallel-scavenge)
@@ -41,7 +42,7 @@ categories:
     1. [Hotspot JVM](#hotspot-jvm)
     1. [OpenJ9](#openj9)
 
-**目录 end**|_2019-04-11 15:12_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-16 00:36_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
