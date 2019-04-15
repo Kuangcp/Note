@@ -574,12 +574,15 @@ TODO 存疑
 - [ ] 
 
 ************************
-### Submodules
-> [官方文档](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
+### Submodule
+> [Official Doc](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
+
 > [git submodule的使用](https://blog.csdn.net/wangjia55/article/details/24400501)
 > [参考博客: Git Submodule使用完整教程](http://www.kafeitu.me/git/2012/03/27/git-submodule.html)
 
 - 能够在一个git仓库中将一个文件夹作为一些独立的子仓库进行管理
+
+- 添加子模块 `git submodule add url dir` 目录为可选项
 
 ***************
 
