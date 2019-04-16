@@ -9,6 +9,14 @@ categories:
 
 **目录 start**
  
+1. [Redis底层数据结构](#redis底层数据结构)
+    1. [简单动态字符串](#简单动态字符串)
+    1. [链表](#链表)
+    1. [字典](#字典)
+    1. [跳表](#跳表)
+    1. [整数集合](#整数集合)
+    1. [压缩列表](#压缩列表)
+    1. [对象](#对象)
 1. [Redis常用命令](#redis常用命令)
     1. [Run Configuration](#run-configuration)
     1. [过期策略](#过期策略)
@@ -27,8 +35,53 @@ categories:
     1. [数据迁移](#数据迁移)
     1. [错误分析](#错误分析)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-16 23:27_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
+# Redis底层数据结构
+## 简单动态字符串
+## 链表
+## 字典
+
+## 跳表
+> [跳表基础](/Skills/CS/DS/LinearList.md)
+
+> [Redis设计与实现: 跳跃表的实现](http://redisbook.com/preview/skiplist/datastruct.html)
+
+Redis 的跳跃表由 redis.h/zskiplistNode 和 redis.h/zskiplist 两个结构定义， 其中 zskiplistNode 结构用于表示跳跃表节点  
+而 zskiplist 结构则用于保存跳跃表节点的相关信息， 比如节点的数量， 以及指向表头节点和表尾节点的指针 等等。
+
+```C
+    typedef struct zskiplistNode {
+        // 后退指针
+        struct zskiplistNode *backward;
+
+        // 分值
+        double score;
+
+        // 成员对象
+        robj *obj;
+
+        // 层
+        struct zskiplistLevel {
+
+            // 前进指针
+            struct zskiplistNode *forward;
+
+            // 跨度
+            unsigned int span;
+
+        } level[];
+
+    } zskiplistNode;
+```
+## 整数集合
+
+## 压缩列表
+
+## 对象
+
+************************
+
 # Redis常用命令
 
 - 关闭数据库 `shutdown` 该命令会在关闭数据库前保存数据

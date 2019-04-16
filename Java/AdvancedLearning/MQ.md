@@ -19,7 +19,7 @@ categories:
     1. [Kafka](#kafka)
     1. [RabbitMQ](#rabbitmq)
 
-**目录 end**|_2019-04-12 12:51_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-16 23:27_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # MQ
 
@@ -39,6 +39,8 @@ categories:
 # MQ中间件
 ## RocketMQ
 > [有关demo](https://github.com/lirenzuo/rocketmq-rocketmq-all-4.1.0-incubating)
+
+4.3 开始支持分布式事务
 
 ## ActiveMQ
 > [Official Site](http://activemq.apache.org/)

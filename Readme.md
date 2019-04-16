@@ -10,6 +10,7 @@
 </div>
 
 # 学习笔记
+> 该仓库克隆下来后并将该项目作为工作空间后, 在VSCode中搜索阅读体验最佳
 
 ## 基础
 * [ 算法 ](/Skills/CS/Algorithm.md)
@@ -104,6 +105,7 @@
 - [daydayup](https://github.com/ITDragonBlog/daydayup)`Java架构师成长之路`
 - [LearningNotes](https://github.com/francistao/LearningNotes)`安卓`
 - [advanced-java](https://github.com/doocs/advanced-java)
+- [Java资源大全中文版](https://github.com/jobbole/awesome-java-cn)
 
 ### Python
 - [老齐的笔记](https://github.com/qiwsir/ITArticles)`跟老齐学Python的轻松入门 作者`

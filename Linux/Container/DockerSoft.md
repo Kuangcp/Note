@@ -38,7 +38,7 @@ categories:
     1. [在线IDE](#在线ide)
     1. [图形化管理工具](#图形化管理工具)
 
-**目录 end**|_2019-03-20 17:29_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-16 23:27_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Docker容器化应用
 > [https://docs.docker.com/samples/](https://docs.docker.com/samples/)  
@@ -183,7 +183,7 @@ categories:
 
 ## git服务器
 ### 简易git-daemon
-> 基于git-daemon构建一个Docker镜像, 跑起来直接做git服务器 | [学习使用git-daemon命令](/Linux/Git_Action.md)
+> 基于git-daemon构建一个Docker镜像, 跑起来直接做git服务器 | [学习使用git-daemon命令](/Skills/Vcs/GitAction.md#使用-git-daemon-搭建简易-server)
 
 ```sh
     # 创建一个挂载了本地文件夹的git仓库，并关联到nginx，目录结构和上文一致

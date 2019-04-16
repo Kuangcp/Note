@@ -10,14 +10,17 @@ categories:
 1. [Java使用redis](#java使用redis)
     1. [Jedis](#jedis)
         1. [jedis遇到的异常](#jedis遇到的异常)
-        1. [SpringBoot使用Redis](#springboot使用redis)
+    1. [Redisson](#redisson)
     1. [Lettuce](#lettuce)
+    1. [vertx-redis-client](#vertx-redis-client)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-16 23:27_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Java使用redis
+> [Official List](https://redis.io/clients#java)
+
 ## Jedis
-> [Github:](https://github.com/xetorthio/jedis)简单直接, 但是项目很久没有更新了
+> [Github: Jedis](https://github.com/xetorthio/jedis) 简单直接 
 
 - maven依赖(Spring 4.1.7)：
 ```xml
@@ -78,12 +81,15 @@ categories:
 - 版本对不上，要Spring和Spring-data-redis 和 redis和commons-lang3对应
 - 目前是4.1.7 + 1.6.0 + 2.9.0 + 3.3.2 编译通过了	
 
-### SpringBoot使用Redis
-> [SpringBoot配置Redis](/Java/Spring/SpringBootDatabase.md)	
+## Redisson
+> [Github: Redisson](https://github.com/redisson/redisson)
 
 *********************
 ## Lettuce
 > [Official](https://lettuce.io/) | [Github:](https://github.com/lettuce-io/lettuce-core)
 
 和 Spring Netty 结合紧密， 适合 Spring 系， 没有Jedis简洁
+
+## vertx-redis-client
+> [Github: vertx-redis-client](https://github.com/vert-x3/vertx-redis-client)
 

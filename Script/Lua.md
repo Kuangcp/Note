@@ -10,13 +10,14 @@ categories:
 1. [Lua](#lua)
     1. [安装](#安装)
 
-**目录 end**|_2019-02-27 09:54_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-16 23:27_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Lua
 
 > [Official ](https://www.lua.org/) | [wiki: lua](https://en.wikipedia.org/wiki/Lua)
 
-> [Lua 菜鸟教程](http://www.runoob.com/lua/lua-tutorial.html)
+> [Lua 菜鸟教程](http://www.runoob.com/lua/lua-tutorial.html)  
+> [lua-in-one-pic](https://github.com/coodict/lua-in-one-pic)
 
 因为该项目 [z.lua](https://github.com/skywind3000/z.lua) 而安装了Lua, 他的执行速度确实非常快
 

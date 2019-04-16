@@ -10,11 +10,13 @@ categories:
 1. [树](#树)
     1. [红黑树](#红黑树)
 
-**目录 end**|_2019-04-16 15:36_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-16 23:27_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 树
 
 ## 红黑树
+> 对称二叉 B 树
+
 红黑树具有以下5种性质：
 
 1. 节点是红色或黑色。

@@ -15,6 +15,7 @@ categories:
         1. [Ubuntu安装配置MySQL](#ubuntu安装配置mysql)
         1. [Docker安装](#docker安装)
         1. [图形化客户端](#图形化客户端)
+        1. [命令行工具](#命令行工具)
 1. [基本数据类型](#基本数据类型)
     1. [数值类型](#数值类型)
         1. [short](#short)
@@ -68,7 +69,7 @@ categories:
         1. [【授权】](#授权)
 1. [查询](#查询)
 
-**目录 end**|_2019-01-25 19:23_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-16 23:27_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 
 # Mysql
@@ -99,6 +100,9 @@ _重启_
 
 ### 图形化客户端
 > windows上就直接 MySQL-Font HeidiSQL Linux就终端了..虽然wine也能装这俩 | [10个Mysql图形客户端](http://www.linuxidc.com/Linux/2015-01/111421.htm)
+
+### 命令行工具
+> [mycli](https://github.com/dbcli/mycli)
 
 ********************************
 # 基本数据类型

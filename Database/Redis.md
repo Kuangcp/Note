@@ -19,11 +19,11 @@ categories:
         1. [解压即用](#解压即用)
     1. [Redis配置文件](#redis配置文件)
 1. [数据类型](#数据类型)
-    1. [字符串String](#字符串string)
-    1. [列表List](#列表list)
-    1. [集合Set](#集合set)
-    1. [有序集合Zset](#有序集合zset)
-    1. [散列Hash](#散列hash)
+    1. [String](#string)
+    1. [List](#list)
+    1. [Set](#set)
+    1. [Zset](#zset)
+    1. [Hash](#hash)
     1. [HyperLogLog](#hyperloglog)
     1. [GEO地理位置](#geo地理位置)
 1. [Pub/Sub发布和订阅](#pubsub发布和订阅)
@@ -33,10 +33,11 @@ categories:
         1. [Python使用](#python使用)
     1. [GUI](#gui)
 1. [Project](#project)
+    1. [Codis](#codis)
     1. [webdis](#webdis)
 1. [使用](#使用)
 
-**目录 end**|_2019-02-13 23:16_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-16 23:27_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -46,7 +47,8 @@ categories:
 > [参考博客: nodejs + redis/mysql 连接池问题](https://www.cnblogs.com/laozhbook/p/nodejs_redis_connection_pool.html)`单线程问题`
 
 ## Book 
-> [Redis设计与实现 第二版](http://www.shouce.ren/api/view/a/13483)
+> [Redis设计与实现 第二版](http://www.shouce.ren/api/view/a/13483)  
+> [Redis 设计与实现](http://redisbook.com)`作者自建网站`
 
 ***********************
 
@@ -104,7 +106,7 @@ categories:
 # 数据类型
 > [社区: 中文文档](http://redisdoc.com/index.html)
 
-## 字符串String
+## String
 > 字符串就是字节组成的序列 可以放字节串，整数，浮点数
 
 - `set key newval nx `存在则set失败
@@ -123,7 +125,7 @@ categories:
 - `persist key` 去除超时时间
 - `ttl key` 查看剩余存活时间 -1表示永久 -2表示没有该key
 
-## 列表List
+## List
 - `rpush key val val val `右/尾添加元素 lpush是左/头，若表不存在就新建
 - `rpushx key value` 若表不存在就什么都不做，否则尾插元素
 - `rpop key` 从list右/尾端中删除元素返回元素值 没有了就返回null
@@ -141,7 +143,7 @@ categories:
     - `bpoplpush`
     - `brpoplpush` 阻塞式先右弹再左进
 
-## 集合Set
+## Set
 - `SADD key member [member ...]`
 - `SCARD key` 返回集合 key 的基数(集合中元素的数量)。
 - `SDIFF key [key ...]`  返回一个集合的全部成员，该集合是所有给定集合之间的差集。不存在的 key 被视为空集。
@@ -158,7 +160,7 @@ categories:
 - `SUNIONSTORE destination key [key ...]`
 - `SSCAN key cursor [MATCH pattern] [COUNT count]` 参考 SCAN 命令
 
-## 有序集合Zset
+## Zset
 > 元素是键值对，键是member成员，值是score分值必须是浮点数
 
 - ZADD 将一个给定分值的成员添加到有序集合里
@@ -188,7 +190,7 @@ categories:
 - ZLEXCOUNT
 - ZREMRANGEBYLEX
 
-## 散列Hash
+## Hash
 > (类似Map 嵌套，一个内置的微型redis)
 
 - HDEL 删除散列中指定的K
@@ -265,10 +267,15 @@ categories:
 # Project
 > 衍生项目 
 
+## Codis
+> [Github: Codis](https://github.com/CodisLabs/codis)
+
 ## webdis
 > 将redis变为一个简单的web接口  
 
 > [官网](http://webd.is/) | [Github地址](https://github.com/nicolasff/webdis)
+
+************************
 
 # 使用
 > [Redis的n种妙用，不仅仅是缓存 ](https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650123010&idx=2&sn=c17bd9192daa15c00502b7e27acacc61&chksm=f36bb623c41c3f35060bf244eddddc25ea6e2b96900f57299e0d8ffe548a08823b057dee5baf&mpshare=1&scene=1&srcid=0109PazxT49BtR2oCJ6Od32h&pass_ticket=ZX4WKje%2FJzbdB6LEivhrNCtzmljNugDZul02fl5SX4snt5QLMa6Cle9o1I5CumfQ#rd)
