@@ -35,10 +35,11 @@ categories:
         1. [Gogs](#gogs)
         1. [Gitea](#gitea)
             1. [配置](#配置)
+    1. [博客](#博客)
     1. [在线IDE](#在线ide)
     1. [图形化管理工具](#图形化管理工具)
 
-**目录 end**|_2019-04-16 23:27_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-16 23:38_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Docker容器化应用
 > [https://docs.docker.com/samples/](https://docs.docker.com/samples/)  
@@ -76,9 +77,7 @@ categories:
 - 最好是一个服务（应用）一个容器
 
 **********
-- [ ] 日后更新, Dockerfile现在还有bug
 
-- 自己写构建文件，安装相应的软件 
 ```Dockerfile
     FROM ubuntu
     MAINTAINER kuangcp myth.kuang@gmail.com
@@ -94,9 +93,10 @@ categories:
         service ssh start; \ 
     EXPOSE 22
 ```
-- `docker build . -t myth:ssh`
-- `docker run -d -t --name myth -p 8989:22 myth:ssh`
-- `docker start myth`
+
+1. `docker build . -t myth:ssh`
+1. `docker run -d -t --name myth -p 8989:22 myth:ssh`
+1. `docker start myth`
 
 ### Alpine-ssh
 - [dockerfile: alpine-ssh](https://github.com/Kuangcp/DockerfileList/blob/master/alpine/alpine-ssh.dockerfile) 
@@ -181,6 +181,10 @@ categories:
 2. 安装 g++ make 
 4. 编译安装下载的源码 进入目录 `./configure --prefix=/usr && make && make check && make install` 
 
+> 直接下载二进制最简单...
+
+************************
+
 ## git服务器
 ### 简易git-daemon
 > 基于git-daemon构建一个Docker镜像, 跑起来直接做git服务器 | [学习使用git-daemon命令](/Skills/Vcs/GitAction.md#使用-git-daemon-搭建简易-server)
@@ -196,6 +200,8 @@ categories:
     #　启动服务
     git daemon --export-all --base-path="/root/Repository" --port=55443
 ```
+> 通过 daemon 能下拉提交代码, nginx 能在线浏览文件
+
 ### Gogs
 
 ### Gitea
@@ -205,8 +211,8 @@ categories:
 
 #### 配置
 > 配置SSH
-只要没有禁用掉SSH, 就能和Github一样使用SSH操作仓库, 但是,由于使用的Docker, 所以端口不是默认的22  
-所以在本机需要配置下 例如我的就是 6002映射到了22上
+
+只要没有禁用掉SSH, 就能和Github一样使用SSH操作仓库, 为了避免其他进程的端口冲突, 单独设置端口 例如: 6002映射到了22上  
 `~/.ssh/config`
 ```conf
     Host git.kuangcp.com
@@ -217,11 +223,21 @@ categories:
 ```
 然后就能正常使用了
 
+************************
+
+## 博客
+
+> [参考博客: 使用Docker 实现微服务并搭建博客，一文全掌握。 ](https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650121506&idx=1&sn=39e3ba8c5d9698bbfb8acfc6b7e772bf&chksm=f36bb803c41c3115371b69cbd1e626fcaf5a85c7034f96fe495cfbf6dc1630a42dfdd6e342da&mpshare=1&scene=1&srcid=06219wgtCPJNvZP66ccQXRCj#rd)
+
+************************
+
 ## 在线IDE
 - Coding平台的WebIDE
 - eclipse che
 
 - [coder-sever](https://github.com/codercom/code-server)`BS模式的VSCode`
+
+************************
 
 ## 图形化管理工具
 - DockerUI

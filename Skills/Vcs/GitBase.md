@@ -65,7 +65,7 @@ categories:
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-04-16 00:36_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-16 23:38_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -193,6 +193,8 @@ TODO 存疑
 
 #### rebase
 > [Official Doc](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
+
+- [ ] rebase merge 各自使用场景
 
 #### revert 
 1. 取消所有暂存 `git revert .`

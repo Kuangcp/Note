@@ -39,7 +39,12 @@ categories:
 # 博客
 
 ## 个人博客网
+
 - [Paul Graham](http://www.paulgraham.com/hackpaint.html)
+- [baeldung](https://www.baeldung.com/)`搜Spring相关总会搜到他的博客`
+
+************************
+
 - [java-success](https://www.java-success.com/)
 
 - [解道](https://www.jdon.com/)
