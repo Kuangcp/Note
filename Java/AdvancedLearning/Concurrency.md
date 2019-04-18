@@ -38,7 +38,7 @@ categories:
     1. [分支合并框架](#分支合并框架)
     1. [Java内存模型](#java内存模型)
 
-**目录 end**|_2019-03-17 15:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-18 08:32_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Java并发1
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/concurrents)  
@@ -145,19 +145,21 @@ categories:
 #### 正确使用锁
 > 查看JDK源码 ForkJoinTask 的 externalAwaitDone 方法
 
-- 1.wait方法用来使线程等待某个条件, 他必须在同步块内部被调用,这个同步块通常会锁定当前对象实例.
-```java
-// 这个模块的标准使用方式
-synchronized(this){
-    while(condition){
-        Object.wait();
-    }
-}
-```
-- 2.始终使用wait循环来调用wait方法, 永远不要在循环之外调用wait方法
+1. wait方法用来使线程等待某个条件, 他必须在同步块内部被调用,这个同步块通常会锁定当前对象实例.
+    ```java
+        // 这个模块的标准使用方式
+        synchronized(this){
+            while(condition){
+                Object.wait();
+            }
+        }
+    ```
+2. 始终使用wait循环来调用wait方法, 永远不要在循环之外调用wait方法
     - 因为有时候, 即使并不满足被唤醒条件,但是由于其他线程调用notifyAll()方法会导致被阻塞的线程意外唤醒,从而导致不可预料的结果
-- 3.唤醒线程,保守的做法是使用notifyAll唤醒所有等待的线程,从优化的角度看,如果处于等待的所有线程都在等待同一个条件,而每次只有一个线程可以从这个条件中被唤醒, 那么就应该选择调用notify
+3. 唤醒线程,保守的做法是使用notifyAll唤醒所有等待的线程,从优化的角度看,如果处于等待的所有线程都在等待同一个条件,而每次只有一个线程可以从这个条件中被唤醒, 那么就应该选择调用notify
 > 当多个线程共享一个变量的时候,每个读写都必须加锁进行同步, 如果没有正确的同步,就容易造成程序的活性失败和安全性失败,这样的失败是很难复现的.所以务必要保证锁的正确使用
+
+************************
 
 ```java
 // 这个就是个错误使用的案例
@@ -187,6 +189,7 @@ public int current(){
     - `线程可见性`  当一个线程修改了被volatile修饰的变量后,无论是否加锁,其他线程都能立即看到最新的修改
     - `禁止指令重排序优化` 普通的变量仅仅保证在该方法的执行过程中, 所有依赖赋值结果的地方都能获取正确的结果
         - 而不能保证变量赋值操作的顺序和程序代码的执行顺序一致
+
 #### 正确使用
 > 打开Netty中NioEventLoop的源码 有一个属性 `private volatile int ioRatio = 50;` 该变量是用于控制IO操作和其他任务运行比例的
 

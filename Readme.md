@@ -83,7 +83,7 @@
 # 其他笔记仓库
 - [笔记](https://github.com/dragonhht/Notes)
 
-- [CS Notes](https://github.com/CyC2018/CS-Notes)
+- [CS Notes](https://github.com/CyC2018/CS-Notes)`技术面试必备基础知识`
 - [note of interview ](https://github.com/zhengjianglong915/note-of-interview)
 - [skill tree](https://github.com/linw7/Skill-Tree)
 

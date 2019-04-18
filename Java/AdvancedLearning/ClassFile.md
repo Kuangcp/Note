@@ -13,7 +13,7 @@ categories:
     1. [编译优化](#编译优化)
     1. [字节码](#字节码)
         1. [常量池](#常量池)
-    1. [类加载](#类加载)
+    1. [类加载机制](#类加载机制)
         1. [类加载器](#类加载器)
         1. [加载和连接](#加载和连接)
         1. [方法句柄](#方法句柄)
@@ -22,7 +22,7 @@ categories:
 1. [字节码相关框架](#字节码相关框架)
 1. [热更新](#热更新)
 
-**目录 end**|_2019-04-06 00:10_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-18 08:32_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 字节码以及类加载
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/java-classfile/src/main/java/com/github/kuangcp) 
@@ -65,7 +65,10 @@ categories:
 - [ ] 理解常量池 以及使用场景
 
 
-## 类加载
+## 类加载机制
+- 类的生命周期 
+    - `加载 Loading` -> `验证 Verification` -> `准备 Preparation` -> `解析 Resolution` -> `初始化 Initialization` -> `使用 Using`  -> `卸载 Unloading`
+    - 验证 准备 解析, 统称为 连接 Linking
 
 ### 类加载器
 - [ ] TODO 学习类加载器
