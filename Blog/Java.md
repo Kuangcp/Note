@@ -22,7 +22,7 @@ categories:
         1. [架构师](#架构师)
     1. [Java语言讨论](#java语言讨论)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-18 23:16_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Java
 > 和Java有关的博客和网页  
@@ -40,6 +40,8 @@ categories:
 - [推荐！国外程序员整理的Java资源大全](http://www.codeceo.com/article/java-resource-collection.html)
 
 - [oracle magazine](https://blogs.oracle.com/java/java-magazine-design-pattern)
+- [参考博客: 一个牛人给Java初学者的建议(必看篇)](https://www.jb51.net/article/113819.htm)  
+
 ***************
 - [Java动态代理机制详解](http://blog.csdn.net/luanlouis/article/details/24589193) `博客很细致，深入原理`
 - [使用JMockit编写java单元测试](http://blog.csdn.net/chjttony/article/details/17838693)

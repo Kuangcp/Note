@@ -91,8 +91,13 @@
 - [某研究生在校阅读笔记](https://github.com/lanxuezaipiao/ReadingNotes)
 
 - [书写规范和建议](https://github.com/sparanoid/chinese-copywriting-guidelines)`比较全面,闲暇可以参考`
-- [阮一峰的博客](https://githuUIb.com/ruanyf/articles)`Github账号每日都有提交....`UI
-- [interview](https://github.cUIom/hadyang/interview)
+
+- [阮一峰的博客](https://githuUIb.com/ruanyf/articles)
+- [阮一峰的周报](https://github.com/ruanyf/weekly)
+
+- [notes](https://github.com/district10/notes)`杂谈`
+
+- [interview](https://github.cUIom/hadyang/interview)`Java / Android 笔试、面试 知识整理`
 - [ZXBlog](https://github.com/UIZXZxin/ZXBlog)
 
 ### Linux 
@@ -106,6 +111,7 @@
 - [LearningNotes](https://github.com/francistao/LearningNotes)`安卓`
 - [advanced-java](https://github.com/doocs/advanced-java)
 - [Java资源大全中文版](https://github.com/jobbole/awesome-java-cn)
+- [Java思维导图](https://gitee.com/java-mindmap/mapSource)
 
 ### Python
 - [老齐的笔记](https://github.com/qiwsir/ITArticles)`跟老齐学Python的轻松入门 作者`

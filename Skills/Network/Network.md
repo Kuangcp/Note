@@ -39,7 +39,7 @@ categories:
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2019-03-17 15:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-18 23:16_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 网络
 
@@ -150,6 +150,7 @@ OSI制定的OSI七层参考模型的过于庞大、复杂。与此对照，由�
 5. 通过 ping/pong 帧 保持链路激活
 6. 服务器可以主动传递消息给客户端, 不需要客户端轮询
 
+> [参考博客: WebSocket 和 Socket 的区别](http://blog.jobbole.com/106009/)  
 **************
 
 ### 网络延迟
@@ -194,6 +195,7 @@ Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开�
 
 > [参考博客: Socket编程](http://www.cnblogs.com/skynet/archive/2010/12/12/1903949.html)  
 > [参考博客: Linux socket 编程](https://www.ibm.com/developerworks/cn/education/linux/l-sock/l-sock.html)
+
 ********************************
 
 # 代理

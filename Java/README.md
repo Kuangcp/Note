@@ -27,6 +27,7 @@
 
 > [wiki: java language](https://en.wikipedia.org/wiki/Java_%28programming_language%29)  
 
+> [如何快速打好Java基础？](https://www.zhihu.com/question/50904128)
 ********************
 
 | 基础 | 进阶 |

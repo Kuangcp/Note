@@ -37,7 +37,7 @@ categories:
     1. [webdis](#webdis)
 1. [使用](#使用)
 
-**目录 end**|_2019-04-16 23:27_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-18 23:16_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -269,6 +269,7 @@ categories:
 
 ## Codis
 > [Github: Codis](https://github.com/CodisLabs/codis)
+> [Kedis](https://gitee.com/kehaw9818/Kedis)  
 
 ## webdis
 > 将redis变为一个简单的web接口  

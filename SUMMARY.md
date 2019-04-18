@@ -116,6 +116,7 @@
     * 【 Java/MSA 】
     * 【 Java/Pattern 】
     * 【 Java/Spring 】
+        * 【 Java/Spring/Why 】
         * [ Spring ](/Java/Spring/Spring.md)
         * [ Spring5 ](/Java/Spring/Spring5.md)
         * [ SpringAOP ](/Java/Spring/SpringAOP.md)
@@ -160,6 +161,7 @@
         * [ Arch ](/Linux/Arch/Arch.md)
         * [ Manjaro ](/Linux/Arch/Manjaro.md)
     * 【 Linux/Base 】
+        * [ EffectiveLinux ](/Linux/Base/EffectiveLinux.md)
         * [ LinuxBase ](/Linux/Base/LinuxBase.md)
         * [ LinuxCommand ](/Linux/Base/LinuxCommand.md)
         * [ LinuxCompressFile ](/Linux/Base/LinuxCompressFile.md)

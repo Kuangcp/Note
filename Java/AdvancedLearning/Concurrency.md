@@ -9,7 +9,7 @@ categories:
 
 **目录 start**
  
-1. [Java并发1](#java并发1)
+1. [Java并发](#java并发)
     1. [Java内存模型](#java内存模型)
     1. [理论知识](#理论知识)
         1. [可能的问题](#可能的问题)
@@ -32,18 +32,20 @@ categories:
     1. [Queue](#queue)
         1. [BlockingQueue](#blockingqueue)
         1. [TransferQueue](#transferqueue)
-    1. [【控制执行】](#控制执行)
+    1. [控制执行](#控制执行)
         1. [任务建模](#任务建模)
             1. [ScheduleThreadPoolExecutor](#schedulethreadpoolexecutor)
     1. [分支合并框架](#分支合并框架)
     1. [Java内存模型](#java内存模型)
 
-**目录 end**|_2019-04-18 08:32_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-18 23:16_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
-# Java并发1
-> [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/concurrents)  
+# Java并发
+> [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/java-concurrency)  
+
 > 主要知识来源 Java程序员修炼之道  | [并发编程网](http://ifeve.com/)  
-> 该模块最早在1.5引入,由[Doug Lea](http://g.oswego.edu/)开发 |  [doug lea博客中文版](http://ifeve.com/doug-lea/)
+
+> 该模块最早在1.5引入,由 [Doug Lea](http://g.oswego.edu/) 开发 |  [doug lea博客中文版](http://ifeve.com/doug-lea/)
 
 > [参考博客: 并发编程 ](http://www.jdon.com/concurrency.html)
 > [参考博客: 不可变真的意味线程安全？](http://www.jdon.com/concurrent/immutable.html)
@@ -371,10 +373,10 @@ if (!stop)
 
 ************************
 
-## 【控制执行】
+## 控制执行
 ### 任务建模
 > 要把目标代码做成可调用（执行者调用）的结构，而不是单独开线程运行
-> [展示代码](./src/main/java/com/concurrents/schedule/CreateModel.groovy)
+> [示例代码](https://github.com/Kuangcp/JavaBase/blob/master/java-concurrency/src/main/java/com/github/kuangcp/schedule/CreateModel.groovy)
 
 `Callable接口`
 - 通常是匿名内部实现类 
@@ -410,8 +412,7 @@ if (!stop)
 - 提供了支持大型任务分解的基本方法，还有自动调度和重新调度的能力
 
 - 这个框架的关键特性之一就是：这些轻量的任务都能够生成新的ForkJoinTask实例，而这些实例仍然由执行他们父任务的线程池来安排调度，这就是分而治之
-- 工作窃取：
-- [一个简单的例子](./src/main/java/com/concurrents/forkjoin/ForkJoinEasyDemo.groovy)
+- 工作窃取： [一个简单的例子](https://github.com/Kuangcp/JavaBase/blob/master/java-concurrency/src/main/java/com/github/kuangcp/forkjoin/ForkJoinEasyDemo.groovy)
 
 - 由 RecursiveAction 或者 RecursiveTask 派生出来的才能作为任务单元 这俩也是派生ForkJoinTask而来
     - RecursiveAction 要重写的方法：`protected void compute()`  

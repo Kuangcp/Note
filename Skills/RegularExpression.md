@@ -18,8 +18,9 @@ categories:
     1. [编程语言](#编程语言)
         1. [Python](#python)
         1. [Shell](#shell)
+1. [Tips](#tips)
 
-**目录 end**|_2019-01-14 10:45_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-18 23:16_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 正则表达式学习
 > [shell regex](http://man.linuxde.net/docs/shell_regex.html)
@@ -77,3 +78,6 @@ categories:
 
 ### Shell
 - [Shell正则表达式](http://man.linuxde.net/docs/shell_regex.html)
+
+# Tips
+- 连续重复字符的匹配 `(.)\1+` [正则表达式匹配重复的字符串](http://www.aijquery.cn/Html/jqueryjiqiao/181.html)

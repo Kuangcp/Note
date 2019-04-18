@@ -41,7 +41,7 @@ categories:
             1. [gradle结合docker](#gradle结合docker)
         1. [热部署](#热部署)
 
-**目录 end**|_2019-02-27 19:09_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-18 23:16_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # SpringBoot
 > [首页](https://spring.io/projects/spring-boot#learn)
@@ -71,8 +71,10 @@ categories:
 - [SpringBoot入门](http://blog.csdn.net/jsyxcjw/article/details/46763639)
 
 > [Guide](https://spring.io/guides/gs/actuator-service/)
+> [小马哥书籍《Spring Boot 编程思想》示例工程 ](https://github.com/mercyblitz/thinking-in-spring-boot-samples)
 
 ### 系列
+
 - [一系列专栏](https://github.com/guoxiaoxu/guo-projects/tree/master/guns-admin/note)
 - [个人博客专栏: SpringBoot干货系列](http://tengj.top/tags/Spring-Boot/)
 - [SpringBoot系列文章](http://www.ityouknow.com/spring-boot)
