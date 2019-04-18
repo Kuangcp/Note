@@ -62,11 +62,6 @@ categories:
 **目录 end**|_2019-04-06 17:05_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 常用的网站
-## 软件下载站
-- [https://en.softonic.com/](https://en.softonic.com/)`windows软件居多`
-- [VirtualBox和VMWare的镜像网](http://www.osboxes.org/)
-- [安卓在X86设备上的ISO下载](http://www.android-x86.org/download)
-
 ## 国内镜像源站点
 - [网易](http://mirrors.163.com/)`下载系统是 *-cd 的文件`
 - [清华大学](https://mirrors.tuna.tsinghua.edu.cn/)
@@ -138,11 +133,18 @@ categories:
 ## 娱乐
 - [数字尾巴](http://www.dgtle.com/portal.php) `小清新的数字技术`
 - [粤语影院](http://www.yueyuyy.com/)
+
 ********************************
-# 资源网
+
+# 下载资源网
 - [脚本之家](http://www.jb51.net/)`用windows的时候一直以为是下盗版软件的地方, 现在才知道还有各种编程学习资源`
 - [河东软件园](http://www.pc0359.cn/)`和上面一样`
 - [搜网盘](https://www.57fx.com/search/)
+
+### 软件下载站
+- [https://en.softonic.com/](https://en.softonic.com/)`windows软件居多`
+- [VirtualBox和VMWare的镜像网](http://www.osboxes.org/)
+- [安卓在X86设备上的ISO下载](http://www.android-x86.org/download)
 
 ## 字典网站
 > [参考博客: 搜索列表](http://www.lingoes.cn/zh/translator/webengine.htm)
