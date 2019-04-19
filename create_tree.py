@@ -19,10 +19,10 @@ end='\033[0m'
     使用： python3 create_tree.py -h 查看帮助
 '''
 # 忽略的文件夹
-ignoreFolder=['.git', 'backup', '.vscode']
+ignoreFolder=['.git', 'backup', '.vscode', 'ARTS']
 # 所有要被忽略的文件
 ignoreFile=['PULL_REQUEST_TEMPLATE.md', 'ISSUE_TEMPLATE.md', 'CODE_OF_CONDUCT.md','README.md', 
-    'Readme.md', 'CSS3.md', 'HTML5.md', '_Sidebar.md']
+    'Readme.md', 'CSS3.md', 'HTML5.md', '_Sidebar.md', 'SUMMARY.md']
 
 result = []
 

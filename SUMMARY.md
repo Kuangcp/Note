@@ -3,6 +3,12 @@
 * [ Introduction ](README.md)
 
 * [ Repository ](./Repository.md)
+* 【 Algorithm 】
+    * 【 Algorithm/DS 】
+        * [ LinearList ](/Algorithm/DS/LinearList.md)
+        * [ Tree ](/Algorithm/DS/Tree.md)
+    * [ Algorithm ](/Algorithm/Algorithm.md)
+    * [ 算法分析 ](/Algorithm/算法分析.md)
 * 【 Blog 】
     * [ Blog ](/Blog/Blog.md)
     * [ Java ](/Blog/Java.md)
@@ -256,10 +262,6 @@
         * [ VirtualBox ](/Skills/Application/VirtualBox.md)
         * [ WebBrowser ](/Skills/Application/WebBrowser.md)
     * 【 Skills/CS 】
-        * 【 Skills/CS/DS 】
-            * [ LinearList ](/Skills/CS/DS/LinearList.md)
-            * [ Tree ](/Skills/CS/DS/Tree.md)
-        * [ Algorithm ](/Skills/CS/Algorithm.md)
         * [ CharacterEncoding ](/Skills/CS/CharacterEncoding.md)
         * [ CompilingPrinciple ](/Skills/CS/CompilingPrinciple.md)
         * [ Computer ](/Skills/CS/Computer.md)
@@ -312,5 +314,3 @@
     * [ Website ](/Skills/Website.md)
 * 【 Windows 】
     * [ WindowsWithHibernate ](/Windows/WindowsWithHibernate.md)
-* 【 algorithm 】
-    * [ 算法分析 ](/algorithm/算法分析.md)
