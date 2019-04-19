@@ -7,12 +7,18 @@ categories:
 
 **目录 start**
  
+1. [并发](#并发)
+    1. [同步](#同步)
+        1. [锁](#锁)
+    1. [异步](#异步)
+    1. [线程和进程](#线程和进程)
+    1. [协程](#协程)
 1. [并发编程](#并发编程)
 
-**目录 end**|_2019-01-16 00:00_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 12:46_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 并发
-> 无关语言 涉及 同步 异步 线程 协程
+> 并发编程的理论基础 无关语言 
 
 ## 同步
 > [码农翻身:那些烦人的同步和互斥问题](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513371&idx=1&sn=c875f64af83306bffca8dd748f1462ff&chksm=80d679d8b7a1f0ce98a0e3a12409805757cd2e958586c54049121f961cf5b2d236530cd019c7&scene=21#wechat_redirect)

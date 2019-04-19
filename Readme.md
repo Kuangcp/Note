@@ -82,24 +82,17 @@
 
 # 其他笔记仓库
 - [笔记](https://github.com/dragonhht/Notes)
-
 - [CS Notes](https://github.com/CyC2018/CS-Notes)`技术面试必备基础知识`
 - [note of interview ](https://github.com/zhengjianglong915/note-of-interview)
 - [skill tree](https://github.com/linw7/Skill-Tree)
-
 - [巨人工作记录](https://ztgame.shenyu.me/)`笔记 基于 GitBook`
 - [某研究生在校阅读笔记](https://github.com/lanxuezaipiao/ReadingNotes)
-
 - [书写规范和建议](https://github.com/sparanoid/chinese-copywriting-guidelines)`比较全面,闲暇可以参考`
-
 - [阮一峰的博客](https://githuUIb.com/ruanyf/articles)
 - [阮一峰的周报](https://github.com/ruanyf/weekly)
-
 - [notes](https://github.com/district10/notes)`杂谈`
-
 - [interview](https://github.cUIom/hadyang/interview)`Java / Android 笔试、面试 知识整理`
 - [ZXBlog](https://github.com/UIZXZxin/ZXBlog)
-
 - [天赋好书](https://www.cntofu.com/)`爬虫爬开源笔记项目然后转换成GitBook一样的网页?`
 
 ### Linux 

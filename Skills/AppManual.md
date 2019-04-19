@@ -39,7 +39,7 @@ categories:
     1. [安全工具](#安全工具)
         1. [gpg](#gpg)
 
-**目录 end**|_2019-02-20 09:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 12:46_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 软件使用记事
 ## 包管理
@@ -126,7 +126,7 @@ categories:
 - Ctrl Alt B 显示/关闭 特殊字符面板
 
 #### rime
-- [rime](http://rime.im/) `用过一下子有莫名其妙的bug就卸载了`
+- [rime](http://rime.im/) 
 
 #### 小小输入法
 [小小输入法在Deepin上的使用](https://bbs.deepin.org/forum.php?mod=viewthread&tid=138500&highlight=%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95)
@@ -184,8 +184,10 @@ _批量修改_
 > [参考博客: 这 7 款开源思维导图工具真的很神奇](https://blog.csdn.net/zuochao_2013/article/details/68928381)
 
 1. [processon](https://www.processon.com/)`免费额度比较小, 但是使用很方便`
-1. [Kity Minder](https://github.com/fex-team/kityminder)`也就是百度脑图`
-    - [DesktopNaotu](https://github.com/NaoTu/DesktopNaotu)`桌面版,适合我使用`
+
+1. [百度脑图在线版](https://github.com/fex-team/kityminder)
+    - [百度脑图客户端](https://github.com/NaoTu/DesktopNaotu)
+
 1. [my-mind](https://github.com/ondras/my-mind)`简单轻巧`
 1. FreeMind 
 1. [freeplane](https://github.com/freeplane/freeplane)`Java编写的, FreeMind衍生`

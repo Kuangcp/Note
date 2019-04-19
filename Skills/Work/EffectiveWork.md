@@ -23,12 +23,11 @@ categories:
             1. [细节](#细节)
         1. [相关软件](#相关软件)
 
-**目录 end**|_2019-02-24 22:34_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 12:46_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 高效工作
 > [知乎: 超强的学习能力是怎样练就的？](https://www.zhihu.com/question/35103080/answer/414223605)
-> [百度脑图: 思维导图](https://gitee.com/gin9/MindMap/blob/master/Skill/EffictiveLearn.km)
-
+> [思维导图: 高效学习](https://gitee.com/gin9/MindMap/blob/master/Skill/EffictiveLearn.km)
 
 `不能用战略的懒惰， 掩盖战术的勤奋`
 

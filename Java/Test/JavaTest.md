@@ -14,16 +14,18 @@ categories:
         1. [正式代码](#正式代码)
         1. [测试代码](#测试代码)
     1. [单元测试](#单元测试)
-1. [实现方案](#实现方案)
-    1. [使用Junit](#使用junit)
+1. [测试框架](#测试框架)
+    1. [Junit](#junit)
         1. [Idea上Junit的使用](#idea上junit的使用)
     1. [TestNG](#testng)
     1. [Mock框架](#mock框架)
         1. [Mockito](#mockito)
     1. [DBUnit](#dbunit)
+    1. [基准测试](#基准测试)
+        1. [JMH](#jmh)
 1. [感悟](#感悟)
 
-**目录 end**|_2019-02-14 14:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 12:46_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # Java的测试
 > [测试的基础理论](/Skills/Base/Test.md)
@@ -61,8 +63,8 @@ assert应该是开发阶段打开，而在发布后关闭。
 - assert(expression) 断言表达式为真
 
 ****************
-# 实现方案
-## 使用Junit
+# 测试框架
+## Junit
 > [Junit4官网](https://junit.org/junit4/)|[Junit5官网](https://junit.org/junit5/)| [如何上手Junit](/MyBlog/how-to-use-junit.md) | [如何上手Junit5](/MyBlog/how-to-use-junit5.md)
 
 - Before Test 执行顺序：
@@ -115,8 +117,14 @@ http://static.javadoc.io/org.mockito/mockito-core/2.19.0/org/mockito/Mockito.htm
 
 一般不用对 void 方法打桩, 事后 verify 就行  
 测试代码针对 mock  对象的 void 方法调用本来就没有什么效果，所以一般也无须用 doNothing(), 况且 void 提供不了返回值作进一步 mock，只需要在事后用 verify() 进行验证一下。
+
 ## DBUnit
 > 基于Junit的一个数据库测试框架, 方便测试dao层
+
+## 基准测试
+### JMH
+
+> [OpenJDK: JMH](http://openjdk.java.net/projects/code-tools/jmh/)
 
 **********************
 # 感悟

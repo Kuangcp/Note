@@ -19,7 +19,7 @@ categories:
     1. [List](#list)
     1. [Set](#set)
 
-**目录 end**|_2019-04-16 15:36_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-19 12:46_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
 # 集合
 
@@ -31,8 +31,10 @@ categories:
         - LinkedList _也实现了Queue接口_ 双向链表实现
         - Vector
     - Set 接口 _内容不允许重复_
+        - SortedSet 接口 _单值排序接口_
+            - TreeSet
     - Queue 接口 _队列接口_
-    - SortedSet 接口 _单值排序接口_
+        - PiorityQueue
 
 - Map接口
     - HashMap _无序, key不重复_

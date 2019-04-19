@@ -9,7 +9,7 @@ categories:
 
 **目录 start**
  
-1. [DOS批处理](#dos批处理)
+1. [Bat](#bat)
     1. [Tips](#tips)
     1. [基础命令](#基础命令)
         1. [常用基础](#常用基础)
@@ -18,9 +18,9 @@ categories:
     1. [服务](#服务)
     1. [实用性脚本](#实用性脚本)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 12:46_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
 ****************************************
-# DOS批处理
+# Bat
 
 ## Tips
 - windows下使用VmWare创建的虚拟机如果报错
