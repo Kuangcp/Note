@@ -4,20 +4,16 @@
 
 * [ Repository ](./Repository.md)
 * [ SUMMARY ](./SUMMARY.md)
-* „Äê ARTS „Äë
-    * „Äê ARTS/2019 „Äë
-        * „Äê ARTS/2019/04 „Äë
-            * [ 1 ](/ARTS/2019/04/1.md)
-    * [ LICE ](/ARTS/LICENSE)
-* „Äê Blog „Äë
+* °æ ARTS °ø
+* °æ Blog °ø
     * [ Blog ](/Blog/Blog.md)
     * [ Java ](/Blog/Java.md)
     * [ Server ](/Blog/Server.md)
     * [ Solution ](/Blog/Solution.md)
     * [ View ](/Blog/View.md)
-* „Äê C „Äë
+* °æ C °ø
     * [ CBase ](/C/CBase.md)
-* „Äê Database „Äë
+* °æ Database °ø
     * [ Experience ](/Database/Experience.md)
     * [ GraphQL ](/Database/GraphQL.md)
     * [ MangoDB ](/Database/MangoDB.md)
@@ -31,15 +27,15 @@
     * [ RedisAdvance ](/Database/RedisAdvance.md)
     * [ SQL ](/Database/SQL.md)
     * [ SQLServer ](/Database/SQLServer.md)
-* „Äê Distributed „Äë
-    * „Äê Distributed/Middlewave „Äë
+* °æ Distributed °ø
+    * °æ Distributed/Middlewave °ø
         * [ Apollo ](/Distributed/Middlewave/Apollo.md)
     * [ RPC ](/Distributed/RPC.md)
-* „Äê FrontEnd „Äë
-    * „Äê FrontEnd/Frame „Äë
+* °æ FrontEnd °ø
+    * °æ FrontEnd/Frame °ø
         * [ LayUI ](/FrontEnd/Frame/LayUI.md)
         * [ Vue ](/FrontEnd/Frame/Vue.md)
-    * „Äê FrontEnd/Node „Äë
+    * °æ FrontEnd/Node °ø
         * [ NodeJS ](/FrontEnd/Node/NodeJS.md)
     * [ Font ](/FrontEnd/Font.md)
     * [ Hexo ](/FrontEnd/Hexo.md)
@@ -48,23 +44,32 @@
     * [ ResponseCode ](/FrontEnd/ResponseCode.md)
     * [ SVG ](/FrontEnd/SVG.md)
     * [ ViewSolution ](/FrontEnd/ViewSolution.md)
-* „Äê Functional „Äë
+    * [ extjs—ßœ∞± º« ](/FrontEnd/extjs—ßœ∞± º«.md)
+* °æ Functional °ø
     * [ Clojure ](/Functional/Clojure.md)
     * [ FPBase ](/Functional/FPBase.md)
     * [ Kotlin ](/Functional/Kotlin.md)
-* „Äê Go „Äë
+* °æ Go °ø
     * [ GoBase ](/Go/GoBase.md)
     * [ GoDatabase ](/Go/GoDatabase.md)
     * [ GoRestful ](/Go/GoRestful.md)
-* „Äê Groovy „Äë
+* °æ Groovy °ø
     * [ Groovy ](/Groovy/Groovy.md)
     * [ GroovySpring ](/Groovy/GroovySpring.md)
-* „Äê Java „Äë
-    * „Äê Java/AdvancedLearning „Äë
-        * „Äê Java/AdvancedLearning/Basic „Äë
+* °æ Java °ø
+    * °æ Java/AdvancedLearning °ø
+        * °æ Java/AdvancedLearning/Basic °ø
             * [ StringConcat ](/Java/AdvancedLearning/Basic/StringConcat.md)
-        * „Äê Java/AdvancedLearning/Collection „Äë
-        * „Äê Java/AdvancedLearning/Map „Äë
+        * °æ Java/AdvancedLearning/Collection °ø
+            * [ List ](/Java/AdvancedLearning/Collection/List.md)
+        * °æ Java/AdvancedLearning/Concurrency °ø
+            * [ Atomic ](/Java/AdvancedLearning/Concurrency/Atomic.md)
+            * [ ConcurrencyCollection ](/Java/AdvancedLearning/Concurrency/ConcurrencyCollection.md)
+            * [ ConcurrencyUtil ](/Java/AdvancedLearning/Concurrency/ConcurrencyUtil.md)
+            * [ ExecutorAndPool ](/Java/AdvancedLearning/Concurrency/ExecutorAndPool.md)
+            * [ ForkAndJoin ](/Java/AdvancedLearning/Concurrency/ForkAndJoin.md)
+            * [ Lock ](/Java/AdvancedLearning/Concurrency/Lock.md)
+        * °æ Java/AdvancedLearning/Map °ø
             * [ HashMap ](/Java/AdvancedLearning/Map/HashMap.md)
             * [ TreeMap ](/Java/AdvancedLearning/Map/TreeMap.md)
         * [ Annotation ](/Java/AdvancedLearning/Annotation.md)
@@ -95,8 +100,8 @@
         * [ SyntaxAndType ](/Java/AdvancedLearning/SyntaxAndType.md)
         * [ Thread ](/Java/AdvancedLearning/Thread.md)
         * [ WebPerformance ](/Java/AdvancedLearning/WebPerformance.md)
-    * „Äê Java/Android „Äë
-    * „Äê Java/Ecosystem „Äë
+    * °æ Java/Android °ø
+    * °æ Java/Ecosystem °ø
         * [ Activiti ](/Java/Ecosystem/Activiti.md)
         * [ Blade ](/Java/Ecosystem/Blade.md)
         * [ Elasticsearch ](/Java/Ecosystem/Elasticsearch.md)
@@ -113,10 +118,11 @@
         * [ Querydsl ](/Java/Ecosystem/Querydsl.md)
         * [ Solr ](/Java/Ecosystem/Solr.md)
         * [ Vertx ](/Java/Ecosystem/Vertx.md)
-    * „Äê Java/MSA „Äë
-    * „Äê Java/Pattern „Äë
-    * „Äê Java/Spring „Äë
-        * „Äê Java/Spring/Why „Äë
+    * °æ Java/MSA °ø
+    * °æ Java/Spring °ø
+        * °æ Java/Spring/Why °ø
+        * [ Spring-Bean—ßœ∞ ](/Java/Spring/Spring-Bean—ßœ∞.md)
+        * [ Spring-Cloud ](/Java/Spring/Spring-Cloud.md)
         * [ Spring ](/Java/Spring/Spring.md)
         * [ Spring5 ](/Java/Spring/Spring5.md)
         * [ SpringAOP ](/Java/Spring/SpringAOP.md)
@@ -125,20 +131,25 @@
         * [ SpringCloud ](/Java/Spring/SpringCloud.md)
         * [ SpringMVC ](/Java/Spring/SpringMVC.md)
         * [ SpringSecurity ](/Java/Spring/SpringSecurity.md)
+        * [ SpringShell ](/Java/Spring/SpringShell.md)
         * [ SpringTest ](/Java/Spring/SpringTest.md)
         * [ SpringWebFlux ](/Java/Spring/SpringWebFlux.md)
         * [ SpringbootDatabase ](/Java/Spring/SpringbootDatabase.md)
+        * [ SpringπŸ∑ΩŒƒµµ—ßœ∞ ](/Java/Spring/SpringπŸ∑ΩŒƒµµ—ßœ∞.md)
+        * [ Spring»›∆˜¿©’πµ„÷ÆAwareΩ”ø⁄ ](/Java/Spring/Spring»›∆˜¿©’πµ„÷ÆAwareΩ”ø⁄.md)
+        * [ Spring»›∆˜¿©’πµ„÷ÆBeanFactoryPostProcessor ](/Java/Spring/Spring»›∆˜¿©’πµ„÷ÆBeanFactoryPostProcessor.md)
+        * [ Spring»›∆˜¿©’πµ„÷ÆBeanPostProcessor ](/Java/Spring/Spring»›∆˜¿©’πµ„÷ÆBeanPostProcessor.md)
         * [ Transactional ](/Java/Spring/Transactional.md)
-    * „Äê Java/TemplateEngine „Äë
+    * °æ Java/TemplateEngine °ø
         * [ Thymeleaf ](/Java/TemplateEngine/Thymeleaf.md)
-    * „Äê Java/Test „Äë
+    * °æ Java/Test °ø
         * [ JavaCucumber ](/Java/Test/JavaCucumber.md)
         * [ JavaHamcreset ](/Java/Test/JavaHamcreset.md)
         * [ JavaTest ](/Java/Test/JavaTest.md)
         * [ Junit ](/Java/Test/Junit.md)
         * [ Junit5 ](/Java/Test/Junit5.md)
         * [ TestNG ](/Java/Test/TestNG.md)
-    * „Äê Java/Tool „Äë
+    * °æ Java/Tool °ø
         * [ Eclipse ](/Java/Tool/Eclipse.md)
         * [ Gradle ](/Java/Tool/Gradle.md)
         * [ GradleAdvance ](/Java/Tool/GradleAdvance.md)
@@ -149,18 +160,35 @@
         * [ Maven ](/Java/Tool/Maven.md)
         * [ MavenAdvance ](/Java/Tool/MavenAdvance.md)
         * [ Tomcat ](/Java/Tool/Tomcat.md)
+    * °æ Java/thread °ø
+        * [ ÷¥––∆˜ ](/Java/thread/÷¥––∆˜.md)
+        * [ œﬂ≥ÃÕ¨≤Ω ](/Java/thread/œﬂ≥ÃÕ¨≤Ω.md)
+        * [ ∏ﬂº∂Õ¨≤Ω∑Ω∑® ](/Java/thread/∏ﬂº∂Õ¨≤Ω∑Ω∑®.md)
     * [ AlibabaJavaStandard ](/Java/AlibabaJavaStandard.md)
     * [ DesignPattern ](/Java/DesignPattern.md)
+    * [ HashMapΩ‚Œˆ ](/Java/HashMapΩ‚Œˆ.md)
+    * [ Java-NIO ](/Java/Java-NIO.md)
+    * [ Java7∫ÕJava8µƒ–¬Ãÿ–‘ ](/Java/Java7∫ÕJava8µƒ–¬Ãÿ–‘.md)
+    * [ Java∑¥…‰ ](/Java/Java∑¥…‰.md)
+    * [ Java–Èƒ‚ª˙ ](/Java/Java–Èƒ‚ª˙.md)
     * [ Log ](/Java/Log.md)
     * [ MIS ](/Java/MIS.md)
+    * [ Quartz ](/Java/Quartz.md)
     * [ RESTful ](/Java/RESTful.md)
-* „Äê Linux „Äë
-    * „Äê Linux/Alpine „Äë
+    * [ WebSocket—ßœ∞± º« ](/Java/WebSocket—ßœ∞± º«.md)
+    * [ ZooKeeper—ßœ∞± º« ](/Java/ZooKeeper—ßœ∞± º«.md)
+    * [ android—ßœ∞± º« ](/Java/android—ßœ∞± º«.md)
+* °æ Kotlin °ø
+    * [ Dubbo ](/Kotlin/Dubbo.md)
+    * [ Shiro ](/Kotlin/Shiro.md)
+    * [ kotlin-base ](/Kotlin/kotlin-base.md)
+* °æ Linux °ø
+    * °æ Linux/Alpine °ø
         * [ AlpineBase ](/Linux/Alpine/AlpineBase.md)
-    * „Äê Linux/Arch „Äë
+    * °æ Linux/Arch °ø
         * [ Arch ](/Linux/Arch/Arch.md)
         * [ Manjaro ](/Linux/Arch/Manjaro.md)
-    * „Äê Linux/Base „Äë
+    * °æ Linux/Base °ø
         * [ EffectiveLinux ](/Linux/Base/EffectiveLinux.md)
         * [ LinuxBase ](/Linux/Base/LinuxBase.md)
         * [ LinuxCommand ](/Linux/Base/LinuxCommand.md)
@@ -175,33 +203,33 @@
         * [ LinuxUI ](/Linux/Base/LinuxUI.md)
         * [ ReleaseExperience ](/Linux/Base/ReleaseExperience.md)
         * [ Ssh ](/Linux/Base/Ssh.md)
-    * „Äê Linux/Centos „Äë
+    * °æ Linux/Centos °ø
         * [ CentosBase ](/Linux/Centos/CentosBase.md)
-    * „Äê Linux/Container „Äë
+    * °æ Linux/Container °ø
         * [ Docker ](/Linux/Container/Docker.md)
         * [ DockerAdvance ](/Linux/Container/DockerAdvance.md)
         * [ DockerFile ](/Linux/Container/DockerFile.md)
         * [ DockerSoft ](/Linux/Container/DockerSoft.md)
         * [ Kubernetes ](/Linux/Container/Kubernetes.md)
-    * „Äê Linux/Debian „Äë
+    * °æ Linux/Debian °ø
         * [ Debian ](/Linux/Debian/Debian.md)
         * [ Ubuntu ](/Linux/Debian/Ubuntu.md)
-    * „Äê Linux/Tool „Äë
+    * °æ Linux/Tool °ø
         * [ Caddy ](/Linux/Tool/Caddy.md)
         * [ HAProxy ](/Linux/Tool/HAProxy.md)
         * [ IME ](/Linux/Tool/IME.md)
         * [ Nginx ](/Linux/Tool/Nginx.md)
         * [ Tmux ](/Linux/Tool/Tmux.md)
         * [ Vim ](/Linux/Tool/Vim.md)
-        * [ Zsh ](/Linux/Tool/Zsh.md)
     * [ JavaDevInit ](/Linux/JavaDevInit.md)
-* „Äê MyBlog „Äë
+    * [ LinuxœµÕ≥—ßœ∞ ](/Linux/LinuxœµÕ≥—ßœ∞.md)
+* °æ MyBlog °ø
     * [ 12306 ](/MyBlog/12306.md)
     * [ 2018-3-15-install-deepin ](/MyBlog/2018-3-15-install-deepin.md)
     * [ twenty-years-of-weak-japan ](/MyBlog/twenty-years-of-weak-japan.md)
     * [ use-maven-create-web-project ](/MyBlog/use-maven-create-web-project.md)
-* „Äê Python „Äë
-    * „Äê Python/Tool „Äë
+* °æ Python °ø
+    * °æ Python/Tool °ø
         * [ PyCharm ](/Python/Tool/PyCharm.md)
     * [ Python ](/Python/Python.md)
     * [ PythonConcurrent ](/Python/PythonConcurrent.md)
@@ -210,23 +238,26 @@
     * [ PythonNet ](/Python/PythonNet.md)
     * [ PythonOffices ](/Python/PythonOffices.md)
     * [ PythonWeb ](/Python/PythonWeb.md)
-* „Äê Reactive „Äë
-* „Äê Rust „Äë
-* „Äê Scala „Äë
+    * [ Pythonª˘¥° ](/Python/Pythonª˘¥°.md)
+    * [ Python∫À–ƒ—ßœ∞ ](/Python/Python∫À–ƒ—ßœ∞.md)
+* °æ Reactive °ø
+* °æ Rust °ø
+* °æ Scala °ø
     * [ SBT ](/Scala/SBT.md)
     * [ Scala ](/Scala/Scala.md)
-* „Äê Script „Äë
-    * [ Dos ](/Script/Dos.md)
-    * [ LinuxBash ](/Script/LinuxBash.md)
+* °æ Script °ø
+    * [ Bash ](/Script/Bash.md)
+    * [ Bat ](/Script/Bat.md)
     * [ Lua ](/Script/Lua.md)
     * [ ShellLearn ](/Script/ShellLearn.md)
-* „Äê Skills „Äë
-    * „Äê Skills/Application „Äë
+    * [ Zsh ](/Script/Zsh.md)
+* °æ Skills °ø
+    * °æ Skills/Application °ø
         * [ Editor ](/Skills/Application/Editor.md)
         * [ VirtualBox ](/Skills/Application/VirtualBox.md)
         * [ WebBrowser ](/Skills/Application/WebBrowser.md)
-    * „Äê Skills/CS „Äë
-        * „Äê Skills/CS/DS „Äë
+    * °æ Skills/CS °ø
+        * °æ Skills/CS/DS °ø
             * [ LinearList ](/Skills/CS/DS/LinearList.md)
             * [ Tree ](/Skills/CS/DS/Tree.md)
         * [ Algorithm ](/Skills/CS/Algorithm.md)
@@ -236,39 +267,39 @@
         * [ Profile ](/Skills/CS/Profile.md)
         * [ ProgramThinking ](/Skills/CS/ProgramThinking.md)
         * [ Time ](/Skills/CS/Time.md)
-    * „Äê Skills/Councurrency „Äë
+    * °æ Skills/Councurrency °ø
         * [ Concurrency ](/Skills/Councurrency/Concurrency.md)
-    * „Äê Skills/DevOps „Äë
+    * °æ Skills/DevOps °ø
         * [ ContinuousDelivery ](/Skills/DevOps/ContinuousDelivery.md)
         * [ ContinuousDeployment ](/Skills/DevOps/ContinuousDeployment.md)
         * [ ContinuousIntegration ](/Skills/DevOps/ContinuousIntegration.md)
         * [ ELK ](/Skills/DevOps/ELK.md)
         * [ Jenkins ](/Skills/DevOps/Jenkins.md)
-    * „Äê Skills/Document „Äë
+    * °æ Skills/Document °ø
         * [ License ](/Skills/Document/License.md)
         * [ MarkDown ](/Skills/Document/MarkDown.md)
         * [ RequirementsDocument ](/Skills/Document/RequirementsDocument.md)
-    * „Äê Skills/Ecology „Äë
+    * °æ Skills/Ecology °ø
         * [ MSA ](/Skills/Ecology/MSA.md)
-    * „Äê Skills/Network „Äë
+    * °æ Skills/Network °ø
         * [ HTTP ](/Skills/Network/HTTP.md)
         * [ Network ](/Skills/Network/Network.md)
         * [ WebSecurity ](/Skills/Network/WebSecurity.md)
-    * „Äê Skills/SoftwareEngineering „Äë
+    * °æ Skills/SoftwareEngineering °ø
         * [ CodeExcellentCode ](/Skills/SoftwareEngineering/CodeExcellentCode.md)
-    * „Äê Skills/Spider „Äë
+    * °æ Skills/Spider °ø
         * [ SpiderBase ](/Skills/Spider/SpiderBase.md)
-    * „Äê Skills/Test „Äë
+    * °æ Skills/Test °ø
         * [ Cucumber ](/Skills/Test/Cucumber.md)
         * [ Hamcrest ](/Skills/Test/Hamcrest.md)
         * [ TestTheory ](/Skills/Test/TestTheory.md)
-    * „Äê Skills/Vcs „Äë
+    * °æ Skills/Vcs °ø
         * [ GitAction ](/Skills/Vcs/GitAction.md)
         * [ GitAdvance ](/Skills/Vcs/GitAdvance.md)
         * [ GitBase ](/Skills/Vcs/GitBase.md)
         * [ GitTeam ](/Skills/Vcs/GitTeam.md)
         * [ Svn ](/Skills/Vcs/Svn.md)
-    * „Äê Skills/Work „Äë
+    * °æ Skills/Work °ø
         * [ Cooperation ](/Skills/Work/Cooperation.md)
         * [ EffectiveWork ](/Skills/Work/EffectiveWork.md)
         * [ InterviewSkill ](/Skills/Work/InterviewSkill.md)
@@ -280,5 +311,7 @@
     * [ RegularExpression ](/Skills/RegularExpression.md)
     * [ SoftwareDesignEngineer ](/Skills/SoftwareDesignEngineer.md)
     * [ Website ](/Skills/Website.md)
-* „Äê Windows „Äë
+* °æ Windows °ø
     * [ WindowsWithHibernate ](/Windows/WindowsWithHibernate.md)
+* °æ algorithm °ø
+    * [ À„∑®∑÷Œˆ ](/algorithm/À„∑®∑÷Œˆ.md)
