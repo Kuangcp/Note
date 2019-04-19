@@ -31,7 +31,7 @@ categories:
         1. [killall](#killall)
         1. [trap](#trap)
         1. [作业控制](#作业控制)
-        1. [进程到守护进程的转变](#进程到守护进程的转变)
+        1. [守护进程](#守护进程)
             1. [nohup](#nohup)
             1. [disown](#disown)
             1. [setid](#setid)
@@ -46,7 +46,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2019-02-18 21:30_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # Linux性能分析和管理
 ## 运行状况信息

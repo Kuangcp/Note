@@ -22,7 +22,7 @@ categories:
     1. [分布式](#分布式)
         1. [CAP定理](#cap定理)
 
-**目录 end**|_2018-12-20 10:44_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # 完整的MIS构建经验
 > MIS: Management information system

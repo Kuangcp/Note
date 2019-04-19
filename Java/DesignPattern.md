@@ -57,7 +57,7 @@ categories:
     1. [经验之谈](#经验之谈)
     1. [反模式](#反模式)
 
-**目录 end**|_2019-04-11 15:12_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # 软件设计的一些原则
 

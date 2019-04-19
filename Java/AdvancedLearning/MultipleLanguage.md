@@ -19,7 +19,7 @@ categories:
         1. [JVM对备选语言的支持](#jvm对备选语言的支持)
         1. [编译器小说](#编译器小说)
 
-**目录 end**|_2019-02-14 14:12_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # JVM上的多语言使用
 

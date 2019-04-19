@@ -10,7 +10,18 @@
 </div>
 
 # 学习笔记
-> 该仓库克隆下来后并将该项目作为工作空间后, 在VSCode中搜索阅读体验最佳
+> 建议将该仓库克隆下来后并将该项目作为工作空间, 在VSCode中搜索阅读, 体验最佳
+
+- 统一重建md文件目录工具:
+    - [deal_md.sh](https://github.com/Kuangcp/Script/blob/master/shell/text/deal_md.sh)
+    - 最好将该仓库完整克隆下来, 在改sh脚本旁新建文件 `local.conf`
+    ```conf
+        # 笔记的仓库路径
+        config_target_repo='/path/to/Note/'
+    ```
+    - 使用别名 `alias kdd='dash /home/kcp/Application/Script/shell/text/deal_md.sh'`
+
+至此 kdd -h 即可
 
 ## 基础
 * [ 算法 ](/Skills/CS/Algorithm.md)
@@ -96,7 +107,7 @@
 - [天赋好书](https://www.cntofu.com/)`爬虫爬开源笔记项目然后转换成GitBook一样的网页?`
 
 ### Linux 
-- [judasn](https://github.com/judasn/hexo-blog) `善于归纳的人 相关:Javaer眼中的Linux`
+- [judasn](https://github.com/judasn/hexo-blog) `善于归纳的人 相关:[Javaer眼中的Linux](https://github.com/judasn/Linux-Tutorial)`
 
 ### Java
 - [Java guide](https://github.com/Snailclimb/JavaGuide)

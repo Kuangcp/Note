@@ -22,9 +22,9 @@ categories:
             1. [find](#find)
         1. [查看文件](#查看文件)
             1. [stat](#stat)
+            1. [file](#file)
             1. [tree](#tree)
             1. [ls](#ls)
-            1. [file](#file)
             1. [wc](#wc)
             1. [cat](#cat)
             1. [nl](#nl)
@@ -60,9 +60,10 @@ categories:
 1. [日志](#日志)
     1. [用户日志](#用户日志)
     1. [系统日志](#系统日志)
+        1. [Systemd](#systemd)
     1. [应用日志](#应用日志)
 
-**目录 end**|_2019-02-16 14:55_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件

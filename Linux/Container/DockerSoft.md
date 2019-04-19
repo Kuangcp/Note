@@ -39,7 +39,7 @@ categories:
     1. [在线IDE](#在线ide)
     1. [图形化管理工具](#图形化管理工具)
 
-**目录 end**|_2019-04-16 23:38_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # Docker容器化应用
 > [https://docs.docker.com/samples/](https://docs.docker.com/samples/)  

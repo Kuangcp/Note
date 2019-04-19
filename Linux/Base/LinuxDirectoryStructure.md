@@ -24,7 +24,7 @@ categories:
         1. [查看系统所有用户信息](#查看系统所有用户信息)
     1. [/tmp](#tmp)
 
-**目录 end**|_2019-02-19 10:36_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # Linux 目录结构
 > Linux 系统目录结构的大致分布以及说明

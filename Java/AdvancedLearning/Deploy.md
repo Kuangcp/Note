@@ -21,7 +21,7 @@ categories:
         1. [Gradle](#gradle)
 1. [配置文件](#配置文件)
 
-**目录 end**|_2019-03-17 15:08_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # 部署运行
 > 传统的可执行jar, war 以及Docker镜像

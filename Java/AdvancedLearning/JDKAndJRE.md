@@ -12,10 +12,12 @@ categories:
 1. [JDK And JRE](#jdk-and-jre)
 1. [Oracle](#oracle)
     1. [Oracle JDK](#oracle-jdk)
+        1. [java](#java)
+            1. [环境变量的使用](#环境变量的使用)
     1. [Oracle JRE](#oracle-jre)
 1. [OpenJDK](#openjdk)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # JDK And JRE
 > LTS: 8 11

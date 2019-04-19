@@ -63,7 +63,7 @@ categories:
 1. [测试平台](#测试平台)
 1. [培训](#培训)
 
-**目录 end**|_2019-04-06 17:05_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-19 13:05_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 
 # 代码托管平台

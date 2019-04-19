@@ -21,7 +21,7 @@ categories:
 1. [Tips](#tips)
     1. [通过SSH执行命令时的环境变量问题](#通过ssh执行命令时的环境变量问题)
 
-**目录 end**|_2019-04-11 15:12_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # SSH
 > [Linux启动或禁止SSH用户及IP的登录](https://blog.csdn.net/linghe301/article/details/8211305)

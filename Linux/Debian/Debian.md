@@ -10,12 +10,14 @@ categories:
 **目录 start**
  
 1. [Debian](#debian)
+    1. [配置](#配置)
+        1. [配置语言环境](#配置语言环境)
     1. [软件管理](#软件管理)
         1. [软件源列表](#软件源列表)
         1. [包管理器](#包管理器)
         1. [源码编译安装](#源码编译安装)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # Debian 
 > Debian系 包含 Debian *buntu Deepin 等等

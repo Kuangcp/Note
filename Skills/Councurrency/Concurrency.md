@@ -15,7 +15,7 @@ categories:
     1. [协程](#协程)
 1. [并发编程](#并发编程)
 
-**目录 end**|_2019-04-19 12:46_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-19 13:05_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # 并发
 > 并发编程的理论基础 无关语言 
