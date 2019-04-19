@@ -1,15 +1,9 @@
-<div align="center"> 
-
-[![star](https://gitee.com/gin9/Memo/badge/star.svg?theme=dark)](https://gitee.com/gin9/Memo/stargazers)[![Fork me on Gitee](https://gitee.com/gin9/Memo/widgets/widget_3.svg)](https://gitee.com/gin9/Memo)[![fork](https://gitee.com/gin9/Memo/badge/fork.svg?theme=dark)](https://gitee.com/gin9/Memo/members)
-
+# 学习笔记
 
 [![目录](https://img.shields.io/badge/note-Catalog-brightgreen.svg)](./SUMMARY.md) 
 [![目录](https://img.shields.io/badge/wiki-Note-brightgreen.svg)](https://gitee.com/gin9/Memo/wikis/pages) 
-[![JavaSE](https://img.shields.io/badge/note-JavaSE-blue.svg)](./Java/) [![CSDN](https://img.shields.io/badge/blog-CSDN-blue.svg)](http://blog.csdn.net/kcp606)
+[![JavaSE](https://img.shields.io/badge/note-JavaSE-blue.svg)](./Java/) 
 
-</div>
-
-# 学习笔记
 > 建议将该仓库克隆下来后并将该项目作为工作空间, 在VSCode中搜索阅读, 体验最佳
 
 ## 基础

@@ -14,6 +14,7 @@ categories:
     1. [实现原理](#实现原理)
     1. [基础类](#基础类)
         1. [AccessibleObject](#accessibleobject)
+        1. [Annotation](#annotation)
         1. [Class](#class)
         1. [Field](#field)
         1. [Method](#method)
@@ -21,9 +22,14 @@ categories:
         1. [Modifier](#modifier)
     1. [使用](#使用)
         1. [获取到Class对象](#获取到class对象)
+        1. [反射的基本使用](#反射的基本使用)
+            1. [操作构造方法](#操作构造方法)
+            1. [操作类中方法](#操作类中方法)
+            1. [操作类的成员属性](#操作类的成员属性)
+            1. [操作注解](#操作注解)
 1. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-04-19 18:07_|
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
@@ -68,6 +74,7 @@ categories:
 
 - [ ] 仍然存疑, 什么情况下才是 默认可访问的
 
+### Annotation
 ### Class
 ### Field
 ### Method
@@ -138,22 +145,123 @@ categories:
 
 ************************
 
-```java
-    // 1. 通过描述对象获取值, 但是该属性要有对应的正确的 set get 方法
-    PropertyDescriptor propertyDescriptor = new PropertyDescriptor("age", A.class);
-    Method method = propertyDescriptor.getReadMethod();
-    Object result = method.invoke(object);
+### 反射的基本使用
 
-    // 2. 直接通过Field对象
-    A a = new A();
-    Field field = a.getClass().getDeclaredField("age");
-    field.setAccessible(true);
-    field.set(a, 1);
-    
-    field.setAccessible(true);
-    System.out.println(field.get(a));
+#### 操作构造方法 
+使用newInstance()操作无参构造方法  
+> 使用Class类中的newInstance()方法进行实例化操作， 但该方法必须要求类有无参构造方法
+
+使用Class类中的getConstructors()获取所有构造方法
+```java
+    Class<?> cls = Class.forName("first.Book");
+    Constructor<?>[] constructors = cls.getConstructors();
 ```
-- [Github: 更多反射Demo](https://github.com/Kuangcp/JavaBase/tree/master/java-class/src/test/java/com/github/kuangcp/reflects)
+
+使用Class类中的getConstructor获取指定参数类型的构造方法
+```java
+  Class<?> cls = Class.forName("first.Book");
+  Constructor constructor = cls.getConstructor(String.class, String.class);
+  // 实例化对象
+  Book book = (Book) constructor.newInstance("java", "123");
+  System.out.println(book);
+```
+
+#### 操作类中方法
+`getDeclaredMethods()` 获取类本身定义的所有方法， 不包含由继承获取到的方法
+```java
+    Class<?> cls = Class.forName("first.Book");
+    Method[] methods = cls.getDeclaredMethods();
+    for (Method method : methods) {
+        System.out.println(method);
+    }
+```
+
+获取指定的方法
+```java
+    // 传入方法名和参数类型
+    Method method = cls.getDeclaredMethod("setName", String.class);
+```
+
+`getMethods()` 获取所有方法， 包含由继承获取到的方法, 但无法取得自身私有方法
+```java
+    Class<?> cls = Class.forName("first.Book");
+    Method[] methods = cls.getMethods();
+    for (Method method : methods) {
+        System.out.println(method);
+    }
+```
+
+获取指定的方法
+```java
+    Method method = cls.getMethod("setName", String.class);
+```
+
+调用方法
+```java
+    Class<?> cls = Class.forName("first.Book");
+    Object object = cls.newInstance();
+    Method method = cls.getMethod("setName", String.class);
+    // 调用方法
+    method.invoke(object, "hello");
+```
+#### 操作类的成员属性
+取得所有成员
+```java
+    Class<?> cls = Class.forName("first.Book");
+    Field[] fields = cls.getDeclaredFields();
+    for (Field field : fields) {
+        System.out.println(field);
+    }
+```
+获取单个成员
+```java
+    Class<?> cls = Class.forName("first.Book");
+    Field field = cls.getDeclaredField("name");
+    System.out.println(field);
+```
+
+取得所有成员， 包含由继承获取的成员， 但无法取得自身私有成员
+```java
+    Class<?> cls = Class.forName("first.Book");
+    Field[] fields = cls.getFields();
+    for (Field field : fields) {
+        System.out.println(field);
+    }
+```
+
+set 和 get 属性的值
+```java
+    Class<?> cls = Class.forName("first.Book");
+    Object object = cls.newInstance();
+    Field field = cls.getDeclaredField("name");
+    // 取消Java安全性检查
+    field.setAccessible(true);
+    // 设置值
+    field.set(object, "你好");
+    System.out.println(field.get(object));
+```
+
+#### 操作注解
+获取类的注解
+```java
+    Class<?> cls = Class.forName("first.Book");
+    Annotation[] as = cls.getAnnotations();
+    for (Annotation a : as) {
+        System.out.println(a);
+    }
+```
+
+获取指定的Annotation
+```java
+    Class<?> cls = Class.forName("first.Book");
+    GetItem annotation = cls.getAnnotation(Deprecated.class);
+    System.out.println(annotation.name());
+    System.out.println(annotation.value());
+```
+
+************************
+
+[Github: 更多反射Demo](https://github.com/Kuangcp/JavaBase/tree/master/java-class/src/test/java/com/github/kuangcp/reflects)
 
 正常情况下 final修饰的类，变量，方法, 表示不可继承，不可修改，不可重写(override), 但是使用反射能在一定程度上进行修改
 被final修饰过的变量，只是说栈存储的地址不能再改变，但是却没有说地址指向的内容不能改变，所以反射可以破final，因为它修改该了以前地址的具体内容，但是没有改地址的信息。

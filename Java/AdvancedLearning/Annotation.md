@@ -10,9 +10,10 @@ categories:
 **目录 start**
  
 1. [注解](#注解)
+    1. [自定义Annotation](#自定义annotation)
     1. [读取](#读取)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-04-19 18:07_|
 ****************************************
 # 注解
 
@@ -40,6 +41,17 @@ categories:
     1. **@Documented**  将此注解包含在 javadoc 中
 
     1. **@Inherited**  允许子类继承父类中的注解
+
+## 自定义Annotation
+
+```java
+  @Retention(value = RetentionPolicy.RUNTIME)
+  public @interface GetItem {
+      // 设置属性内容
+      String name() default "hello";
+      String value();
+  }
+```
 
 ## 读取
 - 判断是否有指定注解类型的注解

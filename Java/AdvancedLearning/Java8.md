@@ -15,17 +15,17 @@ categories:
         1. [default方法](#default方法)
         1. [static方法](#static方法)
     1. [Funcational](#funcational)
+        1. [函数式接口](#函数式接口)
+        1. [函数式接口案例](#函数式接口案例)
     1. [Lambda](#lambda)
         1. [行为参数化](#行为参数化)
         1. [Lambda基础](#lambda基础)
         1. [原始类型特化](#原始类型特化)
-        1. [函数式接口](#函数式接口)
         1. [类型检查、类型推断以及限制](#类型检查、类型推断以及限制)
             1. [类型检查](#类型检查)
             1. [同样的Lambda 不同的函数式接口](#同样的lambda-不同的函数式接口)
             1. [类型推断](#类型推断)
             1. [使用局部变量](#使用局部变量)
-        1. [方法引用](#方法引用)
         1. [复合 Lambda 表达式](#复合-lambda-表达式)
             1. [比较器复合](#比较器复合)
             1. [谓词复合](#谓词复合)
@@ -35,6 +35,12 @@ categories:
         1. [Stream与集合](#stream与集合)
             1. [只能遍历一次](#只能遍历一次)
             1. [外部迭代和内部迭代](#外部迭代和内部迭代)
+        1. [构建流](#构建流)
+            1. [有限流](#有限流)
+            1. [无限流](#无限流)
+        1. [数值流](#数值流)
+            1. [原始类型特化](#原始类型特化)
+            1. [数值范围](#数值范围)
         1. [Stream操作](#stream操作)
             1. [中间操作](#中间操作)
             1. [终端操作](#终端操作)
@@ -47,14 +53,6 @@ categories:
                 1. [极值](#极值)
                 1. [归约的优势与并行化](#归约的优势与并行化)
                 1. [总结](#总结)
-            1. [数值流](#数值流)
-                1. [原始类型特化](#原始类型特化)
-                1. [数值范围](#数值范围)
-            1. [构建流](#构建流)
-                1. [由值创建流](#由值创建流)
-                1. [由数组创建流](#由数组创建流)
-                1. [由文件生成流](#由文件生成流)
-                1. [无限流](#无限流)
         1. [使用流收集数据](#使用流收集数据)
             1. [预定义收集器](#预定义收集器)
                 1. [汇总](#汇总)
@@ -64,10 +62,9 @@ categories:
                     1. [按子组收集数据](#按子组收集数据)
                 1. [分区](#分区)
             1. [自定义收集器](#自定义收集器)
-        1. [高效处理数据](#高效处理数据)
+        1. [高效的使用Stream](#高效的使用stream)
     1. [Optional](#optional)
         1. [Optional类和Stream接口的相似之处](#optional类和stream接口的相似之处)
-        1. [Tips](#tips)
         1. [实践:读取Properties某属性](#实践读取properties某属性)
     1. [时间处理](#时间处理)
         1. [ZoneId](#zoneid)
@@ -77,7 +74,7 @@ categories:
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-04-19 18:07_|
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [doc: API](https://docs.oracle.com/javase/8/docs/api/) | [doc下载](https://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html)
@@ -110,17 +107,15 @@ categories:
 > [参考  Java8函数接口实现回调及Groovy闭包的代码示例](http://www.cnblogs.com/lovesqcc/p/6083759.html)
 > [Function接口 – Java8中java.util.function包下的函数式接口](http://ifeve.com/jjava-util-function-java8/)
 
-**`@FunctionalInterface`**
-- An informative annotation type used to indicate that an interface type declaration is intended to be a functional interface as defined by the Java Language Specification.
+**`@FunctionalInterface`** 这个标注用于表示该接口会设计成一个函数式接口。  
 
-- 这个标注用于表示该接口会设计成一个函数式接口。如果你用@FunctionalInterface定义了一个接口，而它却不是函数式接口的话，编译器将返回一个提示原因的错误。
+An informative annotation type used to indicate that an interface type declaration is intended to be a functional interface as defined by the Java Language Specification.
 
-- 如果使用此批注类型对类型进行批注，则编译器需要生成错误消息，除非：
-    - 类型是接口类型，而不是注释类型，枚举或类。
-    - 带注释的类型满足功能接口的要求。
-- 但是，无论接口声明中是否存在功能接口注释，编译器都会将满足功能接口定义的任何接口视为 FunctionalInterface。
 
-- 函数式接口很有用，抽象方法的签名可以描述Lambda表达式的签名。函数式接口的抽象方法的签名称为函数描述符。
+如果你用 `@FunctionalInterface` 定义了一个接口, 接口中只能有一个方法声明, 否则会编译报错  
+但是，无论接口声明中是否存在该注解，编译器都会将满足功能接口定义的任何接口视为 `FunctionalInterface`
+
+函数式接口很有用，抽象方法的签名可以描述Lambda表达式的签名。函数式接口的抽象方法的签名称为函数描述符。
 - 常用函数接口: (详细可参考 java.util.function; 包下的类)
     1. **Consumer** (接收`单参数无返回值`的函数或lambda表达式)， 方法是 `void accept(T t);`
     1. **BiConsumer** (接收`双参数无返回值`的函数或 lambda表达式)，方法是 `void accept(T t, U u);`
@@ -130,9 +125,103 @@ categories:
     1. **BiPredicate** （接收`双参数返回布尔值`的函数或lambda表达式），方法是 `boolean test(T t, U u);`
     1. **Supplier** (无参数但具有返回值的函数或 lambda表达式)， 方法是 `T get();`
 
+这些仅是JDK提供的接口。如果有需要，可以自己设计一个。   
+`(T,U) -> R` 的表达方式展示了应当如何思考一个函数描述符。  
+表的左侧代表了参数类型。这里它代表一个函数，具有两个参数，分别为泛型T和U，返回类型为R。
+
+| 函数式接口 | 函数描述符 | 原始类型特化 |
+|:----|:----|:----|
+| `Predicate<T>` | T->boolean | IntPredicate<br/>LongPredicate<br/> DoublePredicate|
+| `Consumer<T>` | T->void | IntConsumer<br/>LongConsumer<br/> DoubleConsumer |
+| Function<T,R> | T->R | `IntFunction<R>` <br/> IntToDoubleFunction <br/> IntToLongFunction <br/> `LongFunction<R>`<br/> LongToDoubleFunction <br/> LongToIntFunction <br/> `DoubleFunction<R>` <br/>`ToIntFunction<T>`<br/>`ToDoubleFunction<T>`<br/>`ToLongFunction<T>`|
+| `Supplier<T>` | ()->T | BooleanSupplier<br/>IntSupplier<br/> LongSupplier<br/> DoubleSupplier|
+| `UnaryOperator<T>` | T->T |IntUnaryOperator<br/>LongUnaryOperator<br/>DoubleUnaryOperator|
+| `BinaryOperator<T>` | (T,T)-> T | IntBinaryOperator<br/>LongBinaryOperator<br/>DoubleBinaryOperator|
+| BiPredicate<L,R> | (L,R)->boolean | |
+| BiConsumer<T,U> | (T,U)->void | `ObjIntConsumer<T>`<br/>`ObjLongConsumer<T>`<br/>`ObjDoubleConsumer<T>`|
+| BiFunction<T,U,R> | (T,U)->R | ToIntBiFunction<T,U><br/>ToLongBiFunction<T,U><br/>ToDoubleBiFunction<T,U>|
+
+
 - 为什么要使用 Function 以及闭包呢？
     - 在语法上比定义回调接口、创建匿名类更加简洁；
     - 尝试使用新的语言特性，理解多样化的编程思想，提升编程表达能力。
+
+### 函数式接口
+> 通过 :: 操作符 简化代码
+
+| Lambda | 方法引用 |
+|:----|:----|
+| (Apple a) -> a.getWeight() | Apple::getWeight
+| () -> Thread.currentThread().dumpStack() | Thread.currentThread()::dumpStack
+| (str, i) -> str.substring(i) | String::substring
+| (String s) -> System.out.println(s) | System.out::println
+
+1. 指向静态方法的方法引用（例如Integer的parseInt方法，写作Integer::parseInt）
+1. 指向任意类型实例方法的方法引用 （ 例 如 String 的 length 方 法 ， 写作String::length）。
+1. 指向现有对象的实例方法的方法引用
+    - 假设你有一个局部变量expensiveTransaction 用于存放Transaction类型的对象，它支持实例方法getValue，
+    - 那么你就可以写expensiveTransaction::getValue
+
+**`构造函数的引用`**
+1. 空构造函数 等价于 `() -> T` 
+    - 例如 `Supplier<Apple> c1 = Apple::new;`
+    - 之后 `Apple a1 = c1.get();` 调用接口的get方法实例化Apple对象
+
+不将构造函数实例化却能够引用它，这个功能有一些有趣的应用。例如，你可以使用Map来将构造函数映射到字符串值。
+你可以创建一个giveMeFruit方法，给它一个String和一个Integer，它就可以创建出不同重量的各种水果：
+```java
+    static Map<String, Function<Integer, Fruit>> map = new HashMap<>();
+    static {
+        map.put("apple", Apple::new);
+        map.put("orange", Orange::new);
+    // etc...
+    }
+    public static Fruit giveMeFruit(String fruit, Integer weight){
+        return map.get(fruit.toLowerCase()).apply(weight);
+    }
+```
+
+> 利用JDK提供的函数式接口 可以实现将一个,两个参数的构造函数转变为构造函数引用, 那么可以自定义实现三个参数的接口
+```java
+    public interface TriFunction<T, U, V, R>{
+        R apply(T t, U u, V v);
+    }
+    TriFunction<Integer, Integer, Integer, Color> colorFactory = Color::new;
+```
+
+### 函数式接口案例
+
+| 使用案例 | Lambda例子 | 对应的函数式接口 |
+|:----|:----|:----|
+| 布尔表达式 | (List<String> list) -> list.isEmpty() | `Predicate<List<String>>`|
+| 创建对象 |() -> new Apple(10) |`Supplier<Apple>`
+| 消费一个对象 | (Apple a) ->System.out.println(a.getWeight())|`Consumer<Apple>`|
+| 从一个对象中 选择/提取 | (String s) -> s.length() | Function<String, Integer> 或 `ToIntFunction<String>`
+| 合并两个值 | (int a, int b) -> a * b |  IntBinaryOperator|
+| 比较两个对象 | (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()) | Comparator< Apple > 或 BiFunction<Apple, Apple, Integer> 或 ToIntBiFunction<Apple, Apple>
+
+- 请注意，任何函数式接口都不允许抛出受检异常（checked exception）。如果你需要Lambda 表达式来抛出异常，有两种办法：
+    - 定义一个自己的函数式接口，并声明受检异常，
+    - 或者把Lambda 包在一个try/catch块中。
+- 比如函数式接口BufferedReaderProcessor，它显式声明了一个IOException：
+    ```java
+        @FunctionalInterface
+        public interface BufferedReaderProcessor {
+            String process(BufferedReader b) throws IOException;
+        }
+        BufferedReaderProcessor p = (BufferedReader br) -> br.readLine();
+    ```
+- 但是你可能是在使用一个接受函数式接口的API，比如Function<T, R>，没有办法自己创建一个。这种情况下， 你可以显式捕捉受检异常：
+    ```java
+        Function<BufferedReader, String> f = (BufferedReader b) -> {
+            try {
+                return b.readLine();
+            } catch(IOException e) {
+                throw new RuntimeException(e);
+            }
+        };
+    ```
+
 
 *******************************
 
@@ -204,7 +293,7 @@ categories:
     // 如果将行为参数化, 就能通用的完成需求
     @FunctionalInterface
     public interface BufferedReaderProcessor {
-    String process(BufferedReader b) throws IOException;
+        String process(BufferedReader b) throws IOException;
     }
     public static String processFile(BufferedReaderProcessor p) throws IOException {}
     // 处理一行
@@ -226,57 +315,6 @@ Java 8为我们前面所说的函数式接口带来了一个专门的版本，�
 
 一般来说，针对专门的输入参数类型的函数式接口的名称都要加上对应的原始类型前缀，比如DoublePredicate、 IntConsumer、 LongBinaryOperator、 IntFunction等。 
 Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 IntToDoubleFunction等。
-
-### 函数式接口
-
-请记得这只是一个起点。如果有需要，你可以自己设计一个。请记住， (T,U) -> R的表达方式展示了应当如何思考一个函数描述符。
-表的左侧代表了参数类型。这里它代表一个函数，具有两个参数，分别为泛型T和U，返回类型为R。
-
-
-| 函数式接口 | 函数描述符 | 原始类型特化 |
-|:----|:----|:----|
-| `Predicate<T>` | T->boolean | IntPredicate<br/>LongPredicate<br/> DoublePredicate|
-| `Consumer<T>` | T->void | IntConsumer<br/>LongConsumer<br/> DoubleConsumer |
-| Function<T,R> | T->R | `IntFunction<R>` <br/> IntToDoubleFunction <br/> IntToLongFunction <br/> `LongFunction<R>`<br/> LongToDoubleFunction <br/> LongToIntFunction <br/> `DoubleFunction<R>` <br/>`ToIntFunction<T>`<br/>`ToDoubleFunction<T>`<br/>`ToLongFunction<T>`|
-| `Supplier<T>` | ()->T | BooleanSupplier<br/>IntSupplier<br/> LongSupplier<br/> DoubleSupplier|
-| `UnaryOperator<T>` | T->T |IntUnaryOperator<br/>LongUnaryOperator<br/>DoubleUnaryOperator|
-| `BinaryOperator<T>` | (T,T)-> T | IntBinaryOperator<br/>LongBinaryOperator<br/>DoubleBinaryOperator|
-| BiPredicate<L,R> | (L,R)->boolean | |
-| BiConsumer<T,U> | (T,U)->void | `ObjIntConsumer<T>`<br/>`ObjLongConsumer<T>`<br/>`ObjDoubleConsumer<T>`|
-| BiFunction<T,U,R> | (T,U)->R | ToIntBiFunction<T,U><br/>ToLongBiFunction<T,U><br/>ToDoubleBiFunction<T,U>|
-
-**`Lambdas及函数式接口的例子`**
-
-| 使用案例 | Lambda例子 | 对应的函数式接口 |
-|:----|:----|:----|
-| 布尔表达式 | (List<String> list) -> list.isEmpty() | `Predicate<List<String>>`|
-| 创建对象 |() -> new Apple(10) |`Supplier<Apple>`
-| 消费一个对象 | (Apple a) ->System.out.println(a.getWeight())|`Consumer<Apple>`|
-| 从一个对象中 选择/提取 | (String s) -> s.length() | Function<String, Integer> 或 `ToIntFunction<String>`
-| 合并两个值 | (int a, int b) -> a * b |  IntBinaryOperator|
-| 比较两个对象 | (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()) | Comparator< Apple > 或 BiFunction<Apple, Apple, Integer> 或 ToIntBiFunction<Apple, Apple>
-
-- 请注意，任何函数式接口都不允许抛出受检异常（checked exception）。如果你需要Lambda 表达式来抛出异常，有两种办法：
-    - 定义一个自己的函数式接口，并声明受检异常，
-    - 或者把Lambda 包在一个try/catch块中。
-- 比如函数式接口BufferedReaderProcessor，它显式声明了一个IOException：
-    ```java
-        @FunctionalInterface
-        public interface BufferedReaderProcessor {
-            String process(BufferedReader b) throws IOException;
-        }
-        BufferedReaderProcessor p = (BufferedReader br) -> br.readLine();
-    ```
-- 但是你可能是在使用一个接受函数式接口的API，比如Function<T, R>，没有办法自己创建一个。这种情况下， 你可以显式捕捉受检异常：
-    ```java
-        Function<BufferedReader, String> f = (BufferedReader b) -> {
-            try {
-                return b.readLine();
-            } catch(IOException e) {
-                throw new RuntimeException(e);
-            }
-        };
-    ```
 
 ### 类型检查、类型推断以及限制
 
@@ -357,50 +395,6 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 并且隐式表示它们仅限于其所在线程。如果允许捕获可改变的局部变量，就会引发造成线程不安全的新的可能性，
 而这是我们不想看到的（实例变量可以，因为它们保存在堆中，而堆是在线程之间共享的） 。
 
-### 方法引用
-> 通过 :: 操作符 简化代码
-
-| Lambda | 方法引用 |
-|:----|:----|
-| (Apple a) -> a.getWeight() | Apple::getWeight
-| () -> Thread.currentThread().dumpStack() | Thread.currentThread()::dumpStack
-| (str, i) -> str.substring(i) | String::substring
-| (String s) -> System.out.println(s) | System.out::println
-
-- 构建方法引用
-    1. 指向静态方法的方法引用（例如Integer的parseInt方法，写作Integer::parseInt）
-    1. 指向任意类型实例方法的方法引用 （ 例 如 String 的 length 方 法 ， 写作String::length）。
-    1. 指向现有对象的实例方法的方法引用
-        - 假设你有一个局部变量expensiveTransaction 用于存放Transaction类型的对象，它支持实例方法getValue，
-        - 那么你就可以写expensiveTransaction::getValue
-
-**`构造函数的引用`**
-1. 空构造函数 等价于 `() -> T` 
-    - 例如 `Supplier<Apple> c1 = Apple::new;`
-    - 之后 `Apple a1 = c1.get();` 调用接口的get方法实例化Apple对象
-
-不将构造函数实例化却能够引用它，这个功能有一些有趣的应用。例如，你可以使用Map来将构造函数映射到字符串值。
-你可以创建一个giveMeFruit方法，给它一个String和一个Integer，它就可以创建出不同重量的各种水果：
-```java
-    static Map<String, Function<Integer, Fruit>> map = new HashMap<>();
-    static {
-        map.put("apple", Apple::new);
-        map.put("orange", Orange::new);
-    // etc...
-    }
-    public static Fruit giveMeFruit(String fruit, Integer weight){
-        return map.get(fruit.toLowerCase()).apply(weight);
-    }
-```
-
-> 利用JDK提供的函数式接口 可以实现将一个,两个参数的构造函数转变为构造函数引用, 那么可以自定义实现三个参数的接口
-```java
-    public interface TriFunction<T, U, V, R>{
-        R apply(T t, U u, V v);
-    }
-    TriFunction<Integer, Integer, Integer, Color> colorFactory = Color::new;
-```
-
 ### 复合 Lambda 表达式
 在实践中，这意味着你可以把多个简单的Lambda复合成复杂的表达式。比如，你可以让两个谓词之间做一个or操作，组合成一个更大的谓词。
 而且，你还可以让一个函数的结果成为另一个函数的输入。
@@ -476,6 +470,8 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
     - **内部迭代**
         - 与使用迭代器显式迭代的集合不同，流的迭代操作是在背后进行的。
 
+************************
+
 ### Stream与集合
 
 粗略地说，集合与流之间的差异就在于什么时候进行计算。集合是一个内存中的数据结构，它包含数据结构中目前所有的值——集合中的每个元素都得先算出来才能添加到集合中。  
@@ -496,6 +492,104 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
     - 显式的迭代集合, 命令式的执行操作
 - 内部迭代
     - 将迭代的细节隐藏起来, 方便优化
+
+************************
+
+### 构建流
+> 从值序列、数组、文件来创建流，甚至由函数创建无限流
+
+#### 有限流
+> 由值创建流
+```java
+Stream<String> stream = Stream.of("Java 8 ", "Lambdas ", "In ", "Action"); 
+```
+
+> 由数组创建流
+```java
+    int[] numbers = {2, 3, 5, 7, 11, 13}; 
+    int sum = Arrays.stream(numbers).sum(); 
+```
+
+> 由文件生成流
+
+Java中用于处理文件等I/O操作的NIO  API（非阻塞I/O）已更新，以便利用Stream  API。java.nio.file.Files中的很多静态方法都会返回一个流。
+
+```java
+    long uniqueWords = 0; 
+    try(Stream<String> lines = Files.lines(Paths.get("data.txt"), Charset.defaultCharset())){ 
+        uniqueWords = lines.flatMap(line -> Arrays.stream(line.split(" "))).distinct() .count(); 
+    }catch(IOException e){} 
+```
+
+#### 无限流
+> Stream API提供了两个静态方法来 **从函数生成流**：`Stream.iterate` 和 `Stream.generate`。这两个操作可以创建所谓的 无限流  
+> 同样，你不能对无限流做排序或归约，因为所有元素都需要处理，而这永远也完不成！
+
+**`迭代`**
+```java
+    Stream.iterate(0, n -> n + 2).limit(10).forEach(System.out::println); 
+
+    // 获取斐波那契序列 元组
+    Stream.iterate(new int[]{0, 1}, t -> new int[]{t[1], t[0]+t[1]}) 
+      .limit(20) 
+      .forEach(t -> System.out.println("(" + t[0] + "," + t[1] +")")); 
+```
+
+**`生成`**
+```java
+    Stream.generate(Math::random).limit(5).forEach(System.out::println); 
+    // 很重要的一点是，在并行代码中使用有状态的供应源是不安全的。因此下面的代码仅仅是为了内容完整，应尽量避免使用！
+    IntSupplier fib = new IntSupplier(){ 
+        private int previous = 0; 
+        private int current = 1; 
+        public int getAsInt(){ 
+            int oldPrevious = this.previous; 
+            int nextValue = this.previous + this.current; 
+            this.previous = this.current; 
+            this.current = nextValue; 
+            return oldPrevious; 
+        } 
+    }; 
+    IntStream.generate(fib).limit(10).forEach(System.out::println); 
+```
+
+### 数值流
+
+#### 原始类型特化
+Java8 引入了三个原始类型特化流接口来解决这个问题： `IntStream、DoubleStream 和 LongStream`，分别将流中的元素特化为int、long和double，从而避免了暗含的装箱成本。
+
+**映射到数值流**
+```java
+    // 例如求和, 里面有一个隐含的拆箱操作 再求和
+    numbers.parallelStream().reduce(0, Integer::sum);
+
+    // 请注意，如果流是空的，sum默认返回 0
+    numbers.parallelStream().mapToInt(Integer::intValue).sum() 
+```
+
+**映射到对象流**
+使用 boxed() 方法即可
+
+**默认值OptionalInt**
+```java
+    OptionalInt maxCalories = menu.stream().mapToInt(Dish::getCalories).max(); 
+```
+#### 数值范围
+IntStream和LongStream 的 range() 或者 rangeClose() 方法能产生一个数值流
+> 例如 IntStream.rangeClose(1,100).filter(num->num%2==0).count() 统计100以内的偶数
+
+> **获取勾股数流**
+```java
+    Stream<int[]> pythagoreanTriples = IntStream.rangeClosed(1, 100).boxed() .flatMap(a -> 
+        IntStream.rangeClosed(a, 100) 
+                .filter(b -> Math.sqrt(a*a + b*b) % 1 == 0) 
+                .mapToObj(b -> new int[]{a, b, (int)Math.sqrt(a * a + b * b)}) 
+            ); 
+    
+    pythagoreanTriples.limit(5) .forEach(t -> System.out.println(t[0] + ", " + t[1] + ", " + t[2])); 
+```
+
+************************
 
 ### Stream操作
 因为filter、sorted、map 和collect 等操作是与具体线程模型无关的高层次构件, 所以它们的内部实现可以是单线程的，也可能透明地充分利用你的多核架构
@@ -643,95 +737,6 @@ List<int[]> pairs = numbers1.stream()
     strings.stream().sorted().reduce("", (a,b) -> a+b);
     // joining 内部会使用 StringBuilder
     strings.stream().sorted().collect(Collectors.joining());
-```
-
-#### 数值流
-
-##### 原始类型特化
-Java8 引入了三个原始类型特化流接口来解决这个问题： `IntStream、DoubleStream 和 LongStream`，分别将流中的元素特化为int、long和double，从而避免了暗含的装箱成本。
-
-**映射到数值流**
-```java
-    // 例如求和, 里面有一个隐含的拆箱操作 再求和
-    numbers.parallelStream().reduce(0, Integer::sum);
-
-    // 请注意，如果流是空的，sum默认返回 0
-    numbers.parallelStream().mapToInt(Integer::intValue).sum() 
-```
-
-**映射到对象流**
-使用 boxed() 方法即可
-
-**默认值OptionalInt**
-```java
-    OptionalInt maxCalories = menu.stream().mapToInt(Dish::getCalories).max(); 
-```
-##### 数值范围
-IntStream和LongStream 的 range() 或者 rangeClose() 方法能产生一个数值流
-> 例如 IntStream.rangeClose(1,100).filter(num->num%2==0).count() 统计100以内的偶数
-
-> **获取勾股数流**
-```java
-    Stream<int[]> pythagoreanTriples = IntStream.rangeClosed(1, 100).boxed() .flatMap(a -> 
-        IntStream.rangeClosed(a, 100) 
-                .filter(b -> Math.sqrt(a*a + b*b) % 1 == 0) 
-                .mapToObj(b -> new int[]{a, b, (int)Math.sqrt(a * a + b * b)}) 
-            ); 
-    
-    pythagoreanTriples.limit(5) .forEach(t -> System.out.println(t[0] + ", " + t[1] + ", " + t[2])); 
-```
-#### 构建流
-> 从值序列、数组、文件来创建流，甚至由函数创建无限流
-
-##### 由值创建流
-`Stream<String> stream = Stream.of("Java 8 ", "Lambdas ", "In ", "Action"); `
-
-##### 由数组创建流
-```java
-    int[] numbers = {2, 3, 5, 7, 11, 13}; 
-    int sum = Arrays.stream(numbers).sum(); 
-```
-
-##### 由文件生成流
-Java中用于处理文件等I/O操作的NIO  API（非阻塞I/O）已更新，以便利用Stream  API。java.nio.file.Files中的很多静态方法都会返回一个流。
-
-```java
-    long uniqueWords = 0; 
-    try(Stream<String> lines = Files.lines(Paths.get("data.txt"), Charset.defaultCharset())){ 
-        uniqueWords = lines.flatMap(line -> Arrays.stream(line.split(" "))).distinct() .count(); 
-    }catch(IOException e){} 
-```
-
-##### 无限流
-> Stream API提供了两个静态方法来 **从函数生成流**：`Stream.iterate` 和 `Stream.generate`。这两个操作可以创建所谓的 无限流  
-> 同样，你不能对无限流做排序或归约，因为所有元素都需要处理，而这永远也完不成！
-
-**`迭代`**
-```java
-    Stream.iterate(0, n -> n + 2).limit(10).forEach(System.out::println); 
-
-    // 获取斐波那契序列 元组
-    Stream.iterate(new int[]{0, 1}, t -> new int[]{t[1], t[0]+t[1]}) 
-      .limit(20) 
-      .forEach(t -> System.out.println("(" + t[0] + "," + t[1] +")")); 
-```
-
-**`生成`**
-```java
-    Stream.generate(Math::random).limit(5).forEach(System.out::println); 
-    // 很重要的一点是，在并行代码中使用有状态的供应源是不安全的。因此下面的代码仅仅是为了内容完整，应尽量避免使用！
-    IntSupplier fib = new IntSupplier(){ 
-        private int previous = 0; 
-        private int current = 1; 
-        public int getAsInt(){ 
-            int oldPrevious = this.previous; 
-            int nextValue = this.previous + this.current; 
-            this.previous = this.current; 
-            this.current = nextValue; 
-            return oldPrevious; 
-        } 
-    }; 
-    IntStream.generate(fib).limit(10).forEach(System.out::println); 
 ```
 
 ### 使用流收集数据
@@ -895,8 +900,7 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 
 ************
 
-### 高效处理数据
-> 思考: 如何高效利用Stream
+### 高效的使用Stream
 
 1. 场景: 一个对象(含时间和整数两个属性)集合, 完成的操作是获取到最大时间以及数值平均值...等等多个值
     - [ ] 解决
@@ -940,7 +944,8 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 1. filter 
     1. persion 存在且满足条件就返回自身否则返回空 `person.filter(o -> "name".equals(o.getName()))`
 
-### Tips
+************************
+
 1. **注意**: Optional 无法序列化, 也就是说不能作为 PO 的字段, 但是可以在get上下功夫: `public Optional<String> getName(){return this.name}`
 
 1. 异常与Optional的对比
@@ -955,34 +960,34 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 > 从properties文件中读取某个属性, 正整数就返回该值, 否则返回0  
 
 ```java
-// 原始写法
-public int readDuration(Properties props, String name) {
-    String value = props.getProperty(name);
-    if (value != null) {
+    // 原始写法
+    public int readDuration(Properties props, String name) {
+        String value = props.getProperty(name);
+        if (value != null) {
+            try {
+                int i = Integer.parseInt(value);
+                if (i > 0) {
+                    return i;
+                }
+            } catch (NumberFormatException nfe) { }
+        }
+        return 0;
+    }
+    // 改进
+    public static Optional<Integer> stringToInt(String s) {
         try {
-            int i = Integer.parseInt(value);
-            if (i > 0) {
-                return i;
-            }
-        } catch (NumberFormatException nfe) { }
+            return Optional.of(Integer.parseInt(s));
+        } catch (NumberFormatException e) {
+            return Optional.empty();
+        }
     }
-    return 0;
-}
-// 改进
-public static Optional<Integer> stringToInt(String s) {
-    try {
-        return Optional.of(Integer.parseInt(s));
-    } catch (NumberFormatException e) {
-        return Optional.empty();
-    }
-}
 
-public int readDuration(Properties props, String name) {
-    return Optional.ofNullable(props.getProperty(name))
-        .flatMap(OptionalUtility::stringToInt)
-        .filter(i -> i > 0)
-        .orElse(0);
-}
+    public int readDuration(Properties props, String name) {
+        return Optional.ofNullable(props.getProperty(name))
+            .flatMap(OptionalUtility::stringToInt)
+            .filter(i -> i > 0)
+            .orElse(0);
+    }
 ```
 
 *******************************
