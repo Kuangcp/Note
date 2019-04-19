@@ -11,7 +11,7 @@ categories:
  
 1. [Bash](#bash)
 
-**目录 end**|_2019-04-19 12:46_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 
 # Bash

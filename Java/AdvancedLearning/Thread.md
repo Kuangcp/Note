@@ -18,7 +18,7 @@ categories:
         1. [销毁](#销毁)
     1. [线程的优先级](#线程的优先级)
 
-**目录 end**|_2019-04-19 12:46_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # 线程的基础学习
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/java-thread/src/main/java/com/github/kuangcp)

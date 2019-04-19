@@ -19,6 +19,7 @@ categories:
         1. [Ubuntu Mint](#ubuntu-mint)
         1. [Deepin](#deepin)
             1. [关于显卡](#关于显卡)
+            1. [系统休眠](#系统休眠)
             1. [双系统安装](#双系统安装)
         1. [raspberry-pi](#raspberry-pi)
     1. [arch系](#arch系)
@@ -34,7 +35,7 @@ categories:
     1. [Mageia](#mageia)
     1. [CDLinux](#cdlinux)
 
-**目录 end**|_2019-04-05 01:20_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # Linux各个发行版本使用体验
 

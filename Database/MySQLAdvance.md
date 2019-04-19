@@ -12,9 +12,10 @@ categories:
 1. [MySQL Advanced](#mysql-advanced)
     1. [部署](#部署)
     1. [性能调优](#性能调优)
+        1. [查看状态变量](#查看状态变量)
     1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # MySQL Advanced
 

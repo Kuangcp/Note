@@ -28,7 +28,7 @@ categories:
 1. [Nginx Plus](#nginx-plus)
 1. [问题](#问题)
 
-**目录 end**|_2019-02-21 14:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # Nginx
 

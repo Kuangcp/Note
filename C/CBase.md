@@ -9,13 +9,17 @@ categories:
 
 **目录 start**
  
-1. [C](#c)
+1. [C语言](#c语言)
     1. [资源](#资源)
+1. [基础](#基础)
     1. [数据类型](#数据类型)
     1. [函数](#函数)
     1. [main函数](#main函数)
+1. [高级](#高级)
+    1. [使用C实现元组](#使用c实现元组)
+    1. [使用C实现面向对象思想](#使用c实现面向对象思想)
 
-**目录 end**|_2019-01-13 16:50_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # C语言
 > 个人入门编程语言, 个人觉得比用Python入门更好点, Python入门简单是不错, 但是后面如果要入手别的语言, 有C语言基础更好  

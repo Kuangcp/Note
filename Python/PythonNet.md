@@ -10,8 +10,7 @@ categories:
  
 1. [网络编程](#网络编程)
     1. [Socket](#socket)
-        1. [基于TCP](#基于tcp)
-        1. [基于UDP](#基于udp)
+    1. [WebSocket](#websocket)
     1. [邮件](#邮件)
     1. [WebAPI](#webapi)
         1. [JSON](#json)
@@ -19,7 +18,7 @@ categories:
 1. [爬虫](#爬虫)
     1. [安装所需模块](#安装所需模块)
 
-**目录 end**|_2019-01-27 21:56_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # 网络编程
 ## Socket

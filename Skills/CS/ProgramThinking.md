@@ -43,7 +43,7 @@ categories:
         1. [阿里巴巴的代码检查](#阿里巴巴的代码检查)
     1. [配置文件](#配置文件)
 
-**目录 end**|_2018-12-13 12:06_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:05_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # 开发思想
 > 有关开发的理论性思想,编写,测试,部署等

@@ -1,3 +1,17 @@
+---
+title: StringConcat.md
+date: 2019-04-19 13:04:48
+tags: 
+categories: 
+---
+
+**目录 start**
+ 
+1. [字符串拼接](#字符串拼接)
+            1. [StringBuffer和StringBuilder](#stringbuffer和stringbuilder)
+
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+****************************************
 # 字符串拼接
 
 

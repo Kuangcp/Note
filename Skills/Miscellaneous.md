@@ -13,7 +13,7 @@ categories:
     1. [一些建议](#一些建议)
     1. [无论做什么，原则最重要](#无论做什么原则最重要)
 
-**目录 end**|_2019-01-29 23:37_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:05_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # 学习杂记
 

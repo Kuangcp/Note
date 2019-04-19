@@ -23,7 +23,7 @@ categories:
             1. [细节](#细节)
         1. [相关软件](#相关软件)
 
-**目录 end**|_2019-04-19 12:46_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-19 13:05_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # 高效工作
 > [知乎: 超强的学习能力是怎样练就的？](https://www.zhihu.com/question/35103080/answer/414223605)

@@ -14,7 +14,7 @@ categories:
     1. [安装](#安装)
     1. [基础](#基础)
 
-**目录 end**|_2019-01-18 15:28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # Clojure
 > 似乎是Lisp的方言 [参考博客 Clojure 学习笔记 :0 零基础教程](https://www.jianshu.com/p/32b7ef3659db)

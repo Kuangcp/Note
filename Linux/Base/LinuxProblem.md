@@ -26,7 +26,7 @@ categories:
     1. [数据问题](#数据问题)
         1. [笔记本突然断电导致开机报错](#笔记本突然断电导致开机报错)
 
-**目录 end**|_2019-03-31 21:54_| [Gitee](https://gitee.com/gin9/Memo) | [Github](https://github.com/Kuangcp/Memo)
+**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
 ****************************************
 # 遇到的常见问题
 
