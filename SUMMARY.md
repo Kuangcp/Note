@@ -3,17 +3,15 @@
 * [ Introduction ](README.md)
 
 * [ Repository ](./Repository.md)
-* [ SUMMARY ](./SUMMARY.md)
-* �� ARTS ��
-* �� Blog ��
+* 【 Blog 】
     * [ Blog ](/Blog/Blog.md)
     * [ Java ](/Blog/Java.md)
     * [ Server ](/Blog/Server.md)
     * [ Solution ](/Blog/Solution.md)
     * [ View ](/Blog/View.md)
-* �� C ��
+* 【 C 】
     * [ CBase ](/C/CBase.md)
-* �� Database ��
+* 【 Database 】
     * [ Experience ](/Database/Experience.md)
     * [ GraphQL ](/Database/GraphQL.md)
     * [ MangoDB ](/Database/MangoDB.md)
@@ -27,15 +25,15 @@
     * [ RedisAdvance ](/Database/RedisAdvance.md)
     * [ SQL ](/Database/SQL.md)
     * [ SQLServer ](/Database/SQLServer.md)
-* �� Distributed ��
-    * �� Distributed/Middlewave ��
+* 【 Distributed 】
+    * 【 Distributed/Middlewave 】
         * [ Apollo ](/Distributed/Middlewave/Apollo.md)
     * [ RPC ](/Distributed/RPC.md)
-* �� FrontEnd ��
-    * �� FrontEnd/Frame ��
+* 【 FrontEnd 】
+    * 【 FrontEnd/Frame 】
         * [ LayUI ](/FrontEnd/Frame/LayUI.md)
         * [ Vue ](/FrontEnd/Frame/Vue.md)
-    * �� FrontEnd/Node ��
+    * 【 FrontEnd/Node 】
         * [ NodeJS ](/FrontEnd/Node/NodeJS.md)
     * [ Font ](/FrontEnd/Font.md)
     * [ Hexo ](/FrontEnd/Hexo.md)
@@ -44,32 +42,32 @@
     * [ ResponseCode ](/FrontEnd/ResponseCode.md)
     * [ SVG ](/FrontEnd/SVG.md)
     * [ ViewSolution ](/FrontEnd/ViewSolution.md)
-    * [ extjsѧϰ�ʼ� ](/FrontEnd/extjsѧϰ�ʼ�.md)
-* �� Functional ��
+    * [ extjs学习笔记 ](/FrontEnd/extjs学习笔记.md)
+* 【 Functional 】
     * [ Clojure ](/Functional/Clojure.md)
     * [ FPBase ](/Functional/FPBase.md)
     * [ Kotlin ](/Functional/Kotlin.md)
-* �� Go ��
+* 【 Go 】
     * [ GoBase ](/Go/GoBase.md)
     * [ GoDatabase ](/Go/GoDatabase.md)
     * [ GoRestful ](/Go/GoRestful.md)
-* �� Groovy ��
+* 【 Groovy 】
     * [ Groovy ](/Groovy/Groovy.md)
     * [ GroovySpring ](/Groovy/GroovySpring.md)
-* �� Java ��
-    * �� Java/AdvancedLearning ��
-        * �� Java/AdvancedLearning/Basic ��
+* 【 Java 】
+    * 【 Java/AdvancedLearning 】
+        * 【 Java/AdvancedLearning/Basic 】
             * [ StringConcat ](/Java/AdvancedLearning/Basic/StringConcat.md)
-        * �� Java/AdvancedLearning/Collection ��
+        * 【 Java/AdvancedLearning/Collection 】
             * [ List ](/Java/AdvancedLearning/Collection/List.md)
-        * �� Java/AdvancedLearning/Concurrency ��
+        * 【 Java/AdvancedLearning/Concurrency 】
             * [ Atomic ](/Java/AdvancedLearning/Concurrency/Atomic.md)
             * [ ConcurrencyCollection ](/Java/AdvancedLearning/Concurrency/ConcurrencyCollection.md)
             * [ ConcurrencyUtil ](/Java/AdvancedLearning/Concurrency/ConcurrencyUtil.md)
             * [ ExecutorAndPool ](/Java/AdvancedLearning/Concurrency/ExecutorAndPool.md)
             * [ ForkAndJoin ](/Java/AdvancedLearning/Concurrency/ForkAndJoin.md)
             * [ Lock ](/Java/AdvancedLearning/Concurrency/Lock.md)
-        * �� Java/AdvancedLearning/Map ��
+        * 【 Java/AdvancedLearning/Map 】
             * [ HashMap ](/Java/AdvancedLearning/Map/HashMap.md)
             * [ TreeMap ](/Java/AdvancedLearning/Map/TreeMap.md)
         * [ Annotation ](/Java/AdvancedLearning/Annotation.md)
@@ -100,8 +98,8 @@
         * [ SyntaxAndType ](/Java/AdvancedLearning/SyntaxAndType.md)
         * [ Thread ](/Java/AdvancedLearning/Thread.md)
         * [ WebPerformance ](/Java/AdvancedLearning/WebPerformance.md)
-    * �� Java/Android ��
-    * �� Java/Ecosystem ��
+    * 【 Java/Android 】
+    * 【 Java/Ecosystem 】
         * [ Activiti ](/Java/Ecosystem/Activiti.md)
         * [ Blade ](/Java/Ecosystem/Blade.md)
         * [ Elasticsearch ](/Java/Ecosystem/Elasticsearch.md)
@@ -118,10 +116,11 @@
         * [ Querydsl ](/Java/Ecosystem/Querydsl.md)
         * [ Solr ](/Java/Ecosystem/Solr.md)
         * [ Vertx ](/Java/Ecosystem/Vertx.md)
-    * �� Java/MSA ��
-    * �� Java/Spring ��
-        * �� Java/Spring/Why ��
-        * [ Spring-Beanѧϰ ](/Java/Spring/Spring-Beanѧϰ.md)
+    * 【 Java/MSA 】
+    * 【 Java/Pattern 】
+    * 【 Java/Spring 】
+        * 【 Java/Spring/Why 】
+        * [ Spring-Bean学习 ](/Java/Spring/Spring-Bean学习.md)
         * [ Spring-Cloud ](/Java/Spring/Spring-Cloud.md)
         * [ Spring ](/Java/Spring/Spring.md)
         * [ Spring5 ](/Java/Spring/Spring5.md)
@@ -135,21 +134,21 @@
         * [ SpringTest ](/Java/Spring/SpringTest.md)
         * [ SpringWebFlux ](/Java/Spring/SpringWebFlux.md)
         * [ SpringbootDatabase ](/Java/Spring/SpringbootDatabase.md)
-        * [ Spring�ٷ��ĵ�ѧϰ ](/Java/Spring/Spring�ٷ��ĵ�ѧϰ.md)
-        * [ Spring�����չ��֮Aware�ӿ� ](/Java/Spring/Spring�����չ��֮Aware�ӿ�.md)
-        * [ Spring�����չ��֮BeanFactoryPostProcessor ](/Java/Spring/Spring�����չ��֮BeanFactoryPostProcessor.md)
-        * [ Spring�����չ��֮BeanPostProcessor ](/Java/Spring/Spring�����չ��֮BeanPostProcessor.md)
+        * [ Spring官方文档学习 ](/Java/Spring/Spring官方文档学习.md)
+        * [ Spring容器扩展点之Aware接口 ](/Java/Spring/Spring容器扩展点之Aware接口.md)
+        * [ Spring容器扩展点之BeanFactoryPostProcessor ](/Java/Spring/Spring容器扩展点之BeanFactoryPostProcessor.md)
+        * [ Spring容器扩展点之BeanPostProcessor ](/Java/Spring/Spring容器扩展点之BeanPostProcessor.md)
         * [ Transactional ](/Java/Spring/Transactional.md)
-    * �� Java/TemplateEngine ��
+    * 【 Java/TemplateEngine 】
         * [ Thymeleaf ](/Java/TemplateEngine/Thymeleaf.md)
-    * �� Java/Test ��
+    * 【 Java/Test 】
         * [ JavaCucumber ](/Java/Test/JavaCucumber.md)
         * [ JavaHamcreset ](/Java/Test/JavaHamcreset.md)
         * [ JavaTest ](/Java/Test/JavaTest.md)
         * [ Junit ](/Java/Test/Junit.md)
         * [ Junit5 ](/Java/Test/Junit5.md)
         * [ TestNG ](/Java/Test/TestNG.md)
-    * �� Java/Tool ��
+    * 【 Java/Tool 】
         * [ Eclipse ](/Java/Tool/Eclipse.md)
         * [ Gradle ](/Java/Tool/Gradle.md)
         * [ GradleAdvance ](/Java/Tool/GradleAdvance.md)
@@ -160,35 +159,35 @@
         * [ Maven ](/Java/Tool/Maven.md)
         * [ MavenAdvance ](/Java/Tool/MavenAdvance.md)
         * [ Tomcat ](/Java/Tool/Tomcat.md)
-    * �� Java/thread ��
-        * [ ִ���� ](/Java/thread/ִ����.md)
-        * [ �߳�ͬ�� ](/Java/thread/�߳�ͬ��.md)
-        * [ �߼�ͬ������ ](/Java/thread/�߼�ͬ������.md)
+    * 【 Java/thread 】
+        * [ 执行器 ](/Java/thread/执行器.md)
+        * [ 线程同步 ](/Java/thread/线程同步.md)
+        * [ 高级同步方法 ](/Java/thread/高级同步方法.md)
     * [ AlibabaJavaStandard ](/Java/AlibabaJavaStandard.md)
     * [ DesignPattern ](/Java/DesignPattern.md)
-    * [ HashMap���� ](/Java/HashMap����.md)
+    * [ HashMap解析 ](/Java/HashMap解析.md)
     * [ Java-NIO ](/Java/Java-NIO.md)
-    * [ Java7��Java8�������� ](/Java/Java7��Java8��������.md)
-    * [ Java���� ](/Java/Java����.md)
-    * [ Java����� ](/Java/Java�����.md)
+    * [ Java7和Java8的新特性 ](/Java/Java7和Java8的新特性.md)
+    * [ Java反射 ](/Java/Java反射.md)
+    * [ Java虚拟机 ](/Java/Java虚拟机.md)
     * [ Log ](/Java/Log.md)
     * [ MIS ](/Java/MIS.md)
     * [ Quartz ](/Java/Quartz.md)
     * [ RESTful ](/Java/RESTful.md)
-    * [ WebSocketѧϰ�ʼ� ](/Java/WebSocketѧϰ�ʼ�.md)
-    * [ ZooKeeperѧϰ�ʼ� ](/Java/ZooKeeperѧϰ�ʼ�.md)
-    * [ androidѧϰ�ʼ� ](/Java/androidѧϰ�ʼ�.md)
-* �� Kotlin ��
+    * [ WebSocket学习笔记 ](/Java/WebSocket学习笔记.md)
+    * [ ZooKeeper学习笔记 ](/Java/ZooKeeper学习笔记.md)
+    * [ android学习笔记 ](/Java/android学习笔记.md)
+* 【 Kotlin 】
     * [ Dubbo ](/Kotlin/Dubbo.md)
     * [ Shiro ](/Kotlin/Shiro.md)
     * [ kotlin-base ](/Kotlin/kotlin-base.md)
-* �� Linux ��
-    * �� Linux/Alpine ��
+* 【 Linux 】
+    * 【 Linux/Alpine 】
         * [ AlpineBase ](/Linux/Alpine/AlpineBase.md)
-    * �� Linux/Arch ��
+    * 【 Linux/Arch 】
         * [ Arch ](/Linux/Arch/Arch.md)
         * [ Manjaro ](/Linux/Arch/Manjaro.md)
-    * �� Linux/Base ��
+    * 【 Linux/Base 】
         * [ EffectiveLinux ](/Linux/Base/EffectiveLinux.md)
         * [ LinuxBase ](/Linux/Base/LinuxBase.md)
         * [ LinuxCommand ](/Linux/Base/LinuxCommand.md)
@@ -203,18 +202,18 @@
         * [ LinuxUI ](/Linux/Base/LinuxUI.md)
         * [ ReleaseExperience ](/Linux/Base/ReleaseExperience.md)
         * [ Ssh ](/Linux/Base/Ssh.md)
-    * �� Linux/Centos ��
+    * 【 Linux/Centos 】
         * [ CentosBase ](/Linux/Centos/CentosBase.md)
-    * �� Linux/Container ��
+    * 【 Linux/Container 】
         * [ Docker ](/Linux/Container/Docker.md)
         * [ DockerAdvance ](/Linux/Container/DockerAdvance.md)
         * [ DockerFile ](/Linux/Container/DockerFile.md)
         * [ DockerSoft ](/Linux/Container/DockerSoft.md)
         * [ Kubernetes ](/Linux/Container/Kubernetes.md)
-    * �� Linux/Debian ��
+    * 【 Linux/Debian 】
         * [ Debian ](/Linux/Debian/Debian.md)
         * [ Ubuntu ](/Linux/Debian/Ubuntu.md)
-    * �� Linux/Tool ��
+    * 【 Linux/Tool 】
         * [ Caddy ](/Linux/Tool/Caddy.md)
         * [ HAProxy ](/Linux/Tool/HAProxy.md)
         * [ IME ](/Linux/Tool/IME.md)
@@ -222,14 +221,14 @@
         * [ Tmux ](/Linux/Tool/Tmux.md)
         * [ Vim ](/Linux/Tool/Vim.md)
     * [ JavaDevInit ](/Linux/JavaDevInit.md)
-    * [ Linuxϵͳѧϰ ](/Linux/Linuxϵͳѧϰ.md)
-* �� MyBlog ��
+    * [ Linux系统学习 ](/Linux/Linux系统学习.md)
+* 【 MyBlog 】
     * [ 12306 ](/MyBlog/12306.md)
     * [ 2018-3-15-install-deepin ](/MyBlog/2018-3-15-install-deepin.md)
     * [ twenty-years-of-weak-japan ](/MyBlog/twenty-years-of-weak-japan.md)
     * [ use-maven-create-web-project ](/MyBlog/use-maven-create-web-project.md)
-* �� Python ��
-    * �� Python/Tool ��
+* 【 Python 】
+    * 【 Python/Tool 】
         * [ PyCharm ](/Python/Tool/PyCharm.md)
     * [ Python ](/Python/Python.md)
     * [ PythonConcurrent ](/Python/PythonConcurrent.md)
@@ -238,26 +237,26 @@
     * [ PythonNet ](/Python/PythonNet.md)
     * [ PythonOffices ](/Python/PythonOffices.md)
     * [ PythonWeb ](/Python/PythonWeb.md)
-    * [ Python�� ](/Python/Python��.md)
-    * [ Python����ѧϰ ](/Python/Python����ѧϰ.md)
-* �� Reactive ��
-* �� Rust ��
-* �� Scala ��
+    * [ Python基础 ](/Python/Python基础.md)
+    * [ Python核心学习 ](/Python/Python核心学习.md)
+* 【 Reactive 】
+* 【 Rust 】
+* 【 Scala 】
     * [ SBT ](/Scala/SBT.md)
     * [ Scala ](/Scala/Scala.md)
-* �� Script ��
+* 【 Script 】
     * [ Bash ](/Script/Bash.md)
     * [ Bat ](/Script/Bat.md)
     * [ Lua ](/Script/Lua.md)
     * [ ShellLearn ](/Script/ShellLearn.md)
     * [ Zsh ](/Script/Zsh.md)
-* �� Skills ��
-    * �� Skills/Application ��
+* 【 Skills 】
+    * 【 Skills/Application 】
         * [ Editor ](/Skills/Application/Editor.md)
         * [ VirtualBox ](/Skills/Application/VirtualBox.md)
         * [ WebBrowser ](/Skills/Application/WebBrowser.md)
-    * �� Skills/CS ��
-        * �� Skills/CS/DS ��
+    * 【 Skills/CS 】
+        * 【 Skills/CS/DS 】
             * [ LinearList ](/Skills/CS/DS/LinearList.md)
             * [ Tree ](/Skills/CS/DS/Tree.md)
         * [ Algorithm ](/Skills/CS/Algorithm.md)
@@ -267,39 +266,39 @@
         * [ Profile ](/Skills/CS/Profile.md)
         * [ ProgramThinking ](/Skills/CS/ProgramThinking.md)
         * [ Time ](/Skills/CS/Time.md)
-    * �� Skills/Councurrency ��
+    * 【 Skills/Councurrency 】
         * [ Concurrency ](/Skills/Councurrency/Concurrency.md)
-    * �� Skills/DevOps ��
+    * 【 Skills/DevOps 】
         * [ ContinuousDelivery ](/Skills/DevOps/ContinuousDelivery.md)
         * [ ContinuousDeployment ](/Skills/DevOps/ContinuousDeployment.md)
         * [ ContinuousIntegration ](/Skills/DevOps/ContinuousIntegration.md)
         * [ ELK ](/Skills/DevOps/ELK.md)
         * [ Jenkins ](/Skills/DevOps/Jenkins.md)
-    * �� Skills/Document ��
+    * 【 Skills/Document 】
         * [ License ](/Skills/Document/License.md)
         * [ MarkDown ](/Skills/Document/MarkDown.md)
         * [ RequirementsDocument ](/Skills/Document/RequirementsDocument.md)
-    * �� Skills/Ecology ��
+    * 【 Skills/Ecology 】
         * [ MSA ](/Skills/Ecology/MSA.md)
-    * �� Skills/Network ��
+    * 【 Skills/Network 】
         * [ HTTP ](/Skills/Network/HTTP.md)
         * [ Network ](/Skills/Network/Network.md)
         * [ WebSecurity ](/Skills/Network/WebSecurity.md)
-    * �� Skills/SoftwareEngineering ��
+    * 【 Skills/SoftwareEngineering 】
         * [ CodeExcellentCode ](/Skills/SoftwareEngineering/CodeExcellentCode.md)
-    * �� Skills/Spider ��
+    * 【 Skills/Spider 】
         * [ SpiderBase ](/Skills/Spider/SpiderBase.md)
-    * �� Skills/Test ��
+    * 【 Skills/Test 】
         * [ Cucumber ](/Skills/Test/Cucumber.md)
         * [ Hamcrest ](/Skills/Test/Hamcrest.md)
         * [ TestTheory ](/Skills/Test/TestTheory.md)
-    * �� Skills/Vcs ��
+    * 【 Skills/Vcs 】
         * [ GitAction ](/Skills/Vcs/GitAction.md)
         * [ GitAdvance ](/Skills/Vcs/GitAdvance.md)
         * [ GitBase ](/Skills/Vcs/GitBase.md)
         * [ GitTeam ](/Skills/Vcs/GitTeam.md)
         * [ Svn ](/Skills/Vcs/Svn.md)
-    * �� Skills/Work ��
+    * 【 Skills/Work 】
         * [ Cooperation ](/Skills/Work/Cooperation.md)
         * [ EffectiveWork ](/Skills/Work/EffectiveWork.md)
         * [ InterviewSkill ](/Skills/Work/InterviewSkill.md)
@@ -311,7 +310,7 @@
     * [ RegularExpression ](/Skills/RegularExpression.md)
     * [ SoftwareDesignEngineer ](/Skills/SoftwareDesignEngineer.md)
     * [ Website ](/Skills/Website.md)
-* �� Windows ��
+* 【 Windows 】
     * [ WindowsWithHibernate ](/Windows/WindowsWithHibernate.md)
-* �� algorithm ��
-    * [ �㷨���� ](/algorithm/�㷨����.md)
+* 【 algorithm 】
+    * [ 算法分析 ](/algorithm/算法分析.md)
