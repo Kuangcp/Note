@@ -15,7 +15,7 @@ categories:
         1. [源码](#源码)
         1. [配置环境](#配置环境)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # Netty
 > [trustlin](https://github.com/trustin)`Netty mina 的作者`

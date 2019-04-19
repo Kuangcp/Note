@@ -36,7 +36,7 @@ categories:
     1. [fte-terminal](#fte-terminal)
     1. [在线编辑器](#在线编辑器)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # 文本编辑器
 ## Ghex

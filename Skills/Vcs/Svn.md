@@ -26,7 +26,7 @@ categories:
         1. [回滚到指定版本](#回滚到指定版本)
 1. [Tips](#tips)
 
-**目录 end**|_2019-04-19 13:05_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # SVN
 > 传统的中心化版本控制工具,能够精确控制每个目录的权限, Apache顶级项目  

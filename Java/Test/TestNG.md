@@ -14,7 +14,7 @@ categories:
     1. [使用](#使用)
         1. [基本注解](#基本注解)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # TestNG
 > [Official Doc](http://testng.org/doc/documentation-main.html) 

@@ -21,7 +21,7 @@ categories:
         1. [通配符捕获](#通配符捕获)
     1. [反射和泛型](#反射和泛型)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # 泛型
 > [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)

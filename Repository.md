@@ -43,7 +43,7 @@ categories:
 1. [工作](#工作)
     1. [简历](#简历)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 
 # Git Repository

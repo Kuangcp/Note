@@ -16,7 +16,7 @@ categories:
     1. [容器编排](#容器编排)
 1. [Kubeless](#kubeless)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # Kubernetes
 > 又称 k8s [Official site](https://kubernetes.io/) | [Github:](https://github.com/kubernetes/kubernetes)

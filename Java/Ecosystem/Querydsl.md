@@ -10,7 +10,7 @@ categories:
 1. [Querydsl](#querydsl)
     1. [个人感想](#个人感想)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # Querydsl
 > [Github 地址](https://github.com/querydsl/querydsl) | [最新文档地址](http://www.querydsl.com/static/querydsl/latest/reference/html/)

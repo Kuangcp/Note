@@ -37,7 +37,7 @@ categories:
             1. [关于StringRedisTemplate的方法使用](#关于stringredistemplate的方法使用)
             1. [消息订阅和发布](#消息订阅和发布)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # 数据库模块
 > 主要是采用的JPA，极大的缩减了代码量，但是要注意不要过度依赖框架，丧失了基本的能力

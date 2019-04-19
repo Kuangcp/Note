@@ -20,7 +20,7 @@ categories:
     1. [案例](#案例)
         1. [复选框](#复选框)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # CSS
 ## 选择器

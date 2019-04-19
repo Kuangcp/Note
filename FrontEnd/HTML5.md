@@ -33,7 +33,7 @@ categories:
     1. [XML文件头含义](#xml文件头含义)
     1. [XML的元素](#xml的元素)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # HTML5
 ## 参考资料

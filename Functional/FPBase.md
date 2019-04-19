@@ -13,7 +13,7 @@ categories:
         1. [和其他思想的对比](#和其他思想的对比)
     1. [函数式特性](#函数式特性)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # 函数式编程思想
 > [码农翻身:函数式编程圣经](http://mp.weixin.qq.com/s/0gErQ3tjDLZuD1bYOhi0mQ)

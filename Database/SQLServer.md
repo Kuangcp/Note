@@ -14,7 +14,7 @@ categories:
         1. [Docker安装2017硬是不成功](#docker安装2017硬是不成功)
             1. [2000版本](#2000版本)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # SQLServer
 

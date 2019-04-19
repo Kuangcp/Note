@@ -36,7 +36,7 @@ categories:
     1. [服务器规约](#服务器规约)
 1. [专有名词](#专有名词)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # 阿里巴巴Java开发手册
 > [Github: p3c](https://github.com/alibaba/p3c)`含该手册PDF GitBook等版本` | [《阿里巴巴Java开发手册》详尽](https://yq.aliyun.com/articles/656256?spm=a2c4e.11155472.0.0.7ba85338l1Ef0N)

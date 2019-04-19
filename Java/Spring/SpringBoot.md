@@ -41,7 +41,7 @@ categories:
             1. [gradle结合docker](#gradle结合docker)
         1. [热部署](#热部署)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # SpringBoot
 > [首页](https://spring.io/projects/spring-boot#learn)

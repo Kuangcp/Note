@@ -45,7 +45,7 @@ categories:
         1. [防火墙](#防火墙)
             1. [iptables](#iptables)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # Linux网络管理
 ## Tips

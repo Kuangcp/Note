@@ -23,7 +23,7 @@ categories:
         1. [获取到Class对象](#获取到class对象)
 1. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  

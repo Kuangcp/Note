@@ -11,7 +11,7 @@ categories:
 1. [Windows的快速启动](#windows的快速启动)
     1. [解决Linux下挂载hibernate状态分区的问题](#解决linux下挂载hibernate状态分区的问题)
 
-**目录 end**|_2019-04-19 13:05_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # Windows的快速启动 
 > [参考博客: Windows快速启动背后的功臣：休眠](https://zhuanlan.zhihu.com/p/28639474)

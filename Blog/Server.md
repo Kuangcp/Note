@@ -11,7 +11,7 @@ categories:
     1. [终端](#终端)
     1. [内存优化](#内存优化)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # Server
 > 服务器运维相关

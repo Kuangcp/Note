@@ -13,7 +13,7 @@ categories:
     1. [版本控制系统(VCS)](#版本控制系统vcs)
 1. [Git实现原理](#git实现原理)
 
-**目录 end**|_2019-04-19 13:05_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # Git Advance
 

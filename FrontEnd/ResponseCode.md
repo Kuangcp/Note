@@ -21,7 +21,7 @@ categories:
     1. [NGINX-扩展状态码](#nginx-扩展状态码)
     1. [七牛扩展状态码](#七牛扩展状态码)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # HTTP状态码大全
 > [wiki: http status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)  

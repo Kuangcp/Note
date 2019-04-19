@@ -21,7 +21,7 @@ categories:
         1. [Gradle](#gradle)
 1. [配置文件](#配置文件)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # 部署运行
 > 传统的可执行jar, war 以及Docker镜像

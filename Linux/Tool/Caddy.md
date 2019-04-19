@@ -10,7 +10,7 @@ categories:
  
 1. [Caddy](#caddy)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # Caddy
 > [official website](https://caddyserver.com/) | [0.11.0](https://bin-1253378665.cos.ap-guangzhou.myqcloud.com/caddy_v0.11.0_linux_amd64.tar.gz)

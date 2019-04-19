@@ -11,7 +11,7 @@ categories:
 1. [Go的数据库操作](#go的数据库操作)
     1. [Redis](#redis)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # Go的数据库操作
 

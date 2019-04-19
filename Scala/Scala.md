@@ -25,7 +25,7 @@ categories:
         1. [数据结构和集合](#数据结构和集合)
         1. [actor](#actor)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # Scala
 > [Official tour](https://docs.scala-lang.org/tour/tour-of-scala.html)

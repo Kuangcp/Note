@@ -35,7 +35,7 @@ categories:
     1. [数据迁移](#数据迁移)
     1. [错误分析](#错误分析)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # Redis底层数据结构
 ## 简单动态字符串

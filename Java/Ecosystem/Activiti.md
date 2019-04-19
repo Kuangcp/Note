@@ -23,7 +23,7 @@ categories:
         1. [核心配置文件](#核心配置文件)
         1. [大致原理讲解](#大致原理讲解)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 
 # Activiti

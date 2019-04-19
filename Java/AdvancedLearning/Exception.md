@@ -22,7 +22,7 @@ categories:
         1. [自定义异常](#自定义异常)
             1. [自定义异常的错误码](#自定义异常的错误码)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # 异常
 > 相关博客:[Java异常浅谈](http://www.cnblogs.com/focusj/archive/2011/12/26/2301524.html)  

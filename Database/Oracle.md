@@ -16,7 +16,7 @@ categories:
         1. [Windows](#windows)
     1. [使用](#使用)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # Oracle
 > 强大的数据库, 稍微理解一下他的设计都觉得精妙

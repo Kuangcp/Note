@@ -21,7 +21,7 @@ categories:
     1. [通用概念](#通用概念)
         1. [缓存](#缓存)
 
-**目录 end**|_2019-04-19 13:05_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # 计算机历史
 

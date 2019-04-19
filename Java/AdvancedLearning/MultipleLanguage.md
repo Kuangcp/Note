@@ -19,7 +19,7 @@ categories:
         1. [JVM对备选语言的支持](#jvm对备选语言的支持)
         1. [编译器小说](#编译器小说)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # JVM上的多语言使用
 

@@ -11,7 +11,7 @@ categories:
  
 1. [PyCharm](#pycharm)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # PyCharm
 > [参考博客: PyCharm安装及使用](https://www.jianshu.com/p/042324342bf4)

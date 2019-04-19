@@ -18,7 +18,7 @@ categories:
     1. [编辑器](#编辑器)
     1. [终端](#终端)
 
-**目录 end**|_2019-04-19 13:04_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # 字体
 > [Deepin wiki 字体](https://wiki.deepin.org/wiki/%E5%AD%97%E4%BD%93)  

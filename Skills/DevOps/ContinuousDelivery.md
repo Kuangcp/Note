@@ -9,7 +9,7 @@ categories:
  
 1. [Continuous Delivery](#continuous-delivery)
 
-**目录 end**|_2019-04-19 13:05_| [Kuangcp](https://github.com/Kuangcp/Note) | [yi-yun](https://github.com/yi-yun/Memo)
+**目录 end**|_2019-04-19 15:38_|
 ****************************************
 # Continuous Delivery
 > [Continuous Delivery Overview](https://github.com/mockito/mockito/wiki/Continuous-Delivery-Overview)
