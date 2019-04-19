@@ -2,3 +2,7 @@
 .vscode/
 *.log
 *.code-workspace
+
+ignore.ini
+refresh_catalog.py
+refresh_md.sh

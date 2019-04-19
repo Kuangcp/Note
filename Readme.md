@@ -12,17 +12,6 @@
 # 学习笔记
 > 建议将该仓库克隆下来后并将该项目作为工作空间, 在VSCode中搜索阅读, 体验最佳
 
-- 统一重建md文件目录工具:
-    - [deal_md.sh](https://github.com/Kuangcp/Script/blob/master/shell/text/deal_md.sh)
-    - 最好将该仓库完整克隆下来, 在改sh脚本旁新建文件 `local.conf`
-    ```conf
-        # 笔记的仓库路径
-        config_target_repo='/path/to/Note/'
-    ```
-    - 使用别名 `alias kdd='dash /home/kcp/Application/Script/shell/text/deal_md.sh'`
-
-至此 kdd -h 即可
-
 ## 基础
 * [ 算法 ](/Skills/CS/Algorithm.md)
 * [ 字符编码 ](/Skills/CS/CharacterEncoding.md)
@@ -128,3 +117,14 @@
 - [cain-note](https://github.com/james-cain/cain-note)`像是培训机构的资料和他本人的学习笔记,偏向前端`
 - [梁少锋的博客笔记](https://github.com/youngwind/blog)`前端相关`
 - [HstarDoc](https://github.com/hstarorg/HstarDoc)`前端的大量文档`
+
+************************
+
+# 维护成员
+> [dragonhht](https://github.com/dragonhht/Note)  
+> [yi-yun](https://github.com/yi-yun/Memo)  
+
+# 工具
+- 统一重建md文件目录工具
+    - [三个文件放在项目根目录下](https://gitee.com/gin9/codes/a1mynf0c7kg5ov2hrswbe48)
+    - sh deal_md.sh -h 即可
