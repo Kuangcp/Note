@@ -25,10 +25,11 @@ categories:
 1. [NIO](#nio)
     1. [Buffer](#buffer)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-04-20 12:32_|
 ****************************************
 # Java IO
-> - [个人代码:IO流的相关学习](https://github.com/Kuangcp/JavaBase/tree/master/src/main/java/com/io)
+> [个人代码: IO流的相关学习](https://github.com/Kuangcp/JavaBase/tree/master/java-io) | [Socket NIO](https://github.com/Kuangcp/JavaBase/tree/master/java-network/src/main/java/com/github/kuangcp/nio)  
+> [参考博客: 五种IO模型](https://www.jianshu.com/p/6a6845464770)  
 
 ## Java IO 简史
 > [BIO NIO AIO演变](http://www.cnblogs.com/itdragon/p/8337234.html)
@@ -44,7 +45,18 @@ categories:
 
 > [参考博客: NIO基础详解](http://cmsblogs.com/?p=2467)  
 
-- 对于调用者来说是异步的, 但是实际上是使用的多路复用和一个线程进行轮询, 真的吗? 到底是不是异步的呢?
+对于调用者来说是异步的, 但是实际上是使用的多路复用和一个线程进行轮询.
+
+Selector 模型 
+
+实现的目标就是一个线程能处理多个连接
+
+************************
+
+类似的思想还有定时器   
+- 需求: 实现一个 10s 后调用一个方法的定时器  
+- 简单: `Thread.sleep(10000);` 但是这种方式下, 定时器和任务是一一对应的  
+- 复用模式: 一个线程睡眠很短的时间, 不停去检查 方法的时间到了没有, 到了就执行, 这样就只要一个线程就能处理多个任务  
 
 ### AIO
 > Java1.7 引入; 真正的异步非阻塞IO, NIO2.0

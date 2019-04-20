@@ -1,3 +1,34 @@
+---
+title: Java-NIO.md
+date: 2019-04-20 12:16:01
+tags: 
+categories: 
+---
+
+**目录 start**
+ 
+1. [NIO](#nio)
+    1. [Java IO 与 NIO的主要区别](#java-io-与-nio的主要区别)
+    1. [通道(Channel)与缓冲区(Buffer)](#通道channel与缓冲区buffer)
+        1. [1、[缓冲区(Buffer)](./src/buffer/TestBuffer.java)](#1、[缓冲区buffer]srcbuffertestbufferjava)
+            1. [1、使用方法](#1、使用方法)
+            1. [2、核心属性](#2、核心属性)
+            1. [3、直接缓冲区与非直接缓冲区](#3、直接缓冲区与非直接缓冲区)
+        1. [2、[通道](./src/channel/TestChannel.java)](#2、[通道]srcchanneltestchanneljava)
+            1. [1、主要的Channel接口实现类](#1、主要的channel接口实现类)
+            1. [2、使用方法](#2、使用方法)
+                1. [获取通道](#获取通道)
+                1. [使用通道复制文件(本地IO)](#使用通道复制文件本地io)
+            1. [3、通道之间的数据传输](#3、通道之间的数据传输)
+            1. [4、分散(Scatter)与聚集(Gather)](#4、分散scatter与聚集gather)
+            1. [5、[字符集](./src/channel/TestCharset.java)](#5、[字符集]srcchanneltestcharsetjava)
+            1. [6、网路IO(核心内容)](#6、网路io核心内容)
+                1. [1、[TCP连接](./src/channel/TCPChannel.java)](#1、[tcp连接]srcchanneltcpchanneljava)
+                1. [2、[UDP连接](./src/channel/UDPChannel.java)](#2、[udp连接]srcchanneludpchanneljava)
+        1. [3、[管道](./src/pipe/TestPipe.java)](#3、[管道]srcpipetestpipejava)
+
+**目录 end**|_2019-04-20 12:32_|
+****************************************
 # NIO
 
 ## Java IO 与 NIO的主要区别
@@ -83,7 +114,7 @@
 
 -   利用Channel完成文件的复制(非直接缓冲区).
 
-```
+```java
     @Test
     public void test1() throws IOException {
         FileInputStream fis = new FileInputStream("JavaNIO.iml");
@@ -114,7 +145,7 @@
 
 -   使用直接缓冲区复制文件(内存映射文件).
 
-```
+```java
     @Test
     public void test2() throws IOException {
         // 使用Open()获取通道
@@ -144,7 +175,7 @@
     -   transferFrom()
     -   transferTo()
     
-```
+```java
     @Test
     public void test3() throws IOException {
         // 使用Open()获取通道
