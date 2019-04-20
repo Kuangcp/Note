@@ -3,6 +3,7 @@ title: IO
 date: 2019-04-20 12:16:10
 tags: 
 categories: 
+    - 计算机基础
 ---
 
 **目录 start**
@@ -26,7 +27,7 @@ categories:
         1. [poll](#poll)
         1. [epoll](#epoll)
 
-**目录 end**|_2019-04-20 12:32_|
+**目录 end**|_2019-04-20 13:58_|
 ****************************************
 # IO
 > [参考博客: IO - 同步，异步，阻塞，非阻塞 ](https://blog.csdn.net/historyasamirror/article/details/5778378)  

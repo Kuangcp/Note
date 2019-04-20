@@ -42,7 +42,6 @@
 
 ## Linux
 * [ Java开发环境搭建 ](/Linux/JavaDevInit.md)
-
 * [ Linux基础 ](/Linux/Base/LinuxBase.md)
 * [ Linux文件管理 ](/Linux/Base/LinuxFile.md)
 * [ Linux处理压缩文件 ](/Linux/Base/LinuxCompressFile.md)
@@ -75,7 +74,6 @@
 *******************
 
 # 其他笔记仓库
-- [笔记](https://github.com/dragonhht/Notes)
 - [CS Notes](https://github.com/CyC2018/CS-Notes)`技术面试必备基础知识`
 - [note of interview ](https://github.com/zhengjianglong915/note-of-interview)
 - [skill tree](https://github.com/linw7/Skill-Tree)
@@ -93,6 +91,7 @@
 - [judasn](https://github.com/judasn/hexo-blog) `善于归纳的人 相关:[Javaer眼中的Linux](https://github.com/judasn/Linux-Tutorial)`
 
 ### Java
+- [Java Core Sprout](https://github.com/crossoverJie/JCSprout)
 - [Java guide](https://github.com/Snailclimb/JavaGuide)
 - [Java工程师成神之路](https://github.com/hollischuang/toBeTopJavaer)`Hollis`
 - [唯品会的规范文档](https://github.com/vipshop/vjtools)`规范这种东西, 各有各家的说法, 适合自己就好`
