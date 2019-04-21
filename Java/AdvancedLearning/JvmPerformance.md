@@ -23,6 +23,7 @@ categories:
         1. [jmap](#jmap)
         1. [jhat](#jhat)
         1. [jstack](#jstack)
+        1. [jcmd](#jcmd)
     1. [开源项目](#开源项目)
         1. [Arthas](#arthas)
     1. [图形化](#图形化)
@@ -30,7 +31,7 @@ categories:
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-04-22 00:14_|
 ****************************************
 
 # Java的性能调优
@@ -129,6 +130,8 @@ categories:
     - -l: 打印关于锁的附加信息
 - Demo:
     - jstack -F $PID
+
+### jcmd
 
 ********************
 

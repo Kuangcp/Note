@@ -13,6 +13,7 @@ categories:
     1. [特别网站](#特别网站)
     1. [库托管](#库托管)
 1. [社区网站](#社区网站)
+    1. [国外社区](#国外社区)
     1. [娱乐](#娱乐)
 1. [下载资源网](#下载资源网)
         1. [软件下载站](#软件下载站)
@@ -59,7 +60,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-04-22 00:14_|
 ****************************************
 # 常用的网站
 ## 国内镜像源站点
@@ -129,6 +130,10 @@ categories:
 - [IBM 开发社区](https://www.ibm.com/developerworks/cn/)
 - [daocloud社区](http://open.daocloud.io/)
 - [techug.com](http://www.techug.com)`技术博客`
+
+## 国外社区
+Podcast、Reddit 以及TechRadar 
+- [Hacker News](https://news.ycombinator.com)
 
 ## 娱乐
 - [数字尾巴](http://www.dgtle.com/portal.php) `小清新的数字技术`

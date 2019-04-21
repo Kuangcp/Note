@@ -36,13 +36,13 @@ categories:
     1. [服务器规约](#服务器规约)
 1. [专有名词](#专有名词)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-04-22 00:14_|
 ****************************************
 # 阿里巴巴Java开发手册
 > [Github: p3c](https://github.com/alibaba/p3c)`含该手册PDF GitBook等版本` | [《阿里巴巴Java开发手册》详尽](https://yq.aliyun.com/articles/656256?spm=a2c4e.11155472.0.0.7ba85338l1Ef0N)
 
+> [《唯品会Java开发手册》](https://vipshop.github.io/vjtools/#/standard/)`阿里手册的补充`  
 > [FindBugs、PMD和CheckStyle对比](https://blog.csdn.net/ml5271169588/article/details/6975701)
-
 
 # 编程规约
 ## 命名规约
@@ -429,12 +429,12 @@ categories:
     > 或者如下处理实例化  
 
     ```java
-    private static final ThreadLocal<DateFormat> df = new ThreadLocal<DateFormat>() {      
-        @Override 
-        protected DateFormat initialValue() {           
-            return new SimpleDateFormat("yyyy-MM-dd");       
-        }   
-    };   
+        private static final ThreadLocal<DateFormat> df = new ThreadLocal<DateFormat>() {
+            @Override 
+            protected DateFormat initialValue() {
+                return new SimpleDateFormat("yyyy-MM-dd");
+            }
+        };
     ```
 
 1. 高并发时, 同步调用应该去考量锁的性能损耗。

@@ -20,6 +20,7 @@ categories:
             1. [运行时常量池](#运行时常量池)
         1. [直接内存](#直接内存)
     1. [元空间](#元空间)
+    1. [参数配置](#参数配置)
 1. [GC](#gc)
     1. [GC 术语](#gc-术语)
     1. [判断存活算法](#判断存活算法)
@@ -42,18 +43,18 @@ categories:
     1. [Hotspot JVM](#hotspot-jvm)
     1. [OpenJ9](#openj9)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-04-22 00:14_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
 
 > [Java Language and Virtual Machine Specifications](https://docs.oracle.com/javase/specs/)
 
-> [github:jvm学习仓库](https://github.com/xwjie/jvm)
+> [Github:jvm学习仓库](https://github.com/xwjie/jvm)
 > [个人博客: JVM归类](https://vinoit.me/tags/jvm/)
  
 `书籍`
-- 《深入理解 Java 虚拟机》(周志明 第二版) 大部分内容来源于此,但是部分内容是依据Java8有所改动
+- 《深入理解 Java 虚拟机》(周志明 第二版) 大部分内容来源于此, 但是部分内容是依据Java8有所改动
 
 ## 运行时数据区
 ![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Java/Jvm/MemoryArea.png)
@@ -116,18 +117,14 @@ JVM是基于堆栈的虚拟机.JVM为每个新创建的线程都分配一个堆�
 ### 方法区
 方法区存在于永久代 Perm Gen, 对应于Java8中的MetaSpace
 
-- 用于存放 Class 相关信息, 常量, 静态变量, 访问修饰符, 字段描述, 方法描述, JIT编译器编译后的代码等数据 
-    - 1.7以前常量池也在方法区, 但是1.7开始已经将常量池移到了堆中
-
+用于存放 Class 相关信息, 常量, 静态变量, 访问修饰符, 字段描述, 方法描述, JIT编译器编译后的代码等数据   
 在 HotSpot 虚拟机上, 方法区也看做是 永久代 Permanent Gen, 两者关系是: 方法区是Java虚拟机规范, 永久代是方法区在Hotspot上的实现  
-从Java8开始, 永久代已经被 MetaSpace 取代(操作的直接内存) 
+从Java8开始, 永久代已经被 MetaSpace(操作的直接内存) 取代   
 
-JDK7中符号表被移动到 Native Heap中，字符串常量和类引用被移动到 Java Heap中。
+JDK7中符号表被移动到 Native Heap中，字符串常量池和类引用被移动到 Java Heap中。
 
 #### 运行时常量池
 运行时常量池是方法区的一部分, 用于存放编译期生成的各种字面量和符号引用,这部分内容将在类加载后进入方法区的运行时常量池存放.
-
-1.7以前　字符串常量池也在这里, 从1.7开始就搬到堆上了
 
 ### 直接内存
 直接内存并不是虚拟机运行时数据区的一部分, 也不是Java虚拟机规范中定义的内存区域. 但是这部分内存也被频繁地使用, 而且也可能导致 OutOfMemoryError 
@@ -144,6 +141,9 @@ NIO 会经常使用, 提高性能
 - 没有GC扫描或压缩
 - 元空间里的对象不会被转移
 - 如果GC发现某个类加载器不再存活，会对整个元空间进行集体回收
+
+## 参数配置
+`-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1
 
 **********************
 

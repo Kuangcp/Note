@@ -87,10 +87,13 @@
 - [ZXBlog](https://github.com/UIZXZxin/ZXBlog)
 - [天赋好书](https://www.cntofu.com/)`爬虫爬开源笔记项目然后转换成GitBook一样的网页?`
 
-### Linux 
+## 
+- [skill-map](https://github.com/TeamStuQ/skill-map)
+
+## Linux 
 - [judasn](https://github.com/judasn/hexo-blog) `善于归纳的人 相关:[Javaer眼中的Linux](https://github.com/judasn/Linux-Tutorial)`
 
-### Java
+## Java
 - [Java Core Sprout](https://github.com/crossoverJie/JCSprout)
 - [Java guide](https://github.com/Snailclimb/JavaGuide)
 - [Java工程师成神之路](https://github.com/hollischuang/toBeTopJavaer)`Hollis`
@@ -101,11 +104,11 @@
 - [Java资源大全中文版](https://github.com/jobbole/awesome-java-cn)
 - [Java思维导图](https://gitee.com/java-mindmap/mapSource)
 
-### Python
+## Python
 - [老齐的笔记](https://github.com/qiwsir/ITArticles)`跟老齐学Python的轻松入门 作者`
 - [Python Tutorial vamei](https://github.com/Vamei/Python-Tutorial-Vamei)
 
-### 前端
+## 前端
 - [CSS 魔法](https://github.com/cssmagic/blog)
 - [cain-note](https://github.com/james-cain/cain-note)`像是培训机构的资料和他本人的学习笔记,偏向前端`
 - [梁少锋的博客笔记](https://github.com/youngwind/blog)`前端相关`

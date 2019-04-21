@@ -17,9 +17,10 @@ categories:
     1. [YAML](#yaml)
         1. [Java中的使用](#java中的使用)
     1. [JSON](#json)
+    1. [Smile](#smile)
         1. [Jackson](#jackson)
 
-**目录 end**|_2019-04-19 18:07_|
+**目录 end**|_2019-04-22 00:14_|
 ****************************************
 # 配置文件
 
@@ -72,6 +73,9 @@ categories:
 
 ## JSON
 > [Google 规范](https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md)
+
+## Smile
+> 二进制的JSON [Wikipedia: Smile](https://en.wikipedia.org/wiki/Smile_%28data_interchange_format%29)
 
 ### Jackson
 - [Jackcon 注解的讲解](http://blog.csdn.net/sdyy321/article/details/40298081)

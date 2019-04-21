@@ -14,18 +14,26 @@ categories:
     1. [原理](#原理)
         1. [源码](#源码)
 
-**目录 end**|_2019-04-20 13:58_|
+**目录 end**|_2019-04-22 00:14_|
 ****************************************
 # Netty
-> [trustlin](https://github.com/trustin)`Netty mina 的作者`
+> [trustlin](https://github.com/trustin)`Netty Mina 的作者`
 
-> [Netty4.x官方文档](http://netty.io/wiki/user-guide-for-4.x.html)
-> [Netty权威指南](https://javablog.net/book/3/netty-authoritative-guide.html)
+Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。
 
-- [为什么选择Netty作为基础通信组件？ ](https://my.oschina.net/zhaky/blog/760469)
-- [Reactive Extension (Rx) Adaptor for Netty ](https://github.com/ReactiveX/RxNetty)
+> [知乎: 通俗地讲，Netty 能做什么？](https://www.zhihu.com/question/24322387)  
+> [为什么选择Netty作为基础通信组件？ ](https://my.oschina.net/zhaky/blog/760469)
+
+************************
+
+> [Netty4.x官方文档](http://netty.io/wiki/user-guide-for-4.x.html)  
+> [Netty权威指南](https://javablog.net/book/3/netty-authoritative-guide.html)  
+> [Reactive Extension (Rx) Adaptor for Netty ](https://github.com/ReactiveX/RxNetty)
 
 > [《Netty 实战》 Netty In Action 中文版](https://github.com/ReactivePlatform/netty-in-action-cn)
+> [参考博客: 从线程模型的角度看 Netty 为什么是高性能的？ ](https://crossoverjie.top/2018/07/04/netty/Netty(2)Thread-model/)  
+
+
 
 ********************
 

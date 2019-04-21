@@ -12,6 +12,8 @@ categories:
 1. [Web性能](#web性能)
     1. [性能基准](#性能基准)
     1. [测试工具](#测试工具)
+        1. [基准测试](#基准测试)
+            1. [JMH](#jmh)
         1. [压力测试](#压力测试)
             1. [ApacheBenchMark](#apachebenchmark)
             1. [Jmeter](#jmeter)
@@ -20,7 +22,7 @@ categories:
         1. [MySQL](#mysql)
             1. [主从复制以及读写分离](#主从复制以及读写分离)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-04-22 00:14_|
 ****************************************
 # Web性能
 
@@ -31,6 +33,14 @@ categories:
 1. 对于web后端来说就是请求过多, 数据库连接池不够用, 线程池大量等待的线程, 请求非常缓慢, 直接返回 5xx 错误码...
 
 ## 测试工具
+### 基准测试
+#### JMH
+> [Official Site](http://openjdk.java.net/projects/code-tools/jmh/)  
+
+- [jmh demos](http://hg.openjdk.java.net/code-tools/jmh/file/tip/jmh-samples/src/main/java/org/openjdk/jmh/samples/)
+
+> [参考博客: Java微基准测试框架JMH](https://www.xncoding.com/2018/01/07/java/jmh.html)  
+
 ### 压力测试
 
 #### ApacheBenchMark

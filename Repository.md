@@ -43,7 +43,7 @@ categories:
 1. [工作](#工作)
     1. [简历](#简历)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-04-22 00:14_|
 ****************************************
 
 # Git Repository
@@ -73,6 +73,7 @@ categories:
 - [xuxiaodong](https://github.com/xuxiaodong)`活跃在开源社区, 17年开始就不活跃了,不知道为什么`
 - [mank319](https://github.com/mank319)`go for it 作者`
 - [cycleuser](https://github.com/cycleuser)`博士, 翻译了很多东西`
+- [crossoverJie](https://github.com/crossoverJie)
 
 ************************
 
