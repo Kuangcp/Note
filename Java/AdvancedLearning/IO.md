@@ -1,5 +1,5 @@
 ---
-title: Java的IO
+title: Java中的IO
 date: 2018-11-21 10:56:52
 tags: 
     - IO
@@ -25,31 +25,55 @@ categories:
 1. [NIO](#nio)
     1. [Buffer](#buffer)
 
-**目录 end**|_2019-04-20 12:32_|
+**目录 end**|_2019-04-22 16:30_|
 ****************************************
-# Java IO
+# Java中的IO
 > [个人代码: IO流的相关学习](https://github.com/Kuangcp/JavaBase/tree/master/java-io) | [Socket NIO](https://github.com/Kuangcp/JavaBase/tree/master/java-network/src/main/java/com/github/kuangcp/nio)  
 > [参考博客: 五种IO模型](https://www.jianshu.com/p/6a6845464770)  
 
-## Java IO 简史
+## IO 简史
 > [BIO NIO AIO演变](http://www.cnblogs.com/itdragon/p/8337234.html)
 
 ### BIO
 > Java1.0 到 Java1.3
 
-同步阻塞式IO
-但是能自己实现 伪异步IO
+同步阻塞式IO 但是能基于 BIO 手动实现 伪异步IO
 
 ### NIO
-> Java1.4 引入; 非阻塞式IO, 虽然官方名称为New IO, 民间称为No-blocking IO  
+> Java1.4 引入; 非阻塞式IO, 虽然官方名称为 New IO, 民间称为 `No-blocking IO`
 
-> [参考博客: NIO基础详解](http://cmsblogs.com/?p=2467)  
+这个NIO和是基于操作系统NIO相关函数实现的, 所以称为`No-blocking IO`
+```java
+    //  进入Selector.open(); 方法可以看到
+    public static Selector open() throws IOException {
+        return SelectorProvider.provider().openSelector();
+    }
+    // 进入 provider() 方法
+    // 然后看到 sun.nio.ch.DefaultSelectorProvider.create();
+    public static SelectorProvider create() {
+        String var0 = (String)AccessController.doPrivileged(new GetPropertyAction("os.name"));
+        if (var0.equals("SunOS")) {
+            return createProvider("sun.nio.ch.DevPollSelectorProvider");
+        } else {
+            return (SelectorProvider)(var0.equals("Linux") ? 
+                createProvider("sun.nio.ch.EPollSelectorProvider") : new PollSelectorProvider());
+        }
+    }
+```
 
-对于调用者来说是异步的, 但是实际上是使用的多路复用和一个线程进行轮询.
+所以在Linux上使用的是 epoll Windows 就是 poll 
 
-Selector 模型 
+实现模型和操作系统的NIO也是一致的, 
+一个 Selector 注册多个 SelectionKey, SelectionKey 具有多个状态并且和Channel绑定
 
-实现的目标就是一个线程能处理多个连接
+| 事件名 | 对应值 |
+|:----|:----|
+| 服务端接收客户端连接事件 	| SelectionKey.OP_ACCEPT(16)
+| 客户端连接服务端事件 	   | SelectionKey.OP_CONNECT(8)
+| 读事件 	             | SelectionKey.OP_READ(1)
+| 写事件 	             | SelectionKey.OP_WRITE(4)
+
+> [简单示例代码](https://github.com/Kuangcp/JavaBase/tree/master/java-network/src/main/java/com/github/kuangcp/nio)  
 
 ************************
 

@@ -1,14 +1,15 @@
 ---
-title: IO
+title: 计算机中的IO
 date: 2019-04-20 12:16:10
 tags: 
+    - IO
 categories: 
     - 计算机基础
 ---
 
 **目录 start**
  
-1. [IO](#io)
+1. [计算机中的IO](#计算机中的io)
     1. [IO模型](#io模型)
         1. [Blocking IO](#blocking-io)
         1. [Nonblocking IO](#nonblocking-io)
@@ -27,12 +28,12 @@ categories:
         1. [poll](#poll)
         1. [epoll](#epoll)
 
-**目录 end**|_2019-04-20 13:58_|
+**目录 end**|_2019-04-22 16:30_|
 ****************************************
-# IO
+# 计算机中的IO
 > [参考博客: IO - 同步，异步，阻塞，非阻塞 ](https://blog.csdn.net/historyasamirror/article/details/5778378)  
 
-IO在计算机中指Input/Output，也就是输入和输出。由于程序和运行时数据是在内存中驻留，由CPU这个超快的计算核心来执行，涉及到数据交换的地方，通常是磁盘、网络等，就需要IO接口。
+IO在计算机中指 Input/Output，也就是输入和输出。由于程序和运行时数据是在内存中驻留，由CPU这个超快的计算核心来执行，涉及到数据交换的地方，通常是磁盘、网络等，就需要IO接口。
 
 ## IO模型
 
@@ -76,7 +77,7 @@ IO在计算机中指Input/Output，也就是输入和输出。由于程序和运
 然后kernel会等待数据准备完成，然后将数据拷贝到用户内存，当这一切都完成之后，kernel会给用户进程发送一个signal，告诉它read操作完成了。  
 
 ### 经典比喻
-有 A，B，C，D 四个人在钓鱼：
+有 A，B，C，D 四个人在钓鱼 (BIO, NIO, IO multiplexing, AIO) : 
 - A 用的是最老式的鱼竿，所以呢，得一直守着，等到鱼上钩了再拉杆；
 - B 用的鱼竿有浮漂，所以呢，B就和旁边的MM聊天，隔会再看看有没有鱼上钩，有的话就迅速拉杆；
 - C 用的鱼竿和B差不多，但他想了一个好办法，就是同时放好几根鱼竿，然后守在旁边，一旦有显示说鱼上钩了，它就将对应的鱼竿拉起来； 这样一个人就能处理好多个鱼竿
@@ -85,6 +86,7 @@ IO在计算机中指Input/Output，也就是输入和输出。由于程序和运
 ************************
 
 ## 阻塞和非阻塞
+
 调用blocking IO 会一直 block 住对应的进程直到操作完成, 该操作就是阻塞的  
 而 non-blocking IO 在 kernel 还未准备好数据的情况下会立刻返回, 该操作就是非阻塞的  
 
@@ -102,10 +104,16 @@ IO在计算机中指Input/Output，也就是输入和输出。由于程序和运
 有人可能会说，non-blocking IO并没有被block啊。 这是因为在第一阶段, 数据没有准备好就直接返回没有阻塞, 但是如果数据准备好了就要执行第二阶段 数据复制 的操作, 这个操作是会阻塞对应的进程的  
 而asynchronous IO则不一样，当进程发起IO 操作之后，就直接返回再也不理睬了，直到kernel发送一个信号，告诉进程说IO完成。在这整个过程中，进程完全没有被block。  
 
+************************
+
 # 多路复用
 > [参考博客: IO多路复用](https://blog.csdn.net/chewbee/article/details/78108223)   
 
 ## 多路复用模型
+Reactor 和 Proactor: 前者 使用同步IO, 后者使用异步IO
+
+> [Comparing Two High-Performance I/O Design Patterns](https://www.artima.com/articles/io_design_patternsP.html)  
+
 ### 忙轮询
 忙轮询方式是通过不停的把所有的流从头到尾轮询一遍，查询是否有流已经准备就绪，然后又从头开始。如果所有流都没有准备就绪，那么只会白白浪费CPU时间。
 
@@ -121,22 +129,49 @@ IO在计算机中指Input/Output，也就是输入和输出。由于程序和运
 
 ## IO多路复用函数
 > [参考博客: IO多路复用之select、poll、epoll详解](https://www.cnblogs.com/jeakeven/p/5435916.html)   
+> [参考博客: select、poll、epoll之间的区别总结](https://www.cnblogs.com/Anker/p/3265058.html)  
+
+IO复用机制可以同时监控多个描述符，当某个描述符就绪（读或写就绪），则立即通知相应程序进行读或写操作。   
 
 select/poll/epoll都是采用I/O多路复用机制的，其中select/poll是采用无差别轮询方式，而epoll是采用最小的轮询方式。  
-IO复用机制可以同时监控多个描述符，当某个描述符就绪（读或写就绪），则立即通知相应程序进行读或写操作。  
-但select，poll，epoll本质上都是同步I/O，因为他们都需要在读写事件就绪后自己负责进行读写，也就是说这个读写过程是阻塞的  
+但 select，poll，epoll本质上都是同步I/O， 因为他们都需要在读写事件就绪后`自己`负责进行读写，也就是说这个读写过程是阻塞的    
+所以 select poll epoll 都是 Reactor 模型
 
 ### select
 
 系统提供Select函数来实现多路复用输入/输出模型，Select系统调用是用来让我们的程序监视多个文件句柄的状态变化。程序会阻塞在select函数上，直到被监视的文件句柄中有一个或多个发生了状态变化。
 
+`缺点`
+1. 每次调用select，都需要把fd集合(存放所有fd)从用户态拷贝到内核态，这个开销在fd很多时会很大
+1. 同时每次调用select, 都需要在内核`遍历`传递进来的所有fd，这个开销在fd很多时也很大
+1. select支持的文件描述符数量太小了，默认是1024, 由FD_SETSIZE设置
+
 ### poll
-Poll的处理机制与Select类似，只是Poll选择了pollfd结构体来处理文件描述符的相关操作
+Poll的处理机制与Select类似，只是Poll选择了 pollfd 结构体 而不是 select 的 fd_set 结构来处理文件描述符的相关操作
+
+但是它没有最大连接数的限制，原因是它是`基于链表`来存储的, 但是同样的需要将所有的文件描述符复制来复制去
+
+poll还有一个特点是“水平触发”，如果报告了fd后，没有被处理，那么下次poll时会再次报告该fd。
 
 ### epoll
 epoll是在Linux内核2.6引进的，是select和poll函数的增强版。与select相比，epoll没有文件描述符数量的限制。  
-epoll使用一个文件描述符管理多个文件描述符，将用户关心的文件描述符事件存放到内核的一个事件列表中，这样在用户空间和内核空间只需拷贝一次。
+epoll使用一个文件描述符管理多个文件描述符，将用户关心的文件描述符事件存放到`内核的一个事件列表`中  
+这样在用户空间和内核空间`只需拷贝一次`, 因为用户空间和内核空间共用一块内存
 
-> epoll是Linux所特有
+epoll提供了三个函数:
+- epoll_create是创建一个epoll句柄；
+- epoll_ctl是注册要监听的事件类型；
+- epoll_wait则是等待事件的产生。
 
+epoll支持水平触发和边缘触发，最大的特点在于边缘触发，它只告诉进程哪些fd刚刚变为就绪态，并且只会通知一次。
+还有一个特点是，epoll使用“事件”的就绪通知方式，通过epoll_ctl注册fd，一旦该fd就绪，内核就会采用类似callback的回调机制来激活该fd，epoll_wait便可以收到通知。
+
+epoll的优点：
+1. 没有最大并发连接的限制，能打开的FD的上限远大于1024（1G的内存能监听约10万个端口）。
+2. 效率提升，不是轮询的方式，不会随着FD数目的增加效率下降。只有活跃可用的FD才会调用callback函数；
+    - 即Epoll最大的优点就在于它`只处理“活跃”的连接`，而跟连接总数无关，因此在实际的网络环境中，epoll 的效率就会远远高于 select和poll。
+3. 内存拷贝，利用 mmap() 文件映射内存加速与内核空间的消息传递；即 epoll 使用 mmap 减少复制开销。
+
+> 如果没有大量的 idle-connection 或者 dead-connection，epoll 的效率并不会比 select/poll 高很多  
+> 但是当遇到大量的 idle-connection，就会发现 epoll 的效率大大高于 select/poll。
 

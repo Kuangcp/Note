@@ -31,7 +31,7 @@ categories:
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2019-04-22 00:14_|
+**目录 end**|_2019-04-22 16:30_|
 ****************************************
 
 # Java的性能调优
@@ -148,16 +148,20 @@ categories:
 
 ## 图形化
 ### jvisualvm
+> [Github:visualvm](https://github.com/oracle/visualvm)  
+
 > [参考博客: java内存泄漏的定位与分析](https://blog.csdn.net/lc0817/article/details/67014499)
 
-> Local
+************************
+
+`Local`
 
 > [使用 VisualVM 进行性能分析及调优](https://www.ibm.com/developerworks/cn/java/j-lo-visualvm/index.html)
 > [参考博客: JVisualVM简介与内存泄漏实战分析](http://www.cnblogs.com/belen/p/5573501.html)
 
 ********************
 
-> Remote 
+`Remote`
 -  通常使用两种方式连接远程JVM: JMX jstatd
 
 > [参考博客: JVisualVM远程监控](https://blog.csdn.net/ericzx2008/article/details/23097403)

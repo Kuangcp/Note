@@ -38,7 +38,7 @@ categories:
     1. [分支合并框架](#分支合并框架)
     1. [Java内存模型](#java内存模型)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-04-22 16:30_|
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/java-concurrency)  
@@ -134,15 +134,18 @@ categories:
     - 不可变对象的使用十分广泛，但是开发效率不行，每修改对象的状态都要构建一个新对象
 
 ### synchronized
-- 在synchronized代码块执行完成后，对锁定对象所做的所有修改全部会在线程释放锁之前同步到内存中
-    - 保证了在同一时刻,只有一个线程可以执行某一个方法或者代码块.
-    - 所以这个关键字的作用就是同步 在不同线程中锁定（操作）的对象的内存块
-        - 同步的作用不仅仅是互斥,另一个作用就是共享可变性, 当某个线程修改了可变数据并释放锁,其他线程可以获取变量的最新值
-        - 如果没有正确的同步,这种修改对其他线程是不可见的
+在synchronized代码块执行完成后，对锁定对象所做的所有修改全部会在线程释放锁之前同步到内存中, 具有可重入性
 
->1. 如果锁定的是类的成员属性,或者this, 就是对该对象进行了加锁变成了'单线程', 就影响了整体性能
->2. 使用局部变量就会多线程且保证了数据的一致性
->3. 切记不能锁常量（或者显式声明的String）从而引起死锁
+- 保证了在同一时刻,只有一个线程可以执行某一个方法或者代码块. 保证了线程对变量访问的可见性和排他性
+- 所以这个关键字的作用就是同步 在不同线程中锁定（操作）的对象的内存块
+    - 同步的作用不仅仅是互斥,另一个作用就是共享可变性, 当某个线程修改了可变数据并释放锁,其他线程可以获取变量的最新值
+    - 如果没有正确的同步,这种修改对其他线程是不可见的
+
+>1. 如果锁定的是类的成员属性,或者this, 就是对该对象进行了加锁, 该对象上的线程串行化, 影响了整体性能
+>2. 使用局部变量能保持多线程性能 且保证了数据的一致性
+>3. 切记不能锁常量（或者显式声明的String）从而引发死锁
+
+对应于字节码中的指令是 monitorenter 和 monitorexit 
 
 #### 正确使用锁
 > 查看JDK源码 ForkJoinTask 的 externalAwaitDone 方法
@@ -181,13 +184,11 @@ public int current(){
 
 - 线程所读的值在使用之前总会从内存中读入线程缓存
 - 线程所写的值总会在指令完成之前同步回内存中
-    - 可以把围绕该域的操作看成成是一个小的同步块
+    - 可以把围绕该域的操作看成是一个小的同步块
     - volatile 变量不会引入线程锁，所以不可能发生死锁
-    - [ ] TODO 矛盾
-    - volatile 变量是真正线程安全的，但`只有写入时不依赖当前状态（读取的状态）的变量才应该声明为volatile变量`
+    - volatile 变量是真正线程安全的，但只有`写入时不依赖当前状态的变量`才应该声明为volatile变量
 
-- volatile是Java提供的最轻量级的同步机制,Java内存模型为volatile专门定义了一些特殊的访问规则:
-    - 当一个变量被volatile修饰后:
+- volatile是Java提供的最轻量级的同步机制,Java内存模型为volatile专门定义了一些特殊的访问规则, 当一个变量被volatile修饰后:
     - `线程可见性`  当一个线程修改了被volatile修饰的变量后,无论是否加锁,其他线程都能立即看到最新的修改
     - `禁止指令重排序优化` 普通的变量仅仅保证在该方法的执行过程中, 所有依赖赋值结果的地方都能获取正确的结果
         - 而不能保证变量赋值操作的顺序和程序代码的执行顺序一致
@@ -196,37 +197,37 @@ public int current(){
 > 打开Netty中NioEventLoop的源码 有一个属性 `private volatile int ioRatio = 50;` 该变量是用于控制IO操作和其他任务运行比例的
 
 ```java
-public class ResortJavaDemo {
-    private static boolean stop;
-    public static void main(String[]s) throws InterruptedException {
-        Thread workThread = new Thread(() -> {
-            int i = 0;
-            while(!stop){
-                i++;
-                try {
-                    TimeUnit.SECONDS.sleep(1);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+    public class ResortJavaDemo {
+        private static boolean stop;
+        public static void main(String[]s) throws InterruptedException {
+            Thread workThread = new Thread(() -> {
+                int i = 0;
+                while(!stop){
+                    i++;
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("i"+i);
                 }
-                System.out.println("i"+i);
-            }
-        });
-        workThread.start();
-        TimeUnit.SECONDS.sleep(3);
-        stop = true;
+            });
+            workThread.start();
+            TimeUnit.SECONDS.sleep(3);
+            stop = true;
+        }
     }
-}
 ```
 > 我们预期程序会在3s后停止, 但是实际上它会一直执行下去, 原因就是虚拟机对代码进行了指令重排序和优化, 优化后的指令如下:
 ```java
-if (!stop)
-    while(true)
+    if (!stop)
+        while(true)
 ```
 > 所以需要在stop前加上volatile修饰符, 解决了如下两个问题
 >> 1. main线程对stop的修改在workThread中可见
 >> 2. 禁止指令重排序, 防止因为重排序导致的并发访问逻辑混乱
 
-- 以上示例代码在Java8中是正常运行的, 并不会一直执行下去, 所以还需要找个别的Demo过来
+- 注意 以上示例代码在Java8中是正常运行的, 并不会一直执行下去, 所以还需要找个别的Demo过来
 
 > 一些人认为volatile可以替代传统锁,提升并发性能, 这个认识是错误的. volatile仅仅解决了可见性的问题, 并不能保证互斥性
 >> volatile最适合使用的是一个线程写, 其他线程读的场景. 
@@ -244,6 +245,7 @@ if (!stop)
 - ReentrantLock 和 sync 加解锁机制的区别?  
     - 一个作用于线程一个作用于临界变量
 - 不要依赖线程优先级
+
 ### 概念
 #### CAS指令
 > 互斥同步最主要的问题就是进行线程阻塞和唤醒所带来的性能额外损耗, 因此这种同步也被称为阻塞同步,悲观锁
@@ -347,7 +349,6 @@ if (!stop)
     - 性能指标： 比如 到达时间，服务质量
     - 运行时系统信息： 比如 Author实例是如何排到队列的
 
-    
 ### BlockingQueue
 > 并发扩展类， 
 
