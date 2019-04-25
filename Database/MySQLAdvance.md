@@ -9,15 +9,15 @@ categories:
 
 **目录 start**
  
-1. [MySQL Advanced](#mysql-advanced)
+1. [MySQL进阶](#mysql进阶)
     1. [部署](#部署)
     1. [性能调优](#性能调优)
         1. [查看状态变量](#查看状态变量)
     1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-04-26 00:09_|
 ****************************************
-# MySQL Advanced
+# MySQL进阶
 
 - [Mysql Redis UDF 复制](http://www.cnblogs.com/zhxilin/archive/2016/09/30/5923671.html)
 
