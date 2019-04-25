@@ -38,7 +38,7 @@ categories:
     1. [分支合并框架](#分支合并框架)
     1. [Java内存模型](#java内存模型)
 
-**目录 end**|_2019-04-22 16:30_|
+**目录 end**|_2019-04-25 23:52_|
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/java-concurrency)  
@@ -263,10 +263,13 @@ public int current(){
 - 注意： 原子类不是相似的类继承而来，所以 AtomicBoolean不能当Boolean用
 
 #### 读写锁
-> 在读多写少的场景下, 使用同步锁比同步块性能要好
+> 在读多写少的场景下, 使用读写锁比同步块性能要好
 
-- 读锁 ReentranReadWriteLock 是共享锁
+- 获取的读锁是共享锁
+- 获取写锁时会阻塞所有读锁
+
 *****************
+
 ### 具体实现
 #### 线程锁 
 > `java.util.concurrent.locks`
