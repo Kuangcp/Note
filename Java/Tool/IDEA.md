@@ -34,7 +34,7 @@ categories:
     1. [Tips](#tips)
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-04-25 14:45_|
 ****************************************
 
 # IDEA 使用笔记
@@ -318,6 +318,7 @@ _例如修改为如下_
 
 *********************
 ## 常用插件
+1. rainbow brackets 将括号变成彩色, 更方便查看
 1. Alibaba Java Code Guidelineshuo
     - 阿里巴巴的代码规范插件
     - [《阿里巴巴Java开发规约》IDEA插件与Eclipse插件使用指南](https://zhuanlan.zhihu.com/p/30191998)
@@ -344,7 +345,6 @@ _例如修改为如下_
 1. Docker
 1. Kubernates
 1. Maven helper
-1. rainbow brackets 将括号变成彩色, 更方便查看
 1. grep console 控制台搜索工具
 
 **************************

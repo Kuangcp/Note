@@ -63,7 +63,7 @@ categories:
         1. [Systemd](#systemd)
     1. [应用日志](#应用日志)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-04-25 14:45_|
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -369,7 +369,9 @@ export LANG="zh_CN.UTF-8"
 
 ******************************************
 # 磁盘
-> 附: [Linux系统基本目录结构](/Linux/Base/LinuxDirectoryStructure.md)
+> [Linux系统基本目录结构](/Linux/Base/LinuxDirectoryStructure.md)
+
+> [参考博客: 在 Linux 上检测硬盘上的坏道和坏块 ](https://linux.cn/article-7961-1.html)  
 
 ## 文件系统
 > [参考博客: Linux 文件系统剖析](https://www.ibm.com/developerworks/cn/linux/l-linux-filesystem/index.htmlQ)
