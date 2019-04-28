@@ -13,10 +13,12 @@ categories:
     1. [事务隔离级别](#事务隔离级别)
     1. [性能调优](#性能调优)
         1. [查看状态变量](#查看状态变量)
-    1. [SQL 片段](#sql-片段)
+    1. [存储引擎](#存储引擎)
+        1. [InnoDB](#innodb)
 1. [Tips](#tips)
+    1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2019-04-26 12:48_|
+**目录 end**|_2019-04-29 00:24_|
 ****************************************
 # MySQL进阶
 
@@ -49,11 +51,15 @@ categories:
 - 查看最大连接数 `show variables like "max_conn%";`
     - 设置最大连接数 `set global max_connections=5000;`
 
+## 存储引擎
+### InnoDB
+行溢出
+
 *****************************
-## SQL 片段
-
-1. 删除库下所有表 `select concat('drop table ',table_name,';') from information_schema.TABLES where table_schema='DATABASE_NAME';`
-
 
 # Tips
 - 将需要执行的SQL写入文件 并将结果输出到文件 `mysql -u root -h 192.168.10.201 -p123 < query.sql  > result.log`
+
+## SQL 片段
+
+1. 删除库下所有表 `select concat('drop table ',table_name,';') from information_schema.TABLES where table_schema='DATABASE_NAME';`
