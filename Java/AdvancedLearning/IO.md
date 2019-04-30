@@ -9,8 +9,8 @@ categories:
 
 **目录 start**
  
-1. [Java IO](#java-io)
-    1. [Java IO 简史](#java-io-简史)
+1. [Java中的IO](#java中的io)
+    1. [IO 简史](#io-简史)
         1. [BIO](#bio)
         1. [NIO](#nio)
         1. [AIO](#aio)
@@ -25,7 +25,7 @@ categories:
 1. [NIO](#nio)
     1. [Buffer](#buffer)
 
-**目录 end**|_2019-04-22 16:30_|
+**目录 end**|_2019-04-29 21:10_|
 ****************************************
 # Java中的IO
 > [个人代码: IO流的相关学习](https://github.com/Kuangcp/JavaBase/tree/master/java-io) | [Socket NIO](https://github.com/Kuangcp/JavaBase/tree/master/java-network/src/main/java/com/github/kuangcp/nio)  
@@ -73,7 +73,7 @@ categories:
 | 读事件 	             | SelectionKey.OP_READ(1)
 | 写事件 	             | SelectionKey.OP_WRITE(4)
 
-> [简单示例代码](https://github.com/Kuangcp/JavaBase/tree/master/java-network/src/main/java/com/github/kuangcp/nio)  
+> [Github: NIO案例源码](https://github.com/Kuangcp/JavaBase/tree/master/java-network/src/main/java/com/github/kuangcp/nio)  
 
 ************************
 
@@ -172,11 +172,10 @@ _读取resource目录下配置文件_
 > [Java NIO系列教程（三） Buffer](http://ifeve.com/buffers/)
 
 - Buffer的基本用法: 使用Buffer读写数据一般遵循以下四个步骤：  
->   
-    写入数据到Buffer  
-    调用flip()方法   
-    从Buffer中读取数据
-    调用clear()方法或者compact()方法
+    1. 写入数据到Buffer  
+    1. 调用flip()方法   
+    1. 从Buffer中读取数据
+    1. 调用clear()方法或者compact()方法
 
 - 当向buffer写入数据时，buffer会记录下写了多少数据。一旦要读取数据，需要通过flip()方法将Buffer从写模式切换到读模式。在读模式下，可以读取之前写入到buffer的所有数据。
 
