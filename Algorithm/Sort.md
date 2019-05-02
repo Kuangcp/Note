@@ -25,14 +25,22 @@ categories:
 > Github： [Java 实现](https://github.com/Kuangcp/JavaBase/tree/master/java-algorithms/src/main/java/com/github/kuangcp/sort) | [Python 实现](https://github.com/Kuangcp/PythonLearn/tree/master/algorithm/sort)
 
 > [参考博客: 十大经典排序算法](https://www.runoob.com/w3cnote/ten-sorting-algorithm.html)  
+> [Github: 十大经典排序算法](https://github.com/hustcc/JS-Sorting-Algorithm)  
 
 ************************
 
 | 排序算法 | 平均时间复杂度 | 最好情况 | 最坏情况 |  空间复杂度 | 排序方式 | 稳定性 |
-|:---|:---|:---|:---|:---|:---|:---|
+|:---|:---|:---|:---|:---|:---:|:---:|
 | 冒泡 | n^2 | n | n^2 | 1 | 内 | 稳定 | 
 | 插入 | n^2 | n | n^2 | 1 | 内 | 稳定 | 
 | 选择 | n^2 | n^2 | n^2 | 1 | 内 | \ | 
+| 希尔 | n log n| n^2 | n^2 | 1 | 内 | \ | 
+| 归并 | n log n | n^2 | n^2 | 1 | 内 | \ | 
+| 快速 | n log n | n^2 | n^2 | 1 | 内 | \ | 
+| 堆 | n log n | n^2 | n^2 | 1 | 内 | \ | 
+| 计数 | n + m | n^2 | n^2 | 1 | 内 | \ | 
+| 桶 | n + m | n^2 | n^2 | 1 | 内 | \ | 
+| 基数 | n * m | n^2 | n^2 | 1 | 内 | \ | 
 
 ************************
 
