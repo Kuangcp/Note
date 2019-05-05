@@ -28,7 +28,8 @@ categories:
 - 显示所有 `tmux ls` 
 - 重新加载配置文件 `tmux source ~/.tmux.conf`
 
-> [自定义配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf)
+> [自定义配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf) `ln -s `pwd`tmux.conf ~/.tmux.conf`
+
 *************
 
 > 开启鼠标选择与复制
@@ -44,11 +45,12 @@ categories:
 ### 切换
 - prefix w 切换 panel 或者 window
 
-
 ## 插件
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) `查看Readme下载安装`
 
 > [参考博客: 保存和恢复 Tmux 会话 ](https://liam.page/2016/09/10/tmux-plugin-resurrect/)
+
+- [ ] 正确使用
 
 ### tmux-resurrect
 

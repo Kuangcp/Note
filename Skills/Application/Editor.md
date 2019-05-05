@@ -81,7 +81,7 @@ _个人配置_
 ## Sublime 
 > [常用配置](https://segmentfault.com/a/1190000002596724)
 
-- 如果出现小bug，就直接删除 ～.config 下的 sublime文件夹注意注册证书拷出来
+- 如果出现小bug，就直接删除 ～/.config 下的 sublime文件夹注意注册证书拷出来
 - 中文不兼容解决方法： 3143版本号下：
     - 搜索安装插件 ChineseLocalizations 就能汉化 
     - 修改配置文件 添加`"font_face": "DeJaVu Sans Mono",` 就解决了字体错位的问题
@@ -91,12 +91,13 @@ _个人配置_
 
 **关闭自动检查升级**
 - setting 中 "update_check":false
+
 ### 快捷键
 > [参考博客: Sublime Text 3 快捷键](http://www.cnblogs.com/roadone/p/7745641.html)
 > [sublime的常用快捷键](http://www.cnblogs.com/kristen-zou/p/7641158.html)
 
 ### crack
-> [3143码](https://gitee.com/kcp1104/codes/89xfugn5dwoyr23vchikb54#sublime-3143-Key)
+> [3143码](https://gitee.com/gin9/codes/89xfugn5dwoyr23vchikb54)
 
 - [参考博客](http://www.cnblogs.com/hollow/p/6496469.html)
 - [3143 1](https://fatesinger.com/100121) | [3143 2](https://fatesinger.com/100227) | [3176](https://fatesinger.com/100237) 
