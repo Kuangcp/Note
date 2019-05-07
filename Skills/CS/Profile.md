@@ -9,7 +9,7 @@ categories:
 
 **目录 start**
  
-1. [配置文件](#配置文件)
+1. [数据序列化格式](#数据序列化格式)
     1. [conf或者ini](#conf或者ini)
     1. [properties](#properties)
         1. [Java中的使用](#java中的使用)
@@ -17,19 +17,20 @@ categories:
     1. [YAML](#yaml)
         1. [Java中的使用](#java中的使用)
     1. [JSON](#json)
+    1. [BSON](#bson)
     1. [Smile](#smile)
         1. [Jackson](#jackson)
 
-**目录 end**|_2019-04-22 00:14_|
+**目录 end**|_2019-05-07 09:32_|
 ****************************************
-# 配置文件
+# 数据序列化格式
 
 ## conf或者ini
-```
-    [main]
-    debug=true
-    [client]
-    timeOut=10
+```ini
+[main]
+debug=true
+[client]
+timeOut=10
 ```
 
 ## properties
@@ -38,23 +39,23 @@ categories:
 
 通过ResourceBundle获取classPath下的属性文件
 ```java
-    ResourceBundle bundle = ResourceBundle.getBundle("test");
-    String city = bundle.getString("name");
+ResourceBundle bundle = ResourceBundle.getBundle("test");
+String city = bundle.getString("name");
 ```
 
 通过Properties对象获取配置文件
 ```java
-    Properties pro = new Properties();
-    pro.load(new FileInputStream(new File("./test.properties")));
-    String name = (String) pro.get("name");
+Properties pro = new Properties();
+pro.load(new FileInputStream(new File("./test.properties")));
+String name = (String) pro.get("name");
 ```
 
 使用Properties保存配置文件
 ```java
-    Properties pro = new Properties();
-    pro.setProperty("name", "java");
-    pro.setProperty("study", "sdf");
-    pro.store(new FileOutputStream(new File("test.properties")), "one file");
+Properties pro = new Properties();
+pro.setProperty("name", "java");
+pro.setProperty("study", "sdf");
+pro.store(new FileOutputStream(new File("test.properties")), "one file");
 ```
 
 ## XML
@@ -73,6 +74,8 @@ categories:
 
 ## JSON
 > [Google 规范](https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md)
+
+## BSON
 
 ## Smile
 > 二进制的JSON [Wikipedia: Smile](https://en.wikipedia.org/wiki/Smile_%28data_interchange_format%29)

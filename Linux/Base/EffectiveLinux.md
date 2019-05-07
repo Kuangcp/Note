@@ -62,8 +62,7 @@ categories:
 - `ls -l ~/.local/share/autojump/` 统计信息的目录，清除就相当于卸载重装了
 
 **`z.lua`**
-
-与 Autojump 类似, 性能更好
+> [Github](https://github.com/skywind3000/z.lua)   与 Autojump 类似, 性能更好
 
 ## 其他工具
 > 最终都会安装到 /usr/bin/*  目录下

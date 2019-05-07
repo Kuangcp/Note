@@ -23,7 +23,8 @@ categories:
 
 ## 安装
 > [doc: install](https://www.lua.org/start.html#installing)  
-> 使用包管理器 `apt install lua5.3`
+
+> 使用包管理器 `apt install lua5.3` 然后 `sudo ln -s /usr/bin/lua5.3 /usr/bin/lua`
 
 `lua`
 

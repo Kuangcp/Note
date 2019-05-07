@@ -29,7 +29,7 @@ categories:
         1. [清理仓库大文件](#清理仓库大文件)
         1. [CRLF与LF](#crlf与lf)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-07 09:32_|
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -76,14 +76,10 @@ categories:
         * `password ***` 
     * 成功配置，测试便知
 
-- `Linux下记住密码`：(如果使用了多个github账号，设置这个后只能使用一个账号的自动登录，另一个账号将完全连不上github，ssh也只能一个账号配一个，不能多个账号用一个ssh)
-    * `touch .git-credentials`
-    * `vim .git-credentials`
-    * 输入： ` http://{username}:{password}@github.com` 或者是https开头
-    * `git config --global credential.helper store`
-    * `~/.gitconfig` 文件中多了以下内容即可
-        * [credential]
-        * helper = store
+- `Linux下记住密码` 
+    - 这种情况下一个域名只能使用一个账号
+    - `git config --global credential.helper store`
+    - 那么下一次输入账号和密码就会被持久化保存， 后续无需输入
 
 - `ssh 方法：（推荐）`
     - `ssh-keygen` 不设置密码
@@ -95,7 +91,7 @@ categories:
 *Github下拉到eclipse*
 - 1.在GitHub上新建一个项目，不勾选初始化，复制下URL
 - 2.在eclipse新建项目然后在eclipse里添加git remote
-- 3.commit -》push 完成
+- 3.commit -> push 完成
 - 4.打开Git Bash 使用命令行再查看一下
 
 *本地已有代码关联远程空仓库*

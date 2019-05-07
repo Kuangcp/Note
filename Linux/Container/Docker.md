@@ -53,7 +53,7 @@ categories:
 1. [Dockerfile](#dockerfile)
     1. [dockerignore文件的使用](#dockerignore文件的使用)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-07 09:32_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -436,7 +436,11 @@ _登录镜像仓库_
 > 案例 [1](https://github.com/fecshop/yii2_fecshop_docker/blob/master/docker-compose.yml)
 
 ### 安装
-> sudo pip install -U docker-compose
+> [Official Doc](https://docs.docker.com/compose/install/)
+
+1. `sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
+1. `sudo chmod +x /usr/local/bin/docker-compose`
+1. `sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose`
 
 ***********
 

@@ -130,6 +130,8 @@ _重启_
 
 *****************************
 # 基本组成
+> [key words](https://dev.mysql.com/doc/mysqld-version-reference/en/keywords-5-7.html)
+
 ## 数据编码 
 utf8 最大字节为3的非标准utf8实现
 utf8mb4 才是真正意义上的 utf8 `5.5.3才开始支持`

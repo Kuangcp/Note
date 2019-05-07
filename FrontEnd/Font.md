@@ -16,9 +16,10 @@ categories:
 1. [个人习惯](#个人习惯)
     1. [操作系统默认字体](#操作系统默认字体)
     1. [编辑器](#编辑器)
+    1. [IDEA](#idea)
     1. [终端](#终端)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-07 09:32_|
 ****************************************
 # 字体
 > [Deepin wiki 字体](https://wiki.deepin.org/wiki/%E5%AD%97%E4%BD%93)  
@@ -73,12 +74,17 @@ categories:
 - Fira Code Retina
 - IBM Plex Mono SemiBold [Download](https://fontmeme.com/fonts/ibm-plex-mono-font/)
 
+## IDEA
+- Roboto Mono Medium `Appearance custom font`
+- IBM Plex Mono SemiBold `Editor`
 ## 终端
 - Source Code Pro for Powerline
     - 并且 + Powerline + Awesonme 的 Bold 最适合ZSH的 Bullet Train 主题
 - Droid Sans Mono for Powerline
 - Roboto Mono for Powerline Bold
 - Hack
+
+************************
 
 - [powerline](https://github.com/powerline/powerline)
 - [fonts](https://github.com/powerline/fonts)`终端中常用字体`
