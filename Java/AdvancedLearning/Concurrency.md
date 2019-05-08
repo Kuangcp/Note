@@ -38,7 +38,7 @@ categories:
     1. [分支合并框架](#分支合并框架)
     1. [Java内存模型](#java内存模型)
 
-**目录 end**|_2019-04-25 23:52_|
+**目录 end**|_2019-05-08 20:57_|
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/java-concurrency)  
@@ -49,6 +49,7 @@ categories:
 
 > [参考博客: 并发编程 ](http://www.jdon.com/concurrency.html)
 > [参考博客: 不可变真的意味线程安全？](http://www.jdon.com/concurrent/immutable.html)
+> [Java Concurrency and Multithreading Tutorial](http://tutorials.jenkov.com/java-concurrency/index.html)  
 
 ## Java内存模型
 
@@ -245,6 +246,8 @@ public int current(){
 - ReentrantLock 和 sync 加解锁机制的区别?  
     - 一个作用于线程一个作用于临界变量
 - 不要依赖线程优先级
+
+> [The java.util.concurrent Synchronizer FrameworkDoug Le](http://gee.cs.oswego.edu/dl/papers/aqs.pdf) `AQS`
 
 ### 概念
 #### CAS指令

@@ -43,7 +43,7 @@ categories:
     1. [让命令在后台运行](#让命令在后台运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-08 20:57_|
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -60,6 +60,7 @@ categories:
 - [Linux中国开源社区](https://linux.cn/)
 - [LinuxTOY 是一个致力于提供 Linux 相关资讯的专题站点。](https://linuxtoy.org/)
     - [内容Github源](https://github.com/LinuxTOY/linuxtoy.org)
+- [鳥哥的 Linux 私房菜](http://linux.vbird.org/linux_basic/)
 
 **************************************
 ## 用户

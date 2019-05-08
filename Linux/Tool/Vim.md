@@ -25,7 +25,7 @@ categories:
     1. [SpaceVim](#spacevim)
     1. [space-vim](#space-vim)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-08 20:57_|
 ****************************************
 # Vim 
 > 学习曲线很高，但是学会熟练使用后就效率很高
@@ -39,21 +39,22 @@ categories:
 1. 误按 `Ctrl S` 终止屏幕输出（即停止回显）你敲的依然有效，只是看不见 `Ctrl Q` 即可恢复
 
 1. /usr/share/vim/vim80/macros/less.sh vim版less 具备语法高亮 路径中间是依据vim版本来的,按实际情况改动
-**************
-`vim输出的信息`
-```
-    系统 vimrc 文件: "$VIM/vimrc"
-    用户 vimrc 文件: "$HOME/.vimrc"
-    第二用户 vimrc 文件: "~/.vim/vimrc"
-    用户 exrc 文件: "$HOME/.exrc"
-    defaults file: "$VIMRUNTIME/defaults.vim"
-    $VIM 预设值: "/usr/share/vim"
-```
+
+************************
+
+`vim配置`
+- 系统 vimrc 文件: `$VIM/vimrc`
+- 用户 vimrc 文件: `$HOME/.vimrc`
+- 第二用户 vimrc 文件: `~/.vim/vimrc`
+- 用户 exrc 文件: `$HOME/.exrc`
+- defaults file: `$VIMRUNTIME/defaults.vim`
+- $VIM 预设值: `/usr/share/vim`
+
 ## 基本配置
 - 在文件 全局：`/etc/vim/vimrc` 先备份一下 `sudo cp /etc/vim/vimrc /etc/vim/vimrc.bak`
 	- 或者当前用户：`~/.vimrc` 中添加如下内容
 
-```
+```vim
 set showcmd		" Show (partial) command in status line.
 set autowrite		" Automatically save before commands like :next and :make
 set nocompatible

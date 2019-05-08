@@ -31,10 +31,11 @@ categories:
             1. [Setting](#setting)
     1. [常用插件](#常用插件)
     1. [启动配置](#启动配置)
+        1. [调优](#调优)
     1. [Tips](#tips)
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
 
-**目录 end**|_2019-04-25 14:45_|
+**目录 end**|_2019-05-08 20:57_|
 ****************************************
 
 # IDEA 使用笔记
@@ -362,6 +363,10 @@ _例如修改为如下_
 > [官网文档](https://www.jetbrains.com/help/idea/increasing-memory-heap.html)
 > [IntelliJ IDEA 内存优化最佳实践](http://blog.oneapm.com/apm-tech/426.html)
 
+### 调优
+> [参考博客: 记一次idea性能调优](http://www.cnblogs.com/nevermorewang/p/10061377.html)  
+
+************************
 
 ## Tips
 
