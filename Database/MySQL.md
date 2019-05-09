@@ -66,10 +66,10 @@ categories:
     1. [查看](#查看)
     1. [创建](#创建)
     1. [修改](#修改)
-        1. [【授权】](#授权)
+        1. [授权](#授权)
 1. [查询](#查询)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-09 20:31_|
 ****************************************
 
 # Mysql
@@ -86,11 +86,17 @@ categories:
 
 _配置_
 - 打开配置文件： `sudo gedit /etc/mysql/mysql.conf.d/mysqld.cnf`
-    - `[mysqld]`下添加一行： `character-set-server=utf8`
-    - `[client]`下添加 `default-character-set = utf8`
     - 如果要允许远程访问，就注释掉 `bind-address`
     - 如果是服务器要配置远程访问 就 bind-address=服务器IP
     - 确保skip-networking被删除或者屏蔽，否则不支持TCP/IP 访问
+
+```ini
+    # 要在对应的 [] 之后添加配置
+    [mysqld]
+    character-set-server=utf8
+    [client]
+    default-character-set = utf8
+```
 
 _重启_
 - 重启MySQL ：`sudo systemctl restart mysql`
@@ -402,7 +408,7 @@ alter table `Bookinfo` add constraint `F_N` foreign key `F_N`(`classno`) referen
 ## 修改
 - 修改名字：`rename user feng to newuser；`
 
-### 【授权】
+### 授权
 1. grant all privileges  ON databasename.tablename TO 'username'@'host' 
     - all privileges 所有权限
     - alter | alter routine
@@ -419,6 +425,7 @@ alter table `Bookinfo` add constraint `F_N` foreign key `F_N`(`classno`) referen
 
 - 刷新权限缓存 `flush privileges;`
 
+************************
 
 # 查询
 > 数据库中最主要的还是查询， 多角度复杂的查询

@@ -8,6 +8,7 @@
         * [ LinearList ](/Algorithm/DS/LinearList.md)
         * [ Tree ](/Algorithm/DS/Tree.md)
     * [ Algorithm ](/Algorithm/Algorithm.md)
+    * [ Sort ](/Algorithm/Sort.md)
     * [ 算法分析 ](/Algorithm/算法分析.md)
 * 【 Blog 】
     * [ Blog ](/Blog/Blog.md)
@@ -18,7 +19,7 @@
 * 【 C 】
     * [ CBase ](/C/CBase.md)
 * 【 Database 】
-    * [ Experience ](/Database/Experience.md)
+    * [ DataBase ](/Database/DataBase.md)
     * [ GraphQL ](/Database/GraphQL.md)
     * [ MangoDB ](/Database/MangoDB.md)
     * [ MySQL ](/Database/MySQL.md)
@@ -106,6 +107,9 @@
         * [ WebPerformance ](/Java/AdvancedLearning/WebPerformance.md)
     * 【 Java/Android 】
     * 【 Java/Ecosystem 】
+        * 【 Java/Ecosystem/Dubbo 】
+            * [ Dubbo ](/Java/Ecosystem/Dubbo/Dubbo.md)
+            * [ MulticaseRegistry ](/Java/Ecosystem/Dubbo/MulticaseRegistry.md)
         * [ Activiti ](/Java/Ecosystem/Activiti.md)
         * [ Blade ](/Java/Ecosystem/Blade.md)
         * [ Elasticsearch ](/Java/Ecosystem/Elasticsearch.md)
@@ -115,15 +119,14 @@
         * [ JXls ](/Java/Ecosystem/JXls.md)
         * [ JavaBoot ](/Java/Ecosystem/JavaBoot.md)
         * [ JavaRedis ](/Java/Ecosystem/JavaRedis.md)
-        * [ Kafaka ](/Java/Ecosystem/Kafaka.md)
+        * [ Kafka ](/Java/Ecosystem/Kafka.md)
         * [ Mybatis ](/Java/Ecosystem/Mybatis.md)
         * [ Netty ](/Java/Ecosystem/Netty.md)
         * [ POI ](/Java/Ecosystem/POI.md)
-        * [ Querydsl ](/Java/Ecosystem/Querydsl.md)
+        * [ QueryDSL ](/Java/Ecosystem/QueryDSL.md)
         * [ Solr ](/Java/Ecosystem/Solr.md)
         * [ Vertx ](/Java/Ecosystem/Vertx.md)
     * 【 Java/MSA 】
-    * 【 Java/Pattern 】
     * 【 Java/Spring 】
         * 【 Java/Spring/Why 】
         * [ Spring-Bean学习 ](/Java/Spring/Spring-Bean学习.md)
@@ -173,8 +176,6 @@
     * [ DesignPattern ](/Java/DesignPattern.md)
     * [ HashMap解析 ](/Java/HashMap解析.md)
     * [ Java-NIO ](/Java/Java-NIO.md)
-    * [ Java7和Java8的新特性 ](/Java/Java7和Java8的新特性.md)
-    * [ Java反射 ](/Java/Java反射.md)
     * [ Java虚拟机 ](/Java/Java虚拟机.md)
     * [ Log ](/Java/Log.md)
     * [ MIS ](/Java/MIS.md)
@@ -265,6 +266,7 @@
         * [ CharacterEncoding ](/Skills/CS/CharacterEncoding.md)
         * [ CompilingPrinciple ](/Skills/CS/CompilingPrinciple.md)
         * [ Computer ](/Skills/CS/Computer.md)
+        * [ IO ](/Skills/CS/IO.md)
         * [ Profile ](/Skills/CS/Profile.md)
         * [ ProgramThinking ](/Skills/CS/ProgramThinking.md)
         * [ Time ](/Skills/CS/Time.md)
@@ -280,6 +282,7 @@
         * [ License ](/Skills/Document/License.md)
         * [ MarkDown ](/Skills/Document/MarkDown.md)
         * [ RequirementsDocument ](/Skills/Document/RequirementsDocument.md)
+        * [ UML ](/Skills/Document/UML.md)
     * 【 Skills/Ecology 】
         * [ MSA ](/Skills/Ecology/MSA.md)
     * 【 Skills/Network 】
@@ -309,6 +312,7 @@
     * [ Miscellaneous ](/Skills/Miscellaneous.md)
     * [ Platform ](/Skills/Platform.md)
     * [ Problem ](/Skills/Problem.md)
+    * [ Protobuf ](/Skills/Protobuf.md)
     * [ RegularExpression ](/Skills/RegularExpression.md)
     * [ SoftwareDesignEngineer ](/Skills/SoftwareDesignEngineer.md)
     * [ Website ](/Skills/Website.md)

@@ -30,16 +30,21 @@ categories:
         1. [URL](#url)
         1. [DNS](#dns)
 1. [Socket](#socket)
+1. [单播 多播 组播](#单播-多播-组播)
+    1. [组播](#组播)
 1. [代理](#代理)
     1. [正向代理](#正向代理)
     1. [反向代理](#反向代理)
     1. [透明代理](#透明代理)
     1. [WebDAV](#webdav)
     1. [WebAssembly](#webassembly)
+1. [工具](#工具)
+    1. [Fiddler](#fiddler)
+    1. [Wireshark](#wireshark)
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-09 20:31_|
 ****************************************
 # 网络
 
@@ -197,6 +202,13 @@ Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开�
 > [参考博客: Linux socket 编程](https://www.ibm.com/developerworks/cn/education/linux/l-sock/l-sock.html)
 
 ********************************
+# 单播 多播 组播
+
+## 组播
+
+> [参考博客: 组播（Multicast）传输](http://www.cnblogs.com/ghj1976/p/5276452.html)  
+
+************************
 
 # 代理
 ## 正向代理
@@ -224,6 +236,25 @@ WebDAV （Web-based Distributed Authoring and Versioning） 一种基于 HTTP 1.
 > 字节码技术
 > [ WebAssembly 实践：如何写代码 ](https://segmentfault.com/a/1190000008402872)
 > [MDN](https://developer.mozilla.org/en-US/docs/WebAssembly)
+
+************************
+
+# 工具
+## Fiddler 
+> [fiddler](https://www.telerik.com/fiddler)  
+> [fiddler-everywhere](https://www.telerik.com/fiddler-everywhere)
+
+## Wireshark
+> [Official Site](https://www.wireshark.org/)  
+
+************************
+
+> 问题
+- `Error during loading:[string "/usr/wireshark/init.lua"]:44:`
+    - 这是由于Wireshark为了防止以root用户身份执行Lua脚本，避免对系统造成损坏，而显示警告弹窗。通常，用户只需要确认 
+    - 如果不想每次都看到 修改 `/usr/wireshark/init.lua` 第一行（非注释，有效代码） 改成 `disable_lua = true`
+
+************************
 
 # Tips
 ## 移动通信技术规格

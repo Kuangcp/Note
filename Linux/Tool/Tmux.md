@@ -14,7 +14,7 @@ categories:
     1. [插件](#插件)
         1. [tmux-resurrect](#tmux-resurrect)
 
-**目录 end**|_2019-05-08 20:57_|
+**目录 end**|_2019-05-09 20:31_|
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -60,3 +60,4 @@ categories:
 prefix c-s 保存
 prefix c-r 加载
 
+[maglev](https://github.com/caiogondim/maglev)

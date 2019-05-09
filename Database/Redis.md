@@ -28,16 +28,21 @@ categories:
     1. [GEO地理位置](#geo地理位置)
 1. [Pub/Sub发布和订阅](#pubsub发布和订阅)
 1. [客户端](#客户端)
-    1. [库](#库)
-        1. [Java](#java)
-        1. [Python使用](#python使用)
-    1. [GUI](#gui)
+    1. [Java](#java)
+    1. [Python](#python)
+    1. [GUI客户端](#gui客户端)
 1. [Project](#project)
     1. [Codis](#codis)
     1. [webdis](#webdis)
-1. [使用](#使用)
+1. [Redis的应用场景](#redis的应用场景)
+    1. [作为日志记录](#作为日志记录)
+    1. [作为网站统计数据](#作为网站统计数据)
+    1. [存储配置信息](#存储配置信息)
+    1. [自动补全](#自动补全)
+    1. [构建锁](#构建锁)
+    1. [任务队列](#任务队列)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-09 20:31_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -247,20 +252,21 @@ categories:
 *******************************
 
 # 客户端
-## 库
 > [program language client](http://www.redis.com.cn/clients)
 
-### Java
+## Java
 > [详细](/Java/Ecosystem/JavaRedis.md)
 
 *******************
 
-### Python使用
+## Python
 > pip install redis 该模块和redis命令的用法几乎一模一样, 上手很快
 - [redis文档](https://pypi.python.org/pypi/redis/) `python操作redis的库的文档`
 
-## GUI
+## GUI客户端
 > [Redis Desktop Manager](https://github.com/uglide/RedisDesktopManager/)
+> [FastoRedis](https://fastoredis.com/)
+> [Redis Plus](https://gitee.com/MaxBill/RedisPlus)
 
 *********
 
@@ -278,5 +284,18 @@ categories:
 
 ************************
 
-# 使用
+# Redis的应用场景
 > [Redis的n种妙用，不仅仅是缓存 ](https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650123010&idx=2&sn=c17bd9192daa15c00502b7e27acacc61&chksm=f36bb623c41c3f35060bf244eddddc25ea6e2b96900f57299e0d8ffe548a08823b057dee5baf&mpshare=1&scene=1&srcid=0109PazxT49BtR2oCJ6Od32h&pass_ticket=ZX4WKje%2FJzbdB6LEivhrNCtzmljNugDZul02fl5SX4snt5QLMa6Cle9o1I5CumfQ#rd)
+
+> [参考博客: 为什么我们做分布式使用Redis？](https://my.oschina.net/u/3971241/blog/2221560)`缓存的场景和应对措施`
+
+## 作为日志记录
+## 作为网站统计数据
+## 存储配置信息
+## 自动补全
+- 搜索建议
+
+## 构建锁
+
+## 任务队列
+- 发送邮件

@@ -20,12 +20,13 @@ categories:
     1. [TestNG](#testng)
     1. [Mock框架](#mock框架)
         1. [Mockito](#mockito)
+        1. [EasyMock](#easymock)
     1. [DBUnit](#dbunit)
     1. [基准测试](#基准测试)
         1. [JMH](#jmh)
 1. [感悟](#感悟)
 
-**目录 end**|_2019-04-22 16:30_|
+**目录 end**|_2019-05-09 20:31_|
 ****************************************
 # Java的测试
 > [测试的基础理论](/Skills/Base/Test.md)
@@ -118,8 +119,16 @@ http://static.javadoc.io/org.mockito/mockito-core/2.19.0/org/mockito/Mockito.htm
 一般不用对 void 方法打桩, 事后 verify 就行  
 测试代码针对 mock  对象的 void 方法调用本来就没有什么效果，所以一般也无须用 doNothing(), 况且 void 提供不了返回值作进一步 mock，只需要在事后用 verify() 进行验证一下。
 
+### EasyMock
+> [Github](https://github.com/easymock/easymock)  
+
+************************
+
 ## DBUnit
 > 基于Junit的一个数据库测试框架, 方便测试dao层
+> [Github](https://github.com/sebastianbergmann/dbunit)`但是已经停止维护了`  
+
+************************
 
 ## 基准测试
 ### JMH
@@ -136,4 +145,3 @@ http://static.javadoc.io/org.mockito/mockito-core/2.19.0/org/mockito/Mockito.htm
 >1. 好的测试能大大节省时间, 坏的测试大量延误时间
 >1. 应该在项目主体架构明确后, 才大量书写测试, 验证程序, 避免编写大量无用测试代码
 >1. 单元测试有多难写, 你的代码就有多高的耦合度
-

@@ -25,8 +25,9 @@ categories:
             1. [树冲突](#树冲突)
         1. [回滚到指定版本](#回滚到指定版本)
 1. [Tips](#tips)
+    1. [下载Github子目录](#下载github子目录)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-09 20:31_|
 ****************************************
 # SVN
 > 传统的中心化版本控制工具,能够精确控制每个目录的权限, Apache顶级项目  
@@ -143,6 +144,15 @@ categories:
 ```
 
 # Tips
+## 下载Github子目录
+> [Doc](https://help.github.com/en/articles/support-for-subversion-clients)
+
+- svn co URL
+    - /tree/master/ 换成 /trunk/ 
+    - /tree/master/ 换成 /branches/branchname/ 
+
+************************
+
 > 删除认证信息
 
 `rm -rf ~/.subversion/auth`
