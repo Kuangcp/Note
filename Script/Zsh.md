@@ -18,7 +18,7 @@ categories:
         1. [主题](#主题)
             1. [自己定制](#自己定制)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-10 18:10_|
 ****************************************
 # Zsh
 > [arch zsh wiki](https://wiki.archlinux.org/index.php/Zsh)
@@ -44,7 +44,7 @@ categories:
 
 ```
     plugins=(
-        git mvn gradle autojump
+        git mvn docker
     )
 ```
 

@@ -25,7 +25,7 @@ categories:
     1. [SpaceVim](#spacevim)
     1. [space-vim](#space-vim)
 
-**目录 end**|_2019-05-08 20:57_|
+**目录 end**|_2019-05-10 18:10_|
 ****************************************
 # Vim 
 > 学习曲线很高，但是学会熟练使用后就效率很高
@@ -38,7 +38,11 @@ categories:
 ## Tips
 1. 误按 `Ctrl S` 终止屏幕输出（即停止回显）你敲的依然有效，只是看不见 `Ctrl Q` 即可恢复
 
-1. /usr/share/vim/vim80/macros/less.sh vim版less 具备语法高亮 路径中间是依据vim版本来的,按实际情况改动
+1. `/usr/share/vim/vim80/macros/less.sh` vim 版 less 
+    - 具备语法高亮 路径中间是依据vim版本来的, 按实际情况改动
+1. vim 中粘贴内容时被自动缩进, 导致大量空格
+    1. 先执行 `:set paste` 命令,然后粘贴
+    1. 关闭 paste 模式 `:set nopaste`
 
 ************************
 

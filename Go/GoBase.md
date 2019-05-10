@@ -38,7 +38,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-10 18:10_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -81,10 +81,10 @@ docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub 
 ***********************************
 
 ## 安装
-> [下载](https://golang.google.cn/dl/)|[官方教程](https://golang.google.cn/doc/install) | [参考 教程](http://www.runoob.com/go/go-environment.html) | [_](http://cloud.kuangcp.top/go-1.10.3.tar.gz)  
+> [Official Download](https://golang.google.cn/dl/) | [Official Doc](https://golang.google.cn/doc/install) | [参考 教程](http://www.runoob.com/go/go-environment.html) [.](http://cloud.kuangcp.top/go-1.10.3.tar.gz) 
 
-1. sudo tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
-    - 升级时,只需再执行一次该命令即可
+1. `sudo tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz`
+    - 升级时, 只需对新的包再执行一次解压即可
 1. `*shrc` 或者 `/etc/profile` 中添加
 	```sh
         export GOROOT=/usr/local/go
@@ -92,7 +92,10 @@ docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub 
         export GOBIN=$GOPATH/bin # 'go install' command install dir
         export PATH=$PATH:$GOBIN:$GOPATH:$GOROOT/bin
 	```
-    > **查看版本** `go version`正常输出go的版本则是配置成功  
+1. **查看版本** `go version`正常输出go的版本则是配置成功  
+
+************************
+
 1. 在 `/home/kcp/code/go` 下 新建 test.go
     ```go
         package main
@@ -101,7 +104,7 @@ docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub 
             fmt.Printf("hello, world\n")
         }
     ```
-4. go run test.go 或者 go build
+1. go run test.go 或者 go build
 
 ### Docker
 > 使用Docker安装和部署

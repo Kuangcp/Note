@@ -21,7 +21,7 @@ categories:
     1. [Smile](#smile)
         1. [Jackson](#jackson)
 
-**目录 end**|_2019-05-07 09:32_|
+**目录 end**|_2019-05-10 18:10_|
 ****************************************
 # 数据序列化格式
 
@@ -74,6 +74,8 @@ pro.store(new FileOutputStream(new File("test.properties")), "one file");
 
 ## JSON
 > [Google 规范](https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md)
+
+> [JSON in Java](https://www.baeldung.com/java-json)  
 
 ## BSON
 

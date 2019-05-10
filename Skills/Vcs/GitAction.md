@@ -29,7 +29,7 @@ categories:
         1. [清理仓库大文件](#清理仓库大文件)
         1. [CRLF与LF](#crlf与lf)
 
-**目录 end**|_2019-05-07 09:32_|
+**目录 end**|_2019-05-10 18:10_|
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -242,7 +242,7 @@ categories:
 5. `cat ~/.ssh/id_rsa.pub | xclip -sel clip` 复制公钥
 6. Linux下当大量文件出现mode的变化（因为你的目录移动，文件权限变化等影响的）可以设置忽略掉 `git config core.fileMode false`
     * 当将目录备份出去，然后重装系统粘贴回来，权限就变了，mode也变了，可以设置忽略掉改变
-7. git的输出中文乱码 执行 `git config --global core.quotepath false`即可
+7. git status 中文文件名乱码, 执行 `git config --global core.quotepath false`即可
 
 - `git ls-files` 列出文件列表
     - `git ls-files | xargs wc -l` 计算文件中程序代码行数 通过工具：`xargs` `wc` (中文命名的文件编码问题无法计算行数)

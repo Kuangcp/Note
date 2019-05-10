@@ -42,14 +42,16 @@ categories:
 1. [Tips](#tips)
     1. [常用代码片段](#常用代码片段)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-10 18:10_|
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
 
 > [菜鸟教程: Shell 教程](http://www.runoob.com/linux/linux-shell.html)  
 > [C语言中文网: Shell教程](http://c.biancheng.net/shell/)  
+
 ## shell类别
+> 切换shell `chsh -s /bin/bash`
 
 - sh
   - 大多Linux都支持的shell类别
@@ -60,6 +62,7 @@ categories:
   - 它主要是为了执行脚本而出现，而不是交互，它速度更快，但功能相比bash要少很多，语法严格遵守POSIX标准
   - 速度确实要快,输入上的交互确实交互不了
 - fish
+  - 交互式的, 补全功能比较好 
 
 > [linux shell dash&bash](http://blog.csdn.net/zengqiang1/article/details/61916697)
 > [参考博客: 常见shell类型](http://www.cnblogs.com/happycxz/p/7840077.html)

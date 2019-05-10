@@ -65,7 +65,7 @@ categories:
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-10 18:10_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -117,23 +117,21 @@ TODO 存疑
 - `git config http.postBuffer 524288000` 设置缓存区大小为 500m
 - `git config core.fileMode false` 忽略文件的mode变化，一般发生在文件放在挂载盘的时(默认755)
 
-
 打开`~/.gitconfig`文件能够发现这是 ini 格式的配置文件
 ```ini
-    [user]
-            email = kuangcp@aliyun.com
-            name = kuangcp
-    [core]
-            quotepath = false
-            autocrlf = false
-            safecrlf = true
-    [merge]
-            tool = kdiff3 # 用于比较差异时使用的工具
-    [cola]
-            spellcheck = false
-            fontdiff = IBM Plex Mono SemiBold,9,-1,5,50,0,0,0,0,0
-    [diff]    
-        tool = meld # 配置在merge中发生冲突时的编辑工具,和diff中的tool近乎一致
+[user]
+    email = kuangcp@aliyun.com
+    name = kuangcp
+[core]
+    quotepath = false
+    autocrlf = false
+    safecrlf = false
+[credential]
+    helper = store
+[merge]
+    tool = kdiff3 # 用于比较差异时使用的工具
+[diff]    
+    tool = meld # 配置在merge中发生冲突时的编辑工具,和diff中的tool近乎一致
 ```
 
 > 可用于上面的diff 或 merge 的[工具 详细](/Linux/Base/LinuxFile.md#比较文件内容)
