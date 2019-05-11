@@ -380,6 +380,7 @@ Java 中 ArrayList 和 数组的对比
 > [参考博客: hash是如何处理冲突的?](http://www.cnblogs.com/jillzhang/archive/2006/11/03/548671.html)
 
 > [参考博客: 一种高级的DoS攻击-Hash碰撞攻击 ](https://yq.aliyun.com/articles/92194?utm_campaign=wenzhang&utm_medium=article&utm_source=QQ-qun&201762&utm_content=m_22308)
+> [Application vulnerability due to Non Random Hash Functions](https://stackoverflow.com/questions/8669946/application-vulnerability-due-to-non-random-hash-functions)  
 
 #### 开放定址法
 - 开放定址法有一个公式: `Hi=(H(key)+di) % m` i=1,2,...,k(k<=m-1)
