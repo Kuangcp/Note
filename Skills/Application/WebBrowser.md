@@ -22,7 +22,7 @@ categories:
     1. [Vivaldi](#vivaldi)
     1. [Opera](#opera)
 
-**目录 end**|_2019-05-07 09:32_|
+**目录 end**|_2019-05-12 12:37_|
 ****************************************
 # 浏览器
 ## FireFox
@@ -125,6 +125,7 @@ categories:
 - [插件网](https://extfans.com/)
 - [chromefor](https://www.chromefor.com/)
 - [52crx](https://52crx.com/)
+- [Chrome插件英雄榜](https://github.com/zhaoolee/ChromeAppHeroes)
 
 ### 主题
 1. Aero Trans Brushed Metal Theme

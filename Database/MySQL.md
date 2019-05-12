@@ -29,7 +29,7 @@ categories:
     1. [数据编码](#数据编码)
     1. [数据库](#数据库)
         1. [创建](#创建)
-        1. [导出](#导出)
+        1. [导出和导入](#导出和导入)
         1. [修改](#修改)
     1. [表](#表)
         1. [创建](#创建)
@@ -69,7 +69,7 @@ categories:
         1. [授权](#授权)
 1. [查询](#查询)
 
-**目录 end**|_2019-05-09 20:31_|
+**目录 end**|_2019-05-12 12:37_|
 ****************************************
 
 # Mysql
@@ -91,18 +91,17 @@ _配置_
     - 确保skip-networking被删除或者屏蔽，否则不支持TCP/IP 访问
 
 ```ini
-    # 要在对应的 [] 之后添加配置
-    [mysqld]
-    character-set-server=utf8
-    [client]
-    default-character-set = utf8
+[mysqld]
+character-set-server=utf8
+[client]
+default-character-set = utf8
 ```
 
 _重启_
 - 重启MySQL ：`sudo systemctl restart mysql`
 
 ### Docker安装
->[Docker安装MySQL](/Linux/Container/DockerSoft.md##MySQL) | [博客：Mysql有没有必要Docker化](http://www.infoq.com/cn/articles/can-mysql-run-in-docker?utm_campaign=rightbar_v2&utm_source=infoq&utm_medium=articles_link&utm_content=link_text)
+>[Docker安装MySQL](/Linux/Container/DockerSoft.md#MySQL) | [博客：Mysql有没有必要Docker化](http://www.infoq.com/cn/articles/can-mysql-run-in-docker?utm_campaign=rightbar_v2&utm_source=infoq&utm_medium=articles_link&utm_content=link_text)
 
 ### 图形化客户端
 > windows上就直接 MySQL-Font HeidiSQL Linux就终端了..虽然wine也能装这俩 | [10个Mysql图形客户端](http://www.linuxidc.com/Linux/2015-01/111421.htm)
@@ -139,22 +138,24 @@ _重启_
 > [key words](https://dev.mysql.com/doc/mysqld-version-reference/en/keywords-5-7.html)
 
 ## 数据编码 
-utf8 最大字节为3的非标准utf8实现
+utf8 最大字节为3, 非标准意义上的 utf8 实现  
 utf8mb4 才是真正意义上的 utf8 `5.5.3才开始支持`
 
 ## 数据库
 ### 创建
 > create database name;
 
-### 导出
+### 导出和导入
 > 以下的 -p -h 参数依数据库的配置情况而定
 
 1. 只导出数据库的结构 `mysqldump -uroot -pmysql -d dbname > /data/backup/sql/dbname.sql`  
-    - 导出具体的表就在数据库名后加上 表名
-1. 导出结构和数据就去掉-d参数, 导出具体的表同理
-1. 导入其实就是执行SQL文件 `source /path/to/dbname.sql`
+    - 导出具体的表就在 数据库名 后加上 表名
+    - 导出结构和数据 去掉-d参数
+1. 导入
+    - 执行SQL文件 `source /path/to/dbname.sql`
+    - 或者 `mysql -uusername -ppassword database < /path/sqlfile.sql;`
 
-> [java操作：mysql数据库导入、导出](https://blog.csdn.net/EASYgoing00/article/details/72885280)  主要的思想是Java调用系统命令行执行命令后得到导出文件， 然后读取导出的文件 进一步操作
+> [数据库迁移 Java工具的实现](https://blog.csdn.net/EASYgoing00/article/details/72885280)  主要的思路是Java调用系统命令行执行命令后得到导出文件， 然后读取导出的文件 进一步操作
 
 ### 修改
 - [ ] TODO 修改数据库
