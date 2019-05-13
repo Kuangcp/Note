@@ -26,9 +26,11 @@ categories:
 - 自从忘掉如何安装后, 就不会安装了!!!
 
 ## Tkinter
-> [官网](https://wiki.python.org/moin/TkInter/) | [官网教程](https://docs.python.org/3.5/library/tkinter.html)
+> [Offcial Site](https://wiki.python.org/moin/TkInter/) | [Official Doc](https://docs.python.org/3.5/library/tkinter.html)
 
-> [教程网](https://www.tutorialspoint.com/python/python_gui_programming.htm)
+> [Python - GUI Programming (Tkinter)](https://www.tutorialspoint.com/python/python_gui_programming.htm)
+
+> [Python GUI examples (Tkinter Tutorial)](https://likegeeks.com/python-gui-examples-tkinter-tutorial/)
 
 `安装`
 - python2: `sudo apt install python-tk`

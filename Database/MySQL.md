@@ -152,7 +152,7 @@ utf8mb4 才是真正意义上的 utf8 `5.5.3才开始支持`
     - 导出具体的表就在 数据库名 后加上 表名
     - 导出结构和数据 去掉-d参数
 1. 导入
-    - 执行SQL文件 `source /path/to/dbname.sql`
+    - 执行SQL文件 `source /path/to/dbname.sql` 特别注意文件的路径问题， 是以MySQL客户端运行时的路径为根路径的
     - 或者 `mysql -uusername -ppassword database < /path/sqlfile.sql;`
 
 > [数据库迁移 Java工具的实现](https://blog.csdn.net/EASYgoing00/article/details/72885280)  主要的思路是Java调用系统命令行执行命令后得到导出文件， 然后读取导出的文件 进一步操作
