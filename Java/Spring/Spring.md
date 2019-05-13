@@ -32,7 +32,7 @@ categories:
         1. [ReflectionUtils](#reflectionutils)
 1. [Web开发的最佳实践](#web开发的最佳实践)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-13 18:47_|
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -91,7 +91,8 @@ _其他,可选_
 - 自动注入
     - `@Resource([value=]"id")` 按名字注入
     - `@Autowried` 根据类型自动注入（只对单例起作用）和 `Resource(类名首字母小写)` 等价
-    - `@Qualifier("id") `自动注入后的进一步精确（多个的情况：）
+        - 通过阅读源码还可以知道 可以将符合条件的Bean注入到 List 和 Map 中去, 甚至 Optional
+    - `@Qualifier("id") `自动注入后的进一步精确（多个Bean的情况：）
 
 - **注意 :** 关于自动注入, 在属性上打 @Autowried 注解是不建议的, 作者建议采用构造器方式:  [Why field injection is evil](http://olivergierke.de/2013/11/why-field-injection-is-evil/)
     - 如果使用了 lombok 那么可以在类上使用 
