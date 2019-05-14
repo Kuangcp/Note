@@ -33,8 +33,9 @@
     * [ SQL ](/Database/SQL.md)
     * [ SQLServer ](/Database/SQLServer.md)
 * 【 Distributed 】
-    * 【 Distributed/Middlewave 】
-        * [ Apollo ](/Distributed/Middlewave/Apollo.md)
+    * 【 Distributed/ConfigCenter 】
+        * [ Apollo ](/Distributed/ConfigCenter/Apollo.md)
+    * 【 Distributed/ServiceDiscovery 】
     * [ RPC ](/Distributed/RPC.md)
 * 【 FrontEnd 】
     * 【 FrontEnd/Frame 】
@@ -65,6 +66,10 @@
     * 【 Java/AdvancedLearning 】
         * 【 Java/AdvancedLearning/Basic 】
             * [ StringConcat ](/Java/AdvancedLearning/Basic/StringConcat.md)
+        * 【 Java/AdvancedLearning/Cache 】
+            * [ Caffeine ](/Java/AdvancedLearning/Cache/Caffeine.md)
+            * [ GuavaCache ](/Java/AdvancedLearning/Cache/GuavaCache.md)
+            * [ Memcache ](/Java/AdvancedLearning/Cache/Memcache.md)
         * 【 Java/AdvancedLearning/Collection 】
             * [ List ](/Java/AdvancedLearning/Collection/List.md)
         * 【 Java/AdvancedLearning/Concurrency 】
@@ -127,6 +132,7 @@
         * [ Solr ](/Java/Ecosystem/Solr.md)
         * [ Vertx ](/Java/Ecosystem/Vertx.md)
     * 【 Java/MSA 】
+    * 【 Java/Pattern 】
     * 【 Java/Spring 】
         * 【 Java/Spring/Why 】
         * [ Spring-Bean学习 ](/Java/Spring/Spring-Bean学习.md)
@@ -270,6 +276,8 @@
         * [ Profile ](/Skills/CS/Profile.md)
         * [ ProgramThinking ](/Skills/CS/ProgramThinking.md)
         * [ Time ](/Skills/CS/Time.md)
+    * 【 Skills/Cache 】
+        * [ Cache ](/Skills/Cache/Cache.md)
     * 【 Skills/Councurrency 】
         * [ Concurrency ](/Skills/Councurrency/Concurrency.md)
     * 【 Skills/DevOps 】
@@ -278,6 +286,7 @@
         * [ ContinuousIntegration ](/Skills/DevOps/ContinuousIntegration.md)
         * [ ELK ](/Skills/DevOps/ELK.md)
         * [ Jenkins ](/Skills/DevOps/Jenkins.md)
+        * [ Percona ](/Skills/DevOps/Percona.md)
     * 【 Skills/Document 】
         * [ License ](/Skills/Document/License.md)
         * [ MarkDown ](/Skills/Document/MarkDown.md)
@@ -289,6 +298,8 @@
         * [ HTTP ](/Skills/Network/HTTP.md)
         * [ Network ](/Skills/Network/Network.md)
         * [ WebSecurity ](/Skills/Network/WebSecurity.md)
+    * 【 Skills/Search 】
+        * [ Elasticsearch ](/Skills/Search/Elasticsearch.md)
     * 【 Skills/SoftwareEngineering 】
         * [ CodeExcellentCode ](/Skills/SoftwareEngineering/CodeExcellentCode.md)
     * 【 Skills/Spider 】
