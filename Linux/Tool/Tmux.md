@@ -58,6 +58,8 @@ categories:
 
 > [参考博客: 保存和恢复 Tmux 会话 ](https://liam.page/2016/09/10/tmux-plugin-resurrect/)
 
+- `Prefix I` 安装新增的插件 
+
 ### tmux-resurrect
 
 > [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)

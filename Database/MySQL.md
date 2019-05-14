@@ -214,8 +214,19 @@ _重命名表格_ `RENAME TABLE old TO new `
 - 使用 explain 判断SQL语句是否合理使用索引，尽量避免 extra 列出现：using file sort，using temporary
 
 ### 基本使用
-1. 创建 `alter table add index index_name (column1, column2);`
-1. 查看 `show index from table` 也可以是 db.table 
+1. **创建**
+    - ALTER 方式
+        - 普通索引 `ALTER table ADD INDEX index_name(column1, column2);`
+        - 唯一索引 ADD UNIQUE, 主键索引 ADD PRIMARY KEY
+    - CREATE 方式
+        - `CREATE INDEX index_name ON table_name (column_list)`
+        - 唯一索引 CREATE UNIQUE INDEX
+1. **删除**
+    - `DROP INDEX index_name ON talbe_name`
+    - `ALTER TABLE table_name DROP INDEX index_name`
+    - `ALTER TABLE table_name DROP PRIMARY KEY`      
+1. **查看** 
+    - `show index from table` 也可以是 db.table 
     - [Official Doc](https://dev.mysql.com/doc/refman/5.7/en/show-index.html)`详解命令的输出内容`
 
 ### 索引的类型
@@ -243,7 +254,7 @@ _重命名表格_ `RENAME TABLE old TO new `
 
 > 注意: 单列上存在 null 值, 索引仍能使用 
 
-- [ ] 学习 null 和 索引的详细知识 
+- [ ] 学习 null 和 索引的详细知识  
 
 > 类型隐式转换
 1. `where int_col='123'` 不会发生类型隐式转换，可使用索引
@@ -260,7 +271,7 @@ _重命名表格_ `RENAME TABLE old TO new `
 2. 宁缺勿滥。认为索引会消耗空间、严重拖慢更新和新增速度。
 3. 抵制唯一索引。认为业务的唯一性一律需要在应用层通过“先查后插”方式解决。
 
-**************
+************************
 
 # 视图
 > 保障数据安全性，提高查询效率
@@ -304,6 +315,8 @@ _重命名表格_ `RENAME TABLE old TO new `
 - 你可以使用触发程序来更改将要插入到新行中的值，或用于更新行的值。
 - 在BEFORE触发程序中，AUTO_INCREMENT列的NEW值为0，不是实际插入新记录时将自动生成的序列号。
 
+************************
+
 # 存储过程
 ## 基本结构示例：
 ```sql
@@ -320,6 +333,8 @@ _重命名表格_ `RENAME TABLE old TO new `
       call doiterate(7);
       select @x;
 ```
+
+************************
 
 #  函数
 ## 简单示例
@@ -344,7 +359,7 @@ _重命名表格_ `RENAME TABLE old TO new `
     select fun_test(8,'d');
 ```
 
-***********************************
+************************
 
 # 常用命令集合
 ## 查看数据库参数
@@ -451,7 +466,9 @@ TIMESTAMP(5) -> TIMESTAMP(6)
 ```sql
 alter table `Bookinfo` add constraint `F_N` foreign key `F_N`(`classno`) references `Bookclass`(`classno`) on delete cascade on update cascade;
 ```
-*********************************************
+
+************************
+
 # 变量
 - 加了@ 的是用户变量， 限定当前用户，当前客户端， 在declare中声明的参数可以不加 @，那就是是局部变量
 - 例如：declare a int ;  也可以直接就用不用声明，作为临时变量 例如这两种写法：
@@ -467,8 +484,11 @@ alter table `Bookinfo` add constraint `F_N` foreign key `F_N`(`classno`) referen
 	end if;
 ```
 
+************************
 
 # 异常
+
+************************
 
 # 用户管理
 > [参考博客](http://www.cnblogs.com/fslnet/p/3143344.html)
