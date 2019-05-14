@@ -9,7 +9,7 @@ categories:
  
 1. [Kafaka](#kafaka)
 
-**目录 end**|_2019-04-29 00:24_|
+**目录 end**|_2019-05-14 14:42_|
 ****************************************
 # Kafaka
 > Apache顶级项目
@@ -17,3 +17,4 @@ categories:
 > [参考博客: 初探Kafka Streams](http://ifeve.com/%e5%88%9d%e6%8e%a2kafka-streams/)
 
 - [ksql](https://github.com/confluentinc/ksql)
+> [参考博客: Kafka Topic Architecture](http://cloudurable.com/blog/kafka-architecture-topics/index.html)  

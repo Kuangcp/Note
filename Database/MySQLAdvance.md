@@ -40,9 +40,13 @@ categories:
 
 
 ## 性能调优
-- 分析SQL运行效率: `explain` + SQL
+> [Doc: Optimizing Queries with EXPLAIN](https://dev.mysql.com/doc/refman/5.7/en/using-explain.html)
 
 > [MySQL下INNODB引擎的SELECT COUNT(*)性能优化及思考](http://www.piaoyi.org/database/MySQL-INNODB-SELECT-COUNT.html)
+
+> `set max_execution_time=3000;` (5.7.8 新增) 设置SQL执行最大时间, 超时报错, 单位 ms
+
+> 5.6及以上版本时间类型效率 int > datetime > timestamp
 
 ### 查看状态变量
 > [ SHOW VARIABLES](https://dev.mysql.com/doc/refman/5.7/en/show-variables.html)  

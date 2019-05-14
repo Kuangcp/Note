@@ -24,34 +24,39 @@ categories:
 > [参考博客: 文本三巨头：zsh、tmux 和 vim](http://blog.jobbole.com/86571/)
 > [参考博客: 程序员高效技巧系列](http://cenalulu.github.io/linux/professional-tmux-skills/)  
 
+************************
+> 基本操作
+
 - 新建会话 `tmux new -s myth`  
 - 连接会话 `tmux a -t test`
 - 显示所有 `tmux ls` 
 - 重新加载配置文件 `tmux source ~/.tmux.conf`
 
-> [自定义配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf) `ln -s `pwd`tmux.conf ~/.tmux.conf`
-
 *************
+
+## 配置
+> [个人Tmux配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf) `ln -s `pwd`tmux.conf ~/.tmux.conf` 
 
 > 开启鼠标选择与复制
 ```conf
     set -g mouse on
 ```
 按住Shift即可照常使用鼠标选中文本
-*************
 
+*************
 ## 键绑定
-> prefix 默认是 C-b 也就是 Ctrl b
+> Prefix 默认是 C-b 也就是 Ctrl b
 
 ### 切换
 - prefix w 切换 panel 或者 window
+- Prefix () 切换Session
 
-## 插件
+************************
+
+## TPM插件管理
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) `查看Readme下载安装`
 
 > [参考博客: 保存和恢复 Tmux 会话 ](https://liam.page/2016/09/10/tmux-plugin-resurrect/)
-
-- [ ] 正确使用
 
 ### tmux-resurrect
 
@@ -60,4 +65,12 @@ categories:
 prefix c-s 保存
 prefix c-r 加载
 
-[maglev](https://github.com/caiogondim/maglev)
+### maglev
+
+[Github](https://github.com/caiogondim/maglev)
+
+### copycat
+> [Github](https://github.com/tmux-plugins/tmux-copycat)  
+
+使用: `Prefix /` 即可开始和Vim中一样的搜索
+

@@ -11,11 +11,11 @@ categories:
 **目录 start**
  
 1. [Mysql](#mysql)
-    1. [安装](#安装)
-        1. [Ubuntu安装配置MySQL](#ubuntu安装配置mysql)
-        1. [Docker安装](#docker安装)
-        1. [图形化客户端](#图形化客户端)
-        1. [命令行工具](#命令行工具)
+1. [安装](#安装)
+    1. [Ubuntu安装配置MySQL](#ubuntu安装配置mysql)
+    1. [Docker安装](#docker安装)
+    1. [图形化客户端](#图形化客户端)
+    1. [命令行工具](#命令行工具)
 1. [基本数据类型](#基本数据类型)
     1. [数值类型](#数值类型)
         1. [short](#short)
@@ -26,7 +26,6 @@ categories:
         1. [text](#text)
     1. [LongBlob](#longblob)
 1. [基本组成](#基本组成)
-    1. [数据编码](#数据编码)
     1. [数据库](#数据库)
         1. [创建](#创建)
         1. [导出和导入](#导出和导入)
@@ -35,6 +34,7 @@ categories:
         1. [创建](#创建)
         1. [修改表定义](#修改表定义)
             1. [增删字段](#增删字段)
+        1. [索引](#索引)
     1. [视图](#视图)
     1. [触发器](#触发器)
         1. [【创建单语句的触发器】](#创建单语句的触发器)
@@ -69,14 +69,22 @@ categories:
         1. [授权](#授权)
 1. [查询](#查询)
 
-**目录 end**|_2019-05-12 12:37_|
+**目录 end**|_2019-05-14 14:42_|
 ****************************************
-
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
 
-## 安装
-### Ubuntu安装配置MySQL
+## 规约
+- 优先选择utf8字符集，需要存储emoji字符的，则选择utf8mb4字符集。不要单独定义字符集、校验集、存储引擎、行格式。
+    - CREATE TABLE ... ENGINE = INNODB DEFAULT CHARSET = utf8 ROW_FORMAT = COMPACT，尽量不要单独指定这些选项。不同的字符集/校验集关联查询会导致索引失效，5.6、5.7默认的ROW_FORMAT不同，最好让其自行匹配当前版本。
+- 小数类型为 decimal，禁止使用 float 和 double。
+- varchar 是可变长字符串，不预先分配存储空间，长度不要超过 5000，如果存储长度大于此值，定义字段类型为 text，独立出来一张表，用主键来对应，避免影响其它字段索引效率
+- 字段允许适当冗余，以提高查询性能，但必须考虑数据一致。冗余字段应遵循:
+    - 不是频繁修改的字段。
+    - 不是 varchar 超长字段，更不能是 text 字段。
+
+# 安装
+## Ubuntu安装配置MySQL
 - 更新列表` sudo apt-get update `
 - 安装MySQL `sudo apt-get install mysql-server mysql-client`
 - 检查服务是否已经开启 ： `sudo netstat -tap | grep mysql `
@@ -100,22 +108,23 @@ default-character-set = utf8
 _重启_
 - 重启MySQL ：`sudo systemctl restart mysql`
 
-### Docker安装
->[Docker安装MySQL](/Linux/Container/DockerSoft.md#MySQL) | [博客：Mysql有没有必要Docker化](http://www.infoq.com/cn/articles/can-mysql-run-in-docker?utm_campaign=rightbar_v2&utm_source=infoq&utm_medium=articles_link&utm_content=link_text)
+## Docker安装
+> [Docker安装MySQL](/Linux/Container/DockerSoft.md#MySQL) | [博客：Mysql有没有必要Docker化](http://www.infoq.com/cn/articles/can-mysql-run-in-docker)
 
-### 图形化客户端
-> windows上就直接 MySQL-Font HeidiSQL Linux就终端了..虽然wine也能装这俩 | [10个Mysql图形客户端](http://www.linuxidc.com/Linux/2015-01/111421.htm)
+## 图形化客户端
+> Windows平台上 MySQL-Font HeidiSQL | [10个Mysql图形客户端](http://www.linuxidc.com/Linux/2015-01/111421.htm)
 
-### 命令行工具
-> [mycli](https://github.com/dbcli/mycli)
+## 命令行辅助工具
+> [mycli](https://github.com/dbcli/mycli)`具有自动提示`
 
 ********************************
 # 基本数据类型
 > [MySQL 数据类型](http://www.cnblogs.com/bukudekong/archive/2011/06/27/2091590.html)
+
 ## 数值类型
 ### short
 ### int
-###  decimal 
+### decimal 
 -  The declaration syntax for a DECIMAL column is DECIMAL(M,D). The ranges of values for the arguments are as follows:
    - M is the maximum number of digits (the precision). It has a range of 1 to 65.
    - D is the number of digits to the right of the decimal point (the scale). It has a range of 0 to 30 and must be no larger than M. 
@@ -137,13 +146,14 @@ _重启_
 # 基本组成
 > [key words](https://dev.mysql.com/doc/mysqld-version-reference/en/keywords-5-7.html)
 
-## 数据编码 
-utf8 最大字节为3, 非标准意义上的 utf8 实现  
-utf8mb4 才是真正意义上的 utf8 `5.5.3才开始支持`
+> 注意: utf8 最大字节为3, 非标准意义上的 utf8 实现, utf8mb4 才是真正意义上的 utf8 `5.5.3才开始支持` utf8 一般情况不会出问题, 除非有 emoji 等等
 
 ## 数据库
 ### 创建
 > create database name;
+
+### 修改
+- [ ] TODO 修改数据库
 
 ### 导出和导入
 > 以下的 -p -h 参数依数据库的配置情况而定
@@ -157,16 +167,13 @@ utf8mb4 才是真正意义上的 utf8 `5.5.3才开始支持`
 
 > [数据库迁移 Java工具的实现](https://blog.csdn.net/EASYgoing00/article/details/72885280)  主要的思路是Java调用系统命令行执行命令后得到导出文件， 然后读取导出的文件 进一步操作
 
-### 修改
-- [ ] TODO 修改数据库
-
 ## 表
 ### 创建
 - `create table name (field int, field varchar(32)....);`
 - 查看表的创建语句 `show create table name;`
 
 ### 修改表定义
-- [ ] TODO 修改表格
+- [ ] TODO 修改表
 
 _重命名表格_ `RENAME TABLE old TO new `
 
@@ -174,7 +181,79 @@ _重命名表格_ `RENAME TABLE old TO new `
 - 增加字段 `alter table name add field1 int, field2 varchar(20);`
 - 删除字段 `alter table name drop column field1, drop column field2;`
 
+### 索引
+> [Official Doc](https://dev.mysql.com/doc/refman/5.7/en/optimization-indexes.html)  
+
+索引是采用特定的数据结构设计(BTree 或者 Hash), 为了对若干列进行快速访问  
+
+> 优点
+1. 大大加快查询速度
+1. 如果使用唯一索引，保证数据库表中每条数据的唯一性；
+1. 加快表与表之间的连接操作
+1. 使用排序和分组检索数据时，可以显著的加快排序和分组的时间
+
+> 缺点
+1. 需要额外占用存储空间
+1. 当对被索引的数据进行`增删改`, 需要重建索引, 有一定性能影响
+
+> 注意: [Avoiding Full Table Scans](https://dev.mysql.com/doc/refman/5.7/en/table-scan-avoidance.html)
+
+- 业务上具有唯一特性的字段，即使是多个字段的组合，也必须建成唯一索引
+- 对长度大于50的 varchar 字段建立索引时，按需求恰当的使用前缀索引，或使用其他方法(例如增加int类型列col_crc32，然后对col_crc32建立索引)
+- 合理创建联合索引(避免冗余)，区分度最高的在最左边，单个索引的字段数不超过5个
+- 单张表的索引数量控制在5个以内，若单张表多个字段在查询需求上都要单独用到索引，需要经过DBA评估。查询性能问题无法解决的，应从产品设计上进行重构
+- 使用 explain 判断SQL语句是否合理使用索引，尽量避免 extra 列出现：using file sort，using temporary
+
+#### 基本使用
+1. 创建 `alter table add index index_name (column1, column2);`
+1. 查看 `show index from table` 也可以是 db.table 
+    - [Official Doc](https://dev.mysql.com/doc/refman/5.7/en/show-index.html)`详解命令的输出内容`
+
+#### 索引的类型
+##### 普通索引
+##### 主键索引
+##### 聚集索引
+##### 非聚集索引
+##### 覆盖索引
+##### 联合索引
+
+#### 索引不可用的场景
+
+- 通过索引扫描的记录数超过20%-30%，可能会变成全表扫描
+- 联合索引中，第一个索引列使用范围查询(这时用到部分索引)
+- 联合索引中，查询条件不是最左索引列
+- 模糊查询条件列`最左`以`通配符%`开始
+- HEAP表使用HASH索引时，使用范围检索或者ORDER BY
+- 多表关联时，排序字段不属于驱动表，无法利用索引完成排序
+- 两个独立索引，其中一个用于检索，一个用于排序(只能用到一个)
+- JOIN查询时，关联列`数据类型/以及字符集/检验集`不一致也会导致索引不可用
+- 对索引列进行运算
+- 条件查询中 有 or
+- 联合索引中 最左原则, 必须要使用最左列才能使得索引生效
+- 如果mysql估计使用全表扫描要比使用索引快,则不使用索引(表数量少于10 等等)
+
+> 注意: 单列上存在 null 值, 索引仍能使用 
+
+- [ ] 学习 null 和 索引的详细知识 
+
+
+> 类型隐式转换
+1. `where int_col='123'` 不会发生类型隐式转换，可使用索引
+1. `where int_col='abc'` 'abc'被隐式转换为0，可使用索引
+1. `where char_col=123` 发生类型隐式转换，不会使用索引
+
+#### 使用索引的场景
+1. 经常出现在 where 条件中的字段需添加索引。
+2. join 关联，被驱动表需要对关联字段添加索引。
+3. order by ，group by ，distinct的字段需要添加在索引的后面。
+
+> 创建索引时避免有如下极端误解：
+1. 宁滥勿缺。认为一个查询就需要建一个索引。
+2. 宁缺勿滥。认为索引会消耗空间、严重拖慢更新和新增速度。
+3. 抵制唯一索引。认为业务的唯一性一律需要在应用层通过“先查后插”方式解决。
+
 **************
+
 ## 视图
 > 保障数据安全性，提高查询效率
 

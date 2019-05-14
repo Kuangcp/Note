@@ -18,7 +18,7 @@ categories:
         1. [主题](#主题)
             1. [自己定制](#自己定制)
 
-**目录 end**|_2019-05-10 18:10_|
+**目录 end**|_2019-05-14 14:42_|
 ****************************************
 # Zsh
 > [arch zsh wiki](https://wiki.archlinux.org/index.php/Zsh)
@@ -69,8 +69,11 @@ _额外安装_
     - `git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k`
     - `powerlevel9k/powerlevel9k`
 
-- Bullet Train (桌面在用) | [Github repo](https://github.com/caiogondim/bullet-train.zsh)
+- Bullet Train `桌面在用` 
+    - [Github repo](https://github.com/caiogondim/bullet-train.zsh) |  [必需的符号字体](https://github.com/powerline/powerline)
     - Source Code Pro for Powerline + Powerline + Awesonme 的 Bold 字体搭配最合适
+- Maglev `Tmux 主题 和上面的Zsh主题搭配使用`
+    - [Github地址](https://github.com/caiogondim/maglev)
 
 - spaceship
     - [地址](https://www.ctolib.com/denysdovhan-spaceship-zsh-theme.html)
@@ -79,9 +82,6 @@ _额外安装_
 1. mkdir $ZSH_CUSTOM/themes/
 2. wget http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
 3. config .zshrc to `ZSH_THEME="bullet-train" `
-
-- Maglev
-    - [Github地址](https://github.com/caiogondim/maglev)
 
 #### 自己定制
 > [Github doc](https://github.com/robbyrussell/oh-my-zsh/wiki/Customization)
