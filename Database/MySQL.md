@@ -11,11 +11,12 @@ categories:
 **目录 start**
  
 1. [Mysql](#mysql)
+    1. [规约](#规约)
 1. [安装](#安装)
     1. [Ubuntu安装配置MySQL](#ubuntu安装配置mysql)
     1. [Docker安装](#docker安装)
     1. [图形化客户端](#图形化客户端)
-    1. [命令行工具](#命令行工具)
+    1. [命令行辅助工具](#命令行辅助工具)
 1. [基本数据类型](#基本数据类型)
     1. [数值类型](#数值类型)
         1. [short](#short)
@@ -25,54 +26,67 @@ categories:
         1. [varchar](#varchar)
         1. [text](#text)
     1. [LongBlob](#longblob)
-1. [基本组成](#基本组成)
-    1. [数据库](#数据库)
-        1. [创建](#创建)
-        1. [导出和导入](#导出和导入)
-        1. [修改](#修改)
-    1. [表](#表)
-        1. [创建](#创建)
-        1. [修改表定义](#修改表定义)
-            1. [增删字段](#增删字段)
-        1. [索引](#索引)
-    1. [视图](#视图)
-    1. [触发器](#触发器)
-        1. [【创建单语句的触发器】](#创建单语句的触发器)
-        1. [【创建多语句的触发器】](#创建多语句的触发器)
-        1. [【NEW 和 OLD关键字】](#new-和-old关键字)
-    1. [存储过程](#存储过程)
-        1. [基本结构示例：](#基本结构示例)
-    1. [函数](#函数)
-        1. [【简单示例】](#简单示例)
-1. [1.mysql常用命令集合](#1mysql常用命令集合)
+1. [数据库](#数据库)
+    1. [创建](#创建)
+    1. [修改](#修改)
+    1. [导出和导入](#导出和导入)
+1. [表](#表)
+    1. [创建](#创建)
+    1. [修改表定义](#修改表定义)
+        1. [增删字段](#增删字段)
+    1. [索引](#索引)
+        1. [基本使用](#基本使用)
+        1. [索引的类型](#索引的类型)
+            1. [普通索引](#普通索引)
+            1. [主键索引](#主键索引)
+            1. [聚集索引](#聚集索引)
+            1. [非聚集索引](#非聚集索引)
+            1. [覆盖索引](#覆盖索引)
+            1. [联合索引](#联合索引)
+        1. [索引不可用的场景](#索引不可用的场景)
+        1. [使用索引的场景](#使用索引的场景)
+1. [视图](#视图)
+1. [触发器](#触发器)
+    1. [创建单语句的触发器](#创建单语句的触发器)
+    1. [创建多语句的触发器](#创建多语句的触发器)
+    1. [NEW 和 OLD关键字](#new-和-old关键字)
+1. [存储过程](#存储过程)
+    1. [基本结构示例：](#基本结构示例)
+1. [函数](#函数)
+    1. [简单示例](#简单示例)
+1. [常用命令集合](#常用命令集合)
     1. [查看数据库参数](#查看数据库参数)
         1. [查看连接状况](#查看连接状况)
-    1. [1.1【自增长】](#11自增长)
-    1. [1.2【主键约束的修改】](#12主键约束的修改)
-    1. [1.3【修改表名】](#13修改表名)
-    1. [1.4【定界符】](#14定界符)
-    1. [1.5【已有表数据，新建表】](#15已有表数据新建表)
-    1. [1.6【查看所有连接状态】](#16查看所有连接状态)
-    1. [1.7【查看表的状态】](#17查看表的状态)
-    1. [1.8【关于时间 】](#18关于时间-)
-        1. [1.8.1【常用函数】](#181常用函数)
-        1. [1.8.2【获取当前时间与i个月之间的天数】](#182获取当前时间与i个月之间的天数)
-        1. [1.8.3 datetime和timestamp区别](#183-datetime和timestamp区别)
-    1. [1.9 【插入外码】](#19-插入外码)
-1. [2.【变量】](#2变量)
-1. [3.【基本流程语法】](#3基本流程语法)
-1. [7.【异常】](#7异常)
-1. [8.【用户管理】](#8用户管理)
+    1. [自增长](#自增长)
+    1. [主键约束的修改](#主键约束的修改)
+    1. [修改表名](#修改表名)
+    1. [定界符](#定界符)
+    1. [已有表数据，新建表](#已有表数据新建表)
+    1. [查看所有连接状态](#查看所有连接状态)
+    1. [查看表的状态](#查看表的状态)
+    1. [关于时间](#关于时间)
+        1. [常用函数](#常用函数)
+        1. [获取当前时间与i个月之间的天数](#获取当前时间与i个月之间的天数)
+        1. [datetime和timestamp区别](#datetime和timestamp区别)
+    1. [插入外码](#插入外码)
+1. [变量](#变量)
+1. [基本流程语法](#基本流程语法)
+1. [异常](#异常)
+1. [用户管理](#用户管理)
     1. [查看](#查看)
     1. [创建](#创建)
     1. [修改](#修改)
         1. [授权](#授权)
 1. [查询](#查询)
 
-**目录 end**|_2019-05-14 14:42_|
+**目录 end**|_2019-05-14 18:02_|
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
+
+> [key words](https://dev.mysql.com/doc/mysqld-version-reference/en/keywords-5-7.html)
+
+> 注意: utf8 最大字节为3, 非标准意义上的 utf8 实现, utf8mb4 才是真正意义上的 utf8 `5.5.3才开始支持` utf8 一般情况不会出问题, 除非有 emoji 等等
 
 ## 规约
 - 优先选择utf8字符集，需要存储emoji字符的，则选择utf8mb4字符集。不要单独定义字符集、校验集、存储引擎、行格式。
@@ -143,19 +157,14 @@ _重启_
 创建UTF8编码数据库 `CREATE DATABASE `test2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci`
 
 *****************************
-# 基本组成
-> [key words](https://dev.mysql.com/doc/mysqld-version-reference/en/keywords-5-7.html)
-
-> 注意: utf8 最大字节为3, 非标准意义上的 utf8 实现, utf8mb4 才是真正意义上的 utf8 `5.5.3才开始支持` utf8 一般情况不会出问题, 除非有 emoji 等等
-
-## 数据库
-### 创建
+# 数据库
+## 创建
 > create database name;
 
-### 修改
+## 修改
 - [ ] TODO 修改数据库
 
-### 导出和导入
+## 导出和导入
 > 以下的 -p -h 参数依数据库的配置情况而定
 
 1. 只导出数据库的结构 `mysqldump -uroot -pmysql -d dbname > /data/backup/sql/dbname.sql`  
@@ -167,21 +176,21 @@ _重启_
 
 > [数据库迁移 Java工具的实现](https://blog.csdn.net/EASYgoing00/article/details/72885280)  主要的思路是Java调用系统命令行执行命令后得到导出文件， 然后读取导出的文件 进一步操作
 
-## 表
-### 创建
+# 表
+## 创建
 - `create table name (field int, field varchar(32)....);`
 - 查看表的创建语句 `show create table name;`
 
-### 修改表定义
+## 修改表定义
 - [ ] TODO 修改表
 
 _重命名表格_ `RENAME TABLE old TO new `
 
-#### 增删字段
+### 增删字段
 - 增加字段 `alter table name add field1 int, field2 varchar(20);`
 - 删除字段 `alter table name drop column field1, drop column field2;`
 
-### 索引
+## 索引
 > [Official Doc](https://dev.mysql.com/doc/refman/5.7/en/optimization-indexes.html)  
 
 索引是采用特定的数据结构设计(BTree 或者 Hash), 为了对若干列进行快速访问  
@@ -204,20 +213,20 @@ _重命名表格_ `RENAME TABLE old TO new `
 - 单张表的索引数量控制在5个以内，若单张表多个字段在查询需求上都要单独用到索引，需要经过DBA评估。查询性能问题无法解决的，应从产品设计上进行重构
 - 使用 explain 判断SQL语句是否合理使用索引，尽量避免 extra 列出现：using file sort，using temporary
 
-#### 基本使用
+### 基本使用
 1. 创建 `alter table add index index_name (column1, column2);`
 1. 查看 `show index from table` 也可以是 db.table 
     - [Official Doc](https://dev.mysql.com/doc/refman/5.7/en/show-index.html)`详解命令的输出内容`
 
-#### 索引的类型
-##### 普通索引
-##### 主键索引
-##### 聚集索引
-##### 非聚集索引
-##### 覆盖索引
-##### 联合索引
+### 索引的类型
+#### 普通索引
+#### 主键索引
+#### 聚集索引
+#### 非聚集索引
+#### 覆盖索引
+#### 联合索引
 
-#### 索引不可用的场景
+### 索引不可用的场景
 
 - 通过索引扫描的记录数超过20%-30%，可能会变成全表扫描
 - 联合索引中，第一个索引列使用范围查询(这时用到部分索引)
@@ -236,13 +245,12 @@ _重命名表格_ `RENAME TABLE old TO new `
 
 - [ ] 学习 null 和 索引的详细知识 
 
-
 > 类型隐式转换
 1. `where int_col='123'` 不会发生类型隐式转换，可使用索引
 1. `where int_col='abc'` 'abc'被隐式转换为0，可使用索引
 1. `where char_col=123` 发生类型隐式转换，不会使用索引
 
-#### 使用索引的场景
+### 使用索引的场景
 1. 经常出现在 where 条件中的字段需添加索引。
 2. join 关联，被驱动表需要对关联字段添加索引。
 3. order by ，group by ，distinct的字段需要添加在索引的后面。
@@ -254,7 +262,7 @@ _重命名表格_ `RENAME TABLE old TO new `
 
 **************
 
-## 视图
+# 视图
 > 保障数据安全性，提高查询效率
 
 > [参考博客: ](http://www.jb51.net/article/36363.htm)
@@ -275,12 +283,12 @@ _重命名表格_ `RENAME TABLE old TO new `
     - LOCAL：更新视图时，要满足该视图本身定义的条件即可
 > tips：创建试图时最好加上WITH CASCADED CHECK OPTION参数，这种方式比较严格,可以保证数据的安全性
 
-## 触发器
-### 【创建单语句的触发器】
+# 触发器
+## 创建单语句的触发器
 - `CREATE TRIGGER ins_sum BEFORE INSERT ON account FOR EACH ROW SET @sum = @sum + NEW.amount;`
 - `CREATE TRIGGER trigger_name trigger_time trigger_event ON tbl_name FOR EACH ROW trigger_stmt`
 
-### 【创建多语句的触发器】
+## 创建多语句的触发器
 ```sql
       CREATE TRIGGER trigger_name trigger_time trigger_event
           ON tbl_name FOR EACH ROW
@@ -288,7 +296,7 @@ _重命名表格_ `RENAME TABLE old TO new `
           .......
       END
 ```
-### 【NEW 和 OLD关键字】
+## NEW 和 OLD关键字
 - 使用OLD和NEW关键字，能够访问受触发程序影响的行中的列（OLD和NEW不区分大小写）。在INSERT触发程序中，仅能使用NEW.col_name，没有旧行。
 - 在DELETE触发程序中，仅能使用OLD.col_name，没有新行。在UPDATE触发程序中，可以使用OLD.col_name来引用更新前的某一行的列，也能使用NEW.col_name来引用更新后的行中的列。
 - 用OLD命名的列是只读的。你可以引用它，但不能更改它。对于用NEW命名的列，如果具有SELECT权限，可引用它。
@@ -296,10 +304,10 @@ _重命名表格_ `RENAME TABLE old TO new `
 - 你可以使用触发程序来更改将要插入到新行中的值，或用于更新行的值。
 - 在BEFORE触发程序中，AUTO_INCREMENT列的NEW值为0，不是实际插入新记录时将自动生成的序列号。
 
-## 存储过程
-### 基本结构示例：
+# 存储过程
+## 基本结构示例：
 ```sql
-       -- 【loop】 要有iterate 和leave才是完整的
+       -- loop 要有iterate 和leave才是完整的
     CREATE PROCEDURE doiterate(p1 INT)
       BEGIN
         label1: LOOP
@@ -313,8 +321,8 @@ _重命名表格_ `RENAME TABLE old TO new `
       select @x;
 ```
 
-##  函数
-### 【简单示例】
+#  函数
+## 简单示例
 
 ```sql
     ---函数部分,修改定界符 
@@ -337,37 +345,38 @@ _重命名表格_ `RENAME TABLE old TO new `
 ```
 
 ***********************************
-# 1.mysql常用命令集合
+
+# 常用命令集合
 ## 查看数据库参数
 ### 查看连接状况
 > [查看mysql数据库连接数、并发数相关信息。](https://blog.csdn.net/caodongfang126/article/details/52764213)`show status like 'Threads%';`
 
-## 1.1【自增长】
-- 【创建表时设置自增长，并设置起始值】
+## 自增长
+- 创建表时设置自增长，并设置起始值
     - create table cc( id int auto_increment,name varchar(20),primary key(id) ) auto_increment=1000;
-- 【设置已有字段自增长】 
+- 设置已有字段自增长 
     - alter table test MODIFY id INT UNSIGNED AUTO_INCREMENT;
-- 【自增长的修改】 
+- 自增长的修改 
     - alter table test auto_increment=10； 注意只能改的比当前的值大，不可以改的比当前小
-- 【自增长字段溢出】
+- 自增长字段溢出
     - 设置自动增长的列，只能是int类型（包含了各种int），当出现了溢出就可以改成bigint 但是如果有外键约束，可能就会更改失败，还不如删库重建，实在太大了就删约束再建约束
 
-## 1.2【主键约束的修改】
+## 主键约束的修改
 alter table 表名  add constraint (PK_表名) primary key (j,k,l); 关于一些约束条件constraint好像没有起到作用比如 check
-## 1.3【修改表名】
+## 修改表名
 rename table table1 to table2; 	切记不可随便修改表名，改了就要修改相应的 外键，触发器，函数，存储过程！！！
-## 1.4【定界符】
+## 定界符
 delimiter 任意字符除了转义字符：\
-## 1.5【已有表数据，新建表】
+## 已有表数据，新建表
 create table temp as select * from test;
-## 1.6【查看所有连接状态】
+## 查看所有连接状态
 show processlist  如果是普通用户，只能查看自己当前的连接状态
-## 1.7【查看表的状态】
+## 查看表的状态
 show table status like 'assitant' 可以看到当前自动增长的id当前值 dev.mysql.com/downloads/mysql/#downloads
 
 *****
-## 1.8【关于时间 】
-### 1.8.1【常用函数】
+## 关于时间 
+### 常用函数
 - **NOW()**函数以 'YYYY-MM-DD HH:MM:SS' 返回当前的日期时间，可以直接存到**DATETIME**字段中。
 - **CURDATE()**以’YYYY-MM-DD’的格式返回今天的日期，可以直接存到**DATE**字段中。
 - **CURTIME()**以’HH:MM:SS’的格式返回当前的时间，可以直接存到**TIME**字段中。
@@ -376,7 +385,7 @@ show table status like 'assitant' 可以看到当前自动增长的id当前值 d
    - select datediff(curdate(), date_sub(curdate(), interval i month)); 
 - 一般函数是不能作为 default默认值的，使用只能在插入修改数据时使用
 
-### 1.8.2【获取当前时间与i个月之间的天数】
+### 获取当前时间与i个月之间的天数
 - 问题：假设当前是5月19 且（提前月份）i=1 就是计算从4月19到今天的天数
     - 解答：
 
@@ -391,7 +400,7 @@ show table status like 'assitant' 可以看到当前自动增长的id当前值 d
       SELECT count(*) FROM t_get_video_temp Where DATE_FORMAT(get_date, '%Y-%d')='2006-07';
       SELECT count(*) FROM t_get_video_temp Where get_date like '2006%-07%';
 ```
-### 1.8.3 datetime和timestamp区别
+### datetime和timestamp区别
 ```sql
       -- 问题：为什么 5.5的环境下运行两句命令得到不同的结果（5.6不会有错误）
       -- 没错误
@@ -438,12 +447,12 @@ TIMESTAMP(5) -> TIMESTAMP(6)
 - 以后当你对该记录行的其它列执行更新时，为 TIMESTAMP 列值明确地指定为它原来的值。
 - 另一方面，你可能发现更容易的方法，使用 DATETIME 列，当新建记录行时以 NOW() 初始化该列，以后在对该记录行进行更新时不再处理它。
 
-## 1.9 【插入外码】
+## 插入外码
 ```sql
 alter table `Bookinfo` add constraint `F_N` foreign key `F_N`(`classno`) references `Bookclass`(`classno`) on delete cascade on update cascade;
 ```
 *********************************************
-# 2.【变量】
+# 变量
 - 加了@ 的是用户变量， 限定当前用户，当前客户端， 在declare中声明的参数可以不加 @，那就是是局部变量
 - 例如：declare a int ;  也可以直接就用不用声明，作为临时变量 例如这两种写法：
    - set @name =   expr;
@@ -451,7 +460,7 @@ alter table `Bookinfo` add constraint `F_N` foreign key `F_N`(`classno`) referen
 - 注意：MySQL中只有基本数据类型，没有Oracle中那个绑定类型：表类型或行类型，所以处理起来有点。。不如Oracle方便，不管是触发器还是存储过程
 - set @a= select * from User；执行这句话就会报出 operand should contain 1 column(s)错误，就是说多值赋值的错误
 
-# 3.【基本流程语法】
+# 基本流程语法
 ```sql
 	if ... then 
 	elseif ... then (注意elseif中间没有空格)
@@ -459,9 +468,9 @@ alter table `Bookinfo` add constraint `F_N` foreign key `F_N`(`classno`) referen
 ```
 
 
-# 7.【异常】
+# 异常
 
-# 8.【用户管理】
+# 用户管理
 > [参考博客](http://www.cnblogs.com/fslnet/p/3143344.html)
 
 ## 查看
