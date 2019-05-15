@@ -12,7 +12,7 @@ categories:
 1. [Tomcat](#tomcat)
     1. [原理](#原理)
     1. [配置运行](#配置运行)
-        1. [配置解压版 Tomcat](#配置解压版-tomcat)
+        1. [配置解压方式的Tomcat](#配置解压方式的tomcat)
             1. [IDE中配置运行](#ide中配置运行)
         1. [编码](#编码)
         1. [虚拟目录](#虚拟目录)
@@ -35,21 +35,22 @@ categories:
 1. [Tomcat和Jetty](#tomcat和jetty)
 1. [Tips](#tips)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-15 18:00_|
 ****************************************
 # Tomcat
 > [官方网站](http://tomcat.apache.org/)
 
 - 官网上大致有：
     - Tomcat `7 8 8.5 9` 大版本
-    - Tomcat Native `优化Tomcat性能，提升速倍`
+    - Tomcat Native `优化Tomcat性能，提升数倍`
     - Apache Standard Taglib `JSTL的实现`
     - Tomcat Connectors `用于连接IIS Apache` [官方文档](http://tomcat.apache.org/connectors-doc/index.html)
 
-> [一款功能强大的Tomcat管理监控工具](https://zhuanlan.zhihu.com/p/35557373?group_id=967469270317457408)
+> [一款功能强大的Tomcat管理监控工具](https://zhuanlan.zhihu.com/p/35557373?group_id=967469270317457408)  
 > [psi-probe](https://github.com/psi-probe/psi-probe)`Tomcat监控管理工具`
 
-*************
+************************
+
 ## 原理
 > 更多查看 `Tomcat那些事儿` 公众号  
 > [Tomcat目录部署与Context描述文件context.xml ](https://mp.weixin.qq.com/s?__biz=MzI3MTEwODc5Ng==&mid=2650859355&idx=1&sn=2122baf040ae337dba90201a48b4e11c&chksm=f1329888c645119eec4473e11beaf988c48ce02c52151502086595de59b65dd4bd7cf129530e&scene=21#wechat_redirect)
@@ -60,12 +61,12 @@ categories:
 > | [你了解JMX在Tomcat的应用吗?](https://mp.weixin.qq.com/s?__biz=MzI3MTEwODc5Ng==&mid=401135587&idx=1&sn=610950fda2eceb3683a9fe45078f1a83&scene=21#wechat_redirect)
 
 ## 配置运行
-- 精简版, 适合放在服务器
-    - [tomcat-clean-8.5.31](http://cloud.kuangcp.top/tomcat-clean-8.5.31.zip) | [tomcat-clean-9.0.8](http://cloud.kuangcp.top/tomcat-clean-9.0.8.zip)
-- 个人配置版,适合个人图形化使用
-    - [tomcat-admin-9.0.8](http://cloud.kuangcp.top/tomcat-admin-9.0.8.zip) | [tomcat-admin-8.5.31](http://cloud.kuangcp.top/tomcat-admin-8.5.31.zip)
+> 个人配置好的
 
-###  配置解压版 Tomcat
+- 精简版, 适合放在服务器 [tomcat-clean-8.5.31](http://cloud.kuangcp.top/tomcat-clean-8.5.31.zip) | [tomcat-clean-9.0.8](http://cloud.kuangcp.top/tomcat-clean-9.0.8.zip)
+- 个人配置版,适合个人使用 [tomcat-admin-9.0.8](http://cloud.kuangcp.top/tomcat-admin-9.0.8.zip) | [tomcat-admin-8.5.31](http://cloud.kuangcp.top/tomcat-admin-8.5.31.zip)
+
+###  配置解压方式的Tomcat
 `Windows 平台`
 1. 在setclasspath中把前几行关于JAVA_HOME，JRE_HOME的路径改成自己的
 2. 系统中添加catalina_home环境变量
@@ -75,9 +76,12 @@ categories:
 `Linux 平台`
 - 下载解压，然后 bin 目录下执行 `chmod +x *.sh`
 
-> [参考博客](http://blog.csdn.net/kkgbn/article/details/52071109)
+************************
 
-`配置管理账号 tomcat-users.xml`
+> 配置管理账户
+
+`配置管理账号 tomcat-users.xml 中的 tomcat-users 节点`
+
 ```xml
     <role rolename="manager"/>　  
     <role rolename="manager-gui"/>　  
@@ -88,14 +92,18 @@ categories:
 ```
 - 其中admin-gui是为了能访问manger的界面，manager-secret是为了可以上传war文件 
 
-`配置本机外可访问管理页面`
--  /conf/Catalina/localhost/下  添加manager.xml 
+************************
+
+`配置本机外可访问管理页面`  
+
+/conf/Catalina/localhost/ 下添加 manager.xml 文件
 ```xml
     <Context privileged="true" antiResourceLocking="false"   
          docBase="${catalina.home}/webapps/manager">  
              <Valve className="org.apache.catalina.valves.RemoteAddrValve" allow="^.*$" />  
     </Context> 
 ```
+
 #### IDE中配置运行
 > [你一定不知道IDE里的Tomcat是怎么工作的！ ](https://mp.weixin.qq.com/s?__biz=MzI3MTEwODc5Ng==&mid=401107149&idx=1&sn=908bd8ba76b38417570056795626c163&scene=21#wechat_redirect)
 

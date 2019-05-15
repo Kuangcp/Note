@@ -35,6 +35,7 @@
 * 【 Distributed 】
     * 【 Distributed/ConfigCenter 】
         * [ Apollo ](/Distributed/ConfigCenter/Apollo.md)
+    * 【 Distributed/DataProcessingEngine 】
     * 【 Distributed/ServiceDiscovery 】
     * [ RPC ](/Distributed/RPC.md)
 * 【 FrontEnd 】
@@ -132,7 +133,6 @@
         * [ Solr ](/Java/Ecosystem/Solr.md)
         * [ Vertx ](/Java/Ecosystem/Vertx.md)
     * 【 Java/MSA 】
-    * 【 Java/Pattern 】
     * 【 Java/Spring 】
         * 【 Java/Spring/Why 】
         * [ Spring-Bean学习 ](/Java/Spring/Spring-Bean学习.md)

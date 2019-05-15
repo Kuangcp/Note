@@ -35,7 +35,7 @@ categories:
     1. [Tips](#tips)
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
 
-**目录 end**|_2019-05-08 20:57_|
+**目录 end**|_2019-05-15 18:00_|
 ****************************************
 
 # IDEA 使用笔记
@@ -50,7 +50,7 @@ categories:
     - 不然项目结构很乱, 会在光标停留的文件夹下新建module
 - 一个项目一个空间也是可以的，就是跨项目查看代码会有点麻烦，而且每个项目的IDEA的配置都是不一样的，同样的配置可能要配置很多遍
 
-- 在新版中提供的load unload 模块功能,必须要重启idea, 才能让maven生效 emmm
+- 在新版中提供的 load/unload module 功能,必须要重启idea, 才能让maven生效 emmm
 
 ## 常用技巧
 1. 鼠标方法上悬停显示javadoc  勾选 General -> show quick documentation on mouse move 

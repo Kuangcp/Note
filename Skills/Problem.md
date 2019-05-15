@@ -14,8 +14,10 @@ categories:
         1. [IDEA](#idea)
     1. [Docker](#docker)
         1. [内存高占用](#内存高占用)
+    1. [Firefox](#firefox)
+        1. [SSL_ERROR_RX_RECORD_TOO_LONG](#ssl_error_rx_record_too_long)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-15 18:00_|
 ****************************************
 # 问题解决方案
 ## Linux 
@@ -45,8 +47,7 @@ categories:
 *************************
 ## IDE
 ### IDEA
-- [调整参数，解决CPU满载](https://intellij-support.jetbrains.com/hc/en-us/articles/206544869)
-    - [同样的](https://intellij-support.jetbrains.com/hc/en-us/articles/207241235)
+- [调整参数，解决CPU满载](https://intellij-support.jetbrains.com/hc/en-us/articles/206544869) | [相关](https://intellij-support.jetbrains.com/hc/en-us/articles/207241235)
 
 ## Docker
 ### 内存高占用
@@ -55,3 +56,18 @@ categories:
 - 修改基础镜像？
 
 - [ ] docker ps hanging on docker 1.13.2
+
+## Firefox 
+### SSL_ERROR_RX_RECORD_TOO_LONG
+> 场景
+
+Tomcat 下有 jsp html 文件, 访问 Tomcat localhost:8080, 然后页面上引用的资源 都是 https 链接的, 全都加载不了  
+
+> 问题
+
+Tomcat 报错  org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header  
+FireFox 报错 SSL_ERROR_RX_RECORD_TOO_LONG
+但是!! Chrome 能正常访问, 而且就在昨天 Firefox也是能正常访问的, 什么配置都没动...
+
+> 解决方案
+
