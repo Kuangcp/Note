@@ -16,7 +16,7 @@ categories:
     1. [sed](#sed)
     1. [awk](#awk)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-16 11:09_|
 ****************************************
 # 流编辑器
 > [参考博客: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
@@ -73,31 +73,31 @@ so，也不需要和其他的对比了，其他都是拆分，而paste是合并�
         - 将文件中所有aaa换为bbb, `sed -e "s/aaa/bbb/g" test.md`
     - d 删除 行级别, 删除2-4行 `sed -i "2,4d" test.md`
 
-```
-    b ：label 将执行的指令跳至由 : 建立的参考位置。
-    D ：删除 pattern space 内第一个 newline 字母 前的资料。
-    g ：拷贝资料从 hold space。
-    G ：添加资料从 hold space 至 pattern space
-    h ：拷贝资料从 pattern space 至 hold space
-    H ：添加资料从 pattern space 至 hold space
-    l ：印出 l 资料中的 nonprinting character 用 ASCII 码。
-    i ：插入添加使用者输入的资料行。
-    n ：读入下一笔资料。
-    N ：添加下一笔资料到 pattern space。
-    p ：印出资料。
-    P ：印出 pattern space 内第一个 newline 字母 前的资料。
-    q ：跳出 sed 编辑。
-    r ：读入它档内容。
-    w ：写资料到它档内。
-    x ：交换 hold space 与 pattern space 内容。
-    y ：转换（transform）字元。
-```
+| 命令 | 效果 |
+|:----:|:----|
+| b | label 将执行的指令跳至由 : 建立的参考位置。 |
+| D | 删除 pattern space 内第一个 newline 字母 前的资料。 |
+| g | 拷贝资料从 hold space。 |
+| G | 添加资料从 hold space 至 pattern space |
+| h | 拷贝资料从 pattern space 至 hold space |
+| H | 添加资料从 pattern space 至 hold space |
+| l | 印出 l 资料中的 nonprinting character 用 ASCII 码。 |
+| i | 插入添加使用者输入的资料行。 |
+| n | 读入下一笔资料。 |
+| N | 添加下一笔资料到 pattern space。 |
+| p | 印出资料。 |
+| P | 印出 pattern space 内第一个 newline 字母 前的资料。 |
+| q | 跳出 sed 编辑。 |
+| r | 读入它档内容。 |
+| w | 写资料到它档内。 |
+| x | 交换 hold space 与 pattern space 内容。 |
+| y | 转换（transform）字元。 |
 
 >1. 截取指定行数到新文件 `sed -n ‘开始行数，结束行数p’ info.log > newFile.log`
 >1. 修改配置文件中name的值为123 `sed -i "s/name=.*/name=123/g" config.conf`
->1. CRLF -> LF `sed -i 's/\r//g' file` 配合git 就是 `git ls-files| sed -i 's/\r//g' `
+>1. CRLF -> LF `sed -i 's/\r//g' file` 配合git 就是 `git ls-files| xargs sed -i 's/\r//g'`
 >1. 去除换行符 `sed ':label;N;s/\n/ /;b label'` [参考](http://www.cnblogs.com/lykm02/p/4479098.html)
->1. 注意特殊字符的转义 `git ls-files | xargs  sed -i '/s/@a.*/\//g'`
+>1. 注意特殊字符的转义 `git ls-files | xargs  sed -i 's/@a.*/\//g'`
 
 > [参考博客: linux sed 命令单行任务快速参考](http://www.techug.com/post/linux-sed1line.html)
 
