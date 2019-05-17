@@ -111,3 +111,18 @@ categories:
 1. 根据报错提示的分区, 进行修复, 由于我的Linux是ext3文件系统
 1. `fsck.ext3 -y /dev/sda9` **分区根据实际情况**
 1. 完成后重启即可
+
+************************
+
+## 系统问题
+### 突然掉电关机
+> 导致了 Git 仓库都损坏了 `fatal: loose object`  
+
+> ZSH: corrupt history file
+
+```shell
+mv .zsh_history .zsh_history_bad
+strings .zsh_history_bad > .zsh_history
+fc -R .zsh_history
+```
+两天发生了两次...
