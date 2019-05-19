@@ -53,7 +53,7 @@ categories:
 1. [Dockerfile](#dockerfile)
     1. [dockerignore文件的使用](#dockerignore文件的使用)
 
-**目录 end**|_2019-05-07 09:32_|
+**目录 end**|_2019-05-19 23:30_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -433,14 +433,18 @@ _登录镜像仓库_
 ## Docker-Compose
 > 声明式环境，管理多容器， 并处理好相关资源的关系
 
-> 案例 [1](https://github.com/fecshop/yii2_fecshop_docker/blob/master/docker-compose.yml)
+> [Demo: 开源电商平台](https://github.com/fecshop/yii2_fecshop_docker/blob/master/docker-compose.yml)
+> [Demo: 安装 Kafka](http://www.cnblogs.com/xuxinkun/p/5473952.html)
 
 ### 安装
-> [Official Doc](https://docs.docker.com/compose/install/)
+> [Official Install Doc](https://docs.docker.com/compose/install/)
 
+> 官方建议的安装方式
 1. `sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
 1. `sudo chmod +x /usr/local/bin/docker-compose`
 1. `sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose`
+
+注意 Deepin上 如果通过 apt 去安装 docker-compose 它会把 docker-ce 卸掉, 装旧的 docker.io 
 
 ***********
 
