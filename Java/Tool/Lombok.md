@@ -24,8 +24,9 @@ categories:
         1. [POJO常用](#pojo常用)
         1. [日志相关](#日志相关)
         1. [异常相关](#异常相关)
+1. [实现原理](#实现原理)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-19 16:53_|
 ****************************************
 # Lombok
 
@@ -37,10 +38,15 @@ categories:
 > 一定有人就会跳出来说 在IDE中几个快捷键的事情,何必这么复杂, 
 >> 那他们一定是没有遇到修改的时候吧, 改个属性的名字,类型, 对应的方法你需要改吧, 但是使用lombok就不用担心了
 
+> 还有很多方便的注解 例如 NonNull 加载入参上时, 会检查是否为 null 如果是, 就直接抛出NPE
+
 ## 为什么不要用
+> 破坏了阅读代码的完整性, 当使用了构造器这样的注解, 如果想通过看构造器的引用方来找到调用方, 这时候是没有办法的 只能通过查看类的所有引用方再一个个找  
+> IDE都没有原生支持, 必须要安装对应的插件才能正常编译项目  
 
 ## 个人见解
-> Lombok在IDE中安装插件是为了编译和构建中能够动态的添加Getter Setter 等方法, 而在Maven或者Gradle中添加是为了注解能够引用得到??
+> Lombok在IDE中安装插件是为了编译和构建中能够动态的添加Getter Setter 等方法  
+> 而在Maven或者Gradle中添加是为了引入注解的包  
 
 ************************************************
 
@@ -107,6 +113,7 @@ _添加依赖_
 ## Gradle 
 
 > [使用Lombok的正确方式](https://stackoverflow.com/questions/50519138/annotationprocessor-gradle-4-7-configuration-doesnt-run-lombok)   
+
 > [gradle lombok plugin](https://projectlombok.org/setup/gradle)  
 > [Official Guide](https://docs.gradle.org/4.7-rc-1/userguide/java_plugin.html#sec:java_compile_avoidance)  
 
@@ -151,4 +158,10 @@ _添加依赖_
 
 ### 异常相关
 1. [@SneakyThrows](https://projectlombok.org/features/SneakyThrows)
+
+# 实现原理
+> [参考博客: Lombok原理分析与功能实现 ](https://blog.mythsman.com/2017/12/19/1/)  
+
+Lombok的注解都是编译期注解, 运行期通过类是拿不到这些注解的
+
 

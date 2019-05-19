@@ -22,7 +22,7 @@ categories:
     1. [Vivaldi](#vivaldi)
     1. [Opera](#opera)
 
-**目录 end**|_2019-05-13 18:47_|
+**目录 end**|_2019-05-19 16:53_|
 ****************************************
 # 浏览器
 ## FireFox
@@ -103,6 +103,8 @@ categories:
 
 1. 当前标签页右边打开新标签页: 打开 `about:config?filter=browser.tabs.insertAfterCurrent`, 设置为true
     - PS: 搜中文死活搜不到, 英文一下就解决了..
+
+1. 网页重定向次数限制 默认 20 `network.http.redirection-limit` 设置为0就禁止了网页的重定向
 
 ### 使用
 1. 地址栏 `@bing @baidu...` 即可使用指定的搜索引擎进行搜索
