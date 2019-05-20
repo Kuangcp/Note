@@ -446,7 +446,25 @@ _登录镜像仓库_
 
 注意 Deepin上 如果通过 apt 去安装 docker-compose 它会把 docker-ce 卸掉, 装旧的 docker.io 
 
-***********
+### 配置文件
+> 一个配置文件就表示了一组容器, 以及相关的网络,文件等配置, docker-compose 都是基于该配置文件进行基本命令操作
+
+
+### 使用
+- up          # 自动完成构建镜像，创建服务，启动服务，并关联服务等操作, -d 后台
+- down        # 停止容器并移除网络, -v 移除挂载的volume
+- start       # 启动存在的服务
+- stop        # 停止
+- restart     # 重启项目中服务
+- exec        # 进入指定容器
+- help
+- image       # 列出 Compose 文件中包含的镜像
+- kill [SERVICE...]
+- pause [SERVICE...]
+- unpause [SERVICE...]
+- ps          # 列出项目中所有容器
+
+************************
 
 ## Docker-Machine
 > 创建一个docker集群环境 [官方文档安装](https://docs.docker.com/machine/install-machine)
