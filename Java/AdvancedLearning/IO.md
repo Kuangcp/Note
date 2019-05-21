@@ -25,10 +25,13 @@ categories:
 1. [NIO](#nio)
     1. [Buffer](#buffer)
 
-**目录 end**|_2019-04-29 21:10_|
+**目录 end**|_2019-05-21 15:26_|
 ****************************************
 # Java中的IO
-> [个人代码: IO流的相关学习](https://github.com/Kuangcp/JavaBase/tree/master/java-io) | [Socket NIO](https://github.com/Kuangcp/JavaBase/tree/master/java-network/src/main/java/com/github/kuangcp/nio)  
+> [操作系统中的IO模型](/Skills/CS/IO.md)  
+
+> [Github: IO](https://github.com/Kuangcp/JavaBase/tree/master/java-io) | [Github Socket NIO](https://github.com/Kuangcp/JavaBase/tree/master/java-network/src/main/java/com/github/kuangcp/nio)  
+
 > [参考博客: 五种IO模型](https://www.jianshu.com/p/6a6845464770)  
 
 ## IO 简史
@@ -72,8 +75,6 @@ categories:
 | 客户端连接服务端事件 	   | SelectionKey.OP_CONNECT(8)
 | 读事件 	             | SelectionKey.OP_READ(1)
 | 写事件 	             | SelectionKey.OP_WRITE(4)
-
-> [Github: NIO案例源码](https://github.com/Kuangcp/JavaBase/tree/master/java-network/src/main/java/com/github/kuangcp/nio)  
 
 ************************
 

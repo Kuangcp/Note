@@ -11,7 +11,7 @@ categories:
     1. [安装](#安装)
         1. [Docker](#docker)
 
-**目录 end**|_2019-05-19 23:30_|
+**目录 end**|_2019-05-21 15:26_|
 ****************************************
 # Kafaka
 > Apache顶级项目
@@ -40,6 +40,7 @@ categories:
 1. 运行一个消息生产者并指定topic `bin/kafka-console-producer.sh --broker-list localhost:9092 --topic mykafka`
     - 此时会提供一个输入命令行, 就能输入数据
 1. 查看所有的topic列表 `bin/kafka-topics.sh --list --zookeeper kafka-zookeeper:2181`
+    - 或者 `bin/kafka-topics.sh --list --bootstrap-server 127.0.0.1:9092`
 1. 运行一个消费者并指定topic `bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic mykafka --from-beginning`
     - 会收到消息生产者输入的数据
 

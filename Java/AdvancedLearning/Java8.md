@@ -74,7 +74,7 @@ categories:
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-**目录 end**|_2019-04-19 18:07_|
+**目录 end**|_2019-05-21 15:26_|
 ****************************************
 # Java8
 > [doc: Java8](https://docs.oracle.com/javase/8/) | [doc: API](https://docs.oracle.com/javase/8/docs/api/) | [doc下载](https://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html)
@@ -1023,7 +1023,10 @@ It can be accessed using other duration-based units, such as minutes and hours.
     // LocalDateTime 获取毫秒以及秒  也可以手动指定中国的时区 ZoneOffset.of("+8")
     ZonedDateTime zonedDateTime = datetime.atZone(ZoneOffset.systemDefault());
     Instant instant = zonedDateTime.toInstant();
+    Date date = Date.from(instant);
+    
     long seconds = instant.getEpochSecond(); 
     long millis = instant.toEpochMilli();
-    Date date = Date.from(instant);
+
+    Date.from(datetime.atZone(ZoneId.systemDefault()).toInstant());
 ```

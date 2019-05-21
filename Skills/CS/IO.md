@@ -28,7 +28,7 @@ categories:
         1. [poll](#poll)
         1. [epoll](#epoll)
 
-**目录 end**|_2019-04-22 16:30_|
+**目录 end**|_2019-05-21 15:26_|
 ****************************************
 # 计算机中的IO
 > [参考博客: IO - 同步，异步，阻塞，非阻塞 ](https://blog.csdn.net/historyasamirror/article/details/5778378)  
@@ -86,11 +86,17 @@ IO在计算机中指 Input/Output，也就是输入和输出。由于程序和�
 ************************
 
 ## 阻塞和非阻塞
+阻塞和非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态.  
+阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才会返回。  
+非阻塞调用指在不能立刻得到结果之前，该调用不会阻塞当前线程。  
 
 调用blocking IO 会一直 block 住对应的进程直到操作完成, 该操作就是阻塞的  
 而 non-blocking IO 在 kernel 还未准备好数据的情况下会立刻返回, 该操作就是非阻塞的  
 
 ## 同步和异步
+同步和异步关注的是消息通信机制 (synchronous communication/ asynchronous communication)
+
+所谓同步，就是在发出一个*调用*时，在没有得到结果之前，该*调用*就不返回。但是一旦调用返回，就得到返回值了。 换句话说，就是由*调用者*主动等待这个*调用*的结果。
 
 在说明synchronous IO和asynchronous IO的区别之前，需要先给出两者的定义。Stevens给出的定义（其实是POSIX的定义）是这样子的：
 ```
@@ -132,10 +138,11 @@ Reactor 和 Proactor: 前者 使用同步IO, 后者使用异步IO
 > [参考博客: select、poll、epoll之间的区别总结](https://www.cnblogs.com/Anker/p/3265058.html)  
 
 IO复用机制可以同时监控多个描述符，当某个描述符就绪（读或写就绪），则立即通知相应程序进行读或写操作。   
-
 select/poll/epoll都是采用I/O多路复用机制的，其中select/poll是采用无差别轮询方式，而epoll是采用最小的轮询方式。  
 但 select，poll，epoll本质上都是同步I/O， 因为他们都需要在读写事件就绪后`自己`负责进行读写，也就是说这个读写过程是阻塞的    
 所以 select poll epoll 都是 Reactor 模型
+
+************************
 
 ### select
 
@@ -146,12 +153,16 @@ select/poll/epoll都是采用I/O多路复用机制的，其中select/poll是采�
 1. 同时每次调用select, 都需要在内核`遍历`传递进来的所有fd，这个开销在fd很多时也很大
 1. select支持的文件描述符数量太小了，默认是1024, 由FD_SETSIZE设置
 
+************************
+
 ### poll
 Poll的处理机制与Select类似，只是Poll选择了 pollfd 结构体 而不是 select 的 fd_set 结构来处理文件描述符的相关操作
 
 但是它没有最大连接数的限制，原因是它是`基于链表`来存储的, 但是同样的需要将所有的文件描述符复制来复制去
 
 poll还有一个特点是“水平触发”，如果报告了fd后，没有被处理，那么下次poll时会再次报告该fd。
+
+************************
 
 ### epoll
 epoll是在Linux内核2.6引进的，是select和poll函数的增强版。与select相比，epoll没有文件描述符数量的限制。  
