@@ -932,16 +932,16 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
     - `ifPresent(Consumer<? super T>)` 当不为空执行传入的函数
 
 ### Optional类和Stream接口的相似之处
-1. map
+1. *map*
     1. 使用 map 从 Optional 对象中提取和转换值: 可以将 Optional 看成只有一个元素的集合, 像Stream一样的使用 map
     1. 处理两个Optional对象: `person.flatMap(p -> car.map(c -> findCheapestInsurance(p, c)));` 原始的写法就是要判断两个对象同时存在(person 和 car )才调用find...方法
 
-1. flatMap
+1. *flatMap*
     1. 流式获取 Optional 约束的属性 `Optional<String> name = a.flatMap(A::getB).flatMap(B::getC).map(C::getName)`
     - 其中 `Optional<C> c;` 是B的成员属性 `Optional<B> b;` 是A的成员属性
     - 如果直接使用 map 就会发生 `Optional<Optional<T>>` 嵌套, 所以需要使用 flatMap 
 
-1. filter 
+1. *filter* 
     1. persion 存在且满足条件就返回自身否则返回空 `person.filter(o -> "name".equals(o.getName()))`
 
 ************************
@@ -993,8 +993,8 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 *******************************
 
 ## 时间处理
-1. SimpleDateFormat  `YYYY-MM-dd HH:MM:SS`
-    - 线程不安全, Java8 中使用 DateTimeFormatter 更好
+
+1. SimpleDateFormat `yyyy-MM-dd HH:MM:SS` 但是线程不安全, Java8 可使用 DateTimeFormatter 
 
 ### ZoneId
 >  time-zone ID
@@ -1011,13 +1011,13 @@ It can be accessed using other duration-based units, such as minutes and hours.
 > [How to model java.time.duration in Mysql Database](https://stackoverflow.com/questions/28427525/how-to-model-java-time-duration-in-mysql-database)
 
 ### Period
-类似于Duration, 不同点是 date-based 
+> 类似于Duration, 不同点是 date-based 
 
 ### Instant 
-- [ ] 暂时没有学会怎么用上
+> 用于表示时间线上的一个瞬时点, 可用于表示时间戳, API操作更友好
 
 ### LocalDateTime
-> 方便的新时间处理类, 用于替代Java5的Date, LocalDate LocalTime 组合起来就是 LocalDateTime
+> 方便的新时间处理类, 用于替代Java5的Date, LocalDateTime 就是 LocalDate LocalTime 的组合
 
 ```java
     // LocalDateTime 获取毫秒以及秒  也可以手动指定中国的时区 ZoneOffset.of("+8")
@@ -1025,8 +1025,8 @@ It can be accessed using other duration-based units, such as minutes and hours.
     Instant instant = zonedDateTime.toInstant();
     Date date = Date.from(instant);
     
-    long seconds = instant.getEpochSecond(); 
-    long millis = instant.toEpochMilli();
-
+    // LocalDateTime -> Date
     Date.from(datetime.atZone(ZoneId.systemDefault()).toInstant());
+    // Date -> LocalDateTime 
+    LocalDateTime.ofInstant(date.toInstant(), ZoneOffset.systemDefault());
 ```
