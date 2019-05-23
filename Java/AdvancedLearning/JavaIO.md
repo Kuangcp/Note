@@ -127,7 +127,7 @@ Reader类的核心就是read()这个方法，由于这里直接操作InputStream
 
 ## 应用
 ### 文件IO
-> [参考博客: Read a text file from Java classpath](https://www.java-success.com/read-a-text-file-from-java-classpath/)
+> [参考博客: Read a text file from Java classpath](https://www.java-success.com/read-a-text-file-from-java-classpath/)  
 > [Java：利用I/O流读取文件内容](https://blog.csdn.net/xuehyunyu/article/details/77873420)
 
 #### 读取配置文件

@@ -21,9 +21,11 @@ categories:
 1. [Tips](#tips)
     1. [通过SSH执行命令时的环境变量问题](#通过ssh执行命令时的环境变量问题)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-23 09:29_|
 ****************************************
 # SSH
+> Secure Shell 
+
 > [Linux启动或禁止SSH用户及IP的登录](https://blog.csdn.net/linghe301/article/details/8211305)
 > [ssh和ssh2之间的免密码登陆详解](http://blog.chinaunix.net/uid-26517277-id-4055228.html)
 > [SSH原理与运用（一）：远程登录](http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html)
