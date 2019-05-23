@@ -21,7 +21,7 @@ categories:
         1. [通配符捕获](#通配符捕获)
     1. [反射和泛型](#反射和泛型)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-23 23:01_|
 ****************************************
 # 泛型
 > [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
@@ -100,9 +100,12 @@ categories:
     - 也就是说没有`Pair<double>`只有`Pair<Double>`
     - 因为类型擦除后,类型是Object并不能放double的值, 但是这样做与Java语言中基本类型的独立状态相一致.
     - 当包装器类型(wrapper type)不能接受替换时,可以使用独立的类和方法处理他们  
+    - *但是* 可以使用 原始类型数组 例如 `byte[]`ss
+
 - _运行时类型查询(eq或者instanceof)只适用于原始类型_
     - 比如`Pair<T>` 和`Pair<String>`是等价的,因为类型擦除
     - `Pair<String> pair1` `Pair<Date> pair2` pair1.getClass()和pair2.getClass()是等价的都是返回Pair.class
+
 - _不能抛出也不能捕获泛型类实例_
     - 错误的示例:
         - `public class Problem<T> extends Exception{}`
@@ -110,6 +113,7 @@ categories:
     - 正确示例:
         - 在异常声明中使用类型变量 
         - `public static <T extends Throwable> void doWork() throws T{.. catch(){throw t;}}`
+
 - _参数化类型的数组不合法_
     - 例:`Pair<String>[] list = new Pair<String>[10];`
     - 因为擦除后 list是Pair[]类型,然后就能转成Object[], 就失去了泛型的作用
