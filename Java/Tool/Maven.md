@@ -345,6 +345,61 @@ A 项目 compile
 
 - [protoc-jar](https://github.com/os72/protoc-jar-maven-plugin)`自动识别平台, 使用对应的编译器编译得到java文件, 但是目前还有一些bug`
 
+### 打包可执行Jar
+#### assembly
+```xml
+    <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+            <archive>
+                <manifest>
+                    <mainClass>MainClass</mainClass>
+                </manifest>
+            </archive>
+            <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+            </descriptorRefs>
+        </configuration>
+        <executions>
+            <execution>
+                <id>make-assembly</id>
+                <phase>package</phase>
+                <goals>
+                    <goal>single</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+```
+
+#### shade
+
+```xml
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.1</version>
+        <executions>
+            <execution>
+                <phase>package</phase>
+                <goals>
+                    <goal>shade</goal>
+                </goals>
+                <configuration>
+                    <transformers>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                            <mainClass>com.baturu.ofc.batch.PartsSpuStatistic</mainClass>
+                        </transformer>
+                    </transformers>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
+```
+
+#### jar
+
 ****************************
 
 ## 构建工具对比
