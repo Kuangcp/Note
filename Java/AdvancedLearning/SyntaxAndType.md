@@ -382,10 +382,12 @@ _获取指定时间_ [获取指定时间的时间戳](https://blog.csdn.net/jsso
 | package private | 同包 | 顾名思义就是包级别的private(缺省) |
 | private | 当前类 | 当前类级别private, 内部类从属于当前类 |
 
-> 同包是指 `package xxx;` 是一致的; 而 `package a;` 与 `package a.b;` 不是同包  
+> 同包是指 `package xxx;` 语句完全一样, 而 `package a;` 与 `package a.b;` 不是同包  
 
 ### final
+
 ### static 
+
 ### abstract 
 
 ***************
