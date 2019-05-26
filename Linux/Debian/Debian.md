@@ -17,10 +17,17 @@ categories:
         1. [包管理器](#包管理器)
         1. [源码编译安装](#源码编译安装)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-26 21:49_|
 ****************************************
 # Debian 
-> Debian系 包含 Debian *buntu Deepin 等等
+> 很古老但是很好用的系统 [官网](https://www.debian.org/index.zh-cn.html)
+
+> [参考博客: Debian8最小安装](https://www.howtoforge.com/tutorial/debian-8-jessie-minimal-server/)
+- 奇怪的是我在虚拟机里装了好几个好几次装不上, 装完一登录就只有壁纸
+
+_服务器_
+- 2018-04-01 17:19:50 作为服务器系统安装完Debian8.2 85M内存占用 docker 是1.6
+- 2018-04-10 10:35:54 服务器安装Ubuntu16.04 71M内存 docker是1.13
 
 ## 配置
 ### 配置语言环境

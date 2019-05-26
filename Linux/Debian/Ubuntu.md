@@ -12,10 +12,13 @@ categories:
 1. [Ubuntu](#ubuntu)
     1. [Tips](#tips)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-26 21:49_|
 ****************************************
 
 # Ubuntu
+> 很多人的入门系统, 作为个人服务器也是首选, 软件比较新
+
+> [Ubuntu Server Tutorial](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-server#0) | [网易镜像源](http://mirrors.163.com/ubuntu-releases/)`只有网易有server版的镜像`
 
 ## Tips
 
