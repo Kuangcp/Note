@@ -35,7 +35,7 @@ categories:
     1. [Mageia](#mageia)
     1. [CDLinux](#cdlinux)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-26 21:38_|
 ****************************************
 # Linux各个发行版本使用体验
 
@@ -183,11 +183,16 @@ PRIME方案切换后差点把内核挂了, 一顿瞎操作把系统救活了
 > [How to enable hibernate in Deepin? ](https://bbs.deepin.org/forum.php?mod=viewthread&tid=145013)
 > [ PowerManagement/Hibernate](https://help.ubuntu.com/community/PowerManagement/Hibernate)
 
-- 睡眠：所有当前数据保存到内存中，电源只给内存供电。
-- 休眠：所有当前数据保存到硬盘中，电源全部断开。
-- 重启：所有当前数据关闭，全新冷启动系统。
-- 关机：开启快速启动时，所有当前的用户数据关闭，只保存系统核心数据到硬盘中方便下次快速启动系统，电源全部断开；
-    - 关闭快速启动时，等同于重启。
+- [电源管理状态](https://wiki.deepin.org/index.php?title=Power_management&language=en)
+    - 睡眠：电源只给内存供电, 内存中数据仍保持。
+    - 休眠：内存中数据保存到硬盘中，电源全部断开。
+    - 重启：内存数据清除, 冷启动系统
+    - 关机：开启快速启动时，所有当前的用户数据关闭，只保存系统核心数据到硬盘中方便下次快速启动系统，电源全部断开；
+        - 关闭快速启动时，等同于重启。
+
+> [Hibernate without swap partition](https://wiki.debian.org/Hibernation/Hibernate_Without_Swap_Partition)`仅使用交换文件达到休眠效果`  
+> [Hibernation](https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate#Hibernation_into_swap_file)
+> [Hibernate from swap file](https://askubuntu.com/questions/6769/hibernate-and-resume-from-a-swap-file)
 
 #### 双系统安装
 - 首先进入BIOS关闭 安全启动, 选择引导方式为Legacy关闭UEFI win8以上则要关闭快速启动, 

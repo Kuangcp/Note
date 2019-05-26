@@ -37,7 +37,7 @@ categories:
 1. [实际问题](#实际问题)
     1. [斐波那契数列](#斐波那契数列)
 
-**目录 end**|_2019-04-25 23:52_|
+**目录 end**|_2019-05-26 21:38_|
 ****************************************
 # 数据结构和算法
 > 数据结构是指一组数据的存储结构 算法就是操作数据的方法 数据结构和算法是相辅相成的，数据结构是为算法服务的，而算法要作用在特定的数据结构之上
@@ -46,7 +46,7 @@ categories:
 
 ## 相关书籍和资源
 - 大话数据结构
-- 算法图解
+- 算法图解 [Github](https://github.com/egonSchiele/grokking_algorithms)
 - 算法的乐趣
 
 - 算法 [official site](https://algs4.cs.princeton.edu/home/)
@@ -79,6 +79,7 @@ categories:
 
 > [TheAlgorithms-Java ](https://github.com/TheAlgorithms/Java)
 > [数据结构和算法必知必会的50个代码实现](https://github.com/wangzheng0822/algo)
+
 **********************
 
 离散数学基础: 集合、偏序集、良序、数学归纳法、级数、递归、递推 

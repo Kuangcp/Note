@@ -21,7 +21,7 @@ categories:
         1. [通配符捕获](#通配符捕获)
     1. [反射和泛型](#反射和泛型)
 
-**目录 end**|_2019-05-23 23:01_|
+**目录 end**|_2019-05-26 21:38_|
 ****************************************
 # 泛型
 > [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
@@ -94,7 +94,6 @@ categories:
 ******************************
 ## 约束和局限性
 > 以下代码示例:涉及的类Pair在上述的代码中已经定义, Human和Student是继承关系
-> 并且因为看的 Java核心技术卷 比较老 jdk是1.5的所以没有用7的菱形语法简化泛型 7可以省去右边的类型: `Pair<Double> pair = new Pair<>();`
 
 - _不能使用基本类型实例化类型参数_
     - 也就是说没有`Pair<double>`只有`Pair<Double>`
@@ -104,7 +103,7 @@ categories:
 
 - _运行时类型查询(eq或者instanceof)只适用于原始类型_
     - 比如`Pair<T>` 和`Pair<String>`是等价的,因为类型擦除
-    - `Pair<String> pair1` `Pair<Date> pair2` pair1.getClass()和pair2.getClass()是等价的都是返回Pair.class
+    - `Pair<String> pair1 和 Pair<Date> pair2` pair1.getClass() 和 pair2.getClass() 是等价的都是返回Pair.class
 
 - _不能抛出也不能捕获泛型类实例_
     - 错误的示例:
@@ -116,15 +115,15 @@ categories:
 
 - _参数化类型的数组不合法_
     - 例:`Pair<String>[] list = new Pair<String>[10];`
-    - 因为擦除后 list是Pair[]类型,然后就能转成Object[], 就失去了泛型的作用
-    - 如果要使用的话最好直接使用集合 ArrayList:` ArrayList<Pair<String>>`,安全又高效
-```java
-    Object[] array = list;
-    array[0] = "hi";//  编译错误
-    array[0] = new Pair<Date>(); //通过数组存储的检测,但实际上类型错误了,所以禁止使用参数化类型的数组
-```
+    - 因为擦除后 list是 `Pair[]` 类型, 能转成 `Object[]` 这样就失去了泛型的作用
+    - 如果要使用的话最好直接使用集合 ArrayList:` ArrayList<Pair<String>>` 安全又高效
+    ```java
+        Object[] array = list;
+        array[0] = "hi";//  编译错误
+        array[0] = new Pair<Date>(); //通过数组存储的检测,但实际上类型错误了,所以禁止使用参数化类型的数组
+    ```
 
-- _不能实例化类型变量(T)_
+- _不能实例化类型变量(T)以及数组_
     - 非法 `new T(){}`
 ```java
     public Pair(){
@@ -148,6 +147,7 @@ categories:
     // 因为Class本身是泛型, String.class其实是Class<String>的实例
     // 也不能实例化为一个数组 new T[5]
 ```
+
 - _泛型类的静态上下文中类型变量无效_
     - 不能在静态域中使用类型变量 如下:
     - 如果这段代码能执行,那就可以声明一个 Singleton<Random> 共享随机数生成类,

@@ -19,7 +19,7 @@ categories:
     1. [List](#list)
     1. [Set](#set)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-26 21:38_|
 ****************************************
 # 集合
 
@@ -68,7 +68,7 @@ categories:
 包括的方法有:
 ![List method](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Java/Collection/List/List.png)
 
-List接口有众多实现, 最常用的ArrayList LinkedList 
+List接口有众多实现, 最常用的 ArrayList LinkedList 
 
 ******************************
 [stackoverflow: list add then unsupportedoperationexception](https://stackoverflow.com/questions/5755477/java-list-add-unsupportedoperationexception)
