@@ -11,16 +11,16 @@ categories:
 1. [HashMap](#hashmap)
     1. [结构](#结构)
     1. [构造函数](#构造函数)
-    1. [put()](#put)
-    1. [resize()](#resize)
-    1. [get()](#get)
-    1. [remove()](#remove)
+    1. [put](#put)
+    1. [resize](#resize)
+    1. [get](#get)
+    1. [remove](#remove)
     1. [HashMap 与 HashTable](#hashmap-与-hashtable)
     1. [总结](#总结)
 1. [Tips](#tips)
     1. [死循环问题](#死循环问题)
 
-**目录 end**|_2019-05-19 16:53_|
+**目录 end**|_2019-05-27 13:44_|
 ****************************************
 # HashMap 
 > [API: HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)
@@ -47,7 +47,7 @@ HashMap的数据结构是 数组(称为bucket)加单链表 (数组是只放一�
 
 其中初始容量会根据 tableSizeFor 方法计算得到 大于初始容量的最小的2的指数值 3->4 4->8 ...
 
-## put() 
+## put
 > 得到 key 的数组下标 `key & (n - 1)` 的 hash 值, n 为数组大小
 
 学习队列的时候有种简单的思路就是直接将 key 的值 对数组大小取余, 就得到了key的正确下标  
@@ -63,11 +63,12 @@ HashMap的数据结构是 数组(称为bucket)加单链表 (数组是只放一�
     1. `else` 则遍历桶对应的链表查找key是否存在于链表中；
         1. `if` 找到了对应key的节点，则转 `#` 流程；
         1. `if` 没找到对应key的节点，则尾插法插入节点 并判断是否需要树化；
-1. 如果插入了新节点，则数量加1并判断是否需要扩容；
+
+1. 每当插入新节点，则 ++size 并判断是否需要扩容, 扩容扩的是数组；
 
 - `#` 如果找到了对应key的元素，则判断是否需要替换旧值，并直接返回旧值；
 
-## resize()
+## resize
 1. 如果旧容量大于0，则新容量等于旧容量的2倍，但不超过最大容量2的30次方，新扩容阈值为旧扩容阈值的2倍；
 1. 创建一个新容量的桶；
 1. 移动元素
@@ -77,9 +78,9 @@ HashMap的数据结构是 数组(称为bucket)加单链表 (数组是只放一�
         - 例如桶的原大小4 , 节点的hash 3、7、11、15 `index = ((4-1) & hash)`
         - 扩容一次 3和11保持不变(因为`hash&oldCap == 0`)， 而 7和15要搬移到`(4-1) & hash + oldCap`中去 
 
-## get()
+## get
 
-## remove()
+## remove
 
 - [ ] 树相关的方法
 

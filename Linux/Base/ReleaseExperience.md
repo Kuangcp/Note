@@ -33,9 +33,10 @@ categories:
     1. [Mageia](#mageia)
     1. [CDLinux](#cdlinux)
 
-**目录 end**|_2019-05-26 21:49_|
+**目录 end**|_2019-05-27 13:44_|
 ****************************************
 # Linux常见发行版
+> [Repology](https://repology.org/)
 
 > [论最适合开发用的几款Linux桌面系统](https://www.lulinux.com/archives/3614)
 > [发行版热度对比](https://distrowatch.com/dwres.php?resource=popularity)
@@ -46,7 +47,7 @@ categories:
 - [谈 Linux，Windows 和 Mac](http://www.yinwang.org/blog-cn/2013/03/07/linux-windows-mac)
 
 ## 基础知识
-> 下载安装时要选平台 参考[相关博客](http://downtoearthlinux.com/posts/x86-i386-x86-64-x64-and-amd64-oh-my/)
+> 下载安装时要选平台 [相关博客](http://downtoearthlinux.com/posts/x86-i386-x86-64-x64-and-amd64-oh-my/)
 >> 64: x86-64 =  x64  =  amd64  
 >> 32: x86  =  i386
 
@@ -120,7 +121,7 @@ categories:
 
 ****************************
 ## RedHat
-> 大厂支持
+> 大厂支持 侧重于服务器领域
 
 ### Fedora
 > redhat的试验场 不太感冒

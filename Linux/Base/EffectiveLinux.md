@@ -25,12 +25,13 @@ categories:
         1. [剪贴板管理](#剪贴板管理)
 1. [Tips](#tips)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-27 13:44_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
 
-> [命令行：增强版 ](https://linux.cn/article-10171-1.html)
+> [命令行：增强版 ](https://linux.cn/article-10171-1.html)  
+> [工具](https://www.lulinux.com/archives/2787)  
 
 ## 终端模拟器对比
 > 列举出系统可安装终端 `sudo apt search terminal | grep -E terminal.+amd64`
@@ -42,6 +43,7 @@ categories:
 - `deepin-terminal` 功能很多，主题很多，功能最为强大，但是字体可以选的很少
 - `terminator` 可以定制背景图片，但是在我这deppin系统里有bug，多标签是假的，命令全是在共享的，不能用。。
 - `tilda` 内嵌于桌面上, 小命令方便, 需要查看文件就不方便了
+- `terminology` 看起来很炫酷, 仅此而已
 
 > [更多可安装终端](https://gitee.com/kcp1104/codes/gca14wtqvm67l9j5r0deb56#Terminals.md)
 > 终极工具 `tmux` 运维必备软件 远离终端模拟器的对比和选择, 一个就够了
