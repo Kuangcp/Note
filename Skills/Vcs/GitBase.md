@@ -65,7 +65,7 @@ categories:
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-05-10 18:10_|
+**目录 end**|_2019-05-28 14:23_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -273,16 +273,13 @@ TODO 存疑
 
 - 查看所有标签 `git tag` 
     - `-l 'v1.0.*'` 列出v1.0.*
-    - 展示标签注释信息 `git show tagname`
+    - `git show tagname`　展示标签注释信息
 - 新建一个标签并打上注释 `git tag -a v1.0.0 -m "初始版本"` 
     - 由指定的commit打标签  `git tag -a v1.2.4 commit-id` 
-- 切换标签 `git checkout tagname` 和切换分支一样的，但是标签只是一个镜像，不能修改
-- 如果要在某tag上新建一个分支， `git checkout -b branchname tagname`
-- 提交指定的tag `git push origin tagname` （默认不会自动提交标签）
-    - 提交所有的tag `git push --tags` 
+- 切换标签 `git checkout tagname` 和切换分支一样的，但是标签只是一个镜像，不能做提交
+- 在某tag上新建一个分支 `git checkout -b branchname tagname`
 
 - 删除本地标签 `git tag -d tagname` 
-- 删除远程的tag `git push origin --delete tag <tagname>` 
 
 *******************
 
@@ -357,7 +354,9 @@ TODO 存疑
 > Remove untracked files from the working tree `git clean --help`
 
 ***************************
+
 ### 远程
+
 > 大部分命令都是本地的, 所以执行效率很高, 但是协同开发肯定需要有同步的操作了
 
 > 其实单独的两个主机也能完成同步, 两个IP之间要使用同一个仓库进行开发  
@@ -403,67 +402,51 @@ TODO 存疑
 
 #### push
 - _常用参数_
-    - `-h` 查看所有参数和说明
     - `-q` 控制台不输出任何信息
-    - `-f` 强制 **使用这个参数时要再三考虑清楚**
-    - `--all` 推送所有引用
+    - `-f` 强制推送提交 **使用这个参数时要再三考虑清楚**
+    - `--all` 推送所有分支
     - `-u` upstream 设置 git pull/status 的上游
         - `git push origin master`和`git push -u origin master` 区别在于 前者是使用该远程和分支进行推送
         - 后者也是推送, 并设置origin为默认推送的远程, 以后push就不用注明远程名了(多远程的情况下要注意)
-    - `-d` 删除引用
-    - `--tags` 推送标签（不能使用 --all or --mirror）
+    - `-d --delete` 删除引用(分支或标签)
 
-- 出现 `RPC failed; result=22, HTTP code = 411` 的错误
-    - 就是因为一次提交的文件太大，需要改大缓冲区 
-    - > 例如改成500m  `git config http.postBuffer 524288000`
+- 删除远程分支 
+    - `git push origin -d 分支名称`
+    - 如果本地已经删除了该分支，就可以`git push origin :分支名称`
 
-- 提交本地所有分支 `git push --all` pull时同理
-- 删除远程分支 `git push 远程名称 --delete 分支名称`
-
-- _第一次与远程建立连接_
+- 第一次将本地分支与远程建立关系
     - `git push -u origin master ` | `git push --set-uptream master` | `git push -all` 
     - 这几个都是可以的,最后那个简单, 还能将别的分支一起推上去
+
+- 删除远程的tag 
+    - `git push origin -d tag <tagname>` 
+    - 如果本地已经删除了标签, 就可以 `git push origin :refs/tags/<tagname>`
+- 提交指定tag `git push origin tagname`
+    - 提交所有tag `git push --tags`
+
+************************
+
+- 出现 `RPC failed; result=22, HTTP code = 411` 的错误
+    - 就是因为一次提交的文件太大，需要改大缓冲区 例如改成500m  `git config http.postBuffer 524288000`
 
 #### pull
 
 #### fetch 
-> 拉取代码
 
 - 拉取远程origin的dev分支并在本地创建dev分支相关联 `git fetch origin dev:dev`
+- 删除远程没有但本地有的那些分支 `git fetch -p`
 
 ***********************
 
 ### 分支
 > Git 的分支是轻量型的, 能够快速创建和销毁
 
-- `git checkout -b feature-x develop` 从develop的分支生成一个功能分支，并切换过去
-- 完成功能后：`git checkout develop `
-    - 合并： `git merge --no-ff feature-x`
-    - 删除： `git branch -d feature-x`
-
-*****
-- `git checkout -b release-1.2 develop` 新建一个预发布分支
-    - `git checkout master` 确认没有问题后 `git merge --no-ff release-1.2` 合并到master分支
-    - `git tag -a 1.2` 打标签，这就是github上软件的版本控制
-    - 没有问题后 合并到develop分支`git checkout develop` `git merge --no-ff release-1.2`
-    - 删除预发布分支 `git branch -d release-1.2`
-
-*****
-- `git checkout -b fixbug-0.1 master` 新建修复bug的分支 
-- `git checkout master ``git merge --no-ff fixbug-0.1 ``git tag -a 0.1.1` 修补结束后合并到master分支
-- `git checkout develop` `　git merge --no-ff fixbug-0.1` 再合并到develop分支
-- 删除分支 `git branch -d fixbug-0.1` 
-- 删除远程没有本地有的分支`git fetch -p`
-
-***********
 > 场景: 一个特性分支本不该合并入主开发分支, 但是已经并入了,并且并入后又做了很多其他修改, 这时候怎么影响最小地撤销这次错误的合并
 
 - [ ] 
 
 #### show-branch 
 > 按颜色列出分支上的提交和图示
-
-- [ ] 理解 图示 
 
 #### stash
 > [Official Doc](https://git-scm.com/docs/git-stash)  
