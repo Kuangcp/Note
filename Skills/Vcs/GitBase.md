@@ -65,7 +65,7 @@ categories:
         1. [SVN](#svn)
     1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-05-28 14:23_|
+**目录 end**|_2019-05-28 19:01_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -482,14 +482,15 @@ TODO 存疑
 
 - 列出所有分支(包含本地和远程) `-a --all`
 - 按条件显示分支 `--list 'feature*'`
-- 列出远程分支 `-r / --remote`
+- 列出远程分支 `-r --remote`
 - 查看分支详细信息 `-vv` 本地分支和远程分支的关联状态
 - 查看包含指定 commit(可以多个) 的分支 `--contains [<commit>]` 
     - 对应的则是不包含 `--no-contains [<commit>]` commit 缺省为 HEAD(也就是最近的一次提交) 
 
 - 创建分支 `git branch name`
     - 创建分支并跟踪远程 `-t <remote>/<branch>`
-- 删除分支 -d
+- 重命名分支 `-m old new` 对于远程来说就是先要删除再新建分支
+- 删除分支 `-d 分支`
     - 如果该分支没有被完全合并, 就会提醒使用 `-D` 强制删除. 等价于 `--delete --force`
 
 - 设置当前分支跟踪的远程分支 `--set-upstream-to=<remote>/<branch> <branch>`

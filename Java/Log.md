@@ -32,7 +32,7 @@ categories:
     1. [Linux上查看日志](#linux上查看日志)
     1. [lnav](#lnav)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-05-28 19:01_|
 ****************************************
 # 日志系统
 > [码农翻身: 一个著名的日志系统是怎么设计出来的？ ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45&chksm=80d67bacb7a1f2ba38aa37620d273dfd7d7227667df556d36c84d125cafd73fef16464288cf9&scene=21#wechat_redirect)`深刻的理解了日志系统的来源以及相关关系`  
@@ -381,9 +381,16 @@ _4.另外还有SocketAppender、SMTPAppender、DBAppender、SyslogAppender、Sif
 > [Java 调整格式日志输出](https://www.jb51.net/article/88937.htm)
 
 1. 日志记录方式, 注意格式的正确, 否则, 错误会被隐藏
-    - [Github: CorrectLog.java](https://github.com/kuangcp/JavaBase/blob/master/java-classfile/src/main/java/log/CorrectLog.java)
+    - [Github: CorrectLog.java](https://github.com/Kuangcp/JavaBase/blob/master/java-class/src/test/java/log/CorrectLogTest.java)
 
-1. 在Springboot中指定包的日志等级 `logging.level.com.github.kuangcp.service = DEBUG`
+1. 在Springboot中指定包的日志等级 `logging.level.com.xxx = DEBUG`
+
+1. [日志包间互相依赖导致 StackOverflowError](https://www.slf4j.org/codes.html#log4jDelegationLoop)
+    -  log4j-over-slf4j.jar AND slf4j-log4j12.jar 
+    -  jcl-over-slf4j.jar AND slf4j-jcl.jar 
+    - [log4j-over-slf4j与slf4j-log4j12共存stack overflow异常分析](https://blog.csdn.net/kxcfzyk/article/details/38613861)
+    - 解决方案就是利用 Maven Helper, 分析所有的Dependency, 找到上述两组并存的情况, exclude一方就解决了
+    - 或者 通过 `mvn dependency:tree` 手动分析和手动exclude 
 
 ********************
 
