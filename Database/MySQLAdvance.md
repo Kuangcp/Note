@@ -18,7 +18,7 @@ categories:
 1. [Tips](#tips)
     1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2019-04-29 00:24_|
+**目录 end**|_2019-05-29 18:21_|
 ****************************************
 # MySQL进阶
 
@@ -47,6 +47,8 @@ categories:
 > `set max_execution_time=3000;` (5.7.8 新增) 设置SQL执行最大时间, 超时报错, 单位 ms
 
 > 5.6及以上版本时间类型效率 int > datetime > timestamp
+
+> limit 做分页时 记录上次分页最后一条记录的id使用上where进行过滤 提高性能, 前提id是int自增的
 
 ### 查看状态变量
 > [ SHOW VARIABLES](https://dev.mysql.com/doc/refman/5.7/en/show-variables.html)  
