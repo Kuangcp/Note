@@ -41,12 +41,12 @@ _MANIFEST.MF示例_
     Build-Jdk: 1.8.0_152
     Main-Class: com.youaishujuhui.minigame.Main
 ```
-- 编译文件        `javac -d *.java `
+- 编译文件       `javac -d *.java `
 - 打包字节码成jar `jar -cvf hello.jar com/test/*.*` 
 - 打包成可执行jar `jar -cvfm hello.jar mainfest *.*` 
-    - 其中：`mainfest` 文本文件： `Main-Class: com.test.Main` 冒号后一定要有空格，文件最后一行一定留空行
+    - 其中 `mainfest` 文本文件： `Main-Class: com.test.Main` 冒号后一定要有空格，文件最后一行一定留空行
 
-- 运行jar包中指定的类`java -cp clojure.jar clojure.main`
+- 运行jar包中指定的含Main方法的类 `java -cp clojure.jar clojure.main` 这种方式是直接指定了类, 所以不需要 MANIFEST.MF 文件
     - 多个jar运行 `java -cp jline-0.9.94.jar;clojure.jar jline.ConsoleRunner clojure.main`
     - [参考博客: 用java –jar 命令运行Jar包](https://blog.csdn.net/paullinjie/article/details/53188943)
 
