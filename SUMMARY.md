@@ -21,7 +21,7 @@
 * 【 Database 】
     * [ DataBase ](/Database/DataBase.md)
     * [ GraphQL ](/Database/GraphQL.md)
-    * [ MangoDB ](/Database/MangoDB.md)
+    * [ MongoDB ](/Database/MongoDB.md)
     * [ MySQL ](/Database/MySQL.md)
     * [ MySQLAdvance ](/Database/MySQLAdvance.md)
     * [ Oracle ](/Database/Oracle.md)
@@ -36,6 +36,7 @@
     * 【 Distributed/ConfigCenter 】
         * [ Apollo ](/Distributed/ConfigCenter/Apollo.md)
     * 【 Distributed/DataProcessingEngine 】
+        * [ Flink ](/Distributed/DataProcessingEngine/Flink.md)
     * 【 Distributed/ServiceDiscovery 】
     * [ RPC ](/Distributed/RPC.md)
 * 【 FrontEnd 】
@@ -44,6 +45,7 @@
         * [ Vue ](/FrontEnd/Frame/Vue.md)
     * 【 FrontEnd/Node 】
         * [ NodeJS ](/FrontEnd/Node/NodeJS.md)
+    * [ Extjs ](/FrontEnd/Extjs.md)
     * [ Font ](/FrontEnd/Font.md)
     * [ Hexo ](/FrontEnd/Hexo.md)
     * [ JavaScript ](/FrontEnd/JavaScript.md)
@@ -51,7 +53,6 @@
     * [ ResponseCode ](/FrontEnd/ResponseCode.md)
     * [ SVG ](/FrontEnd/SVG.md)
     * [ ViewSolution ](/FrontEnd/ViewSolution.md)
-    * [ extjs学习笔记 ](/FrontEnd/extjs学习笔记.md)
 * 【 Functional 】
     * [ Clojure ](/Functional/Clojure.md)
     * [ FPBase ](/Functional/FPBase.md)
@@ -91,7 +92,6 @@
         * [ Exception ](/Java/AdvancedLearning/Exception.md)
         * [ ExtendsAndInterface ](/Java/AdvancedLearning/ExtendsAndInterface.md)
         * [ Generics ](/Java/AdvancedLearning/Generics.md)
-        * [ IO ](/Java/AdvancedLearning/IO.md)
         * [ JDBC ](/Java/AdvancedLearning/JDBC.md)
         * [ JDKAndJRE ](/Java/AdvancedLearning/JDKAndJRE.md)
         * [ JMX ](/Java/AdvancedLearning/JMX.md)
@@ -99,6 +99,7 @@
         * [ Java11 ](/Java/AdvancedLearning/Java11.md)
         * [ Java7 ](/Java/AdvancedLearning/Java7.md)
         * [ Java8 ](/Java/AdvancedLearning/Java8.md)
+        * [ JavaIO ](/Java/AdvancedLearning/JavaIO.md)
         * [ JavaNetwork ](/Java/AdvancedLearning/JavaNetwork.md)
         * [ JavaReleaseVersion ](/Java/AdvancedLearning/JavaReleaseVersion.md)
         * [ JavaWeb ](/Java/AdvancedLearning/JavaWeb.md)
@@ -130,6 +131,7 @@
         * [ Netty ](/Java/Ecosystem/Netty.md)
         * [ POI ](/Java/Ecosystem/POI.md)
         * [ QueryDSL ](/Java/Ecosystem/QueryDSL.md)
+        * [ SPI ](/Java/Ecosystem/SPI.md)
         * [ Solr ](/Java/Ecosystem/Solr.md)
         * [ Vertx ](/Java/Ecosystem/Vertx.md)
     * 【 Java/MSA 】
@@ -189,7 +191,6 @@
     * [ RESTful ](/Java/RESTful.md)
     * [ WebSocket学习笔记 ](/Java/WebSocket学习笔记.md)
     * [ ZooKeeper学习笔记 ](/Java/ZooKeeper学习笔记.md)
-    * [ android学习笔记 ](/Java/android学习笔记.md)
 * 【 Kotlin 】
     * [ Dubbo ](/Kotlin/Dubbo.md)
     * [ Shiro ](/Kotlin/Shiro.md)
@@ -214,7 +215,7 @@
         * [ LinuxStreamEditor ](/Linux/Base/LinuxStreamEditor.md)
         * [ LinuxUI ](/Linux/Base/LinuxUI.md)
         * [ ReleaseExperience ](/Linux/Base/ReleaseExperience.md)
-        * [ Ssh ](/Linux/Base/Ssh.md)
+        * [ SSH ](/Linux/Base/SSH.md)
     * 【 Linux/Centos 】
         * [ CentosBase ](/Linux/Centos/CentosBase.md)
     * 【 Linux/Container 】
@@ -222,9 +223,11 @@
         * [ DockerAdvance ](/Linux/Container/DockerAdvance.md)
         * [ DockerFile ](/Linux/Container/DockerFile.md)
         * [ DockerSoft ](/Linux/Container/DockerSoft.md)
+        * [ Helm ](/Linux/Container/Helm.md)
         * [ Kubernetes ](/Linux/Container/Kubernetes.md)
     * 【 Linux/Debian 】
         * [ Debian ](/Linux/Debian/Debian.md)
+        * [ Deepin ](/Linux/Debian/Deepin.md)
         * [ Ubuntu ](/Linux/Debian/Ubuntu.md)
     * 【 Linux/Tool 】
         * [ Caddy ](/Linux/Tool/Caddy.md)
@@ -276,6 +279,7 @@
         * [ Profile ](/Skills/CS/Profile.md)
         * [ ProgramThinking ](/Skills/CS/ProgramThinking.md)
         * [ Time ](/Skills/CS/Time.md)
+        * [ Virtualization ](/Skills/CS/Virtualization.md)
     * 【 Skills/Cache 】
         * [ Cache ](/Skills/Cache/Cache.md)
     * 【 Skills/Councurrency 】

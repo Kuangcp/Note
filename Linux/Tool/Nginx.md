@@ -109,26 +109,27 @@ server {
 
 ***************
 ## 配置使用
+> [Official Doc](https://www.nginx.com/resources/wiki/start/#pre-canned-configurations)  
+
 > [知乎专栏](https://zhuanlan.zhihu.com/p/24524057)  
 > [nginx基本配置](https://segmentfault.com/a/1190000002797601) | [ngrok nginx docker本地搭建服务器](https://fengqi.me/unix/409.html)
 - [实验楼课程](https://www.shiyanlou.com/courses/95)
 
-- 个人理解
-  1. server_name 是一个域名或者ip, 如果是ip和公网的域名就没什么好解释的,
-    - 但是如果只是局域网的修改host文件生成的域名, 自己使用该域名访问是没有问题的, 别人访问不了,但是如果也同样的修改host文件后, 也能正确使用域名访问
-  2. server是一个门路, 不会冲突, 所以才能有很多个监听80端口的配置而互不影响.
+nginx 配置文件的语法是自己独有的语法, 比较像 shell, 里面有用到正则, 变量的概念
 
 ### 本地静态文件Web服务器
-> 最简单的使用 [参考博客](http://blog.yuansc.com/2015/04/29/nginx%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/)
+> [参考 nginx配置静态文件服务器 ](http://blog.yuansc.com/2015/04/29/nginx%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/)
 
 ```conf
   server {
-    # listen 6050;
     client_max_body_size 4G;
-    listen  80;  ## listen for ipv4; this line is default and implied
+    listen  80;  # listen for ipv4; this line is default and implied
     server_name static.me.com;
     root /home/mini/Sync;
     location / {
+        autoindex on; # 显示索引
+        autoindex_exact_size on; # 显示大小
+		autoindex_localtime on;  # 显示时间
     }
   }
 ```
