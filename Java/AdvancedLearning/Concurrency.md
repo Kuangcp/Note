@@ -25,7 +25,7 @@ categories:
             1. [原子类](#原子类)
             1. [读写锁](#读写锁)
         1. [具体实现](#具体实现)
-            1. [线程锁](#线程锁)
+            1. [Lock](#lock)
             1. [CountDownLatch 锁存器](#countdownlatch-锁存器)
             1. [ConcurrentHashMap](#concurrenthashmap)
             1. [CopyOnWriteArrayList](#copyonwritearraylist)
@@ -38,7 +38,7 @@ categories:
     1. [分支合并框架](#分支合并框架)
     1. [Java内存模型](#java内存模型)
 
-**目录 end**|_2019-05-08 20:57_|
+**目录 end**|_2019-05-31 09:37_|
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/java-concurrency)  
@@ -274,7 +274,7 @@ public int current(){
 *****************
 
 ### 具体实现
-#### 线程锁 
+#### Lock 
 > `java.util.concurrent.locks`
 - 块结构同步方式基于锁这样的的概念，具有缺点
     - 锁只有一种类型

@@ -32,7 +32,7 @@ categories:
         1. [ReflectionUtils](#reflectionutils)
 1. [Web开发的最佳实践](#web开发的最佳实践)
 
-**目录 end**|_2019-05-13 18:47_|
+**目录 end**|_2019-05-31 09:37_|
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -253,7 +253,6 @@ _其他,可选_
      <version>${spring.version}</version>
    </dependency>
 ```
-- [ ] Spring方式, 现在用boot用多了, 都忘了怎么配置Spring了
 
 ## Utils
 ### ReflectionUtils

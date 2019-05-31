@@ -1,3 +1,36 @@
+---
+title: Extjs学习笔记
+date: 2019-05-31 09:30:51
+tags: 
+categories: 
+---
+
+**目录 start**
+ 
+1. [Extjs的使用](#extjs的使用)
+1. [相关组件的使用](#相关组件的使用)
+    1. [1, 对话框](#1-对话框)
+    1. [2,窗体组件](#2窗体组件)
+    1. [3,表单](#3表单)
+    1. [4,文本框](#4文本框)
+    1. [5,按钮](#5按钮)
+    1. [6,单选框和复选框](#6单选框和复选框)
+    1. [7,下拉列表](#7下拉列表)
+    1. [8,联动下拉列表](#8联动下拉列表)
+    1. [9,上传图片](#9上传图片)
+    1. [10,文本编辑器](#10文本编辑器)
+    1. [11,布局](#11布局)
+        1. [1,ContainerLayout](#1containerlayout)
+        1. [2,FormLayout](#2formlayout)
+        1. [3,ColumnLayout](#3columnlayout)
+        1. [4,BorderLayout](#4borderlayout)
+        1. [5,AccordionLayout](#5accordionlayout)
+        1. [6,FitLayout](#6fitlayout)
+        1. [7,TableLayout](#7tablelayout)
+
+**目录 end**|_2019-05-31 09:37_|
+****************************************
+
 # Extjs的使用
  - 引入相关文件
 > ext-all.js  
