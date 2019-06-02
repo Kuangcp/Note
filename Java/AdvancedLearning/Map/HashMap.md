@@ -1,5 +1,5 @@
 ---
-title: HashMap
+title: Java中的HashMap
 date: 2019-04-16 15:35:58
 tags: 
 categories: 
@@ -37,6 +37,7 @@ categories:
 HashMap的数据结构是 数组(称为bucket)加单链表 (数组是只放一个Node对象, 单链表是为了放通过hash计算得到的index一致的元素包装成的Node对象)
 
 ![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Java/Collection/Map/HashMap.png)
+![HashMap主要数据结构](https://github.com/dragonhht/GitImgs/blob/master/Notes/HashMap_1.png?raw=true)
 
 这种设计的好处是, 如果 hash 足够分散, get 时的时间复杂度为 O(1), 反之则是 链表 O(n) 红黑树 O(log n)
 
@@ -48,7 +49,7 @@ HashMap的数据结构是 数组(称为bucket)加单链表 (数组是只放一�
 其中初始容量会根据 tableSizeFor 方法计算得到 大于初始容量的最小的2的指数值 3->4 4->8 ...
 
 ## put
-> 得到 key 的数组下标 `key & (n - 1)` 的 hash 值, n 为数组大小
+> 得到 key 的数组下标: `(n - 1) & key 的 hash 值`, 其中 n 为数组大小
 
 学习队列的时候有种简单的思路就是直接将 key 的值 对数组大小取余, 就得到了key的正确下标  
 但是HashMap采用这种设计的优点是性能更好,因为Java中的取余实际上是 `a - (a / b) * b`  
