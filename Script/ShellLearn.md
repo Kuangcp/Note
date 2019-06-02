@@ -31,7 +31,9 @@ categories:
             1. [case](#case)
         1. [循环](#循环)
     1. [函数](#函数)
-    1. [配置文件](#配置文件)
+    1. [文件读写](#文件读写)
+        1. [配置文件](#配置文件)
+            1. [ini和conf](#ini和conf)
     1. [脚本的参数自动补全](#脚本的参数自动补全)
         1. [Bash](#bash)
         1. [Zsh](#zsh)
@@ -42,7 +44,7 @@ categories:
 1. [Tips](#tips)
     1. [常用代码片段](#常用代码片段)
 
-**目录 end**|_2019-05-10 18:10_|
+**目录 end**|_2019-06-02 11:58_|
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -302,8 +304,21 @@ _判断文件_
   }
 ```
 **********************
-## 配置文件
-> [参考博客](http://blog.csdn.net/xinfuqizao/article/details/21812003)
+## 文件读写
+```bash
+		while IFS= read -r -u3 line; do
+    		echo "$line"
+		done 3< "$2"
+```
+
+### 配置文件
+
+#### ini和conf
+```conf
+  [block]
+  name=myth
+```
+- 如果没有 `[block]` 这样的声明就可以当sh用, 直接 source file 就加载了配置内容
 
 ********************
 ## 脚本的参数自动补全

@@ -28,7 +28,7 @@ categories:
 1. [Nginx Plus](#nginx-plus)
 1. [问题](#问题)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-06-02 11:58_|
 ****************************************
 # Nginx
 
@@ -117,19 +117,21 @@ server {
 
 nginx 配置文件的语法是自己独有的语法, 比较像 shell, 里面有用到正则, 变量的概念
 
+- `nginx -s reload` 重新加载配置文件
+
 ### 本地静态文件Web服务器
 > [参考 nginx配置静态文件服务器 ](http://blog.yuansc.com/2015/04/29/nginx%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/)
 
 ```conf
   server {
     client_max_body_size 4G;
-    listen  80;  # listen for ipv4; this line is default and implied
-    server_name static.me.com;
+    listen  80; 
+    server_name static.kcp;
     root /home/mini/Sync;
     location / {
         autoindex on; # 显示索引
         autoindex_exact_size on; # 显示大小
-		autoindex_localtime on;  # 显示时间
+	    autoindex_localtime on;  # 显示时间
     }
   }
 ```
@@ -137,45 +139,46 @@ nginx 配置文件的语法是自己独有的语法, 比较像 shell, 里面有�
 
 > 在服务器中配置， 出现403错误, 将 /etc/nginx/nginx.conf 中第一行的 `user nginx;` 改成 root
 
-
 #### 反向代理多个服务
 - 修改默认配置文件 `/etc/nginx/nginx.conf`
-  - 或者更好的就是在 `/etc/nginx/conf.d/`下新建 *.conf 文件，文件名任意
+  - 更好的方式则是: 在 `/etc/nginx/conf.d/`下新建 *.conf 文件
 
-`该配置文件配置了服务器反向代理，80端口上：/路径的请求转发到9991端口 /myth转发到7898端口 `
+`配置反向代理`
+> 80端口上：/路径的请求转发到9991端口 /myth转发到7898端口 
+
 ```conf
-upstream xxxuthus {
-  server 127.0.0.1:9991;
-}
-upstream youhui {
-  server 127.0.0.1:7898;
-}
-
-server {
-  listen 80;
-  server_name 1.1.1.1;
-
-  location / {
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
-    proxy_set_header Host $http_host;
-    proxy_set_header X-Nginx-Proxt true;
-
-    proxy_pass http://xxxuthus;
-    proxy_redirect off;
+  upstream one {
+    server 127.0.0.1:9991;
   }
- location /myth{
-  proxy_pass http://youhui;
-  proxy_redirect off;
- }
-}
+  upstream two {
+    server 127.0.0.1:7898;
+  }
+
+  server {
+    listen 80;
+    server_name 1.1.1.1;
+
+    location / {
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_set_header X-Nginx-Proxt true;
+
+      proxy_pass http://one;
+      proxy_redirect off;
+    }
+    
+    location /myth{
+      proxy_pass http://two;
+      proxy_redirect off;
+    }
+  }
 ```
-- 测试配置文件 再 重启nginx `nginx -s reload`
 
 #### 配置https
 > 参考博客 [nginx搭建https服务](http://www.cnblogs.com/tintin1926/archive/2012/07/12/2587311.html) | [nginx http/2](http://letus.club/2016/04/08/nginx-http2-letsencrypt/)
 
-- 先签发证书 `命令运行`
+> 自签发证书 `命令运行`
 ```sh
   ############ 证书颁发机构
   # CA机构私钥
@@ -214,11 +217,12 @@ server {
     proxy_redirect off;
   }
 }
-
 ```
+
 ##### certbot来配置Https
 > 免费的网站, 并且现在支持泛域名了! [参考博客](http://www.cnblogs.com/lidong94/p/7156839.html) | [参考博客](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04)  
 > [Nginx反向代理https](http://linux.it.net.cn/e/server/nginx/2015/0131/12745.html)
+
 ```sh
   wget https://dl.eff.org/certbot-auto
   chmod a+x certbot-auto
@@ -262,7 +266,7 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
 ```
 
 #### 配置Websocket反向代理
-```
+```conf
   # 配置连接的配置信息
   map $http_upgrade $connection_upgrade{
     default upgrade;
@@ -293,7 +297,6 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
 
 ### 防盗链
 
-
 ### 负载均衡
 > [Nginx 反向代理 负载均衡 虚拟主机配置](https://segmentfault.com/a/1190000012479902)
 
@@ -308,15 +311,16 @@ add_header Access-Control-Allow-Methods GET,POST,OPTIONS;
 #### 静态服务器将后台反代理
 > 极大地省去了后台的配置！！
 > [Nginx反向代理解决跨域问题](https://segmentfault.com/a/1190000012859206) | [nginx简易使用教程,使用nginx解决跨域问题](https://www.jianshu.com/p/05415981e5e5)
+
 _配置静态端_
-```
+```conf
 server {
     client_max_body_size 4G;
     listen  80;  ## listen for ipv4; this line is default and implied
     server_name view.kcp;
     location /api/ {
-            # add_header 'Access-Control-Allow-Origin' '*';
-            proxy_pass http://127.0.0.1:8889;
+        # add_header 'Access-Control-Allow-Origin' '*';
+        proxy_pass http://127.0.0.1:8889;
     }
     location / {
         root /home/kcp/IdeaProjects/Base/graduate/static;

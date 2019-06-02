@@ -29,13 +29,13 @@ categories:
             1. [操作注解](#操作注解)
 1. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2019-04-19 18:07_|
+**目录 end**|_2019-06-02 11:58_|
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
 > If it is possible to perform an operation without using reflection, then it is preferable to avoid using it. 
 
-> [Java8 doc: reflection](https://docs.oracle.com/javase/tutorial/reflect/index.html)
+> [Offcial Tutorials: reflection](https://docs.oracle.com/javase/tutorial/reflect/index.html)
 
 > [ Java反射异常处理之InvocationTargetException ](https://blog.csdn.net/zhangzeyuaaa/article/details/39611467)
 

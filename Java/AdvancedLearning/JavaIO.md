@@ -25,7 +25,7 @@ categories:
 1. [NIO](#nio)
     1. [Buffer](#buffer)
 
-**目录 end**|_2019-05-21 15:26_|
+**目录 end**|_2019-06-02 11:58_|
 ****************************************
 # Java中的IO
 > [操作系统中的IO模型](/Skills/CS/IO.md)  
@@ -43,7 +43,7 @@ categories:
 同步阻塞式IO 但是能基于 BIO 手动实现 伪异步IO
 
 ### NIO
-> Java1.4 引入; 非阻塞式IO, 虽然官方名称为 New IO, 民间称为 `No-blocking IO`
+> Java1.4 引入; 同步非阻塞式IO, 虽然官方名称为 New IO, 民间称为 `No-blocking IO`
 
 这个NIO和是基于操作系统NIO相关函数实现的, 所以称为`No-blocking IO`
 ```java
@@ -64,10 +64,9 @@ categories:
     }
 ```
 
-所以在Linux上使用的是 epoll Windows 就是 poll 
+在Linux上使用的是 epoll, Windows 则是 poll 
 
-实现模型和操作系统的NIO也是一致的, 
-一个 Selector 注册多个 SelectionKey, SelectionKey 具有多个状态并且和Channel绑定
+实现模型和操作系统的NIO也是一致的, 一个 Selector 注册多个 SelectionKey, SelectionKey 具有多个状态并且和Channel绑定
 
 | 事件名 | 对应值 |
 |:----|:----|

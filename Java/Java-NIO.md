@@ -14,7 +14,7 @@ categories:
             1. [1、使用方法](#1、使用方法)
             1. [2、核心属性](#2、核心属性)
             1. [3、直接缓冲区与非直接缓冲区](#3、直接缓冲区与非直接缓冲区)
-        1. [2、[通道](./src/channel/TestChannel.java)](#2、[通道]srcchanneltestchanneljava)
+        1. [2、通道](#2、通道)
             1. [1、主要的Channel接口实现类](#1、主要的channel接口实现类)
             1. [2、使用方法](#2、使用方法)
                 1. [获取通道](#获取通道)
@@ -27,7 +27,7 @@ categories:
                 1. [2、[UDP连接](./src/channel/UDPChannel.java)](#2、[udp连接]srcchanneludpchanneljava)
         1. [3、[管道](./src/pipe/TestPipe.java)](#3、[管道]srcpipetestpipejava)
 
-**目录 end**|_2019-04-20 12:32_|
+**目录 end**|_2019-06-02 11:58_|
 ****************************************
 # NIO
 
@@ -78,7 +78,7 @@ categories:
 
 -   直接缓冲区：通过`allocateDirect()`方法分配缓冲区，缓冲区将直接建立在物理内存中
 
-### 2、[通道](./src/channel/TestChannel.java)
+### 2、通道
 
 > Channel表示IO源与目标打开的连接，类似于传统的流。不过Channel不能直接访问数据，Channel只能与Buffer进行交互
 
