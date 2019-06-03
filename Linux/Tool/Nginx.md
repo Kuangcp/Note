@@ -137,7 +137,19 @@ nginx 配置文件的语法是自己独有的语法, 比较像 shell, 里面有�
 ```
 再在 `/etc/hosts`文件中配置下域名即可访问
 
-> 在服务器中配置， 出现403错误, 将 /etc/nginx/nginx.conf 中第一行的 `user nginx;` 改成 root
+> 若出现403错误, 将 /etc/nginx/nginx.conf 中第一行的 `user nginx;` 改成 root
+
+`配置某文件浏览器打开` 也就是 text/plain; 类型
+
+> 例: code 目录下所有文件为 text/plain; 类型
+```conf
+    location /code/ {
+        # All files in it
+        location ~* {
+            add_header Content-Type text/plain;
+        }
+    }
+```
 
 #### 反向代理多个服务
 - 修改默认配置文件 `/etc/nginx/nginx.conf`
