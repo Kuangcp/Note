@@ -15,19 +15,14 @@ categories:
     1. [安装配置](#安装配置)
         1. [Docker安装](#docker安装)
         1. [sys.path](#syspath)
+    1. [执行](#执行)
     1. [基础](#基础)
         1. [代码风格](#代码风格)
         1. [包](#包)
         1. [基础语法](#基础语法)
         1. [基础数据类型](#基础数据类型)
-    1. [内置模块](#内置模块)
-        1. [http](#http)
-        1. [virtualenv](#virtualenv)
-        1. [pip](#pip)
-            1. [Requirements files](#requirements-files)
-            1. [发布包到 pypi](#发布包到-pypi)
     1. [变量](#变量)
-    1. [基本运行结构](#基本运行结构)
+    1. [基本执行结构](#基本执行结构)
         1. [序列](#序列)
             1. [列表](#列表)
             1. [元组](#元组)
@@ -35,7 +30,13 @@ categories:
             1. [字符串编码问题(python2问题)](#字符串编码问题python2问题)
             1. [字典（键值对）](#字典（键值对）)
         1. [运算符](#运算符)
-        1. [模块](#模块)
+    1. [模块](#模块)
+        1. [内置模块](#内置模块)
+            1. [http](#http)
+            1. [virtualenv](#virtualenv)
+            1. [pip](#pip)
+                1. [Requirements files](#requirements-files)
+                1. [发布包到 pypi](#发布包到-pypi)
     1. [输入输出](#输入输出)
         1. [输入](#输入)
         1. [输出](#输出)
@@ -47,6 +48,7 @@ categories:
         1. [继承](#继承)
     1. [异常](#异常)
     1. [文件操作](#文件操作)
+1. [读取大文件](#读取大文件)
         1. [JSON](#json)
         1. [conf或者ini](#conf或者ini)
     1. [测试](#测试)
@@ -64,7 +66,7 @@ categories:
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-**目录 end**|_2019-05-14 14:42_|
+**目录 end**|_2019-06-04 09:48_|
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -137,6 +139,11 @@ categories:
 1. 修改环境变量
     - 修改或添加 环境变量 PYTHONPATH 路径用分号分隔
 
+## 执行
+1. python 源文件
+1. 源文件 第一行声明 `#!/usr/bin/python` 和shell脚本一样的用法, 然后 ./源文件
+
+1. 优化代码 `python -O -m py_compile test.py` 
 ******************************
 
 ## 基础
@@ -193,93 +200,39 @@ When importing the package, Python searches through the directories on `sys.path
 
 ### 基础数据类型
 - 数值类型
-    - 整数 各种进制 `0 八` `0x 十六` `0b 二`
-    - 浮点数 `1.2e2` `13.34e-2`
+    - 整型 (`-2^31 ~ 2^31-1`) `0b`,`0`,`0x`  2,8,16 进制
+    - 浮点型 `1.2e2` `13.34e-2`
     - 复数  `3+4j` `0.1-0.5j`
+
 - 布尔型
-    - 0或0.0 :看成false
-    - `""` `''` :false
-    - () [] {} :false
+    - 0 或 0.0   视作 False
+    - `""` `''`  视作 False
+    - () [] {}   视作 False
+    
 - 字符串
     - 单引号 双引号: 单行字符串
     - 三引号 多行字符串
+
 - 空值 None
-
-******************
-
-## 内置模块
-python -m module_name
-
-### http
-- 快速启动一个 HTTP Web 服务器 `http.server [port]`
-
-### virtualenv
-> [廖雪峰 virtualenv](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000)
-
-**虽然也可以用apt安装 python-venv, 但是最好不要这样,避免后续模块升级后不必要的冲突**
-
-- 创建环境 `python3 -m venv web` 或者 `virtualenv --no-site-packages web` 不将系统中安装的包带入该环境
-- 启动环境 `source web/bin/activate`
-    - 在环境中使用的pip python 都是环境中的, 其实就是修改了系统的环境变量指向
-- 停用环境 `deactivate`
-
-### pip
-> [pip](https://pip.readthedocs.io/en/stable/) | [doc](https://pip.pypa.io/en/stable/reference/pip_install/) | [guide](https://packaging.python.org/tutorials/installing-packages/) 
-
-1. 作为Python的包管理器, 包的可执行文件默认在 /usr/local/bin 目录下(全局)
-    - 如果安装时加了该参数 --user 就是安装在 ~/.local/bin 目录下
-    - 升级pip `python -m pip install --upgrade pip`
-
-1. 也可以这样使用 `python -m pip install xxx`
-
-1. 安装指定版本的包 `install name==version` 
-
-> [修改Pip 管理工具默认下载源](https://blog.csdn.net/JQ_AK47/article/details/77944444)
-
-#### Requirements files
-> [pip官方文档 Requirements files](https://pip.readthedocs.io/en/1.1/requirements.html)
-
-1. 导出 `pip freeze > requirements.txt` _这个命令会将当前环境安装的包全部列出来, 适合env环境下使用_
-    - 如果没有使用虚拟环境, 然后只想导出某项目的依赖 [Github pipreqs](https://github.com/bndr/pipreqs)
-    - 安装 : `pip install pipreqs` 然后 `pipreqs /path/to/project`
-
-1. 使用 `pip install -r requirements.txt`
-
-#### 发布包到 pypi
-> [Official : about package](https://packaging.python.org/guides/distributing-packages-using-setuptools/?highlight=pypirc#id78)
-
-1. edit `$HOME/.pypirc` to save authorization  info
-    ```
-        [pypi]
-        username = <username>
-        password = <password>
-    ```
-1. pip3 install wheel twine 
-1. rm -rf dist build *.egg-info
-1. python3 setup.py bdist_wheel
-1. twine upload dist/*
-
-> [可以参考该项目: 终端内使用百度翻译](https://gitee.com/gin9/baidu-trans-cli)
-
-由于Readme 使用的是 [reStructuredText](https://rest-sphinx-memo.readthedocs.io/en/latest/ReST.html) 语法(要求严格,所以需要借助工具)
-> 1. pip install collective.checkdocs Pygments
-> 1. python3 setup.py checkdocs
 
 *******************************
 ## 变量
 - 局部变量：
 - 全局变量：定义在函数外的变量，也称公用变量，函数中 `global x` 声明引用全局变量x
-## 基本运行结构
+
+## 基本执行结构
 - 输入输出：
     - input("") 默认当成字符串输入 数值：int() 强转一下
     - print("")
         - 输出不带换行  print('', '', end='')
+- 逻辑运算符
+    - and or not
 - 选择：
     - if elif else
-- for循环：
+- for 循环：
     - `for in ` `while ` 例如：`for i in range(1,10,2):`  范围 [1,10) 增量为2
     - pass 语句，当某个子句没有任何操作，，用pass保持程序结构完整性 不影响下一句 不像continue
-- while 循环;
+- while 循环
     - `while True:`` while ‘2’ in nums:`` while num<2:`  
     - `while 列表: ` 直到列表为空退出循环
 
@@ -304,7 +257,8 @@ python -m module_name
 - len() 
 - min() max() sum() 要求元素全是数值
 
-*****
+************************
+
 #### 列表
 - 元素可包含 字符串，浮点，整型，列表，布尔
 - 操作：
@@ -323,6 +277,8 @@ python -m module_name
     - 仿造一维的定义： lists = [[0 for x in range(10)] for y in range(10)] 10*10 初始为0的列表
     - 简便但是不可行的方法： lists = [[0]*10]*10 这是个坑， 只是声明了一维数组，然后多次引用， 虽然看起来是二维， 引用数据就会发现是一维  
 
+************************
+
 #### 元组
 - 元组和列表类似但是元组是创建不可更改的 
     - 和列表相比，相同点：按定义的顺序排序，负索引一致，可以使用分片
@@ -333,7 +289,8 @@ python -m module_name
     - 连接：+ 连接得到新的元组
     - 删除：del 删除整个元组
 
-*****
+************************
+
 #### 字符串
 - str() 将对象转化成字符串 （注：Python中不能像Java一样字符串和数值直接+）
 - repr() 注意和str()的区别
@@ -357,14 +314,15 @@ python -m module_name
         - 字典方式 
     - `title()` 首字母大写 
 
-****
+************************
+
 `字符串，列表，元组相互转换：`
 - 字符串-列表 ： list("python")
 - 字符串-元组 ： tuple("python")
 - 列表或元组-字符串 join(obj) 参数是列表或元组类型，其元素只能是字符串类型
 
+************************
 
-***************************************
 #### 字符串编码问题(python2问题)
 > [ Python 3的bytes/str之别 ](http://www.ituring.com.cn/article/1116)
 
@@ -385,7 +343,8 @@ python -m module_name
 ```
 - 因为文件不是UTF8：`UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb9 in position 2: invalid start byte `
 
-*************************************
+************************
+
 #### 字典（键值对）
 - 通过用空间来换取时间，与列表相比，键的增加不影响查找插入速度，需要占用大量内存 
 - 特性：
@@ -437,13 +396,69 @@ python -m module_name
     - \f   换页
     - \  续行符（行尾）
 
+******************
 
-### 模块
-> [参考博客](http://blog.csdn.net/hansel/article/details/8975663)
+## 模块
+python -m module_name
 
-- 关于同级，子级目录是比较方便的，涉及到上级目录的就麻烦点了
+### 内置模块
+#### http
+- 快速启动一个 HTTP Web 服务器 `http.server [port]`
+
+#### virtualenv
+> [廖雪峰 virtualenv](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000)
+
+**虽然也可以用apt安装 python-venv, 但是最好不要这样,避免后续模块升级后不必要的冲突**
+
+- 创建环境 `python3 -m venv web` 或者 `virtualenv --no-site-packages web` 不将系统中安装的包带入该环境
+- 启动环境 `source web/bin/activate`
+    - 在环境中使用的pip python 都是环境中的, 其实就是修改了系统的环境变量指向
+- 停用环境 `deactivate`
+
+#### pip
+> [pip](https://pip.readthedocs.io/en/stable/) | [doc](https://pip.pypa.io/en/stable/reference/pip_install/) | [guide](https://packaging.python.org/tutorials/installing-packages/) 
+
+1. 作为Python的包管理器, 包的可执行文件默认在 /usr/local/bin 目录下(全局)
+    - 如果安装时加了该参数 --user 就是安装在 ~/.local/bin 目录下
+    - 升级pip `python -m pip install --upgrade pip`
+
+1. 也可以这样使用 `python -m pip install xxx`
+
+1. 安装指定版本的包 `install name==version` 
+
+> [修改Pip 管理工具默认下载源](https://blog.csdn.net/JQ_AK47/article/details/77944444)
+
+##### Requirements files
+> [pip官方文档 Requirements files](https://pip.readthedocs.io/en/1.1/requirements.html)
+
+1. 导出 `pip freeze > requirements.txt` _这个命令会将当前环境安装的包全部列出来, 适合env环境下使用_
+    - 如果没有使用虚拟环境, 然后只想导出某项目的依赖 [Github pipreqs](https://github.com/bndr/pipreqs)
+    - 安装 : `pip install pipreqs` 然后 `pipreqs /path/to/project`
+
+1. 使用 `pip install -r requirements.txt`
+
+##### 发布包到 pypi
+> [Official : about package](https://packaging.python.org/guides/distributing-packages-using-setuptools/?highlight=pypirc#id78)
+
+1. edit `$HOME/.pypirc` to save authorization  info
+    ```
+        [pypi]
+        username = <username>
+        password = <password>
+    ```
+1. pip3 install wheel twine 
+1. rm -rf dist build *.egg-info
+1. python3 setup.py bdist_wheel
+1. twine upload dist/*
+
+> [可以参考该项目: 终端内使用百度翻译](https://gitee.com/gin9/baidu-trans-cli)
+
+由于Readme 使用的是 [reStructuredText](https://rest-sphinx-memo.readthedocs.io/en/latest/ReST.html) 语法(要求严格,所以需要借助工具)
+> 1. pip install collective.checkdocs Pygments
+> 1. python3 setup.py checkdocs
 
 ************
+
 ## 输入输出
 ### 输入
 ### 输出
@@ -613,6 +628,7 @@ def show_help():
     finally:
         print('finally')
 ```
+
 - 基本语法 `try except else finally`
     - else是无异常执行
     - 有异常就执行 except， except 超类Exception，也可以多个except （和Java一致）
@@ -653,11 +669,11 @@ def show_help():
 
 - 注意路径，Windows系统中要使用反斜杠 \ 
 - 最简单：`file = open('')` 只读打开
-- `使用with来操作 好处是Python自动关闭文件`
-```python
-    with open('filename') as name: 
-        name.read()
-```
+- `使用with来操作 好处是Python自动关闭文件` 类似于Java的TWR
+    ```python
+        with open('filename') as file: 
+            lines = file.readlines()
+    ```
 - 为写打开新文本文件只读 `file = open('a.txt','w+'[,coding='utf-8'])` 打开删空
 - `file.write('')`
 - `os模块`
@@ -681,15 +697,22 @@ def show_help():
     - dir() 复制单个文件
     - shultil.copytree(r'',r'') 复制目录树 
 
+```python
+# 读取大文件
+for line in fileinput.input("test.txt"):
+    print(line)
+```
+************************
+
 `b 表示字节流（二进制文件） 不加表示字符流（文本文件）`
 
 |字符流方式   |意义   |当存在   |当不存在   |
 |:-----|:-----|:------|:-----|
 |r   |只读打开   |打开   |返回空指针 |
-|w   |只写打开新  |打开删空 |新建打开  |
+|w   |只写打开  |打开删空 |新建打开  |
 |a   |追加打开   |打开   |新建打开  |
 |r+  |读打开可写  |打开   |返回空指针  |
-|w+  |写打开新可读 |打开删空 |新建打开  |
+|w+  |写打开可读 |打开删空 |新建打开  |
 |a+  |追加打开可读 |打开   |新建打开  |
 
 ****************
@@ -697,11 +720,13 @@ def show_help():
 |字节流方式   |意义   |当存在   |当不存在   |
 |:-----|:-----|:------|:-----|
 |rb  |只读打开   |打开   |返回空指针 |
-|wb  |只写打开新  |打开删空 |新建打开  |
+|wb  |只写打开  |打开删空 |新建打开  |
 |ab  |追加打开   |打开   |新建打开  |
 |rb+ |读打开可写  |打开   |返回空指针 |
-|wb+ |写打开新可读 |打开删空 |新建打开  |
+|wb+ |写打开可读 |打开删空 |新建打开  |
 |ab+ |追加打开可读 |打开   |新建打开  |
+
+************************
 
 ### JSON
 ```python

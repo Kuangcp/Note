@@ -22,7 +22,7 @@ categories:
         1. [自定义异常](#自定义异常)
             1. [自定义异常的错误码](#自定义异常的错误码)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-06-04 09:48_|
 ****************************************
 # 异常
 > 相关博客:[Java异常浅谈](http://www.cnblogs.com/focusj/archive/2011/12/26/2301524.html)  
@@ -35,6 +35,8 @@ categories:
 Err错误，一般是指与虚拟机相关的问题，如系统崩溃，虚拟机错误，动态链接失败等，这种错误无法恢复或不可能捕获，将导致应用程序中断，通常应用程序无法处理这些错误;  
 因此应用程序不应该使用catch块来捕获Error对象,在定义该方法时，也无须在其throws子句中声明该方法可能抛出Error及任何子类。  
 所以异常处理更多的是指Exception类,而经常处理的一般是RunTimeException 而Exception又分为2种:_校验异常_ 和 _运行时异常_  
+
+非受检异常, 继承于RunTimeException, 其他的都属于受检异常
 
 ## 常见异常
 > [ConcurrentModificationException](https://docs.oracle.com/javase/8/docs/api/java/util/ConcurrentModificationException.html)
