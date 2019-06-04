@@ -18,9 +18,10 @@ categories:
     1. [HashMap 与 HashTable](#hashmap-与-hashtable)
     1. [总结](#总结)
 1. [Tips](#tips)
-    1. [死循环问题](#死循环问题)
+    1. [扩容死循环问题](#扩容死循环问题)
+    1. [栈溢出问题](#栈溢出问题)
 
-**目录 end**|_2019-05-27 13:44_|
+**目录 end**|_2019-06-04 19:53_|
 ****************************************
 # HashMap 
 > [API: HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)
@@ -116,7 +117,7 @@ hashmap的实现原理，从负载因子，冲突处理，equals，hashcode一�
 
 数据竞争: put, resize, rehash, fail fast
 
-## 死循环问题
+## 扩容死循环问题
 > [参考博客: HashMap的死循环](https://www.jianshu.com/p/1e9cf0ac07f4)
 
 ```java
@@ -178,3 +179,5 @@ hashmap的实现原理，从负载因子，冲突处理，equals，hashcode一�
 ```
 JDK8 扩容时采用的方式是将一个链表按原有顺序拆分成两个链表 而且采用的是尾插法, 即使是出现了并发问题, 只是重复执行了操作, 不会出现环
 
+## 栈溢出问题
+Flink 中 大量集合进行 union 操作时, 由于 HashMap空间不够而导致的 hashCode hash put 函数递归调用

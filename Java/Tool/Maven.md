@@ -35,6 +35,10 @@ categories:
     1. [常用插件](#常用插件)
         1. [lombok](#lombok)
         1. [protobuf](#protobuf)
+        1. [打包可执行Jar](#打包可执行jar)
+            1. [assembly](#assembly)
+            1. [shade](#shade)
+            1. [jar](#jar)
     1. [构建工具对比](#构建工具对比)
         1. [Maven和Ant的区别一](#maven和ant的区别一)
         1. [Maven的优势](#maven的优势)
@@ -47,7 +51,7 @@ categories:
             1. [Gradle](#gradle)
             1. [Maven](#maven)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-06-04 19:53_|
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -275,6 +279,8 @@ mvn install:install-file
 
 ### 部署
 > [Java项目部署方式整理](/Java/AdvancedLearning/Deploy.md)
+
+> [deploy with source](https://stackoverflow.com/questions/4725668/how-to-deploy-snapshot-with-sources-and-javadoc)
 
 ******************
 ## maven的依赖

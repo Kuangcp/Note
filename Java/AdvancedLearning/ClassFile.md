@@ -23,13 +23,15 @@ categories:
 1. [字节码相关框架](#字节码相关框架)
 1. [热更新](#热更新)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-06-04 19:53_|
 ****************************************
 # 字节码以及类加载
-> [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/java-classfile/src/main/java/com/github/kuangcp) 
+> [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
 
 **`相关项目`**
-> [Apache bcel](http://commons.apache.org/proper/commons-bcel/index.html)
+> [Apache bcel](http://commons.apache.org/proper/commons-bcel/index.html)  
+> cglib  
+> javassist  
 
 ## 编译优化
 > 由源文件 *.java 编译成 *.class 文件
@@ -58,7 +60,7 @@ categories:
 
 ### 常量池
 > 常量池是为类文件中的其他常量元素提供快捷访问方式的区域。对于JVM来说常量池相当于符号表
-> [参考博客](http://www.cnblogs.com/LeonNew/p/5314731.html)
+> [参考博客](http://www.cnblogs.com/LeonNew/p/5314731.html)  
 
 - `javap -v class文件` 输出很多额外信息，# 开头的就是常量池信息
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p120.jpg)

@@ -1,5 +1,5 @@
 ---
-title: Java注解
+title: Java中的注解
 date: 2018-11-21 10:56:52
 tags: 
     - 注解
@@ -13,7 +13,7 @@ categories:
     1. [自定义Annotation](#自定义annotation)
     1. [读取](#读取)
 
-**目录 end**|_2019-04-19 18:07_|
+**目录 end**|_2019-06-04 19:53_|
 ****************************************
 # 注解
 
@@ -54,7 +54,8 @@ categories:
 ```
 
 ## 读取
+> [相关代码片段](https://gitee.com/gin9/codes/s148mbplxo06qgn25d3wc23)
+
 - 判断是否有指定注解类型的注解
     - 在类上的注解就是得到类对象, 然后判断 isAnnotationPresent(ExcelConfig.class)
     - 在方法上的注解就是得到所有方法, 属性同理
-- [相关代码片段](https://gitee.com/kcp1104/codes/s148mbplxo06qgn25d3wc23)

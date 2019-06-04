@@ -1,5 +1,5 @@
 ---
-title: Fork/Join
+title: CloudNative.md
 date: 2019-06-04 19:44:41
 tags: 
 categories: 
@@ -7,8 +7,9 @@ categories:
 
 **目录 start**
  
-1. [ForkJoin方式](#forkjoin方式)
+1. [云原生](#云原生)
 
 **目录 end**|_2019-06-04 19:53_|
 ****************************************
-# ForkJoin方式
+# 云原生
+> [Pivotal对云原声的定义](https://pivotal.io/cn/cloud-native)
