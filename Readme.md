@@ -1,10 +1,10 @@
 # 学习笔记
 
-[![目录](https://img.shields.io/badge/note-Catalog-brightgreen.svg)](./SUMMARY.md) 
+[![目录](https://img.shields.io/badge/catalog-详细目录-brightgreen.svg)](./SUMMARY.md) 
+[![JavaSE](https://img.shields.io/badge/JavaSE-Java基础-blue.svg)](./Java/) 
 [![目录](https://img.shields.io/badge/wiki-Note-brightgreen.svg)](https://gitee.com/gin9/Memo/wikis/pages) 
-[![JavaSE](https://img.shields.io/badge/note-JavaSE-blue.svg)](./Java/) 
 
-> 建议将该仓库克隆下来后并将该项目作为工作空间, 在VSCode中搜索阅读, 体验最佳
+> 建议将该仓库克隆下来后并将该项目作为工作空间, 在 [Visual Studio Code](https://code.visualstudio.com/) 中搜索阅读, 体验最佳
 
 ## 基础
 * [ 算法 ](/Skills/CS/Algorithm.md)
@@ -20,7 +20,6 @@
 * [ Git基础 ](/Skills/Vcs/GitBase.md)
 * [ Git协作 ](/Skills/Vcs/GitTeam.md)
 * [ Svn ](/Skills/Vcs/Svn.md)
-
 ********************
 * [ 编辑器对比 ](/Skills/Application/Editor.md)
 * [ Web浏览器对比 ](/Skills/Application/WebBrowser.md)
