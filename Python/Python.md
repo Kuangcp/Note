@@ -27,7 +27,7 @@ categories:
             1. [列表](#列表)
             1. [元组](#元组)
             1. [字符串](#字符串)
-            1. [字符串编码问题(python2问题)](#字符串编码问题python2问题)
+            1. [字符串编码问题](#字符串编码问题)
             1. [字典（键值对）](#字典（键值对）)
         1. [运算符](#运算符)
     1. [模块](#模块)
@@ -48,7 +48,6 @@ categories:
         1. [继承](#继承)
     1. [异常](#异常)
     1. [文件操作](#文件操作)
-1. [读取大文件](#读取大文件)
         1. [JSON](#json)
         1. [conf或者ini](#conf或者ini)
     1. [测试](#测试)
@@ -66,7 +65,7 @@ categories:
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-**目录 end**|_2019-06-04 09:48_|
+**目录 end**|_2019-06-06 09:04_|
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -323,8 +322,8 @@ When importing the package, Python searches through the directories on `sys.path
 
 ************************
 
-#### 字符串编码问题(python2问题)
-> [ Python 3的bytes/str之别 ](http://www.ituring.com.cn/article/1116)
+#### 字符串编码问题
+> [ Python3 的 bytes str 之别 ](http://www.ituring.com.cn/article/1116)
 
 ![str和bytes的关系](https://raw.githubusercontent.com/Kuangcp/ImageRepos/masters/Tech/python/str_bytes.jpeg)
 
@@ -533,15 +532,16 @@ def show_help():
     - 缺省默认值（参数缺省之后，调用可以不传这个参数，否则必须要传） `def create(name='df')`
     - 列表类型，不想形参改变实参 传递副本过去即可 `list[:]`
     
-- `以下两种情况（* 和 **），都必须放在形参列表的最后 (两者同时使用时：* 只能在 ** 前 )`
-    - 多个实参 `create(age, *name)` `create(12, 's','d')`
-        - 所以这是名为name的`元组` 不能指定没有的名称 错误：create(12，d=2, 2,3,4)
-    - 多个指定名称实参 `create(age, **name)` `create(12, name='d', lo=23)` 
-        - 必须要指定名称 这是名为name的键值对`字典`
-        - 错误：create(12,d=23,3,3,3)
-    - 注意：
-        - `def hi(name, age=0, *names, **s)` `hi('d', 23,34, d=6) ` age会被赋值23
-        - `def hi(name, *names, age=0, **s)` `hi('d', 23,34, d=6)` 这样写age就不会赋值，除非指定名称 age=23
+
+- 多个实参 `create(age, *name)` `create(12, 's','d')`
+    - 所以这是名为name的`元组` 不能指定没有的名称 错误：create(12，d=2, 2,3,4)
+- 多个指定名称实参 `create(age, **name)` `create(12, name='d', lo=23)` 
+    - 必须要指定名称 这是名为name的键值对`字典`
+    - 错误：create(12,d=23,3,3,3)
+- 注意：
+    - `def hi(name, age=0, *names, **s)` `hi('d', 23,34, d=6) ` age会被赋值23
+    - `def hi(name, *names, age=0, **s)` `hi('d', 23,34, d=6)` 这样写age就不会赋值，除非指定名称 age=23
+    - `以上两种情况（* 和 **），都必须放在形参列表的最后 (两者同时使用时：* 只能在 ** 前 )`
 
 - 返回值
     - 返不返回 看需求 没有像Java一样的强制性约束类型
@@ -676,6 +676,7 @@ def show_help():
     ```
 - 为写打开新文本文件只读 `file = open('a.txt','w+'[,coding='utf-8'])` 打开删空
 - `file.write('')`
+
 - `os模块`
     - `os.rename('filename1','filename2') ` mv 
     - `os.remove('filename.py')` rm
@@ -684,7 +685,7 @@ def show_help():
     - `os.makedirs(r'path')` mkdir
     - `os.chdir('')` 改变一个目录
     - `os.rmdir('')` 删除该目录，前提是空目录
-
+ 
 - `os.path模块`
     - abspath('') 获取绝对路径
     - exists('') 是否存在
@@ -698,9 +699,9 @@ def show_help():
     - shultil.copytree(r'',r'') 复制目录树 
 
 ```python
-# 读取大文件
-for line in fileinput.input("test.txt"):
-    print(line)
+    # 读取大文件
+    for line in fileinput.input("test.txt"):
+        print(line)
 ```
 ************************
 
@@ -771,15 +772,19 @@ _对应的conf_
     [redis]
     host=127.0.0.1
 ```
-******************************
+
+************************
+
 ## 测试
+
 - 文件名test开头就当做是测试类，不会直接运行
 - 类继承 unittest.TestCase, 所有test_开头的方法都将自动运行
 - 断言 self.assertEqual assertNotEquals assertIn(item, list)
 - 直接运行 unittest.main()
 - 输出结果: `. 测试通过` `E 测试运行错误` `F 测试断言不通过`
 
-************
+************************
+
 ## 数据库
 ### MySQL
 - python3环境下： `sudo apt install python3-mysqldb`

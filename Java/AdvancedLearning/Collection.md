@@ -9,7 +9,7 @@ categories:
 
 **目录 start**
  
-1. [集合](#集合)
+1. [JDK中的集合](#jdk中的集合)
     1. [集合继承和实现关系](#集合继承和实现关系)
     1. [Iterator](#iterator)
     1. [Map](#map)
@@ -18,10 +18,12 @@ categories:
         1. [TreeMap](#treemap)
     1. [List](#list)
     1. [Set](#set)
+1. [第三方开源集合框架](#第三方开源集合框架)
+    1. [fastutil](#fastutil)
 
-**目录 end**|_2019-05-26 21:38_|
+**目录 end**|_2019-06-06 09:04_|
 ****************************************
-# 集合
+# JDK中的集合
 
 ## 集合继承和实现关系
 
@@ -89,3 +91,9 @@ List接口有众多实现, 最常用的 ArrayList LinkedList
 
 > [3分钟搞掂Set集合](https://segmentfault.com/a/1190000014391402?utm_source=channel-hottest)
 
+
+# 第三方开源集合框架
+
+
+## fastutil
+> [Github](https://github.com/vigna/fastutil)
