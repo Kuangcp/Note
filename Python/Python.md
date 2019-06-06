@@ -24,11 +24,11 @@ categories:
     1. [变量](#变量)
     1. [基本执行结构](#基本执行结构)
         1. [序列](#序列)
-            1. [列表](#列表)
-            1. [元组](#元组)
-            1. [字符串](#字符串)
+            1. [列表 list](#列表-list)
+            1. [元组 tuple](#元组-tuple)
+            1. [字符串 str](#字符串-str)
             1. [字符串编码问题](#字符串编码问题)
-            1. [字典（键值对）](#字典（键值对）)
+            1. [字典 dict](#字典-dict)
         1. [运算符](#运算符)
     1. [模块](#模块)
         1. [内置模块](#内置模块)
@@ -65,7 +65,7 @@ categories:
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-**目录 end**|_2019-06-06 09:04_|
+**目录 end**|_2019-06-06 18:13_|
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -244,21 +244,22 @@ When importing the package, Python searches through the directories on `sys.path
 ```
 
 ### 序列
-`序列通用操作（包含：字符串，列表，元组）`
-- `​索引`，从左至右：`0,1,2...n` 从右至左：`-1,-2...-n`
+> 序列通用操作（包含：字符串，列表，元组）
+
+- `索引` 从左至右：`0,1,2...n` 从右至左：`-1,-2...-n`
 - `切片`（截取序列的部分） `temp[:]` 返回一个副本
     - `temp[2:4]`就是`[2,4)` 
     - `temp[1:]`1到最后 `temp[-3:]` *[-3,-1]*
     - `temp[:4]` *[0,4)* `temp[:-3]` *[0,-3]*
-- `加 `：lista+listb 直接连接
-- `乘`：lista*4
+- `加` ：lista+listb 直接连接
+- `乘` ：lista*4
 - `判断是否存在`：`in` `not int`
 - len() 
 - min() max() sum() 要求元素全是数值
 
 ************************
 
-#### 列表
+#### 列表 list
 - 元素可包含 字符串，浮点，整型，列表，布尔
 - 操作：
     - 增加 + ，`append()/extend()`尾部加入元素/列表  `insert(index, "")` 元素插入到任意位置,其后元素后移
@@ -278,7 +279,7 @@ When importing the package, Python searches through the directories on `sys.path
 
 ************************
 
-#### 元组
+#### 元组 tuple
 - 元组和列表类似但是元组是创建不可更改的 
     - 和列表相比，相同点：按定义的顺序排序，负索引一致，可以使用分片
     - 不同点：元组使用的是()，不能增加删除元素，没有index方法但是有in，可以在字典中作为键,列表不可以
@@ -290,7 +291,7 @@ When importing the package, Python searches through the directories on `sys.path
 
 ************************
 
-#### 字符串
+#### 字符串 str
 - str() 将对象转化成字符串 （注：Python中不能像Java一样字符串和数值直接+）
 - repr() 注意和str()的区别
 - `r"d:\python27\"` r前缀表示转义字符看成普通字符
@@ -344,7 +345,7 @@ When importing the package, Python searches through the directories on `sys.path
 
 ************************
 
-#### 字典（键值对）
+#### 字典 dict
 - 通过用空间来换取时间，与列表相比，键的增加不影响查找插入速度，需要占用大量内存 
 - 特性：
     - 值是可以是任意的，甚至是字典嵌套
@@ -355,7 +356,8 @@ When importing the package, Python searches through the directories on `sys.path
     - 返回所有key：keys() 
     - 查询是否有这个键 ：has_key() 
     - get() keys() values() 
-    - 转化元组并返回 ：items() 
+    - 转化元组 ：items() 
+        - 可用于遍历 `for key,value in dict.items():`
     - 删除指定键：del() `del dict['name']` 
     - 删除所有：clear() 
     - 删除指定键并返回值 ：pop() 
