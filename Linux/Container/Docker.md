@@ -41,6 +41,8 @@ categories:
 1. [容器编排](#容器编排)
     1. [Docker-Compose](#docker-compose)
         1. [安装](#安装)
+        1. [配置文件](#配置文件)
+        1. [使用](#使用)
     1. [Docker-Machine](#docker-machine)
     1. [Docker-Swarm](#docker-swarm)
 1. [网络](#网络)
@@ -53,7 +55,7 @@ categories:
 1. [Dockerfile](#dockerfile)
     1. [dockerignore文件的使用](#dockerignore文件的使用)
 
-**目录 end**|_2019-05-19 23:30_|
+**目录 end**|_2019-06-09 23:27_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -342,7 +344,7 @@ _登录镜像仓库_
     - `-t` 容器启动后进入其命令行
     - `-v` 将本地文件夹建立映射到容器内 `-v 本机:容器`
     - `-p` 端口映射左本机右容器：`-p 44:22`主机容器端口相同就：`-p 22` 将容器所有EXPOSE的端口映射到宿主机随机端口`-P`
-    - `-f` 文件？
+        - 绑定udp端口 `-p 44:22/udp`
     - `--env name="tanky"` 设置环境变量
     - `--cpu-shares` 设置CPU的相对权重，只在link之间容器的权重比例
     - `--cpuset-cpus` 限制只能运行在某标号的CPU上
