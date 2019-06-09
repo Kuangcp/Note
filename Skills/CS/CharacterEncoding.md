@@ -54,14 +54,15 @@ Linux `man ascii` 就可以查看, 没有这个手册就安装 `ascii` 用这个
 *******************
 
 ## Unicode
-> [unicode.org](http://www.unicode.org/) | [wikipedia](https://en.wikipedia.org/wiki/Unicode) | [unicode table](https://unicode-table.com/)  
+> [unicode.org](http://www.unicode.org/) | [wikipedia](https://en.wikipedia.org/wiki/Unicode) | [unicode table](https://unicode-table.com/cn/)  
 
 Unicode 是一个囊括了世界上所有字符的字符集，其中每一个字符都对应有唯一的编码值, 但是并不是一个具体实现的编码方案, 不能直接使用  
 其实现有 UTF-8 UTF-16 UTF-32 ...
 目前最新版本 11 已经包括 137,439 个字符
 
-> 问题
-1. 零宽空格 unicode: `U+FEFF` html: `&#65279;` 看不到的字符, 可能带来一些坑
+> 问题 直接看, 看不到的字符, 可能带来一些坑
+1. 零宽间隔 `U+200B`  
+1. 零宽不折行空格 unicode: `U+FEFF` html: `&#65279;` 
 
 ******************
 
