@@ -477,7 +477,11 @@ TODO 存疑
     - 就在 feature-test 分支上建立新分支, 然后 apply stash@{0}
     - 不推荐用 pop, 当stash多了以后 人不一定都记得每个stash都改了啥, 可能会有冲突以及修改覆盖的问题
     - 最好用新分支装起来, 然后合并分支, 或者是 cherry-pick, 修改也不会丢失
-     
+
+> *注意* stash 是一个项目范围内的栈结构, 所以如果多个分支执行了stash都是混在一起的, 要先确定好当前分支 stash 的 id 是多少 再 pop 或者 apply (不能无脑pop 血泪教训)
+
+- 使用该别名能过滤当前分支的stash `alias wip='git stash list | grep $(git symbolic-ref --short -q HEAD)' `
+
 ********************
 
 #### branch 
