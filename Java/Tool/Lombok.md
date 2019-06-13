@@ -129,12 +129,18 @@ _添加依赖_
 - [Lombok 注解在线帮助文档](http://projectlombok.org/features/index)
 
 ## 注解使用
+
 ### POJO常用
-- `@Data` ：注解在类上；提供类所有属性的 getter 和 setter 方法，此外还提供了equals、canEqual、hashCode、toString 方法
-- `@Setter`：注解在属性上；为属性提供 setter 方法
-- `@Getter`：注解在属性上；为属性提供 getter 方法
-- `@NoArgsConstructor`：注解在类上；为类提供一个无参的构造方法
-- `@AllArgsConstructor`：注解在类上；为类提供一个全参的构造方法
+
+| 注解 | 范围 | 功能 |
+|:---|:--- |:--- |
+| @Data| 类 | Getter Setter RequiredArgsConstructor ToString EqualsAndHashCode 的集合
+| @Setter| 类 | 为属性提供 setter 方法
+| @Getter| 类 | 为属性提供 getter 方法
+| @NoArgsConstructor| 类 | 为类提供一个无参的构造方法
+| @AllArgsConstructor| 类 | 为类提供一个全参的构造方法
+| @Builder| 类 方法 构造器 | 生成 构造器模式 模板代码
+| @Delegate| 属性,方法 | 将属性的方法委派到当前对象上 常用于嵌套的POJO
 
 ### 日志相关
 > [Official log](https://projectlombok.org/features/log)
