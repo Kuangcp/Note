@@ -18,11 +18,11 @@ categories:
     1. [堆](#堆)
     1. [Tim](#tim)
 
-**目录 end**|_2019-05-02 01:09_|
+**目录 end**|_2019-06-16 00:08_|
 ****************************************
 # 排序算法
 
-> Github： [Java 实现](https://github.com/Kuangcp/JavaBase/tree/master/java-algorithms/src/main/java/com/github/kuangcp/sort) | [Python 实现](https://github.com/Kuangcp/PythonLearn/tree/master/algorithm/sort)
+> Github： [Java 实现](https://github.com/Kuangcp/JavaBase/tree/algorithms/src/main/java/com/github/kuangcp/sort) | [Python 实现](https://github.com/Kuangcp/PythonLearn/tree/master/algorithm/sort)
 
 > [参考博客: 十大经典排序算法](https://www.runoob.com/w3cnote/ten-sorting-algorithm.html)  
 > [Github: 十大经典排序算法](https://github.com/hustcc/JS-Sorting-Algorithm)  

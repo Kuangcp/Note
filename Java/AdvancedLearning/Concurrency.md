@@ -38,10 +38,10 @@ categories:
     1. [分支合并框架](#分支合并框架)
     1. [Java内存模型](#java内存模型)
 
-**目录 end**|_2019-05-31 09:37_|
+**目录 end**|_2019-06-16 00:08_|
 ****************************************
 # Java并发
-> [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/java-concurrency)  
+> [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
 
 > 主要知识来源 Java程序员修炼之道  | [并发编程网](http://ifeve.com/)  
 
@@ -383,7 +383,7 @@ public int current(){
 ## 控制执行
 ### 任务建模
 > 要把目标代码做成可调用（执行者调用）的结构，而不是单独开线程运行
-> [示例代码](https://github.com/Kuangcp/JavaBase/blob/master/java-concurrency/src/main/java/com/github/kuangcp/schedule/CreateModel.groovy)
+> [示例代码](https://github.com/Kuangcp/JavaBase/blob/concurrency/src/main/java/com/github/kuangcp/schedule/CreateModel.groovy)
 
 `Callable接口`
 - 通常是匿名内部实现类 
@@ -419,7 +419,7 @@ public int current(){
 - 提供了支持大型任务分解的基本方法，还有自动调度和重新调度的能力
 
 - 这个框架的关键特性之一就是：这些轻量的任务都能够生成新的ForkJoinTask实例，而这些实例仍然由执行他们父任务的线程池来安排调度，这就是分而治之
-- 工作窃取： [一个简单的例子](https://github.com/Kuangcp/JavaBase/blob/master/java-concurrency/src/main/java/com/github/kuangcp/forkjoin/ForkJoinEasyDemo.groovy)
+- 工作窃取： [一个简单的例子](https://github.com/Kuangcp/JavaBase/blob/concurrency/src/main/java/com/github/kuangcp/forkjoin/ForkJoinEasyDemo.groovy)
 
 - 由 RecursiveAction 或者 RecursiveTask 派生出来的才能作为任务单元 这俩也是派生ForkJoinTask而来
     - RecursiveAction 要重写的方法：`protected void compute()`  

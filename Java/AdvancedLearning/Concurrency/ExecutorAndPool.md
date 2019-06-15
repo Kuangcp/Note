@@ -12,7 +12,7 @@ categories:
         1. [常用方法](#常用方法)
     1. [创建线程池的方法](#创建线程池的方法)
 
-**目录 end**|_2019-06-04 19:53_|
+**目录 end**|_2019-06-16 00:08_|
 ****************************************
 # Executor框架
 > 为什么要使用线程池? 为什么要使用该框架?
@@ -20,7 +20,7 @@ categories:
 - [ ]  
 
 ## 线程池
-> [使用默认的线程池策略](https://github.com/Kuangcp/JavaBase/blob/master/java-thread/src/main/java/com/github/kuangcp/UseThreadPool.java)
+> [使用默认的线程池策略](https://github.com/Kuangcp/JavaBase/blob/thread/src/main/java/com/github/kuangcp/UseThreadPool.java)
 
 > [线程池 BlockingQueue synchronized volatile](https://segmentfault.com/a/1190000012916473)
 > [参考博客: Java(Android)线程池](http://www.trinea.cn/android/java-android-thread-pool/)

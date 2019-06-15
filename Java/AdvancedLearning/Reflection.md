@@ -29,7 +29,7 @@ categories:
             1. [操作注解](#操作注解)
 1. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2019-06-02 11:58_|
+**目录 end**|_2019-06-16 00:08_|
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
@@ -261,7 +261,7 @@ set 和 get 属性的值
 
 ************************
 
-[Github: 更多反射Demo](https://github.com/Kuangcp/JavaBase/tree/master/java-class/src/test/java/com/github/kuangcp/reflects)
+[Github: 更多反射Demo](https://github.com/Kuangcp/JavaBase/tree/class/src/test/java/com/github/kuangcp/reflects)
 
 正常情况下 final修饰的类，变量，方法, 表示不可继承，不可修改，不可重写(override), 但是使用反射能在一定程度上进行修改
 被final修饰过的变量，只是说栈存储的地址不能再改变，但是却没有说地址指向的内容不能改变，所以反射可以破final，因为它修改该了以前地址的具体内容，但是没有改地址的信息。
@@ -272,6 +272,6 @@ set 和 get 属性的值
 # 反射的性能问题
 > [参考博客: java反射的性能问题 ](http://www.cnblogs.com/zhishan/p/3195771.html)
 
-> [性能测试对比: 反射 setter cglib](https://github.com/Kuangcp/JavaBase/blob/master/java-class/src/test/java/com/github/kuangcp/reflects/ReflectPerformanceTest.java)
+> [性能测试对比: 反射 setter cglib](https://github.com/Kuangcp/JavaBase/blob/class/src/test/java/com/github/kuangcp/reflects/ReflectPerformanceTest.java)
 
 Spring 中的 IOC 主要是依据反射来实现的, 只在启动阶段性能有所损耗, 关注性能以及热点代码最好避免使用反射

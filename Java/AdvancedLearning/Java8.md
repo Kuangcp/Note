@@ -74,10 +74,12 @@ categories:
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
 
-**目录 end**|_2019-05-21 15:26_|
+**目录 end**|_2019-06-16 00:08_|
 ****************************************
 # Java8
-> [doc: Java8](https://docs.oracle.com/javase/8/) | [doc: API](https://docs.oracle.com/javase/8/docs/api/) | [doc下载](https://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html)
+> [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
+
+[doc下载](https://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html)
 
 > [Java8 JDK Readme](http://www.oracle.com/technetwork/java/javase/jdk-8-readme-2095712.html) | [Jre8 Readme](http://www.oracle.com/technetwork/java/javase/jre-8-readme-2095710.html)`有说明哪些是JRE运行不必要的文件`  
 
@@ -88,6 +90,7 @@ categories:
 
 **`参考书籍`**
 1. Java8 in action 
+1. 写给大忙人看的Java8
 
 *****************************
 ## 接口的变化
