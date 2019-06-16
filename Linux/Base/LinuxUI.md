@@ -16,11 +16,13 @@ categories:
     1. [Theme](#theme)
     1. [Icon](#icon)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-06-16 19:38_|
 ****************************************
 
 # UI
 > themes icons fonts 
+
+- [www.gnome-look.org](https://www.gnome-look.org/)
 
 - 所有用户通用, 安装新的后需要重启 `/usr/share/themes`
 - 当前用户, 直接复制进来立即生效:  `~/.themes` 或者 `~/.local/share/themes`
@@ -42,8 +44,9 @@ categories:
 
 > [参考博客: 10 Great Linux GTK Themes For 2018 ](https://www.maketecheasier.com/gtk-themes-for-linux/)
 
-- [mac theme](https://www.gnome-look.org/p/1239453/)
+- [pingguo](https://www.gnome-look.org/p/1239453/)
 - [Github:vimix](https://github.com/vinceliuice/vimix-gtk-themes)`material design theme`
+- [Sierra](https://www.gnome-look.org/p/1013714/)
 - [GTK3主题：OSX-Arc](https://www.linuxidc.com/Linux/2017-01/139053.htm) `解压到 /usr/share/themes/ 下即可,或者 ~/.themes/ `
 
 ***********************

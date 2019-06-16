@@ -10,62 +10,62 @@ categories:
 **目录 start**
  
 1. [Git基础](#git基础)
-    1. [开源许可证](#开源许可证)
-    1. [Git常用命令](#git常用命令)
-        1. [基本命令](#基本命令)
-            1. [config](#config)
-            1. [clone](#clone)
-            1. [add](#add)
-            1. [rm](#rm)
-            1. [status](#status)
-            1. [commit](#commit)
-            1. [rebase](#rebase)
-            1. [revert](#revert)
-            1. [show](#show)
-            1. [log](#log)
-                1. [对比两个分支的差异](#对比两个分支的差异)
-                1. [查看文件的修改记录](#查看文件的修改记录)
-            1. [blame](#blame)
-            1. [diff](#diff)
-            1. [tag](#tag)
-            1. [reset](#reset)
-                1. [回滚add操作](#回滚add操作)
-                1. [回滚最近一次commit](#回滚最近一次commit)
-                1. [回滚最近几次的commit并添加到一个新建的分支上去](#回滚最近几次的commit并添加到一个新建的分支上去)
-                1. [回滚merge和pull操作](#回滚merge和pull操作)
-                1. [在index已有修改的状态回滚merge或者pull](#在index已有修改的状态回滚merge或者pull)
-                1. [被中断的工作流程](#被中断的工作流程)
-            1. [gc](#gc)
-            1. [clean](#clean)
-        1. [远程](#远程)
-            1. [remote](#remote)
-            1. [push](#push)
-            1. [pull](#pull)
-            1. [fetch](#fetch)
-        1. [分支](#分支)
-            1. [show-branch](#show-branch)
-            1. [stash](#stash)
-            1. [branch](#branch)
-            1. [checkout](#checkout)
-            1. [fetch](#fetch)
-            1. [pull](#pull)
-            1. [merge](#merge)
-            1. [rebase](#rebase)
-            1. [cherry-pick](#cherry-pick)
-        1. [Submodule](#submodule)
-        1. [其他](#其他)
-            1. [grep](#grep)
-            1. [archive](#archive)
-            1. [reflog](#reflog)
-    1. [配置文件](#配置文件)
-        1. [.gitignore](#gitignore)
-        1. [gitattributes](#gitattributes)
-    1. [常见VCS工具](#常见vcs工具)
-        1. [Git](#git)
-        1. [SVN](#svn)
-    1. [repos的使用](#repos的使用)
+1. [开源许可证](#开源许可证)
+1. [Git常用命令](#git常用命令)
+    1. [基本命令](#基本命令)
+        1. [config](#config)
+        1. [clone](#clone)
+        1. [add](#add)
+        1. [rm](#rm)
+        1. [status](#status)
+        1. [commit](#commit)
+        1. [rebase](#rebase)
+        1. [revert](#revert)
+        1. [show](#show)
+        1. [log](#log)
+            1. [对比两个分支的差异](#对比两个分支的差异)
+            1. [查看文件的修改记录](#查看文件的修改记录)
+        1. [blame](#blame)
+        1. [diff](#diff)
+        1. [tag](#tag)
+        1. [reset](#reset)
+            1. [回滚add操作](#回滚add操作)
+            1. [回滚最近一次commit](#回滚最近一次commit)
+            1. [回滚最近几次的commit并添加到一个新建的分支上去](#回滚最近几次的commit并添加到一个新建的分支上去)
+            1. [回滚merge和pull操作](#回滚merge和pull操作)
+            1. [在index已有修改的状态回滚merge或者pull](#在index已有修改的状态回滚merge或者pull)
+            1. [被中断的工作流程](#被中断的工作流程)
+        1. [gc](#gc)
+        1. [clean](#clean)
+    1. [远程](#远程)
+        1. [remote](#remote)
+        1. [push](#push)
+        1. [pull](#pull)
+        1. [fetch](#fetch)
+    1. [分支](#分支)
+        1. [show-branch](#show-branch)
+        1. [stash](#stash)
+        1. [branch](#branch)
+        1. [checkout](#checkout)
+        1. [fetch](#fetch)
+        1. [pull](#pull)
+        1. [merge](#merge)
+        1. [rebase](#rebase)
+        1. [cherry-pick](#cherry-pick)
+    1. [Submodule](#submodule)
+    1. [其他](#其他)
+        1. [grep](#grep)
+        1. [archive](#archive)
+        1. [reflog](#reflog)
+1. [配置文件](#配置文件)
+    1. [.gitignore](#gitignore)
+    1. [gitattributes](#gitattributes)
+1. [常见VCS工具](#常见vcs工具)
+    1. [Git](#git)
+    1. [SVN](#svn)
+1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-05-28 19:01_|
+**目录 end**|_2019-06-16 19:38_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -75,22 +75,22 @@ categories:
 > [Gitee: about git](https://gitee.com/all-about-git)  
 > [Git官网中文教程](https://git-scm.com/book/zh/v2) | [对应的仓库](https://github.com/progit/progit2)  
 
-TODO 存疑
-
 - index stage work 三个概念上的区域
     - index: 已经 commit 的内容, 不可更改历史commit 
     - stage: 执行 add 命令, 将文件缓存到该区
     - work: 工作目录, 日常做修改的就是该分区
 
-## 开源许可证
-- 关于许可证 [Github许可证网](https://choosealicense.com/licenses/)
-    - 新建项目的时候可以选择 添加.gitignore和许可证类别 许可证大致分为 MIT Apache2.0 GPL 
-    - `MIT` 简单宽松的许可证，任何人可以拿代码做任何事与我无关` eg: jQuery、Rails` 
-    - `Apache` 关注于专利，这类似于MIT许可证，但它同时还包含了贡献者向用户提供专利授权相关的条款。 `Apache、SVN和NuGet`
-    - `GPL` 关注于共享改进，这是一种copyleft许可证，要求修改项目代码的用户再次分发源码或二进制代码时，必须公布他的相关修改。 `Linux、Git`
+# 开源许可证
+
+关于许可证 [Github许可证网](https://choosealicense.com/licenses/) 
+新建项目的时候可以选择 添加.gitignore和许可证类别 许可证大致分为 MIT Apache2.0 GPL 
+
+- `MIT` 简单宽松的许可证，任何人可以拿代码做任何事与我无关` eg: jQuery、Rails` 
+- `Apache` 关注于专利，这类似于MIT许可证，但它同时还包含了贡献者向用户提供专利授权相关的条款。 `Apache、SVN和NuGet`
+- `GPL` 关注于共享改进，这是一种copyleft许可证，要求修改项目代码的用户再次分发源码或二进制代码时，必须公布他的相关修改。 `Linux、Git`
 
 **********************
-## Git常用命令
+# Git常用命令
 > [git-tips](https://github.com/521xueweihan/git-tips)`学习Git的仓库`  
 > [git权威指南的组织](https://github.com/gotgit)`完整书籍,以及相关测试题`
 
@@ -104,10 +104,10 @@ TODO 存疑
 
 ***************
 
-### 基本命令
+## 基本命令
 > 使用 `git help 加上命令`, 就能看到命令对应的文档
 
-#### config
+### config
 - 三种配置方式 作用范围越大, 优先级越低
     - `--system` 作用所有用户, 对应文件 `/etc/gitconfig`
     - `--global` 作用当前用户, 对应文件 `~/.gitconfig` 
@@ -136,7 +136,7 @@ TODO 存疑
 
 > 可用于上面的diff 或 merge 的[工具 详细](/Linux/Base/LinuxFile.md#比较文件内容)
 
-#### clone
+### clone
 - `git clone branchname URL` 克隆远程仓库的指定分支
 - `git clone URL 目录` 克隆下来后更名为指定目录
 - `git clone --depth 1 URL` 只克隆最近一次提交的历史, 能大大减小拉取的大小 (Shallow Clone)
@@ -152,17 +152,17 @@ TODO 存疑
     按提示执行命令即可解决
 ```
 
-#### add 
+### add 
 - 添加文件或目录 `git add file dir ...`
 - 添加当前文件夹以及子文件夹 `git add .`
 - 交互式添加每个文件的每部分修改 `git add -p`
 
-#### rm
+### rm
 - 删除文件 `git rm file1 file2 ...`
 - 仅从git仓库中删除文件, 但是文件系统中保留文件 `git rm --cached 文件`
     - 如果仅仅是想从仓库中剔除, 那么执行完命令还要在 `.gitignore` 文件中注明, 不然又add回去了
 
-#### status
+### status
 > git status --help 查看详细介绍
 
 - `-s --short` 简化输出
@@ -171,7 +171,7 @@ TODO 存疑
     - M 修改过的文件
     - MM 修改了但是没有暂存
 
-#### commit
+### commit
 > [Official Doc](https://git-scm.com/docs/git-commit)
 
 - `git commit -am "init" `: a git库已有文件的修改进行添加, m 注释
@@ -189,24 +189,24 @@ TODO 存疑
     - 注意: 如果没有将前一个提交推送到远程, 那么没有任何影响, 
     - 如果已经推送上去了, 就相当于该次 --amend 操作是新开了个分支完成的修改, git log 里会出现一个分支的环
 
-#### rebase
+### rebase
 > [Official Doc](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
 
 - [ ] rebase merge 各自使用场景
 
-#### revert 
+### revert 
 1. 取消所有暂存 `git revert .`
 
 1. 回滚代码至指定提交 `git revert --no-commit 032ac94ad...HEAD`
     - `git commit -m "rolled back"`
 
-#### show
+### show
 > 展示提交信息
 
 - 显示当前提交的差异 `git show HEAD` HEAD替换成commit的sha值就是显示指定提交的修改
 - `git show -h` 查看更多
 
-#### log
+### log
 > 更多说明 查看 `git help log` | [Official Doc](https://www.git-scm.com/docs/git-log)
 
 - `-p` 显示每次提交的内容差异 `git log -p -2` 仅显示最近两次提交的差异
@@ -233,7 +233,7 @@ TODO 存疑
     alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
 ```
 
-##### 对比两个分支的差异
+#### 对比两个分支的差异
 > [参考博客](http://blog.csdn.net/u011240877/article/details/52586664)
 
 - 查看 dev 有，而 master 中没有的 `git log dev ^master` 反之 `git log master ^dev`
@@ -242,18 +242,18 @@ TODO 存疑
 - 在上述情况下，再显示出每个提交是在哪个分支上:`git log --left-right dev...master`
     - 注意 commit 后面的箭头，根据我们在 –left-right dev…master 的顺序，左箭头 < 表示是 dev 的，右箭头 > 表示是 master的。
 
-##### 查看文件的修改记录
+#### 查看文件的修改记录
 1. git log fileName 或者 git log --pretty=oneline fileName 更容易看到 sha-1 值
 1. git show sha-1的值 就能看到该次提交的所有修改
 
 **************************
-#### blame
+### blame
 > 查看文件修改记录 追责
 
 `git blame file`
 
 *****************************
-#### diff
+### diff
 - 默认是将 work 区 和 index 区 进行比较
 - `--cached` stage 区 和 index 区 进行比较, 等同于`--staged`
 
@@ -268,7 +268,7 @@ TODO 存疑
 > [Github:diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)`一个更方便查看diff的工具`
 - 最简单的就是 `npm install -g diff-so-fancy` 安装 
 
-#### tag
+### tag
 > [Official Doc](https://git-scm.com/docs/git-tag/2.10.2)
 
 - 查看所有标签 `git tag` 
@@ -283,7 +283,7 @@ TODO 存疑
 
 *******************
 
-#### reset
+### reset
 > git reset -h 
 ```
 用法：git reset [--mixed | --soft | --hard | --merge | --keep] [-q] [<提交>]
@@ -303,12 +303,12 @@ TODO 存疑
 
 > [参考: 使用reset回滚代码](https://www.v2ex.com/t/296286)
 
-##### 回滚add操作
+#### 回滚add操作
 - 当执行了 git add 命令, 将文件存入暂存区
 - 可以使用 `git reset 文件` 将指定文件 或者 `git reset .` 当前目录(递归) 都取消暂存
 - 文件内容没有改变, 这个用于选指定文件提交时
 
-##### 回滚最近一次commit
+#### 回滚最近一次commit
 
 1. `git reset --soft HEAD^` 撤销最近那次 commit 行为
 1. 修改代码的内容
@@ -317,7 +317,7 @@ TODO 存疑
 > 注意 reset 操作会将老的HEAD会备份到文件 .git/ORIG_HEAD 中，命令中就是引用了这个老的相关信息
 > -c 参数是复用指定节点的提交信息
 
-##### 回滚最近几次的commit并添加到一个新建的分支上去
+#### 回滚最近几次的commit并添加到一个新建的分支上去
 1. 新建分支 `git branch feature/new`
 1. 删除master分支最近3次提交 `git reset --hard HEAD^3`
 1. 切换到新分支上 `git checkout feature/new` 
@@ -327,22 +327,22 @@ TODO 存疑
 
 > 注意: 这个操作在多人的协作中, reset --hard 比较危险, 可能引起别人分支的混乱
 
-##### 回滚merge和pull操作
+#### 回滚merge和pull操作
 1. 执行了merge 或者 pull 操作后 
 1. `git reset --hard ORIG_HEAD` 注意: 该命令会将 index 和 stage 的修改清空
 
-##### 在index已有修改的状态回滚merge或者pull
+#### 在index已有修改的状态回滚merge或者pull
 1. `git pull`
 1. `reset --merge ORIG_HEAD` 
 
 > 使用 --hard 会直接回滚,直接丢失当前未提交的所有更改
 
-##### 被中断的工作流程
+#### 被中断的工作流程
 > 在开发一个功能的时候, 突然有别的需求插进来了, 就可以通过 commit 一次, 然后回滚该次 commit 的方式  
 > 将工作状态暂存, 且不会产生垃圾提交
 
 **************************
-#### gc
+### gc
 
 `git gc -h`:
 - `--aggressive` 默认使用较快速的方式检查文档库,并完成清理,当需要比较久的时间,偶尔使用即可
@@ -350,12 +350,12 @@ TODO 存疑
 - `--auto` 启用自动垃圾回收模式
 - `--force` 强制执行 gc 即使另外一个 gc 正在执行
 
-#### clean
+### clean
 > Remove untracked files from the working tree `git clean --help`
 
 ***************************
 
-### 远程
+## 远程
 
 > 大部分命令都是本地的, 所以执行效率很高, 但是协同开发肯定需要有同步的操作了
 
@@ -384,7 +384,7 @@ TODO 存疑
 
 ********************
 
-#### remote
+### remote
 > [Official Doc](https://git-scm.com/docs/git-remote)
 
 1. **常用参数**
@@ -400,7 +400,7 @@ TODO 存疑
 
 - [参考: 删除，重命名远程分支](http://zengrong.net/post/1746.htm)
 
-#### push
+### push
 - _常用参数_
     - `-q` 控制台不输出任何信息
     - `-f` 强制推送提交 **使用这个参数时要再三考虑清楚**
@@ -421,6 +421,7 @@ TODO 存疑
 - 删除远程的tag 
     - `git push origin -d tag <tagname>` 
     - 如果本地已经删除了标签, 就可以 `git push origin :refs/tags/<tagname>`
+
 - 提交指定tag `git push origin tagname`
     - 提交所有tag `git push --tags`
 
@@ -429,16 +430,16 @@ TODO 存疑
 - 出现 `RPC failed; result=22, HTTP code = 411` 的错误
     - 就是因为一次提交的文件太大，需要改大缓冲区 例如改成500m  `git config http.postBuffer 524288000`
 
-#### pull
+### pull
 
-#### fetch 
+### fetch 
 
 - 拉取远程origin的dev分支并在本地创建dev分支相关联 `git fetch origin dev:dev`
 - 删除远程没有但本地有的那些分支 `git fetch -p`
 
 ***********************
 
-### 分支
+## 分支
 > Git 的分支是轻量型的, 能够快速创建和销毁
 
 > 场景: 一个特性分支本不该合并入主开发分支, 但是已经并入了,并且并入后又做了很多其他修改, 这时候怎么影响最小地撤销这次错误的合并? 
@@ -448,10 +449,14 @@ TODO 存疑
 
 - 获取当前分支名 `git symbolic-ref --short -q HEAD`
 
-#### show-branch 
+- 拉取远程分支到本地并建立同名分支 
+    - 拉取元数据 `git fetch --all` 
+    - 建立和远程分支对应的本地分支 `git pull <远程主机名> <远程分支名>:<本地分支名>`
+
+### show-branch 
 > 按颜色列出分支上的提交和图示
 
-#### stash
+### stash
 > [Official Doc](https://git-scm.com/docs/git-stash)  
 > 将当前修改缓存起来, 减少不必要的残缺提交  stash命令的缓存都是基于某个提交上的修改, 是一个栈的形式 
 
@@ -478,13 +483,12 @@ TODO 存疑
     - 不推荐用 pop, 当stash多了以后 人不一定都记得每个stash都改了啥, 可能会有冲突以及修改覆盖的问题
     - 最好用新分支装起来, 然后合并分支, 或者是 cherry-pick, 修改也不会丢失
 
-> *注意* stash 是一个项目范围内的栈结构, 所以如果多个分支执行了stash都是混在一起的, 要先确定好当前分支 stash 的 id 是多少 再 pop 或者 apply (不能无脑pop 血泪教训)
-
-- 使用该别名能过滤当前分支的stash `alias wip='git stash list | grep $(git symbolic-ref --short -q HEAD)' `
+> *注意* stash 是一个项目范围内的栈结构, 所以如果多个分支执行了stash, 那缓存都是共用的, 要先确定好当前分支 stash 的 id 是多少 再 pop 或者 apply (不能无脑pop 血泪教训)  
+> 使用该别名能过滤当前分支的stash `alias wip='git stash list | grep $(git symbolic-ref --short -q HEAD)' `
 
 ********************
 
-#### branch 
+### branch 
 > 查看所有参数 `git branch --help`
 
 - 列出所有分支(包含本地和远程) `-a --all`
@@ -495,14 +499,14 @@ TODO 存疑
     - 对应的则是不包含 `--no-contains [<commit>]` commit 缺省为 HEAD(也就是最近的一次提交) 
 
 - 创建分支 `git branch name`
-    - 创建分支并跟踪远程 `-t <remote>/<branch>`
+    - 设置当前分支的对应远程分支 `-t <remote>/<branch>`
 - 重命名分支 `-m old new` 对于远程来说就是先要删除再新建分支
 - 删除分支 `-d 分支`
     - 如果该分支没有被完全合并, 就会提醒使用 `-D` 强制删除. 等价于 `--delete --force`
 
 - 设置当前分支跟踪的远程分支 `--set-upstream-to=<remote>/<branch> <branch>`
 
-#### checkout
+### checkout
 > [Official Doc: git checkout](https://git-scm.com/docs/git-checkout)
 
 > alias gch='git checkout'
@@ -521,17 +525,18 @@ TODO 存疑
     - 取出指定节点状态的某文件，而且执行完命令后，取出的那个状态会成为head状态，
     - 需要执行  `git reset HEAD` 来清除这种状态
 
-#### fetch
-> 访问远程仓库, 拉取本地没有的数据
-- `git fetch origin dev-test` 下拉指定远程的指定分支到本地, 本地没有就会自动新建
+### fetch
+> 访问远程仓库, 拉取本地没有的远程数据
+
+- `git fetch origin dev-test` 下拉指定远程的指定分支, 本地没有就会自动新建远程分支
 - `git fetch --all` 下拉默认远程的所有分支的代码
 
-#### pull
+### pull
 > 不仅仅是下拉代码, 还会进行merge合并, 所以安全起见, 是先fetch然后再进行合并操作  
 - `git pull origin dev` 下拉指定远程的指定分支
 - `git pull --all` 下拉默认远程的所有分支代码并自动合并
 
-#### merge
+### merge
 - [官方文档](https://git-scm.com/docs/git-merge)
 
 > [Official Doc: 高级合并](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%AB%98%E7%BA%A7%E5%90%88%E5%B9%B6)
@@ -553,7 +558,7 @@ TODO 存疑
 - `git config --global mergetool.kdiff3.trustExitCode true`
 - `git config --global mergetool.keepBackup false`
 
-#### rebase
+### rebase
 > 衍和操作 [参考博客](http://blog.csdn.net/endlu/article/details/51605861) | 
 > [Git rebase -i 交互变基](http://blog.csdn.net/zwlove5280/article/details/46649799) | 
 > [git rebase的原理之多人合作分支管理](http://blog.csdn.net/zwlove5280/article/details/46708969)    
@@ -565,18 +570,17 @@ TODO 存疑
     - `git rebase --abort` 放弃rebase
     - `git rebase --continue` 修改好冲突后继续
 
-#### cherry-pick
+### cherry-pick
 - [ ] learn 
 
 ************************
-### Submodule
+## Submodule
 > [Official Doc](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 
 > [git submodule的使用](https://blog.csdn.net/wangjia55/article/details/24400501)
 > [参考博客: Git Submodule使用完整教程](http://www.kafeitu.me/git/2012/03/27/git-submodule.html)
 
 - 能够在一个git仓库中将一个文件夹作为一些独立的子仓库进行管理
-
 - 添加子模块 `git submodule add url dir` 目录为可选项
 
 当主仓库 clone 时 只会将子模块作为空目录克隆下来
@@ -585,15 +589,15 @@ TODO 存疑
 
 以上两条命令等价于 `git submodule update --init --recursive`
 
-删除子模块
+`删除子模块`
 1. 删除.gitsubmodule里相关部分
 1. 删除.git/config 文件里相关字段
 1. 删除子仓库目录
 
 ***************
 
-### 其他
-#### grep  
+## 其他
+### grep  
 - 搜索文字 `git grep docker`
     - `-n`搜索并显示行号 
     - `--name-only` 只显示文件名，不显示内容
@@ -601,15 +605,16 @@ TODO 存疑
     - 查找git仓库里某个特定版本里的内容, 在命令行末尾加上标签名(tag reference):  `git grep xmmap v1.5.0`
     - `git grep --all-match -e '#define' -e SORT_DIRENT` 匹配两个字符串
     
-#### archive
+### archive
 1. 将某版本打包成压缩包 `git archive -v --format=zip v0.1 > v0.1.zip`
 
-#### reflog
+### reflog
 - 查看仓库的操作日志 `git reflog`
 
-*************
-## 配置文件
-### .gitignore
+************************
+
+# 配置文件
+## .gitignore
 > [Github: gitignore](https://github.com/github/gitignore) | 一行是一个配置, 是独占一行的
 
 - 使用 `#` 注释一行
@@ -629,7 +634,7 @@ TODO 存疑
     doc/*.txt #忽略 doc一级子目录的txt文件, 不忽略多级子目录中txt
 ```
 
-### gitattributes
+## gitattributes
 > [gitattributes](http://schacon.github.io/git/gitattributes.html)
 
 1. 配置文件的换行符 eol
@@ -643,12 +648,13 @@ TODO 存疑
 1. encoding
 
 *****************
-## 常见VCS工具
-### Git
+
+# 常见VCS工具
+## Git
 > 分布式的去中心化的, 大多数操作是本地化操作, 速度快, 更方便
 - 最大的区别是其他的 VCS 都是 一个增量式的文件集合, git 是文件的一系列快照, 类似于 AUFS 文件系统一层一层那样
 
-### SVN
+## SVN
 > [Svn笔记](/Linux/Svn.md)
 
 1. 中心化的, 代码统一保存, 如果中心发生错误, 代码会全部毁掉, 提交是必须要和服务端通信才能完成
@@ -656,6 +662,7 @@ TODO 存疑
 3. 优点: 能够精确控制每个目录的每个人的访问权限
 
 ************************
+
 **`git和SVN一起用`**
 可以通过 git-svn 使用Git的命令与SVN服务器进行交互
 > [Official doc: git-svn](https://git-scm.com/docs/git-svn)
@@ -675,6 +682,6 @@ TODO 存疑
     - 如果SVN也用了分支, 那么就要命了, 这么多分支和状态, 要靠大脑记住实时的状态就....
 *********************
 
-## repos的使用
+# repos的使用
 > 综合各个VCS的管理方式
 

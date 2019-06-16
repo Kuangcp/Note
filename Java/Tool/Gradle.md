@@ -45,7 +45,7 @@ categories:
     1. [构建Docker镜像](#构建docker镜像)
         1. [第二种插件方式](#第二种插件方式)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-06-16 19:38_|
 ****************************************
 
 # Gradle
@@ -188,7 +188,7 @@ _~/.gradle/init.gradle_
 运行：`gradle -q helloworld`
 
 **************************
-> 初始化新项目  [doc:building java application](https://guides.gradle.org/building-java-applications/) 或者直接使用 gradle init 交互式新建一个项目
+> 初始化新项目  [Doc:building java application](https://guides.gradle.org/building-java-applications/) 或者直接使用 gradle init 交互式新建一个项目
 
 ********************************
 
