@@ -26,6 +26,11 @@ categories:
 ## 安装配置
 > [Official site](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
+设置 ZGC 的 JVM 参数 
+```
+    -XX:+UnlockExperimentalVMOptions
+    -XX:+UseZGC
+```
 ### Linux
 ```sh
     JAVA_HOME=/path/to/java11
