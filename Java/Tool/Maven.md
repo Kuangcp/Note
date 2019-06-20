@@ -35,10 +35,7 @@ categories:
     1. [常用插件](#常用插件)
         1. [lombok](#lombok)
         1. [protobuf](#protobuf)
-        1. [打包可执行Jar](#打包可执行jar)
-            1. [assembly](#assembly)
-            1. [shade](#shade)
-            1. [jar](#jar)
+    1. [Maven Enforcer Plugin](#maven-enforcer-plugin)
     1. [构建工具对比](#构建工具对比)
         1. [Maven和Ant的区别一](#maven和ant的区别一)
         1. [Maven的优势](#maven的优势)
@@ -51,7 +48,7 @@ categories:
             1. [Gradle](#gradle)
             1. [Maven](#maven)
 
-**目录 end**|_2019-06-04 19:53_|
+**目录 end**|_2019-06-20 21:02_|
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -329,13 +326,14 @@ A 项目 compile
 #### 排除依赖
 `对应的<dependency>标签中添加`
 ```xml
-<exclusions>
-    <exclusion>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-logging</artifactId>
-    </exclusion>
-</exclusions>
+    <exclusions>
+        <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+    </exclusions>
 ```
+
 ### 继承
 > 新建一个项目作为父项目  
 > 然后在需要引用父项目的子项目pom文件中, 加上parent 标签里面写上 父项目的三要素
@@ -351,60 +349,10 @@ A 项目 compile
 
 - [protoc-jar](https://github.com/os72/protoc-jar-maven-plugin)`自动识别平台, 使用对应的编译器编译得到java文件, 但是目前还有一些bug`
 
-### 打包可执行Jar
-#### assembly
-```xml
-    <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>3.0.0</version>
-        <configuration>
-            <archive>
-                <manifest>
-                    <mainClass>MainClass</mainClass>
-                </manifest>
-            </archive>
-            <descriptorRefs>
-                <descriptorRef>jar-with-dependencies</descriptorRef>
-            </descriptorRefs>
-        </configuration>
-        <executions>
-            <execution>
-                <id>make-assembly</id>
-                <phase>package</phase>
-                <goals>
-                    <goal>single</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
-```
+## Maven Enforcer Plugin
+> [Official Site](http://maven.apache.org/enforcer/maven-enforcer-plugin/)  
 
-#### shade
-
-```xml
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.1</version>
-        <executions>
-            <execution>
-                <phase>package</phase>
-                <goals>
-                    <goal>shade</goal>
-                </goals>
-                <configuration>
-                    <transformers>
-                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                            <mainClass>com.baturu.ofc.batch.PartsSpuStatistic</mainClass>
-                        </transformer>
-                    </transformers>
-                </configuration>
-            </execution>
-        </executions>
-    </plugin>
-```
-
-#### jar
+[Maven Enforcer Plugin - Baeldung](https://www.baeldung.com/maven-enforcer-plugin)
 
 ****************************
 

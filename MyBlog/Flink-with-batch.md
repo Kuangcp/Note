@@ -1,5 +1,5 @@
 ---
-title: Flink-with-batch.md
+title: Flink-with-batch
 date: 2019-06-17 17:00:27
 tags: 
 categories: 
@@ -16,9 +16,8 @@ categories:
         1. [部署](#部署)
     1. [批处理](#批处理)
         1. [Rest API](#rest-api)
-    1. [总结和展望](#总结和展望)
 
-**目录 end**|_2019-06-17 17:00_|
+**目录 end**|_2019-06-20 21:02_|
 ****************************************
 # Flink 中的批处理
 
@@ -36,7 +35,8 @@ https://blog.csdn.net/wenxueliu/article/details/89484375
 
 Flink 是一个批处理和流处理结合的统一计算框架，其核心是一个提供了数据分发以及并行化计算的流数据处理引擎。
 
-最开始08年是柏林理工大学的一个研究项目，14年成为Apache孵化项目, 15年阿里fork并开发了Blink分支, 之后又并入社区, 在实践中做了诸多优化.
+最开始08年是柏林理工大学的一个研究项目，14年成为Apache孵化项目, 15年阿里fork并开发了Blink分支, 之后又并入社区  
+在实践中做了诸多优化 例如 增量 checkpoint, 重构调度和资源管理, 以支持 Yarn K8s
 
 ## 为何选用Flink
 > 阿里, 滴滴,美团,字节跳动 等公司使用和开发, 其中在阿里双十一大屏的应用场景上达到了 4.72亿次/秒.
@@ -157,7 +157,7 @@ Flink基于每个事件一行一行地流式处理，真正的流式计算，流
 批处理也被称为离线计算 实时性要求不高 但是数据量大
 
 大致工作流程, 首先 JobManager 生成执行计划的 DAG , 然后发布 Task 给 TaskManager 并行执行
-由于是有状态的计算,数据不加以同步的话, 就会混乱, 所以 Flink 通过 [超级步骤同步来保证结果的正确](https://ci.apache.org/projects/flink/flink-docs-release-1.8/dev/batch/iterations.html#superstep-synchronization) 类似于Java并发类中的 CountDownLatch 
+由于是有状态的计算,数据不加以同步的话, 就会混乱, 所以 Flink 通过 [超级步骤同步来保证结果的正确](https://ci.apache.org/projects/flink/flink-docs-release-1.8/dev/batch/iterations.html#superstep-synchronization) 类似于 Java 并发类中的 CountDownLatch 
 
 其中 这个同步就要求我们应用代码中的 Source Sink 组件中的成员属性 是必须为序列化的, 且不含 transient 关键字修饰的属性
 否则 就会报错, 因为无法做到 Task Slots 之间同步数据了, 后续的计算也就无意义了
@@ -180,10 +180,4 @@ Flink基于每个事件一行一行地流式处理，真正的流式计算，流
     - curl -X POST http://127.0.0.1:8081/jars/ae0dd296-b4ee-4667-9ba8-1c7b374d694c_flink-1.0.0-SNAPSHOT-all-dependency.jar/run\?entry-class\=com.github.kuangcp.hi.SimpleStatistic
 
 > 注意: 这里的 参数 只能为单个字符串 或者逗号分割的参数列表, 不能传入 JSON 格式的字符串, 最后解决是用BASE64编码处理
-
-************************
-
-## 总结和展望
-1. Docker 或者 k8s 统一环境, 方便开发测试
-1. 统一HDFS资源, 做好权限管理
 

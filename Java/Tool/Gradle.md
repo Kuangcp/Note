@@ -39,13 +39,11 @@ categories:
 1. [Gradle多模块的构建](#gradle多模块的构建)
     1. [另一种多模块的构建方式](#另一种多模块的构建方式)
 1. [部署](#部署)
-    1. [War包](#war包)
-    1. [Jar包](#jar包)
     1. [上传至构建仓库](#上传至构建仓库)
     1. [构建Docker镜像](#构建docker镜像)
-        1. [第二种插件方式](#第二种插件方式)
+        1. [插件方式构建Docker镜像](#插件方式构建docker镜像)
 
-**目录 end**|_2019-06-16 19:38_|
+**目录 end**|_2019-06-20 21:02_|
 ****************************************
 
 # Gradle
@@ -442,12 +440,6 @@ C 项目就能使用 A 中的类了
 
 ******************************************************
 # 部署
-## War包
-
-## Jar包
-- Gradle默认是只会打包源码，并不会打包依赖（为了更方便依赖的作用）
-    - [shadow插件官网文档](http://imperceptiblethoughts.com/shadow/)
-
 ## 上传至构建仓库
 > [Official Doc](https://docs.gradle.org/current/userguide/publishing_overview.html)
 
@@ -491,6 +483,7 @@ _build.gradle_
         }
     }
 ```
+
 _Dockerfile_
 ```dockerfile
     FROM frolvlad/alpine-oraclejdk8:slim
@@ -503,6 +496,6 @@ _Dockerfile_
 - `gradle buildDocker` 即可构建镜像
 - 运行 `docker run --name web --link postgre:db -p 5678:8889 -it 镜像` 注意其中要关联PostgreSQL的容器
 
-### 第二种插件方式
+### 插件方式构建Docker镜像
 > [参考  通过Gradle使用Docker部署 Spring Boot项目](https://www.jianshu.com/p/7571fa3b394c)
 

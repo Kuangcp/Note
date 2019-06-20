@@ -16,7 +16,7 @@ categories:
     1. [sed](#sed)
     1. [awk](#awk)
 
-**目录 end**|_2019-05-16 11:09_|
+**目录 end**|_2019-06-20 21:02_|
 ****************************************
 # 流编辑器
 > [参考博客: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
@@ -104,10 +104,11 @@ so，也不需要和其他的对比了，其他都是拆分，而paste是合并�
 > 替换满足特定条件的一行里面的多个字符串 `log.debug("who={}", who);` 把这个Java的log 里面的 who删除
 
 ## awk
-> awk有3个不同版本: awk、nawk和gawk，未作特别说明，一般指gawk，gawk 是 AWK 的 GNU 版本。
+> awk有多个不同版本: awk、mawk nawk和gawk，未作特别说明，一般指gawk，gawk 是 AWK 的 GNU 版本。`在 Deepin 上 awk nawk 都最终是 gawk 的软链接`
 
 1. 截取输出 cat log.log | awk '{print $2}' 
 1. 只输出某列之后的列 忽略第一列:`awk '{$1="";print $0}'` 忽略1到4: `awk '{ for(i=1; i<=4; i++){ $i="" }; print $0 }'`
 1. 按列求和 `awk '{sum += $1};END {print sum}'`
 
 > [参考博客: awk 入门教程](http://www.ruanyifeng.com/blog/2018/11/awk.html)
+

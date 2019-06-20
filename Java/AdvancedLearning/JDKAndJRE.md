@@ -14,10 +14,11 @@ categories:
     1. [Oracle JDK](#oracle-jdk)
         1. [java](#java)
             1. [环境变量的使用](#环境变量的使用)
+            1. [执行含main方法的类](#执行含main方法的类)
     1. [Oracle JRE](#oracle-jre)
 1. [OpenJDK](#openjdk)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-06-20 21:02_|
 ****************************************
 # JDK And JRE
 > LTS: 8 11
@@ -68,9 +69,11 @@ categories:
 > java [-options] -jar jarfile [args...]
 
 > [What is the java -D command-line option good for? ](https://coderanch.com/t/178539/certification/java-command-line-option-good)
-
-- 传入 `java -Dkey=true -jar xxx.jar` -D 参数先于 -jar
+- 传入 `java -Dkey=true -jar xxx.jar` -D 参数要前于 -jar
 - 获取 `System.getProperty("key", "defaultvalue");`
+
+#### 执行含main方法的类
+- `java -cp jarfile[:jarfile2] className`
 
 *******************
 ## Oracle JRE

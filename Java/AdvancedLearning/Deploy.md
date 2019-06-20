@@ -13,6 +13,8 @@ categories:
     1. [打包可执行jar](#打包可执行jar)
         1. [用命令手动打包](#用命令手动打包)
         1. [Maven](#maven)
+            1. [assembly](#assembly)
+            1. [shade](#shade)
         1. [Gradle](#gradle)
     1. [打包war](#打包war)
     1. [Docker镜像](#docker镜像)
@@ -21,7 +23,7 @@ categories:
         1. [Gradle](#gradle)
 1. [配置文件](#配置文件)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-06-20 21:02_|
 ****************************************
 # 部署运行
 > 传统的可执行jar, war 以及Docker镜像
@@ -44,11 +46,8 @@ _MANIFEST.MF示例_
 - 编译文件       `javac -d *.java `
 - 打包字节码成jar `jar -cvf hello.jar com/test/*.*` 
 - 打包成可执行jar `jar -cvfm hello.jar mainfest *.*` 
-    - 其中 `mainfest` 文本文件： `Main-Class: com.test.Main` 冒号后一定要有空格，文件最后一行一定留空行
-
-- 运行jar包中指定的含Main方法的类 `java -cp clojure.jar clojure.main` 这种方式是直接指定了类, 所以不需要 MANIFEST.MF 文件
-    - 多个jar运行 `java -cp jline-0.9.94.jar;clojure.jar jline.ConsoleRunner clojure.main`
-    - [参考博客: 用java –jar 命令运行Jar包](https://blog.csdn.net/paullinjie/article/details/53188943)
+    - 其中 `mainfest` 文本文件： `Main-Class: com.test.Main` 
+    - 冒号后一定要有空格，文件最后一行一定留空行
 
 ### Maven
 
@@ -56,18 +55,66 @@ _MANIFEST.MF示例_
 > [Demo项目](https://gitee.com/gin9/codes/ri4x8cut3awgh0e271lfb54) | [详情](/Java/Tool/Maven.md#31打包成可执行jar)
 
 **依赖Jar的项目**
-- [ ] 完善 Maven 含 Jar 打包可执行jar
+#### assembly
+```xml
+    <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+            <archive>
+                <manifest>
+                    <mainClass>com.xxx.Main</mainClass>
+                </manifest>
+            </archive>
+            <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+            </descriptorRefs>
+        </configuration>
+        <executions>
+            <execution>
+                <id>make-assembly</id>
+                <phase>package</phase>
+                <goals>
+                    <goal>single</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+```
+
+#### shade
+
+```xml
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.1</version>
+        <executions>
+            <execution>
+                <phase>package</phase>
+                <goals>
+                    <goal>shade</goal>
+                </goals>
+                <configuration>
+                    <transformers>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                            <mainClass>com.xxx.Main</mainClass>
+                        </transformer>
+                    </transformers>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
+```
+
+************************
 
 > [Maven实战（九）——打包的技巧](http://www.infoq.com/cn/news/2011/06/xxb-maven-9-package)
 > [Maven打包成可执行jar](https://blog.csdn.net/u013177446/article/details/53944424)
 > [参考博客: 使用MAVEN打包可执行的jar包](https://www.jianshu.com/p/afb79650b606)
 
-1. [Demo项目的完整代码片段](https://gitee.com/gin9/codes/ri4x8cut3awgh0e271lfb54)
-    - 多个main的情况下运行指定的main 
-        - `java -cp example03-1.0-SNAPSHOT.jar cn.zhouyafeng.itchat4j.main.TulingRobot`
-
 > war和jar一样使用
-- Springboot项目能够做到, 其实就是Main方法, 然后配置了一个Servlet的加载类就可以当war用了
+- Springboot项目能够做到, 其实就是 Main 方法, 然后配置了一个Servlet的加载类就可以当war用了
     - [通过Maven构建打包Spring boot，并将config配置文件提取到jar文件外](http://lib.csdn.net/article/java/65574)
 
 > [一个项目生成若干不同内容的Jar](https://stackoverflow.com/questions/2424015/maven-best-practice-for-generating-multiple-jars-with-different-filtered-classes)
@@ -99,16 +146,33 @@ _MANIFEST.MF示例_
 1. run : `gradle clean jar && java -jar file`   
 
 **依赖Jar的项目**
-> 有好几种插件可以实现 1.[shadow插件官网文档](http://imperceptiblethoughts.com/shadow/) 
+- Gradle默认是只会打包源码，并不会打包依赖
 
-- [ ] 完善 Gradle 含 Jar 打包可执行jar
+> 原生方式打包含依赖的Jar,并设置mainClass
+```groovy
+    task uberJar(type: Jar) {
+        archiveClassifier = 'all-dependency'
+
+        from sourceSets.main.output
+
+        dependsOn configurations.runtimeClasspath
+        from {
+            configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+        }
+
+        manifest {
+            attributes 'Main-Class': 'com.xxx.Main'
+        }
+    }
+```
+
+> 通过插件
+- [shadow插件官网文档](http://imperceptiblethoughts.com/shadow/)
 
 *************************
 
 ## 打包war
-> 供 Servlet 容器直接运行
-
-> 最终将生成的war 放到 tomcat 的 webapps 目录下或者Jetty的 webapps 目录下
+> 最终将生成的war 放到 tomcat 的 webapps 目录下或者 Jetty的 webapps 目录下
 
 ********************
 
