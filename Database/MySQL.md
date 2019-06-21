@@ -219,12 +219,13 @@ _重命名表格_ `RENAME TABLE old TO new `
         - 普通索引 `ALTER table ADD INDEX index_name(column1, column2);`
         - 唯一索引 ADD UNIQUE, 主键索引 ADD PRIMARY KEY
     - CREATE 方式
-        - `CREATE INDEX index_name ON table_name (column_list)`
-        - 唯一索引 CREATE UNIQUE INDEX
+        - 普通方式 `CREATE INDEX index_name ON table_name (column_list)`
+        - 唯一索引 `CREATE UNIQUE INDEX index_name ON table_name(column_list)`
 1. **删除**
     - `DROP INDEX index_name ON talbe_name`
     - `ALTER TABLE table_name DROP INDEX index_name`
     - `ALTER TABLE table_name DROP PRIMARY KEY`      
+
 1. **查看** 
     - `show index from table` 也可以是 db.table 
     - [Official Doc](https://dev.mysql.com/doc/refman/5.7/en/show-index.html)`详解命令的输出内容`

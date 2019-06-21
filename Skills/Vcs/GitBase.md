@@ -137,6 +137,7 @@ categories:
 > 可用于上面的diff 或 merge 的[工具 详细](/Linux/Base/LinuxFile.md#比较文件内容)
 
 ### clone
+
 - `git clone branchname URL` 克隆远程仓库的指定分支
 - `git clone URL 目录` 克隆下来后更名为指定目录
 - `git clone --depth 1 URL` 只克隆最近一次提交的历史, 能大大减小拉取的大小 (Shallow Clone)
@@ -144,20 +145,16 @@ categories:
     - 且在新建一个远程仓库后, 推送时会报错:`shallow update not allowed` 因为本地库是残缺的
     - 所以需要新建一个目录, 把原仓库全拉下来, 再添加远程进行推送, 然后删除该目录, 残缺版的仓库也能正常向新远程推送提交了
 
-> 克隆在指定tag状态的仓库 `git clone URL --branch=name ` 然后 Git会提示 
-```
-    您正处于分离头指针状态。您可以查看、做试验性的修改及提交，并且您可以通过另外的检出分支操作丢弃在这个状态下所做的任何提交。
-    如果您想要通过创建分支来保留在此状态下所做的提交，您可以通过在检出命令添加参数 -b 来实现（现在或稍后）。例如：
-    git checkout -b <new-branch-name>
-    按提示执行命令即可解决
-```
+克隆 指定标签 `git clone -b <tag_name> --single-branch <repo_url> [<dest_dir>] ` (从Git 1.7.10开始)
 
 ### add 
+
 - 添加文件或目录 `git add file dir ...`
 - 添加当前文件夹以及子文件夹 `git add .`
 - 交互式添加每个文件的每部分修改 `git add -p`
 
 ### rm
+
 - 删除文件 `git rm file1 file2 ...`
 - 仅从git仓库中删除文件, 但是文件系统中保留文件 `git rm --cached 文件`
     - 如果仅仅是想从仓库中剔除, 那么执行完命令还要在 `.gitignore` 文件中注明, 不然又add回去了
@@ -509,17 +506,17 @@ categories:
 ### checkout
 > [Official Doc: git checkout](https://git-scm.com/docs/git-checkout)
 
-> alias gch='git checkout'
+> alias gh='git checkout'
 
-1. 切换分支 `gch feature/a`
-1. 切换分支并设置该分支的远程分支 `gch feature/a origin/feature/a`
+1. 切换分支 `gh feature/a`
+1. 切换分支并设置该分支的远程分支 `gh feature/a origin/feature/a`
 
 > 撤销文件修改
-- `gch .` 取出最近的一次提交, 覆盖掉 work 区下当前目录(递归)下所有已更改(包括删除操作), 且未进入 stage 的内容, 已经进入 stage 区的文件内容则不受影响
-    - `gch 文件1 文件2...` 同上, 但是只操作指定的文件
+- `gh .` 取出最近的一次提交, 覆盖掉 work 区下当前目录(递归)下所有已更改(包括删除操作), 且未进入 stage 的内容, 已经进入 stage 区的文件内容则不受影响
+    - `gh 文件1 文件2...` 同上, 但是只操作指定的文件
 
-- `gch [commit-hash] 文件1 文件2...` 根据指定的 commit 对应hash值, 作如上操作, 但是区别在于 从 index 直接覆盖掉 stage 区, 并丢弃 work 区
-    - `gch [commit-hash] .` **`如在项目根目录执行该命令, 会将当前项目的所有未提交修改全部丢失, 不可恢复!!!!`**
+- `gh [commit-hash] 文件1 文件2...` 根据指定的 commit 对应hash值, 作如上操作, 但是区别在于 从 index 直接覆盖掉 stage 区, 并丢弃 work 区
+    - `gh [commit-hash] .` **`如在项目根目录执行该命令, 会将当前项目的所有未提交修改全部丢失, 不可恢复!!!!`**
 
 - `git checkout [commit-hash] 节点标识符或者标签 文件名 文件名 ...` 
     - 取出指定节点状态的某文件，而且执行完命令后，取出的那个状态会成为head状态，
