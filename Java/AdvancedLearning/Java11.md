@@ -15,7 +15,7 @@ categories:
         1. [Linux](#linux)
     1. [新特性](#新特性)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-06-22 13:01_|
 ****************************************
 # Java11 
 > [Official:doc](https://docs.oracle.com/en/java/javase/11/) | [Official:api](https://docs.oracle.com/en/java/javase/11/docs/api/index.html)
@@ -26,11 +26,12 @@ categories:
 ## 安装配置
 > [Official site](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-设置 ZGC 的 JVM 参数 
+通过 JVM 参数启用 ZGC
 ```
     -XX:+UnlockExperimentalVMOptions
     -XX:+UseZGC
 ```
+
 ### Linux
 ```sh
     JAVA_HOME=/path/to/java11

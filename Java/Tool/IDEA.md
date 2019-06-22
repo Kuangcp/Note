@@ -35,7 +35,7 @@ categories:
     1. [Tips](#tips)
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
 
-**目录 end**|_2019-05-15 18:00_|
+**目录 end**|_2019-06-22 13:01_|
 ****************************************
 
 # IDEA 使用笔记
@@ -125,7 +125,13 @@ _例如修改为如下_
 
 
 ### 个人IDEA配置
-- 字体Fira Code Retina 14 0.9
+- 代码字体 
+    1. Fira Code Retina 14 0.9
+    1. IBM Plex Mono SemiBold 15 0.9 
+- 设置字体
+    1. Robot Mono Medium for Powershell 14 
+
+- [Google java style](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml)
 
 ************************
 ## IDEA快捷键

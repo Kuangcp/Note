@@ -17,7 +17,7 @@ categories:
     1. [Firefox](#firefox)
         1. [SSL_ERROR_RX_RECORD_TOO_LONG](#ssl_error_rx_record_too_long)
 
-**目录 end**|_2019-05-15 18:00_|
+**目录 end**|_2019-06-22 13:01_|
 ****************************************
 # 问题解决方案
 ## Linux 
@@ -37,7 +37,7 @@ categories:
     alias java='java "$_SILENT_JAVA_OPTIONS"'
 ```
 - 只需将该配置加到  `/etc/profile` 文件尾部, 这样的话, 终端不会有如上提示
-- 但是IDEA中输出控制台仍带有该提示, 在 `bin/idea.sh` 中也添加如上配置即可(在最后一段之前)
+- 但是IDEA中输出控制台仍带有该提示, 在 `bin/idea.sh` 中也添加如上配置即可(在最后一段启动命令之前)
 
 *******************************
 > Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=gasp

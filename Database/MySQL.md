@@ -79,7 +79,7 @@ categories:
         1. [授权](#授权)
 1. [查询](#查询)
 
-**目录 end**|_2019-05-14 18:02_|
+**目录 end**|_2019-06-22 13:01_|
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -227,7 +227,7 @@ _重命名表格_ `RENAME TABLE old TO new `
     - `ALTER TABLE table_name DROP PRIMARY KEY`      
 
 1. **查看** 
-    - `show index from table` 也可以是 db.table 
+    - `show index from table`
     - [Official Doc](https://dev.mysql.com/doc/refman/5.7/en/show-index.html)`详解命令的输出内容`
 
 ### 索引的类型
