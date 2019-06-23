@@ -18,3 +18,5 @@ categories:
 
 RegistryService 通过查看 Type Hierarchy 可以看到所有 Dubbo 支持的注册中心
 
+## SPI
+[META-INF 目录结构](https://docs.oracle.com/en/java/javase/11/docs/specs/jar/jar.html#the-meta-inf-directory)
