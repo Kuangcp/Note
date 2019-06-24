@@ -33,7 +33,9 @@ categories:
 - [vim galore](https://github.com/mhinz/vim-galore)
 - [Vim galore 中文翻译](https://github.com/wsdjeg/vim-galore-zh_cn)
 
-> [bytefluent.com/vivify](http://bytefluent.com/vivify/)方便的自制主题
+> [bytefluent.com/vivify](http://bytefluent.com/vivify/) `方便的自制主题`
+
+> [vim教程网](https://vimjc.com/)
 
 ## Tips
 1. 误按 `Ctrl S` 终止屏幕输出（即停止回显）你敲的依然有效，只是看不见 `Ctrl Q` 即可恢复
