@@ -505,6 +505,32 @@ _客户端_
     socks5  127.0.0.1  1080
     ```
 
+#### OpenVPN
+> [arch wiki](https://wiki.archlinux.org/index.php/OpenVPN)
+
+1. 服务端提供 ca 文件
+1. 配置文件 
+    ```
+        client
+        dev tun
+        proto tcp
+        remote IP PORT               # 服务端IP地址映射的公网IP地址 端口
+        resolv-retry infinite
+        nobind
+        persist-key
+        persist-tun
+
+        ca ca.crt # ca 文件
+
+        auth-user-pass # 可选 password 文件
+
+        comp-lzo
+        verb 3
+    ```
+1. 账户密码文件
+    ```
+        sudo openvpn --daemon --cd /etc/openvpn/client --config connect.ovpn --auth-user-pass /etc/openvpn/client/passwd --log-append /path/to/log.log
+    ```
 
 ### 防火墙
 
