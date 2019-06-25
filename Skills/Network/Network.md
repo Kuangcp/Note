@@ -29,6 +29,8 @@ categories:
         1. [TTFB](#ttfb)
         1. [URL](#url)
         1. [DNS](#dns)
+        1. [VPN](#vpn)
+            1. [OpenVPN](#openvpn)
 1. [Socket](#socket)
 1. [单播 多播 组播](#单播-多播-组播)
     1. [组播](#组播)
@@ -44,7 +46,7 @@ categories:
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2019-05-09 20:31_|
+**目录 end**|_2019-06-25 12:32_|
 ****************************************
 # 网络
 
@@ -186,6 +188,35 @@ OSI制定的OSI七层参考模型的过于庞大、复杂。与此对照，由�
      - 递归加迭代， 区别在于，先迭代根， 得到下级一级服务器节点后，下级就是递归的入口和出口
 - 授权和非授权， 还是上面那个URL， 其他的都不是授权的， 只有离URL最近的DNS才是授权的 即 `bupt.edu.cn` 
 
+### VPN
+
+#### OpenVPN
+> [arch wiki](https://wiki.archlinux.org/index.php/OpenVPN)
+
+1. 服务端提供 ca 文件
+1. 配置文件 
+    ```
+        client
+        dev tun
+        proto tcp
+        remote IP PORT               # 服务端IP地址映射的公网IP地址 端口
+        resolv-retry infinite
+        nobind
+        persist-key
+        persist-tun
+
+        ca ca.crt # ca 文件
+
+        auth-user-pass # 可选 password 文件
+
+        comp-lzo
+        verb 3
+    ```
+1. 账户密码文件
+    ```
+        sudo openvpn --daemon --cd /etc/openvpn/client --config connect.ovpn --auth-user-pass /etc/openvpn/client/passwd --log-append /path/to/log.log
+    ```
+
 *******************************
 
 # Socket
@@ -202,6 +233,7 @@ Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开�
 > [参考博客: Linux socket 编程](https://www.ibm.com/developerworks/cn/education/linux/l-sock/l-sock.html)
 
 ********************************
+
 # 单播 多播 组播
 
 ## 组播
