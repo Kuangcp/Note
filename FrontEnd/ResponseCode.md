@@ -25,6 +25,7 @@ categories:
 ****************************************
 # HTTP状态码大全
 > [wiki: http status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)  
+> [MDN: HTTP 响应状态代码](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)
 
 > [HTTP状态码](http://www.runoob.com/http/http-status-codes.html)
 > [HTTP状态码百度百科](https://baike.baidu.com/item/HTTP%E7%8A%B6%E6%80%81%E7%A0%81)
