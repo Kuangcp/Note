@@ -88,12 +88,21 @@ categories:
 - for 循环
     - `for(int a=0; i<10; i++){}`
 - for each循环
-    - `for(Object item:list){}` 其中list对象如果是通过调用一个对象的方法返回的，那么只会调用一次
+    - `for(Object item:list){}` 注意 list对象如果是通过`调用一个对象的方法`返回的，那么只会调用一次该方法
 
-## 用户输入输出
-- `System.out.println("")` 输出并在末尾追加换行
+## 标准输入输出
+> 系统标准输入
+- `Scanner scanner = new Scanner(System.in);`
+
+> 系统标准输出
+- `System.out.println("")` 并在末尾追加换行
     - .print() 输出, 行末不换行
     - .printf() 格式化输出, 和C语法类似
+
+## Runtime
+> Runtime.getRuntime().addShutdownHook(Thread thread) 
+1. 在JVM正常退出时会调用注册的Hook
+1. 例如 System.exit(), 或者 Java 进程收到退出的信号 SIGTERM SIGINT SIGQUIT 等等, 但是暴力退出是不会被调用到Hook的
 
 ***********************
 # 数据类型
@@ -102,7 +111,7 @@ categories:
 ## 自动拆装箱
 > 在日常Java开发中, 基本数据类型和包装类型是可以视为等价的(唯一差别就是包装类型能表达null), 就是因为自动拆装箱的存在
 
-| 基本数据类型 | 封装类型 | 默认值 |
+| 基本数据类型 | 包装类型 |
 |:----|:----|
 | byte | Byte |
 | char | Character |
@@ -114,17 +123,23 @@ categories:
 | double | Double |
 | void | Void |
 
-> 存在的意义: TODO 
+> 区别
+- 存储方式及位置的不同，基本类型是直接存储变量的值保存在堆栈中能高效的存取，包装类型需要通过引用指向实例，具体的实例保存在堆中。
+- 初始值的不同，封装类型的初始值为 null，基本类型的的初始值视具体的类型而定，比如int类型的初始值为0，boolean类型为false；
+- 使用方式的不同, 在泛型场合只能使用包装类型, 基本类型无法表达 null
 
-- 存储方式及位置的不同，基本类型是直接存储变量的值保存在堆栈中能高效的存取，封装类型需要通过引用指向实例，具体的实例保存在堆中。
-- 初始值的不同，封装类型的初始值为null，基本类型的的初始值视具体的类型而定，比如int类型的初始值为0，boolean类型为false；
-- 使用方式的不同, 在泛型时只能使用封装类型, 基本类型无法表达null
+> 存在的意义
+1. 基本类型无法作为对象看待, 扩充了语义
+1. 为了泛型
 
 > 弊端
+1. 性能问题, 需要构造对象
 
-性能问题
+************************
 
-自动装箱都是通过包装类的valueOf()方法来实现的.自动拆箱都是通过包装类对象的xxxValue()来实现的。
+> 注意自动拆装箱是编译器的语法糖   
+> 自动装箱都是通过包装类的 valueOf() 方法来实现的.  
+> 自动拆箱都是通过包装类对象的 xxxValue() 来实现的.
 
 ## 基础数据类型
 > 八种基本数据类型 byte char boolean short int long float double
@@ -214,10 +229,12 @@ true 和 false 也是缓存了的
 > [Unsigned arithmetic in Java](https://www.javamex.com/java_equivalents/unsigned_arithmetic.shtml)  
 > [Java equivalent of unsigned long long?](https://stackoverflow.com/questions/508630/java-equivalent-of-unsigned-long-long)
 
-无符号Long:  `Long.parseUnsignedLong();` `Long.toUnsignedString();` 
+无符号Long: `Long.parseUnsignedLong();` `Long.toUnsignedString();` 
+
 > [参考博客: Java 中的无符号类型是怎么回事儿？](https://www.cnblogs.com/yuanyq/p/java_unsigned_types.html)
 
 ### Boolean
+> 内含两个单例 TRUE FALSE
 
 ### Void
 - void 的包装类型, 常用于反射时对应上 返回值为void的方法(总得有个类型 Void.TYPE) 该类型在 jdk1.1就有了, 1.5出了泛型后, 又多了一个用途(因为泛型不支持原始类型)
@@ -230,21 +247,21 @@ true 和 false 也是缓存了的
 
 1. 在AOP中, 增强根据切点的返回值类型, 做出不同的逻辑, 有可能用到Void
 1. Void 强调 the nothing, null 强调 nothing
-1. Void 作为方法的返回值时,只能返回 null 
+1. Void 作为方法的返回值时, 只能返回 null 
 
 - 案例:  
     - Future<Void>
     - ResponseEntity<Void> 
-    - A `Consumer<T>` can be viewed as a `Function<T, Void>`.
-    - A `Supplier<T>` can be viewed as a `Function<Void, T>`
+    - A `Consumer<T>` can be viewed as a `Function<T, Void>`, 没有返回值,只有入参
+    - A `Supplier<T>` can be viewed as a `Function<Void, T>`, 没有入参,只有返回值
 
 > [official api](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html)
 
 > When you use the visitor pattern it can be cleaner to use Void instead of Object when you want to be sure that the return value will be null. Example: 
 ```java
     public interface LeavesVisitor<OUT>{
-    OUT visit(Leaf1 leaf);
-    OUT visit(Leaf2 leaf);
+        OUT visit(Leaf1 leaf);
+        OUT visit(Leaf2 leaf);
     }
 ```
 
@@ -266,9 +283,10 @@ true 和 false 也是缓存了的
 ## 枚举类型
 > [official doc: enum](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html)
 
-枚举类的构造器必须是private 或者 package private (也就是缺省)
+枚举类的构造器必须是 private 或者 package private (也就是缺省)
 
 > [参考博客: Java 语言中 Enum 类型的使用介绍](https://www.ibm.com/developerworks/cn/java/j-lo-enum/index.html)
+
 从上面的定义形式来看，似乎 Java 中的枚举类型很简单，但实际上 Java 语言规范赋予枚举类型的功能非常的强大，它不仅是简单地将整形数值转换成对象，而是将枚举类型定义转变成一个完整功能的类定义。
 
 - 简单定义
@@ -295,26 +313,26 @@ true 和 false 也是缓存了的
 
 ***************************
 ## 内部类
-> 就是一种特殊的成员变量, 其特征和成员属性是一致的
+> 可看做一种特殊的成员变量, 其特征和成员属性是一致的
 
 - https://www.tutorialspoint.com/java/java_innerclasses.htm
 - https://www.geeksforgeeks.org/anonymous-inner-class-java/
 
 **************************
+
 ## 类型强转
 > 数学运算时,数据类型自动往大数据类型转: int float double
 
 - Double -> int 直接(int)num;
-
 - int/Integer -> Long 不能隐式转, 需要 Long.valueOf()
 
 **********************
 
 ## 时间类型
+> java.time 包
 
-1. 最早常用是 Date 然后 Calendar 然后Java8: Instant LocalDateTime ...
-
-_获取指定时间_ [获取指定时间的时间戳](https://blog.csdn.net/jssongwei/article/details/71403354)
+1. 最早常用是 Date 然后 Calendar 
+1. 目前Java8: Instant LocalDateTime Duration ...
 
 ## 非原生类型
 ### 元组

@@ -380,16 +380,17 @@ _系统运行级别_
 
 - 命令后接 & （只是让进程成为job并在当前终端的后台执行 hup信号仍然能影响到）
 
-`nohup， disown, screen, setid`
+运行的命令不因 用户注销，网络中断等因素而中断 `nohup， disown, screen, setid`
 
-- 运行的命令不因 用户注销，网络中断等因素而中断
-    - 让进程对hup信号免疫 nohup disown
-    - 让进程的父进程改为1号进程: setid  `( &)`
-    -  screen
+- 让进程对 hang up 信号免疫: 
+    - nohup, disown
+- 让进程的父进程改为1号进程: 
+    - setid, `(command &)`
+- screen
 
 > 示例
 1. 使用`nohup`就能屏蔽hup信号，标准输出会输出到当前目录下的nohup.out文件. `nohup 命令 &`
-    1. 将所有输出重定向到空设备  `nohup 命令>/dev/null 2>&1`
+    1. 将标准输出重定向到空设备 并将错误输出重定向到标准输出  `nohup 命令>/dev/null 2>&1`
 1. 例如 在当前目录后台打开文件管理器 `(dde-file-manager . &) >/dev/null 2>&1`
 
 ************************

@@ -183,6 +183,7 @@ _MANIFEST.MF示例_
 > - 结合 Maven Gradle 方便的构建 Docker镜像
 
 ### 手动
+from jdk基础镜像, 将jar 复制进去, 设置好 CMD
 
 ### Maven
 
