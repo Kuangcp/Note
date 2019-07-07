@@ -1,10 +1,9 @@
 ---
-title: JavaWeb性能调优
+title: Web性能调优
 date: 2018-12-13 16:02:57
 tags: 
     - Performance
 categories: 
-    - Java
 ---
 
 **目录 start**
@@ -50,6 +49,9 @@ categories:
 > [参考博客: 性能测试之－wrk(转)](http://www.cnblogs.com/rainy-shurun/p/5867946.html)
 
 1. 需要手动编译安装 make
+
+### hey
+> [Github](https://github.com/rakyll/hey)
 
 ******************
 ## 数据库性能

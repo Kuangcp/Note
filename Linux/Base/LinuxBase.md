@@ -177,7 +177,6 @@ categories:
 ### 守护进程
 > [参考博客: 守护进程](https://blog.csdn.net/lianghe_work/article/details/47659889)
 
-
 ### 线程
 1. 查看创建一个线程占用内存大小 `ulimit -s`
 

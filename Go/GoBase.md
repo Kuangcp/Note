@@ -84,6 +84,7 @@ docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub 
 > [Official Download](https://golang.google.cn/dl/) | [Official Doc](https://golang.google.cn/doc/install) | [参考 教程](http://www.runoob.com/go/go-environment.html) [.](http://cloud.kuangcp.top/go-1.10.3.tar.gz) 
 
 1. `sudo tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz` 安装和升级都是如此
+    - 注意: 升级前必须 `rm -rf /usr/local/go` 以免造成文件的混乱
 1. `*shrc` 或者 `/etc/profile` 中添加
 	```sh
         export GOROOT=/usr/local/go
