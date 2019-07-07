@@ -1,10 +1,27 @@
+---
+title: Quartz
+date: 2019-07-07 11:57:07
+tags: 
+categories: 
+    - Java
+---
+
+**目录 start**
+ 
+1. [Quartz学习](#quartz学习)
+    1. [官方样例](#官方样例)
+    1. [Quartz中常用的一些类](#quartz中常用的一些类)
+    1. [有状态的Job与无状态的Job](#有状态的job与无状态的job)
+    1. [Quartz中重要的几个监听器](#quartz中重要的几个监听器)
+
+**目录 end**|_2019-07-07 12:07_|
+****************************************
 # Quartz学习
 
-## 依赖（使用Gradle）
-
-```
-compile group: 'org.quartz-scheduler', name: 'quartz', version: '2.2.1'
-compile group: 'org.quartz-scheduler', name: 'quartz-jobs', version: '2.2.1'
+> 添加依赖
+```groovy
+    compile group: 'org.quartz-scheduler', name: 'quartz', version: '2.2.1'
+    compile group: 'org.quartz-scheduler', name: 'quartz-jobs', version: '2.2.1'
 ```
 
 ##  官方样例
@@ -262,5 +279,3 @@ fun main(args: Array<String>) {
         ```
      
 -   `SchedulerListener`: 在Scheduler生命周期中的关键事件发生时调用
-
-   

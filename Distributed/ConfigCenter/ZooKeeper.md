@@ -1,4 +1,20 @@
-## 1、安装并启动
+---
+title: ZooKeeper
+date: 2019-07-07 11:52:11
+tags: 
+categories: 
+    - 分布式
+---
+
+**目录 start**
+ 
+1. [安装并启动](#安装并启动)
+    1. [使用](#使用)
+    1. [Java API](#java-api)
+
+**目录 end**|_2019-07-07 12:07_|
+****************************************
+# 安装并启动
 
 -   进官网下载ZooKeeper，地址为`https://www.apache.org/dyn/closer.cgi/zookeeper/`
 
@@ -12,7 +28,7 @@
 
 -   停止ZooKeeper服务的命令为`bin/zkServer.sh stop`
 
-## 2、使用
+## 使用
 
 -   创建Znodes：`create [参数] /path 数据`，例如：`create /FirstZnode "first ZooKeeper-app"`，起命令参数如下
 
@@ -33,7 +49,9 @@
 
 -   删除Znode:`rmr /path`,仅适用于无子Znode
 
-## 3、[Java API](https://github.com/dragonhht/ZooKeeper-study/blob/master/src/test/java/hht/dragon/TestZooKeeper.java)
+## Java API
+
+> [Java API](https://github.com/dragonhht/ZooKeeper-study/blob/master/src/test/java/hht/dragon/TestZooKeeper.java)
 
 -   获取ZooKeeper连接
 
@@ -84,7 +102,7 @@
 
 -   获取数据：`getData(String path, Watcher watcher, Stat stat)`
 
-    ```
+    ```java
         public void getData() throws IOException, InterruptedException, KeeperException {
             ZooKeeper zoo = connect("localhost");
             byte[] data = zoo.getData(ZNODE_PATH, new Watcher() {
@@ -125,7 +143,7 @@
 
 -   修改数据： `setData(String path, byte[] data, int version)`
 
-    ```
+    ```java
     public void setData() throws IOException, InterruptedException, KeeperException {
             ZooKeeper zoo = connect("localhost");
             byte[] data = "修改数据".getBytes();
@@ -142,7 +160,7 @@
 
 -   获取子节点： `getChildren(String path, Watcher watcher)`
 
-    ```
+    ```java
         public void getChild() throws IOException, InterruptedException, KeeperException {
             ZooKeeper zoo = connect("localhost");
             List<String> children = zoo.getChildren("/FirstNode", false);
@@ -158,7 +176,7 @@
 
 -   删除Znode节点
 
-    ```
+    ```java
         public void del() throws IOException, InterruptedException, KeeperException {
             ZooKeeper zoo = connect("localhost");
             zoo.delete(ZNODE_PATH, zoo.exists(ZNODE_PATH, true).getVersion());

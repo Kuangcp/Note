@@ -23,7 +23,7 @@ categories:
 1. [字节码相关框架](#字节码相关框架)
 1. [热更新](#热更新)
 
-**目录 end**|_2019-06-04 19:53_|
+**目录 end**|_2019-07-07 12:07_|
 ****************************************
 # 字节码以及类加载
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
@@ -85,7 +85,14 @@ categories:
     - 扩展类加载器： 加载安装时自带的标准扩展，一般包括安全性扩展
     - 应用或系统类加载器： 应用最广泛的类加载器，负责加载应用类，在大多SE环境中主要工作是由他完成
     - 定制类载器： 为了企业框架定制的加载器
-    
+
+- BootStrap ClassLoader(启动类加载器)：一般负责加载系统的核心类，如，rt.jar中的Java类
+- Extendsion ClassLoader(扩展类加载器)：用于加载%JAVA_HOME%/lib/ext/*.jar中的Java类
+- App ClassLoader(应用类加载器，系统类加载器)：用于加载用户程序的类
+- 自定义的ClassLoader：加载一些特殊途径的类，一般也是用户类
+
+![JavaClassLoader](https://github.com/dragonhht/GitImgs/blob/master/Notes/JavaClassLoader.png?raw=true)
+
 ### 加载和连接
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p107.jpg)
 
