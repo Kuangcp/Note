@@ -98,6 +98,7 @@ so，也不需要和其他的对比了，其他都是拆分，而paste是合并�
 >1. CRLF -> LF `sed -i 's/\r//g' file` 配合git 就是 `git ls-files| xargs sed -i 's/\r//g'`
 >1. 去除换行符 `sed ':label;N;s/\n/ /;b label'` [参考](http://www.cnblogs.com/lykm02/p/4479098.html)
 >1. 注意特殊字符的转义 `git ls-files | xargs  sed -i 's/@a.*/\//g'`
+>1. 文件内容倒置 `sed '1!G;h;$!d' filename`
 
 > [参考博客: linux sed 命令单行任务快速参考](http://www.techug.com/post/linux-sed1line.html)
 

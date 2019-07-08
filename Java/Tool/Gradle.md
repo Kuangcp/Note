@@ -354,9 +354,8 @@ C 项目就能使用 A 中的类了
 #### Lombok
 > [详细](/Java/Tool/Lombok.md)
 
-#### Maven 
-- `apply plugin: "maven"` 然后就能执行 install等命令了
-- gradle 4.8 用不了 [需要这种方式](https://blog.csdn.net/mxw2552261/article/details/78640338)
+#### Maven Publish
+- [Maven Publish Plugin](https://docs.gradle.org/current/userguide/publishing_maven.html)
 
 #### shadowJar 
 > 打包为 fat jar 也就是包含所有依赖jar的jar包
