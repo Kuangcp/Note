@@ -433,33 +433,54 @@ _登录镜像仓库_
 
 # 容器编排
 ## Docker-Compose
-> 声明式环境，管理多容器， 并处理好相关资源的关系
+> [Official](https://docs.docker.com/compose/)
+
+声明式环境，管理多容器， 并处理好相关资源的关系
 
 > [Demo: 开源电商平台](https://github.com/fecshop/yii2_fecshop_docker/blob/master/docker-compose.yml)
 > [Demo: 安装 Kafka](http://www.cnblogs.com/xuxinkun/p/5473952.html)
 
 ### 安装
-> [Official Install Doc](https://docs.docker.com/compose/install/)
 
 > 官方建议的安装方式
 1. `sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
 1. `sudo chmod +x /usr/local/bin/docker-compose`
 1. `sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose`
 
-注意 Deepin上 如果通过 apt 去安装 docker-compose 它会把 docker-ce 卸掉, 装旧的 docker.io 
+> 注意 Deepin上 如果通过 apt 去安装 docker-compose 它会把 docker-ce 卸掉, 装旧的 docker.io 
 
 ### 配置文件
-> 一个配置文件就表示了一组容器, 以及相关的网络,文件等配置, docker-compose 都是基于该配置文件进行基本命令操作
+> 一个配置文件就表示了一组容器, 以及相关的网络,文件等配置, docker-compose 都是基于该配置文件进行基本命令操作  
+> 语法上和 docker run 基本一致, 只不过以 yml 形式配置而已
 
+```yml
+version: "2.1"
+services:
+  zookeeper:
+    image: ${IMAGE_NAME:-defaultImage}
+    expose:
+      - "6666"
+    ports:
+      - "6666:6666"
+    volumes:
+      - /etc/localtime:/etc/localtime
+    command: ./bin/start.sh
+    links:
+        - "mysql:mysql"
+    environment:
+      - NAME=who
+```
 
-### 使用
+### 使用命令
+> 必须要在 docker-compose.yml 文件目录下执行
+
+- help
 - up          # 自动完成构建镜像，创建服务，启动服务，并关联服务等操作, -d 后台
 - down        # 停止容器并移除网络, -v 移除挂载的volume
 - start       # 启动存在的服务
 - stop        # 停止
 - restart     # 重启项目中服务
 - exec        # 进入指定容器
-- help
 - image       # 列出 Compose 文件中包含的镜像
 - kill [SERVICE...]
 - pause [SERVICE...]

@@ -28,7 +28,7 @@ categories:
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
 
-> [The Art of Command Line](https://github.com/jlevy/the-art-of-command-line)
+> [The Art of Command Line](https://github.com/jlevy/the-art-of-command-line) `高效优美的工具`
 
 ## 系统内置命令
 > /bin/* 系统自带命令
