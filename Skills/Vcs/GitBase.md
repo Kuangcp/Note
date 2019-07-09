@@ -65,7 +65,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-06-16 19:38_|
+**目录 end**|_2019-07-09 21:40_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -568,9 +568,20 @@ categories:
     - `git rebase --continue` 修改好冲突后继续
 
 ### cherry-pick
-- [ ] learn 
+> [Official Doc](https://git-scm.com/docs/git-cherry-pick)
+
+- `git cherry-pick <commit-id>`
+
+简单来讲, 就是将指定的某个提交(任意分支上的)上的修改, 重放到当前分支上  
+和 stash pop 命令相比, 在重放上是一致的
+
+> 用途
+1. 可用于合并已有的若干个提交, 为了改动最小, 一般新建分支来做这件事
+    - 例如 功能分支 `fea/something` 上的四个提交其实可以合并, 使得提交信息更清晰, 不冗余, 就可以从 `fea/something`
+    - 创建处新建一个分支, 将该分支所有提交进行重放, 需要合并的那几个放一起重放 然后 将四个提交 reset, 再次提交即可
 
 ************************
+
 ## Submodule
 > [Official Doc](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 
