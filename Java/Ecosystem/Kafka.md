@@ -11,7 +11,7 @@ categories:
     1. [安装](#安装)
         1. [Docker](#docker)
 
-**目录 end**|_2019-05-21 15:26_|
+**目录 end**|_2019-07-09 19:57_|
 ****************************************
 # Kafaka
 > [Official Doc](https://kafka.apache.org/21/documentation.html)  
@@ -19,6 +19,8 @@ categories:
 > [参考博客: 初探Kafka Streams](http://ifeve.com/%e5%88%9d%e6%8e%a2kafka-streams/)  
 - [ksql](https://github.com/confluentinc/ksql)  
 > [参考博客: Kafka Topic Architecture](http://cloudurable.com/blog/kafka-architecture-topics/index.html)  
+
+> [参考博客: Apche Kafka 的生与死 – failover 机制详解](https://www.cnblogs.com/fxjwind/p/4972244.html) `解释 I wrote this conflicted ephemeral node`  
 
 ## 安装
 

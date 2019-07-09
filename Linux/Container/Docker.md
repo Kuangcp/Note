@@ -42,7 +42,8 @@ categories:
     1. [Docker-Compose](#docker-compose)
         1. [安装](#安装)
         1. [配置文件](#配置文件)
-        1. [使用](#使用)
+        1. [使用命令](#使用命令)
+        1. [Tips](#tips)
     1. [Docker-Machine](#docker-machine)
     1. [Docker-Swarm](#docker-swarm)
 1. [网络](#网络)
@@ -55,7 +56,7 @@ categories:
 1. [Dockerfile](#dockerfile)
     1. [dockerignore文件的使用](#dockerignore文件的使用)
 
-**目录 end**|_2019-06-09 23:27_|
+**目录 end**|_2019-07-09 19:57_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -486,6 +487,9 @@ services:
 - pause [SERVICE...]
 - unpause [SERVICE...]
 - ps          # 列出项目中所有容器
+
+### Tips
+- [ ] /etc/hosts 文件在 up down 一次后就变成默认配置了, 这个原因
 
 ************************
 

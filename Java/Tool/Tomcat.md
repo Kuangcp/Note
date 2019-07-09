@@ -36,7 +36,7 @@ categories:
 1. [Tomcat和Jetty](#tomcat和jetty)
 1. [Tips](#tips)
 
-**目录 end**|_2019-07-09 16:37_|
+**目录 end**|_2019-07-09 19:57_|
 ****************************************
 # Tomcat
 > [官方网站](http://tomcat.apache.org/)
@@ -267,8 +267,18 @@ Tomcat 是提供一个支持 Servlet 和 JSP 运行的容器。Servlet 和 JSP �
 - [Tomcat启动卡住,因为random](https://www.jianshu.com/p/576d356dc163)
 
 ************************
-
 > [Tomcat 启动报错SEVERE: Unable to process Jar entry](https://www.jqhtml.com/43116.html)
 
-在这次遇到的问题是 spring-boot-autoconfigure 2.0.1.RELEASE 依赖不能和 Tomcat 7.0.55 兼容, 导致了 Unable to process Jar entry EOFException 报错
+- 表现
+    - 启动Tomcat 大量的 Unable to process Jar entry
+    - 最后 Tomcat OOM
+- 排查过程
+    - 首先判断为Maven缓存导致的问题, 下载下来的jar是有问题的, 但是通过比较 md5 发现文件是一致的
+    - 然后搜索相关信息, javassist jar包依赖冲突, 也不是
+- 技术原因分析
+    - 在这次遇到的问题是 spring-boot-autoconfigure 2.0.1.RELEASE 依赖不能和 Tomcat 7.0.55 兼容, 导致了 Unable to process Jar entry EOFException 报错
+    - 但是这个报错不影响应用 深层次原因是 这个 autoconfigure 会尝试将项目所有依赖都加载扫描一次
+    - 如果物理机或者容器内存不够, 就会直接down掉, 但是! 内存够的话 就不影响后续的启动, 除非应用确实需要使用SpringBoot框架的 2.0.1 版本
+- 人为原因
+    - 没有做好依赖管理, 导致了 SpringBoot 被错误的引入
 
