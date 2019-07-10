@@ -38,7 +38,7 @@ categories:
     1. [分支合并框架](#分支合并框架)
     1. [Java内存模型](#java内存模型)
 
-**目录 end**|_2019-06-16 00:08_|
+**目录 end**|_2019-07-10 20:47_|
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -129,7 +129,7 @@ categories:
     - 这些对象或者没有状态（属性）或者只有final域。因为他们的状态不可变，所以是安全而又活泼，不会出现不一致的情况
     - 初始化就会遇上问题，如果是需要初始化很多属性，可以采用工厂模式，但是构建器模式更好。
         - 一个是实现了构建器泛型接口的内部静态类，另一个是构建不可变类实例的私有构造方法 
-        - [思想实现代码](./src/main/java/com/concurrents/old/BuildFactory.java)
+        - [思想实现代码](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/main/java/com/github/kuangcp/old/BuildFactory.java)
     - 不可变对象中的final域特别要注意：
         - final声明的对象的引用是不可变的， 但是如果引用的是对象，该对象自身的属性的引用是可变的
     - 不可变对象的使用十分广泛，但是开发效率不行，每修改对象的状态都要构建一个新对象

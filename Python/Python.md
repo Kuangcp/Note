@@ -27,7 +27,7 @@ categories:
             1. [列表 list](#列表-list)
             1. [元组 tuple](#元组-tuple)
             1. [字符串 str](#字符串-str)
-            1. [字符串编码问题](#字符串编码问题)
+                1. [字符串编码问题](#字符串编码问题)
             1. [字典 dict](#字典-dict)
         1. [运算符](#运算符)
     1. [模块](#模块)
@@ -65,7 +65,7 @@ categories:
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-**目录 end**|_2019-06-06 18:13_|
+**目录 end**|_2019-07-10 20:47_|
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -277,6 +277,8 @@ When importing the package, Python searches through the directories on `sys.path
     - 仿造一维的定义： lists = [[0 for x in range(10)] for y in range(10)] 10*10 初始为0的列表
     - 简便但是不可行的方法： `lists = [[0]*10]*10` 这是个坑， 只是声明了一维数组，然后多次引用， 虽然看起来是二维， 引用数据就会发现是一维  
 
+> set() 函数, 返回结果则是不重复的元素集合
+
 ************************
 
 #### 元组 tuple
@@ -321,9 +323,7 @@ When importing the package, Python searches through the directories on `sys.path
 - 字符串-元组 ： tuple("python")
 - 列表或元组-字符串 join(obj) 参数是列表或元组类型，其元素只能是字符串类型
 
-************************
-
-#### 字符串编码问题
+##### 字符串编码问题
 > [ Python3 的 bytes str 之别 ](http://www.ituring.com.cn/article/1116)
 
 ![str和bytes的关系](https://raw.githubusercontent.com/Kuangcp/ImageRepos/masters/Tech/python/str_bytes.jpeg)
@@ -351,11 +351,11 @@ When importing the package, Python searches through the directories on `sys.path
     - 值是可以是任意的，甚至是字典嵌套
     - 键必须不可变，只能由 数值，字符串，元组，不能用列表
 - 操作：
-    - 定义字典 dict={}
-    - 添加 ： `dict['a'] = 2323 `
-    - 返回所有key：keys() 
-    - 查询是否有这个键 ：has_key() 
-    - get() keys() values() 
+    - 定义 dict={}
+    - 添加 `dict['count'] = 1`
+    - 获取 `count = dict['count]` 但是如果字典中没有该key, 会抛出异常
+    - 获取 `get(key)` 获取不到返回 None
+    - 返回所有key/value `keys() values()`
     - 转化元组 ：items() 
         - 可用于遍历 `for key,value in dict.items():`
     - 删除指定键：del() `del dict['name']` 
@@ -859,7 +859,7 @@ _or (if you need to use Python 2)_
 - platform 操作系统信息
     - 获取当前操作系统名称 platform.system() 
 
-- `subprocess` [代码](https://gitee.com/kcp1104/codes/9ytejo7fl2xmqsr5zwkv380)
+- `subprocess` [代码](https://gitee.com/gin9/codes/9ytejo7fl2xmqsr5zwkv380)
 
 ### 时间处理
 
