@@ -31,7 +31,7 @@ categories:
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2019-04-22 16:30_|
+**目录 end**|_2019-07-14 18:13_|
 ****************************************
 
 # Java的性能调优
@@ -128,8 +128,12 @@ categories:
     - -F: 强制产生一个线程dump
     - -m: 打印java和native frames
     - -l: 打印关于锁的附加信息
-- Demo:
-    - jstack -F $PID
+
+- 找出占用CPU最高的线程:
+    1. `jps 或者 ps aux | grep xxx` 得到想要的Java进程id
+    1. `top -Hp 进程id` 查看 time 占用最长 或者 CPU占用最高 的线程
+    1. `printf %x 线程id` 得到 16进制 线程id
+    1. `jstack 进程id | grep -A 20 16进制线程id` 查看该线程的栈,进而分析到代码
 
 ### jcmd
 

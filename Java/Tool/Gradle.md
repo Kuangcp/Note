@@ -31,7 +31,7 @@ categories:
         1. [配置镜像源](#配置镜像源)
         1. [插件](#插件)
             1. [Lombok](#lombok)
-            1. [Maven](#maven)
+            1. [Maven Publish](#maven-publish)
             1. [shadowJar](#shadowjar)
             1. [docker](#docker)
             1. [protobuf-gradle-plugin](#protobuf-gradle-plugin)
@@ -43,7 +43,7 @@ categories:
     1. [构建Docker镜像](#构建docker镜像)
         1. [插件方式构建Docker镜像](#插件方式构建docker镜像)
 
-**目录 end**|_2019-06-20 21:02_|
+**目录 end**|_2019-07-14 18:13_|
 ****************************************
 
 # Gradle
@@ -261,35 +261,46 @@ C 项目就能使用 A 中的类了
 *********************
 
 #### 依赖排除以及指定依赖版本
+
+1. 在 configuration 中排除 
 ```groovy
-    // 依赖排除
-    compile(''){
-        exclude group: '' // 按group排除
-        exclude module: '' // 按 artifact 排除
-        exclude grop: '', module: '' // 按 group artifact 排除
+    configurations {
+        compile.exclude module: 'commons'
+        all*.exclude group: 'org.gradle.test.excludes', module: 'reports'
     }
-    // 全局依赖排除
-    all*.exclude group:'org.unwanted', module: 'iAmBuggy'
+```
+1. 在具体的某个dependency中排除
+```groovy
+    dependencies{
+        // 依赖排除
+        compile(''){
+            exclude group: '' // 按group排除
+            exclude module: '' // 按 artifact 排除
+            exclude grop: '', module: '' // 按 group artifact 排除
+        }
+        // 全局依赖排除
+        all*.exclude group:'org.unwanted', module: 'iAmBuggy'
 
-    // 禁用依赖传递
-    compile('com.zhyea:ar4j:1.0') {
-	    transitive = false
-    }
-    
-    configurations.all {
-        transitive = false
-    }
+        // 禁用依赖传递
+        compile('com.zhyea:ar4j:1.0') {
+            transitive = false
+        }
+        
+        configurations.all {
+            transitive = false
+        }
 
-    // 强制使用指定版本的依赖
-    compile('com.zhyea:ar4j:1.0') {
-        force = true
-    }
-    // 始终使用最新的依赖,  若 1.+ 则是 1.xx版本的最新版
-    compile 'com.zhyea:ar4j:+'
-    
-    configurations.all {
-        resolutionStrategy {
-            force 'org.hamcrest:hamcrest-core:1.3'
+        // 强制使用指定版本的依赖
+        compile('com.zhyea:ar4j:1.0') {
+            force = true
+        }
+        // 始终使用最新的依赖,  若 1.+ 则是 1.xx版本的最新版
+        compile 'com.zhyea:ar4j:+'
+        
+        configurations.all {
+            resolutionStrategy {
+                force 'org.hamcrest:hamcrest-core:1.3'
+            }
         }
     }
 ```

@@ -22,8 +22,9 @@ categories:
     1. [定时任务](#定时任务)
         1. [crontab](#crontab)
         1. [Systemd](#systemd)
+1. [多媒体](#多媒体)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-07-14 18:13_|
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -110,3 +111,8 @@ categories:
 
 ### Systemd
 > [参考博客: Systemd 定时器教程](http://www.ruanyifeng.com/blog/2018/03/systemd-timer.html) `配置和使用上比Crontab更繁杂, 但是有更多的可控制项`
+
+# 多媒体
+
+> m3u8 网址转换为mp4
+- `ffmpeg -i http://xxx.m3u8 -c copy -bsf:a aac_adtstoasc output.mp4`

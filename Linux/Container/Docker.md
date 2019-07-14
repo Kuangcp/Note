@@ -56,7 +56,7 @@ categories:
 1. [Dockerfile](#dockerfile)
     1. [dockerignore文件的使用](#dockerignore文件的使用)
 
-**目录 end**|_2019-07-09 19:57_|
+**目录 end**|_2019-07-14 18:13_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -476,7 +476,7 @@ services:
 > 必须要在 docker-compose.yml 文件目录下执行
 
 - help
-- up          # 自动完成构建镜像，创建服务，启动服务，并关联服务等操作, -d 后台
+- up          # 自动完成构建镜像，创建服务，启动服务，并关联服务等操作, `-d` 后台执行
 - down        # 停止容器并移除网络, -v 移除挂载的volume
 - start       # 启动存在的服务
 - stop        # 停止
