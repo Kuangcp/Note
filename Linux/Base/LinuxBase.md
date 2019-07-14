@@ -12,16 +12,17 @@ categories:
 1. [Linux系统](#linux系统)
     1. [用户](#用户)
     1. [用户组](#用户组)
+    1. [环境变量](#环境变量)
+        1. [全局环境变量](#全局环境变量)
+        1. [局部环境变量](#局部环境变量)
+        1. [加载环境变量](#加载环境变量)
+    1. [信号量](#信号量)
     1. [进程](#进程)
         1. [孤儿进程和僵死进程](#孤儿进程和僵死进程)
             1. [孤儿进程](#孤儿进程)
             1. [僵尸进程](#僵尸进程)
         1. [守护进程](#守护进程)
         1. [线程](#线程)
-    1. [环境变量](#环境变量)
-        1. [全局环境变量](#全局环境变量)
-        1. [局部环境变量](#局部环境变量)
-        1. [加载环境变量](#加载环境变量)
     1. [时间](#时间)
     1. [服务](#服务)
         1. [自启服务](#自启服务)
@@ -42,7 +43,7 @@ categories:
     1. [让命令在后台运行](#让命令在后台运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2019-05-27 13:44_|
+**目录 end**|_2019-07-15 00:17_|
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -140,7 +141,39 @@ categories:
 - grpconv 注：通过/etc/group和/etc/gshadow 的文件内容来同步或创建/etc/gshadow ，如果/etc/gshadow 不存在则创建;
 -  注：通过/etc/group 和/etc/gshadow 文件内容来同步或创建/etc/group ，然后删除gshadow文件
 
-****************************
+************************
+## 环境变量
+
+### 全局环境变量
+### 局部环境变量
+### 加载环境变量
+ 
+1. /etc/profile
+1. $HOME/.bash_profile
+1. $HOME/.bashrc
+1. $HOME/.bash_login
+1. $HOME/.profile
+
+> [千万别混淆 Bash/Zsh 的四种运行模式](https://zhuanlan.zhihu.com/p/47819029)
+> [	ssh连接远程主机执行脚本的环境变量问题](https://blog.csdn.net/whitehack/article/details/51705889)
+
+************************
+## 信号量
+`进程通信的一种标准化的方式`
+
+> /bin/kill -L 可查看所有信号量
+```
+ 1 HUP      2 INT      3 QUIT     4 ILL      5 TRAP     6 ABRT     7 BUS
+ 8 FPE      9 KILL    10 USR1    11 SEGV    12 USR2    13 PIPE    14 ALRM
+15 TERM    16 STKFLT  17 CHLD    18 CONT    19 STOP    20 TSTP    21 TTIN
+22 TTOU    23 URG     24 XCPU    25 XFSZ    26 VTALRM  27 PROF    28 WINCH
+29 POLL    30 PWR     31 SYS
+```
+编号为1 ~ 31的信号为传统UNIX支持的信号，是不可靠信号(非实时的)，编号为32 ~ 63的信号是后来扩充的，称做可靠信号(实时信号)。不可靠信号和可靠信号的区别在于前者不支持排队，只是负责发送, 不负责存储和接收, 可能会造成信号丢失，而后者不会。
+
+> [参考](https://blog.csdn.net/baobao8505/article/details/1115820)
+
+************************
 
 ## 进程
 > 参考 深入理解计算机系统 书籍
@@ -179,22 +212,6 @@ categories:
 
 ### 线程
 1. 查看创建一个线程占用内存大小 `ulimit -s`
-
-************************
-## 环境变量
-
-### 全局环境变量
-### 局部环境变量
-### 加载环境变量
- 
-1. /etc/profile
-1. $HOME/.bash_profile
-1. $HOME/.bashrc
-1. $HOME/.bash_login
-1. $HOME/.profile
-
-> [千万别混淆 Bash/Zsh 的四种运行模式](https://zhuanlan.zhihu.com/p/47819029)
-> [	ssh连接远程主机执行脚本的环境变量问题](https://blog.csdn.net/whitehack/article/details/51705889)
 
 ************************
 ## 时间

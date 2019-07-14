@@ -73,8 +73,11 @@ categories:
         1. [Period](#period)
         1. [Instant](#instant)
         1. [LocalDateTime](#localdatetime)
+        1. [ZoneOffset](#zoneoffset)
+        1. [ZonedDateTime](#zoneddatetime)
+        1. [Clock](#clock)
 
-**目录 end**|_2019-07-14 18:13_|
+**目录 end**|_2019-07-15 00:17_|
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -1032,3 +1035,12 @@ It can be accessed using other duration-based units, such as minutes and hours.
     // Date -> LocalDateTime 
     LocalDateTime.ofInstant(date.toInstant(), ZoneOffset.systemDefault());
 ```
+
+### ZoneOffset
+时区偏移量，比如：+8:00
+
+### ZonedDateTime
+带时区的时间
+
+### Clock
+时钟，比如获取目前美国纽约的时间
