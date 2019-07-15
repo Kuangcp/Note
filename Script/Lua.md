@@ -10,7 +10,7 @@ categories:
 1. [Lua](#lua)
     1. [安装](#安装)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-07-15 18:54_|
 ****************************************
 # Lua
 
@@ -22,7 +22,7 @@ categories:
 因为该项目 [z.lua](https://github.com/skywind3000/z.lua) 而安装了Lua, 他的执行速度确实非常快
 
 ## 安装
-> [doc: install](https://www.lua.org/start.html#installing)  
+> [Official: install](https://www.lua.org/start.html#installing)  
 
 > 使用包管理器 `apt install lua5.3` 然后 `sudo ln -s /usr/bin/lua5.3 /usr/bin/lua`
 

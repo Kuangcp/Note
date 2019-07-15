@@ -9,12 +9,15 @@ categories:
 **目录 start**
  
 1. [Tmux](#tmux)
+    1. [配置](#配置)
     1. [键绑定](#键绑定)
         1. [切换](#切换)
-    1. [插件](#插件)
+    1. [TPM插件管理](#tpm插件管理)
         1. [tmux-resurrect](#tmux-resurrect)
+        1. [maglev](#maglev)
+        1. [copycat](#copycat)
 
-**目录 end**|_2019-05-09 20:31_|
+**目录 end**|_2019-07-15 18:54_|
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -35,7 +38,7 @@ categories:
 *************
 
 ## 配置
-> [个人Tmux配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf) `ln -s `pwd`tmux.conf ~/.tmux.conf` 
+> [个人Tmux配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf) `ln -s $(pwd)/tmux.conf ~/.tmux.conf` 
 
 > 开启鼠标选择与复制
 ```conf

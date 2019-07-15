@@ -23,9 +23,10 @@ categories:
         1. [asciinema](#asciinema)
     1. [图形化工具](#图形化工具)
         1. [剪贴板管理](#剪贴板管理)
+        1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2019-05-27 13:44_|
+**目录 end**|_2019-07-15 18:54_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -161,6 +162,9 @@ categories:
 > [参考博客: 这9个Linux命令非常危险 请大家慎用](https://www.jb51.net/LINUXjishu/498660.html)
 
 > [参考博客: 关于 Linux 你可能不是非常了解的七件事](https://linux.cn/article-8934-1.html)
+
+### 资源管理
+> gnome-system-monitor
 
 ************************
 

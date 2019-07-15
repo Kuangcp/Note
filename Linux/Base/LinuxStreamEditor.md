@@ -16,29 +16,27 @@ categories:
     1. [sed](#sed)
     1. [awk](#awk)
 
-**目录 end**|_2019-06-20 21:02_|
+**目录 end**|_2019-07-15 18:54_|
 ****************************************
 # 流编辑器
 > [参考博客: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
 
 ## tr
 > 转换字符
-- 替换：可以使用字符集的形式。如tr [a-z] [A-Z] 或者 tr a-z A-Z
-- 压缩：-s   如echo “you are        a    man   ”|tr -s ' ' ' '   结果you are a man
-- 删除：-d   如echo "you     are    a man"|  tr -d ' '结果youareaman
+- 替换：可以使用字符集的形式如tr `[a-z]` `[A-Z]` 或者 tr a-z A-Z
+- 压缩：-s   如 `echo “you are        a    man   ” | tr -s ' ' ' '` 结果you are a man
+- 删除：-d   如 `echo "you     are    a man"|  tr -d ' ' ` 结果youareaman
 
 ## cut
 > man cut
 
 ## paste
-> 粘贴，也就是合并文件用的
+> 粘贴，合并文件用
+
 使用制表符来合并多个文件对应的行，也可以使用 -d 指定合并符
-实例：
-默认制表符
-paste p3.txt p2.txt p1.txt
-指定
-paste -d ‘*‘ p3.txt p2.txt p1.txt
-so，也不需要和其他的对比了，其他都是拆分，而paste是合并。
+
+实例： 默认制表符  paste p3.txt p2.txt p1.txt
+指定 paste -d ‘*‘ p3.txt p2.txt p1.txt
 
 ## sed
 > 组成模式: `参数 命令 文件` | sed --help 查看详细
@@ -75,23 +73,23 @@ so，也不需要和其他的对比了，其他都是拆分，而paste是合并�
 
 | 命令 | 效果 |
 |:----:|:----|
-| b | label 将执行的指令跳至由 : 建立的参考位置。 |
-| D | 删除 pattern space 内第一个 newline 字母 前的资料。 |
-| g | 拷贝资料从 hold space。 |
+| b | label 将执行的指令跳至由 : 建立的参考位置 |
+| D | 删除 pattern space 内第一个 newline 字母 前的资料 |
+| g | 拷贝资料从 hold space |
 | G | 添加资料从 hold space 至 pattern space |
 | h | 拷贝资料从 pattern space 至 hold space |
 | H | 添加资料从 pattern space 至 hold space |
-| l | 印出 l 资料中的 nonprinting character 用 ASCII 码。 |
-| i | 插入添加使用者输入的资料行。 |
-| n | 读入下一笔资料。 |
-| N | 添加下一笔资料到 pattern space。 |
-| p | 印出资料。 |
-| P | 印出 pattern space 内第一个 newline 字母 前的资料。 |
-| q | 跳出 sed 编辑。 |
-| r | 读入它档内容。 |
-| w | 写资料到它档内。 |
-| x | 交换 hold space 与 pattern space 内容。 |
-| y | 转换（transform）字元。 |
+| l | 印出 l 资料中的 nonprinting character 用 ASCII 码 |
+| i | 插入添加使用者输入的资料行 |
+| n | 读入下一笔资料 |
+| N | 添加下一笔资料到 pattern space |
+| p | 印出资料 |
+| P | 印出 pattern space 内第一个 newline 字母 前的资料 |
+| q | 跳出 sed 编辑 |
+| r | 读入它档内容 |
+| w | 写资料到它档内 |
+| x | 交换 hold space 与 pattern space 内容 |
+| y | 转换（transform）字元 |
 
 >1. 截取指定行数到新文件 `sed -n ‘开始行数，结束行数p’ info.log > newFile.log`
 >1. 修改配置文件中name的值为123 `sed -i "s/name=.*/name=123/g" config.conf`
@@ -109,7 +107,7 @@ so，也不需要和其他的对比了，其他都是拆分，而paste是合并�
 ************************
 
 ## awk
-> awk有多个不同版本: awk、mawk nawk和gawk，未作特别说明，一般指gawk，gawk 是 AWK 的 GNU 版本。`在 Deepin 上 awk nawk 都最终是 gawk 的软链接`
+> awk有多个不同版本: awk、mawk nawk和gawk，未作特别说明，一般指gawk，gawk 是 AWK 的 GNU 版本`在 Deepin 上 awk nawk 都最终是 gawk 的软链接`
 
 1. 截取输出 cat log.log | awk '{print $2}' 
 1. 只输出某列之后的列 忽略第一列:`awk '{$1="";print $0}'` 忽略1到4: `awk '{ for(i=1; i<=4; i++){ $i="" }; print $0 }'`
