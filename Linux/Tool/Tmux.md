@@ -38,7 +38,14 @@ categories:
 *************
 
 ## 配置
-> [个人Tmux配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf) `ln -s $(pwd)/tmux.conf ~/.tmux.conf` 
+> [个人Tmux配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf) 
+
+1. `ln -s $(pwd)/tmux.conf ~/.tmux.conf` 
+1. `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+1. `tmux source ~/.tmux.conf`
+1. `Ctrl A, I` 等待插件安装完成
+
+*******************
 
 > 开启鼠标选择与复制
 ```conf
@@ -65,17 +72,16 @@ categories:
 
 ### tmux-resurrect
 
-> [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)
+> [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)  
+> [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum)  
 
-prefix c-s 保存
-prefix c-r 加载
+prefix c-s 保存会话
+prefix c-r 加载历史会话
 
 ### maglev
-
-[Github](https://github.com/caiogondim/maglev)
+> [Github](https://github.com/caiogondim/maglev)
 
 ### copycat
 > [Github](https://github.com/tmux-plugins/tmux-copycat)  
 
-使用: `Prefix /` 即可开始和Vim中一样的搜索
-
+使用: `Prefix /` 可用 less 一样的方式搜索
