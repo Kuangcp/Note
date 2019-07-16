@@ -24,3 +24,20 @@ categories:
 - [什么Linux发行版软件最多？](https://www.lulinux.com/archives/2787)
 - [Arch Linux 安装、配置、美化和优化](http://www.cnblogs.com/bluestorm/p/5929172.html)
 
+## Pacman 
+
+### Yaourt
+> [Arch User Repository](https://wiki.archlinux.org/index.php/Arch_User_Repository)
+
+1. `/etc/pacman.conf` 追加
+    ```conf
+    [archlinuxcn]
+    #The Chinese Arch Linux communities packages.
+    SigLevel = Optional TrustAll
+    Server   = http://repo.archlinuxcn.org/$arch
+    ```
+1. `sudo pacman -Syu yaourt` 同步
+
+- deepin-wine
+- [企业微信](https://aur.archlinux.org/packages/deepin-wxwork/)
+- [go-for-it](https://aur.archlinux.org/packages/go-for-it/)

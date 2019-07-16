@@ -26,7 +26,7 @@ categories:
 
 响应速度快， 除了切换输入法的时候响应慢了点
 
-Ctrl ` 切换输入设置
+Ctrl ` 输入设置
 
 ## 搜狗
 > [Official Site](https://pinyin.sogou.com/linux/)  
