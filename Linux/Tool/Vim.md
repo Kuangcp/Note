@@ -54,8 +54,15 @@ categories:
 - $VIM 预设值: `/usr/share/vim`
 
 ## 基本配置
-- 在文件 全局：`/etc/vim/vimrc` 先备份一下 `sudo cp /etc/vim/vimrc /etc/vim/vimrc.bak`
-	- 或者当前用户：`~/.vimrc` 中添加如下内容
+1. 全局修改 ：`/etc/vim/vimrc`
+1. 或者配置放在 `/etc/vim/vimrc.local`
+    - 然后在 `/etc/vim/vimrc` 中添加:
+    ```sh
+    if filereadable("/etc/vim/vimrc.local")
+        source /etc/vim/vimrc.local
+    endif
+    ```
+1. 或者当前用户：`~/.vimrc` 中添加
 
 ```vim
 set showcmd		" Show (partial) command in status line.
@@ -78,10 +85,9 @@ set backspace=2
 imap jk <Esc> 
 
 set relativenumber " 设置相对行号
-" 逗号后追加空格
-inoremap , ,<space>  
 ```
-**********************************************
+
+******************************
 > GVim
 
 **~/.gvimrc**
