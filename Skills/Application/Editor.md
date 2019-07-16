@@ -27,7 +27,7 @@ categories:
     1. [Atom](#atom)
     1. [Gedit](#gedit)
     1. [小书匠](#小书匠)
-    1. [Moeditor|Typora|CuteMarkEd](#moeditor|typora|cutemarked)
+    1. [Moeditor/Typora/CuteMarkEd](#moeditortyporacutemarked)
     1. [Cmd](#cmd)
 1. [终端中的文本编辑器](#终端中的文本编辑器)
     1. [Vi/Vim](#vivim)
@@ -36,7 +36,7 @@ categories:
     1. [fte-terminal](#fte-terminal)
     1. [在线编辑器](#在线编辑器)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-07-16 19:22_|
 ****************************************
 # 文本编辑器
 ## Ghex
@@ -199,8 +199,8 @@ strict-ssl=false
 
 ************
 
-## Moeditor|Typora|CuteMarkEd 
-> [Moeditor](https://github.com/Moeditor/Moeditor)
+## Moeditor/Typora/CuteMarkEd 
+> [Github:Moeditor](https://github.com/Moeditor/Moeditor)
 
 - 书写单个md文件方便，美观，没有目录树侧栏是硬伤, 但是typora 导出很强大
 
@@ -213,12 +213,12 @@ strict-ssl=false
 
 # 终端中的文本编辑器
 ## Vi/Vim
-> [Github地址](https://github.com/vim/vim)  
-> [Vim 学习笔记](/Linux/vim.md)
+> [Github: Vim](https://github.com/vim/vim)  
+> [Vim 学习笔记](/Linux/Tool/Vim.md)
 
 ************
 ## Nano
-- 模式没有vi系列复杂，使用简单，安装占用小
+- 使用简单，安装占用小 类似 emacs 的快捷键操作方式
 
 ## Micro
 > [Github: micro](https://github.com/zyedidia/micro)
