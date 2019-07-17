@@ -56,7 +56,7 @@ categories:
 1. [Dockerfile](#dockerfile)
     1. [dockerignore文件的使用](#dockerignore文件的使用)
 
-**目录 end**|_2019-07-14 18:13_|
+**目录 end**|_2019-07-17 19:58_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -412,6 +412,8 @@ _登录镜像仓库_
 
 - `docker run -v dir:dir[:ro]` 一般是创建容器时使用，和-p类似可以多个，左本机右容器 默认rw权限可以指定 ro只读
     - 可以将一个文件挂载为数据卷，但是文件夹更好，文件可能会有问题出现
+
+- 挂载宿主机时区及时间 `/etc/localtime:/etc/localtime`
 
 ## 数据卷容器
 - `docker run -it -v /test --name data ubuntu ` 运行一个挂载了数据卷的容器

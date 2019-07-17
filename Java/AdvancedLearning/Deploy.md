@@ -22,8 +22,10 @@ categories:
         1. [Maven](#maven)
         1. [Gradle](#gradle)
 1. [配置文件](#配置文件)
+1. [Tips](#tips)
+    1. [Java在Linux上的时区问题](#java在linux上的时区问题)
 
-**目录 end**|_2019-06-20 21:02_|
+**目录 end**|_2019-07-17 19:58_|
 ****************************************
 # 部署运行
 > 传统的可执行jar, war 以及Docker镜像
@@ -194,7 +196,6 @@ from jdk基础镜像, 将jar 复制进去, 设置好 CMD
 # 配置文件
 > 多目标应用环境的发布, 可以使用Maven 多 Profile; Spring 的多profiles; 环境变量; ...
 
-
 **********************
 
 > 在环境中存储配置
@@ -219,3 +220,38 @@ from jdk基础镜像, 将jar 复制进去, 设置好 CMD
 12-Factor 应用中，环境变量的粒度要足够小，且相对独立。它们永远也不会组合成一个所谓的“环境”，而是独立存在于每个部署之中。当应用程序不断扩展，需要更多种类的部署时，这种配置管理方式能够做到平滑过渡。 
 
 > [参考博客: 在环境中存储配置](https://12factor.net/zh_cn/config)
+
+# Tips
+
+## Java在Linux上的时区问题
+- 表象
+    - Docker容器中运行的Linux上时区是正确的, 但是Java应用的时区不对
+- 原因 
+    - JVM获取时区配置的顺序
+    1. 查看 环境变量 TZ 
+        - `export TZ=Asia/Shanghai`
+    1. /etc/sysconfig/clock 中查找 ZONE 的值
+        ```conf
+        ZONE="Asia/Shanghai"
+        UTC=false
+        ARC=false
+        ```
+    1. /etc/localtime 或者 /usr/share/zoneinfo 
+        - `ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`
+    - 也可以加JVM参数 `-Duser.timezone=GMT+8`
+    - 或者硬编码设置时区
+
+> 快速测试Java获取到的时区
+```java
+    import java.util.Date;
+    import java.time.ZoneOffset;
+
+    public class TimeTest {
+        public static void main(String[] args){
+            System.out.println(new Date());
+            System.out.println(ZoneOffset.systemDefault());
+        }
+    }
+```
+
+

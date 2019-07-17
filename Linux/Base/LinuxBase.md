@@ -43,7 +43,7 @@ categories:
     1. [让命令在后台运行](#让命令在后台运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2019-07-15 00:17_|
+**目录 end**|_2019-07-17 19:58_|
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -214,10 +214,11 @@ categories:
 1. 查看创建一个线程占用内存大小 `ulimit -s`
 
 ************************
+
 ## 时间
 > [同步Linux服务器时间](http://www.cnblogs.com/chenmh/p/5485829.html)
 
-- Linux 的时间由两部分组成, 时区和时间: /etc/timezone 和 /etc/localtime
+-  /etc/timezone 时区, /etc/localtime 时区及时间
 
 **同步时间**
 1. 修改时区 `cp -y /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`
@@ -231,11 +232,12 @@ categories:
 2. 配置定时任务 `crontab -e`
     - `00 10 * * * root /usr/sbin/ntpdate -u cn.pool.ntp.org > /dev/null 2>&1; /sbin/hwclock -w `
 
+************************
+
 ## 服务
 > 采用 systemd 方式进行管理 [Arch Doc: systemd](https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
 - systemctl start/stop/restart/reload/edit ... 详情见 man systemctl
-
 - 修改服务的配置 `systemctl edit docker.service` 当发现文件不存在时,这个是创建文件 对应的文件是 `/etc/systemd/system/docker.service.d/`
 
 ### 自启服务

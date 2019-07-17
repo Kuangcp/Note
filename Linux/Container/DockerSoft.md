@@ -38,8 +38,9 @@ categories:
     1. [博客](#博客)
     1. [在线IDE](#在线ide)
     1. [图形化管理工具](#图形化管理工具)
+1. [运行图形化应用](#运行图形化应用)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-07-17 19:58_|
 ****************************************
 # Docker容器化应用
 > [https://docs.docker.com/samples/](https://docs.docker.com/samples/)  
@@ -243,3 +244,5 @@ categories:
 - DockerUI
 - [Portainer](https://github.com/portainer/portainer)
 
+# 运行图形化应用
+> [Github Topic](https://github.com/search?p=4&q=docker+desktop&type=Repositories&utf8=%E2%9C%93)
