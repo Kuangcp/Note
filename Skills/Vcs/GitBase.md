@@ -60,12 +60,13 @@ categories:
 1. [配置文件](#配置文件)
     1. [.gitignore](#gitignore)
     1. [gitattributes](#gitattributes)
+1. [自定义插件](#自定义插件)
 1. [常见VCS工具](#常见vcs工具)
     1. [Git](#git)
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-07-09 21:40_|
+**目录 end**|_2019-07-18 17:48_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -655,7 +656,13 @@ categories:
 1. delta 
 1. encoding
 
-*****************
+
+************************
+
+# 自定义插件
+> [how-to-create-git-plugin](https://adamcod.es/2013/07/12/how-to-create-git-plugin.html)
+
+************************
 
 # 常见VCS工具
 ## Git

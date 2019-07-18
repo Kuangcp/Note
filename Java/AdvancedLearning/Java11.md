@@ -14,8 +14,9 @@ categories:
     1. [安装配置](#安装配置)
         1. [Linux](#linux)
     1. [新特性](#新特性)
+        1. [部分API转为内部API](#部分api转为内部api)
 
-**目录 end**|_2019-06-22 13:01_|
+**目录 end**|_2019-07-18 17:48_|
 ****************************************
 # Java11 
 > [Official: JDK 11 Documentation](https://docs.oracle.com/en/java/javase/11/) | [Official:api](https://docs.oracle.com/en/java/javase/11/docs/api/index.html)
@@ -54,3 +55,8 @@ categories:
 
 > [Java11](https://blog.csdn.net/weixin_38055381/article/details/82865385)
 
+
+### 部分API转为内部API
+> [Compile Your Application if Needed](https://docs.oracle.com/en/java/javase/11/migrate/index.html#JSMIG-GUID-77874D97-46F3-4DB5-85E4-2ACB5F8D760B)
+
+例如 sun.misc.Unsafe , 如果应用有引用, 在 JDK11 中编译会报错 加 `--add-exports` 可避免报错

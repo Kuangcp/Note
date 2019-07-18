@@ -40,7 +40,7 @@ categories:
     1. [图形化管理工具](#图形化管理工具)
 1. [运行图形化应用](#运行图形化应用)
 
-**目录 end**|_2019-07-17 19:58_|
+**目录 end**|_2019-07-18 17:48_|
 ****************************************
 # Docker容器化应用
 > [https://docs.docker.com/samples/](https://docs.docker.com/samples/)  
@@ -246,3 +246,5 @@ categories:
 
 # 运行图形化应用
 > [Github Topic](https://github.com/search?p=4&q=docker+desktop&type=Repositories&utf8=%E2%9C%93)
+> [Running GUI apps with Docker](https://www.tuicool.com/articles/ayIzI3)
+https://www.cnblogs.com/larva-zhh/p/10531824.html
