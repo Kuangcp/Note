@@ -320,6 +320,9 @@ _判断文件_
 ```
 - 如果没有 `[block]` 这样的声明就可以当sh用, 直接 source file 就加载了配置内容
 
+## 多线程
+> [参考博客: shell如何实现多线程](https://www.cnblogs.com/signjing/p/7074778.html)  
+
 ********************
 ## 脚本的参数自动补全
 > [参考博客: 命令行自动补全原理 ](http://www.cnblogs.com/wang_yb/p/5969451.html)
