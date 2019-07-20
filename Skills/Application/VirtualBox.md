@@ -17,12 +17,11 @@ categories:
     1. [安装Windows](#安装windows)
         1. [Windows7](#windows7)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-07-20 23:31_|
 ****************************************
 # VirtualBox
 
 ## 安装Linux
-
 
 ### Manjaro
 > 官网下载好对应的镜像文件

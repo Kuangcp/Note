@@ -16,7 +16,7 @@ categories:
     1. [Theme](#theme)
     1. [Icon](#icon)
 
-**目录 end**|_2019-06-16 19:38_|
+**目录 end**|_2019-07-20 23:31_|
 ****************************************
 
 # UI
@@ -30,22 +30,23 @@ categories:
 - [ ] 问题: Deepin上 全放 ~/.local/share/themes 会有bug, 只能全放 ~/.themes
 
 ## Font
-> [笔记: 字体](/FrontEnd/Font.md)  
+> [字体](/FrontEnd/Font.md)  
 
 ### 字体渲染
 > [Debian8安装Infinality改善字体渲染，安装Ubuntu字体](https://www.linuxdashen.com/debian8%E5%AE%89%E8%A3%85infinality%E6%94%B9%E5%96%84%E5%AD%97%E4%BD%93%E6%B8%B2%E6%9F%93%EF%BC%8C%E5%AE%89%E8%A3%85ubuntu%E5%AD%97%E4%BD%93)
 > [一条命令搞定Linux字体渲染](https://www.lulinux.com/archives/278)
 
-- 刷新字体缓存 `fc-cache -fv`
+- 刷新字体缓存 `fc-cache -fv`  `~/.local/share/fonts`
 
 *******************
 
 ## Theme
+- [Github:vimix](https://github.com/vinceliuice/vimix-gtk-themes)`material design theme`
 
 > [参考博客: 10 Great Linux GTK Themes For 2018 ](https://www.maketecheasier.com/gtk-themes-for-linux/)
 
 - [pingguo](https://www.gnome-look.org/p/1239453/)
-- [Github:vimix](https://github.com/vinceliuice/vimix-gtk-themes)`material design theme`
+
 - [Sierra](https://www.gnome-look.org/p/1013714/)
 - [GTK3主题：OSX-Arc](https://www.linuxidc.com/Linux/2017-01/139053.htm) `解压到 /usr/share/themes/ 下即可,或者 ~/.themes/ `
 
