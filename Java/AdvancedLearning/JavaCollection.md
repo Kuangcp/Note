@@ -23,7 +23,7 @@ categories:
     1. [Koloboke](#koloboke)
     1. [Trove](#trove)
 
-**目录 end**|_2019-06-06 18:13_|
+**目录 end**|_2019-07-21 18:08_|
 ****************************************
 # JDK中的集合
 
@@ -75,6 +75,7 @@ categories:
 List接口有众多实现, 最常用的 ArrayList LinkedList 
 
 ******************************
+
 [stackoverflow: list add then unsupportedoperationexception](https://stackoverflow.com/questions/5755477/java-list-add-unsupportedoperationexception)
 > 有时候会使用 Arrays.asList() 或者 Collections.singletonList() 来快速生成 List  
 > 但是 这两个生成的实例都是返回 AbstractList 的实现类, 其 add remove 方法是没有实现的, 如果调用了就会抛出异常
@@ -84,7 +85,7 @@ List接口有众多实现, 最常用的 ArrayList LinkedList
         throw new UnsupportedOperationException();
     }
 ```
-> 这是因为, 这个类设计就是采用的定长数组来实现List, 所以不能对其中元素进行更改
+> 这是因为, 这个类设计就是采用的定长数组来实现List, 所以不能对其中元素进行更改 类似的还有 `Collections.emptyXxx()`
 
 ******************************************
 ## Set

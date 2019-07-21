@@ -18,7 +18,7 @@ categories:
         1. [销毁](#销毁)
     1. [线程的优先级](#线程的优先级)
 
-**目录 end**|_2019-06-16 00:08_|
+**目录 end**|_2019-07-21 18:08_|
 ****************************************
 # 线程的基础学习
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/thread/src/main/java/com/github/kuangcp)

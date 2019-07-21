@@ -12,13 +12,15 @@ categories:
 1. [JDK And JRE](#jdk-and-jre)
 1. [Oracle](#oracle)
     1. [Oracle JDK](#oracle-jdk)
+        1. [jps](#jps)
+        1. [jstack](#jstack)
         1. [java](#java)
             1. [环境变量的使用](#环境变量的使用)
             1. [执行含main方法的类](#执行含main方法的类)
     1. [Oracle JRE](#oracle-jre)
 1. [OpenJDK](#openjdk)
 
-**目录 end**|_2019-06-20 21:02_|
+**目录 end**|_2019-07-21 18:08_|
 ****************************************
 # JDK And JRE
 > LTS: 8 11
@@ -63,13 +65,19 @@ categories:
 
 >  [Useage: Java 性能分析](/Java/AdvancedLearning/JavaPerformance.md)
 
+### jps
+> 查看运行的Java进程
+
+### jstack
+
 ### java
 
 #### 环境变量的使用
 > java [-options] -jar jarfile [args...]
 
 > [What is the java -D command-line option good for? ](https://coderanch.com/t/178539/certification/java-command-line-option-good)
-- 传入 `java -Dkey=true -jar xxx.jar` -D 参数要前于 -jar
+- 传入 `java -Dkey=true -jar xxx.jar`
+    - *-D 参数* 要前于 -jar
 - 获取 `System.getProperty("key", "defaultvalue");`
 
 #### 执行含main方法的类

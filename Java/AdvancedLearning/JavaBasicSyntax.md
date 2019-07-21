@@ -15,7 +15,8 @@ categories:
     1. [结构](#结构)
         1. [判断](#判断)
         1. [循环](#循环)
-    1. [用户输入输出](#用户输入输出)
+    1. [标准输入输出](#标准输入输出)
+    1. [Runtime](#runtime)
 1. [数据类型](#数据类型)
     1. [自动拆装箱](#自动拆装箱)
     1. [基础数据类型](#基础数据类型)
@@ -68,8 +69,9 @@ categories:
     1. [DAO](#dao)
 1. [关键字](#关键字)
     1. [try](#try)
+    1. [transient](#transient)
 
-**目录 end**|_2019-05-19 16:53_|
+**目录 end**|_2019-07-21 18:08_|
 ****************************************
 # 基础语法
 
@@ -556,3 +558,6 @@ Warning:(18, 1) java: Generating equals/hashCode implementation but without a ca
     1. if the try block or a catch block goes into an infinite loop, or blocks for ever
     1. if something (e.g. a JNI bug) causes the JVM to crash
     1. if there is a machine outage (power failure, hardware error, etc). 
+
+## transient
+> 序列化的时候忽略该关键字修饰的属性
