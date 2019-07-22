@@ -1,10 +1,9 @@
 ---
-title: MQ
+title: 消息队列
 date: 2018-11-21 10:56:52
 tags: 
     - MQ
 categories: 
-    - Java
 ---
 
 **目录 start**
@@ -18,8 +17,9 @@ categories:
     1. [ActiveMQ](#activemq)
     1. [Kafka](#kafka)
     1. [RabbitMQ](#rabbitmq)
+    1. [Pulsar](#pulsar)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-07-21 18:08_|
 ****************************************
 # MQ
 
