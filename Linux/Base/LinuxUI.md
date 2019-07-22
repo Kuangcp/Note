@@ -56,3 +56,30 @@ categories:
 > sudo apt search icon-theme  也能看到很多icon
 
 1. Halo-icon-theme
+
+## Terminal
+> 256 color
+
+```sh
+# 测试 terminal 是否支持 256
+for i in {0..255} ; do
+    printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
+    if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
+        printf "\n";
+    fi
+done
+```
+
+[Gihub: LS_COLORS](https://github.com/trapd00r/LS_COLORS)  
+[customize bash prompt](https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/)
+
+1. `curl https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS -o /etc/lscolor-256color`
+1. add to *sh.rc
+    ```sh
+    if [[ ("$TERM" = *256color || "$TERM" = screen* || "$TERM" = xterm* ) && -f /etc/lscolor-256color ]]; then
+            eval $(dircolors -b /etc/lscolor-256color)
+        else
+                eval $(dircolors)
+    fi
+    ```
+***********************
