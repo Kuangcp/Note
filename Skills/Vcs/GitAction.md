@@ -270,7 +270,7 @@ categories:
     - `git push origin --force --tags`
 1. 使用`git pull rebase`来更新分支，而不是 `git merge` 不然大文件又从别的分支回来了
 
-> 要注意, 所有的分支都必须pull rebase , 只要还有一个人留有对大文件的引用, 大文件就一直在仓库
+> 要注意, 所有的分支都必须 pull rebase , 只要还有一个人留有对大文件的引用, 大文件就一直在仓库
 
 ### CRLF与LF
 > 由于系统的不同 Windows是 CRLF *nix 是 LF Mac 是 CR | [wiki: CRLF](https://en.wikipedia.org/wiki/Newline)  
