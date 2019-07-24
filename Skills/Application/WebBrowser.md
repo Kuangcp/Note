@@ -103,7 +103,6 @@ categories:
     1. 后者是轻度使用(开10个以下标签), 仅在内存不够时, 只用于内存不足时开发必需 (一般400M左右)
 
 1. 当前标签页右边打开新标签页: 打开 `about:config?filter=browser.tabs.insertAfterCurrent`, 设置为true
-    - PS: 搜中文死活搜不到, 英文一下就解决了..
 
 1. 网页重定向次数限制 默认 20 `network.http.redirection-limit` 设置为0就禁止了网页的重定向
 

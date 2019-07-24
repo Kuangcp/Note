@@ -244,11 +244,6 @@ categories:
 
 带行号输出 `cat -n file` 或者 `nl file`但是空行不会编号, 除非这样: `nl -b a file`
 
-- [ ] 需要解决该问题  ls | xargs cat | grep "ERROR"
-```
-匹配到二进制文件 (标准输入)
-xargs: cat：因信号 13 而终止
-```
 #### nl
 - [参考博客: 每天一个linux命令(11)：nl命令](http://www.cnblogs.com/peida/archive/2012/11/01/2749048.html#/)
 
@@ -259,7 +254,18 @@ xargs: cat：因信号 13 而终止
 - h 查看帮助文档 z/b 上下翻页 g/G 文件首/尾 
 - F 监听文件
 
-- 当打开多个文件时 :n :p 表示 next pre　也就是　下一个，上一个文件
+- 当打开多个文件时 `:n`和`:p` 表示 next pre　也就是　下一个，上一个文件
+
+> [syntax-highlighting](https://unix.stackexchange.com/questions/90990/less-command-and-syntax-highlighting)  
+> [Make the less Command More Powerful](https://www.topbug.net/blog/2016/09/27/make-gnu-less-more-powerful/)
+
+1. install  source-highlight
+1. append to  *sh.rc
+    ```sh
+    # sh 在不同的系统 路径和名字都有可能不一样
+    export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
+    export LESS=' -R'
+    ```
 
 #### tail
 - tail命令用于输入文件中的尾部内容。tail命令默认在屏幕上显示指定文件的末尾10行。 来自: http://man.linuxde.net/tail
