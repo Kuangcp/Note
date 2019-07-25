@@ -102,11 +102,11 @@ categories:
 
 1. 解压到任意目录, 并将 bin 目录加入 环境变量即可
 
-## 使用Wrapper
-> 类似于 Maven 的 mvnw 脚本
+## Wrapper
+> [The Gradle Wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html)
 
-> 在使用IDE生成项目的时候，可以选择gradle的执行目录，可以选`gradle wrapper` 也可以选自己下载解压的完整包  
-> 如果使用的不是这个wrapper，那么别人在下载项目后，运行gradle命令就要先安装gradle，使用wrapper更好
+类似于 Maven 的 mvnw 脚本 在使用IDE生成项目的时候，可以选择gradle的执行目录，可以选`gradle wrapper` 也可以选自己下载解压的完整包  
+如果使用的不是这个wrapper，那么别人在下载项目后，运行gradle命令就要先安装gradle，使用wrapper更好  
 
 ```groovy
    task wrapper(type: Wrapper){
@@ -117,7 +117,9 @@ categories:
 ```
 - 运行 gradle wrapper 一次即可开始使用包装器的脚本来构建项目了
 - 生成gradle包管理器：`gradle wrapper --gradle-version 2.0`
-***************************************
+
+************************
+
 ## CUI使用
 ### 命令行选项
 - `tasks` : 输出所有建立的task
