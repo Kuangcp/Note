@@ -54,7 +54,7 @@ _MANIFEST.MF示例_
 ### Maven
 
 **不依赖Jar的项目**
-> [Demo项目](https://gitee.com/gin9/codes/ri4x8cut3awgh0e271lfb54) | [详情](/Java/Tool/Maven.md#31打包成可执行jar)
+> [Demo项目](https://gitee.com/gin9/codes/ri4x8cut3awgh0e271lfb54) 
 
 **依赖Jar的项目**
 #### assembly
