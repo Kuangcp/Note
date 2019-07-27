@@ -145,12 +145,17 @@ categories:
 - [Docker hub: Mysql](https://hub.docker.com/_/mysql/)
 
 - 简单启动 `docker run --name some-mysql -p 3360:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag`
-    - 默认配置文件是 `/etc/mysql/conf.d/docker.cnf`
+    - 容器中默认配置文件为 `/etc/mysql/conf.d/docker.cnf`
 
-- 挂载自定义配置文件 主要是配置编码 以及设定时区
+- 或者挂载自定义配置文件 主要是配置编码 以及设定时区
     - `docker run --name mysql-5.7 -v 配置文件目录:/etc/mysql/conf.d  -e MYSQL_ROOT_PASSWORD=mythos1104 -e TZ=Asia/Shanghai -p 3360:3306 -d mysql:5.7`
 
-- 连接`mysql -h 127.0.0.1 -P 3360 -uroot -pmythos1104`
+- 连接 `mysql -h 127.0.0.1 -P 3360 -uroot -pmythos1104`
+
+> 最简单方式, 前提是已经安装好 docker-compose
+
+1. [Github](https://github.com/Kuangcp/DockerfileList/tree/master/docker-compose/mysql)`克隆项目,在该目录下执行命令`
+    - `docker-compose up -d` 既可创建 正确时区, utf8编码的数据库 
 
 ### MongoDB
 > [Official](https://hub.docker.com/_/mongo/)
