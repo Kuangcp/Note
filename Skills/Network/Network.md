@@ -42,10 +42,11 @@ categories:
 1. [工具](#工具)
     1. [Fiddler](#fiddler)
     1. [Wireshark](#wireshark)
+    1. [Charles](#charles)
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2019-07-21 18:08_|
+**目录 end**|_2019-07-29 10:23_|
 ****************************************
 # 网络
 
@@ -255,10 +256,14 @@ WebDAV （Web-based Distributed Authoring and Versioning） 一种基于 HTTP 1.
 # 工具
 ## Fiddler 
 > [fiddler](https://www.telerik.com/fiddler)  
-> [fiddler-everywhere](https://www.telerik.com/fiddler-everywhere)
+
+> [fiddler-everywhere](https://www.telerik.com/fiddler-everywhere) `Linux 免费`
 
 ## Wireshark
 > [Official Site](https://www.wireshark.org/)  
+
+## Charles
+> [Offcial Site](https://www.charlesproxy.com/)
 
 ************************
 
