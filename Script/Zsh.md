@@ -52,7 +52,7 @@ categories:
 > [wiki: plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins)  
 > [zsh oh-my-zsh 插件推荐 ](https://hufangyun.com/2017/zsh-plugin/)
 
-- 个人常用 git autojump go docker kubectl 
+- 个人常用 git gitfast mvn gradle go docker kubectl sudo  
 
 **********************
 
