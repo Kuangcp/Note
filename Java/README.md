@@ -32,15 +32,15 @@
 
 | 基础 | 进阶 |
 |:----|:----|
-| [基础语法](/Java/AdvancedLearning/GrammarAndType.md)  | [反射](/Java/AdvancedLearning/Reflection.md)
-| [继承和接口](/Java/AdvancedLearning/ExtendsAndInterface.md)  | [JVM](/Java/AdvancedLearning/JVM.md)
-| [异常](/Java/AdvancedLearning/Exception.md)  | [字节码](/Java/AdvancedLearning/ClassFile.md)
-| [泛型](/Java/AdvancedLearning/Generics.md)  | [测试](/Java/AdvancedLearning/JavaTest.md)
-| [集合](/Java/AdvancedLearning/Collection.md)  | [打包部署](/Java/AdvancedLearning/Deploy.md)
-| [线程](/Java/AdvancedLearning/Thread.md)  | [持续集成 CI](/Skills/DevOps/ContinuousIntegration.md)
-| [并发](/Java/AdvancedLearning/Concurrents.md)  | [持续交付 CD](/Skills/DevOps/ContinuousDelivery.md)
-| [IO](/Java/AdvancedLearning/JavaIO.md)  | [网络编程](/Java/AdvancedLearning/Socket.md)
-| [注解](/Java/AdvancedLearning/Annotation.md)  | 
+| [基础语法](/Java/AdvancedLearning/JavaBasicSyntax.md)  | [反射](/Java/AdvancedLearning/JavaReflection.md)
+| [继承和接口](/Java/AdvancedLearning/JavaInheritedAndInterface.md)  | [JVM](/Java/AdvancedLearning/JVM.md)
+| [异常](/Java/AdvancedLearning/JavaException.md)  | [字节码](/Java/AdvancedLearning/JavaClass.md)
+| [泛型](/Java/AdvancedLearning/JavaGenerics.md)  | [测试](/Java/Test/JavaTest.md)
+| [集合](/Java/AdvancedLearning/JavaCollection.md)  | [打包部署](/Java/AdvancedLearning/JavaDeploy.md)
+| [线程](/Java/AdvancedLearning/JavaThread.md)  | [持续集成 CI](/Skills/DevOps/ContinuousIntegration.md)
+| [并发](/Java/AdvancedLearning/JavaConcurrency.md)  | [持续交付 CD](/Skills/DevOps/ContinuousDelivery.md)
+| [IO](/Java/AdvancedLearning/JavaIO.md)  | [网络编程](/Java/AdvancedLearning/JavaNetwork.md)
+| [注解](/Java/AdvancedLearning/JavaAnnotation.md)  | 
 | [JDBC](/Java/AdvancedLearning/JDBC.md) |
 
 ## JDK
@@ -51,8 +51,7 @@
 >- [Java11](/Java/AdvancedLearning/Java11.md)
 
 # 抽象
->- [编程思想](/Java/AdvancedLearning/ProgramThinking.md)  
->- [模式之禅](/Java/ZenOfPattern.md)
+>- [模式之禅](/Java/DesignPattern.md)
 
 # 相关资源
 > [Java核心知识思维导图](https://gitee.com/gin9/MindMap)  | [阿里巴巴Java开发手册](https://github.com/alibaba/p3c) | [个人整理](/Java/AlibabaJavaStandard.md)
