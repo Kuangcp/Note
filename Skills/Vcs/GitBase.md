@@ -187,10 +187,31 @@ categories:
     - 注意: 如果没有将前一个提交推送到远程, 那么没有任何影响, 
     - 如果已经推送上去了, 就相当于该次 --amend 操作是新开了个分支完成的修改, git log 里会出现一个分支的环
 
-### rebase
-> [Official Doc](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
+************************
 
-- [ ] rebase merge 各自使用场景
+### rebase
+> [Official Doc](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) 
+
+`git rebase --help`
+
+> master 提交了 b,c  
+> dev 提交了 d,e   
+
+```
+merge master: 
+
+master: a - b - c 
+             \   \
+dev:          d - e
+
+rebase master: 
+
+master: a - b - c - d' - e'
+```
+
+merge 会保留分支图, rebase 会保持提交记录为直线
+
+************************
 
 ### revert 
 1. 取消所有暂存 `git revert .`
@@ -198,11 +219,15 @@ categories:
 1. 回滚代码至指定提交 `git revert --no-commit 032ac94ad...HEAD`
     - `git commit -m "rolled back"`
 
+************************
+
 ### show
 > 展示提交信息
 
 - 显示当前提交的差异 `git show HEAD` HEAD替换成commit的sha值就是显示指定提交的修改
 - `git show -h` 查看更多
+
+************************
 
 ### log
 > 更多说明 查看 `git help log` | [Official Doc](https://www.git-scm.com/docs/git-log)
@@ -265,6 +290,8 @@ categories:
 
 > [Github:diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)`一个更方便查看diff的工具`
 - 最简单的就是 `npm install -g diff-so-fancy` 安装 
+
+************************
 
 ### tag
 > [Official Doc](https://git-scm.com/docs/git-tag/2.10.2)
