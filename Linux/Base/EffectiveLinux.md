@@ -27,7 +27,7 @@ categories:
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2019-08-05 15:29_|
+**目录 end**|_2019-08-05 19:27_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -69,7 +69,6 @@ categories:
 > [Github](https://github.com/skywind3000/z.lua)   与 Autojump 类似, 性能更好
 
 ## 网络工具
-- tinyproxy [Github](https://github.com/tinyproxy/tinyproxy) | [Simple Guide](https://www.rosehosting.com/blog/install-and-configure-tinyproxy/)
 
 ************************
 

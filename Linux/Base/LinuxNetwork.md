@@ -37,15 +37,17 @@ categories:
                 1. [手机](#手机)
                 1. [电脑](#电脑)
             1. [配置FTP服务器](#配置ftp服务器)
-        1. [Ssh](#ssh)
+        1. [SSH](#ssh)
         1. [telnet](#telnet)
+        1. [Proxy](#proxy)
         1. [VPN](#vpn)
             1. [shadowsocks](#shadowsocks)
             1. [proxychains](#proxychains)
+            1. [OpenVPN](#openvpn)
         1. [防火墙](#防火墙)
             1. [iptables](#iptables)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-08-05 19:27_|
 ****************************************
 # Linux网络管理
 ## Tips
@@ -449,7 +451,7 @@ _ss_
 ```
 
 ******************************
-### Ssh
+### SSH
 > [详细](/Linux/Base/Ssh.md)
 
 ### telnet
@@ -460,7 +462,12 @@ _ss_
 
 - 测试连通性 `telnet ip port` 如果端口开放则提示 Connected, 否则会提示 refused 
 
-***********
+************************
+### Proxy
+> 代理
+
+- tinyproxy [Github](https://github.com/tinyproxy/tinyproxy) | [Simple Guide](https://www.rosehosting.com/blog/install-and-configure-tinyproxy/)
+
 ### VPN
 #### shadowsocks
 _服务端_
