@@ -13,6 +13,7 @@ categories:
     1. [终端模拟器对比](#终端模拟器对比)
     1. [效率工具](#效率工具)
         1. [目录跳转](#目录跳转)
+    1. [网络工具](#网络工具)
     1. [其他工具](#其他工具)
     1. [检测工具](#检测工具)
         1. [硬盘](#硬盘)
@@ -26,7 +27,7 @@ categories:
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2019-07-15 18:54_|
+**目录 end**|_2019-08-05 15:29_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -67,10 +68,15 @@ categories:
 **`z.lua`**
 > [Github](https://github.com/skywind3000/z.lua)   与 Autojump 类似, 性能更好
 
+## 网络工具
+- tinyproxy [Github](https://github.com/tinyproxy/tinyproxy) | [Simple Guide](https://www.rosehosting.com/blog/install-and-configure-tinyproxy/)
+
+************************
+
 ## 其他工具
 > 最终都会安装到 /usr/bin/*  目录下
 
-- sudo 命令是需要安装的... 
+- sudo 是需要安装的
     1. `alias sudo='sudo'` 能够在别名上使用 sudo *神奇*
 
 - md5sum 报文摘要算法 Message-Digest Algorithm 5 的实现 
@@ -79,9 +85,12 @@ categories:
 
 - last _查看Linux登录信息_
     - last -n 5 最近五次登录
+
 - w | uptime _查看启动情况_
+
 - colrm
     - ps | clorm 20 30 `colrm` _删除输出的20 到30 列_
+
 - xsel 
     - `cat a.md | xsel -b` _将文件所有内容复制到剪贴板_ 但是处理大文件时会失效 xclip 更有效
 

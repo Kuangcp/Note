@@ -14,8 +14,9 @@ categories:
         1. [Lombok](#lombok)
         1. [SLF4J](#slf4j)
         1. [Dubbo](#dubbo)
+        1. [Jigsaw](#jigsaw)
 
-**目录 end**|_2019-05-19 16:53_|
+**目录 end**|_2019-08-05 15:29_|
 ****************************************
 # Java中的SPI
 > Service Provider Interface
@@ -48,3 +49,8 @@ lombok的原理也是类似，他用自己写的 AnnotationProcessor 去实现 j
 
 ### Dubbo
 > [参考博客: SPI Loading](http://dubbo.apache.org/zh-cn/docs/dev/SPI.html)  
+
+### Jigsaw
+Java9推出的模块化系统 JPMS Java Platform Module System
+
+通过改进的SPI机制来实现模块的依赖注入
