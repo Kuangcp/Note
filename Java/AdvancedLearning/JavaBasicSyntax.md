@@ -146,6 +146,8 @@ categories:
 ## 基础数据类型
 > 八种基本数据类型 byte char boolean short int long float double
 
+以特定进制声明数值 0b 二进制 0 八进制 0x 十六进制
+
 > [The Java™ Tutorials: Primitive Data Types](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)  
 
 > [参考博客: Java 有值类型吗？](http://www.yinwang.org/blog-cn/2016/06/08/java-value-type)

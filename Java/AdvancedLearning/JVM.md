@@ -346,6 +346,8 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
 ### CMS
 > Concurrent Mark Sweep 着重点是尽可能缩短垃圾收集时用户线程的停顿时间
 
+`-XX:+UseConcMarkSweepGC`
+
 工作流程, 依次执行
 1. 初始标记 CMS initial mark
 1. 并发标记 CMS concurrent mark
@@ -369,6 +371,8 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
 ### G1
 > Garbage First 面向服务端应用的垃圾收集器, JDK7发布, JDK9作为默认GC
 
+`-XX:+UseG1GC`
+
 - 并行和并发
     - 充分利用多核CPU来缩短STW的时间, 部分其他收集器需要停顿的逻辑也和用户进程并发执行
 - 分代收集
@@ -382,9 +386,13 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
 > [参考博客: JVM系列篇：深入剖析G1收集器](https://my.oschina.net/u/3959491/blog/3029276)
 
 ### ZGC
-> JDK11 
+> JDK11   [ZGC](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
+
+`-XX:+UnlockExperimentalVMOptions -XX:+UseZGC`
 
 > [参考博客: Oracle 即将发布的全新 Java 垃圾收集器 ZGC](https://www.infoq.cn/article/oracle-release-java-gc-zgc)
+
+IDEA 切换使用该GC后CPU使用率高涨到20%, 用 CMS G1 则为1%, 均指无动作的情况
 
 ********************************
 
