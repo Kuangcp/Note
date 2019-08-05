@@ -11,14 +11,13 @@ categories:
  
 1. [Zsh](#zsh)
     1. [为什么要使用](#为什么要使用)
-    1. [安装](#安装)
     1. [配置](#配置)
     1. [oh-my-zsh](#oh-my-zsh)
         1. [插件](#插件)
         1. [主题](#主题)
             1. [自己定制](#自己定制)
 
-**目录 end**|_2019-07-20 23:31_|
+**目录 end**|_2019-08-05 23:25_|
 ****************************************
 # Zsh
 > [arch zsh wiki](https://wiki.archlinux.org/index.php/Zsh)
@@ -26,9 +25,6 @@ categories:
 ## 为什么要使用
 > [mac 装了 oh my zsh 后比用 bash 具体好在哪儿？](https://www.zhihu.com/question/29977255)  
 > [终极 Shell——ZSH](https://zhuanlan.zhihu.com/mactalk/19556676)
-
-## 安装
-> debian系 `apt install zsh`  
 
 ## 配置
 > [某人的配置](https://github.com/lilydjwg/dotzsh)
@@ -72,15 +68,15 @@ _额外安装_
 - Bullet Train `桌面在用 bullet-train` 
     - [Github repo](https://github.com/caiogondim/bullet-train.zsh) |  [必需的符号字体](https://github.com/powerline/powerline)
     - Source Code Pro for Powerline + Powerline + Awesonme 的 Bold 字体搭配最合适
-```shell
-wget https://raw.githubusercontent.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme /home/kcp/.oh-my-zsh/custom/themes
+
+```sh
+wget https://raw.githubusercontent.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme -O /home/kcp/.oh-my-zsh/custom/themes
 
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
 wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
 mv PowerlineSymbols.otf ~/.local/share/fonts/
 fc-cache -vf ~/.local/share/fonts/
 mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
-
 ```
 
 - Maglev `Tmux 主题 和上面的Zsh主题搭配使用`

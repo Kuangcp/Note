@@ -11,8 +11,12 @@ categories:
 **目录 start**
  
 1. [Arch](#arch)
+    1. [Pacman](#pacman)
+        1. [Yaourt](#yaourt)
+        1. [Yay](#yay)
+1. [Tips](#tips)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-08-05 23:25_|
 ****************************************
 
 # Arch
@@ -26,8 +30,10 @@ categories:
 
 ## Pacman 
 
+> Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的社区驱动软件仓库。Debian/Ubuntu 用户的对应类比是 PPA。
+
 ### Yaourt
-> [Arch User Repository](https://wiki.archlinux.org/index.php/Arch_User_Repository)
+> [Arch User Repository](https://wiki.archlinux.org/index.php/Arch_User_Repository)`但是已经暂停开发了`
 
 1. `/etc/pacman.conf` 追加
     ```conf
@@ -37,6 +43,11 @@ categories:
     Server   = http://repo.archlinuxcn.org/$arch
     ```
 1. `sudo pacman -Syu yaourt` 同步
+
+### Yay
+- `pacman -S yay` 下一代aur管理
+
+# Tips
 
 - deepin-wine
 - [企业微信](https://aur.archlinux.org/packages/deepin-wxwork/)

@@ -14,9 +14,10 @@ categories:
     1. [安装配置](#安装配置)
         1. [Linux](#linux)
     1. [新特性](#新特性)
+        1. [ZGC](#zgc)
         1. [部分API转为内部API](#部分api转为内部api)
 
-**目录 end**|_2019-07-18 17:48_|
+**目录 end**|_2019-08-05 23:25_|
 ****************************************
 # Java11 
 > [Official: JDK 11 Documentation](https://docs.oracle.com/en/java/javase/11/) | [Official:api](https://docs.oracle.com/en/java/javase/11/docs/api/index.html)
@@ -28,11 +29,13 @@ categories:
 ## 安装配置
 > [Official site](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
+> [ZGC](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
+
 ### Linux
 ```sh
-    JAVA_HOME=/path/to/java11
-    export CLASSPATH=.:${JAVA_HOME}/lib
-    export PATH=${JAVA_HOME}/bin:$PATH
+JAVA_HOME=/path/to/java11
+export CLASSPATH=.:${JAVA_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
 ```
 
 ## 新特性
