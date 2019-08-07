@@ -37,21 +37,19 @@ categories:
             1. [被中断的工作流程](#被中断的工作流程)
         1. [gc](#gc)
         1. [clean](#clean)
-    1. [远程](#远程)
-        1. [remote](#remote)
-        1. [push](#push)
-        1. [pull](#pull)
-        1. [fetch](#fetch)
-    1. [分支](#分支)
+    1. [本地分支](#本地分支)
         1. [show-branch](#show-branch)
         1. [stash](#stash)
         1. [branch](#branch)
         1. [checkout](#checkout)
-        1. [fetch](#fetch)
-        1. [pull](#pull)
         1. [merge](#merge)
         1. [rebase](#rebase)
         1. [cherry-pick](#cherry-pick)
+    1. [远程操作](#远程操作)
+        1. [remote](#remote)
+        1. [push](#push)
+        1. [fetch](#fetch)
+        1. [pull](#pull)
     1. [Submodule](#submodule)
     1. [其他](#其他)
         1. [grep](#grep)
@@ -66,7 +64,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-07-18 17:48_|
+**目录 end**|_2019-08-07 20:38_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -378,9 +376,145 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 ### clean
 > Remove untracked files from the working tree `git clean --help`
 
+************************
+
+## 本地分支
+> Git 的分支是轻量型的, 能够快速创建和销毁
+
+> 场景: 一个特性分支本不该合并入主开发分支, 但是已经并入了,并且并入后又做了很多其他修改, 这时候怎么影响最小地撤销这次错误的合并? 
+- [ ] 
+
+************************
+
+- 获取当前分支名 `git symbolic-ref --short -q HEAD`
+
+- 拉取远程分支到本地并建立同名分支 
+    - 拉取元数据 `git fetch --all` 
+    - 建立和远程分支对应的本地分支 `git pull <远程主机名> <远程分支名>:<本地分支名>`
+
+### show-branch 
+> 按颜色列出分支上的提交和图示
+
+### stash
+> [Official Doc](https://git-scm.com/docs/git-stash)  
+> 将当前修改缓存起来, 减少不必要的残缺提交  stash命令的缓存都是基于某个提交上的修改, 是一个栈的形式 
+
+> [参考博客: Git Stash的用法](http://www.cppblog.com/deercoder/archive/2011/11/13/160007.html)`底下的评论也很有价值, 值得思考`
+> [参考博客: git-stash用法小结](https://www.cnblogs.com/tocy/p/git-stash-reference.html)
+
+> git stash --help 查看完整的使用说明
+
+- list
+    - 输出大致为: `stash@{num}: On branchName : comment`
+- save
+    - save comment 
+- pop 
+    - 将最近的stash pop出来, 应用到工作目录中, 原有的 stash 就丢弃了
+- apply 
+    - 将指定的stash 应用到工作目录, 不丢弃原有的stash
+- drop
+    - 丢弃指定的stash, 如果想丢弃当前项目所有更改就可以将所有更改 save stash 然后 drop
+- clear 
+    - 清除所有 stash 
+
+1. 如果需要恢复 `stash@{0}: On feature-test: test` 
+    - 就在 feature-test 分支上建立新分支, 然后 apply stash@{0}
+    - 不推荐用 pop, 当stash多了以后 人不一定都记得每个stash都改了啥, 可能会有冲突以及修改覆盖的问题
+    - 最好用新分支装起来, 然后合并分支, 或者是 cherry-pick, 修改也不会丢失
+
+> *注意* stash 是一个项目范围内的栈结构, 所以如果多个分支执行了stash, 那缓存都是共用的
+> 要先确定好当前分支 stash 的 id (通过记录comment的方式会更好) 再 pop 或者 apply (不能无脑pop 血泪教训)  
+
+> 使用该别名能过滤当前分支的stash `alias wip='git stash list | grep $(git branch --show-current)' `
+
+********************
+
+### branch 
+> 查看所有参数 `git branch --help`
+
+- 列出所有分支(包含本地和远程) `-a --all`
+- 按条件显示分支 `--list 'feature*'`
+- 列出远程分支 `-r --remote`
+- 查看分支详细信息 `-vv` 本地分支和远程分支的关联状态
+- 查看包含指定 commit(可以多个) 的分支 `--contains [<commit>]` 
+    - 对应的则是不包含 `--no-contains [<commit>]` commit 缺省为 HEAD(也就是最近的一次提交) 
+
+- 创建分支 `git branch name` 并设置当前分支的对应远程分支 `-t <remote>/<branch>`
+- 重命名分支 `-m old new` 对于远程来说就是先要删除再新建分支
+- 删除分支 `-d 分支`
+    - 如果该分支没有被完全合并, 就会提醒使用 `-D` 强制删除. 等价于 `--delete --force`
+
+- 设置当前分支跟踪的远程分支 `--set-upstream-to=<remote>/<branch> <branch>`
+
+### checkout
+> [Official Doc: git checkout](https://git-scm.com/docs/git-checkout)
+
+> alias gh='git checkout'
+
+1. 切换分支 `gh feature/a`
+1. 切换分支并设置该分支的远程分支 `gh feature/a origin/feature/a`
+
+> 撤销文件修改
+- `gh .` 取出最近的一次提交, 覆盖掉 work 区下当前目录(递归)下所有已更改(包括删除操作), 且未进入 stage 的内容, 已经进入 stage 区的文件内容则不受影响
+    - `gh 文件1 文件2...` 同上, 但是只操作指定的文件
+
+- `gh [commit-hash] 文件1 文件2...` 根据指定的 commit 对应hash值, 作如上操作, 但是区别在于 从 index 直接覆盖掉 stage 区, 并丢弃 work 区
+    - `gh [commit-hash] .` **`如在项目根目录执行该命令, 会将当前项目的所有未提交修改全部丢失, 不可恢复!!!!`**
+
+- `git checkout [commit-hash] 节点标识符或者标签 文件名 文件名 ...` 
+    - 取出指定节点状态的某文件，而且执行完命令后，取出的那个状态会成为head状态，
+    - 需要执行  `git reset HEAD` 来清除这种状态
+
+### merge
+- [官方文档](https://git-scm.com/docs/git-merge)
+
+> [Official Doc: 高级合并](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%AB%98%E7%BA%A7%E5%90%88%E5%B9%B6)
+> [参考博客: 解决 Git 冲突的 14 个建议和工具](http://blog.jobbole.com/97911/)
+
+- `git merge develop `默认会直接将当前分支指向Develop分支。(一条拐弯的分支线)
+- 推荐: `git merge --no-ff develop` 在当前分支`主动合并`分支Develop，在当前分支上生成一个新节点(有一个环的线)
+
+1. merge 就是获取对方的修改, 与自己这一份进行合并(对 对方没有任何影响)
+    - `master merge dev` 就是 master 下载 dev 的那一份代码, 与自己的这份代码合并为一份
+
+- 如果遇到冲突：
+    - `git mergetool` 使用工具进行分析冲突文件方便修改
+
+> 配置mergetool工具kdiff3, 同类的还有meld：
+- `git config --global merge.tool kdiff3`
+- `git config --global mergetool.kdiff3.cmd "'D:/kdiff3.exe' \"\$BASE\" \"\$LOCAL\" \"\$REMOTE\" -o \"\$MERGED\""`
+- `git config --global mergetool.prompt false`
+- `git config --global mergetool.kdiff3.trustExitCode true`
+- `git config --global mergetool.keepBackup false`
+
+### rebase
+> 衍和操作 [参考博客](http://blog.csdn.net/endlu/article/details/51605861) | 
+> [Git rebase -i 交互变基](http://blog.csdn.net/zwlove5280/article/details/46649799) | 
+> [git rebase的原理之多人合作分支管理](http://blog.csdn.net/zwlove5280/article/details/46708969)    
+> 他会将分支中的圈, 消除掉, 成为线性结构
+
+- 效果和merge差不多，但是分支图更清晰?TODO 有待详细学习
+- 与master合并：`git merge master` 换成 `git rebase master`
+- 当遇到冲突：
+    - `git rebase --abort` 放弃rebase
+    - `git rebase --continue` 修改好冲突后继续
+
+### cherry-pick
+> [Official Doc](https://git-scm.com/docs/git-cherry-pick)
+
+- `git cherry-pick <commit-id>`
+
+简单来讲, 就是将指定的某个提交(任意分支上的)上的修改, 重放到当前分支上  
+和 stash pop 命令相比, 在重放上是一致的
+
+> 用途
+1. 可用于合并已有的若干个提交, 为了改动最小, 一般新建分支来做这件事
+    - 例如 功能分支 `fea/something` 上的四个提交其实可以合并, 使得提交信息更清晰, 不冗余, 就可以从 `fea/something`
+    - 创建处新建一个分支, 将该分支所有提交进行重放, 需要合并的那几个放一起重放 然后 将四个提交 reset, 再次提交即可
+
 ***************************
 
-## 远程
+## 远程操作
 
 > 大部分命令都是本地的, 所以执行效率很高, 但是协同开发肯定需要有同步的操作了
 
@@ -450,108 +584,14 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 - 提交指定tag `git push origin tagname`
     - 提交所有tag `git push --tags`
 
-************************
-
 - 出现 `RPC failed; result=22, HTTP code = 411` 的错误
     - 就是因为一次提交的文件太大，需要改大缓冲区 例如改成500m  `git config http.postBuffer 524288000`
 
-### pull
-
-### fetch 
+### fetch
+> 访问远程仓库, 拉取本地没有的远程数据
 
 - 拉取远程origin的dev分支并在本地创建dev分支相关联 `git fetch origin dev:dev`
 - 删除远程没有但本地有的那些分支 `git fetch -p`
-
-***********************
-
-## 分支
-> Git 的分支是轻量型的, 能够快速创建和销毁
-
-> 场景: 一个特性分支本不该合并入主开发分支, 但是已经并入了,并且并入后又做了很多其他修改, 这时候怎么影响最小地撤销这次错误的合并? 
-- [ ] 
-
-************************
-
-- 获取当前分支名 `git symbolic-ref --short -q HEAD`
-
-- 拉取远程分支到本地并建立同名分支 
-    - 拉取元数据 `git fetch --all` 
-    - 建立和远程分支对应的本地分支 `git pull <远程主机名> <远程分支名>:<本地分支名>`
-
-### show-branch 
-> 按颜色列出分支上的提交和图示
-
-### stash
-> [Official Doc](https://git-scm.com/docs/git-stash)  
-> 将当前修改缓存起来, 减少不必要的残缺提交  stash命令的缓存都是基于某个提交上的修改, 是一个栈的形式 
-
-> [参考博客: Git Stash的用法](http://www.cppblog.com/deercoder/archive/2011/11/13/160007.html)`底下的评论也很有价值, 值得思考`
-> [参考博客: git-stash用法小结](https://www.cnblogs.com/tocy/p/git-stash-reference.html)
-
-> git stash --help 查看完整的使用说明
-
-- list
-    - 输出大致为: `stash@{num}: On branchName : comment`
-- save
-    - save comment 
-- pop 
-    - 将最近的stash pop出来, 应用到工作目录中, 原有的 stash 就丢弃了
-- apply 
-    - 将指定的stash 应用到工作目录, 不丢弃原有的stash
-- drop
-    - 丢弃指定的stash, 如果想丢弃当前项目所有更改就可以将所有更改 save stash 然后 drop
-- clear 
-    - 清除所有 stash 
-
-1. 如果需要恢复 `stash@{0}: On feature-test: test` 
-    - 就在 feature-test 分支上建立新分支, 然后 apply stash@{0}
-    - 不推荐用 pop, 当stash多了以后 人不一定都记得每个stash都改了啥, 可能会有冲突以及修改覆盖的问题
-    - 最好用新分支装起来, 然后合并分支, 或者是 cherry-pick, 修改也不会丢失
-
-> *注意* stash 是一个项目范围内的栈结构, 所以如果多个分支执行了stash, 那缓存都是共用的, 要先确定好当前分支 stash 的 id 是多少 再 pop 或者 apply (不能无脑pop 血泪教训)  
-> 使用该别名能过滤当前分支的stash `alias wip='git stash list | grep $(git symbolic-ref --short -q HEAD)' `
-
-********************
-
-### branch 
-> 查看所有参数 `git branch --help`
-
-- 列出所有分支(包含本地和远程) `-a --all`
-- 按条件显示分支 `--list 'feature*'`
-- 列出远程分支 `-r --remote`
-- 查看分支详细信息 `-vv` 本地分支和远程分支的关联状态
-- 查看包含指定 commit(可以多个) 的分支 `--contains [<commit>]` 
-    - 对应的则是不包含 `--no-contains [<commit>]` commit 缺省为 HEAD(也就是最近的一次提交) 
-
-- 创建分支 `git branch name`
-    - 设置当前分支的对应远程分支 `-t <remote>/<branch>`
-- 重命名分支 `-m old new` 对于远程来说就是先要删除再新建分支
-- 删除分支 `-d 分支`
-    - 如果该分支没有被完全合并, 就会提醒使用 `-D` 强制删除. 等价于 `--delete --force`
-
-- 设置当前分支跟踪的远程分支 `--set-upstream-to=<remote>/<branch> <branch>`
-
-### checkout
-> [Official Doc: git checkout](https://git-scm.com/docs/git-checkout)
-
-> alias gh='git checkout'
-
-1. 切换分支 `gh feature/a`
-1. 切换分支并设置该分支的远程分支 `gh feature/a origin/feature/a`
-
-> 撤销文件修改
-- `gh .` 取出最近的一次提交, 覆盖掉 work 区下当前目录(递归)下所有已更改(包括删除操作), 且未进入 stage 的内容, 已经进入 stage 区的文件内容则不受影响
-    - `gh 文件1 文件2...` 同上, 但是只操作指定的文件
-
-- `gh [commit-hash] 文件1 文件2...` 根据指定的 commit 对应hash值, 作如上操作, 但是区别在于 从 index 直接覆盖掉 stage 区, 并丢弃 work 区
-    - `gh [commit-hash] .` **`如在项目根目录执行该命令, 会将当前项目的所有未提交修改全部丢失, 不可恢复!!!!`**
-
-- `git checkout [commit-hash] 节点标识符或者标签 文件名 文件名 ...` 
-    - 取出指定节点状态的某文件，而且执行完命令后，取出的那个状态会成为head状态，
-    - 需要执行  `git reset HEAD` 来清除这种状态
-
-### fetch
-> 访问远程仓库, 拉取本地没有的远程数据
 
 - `git fetch origin dev-test` 下拉指定远程的指定分支, 本地没有就会自动新建远程分支
 - `git fetch --all` 下拉默认远程的所有分支的代码
@@ -560,53 +600,6 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 > 不仅仅是下拉代码, 还会进行merge合并, 所以安全起见, 是先fetch然后再进行合并操作  
 - `git pull origin dev` 下拉指定远程的指定分支
 - `git pull --all` 下拉默认远程的所有分支代码并自动合并
-
-### merge
-- [官方文档](https://git-scm.com/docs/git-merge)
-
-> [Official Doc: 高级合并](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%AB%98%E7%BA%A7%E5%90%88%E5%B9%B6)
-> [参考博客: 解决 Git 冲突的 14 个建议和工具](http://blog.jobbole.com/97911/)
-
-- `git merge develop `默认会直接将当前分支指向Develop分支。(一条拐弯的分支线)
-- 推荐: `git merge --no-ff develop` 在当前分支`主动合并`分支Develop，在当前分支上生成一个新节点(有一个环的线)
-
-1. merge 就是获取对方的修改, 与自己这一份进行合并(对 对方没有任何影响)
-    - `master merge dev` 就是 master 下载 dev 的那一份代码, 与自己的这份代码合并为一份
-
-- 如果遇到冲突：
-    - `git mergetool` 使用工具进行分析冲突文件方便修改
-
-> 配置mergetool工具kdiff3, 同类的还有meld：
-- `git config --global merge.tool kdiff3`
-- `git config --global mergetool.kdiff3.cmd "'D:/kdiff3.exe' \"\$BASE\" \"\$LOCAL\" \"\$REMOTE\" -o \"\$MERGED\""`
-- `git config --global mergetool.prompt false`
-- `git config --global mergetool.kdiff3.trustExitCode true`
-- `git config --global mergetool.keepBackup false`
-
-### rebase
-> 衍和操作 [参考博客](http://blog.csdn.net/endlu/article/details/51605861) | 
-> [Git rebase -i 交互变基](http://blog.csdn.net/zwlove5280/article/details/46649799) | 
-> [git rebase的原理之多人合作分支管理](http://blog.csdn.net/zwlove5280/article/details/46708969)    
-> 他会将分支中的圈, 消除掉, 成为线性结构
-
-- 效果和merge差不多，但是分支图更清晰?TODO 有待详细学习
-- 与master合并：`git merge master` 换成 `git rebase master`
-- 当遇到冲突：
-    - `git rebase --abort` 放弃rebase
-    - `git rebase --continue` 修改好冲突后继续
-
-### cherry-pick
-> [Official Doc](https://git-scm.com/docs/git-cherry-pick)
-
-- `git cherry-pick <commit-id>`
-
-简单来讲, 就是将指定的某个提交(任意分支上的)上的修改, 重放到当前分支上  
-和 stash pop 命令相比, 在重放上是一致的
-
-> 用途
-1. 可用于合并已有的若干个提交, 为了改动最小, 一般新建分支来做这件事
-    - 例如 功能分支 `fea/something` 上的四个提交其实可以合并, 使得提交信息更清晰, 不冗余, 就可以从 `fea/something`
-    - 创建处新建一个分支, 将该分支所有提交进行重放, 需要合并的那几个放一起重放 然后 将四个提交 reset, 再次提交即可
 
 ************************
 
@@ -682,7 +675,6 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 1. export-ignore
 1. delta 
 1. encoding
-
 
 ************************
 

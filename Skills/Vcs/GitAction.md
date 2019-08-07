@@ -29,7 +29,7 @@ categories:
         1. [清理仓库大文件](#清理仓库大文件)
         1. [CRLF与LF](#crlf与lf)
 
-**目录 end**|_2019-05-10 18:10_|
+**目录 end**|_2019-08-07 20:38_|
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -172,12 +172,13 @@ categories:
 
 *`目录结构`*
 ```
+    root
     ├── a
     │   └── .git
     └── b
         └── .git
 ```
-> 也就是说在仓库目录的父级目录 作为基础目录 (base-path)
+> 也就是说在仓库目录的父级目录 root 作为基础目录 (base-path)
 
 - `git daemon --export-all --base-path=$(pwd) --port=8080` 在 当前目录 启动一个Git守护进程
     - `--enable=receive-pack` 为了安全，默认是仓库不能被修改， 添加这个参数就可以push了
@@ -186,7 +187,9 @@ categories:
     - `--port=8080` 指定开放的端口
     - `--verbose` 启动看到的日志信息更多
 
-- 克隆 `git clone git://localhost:8080/a` 
+- 直接克隆 `git clone git://localhost:8080/a` 
+- 或者作为已有代码的远程 `git remote add hub git://localhost:8080/a`
+    - 然后 git fetch 对应的分支就可以达到将某个分支直接给对方的目的
 
 ### HTTP 方式的 Git 服务器
 - 安装Apache： Web服务器
