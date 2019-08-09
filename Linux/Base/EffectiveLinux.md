@@ -110,6 +110,7 @@ categories:
 - dircolors [Linux dircolors命令](http://www.runoob.com/linux/linux-comm-dircolors.html)`用于设置 ls 命令输出时的色彩`
 
 - gtypist 用于练习打字
+- Flameshot 截图工具  类似于 snipaste
 
 `xclip`
 > 便捷的文本复制
