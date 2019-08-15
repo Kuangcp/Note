@@ -145,6 +145,8 @@ categories:
 
 *************************
 #### desktop文件
+> [freedesktop](https://www.freedesktop.org/wiki/)
+
 ```conf
 	[Desktop Entry] #每个desktop文件都以这个标签开始，说明这是一个Desktop Entry文件
 	Version = 1.0 #标明Desktop Entry的版本（可选）
