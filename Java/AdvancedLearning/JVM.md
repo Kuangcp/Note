@@ -175,6 +175,7 @@ NIO 会经常使用, 提高性能
 
 - [Oracle JDK8 GC调优指南](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/toc.html)
 - [JDK11 GC调优指南](https://docs.oracle.com/en/java/javase/11/gctuning/introduction-garbage-collection-tuning.html)
+> [How to Tune Java Garbage Collection](https://www.cubrid.org/blog/how-to-tune-java-garbage-collection/)
 
 GC 的目的是识别出不再使用的内存，并将其变为可用的。现代垃圾收集器通常分几个阶段以及根据不同的分代使用不同的垃圾收集器来完成回收过程
 
@@ -189,7 +190,9 @@ GC 的目的是识别出不再使用的内存，并将其变为可用的。现�
 发生在老年代的GC, 出现了 Major GC, 往往会伴随至少一次 Minor GC. Major GC 的速度一般会比 Minor GC 慢10倍以上.
 
 > [What causes a full GC to run?](https://stackoverflow.com/questions/42226785/what-causes-a-full-gc-to-run)
+
 *************
+
 > [Generation](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/generations.html#sthref16)
 
 ![Generation](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Java/Jvm/Generation.png)
@@ -305,7 +308,7 @@ GC Roots 对象包含:
 > 查看当前使用的垃圾收集器 
 - `-XX:+PrintCommandLineFlags` 或者查看GC日志中代的名称 `-XX:+PrintGCDetails`
 - JDK1.7 1.8 默认垃圾收集器Parallel Scavenge（新生代）+Parallel Old（老年代）
-- JDK1.9 默认垃圾收集器G1
+- JDK1.9 以上 默认垃圾收集器G1
 
 ***************
 
@@ -415,3 +418,6 @@ IBM主导开发, 捐赠给Eclipse基金会
 
 > [参考博客: IBM开源JVM实现OpenJ9，并提交Eclipse基金会托管)](http://www.infoq.com/cn/news/2017/09/IBM-JVM-OpenJ9-Eclipse)
 > [参考博客: Eclipse Open J9：Eclipse OMR项目提供的开源JVM](http://www.infoq.com/cn/news/2018/03/OMR-OpenJ9)
+
+## GraalVM
+> [参考博客: Oracle 发布多语种虚拟机平台 GraalVM 1.0](https://www.infoq.cn/article/2018%2F05%2Foracle-graalvm-v1)

@@ -55,8 +55,11 @@ categories:
 > [参考博客: Java10的新特性](https://segmentfault.com/a/1190000014076481)
 
 1. 类型推断
-
-> [参考博客: Oracle 发布多语种虚拟机平台 GraalVM 1.0](https://www.infoq.cn/article/2018%2F05%2Foracle-graalvm-v1)
+1. String 类 API 增强
+1. 集合 API 增强
+1. Stream 增强
+1. Optional 增强
+1. java javac 合并
 
 ## Java11
 > [参考博客: Java11的新特性](https://segmentfault.com/a/1190000016527932#articleHeader5)

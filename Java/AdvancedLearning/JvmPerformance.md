@@ -153,6 +153,7 @@ categories:
 ## 图形化
 ### jvisualvm
 > [Github:visualvm](https://github.com/oracle/visualvm)  
+> [visualgc plugin](https://www.oracle.com/technetwork/java/visualgc-136680.html)  
 
 > [参考博客: java内存泄漏的定位与分析](https://blog.csdn.net/lc0817/article/details/67014499)
 
