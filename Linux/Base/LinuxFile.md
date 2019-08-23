@@ -426,7 +426,7 @@ export LANG="zh_CN.UTF-8"
 - 卸载挂载的磁盘 `sudo umount /mnt`
 
 > 自动挂载分区 (root身份运行命令)
-1. `blkid` 查看设备详情, 找到要挂载的硬盘的 UUID 文件系统类型
+1. `blkid` 查看设备详情, 找到要挂载的硬盘的 UUID 以及 文件系统类型
 1. `vim /etc/fstab` 在文件中添加, 记得要 先创建该目录 `/media/kcp/Data1`
     - `UUID=42168DE83BC5EDAD /media/kcp/Data1 ntfs defaults 0 1` 类似配置
     - `mount -a` 切记要先用该命令测试下该文件是否正确, 如果有错误, 系统关机后就开不了机了(可以使用U盘进系统进行修改该文件)

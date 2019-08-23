@@ -21,12 +21,28 @@ categories:
 
 > [参考博客: Linux安装搜狗拼音和谷歌拼音输入法](https://www.jianshu.com/p/429b8f75af2c)
 
+主要的输入法框架分为 fcitx ibus
+
+# fcitx 
+> fcitx  fcitx-im  fcitx-configtool
+
+`~/.xprofile`
+```sh
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+```
+
+# ibus
+
+
 ## Rime
 > [rime](https://rime.im/)  中州韵 
 
 响应速度快， 除了切换输入法的时候响应慢了点
 
 Ctrl ` 输入设置
+
 
 ## 搜狗
 > [Official Site](https://pinyin.sogou.com/linux/)  
