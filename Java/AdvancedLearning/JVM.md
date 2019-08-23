@@ -350,6 +350,8 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
 ### Parallel Old
 > 是Parallel Scavenge 收集器的老年代版本
 
+`-XX:+UseParallelOldGC`
+
 ### CMS
 > Concurrent Mark Sweep 着重点是尽可能缩短垃圾收集时用户线程的停顿时间 [Oracle Doc](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/cms.html)
 
