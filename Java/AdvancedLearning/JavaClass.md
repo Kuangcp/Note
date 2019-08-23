@@ -93,6 +93,8 @@ categories:
 
 ![JavaClassLoader](https://github.com/dragonhht/GitImgs/blob/master/Notes/JavaClassLoader.png?raw=true)
 
+> 注意： 例如在读取类路径下文件时，可以通过 `.getClassLoader().getResourceAsStream("app.properties")` 但是如果类对象是由 BootStrap 类加载器加载的， getClassLoader()将返回 null
+
 ### 加载和连接
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p107.jpg)
 
