@@ -19,6 +19,8 @@ categories:
 
 - [ ]  
 
+1. 使用线程池能节省线程创建销毁的开销， 且能通过线程池的参数设置限流
+
 ## 线程池
 > [使用默认的线程池策略](https://github.com/Kuangcp/JavaBase/blob/thread/src/main/java/com/github/kuangcp/UseThreadPool.java)
 

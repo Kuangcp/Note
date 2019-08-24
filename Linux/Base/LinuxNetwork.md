@@ -452,7 +452,7 @@ _ss_
 
 ******************************
 ### SSH
-> [详细](/Linux/Base/Ssh.md)
+> [详细](/Linux/Base/SSH.md)
 
 ### telnet
 > 远程控制服务器的一种协议和SSH类似

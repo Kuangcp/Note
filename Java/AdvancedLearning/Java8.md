@@ -753,7 +753,8 @@ Collectors所提供的工厂方法 它们主要提供了三大功能：将流元
 
 - toList toMap toSet 等方法
 
-- [ ] toMap 当 key 重复时会抛出异常
+> 注意： toMap 方法的使用， 当 key 重复时会抛出异常 
+> `toMap(k->k, v->v, (a,b)->b);` 使用该方式能避免， 设置了遇到重复的策略， 后者覆盖前者
 
 ##### 汇总
 > Collectors类专门为汇总提供了一个工厂方法：Collectors.summingInt 它可接受一个把对象映射为求和所需int的函数，并返回一个收集器；该收集器在传递给普通的collect方法后即执行我们需要的汇总操作  

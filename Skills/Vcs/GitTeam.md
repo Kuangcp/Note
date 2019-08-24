@@ -125,6 +125,15 @@ categories:
 ## GitBlade
 - 功能强大 付费软件
 
+## gitg
+> [Official](https://wiki.gnome.org/Apps/Gitg)
+
+## tig
+> [Github](https://github.com/jonas/tig)
+
+## Guitar
+> [Github](https://github.com/soramimi/Guitar)
+
 ## GitAhead
 > [Github](https://github.com/gitahead/gitahead) 
 

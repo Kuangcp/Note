@@ -31,3 +31,6 @@ categories:
 
 > U盘启动盘启动准备安装系统时, 默认用户名和密码都为 manjaro
 
+## 镜像源
+`sudo pacman-mirrors -i -c China -m rank` | [ustc.edu.cn](http://mirrors.ustc.edu.cn/help/manjaro.html)
+
