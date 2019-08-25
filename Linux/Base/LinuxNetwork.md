@@ -80,7 +80,7 @@ _netstat工具_ 或者 更好用的 [iproute2](#3iproute2)
 ## DNS
 > [Github: dns topic](https://github.com/topics/dns)
 
-- `nslookup ` 
+- `nslookup`  dnsutils
     - 强大的调试DNS工具
     - nslookup - 8.8.8.8 进入循环模式， 方便调试 8.8.8.8 是Google开放的DNS 备选 8.8.4.4
         - 结果解释：Non-authoritative answer: 表示这是从缓存得到的结果，不一定准确

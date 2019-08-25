@@ -9,17 +9,18 @@ categories:
 **目录 start**
  
 1. [IME](#ime)
+1. [fcitx](#fcitx)
+1. [ibus](#ibus)
+1. [常用输入法](#常用输入法)
     1. [Rime](#rime)
     1. [搜狗](#搜狗)
     1. [Google拼音](#google拼音)
 1. [Tips](#tips)
 
-**目录 end**|_2019-07-15 18:54_|
+**目录 end**|_2019-08-25 12:38_|
 ****************************************
 # IME
 > 输入法
-
-> [参考博客: Linux安装搜狗拼音和谷歌拼音输入法](https://www.jianshu.com/p/429b8f75af2c)
 
 主要的输入法框架分为 fcitx ibus
 
@@ -35,17 +36,18 @@ export XMODIFIERS="@im=fcitx"
 
 # ibus
 
-
+# 常用输入法
 ## Rime
 > [rime](https://rime.im/)  中州韵 
 
 响应速度快， 除了切换输入法的时候响应慢了点
 
-Ctrl ` 输入设置
-
+Ctrl ` 进入设置
 
 ## 搜狗
 > [Official Site](https://pinyin.sogou.com/linux/)  
+
+> [参考博客: Linux安装搜狗拼音和谷歌拼音输入法](https://www.jianshu.com/p/429b8f75af2c)
 
 比较良心， 一直希望百度输入法能出Linux版， 最后还是没有， 优点就是能同步帐号， 云词库什么的， 但是bug比较多， 容易奔溃（可能和Deepin有关）
 
@@ -55,4 +57,5 @@ Ctrl ` 输入设置
 速度比较快， 但是不够聪明， 打字舒适度上没有rime好用
 
 # Tips 
-- fcitx + sogou 输入法经常出现 `单CPU 100%满载`, 在搜狗输入法 中打开 fcitx 设置, 插件中 关闭 搜狗云 插件, 即可解决问题
+> fcitx + sogou 输入法经常出现 `单CPU 100%满载`
+- 在搜狗输入法 中打开 fcitx 设置, 插件中 关闭 搜狗云 插件, 即可解决问题

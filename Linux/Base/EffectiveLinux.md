@@ -172,6 +172,10 @@ categories:
 
 > [参考博客: 关于 Linux 你可能不是非常了解的七件事](https://linux.cn/article-8934-1.html)
 
+### 截图
+- Flameshot
+- deepin-screenshot
+
 ### 资源管理
 > gnome-system-monitor
 
