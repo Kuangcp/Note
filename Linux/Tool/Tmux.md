@@ -17,7 +17,7 @@ categories:
         1. [maglev](#maglev)
         1. [copycat](#copycat)
 
-**目录 end**|_2019-07-15 18:54_|
+**目录 end**|_2019-08-25 12:31_|
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -65,6 +65,7 @@ categories:
 
 ## TPM插件管理
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) `查看Readme下载安装`
+> `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
 > [参考博客: 保存和恢复 Tmux 会话 ](https://liam.page/2016/09/10/tmux-plugin-resurrect/)
 

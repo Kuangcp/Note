@@ -10,19 +10,18 @@ categories:
 **目录 start**
  
 1. [SSH](#ssh)
-    1. [1.安装](#1安装)
-    1. [2.复制粘贴建立密钥对](#2复制粘贴建立密钥对)
-    1. [2.使用脚本更简单](#2使用脚本更简单)
-    1. [3.遇到的问题](#3遇到的问题)
-    1. [4.SSH配置文件](#4ssh配置文件)
-    1. [5.多密钥对](#5多密钥对)
-    1. [6.访问图形化](#6访问图形化)
-    1. [7.ssh登录并执行一系列命令](#7ssh登录并执行一系列命令)
+    1. [安装](#安装)
+    1. [复制粘贴建立密钥对](#复制粘贴建立密钥对)
+    1. [使用脚本更简单](#使用脚本更简单)
+    1. [SSH配置文件](#ssh配置文件)
+    1. [多密钥对](#多密钥对)
+    1. [访问图形化](#访问图形化)
+    1. [SSH登录并执行一系列命令](#ssh登录并执行一系列命令)
+        1. [通过SSH执行命令时的环境变量问题](#通过ssh执行命令时的环境变量问题)
 1. [Tips](#tips)
-    1. [通过SSH执行命令时的环境变量问题](#通过ssh执行命令时的环境变量问题)
 1. [Mosh](#mosh)
 
-**目录 end**|_2019-06-09 23:27_|
+**目录 end**|_2019-08-25 12:31_|
 ****************************************
 # SSH
 > Secure Shell 
@@ -48,7 +47,7 @@ categories:
 
 ******************
 
-## 1.安装
+## 安装
 _客户端_
 - `sudo apt-get install openssh-client`
 - 生成密钥对 `ssh-keygen` 可以设置密码，为了方便也可以全部采用默认(不安全)
@@ -60,7 +59,7 @@ _服务端_
 - 查看对否启动sshd`ps -e |grep ssh`
 - 关闭服务 `/etc/init.d/ssh stop`
 
-## 2.复制粘贴建立密钥对
+## 复制粘贴建立密钥对
 _客户端_
 - 进入.ssh文件夹下 `gedit id_rsa.pub` 然后复制该公钥内容
     - 或者 `cat ~/.ssh/id_rsa.pub | xclip -sel clip` 将文件复制到剪贴板 
@@ -71,7 +70,7 @@ _服务器端_
 - 进入.ssh文件夹下 `sudo vim authorized_keys` 粘贴客户端公钥内容
 - 更改文件权限 `sudo chmod 600 authorized_keys` 确保 其 group和other位没有 w 权限
 
-## 2.使用脚本更简单
+## 使用脚本更简单
 - 两方安装好软件 客户端生成好了秘钥对之后
 - 默认端口:`ssh-copy-id "username@host"` 输密码就可以了
 - 指定端口 `ssh-copy-id ”-p port username@host“` 
@@ -86,30 +85,7 @@ _服务器端_
     - 再次连接新的系统按着提示来运行一条命令即可
     - 例如 `ssh-keygen -f "/home/kcp/.ssh/known_hosts" -R 120.78.154.52`
 
-## 3.遇到的问题
-- 终端抛出`ssh_exchange_identification: Connection closed by remote host` 错误:
-```sh
-    echo "PermitRootLogin without-password" >> /etc/ssh/sshd_config ;\
-    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config ;\
-```
-- 或者尝试 `echo "sshd: ALL" >> /etc/hosts.allow && service sshd restart`
-
-********
-
-_这是什么问题,这么6的么, 配置好了公钥_
-```sh
-$ ssh -p 8888 git@184.170.220.117
-    The authenticity of host '[184.170.220.117]:8888 ([184.170.220.117]:8888)' can't be established.
-    ECDSA key fingerprint is SHA256:Ha9k9dsMxtTaDgN4maUy1VoNzzsm+uMb84zcib6U5jU.
-    Are you sure you want to continue connecting (yes/no)? yes
-    Warning: Permanently added '[184.170.220.117]:8888' (ECDSA) to the list of known hosts.
-    PTY allocation request failed on channel 0
-    Welcome to GitLab, Carlsiry Chen!
-    Connection to 184.170.220.117 closed.
-```
-_emmm.出现这样的输出竟然是连接上了,,,_
-
-## 4.SSH配置文件
+## SSH配置文件
 `vim ~/.ssh/config`
 ```
     Host aliyun
@@ -135,7 +111,7 @@ _参数解释_
 
 > 修改欢迎信息 /etc/motd
 
-## 5.多密钥对
+## 多密钥对
 > [参考博客](http://blog.csdn.net/black_ox/article/details/17753943)   
 
 1. `ssh-keygen` 生成SSH密钥对
@@ -159,7 +135,7 @@ _config_
 ```
 - 测试配置是否正确: `ssh -T git@default`
 
-## 6.访问图形化
+## 访问图形化
 
 在`/etc/ssh/sshd_config`添加以下信息，然后重启ssh服务
 ```
@@ -169,17 +145,47 @@ _config_
 - `ssh -X -p port user@host` 登录即可
     - 使用过一次,发现了严重的内存泄露,也不知道是什么原因
 
-## 7.ssh登录并执行一系列命令
+## SSH登录并执行一系列命令
 ```sh
     ssh user@host 'cmd \
         && cmd \'
 ```
 
-# Tips
-## 通过SSH执行命令时的环境变量问题
+### 通过SSH执行命令时的环境变量问题
 详细在于不同的shell中 Linux 环境变量加载的不同
 [](/Linux/Base/LinuxBase.md)
 - 简单方式: 手动加载环境变量 `ssh name@host "source ~/.bashrc && java -version"`
+
+************************
+
+# Tips
+> 终端抛出`ssh_exchange_identification: Connection closed by remote host` 错误:
+```sh
+    echo "PermitRootLogin without-password" >> /etc/ssh/sshd_config ;\
+    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config ;\
+```
+- 或者尝试 `echo "sshd: ALL" >> /etc/hosts.allow && service sshd restart`
+
+************************
+
+> 连接时提示错误信息 前提：配置好了公钥，即使有这个信息，但是却已经连上了
+```sh
+$ ssh -p 8888 git@184.170.220.117
+    The authenticity of host '[184.170.220.117]:8888 ([184.170.220.117]:8888)' can't be established.
+    ECDSA key fingerprint is SHA256:Ha9k9dsMxtTaDgN4maUy1VoNzzsm+uMb84zcib6U5jU.
+    Are you sure you want to continue connecting (yes/no)? yes
+    Warning: Permanently added '[184.170.220.117]:8888' (ECDSA) to the list of known hosts.
+    PTY allocation request failed on channel 0
+    Welcome to GitLab, Carlsiry Chen!
+    Connection to 184.170.220.117 closed.
+```
+
+************************
+
+> SSH: Could not load host key: /etc/ssh/ssh_host_rsa_key
+- `/usr/bin/ssh-keygen -A` 生成所有方式的密钥对
+
+************************
 
 # Mosh
 > [Official Site](https://mosh.org/)  
