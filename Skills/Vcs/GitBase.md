@@ -45,6 +45,7 @@ categories:
         1. [merge](#merge)
         1. [rebase](#rebase)
         1. [cherry-pick](#cherry-pick)
+        1. [bisect](#bisect)
     1. [远程操作](#远程操作)
         1. [remote](#remote)
         1. [push](#push)
@@ -64,7 +65,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-08-07 20:38_|
+**目录 end**|_2019-08-27 21:33_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -511,6 +512,11 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 1. 可用于合并已有的若干个提交, 为了改动最小, 一般新建分支来做这件事
     - 例如 功能分支 `fea/something` 上的四个提交其实可以合并, 使得提交信息更清晰, 不冗余, 就可以从 `fea/something`
     - 创建处新建一个分支, 将该分支所有提交进行重放, 需要合并的那几个放一起重放 然后 将四个提交 reset, 再次提交即可
+
+### bisect
+
+- [git bisect 命令教程](http://www.ruanyifeng.com/blog/2018/12/git-bisect.html)
+- [二分查找捉虫记](http://www.worldhello.net/2016/02/29/git-bisect-on-git.html)`通过分析提交历史查到哪次提交引起的Bug然后检出,修复`
 
 ***************************
 

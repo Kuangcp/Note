@@ -29,7 +29,7 @@ categories:
         1. [清理仓库大文件](#清理仓库大文件)
         1. [CRLF与LF](#crlf与lf)
 
-**目录 end**|_2019-08-07 20:38_|
+**目录 end**|_2019-08-27 21:33_|
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -250,9 +250,6 @@ categories:
 - `git ls-files` 列出文件列表
     - `git ls-files | xargs wc -l` 计算文件中程序代码行数 通过工具：`xargs` `wc` (中文命名的文件编码问题无法计算行数)
     - `git ls-files | xargs cat | wc -l` 计算行数总和
-
-- [git bisect 命令教程](http://www.ruanyifeng.com/blog/2018/12/git-bisect.html)
-- [二分查找捉虫记](http://www.worldhello.net/2016/02/29/git-bisect-on-git.html)`通过分析提交历史查到哪次提交引起的Bug然后检出,修复`
 
 - [API: github开发接口](https://developer.github.com/v3/)
 

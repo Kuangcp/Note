@@ -42,8 +42,9 @@ categories:
 1. [JVM不同实现](#jvm不同实现)
     1. [Hotspot JVM](#hotspot-jvm)
     1. [OpenJ9](#openj9)
+    1. [GraalVM](#graalvm)
 
-**目录 end**|_2019-08-06 21:36_|
+**目录 end**|_2019-08-27 21:33_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -166,7 +167,8 @@ NIO 会经常使用, 提高性能
 - 如果GC发现某个类加载器不再存活，会对整个元空间进行集体回收
 
 ## 参数配置
-`-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1
+- `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1
+- `-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000`  开启远程调试
 
 **********************
 
