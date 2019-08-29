@@ -27,6 +27,8 @@ categories:
 - 压缩：-s   如 `echo “you are        a    man   ” | tr -s ' ' ' '` 结果you are a man
 - 删除：-d   如 `echo "you     are    a man"|  tr -d ' ' ` 结果youareaman
 
+## colrm
+
 ## cut
 > man cut
 

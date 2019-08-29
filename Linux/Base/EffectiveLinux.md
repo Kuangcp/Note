@@ -53,6 +53,8 @@ categories:
 ## 效率工具
 > 提高工作和开发效率
 
+> `通知提醒` [Desktop notifications](https://wiki.archlinux.org/index.php/Desktop_notifications)
+
 ### 目录跳转
 **`Autojump`**
 > 统计cd 目录，方便目录跳转  *shrc 中要有 : `. /usr/share/autojump/autojump.sh`  
@@ -110,7 +112,6 @@ categories:
 - dircolors [Linux dircolors命令](http://www.runoob.com/linux/linux-comm-dircolors.html)`用于设置 ls 命令输出时的色彩`
 
 - gtypist 用于练习打字
-- Flameshot 截图工具  类似于 snipaste
 
 `xclip`
 > 便捷的文本复制
@@ -173,7 +174,7 @@ categories:
 > [参考博客: 关于 Linux 你可能不是非常了解的七件事](https://linux.cn/article-8934-1.html)
 
 ### 截图
-- Flameshot
+- Flameshot 截图工具  类似于 snipaste
 - deepin-screenshot
 
 ### 资源管理

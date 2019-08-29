@@ -43,6 +43,8 @@ categories:
 1. `/usr/share/vim/vim80/macros/less.sh` vim 版 less 
     - 具备语法高亮 路径中间是依据vim版本来的, 按实际情况改动
 
+1. 设置默认编辑器 `export EDITOR=/usr/bin/vim`
+
 ************************
 
 `vim配置`
