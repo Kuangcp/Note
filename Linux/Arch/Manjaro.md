@@ -11,8 +11,9 @@ categories:
 **目录 start**
  
 1. [Manjaro](#manjaro)
+    1. [Tips](#tips)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-08-30 18:32_|
 ****************************************
 # Manjaro
 > [Gitlab source code](https://gitlab.manjaro.org/explore/groups)
@@ -24,13 +25,29 @@ categories:
 > [参考博客: Manjaro Deepin安装使用分享](https://zhuanlan.zhihu.com/p/43442012)  
 
 由于是基于arch的, 滚动更新的特性, 所以需要在每次在安装软件前 `pacman -Syu` 更新整个系统
+
+## Tips
+
 - 这次下载解压运行 VSCode 就是这样, 报错为 
    - `error while loading shared libraries: libgconf-2.so.4: cannot open shared object file: No such file or directory`
    - 尝试安装 libgconf libgconf2 ...
    - 其实真正的包是 gconf , 而这个也是尝试过的,  但是还是说找不到package, 更新了下系统,才找到了这个包
 
+************************
+
 > U盘启动盘启动准备安装系统时, 默认用户名和密码都为 manjaro
 
-## 镜像源
-`sudo pacman-mirrors -i -c China -m rank` | [ustc.edu.cn](http://mirrors.ustc.edu.cn/help/manjaro.html)
+************************
+
+> Manjaro 安装 deb 包 
+
+1. 安装工具 yaourt -S debtap  或者  yay debtap
+1. 升级 sudo debtap -u
+1. 转换deb包 sudo debtap  xxxx.deb
+1. 安装转换后的安装包 sudo pacman -U x.tar.xz
+
+************************
+
+> 使用国内镜像源 
+1. `sudo pacman-mirrors -i -c China -m rank` | [ustc.edu.cn](http://mirrors.ustc.edu.cn/help/manjaro.html)
 
