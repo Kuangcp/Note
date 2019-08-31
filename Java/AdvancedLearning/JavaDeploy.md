@@ -12,20 +12,14 @@ categories:
 1. [部署运行](#部署运行)
     1. [打包可执行jar](#打包可执行jar)
         1. [用命令手动打包](#用命令手动打包)
-        1. [Maven](#maven)
-            1. [assembly](#assembly)
-            1. [shade](#shade)
-        1. [Gradle](#gradle)
     1. [打包war](#打包war)
     1. [Docker镜像](#docker镜像)
         1. [手动](#手动)
-        1. [Maven](#maven)
-        1. [Gradle](#gradle)
 1. [配置文件](#配置文件)
 1. [Tips](#tips)
     1. [Java在Linux上的时区问题](#java在linux上的时区问题)
 
-**目录 end**|_2019-07-21 18:08_|
+**目录 end**|_2019-08-31 23:52_|
 ****************************************
 # 部署运行
 > 传统的可执行jar, war 以及Docker镜像
@@ -33,8 +27,9 @@ categories:
 > [参考博客: JAR 文件揭密](https://www.ibm.com/developerworks/cn/java/j-jar/index.html)
 > [参考博客: maven-assembly-plugin 入门指南](https://www.jianshu.com/p/14bcb17b99e0)
 
+> [Maven 打包部署](/Java/Tool/Maven.md#打包部署)  |  [Gradle 打包部署](/Java/Tool/Gradle.md#打包部署)  
+
 ## 打包可执行jar
-### 用命令手动打包
 > [关于MANIFEST.MF文件](https://blog.csdn.net/baileyfu/article/details/1808023)`这个文件很重要, 如果自己手动配置就需要编写该文件`
 _MANIFEST.MF示例_
 ```yml
@@ -51,147 +46,20 @@ _MANIFEST.MF示例_
     - 其中 `mainfest` 文本文件： `Main-Class: com.test.Main` 
     - 冒号后一定要有空格，文件最后一行一定留空行
 
-### Maven
-
-**不依赖Jar的项目**
-> [Demo项目](https://gitee.com/gin9/codes/ri4x8cut3awgh0e271lfb54) 
-
-**依赖Jar的项目**
-#### assembly
-```xml
-    <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>3.0.0</version>
-        <configuration>
-            <archive>
-                <manifest>
-                    <mainClass>com.xxx.Main</mainClass>
-                </manifest>
-            </archive>
-            <descriptorRefs>
-                <descriptorRef>jar-with-dependencies</descriptorRef>
-            </descriptorRefs>
-        </configuration>
-        <executions>
-            <execution>
-                <id>make-assembly</id>
-                <phase>package</phase>
-                <goals>
-                    <goal>single</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
-```
-
-#### shade
-
-```xml
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.1</version>
-        <executions>
-            <execution>
-                <phase>package</phase>
-                <goals>
-                    <goal>shade</goal>
-                </goals>
-                <configuration>
-                    <transformers>
-                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                            <mainClass>com.xxx.Main</mainClass>
-                        </transformer>
-                    </transformers>
-                </configuration>
-            </execution>
-        </executions>
-    </plugin>
-```
-
-************************
-
-> [Maven实战（九）——打包的技巧](http://www.infoq.com/cn/news/2011/06/xxb-maven-9-package)
-> [Maven打包成可执行jar](https://blog.csdn.net/u013177446/article/details/53944424)
-> [参考博客: 使用MAVEN打包可执行的jar包](https://www.jianshu.com/p/afb79650b606)
-
-> war和jar一样使用
-- Springboot项目能够做到, 其实就是 Main 方法, 然后配置了一个Servlet的加载类就可以当war用了
-    - [通过Maven构建打包Spring boot，并将config配置文件提取到jar文件外](http://lib.csdn.net/article/java/65574)
-
-> [一个项目生成若干不同内容的Jar](https://stackoverflow.com/questions/2424015/maven-best-practice-for-generating-multiple-jars-with-different-filtered-classes)
-
-### Gradle
-> [参考博客: Building Java Applications](https://guides.gradle.org/building-java-applications/)
-
-**不依赖Jar的项目**
-1. 依据模板新建项目 `gradle init --type java-application` 
-    ```groovy
-        // 主要是如下配置
-        plugins {
-            // Apply the java plugin to add support for Java
-            id 'java'
-            // Apply the application plugin to add support for building an application
-            id 'application'
-        }
-        // Define the main class for the application
-        mainClassName = 'App'
-    ```
-1. add this config to build.gradle
-    ```groovy
-        jar {
-            manifest {
-                attributes 'Main-Class': 'base.Main'
-            }
-        }
-    ```
-1. run : `gradle clean jar && java -jar file`   
-
-**依赖Jar的项目**
-- Gradle默认是只会打包源码，并不会打包依赖
-
-> 原生方式打包含依赖的Jar,并设置mainClass
-```groovy
-    task uberJar(type: Jar) {
-        archiveClassifier = 'all-dependency'
-
-        from sourceSets.main.output
-
-        dependsOn configurations.runtimeClasspath
-        from {
-            configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
-        }
-
-        manifest {
-            attributes 'Main-Class': 'com.xxx.Main'
-        }
-    }
-```
-
-> 通过插件
-- [shadow插件官网文档](http://imperceptiblethoughts.com/shadow/)
-
 *************************
 
 ## 打包war
 > 最终将生成的war 放到 tomcat 的 webapps 目录下或者 Jetty的 webapps 目录下
 
-********************
-
 ## Docker镜像
 > 以一个基础镜像,然后将war放进去构建成一个镜像, 然后推送到服务器上构建容器进行运行
 
+1. 简要概括: from jdk基础镜像, 将jar 复制进去, 设置好 CMD
+
 > [jib](https://github.com/GoogleContainerTools/jib)
-> - 结合 Maven Gradle 方便的构建 Docker镜像
+> - 结合 Maven Gradle 能更方便的构建 Docker镜像
 
-### 手动
-from jdk基础镜像, 将jar 复制进去, 设置好 CMD
-
-### Maven
-
-### Gradle
-
-**********************************
+************************
 
 # 配置文件
 > 多目标应用环境的发布, 可以使用Maven 多 Profile; Spring 的多profiles; 环境变量; ...
@@ -253,5 +121,3 @@ from jdk基础镜像, 将jar 复制进去, 设置好 CMD
         }
     }
 ```
-
-

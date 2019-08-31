@@ -17,7 +17,7 @@ categories:
     1. [Chocolate](#chocolate)
     1. [Docker安装](#docker安装)
     1. [手动配置](#手动配置)
-    1. [使用Wrapper](#使用wrapper)
+    1. [Wrapper](#wrapper)
     1. [CUI使用](#cui使用)
         1. [命令行选项](#命令行选项)
         1. [守护进程](#守护进程)
@@ -38,12 +38,14 @@ categories:
     1. [setting.gradle](#settinggradle)
 1. [Gradle多模块的构建](#gradle多模块的构建)
     1. [另一种多模块的构建方式](#另一种多模块的构建方式)
-1. [部署](#部署)
-    1. [上传至构建仓库](#上传至构建仓库)
+1. [使用](#使用)
+    1. [安装到本地仓库](#安装到本地仓库)
+    1. [上传至构件仓库](#上传至构件仓库)
+1. [打包部署](#打包部署)
     1. [构建Docker镜像](#构建docker镜像)
         1. [插件方式构建Docker镜像](#插件方式构建docker镜像)
 
-**目录 end**|_2019-07-14 18:13_|
+**目录 end**|_2019-08-31 23:52_|
 ****************************************
 
 # Gradle
@@ -451,8 +453,30 @@ C 项目就能使用 A 中的类了
 - [参考更为规范的多项目构建](https://github.com/someok/gradle-multi-project-example)
 
 ******************************************************
-# 部署
-## 上传至构建仓库
+# 使用
+## 安装到本地仓库
+> 含源码 install 或 deploy
+
+```groovy
+    apply plugin: "maven-publish"
+
+    // publish with source code
+    task sourceJar(type: Jar) {
+        from sourceSets.main.allJava
+    }
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+                artifact sourceJar {
+                    classifier "sources"
+                }
+            }
+        }
+    }
+```
+
+## 上传至构件仓库
 > [Official Doc](https://docs.gradle.org/current/userguide/publishing_overview.html)
 
 > 特别注意使用gpg, 如果按这下面的一堆文档跟着做的话你要保证你的gpg小于等于2.0版本, 不然就卡在这里了
@@ -462,6 +486,58 @@ C 项目就能使用 A 中的类了
 > [官方文档](http://central.sonatype.org/pages/gradle.html)
 > [参考博客](http://blog.csdn.net/h3243212/article/details/72374363#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98)
 > [最简单的方式就是利用码云等平台创建私服 ](https://blog.csdn.net/kcp606/article/details/79675590)
+
+************************
+
+# 打包部署
+> [参考博客: Building Java Applications](https://guides.gradle.org/building-java-applications/)
+
+**不依赖Jar的项目**
+1. 依据模板新建项目 `gradle init --type java-application` 
+    ```groovy
+        // 主要是如下配置
+        plugins {
+            // Apply the java plugin to add support for Java
+            id 'java'
+            // Apply the application plugin to add support for building an application
+            id 'application'
+        }
+        // Define the main class for the application
+        mainClassName = 'App'
+    ```
+1. add this config to build.gradle
+    ```groovy
+        jar {
+            manifest {
+                attributes 'Main-Class': 'base.Main'
+            }
+        }
+    ```
+1. run : `gradle clean jar && java -jar file`   
+
+**依赖Jar的项目**
+- Gradle默认是只会打包源码，并不会打包依赖
+
+> 原生方式打包含依赖的Jar,并设置mainClass
+```groovy
+    task uberJar(type: Jar) {
+        archiveClassifier = 'all-dependency'
+
+        from sourceSets.main.output
+
+        dependsOn configurations.runtimeClasspath
+        from {
+            configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+        }
+
+        manifest {
+            attributes 'Main-Class': 'com.xxx.Main'
+        }
+    }
+```
+
+> 通过插件
+- [shadow插件官网文档](http://imperceptiblethoughts.com/shadow/)
 
 ## 构建Docker镜像
 > [用 Docker、Gradle 来构建、运行、发布一个 Spring Boot 应用](http://www.importnew.com/24671.html)

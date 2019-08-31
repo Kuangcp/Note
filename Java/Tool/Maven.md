@@ -24,7 +24,9 @@ categories:
         1. [使用maven构建多模块的项目](#使用maven构建多模块的项目)
         1. [Profiles](#profiles)
         1. [测试](#测试)
-        1. [部署](#部署)
+        1. [打包部署](#打包部署)
+            1. [assembly](#assembly)
+            1. [shade](#shade)
     1. [maven的依赖](#maven的依赖)
         1. [1 依赖的范围](#1-依赖的范围)
             1. [依赖的传递](#依赖的传递)
@@ -48,7 +50,7 @@ categories:
             1. [Gradle](#gradle)
             1. [Maven](#maven)
 
-**目录 end**|_2019-06-20 21:02_|
+**目录 end**|_2019-08-31 23:52_|
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -274,10 +276,76 @@ mvn install:install-file
 - 跳过测试 `mvn test -DskipTests`
 - 执行指定测试类 `mvn test -Dtest=类名`
 
-### 部署
-> [Java项目部署方式整理](/Java/AdvancedLearning/Deploy.md)
-
+### 打包部署
 > [deploy with source](https://stackoverflow.com/questions/4725668/how-to-deploy-snapshot-with-sources-and-javadoc)
+
+**不依赖Jar的项目**
+> [Demo项目](https://gitee.com/gin9/codes/ri4x8cut3awgh0e271lfb54) 
+
+**依赖Jar的项目**
+#### assembly
+```xml
+    <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+            <archive>
+                <manifest>
+                    <mainClass>com.xxx.Main</mainClass>
+                </manifest>
+            </archive>
+            <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+            </descriptorRefs>
+        </configuration>
+        <executions>
+            <execution>
+                <id>make-assembly</id>
+                <phase>package</phase>
+                <goals>
+                    <goal>single</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+```
+
+#### shade
+
+```xml
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.1</version>
+        <executions>
+            <execution>
+                <phase>package</phase>
+                <goals>
+                    <goal>shade</goal>
+                </goals>
+                <configuration>
+                    <transformers>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                            <mainClass>com.xxx.Main</mainClass>
+                        </transformer>
+                    </transformers>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
+```
+
+************************
+
+> [Maven实战（九）——打包的技巧](http://www.infoq.com/cn/news/2011/06/xxb-maven-9-package)
+> [Maven打包成可执行jar](https://blog.csdn.net/u013177446/article/details/53944424)
+> [参考博客: 使用MAVEN打包可执行的jar包](https://www.jianshu.com/p/afb79650b606)
+
+> war和jar一样使用
+- Springboot项目能够做到, 其实就是 Main 方法, 然后配置了一个Servlet的加载类就可以当war用了
+    - [通过Maven构建打包Spring boot，并将config配置文件提取到jar文件外](http://lib.csdn.net/article/java/65574)
+
+> [一个项目生成若干不同内容的Jar](https://stackoverflow.com/questions/2424015/maven-best-practice-for-generating-multiple-jars-with-different-filtered-classes)
 
 ******************
 ## maven的依赖
