@@ -265,6 +265,10 @@ WebDAV （Web-based Distributed Authoring and Versioning） 一种基于 HTTP 1.
 ## Wireshark
 > [Official Site](https://www.wireshark.org/)  
 
+> 问题  `Error during loading:[string "/usr/wireshark/init.lua"]:44:`  
+- 这是由于Wireshark为了防止以root用户身份执行Lua脚本，避免对系统造成损坏，而显示警告弹窗。通常，用户只需要确认 
+- 如果不想每次都看到 修改 `/usr/wireshark/init.lua` 第一行（非注释，有效代码） 改成 `disable_lua = true`
+
 ## Charles
 > [Offcial Site](https://www.charlesproxy.com/)
 
@@ -272,12 +276,6 @@ WebDAV （Web-based Distributed Authoring and Versioning） 一种基于 HTTP 1.
 > [Official Site](https://mitmproxy.org/) | [Docker Hub](https://hub.docker.com/r/mitmproxy/mitmproxy/)
 
 `docker run --rm -it -p 8080:8080 -p 8081:8081 mitmproxy/mitmproxy mitmweb --web-iface 0.0.0.0`
-************************
-
-> 问题
-- `Error during loading:[string "/usr/wireshark/init.lua"]:44:`
-    - 这是由于Wireshark为了防止以root用户身份执行Lua脚本，避免对系统造成损坏，而显示警告弹窗。通常，用户只需要确认 
-    - 如果不想每次都看到 修改 `/usr/wireshark/init.lua` 第一行（非注释，有效代码） 改成 `disable_lua = true`
 
 ************************
 
