@@ -65,7 +65,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-08-27 21:33_|
+**目录 end**|_2019-09-01 12:00_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -596,14 +596,16 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 ### fetch
 > 访问远程仓库, 拉取本地没有的远程数据
 
-- 拉取远程origin的dev分支并在本地创建dev分支相关联 `git fetch origin dev:dev`
+- 拉取 origin 的 dev 分支 并在本地创建dev分支 `git fetch origin dev:dev`
+    - 但本地的分支并没有 track 远程分支 
 - 删除远程没有但本地有的那些分支 `git fetch -p`
 
-- `git fetch origin dev-test` 下拉指定远程的指定分支, 本地没有就会自动新建远程分支
-- `git fetch --all` 下拉默认远程的所有分支的代码
+- `git fetch origin dev-test` 下拉指定远程的指定分支 至 origin/dev-test 但不会创建本地分支
+- `git fetch --all`
 
 ### pull
 > 不仅仅是下拉代码, 还会进行merge合并, 所以安全起见, 是先fetch然后再进行合并操作  
+
 - `git pull origin dev` 下拉指定远程的指定分支
 - `git pull --all` 下拉默认远程的所有分支代码并自动合并
 

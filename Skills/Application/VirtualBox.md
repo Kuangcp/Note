@@ -17,8 +17,10 @@ categories:
         1. [Deepin](#deepin)
     1. [安装Windows](#安装windows)
         1. [Windows7](#windows7)
+    1. [安装 Android](#安装-android)
+        1. [Android-x86](#android-x86)
 
-**目录 end**|_2019-08-05 19:27_|
+**目录 end**|_2019-09-01 12:00_|
 ****************************************
 # VirtualBox
 
@@ -46,3 +48,17 @@ categories:
 ## 安装Windows
 
 ### Windows7
+
+************************
+
+## 安装 Android
+> [参考博客: 5 Best Android Emulators for Linux](https://beebom.com/android-emulators-linux/)  
+
+### Android-x86
+> [下载](https://www.fosshub.com/Android-x86.html)  
+> [参考博客: ](https://www.cnblogs.com/wynn0123/p/6288344.html)  
+
+> 启动后不进图形化:
+1. `mount –o remount,rw /mnt`
+1. vi /mnt/grub/menu.lst  第一个块 kernel /android-8.1-rc2/kernel quiet 后空格，加上 nomodeset
+1. 修改分辨率也是在这一行 UVESA_MODE 的值
