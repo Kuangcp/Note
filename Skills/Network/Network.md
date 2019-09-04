@@ -254,8 +254,10 @@ WebDAV （Web-based Distributed Authoring and Versioning） 一种基于 HTTP 1.
 
 ************************
 
-# 工具
+# 抓包工具
 > [Alternatives to Charles for Linux](https://alternativeto.net/software/charles/?platform=linux)
+
+作为中间代理人进行抓包，都需要连接WIFI然后设置成对应的代理ip port 
 
 ## Fiddler 
 > [fiddler](https://www.telerik.com/fiddler)  
@@ -275,7 +277,14 @@ WebDAV （Web-based Distributed Authoring and Versioning） 一种基于 HTTP 1.
 ## mitmproxy
 > [Official Site](https://mitmproxy.org/) | [Docker Hub](https://hub.docker.com/r/mitmproxy/mitmproxy/)
 
-`docker run --rm -it -p 8080:8080 -p 8081:8081 mitmproxy/mitmproxy mitmweb --web-iface 0.0.0.0`
+`docker run --rm --name proxy -d -p 8888:8080 -p 8081:8081 mitmproxy/mitmproxy mitmweb --web-iface 0.0.0.0`
+
+过滤和搜索功能强大但是用久了占用内存大，因为抓包的数据都在内存里
+
+## camilla
+> [Offcial Site](https://www.camillaproxy.com/docs/)
+
+功能简单只能查看抓包的数据，数据只缓存浏览器，刷新就会消失，但是占用内存小
 
 ************************
 

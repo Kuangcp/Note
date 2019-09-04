@@ -33,7 +33,7 @@ categories:
 ### ApacheBenchMark
 > 简称 ab
 
-- 安装:`sudo apt install apache2-utils`
+- 安装:`sudo apt install apache2-utils` `sudo pacman -S apache-tools`
 - 简单使用 `ab -c 并发数 -n 总请求数 URL`
     - 查看文档:`man ab` 或 `ab -h`
 - [ab](https://httpd.apache.org/docs/2.4/programs/ab.html) `apt安装这个包即可apache2-utils` 

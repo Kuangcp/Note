@@ -65,7 +65,7 @@ categories:
 **************************************
 ## 用户
 - 添加用户 `sudo adduser username` 
-    - 对比 `useradd`只是新建一个用户不会创建主目录
+    - 注意 `useradd` 命令只新建用户不会创建用户主目录
 - 添加到sudo组 ，使用命令更安全：`sudo gpasswd -a $USER sudo` 但是要注销或者重启才生效
     - 或者：添加用户到用户组：`adduser user group`
     - 或者：使用修改文件的方式：（不推荐） 但是在docker中跑Ubuntu新建用户时很有用，也可以不用动文件，添加进组是有效的，看情况吧

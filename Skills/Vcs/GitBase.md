@@ -213,10 +213,15 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 ************************
 
 ### revert 
+> [Doc](https://git-scm.com/docs/git-revert)
+
 1. 取消所有暂存 `git revert .`
 
 1. 回滚代码至指定提交 `git revert --no-commit 032ac94ad...HEAD`
     - `git commit -m "rolled back"`
+
+1. 撤销合并操作 [revert-a-faulty-merge](https://github.com/git/git/blob/master/Documentation/howto/revert-a-faulty-merge.txt)
+> [参考博客: git 撤销merge操作](https://blog.csdn.net/zzjjiandan/article/details/78260065) `撤销合并以及恢复撤销` 
 
 ************************
 
@@ -398,6 +403,7 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 
 ### stash
 > [Official Doc](https://git-scm.com/docs/git-stash)  
+
 > 将当前修改缓存起来, 减少不必要的残缺提交  stash命令的缓存都是基于某个提交上的修改, 是一个栈的形式 
 
 > [参考博客: Git Stash的用法](http://www.cppblog.com/deercoder/archive/2011/11/13/160007.html)`底下的评论也很有价值, 值得思考`
@@ -597,7 +603,7 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 > 访问远程仓库, 拉取本地没有的远程数据
 
 - 拉取 origin 的 dev 分支 并在本地创建dev分支 `git fetch origin dev:dev`
-    - 但本地的分支并没有 track 远程分支 
+    - 但本地的分支并没有 track 远程分支。 需要执行 `git push -u origin dev`
 - 删除远程没有但本地有的那些分支 `git fetch -p`
 
 - `git fetch origin dev-test` 下拉指定远程的指定分支 至 origin/dev-test 但不会创建本地分支
