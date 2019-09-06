@@ -657,6 +657,11 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 ### reflog
 - 查看仓库的操作日志 `git reflog`
 
+### apply 
+> 应用diff得到的patch文件
+
+`git apply --ignore-space-change --ignore-whitespace  patch.diff`
+
 ************************
 
 # 配置文件
