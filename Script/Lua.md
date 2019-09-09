@@ -9,8 +9,9 @@ categories:
  
 1. [Lua](#lua)
     1. [安装](#安装)
+    1. [luarocks](#luarocks)
 
-**目录 end**|_2019-07-15 18:54_|
+**目录 end**|_2019-09-09 17:55_|
 ****************************************
 # Lua
 
@@ -30,3 +31,6 @@ categories:
 
 `luac`
 > [doc: luac](https://www.lua.org/manual/5.3/luac.html)
+
+## luarocks
+> [Official Site](https://luarocks.org/#quick-start) lua 的包管理

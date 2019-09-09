@@ -24,10 +24,11 @@ categories:
         1. [asciinema](#asciinema)
     1. [图形化工具](#图形化工具)
         1. [剪贴板管理](#剪贴板管理)
+        1. [截图](#截图)
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2019-08-05 19:27_|
+**目录 end**|_2019-09-09 17:55_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -53,7 +54,7 @@ categories:
 ## 效率工具
 > 提高工作和开发效率
 
-> `通知提醒` [Desktop notifications](https://wiki.archlinux.org/index.php/Desktop_notifications)
+> `通知提醒` [Desktop notifications](https://wiki.archlinux.org/index.php/Desktop_notifications) notify-send
 
 ### 目录跳转
 **`Autojump`**

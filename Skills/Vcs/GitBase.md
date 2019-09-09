@@ -53,9 +53,11 @@ categories:
         1. [pull](#pull)
     1. [Submodule](#submodule)
     1. [其他](#其他)
+        1. [gitk](#gitk)
         1. [grep](#grep)
         1. [archive](#archive)
         1. [reflog](#reflog)
+        1. [apply](#apply)
 1. [配置文件](#配置文件)
     1. [.gitignore](#gitignore)
     1. [gitattributes](#gitattributes)
@@ -65,7 +67,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-09-01 12:00_|
+**目录 end**|_2019-09-09 17:55_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -138,7 +140,7 @@ categories:
 
 ### clone
 
-- `git clone branchname URL` 克隆远程仓库的指定分支
+- `-b branch` 克隆远程仓库的指定分支
 - `git clone URL 目录` 克隆下来后更名为指定目录
 - `git clone --depth 1 URL` 只克隆最近一次提交的历史, 能大大减小拉取的大小 (Shallow Clone)
     - 但是如果要用到之前的提交历史就还是要下拉下来的 类似于懒加载

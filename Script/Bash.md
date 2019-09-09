@@ -11,7 +11,7 @@ categories:
  
 1. [Bash](#bash)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-09-09 17:55_|
 ****************************************
 
 # Bash
@@ -20,3 +20,4 @@ categories:
 
 > [参考博客: bash实现“多进程”](http://www.cnitblog.com/sysop/archive/2008/11/03/50974.aspx)
 
+[Bash字符串操作](https://www.cnblogs.com/chengmo/archive/2010/10/02/1841355.html)
