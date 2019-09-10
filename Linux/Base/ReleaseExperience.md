@@ -77,6 +77,8 @@ categories:
 
 > [参考博客: 迁移到 GRUB 2](https://www.ibm.com/developerworks/cn/linux/l-grub2/)
 
+> UEFI  | [Doc](https://wiki.manjaro.org/index.php?title=UEFI_-_Install_Guide)
+
 ## 服务器系统之争
 > [服务器操作系统应该选择 Debian/Ubuntu 还是 CentOS？](https://www.zhihu.com/question/19599986)  
 > [CentOS vs CoreOS – Which OS to choose for your Docker web hosting services](https://bobcares.com/blog/centos-vs-coreos-os-for-docker-web-hosting/2/)
