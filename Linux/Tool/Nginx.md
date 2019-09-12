@@ -126,7 +126,7 @@ nginx 配置文件的语法是自己独有的语法, 比较像 shell, 里面有�
   server {
     client_max_body_size 4G;
     listen  80; 
-    server_name static.kcp;
+    # server_name static.kcp; # 如果需要使用域名 则需要在host配置
     root /home/mini/Sync;
     location / {
         autoindex on; # 显示索引
@@ -135,13 +135,11 @@ nginx 配置文件的语法是自己独有的语法, 比较像 shell, 里面有�
     }
   }
 ```
-再在 `/etc/hosts`文件中配置下域名即可访问
 
-> 若出现403错误, 将 /etc/nginx/nginx.conf 中第一行的 `user nginx;` 改成 root
+> 若出现403错误, 将 /etc/nginx/nginx.conf 中第一行的 `user nginx;` 改成可访问静态文件目录的用户即可
 
-`配置某文件浏览器打开` 也就是 text/plain; 类型
-
-> 例: code 目录下所有文件为 text/plain; 类型
+- `配置某文本文件浏览器直接打开` 即 text/plain; 类型
+> 例: 浏览器直接查看 code 目录下所有源代码
 ```conf
     location /code/ {
         # All files in it
