@@ -28,26 +28,28 @@ categories:
         1. [scp](#scp)
         1. [rsync](#rsync)
         1. [wget](#wget)
-    1. [常用服务](#常用服务)
-        1. [邮件服务器postfix和devecot](#邮件服务器postfix和devecot)
-        1. [FTP](#ftp)
-            1. [基础](#基础)
-            1. [使用](#使用)
-            1. [手机和电脑之间传输管理文件](#手机和电脑之间传输管理文件)
-                1. [手机](#手机)
-                1. [电脑](#电脑)
-            1. [配置FTP服务器](#配置ftp服务器)
-        1. [SSH](#ssh)
-        1. [telnet](#telnet)
-        1. [Proxy](#proxy)
-        1. [VPN](#vpn)
-            1. [shadowsocks](#shadowsocks)
-            1. [proxychains](#proxychains)
-            1. [OpenVPN](#openvpn)
-        1. [防火墙](#防火墙)
-            1. [iptables](#iptables)
+1. [常用服务](#常用服务)
+    1. [邮件服务器postfix和devecot](#邮件服务器postfix和devecot)
+    1. [FTP](#ftp)
+        1. [基础](#基础)
+        1. [使用](#使用)
+        1. [手机和电脑之间传输管理文件](#手机和电脑之间传输管理文件)
+            1. [手机](#手机)
+            1. [电脑](#电脑)
+        1. [配置FTP服务器](#配置ftp服务器)
+    1. [SSH](#ssh)
+    1. [telnet](#telnet)
+    1. [Proxy](#proxy)
+    1. [VPN](#vpn)
+        1. [基础](#基础)
+            1. [tun](#tun)
+        1. [shadowsocks](#shadowsocks)
+        1. [proxychains](#proxychains)
+        1. [OpenVPN](#openvpn)
+    1. [防火墙](#防火墙)
+        1. [iptables](#iptables)
 
-**目录 end**|_2019-08-05 19:27_|
+**目录 end**|_2019-09-12 18:26_|
 ****************************************
 # Linux网络管理
 ## Tips
@@ -382,28 +384,26 @@ _ss_
 - 获取API返回数据 `wget -q url -O -`
 
 ****************************
-## 常用服务
+# 常用服务
 
-### 邮件服务器postfix和devecot
+## 邮件服务器postfix和devecot
 
-### FTP
+## FTP
 
-#### 基础
-
-#### 使用
+### 使用
 - 登录`ftp host port`
 
-#### 手机和电脑之间传输管理文件
+### 手机和电脑之间传输管理文件
 > 前提是两个设备处于同一个局域网, 也就是说连同一个WIFI, 或者电脑开热点给手机连?
 
-##### 手机
+#### 手机
 > 手机安装 FeelFTP , 然后设置编码为utf-8, 开启服务器  
 > 或者安装ES文件浏览器, 也带有FTP服务器, 但是不稳定, 切出去就停了, 而且不能选择上SDK卡
 
-##### 电脑
+#### 电脑
 > 安装FileZila 配置正确的ip 端口 用户名 口令 完成连接
 
-#### 配置FTP服务器
+### 配置FTP服务器
 - `sudo apt-get install vsftpd -y`
 - `sudo systemctl start vsftpd.service`
 - 创建用户 `sudo useradd -d /home/uftp -s /bin/bash uftp`
@@ -451,10 +451,10 @@ _ss_
 ```
 
 ******************************
-### SSH
+## SSH
 > [详细](/Linux/Base/SSH.md)
 
-### telnet
+## telnet
 > 远程控制服务器的一种协议和SSH类似
 
 > [linux telnet命令参数](http://www.linuxso.com/command/telnet.html)  
@@ -463,13 +463,16 @@ _ss_
 - 测试连通性 `telnet ip port` 如果端口开放则提示 Connected, 否则会提示 refused 
 
 ************************
-### Proxy
+## Proxy
 > 代理
 
 - tinyproxy [Github](https://github.com/tinyproxy/tinyproxy) | [Simple Guide](https://www.rosehosting.com/blog/install-and-configure-tinyproxy/)
 
-### VPN
-#### shadowsocks
+## VPN
+### tun/tap
+> [参考博客: linux下TUN/TAP虚拟网卡的使用](https://blog.csdn.net/bytxl/article/details/26586109)  
+
+### shadowsocks
 _服务端_
 - 安装服务端`sudo pip install shadowsocks`
 - 启动服务`sudo ssserver -p 443 -k sd -m aes-256-cfb`     
@@ -493,7 +496,7 @@ _客户端_
 - 设置代理是1080端口即可
 
 
-#### proxychains
+### proxychains
 - 安装
     - [编译安装](https://github.com/rofl0r/proxychains-ng)
     - 包管理器  
@@ -512,11 +515,11 @@ _客户端_
     socks5  127.0.0.1  1080
     ```
 
-#### OpenVPN
+### OpenVPN
 > [arch wiki](https://wiki.archlinux.org/index.php/OpenVPN)
 
 1. 服务端提供 ca 文件
-1. 配置文件 
+1. 配置文件 `connect.ovpn`
     ```
         client
         dev tun
@@ -539,9 +542,15 @@ _客户端_
         sudo openvpn --daemon --cd /etc/openvpn/client --config connect.ovpn --auth-user-pass /etc/openvpn/client/passwd --log-append /path/to/log.log
     ```
 
-### 防火墙
+> ERROR: Cannot open TUN/TAP dev /dev/net/tun: No such device
+1. modinfo tun 查看内核模块是否存在
+1. 尝试 sudo pacman -S networkmanager-vpnc 并重启
 
-#### iptables
+************************
+
+## 防火墙
+
+### iptables
 > [参考博客: linux下IPTABLES配置详解](http://www.cnblogs.com/JemBai/archive/2009/03/19/1416364.html)
 
 > 其主要配置文件为: `/etc/sysconfig/iptables`
