@@ -604,15 +604,16 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 ### fetch
 > 访问远程仓库, 拉取本地没有的远程数据
 
-- 拉取 origin 的 dev 分支 并在本地创建dev分支 `git fetch origin dev:dev`
-    - 但本地的分支并没有 track 远程分支。 需要执行 `git push -u origin dev`
+- 拉取本地没有的分支（两种方式）
+    1. **推荐** 拉取 origin 信息 `git fetch --all` 由远程分支创建新分支并设定跟踪 `git checkout -b dev origin/dev`
+    1. 拉取 origin 的 dev 分支 并在本地创建 dev 分支 `git fetch origin dev:dev`
+        - 但此时本地的分支并没有 track 远程分支，需要执行 `git push -u origin dev` 进行设置
 - 删除远程没有但本地有的那些分支 `git fetch -p`
 
 - `git fetch origin dev-test` 下拉指定远程的指定分支 至 origin/dev-test 但不会创建本地分支
-- `git fetch --all`
 
 ### pull
-> 不仅仅是下拉代码, 还会进行merge合并, 所以安全起见, 是先fetch然后再进行合并操作  
+> 不仅仅是 fetch 代码, 还会进行 merge 操作, 所以安全起见, 是先 fetch 然后再手动 merge
 
 - `git pull origin dev` 下拉指定远程的指定分支
 - `git pull --all` 下拉默认远程的所有分支代码并自动合并
