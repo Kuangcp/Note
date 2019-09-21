@@ -31,7 +31,6 @@ categories:
 1. [常用服务](#常用服务)
     1. [邮件服务器postfix和devecot](#邮件服务器postfix和devecot)
     1. [FTP](#ftp)
-        1. [基础](#基础)
         1. [使用](#使用)
         1. [手机和电脑之间传输管理文件](#手机和电脑之间传输管理文件)
             1. [手机](#手机)
@@ -41,15 +40,14 @@ categories:
     1. [telnet](#telnet)
     1. [Proxy](#proxy)
     1. [VPN](#vpn)
-        1. [基础](#基础)
-            1. [tun](#tun)
+        1. [tun/tap](#tuntap)
         1. [shadowsocks](#shadowsocks)
         1. [proxychains](#proxychains)
         1. [OpenVPN](#openvpn)
     1. [防火墙](#防火墙)
         1. [iptables](#iptables)
 
-**目录 end**|_2019-09-12 18:26_|
+**目录 end**|_2019-09-21 16:15_|
 ****************************************
 # Linux网络管理
 ## Tips
@@ -257,7 +255,7 @@ _ss_
     - 扫描22-33端口，
     - -z 一旦连接立马断开，不发送接收任何数据
     - -v 输出详细信息
-    - -n 直接使用IP地址，不适用域名服务器来查询其域名
+    - -n 直接使用IP地址，不使用域名服务器来查询其域名
     - -w 设置连接超时时间 s
     - -u 使用UDP 默认缺省则是TCP
 - 连接开放的端口 `nc -v host port`

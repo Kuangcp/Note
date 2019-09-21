@@ -65,7 +65,7 @@ categories:
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-**目录 end**|_2019-07-10 20:47_|
+**目录 end**|_2019-09-21 16:15_|
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -79,7 +79,6 @@ categories:
 > [Anaconda](https://docs.anaconda.com/anaconda/install/linux)`一站式集成环境`
 
 - [python-gtk3](https://python-gtk-3-tutorial.readthedocs.io/en/latest/introduction.html) `python-gtk3的开发`
-- [httpie](http://python.ctolib.com/httpie.html) `好用的类curl工具 文档` 
 - [一译](http://python.usyiyi.cn/)`翻译了大量Python文档`
 
 ## 简介
@@ -869,6 +868,7 @@ _time_
 1. 格式化当前时间 `time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())`
 
 ### 三方库
+- `qrcode` 终端生成二维码
 - `redis` 和Redis命令完美融合
 - `httpie` HTTP方便的交互 [doc](https://httpie.org/doc)
     - POST时 特别注意:`参数==值`
