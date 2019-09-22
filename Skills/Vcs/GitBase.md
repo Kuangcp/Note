@@ -67,7 +67,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-09-09 17:55_|
+**目录 end**|_2019-09-22 22:58_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -125,7 +125,7 @@ categories:
     email = kuangcp@aliyun.com
     name = kuangcp
 [core]
-    quotepath = false
+    quotepath = false # 配置路径显示为中文
     autocrlf = false
     safecrlf = false
 [credential]
