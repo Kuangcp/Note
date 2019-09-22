@@ -246,9 +246,6 @@ An informative annotation type used to indicate that an interface type declarati
 
 > [参考博客: 你真的了解lambda吗？一文让你明白lambda用法与源码分析 ](https://mp.weixin.qq.com/s?__biz=MzAxODcyNjEzNQ==&mid=2247485682&idx=1&sn=f3fb281b49a029b607f9377853a644bf&chksm=9bd0a56aaca72c7c8beebbea8f9471446cb444bd8e1e7d21016e906d1227e8f87770e2f8f31e&mpshare=1&scene=1&srcid=0810geQnLXB2oMjfoAOEJ39L#rd)
 > [参考博客: 级联 lambda 表达式的函数重用与代码简短问题](http://www.techug.com/post/java-lambda.html)
-
-- [ ] 学习常见排序 Comparator int float double time string...
-
 > [参考博客: Java8：Lambda表达式增强版Comparator和排序](http://www.importnew.com/15259.html)
 
 ### 行为参数化
@@ -306,6 +303,14 @@ An informative annotation type used to indicate that an interface type declarati
     // 处理两行
     String result = processFile((BufferedReader br) -> br.readLine() + br.readLine());
 ```
+
+#### Lambda 实现原理
+
+1. 初步分析 编译后生成匿名内部类替换lambda表达式
+
+> [参考: Java Lambda表达式 实现原理分析](https://blog.csdn.net/jiankunking/article/details/79825928)
+
+************************
 
 ### 原始类型特化 
 > Primitive Specializations
