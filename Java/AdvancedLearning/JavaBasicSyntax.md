@@ -71,7 +71,7 @@ categories:
     1. [try](#try)
     1. [transient](#transient)
 
-**目录 end**|_2019-07-21 18:08_|
+**目录 end**|_2019-09-28 02:10_|
 ****************************************
 # 基础语法
 
@@ -495,6 +495,11 @@ java.lnag.Object中对hashCode的约定：
 Warning:(18, 1) java: Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
 
 ## VO
+> view object 前端展示对象
+1. 前后端分离项目中VO代表给前端展示接口使用
+
+************************
+
 > (value object) 值对象
 1. 使用new关键字创建的, 由GC回收的, 
 2. VO是值对象, 业务对象, 存活在业务层的, 是业务逻辑使用的
@@ -518,6 +523,7 @@ Warning:(18, 1) java: Generating equals/hashCode implementation but without a ca
 ## TO
 > (transfer Object) 数据传输对象
 - 在应用程序不同tie(关系)之间传输的对象
+- 例如 RPC 接口中的对象 UserTO
 
 ## BO
 > (business object) 业务对象

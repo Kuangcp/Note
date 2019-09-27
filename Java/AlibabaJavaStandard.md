@@ -36,7 +36,7 @@ categories:
     1. [服务器规约](#服务器规约)
 1. [专有名词](#专有名词)
 
-**目录 end**|_2019-04-22 00:14_|
+**目录 end**|_2019-09-28 02:10_|
 ****************************************
 # 阿里巴巴Java开发手册
 > [Github: p3c](https://github.com/alibaba/p3c)`含该手册PDF GitBook等版本` | [《阿里巴巴Java开发手册》详尽](https://yq.aliyun.com/articles/656256?spm=a2c4e.11155472.0.0.7ba85338l1Ef0N)
@@ -106,7 +106,7 @@ categories:
        - 数据传输对象 ***xxxDTO*** xxx是业务领域相关的名称
        - 展示对象 ***xxxVO*** xxx是网页名称 使用了模板框架
        - POJO是 ***DO DTO BO VO*** 统称, 禁止命名为 xxxPOJO
-       - 有关这些缩写的详细说明  [详细定义和解释](/Java/AdvancedLearning/GrammarAndType.md#object)
+       - 有关这些缩写的详细说明  [详细定义和解释](/Java/AdvancedLearning/JavaBasicSyntax.md#object)
 
 
 1. **`Tomcat组织推荐的代码风格`**
