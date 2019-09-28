@@ -60,6 +60,8 @@ categories:
     1. [JavaDoc](#javadoc)
 1. [抽象类](#抽象类)
 1. [继承和接口](#继承和接口)
+    1. [常见接口](#常见接口)
+        1. [Serializable](#serializable)
 1. [Object](#object)
     1. [VO](#vo)
     1. [PO](#po)
@@ -71,7 +73,7 @@ categories:
     1. [try](#try)
     1. [transient](#transient)
 
-**目录 end**|_2019-09-28 02:10_|
+**目录 end**|_2019-09-29 00:27_|
 ****************************************
 # 基础语法
 
@@ -422,7 +424,7 @@ true 和 false 也是缓存了的
 方法的签名: 
 - [ ] 方法签名的详解
 
->1. 关于方法上参数使用 final 修饰的作用: 明确该方法内部不能对参数进行修改, 避免bug
+>1. 关于方法上参数使用 final 修饰的作用: 明确该方法内部不能对参数进行修改
 
 ### 方法的传参方式
 > [Java 有值类型吗？](http://www.yinwang.org/blog-cn/2016/06/08/java-value-type)
@@ -484,6 +486,15 @@ java.lnag.Object中对hashCode的约定：
 
 # 继承和接口
 > [Lesson: Interfaces and Inheritance](https://docs.oracle.com/javase/tutorial/java/IandI/index.html)
+
+## 常见接口
+
+### Serializable
+> 序列化接口
+
+1. serialVersionUID
+    - 该属性可显式声明，若没有则编译器会 根据类名、接口名、成员方法及属性等来生成一个64位的哈希字段 
+    - 该属性的作用：如果显式声明且值保持一致，那么类的变动(增加或删除属性)能被兼容(改动的属性忽略或没有值))，如果没有设置则会导致反序列化异常
 
 **************
 # Object 
