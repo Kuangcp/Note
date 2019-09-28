@@ -67,7 +67,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-09-22 22:58_|
+**目录 end**|_2019-09-29 02:24_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -110,10 +110,10 @@ categories:
 > 使用 `git help 加上命令`, 就能看到命令对应的文档
 
 ### config
-- 三种配置方式 作用范围越大, 优先级越低
+- 三种配置方式 作用范围越大, 生效优先级越低
     - `--system` 作用所有用户, 对应文件 `/etc/gitconfig`
     - `--global` 作用当前用户, 对应文件 `~/.gitconfig` 
-    - `--local`(缺省) 作用当前项目, 对应文件 `./.git/gitconfig`
+    - (缺省) `--local`作用当前项目, 对应文件 `./.git/gitconfig`
 
 - `git config user.email ***`  和   `git config user.name ***` 这两个是必须的，
 - `git config http.postBuffer 524288000` 设置缓存区大小为 500m
@@ -723,10 +723,11 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 ************************
 
 **`git和SVN一起用`**
+
 可以通过 git-svn 使用Git的命令与SVN服务器进行交互
 > [Official doc: git-svn](https://git-scm.com/docs/git-svn)
 
-> 但是个人目前在用的方式是直接 git 和 svn 一起用  
+> 但是个人目前在用的方式是直接 git 和 svn 一起用, 因为项目只能用SVN的原因  
 > [参考博客: 为啥要同时用 SVN 和 Git 管理项目](https://www.cnblogs.com/dasusu/p/7774469.html)
 
 1. 避免LRLF LF 问题
@@ -739,8 +740,10 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 - 至此, 就能和团队保持一致的使用SVN, 然后自己多任务开发时, 又能使用git优秀的分支模型
 - 当然该场景是有限的, 也就是说只有你一个人在用git 而且团队中使用SVN时没有使用SVN的分支模型, 这个是没有问题的
     - 如果SVN也用了分支, 那么就要命了, 这么多分支和状态, 要靠大脑记住实时的状态就....
+- 还有一个点就是分工比较明确，开发中没有互相依赖，不然就需要在Git SVN都需要频繁解决冲突
+- 所以这只是权宜之计
+
 *********************
 
 # repos的使用
 > 综合各个VCS的管理方式
-
