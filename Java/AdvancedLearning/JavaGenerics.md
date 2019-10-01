@@ -226,17 +226,24 @@ categories:
 ## 通配符类型
 > [Guidelines for Wildcard Use](https://docs.oracle.com/javase/tutorial/java/generics/wildcardGuidelines.html)
 
-- `<T> 可以看作 <T extends Object>`
-- `<?> 可以看作 <? extends Object>`
+- `<T> 可以看作 <T extends Object>`  `<?> 可以看作 <? extends Object>`
 
-- `? extends` : 数据的提供方 执行 get 操作
-- `? super` : 数据的存储方 执行 set 操作
+- 协变(covariant)和逆变 (contravariant)
+    - 协变 是指能够使用与原始指定的派生类型相比，派生程度更大的类型。
+        - 例如 String -> Object
+    - 逆变 是指能够使用派生程度更小的类型。
+        - 例如 Object -> String 
 
-- 限定通配符总是包括自己
-- 如果你既想存，又想取，那就别用通配符
-- 不能同时声明泛型通配符上界和下界
+- Producer extends, Consumer super.
+    - `? extends` : 数据的提供方 执行 get 操作
+    - `? super` : 数据的存储方 执行 set 操作
 
-> `注意` 通配符的泛型约束一般是出现在基础库的API上(接口上, 方法上) 普通逻辑代码是不会用通配的
+- Tips
+    - 限定通配符总是包括自己
+    - 如果你既想存，又想取，那就别用通配符
+    - 不能同时声明泛型通配符上界和下界
+
+> `注意` 通配符的泛型约束一般是出现在基础库的API上(接口上, 方法上) 常见应用逻辑代码用的较少
 
 ### 子类 类型限定的通配符 extends
 > 通配符上限  顾名思义,就是限定为该类及其子类
