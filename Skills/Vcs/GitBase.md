@@ -58,6 +58,7 @@ categories:
         1. [archive](#archive)
         1. [reflog](#reflog)
         1. [apply](#apply)
+        1. [rev-parse](#rev-parse)
 1. [配置文件](#配置文件)
     1. [.gitignore](#gitignore)
     1. [gitattributes](#gitattributes)
@@ -67,7 +68,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-09-29 02:24_|
+**目录 end**|_2019-10-01 23:13_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -230,20 +231,30 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 ### show
 > 展示提交信息
 
-- 显示当前提交的差异 `git show HEAD` HEAD替换成commit的sha值就是显示指定提交的修改
-- `git show -h` 查看更多
+- 显示当前提交的差异 `git show HEAD` 
+    - HEAD替换成具体的 commit id就是显示指定提交的修改内容
+    - 注意这里有个 `^` 语法 HEAD^ 就是HEAD的前一次，两个就是前两次，commit id 同理 
+    - 还有一个 `~` 语法 例如 ~2 ~3 就等价于 ^^ ^^^
+        - 特别注意 `git show HEAD~2^2` 表示取第前两次提交的第二个父提交， 如果这是一个merge节点的话，否则会报错
+        - `第一父提交`是合并时所在分支，`第二父提交`是所合并的分支
+    - 可借助 git reflog 命令的输出找到对应的位置 例如 `HEAD{10}`
 
 ************************
 
 ### log
 > 更多说明 查看 `git help log` | [Official Doc](https://www.git-scm.com/docs/git-log)
 
-- `-p` 显示每次提交的内容差异 `git log -p -2` 仅显示最近两次提交的差异
-- 查看每一次提交的修改内容 `--stat` 
+- `-g` 包含 reflog 信息
+- `-p` 显示所有提交的修改内容 `git log -p -2` 则仅显示最近两次提交的差异
+- `--stat` 查看每一次提交的修改文件修改概述  也就是在pull时能看到的那些++--的内容
+
 - `---pretty=[online/short/full/fuller/format]` 使用预定义格式显示
-    - format 是可以自定义格式和占位符
+    - format 可自定义格式和占位符 详情查看 -h
+
 - 图形的样子显示分支图 `--graph` 
 - 显示每个分支最近的提交 `--simplify-by-decoration`
+- 输出简短且唯一的 SHA-1 值 `--abbrev-commit` 
+    - 注意 SHA-1 20 byte长度 出现冲突的概率是 (n*(n-1)/2) / 2^160
 
 - `git log --author='A' `输出所有A开头的作者日志
 - `git log 文件名 文件名` 输出更改指定文件的所有commit 要文件在当前路径才可
@@ -265,10 +276,14 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 #### 对比两个分支的差异
 > [参考博客](http://blog.csdn.net/u011240877/article/details/52586664)
 
-- 查看 dev 有，而 master 中没有的 `git log dev ^master` 反之 `git log master ^dev`
-- 查看 dev 中比 master 中多提交了哪些内容：`git log master..dev`
-- 不知道谁提交的多谁提交的少，单纯想知道有什么不一样：`git log dev...master`
-- 在上述情况下，再显示出每个提交是在哪个分支上:`git log --left-right dev...master`
+- 查看在dev分支，而不在master分支上的 commit. 
+    - `git log master..dev`
+    - 或者 `git log dev ^master` (^表示非，等价于 --not) 
+        - 但是 ^ 语法支持多个分支 例如 `git log dev ^master ^fea/feature1` 意为：在dev分支但是不在后两个分支中的commit
+    - 还可对比远程分支和本地分支的差别 `git log origin/master..master`
+
+- 对比分支的差别 `git log dev...master` 也就是那些非两个分支共有的commit
+    - 显示出每个提交是在哪个分支上 `git log --left-right dev...master`
     - 注意 commit 后面的箭头，根据我们在 –left-right dev…master 的顺序，左箭头 < 表示是 dev 的，右箭头 > 表示是 master的。
 
 #### 查看文件的修改记录
@@ -406,25 +421,36 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 ### stash
 > [Official Doc](https://git-scm.com/docs/git-stash)  
 
-> 将当前修改缓存起来, 减少不必要的残缺提交  stash命令的缓存都是基于某个提交上的修改, 是一个栈的形式 
+> 将当前修改缓存起来, 避免不必要的残缺提交 stash命令的缓存都是基于某个提交上的修改, 是一个栈的用法
 
 > [参考博客: Git Stash的用法](http://www.cppblog.com/deercoder/archive/2011/11/13/160007.html)`底下的评论也很有价值, 值得思考`
 > [参考博客: git-stash用法小结](https://www.cnblogs.com/tocy/p/git-stash-reference.html)
 
 > git stash --help 查看完整的使用说明
 
+> 基本动作
+
+- push
+    - save命令的进化版，该动作是缺省动作
 - list
     - 输出大致为: `stash@{num}: On branchName : comment`
 - save
-    - save comment 
+    - save comment 已被废弃
 - pop 
-    - 将最近的stash pop出来, 应用到工作目录中, 原有的 stash 就丢弃了
+    - 将最近的stash 应用到当前仓库上, 原有的 stash 就丢弃了，如果pop缓存时发生了冲突 则不会丢弃对应的缓存
 - apply 
-    - 将指定的stash 应用到工作目录, 不丢弃原有的stash
+    - 将指定的stash 应用到仓库上, 不丢弃原有的stash
 - drop
     - 丢弃指定的stash, 如果想丢弃当前项目所有更改就可以将所有更改 save stash 然后 drop
 - clear 
     - 清除所有 stash 
+- brnach 
+    - 从创建缓存处创建新分支出来并pop 默认栈顶缓存，相比于pop和apply，这种方式更贴近缓存被创建时的场景
+
+> push动作 实用参数
+1. `--keep-index` `-k` stash 将不缓存 已经被add进index区的内容
+1. `--include-untracked` 或 `-u` stash 将缓存未被track的文件
+1. `--patch` 交互式选择哪些内容需stash缓存哪些进入index区
 
 1. 如果需要恢复 `stash@{0}: On feature-test: test` 
     - 就在 feature-test 分支上建立新分支, 然后 apply stash@{0}
@@ -658,12 +684,19 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 1. 将某版本打包成压缩包 `git archive -v --format=zip v0.1 > v0.1.zip`
 
 ### reflog
-- 查看仓库的操作日志 `git reflog`
+- 查看仓库的本地操作日志 仅记录HEAD以及所有分支引用所指向的历史 
+
+1. `git reflog` 显示commit操作详情，仅本地保存
 
 ### apply 
 > 应用diff得到的patch文件
 
 `git apply --ignore-space-change --ignore-whitespace  patch.diff`
+
+### rev-parse 
+> 该工具是Git内部命令 往往被其他子命令使用
+
+1. 查看分支指向具体的commit id `git rev-parse fea/new`
 
 ************************
 
