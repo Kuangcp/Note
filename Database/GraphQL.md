@@ -12,8 +12,9 @@ categories:
  
 1. [GraphQL](#graphql)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-10-07 20:09_|
 ****************************************
 # GraphQL
-> [Official Site](https://graphql.org)
+> Graph Query Language 简称 GQL 面向图结构的查询语言
 
+> [相关社区: GQL Standard](https://www.gqlstandards.org/)

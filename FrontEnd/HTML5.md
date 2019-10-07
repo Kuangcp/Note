@@ -29,11 +29,12 @@ categories:
         1. [cookie](#cookie)
         1. [LocalStorage和SessionStorage](#localstorage和sessionstorage)
             1. [清除](#清除)
+1. [Notification](#notification)
 1. [XML](#xml)
     1. [XML文件头含义](#xml文件头含义)
     1. [XML的元素](#xml的元素)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-10-07 20:09_|
 ****************************************
 # HTML5
 ## 参考资料
@@ -514,6 +515,12 @@ width="1000" height="202" >
                                  name:给当前小窗口起个名字，这个name就是给<a>标记target属性来用的。
                           提示做网站后台时，返回首页的相关代码：<a href="" target="_top">
 ```
+
+# Notification 
+> [MDN](https://developer.mozilla.org/en-US/docs/Web/API/notification)
+
+************************
+
 # XML
 ## XML文件头含义
 ```
