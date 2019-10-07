@@ -68,7 +68,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-10-01 23:13_|
+**目录 end**|_2019-10-07 21:26_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -326,6 +326,9 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 - 在某tag上新建一个分支 `git checkout -b branchname tagname`
 
 - 删除本地标签 `git tag -d tagname` 
+- 删除远程的tag 
+    - `git push origin -d tag <tagname>` 
+    - 如果本地已经删除了标签, 就可以 `git push origin :refs/tags/<tagname>`
 
 *******************
 
@@ -616,10 +619,6 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 - 第一次将本地分支与远程建立关系
     - `git push -u origin master ` | `git push --set-uptream master` | `git push -all` 
     - 这几个都是可以的,最后那个简单, 还能将别的分支一起推上去
-
-- 删除远程的tag 
-    - `git push origin -d tag <tagname>` 
-    - 如果本地已经删除了标签, 就可以 `git push origin :refs/tags/<tagname>`
 
 - 提交指定tag `git push origin tagname`
     - 提交所有tag `git push --tags`
