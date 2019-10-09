@@ -139,16 +139,25 @@ categories:
 
 > 可用于上面的diff 或 merge 的[工具 详细](/Linux/Base/LinuxFile.md#比较文件内容)
 
+************************
+
 ### clone
 
 - `-b branch` 克隆远程仓库的指定分支
 - `git clone URL 目录` 克隆下来后更名为指定目录
-- `git clone --depth 1 URL` 只克隆最近一次提交的历史, 能大大减小拉取的大小 (Shallow Clone)
-    - 但是如果要用到之前的提交历史就还是要下拉下来的 类似于懒加载
-    - 且在新建一个远程仓库后, 推送时会报错:`shallow update not allowed` 因为本地库是残缺的
-    - 所以需要新建一个目录, 把原仓库全拉下来, 再添加远程进行推送, 然后删除该目录, 残缺版的仓库也能正常向新远程推送提交了
+- 克隆 指定标签 `git clone -b <tag_name> --single-branch <repo_url> [<dest_dir>] ` (从Git 1.7.10开始)
 
-克隆 指定标签 `git clone -b <tag_name> --single-branch <repo_url> [<dest_dir>] ` (从Git 1.7.10开始)
+
+> Shallow Clone
+- `git clone --depth 1 URL` 只克隆最近一次提交的历史, 能大大减小拉取的大小 
+    - 但是如果要新建一个远程仓库, 并推送过去，会报错:`shallow update not allowed` 因为本地库是残缺的
+        - 此时需要 `git remote set-branches origin '*'` 然后 `git pull` 就会拉取所有信息成为完整的仓库
+    - 由于库是残缺的，拉取远程分支到本地不能直接用 `git checkout -b branch origin/branch` 的方式，
+        - 只能用 `git fetch origin branch:branch`
+        - 并且跟踪远程也需手动执行 `git push -u origin branch`
+        - 并且 git log 的输出不会显示 origin/branch 的指针信息，需要在对应分支上手动执行 `git remote set-branches origin branch` 再 `git fetch`
+
+************************
 
 ### add 
 
@@ -156,11 +165,15 @@ categories:
 - 添加当前文件夹以及子文件夹 `git add .`
 - 交互式添加每个文件的每部分修改 `git add -p`
 
+************************
+
 ### rm
 
 - 删除文件 `git rm file1 file2 ...`
 - 仅从git仓库中删除文件, 但是文件系统中保留文件 `git rm --cached 文件`
     - 如果仅仅是想从仓库中剔除, 那么执行完命令还要在 `.gitignore` 文件中注明, 不然又add回去了
+
+************************
 
 ### status
 > git status --help 查看详细介绍
@@ -170,6 +183,8 @@ categories:
     - A 新添加到暂存区
     - M 修改过的文件
     - MM 修改了但是没有暂存
+
+************************
 
 ### commit
 > [Official Doc](https://git-scm.com/docs/git-commit)
@@ -291,6 +306,7 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 1. git show sha-1的值 就能看到该次提交的所有修改
 
 **************************
+
 ### blame
 > 查看文件修改记录 追责
 
@@ -391,6 +407,7 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 > 将工作状态暂存, 且不会产生垃圾提交
 
 **************************
+
 ### gc
 
 `git gc -h`:
@@ -399,7 +416,11 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 - `--auto` 启用自动垃圾回收模式
 - `--force` 强制执行 gc 即使另外一个 gc 正在执行
 
+
+************************
+
 ### clean
+
 > Remove untracked files from the working tree `git clean --help`
 
 ************************
