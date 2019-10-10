@@ -23,19 +23,18 @@ categories:
 
 ## 相关博客
 > [浅谈k8s+docker 资源监控](https://segmentfault.com/a/1190000003898140) | [基于Kubernetes构建Docker集群管理详解](http://www.csdn.net/article/2014-12-24/2823292-Docker-Kubernetes)  
-[Kubernetes 学习笔记 ](http://wdxtub.com/2017/06/05/k8s-note/)
+> [Kubernetes 学习笔记 ](http://wdxtub.com/2017/06/05/k8s-note/)
+> [Kubernetes中文社区](https://www.kubernetes.org.cn/doc-45)  
 
-> [参考博客: Kubernetes会不会被自身的复杂性压垮？](http://www.infoq.com/cn/articles/will-kubernetes-collapse-under-the-weight-of-its-complexity)
+> [参考博客: Kubernetes会不会被自身的复杂性压垮？](http://www.infoq.com/cn/articles/will-kubernetes-collapse-under-the-weight-of-its-complexity)  
 > [参考博客: 一文带你看透kubernetes 容器编排系统](https://my.oschina.net/qcloudcommunity/blog/2998211)
 
 ## 安装
 > [official doc](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-> [参考博客: kubeadm 搭建 kubernetes 集群](https://mritd.me/2016/10/29/set-up-kubernetes-cluster-by-kubeadm/)
-
-> [参考博客: Kubernetes国内镜像、下载安装包和拉取gcr.io镜像](https://blog.csdn.net/nklinsirui/article/details/80581286)
-
-> [参考博客: 国内服务器安装kubernetes一路坑，求大神指点 ](http://dockone.io/question/1225#!answer_form)
+> [参考博客: kubeadm 搭建 kubernetes 集群](https://mritd.me/2016/10/29/set-up-kubernetes-cluster-by-kubeadm/)  
+> [参考博客: Kubernetes国内镜像、下载安装包和拉取gcr.io镜像](https://blog.csdn.net/nklinsirui/article/details/80581286)  
+> [参考博客: 国内服务器安装kubernetes一路坑，求大神指点 ](http://dockone.io/question/1225#!answer_form)  
 
 - **注意** Deepin上不要安装 kubernetes-client 这个是 1.7 版本, 类似于 docker.io 这样的老旧版本
 
