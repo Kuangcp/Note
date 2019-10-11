@@ -47,6 +47,10 @@ categories:
 ### 必备插件
 > [开发自己的插件](https://github.com/Kuangcp/LearnWebExtension)
 
+1. 附加组件管理器: 只有正式版会内置该插件, 别的版本都没有, 插件的功能是 地址栏二维码,拖拽链接,
+    - 如果想在开发版以及Nightly上用上该插件, 只需要去 ~/.mozilla/ 下找到正式版的配置文件里的 extension 目录就能找到 cpmanager.xpi 了, 拖入浏览器就可以了
+    - 但是这个组件只保证正式版是正常的, 其他版本则要看运气
+
 - `Saka Key` 快捷键神器 大幅度脱离鼠标 [官方文档](https://key.saka.io/)
     1. 浏览器默认: 脱离输入框焦点 _Esc_ | 切换标签 _ctrl-Tab_  _shift-ctrl-Tab_ | 关闭标签 _ctrl-w_
     1. 滑动: 下滑 `d/j` 上滑 `s/k `
@@ -67,17 +71,16 @@ categories:
         - 比如要在网页上敲英文的时候,就需要每次都要输入分号,才能绕过监听, 真是麻烦
     1. [剪贴板](https://key.saka.io/tutorial/clipboard): 复制当前页面的URL:`yy`
         - 当前标签页打开链接 `yf`| 后台打开 `yb` | 新窗口打开 `yn` | 隐私窗口 `y shift-n`
+- Vimium
+    - Vim风格操作浏览器日常操作，命令简单 功能也都差不多有
 
-1. 附加组件管理器: 只有正式版会内置该插件, 别的版本都没有, 插件的功能是 地址栏二维码,拖拽链接,
-    - 如果想在开发版以及Nightly上用上该插件, 只需要去 ~/.mozilla/ 下找到正式版的配置文件里的 extension 目录就能找到 cpmanager.xpi 了, 拖入浏览器就可以了
-    - 但是这个组件只保证正式版是正常的, 其他版本看运气
-
+1. `Dark Reader` 设置网页黑夜模式
 1. `Greasemonkey` 传说中的油猴, 可以自己写脚本 [wiki](https://wiki.greasespot.net/User_Script_Hosting)
-1. `New Tab Tools` 新建标签页的自定义工具 有一定bug
+1. `New Tab Tools` 新建标签页的自定义工具 
 1. `cliget` 能将下载中的任务转化为 curl wget命令 牛
 1. `eolinker` 接口测试工具
 1. `Simple Tab Groups` 58版本有bug
-1. `rester` rest客户端工具
+1. `RESTer` rest客户端工具
 1. `Download all Images`下载图片
 1. `octotree` github 目录查看
 1. `Web Developer` 各种Web调试开发工具
@@ -140,11 +143,12 @@ categories:
 
 ### 插件 
 1. Saka key
+1. cVim [Github](https://github.com/1995eaton/chromium-vim)
 1. crxMouse 
 1. TabsFolder
 1. Chrome Download Manager
 
-************
+************************
 
 ## Vivaldi
 - 感觉采用的是chrome内核，做的更漂亮了，而且是内置了很多常用插件，的确很方便，相比于chrome更符合国内使用
