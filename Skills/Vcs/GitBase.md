@@ -328,6 +328,14 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 > [Github:diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)`一个更方便查看diff的工具`
 - 最简单的就是 `npm install -g diff-so-fancy` 安装 
 
+- 创建分支之间的patch `git diff branch1 branch2 > first.patch`
+- 创建单文件的patch `git diff filePath > first.patch` 路径为Git项目根路径的相对路径
+
+### apply 
+> 应用diff得到的patch文件
+
+- `git apply --ignore-space-change --ignore-whitespace first.patch`
+
 ************************
 
 ### tag
@@ -707,11 +715,6 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 - 查看仓库的本地操作日志 仅记录HEAD以及所有分支引用所指向的历史 
 
 1. `git reflog` 显示commit操作详情，仅本地保存
-
-### apply 
-> 应用diff得到的patch文件
-
-`git apply --ignore-space-change --ignore-whitespace  patch.diff`
 
 ### rev-parse 
 > 该工具是Git内部命令 往往被其他子命令使用
