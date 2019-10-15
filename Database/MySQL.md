@@ -181,8 +181,8 @@ _重启_
 - `create table name (field int, field varchar(32)....);`
 - 查看表的创建语句 `show create table name;`
 
-## 修改表定义
-- [ ] TODO 修改表
+## ALTER
+> [Official Doc](https://dev.mysql.com/doc/refman/5.7/en/alter-table.html)
 
 _重命名表格_ `RENAME TABLE old TO new `
 
