@@ -34,6 +34,7 @@ categories:
 - 连接会话 `tmux a -t test`
 - 显示所有 `tmux ls` 
 - 重新加载配置文件 `tmux source ~/.tmux.conf`
+- 帮助 `prefix ?`
 
 *************
 
