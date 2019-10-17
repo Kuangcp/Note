@@ -15,9 +15,10 @@ categories:
     1. [内存情况](#内存情况)
         1. [free](#free)
     1. [性能监测](#性能监测)
+        1. [top](#top)
+        1. [smem](#smem)
         1. [vmstat](#vmstat)
         1. [mpstat](#mpstat)
-        1. [top](#top)
         1. [iostat](#iostat)
     1. [进程管理](#进程管理)
         1. [pidof](#pidof)
@@ -46,7 +47,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2019-08-27 21:33_|
+**目录 end**|_2019-10-17 18:30_|
 ****************************************
 # Linux性能分析和管理
 ## 运行状况信息
@@ -87,7 +88,17 @@ categories:
 **************************
 
 ## 性能监测
+### top
+> 来源 procps, 用于查看 进程详细信息, CPU占用率 内存 网络等...
+
+> [Github: htop](https://github.com/hishamhm/htop)`Htop更好用`
+
+### smem
+> Report memory usage with shared memory divided proportionally.  
+
 ### vmstat
+> Report virtual memory statistics
+
 - 最初是设计为查看虚拟内存的,现在用于性能监测
 - `vmstat 1 4` 输出信息,间隔1s 共4次 特别注意第一行数据是指开机以来的平均值,后面的才是当前值
     - 输出内容:
@@ -146,11 +157,6 @@ categories:
     - `-I ` 值可选, SUM CPU ALL 
     - 分别表示 CPU总的中断数, 展示每一个CPU的中断数 SUM和CPU数据综合展示
 
-### top
-> 来源 procps, 用于查看 进程详细信息, CPU占用率 内存 网络等...
-
-> [github: htop](https://github.com/hishamhm/htop)
-
 ### iostat
 - 执行`iostat`输出信息:
     - 第一部分, 系统信息
@@ -188,9 +194,13 @@ categories:
 ### pgrep 
 > pgrep, pkill - look up or signal processes based on name and other attributes
 
-1. pgrep java 
+1. pgrep java 查看Java `进程`
 
 ### sar
+> Collect, report, or save system activity information.
+
+> 需要启动 sysstat 服务 才能使用
+
 - 默认持续执行除非Ctrl C退出,指定参数后就和vmstat一样 `sar 2 3` 
 - 输出到指定文件中: `-o filename` 注意这个不是文本结构,是特殊的结构化方式, 查看需要 `sar -f filename`
 - 多核的支持:`sar -P ALL 1 1 ` 与mpstat 大致相同
@@ -207,7 +217,8 @@ categories:
 - ![p176](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p176.jpg)
 
 ### lsof
-> 这个命令使用时最好是 sudo或者root用户, 不然就会警告说显示信息不完全
+> list open files  
+> 这个命令使用时最好使用sudo或者root用户, 不然就会警告说显示信息不完全
 
 1. `lsof -d 3` 查看打开标准错误输出的进程 (标准错误输出是3)
 1. `lsof file/dir` 查看打开某文件或目录(不关注子文件夹)的进程 
@@ -258,6 +269,7 @@ categories:
 1. cp /proc/12008/fd/4 test.log.save `复制回来`
 
 ### fuser
+> identify processes using files or sockets  
 > 和lsof功能差不多,但是这个是符合posix标准的命令 (POSIX:可移植操作系统接口)
 
 - `fuser -v /home/kuang/sdk` 列出正在打开这个目录的进程(和lsof一样不关注子文件夹)
@@ -531,6 +543,7 @@ categories:
 - 运行 `dmidecode -t `就会提示你后接类别
 
 ### lsmod
+> Show the status of modules in the Linux Kernel
 
 ### chroot
 > change root directory 更改root目录 最古老的容器技术

@@ -23,6 +23,9 @@ categories:
             1. [僵尸进程](#僵尸进程)
         1. [守护进程](#守护进程)
         1. [线程](#线程)
+    1. [内存](#内存)
+        1. [虚拟内存](#虚拟内存)
+        1. [交换内存](#交换内存)
     1. [时间](#时间)
     1. [服务](#服务)
         1. [自启服务](#自启服务)
@@ -43,7 +46,7 @@ categories:
     1. [让命令在后台运行](#让命令在后台运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2019-07-17 19:58_|
+**目录 end**|_2019-10-17 18:30_|
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -212,6 +215,14 @@ categories:
 
 ### 线程
 1. 查看创建一个线程占用内存大小 `ulimit -s`
+
+## 内存
+### 虚拟内存
+> [参考博客: What does Virtual memory size in top mean?](https://serverfault.com/questions/138427/what-does-virtual-memory-size-in-top-mean)  
+
+> [参考博客: The Right Way to Monitor Virtual Memory on Linux](https://www.logicmonitor.com/blog/the-right-way-to-monitor-virtual-memory-on-linux/)  
+
+### 交换内存
 
 ************************
 
