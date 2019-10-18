@@ -790,9 +790,9 @@ _对应的conf_
 
 ## 数据库
 ### MySQL
-- python3环境下： `sudo apt install python3-mysqldb`
-- `sudo apt install libmysqlclient-dev`
-- `sudo pip install mysql-python`
+> pip install mysqlclient
+
+- import MySQLdb
 
 
 ### Redis
