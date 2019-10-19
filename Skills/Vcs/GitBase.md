@@ -27,6 +27,7 @@ categories:
             1. [查看文件的修改记录](#查看文件的修改记录)
         1. [blame](#blame)
         1. [diff](#diff)
+        1. [apply](#apply)
         1. [tag](#tag)
         1. [reset](#reset)
             1. [回滚add操作](#回滚add操作)
@@ -57,7 +58,6 @@ categories:
         1. [grep](#grep)
         1. [archive](#archive)
         1. [reflog](#reflog)
-        1. [apply](#apply)
         1. [rev-parse](#rev-parse)
 1. [配置文件](#配置文件)
     1. [.gitignore](#gitignore)
@@ -68,7 +68,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-10-07 21:26_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)

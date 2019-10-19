@@ -1,3 +1,18 @@
+---
+title: Spring官方文档学习.md
+date: 2019-10-19 17:04:25
+tags: 
+categories: 
+---
+
+**目录 start**
+ 
+1. [Spring官方文档学习](#spring官方文档学习)
+    1. [１、Spring Bean的生命周期](#１、spring-bean的生命周期)
+    1. [2、Spring容器的扩展点](#2、spring容器的扩展点)
+
+**目录 end**|_2019-10-19 17:04_|
+****************************************
 # Spring官方文档学习
 
 ## １、Spring Bean的生命周期

@@ -13,7 +13,7 @@ categories:
 1. [Manjaro](#manjaro)
     1. [Tips](#tips)
 
-**目录 end**|_2019-09-01 17:00_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 # Manjaro
 > [Gitlab source code](https://gitlab.manjaro.org/explore/groups)

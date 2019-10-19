@@ -1,3 +1,31 @@
+---
+title: Spring-Cloud.md
+date: 2019-10-19 17:04:24
+tags: 
+categories: 
+---
+
+**目录 start**
+ 
+1. [Spring Cloud 学习](#spring-cloud-学习)
+    1. [一、[注册中心(服务注册与发现)](https://github.com/dragonhht/spring-cloud-study2/cloud-study-registration-center)(Eureka)](#一、[注册中心服务注册与发现]httpsgithubcomdragonhhtspring-cloud-study2cloud-study-registration-centereureka)
+        1. [使用](#使用)
+    1. [二、[服务提供者](https://github.com/dragonhht/spring-cloud-study2/cloud-study-service)](#二、[服务提供者]httpsgithubcomdragonhhtspring-cloud-study2cloud-study-service)
+        1. [使用](#使用)
+    1. [三、[(消费者使用)负载均衡](https://github.com/dragonhht/spring-cloud-study2/cloud-study-consumer-using-loadbalancer/src/main/java/spring/cloud/study2/consumer/ConsumerApplication_9999.java)(Ribbon)](#三、[消费者使用负载均衡]httpsgithubcomdragonhhtspring-cloud-study2cloud-study-consumer-using-loadbalancersrcmainjavaspringcloudstudy2consumerconsumerapplication_9999javaribbon)
+        1. [使用](#使用)
+    1. [四、[断路器](https://github.com/dragonhht/spring-cloud-study2/cloud-study-consumer-using-loadbalancer/src/main/java/spring/cloud/study2/consumer/service/ConsumerService.java)(Hystrix)](#四、[断路器]httpsgithubcomdragonhhtspring-cloud-study2cloud-study-consumer-using-loadbalancersrcmainjavaspringcloudstudy2consumerserviceconsumerservicejavahystrix)
+        1. [使用](#使用)
+    1. [五、[配置中心](https://github.com/dragonhht/spring-cloud-study2/cloud-study-config-server)(采用git来存储配置信息)](#五、[配置中心]httpsgithubcomdragonhhtspring-cloud-study2cloud-study-config-server采用git来存储配置信息)
+        1. [使用](#使用)
+        1. [在应用中获取配置信息](#在应用中获取配置信息)
+    1. [六、[服务网关(内提供负载均衡)](https://github.com/dragonhht/spring-cloud-study2/cloud-study-service-gateway)(Zuul)](#六、[服务网关内提供负载均衡]httpsgithubcomdragonhhtspring-cloud-study2cloud-study-service-gatewayzuul)
+        1. [使用](#使用)
+        1. [服务过滤](#服务过滤)
+            1. [使用](#使用)
+
+**目录 end**|_2019-10-19 17:04_|
+****************************************
 # Spring Cloud 学习
 
 ## 一、[注册中心(服务注册与发现)](https://github.com/dragonhht/spring-cloud-study2/cloud-study-registration-center)(Eureka)

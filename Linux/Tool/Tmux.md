@@ -17,7 +17,7 @@ categories:
         1. [maglev](#maglev)
         1. [copycat](#copycat)
 
-**目录 end**|_2019-08-25 12:31_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))

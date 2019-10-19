@@ -17,7 +17,7 @@ categories:
     1. [sonarqube](#sonarqube)
         1. [小型项目目前使用的方案](#小型项目目前使用的方案)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 # 持续集成
 > 参考博客: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  

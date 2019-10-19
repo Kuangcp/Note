@@ -1,3 +1,34 @@
+---
+title: kotlin-base
+date: 2019-10-19 17:03:37
+tags: 
+categories: 
+---
+
+**目录 start**
+ 
+1. [Kotlin学习](#kotlin学习)
+    1. [1、基础学习](#1、基础学习)
+        1. [1、[变量](./src/main/kotlin/hht/dragon/java/variable/VariableStudy.kt)](#1、[变量]srcmainkotlinhhtdragonjavavariablevariablestudykt)
+            1. [1、申明变量和值](#1、申明变量和值)
+        1. [2、变量类型推断](#2、变量类型推断)
+        1. [3、原始字符串与模板表达式](#3、原始字符串与模板表达式)
+        1. [2、流程控制语句](#2、流程控制语句)
+        1. [3、关键字](#3、关键字)
+        1. [4、与Java中不同的操作符](#4、与java中不同的操作符)
+        1. [5、异常捕获](#5、异常捕获)
+        1. [6、Unit类型](#6、unit类型)
+        1. [7、Nothing类型](#7、nothing类型)
+    1. [2、 集合类](#2、-集合类)
+        1. [1、List](#1、list)
+            1. [1、创建](#1、创建)
+            1. [2、遍历](#2、遍历)
+    1. [3、面向对象编程](#3、面向对象编程)
+        1. [1、类与构造器](#1、类与构造器)
+    1. [4、[Kotlin与Java互操作](./src/test/kotlin/hht/dragon/java/withjava/UsingJava.kt)](#4、[kotlin与java互操作]srctestkotlinhhtdragonjavawithjavausingjavakt)
+
+**目录 end**|_2019-10-19 17:04_|
+****************************************
 # Kotlin学习
 
 ## 1、基础学习

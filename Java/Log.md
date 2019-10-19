@@ -32,7 +32,7 @@ categories:
     1. [Linux上查看日志](#linux上查看日志)
     1. [lnav](#lnav)
 
-**目录 end**|_2019-06-16 00:08_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 # 日志系统
 > [码农翻身: 一个著名的日志系统是怎么设计出来的？ ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45&chksm=80d67bacb7a1f2ba38aa37620d273dfd7d7227667df556d36c84d125cafd73fef16464288cf9&scene=21#wechat_redirect)`深刻的理解了日志系统的来源以及相关关系`  

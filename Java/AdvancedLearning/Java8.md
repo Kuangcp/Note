@@ -20,6 +20,7 @@ categories:
     1. [Lambda](#lambda)
         1. [行为参数化](#行为参数化)
         1. [Lambda基础](#lambda基础)
+            1. [Lambda 实现原理](#lambda-实现原理)
         1. [原始类型特化](#原始类型特化)
         1. [类型检查、类型推断以及限制](#类型检查、类型推断以及限制)
             1. [类型检查](#类型检查)
@@ -77,7 +78,7 @@ categories:
         1. [ZonedDateTime](#zoneddatetime)
         1. [Clock](#clock)
 
-**目录 end**|_2019-07-15 00:17_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  

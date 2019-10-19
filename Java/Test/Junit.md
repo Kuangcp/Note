@@ -22,8 +22,9 @@ categories:
     1. [参数化测试](#参数化测试)
     1. [测试套件](#测试套件)
     1. [分类测试](#分类测试)
+1. [Junit源码解析](#junit源码解析)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 # 如何使用Junit
 > [Official doc: 4.12](https://github.com/junit-team/junit4/blob/master/doc/ReleaseNotes4.12.md)

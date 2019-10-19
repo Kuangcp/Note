@@ -1,3 +1,19 @@
+---
+title: Spring-Bean学习.md
+date: 2019-10-19 17:04:24
+tags: 
+categories: 
+---
+
+**目录 start**
+ 
+1. [容器](#容器)
+1. [Bean概述](#bean概述)
+1. [Bean的实例化](#bean的实例化)
+1. [Bean的作用域](#bean的作用域)
+
+**目录 end**|_2019-10-19 17:04_|
+****************************************
 # 容器
 
 接口`org.springframework.context.ApplicationContext`表示Spring IoC容器，负责实例化，配置和组装bean。容器通过读取配置元数据获取有关要实例化、配置和组装的对象的指令。

@@ -28,7 +28,7 @@ categories:
         1. [Java使用](#java使用)
     1. [基础数据](#基础数据)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 # Postgresql
 - [ ] [该公司对于PostgreSQL的缺点陈列是否属实](http://www.onexsoft.com/onesql.html)

@@ -1,3 +1,16 @@
+---
+title: Spring容器扩展点之BeanFactoryPostProcessor.md
+date: 2019-10-19 17:04:25
+tags: 
+categories: 
+---
+
+**目录 start**
+ 
+1. [Spring容器扩展点之BeanFactoryPostProcessor](#spring容器扩展点之beanfactorypostprocessor)
+
+**目录 end**|_2019-10-19 17:04_|
+****************************************
 # Spring容器扩展点之BeanFactoryPostProcessor
 
 `BeanFactoryPostProcessor`?怎么命名与前面讲过[BeanPostProcessor](https://github.com/dragonhht/Notes/blob/master/Java/Spring%E5%AE%B9%E5%99%A8%E6%89%A9%E5%B1%95%E7%82%B9%E4%B9%8BBeanPostProcessor.md)那么像呢?  

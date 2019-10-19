@@ -29,7 +29,7 @@ categories:
         1. [poll](#poll)
         1. [epoll](#epoll)
 
-**目录 end**|_2019-06-02 11:58_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 # 计算机中的IO
 > [参考博客: IO - 同步，异步，阻塞，非阻塞 ](https://blog.csdn.net/historyasamirror/article/details/5778378)  

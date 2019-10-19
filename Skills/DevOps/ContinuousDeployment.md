@@ -11,7 +11,7 @@ categories:
 1. [Continuous Deployment](#continuous-deployment)
 1. [BUG 跟踪](#bug-跟踪)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 # 传统部署
 - 打包成jar或者war，下载JDK或者JRE 绿色解压即用，将jar/war文件复制到bin目录下

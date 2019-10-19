@@ -18,12 +18,15 @@ categories:
 1. [GUI](#gui)
     1. [git-cola](#git-cola)
     1. [GitBlade](#gitblade)
+    1. [gitg](#gitg)
+    1. [tig](#tig)
+    1. [Guitar](#guitar)
     1. [GitAhead](#gitahead)
     1. [SourceTree](#sourcetree)
 1. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
     1. [最终方案](#最终方案)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 
 # 使用Git进行团队协作

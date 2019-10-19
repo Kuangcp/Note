@@ -16,7 +16,7 @@ categories:
     1. [Thrift](#thrift)
         1. [Marshalling](#marshalling)
 
-**目录 end**|_2019-07-21 18:08_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 # 序列化
 > [码农翻身:序列化： 一个老家伙的咸鱼翻身](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513589&idx=1&sn=d402d623d9121453f1e570395c7f99d7&chksm=80d67a36b7a1f32054d4c779dd26e8f97a075cf4d9ed1281f16d09f1df50a29319cd37520377&scene=21#wechat_redirect) `对象转化为二进制流`

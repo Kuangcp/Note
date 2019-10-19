@@ -33,7 +33,7 @@ categories:
     1. [Mageia](#mageia)
     1. [CDLinux](#cdlinux)
 
-**目录 end**|_2019-05-27 13:44_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 # Linux常见发行版
 > [Repology](https://repology.org/)

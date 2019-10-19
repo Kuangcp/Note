@@ -20,7 +20,7 @@ categories:
         1. [Shell](#shell)
 1. [Tips](#tips)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 # 正则表达式学习
 > [shell regex](http://man.linuxde.net/docs/shell_regex.html)

@@ -16,7 +16,7 @@ categories:
         1. [Bootstrap](#bootstrap)
         1. [LayUI](#layui)
 
-**目录 end**|_2019-04-19 15:38_|
+**目录 end**|_2019-10-19 17:04_|
 ****************************************
 # 前端
 > 半学半就 [个人导航页](https://kuangcp.github.io/main.html)

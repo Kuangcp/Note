@@ -1,3 +1,16 @@
+---
+title: Spring容器扩展点之Aware接口.md
+date: 2019-10-19 17:04:25
+tags: 
+categories: 
+---
+
+**目录 start**
+ 
+1. [Spring容器扩展点之Aware接口](#spring容器扩展点之aware接口)
+
+**目录 end**|_2019-10-19 17:04_|
+****************************************
 # Spring容器扩展点之Aware接口
 
 在Spring容器中，提供了许多Aware接口，使用这些接口可以更好的对bean进行扩展，获取许多与容器相关的组件；今天，我们大概来看看Spring中提供的一些Aware接口：
