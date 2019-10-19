@@ -156,13 +156,13 @@ docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub 
 ```sh
     cd $GOPATH
     mkdir -p src/golang.org/x/tools
-    git clone --deepth 1 https://github.com/golang/tools src/golang.org/x/tools
+    git clone --depth 1 https://github.com/golang/tools src/golang.org/x/tools
 
     mkdir -p src/golang.org/x/lint
-    git clone --deepth 1 https://github.com/golang/lint  src/golang.org/x/lint
+    git clone --depth 1 https://github.com/golang/lint  src/golang.org/x/lint
 
     mkdir -p src/github.com/golang/dep
-    git clone --deepth 1 https://github.com/golang/dep src/github.com/golang/dep
+    git clone --depth 1 https://github.com/golang/dep src/github.com/golang/dep
 
     go get golang.org/x/tools/cmd/guru 
     go get golang.org/x/tools/cmd/gorename 
