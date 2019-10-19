@@ -132,6 +132,7 @@ docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub 
         - 而这些路径下又必须分别包含三个规定的目录：src、pkg 和 bin，这三个目录分别用于存放源码文件、包文件和可执行文件。
     - `$GOARM` 专门针对基于 arm 架构的处理器，它的值可以是 5 或 6，默认为 6。
     - `$GOMAXPROCS` 用于设置应用程序可使用的处理器个数与核数，详见第 14.1.3 节。
+    - `$GOPROXY` 设置 mod 的代理 
 
 ********************************
 
@@ -171,12 +172,19 @@ docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub 
     go get github.com/ramya-rao-a/go-outline
     go get github.com/acroca/go-symbols
     go get github.com/sqs/goreturns
+    go get golang.org/x/tools/cmd/goimports
     go get github.com/golang/dep
 ```
 
-> 可以利用码云来加速下载
-1. lint https://gitee.com/gin9/golang-lint.git
-1. tools https://gitee.com/gin9/golang-tools.git 
+### go mod
+- `export GOPROXY=https://mirrors.aliyun.com/goproxy/` 使用国内模块源 
+- `go env -w GOSUMDB=off` 关闭官方 sum 校验服务
+- `go env -w GOSUMDB="sum.golang.google.cn"` 使用国内源
+
+> [wiki Modules](https://github.com/golang/go/wiki/Modules)  
+> [参考博客: Go模块简明教程](https://github.com/wuyumin/tutorial/blob/master/zh-cn/Modules/README.md)  
+
+1. go mod init moduleName 按名初始化模块
 
 *********************************
 
