@@ -18,6 +18,7 @@ categories:
         1. [Docker](#docker)
     1. [环境变量解释](#环境变量解释)
     1. [基本开发环境搭建](#基本开发环境搭建)
+        1. [go mod](#go-mod)
     1. [数据类型](#数据类型)
         1. [基本类型](#基本类型)
             1. [int](#int)
@@ -38,7 +39,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-10-21 00:41_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -60,8 +61,12 @@ Go 语言被设计成一门应用于搭载 Web 服务器，存储集群或类似
 - [从 0 到 1 学习 Go 语言 ](https://mp.weixin.qq.com/s?__biz=MjM5NzM0MjcyMQ==&mid=2650087380&idx=1&sn=56c77443ae171e1091e146704798647a&chksm=bedac4ba89ad4dac6dab9bd21355a13a692f3411d4242e02ce2be91534570167ee3b7afb5d82&mpshare=1&scene=1&srcid=0127jfIvpS2r7ItNbpOnjnr8#rd)
 
 > go相关应用 
-docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub influxdb caddy beego martini cayley nsq codis delve cobra shadowsocks-go phcolus 
-**************************************
+
+docker lantern kubernetes awesome-go gogs synching hugo grafana etcd hub influxdb  
+
+caddy beego martini cayley nsq codis delve cobra shadowsocks-go phcolus 
+
+************************
 
 ## 社区
 - [GoCN Forum](https://gocn.vip/)
@@ -72,13 +77,15 @@ docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub 
 - [Go Programming & Concurrency in Practice](https://github.com/hyper0x/goc2p)
 - [golang教程](http://c.biancheng.net/golang/)
 
-**************************************
+************************
 
 ## 书籍
 
 > [Go语言高级编程(Advanced Go Programming)](https://books.studygolang.com/advanced-go-programming-book/index.html)
 > [Go 语言学习资料与社区索引](https://github.com/Unknwon/go-study-index)
-***********************************
+
+************************
+
 
 ## 安装
 > [Official Download](https://golang.google.cn/dl/) | [Official Doc](https://golang.google.cn/doc/install) | [参考 教程](http://www.runoob.com/go/go-environment.html) [.](http://cloud.kuangcp.top/go-1.10.3.tar.gz) 
@@ -137,7 +144,7 @@ docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub 
 ********************************
 
 ## 基本开发环境搭建
-> [Github:Golang](https://github.com/golang)
+> [Github:Golang](https://github.com/golang) | [基础学习项目](https://github.com/Kuangcp/GoBase)
 
 入门时使用 VSCode 是比较方便的, VSCode 会推荐我们安装如下工具
 1. tools _工具集_

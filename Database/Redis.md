@@ -20,11 +20,12 @@ categories:
     1. [Redis配置文件](#redis配置文件)
 1. [数据类型](#数据类型)
     1. [String](#string)
+        1. [BitMap](#bitmap)
+        1. [HyperLogLog](#hyperloglog)
     1. [List](#list)
     1. [Set](#set)
     1. [Zset](#zset)
     1. [Hash](#hash)
-    1. [HyperLogLog](#hyperloglog)
     1. [GEO地理位置](#geo地理位置)
 1. [Pub/Sub发布和订阅](#pubsub发布和订阅)
 1. [客户端](#客户端)
@@ -42,7 +43,7 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2019-10-20 15:10_|
+**目录 end**|_2019-10-21 00:41_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -121,7 +122,7 @@ categories:
 
 ************************
 
-> setbit    
+### BitMap
 > [参考博客: redis的bitset实战](https://segmentfault.com/a/1190000016296106)  
 
 基于string, 可以操作每个 bit 的值
@@ -134,6 +135,17 @@ categories:
     - 返回指定bitset中在指定起始位置中第一个出现指定值的offset，不传start，end默认估计是0,-1
 - bitcount
     - 统计bitset中出现1的个数
+
+### HyperLogLog
+> 用于做基数统计的算法
+
+HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大时，计算基数所需的空间总是固定 的、并且是很小的  
+
+- PFADD 添加元素到制定 HyperLogLog 中
+- PFCOUNT 返回给定 HyperLogLog 的基数估算值。
+- PFMERGE 将多个 HyperLogLog 合并为一个 HyperLogLog 
+
+************************
 
 ## List
 - `rpush key val val val `右/尾添加元素 lpush是左/头，若表不存在就新建
@@ -222,17 +234,6 @@ categories:
 - HVALS
 - HSCAN
 - HSTRLEN
-
-************************
-
-## HyperLogLog
-> 用于做基数统计的算法
-
-HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大时，计算基数所需的空间总是固定 的、并且是很小的
-
-- PFADD 添加元素到制定 HyperLogLog 中
-- PFCOUNT 返回给定 HyperLogLog 的基数估算值。
-- PFMERGE 将多个 HyperLogLog 合并为一个 HyperLogLog 
 
 ************************
 
