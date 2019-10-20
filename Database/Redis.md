@@ -42,7 +42,7 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-10-20 15:10_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -88,7 +88,8 @@ categories:
     - [简化配置文件](https://raw.githubusercontent.com/Kuangcp/Configs/master/Database/redis/simple_redis.conf)
 1. 再下载脚本就可以便捷的使用redis了 [shell脚本](https://github.com/Kuangcp/Configs/tree/master/Database/redis/helper)
 
-****************************
+************************
+
 ## Redis配置文件
 - [配置文件讲解](https://github.com/Kuangcp/Configs/blob/master/Database/redis/explain_redis.conf) | [原始配置文件](https://github.com/Kuangcp/Configs/blob/master/Database/redis/redis.conf)
 
@@ -117,6 +118,22 @@ categories:
 	- `set key val ex secondes` set时设置超时时间
 - `persist key` 去除超时时间
 - `ttl key` 查看剩余存活时间 -1表示永久 -2表示没有该key
+
+************************
+
+> setbit    
+> [参考博客: redis的bitset实战](https://segmentfault.com/a/1190000016296106)  
+
+基于string, 可以操作每个 bit 的值
+- setbit key offset value
+    - `set key 上便宜量offset(2^32) 的 值 value(0/1)`
+- getbit key offset 
+- bitop 
+    - 主要做bitset的and、or、xor、not操作，结果存在新的bitset中，注意时间复杂度为O(N)
+- bitpos
+    - 返回指定bitset中在指定起始位置中第一个出现指定值的offset，不传start，end默认估计是0,-1
+- bitcount
+    - 统计bitset中出现1的个数
 
 ## List
 - `rpush key val val val `右/尾添加元素 lpush是左/头，若表不存在就新建
@@ -153,6 +170,8 @@ categories:
 - `SUNIONSTORE destination key [key ...]`
 - `SSCAN key cursor [MATCH pattern] [COUNT count]` 参考 SCAN 命令
 
+************************
+
 ## Zset
 > 元素是键值对，键是member成员，值是score分值必须是浮点数
 
@@ -183,8 +202,10 @@ categories:
 - ZLEXCOUNT
 - ZREMRANGEBYLEX
 
+************************
+
 ## Hash
-> (类似Map 嵌套，一个内置的微型redis)
+> key-value 结构
 
 - HDEL 删除散列中指定的K
 - HEXISTS
@@ -202,10 +223,18 @@ categories:
 - HSCAN
 - HSTRLEN
 
+************************
+
 ## HyperLogLog
-- PFADD
-- PFCOUNT
-- PFMERGE
+> 用于做基数统计的算法
+
+HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大时，计算基数所需的空间总是固定 的、并且是很小的
+
+- PFADD 添加元素到制定 HyperLogLog 中
+- PFCOUNT 返回给定 HyperLogLog 的基数估算值。
+- PFMERGE 将多个 HyperLogLog 合并为一个 HyperLogLog 
+
+************************
 
 ## GEO地理位置
 - GEOADD
@@ -215,7 +244,8 @@ categories:
 - GEORADIUSBYMEMBER
 - GEOHASH
 
-***************
+************************
+
 # Pub/Sub发布和订阅
 
 - `PSUBSCRIBE pattern [pattern ...]`

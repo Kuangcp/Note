@@ -23,12 +23,13 @@ categories:
     1. [分享](#分享)
         1. [asciinema](#asciinema)
     1. [图形化工具](#图形化工具)
+        1. [图片管理](#图片管理)
         1. [剪贴板管理](#剪贴板管理)
         1. [截图](#截图)
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-10-20 15:10_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -164,7 +165,15 @@ categories:
 - 执行 `asciinema`或`asciinema rec` 即可开始录制
 - 要注册就运行 `asciinema auth` 进入输出的网址，填邮箱和名字即可（每次登录都要这样。或者使用邮件来确认，麻烦ing）
 
+************************
+
 ## 图形化工具
+### 图片管理
+1. gthumb
+1. Viewnior
+1. webp
+1. ImageMagick
+
 ### 剪贴板管理
 > [参考博客: 面向 Linux 的 10 款最佳剪贴板管理器](https://linux.cn/article-7329-1.html)
 
