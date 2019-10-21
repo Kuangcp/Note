@@ -155,6 +155,7 @@ docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub 
 
 **汇总一下命令**
 ```sh
+    # 必须在 GOPATH 下执行
     cd $GOPATH
     mkdir -p src/golang.org/x/tools
     git clone --depth 1 https://github.com/golang/tools src/golang.org/x/tools
@@ -167,19 +168,30 @@ docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub 
 
     go get golang.org/x/tools/cmd/guru 
     go get golang.org/x/tools/cmd/gorename 
+    go get golang.org/x/tools/cmd/goimports
     go get golang.org/x/lint
     go get golang.org/x/lint/golint
+
+    # 可在任意目录执行
     go get github.com/ramya-rao-a/go-outline
     go get github.com/acroca/go-symbols
-    go get github.com/sqs/goreturns
-    go get golang.org/x/tools/cmd/goimports
+    
     go get github.com/golang/dep
+    go get github.com/sqs/goreturns
+    go get github.com/rogpeppe/godef
+    go get github.com/uudashr/gopkgs/cmd/gopkgs
+    go get github.com/go-delve/delve/cmd/dlv
+    go get github.com/mdempsky/gocode
 ```
 
 ### go mod
-- `export GOPROXY=https://mirrors.aliyun.com/goproxy/` 使用国内模块源 
 - `go env -w GOSUMDB=off` 关闭官方 sum 校验服务
-- `go env -w GOSUMDB="sum.golang.google.cn"` 使用国内源
+
+> 配置国内源
+```sh
+export GOPROXY=https://mirrors.aliyun.com/goproxy/
+export GOSUMDB=sum.golang.google.cn
+```
 
 > [wiki Modules](https://github.com/golang/go/wiki/Modules)  
 > [参考博客: Go模块简明教程](https://github.com/wuyumin/tutorial/blob/master/zh-cn/Modules/README.md)  
