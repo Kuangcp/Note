@@ -11,9 +11,10 @@ categories:
  
 1. [Xfce](#xfce)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-10-22 18:24_|
 ****************************************
 # Xfce 
 
 1. notify-send 发送新通知
+    - notify-send -i iconFilePath title detail -t 1500
 1. xflock4 锁屏
