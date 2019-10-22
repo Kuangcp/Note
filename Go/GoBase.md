@@ -17,7 +17,9 @@ categories:
     1. [安装](#安装)
         1. [Docker](#docker)
     1. [环境变量解释](#环境变量解释)
-    1. [基本开发环境搭建](#基本开发环境搭建)
+    1. [开发环境搭建](#开发环境搭建)
+    1. [Modules](#modules)
+        1. [配置](#配置)
     1. [数据类型](#数据类型)
         1. [基本类型](#基本类型)
             1. [int](#int)
@@ -38,7 +40,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-10-22 09:35_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -136,7 +138,7 @@ docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub 
 
 ********************************
 
-## 基本开发环境搭建
+## 开发环境搭建
 > [Github:Golang](https://github.com/golang)
 
 入门时使用 VSCode 是比较方便的, VSCode 会推荐我们安装如下工具
@@ -184,7 +186,10 @@ docker golang lantern kubernetes awesome-go gogs synching hugo grafana etcd hub 
     go get github.com/mdempsky/gocode
 ```
 
-### go mod
+## Modules
+> [Wiki](https://github.com/golang/go/wiki/Modules)  
+
+### 配置
 - `go env -w GOSUMDB=off` 关闭官方 sum 校验服务
 
 > 配置国内源
@@ -196,9 +201,14 @@ export GOSUMDB=sum.golang.google.cn
 > [wiki Modules](https://github.com/golang/go/wiki/Modules)  
 > [参考博客: Go模块简明教程](https://github.com/wuyumin/tutorial/blob/master/zh-cn/Modules/README.md)  
 
-1. go mod init moduleName 按名初始化模块
+************************
 
-*********************************
+1. `go mod init moduleName` 按名初始化模块
+1. `go mod edit -replace github.com/kuangcp/gobase/cuibase=./../cuibase`
+    - 多模块开发时，使用本地开发的模块取代发布的版本
+    - 效果: `replace github.com/kuangcp/gobase/cuibase => ./../cuibase`
+
+************************
 
 ## 数据类型
 _有关类型后置_
