@@ -17,8 +17,9 @@ categories:
     1. [安装](#安装)
         1. [Docker](#docker)
     1. [环境变量解释](#环境变量解释)
-    1. [基本开发环境搭建](#基本开发环境搭建)
-        1. [go mod](#go-mod)
+    1. [开发环境搭建](#开发环境搭建)
+    1. [Modules](#modules)
+        1. [配置](#配置)
     1. [数据类型](#数据类型)
         1. [基本类型](#基本类型)
             1. [int](#int)
@@ -39,7 +40,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2019-10-21 00:41_|
+**目录 end**|_2019-10-23 22:39_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -143,7 +144,7 @@ caddy beego martini cayley nsq codis delve cobra shadowsocks-go phcolus
 
 ********************************
 
-## 基本开发环境搭建
+## 开发环境搭建
 > [Github:Golang](https://github.com/golang) | [基础学习项目](https://github.com/Kuangcp/GoBase)
 
 入门时使用 VSCode 是比较方便的, VSCode 会推荐我们安装如下工具
@@ -162,6 +163,7 @@ caddy beego martini cayley nsq codis delve cobra shadowsocks-go phcolus
 
 **汇总一下命令**
 ```sh
+    # 必须在 GOPATH 下执行
     cd $GOPATH
     mkdir -p src/golang.org/x/tools
     git clone --depth 1 https://github.com/golang/tools src/golang.org/x/tools
@@ -174,26 +176,45 @@ caddy beego martini cayley nsq codis delve cobra shadowsocks-go phcolus
 
     go get golang.org/x/tools/cmd/guru 
     go get golang.org/x/tools/cmd/gorename 
+    go get golang.org/x/tools/cmd/goimports
     go get golang.org/x/lint
     go get golang.org/x/lint/golint
+
+    # 可在任意目录执行
     go get github.com/ramya-rao-a/go-outline
     go get github.com/acroca/go-symbols
-    go get github.com/sqs/goreturns
-    go get golang.org/x/tools/cmd/goimports
+    
     go get github.com/golang/dep
+    go get github.com/sqs/goreturns
+    go get github.com/rogpeppe/godef
+    go get github.com/uudashr/gopkgs/cmd/gopkgs
+    go get github.com/go-delve/delve/cmd/dlv
+    go get github.com/mdempsky/gocode
 ```
 
-### go mod
-- `export GOPROXY=https://mirrors.aliyun.com/goproxy/` 使用国内模块源 
+## Modules
+> [Wiki](https://github.com/golang/go/wiki/Modules)  
+
+### 配置
 - `go env -w GOSUMDB=off` 关闭官方 sum 校验服务
-- `go env -w GOSUMDB="sum.golang.google.cn"` 使用国内源
+
+> 配置国内源
+```sh
+export GOPROXY=https://mirrors.aliyun.com/goproxy/
+export GOSUMDB=sum.golang.google.cn
+```
 
 > [wiki Modules](https://github.com/golang/go/wiki/Modules)  
 > [参考博客: Go模块简明教程](https://github.com/wuyumin/tutorial/blob/master/zh-cn/Modules/README.md)  
 
-1. go mod init moduleName 按名初始化模块
+************************
 
-*********************************
+1. `go mod init moduleName` 按名初始化模块
+1. `go mod edit -replace github.com/kuangcp/gobase/cuibase=./../cuibase`
+    - 多模块开发时，使用本地开发的模块取代发布的版本
+    - 效果: `replace github.com/kuangcp/gobase/cuibase => ./../cuibase`
+
+************************
 
 ## 数据类型
 _有关类型后置_
