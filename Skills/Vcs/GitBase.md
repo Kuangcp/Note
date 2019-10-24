@@ -19,7 +19,7 @@ categories:
         1. [rm](#rm)
         1. [status](#status)
         1. [commit](#commit)
-        1. [rebase](#rebase)
+        1. [restore](#restore)
         1. [revert](#revert)
         1. [show](#show)
         1. [log](#log)
@@ -43,6 +43,7 @@ categories:
         1. [stash](#stash)
         1. [branch](#branch)
         1. [checkout](#checkout)
+        1. [switch](#switch)
         1. [merge](#merge)
         1. [rebase](#rebase)
         1. [cherry-pick](#cherry-pick)
@@ -68,7 +69,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-10-24 23:18_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -204,33 +205,19 @@ categories:
     - 注意: 如果没有将前一个提交推送到远程, 那么没有任何影响, 
     - 如果已经推送上去了, 就相当于该次 --amend 操作是新开了个分支完成的修改, git log 里会出现一个分支的环
 
+
 ************************
 
-### rebase
-> [Official Doc](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) 
+### restore
 
-`git rebase --help`
-
-> master 提交了 b,c  
-> dev 提交了 d,e   
-
-```
-merge master: 
-
-master: a - b - c 
-             \   \
-dev:          d - e
-
-rebase master: 
-
-master: a - b - c - d' - e'
-```
-
-merge 会保留分支图, rebase 会保持提交记录为直线
+- 将 Readme.md 回滚到 master倒数第三个 commit 的状态 `git restore --source master~2 Readme.md`
+- 撤销所有Java文件修改 `git restore '*.java'` 注意支持 regex
+- 撤销工作目录所有修改 `git restore :/`
 
 ************************
 
 ### revert 
+
 > [Doc](https://git-scm.com/docs/git-revert)
 
 1. 取消所有暂存 `git revert .`
@@ -532,6 +519,10 @@ merge 会保留分支图, rebase 会保持提交记录为直线
     - 取出指定节点状态的某文件，而且执行完命令后，取出的那个状态会成为head状态，
     - 需要执行  `git reset HEAD` 来清除这种状态
 
+### switch 
+> switch branch 
+
+
 ### merge
 - [官方文档](https://git-scm.com/docs/git-merge)
 
@@ -555,6 +546,8 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 - `git config --global mergetool.keepBackup false`
 
 ### rebase
+> [Official Doc](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) 
+
 > 衍和操作 [参考博客](http://blog.csdn.net/endlu/article/details/51605861) | 
 > [Git rebase -i 交互变基](http://blog.csdn.net/zwlove5280/article/details/46649799) | 
 > [git rebase的原理之多人合作分支管理](http://blog.csdn.net/zwlove5280/article/details/46708969)    
@@ -565,6 +558,23 @@ merge 会保留分支图, rebase 会保持提交记录为直线
 - 当遇到冲突：
     - `git rebase --abort` 放弃rebase
     - `git rebase --continue` 修改好冲突后继续
+
+> master 提交了 b,c  
+> dev 提交了 d,e   
+
+```
+merge master: 
+
+master: a - b - c 
+             \   \
+dev:          d - e
+
+rebase master: 
+
+master: a - b - c - d' - e'
+```
+
+merge 会保留分支图, rebase 会保持提交记录为单分支
 
 ### cherry-pick
 > [Official Doc](https://git-scm.com/docs/git-cherry-pick)

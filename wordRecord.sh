@@ -13,17 +13,17 @@ if test -z "$result" ; then
     go get github.com/kuangcp/gobase/count
     cd $GOPATH
     cd github.com/kuangcp/gobase/count
-    go install 
+    go install
 fi
 
 logFile=submission.log
 
-# if [ "$1"z = "z" ];then
-#     word=$(count -s) 
-#     line=$(git ls-files | grep -v "ARTS" | xargs cat | wc -l)
-#     time=$(date "+%F %T")
-#     echo "$word $line lines on $time " >> $logFile
-# 	less $logFile
-# else 
-# 	less $logFile
-# fi
+if [ "$1"z = "z" ];then
+    word=$(count -s) 
+    line=$(git ls-files | grep -v "ARTS" | xargs cat | wc -l)
+    time=$(date "+%F %T")
+    echo "$word $line lines on $time " >> $logFile
+	less $logFile
+else 
+	less $logFile
+fi
