@@ -69,7 +69,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-10-24 23:18_|
+**目录 end**|_2019-10-30 21:04_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -210,7 +210,8 @@ categories:
 
 ### restore
 
-- 将 Readme.md 回滚到 master倒数第三个 commit 的状态 `git restore --source master~2 Readme.md`
+- 将 Readme.md 回滚到 master倒数第三个 commit 的状态 `git restore -s master~2 Readme.md`
+    - 回滚至指定提交 `git restore -s commitid filepath`
 - 撤销所有Java文件修改 `git restore '*.java'` 注意支持 regex
 - 撤销工作目录所有修改 `git restore :/`
 
@@ -302,7 +303,7 @@ categories:
 *****************************
 ### diff
 - 默认是将 work 区 和 index 区 进行比较
-- `--cached` stage 区 和 index 区 进行比较, 等同于`--staged`
+    - `--cached` stage 区 和 index 区 进行比较, 等同于`--staged`
 
 ```
     git diff [options] [<commit>] [--] [<path>...]

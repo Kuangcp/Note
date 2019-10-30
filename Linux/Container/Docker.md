@@ -56,7 +56,7 @@ categories:
 1. [Dockerfile](#dockerfile)
     1. [dockerignore文件的使用](#dockerignore文件的使用)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-10-30 21:04_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -355,6 +355,8 @@ _登录镜像仓库_
     - `--rm` 容器运行结束退出就自动删除该容器 注意和`-d`不能共存
     - `--restart=always` 设置该容器随dokcer 服务自启动
     - `--hostname 容器hostname` 指定容器的hostname
+
+`-e TZ="Asia/Shanghai" -v /etc/localtime:/etc/localtime:ro`
 
 #### 资源限制
 
