@@ -16,7 +16,6 @@ categories:
     1. [网络工具](#网络工具)
         1. [nmap](#nmap)
         1. [whatportis](#whatportis)
-        1. [apache benchmark](#apache-benchmark)
     1. [日常工具](#日常工具)
         1. [图片查看工具](#图片查看工具)
         1. [BaiduPCS](#baidupcs)
@@ -39,7 +38,7 @@ categories:
     1. [安全工具](#安全工具)
         1. [gpg](#gpg)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-10-31 17:01_|
 ****************************************
 # 软件使用记事
 ## 包管理
@@ -91,12 +90,6 @@ categories:
 
 ### whatportis
 > whatportis 是一款可以通过服务查询默认端口，或者是通过端口查询默认服务的工具
-
-### apache benchmark
-> 压力测试工具
-
-- 测试本机超过100连接报错 104: 
-    - [Blog:解决问题](http://www.cnblogs.com/archoncap/p/5883723.html)
 
 ************************************
 ## 日常工具

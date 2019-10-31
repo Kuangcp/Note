@@ -11,7 +11,7 @@ categories:
 1. [Web性能](#web性能)
     1. [性能基准](#性能基准)
     1. [测试工具](#测试工具)
-        1. [ApacheBenchMark](#apachebenchmark)
+        1. [Apache BenchMark](#apache-benchmark)
         1. [Jmeter](#jmeter)
         1. [wrk](#wrk)
         1. [hey](#hey)
@@ -19,7 +19,7 @@ categories:
         1. [MySQL](#mysql)
             1. [主从复制以及读写分离](#主从复制以及读写分离)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-10-31 17:01_|
 ****************************************
 # Web性能
 
@@ -31,13 +31,18 @@ categories:
 
 ## 测试工具
 
-### ApacheBenchMark
+### Apache BenchMark
 > 简称 ab
 
 - 安装:`sudo apt install apache2-utils` `sudo pacman -S apache-tools`
 - 简单使用 `ab -c 并发数 -n 总请求数 URL`
     - 查看文档:`man ab` 或 `ab -h`
 - [ab](https://httpd.apache.org/docs/2.4/programs/ab.html) `apt安装这个包即可apache2-utils` 
+
+- 测试本机超过100连接报错 104: 
+    - [Blog:解决问题](http://www.cnblogs.com/archoncap/p/5883723.html)
+
+- `ab -c 5 -n 1000 -X 127.0.0.1:8888 -T application/json -p list.json -C 'JSESSIONID=xxx' URL` 使用 Cookie 使用代理 对json接口发起请求
 
 ### Jmeter
 > 具有图形化客户端
