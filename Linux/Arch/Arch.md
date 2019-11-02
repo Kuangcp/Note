@@ -32,6 +32,8 @@ categories:
 
 > Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的社区驱动软件仓库。Debian/Ubuntu 用户的对应类比是 PPA。
 
+1. `pacman-mirrors` generate pacman mirrorlist for Manjaro Linux 
+
 ### Yaourt
 > [Arch User Repository](https://wiki.archlinux.org/index.php/Arch_User_Repository)`但是已经暂停开发了`
 
