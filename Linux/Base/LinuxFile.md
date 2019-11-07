@@ -388,6 +388,8 @@ export LANG="zh_CN.UTF-8"
 > [参考博客: 详解NTFS文件系统](http://www.blogfshare.com/detail-ntfs-filesys.html)
 > [参考博客: 使用 FUSE 开发自己的文件系统](https://www.ibm.com/developerworks/cn/linux/l-fuse/)
 
+> tmpfs [wiki](https://wiki.archlinux.org/index.php/Tmpfs)
+
 ### fsck
 > check and repair a Linux filesystem
 
