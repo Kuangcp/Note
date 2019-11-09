@@ -45,7 +45,7 @@ categories:
 1. [Tips](#tips)
     1. [常用代码片段](#常用代码片段)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-11-10 01:49_|
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -326,6 +326,8 @@ _判断文件_
     		echo "$line"
 		done 3< "$2"
 ```
+
+- `cat a.log | while read line; do echo "line: "$line; done`
 
 ### 配置文件
 
