@@ -29,7 +29,7 @@ categories:
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2019-10-20 15:10_|
+**目录 end**|_2019-11-10 01:49_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -143,10 +143,15 @@ categories:
 
 - 检测健康状况 `smartctl -Hc /dev/sda9`
 
-************
+
+************************
+
 ## 文本处理
 `wc`
 > 单词 行数 统计
+
+
+************************
 
 ## 文件操作
 `iconv`
@@ -157,7 +162,11 @@ categories:
 
 - [参考博客](http://blog.csdn.net/ygm_linux/article/details/32321729)
 
-***********
+`pdfunite`
+> Portable Document Format (PDF) page merger
+
+************************
+
 ## 分享
 ### asciinema
 - [asciinema](https://asciinema.org) `终端屏幕录制和分享网`
