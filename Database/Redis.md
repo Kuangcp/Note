@@ -43,7 +43,7 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2019-10-21 00:41_|
+**目录 end**|_2019-11-12 09:21_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -84,7 +84,7 @@ categories:
 > [4.0.2](http://cloud.kuangcp.top/redis-4.0.2.zip) | [3.2.8](http://cloud.kuangcp.top/redis-3.2.8.zip)
 
 `个人配置步骤:`
-1. 从源码编译: 官网下载源码，src下执行`make`进行编译，编译完成后，复制src目录中的`redis-cli redis-server`就可以用了，`redis-benchmark` 可选，测性能
+1. 从源码编译: [官网下载源码](https://redis.io/)，src下执行`make`进行编译，编译完成后，复制src目录中的`redis-cli redis-server`就可以用了，`redis-benchmark` 可选，测性能
 1. 配置文件: 再复制下面的简化配置文件，或者使用源码中根目录下的配置文件自己配置下
     - [简化配置文件](https://raw.githubusercontent.com/Kuangcp/Configs/master/Database/redis/simple_redis.conf)
 1. 再下载脚本就可以便捷的使用redis了 [shell脚本](https://github.com/Kuangcp/Configs/tree/master/Database/redis/helper)

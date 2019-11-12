@@ -26,6 +26,8 @@ categories:
         1. [实践](#实践)
     1. [Atom](#atom)
     1. [Gedit](#gedit)
+    1. [MousePad](#mousepad)
+    1. [Xed](#xed)
     1. [小书匠](#小书匠)
     1. [Moeditor/Typora/CuteMarkEd](#moeditortyporacutemarked)
     1. [Cmd](#cmd)
@@ -36,7 +38,7 @@ categories:
     1. [fte-terminal](#fte-terminal)
     1. [在线编辑器](#在线编辑器)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-11-12 09:21_|
 ****************************************
 # 文本编辑器
 ## Ghex
@@ -176,6 +178,11 @@ strict-ssl=false
 > [Github地址](https://github.com/GNOME/gedit)
 
 - 安装markdown预览插件 `该插件早已经停止维护了，还是只用来简单的查看修改文件就好了`
+
+## MousePad
+
+## Xed 
+> [Github](https://github.com/linuxmint/xed)  
 
 ******************************
 
