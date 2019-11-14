@@ -12,7 +12,7 @@ categories:
  
 1. [Linux网络管理](#linux网络管理)
     1. [Tips](#tips)
-        1. [查看端口占用情况](#查看端口占用情况)
+        1. [查看进程占用的端口](#查看进程占用的端口)
     1. [DNS](#dns)
         1. [修改DNS](#修改dns)
     1. [Route](#route)
@@ -47,35 +47,29 @@ categories:
     1. [防火墙](#防火墙)
         1. [iptables](#iptables)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-11-14 19:38_|
 ****************************************
 # Linux网络管理
 ## Tips
-### 查看端口占用情况
-> netstat lsof fuser ps 都有一定效果 [ linux_performance ](./Linux/linux_performance.md)  
+### 查看进程占用的端口
+> netstat lsof fuser  
 
 > [参考博客: linux下常用命令查看端口占用](http://blog.csdn.net/ws379374000/article/details/74218530)
 
-_netstat工具_ 或者 更好用的 [iproute2](#3iproute2)
-
-- `lsof -i:端口号` 用于查看某一端口的占用情况，缺省端口号显示全部
-    - 或者 `cat /etc/services` 查看系统以及使用的端口
+_netstat工具_ 或者 更好用的 [iproute2](#iproute2)
 
 - `netstat -tunlp | grep 端口号` 用于查看指定的端口号的进程情况
     - `-t` (tcp) 仅显示tcp相关选项
     - `-u` (udp)仅显示udp相关选项
     - `-n` 拒绝显示别名，能显示数字的全部转化为数字
     - `-l` 仅列出在Listen(监听)的服务状态
-    - `-p` 显示建立相关链接的程序名
+    - `-p` 显示建立相关链接的程序名 **需要root**
 
-- 查询端口占用的pid 三种：
-    - `netstat -aonp |grep "^[a-z]\+[ ]\+0[ ]\+0[ ]\+[0-9\.]\+:80[ ]\+"|awk -F" "   {'print $0'}`
-    - `netstat -aonp |grep ":80[ ]\+"|awk -F" "   {'print $0'}`
-    - `sudo netstat -aonp |grep ":6379[ ]\+"|awk -F" "   {'print $0'}`
-    - `sudo kill -9 pid` 杀掉指定pid
-    - `ps aux` 查看当前执行中的程序
 
-- 似乎能看到更多 `netstat -tpanl | grep 127.0.0.1` 
+- `lsof -i:端口号` 用于查看某一端口的占用情况，缺省端口号显示全部
+    - 或者 `cat /etc/services` 查看系统以及使用的端口
+
+************************
 
 ## DNS
 > [Github: dns topic](https://github.com/topics/dns)
@@ -227,6 +221,7 @@ _ss_
 
 - 默认网关： 如果主机找不到准发规则， 就把数据包发给默认的网关
 - 增加/删除一条路由规则 `ip route add/del 192.168.2.0/24 via 192.168.1.254`
+- 关闭 启用 `ifconfig name down/up`
 
 ### tcpdump
 - `tcpdump -i eth0 -nn -X 'port 53' -c 1` root用户才有运行权限
