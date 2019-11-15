@@ -141,14 +141,20 @@ categories:
         - 是否向上级loger传递打印信息。默认是true。
 - `<loger>`可以包含零个或多个`<appender-ref>`元素，标识这个appender将会添加到这个loger。
 
-********
+- 配置包日志级别 `<logger name="com.github.kuangcp.hi" level="DEBUG"/>`
+
+
+************************
+
 - `<root>`
     - 也是`<loger>`元素，但是它是根loger。只有一个level属性，应为已经被命名为"root".
     - `level:`
         - 用来设置打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF，不能设置为INHERITED或者同义词NULL。
         - 默认是DEBUG。
 - `<root>`可以包含零个或多个`<appender-ref>`元素，标识这个appender将会添加到这个loger。
-**********
+
+************************
+
 `测试类：`
 ```java
     public class LogbackDemo { 
