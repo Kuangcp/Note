@@ -17,7 +17,7 @@ categories:
     1. [sed](#sed)
     1. [awk](#awk)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-11-16 19:27_|
 ****************************************
 # 流编辑器
 > [参考博客: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
@@ -95,15 +95,19 @@ categories:
 | y | 转换（transform）字元 |
 
 >1. 截取指定行数到新文件 `sed -n ‘开始行数，结束行数p’ info.log > newFile.log`
+
 >1. 修改配置文件中name的值为123 `sed -i "s/name=.*/name=123/g" config.conf`
->1. CRLF -> LF `sed -i 's/\r//g' file` 配合git 就是 `git ls-files| xargs sed -i 's/\r//g'`
->1. 去除换行符 `sed ':label;N;s/\n/ /;b label'` [参考](http://www.cnblogs.com/lykm02/p/4479098.html)
+>1. 修改第3行 `sed -i '3 s/name/1/g'`
+>1. CRLF -> LF `sed -i 's/\r//g' file`  
+    > 配合git: `git ls-files| xargs sed -i 's/\r//g'`
 >1. 注意特殊字符的转义 `git ls-files | xargs  sed -i 's/@a.*/\//g'`
+
+>1. 去除换行符 `sed ':label;N;s/\n/ /;b label'` [参考](http://www.cnblogs.com/lykm02/p/4479098.html)
 >1. 文件内容倒置 `sed '1!G;h;$!d' filename`
 
 > [参考博客: linux sed 命令单行任务快速参考](http://www.techug.com/post/linux-sed1line.html)
 
-> 替换满足特定条件的一行里面的多个字符串 `log.debug("who={}", who);` 把这个Java的log 里面的 who删除
+- [ ] 替换满足特定条件的一行里面的多个字符串 `log.debug("who={}", who);` 把这个Java的log 里面的 who删除
 
 > [sokoban sed](https://github.com/aureliojargas/sokoban.sed)`sed 写的推箱子游戏`
 

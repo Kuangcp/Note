@@ -45,7 +45,7 @@ categories:
 1. [Tips](#tips)
     1. [常用代码片段](#常用代码片段)
 
-**目录 end**|_2019-11-10 01:49_|
+**目录 end**|_2019-11-16 19:27_|
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -310,10 +310,14 @@ _判断文件_
 > Shell的函数只能返回整型数据类型
 
 ```sh
-  # shell 文件中定义函数
-  simple(){
-    echo "simple"
-  }
+    simple(){
+        echo "simple"
+    }
+
+    zero(){
+        return 0
+    }
+    echo "return "$?
 ```
 
 > 命令行内定义函数
@@ -322,12 +326,16 @@ _判断文件_
 **********************
 ## 文件读写
 ```bash
-		while IFS= read -r -u3 line; do
-    		echo "$line"
-		done 3< "$2"
-```
+    # 1
+    while IFS= read -r -u3 line; do
+        echo "$line"
+    done 3< "$2"
 
-- `cat a.log | while read line; do echo "line: "$line; done`
+    # 2
+    cat a.log | while read line; do
+        echo "line: "$line;
+    done
+```
 
 ### 配置文件
 
