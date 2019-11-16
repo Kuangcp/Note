@@ -40,7 +40,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2019-10-23 22:39_|
+**目录 end**|_2019-11-16 21:33_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -247,6 +247,8 @@ _有关类型后置_
 
 ### 标准输入输出
 > [参考博客: golang中的格式化输入输出](https://blog.csdn.net/xiaoyida11/article/details/51554022)
+
+- 打印结构体 `fmt.Printf("%+v\n", object)`
 
 **************************
 

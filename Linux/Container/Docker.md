@@ -40,7 +40,6 @@ categories:
     1. [数据卷容器](#数据卷容器)
 1. [容器编排](#容器编排)
     1. [Docker-Compose](#docker-compose)
-        1. [安装](#安装)
         1. [配置文件](#配置文件)
         1. [使用命令](#使用命令)
         1. [Tips](#tips)
@@ -56,7 +55,7 @@ categories:
 1. [Dockerfile](#dockerfile)
     1. [dockerignore文件的使用](#dockerignore文件的使用)
 
-**目录 end**|_2019-10-30 21:04_|
+**目录 end**|_2019-11-16 21:33_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -105,7 +104,8 @@ categories:
 ## Linux
 > [Official doc](https://docs.docker.com/install/linux/docker-ce/) `所有的发行版`
 
-> docker.io 是旧版本 现在新的Docker分为 docker-ce  docker-ee
+> docker.io 是旧版本 现在新的Docker分为 docker-ce  docker-ee  
+> 注意 Deepin上 如果通过 apt 去安装 docker-compose 它会把 docker-ce 卸掉, 装旧的 docker.io 
 
 ### 安装包安装
 > [官方文件地址](https://download.docker.com/linux/)
@@ -445,14 +445,8 @@ _登录镜像仓库_
 > [Demo: 开源电商平台](https://github.com/fecshop/yii2_fecshop_docker/blob/master/docker-compose.yml)
 > [Demo: 安装 Kafka](http://www.cnblogs.com/xuxinkun/p/5473952.html)
 
-### 安装
-
-> 官方建议的安装方式
-1. `sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
-1. `sudo chmod +x /usr/local/bin/docker-compose`
-1. `sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose`
-
-> 注意 Deepin上 如果通过 apt 去安装 docker-compose 它会把 docker-ce 卸掉, 装旧的 docker.io 
+- [安装](https://docs.docker.com/compose/install/)
+    - 最简单: `sudo pip install docker-compose`
 
 ### 配置文件
 > 一个配置文件就表示了一组容器, 以及相关的网络,文件等配置, docker-compose 都是基于该配置文件进行基本命令操作  

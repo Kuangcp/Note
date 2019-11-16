@@ -19,12 +19,13 @@ categories:
     1. [time](#time)
     1. [date](#date)
     1. [grep](#grep)
+    1. [script](#script)
     1. [定时任务](#定时任务)
         1. [crontab](#crontab)
         1. [Systemd](#systemd)
 1. [多媒体](#多媒体)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-11-16 21:33_|
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -54,6 +55,7 @@ categories:
     - 1是标准输出
 
 ******************
+
 ## 管道
 > [参考博客: linux 管道 ](http://www.cnblogs.com/davidwang456/p/3839874.html)
 > [参考博客: linux shell 管道命令(pipe)使用及与shell重定向区别](http://www.cnblogs.com/chengmo/archive/2010/10/21/1856577.html)
@@ -87,6 +89,13 @@ categories:
 - -o 一行内多次匹配 
     - 统计所有 `main` 数量 `grep -o main test.log | wc -l` 
 - -i 忽略大小写
+
+## script
+>  make typescript of terminal session
+
+录制终端
+
+************************
 
 ## 定时任务
 ### crontab
