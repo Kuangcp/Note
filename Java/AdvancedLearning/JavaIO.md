@@ -25,7 +25,7 @@ categories:
 1. [NIO](#nio)
     1. [Buffer](#buffer)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-11-17 21:38_|
 ****************************************
 # Java中的IO
 > [操作系统中的IO模型](/Skills/CS/IO.md)  
@@ -135,7 +135,8 @@ Reader类的核心就是read()这个方法，由于这里直接操作InputStream
     - 读取properties文件 ：`new Properties().load(is);`
     - 按行读取文件 `BufferedReader bf = new BufferedReader(new InputStreamReader(is));`
 
-**************
+************************
+
 ##### 可执行jar读取外部配置文件
 ```java
     Properties properties = new Properties();

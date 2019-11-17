@@ -22,7 +22,7 @@ categories:
     1. [Vivaldi](#vivaldi)
     1. [Opera](#opera)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-11-17 21:38_|
 ****************************************
 # 浏览器
 ## FireFox
@@ -133,6 +133,8 @@ categories:
 - [chromefor](https://www.chromefor.com/)
 - [52crx](https://52crx.com/)
 - [Chrome插件英雄榜](https://github.com/zhaoolee/ChromeAppHeroes)
+
+1.  `Removing keychain login from Chormium` 启动命令添加如下参数 chromium --password-store=basic
 
 ### 主题
 1. Aero Trans Brushed Metal Theme

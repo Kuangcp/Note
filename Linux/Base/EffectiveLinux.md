@@ -29,7 +29,7 @@ categories:
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2019-11-10 01:49_|
+**目录 end**|_2019-11-17 21:38_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -71,6 +71,9 @@ categories:
 
 **`z.lua`**
 > [Github](https://github.com/skywind3000/z.lua)   与 Autojump 类似, 性能更好
+
+- `pip install qrcode` 
+    - *qr --help* 终端内生成二维码
 
 ## 网络工具
 
