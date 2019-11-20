@@ -18,25 +18,25 @@ categories:
     1. [xz](#xz)
     1. [7Z](#7z)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-11-20 20:21_|
 ****************************************
 # Linux操作压缩文档
 > Linux默认自带ZIP压缩，最大支持4GB压缩，RAR的压缩比大于4GB.
 
 | 文件名模式 | 解压方式 |
 |:----|:----|
-| *.tar |  用 tar -xvf 解压 |
-|*.tar.gz 和 *.tgz| 用 tar -xzf 解压|
-|*.tar.xz | 用 tar -xJf 解压|
-|*.tar.Z| 用tar -xZf 解压|
-|*.tar.bz2|用tar -xjf 解压|
+| *.tar             | tar -xvf 解压 |
+| *.tar.gz 和 *.tgz | tar -xzf 解压|
+| *.tar.xz          | tar -xJf 解压|
+| *.tar.Z           | tar -xZf 解压|
+| *.tar.bz2         | tar -xjf 解压|
 |-|-|
-| *.gz|用 gzip -d 或者 gunzip 解压|
-|*.bz2|用 bzip2 -d或者用bunzip2 解压|
-|*.Z|用 uncompress 解压|
-|*.xz|用 xz -d 解压|
-|*.rar|用 unrar e 解压|
-|*.zip|用 unzip 解压|
+| *.gz              | gzip -d 或者 gunzip 解压|
+| *.bz2             | bzip2 -d或者用bunzip2 解压|
+| *.Z               | uncompress 解压|
+| *.xz              | xz -d 解压|
+| *.rar             | unrar e 解压|
+| *.zip             | unzip 解压|
 
 *********************************
 

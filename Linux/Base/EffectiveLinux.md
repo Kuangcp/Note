@@ -29,7 +29,7 @@ categories:
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2019-11-17 21:38_|
+**目录 end**|_2019-11-20 20:21_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -167,6 +167,8 @@ categories:
 
 `pdfunite`
 > Portable Document Format (PDF) page merger
+
+- pdfunite 1.pdf 2.pdf merged.pdf
 
 ************************
 

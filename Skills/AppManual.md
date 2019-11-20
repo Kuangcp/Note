@@ -38,7 +38,7 @@ categories:
     1. [安全工具](#安全工具)
         1. [gpg](#gpg)
 
-**目录 end**|_2019-10-31 17:01_|
+**目录 end**|_2019-11-20 20:21_|
 ****************************************
 # 软件使用记事
 ## 包管理
@@ -129,9 +129,7 @@ categories:
 
 ***********************************
 ### convert
-> 注意 该软件是按后缀来识别图像文件格式的... 所以 jpeg 可以直接改成 jpg 用
-
-- [参考博客](http://blog.csdn.net/mybelief321/article/details/9969949)
+> convert between image formats as well as resize an image, blur, crop, despeckle, dither, draw on, flip, join, re-sample, and much more
 
 - 将图片转换成指定大小 这是保持比例的 `convert -resize 600X600 src.jpg dst.jpg` 中间是字母X
     - 如果不保持比例，就在宽高后加上感叹号 
@@ -149,7 +147,10 @@ _批量修改_
 1. x/y 得到比例 在 原图中裁剪出同样比例的图片 (Viewnior就很好用)
 1. 将裁剪出来的图片转换指定大小 `convert -resize xXy src.jpg dst.jpg`
 
+-  convert origin.jpg target.pdf
+
 ***********************************************
+
 ### todo.txt
 > [官网](http://todotxt.org/) 一个简约的 TODO 软件
 

@@ -206,7 +206,7 @@
 > 创建意图  
 > Intent intent=new Intent(MainActivity.this, test_Activity.class);  
 > startActivityForResult(intent, 0x717);  //使用startActivityForResult启动新的Activity  
-#
+
 >Intent intent=getIntent();   // 获取Intent对象  
 >setResult(0x717, intent);   //设置返回的结果码，并返回调用该Activity的Activity
 		
