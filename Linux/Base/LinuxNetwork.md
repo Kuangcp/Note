@@ -47,7 +47,7 @@ categories:
     1. [防火墙](#防火墙)
         1. [iptables](#iptables)
 
-**目录 end**|_2019-11-14 19:38_|
+**目录 end**|_2019-11-22 14:34_|
 ****************************************
 # Linux网络管理
 ## Tips
@@ -156,32 +156,17 @@ _netstat工具_ 或者 更好用的 [iproute2](#iproute2)
 > [Official site](https://curl.haxx.se/)
 
 1. 不输出，重定向到*黑洞设备*  ` curl -s -o /dev/null URL`
-1. 格式化返回的json数据：`curl xxxx|python -m json.tool `
 1. 使用基础认证 发送JSON数据 `curl -i -H "Content-Type:application/json" -u admin:secret -X POST --data '{"title":"1","content":"1"}' http://tomcat.kcp/email/content`
-
-```sh
-    # 如果没有认证则会收到如下结果
-$ curl -i -u admin:secret -X POST http://tomcat.kcp/email/content
-    HTTP/1.1 401 
-    Server: nginx/1.13.3
-    Date: Thu, 26 Jul 2018 12:17:18 GMT
-    Content-Length: 0
-    Connection: keep-alive
-    Set-Cookie: JSESSIONID=D863FC575140E9B1A0A2505410617487; Path=/; HttpOnly
-    X-Content-Type-Options: nosniff
-    X-XSS-Protection: 1; mode=block
-    Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-    Pragma: no-cache
-    Expires: 0
-    X-Frame-Options: DENY
-    WWW-Authenticate: Basic realm="Realm"
-```
+>  如果没有认证则会收到 401 返回码
 
 - [curl cookie](https://curl.haxx.se/docs/http-cookies.html) | [curl使用Cookie](https://aiezu.com/article/linux_curl_http_cookie.html)
+- `curl -v --cookie "USER_TOKEN=Yes" http://127.0.0.1:5000/`
 
 > [参考博客: curl返回常见错误码](http://www.cnblogs.com/wainiwann/p/3492939.html)
 - [56错误码](https://stackoverflow.com/questions/10285700/curl-error-recv-failure-connection-reset-by-peer-php-curl)
 > [参考博客: 使用cURL和用户名和密码？](http://www.cnblogs.com/seasonzone/p/7527218.html)
+
+************************
 
 ### iproute2
 > 代替 netstat 的强大工具
@@ -223,6 +208,8 @@ _ss_
 - 增加/删除一条路由规则 `ip route add/del 192.168.2.0/24 via 192.168.1.254`
 - 关闭 启用 `ifconfig name down/up`
 
+************************
+
 ### tcpdump
 - `tcpdump -i eth0 -nn -X 'port 53' -c 1` root用户才有运行权限
     - -i 指定监听的网络接口（网卡）
@@ -239,6 +226,8 @@ _ss_
     - -r 读取raw packets 文件
 
 - 列出可以选择的抓包对象 `tcpdump -D`（USB设备也能抓？）
+
+************************
 
 ### netcat
 > sudo apt install netcat  

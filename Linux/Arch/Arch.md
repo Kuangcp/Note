@@ -16,7 +16,7 @@ categories:
         1. [Yay](#yay)
 1. [Tips](#tips)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-11-22 14:34_|
 ****************************************
 
 # Arch
@@ -46,7 +46,19 @@ categories:
     ```
 1. `sudo pacman -Syu yaourt` 同步
 
+> 若遇到 签名错误  signature from ... is unknown trust
+
+```sh
+sudo rm -R /etc/pacman.d/gnupg/
+sudo rm -R /root/.gnupg/ 
+sudo gpg --refresh-keys
+sudo pacman-key --init && pacman-key --populate archlinux manjaro
+sudo pacman-key --refresh-keys
+sudo pacman -Syyu
+```
+
 ### Yay
+
 - `pacman -S yay` 下一代aur管理
 
 # Tips
