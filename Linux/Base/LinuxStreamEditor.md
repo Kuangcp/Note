@@ -17,7 +17,7 @@ categories:
     1. [sed](#sed)
     1. [awk](#awk)
 
-**目录 end**|_2019-11-16 19:27_|
+**目录 end**|_2019-11-23 18:39_|
 ****************************************
 # 流编辑器
 > [参考博客: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
@@ -42,57 +42,50 @@ categories:
 指定 paste -d ‘*‘ p3.txt p2.txt p1.txt
 
 ## sed
-> 组成模式: `参数 命令 文件` | sed --help 查看详细
+> 使用方式: `操作类型 命令 文件` | sed --help 查看详细
 
-- [参考：sed 查找与替换](http://wiki.jikexueyuan.com/project/shell-learning/sed-search-and-replace.html)
-- [sed 正则的精确控制](http://wiki.jikexueyuan.com/project/shell-learning/sed-accurate-control-of-regular.html)
-    - `echo Tolstoy is worldly | sed 's/T.*y/Camus/'` 这里的pattern就有问题， 会把整行替换掉
-    - `echo Tolstoy is worldly | sed 's/T[a-z]*y/Camus/'` 只把第一个单词替换
-
-> 处理管道流 `echo syx is a good body | sed 's/syx/zsf/'`
-
-- `参数`
+- `操作类型`
     - `-n` suppress automatic printing of pattern space
     - `-e` 只在控制台输出的操作的结果内容(全部)，源文件不变 
     - `-i` 直接在源文件中进行修改
     - `-f file` 执行一个 sed 脚本文件中的指令
 
 - `命令`
-    - p 打印 `sed -n Np 文件名`
-    - a 新增 在下一行
-    - i 插入 在上一行 将hello插入到第4行：`sed -in "4i hello" test.md`
-    - c 替换 整行
-    - s 替换 行内字符串的替换 
-        - 命令结构为: `'s/pattern/relacement/flags'`
-            - pattern 是正则的 pattern 写法 **注意会匹配到首尾的空字符** `echo abc | sed 's/a*/l/g'` 就很费解
-            - replacement 是需要替换成的内容
-            - flags 是动作(可以为空)
-                - 整数: 一行中的第几处符合 pattern 将被替换
-                - g : 全部替换
-                - p : 输出修改的行内容
-                - w filename : 替换后的文件写入到新文件
-        - 将文件中所有aaa换为bbb, `sed -e "s/aaa/bbb/g" test.md`
-    - d 删除 行级别, 删除2-4行 `sed -i "2,4d" test.md`
 
 | 命令 | 效果 |
 |:----:|:----|
 | b | label 将执行的指令跳至由 : 建立的参考位置 |
+| d | 删除行  删除2-4行 `sed -i "2,4d" file` |
 | D | 删除 pattern space 内第一个 newline 字母 前的资料 |
 | g | 拷贝资料从 hold space |
 | G | 添加资料从 hold space 至 pattern space |
 | h | 拷贝资料从 pattern space 至 hold space |
 | H | 添加资料从 pattern space 至 hold space |
 | l | 印出 l 资料中的 nonprinting character 用 ASCII 码 |
-| i | 插入添加使用者输入的资料行 |
+| a | 新增 在下一行
+| i | 插入添加使用者输入的行  将hello插入到第4行：`sed -in "4i hello" test.md` |
 | n | 读入下一笔资料 |
 | N | 添加下一笔资料到 pattern space |
-| p | 印出资料 |
+| p | 打印 `sed -n 1p file` |
 | P | 印出 pattern space 内第一个 newline 字母 前的资料 |
 | q | 跳出 sed 编辑 |
 | r | 读入它档内容 |
 | w | 写资料到它档内 |
 | x | 交换 hold space 与 pattern space 内容 |
 | y | 转换（transform）字元 |
+
+- c 替换 整行
+- s 替换 行内字符串的替换 
+    - 命令结构为: `'s/pattern/relacement/flags'`
+        - pattern 是正则的 pattern 写法 **注意会匹配到首尾的空字符** `echo abc | sed 's/a*/l/g'` 就很费解
+        - replacement 是需要替换成的内容
+        - flags 是动作(可以为空)
+            - 整数: 一行中的第几处符合 pattern 将被替换
+            - g : 全部替换
+            - p : 输出修改的行内容
+            - w filename : 替换后的文件写入到新文件
+    - 将文件中所有aaa换为bbb, `sed -e "s/aaa/bbb/g" test.md`
+
 
 >1. 截取指定行数到新文件 `sed -n ‘开始行数，结束行数p’ info.log > newFile.log`
 
@@ -110,6 +103,13 @@ categories:
 - [ ] 替换满足特定条件的一行里面的多个字符串 `log.debug("who={}", who);` 把这个Java的log 里面的 who删除
 
 > [sokoban sed](https://github.com/aureliojargas/sokoban.sed)`sed 写的推箱子游戏`
+
+- [参考：sed 查找与替换](http://wiki.jikexueyuan.com/project/shell-learning/sed-search-and-replace.html)
+- [sed 正则的精确控制](http://wiki.jikexueyuan.com/project/shell-learning/sed-accurate-control-of-regular.html)
+    - `echo Tolstoy is worldly | sed 's/T.*y/Camus/'` 这里的pattern就有问题， 会把整行替换掉
+    - `echo Tolstoy is worldly | sed 's/T[a-z]*y/Camus/'` 只把第一个单词替换
+
+> 处理管道流 `echo syx is a good body | sed 's/syx/zsf/'`
 
 ************************
 

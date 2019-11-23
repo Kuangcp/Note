@@ -24,8 +24,9 @@ categories:
         1. [crontab](#crontab)
         1. [Systemd](#systemd)
 1. [多媒体](#多媒体)
+    1. [ffmpeg](#ffmpeg)
 
-**目录 end**|_2019-11-16 21:33_|
+**目录 end**|_2019-11-23 18:39_|
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -121,7 +122,22 @@ categories:
 ### Systemd
 > [参考博客: Systemd 定时器教程](http://www.ruanyifeng.com/blog/2018/03/systemd-timer.html) `配置和使用上比Crontab更繁杂, 但是有更多的可控制项`
 
+************************
+
 # 多媒体
 
-> m3u8 网址转换为mp4
+## ffmpeg
+> [Official Site](http://ffmpeg.org/ffmpeg.html)  
+
+> m3u8 URL 转换为mp4
 - `ffmpeg -i http://xxx.m3u8 -c copy -bsf:a aac_adtstoasc output.mp4`
+
+- 获取视频中的音频 `ffmpeg -i input.mp4 -vn -y -acodec copy output.m4a`
+- 去掉视频中的音频 `ffmpeg -i input.mp4 -an output.mp4`
+
+- 合并视频 `ffmpeg -f concat -safe 0 -i file.cfg  -c copy result.mp4`
+    - file.cfg 内容为多行文件 : `file "/path/to/file"`
+- 截取视频 `ffmpeg -ss 00:00:00 -t 00:00:30 -i input.mp4 -vcodec copy -acodec copy output.mp4`
+    - `-ss` 开始时间 `-t` 截取时长  `-q 0` 无损 `-c copy`表示不必重新编码
+
+
