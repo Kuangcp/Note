@@ -21,7 +21,8 @@ categories:
     1. [行为参数化](#行为参数化)
     1. [Lambda基础](#lambda基础)
         1. [Lambda 实现原理](#lambda-实现原理)
-            1. [Lambda 局限性](#lambda-局限性)
+        1. [Lambda 局限性](#lambda-局限性)
+        1. [Lambda BUG](#lambda-bug)
     1. [原始类型特化](#原始类型特化)
     1. [类型检查、类型推断以及限制](#类型检查、类型推断以及限制)
         1. [类型检查](#类型检查)
@@ -79,7 +80,7 @@ categories:
     1. [ZonedDateTime](#zoneddatetime)
     1. [Clock](#clock)
 
-**目录 end**|_2019-11-25 22:54_|
+**目录 end**|_2019-11-25 20:33_|
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -313,12 +314,14 @@ An informative annotation type used to indicate that an interface type declarati
 > [参考: Java Lambda表达式 实现原理分析](https://blog.csdn.net/jiankunking/article/details/79825928)
 
 ### Lambda 局限性
-1. 当原方法上具有泛型参数时无法使用 Lambda 写法
+1. 当原方法上具有类范围的泛型参数时无法使用 Lambda 写法
     ```java
     public interface Test<T> {
         T execute(T param);
     }
     ```
+### Lambda BUG
+> [泛型内extends多个类 lambda 表达式方法引用时会报错](https://bugs.java.com/bugdatabase/view_bug.do?bug_id=8142476)
 
 ************************
 
