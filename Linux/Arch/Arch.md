@@ -16,7 +16,7 @@ categories:
         1. [Yay](#yay)
 1. [Tips](#tips)
 
-**目录 end**|_2019-11-22 14:34_|
+**目录 end**|_2019-11-25 22:54_|
 ****************************************
 
 # Arch
@@ -33,6 +33,10 @@ categories:
 > Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的社区驱动软件仓库。Debian/Ubuntu 用户的对应类比是 PPA。
 
 1. `pacman-mirrors` generate pacman mirrorlist for Manjaro Linux 
+
+1. -S 安装
+1. -R 卸载
+    - -Rs 卸载以及没有被其他软件依赖的软件包
 
 ### Yaourt
 > [Arch User Repository](https://wiki.archlinux.org/index.php/Arch_User_Repository)`但是已经暂停开发了`

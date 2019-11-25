@@ -19,7 +19,7 @@ categories:
     1. [IDEA](#idea)
     1. [终端](#终端)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-11-25 22:54_|
 ****************************************
 # 字体
 > [Deepin wiki 字体](https://wiki.deepin.org/wiki/%E5%AD%97%E4%BD%93)  
@@ -42,6 +42,9 @@ categories:
 - [https://www.urbanfonts.com/](https://www.urbanfonts.com/)
 - [https://www.1001fonts.com/](https://www.1001fonts.com/)
 - [https://www.ffonts.net/](https://www.ffonts.net/)
+
+- ttf-ms-fonts
+- ttf-wps-fonts
 
 ******************************
 

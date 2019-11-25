@@ -11,74 +11,75 @@ categories:
 **目录 start**
  
 1. [Java8](#java8)
-    1. [接口的变化](#接口的变化)
-        1. [default方法](#default方法)
-        1. [static方法](#static方法)
-    1. [Funcational](#funcational)
-        1. [函数式接口](#函数式接口)
-        1. [函数式接口案例](#函数式接口案例)
-    1. [Lambda](#lambda)
-        1. [行为参数化](#行为参数化)
-        1. [Lambda基础](#lambda基础)
-            1. [Lambda 实现原理](#lambda-实现原理)
+1. [接口的变化](#接口的变化)
+    1. [default方法](#default方法)
+    1. [static方法](#static方法)
+1. [Funcational](#funcational)
+    1. [函数式接口](#函数式接口)
+    1. [函数式接口案例](#函数式接口案例)
+1. [Lambda](#lambda)
+    1. [行为参数化](#行为参数化)
+    1. [Lambda基础](#lambda基础)
+        1. [Lambda 实现原理](#lambda-实现原理)
+            1. [Lambda 局限性](#lambda-局限性)
+    1. [原始类型特化](#原始类型特化)
+    1. [类型检查、类型推断以及限制](#类型检查、类型推断以及限制)
+        1. [类型检查](#类型检查)
+        1. [同样的Lambda 不同的函数式接口](#同样的lambda-不同的函数式接口)
+        1. [类型推断](#类型推断)
+        1. [使用局部变量](#使用局部变量)
+    1. [复合 Lambda 表达式](#复合-lambda-表达式)
+        1. [比较器复合](#比较器复合)
+        1. [谓词复合](#谓词复合)
+        1. [函数复合](#函数复合)
+    1. [利用Lambda开发DSL框架](#利用lambda开发dsl框架)
+1. [Stream](#stream)
+    1. [Stream与集合](#stream与集合)
+        1. [只能遍历一次](#只能遍历一次)
+        1. [外部迭代和内部迭代](#外部迭代和内部迭代)
+    1. [构建流](#构建流)
+        1. [有限流](#有限流)
+        1. [无限流](#无限流)
+    1. [数值流](#数值流)
         1. [原始类型特化](#原始类型特化)
-        1. [类型检查、类型推断以及限制](#类型检查、类型推断以及限制)
-            1. [类型检查](#类型检查)
-            1. [同样的Lambda 不同的函数式接口](#同样的lambda-不同的函数式接口)
-            1. [类型推断](#类型推断)
-            1. [使用局部变量](#使用局部变量)
-        1. [复合 Lambda 表达式](#复合-lambda-表达式)
-            1. [比较器复合](#比较器复合)
-            1. [谓词复合](#谓词复合)
-            1. [函数复合](#函数复合)
-        1. [利用Lambda开发DSL框架](#利用lambda开发dsl框架)
-    1. [Stream](#stream)
-        1. [Stream与集合](#stream与集合)
-            1. [只能遍历一次](#只能遍历一次)
-            1. [外部迭代和内部迭代](#外部迭代和内部迭代)
-        1. [构建流](#构建流)
-            1. [有限流](#有限流)
-            1. [无限流](#无限流)
-        1. [数值流](#数值流)
-            1. [原始类型特化](#原始类型特化)
-            1. [数值范围](#数值范围)
-        1. [Stream操作](#stream操作)
-            1. [中间操作](#中间操作)
-            1. [终端操作](#终端操作)
-        1. [使用Stream](#使用stream)
-            1. [筛选](#筛选)
-            1. [映射](#映射)
-            1. [查找和匹配](#查找和匹配)
-            1. [归约](#归约)
-                1. [求和](#求和)
-                1. [极值](#极值)
-                1. [归约的优势与并行化](#归约的优势与并行化)
-                1. [总结](#总结)
-        1. [使用流收集数据](#使用流收集数据)
-            1. [预定义收集器](#预定义收集器)
-                1. [汇总](#汇总)
-                1. [规约](#规约)
-                1. [分组](#分组)
-                    1. [多级分组](#多级分组)
-                    1. [按子组收集数据](#按子组收集数据)
-                1. [分区](#分区)
-            1. [自定义收集器](#自定义收集器)
-        1. [高效的使用Stream](#高效的使用stream)
-    1. [Optional](#optional)
-        1. [Optional类和Stream接口的相似之处](#optional类和stream接口的相似之处)
-        1. [实践:读取Properties某属性](#实践读取properties某属性)
-    1. [时间处理](#时间处理)
-        1. [ZoneId](#zoneid)
-        1. [Clock](#clock)
-        1. [Duration](#duration)
-        1. [Period](#period)
-        1. [Instant](#instant)
-        1. [LocalDateTime](#localdatetime)
-        1. [ZoneOffset](#zoneoffset)
-        1. [ZonedDateTime](#zoneddatetime)
-        1. [Clock](#clock)
+        1. [数值范围](#数值范围)
+    1. [Stream操作](#stream操作)
+        1. [中间操作](#中间操作)
+        1. [终端操作](#终端操作)
+    1. [使用Stream](#使用stream)
+        1. [筛选](#筛选)
+        1. [映射](#映射)
+        1. [查找和匹配](#查找和匹配)
+        1. [归约](#归约)
+            1. [求和](#求和)
+            1. [极值](#极值)
+            1. [归约的优势与并行化](#归约的优势与并行化)
+            1. [总结](#总结)
+    1. [使用流收集数据](#使用流收集数据)
+        1. [预定义收集器](#预定义收集器)
+            1. [汇总](#汇总)
+            1. [规约](#规约)
+            1. [分组](#分组)
+                1. [多级分组](#多级分组)
+                1. [按子组收集数据](#按子组收集数据)
+            1. [分区](#分区)
+        1. [自定义收集器](#自定义收集器)
+    1. [高效的使用Stream](#高效的使用stream)
+1. [Optional](#optional)
+    1. [Optional类和Stream接口的相似之处](#optional类和stream接口的相似之处)
+    1. [实践:读取Properties某属性](#实践读取properties某属性)
+1. [时间处理](#时间处理)
+    1. [ZoneId](#zoneid)
+    1. [Clock](#clock)
+    1. [Duration](#duration)
+    1. [Period](#period)
+    1. [Instant](#instant)
+    1. [LocalDateTime](#localdatetime)
+    1. [ZoneOffset](#zoneoffset)
+    1. [ZonedDateTime](#zoneddatetime)
+    1. [Clock](#clock)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-11-25 22:54_|
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -97,20 +98,20 @@ categories:
 1. 写给大忙人看的Java8
 
 *****************************
-## 接口的变化
+# 接口的变化
 
-### default方法
+## default方法
 > 接口中也能写具有方法体的方法了
 
 1. 调用方式: `接口.super.方法`
 
-### static方法
+## static方法
 
 1. 调用方式: static 方法 `接口.方法`
 
 *************************
 
-## Funcational
+# Funcational
 > [参考  Java8函数接口实现回调及Groovy闭包的代码示例](http://www.cnblogs.com/lovesqcc/p/6083759.html)
 > [Function接口 – Java8中java.util.function包下的函数式接口](http://ifeve.com/jjava-util-function-java8/)
 
@@ -153,7 +154,7 @@ An informative annotation type used to indicate that an interface type declarati
     - 在语法上比定义回调接口、创建匿名类更加简洁；
     - 尝试使用新的语言特性，理解多样化的编程思想，提升编程表达能力。
 
-### 函数式接口
+## 函数式接口
 > 通过 :: 操作符 简化代码
 
 | Lambda | 方法引用 |
@@ -196,7 +197,7 @@ An informative annotation type used to indicate that an interface type declarati
     TriFunction<Integer, Integer, Integer, Color> colorFactory = Color::new;
 ```
 
-### 函数式接口案例
+## 函数式接口案例
 
 | 使用案例 | Lambda例子 | 对应的函数式接口 |
 |:----|:----|:----|
@@ -231,7 +232,7 @@ An informative annotation type used to indicate that an interface type declarati
 
 *******************************
 
-## Lambda
+# Lambda
 
 1. Lambda表达式可以理解为一种匿名函数：它没有名称，但有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常的列表。
 1. Lambda表达式让你可以简洁地传递代码。
@@ -249,7 +250,7 @@ An informative annotation type used to indicate that an interface type declarati
 > [参考博客: 级联 lambda 表达式的函数重用与代码简短问题](http://www.techug.com/post/java-lambda.html)
 > [参考博客: Java8：Lambda表达式增强版Comparator和排序](http://www.importnew.com/15259.html)
 
-### 行为参数化
+## 行为参数化
 >1. 行为参数化，就是一个方法接受多个不同的行为作为参数，并在内部使用它们， 完成不同行为的能力。
 >1. 行为参数化可让代码更好地适应不断变化的要求，减轻未来的工作量。
 >1. 传递代码，就是将新行为作为参数传递给方法。但在Java 8之前这实现起来很啰嗦。为接
@@ -259,7 +260,7 @@ An informative annotation type used to indicate that an interface type declarati
 > 这种模式可以把一个行为（一段代码）封装起来，并通过传递和使用创建的行为, 将方法的行为参数化。前面提到过，这种做法类似于策略设计模式  
 > Java API中的很多方法都可以用不同的行为来参数化。这些方法往往与匿名类一起使用
 
-### Lambda基础
+## Lambda基础
 - 可以把Lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常列表。
     - `匿名`  我们说匿名，是因为它不像普通的方法那样有一个明确的名称：写得少而想得多！
     - `函数`  我们说它是函数，是因为Lambda函数不像方法那样属于某个特定的类。但和方法签名的组成是一致的
@@ -305,15 +306,23 @@ An informative annotation type used to indicate that an interface type declarati
     String result = processFile((BufferedReader br) -> br.readLine() + br.readLine());
 ```
 
-#### Lambda 实现原理
+### Lambda 实现原理
 
 1. 初步分析 编译后生成匿名内部类替换lambda表达式
 
 > [参考: Java Lambda表达式 实现原理分析](https://blog.csdn.net/jiankunking/article/details/79825928)
 
+### Lambda 局限性
+1. 当原方法上具有泛型参数时无法使用 Lambda 写法
+    ```java
+    public interface Test<T> {
+        T execute(T param);
+    }
+    ```
+
 ************************
 
-### 原始类型特化 
+## 原始类型特化 
 > Primitive Specializations
 
 > Java类型要么是引用类型（比如Byte、 Integer、 Object、 List） ，要么是原始类型（比如int、 double、 byte、 char）。
@@ -327,15 +336,15 @@ Java 8为我们前面所说的函数式接口带来了一个专门的版本，�
 一般来说，针对专门的输入参数类型的函数式接口的名称都要加上对应的原始类型前缀，比如DoublePredicate、 IntConsumer、 LongBinaryOperator、 IntFunction等。 
 Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 IntToDoubleFunction等。
 
-### 类型检查、类型推断以及限制
+## 类型检查、类型推断以及限制
 
 当我们第一次提到Lambda表达式时，说它可以为函数式接口生成一个实例。然而， Lambda 表达式本身并不包含它在实现哪个函数式接口的信息。
 
-#### 类型检查
+### 类型检查
 > Lambda的类型是从使用Lambda的上下文推断出来的。上下文（比如，接受它传递的方法的参数，或接受它的值的局部变量）中Lambda表达式需要的类型称为目标类型。
 > 请注意，如果Lambda表达式抛出一个异常，那么抽象方法所声明的throws语句也必须与之匹配。
 
-#### 同样的Lambda 不同的函数式接口
+### 同样的Lambda 不同的函数式接口
 > 有了目标类型的概念，同一个Lambda表达式就可以与不同的函数式接口联系起来，只要它们的抽象方法签名能够兼容。
 
 比如，前面提到的Callable和PrivilegedAction，这两个接口 都代表着什么也不接受且返回一个泛型T的函数。 因此，下面两个赋值是有效的：
@@ -360,7 +369,7 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 
 既可以利用目标类型来检查一个Lambda是否可以用于某个特定的上下文. 也可以用来做一些略有不同的事：推断Lambda参数的类型。
 
-#### 类型推断
+### 类型推断
 > 你还可以进一步简化你的代码。 Java编译器会从上下文（目标类型）推断出用什么函数式接口来配合Lambda表达式，
 > 这意味着它也可以推断出适合Lambda的签名，因为函数描述符可以通过目标类型来得到。  
 > 这样做的好处在于，编译器可以了解Lambda表达式的参数类型，这样就可以在Lambda语法中省去标注参数类型。
@@ -372,7 +381,7 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
     Comparator<Apple> c = (a1, a2) -> a1.getWeight().compareTo(a2.getWeight());
 ```
 
-#### 使用局部变量
+### 使用局部变量
 我们迄今为止所介绍的所有Lambda表达式都只用到了其主体里面的参数。但Lambda表达式也允许使用自由变量（不是参数，而是在外层作用域中定义的变量），
 就像匿名类一样。 它们被称作捕获Lambda。例如，下面的Lambda捕获了portNumber变量：
 ```java
@@ -406,17 +415,17 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 并且隐式表示它们仅限于其所在线程。如果允许捕获可改变的局部变量，就会引发造成线程不安全的新的可能性，
 而这是我们不想看到的（实例变量可以，因为它们保存在堆中，而堆是在线程之间共享的） 。
 
-### 复合 Lambda 表达式
+## 复合 Lambda 表达式
 在实践中，这意味着你可以把多个简单的Lambda复合成复杂的表达式。比如，你可以让两个谓词之间做一个or操作，组合成一个更大的谓词。
 而且，你还可以让一个函数的结果成为另一个函数的输入。
 窍门在于，我们即将介绍的方法都是**默认方法**，也就是说它们不是抽象方法。
 
-#### 比较器复合
+### 比较器复合
 1. 单一属性比较 `Comparator<Apple> c = Comparator.comparing(Apple::getWeight);` (实用的**Comparator.comparing**方法)
     - 顺序(小到大) 逆序则再调用下 reversed()
 1. 按重量排序, 重量一致则再按国家排序 `inventory.sort(comparing(Apple::getWeight).thenComparing(Apple::getCountry));`
 
-#### 谓词复合
+### 谓词复合
 > 谓词接口包括三个方法： negate、 and和or，让你可以重用已有的Predicate来创建更复杂的谓词。  
 > 请注意， and和or方法是按照在表达式链中的位置，从左向右确定优先级的。因此， a.or(b).and(c)可以看作(a || b) && c。
 
@@ -424,7 +433,7 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 1. 红且重`Predicate<Apple> redAndHeavyApple = redApple.and(a -> a.getWeight() > 150);`
 1. 红且重或者是绿的 `Predicate<Apple> redAndHeavyAppleOrGreen = redApple.and(a -> a.getWeight() > 150).or(a -> "green".equals(a.getColor()));`
 
-#### 函数复合
+### 函数复合
 可以把Function接口所代表的Lambda表达式复合起来。 Function接口为此配了andThen和compose两个默认方法，它们都会返回Function的一个实例。
 
 ```java
@@ -456,12 +465,12 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
         return (f.apply(a) + f.apply(b)) * (b-a) / 2.0;
     }
 ```
-### 利用Lambda开发DSL框架
+## 利用Lambda开发DSL框架
 - [ ] 可以将mythpoi改造一下
 
 **********************************
 
-## Stream
+# Stream
 > [参考博客: Java 8 中的 Streams API 详解](https://www.ibm.com/developerworks/cn/java/j-lo-java8streamapi/)
 
 - Java 8中的Stream API可以让你写出这样的代码
@@ -483,7 +492,7 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 
 ************************
 
-### Stream与集合
+## Stream与集合
 
 粗略地说，集合与流之间的差异就在于什么时候进行计算。集合是一个内存中的数据结构，它包含数据结构中目前所有的值——集合中的每个元素都得先算出来才能添加到集合中。  
 （你可以往集合里加东西或者删东西，但是不管什么时候，集合中的每个元素都是放在内存里的，元素都得先算出来才能成为集合的一部分）  
@@ -491,11 +500,11 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 
 例如构建一个质数流, 对所有的质数处理, 如果使用集合就要把所有的质数构建出来, 然后做下一步操作, 但是流只会按需生成。这是一种生产者－消费者的关系. 从另一个角度来说，流就像是一个延迟创建的集合：只有在消费者要求的时候才会计算值
 
-#### 只能遍历一次
+### 只能遍历一次
 > 和迭代器类似，流只能遍历一次, 遍历完之后，我们就说这个流已经被消费掉了  
 > 从哲学的角度看, 集合是空间中分布的一组值, 而流是时间中分布的一组值
 
-#### 外部迭代和内部迭代
+### 外部迭代和内部迭代
 - 使用Collection接口需要用户去做迭代（比如用for-each），这称为外部迭代。  
 - 相反，Streams库使用内部迭代——它帮你把迭代做了，还把得到的流值存在了某个地方，你只要给出一个函数声明迭代中执行的操作即可。
 
@@ -506,10 +515,10 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 
 ************************
 
-### 构建流
+## 构建流
 > 从值序列、数组、文件来创建流，甚至由函数创建无限流
 
-#### 有限流
+### 有限流
 > 由值创建流
 ```java
 Stream<String> stream = Stream.of("Java 8 ", "Lambdas ", "In ", "Action"); 
@@ -532,7 +541,7 @@ Java中用于处理文件等I/O操作的NIO  API（非阻塞I/O）已更新，�
     }catch(IOException e){} 
 ```
 
-#### 无限流
+### 无限流
 > Stream API提供了两个静态方法来 **从函数生成流**：`Stream.iterate` 和 `Stream.generate`。这两个操作可以创建所谓的 无限流  
 > 同样，你不能对无限流做排序或归约，因为所有元素都需要处理，而这永远也完不成！
 
@@ -564,9 +573,9 @@ Java中用于处理文件等I/O操作的NIO  API（非阻塞I/O）已更新，�
     IntStream.generate(fib).limit(10).forEach(System.out::println); 
 ```
 
-### 数值流
+## 数值流
 
-#### 原始类型特化
+### 原始类型特化
 Java8 引入了三个原始类型特化流接口来解决这个问题： `IntStream、DoubleStream 和 LongStream`，分别将流中的元素特化为int、long和double，从而避免了暗含的装箱成本。
 
 **映射到数值流**
@@ -585,7 +594,7 @@ Java8 引入了三个原始类型特化流接口来解决这个问题： `IntStr
 ```java
     OptionalInt maxCalories = menu.stream().mapToInt(Dish::getCalories).max(); 
 ```
-#### 数值范围
+### 数值范围
 IntStream和LongStream 的 range() 或者 rangeClose() 方法能产生一个数值流
 > 例如 IntStream.rangeClose(1,100).filter(num->num%2==0).count() 统计100以内的偶数
 
@@ -602,10 +611,10 @@ IntStream和LongStream 的 range() 或者 rangeClose() 方法能产生一个数�
 
 ************************
 
-### Stream操作
+## Stream操作
 因为filter、sorted、map 和collect 等操作是与具体线程模型无关的高层次构件, 所以它们的内部实现可以是单线程的，也可能透明地充分利用你的多核架构
 
-#### 中间操作
+### 中间操作
 诸如 filter 或 sorted  map flatMap limit distinct 等中间操作会返回另一个流。这让多个操作可以连接起来形成一个查询。 
 重要的是，除非流水线上触发一个终端操作，否则中间操作不会执行任何处理因为中间操作一般都可以合并起来，在终端操作时一次性全部处理 (循环合并)
 
@@ -625,7 +634,7 @@ IntStream和LongStream 的 range() 或者 rangeClose() 方法能产生一个数�
 | limit| 有状态 有界|`Stream<T>`|long||
 | distinct| 有状态 无界|`Stream<T>`|||
 
-#### 终端操作
+### 终端操作
 > 非短路操作
 
 | 操作 | 类型 | 返回类型 | 参数 | 函数描述符 | 目的 | 
@@ -646,20 +655,20 @@ IntStream和LongStream 的 range() 或者 rangeClose() 方法能产生一个数�
 
 **********
 
-### 使用Stream
+## 使用Stream
 - 流的使用一般包括三件事：
     - 一个数据源（如集合）来执行一个查询；
     - 一个中间操作链，形成一条流的流水线；
     - 一个终端操作，执行流水线，并能生成结果。
     > 流的流水线背后的理念类似于构建器模式 在构建器模式中有一个调用链用来设置一套配置（对流来说这就是一个中间操作链），接着是调用 build方法 （对流来说就是终端操作）
 
-#### 筛选
+### 筛选
 1. 利用 filter 使用谓词 Predicate 筛选
 1. 去重 distinct()
 1. 截断 limit(n) 只能按流的长度单向截断
 1. 跳过元素 skip(n)
 
-#### 映射
+### 映射
 - 流支持map方法，它会接受一个函数作为参数。这个函数会被应用到每个元素上，并将其映射成一个新的元素
     - （使用映射一词，是因为它和转换类似，但其中的细微差别在于它是“创建一个新版本”而不是去“修改”）
 
@@ -687,7 +696,7 @@ List<int[]> pairs = numbers1.stream()
     ).collect(toList()); 
 ```
 
-#### 查找和匹配
+### 查找和匹配
 > allMatch、anyMatch、noneMatch、findFirst findAny
 
 - 都是接受一个 谓词 函数, 都用到了我们所谓的短路,不需要处理所有的流，这就是大家熟悉的Java中&&和||运算符短路在流中的版本
@@ -695,13 +704,13 @@ List<int[]> pairs = numbers1.stream()
     - findFirst findAny 是查找 返回 ``Optional<T>`` findFirst 针对有序的流
         - 如果你不关心返回的元素是哪个，请使用 findAny ，因为它在使用并行流时限制较少。
 
-#### 归约
+### 归约
 - 如何把一个流中的元素组合起来，使用 reduce 操作来表达更复杂的查询 此类查询需要将流中所有元素反复结合起来，得到一个值
 - 这样的查询可以被归类为归约操作（将流归约成一个值）。用函数式编程语言的术语来说，这称为折叠（fold）
 
 > map 和 reduce 的连接通常称为 map-reduce 模式，因 Google 用它来进行网络搜索而出名，因为它很容易并行化。
 
-##### 求和
+#### 求和
 
 ```java
     int sum = 0; 
@@ -718,7 +727,7 @@ List<int[]> pairs = numbers1.stream()
     Optional<Integer> sum = numbers.stream().reduce((a, b) -> (a + b));
 ```
 
-##### 极值
+#### 极值
 
 ```java
     // 最大值
@@ -729,7 +738,7 @@ List<int[]> pairs = numbers1.stream()
     Optional<Integer> min = numbers.stream().reduce((x, y) -> x < y ? x : y);
 ```
 
-##### 归约的优势与并行化
+#### 归约的优势与并行化
 相比于前面写的逐步迭代求和，使用 reduce 的好处在于，这里的迭代被内部迭代抽象掉了，这让内部实现得以选择并行执行reduce 操作。  
 而迭代式求和例子要更新共享变量 sum ，这不是那么容易并行化的。如果你加入了同步，很可能会发现线程竞争抵消了并行本应带来的性能提升！  
 这种计算的并行化需要另一种办法：将输入分块，分块求和，最后再合并起来。
@@ -740,7 +749,7 @@ List<int[]> pairs = numbers1.stream()
 
 ***************************
 
-##### 总结
+#### 总结
 > joining 替换 字符串直接拼接
 
 ```java
@@ -750,11 +759,11 @@ List<int[]> pairs = numbers1.stream()
     strings.stream().sorted().collect(Collectors.joining());
 ```
 
-### 使用流收集数据
+## 使用流收集数据
 > 函数式编程相对于指令式编程的一个主要优势：你只需指出希望的结果——“做什么”，而不用操心执行的步骤——“如何做”
 
 
-#### 预定义收集器
+### 预定义收集器
 Collectors所提供的工厂方法 它们主要提供了三大功能：将流元素归约和汇总为一个值 元素分组 元素分区
 
 - toList toMap toSet 等方法
@@ -762,7 +771,7 @@ Collectors所提供的工厂方法 它们主要提供了三大功能：将流元
 > 注意： toMap 方法的使用， 当 key 重复时会抛出异常 
 > `toMap(k->k, v->v, (a,b)->b);` 使用该方式能避免， 设置了遇到重复的策略， 后者覆盖前者
 
-##### 汇总
+#### 汇总
 > Collectors类专门为汇总提供了一个工厂方法：Collectors.summingInt 它可接受一个把对象映射为求和所需int的函数，并返回一个收集器；该收集器在传递给普通的collect方法后即执行我们需要的汇总操作  
 > 求平均数 Collectors.averagingInt
 
@@ -776,7 +785,7 @@ Collectors所提供的工厂方法 它们主要提供了三大功能：将流元
 joining工厂方法返回的收集器会把对流中每一个对象应用toString方法得到的所有字符串连接成一个字符串。
 `String shortMenu = menu.stream().collect(joining()); `
 
-##### 规约
+#### 规约
 事实上，我们已经讨论的所有收集器，都是一个可以用reducing工厂方法定义的归约过程的特殊情况而已。Collectors.reducing工厂方法是所有这些特殊情况的一般化。
 
 - 例如 计算总热量 `int totalCalories = menu.stream().collect(reducing(0, Dish::getCalories, (i, j) -> i + j));`
@@ -798,7 +807,7 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 函数式编程（特别是Java 8的Collections框架中加入的基于函数式风格原理设计的新API）通常提供了多种方法来执行同一个操作。
 这个例子还说明，收集器在某种程度上比Stream接口上直接提供的方法用起来更复杂，但好处在于它们能提供更高水平的抽象和概括，也更容易重用和自定义。
 
-##### 分组
+#### 分组
 一个常见的数据库操作是根据一个或多个属性对集合中的项目进行分组。
 
 - 使用 groupingBy `Map<Dish.Type, List<Dish>> dishesByType = menu.stream().collect(groupingBy(Dish::getType));`
@@ -820,7 +829,7 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
             })); 
 ```
 
-###### 多级分组
+##### 多级分组
 > 要实现多级分组，我们可以使用一个由双参数版本的 Collectors.groupingBy 工厂方法创建的收集器，它除了普通的分类函数之外，还可以接受collector类型的第二个参数。
 
 ```java
@@ -840,7 +849,7 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
     ); 
 ```
 
-###### 按子组收集数据
+##### 按子组收集数据
 > 可以把第二个groupingBy收集器传递给外层收集器来实现多级分组。但进一步说，传递给第一个groupingBy的第二个收集器可以是任何类型 
 >> 例如: `Map<Dish.Type, Long> typesCount = menu.stream().collect(groupingBy(Dish::getType, counting())); `
 
@@ -905,21 +914,21 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
         },toCollection(HashSet::new) ))); 
 ```
 
-##### 分区
+#### 分区
 
-#### 自定义收集器
+### 自定义收集器
 > [参考博客: 自定义收集器深度剖析：](http://www.cnblogs.com/webor2006/p/8353314.html)
 
 ************
 
-### 高效的使用Stream
+## 高效的使用Stream
 
 1. 场景: 一个对象(含时间和整数两个属性)集合, 完成的操作是获取到最大时间以及数值平均值...等等多个值
     - [ ] 解决
     
 ****************************************
 
-## Optional
+# Optional
 >1. null引用在历史上被引入到程序设计语言中，目的是为了表示变量值的缺失。
 >1. Java 8中引入了一个新的类java.util.Optional<T>，对存在或缺失的变量值进行建模。
 >1. 你可以使用静态工厂方法Optional.empty、 Optional.of以及Optional.ofNullable创建Optional对象。
@@ -943,7 +952,7 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
     - `orElseThrow(Supplier<? extends X> exceptionSupplier)` 与 get() 一致,但是可以自定义异常
     - `ifPresent(Consumer<? super T>)` 当不为空执行传入的函数
 
-### Optional类和Stream接口的相似之处
+## Optional类和Stream接口的相似之处
 1. *map*
     1. 使用 map 从 Optional 对象中提取和转换值: 可以将 Optional 看成只有一个元素的集合, 像Stream一样的使用 map
     1. 处理两个Optional对象: `person.flatMap(p -> car.map(c -> findCheapestInsurance(p, c)));` 原始的写法就是要判断两个对象同时存在(person 和 car )才调用find...方法
@@ -968,7 +977,7 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
     - OptionalInt OptionalLong OptionalDouble, 因为他们不支持 Stream 操作
     - 即使 OptionalInt 能简化 Optional<Integer>
 
-### 实践:读取Properties某属性
+## 实践:读取Properties某属性
 > 从properties文件中读取某个属性, 正整数就返回该值, 否则返回0  
 
 ```java
@@ -1004,31 +1013,31 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 
 *******************************
 
-## 时间处理
+# 时间处理
 
 1. SimpleDateFormat `yyyy-MM-dd HH:MM:SS` 但是线程不安全, Java8 可使用 DateTimeFormatter 
 
-### ZoneId
+## ZoneId
 >  time-zone ID
 
-### Clock
+## Clock
 > 具有时区信息的时间类
 
 a clock can be used instead of System.currentTimeMillis() and TimeZone.getDefault(). 
 
-### Duration
+## Duration
 This class models a quantity or amount of time in terms of seconds and nanoseconds.   
 It can be accessed using other duration-based units, such as minutes and hours.
 
 > [How to model java.time.duration in Mysql Database](https://stackoverflow.com/questions/28427525/how-to-model-java-time-duration-in-mysql-database)
 
-### Period
+## Period
 > 类似于Duration, 不同点是 date-based 
 
-### Instant 
+## Instant 
 > 用于表示时间线上的一个瞬时点, 可用于表示时间戳, API操作更友好
 
-### LocalDateTime
+## LocalDateTime
 > 方便的新时间处理类, 用于替代Java5的Date, LocalDateTime 就是 LocalDate LocalTime 的组合
 
 ```java
@@ -1043,11 +1052,11 @@ It can be accessed using other duration-based units, such as minutes and hours.
     LocalDateTime.ofInstant(date.toInstant(), ZoneOffset.systemDefault());
 ```
 
-### ZoneOffset
+## ZoneOffset
 时区偏移量，比如：+8:00
 
-### ZonedDateTime
+## ZonedDateTime
 带时区的时间
 
-### Clock
+## Clock
 时钟，比如获取目前美国纽约的时间

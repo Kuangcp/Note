@@ -13,7 +13,7 @@ categories:
 1. [Manjaro](#manjaro)
     1. [Tips](#tips)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-11-25 22:54_|
 ****************************************
 # Manjaro
 > [Gitlab source code](https://gitlab.manjaro.org/explore/groups)
@@ -24,6 +24,8 @@ categories:
 > [Manjaro安装后你需要这样做](https://www.cnblogs.com/haohao77/p/9034499.html)  
 > [参考博客: Manjaro Deepin安装使用分享](https://zhuanlan.zhihu.com/p/43442012)  
 > [参考博客: Manjaro Deepin 配置备忘](https://yifeitao.com/2019/06/xiaomi-pro-manjaro-deepin)  
+
+> [参考博客: Manjaro 配置](https://blog.triplez.cn/manjaro-quick-start)  
 
 由于是基于arch的, 滚动更新的特性, 所以需要在每次在安装软件前 `pacman -Syu` 更新整个系统
 
