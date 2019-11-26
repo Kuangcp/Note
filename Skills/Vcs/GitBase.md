@@ -69,7 +69,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-10-30 21:04_|
+**目录 end**|_2019-11-26 19:52_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -138,7 +138,8 @@ categories:
     tool = meld # 配置在merge中发生冲突时的编辑工具,和diff中的tool近乎一致
 ```
 
-> 可用于上面的diff 或 merge 的[工具 详细](/Linux/Base/LinuxFile.md#比较文件内容)
+> 可用： opendiff kdiff3 tkdiff xxdiff meld kompare gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare smerge vimdiff emerge  
+> [工具 详细](/Linux/Base/LinuxFile.md#比较文件内容)
 
 ************************
 

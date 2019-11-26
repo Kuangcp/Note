@@ -12,6 +12,7 @@ categories:
 1. [Vim](#vim)
     1. [Tips](#tips)
     1. [基本配置](#基本配置)
+        1. [GVim](#gvim)
     1. [基础操作](#基础操作)
         1. [跳转](#跳转)
             1. [高级跳转](#高级跳转)
@@ -25,7 +26,7 @@ categories:
     1. [SpaceVim](#spacevim)
     1. [space-vim](#space-vim)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-11-26 19:52_|
 ****************************************
 # Vim 
 > 学习曲线很高，但是学会熟练使用后就效率很高
@@ -90,7 +91,7 @@ set relativenumber " 设置相对行号
 ```
 
 ******************************
-> GVim
+### GVim
 
 **~/.gvimrc**
 ```
@@ -213,7 +214,7 @@ syntax on
 > [参考博客: SpaceVim 中文手册](https://ruby-china.org/topics/32020)`主要看评论, 两个作者理念不同`
 > [参考博客: 如何评价Vim配置文件SpaceVim?](https://www.zhihu.com/question/54270182)
 
-- [Space Vim](https://github.com/topics/spacevim)`把Vim玩上天了`
+- [Space Vim](https://github.com/topics/spacevim)
     - [GitBook : Space Vim Guide](https://legacy.gitbook.com/book/everettjf/spacevimtutorial/details)
     - [quick start](https://spacevim.org/quick-start-guide/)
     - [中文 文档](https://spacevim.org/cn/documentation/)

@@ -27,6 +27,7 @@ categories:
     1. [Zset](#zset)
     1. [Hash](#hash)
     1. [GEO地理位置](#geo地理位置)
+1. [Pipelining](#pipelining)
 1. [Pub/Sub发布和订阅](#pubsub发布和订阅)
 1. [客户端](#客户端)
     1. [Java](#java)
@@ -43,7 +44,7 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2019-11-16 21:33_|
+**目录 end**|_2019-11-26 19:52_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -247,6 +248,13 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 - GEORADIUS
 - GEORADIUSBYMEMBER
 - GEOHASH
+
+************************
+
+# Pipelining
+> 一次请求/响应服务器能实现处理新的请求即使旧的请求还未被响应。这样就可以将多个命令发送到服务器，而不用等待回复，最后在一个步骤中读取该答复。
+
+- `(printf "PING\r\nPING\r\nPING\r\n"; sleep 1) | nc localhost 6379`
 
 ************************
 
