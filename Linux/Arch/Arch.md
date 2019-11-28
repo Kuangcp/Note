@@ -11,12 +11,14 @@ categories:
 **目录 start**
  
 1. [Arch](#arch)
-    1. [Pacman](#pacman)
+    1. [包管理](#包管理)
+        1. [Pacman](#pacman)
+        1. [snap](#snap)
         1. [Yaourt](#yaourt)
         1. [Yay](#yay)
 1. [Tips](#tips)
 
-**目录 end**|_2019-11-25 22:54_|
+**目录 end**|_2019-11-28 16:36_|
 ****************************************
 
 # Arch
@@ -28,7 +30,8 @@ categories:
 - [什么Linux发行版软件最多？](https://www.lulinux.com/archives/2787)
 - [Arch Linux 安装、配置、美化和优化](http://www.cnblogs.com/bluestorm/p/5929172.html)
 
-## Pacman 
+## 包管理
+### Pacman 
 
 > Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的社区驱动软件仓库。Debian/Ubuntu 用户的对应类比是 PPA。
 
@@ -37,6 +40,14 @@ categories:
 1. -S 安装
 1. -R 卸载
     - -Rs 卸载以及没有被其他软件依赖的软件包
+
+### snap
+> 安装 
+1. sudo pacman -S snapd
+1. sudo systemctl enable --now snapd.socket
+1. sudo ln -s /var/lib/snapd/snap /snap
+
+> 使用 sudo snap install redis-desktop-manager
 
 ### Yaourt
 > [Arch User Repository](https://wiki.archlinux.org/index.php/Arch_User_Repository)`但是已经暂停开发了`
@@ -64,6 +75,8 @@ sudo pacman -Syyu
 ### Yay
 
 - `pacman -S yay` 下一代aur管理
+
+************************
 
 # Tips
 
