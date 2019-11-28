@@ -21,6 +21,7 @@ categories:
     1. [基础命令工具](#基础命令工具)
         1. [ping](#ping)
         1. [traceroute](#traceroute)
+        1. [netstat](#netstat)
         1. [curl](#curl)
         1. [iproute2](#iproute2)
         1. [tcpdump](#tcpdump)
@@ -47,7 +48,7 @@ categories:
     1. [防火墙](#防火墙)
         1. [iptables](#iptables)
 
-**目录 end**|_2019-11-22 14:34_|
+**目录 end**|_2019-11-28 19:36_|
 ****************************************
 # Linux网络管理
 ## Tips
@@ -55,16 +56,6 @@ categories:
 > netstat lsof fuser  
 
 > [参考博客: linux下常用命令查看端口占用](http://blog.csdn.net/ws379374000/article/details/74218530)
-
-_netstat工具_ 或者 更好用的 [iproute2](#iproute2)
-
-- `netstat -tunlp | grep 端口号` 用于查看指定的端口号的进程情况
-    - `-t` (tcp) 仅显示tcp相关选项
-    - `-u` (udp)仅显示udp相关选项
-    - `-n` 拒绝显示别名，能显示数字的全部转化为数字
-    - `-l` 仅列出在Listen(监听)的服务状态
-    - `-p` 显示建立相关链接的程序名 **需要root**
-
 
 - `lsof -i:端口号` 用于查看某一端口的占用情况，缺省端口号显示全部
     - 或者 `cat /etc/services` 查看系统以及使用的端口
@@ -151,6 +142,24 @@ _netstat工具_ 或者 更好用的 [iproute2](#iproute2)
 > [参考博客: traceroute/tracert--获取网络路由路径](https://www.cnblogs.com/embedded-linux/p/6937929.html)
 
 1. Debian系查看路由路径 `traceroute -I stackoverflow.com`
+
+### netstat 
+> 相关 [iproute2](#iproute2)
+
+- `netstat -tunlp | grep 端口号` 用于查看指定的端口号的进程情况
+    - `-t` (tcp) 仅显示tcp相关选项
+    - `-u` (udp)仅显示udp相关选项
+    - `-n` 拒绝显示别名，能显示数字的全部转化为数字
+    - `-l` 仅列出在Listen(监听)的服务状态
+    - `-p` 显示建立相关链接的程序名 **需要root**
+
+- `netstat -an|awk '/tcp/ {print $6}'|sort|uniq -c| sort -hr` 查看 socket 状态和数量
+
+- TIME_WAIT 由于等待 2ML 时间才能关闭socket， 频繁请求会导致大量该状态的 socket
+    - 会占用一个五元组：（协议，本地IP，本地端口，远程IP，远程端口）
+    - 对于 Web 服务器，协议是 TCP，本地 IP 通常也只有一个，本地端口默认的 80 或者 443。只剩下远程 IP 和远程端口可以变了。
+    - 如果远程 IP 是相同的话，就只有远程端口可以变了。这个只有几万个，所以当同一客户端向服务器建立了大量连接之后，会耗尽可用的五元组导致问题。
+
 
 ### curl
 > [Official site](https://curl.haxx.se/)
