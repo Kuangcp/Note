@@ -10,7 +10,9 @@ categories:
 **目录 start**
  
 1. [MySQL进阶](#mysql进阶)
-    1. [事务隔离级别](#事务隔离级别)
+    1. [事务](#事务)
+        1. [事务隔离级别](#事务隔离级别)
+        1. [事务死锁](#事务死锁)
     1. [性能调优](#性能调优)
         1. [查看状态变量](#查看状态变量)
     1. [存储引擎](#存储引擎)
@@ -18,7 +20,7 @@ categories:
 1. [Tips](#tips)
     1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-11-29 13:39_|
 ****************************************
 # MySQL进阶
 
@@ -28,7 +30,8 @@ categories:
 
 > [参考博客: 轻松理解MYSQL MVCC 实现机制](https://blog.csdn.net/whoamiyang/article/details/51901888#commentBox)  
 
-## 事务隔离级别
+## 事务
+### 事务隔离级别
 > [参考博客: MySQL的四种事务隔离级别](https://www.cnblogs.com/huanongying/p/7021555.html)  
 
 | 事务隔离级别 | 脏读 | 不可重复读 | 幻读
@@ -38,6 +41,18 @@ categories:
 | 可重复读（repeatable-read）  | \ | \ | 会
 | 串行化（serializable） 	   | \ | \ | \ 
 
+### 事务死锁
+
+> [deadlock](https://stackoverflow.com/questions/2332768/how-to-avoid-mysql-deadlock-found-when-trying-to-get-lock-try-restarting-trans)
+
+一个事务里 lock A lock B 另一个事务里 lock B lock A , 这时候两个事务都做了第一步， 然后做第二步会发生死锁
+
+- 在业务层面上比较容易出现的场景 例如
+    - 一个事务方法内更新两个用户的数据，一个线程先后更新 A B， 另一个线程 先后更新 B A, 
+        - 此时如果能对 A B 做排序按相同的顺序做更新操作即可避免死锁
+    - 一个事务方法更新A表 另一个事务方法 更新B表 A B 两个表有外键关联 然后两个方法更新的又恰好是关联的数据，因为 innodb引擎，更新A表也会锁住B表 从而导致死锁
+
+************************
 
 ## 性能调优
 > [Doc: Optimizing Queries with EXPLAIN](https://dev.mysql.com/doc/refman/5.7/en/using-explain.html)

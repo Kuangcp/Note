@@ -18,7 +18,7 @@ categories:
         1. [Yay](#yay)
 1. [Tips](#tips)
 
-**目录 end**|_2019-11-28 16:36_|
+**目录 end**|_2019-11-29 13:39_|
 ****************************************
 
 # Arch
@@ -47,7 +47,9 @@ categories:
 1. sudo systemctl enable --now snapd.socket
 1. sudo ln -s /var/lib/snapd/snap /snap
 
-> 使用 sudo snap install redis-desktop-manager
+- 使用 sudo snap install redis-desktop-manager
+    - 可执行文件 /var/lib/snapd/snap/bin/redis-desktop-manager.rdm
+
 
 ### Yaourt
 > [Arch User Repository](https://wiki.archlinux.org/index.php/Arch_User_Repository)`但是已经暂停开发了`
