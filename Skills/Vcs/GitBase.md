@@ -668,7 +668,13 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
     - 就是因为一次提交的文件太大，需要改大缓冲区 例如改成500m  `git config http.postBuffer 524288000`
 
 ### fetch
-> 访问远程仓库, 拉取本地没有的远程数据
+> 访问远程仓库, 拉取本地没有的远程数据 
+
+- 注意 fetch 是一个分支一个分支进行拉取的, 在此基础上可以优化网络不稳定时clone代码的问题 
+    - 关键是分支之间独立拉取不会像clone拉取所有分支，有分支拉取失败就要从头再来
+    - 操作过程: 创建空目录并进入， `git init` 然后 `git fetch URL`
+    - 创建 msater分支 `git checkout -b master FETCH_HEAD`
+    - 拉取其他分支 `git fetch --all`
 
 - 拉取本地没有的分支（两种方式）
     1. **推荐** 拉取 origin 信息 `git fetch --all` 由远程分支创建新分支并设定跟踪 `git checkout -b dev origin/dev`
