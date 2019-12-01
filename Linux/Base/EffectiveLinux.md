@@ -29,7 +29,7 @@ categories:
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2019-11-20 20:21_|
+**目录 end**|_2019-12-01 16:34_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -41,16 +41,16 @@ categories:
 > 列举出系统可安装终端 `sudo apt search terminal | grep -E terminal.+amd64`
 
 - `qterminal` 可定制标签页位置以及透明度，很简洁,挺好用,但是不能内容和窗体大小自适配, 0.7.1已没有这个bug, 还是很好用的模拟器, 但是多标签的时候, 会有内存泄露
-- `mate-terminal` 和gnome-terminal 基本配置什么的几乎一样，只是标题栏简洁一丢丢，如果使用选择即复制,那么在跨标签页复制粘贴有bug
 - `gnome-terminal` 很简洁，但是多标签时，标签栏太大,标签页底部有白边
+- `mate-terminal` 和gnome-terminal 基本配置什么的几乎一样，标签栏更简洁
 - `sakura` 外观上和前两个几乎一样，标签页可以更简洁，但是设置不好调, 而且不能自定义快捷键
 - `deepin-terminal` 功能很多，主题很多，功能最为强大，但是字体可以选的很少
 - `terminator` 可以定制背景图片，但是在我这deppin系统里有bug，多标签是假的，命令全是在共享的，不能用。。
 - `tilda` 内嵌于桌面上, 小命令方便, 需要查看文件就不方便了
 - `terminology` 看起来很炫酷, 仅此而已
 
-> [更多可安装终端](https://gitee.com/kcp1104/codes/gca14wtqvm67l9j5r0deb56#Terminals.md)
-> 终极工具 `tmux` 运维必备软件 远离终端模拟器的对比和选择, 一个就够了
+> [更多可安装终端](https://gitee.com/kcp1104/codes/gca14wtqvm67l9j5r0deb56#Terminals.md)  
+> 终极工具 `tmux` 运维必备软件 远离终端模拟器的对比和选择, 仅需单标签简洁可配色
 
 ## 效率工具
 > 提高工作和开发效率

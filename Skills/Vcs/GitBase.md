@@ -69,7 +69,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-11-26 19:52_|
+**目录 end**|_2019-12-01 16:34_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -465,7 +465,7 @@ categories:
     - 丢弃指定的stash, 如果想丢弃当前项目所有更改就可以将所有更改 save stash 然后 drop
 - clear 
     - 清除所有 stash 
-- brnach 
+- branch 
     - 从创建缓存处创建新分支出来并pop 默认栈顶缓存，相比于pop和apply，这种方式更贴近缓存被创建时的场景
 
 > push动作 实用参数
@@ -481,7 +481,7 @@ categories:
 > *注意* stash 是一个项目范围内的栈结构, 所以如果多个分支执行了stash, 那缓存都是共用的
 > 要先确定好当前分支 stash 的 id (通过记录comment的方式会更好) 再 pop 或者 apply (不能无脑pop 血泪教训)  
 
-> 使用该别名能过滤当前分支的stash `alias wip='git stash list | grep $(git branch --show-current)' `
+> 使用该别名能展示当前分支的stash `alias wip='git stash list | grep $(git branch --show-current)' `
 
 ********************
 
