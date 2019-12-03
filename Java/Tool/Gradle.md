@@ -20,6 +20,9 @@ categories:
     1. [Wrapper](#wrapper)
     1. [CUI使用](#cui使用)
         1. [命令行选项](#命令行选项)
+        1. [动作](#动作)
+            1. [build](#build)
+            1. [test](#test)
         1. [守护进程](#守护进程)
 1. [配置](#配置)
     1. [全局配置文件](#全局配置文件)
@@ -45,7 +48,7 @@ categories:
     1. [构建Docker镜像](#构建docker镜像)
         1. [插件方式构建Docker镜像](#插件方式构建docker镜像)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-12-03 18:08_|
 ****************************************
 
 # Gradle
@@ -136,6 +139,15 @@ categories:
 - `-s,--stacktrace`: 输出错误栈
 - `-q,--quiet`:减少构建出错时打印的错误信息
 
+### 动作
+#### build
+
+#### test 
+
+- gradle test -Dtest.single=YourTestClass
+- gradle test --tests org.somewhere.MyTestClass
+- gradle test --tests org.somewhere.MyTestClass.my_test_case
+
 ### 守护进程
 
 - 命令加上 `--daemon`就会开启一个守护进程，只会开启一次
@@ -151,8 +163,8 @@ _~/.gradle/init.gradle_
 ```Groovy
     allprojects{
         repositories {
-            def ALIYUN_REPOSITORY_URL = 'http://maven.aliyun.com/nexus/content/groups/public'
-            def ALIYUN_JCENTER_URL = 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+            def ALIYUN_REPOSITORY_URL = 'https://maven.aliyun.com/nexus/content/groups/public'
+            def ALIYUN_JCENTER_URL = 'https://maven.aliyun.com/nexus/content/repositories/jcenter'
             all { 
                 ArtifactRepository repo ->
                 if(repo instanceof MavenArtifactRepository){

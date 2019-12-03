@@ -27,6 +27,7 @@ categories:
     1. [Zset](#zset)
     1. [Hash](#hash)
     1. [GEO地理位置](#geo地理位置)
+1. [Scan](#scan)
 1. [Pipelining](#pipelining)
 1. [Pub/Sub发布和订阅](#pubsub发布和订阅)
 1. [客户端](#客户端)
@@ -44,7 +45,7 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2019-11-26 19:52_|
+**目录 end**|_2019-12-03 18:08_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -248,6 +249,17 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 - GEORADIUS
 - GEORADIUSBYMEMBER
 - GEOHASH
+
+************************
+# Scan
+> [Doc](http://doc.redisfans.com/key/scan.html)
+
+- SCAN 命令用于迭代当前数据库中的数据库键。
+- SSCAN 命令用于迭代集合键中的元素。
+- HSCAN 命令用于迭代哈希键中的键值对。
+- ZSCAN 命令用于迭代有序集合中的元素（包括元素成员和元素分值）
+
+> 使用SCAN命令代替原有全查询命令更安全，因为是部分查询不容易像全查询命令那样阻塞Redis进程，因此往往生产环境会禁止全查询命令 keys smembers 等 
 
 ************************
 
