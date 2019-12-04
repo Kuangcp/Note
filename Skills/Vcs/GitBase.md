@@ -69,7 +69,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-12-01 16:34_|
+**目录 end**|_2019-12-04 13:01_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -317,13 +317,18 @@ categories:
 > [Github:diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)`一个更方便查看diff的工具`
 - 最简单的就是 `npm install -g diff-so-fancy` 安装 
 
+> patch 
+
 - 创建分支之间的patch `git diff branch1 branch2 > first.patch`
 - 创建单文件的patch `git diff filePath > first.patch` 路径为Git项目根路径的相对路径
 
-### apply 
-> 应用diff得到的patch文件
+************************
+
+### apply
+> 使用 diff 或者 stash 得到的 patch 文件
 
 - `git apply --ignore-space-change --ignore-whitespace first.patch`
+- `patch -p1 < first.patch`
 
 ************************
 
@@ -481,9 +486,13 @@ categories:
 > *注意* stash 是一个项目范围内的栈结构, 所以如果多个分支执行了stash, 那缓存都是共用的
 > 要先确定好当前分支 stash 的 id (通过记录comment的方式会更好) 再 pop 或者 apply (不能无脑pop 血泪教训)  
 
-> 使用该别名能展示当前分支的stash `alias wip='git stash list | grep $(git branch --show-current)' `
+- 使用该别名能展示当前分支的stash `alias wip='git stash list | grep $(git branch --show-current)' `
 
-********************
+> patch 
+- 从stash栈中创建 patch `git stash show -p stash@{0} > first.patch`
+    - 简化别名 `alias gsh.st='__gshst(){ index=$1; if test -z $index; then index=0; fi; git stash show -p stash@{$index} }; __gshst'`
+
+************************
 
 ### branch 
 > 查看所有参数 `git branch --help`
@@ -637,7 +646,6 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
     - `rename origin myth` 更改远程文档库的名称
     - `show origin` 查看远程分支的状态和信息
 
-1. 删除远程库某分支`git push 远程名称 --delete 分支名称` 
 1. 显示本地仓库跟踪的那个远程仓库 `git ls-remote` 
 1. 查看关联远程仓库的详情(push和pull的地址) `git remote -v` 
 
@@ -658,8 +666,7 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
     - 如果本地已经删除了该分支，就可以`git push origin :分支名称`
 
 - 第一次将本地分支与远程建立关系
-    - `git push -u origin master ` | `git push --set-uptream master` | `git push -all` 
-    - 这几个都是可以的,最后那个简单, 还能将别的分支一起推上去
+    - `git push -u origin master ` | `git push --set-uptream master` | `git push -all` (会将所有分支一起push)
 
 - 提交指定tag `git push origin tagname`
     - 提交所有tag `git push --tags`
