@@ -29,7 +29,7 @@ categories:
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2019-12-01 16:34_|
+**目录 end**|_2019-12-04 22:06_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -40,16 +40,24 @@ categories:
 ## 终端模拟器对比
 > 列举出系统可安装终端 `sudo apt search terminal | grep -E terminal.+amd64`
 
-- `qterminal` 可定制标签页位置以及透明度，很简洁,挺好用,但是不能内容和窗体大小自适配, 0.7.1已没有这个bug, 还是很好用的模拟器, 但是多标签的时候, 会有内存泄露
-- `gnome-terminal` 很简洁，但是多标签时，标签栏太大,标签页底部有白边
+1. 功能点： 终端透明化，终端背景图，快捷键设置，终端内颜色自定义，下拉式，标签水平垂直拆分，鼠标键盘交互性，资源占用少
+
+- `xiki` 鼠标和键盘高度交互， 交互性和复杂度比较高
+- `qterminal` 设置比较简单，基本功能都有，终端内容显示时兼容性略有问题
+- `gnome-terminal` gnome 自带 很简洁，但是多标签时，标签栏太大,标签页底部有白边
+    - 鼠标中键无法复制时需安装 `parcellite`
+- `xfce-terminal` xfce 自带
+    - `~/.config/xfce4/terminal/accels.scm`
 - `mate-terminal` 和gnome-terminal 基本配置什么的几乎一样，标签栏更简洁
-- `sakura` 外观上和前两个几乎一样，标签页可以更简洁，但是设置不好调, 而且不能自定义快捷键
+- `sakura` 外观上和前两个几乎一样，标签页可以更简洁
+    - `~/.config/xfce4/terminal/accels.scm` 
+    - [doc](http://troubleshooters.com/linux/sakura.htm) | [config shortcut](https://unix.stackexchange.com/questions/102474/configuring-shortcuts-for-sakura)  
 - `deepin-terminal` 功能很多，主题很多，功能最为强大，但是字体可以选的很少
 - `terminator` 可以定制背景图片，但是在我这deppin系统里有bug，多标签是假的，命令全是在共享的，不能用。。
 - `tilda` 内嵌于桌面上, 小命令方便, 需要查看文件就不方便了
-- `terminology` 看起来很炫酷, 仅此而已
+- `terminology` 样式高度自定义，甚至能运行在没有图形化的Linux上
 
-> [更多可安装终端](https://gitee.com/kcp1104/codes/gca14wtqvm67l9j5r0deb56#Terminals.md)  
+> [更多可安装终端](https://gitee.com/gin9/codes/gca14wtqvm67l9j5r0deb56#Terminals.md)  
 > 终极工具 `tmux` 运维必备软件 远离终端模拟器的对比和选择, 仅需单标签简洁可配色
 
 ## 效率工具
@@ -208,7 +216,8 @@ categories:
 
 # Tips
 
-> `sudo echo "Text I want to write" > /path/to/file` not work
+> `sudo echo "Text I want to write" > /path/to/file` not work  
+
 > [参考博客: "sudo echo" does not work together in Ubuntu ](https://blogs.oracle.com/joshis/sudo-echo-does-not-work-together-in-ubuntu-another-waste-of-time-issue)
 > [stack over flow](https://stackoverflow.com/questions/84882/sudo-echo-something-etc-privilegedfile-doesnt-work-is-there-an-alterna)
 
