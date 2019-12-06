@@ -41,6 +41,8 @@ categories:
     1. [本地分支](#本地分支)
         1. [show-branch](#show-branch)
         1. [stash](#stash)
+            1. [patch](#patch)
+            1. [恢复](#恢复)
         1. [branch](#branch)
         1. [checkout](#checkout)
         1. [switch](#switch)
@@ -69,7 +71,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-12-04 13:01_|
+**目录 end**|_2019-12-06 18:19_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -454,8 +456,7 @@ categories:
 
 > git stash --help 查看完整的使用说明
 
-> 基本动作
-
+`基本动作`
 - push
     - save命令的进化版，该动作是缺省动作
 - list
@@ -488,9 +489,19 @@ categories:
 
 - 使用该别名能展示当前分支的stash `alias wip='git stash list | grep $(git branch --show-current)' `
 
-> patch 
+#### patch 
 - 从stash栈中创建 patch `git stash show -p stash@{0} > first.patch`
     - 简化别名 `alias gsh.st='__gshst(){ index=$1; if test -z $index; then index=0; fi; git stash show -p stash@{$index} }; __gshst'`
+
+#### 恢复
+> [How to recover a dropped stash in Git?](https://stackoverflow.com/questions/89332/how-to-recover-a-dropped-stash-in-git)  
+
+误操作 stash drop 或者 clean 的内容 
+
+- `git fsck --no-reflog | awk '/dangling commit/ {print $3}'`
+- WIP 开头的就是 stash 对应的 commit , 找到对应的 sha1 id 建立新分支即可
+    - 也就是说 stash 仍然是采用 分支 来实现的, 在某个分支stash 就相当于在该分支进行 commit
+    - 所以不是我一开始认为的是游离的数据, gc 会被清理
 
 ************************
 

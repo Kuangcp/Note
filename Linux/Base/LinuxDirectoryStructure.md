@@ -17,6 +17,7 @@ categories:
     1. [/usr](#usr)
         1. [/usr/local](#usrlocal)
     1. [/etc](#etc)
+        1. [/etc/passwd](#etcpasswd)
         1. [/etc/alternatives](#etcalternatives)
         1. [/etc/apt](#etcapt)
         1. [/etc/fstab](#etcfstab)
@@ -25,7 +26,7 @@ categories:
     1. [查看发行版](#查看发行版)
     1. [查看系统所有用户信息](#查看系统所有用户信息)
 
-**目录 end**|_2019-11-25 22:54_|
+**目录 end**|_2019-12-06 18:19_|
 ****************************************
 # Linux 目录结构
 > Linux 系统目录结构的大致分布以及说明
@@ -65,6 +66,11 @@ categories:
 ************************
 ## /etc
 > 系统以及应用的配置目录
+
+### /etc/passwd
+> 用户的组，权限, Home目录, 默认shell 相关配置
+
+- 禁止 Shell 登录, 将原有默认 shell `/bin/bash` 改为 `/sbin/nologin`
 
 ### /etc/alternatives
 alternative是可选项的意思.

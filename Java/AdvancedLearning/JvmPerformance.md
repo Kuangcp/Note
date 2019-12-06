@@ -31,7 +31,7 @@ categories:
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-12-06 18:19_|
 ****************************************
 
 # Java的性能调优
@@ -190,9 +190,9 @@ categories:
 ### MAT
 > Memory Analyzer tool(MAT) | [Official Site](http://www.eclipse.org/mat/)
 
-> [参考博客: JAVA Shallow heap & Retained heap](http://www.cnblogs.com/lipeineng/p/5824799.html)
-
-> [ Official Doc: OQL Syntax](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Freference%2Foqlsyntax.html)
+> [参考博客: JAVA Shallow heap & Retained heap](http://www.cnblogs.com/lipeineng/p/5824799.html)  
+> [参考博客:  利用MAT分析JVM内存问题，从入门到精通](https://www.cnblogs.com/javaadu/p/11161380.html)  
+> [ Official Doc: OQL Syntax](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Freference%2Foqlsyntax.html)  
 
 他的 OQL 比较方便, 像写 SQL 一样去查询对象
 
