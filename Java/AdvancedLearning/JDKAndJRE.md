@@ -20,7 +20,7 @@ categories:
     1. [Oracle JRE](#oracle-jre)
 1. [OpenJDK](#openjdk)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-12-07 21:50_|
 ****************************************
 # JDK And JRE
 > LTS: 8 11
@@ -100,7 +100,9 @@ categories:
     └── Welcome.html
 ```
 
-*********************************************************
+
+************************
+
 
 # OpenJDK
 > [Official Site](http://openjdk.java.net/) | [Open JDK下载地址](https://adoptopenjdk.net/nightly.html)

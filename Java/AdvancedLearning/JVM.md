@@ -44,7 +44,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2019-12-01 16:34_|
+**目录 end**|_2019-12-07 21:50_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -426,4 +426,12 @@ IBM主导开发, 捐赠给Eclipse基金会
 > [参考博客: Eclipse Open J9：Eclipse OMR项目提供的开源JVM](http://www.infoq.com/cn/news/2018/03/OMR-OpenJ9)
 
 ## GraalVM
-> [参考博客: Oracle 发布多语种虚拟机平台 GraalVM 1.0](https://www.infoq.cn/article/2018%2F05%2Foracle-graalvm-v1)
+> [Official Site](https://www.graalvm.org/)  
+
+> [native image](https://www.graalvm.org/docs/reference-manual/native-image/)  
+
+- 安装模块 `gu install native-image`
+
+> [参考博客: Oracle 发布多语种虚拟机平台 GraalVM 1.0](https://www.infoq.cn/article/2018%2F05%2Foracle-graalvm-v1)  
+> [参考博客: 全栈虚拟机GraalVM初体验](https://zhuanlan.zhihu.com/p/35849246)  
+> 目前来看仅够实验，一个简短的Hello world 需要消耗40s 1g 内存才能编译成原生可执行程序  
