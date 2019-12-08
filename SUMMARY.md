@@ -137,6 +137,7 @@
         * [ Solr ](/Java/Ecosystem/Solr.md)
         * [ Vertx ](/Java/Ecosystem/Vertx.md)
     * 【 Java/MSA 】
+    * 【 Java/Pattern 】
     * 【 Java/Spring 】
         * 【 Java/Spring/Why 】
         * [ Spring-Bean学习 ](/Java/Spring/Spring-Bean学习.md)
@@ -184,7 +185,6 @@
     * [ Log ](/Java/Log.md)
     * [ MIS ](/Java/MIS.md)
     * [ Quartz ](/Java/Quartz.md)
-    * [ RESTful ](/Java/RESTful.md)
 * 【 Kotlin 】
     * [ Dubbo ](/Kotlin/Dubbo.md)
     * [ Shiro ](/Kotlin/Shiro.md)
@@ -230,6 +230,10 @@
         * [ Nginx ](/Linux/Tool/Nginx.md)
         * [ Tmux ](/Linux/Tool/Tmux.md)
         * [ Vim ](/Linux/Tool/Vim.md)
+    * 【 Linux/Window 】
+        * [ Gnome ](/Linux/Window/Gnome.md)
+        * [ KDE ](/Linux/Window/KDE.md)
+        * [ Xfce ](/Linux/Window/Xfce.md)
     * [ JavaDevInit ](/Linux/JavaDevInit.md)
     * [ Linux系统学习 ](/Linux/Linux系统学习.md)
 * 【 MyBlog 】
@@ -242,6 +246,7 @@
 * 【 Python 】
     * 【 Python/Tool 】
         * [ PyCharm ](/Python/Tool/PyCharm.md)
+        * [ Selenium ](/Python/Tool/Selenium.md)
     * [ Python ](/Python/Python.md)
     * [ PythonConcurrent ](/Python/PythonConcurrent.md)
     * [ PythonGUI ](/Python/PythonGUI.md)
@@ -314,6 +319,9 @@
         * [ GitBase ](/Skills/Vcs/GitBase.md)
         * [ GitTeam ](/Skills/Vcs/GitTeam.md)
         * [ Svn ](/Skills/Vcs/Svn.md)
+    * 【 Skills/Web 】
+        * [ FaceBook-GraphQL ](/Skills/Web/FaceBook-GraphQL.md)
+        * [ RESTful ](/Skills/Web/RESTful.md)
     * 【 Skills/Work 】
         * [ Cooperation ](/Skills/Work/Cooperation.md)
         * [ EffectiveWork ](/Skills/Work/EffectiveWork.md)
@@ -323,6 +331,7 @@
     * [ Miscellaneous ](/Skills/Miscellaneous.md)
     * [ Platform ](/Skills/Platform.md)
     * [ Problem ](/Skills/Problem.md)
+    * [ ProgrammingParadigm ](/Skills/ProgrammingParadigm.md)
     * [ Protobuf ](/Skills/Protobuf.md)
     * [ RegularExpression ](/Skills/RegularExpression.md)
     * [ SoftwareDesignEngineer ](/Skills/SoftwareDesignEngineer.md)

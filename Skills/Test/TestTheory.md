@@ -61,7 +61,7 @@ categories:
     1. [Mock](#mock)
     1. [BDD](#bdd)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-12-09 01:35_|
 ****************************************
 # 测试
 
@@ -84,10 +84,13 @@ categories:
 1. 对设计的反馈
     - 一个模块很难进行单元测试通常是不良设计的信号，单元测试可以反过来指导设计出高内聚、低耦合的模块。
 
+************************
+
 ## 基础知识
 > [码农翻身: 张大胖和单元测试](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513524&idx=1&sn=8967771a4ac2a2b3b9bca019207e275a&chksm=80d67a77b7a1f36167ca66f9bdad810202d8790be1f15977dacd03348ee2b139f65ba58e4187&scene=21#wechat_redirect)
 
-- [个人笔记: TDD 测试驱动开发](/Java/AdvancedLearning/ProgramThinking.md#tdd-测试驱动开发)
+- [个人笔记: TDD 测试驱动开发](/Java/AdvancedLearning/ProgramThinking.md#tdd-测试驱动开发)  
+> [参考博客: Unit testing code with a file system dependency](https://stackoverflow.com/questions/129036/unit-testing-code-with-a-file-system-dependency)`如何编写脱离外部依赖的真正单元测试`  
 
 ### 测试替身
 > 泛指任何出于测试目的的替换真实对象的假冒对象，为了解决测试代码的依赖项问题。  

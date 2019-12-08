@@ -25,8 +25,9 @@ categories:
         1. [Systemd](#systemd)
 1. [多媒体](#多媒体)
     1. [ffmpeg](#ffmpeg)
+    1. [视频播放器](#视频播放器)
 
-**目录 end**|_2019-12-01 23:47_|
+**目录 end**|_2019-12-09 01:35_|
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -144,4 +145,5 @@ categories:
 - 截取视频 `ffmpeg -ss 00:00:00 -t 00:00:30 -i input.mp4 -vcodec copy -acodec copy output.mp4`
     - `-ss` 开始时间 `-t` 截取时长  `-q 0` 无损 `-c copy`表示不必重新编码
 
-
+## 视频播放器
+> [参考博客: Top 10 Best Linux Video Players](https://www.ubuntupit.com/top-10-best-linux-video-players-enjoy-ultimate-movie-music/)  
