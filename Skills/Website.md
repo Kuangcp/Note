@@ -60,7 +60,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-12-10 13:32_|
 ****************************************
 # 常用的网站
 ## 国内镜像源站点
@@ -173,6 +173,7 @@ Podcast、Reddit 以及TechRadar
 - [hackerrank](https://www.hackerrank.com)
 - [leetcode 中国](http://leetcode-cn.com/)
 - [lintcode](http://www.lintcode.com)
+- [javatpoint](https://www.javatpoint.com)  
 
 ## 并发
 - [并发编程网 http://ifeve.com](http://ifeve.com/)
