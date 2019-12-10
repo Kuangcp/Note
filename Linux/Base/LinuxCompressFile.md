@@ -17,8 +17,9 @@ categories:
     1. [gzip](#gzip)
     1. [xz](#xz)
     1. [7Z](#7z)
+1. [压缩文件内容预览搜索](#压缩文件内容预览搜索)
 
-**目录 end**|_2019-11-20 20:21_|
+**目录 end**|_2019-12-10 09:42_|
 ****************************************
 # Linux操作压缩文档
 > Linux默认自带ZIP压缩，最大支持4GB压缩，RAR的压缩比大于4GB.
@@ -152,14 +153,17 @@ categories:
 > 安装 apt install p7zip-full 或者 p7zip 
 > man 7z 查看帮助文档  
 -  `7z <command> [<switches>... ] <archive_name> [<file_names>... ] [<@listfiles>... ]`
-    - b benchmark 评测分数 [个人电脑评测](https://gitee.com/kcp1104/codes/0r72axdcp1yewmnljhi8g38)
+    - `b`: benchmark 评测压缩和解压速率
     
 > 压缩
 - a 压缩包名 文件名 
 
 > 解压
 - 7z x file
-    - -o 路径
+    - `-o` 路径
 
-- [ ] 7z命令的 学习使用
+# 压缩文件内容预览搜索
+> [参考博客: Unix Z Commands – Zcat, Zless, Zgrep, Zegrep and Zdiff Examples ](https://linoxide.com/linux-how-to/z-commands-zcat-zless-zgrepzegrep-zdiff-examples/)  
 
+- `zcat log.tgz | grep -a "pattern"` 等价于 `zgrep "pattern" log.tgz`
+    - 相关参数说明 man 文档
