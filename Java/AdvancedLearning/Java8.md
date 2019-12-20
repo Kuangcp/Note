@@ -80,7 +80,7 @@ categories:
     1. [ZonedDateTime](#zoneddatetime)
     1. [Clock](#clock)
 
-**目录 end**|_2019-11-25 20:33_|
+**目录 end**|_2019-12-20 18:28_|
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -1018,7 +1018,7 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 
 # 时间处理
 
-1. SimpleDateFormat `yyyy-MM-dd HH:MM:SS` 但是线程不安全, Java8 可使用 DateTimeFormatter 
+1. SimpleDateFormat `yyyy-MM-dd HH:MM:SS` 但是线程不安全, Java8 可使用 `DateTimeFormatter` 
 
 ## ZoneId
 >  time-zone ID
