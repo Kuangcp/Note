@@ -34,11 +34,12 @@ categories:
         1. [TransferQueue](#transferqueue)
     1. [控制执行](#控制执行)
         1. [任务建模](#任务建模)
-            1. [ScheduleThreadPoolExecutor](#schedulethreadpoolexecutor)
+    1. [线程池](#线程池)
+        1. [ScheduledThreadPoolExecutor](#scheduledthreadpoolexecutor)
     1. [分支合并框架](#分支合并框架)
     1. [Java内存模型](#java内存模型)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-12-20 00:16_|
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -399,15 +400,19 @@ public int current(){
     - 提供了两个构造器，一个是Callable为参数，另一个以Runnable为参数
 - 可以基于FutureTask的Runnable特性，把任务写成Callable然后封装进一个有执行者地调度并在必要时可以取消的FutureTask
 
-#### ScheduleThreadPoolExecutor
-> ScheduleThreadPoolExecutor  简称 STPE 线程池类中很重要的类
+**************************
+
+## 线程池
+
+### ScheduledThreadPoolExecutor
+> ScheduledThreadPoolExecutor  简称 STPE 线程池类中很重要的类
 
 - 线程池的大小可以预定义， 也可自适应
 - 所安排的任务可以定期执行，也可只运行一次
-- STPE扩展了ThreadPoolExecutor类，很相似但不具备定期调度能力
+- STPE扩展了 ThreadPoolExecutor 类，很相似但不具备定期调度能力
     - STPE和并发包里的类结合使用是常见的模式之一
 
-**************************
+************************
 
 ## 分支合并框架
 - 引入一种新的执行者服务，称为 ForkJoinPool

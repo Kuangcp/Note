@@ -17,7 +17,7 @@ categories:
     1. [Google拼音](#google拼音)
 1. [Tips](#tips)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-12-20 00:16_|
 ****************************************
 # IME
 > 输入法
@@ -33,6 +33,10 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 ```
+
+- 设置里面 Global config -> Program -> Active 
+
+************************
 
 # ibus
 
