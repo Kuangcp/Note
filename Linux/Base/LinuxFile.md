@@ -10,13 +10,6 @@ categories:
 **目录 start**
  
 1. [文件管理](#文件管理)
-    1. [Tips](#tips)
-        1. [设置交换内存文件](#设置交换内存文件)
-            1. [清空交换内存](#清空交换内存)
-        1. [清除缓存](#清除缓存)
-        1. [善用*shrc文件](#善用shrc文件)
-            1. [善用alias](#善用alias)
-            1. [desktop文件](#desktop文件)
     1. [基本命令](#基本命令)
         1. [查找文件](#查找文件)
             1. [find](#find)
@@ -62,108 +55,19 @@ categories:
     1. [系统日志](#系统日志)
         1. [Systemd](#systemd)
     1. [应用日志](#应用日志)
+1. [Tips](#tips)
+    1. [设置交换内存文件](#设置交换内存文件)
+        1. [清空交换内存](#清空交换内存)
+    1. [清除缓存](#清除缓存)
+    1. [善用*shrc文件](#善用shrc文件)
+        1. [善用alias](#善用alias)
+    1. [desktop文件](#desktop文件)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2019-12-22 01:09_|
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
 
-- 清空文件内容 `true > a.txt ` 
-- 安装上传下载文件的工具 `sudo apt install lrzsz`
-- `cat ~/.ssh/id_rsa.pub | xsel -b` 将文件复制到剪贴板
-
-*************************
-
-## Tips
-### 设置交换内存文件
-- 查看内存 `free -h` 
-- 创建一个4g 交换文件 `dd if=/dev/zero of=/swapfile bs=1024k count=4096` 
-- 格式化成交换文件的格式 `mkswap /swapfile` 
-- 启用该文件作为交换分区的文件 ` swapon /swapfile` 
-- `/swapfile swap swap defaults 0 0` 写入`/etc/fstab`文件中，让交换分区的设置开机自启
-
-- 修改交换内存开始使用的阈值
-    - `sudo sysctl vm.swappiness=15` 临时修改重启注销失效， 查看：`cat /proc/sys/vm/swappiness`
-    - 永久修改：`/etc/sysctl.conf ` 文件中设置开始使用交换分区的触发值： `vm.swappiness=10`
-    - 表示物理内存剩余`10%` 才会开始使用交换分区
-    - `建议，笔记本的硬盘低于 7200 转的不要设置太高的交换分区使用，大大影响性能，因为交换分区就是在硬盘上，频繁的交换数据`
-
-```sh
-    # 完整命令: root身份运行
-    dd if=/dev/zero of=/swapfile bs=1024k count=4096 && mkswap /swapfile && swapon /swapfile && echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
-```
-#### 清空交换内存
-- 1.关闭交换分区 `sudo swapoff 交换分区文件`
-    - 2.开启交换分区 `sudo swapon 交换分区文件`
-- 或者 `swapoff -a && swapon -a`
-
-### 清除缓存
-> [参考: 如何在 Linux 中清除缓存（Cache）？](https://linux.cn/article-5627-1.html) `注意要切换到root再运行命令`  
-> [参考博客: Linux 内存中的Cache，真的能被回收么？](https://www.cnblogs.com/276815076/p/5478966.html)  
-
-> `/proc/sys/vm/drop_caches`
-> 设置值 `sync; echo 1 > /proc/sys/vm/drop_caches`
-
-| 值 | 作用 |
-|:----|:----|
-| 1 | 仅清除 page cache |
-| 2 | 表示清除回收slab分配器中的对象（包括目录项缓存和inode缓存） |
-| 3 | 表示清除page cache和slab分配器中的缓存对象 |
-
-- 曾经因为缓存的问题会引发一些很诡异的问题
-    - 例如构建工具Maven, 也会因为在一个项目空间下, 多个同名项目的缓存问题 
-        - 巨诡异 `if(true){}` 都能不执行, if 和 else 同时执行
-
-### 善用*shrc文件
-> 注意加载顺序 /etc/profile -> ~/.*shrc `各种sh的rc文件` bash zsh ash
-
-#### 善用alias
-
-```sh
-    if [ -f ~/.bash_aliases ]; then
-        . ~/.bash_aliases
-    fi
-```
-- 在`~/.bashrc`添加这段，然后在 `.bash_aliases` 文件中设置别名
-    - 例如 ： `alias Kg.notes='cd ~/Documents/Notes/Code_Notes/'` 
-    - 更改文件后，想当前终端就生效就 `source ~/.bashrc` 不执行命令就重启终端即可
-> 注意_
-> 你会发现 当前用户 下 Kg.notes 是正常运行的, 但是 sudo Kg.note 就会报错说找不到命令  
-> 神奇的是 配置一个别名 `alias sudo='sudo '` 就可以解决这个问题了 [stackoverflow](https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo)
-> 官方说明如下_
-```
-    The first word of each simple command, if unquoted, is checked to see if it has an alias. If so, that word is replaced by the text of the alias. 
-    The characters ‘/’, ‘$’, ‘`’, ‘=’ and any of the shell metacharacters or quoting characters listed above may not appear in an alias name. 
-    The replacement text may contain any valid shell input, including shell metacharacters. The first word of the replacement text is tested for aliases, 
-    but a word that is identical to an alias being expanded is not expanded a second time. This means that one may alias ls to "ls -F", for instance, 
-    and Bash does not try to recursively expand the replacement text. If the last character of the alias value is a space or tab character, 
-    then the next command word following the alias is also checked for alias expansion. 
-```
-- 如[我的配置文件](https://github.com/Kuangcp/Configs/tree/master/Linux/init) `将配置文件分类放`
-    - K.h就能显示出每个命令的说明 其实现脚本： [python3脚本](https://github.com/Kuangcp/Script/blob/master/python/show_alias_help.py) 
-    - 在别名文件目录时, 建立链接就可以用了 `ln -s `pwd`/.bash_aliases ~/.bash_aliases` 
-
-*************************
-#### desktop文件
-> [freedesktop](https://www.freedesktop.org/wiki/)
-
-```conf
-	[Desktop Entry] #每个desktop文件都以这个标签开始，说明这是一个Desktop Entry文件
-	Version = 1.0 #标明Desktop Entry的版本（可选）
-	Name = Firefox #程序名称（必须），这里以创建一个Firefox的快捷方式为例
-	GenericName = Web Browser #程序通用名称（可选）
-	Comment = A Web Browser #程序描述（可选）
-	Exec = firefox %u #程序的启动命令（必选），可以带参数运行,当下面的Type为Application，此项有效
-	Icon = firefox #设置快捷方式的图标 svg(更好) png
-	Terminal = false #是否在终端中运行（可选），当Type为Application，此项有效
-	Type = Application #desktop的类型（必选），常见值有“Application”和“Link”
-	Categories = GNOME;Application;Network; #注明在菜单栏中显示的类别（可选）
-```
-- [示例文件](https://github.com/Kuangcp/Configs/blob/master/Linux/desktop/VSCode.desktop)
-- 如要将快捷方式放在启动菜单内 将 desktop 文件复制到 `/usr/share/applications/` 目录下即可
-    - 注意：目录不能有空格 等特殊字符
-
-**************************************
 ## 基本命令 
 > cd_
 - `cd - ` 跳转到上一个目录
@@ -174,7 +78,6 @@ categories:
 
 > silversearcher-ag `快速搜索文件内容`
 
-**************
 #### find  
 - `find . -name "*.txt"` 查找当前目录的txt后缀的文件
 - `sudo find / -name a.java` 全盘查找
@@ -367,7 +270,8 @@ categories:
 
 1. 最简单就是 `cat file1 file2 > result`
 
-******************************************
+************************
+
 ## 默认编码
 > 查看当前编码  locale 或者 echo $LANG
 
@@ -377,7 +281,8 @@ LC_ALL="zh_CN.UTF-8"
 export LANG="zh_CN.UTF-8"
 ```
 
-******************************************
+************************
+
 # 磁盘
 > [Linux系统基本目录结构](/Linux/Base/LinuxDirectoryStructure.md)
 
@@ -455,7 +360,8 @@ export LANG="zh_CN.UTF-8"
     - sort – 对文本文件按行排序 （-r）将比较的结果逆序输出，（-f）忽略大小写 -h 可读
     - head – 输出文件的前几行
 
-*********************************
+************************
+
 # 日志
 > 基本都在 `/var/log` 下
 
@@ -474,3 +380,99 @@ export LANG="zh_CN.UTF-8"
 
 ## 应用日志
 > [处理Apache日志的Bash脚本](http://www.ruanyifeng.com/blog/2012/01/a_bash_script_of_apache_log_analysis.html)
+
+************************
+
+# Tips
+- 清空文件内容 `true > a.txt ` 
+- 安装上传下载文件的工具 `sudo apt install lrzsz`
+- `cat ~/.ssh/id_rsa.pub | xsel -b` 将文件复制到剪贴板
+
+## 设置交换内存文件
+- 查看内存 `free -h` 
+- 创建一个4g 交换文件 `dd if=/dev/zero of=/swapfile bs=1024k count=4096` 
+- 格式化成交换文件的格式 `mkswap /swapfile` 
+- 启用该文件作为交换分区的文件 ` swapon /swapfile` 
+- `/swapfile swap swap defaults 0 0` 写入`/etc/fstab`文件中，让交换分区的设置开机自启
+
+- 修改交换内存开始使用的阈值
+    - `sudo sysctl vm.swappiness=15` 临时修改重启注销失效， 查看：`cat /proc/sys/vm/swappiness`
+    - 永久修改：`/etc/sysctl.conf ` 文件中设置开始使用交换分区的触发值： `vm.swappiness=10`
+    - 表示物理内存剩余`10%` 才会开始使用交换分区
+    - `建议，笔记本的硬盘低于 7200 转的不要设置太高的交换分区使用，大大影响性能，因为交换分区就是在硬盘上，频繁的交换数据`
+
+```sh
+    # 完整命令: root身份运行
+    dd if=/dev/zero of=/swapfile bs=1024k count=4096 && mkswap /swapfile && swapon /swapfile && echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+```
+### 清空交换内存
+- 1.关闭交换分区 `sudo swapoff 交换分区文件`
+    - 2.开启交换分区 `sudo swapon 交换分区文件`
+- 或者 `swapoff -a && swapon -a`
+
+## 清除缓存
+> [参考: 如何在 Linux 中清除缓存（Cache）？](https://linux.cn/article-5627-1.html) `注意要切换到root再运行命令`  
+> [参考博客: Linux 内存中的Cache，真的能被回收么？](https://www.cnblogs.com/276815076/p/5478966.html)  
+
+> `/proc/sys/vm/drop_caches`
+> 设置值 `sync; echo 1 > /proc/sys/vm/drop_caches`
+
+| 值 | 作用 |
+|:----|:----|
+| 1 | 仅清除 page cache |
+| 2 | 表示清除回收slab分配器中的对象（包括目录项缓存和inode缓存） |
+| 3 | 表示清除page cache和slab分配器中的缓存对象 |
+
+- 曾经因为缓存的问题会引发一些很诡异的问题
+    - 例如构建工具Maven, 也会因为在一个项目空间下, 多个同名项目的缓存问题 
+        - 巨诡异 `if(true){}` 都能不执行, if 和 else 同时执行
+
+## 善用*shrc文件
+> 注意加载顺序 /etc/profile -> ~/.*shrc `各种sh的rc文件` bash zsh ash
+
+### 善用alias
+
+```sh
+    if [ -f ~/.bash_aliases ]; then
+        . ~/.bash_aliases
+    fi
+```
+- 在`~/.bashrc`添加这段，然后在 `.bash_aliases` 文件中设置别名
+    - 例如 ： `alias Kg.notes='cd ~/Documents/Notes/Code_Notes/'` 
+    - 更改文件后，想当前终端就生效就 `source ~/.bashrc` 不执行命令就重启终端即可
+> 注意_
+> 你会发现 当前用户 下 Kg.notes 是正常运行的, 但是 sudo Kg.note 就会报错说找不到命令  
+> 神奇的是 配置一个别名 `alias sudo='sudo '` 就可以解决这个问题了 [stackoverflow](https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo)
+> 官方说明如下_
+```
+    The first word of each simple command, if unquoted, is checked to see if it has an alias. If so, that word is replaced by the text of the alias. 
+    The characters ‘/’, ‘$’, ‘`’, ‘=’ and any of the shell metacharacters or quoting characters listed above may not appear in an alias name. 
+    The replacement text may contain any valid shell input, including shell metacharacters. The first word of the replacement text is tested for aliases, 
+    but a word that is identical to an alias being expanded is not expanded a second time. This means that one may alias ls to "ls -F", for instance, 
+    and Bash does not try to recursively expand the replacement text. If the last character of the alias value is a space or tab character, 
+    then the next command word following the alias is also checked for alias expansion. 
+```
+- 如[我的配置文件](https://github.com/Kuangcp/Configs/tree/master/Linux/init) `将配置文件分类放`
+    - K.h就能显示出每个命令的说明 其实现脚本： [python3脚本](https://github.com/Kuangcp/Script/blob/master/python/show_alias_help.py) 
+    - 在别名文件目录时, 建立链接就可以用了 `ln -s `pwd`/.bash_aliases ~/.bash_aliases` 
+
+*************************
+
+## desktop文件
+> [freedesktop](https://www.freedesktop.org/wiki/)
+
+```conf
+	[Desktop Entry] #每个desktop文件都以这个标签开始，说明这是一个Desktop Entry文件
+	Version = 1.0 #标明Desktop Entry的版本（可选）
+	Name = Firefox #程序名称（必须），这里以创建一个Firefox的快捷方式为例
+	GenericName = Web Browser #程序通用名称（可选）
+	Comment = A Web Browser #程序描述（可选）
+	Exec = firefox %u #程序的启动命令（必选），可以带参数运行,当下面的Type为Application，此项有效
+	Icon = firefox #设置快捷方式的图标 svg(更好) png
+	Terminal = false #是否在终端中运行（可选），当Type为Application，此项有效
+	Type = Application #desktop的类型（必选），常见值有“Application”和“Link”
+	Categories = GNOME;Application;Network; #注明在菜单栏中显示的类别（可选）
+```
+- [示例文件](https://github.com/Kuangcp/Configs/blob/master/Linux/desktop/VSCode.desktop)
+- 如要将快捷方式放在启动菜单内 将 desktop 文件复制到 `/usr/share/applications/` 目录下即可
+    - 注意：目录不能有空格 等特殊字符
