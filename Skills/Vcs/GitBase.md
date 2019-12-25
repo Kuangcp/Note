@@ -27,6 +27,7 @@ categories:
             1. [查看文件的修改记录](#查看文件的修改记录)
         1. [blame](#blame)
         1. [diff](#diff)
+            1. [diff 创建 patch](#diff-创建-patch)
         1. [apply](#apply)
         1. [tag](#tag)
         1. [reset](#reset)
@@ -41,7 +42,7 @@ categories:
     1. [本地分支](#本地分支)
         1. [show-branch](#show-branch)
         1. [stash](#stash)
-            1. [patch](#patch)
+            1. [stash 创建 patch](#stash-创建-patch)
             1. [恢复](#恢复)
         1. [branch](#branch)
         1. [checkout](#checkout)
@@ -71,7 +72,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-12-06 18:19_|
+**目录 end**|_2019-12-25 21:12_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -280,7 +281,7 @@ categories:
 ```
 
 #### 对比两个分支的差异
-> [参考博客](http://blog.csdn.net/u011240877/article/details/52586664)
+> [参考博客 git 对比两个分支差异](http://blog.csdn.net/u011240877/article/details/52586664)
 
 - 查看在dev分支，而不在master分支上的 commit. 
     - `git log master..dev`
@@ -292,18 +293,22 @@ categories:
     - 显示出每个提交是在哪个分支上 `git log --left-right dev...master`
     - 注意 commit 后面的箭头，根据我们在 –left-right dev…master 的顺序，左箭头 < 表示是 dev 的，右箭头 > 表示是 master的。
 
+- 单纯比较不同 `git diff dev master`
+
 #### 查看文件的修改记录
 1. git log fileName 或者 git log --pretty=oneline fileName 更容易看到 sha-1 值
 1. git show sha-1的值 就能看到该次提交的所有修改
 
-**************************
+
+************************
 
 ### blame
 > 查看文件修改记录 追责
 
 `git blame file`
 
-*****************************
+************************
+
 ### diff
 - 默认是将 work 区 和 index 区 进行比较
     - `--cached` stage 区 和 index 区 进行比较, 等同于`--staged`
@@ -319,9 +324,11 @@ categories:
 > [Github:diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)`一个更方便查看diff的工具`
 - 最简单的就是 `npm install -g diff-so-fancy` 安装 
 
-> patch 
+#### diff 创建 patch 
 
 - 创建分支之间的patch `git diff branch1 branch2 > first.patch`
+- 创建分支之间具体文件的patch `git diff branch1 branch2 path/file1 path/file2 > first.patch`
+    - 注意文件是命令行当前路径的相对路径
 - 创建单文件的patch `git diff filePath > first.patch` 路径为Git项目根路径的相对路径
 
 ************************
@@ -489,7 +496,7 @@ categories:
 
 - 使用该别名能展示当前分支的stash `alias wip='git stash list | grep $(git branch --show-current)' `
 
-#### patch 
+#### stash 创建 patch 
 - 从stash栈中创建 patch `git stash show -p stash@{0} > first.patch`
     - 简化别名 `alias gsh.st='__gshst(){ index=$1; if test -z $index; then index=0; fi; git stash show -p stash@{$index} }; __gshst'`
 
