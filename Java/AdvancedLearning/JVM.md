@@ -39,12 +39,13 @@ categories:
         1. [CMS](#cms)
         1. [G1](#g1)
         1. [ZGC](#zgc)
+        1. [ShenandoahGC](#shenandoahgc)
 1. [JVM不同实现](#jvm不同实现)
     1. [Hotspot JVM](#hotspot-jvm)
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2019-12-07 21:50_|
+**目录 end**|_2019-12-31 19:44_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -156,7 +157,7 @@ JDK7中符号表被移动到 Native Heap中，字符串常量池和类引用被�
 NIO 会经常使用, 提高性能
 
 ## 元空间
-> Java8 引入, 取代了以往的 Perm Gen
+> MetaSpace Java8 引入, 取代了以往的 Perm Gen
 
 - 充分利用了Java语言规范：类及相关的元数据的生命周期与类加载器的一致。
 - 每个类加载器都有它的内存区域-元空间
@@ -166,9 +167,15 @@ NIO 会经常使用, 提高性能
 - 元空间里的对象不会被转移
 - 如果GC发现某个类加载器不再存活，会对整个元空间进行集体回收
 
+> [参考博客: Metaspace Architecture](https://stuefe.de/posts/metaspace/metaspace-architecture/)  
+> [参考博客: What is Compressed Class Space?](https://stuefe.de/posts/metaspace/what-is-compressed-class-space/)  
+
+************************
+
 ## 参数配置
 - `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1
 - `-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000`  开启远程调试
+- `-XX:CompressedClassSpaceSize=500m` 压缩类元空间大小 默认是1g
 
 **********************
 
@@ -401,13 +408,18 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
 > [参考博客: JVM系列篇：深入剖析G1收集器](https://my.oschina.net/u/3959491/blog/3029276)
 
 ### ZGC
-> JDK11   [ZGC](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
+> JDK11  [wiki: ZGC](https://wiki.openjdk.java.net/display/zgc/Main) | [ZGC Release note](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
 
 `-XX:+UnlockExperimentalVMOptions -XX:+UseZGC`
 
 > [参考博客: Oracle 即将发布的全新 Java 垃圾收集器 ZGC](https://www.infoq.cn/article/oracle-release-java-gc-zgc)
 
 IDEA 切换使用该GC后CPU使用率高涨到20%, 用 CMS G1 则为1%, 均指无动作的情况
+
+### ShenandoahGC
+> JDK12  [wiki: ShenandoahGC](https://wiki.openjdk.java.net/display/shenandoah/Main)
+
+> [参考博客: JDK12 ShenandoahGC小试牛刀](https://juejin.im/post/5c934a5d5188252dad05d82a)  
 
 ********************************
 
