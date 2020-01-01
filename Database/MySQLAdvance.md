@@ -20,7 +20,7 @@ categories:
 1. [Tips](#tips)
     1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2019-11-29 13:39_|
+**目录 end**|_2019-12-31 19:44_|
 ****************************************
 # MySQL进阶
 
@@ -37,7 +37,7 @@ categories:
 | 事务隔离级别 | 脏读 | 不可重复读 | 幻读
 |:---|:---:|:---:|:---:|
 | 读未提交（read-uncommitted） | 会 | 会 | 会
-| 不可重复读（read-committed） | \ | 会 | 会
+| 提交读（read-committed） | \ | 会 | 会
 | 可重复读（repeatable-read）  | \ | \ | 会
 | 串行化（serializable） 	   | \ | \ | \ 
 
