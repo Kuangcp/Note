@@ -45,7 +45,7 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2019-12-03 18:08_|
+**目录 end**|_2020-01-01 20:27_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -306,9 +306,10 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 - [redis文档](https://pypi.python.org/pypi/redis/) `python操作redis的库的文档`
 
 ## GUI客户端
-> [Redis Desktop Manager](https://github.com/uglide/RedisDesktopManager/)
-> [FastoRedis](https://fastoredis.com/)
-> [Redis Plus](https://gitee.com/MaxBill/RedisPlus)
+> [Redis Desktop Manager](https://github.com/uglide/RedisDesktopManager/)  
+> [FastoRedis](https://fastoredis.com/)  
+> [Redis Plus](https://gitee.com/MaxBill/RedisPlus)  
+> Redily
 
 *********
 
