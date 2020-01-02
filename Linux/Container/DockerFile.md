@@ -35,7 +35,7 @@ categories:
         1. [打包最新版git](#打包最新版git)
         1. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-02 20:57_|
 ****************************************
 # Dockerfile
 ## 使用入门案例
@@ -54,7 +54,9 @@ categories:
 
 ## Tips
 > [Reducing Your Docker Image Size](https://blog.codeship.com/reduce-docker-image-size/)
-*******************************************************************
+
+************************
+
 ## Dockerfile命令
 - Dockerfile是一个`镜像`的表示，可以通过Dockerfile来描述构建镜像的步骤，且可以自动构建一个容器
 - 所有的 Dockerfile 命令格式都是: `INSTRUCTION arguments` 

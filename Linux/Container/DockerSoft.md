@@ -40,7 +40,7 @@ categories:
     1. [图形化管理工具](#图形化管理工具)
 1. [运行图形化应用](#运行图形化应用)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-02 20:57_|
 ****************************************
 # Docker容器化应用
 > [https://docs.docker.com/samples/](https://docs.docker.com/samples/)  
@@ -50,6 +50,7 @@ categories:
 - [Official: registry](https://hub.docker.com/_/registry/)
 
 > [如何创建尽可能小的Docker容器教程](http://www.open-open.com/lib/view/open1419760974078.html)
+> [参考博客: 一次 Docker 容器内大量僵死进程排查分析](https://juejin.im/post/5e0002adf265da33dc7a3a1f?from=singlemessage)  
 
 ## 个人镜像
 `百度云`
