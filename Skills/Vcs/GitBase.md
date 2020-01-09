@@ -29,6 +29,8 @@ categories:
         1. [diff](#diff)
             1. [diff 创建 patch](#diff-创建-patch)
         1. [apply](#apply)
+        1. [format-patch](#format-patch)
+        1. [am](#am)
         1. [tag](#tag)
         1. [reset](#reset)
             1. [回滚add操作](#回滚add操作)
@@ -72,7 +74,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2020-01-08 17:29_|
+**目录 end**|_2020-01-09 15:19_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -339,6 +341,22 @@ categories:
 
 - `git apply --ignore-space-change --ignore-whitespace first.patch`
 - `patch -p1 < first.patch`
+
+************************
+
+### format-patch
+> Prepare patches for e-mail submission  
+> [参考博客: How To Create and Apply Git Patch Files](https://devconnected.com/how-to-create-and-apply-git-patch-files/)  
+
+- `git format-patch -1 commit-sha` 指定commit 创建patch
+- `git format-patch master -o patches` 对那些 master分支 中有而当前分支没有的 commit 创建 patch 到 patches 目录
+
+************************
+
+### am
+> Apply a series of patches from a mailbox  
+
+- git am patches/1.patch
 
 ************************
 
