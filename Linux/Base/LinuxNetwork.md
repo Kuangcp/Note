@@ -38,7 +38,7 @@ categories:
             1. [电脑](#电脑)
         1. [配置FTP服务器](#配置ftp服务器)
     1. [SSH](#ssh)
-    1. [telnet](#telnet)
+    1. [Telnet](#telnet)
     1. [Proxy](#proxy)
     1. [VPN](#vpn)
         1. [tun/tap](#tuntap)
@@ -47,8 +47,11 @@ categories:
         1. [OpenVPN](#openvpn)
     1. [防火墙](#防火墙)
         1. [iptables](#iptables)
+    1. [远程桌面](#远程桌面)
+        1. [VNC](#vnc)
+        1. [Xrdp](#xrdp)
 
-**目录 end**|_2019-11-28 19:36_|
+**目录 end**|_2020-01-13 00:34_|
 ****************************************
 # Linux网络管理
 ## Tips
@@ -441,17 +444,20 @@ _ss_
      ~$ sudo systemctl restart vsftpd.service
 ```
 
-******************************
+
+************************
+
 ## SSH
 > [详细](/Linux/Base/SSH.md)
 
-## telnet
+## Telnet
 > 远程控制服务器的一种协议和SSH类似
 
 > [linux telnet命令参数](http://www.linuxso.com/command/telnet.html)  
 > [每天一个linux命令（58）：telnet命令](http://www.cnblogs.com/peida/archive/2013/03/13/2956992.html)
 
-- 测试连通性 `telnet ip port` 如果端口开放则提示 Connected, 否则会提示 refused 
+- 测试端口连通性 `telnet ip port` 如果端口开放则提示 Connected, 否则会提示 refused 
+    - netcat 具有同样效果 `nc -v -z -n ip port`
 
 ************************
 ## Proxy
@@ -485,7 +491,6 @@ _客户端_
 ```
 - `sslocal -c /etc/ss/json`
 - 设置代理是1080端口即可
-
 
 ### proxychains
 - 安装
@@ -557,4 +562,28 @@ _客户端_
 _有时候会发生这样的事情_
 1. 服务器的服务是正常启动的, 但是客户端连不上, 然后使用curl 去访问那个端口, 报错说 curl: (7) Failed to connect to xxxx port 8080: 没有到主机的路由
 2. 那么这时候就要检查防火墙了
+
+************************
+## 远程桌面
+> [参考博客: 连接Linux远程桌面的四个方法](https://www.cnblogs.com/hw-1015/articles/5910969.html)  
+> [参考博客: 你会在linux服务器上安装远程桌面吗？](https://www.zhihu.com/question/20301978)  
+
+### VNC
+> Virtual Network Computing 
+
+> [参考博客: Ubuntu远程SSH及x11vnc远程桌面连接](https://blog.csdn.net/ywueoei/article/details/79952727)  
+
+1. 服务端 安装 `yay realvnc-vnc-server`
+1. 设置密码 `x11vnc -storepasswd`
+1. 使用密码启动 `x11vnc -forever -shared -rfbauth ~/.vnc/passwd`
+    - 设置分辨率 `-geometry 1280×1024`
+
+1. 客户端 vnc-viewer(任意) 输入 ip 即可连接 
+
+
+************************
+
+### Xrdp
+> [参考博客: Xrdp - 通过Windows的RDP连接Linux远程桌面](https://www.linuxidc.com/Linux/2018-10/155073.htm)  
+
 
