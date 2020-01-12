@@ -29,6 +29,8 @@ categories:
         1. [diff](#diff)
             1. [diff 创建 patch](#diff-创建-patch)
         1. [apply](#apply)
+        1. [format-patch](#format-patch)
+        1. [am](#am)
         1. [tag](#tag)
         1. [reset](#reset)
             1. [回滚add操作](#回滚add操作)
@@ -43,7 +45,7 @@ categories:
         1. [show-branch](#show-branch)
         1. [stash](#stash)
             1. [stash 创建 patch](#stash-创建-patch)
-            1. [恢复](#恢复)
+            1. [恢复被drop的stash](#恢复被drop的stash)
         1. [branch](#branch)
         1. [checkout](#checkout)
         1. [switch](#switch)
@@ -72,7 +74,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2019-12-25 21:12_|
+**目录 end**|_2020-01-10 10:29_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -283,6 +285,7 @@ categories:
 #### 对比两个分支的差异
 > [参考博客 git 对比两个分支差异](http://blog.csdn.net/u011240877/article/details/52586664)
 
+> commit 差异
 - 查看在dev分支，而不在master分支上的 commit. 
     - `git log master..dev`
     - 或者 `git log dev ^master` (^表示非，等价于 --not) 
@@ -293,12 +296,12 @@ categories:
     - 显示出每个提交是在哪个分支上 `git log --left-right dev...master`
     - 注意 commit 后面的箭头，根据我们在 –left-right dev…master 的顺序，左箭头 < 表示是 dev 的，右箭头 > 表示是 master的。
 
-- 单纯比较不同 `git diff dev master`
+> 内容差异
+- `git diff dev master` 可以理解为 从 dev 分支切换到 master 分支将发生的修改
 
 #### 查看文件的修改记录
 1. git log fileName 或者 git log --pretty=oneline fileName 更容易看到 sha-1 值
 1. git show sha-1的值 就能看到该次提交的所有修改
-
 
 ************************
 
@@ -338,6 +341,27 @@ categories:
 
 - `git apply --ignore-space-change --ignore-whitespace first.patch`
 - `patch -p1 < first.patch`
+
+************************
+
+### format-patch
+> Prepare patches for e-mail submission  
+> [参考博客: How To Create and Apply Git Patch Files](https://devconnected.com/how-to-create-and-apply-git-patch-files/)  
+
+- `git format-patch -1 commit-sha` 指定commit 创建 patch
+    - 参数选项可以为 `-2` `-3`... 数字表示 commit id 之前的 几个 commit 也创建 patch
+- `git format-patch master -o patches` 对那些 master分支 中有而当前分支没有的 commit 创建 patch 到 patches 目录
+
+- `git format-patch master  --stdout > total.patch` 将所有patch文件合并为一个 
+
+************************
+
+### am
+> Apply a series of patches from a mailbox  
+
+- git am patches/1.patch
+
+- 如果是单纯的搬运 commit 使用 format-patch 创建 patch 然后 使用 am 应用的方式 比 diff  然后 apply 更好， 因为会保留原有commit信息
 
 ************************
 
@@ -500,10 +524,10 @@ categories:
 - 从stash栈中创建 patch `git stash show -p stash@{0} > first.patch`
     - 简化别名 `alias gsh.st='__gshst(){ index=$1; if test -z $index; then index=0; fi; git stash show -p stash@{$index} }; __gshst'`
 
-#### 恢复
+#### 恢复被drop的stash
 > [How to recover a dropped stash in Git?](https://stackoverflow.com/questions/89332/how-to-recover-a-dropped-stash-in-git)  
 
-误操作 stash drop 或者 clean 的内容 
+可以恢复 误操作 stash drop 或者 clean 的内容 
 
 - `git fsck --no-reflog | awk '/dangling commit/ {print $3}'`
 - WIP 开头的就是 stash 对应的 commit , 找到对应的 sha1 id 建立新分支即可

@@ -22,7 +22,7 @@ categories:
     1. [Vivaldi](#vivaldi)
     1. [Opera](#opera)
 
-**目录 end**|_2019-11-17 21:38_|
+**目录 end**|_2020-01-10 11:30_|
 ****************************************
 # 浏览器
 ## FireFox
@@ -38,7 +38,8 @@ categories:
 
 - 火狐和Chrome都支持在控制台的网络中直接右击一个请求然后复制, 就可以出来复制成cURL命令的选项, 比较好用
 
-> [火狐性能优化贴](https://www.xzcblog.com/post-47.html)
+> [火狐性能优化贴](https://www.xzcblog.com/post-47.html)  
+> [Firefox uses too much memory or CPU resources - How to fix](https://support.mozilla.org/en-US/kb/firefox-uses-too-much-memory-or-cpu-resources)
 
 ### 开发版本
 > [开发者版本链接](https://www.mozilla.org/zh-CN/firefox/developer/) | [开发工具](https://firefox-dev.tools/)  
@@ -91,6 +92,7 @@ categories:
 1. `Auto Reload Tab` 定时自动刷新标签页
 1. `ReloadMatic` 定时自动刷新
 1. `轻灵划译` 即刻翻译, 多种平台
+1. `Tab Counter` Tab计数 
 
 ### 配置
 > 大多是通过 about:config 页面配置

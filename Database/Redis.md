@@ -45,7 +45,7 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2020-01-01 20:27_|
+**目录 end**|_2020-01-10 11:30_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -255,7 +255,13 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 > [Doc](http://doc.redisfans.com/key/scan.html)
 
 - SCAN 命令用于迭代当前数据库中的数据库键。
-- SSCAN 命令用于迭代集合键中的元素。
+- SSCAN 命令用于迭代 Set 键中的元素。
+    - cursor 游标 
+        - 注意这个游标不是 常见的 fori 循环里的i 是规律递增，第一次 sscan 会返回 cursor(第一个参数) 需要下一次拿这个 cursor 作为参数继续获取，直到返回 0 表示迭代完成
+    - count 数量
+        - redis 不保证返回的数据数量严格等于 count 只保证大于等于 `注意count不能小于1 否则报 syntax error`
+    - match pattern 匹配key的模式
+    - 因为 这种不易理解的迭代方式, Spring 的 RedisTemplate 只提供了 count pattern 参数 cursor 默认为0
 - HSCAN 命令用于迭代哈希键中的键值对。
 - ZSCAN 命令用于迭代有序集合中的元素（包括元素成员和元素分值）
 

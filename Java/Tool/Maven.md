@@ -50,7 +50,7 @@ categories:
             1. [Gradle](#gradle)
             1. [Maven](#maven)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-10 10:29_|
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -449,7 +449,9 @@ A 项目 compile
 - 大量的开源项目使用了maven。
 
 ********************
+
 ## 发布构件到公共仓库
+
 - [ ] Jforg mvnrepository 
 
 > [将项目发布到 maven 中央仓库踩过的坑](http://blog.csdn.net/h3243212/article/details/72374363)
@@ -458,10 +460,16 @@ A 项目 compile
 > [android-library-publish-to-jcenter](https://github.com/panpf/android-library-publish-to-jcenter)
 
 *********************
+
 # 配置私服
 > 不用去跑审核流程, 私有, 快速, 便捷
+
 ## nexus
 > 需要运行软件, 一般公司内部局域网使用, 如果自己有服务器也能开放给公众使用 [参考博客: maven私服搭建及gradle上传](https://www.jianshu.com/p/b1fe26d5b8c8)
+
+1. 设置 RELEASE 不可重复 deploy 管理后台 Repositories -> Releases -> ANALYZE -> Configuration -> Deployment Policy 设置为 Disable Redeploy
+
+************************
 
 ## 码云
 > 利用公开仓库来搭建私服 | [参考博客:  使用git仓库搭建maven私服 ](https://my.oschina.net/polly/blog/1649362)

@@ -28,6 +28,7 @@ categories:
             1. [删除文件相关情况](#删除文件相关情况)
         1. [fuser](#fuser)
         1. [ps](#ps)
+        1. [pstree](#pstree)
         1. [kill](#kill)
         1. [killall](#killall)
         1. [trap](#trap)
@@ -47,7 +48,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2019-11-28 19:36_|
+**目录 end**|_2020-01-09 15:19_|
 ****************************************
 # Linux性能分析和管理
 ## 运行状况信息
@@ -356,6 +357,15 @@ categories:
 1. 统计所有java进程内存使用 `ps aux|grep java | grep -v grep | awk '{sum+=$6};END {print sum "K " sum/1024"M "}'` 
     - `ps -a -x -o rss,comm | grep java | awk '{sum+=$1};END {print sum "K " sum/1024"M "}'`
 1. 按内存排序 列出所有进程 `ps aux | grep -v RSS | awk "{print $6 "\t" $11 }" | sort --human-numeric-sort -r | less`
+
+************************
+
+### pstree
+> 顾名思义 树状图展示进程 线程关系
+
+> [参考博客: Linux下查看线程数的几种方法汇总](https://www.cnblogs.com/yinzhengjie/p/9998771.html)  
+
+************************
 
 ### kill
 - `kill -l` 或者 `trap -l` 显示kill可以向进程发送的信号

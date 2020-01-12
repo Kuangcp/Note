@@ -219,6 +219,7 @@ _ss_
 - 默认网关： 如果主机找不到准发规则， 就把数据包发给默认的网关
 - 增加/删除一条路由规则 `ip route add/del 192.168.2.0/24 via 192.168.1.254`
 - 关闭 启用 `ifconfig name down/up`
+- 设置网卡 eno1 MAC 地址`ip link set eno1 address b4:xx:xx`
 
 ************************
 
