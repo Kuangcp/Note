@@ -51,7 +51,7 @@ categories:
         1. [VNC](#vnc)
         1. [Xrdp](#xrdp)
 
-**目录 end**|_2020-01-13 00:34_|
+**目录 end**|_2020-01-15 17:21_|
 ****************************************
 # Linux网络管理
 ## Tips
@@ -187,7 +187,7 @@ categories:
 | :-----       | :------  | :-------------- |
 | 地址和链路配置 | ifconfig | ip addr, ip link |
 |   路由表      |  route   |     ip route     |
-|  ARP表       |   arp     |     ip neigh     |
+|  ARP表       |   arp    |     ip neigh     |
 |  VLAN        | vconfig  |     ip link      |
 |   隧道       | iptunnel  |    ip tunnel     |
 |   组播       | ipmaddr   |     ip maddr     |
@@ -216,8 +216,9 @@ _ss_
 |    删除ARP     |           arp -d 192.168.1.100           |   ip neigh del 192.168.1.100 dev eth0    |
 |   展示套接字状态    |                netstat -l                |                  ss -l                   |
 
-- 默认网关： 如果主机找不到准发规则， 就把数据包发给默认的网关
+- 默认网关： 如果主机找不到转发规则， 就把数据包发给默认的网关
 - 增加/删除一条路由规则 `ip route add/del 192.168.2.0/24 via 192.168.1.254`
+    - 当使用 VPN 时，建立新的虚拟网卡 tun， 可以手动设置路由让指定ip走虚拟网卡 从而访问到VPN内局域网地址(网络号和真实网卡一样，默认会把数据包转发至本地局域网)
 - 关闭 启用 `ifconfig name down/up`
 - 设置网卡 eno1 MAC 地址`ip link set eno1 address b4:xx:xx`
 

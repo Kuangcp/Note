@@ -29,7 +29,7 @@ categories:
             1. [meld](#meld)
             1. [kdiff3](#kdiff3)
             1. [vimdiff](#vimdiff)
-        1. [文件管理命令](#文件管理命令)
+        1. [文件变更命令](#文件变更命令)
             1. [rename](#rename)
             1. [chown](#chown)
             1. [chgrp](#chgrp)
@@ -38,6 +38,7 @@ categories:
             1. [rm](#rm)
             1. [mv](#mv)
             1. [文件的分割与合并](#文件的分割与合并)
+            1. [监控文件变更](#监控文件变更)
     1. [默认编码](#默认编码)
 1. [磁盘](#磁盘)
     1. [文件系统](#文件系统)
@@ -63,7 +64,7 @@ categories:
         1. [善用alias](#善用alias)
     1. [desktop文件](#desktop文件)
 
-**目录 end**|_2019-12-22 01:09_|
+**目录 end**|_2020-01-15 17:21_|
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -210,7 +211,7 @@ categories:
 
 #### vimdiff
 
-### 文件管理命令
+### 文件变更命令
 #### rename
 `rename命令的使用(基于perl)`
 - `rename "s/.html/.php/" * ` //把.html 后缀的改成 .php后缀
@@ -269,6 +270,15 @@ categories:
 > 合并
 
 1. 最简单就是 `cat file1 file2 > result`
+
+#### 监控文件变更
+> 原理是通过监听文件变更时发出的 signal
+
+- 借助 inotify-tool 包更容易使用
+    - inotifywait
+    - inotifywatch
+
+- 持续监听某目录变更 `inotifywait -mrq --timefmt '%d/%m/%y %H:%M' --format '%T %w%f%e' -e modify,delete,create,attrib /home/kcp/test/git-test`
 
 ************************
 

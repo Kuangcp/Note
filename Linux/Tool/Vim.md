@@ -26,7 +26,7 @@ categories:
     1. [SpaceVim](#spacevim)
     1. [space-vim](#space-vim)
 
-**目录 end**|_2019-11-26 19:52_|
+**目录 end**|_2020-01-15 17:21_|
 ****************************************
 # Vim 
 > 学习曲线很高，但是学会熟练使用后就效率很高
@@ -45,6 +45,8 @@ categories:
     - 具备语法高亮 路径中间是依据vim版本来的, 按实际情况改动
 
 1. 设置默认编辑器 `export EDITOR=/usr/bin/vim`
+
+1. vim 会导致文件 inode 变更 [why inode value changes when we edit in “vi” editor?](https://unix.stackexchange.com/questions/36467/why-inode-value-changes-when-we-edit-in-vi-editor)
 
 ************************
 
