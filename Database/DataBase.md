@@ -90,13 +90,16 @@ MVCC
 > key-value 数据库: redis memcached   
 > 文档数据库: MongoDB  
 > 图数据库: Neo4j  
-> 时序数据库: InfluxDB   
+> 时序数据库: InfluxDB TSDB  
 
 ## Redis
 > 数据类型丰富,处理非关系型并且结构化的数据十分方便, 结合Python使用就行云流水一般了
 
+## LevelDB
+> [Github](https://github.com/google/leveldb)  
+
 ## MangoDB
-> 正准备学习的文档性数据库, 混合类型: 关系型非关系型
+> 文档性数据库, 混合类型: 关系型非关系型
 
 ## GemFire
 > 分布式内存数据库 12306 采用的解决方案

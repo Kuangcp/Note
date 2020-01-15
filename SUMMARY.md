@@ -68,6 +68,8 @@
 * 【 Groovy 】
     * [ Groovy ](/Groovy/Groovy.md)
     * [ GroovySpring ](/Groovy/GroovySpring.md)
+* 【 Hardware 】
+    * [ Interface ](/Hardware/Interface.md)
 * 【 Java 】
     * 【 Java/AdvancedLearning 】
         * 【 Java/AdvancedLearning/Basic 】
@@ -137,7 +139,6 @@
         * [ Solr ](/Java/Ecosystem/Solr.md)
         * [ Vertx ](/Java/Ecosystem/Vertx.md)
     * 【 Java/MSA 】
-    * 【 Java/Pattern 】
     * 【 Java/Spring 】
         * 【 Java/Spring/Why 】
         * [ Spring-Bean学习 ](/Java/Spring/Spring-Bean学习.md)
@@ -240,6 +241,7 @@
     * [ 12306 ](/MyBlog/12306.md)
     * [ 2018-3-15-install-deepin ](/MyBlog/2018-3-15-install-deepin.md)
     * [ Flink-with-batch ](/MyBlog/Flink-with-batch.md)
+    * [ Out-of-memory ](/MyBlog/Out-of-memory.md)
     * [ WebSocket-demo ](/MyBlog/WebSocket-demo.md)
     * [ twenty-years-of-weak-japan ](/MyBlog/twenty-years-of-weak-japan.md)
     * [ use-maven-create-web-project ](/MyBlog/use-maven-create-web-project.md)
