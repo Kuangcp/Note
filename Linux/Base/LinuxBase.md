@@ -67,7 +67,9 @@ categories:
 - [鳥哥的 Linux 私房菜](http://linux.vbird.org/linux_basic/)
 - [阿里云系统组技术博客](https://kernel.taobao.org/)
 
-**************************************
+
+************************
+
 ## 用户
 - 添加用户 `sudo adduser username` 
     - 注意 `useradd` 命令只新建用户不会创建用户主目录

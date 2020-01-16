@@ -16,6 +16,13 @@ categories:
 ****************************************
 # 虚拟化技术
 
+> 虚拟硬盘格式
+- vhd: VirtualPC, Hyper-V, Xen, VirtualBox
+- vmdk: VMWare
+- qcow2: Qemu, KVM
+
+## QEMU
+
 ## KVM
 
 ## XEN
