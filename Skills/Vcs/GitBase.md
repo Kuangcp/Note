@@ -521,8 +521,9 @@ categories:
 - 使用该别名能展示当前分支的stash `alias wip='git stash list | grep $(git branch --show-current)' `
 
 #### stash 创建 patch 
-- 从stash栈中创建 patch `git stash show -p stash@{0} > first.patch`
+- 查看stash栈某下标(提交)的差异 `git stash show -p stash@{0}`
     - 简化别名 `alias gsh.st='__gshst(){ index=$1; if test -z $index; then index=0; fi; git stash show -p stash@{$index} }; __gshst'`
+- 创建 patch `gsh.st > dev.patch`
 
 #### 恢复被drop的stash
 > [How to recover a dropped stash in Git?](https://stackoverflow.com/questions/89332/how-to-recover-a-dropped-stash-in-git)  

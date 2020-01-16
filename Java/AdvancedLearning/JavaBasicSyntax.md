@@ -163,6 +163,8 @@ categories:
 
 用 2 个字节来表示 Unicode 值 取值范围: '\u0000' (or 0) , '\uffff' (or 65,535 inclusive).
 
+> [参考博客: isn't the size of character in java 2 bytes](https://stackoverflow.com/questions/5078314/isnt-the-size-of-character-in-java-2-bytes)  
+
 ### boolean
 > [参考 你真的知道Java中boolean类型占用多少个字节吗？](https://www.jianshu.com/p/2f663dc820d0)
 
@@ -170,10 +172,12 @@ categories:
 
 ### int
 > 数值范围 -2^31,2^31-1 int占四个字节 32位 一位是符号位   
+
 Java8 以上可以使用无符号的 int, 值范围: 0, 2^32-1
 
 ### long
 > 数值范围 -2^63 2^63-1 占八个字节 64位 一位是符号位  
+
 Java8 以上可以使用无符号的 long, 值范围: 0, 2^64-1
 
 ### float
@@ -182,7 +186,7 @@ Java8 以上可以使用无符号的 long, 值范围: 0, 2^64-1
 
 **************************
 ## 封装类型
-> `wrapper class`基本类型和包装类型不能混为一谈 本质上的 class是不同的, 只不过自动拆装箱才让人感觉没差别
+> `wrapper class` 基本类型和包装类型不能混为一谈 本质上的 class是不同的, 只不过自动拆装箱才让人感觉没差别
 
 |  |  |
 |:----|:----|
@@ -196,11 +200,11 @@ Java8 以上可以使用无符号的 long, 值范围: 0, 2^64-1
 
 > 封装类型的缓存行为 
 
-对于 Integer, 有 IntegerCache 类缓存 [-128, 127] 范围内的值. 可以通过 `-XX:AutoBoxCacheMax` 修改上限值  
+Integer, 有 IntegerCache 类缓存 [-128, 127] 范围内的值. 可以通过 `-XX:AutoBoxCacheMax` 修改上限值  
 且 Byte Short Long Character 都有对应的缓存对象和缓存值范围, 但是只有Integer的缓存范围可变  
 
-Byte, Short, Long有固定范围: [-128, 127]   
-对于Character, 范围是 ‘\u0000’ 至 ‘\u007f’ 即 [0,127]  
+Byte, Short, Long 有固定范围: [-128, 127]   
+Character  范围是 ‘\u0000’ 至 ‘\u007f’ 即 [0,127]  
 
 true 和 false 也是缓存了的
 
@@ -213,7 +217,7 @@ true 和 false 也是缓存了的
 ### String
 > 该类是final修饰的, 原因:[知乎问题](https://www.zhihu.com/question/31345592)
 
-字符串对象是不可变的，这意味着一旦创建，它们的值就不能更改。 String类在技术上不是基本数据类型，但考虑到语言给予它的特殊支持，您可能倾向于将其视为基本数据类型。
+字符串对象是不可变的，这意味着一旦创建，它们的值就不能更改。 String类在技术上不是基本数据类型，但考虑到语言给予它的特殊支持，倾向于将其视为基本数据类型。
 
 - 常量池
     - 字符串常量池存在于方法区 
@@ -255,7 +259,7 @@ true 和 false 也是缓存了的
 1. Void 强调 the nothing, null 强调 nothing
 1. Void 作为方法的返回值时, 只能返回 null 
 
-- 案例:  
+- 案例:
     - Future<Void>
     - ResponseEntity<Void> 
     - A `Consumer<T>` can be viewed as a `Function<T, Void>`, 没有返回值,只有入参
@@ -272,7 +276,6 @@ true 和 false 也是缓存了的
 ```
 
 > When you will implement your visitor you can explicitly set OUT to be Void so that you know your visitor will always return null, instead of using Object
-
 ```java
     public class MyVoidVisitor implements LeavesVisitor<Void>{
         Void visit(Leaf1 leaf){
@@ -285,7 +288,9 @@ true 和 false 也是缓存了的
         }
     }
 ```
-****************************
+
+************************
+
 ## 枚举类型
 > [official doc: enum](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html)
 
@@ -298,7 +303,7 @@ true 和 false 也是缓存了的
 - 简单定义
     - `public enum Color {RED, GREEN, GRAY, BLUE, YELLOW, WHITE, PURPLE, BLACK}`
 
-- 简单单例
+> 简单单例
 ```java
     public enum Tool{
         INSTANCE(12); 
@@ -314,8 +319,8 @@ true 和 false 也是缓存了的
     Tool.INSTANCE.getNum();
 ```
 
-> [参考博客: 关于java枚举类型的疑问 ](https://segmentfault.com/q/1010000000306839)
-> [compilation-error-switch-with-enum](https://stackoverflow.com/questions/5551568/compilation-error-switch-with-enum)
+> [参考博客: 关于java枚举类型的疑问 ](https://segmentfault.com/q/1010000000306839)  
+> [compilation-error-switch-with-enum](https://stackoverflow.com/questions/5551568/compilation-error-switch-with-enum)  
 
 ***************************
 ## 内部类
@@ -356,7 +361,7 @@ true 和 false 也是缓存了的
 1. 不适合存储大量数据，因为元组不支持append、remove等方法
 1. 考虑到工程实际情况，后端使用的语言可能不支持元组，需要转换为其他格式
 
-**************
+************************
 
 # 运算
 ## 除法
@@ -477,12 +482,17 @@ java.lnag.Object中对hashCode的约定：
 - {@link BurgersManagers#eat(Burger, boolean)} 指向其他类中的某个方法
 - {@link BurgersManagers#eat(Burger, boolean) burgers manager eat} 指向其他带有标签的类的某个方法
 
-************
+************************
 
 # 抽象类
 1. Concrete and Abstract Class
 
-******************
+************************
+
+# 对象
+> [参考博客: 计算Java对象内存大小](https://www.cnblogs.com/E-star/p/10222250.html)  
+
+************************
 
 # 继承和接口
 > [Lesson: Interfaces and Inheritance](https://docs.oracle.com/javase/tutorial/java/IandI/index.html)
@@ -496,7 +506,9 @@ java.lnag.Object中对hashCode的约定：
     - 该属性可显式声明，若没有则编译器会 根据类名、接口名、成员方法及属性等来生成一个64位的哈希字段 
     - 该属性的作用：如果显式声明且值保持一致，那么类的变动(增加或删除属性)能被兼容(改动的属性忽略或没有值))，如果没有设置则会导致反序列化异常
 
-**************
+
+************************
+
 # Object 
 
 > [参考博客:  java的(PO,VO,TO,BO,DAO,POJO)解释](http://www.cnblogs.com/yxnchinahlj/archive/2012/02/24/2366110.html) | [VO DAO BO 等缩写的意义](https://zhuanlan.zhihu.com/p/35762537?group_id=969493512006373376)
@@ -552,6 +564,7 @@ Warning:(18, 1) java: Generating equals/hashCode implementation but without a ca
 - 通常和PO结合使用，DAO中包含了各种数据库的操作方法
 
 *************************
+
 # 关键字
 >  Java关键字和保留字
 
@@ -566,8 +579,6 @@ Warning:(18, 1) java: Generating equals/hashCode implementation but without a ca
 | catch    | else     | goto    | native     | short     | throws
 | char     | enum     | if      | new        | static    | transient
 
-- [ ]  transient 序列化时不进行序列化
-
 ## try 
 > try catch finally 
 
@@ -579,4 +590,4 @@ Warning:(18, 1) java: Generating equals/hashCode implementation but without a ca
     1. if there is a machine outage (power failure, hardware error, etc). 
 
 ## transient
-> 序列化的时候忽略该关键字修饰的属性
+> 该关键字修饰的属性 在对象序列化时不参与序列化

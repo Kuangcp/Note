@@ -103,7 +103,7 @@ categories:
     - `jstat -gcutil -t -h5 7919 1000 50`
 
 ### jinfo 
-> 观察运行中的java程序的运行环境参数：参数包括Java System属性和JVM命令行参数
+> 观察运行中的 java 进程的运行环境参数：参数包括Java System 属性和 JVM 命令行参数
 - Demo:
     - jinfo 14352
     - jinfo -sysprops 14352
