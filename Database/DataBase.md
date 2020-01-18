@@ -15,12 +15,14 @@ categories:
         1. [事务的并发问题](#事务的并发问题)
     1. [数据库并发控制](#数据库并发控制)
 1. [关系型数据库](#关系型数据库)
+    1. [SQLite](#sqlite)
     1. [SQL Server](#sql-server)
     1. [Mysql](#mysql)
     1. [Oracle](#oracle)
-    1. [Postgresql](#postgresql)
+    1. [PostgreSQL](#postgresql)
 1. [非关系型数据库](#非关系型数据库)
     1. [Redis](#redis)
+    1. [LevelDB](#leveldb)
     1. [MangoDB](#mangodb)
     1. [GemFire](#gemfire)
 1. [两者的对比](#两者的对比)
@@ -31,7 +33,7 @@ categories:
 1. [非关系型数据库设计](#非关系型数据库设计)
 1. [数据库中间件](#数据库中间件)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-19 00:19_|
 ****************************************
 # 数据库
 > [码农翻身:爱炫耀的数据库老头儿](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514001&idx=1&sn=17b72c3e69db6c4277e3045c699b7b6b&chksm=80d67c52b7a1f5446020826841869221873f4578524181384592839d19c4810dc68807117e13&scene=21#wechat_redirect) `事务,undo日志`
@@ -70,9 +72,10 @@ MVCC
 # 关系型数据库
 > 代表性: Oracle MySQL PostgreSQL SQL Server
 
-> [参考博客: 什么是数据库ACID?](http://www.jdon.com/concurrent/acid-database.html)
+> [List of Relational Database Management Systems (RDBMSs)](https://database.guide/list-of-relational-database-management-systems-rdbms/)  
 
-
+## SQLite
+> [Official Site](https://sqlite.org/index.html)  
 
 ## SQL Server
 
@@ -80,11 +83,14 @@ MVCC
 > 结合docker配置很快，就是默认编码是latin 每次要改成 utf8mb4
 
 ## Oracle
+> [Official Site](https://www.oracle.com/database/)  
+
 > 十分的庞大, 学习了他理念的设计, 感受良多
 
-## Postgresql
-> 听说性能强劲, 但是自己没有测试实践过, 命令行倒是很简洁, 就是数据库的逻辑理念和MySQL不一样, 迁移过去要稍微看下基础
-> 实际使用上, 如果使用Docker开一个容器运行, 所消耗的资源比MySQL少多了, MySQL大概 300M PostgreSQL只要几十M
+## PostgreSQL
+> [Official Site](https://www.postgresql.org/)  
+
+************************
 
 # 非关系型数据库
 > key-value 数据库: redis memcached   

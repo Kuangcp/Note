@@ -28,7 +28,7 @@ categories:
         1. [Java使用](#java使用)
     1. [基础数据](#基础数据)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-19 00:19_|
 ****************************************
 # Postgresql
 - [ ] [该公司对于PostgreSQL的缺点陈列是否属实](http://www.onexsoft.com/onesql.html)
@@ -55,7 +55,7 @@ categories:
 > [官方镜像](https://hub.docker.com/_/postgres/)
 
 #### pull完整版
-- 或者： `docker pull postgres` [官方镜像](https://hub.docker.com/_/postgres/)
+- 或者： `docker pull postgres` [Docker Hub](https://hub.docker.com/_/postgres/)
     - 运行容器 `docker run --name mypostgre -i -t -p 5432:5432 postgres`
     - 客户端连接 `psql -h localhost -p 5432 -U postgres`
 
