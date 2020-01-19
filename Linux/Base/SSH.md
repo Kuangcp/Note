@@ -21,7 +21,7 @@ categories:
 1. [Tips](#tips)
 1. [Mosh](#mosh)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-19 21:18_|
 ****************************************
 # SSH
 > Secure Shell 
@@ -31,12 +31,11 @@ categories:
 > [SSH原理与运用（一）：远程登录](http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html)
 > [SSH原理与运用（二）：远程操作与端口转发](http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html)
 
-- 默认22端口登录系统`ssh user@host`   
-- 指定端口登录 `ssh -p port user@host`   
+- 默认22端口登录系统`ssh user@host` | 指定端口登录 `ssh -p port user@host`   
 - 测试能否登录上 `ssh -T user@host`     
 
 > `ssh -i 私钥绝对路径 user@host` 采用指定私钥登录(一般默认是`.ssh/id_rsa`)  
->> 私钥一定要是 600 权限
+>> 私钥一定要是 600 权限  
 >> 去除私钥的口令 `openssl rsa -in ~/.ssh/id_rsa -out ~/.ssh/id_rsa_new` _在GitForWindows里面虽然有openssl,但是这个命令却执行不了_
 
 使用密码方式免去密码登录

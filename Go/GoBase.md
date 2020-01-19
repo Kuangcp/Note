@@ -40,7 +40,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2019-11-16 21:33_|
+**目录 end**|_2020-01-19 21:18_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -77,6 +77,7 @@ caddy beego martini cayley nsq codis delve cobra shadowsocks-go phcolus
 
 - [Go Programming & Concurrency in Practice](https://github.com/hyper0x/goc2p)
 - [golang教程](http://c.biancheng.net/golang/)
+- [build web application with golang](https://www.gitbook.com/book/astaxie/build-web-application-with-golang)  
 
 ************************
 

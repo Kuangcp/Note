@@ -51,7 +51,7 @@ categories:
         1. [VNC](#vnc)
         1. [Xrdp](#xrdp)
 
-**目录 end**|_2020-01-15 17:21_|
+**目录 end**|_2020-01-19 21:18_|
 ****************************************
 # Linux网络管理
 ## Tips
@@ -70,7 +70,7 @@ categories:
 
 - `nslookup`  dnsutils
     - 强大的调试DNS工具
-    - nslookup - 8.8.8.8 进入循环模式， 方便调试 8.8.8.8 是Google开放的DNS 备选 8.8.4.4
+    - `nslookup - 8.8.8.8` 进入 REPL 方便调试, 8.8.8.8 是Google开放的DNS 备选 8.8.4.4
         - 结果解释：Non-authoritative answer: 表示这是从缓存得到的结果，不一定准确
         - Server：上连DNS服务器的IP， Address：`上连DNS的IP#端口` 通常是53
         - canonical name 即CNAME 别名
