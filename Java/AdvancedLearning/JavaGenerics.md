@@ -21,7 +21,7 @@ categories:
         1. [通配符捕获](#通配符捕获)
     1. [反射和泛型](#反射和泛型)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-26 17:11_|
 ****************************************
 # 泛型
 > [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
@@ -31,7 +31,7 @@ categories:
 
 ***************
 
-> [开始学习的兴趣来源](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514015&idx=1&sn=12409f705c6d266e4cd062e78ce50be0&chksm=80d67c5cb7a1f54a68ed83580b63b4acded0df525bb046166db2c00623a6bba0de3c5ad71884&scene=21#wechat_redirect)
+> [开始学习的兴趣来源 Java帝国之泛型 ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514015&idx=1&sn=12409f705c6d266e4cd062e78ce50be0&chksm=80d67c5cb7a1f54a68ed83580b63b4acded0df525bb046166db2c00623a6bba0de3c5ad71884&scene=21#wechat_redirect)
 
 [参考博客: Java总结篇系列：Java泛型](http://www.cnblogs.com/lwbqqyumidi/p/3837629.html)  
 泛型，即“参数化类型”。一提到参数，最熟悉的就是定义方法时有形参，然后调用此方法时传递实参。  
@@ -95,14 +95,14 @@ categories:
 ## 约束和局限性
 > 以下代码示例:涉及的类Pair在上述的代码中已经定义, Human和Student是继承关系
 
-- _不能使用基本类型实例化类型参数_
-    - 也就是说没有`Pair<double>`只有`Pair<Double>`
+- _不能使用基本类型 实例化类型参数_
+    - 也就是说没有 `Pair<double>` 只有 `Pair<Double>`
     - 因为类型擦除后,类型是Object并不能放double的值, 但是这样做与Java语言中基本类型的独立状态相一致.
-    - 当包装器类型(wrapper type)不能接受替换时,可以使用独立的类和方法处理他们  
-    - *但是* 可以使用 原始类型数组 例如 `byte[]`ss
+    - *但是* 可以使用 原始类型数组 例如 `byte[]`
+    - [valhalla项目正计划支持原始类型](http://openjdk.java.net/projects/valhalla/)
 
 - _运行时类型查询(eq或者instanceof)只适用于原始类型_
-    - 比如`Pair<T>` 和`Pair<String>`是等价的,因为类型擦除
+    - 比如 `Pair<T>` 和 `Pair<String>` 是等价的,因为类型擦除
     - `Pair<String> pair1 和 Pair<Date> pair2` pair1.getClass() 和 pair2.getClass() 是等价的都是返回Pair.class
 
 - _不能抛出也不能捕获泛型类实例_

@@ -20,7 +20,7 @@ categories:
             1. [categories](#categories)
         1. [新建文章](#新建文章)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-26 17:11_|
 ****************************************
 # Hexo
 > [Official Doc](https://hexo.io/zh-cn/docs/index.html)
@@ -100,5 +100,4 @@ layout: "categories"
     - 文章的开头具有 时间，标题，分类， 标签等信息
 - 然后生成`hexo g` 发布 `hexo d`
 
-- [ ] 搭建一个可用的博客, 然后将博客通过该方式书写
 

@@ -14,8 +14,9 @@ categories:
 1. [接口的变化](#接口的变化)
     1. [default方法](#default方法)
     1. [static方法](#static方法)
-1. [Funcational](#funcational)
+1. [函数式](#函数式)
     1. [函数式接口](#函数式接口)
+        1. [构造函数的引用](#构造函数的引用)
     1. [函数式接口案例](#函数式接口案例)
 1. [Lambda](#lambda)
     1. [行为参数化](#行为参数化)
@@ -47,7 +48,7 @@ categories:
     1. [Stream操作](#stream操作)
         1. [中间操作](#中间操作)
         1. [终端操作](#终端操作)
-    1. [使用Stream](#使用stream)
+    1. [Stream的使用](#stream的使用)
         1. [筛选](#筛选)
         1. [映射](#映射)
         1. [查找和匹配](#查找和匹配)
@@ -55,17 +56,15 @@ categories:
             1. [求和](#求和)
             1. [极值](#极值)
             1. [归约的优势与并行化](#归约的优势与并行化)
-            1. [总结](#总结)
-    1. [使用流收集数据](#使用流收集数据)
+    1. [收集器的使用](#收集器的使用)
         1. [预定义收集器](#预定义收集器)
-            1. [汇总](#汇总)
-            1. [规约](#规约)
+            1. [汇总 collector](#汇总-collector)
+            1. [规约 reduce](#规约-reduce)
             1. [分组](#分组)
                 1. [多级分组](#多级分组)
                 1. [按子组收集数据](#按子组收集数据)
             1. [分区](#分区)
-        1. [自定义收集器](#自定义收集器)
-    1. [高效的使用Stream](#高效的使用stream)
+        1. [自定义收集器 Collector](#自定义收集器-collector)
 1. [Optional](#optional)
     1. [Optional类和Stream接口的相似之处](#optional类和stream接口的相似之处)
     1. [实践:读取Properties某属性](#实践读取properties某属性)
@@ -80,7 +79,7 @@ categories:
     1. [ZonedDateTime](#zoneddatetime)
     1. [Clock](#clock)
 
-**目录 end**|_2019-12-20 18:28_|
+**目录 end**|_2020-01-26 17:11_|
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -112,31 +111,16 @@ categories:
 
 *************************
 
-# Funcational
+# 函数式
 > [参考  Java8函数接口实现回调及Groovy闭包的代码示例](http://www.cnblogs.com/lovesqcc/p/6083759.html)
 > [Function接口 – Java8中java.util.function包下的函数式接口](http://ifeve.com/jjava-util-function-java8/)
 
-**`@FunctionalInterface`** 这个标注用于表示该接口会设计成一个函数式接口。  
-
 An informative annotation type used to indicate that an interface type declaration is intended to be a functional interface as defined by the Java Language Specification.
 
-
 如果你用 `@FunctionalInterface` 定义了一个接口, 接口中只能有一个方法声明, 否则会编译报错  
-但是，无论接口声明中是否存在该注解，编译器都会将满足功能接口定义的任何接口视为 `FunctionalInterface`
+而且无论接口声明中是否使用该注解，编译器都会将接口只有一个方法声明的任何接口视为 `FunctionalInterface`
 
-函数式接口很有用，抽象方法的签名可以描述Lambda表达式的签名。函数式接口的抽象方法的签名称为函数描述符。
-- 常用函数接口: (详细可参考 java.util.function; 包下的类)
-    1. **Consumer** (接收`单参数无返回值`的函数或lambda表达式)， 方法是 `void accept(T t);`
-    1. **BiConsumer** (接收`双参数无返回值`的函数或 lambda表达式)，方法是 `void accept(T t, U u);`
-    1. **Function** (接收`单参数有返回值`的函数或lambda表达式)， 方法是 `R apply(T t);`
-    1. **BiFunction** (接收`双参数有返回值`的函数或lambda表达式)，方法是 `R apply(T t, U u);`
-    1. **Predicate** （接收`单参数返回布尔值`的函数或lambda表达式），方法是 `boolean test(T t);`
-    1. **BiPredicate** （接收`双参数返回布尔值`的函数或lambda表达式），方法是 `boolean test(T t, U u);`
-    1. **Supplier** (无参数但具有返回值的函数或 lambda表达式)， 方法是 `T get();`
-
-这些仅是JDK提供的接口。如果有需要，可以自己设计一个。   
-`(T,U) -> R` 的表达方式展示了应当如何思考一个函数描述符。  
-表的左侧代表了参数类型。这里它代表一个函数，具有两个参数，分别为泛型T和U，返回类型为R。
+> 常用函数接口: (详细可参考 java.util.function; 包下的类)
 
 | 函数式接口 | 函数描述符 | 原始类型特化 |
 |:----|:----|:----|
@@ -150,6 +134,8 @@ An informative annotation type used to indicate that an interface type declarati
 | BiConsumer<T,U> | (T,U)->void | `ObjIntConsumer<T>`<br/>`ObjLongConsumer<T>`<br/>`ObjDoubleConsumer<T>`|
 | BiFunction<T,U,R> | (T,U)->R | ToIntBiFunction<T,U><br/>ToLongBiFunction<T,U><br/>ToDoubleBiFunction<T,U>|
 
+- `(T,U) -> R` 的表达方式展示了应当如何思考一个函数描述符。  
+    - 表的左侧代表了参数类型。这里它代表一个函数，具有两个参数，分别为泛型T和U，返回类型为R。
 
 - 为什么要使用 Function 以及闭包呢？
     - 在语法上比定义回调接口、创建匿名类更加简洁；
@@ -171,7 +157,7 @@ An informative annotation type used to indicate that an interface type declarati
     - 假设你有一个局部变量expensiveTransaction 用于存放Transaction类型的对象，它支持实例方法getValue，
     - 那么你就可以写expensiveTransaction::getValue
 
-**`构造函数的引用`**
+### 构造函数的引用
 1. 空构造函数 等价于 `() -> T` 
     - 例如 `Supplier<Apple> c1 = Apple::new;`
     - 之后 `Apple a1 = c1.get();` 调用接口的get方法实例化Apple对象
@@ -314,12 +300,13 @@ An informative annotation type used to indicate that an interface type declarati
 > [参考: Java Lambda表达式 实现原理分析](https://blog.csdn.net/jiankunking/article/details/79825928)
 
 ### Lambda 局限性
-1. 当原方法上具有类范围的泛型参数时无法使用 Lambda 写法
+1. 当方法上具有`类范围`的泛型参数时无法使用 Lambda 写法
     ```java
     public interface Test<T> {
         T execute(T param);
     }
     ```
+
 ### Lambda BUG
 > [泛型内extends多个类 lambda 表达式方法引用时会报错](https://bugs.java.com/bugdatabase/view_bug.do?bug_id=8142476)
 
@@ -328,16 +315,21 @@ An informative annotation type used to indicate that an interface type declarati
 ## 原始类型特化 
 > Primitive Specializations
 
-> Java类型要么是引用类型（比如Byte、 Integer、 Object、 List） ，要么是原始类型（比如int、 double、 byte、 char）。
-但是泛型（比如`Consumer<T>`中的T）只能绑定到引用类型。这是由泛型内部的实现方式造成的。
-因此，在Java里有一个将原始类型转换为对应的引用类型的机制。这个机制叫作装箱（boxing） 。
-相反的操作，也就是将引用类型转换为对应的原始类型，叫作拆箱（unboxing）。 Java还有一个自动装箱机制来帮助程序员执行这一任务：装箱和拆箱操作是自动完成的。
-但这在性能方面是要付出代价的。装箱后的值本质上就是把原始类型包裹起来，并保存在堆里。因此，装箱后的值需要更多的内存，并需要额外的内存搜索来获取被包裹的原始值。
-Java 8为我们前面所说的函数式接口带来了一个专门的版本，以便在输入和输出都是原始类型时避免自动装箱的操作。
-比如，在下面的代码中，使用IntPredicate就避免了对值1000进行装箱操作，但要是用Predicate<Integer>就会把参数1000装箱到一个Integer对象中 -- Java8 in action
+> Java数据类型要么是引用类型（比如Byte、 Integer、 Object、 List），要么是原始类型（比如int、 double、 byte、 char）。  
+但是泛型（比如`List<T>`中的T）只能绑定到引用类型。这是由泛型内部的实现方式造成的 [泛型 详细](/Java/AdvancedLearning/JavaGenerics.md)。 
 
-一般来说，针对专门的输入参数类型的函数式接口的名称都要加上对应的原始类型前缀，比如DoublePredicate、 IntConsumer、 LongBinaryOperator、 IntFunction等。 
+因此，在Java里有一个将原始类型转换为对应的引用类型的机制。这个机制叫作装箱 boxing ，反之为拆箱 unboxing 。  
+Java还有一个自动装箱机制来帮助程序员执行这一任务：装箱和拆箱操作是自动完成的。但这在性能方面是要付出代价的。  
+
+装箱后的值本质上就是把原始类型包裹起来，并保存在堆里。因此，装箱后的值需要更多的内存，并需要额外的内存搜索来获取被包裹的原始值。  
+Java 8为我们前面所说的函数式接口带来了一个专门的版本，以便在输入和输出都是原始类型时避免自动装箱的操作。  
+
+比如，在下面的代码中，使用IntPredicate就避免了对值1000进行装箱操作，但要是用Predicate<Integer>就会把参数1000装箱到一个Integer对象中 -- Java8 in action  
+
+一般来说，针对专门的输入参数类型的函数式接口的名称都要加上对应的原始类型前缀，比如 DoublePredicate、LongBinaryOperator等。  
 Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 IntToDoubleFunction等。
+
+************************
 
 ## 类型检查、类型推断以及限制
 
@@ -658,7 +650,7 @@ IntStream和LongStream 的 range() 或者 rangeClose() 方法能产生一个数�
 
 **********
 
-## 使用Stream
+## Stream的使用
 - 流的使用一般包括三件事：
     - 一个数据源（如集合）来执行一个查询；
     - 一个中间操作链，形成一条流的流水线；
@@ -750,19 +742,9 @@ List<int[]> pairs = numbers1.stream()
 
 但要并行执行这段代码也要付一定代价，传递给 reduce 的Lambda不能更改状态（如实例变量），而且操作必须满足结合律才可以按任意顺序执行。
 
-***************************
+************************
 
-#### 总结
-> joining 替换 字符串直接拼接
-
-```java
-    // 该方案 效率不高, 所有字符串被反复连接, 每次迭代都需创建新String对象
-    strings.stream().sorted().reduce("", (a,b) -> a+b);
-    // joining 内部会使用 StringBuilder
-    strings.stream().sorted().collect(Collectors.joining());
-```
-
-## 使用流收集数据
+## 收集器的使用
 > 函数式编程相对于指令式编程的一个主要优势：你只需指出希望的结果——“做什么”，而不用操心执行的步骤——“如何做”
 
 
@@ -774,7 +756,7 @@ Collectors所提供的工厂方法 它们主要提供了三大功能：将流元
 > 注意： toMap 方法的使用， 当 key 重复时会抛出异常 
 > `toMap(k->k, v->v, (a,b)->b);` 使用该方式能避免， 设置了遇到重复的策略， 后者覆盖前者
 
-#### 汇总
+#### 汇总 collector
 > Collectors类专门为汇总提供了一个工厂方法：Collectors.summingInt 它可接受一个把对象映射为求和所需int的函数，并返回一个收集器；该收集器在传递给普通的collect方法后即执行我们需要的汇总操作  
 > 求平均数 Collectors.averagingInt
 
@@ -788,7 +770,7 @@ Collectors所提供的工厂方法 它们主要提供了三大功能：将流元
 joining工厂方法返回的收集器会把对流中每一个对象应用toString方法得到的所有字符串连接成一个字符串。
 `String shortMenu = menu.stream().collect(joining()); `
 
-#### 规约
+#### 规约 reduce
 事实上，我们已经讨论的所有收集器，都是一个可以用reducing工厂方法定义的归约过程的特殊情况而已。Collectors.reducing工厂方法是所有这些特殊情况的一般化。
 
 - 例如 计算总热量 `int totalCalories = menu.stream().collect(reducing(0, Dish::getCalories, (i, j) -> i + j));`
@@ -809,6 +791,18 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 
 函数式编程（特别是Java 8的Collections框架中加入的基于函数式风格原理设计的新API）通常提供了多种方法来执行同一个操作。
 这个例子还说明，收集器在某种程度上比Stream接口上直接提供的方法用起来更复杂，但好处在于它们能提供更高水平的抽象和概括，也更容易重用和自定义。
+
+> joining 替换 字符串直接拼接
+
+```java
+    // 该方案 效率不高, 所有字符串被反复连接, 每次迭代都需创建新String对象
+    strings.stream().sorted().reduce("", (a,b) -> a+b);
+    // joining 内部会使用 StringBuilder
+    strings.stream().sorted().collect(Collectors.joining());
+```
+
+> 场景: 一个对象(含时间和整数两个属性)集合, 完成的操作是获取到最大时间以及数值平均值...等等多个值
+
 
 #### 分组
 一个常见的数据库操作是根据一个或多个属性对集合中的项目进行分组。
@@ -919,17 +913,10 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 
 #### 分区
 
-### 自定义收集器
+### 自定义收集器 Collector
 > [参考博客: 自定义收集器深度剖析：](http://www.cnblogs.com/webor2006/p/8353314.html)
 
-************
-
-## 高效的使用Stream
-
-1. 场景: 一个对象(含时间和整数两个属性)集合, 完成的操作是获取到最大时间以及数值平均值...等等多个值
-    - [ ] 解决
-    
-****************************************
+************************
 
 # Optional
 >1. null引用在历史上被引入到程序设计语言中，目的是为了表示变量值的缺失。

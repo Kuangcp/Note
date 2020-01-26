@@ -10,15 +10,11 @@ categories:
 **目录 start**
  
 1. [SQL](#sql)
-    1. [范式](#范式)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-26 17:11_|
 ****************************************
 # SQL
 > 基础SQL语言的学习使用
 
 > [soar](https://github.com/XiaoMi/soar)`SQL Optimizer And Rewriter `
-
-## 范式
-- [ ] 学习
 
