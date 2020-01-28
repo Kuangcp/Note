@@ -74,7 +74,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2020-01-10 10:29_|
+**目录 end**|_2020-01-28 17:29_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -228,12 +228,13 @@ categories:
 > [Doc](https://git-scm.com/docs/git-revert)
 
 1. 取消所有暂存 `git revert .`
-
+1. 撤销某次提交 `git revert commitId` 注意该操作可嵌套 即 撤销撤销某次提交
 1. 回滚代码至指定提交 `git revert --no-commit 032ac94ad...HEAD`
     - `git commit -m "rolled back"`
 
-1. 撤销合并操作 [revert-a-faulty-merge](https://github.com/git/git/blob/master/Documentation/howto/revert-a-faulty-merge.txt)
-> [参考博客: git 撤销merge操作](https://blog.csdn.net/zzjjiandan/article/details/78260065) `撤销合并以及恢复撤销` 
+> 场景: 一个特性分支不该合并到主开发分支, 但是已经合并了, 并且合并后又做了很多其他修改, 这时候怎么影响最小地撤销这次错误的合并? 
+1. 找到 merge 的 commitId，git show commitId 找到 Merge: 后两个commitId 分别记为 1 2 
+1. 如果保留1, 删除2节点提交的内容 则 `git revert commitId -m 1`
 
 ************************
 
@@ -462,9 +463,6 @@ categories:
 
 ## 本地分支
 > Git 的分支是轻量型的, 能够快速创建和销毁
-
-> 场景: 一个特性分支本不该合并入主开发分支, 但是已经并入了,并且并入后又做了很多其他修改, 这时候怎么影响最小地撤销这次错误的合并? 
-- [ ] 
 
 ************************
 

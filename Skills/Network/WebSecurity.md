@@ -19,7 +19,7 @@ categories:
         1. [XSS](#xss)
     1. [JWT](#jwt)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-28 17:29_|
 ****************************************
 
 # Web安全
@@ -72,8 +72,11 @@ categories:
     #参数决定TIME_WAIT状态的sockets总数量，可根据连接数和系统资源需要进行设置。 
 ```
 ### CSRF
-> CSRF (Cross Site Request Forgery) `跨站请求伪造` ，它讲的是你在一个浏览器中打开了两个标签页，其中一个页面通过窃取另一个页面的 cookie 来发送伪造的请求，
-> 因为 cookie 是随着请求自动发送到服务端的。  
+> CSRF (Cross Site Request Forgery) `跨站请求伪造` 
+
+指在一个浏览器中打开了两个标签页，其中一个页面通过窃取另一个页面的 cookie 来发送伪造的请求  
+
+例如域名A下页面a里一个 image标签 url是域名B的后端URL，利用 cookie 会随着当前页面的请求自动发送到服务端的特性，A站点的cookie会发送至站点B  
 
 > [维基百科定义 CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery) |
 > [百度百科 CSRF](https://baike.baidu.com/item/CSRF)

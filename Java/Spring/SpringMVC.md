@@ -31,7 +31,7 @@ categories:
             1. [WebSocket](#websocket)
         1. [Q&A](#q&a)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-28 17:29_|
 ****************************************
 
 # SpringMVC
@@ -352,5 +352,3 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter{
 
 - [解决问题参考博客](https://yq.aliyun.com/articles/101169)
 - [jsessionid的作用](http://sxsoft.blog.163.com/blog/static/190412229200911103116773)
-
-- [ ] ModelAndView中的addObject 的值能用js获取到么

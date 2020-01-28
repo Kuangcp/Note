@@ -29,7 +29,7 @@ categories:
         1. [清理仓库大文件](#清理仓库大文件)
         1. [CRLF与LF](#crlf与lf)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-28 17:29_|
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -225,7 +225,6 @@ categories:
 - 或者直接改配置文件，省的每次输这么多 `git config http.sslVerify false`
 
 #### 使用SSH登录GitServer
-- [ ] 实践一下
 
 ******************
 

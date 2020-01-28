@@ -55,7 +55,7 @@ categories:
 1. [Dockerfile](#dockerfile)
     1. [dockerignore文件的使用](#dockerignore文件的使用)
 
-**目录 end**|_2019-11-16 21:33_|
+**目录 end**|_2020-01-28 17:29_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -524,8 +524,6 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
     - 也就是说能容纳 2的16次幂 -2 个容器 (65534), 容器创建时会依次分配ip
 
 > 注意: 此方式下容器之间是互通的, 通常使用的 `--link containerName:aliasName` 也只不过是在 /etc/hosts 文件中添加了容器的 dns 而已
-
-- [ ] 验证
 
 > 特别容易出现锁，一个没有启动，其他的都启动不了 尝试？ `sudo service docker restart`
 

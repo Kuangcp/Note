@@ -32,7 +32,7 @@ categories:
         1. [ReflectionUtils](#reflectionutils)
 1. [Web开发的最佳实践](#web开发的最佳实践)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-28 17:29_|
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -180,12 +180,10 @@ _其他,可选_
 
 # 基础
 ## 生命周期
-@PreDestroy  
-@PostConstruct
+- @PreDestroy  
+- @PostConstruct
 
-- [ ] 完善
-
-********
+************************
 
 ##  IOC/DI 控制反转
 - DI 译为依赖注入 所有的bean都在IOC容器中（单例的）多例的不在该容器中进行管理
@@ -209,8 +207,6 @@ _其他,可选_
         private B b;
     }
 ```
-
-- [ ] look up 方法注入
 
 *****************
 ## Scheduling
