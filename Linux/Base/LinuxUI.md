@@ -18,7 +18,7 @@ categories:
     1. [Terminal](#terminal)
 1. [测试 terminal 是否支持 256](#测试-terminal-是否支持-256)
 
-**目录 end**|_2019-12-20 00:16_|
+**目录 end**|_2020-01-30 12:28_|
 ****************************************
 
 # UI
@@ -29,7 +29,7 @@ categories:
 - 所有用户通用, 安装新的后需要重启 `/usr/share/themes`
 - 当前用户, 直接复制进来立即生效:  `~/.themes` 或者 `~/.local/share/themes`
 
-- [ ] 问题: Deepin上 全放 ~/.local/share/themes 会有bug, 只能全放 ~/.themes
+- 问题: Deepin上 全放 ~/.local/share/themes 会有bug, 只能全放 ~/.themes
 
 ## Font
 > [字体](/FrontEnd/Font.md)  
