@@ -20,16 +20,17 @@ categories:
         1. [复制粘贴](#复制粘贴)
         1. [插入模式](#插入模式)
         1. [命令模式](#命令模式)
-    1. [语言插件](#语言插件)
+    1. [插件管理](#插件管理)
+1. [定制化](#定制化)
     1. [vim-init](#vim-init)
     1. [spf13](#spf13)
     1. [SpaceVim](#spacevim)
     1. [space-vim](#space-vim)
 
-**目录 end**|_2020-01-15 17:21_|
+**目录 end**|_2020-01-31 11:57_|
 ****************************************
 # Vim 
-> 学习曲线很高，但是学会熟练使用后就效率很高
+> 学习曲线很高，但是学会熟练使用后就效率很高 `官方教程程序 vimtutor`
 
 - [vim galore](https://github.com/mhinz/vim-galore)
 - [Vim galore 中文翻译](https://github.com/wsdjeg/vim-galore-zh_cn)
@@ -50,7 +51,7 @@ categories:
 
 ************************
 
-`vim配置`
+`配置文件优先级`
 - 系统 vimrc 文件: `$VIM/vimrc`
 - 用户 vimrc 文件: `$HOME/.vimrc`
 - 第二用户 vimrc 文件: `~/.vim/vimrc`
@@ -67,34 +68,11 @@ categories:
         source /etc/vim/vimrc.local
     endif
     ```
-1. 或者当前用户：`~/.vimrc` 中添加
+1. 或者当前用户：`~/.vimrc` [个人vim配置](https://github.com/Kuangcp/Configs/blob/master/Linux/vimrc.local)
 
-```vim
-set showcmd		" Show (partial) command in status line.
-set autowrite		" Automatically save before commands like :next and :make
-set nocompatible
-set number
-filetype on 
-syntax on
-set history=1000
-set autoindent
-set smartindent
-set tabstop=4
-set expandtab
-set shiftwidth=4
-set showmatch
-set guioptions=T
-set ruler
-set hls
-set backspace=2
-imap jk <Esc> 
+************************
 
-set relativenumber " 设置相对行号
-```
-
-******************************
 ### GVim
-
 **~/.gvimrc**
 ```
 :set guifont=IBM\ Plex\ Mono\ 12
@@ -153,13 +131,13 @@ syntax on
 
 | 参数 | 含义 |
 |:----|:----|
-| range | 指的是范围 1,5 指的是1-5行; `1,$`或是`1,%` 则是第一行到最后一行; `.,5`当期行到第5行
-| pattern |	就是要被替换掉的字串，可以用 regexp 來表示。
-| string | 匹配到 pattern 的字符串替换为 string
-| c | confirm，每次替换前先询问
-| e | 不显示error
-| g | global 全局
-| i | ignore 不分大小写。
+| range    | 指的是范围 1,5 指的是1-5行; `1,$`或是`1,%` 则是第一行到最后一行; `.,5`当期行到第5行
+| pattern  | 就是要被替换掉的字串，可以用 regexp 來表示。
+| string   | 匹配到 pattern 的字符串替换为 string
+| c        | confirm，每次替换前先询问
+| e        | 不显示error
+| g        | global 全局
+| i        | ignore 不分大小写。
 
 > % 是目前編輯的文章，# 是前一次編輯的文章, . 表示当前行
 
@@ -200,12 +178,21 @@ syntax on
 
 > 先 q 再 : 就会显示最近的命令
 
-********************
-## 语言插件
-> vim-python   
-> vim-go 
 
-****************
+************************
+
+## 插件管理
+> [vim-plug](https://github.com/junegunn/vim-plug)  
+
+> [参考博客: VIM插件推荐](https://zhuanlan.zhihu.com/p/58816186)  
+
+> 语言插件
+- vim-python   
+- vim-go 
+
+************************
+
+# 定制化
 ## vim-init
 > [Github:](https://github.com/skywind3000/vim-init)
 
