@@ -1,5 +1,5 @@
 ---
-title: Problem.md
+title: 问题及解决方案
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -7,7 +7,7 @@ categories:
 
 **目录 start**
  
-1. [问题解决方案](#问题解决方案)
+1. [问题及解决方案](#问题及解决方案)
     1. [Linux](#linux)
     1. [JDK](#jdk)
     1. [IDE](#ide)
@@ -17,9 +17,9 @@ categories:
     1. [Firefox](#firefox)
         1. [SSL_ERROR_RX_RECORD_TOO_LONG](#ssl_error_rx_record_too_long)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-31 12:34_|
 ****************************************
-# 问题解决方案
+# 问题及解决方案
 ## Linux 
 > [详细](/Linux/Base/LinuxProblem.md)
 

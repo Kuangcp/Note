@@ -11,8 +11,7 @@ categories:
  
 1. [学习Shell](#学习shell)
     1. [shell类别](#shell类别)
-    1. [Shell内建命令](#shell内建命令)
-    1. [执行](#执行)
+    1. [执行方式](#执行方式)
     1. [输入输出](#输入输出)
         1. [输入](#输入)
         1. [输出](#输出)
@@ -45,7 +44,7 @@ categories:
 1. [Tips](#tips)
     1. [常用代码片段](#常用代码片段)
 
-**目录 end**|_2019-11-16 19:27_|
+**目录 end**|_2020-01-31 12:34_|
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -60,23 +59,19 @@ categories:
   - 大多Linux都支持的shell类别
 - bash
 - zsh
-  - 十分现代化 [配置oh my zsh](https://segmentfault.com/a/1190000004695131)
+  - 高扩展性 [配置oh my zsh](https://segmentfault.com/a/1190000004695131)
 - dash
   - 它主要是为了执行脚本而出现，而不是交互，它速度更快，但功能相比bash要少很多，语法严格遵守POSIX标准
   - 速度确实要快,输入上的交互确实交互不了
 - fish
   - 交互式的, 补全功能比较好 
 
-> [linux shell dash&bash](http://blog.csdn.net/zengqiang1/article/details/61916697)
-> [参考博客: 常见shell类型](http://www.cnblogs.com/happycxz/p/7840077.html)
-
+> [参考博客: 常见shell类型](http://www.cnblogs.com/happycxz/p/7840077.html)  
 > [Github: zsh guide](https://github.com/goreliu/zshguide)  
-*****************
-## Shell内建命令
-- [ ] 学习内建命令的使用
 
 *******************
-## 执行
+
+## 执行方式
 - [source命令](http://blog.csdn.net/xiaolang85/article/details/7861441) | [点和source命令](http://www.cnblogs.com/my_life/articles/4323528.html)
 
 - 文件头部 `#!/bin/sh`表示要使用sh解释器来执行, 可以替换成bash dash
@@ -290,12 +285,14 @@ _判断文件_
 ### 循环
 - [参考博客](http://www.cnblogs.com/fhefh/archive/2011/04/15/2017233.html)
 
-`简易循环`
+`for`
 ```sh
   for i in $(seq 1 5); do
     echo $i
   done
 ```
+
+`while`
 ```sh
     i=1
     while [ "$i" -le 10 ];do
@@ -321,7 +318,7 @@ _判断文件_
 ```
 
 > 命令行内定义函数
-- `function hi { echo hi;}` 注意左括号和命令的空格，以及命令;结尾
+- `function hi { echo hi;};` 注意左括号和命令的空格，以及命令;结尾
 
 **********************
 ## 文件读写
@@ -379,7 +376,7 @@ _判断文件_
 ## 常用代码片段 
 
 1. 获取当前shell脚本的绝对路径 ```basepath=$(cd `dirname $0`; pwd)```
-1. 命令嵌套 只要在 命令中用 两个反引号 `` 将子命令包住即可
+1. 获取命名或函数标准输出 **`** 反引号包裹 或者 **$()**
 1. 检查当前用户为Root用户
     ```sh
         if [ $(id -u) != "0" ]; then

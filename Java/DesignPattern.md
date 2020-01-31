@@ -19,7 +19,7 @@ categories:
         1. [组合优于继承](#组合优于继承)
         1. [查询与命令分离](#查询与命令分离)
         1. [够用原则](#够用原则)
-    1. [面向对象的S.O.L.I.D 原则](#面向对象的solid-原则)
+    1. [面向对象的 S.O.L.I.D 原则](#面向对象的-solid-原则)
         1. [单一职责原则](#单一职责原则)
         1. [里氏代换原则](#里氏代换原则)
         1. [接口隔离原则](#接口隔离原则)
@@ -57,7 +57,7 @@ categories:
     1. [经验之谈](#经验之谈)
     1. [反模式](#反模式)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-01-31 12:34_|
 ****************************************
 # 软件设计的一些原则
 
@@ -98,11 +98,10 @@ KISS原则在设计上可能最被推崇的，在家装设计，界面设计，�
 - 多使用组合而不是继承, 但是这个观点是存在一定的争议的, 还是要有度的,合理搭配最为重要
     - 组合就是将原来继承方式中的父类放到子类作为属性?
 
-组合
+> 组合
 1. （对象）组合是一种通过创建一个组合了其它对象的对象，从而获得新功能的复用方法。
 2. 将功能委托给所组合的一个对象，从而获得新功能。
 3. 有些时候也称之为"聚合"（aggregation）或"包容"（containment），尽管有些作者对这些术语赋予了专门的含义
-- [ ] 再度思考
 
 > [参考博客: 组合、委托与继承，面向对象中类之间的基本关系漫游](http://www.cnblogs.com/narutow/p/8117352.html)
 > [参考博客: 优先使用（对象）组合，而非（类）继承](https://www.xuebuyuan.com/1639556.html)
@@ -122,17 +121,17 @@ KISS原则在设计上可能最被推崇的，在家装设计，界面设计，�
     
 *******************
 
-## 面向对象的S.O.L.I.D 原则
-- 一般来说这是面向对象的五大设计原则, Solid 稳定的。
+## 面向对象的 S.O.L.I.D 原则
+一般来说这是面向对象的五大设计原则, Solid(稳定的)
 
-| En  | Zh |
+| | |
 |:----|:----|
-| Single Responsibility Principle | 单一职责原则 
-| Open Closed Principle | 开闭原则
-| Liskov Substitution Principle | 里氏替换
-| Law of Demeter | 迪米特法则
-| Interface Segregation Preciple | 接口隔离原则
-| Dependence Inversion Principle | 依赖倒置原则
+| Single Responsibility Principle   | 单一职责原则 
+| Open Closed Principle             | 开闭原则
+| Liskov Substitution Principle     | 里氏替换
+| Law of Demeter                    | 迪米特法则
+| Interface Segregation Preciple    | 接口隔离原则
+| Dependence Inversion Principle    | 依赖倒置原则
 
 ### 单一职责原则
 `Single Responsibility Principle (SRP)`
@@ -341,7 +340,7 @@ DbC的核心思想是对软件系统中的元素之间相互合作以及“责�
     - 这样就把`C->A`变成了`C->D`以及`A->D`，从而打破了循环依赖关系。
 1. 第二种方法是使用`DIP`（依赖倒置原则）和`ISP`（接口分隔原则）设计原则。
 
-***************************************
+************************
 
 # 设计模式
 > `较为全面的教程`: [java design patterns](https://java-design-patterns.com/) |  [菜鸟教程: 设计模式简介](http://www.runoob.com/design-pattern/design-pattern-intro.html)  | [《软件秘笈：设计模式那点事》](https://mubu.com/doc/explore/17351)
@@ -553,7 +552,7 @@ DbC的核心思想是对软件系统中的元素之间相互合作以及“责�
 
 ![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/Bridge.png)
 
-*********************
+************************
 
 # 实践
 ## 经验之谈
@@ -561,11 +560,9 @@ DbC的核心思想是对软件系统中的元素之间相互合作以及“责�
 - [一个鸭子游戏引发的设计（多态，继承，抽象，接口，策略者模式）](http://www.cnblogs.com/x-xk/archive/2012/12/21/2823401.html)
 - [不要再盲目的new了！你要学着针对接口编程！（具体方法，Factory，Abstract Factory](www.cnblogs.com/x-xk/archive/2013/01/06/2830742.html)
 
-- [参考博客: 为什么我墙裂建议大家使用枚举来实现单例。](https://mp.weixin.qq.com/s/aGMz1u0Oh4ZHTDBFvgq0lg)
-- [ ] 自己用Java重写一下这个例子, 并做出自己的总结
-
+- [参考博客: 为什么我墙裂建议大家使用枚举来实现单例。](https://mp.weixin.qq.com/s/aGMz1u0Oh4ZHTDBFvgq0lg)`但是枚举的实现不利于扩展`
 
 ## 反模式
-- 末日金字塔: 多层嵌套
+- 末日金字塔: if while 代码块多层嵌套
 - 继承关系超过3层
 - 父类和子类同名成员属性
