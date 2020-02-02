@@ -60,7 +60,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2019-12-10 13:32_|
+**目录 end**|_2020-02-02 20:57_|
 ****************************************
 # 常用的网站
 ## 国内镜像源站点
@@ -77,8 +77,6 @@ categories:
 
 ### 镜像站点
 > Google
-- [1](https://rain.likeso.ml/)
-- [2](https://plus.likeso.ml/)
 - [3](http://www.kaseng.top/)
 
 
@@ -213,8 +211,6 @@ Podcast、Reddit 以及TechRadar
 **************************************
 ## 前端
 - [json.cn](https://www.json.cn/)`json工具`
-- [pixlr](https://pixlr.com/editor/)`简直神器啊, 在线使用PS, woc!!!`
-- [PS在线工具](https://www.photoshop.com/tools?wf=editor)`功能有限,也可以玩玩`
 - [bootcdn](http://www.bootcdn.cn/) `常用js css的cdn`
 - [填充图](https://placeholder.com/)
 - [jshell](https://fiddle.jshell.net/)`可以在线练习HTML CSS Js`
@@ -309,6 +305,8 @@ _自建Git服务_
 - [visual paradigm](https://online.visual-paradigm.com)
 
 yed astah dia 
+
+- VSCode 加 plantUML 
 
 ### Log文件
 > 方便的查看Log文件

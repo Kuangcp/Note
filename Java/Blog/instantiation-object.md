@@ -1,16 +1,38 @@
+---
+title: Java实例化对象的几种方式
+date: 2020-02-02 18:45:47
+tags: 
+categories: 
+---
+
+**目录 start**
+ 
+1. [Java 实例化对象的方式](#java-实例化对象的方式)
+    1. [new](#new)
+    1. [反射](#反射)
+    1. [clone](#clone)
+    1. [反序列化](#反序列化)
+    1. [Unsafe](#unsafe)
+
+**目录 end**|_2020-02-02 20:57_|
+****************************************
 # Java 实例化对象的方式
 > [Github: 实例代码](https://github.com/kuangcp/JavaBase/blob/master/class/src/test/java/com/github/kuangcp/instantiation/InstantiationAndConstructorTest.java)
 
 > [Java创建对象的五种方式](https://juejin.im/post/5d44530a6fb9a06aed7103bd)
 
 ## new
+TODO
+
 ## 反射
 1. 获取Class对象
 1. 反射获取构造器方法或者调用 newInstance 方法(实际上是调用空构造器方法) 进行实例化
 
 ## clone
+TODO
 
 ## 反序列化
+TODO 
 
 ## Unsafe
 **sun.misc.Unsafe** 中提供 `allocateInstance` 方法，仅通过Class对象就可以创建此类的实例对象，而且不需要调用其构造函数、初始化代码、JVM安全检查等。  
