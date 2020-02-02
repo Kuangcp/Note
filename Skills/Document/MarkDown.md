@@ -39,20 +39,29 @@ categories:
     <center> 
 
     </center>
-
 ```
 > 注意这俩标签前后都需要一行空行
 
 ## 基本元素
+### 文本
+1. 斜体 `*content*` 或者 `_content_`
+1. 粗体 `**content**`
+1. 删除 `~content~`
+1. 粗斜 `***content***` 或者 `___content___`
+
+### 分割线
+- `***`
+- `---`
+- `___`
 
 ### 链接
-1. [name](url) 推荐
-1. [[name|url]]
+1. `[name](url)` 推荐
+1. [[name|url]
 1. [name][targetNum]
     - 末尾: [targetNum]: url
 
 ### 图片
-1. ![description](url)
+1. `![description](url)`
 1. ![description][targetNum]
     - 末尾: [targetNum]: url "description"
 
@@ -68,14 +77,6 @@ categories:
 - 当需要出现代码块, 图片, 表格 等块状结构时, 只需将整体进行缩进, 就可以保证后续的有序性  
 
 例如: 
-1. a
-```sh
-echo hi
-```
-1. b
-
-就可以改良成: 
-1. a
 1. a
     ```sh
     echo hi
@@ -104,19 +105,17 @@ echo hi
 - 可以有多种数据结构 yml  ini 
     - 一般用于描述文件元信息; 静态博客生成器用于生成博客的标签等信息;
 
+### 代码块
+1. 行级 反引号
+1. 多行 三个反引号独立行进行包裹
+
+************************
+
 ## 流程图
-```flow
-st=>start: Start
-e=>end
-op=>operation: My Operation
-cond=>condition: Yes or No?
+- [plantUML](http://plantuml.com)
 
-st->op->cond
-cond(yes)->e
-cond(no)->op
-```
+************************
 
-**************
 ## Github 
 > [比较全面的Github格式 GFM](https://github.com/guodongxiaren/README)
 
@@ -127,7 +126,6 @@ _目录规则（页内跳转）_
     - 同理还有  `/` 中英文的 逗号 句号 冒号 小数点 问号
 - 空格会变成 - 
 
-****
 _文件内容_
 - 一行显示上 58列 就要换行
 - 行末加上两个空格即是换行, 直接回车键换行是没有用的
@@ -142,7 +140,6 @@ _列表的折叠写法_
     </details>
 ```
 
-*****
 _md文件的头属性_
 ```
     ---

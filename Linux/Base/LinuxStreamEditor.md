@@ -111,10 +111,14 @@ categories:
 ************************
 
 ## awk
-> awk有多个不同版本: awk、mawk nawk和gawk，未作特别说明，一般指gawk，gawk 是 AWK 的 GNU 版本`在 Deepin 上 awk nawk 都最终是 gawk 的软链接`
 
-1. 截取输出 cat log.log | awk '{print $2}' 
-1. 只输出某列之后的列 忽略第一列:`awk '{$1="";print $0}'` 忽略1到4: `awk '{ for(i=1; i<=4; i++){ $i="" }; print $0 }'`
+> awk有多个不同版本: awk、mawk nawk和gawk，若未作特别说明，通常指gawk (gawk 是 AWK 的 GNU 版本)
+
+1. 输出指定列 `cat log.log | awk '{print $2}'`
+    1. 忽略第一列:`awk '{$1="";print $0}'` 
+    1. 忽略1到4: `awk '{ for(i=1; i<=4; i++){ $i="" }; print $0 }'`
 1. 按列求和 `awk '{sum += $1};END {print sum}'`
+1. 添加行号  `awk '{printf("%2d %s\n", NR, $0);`
+1. 读取标准输出 `awk '{print $0}' - `
 
 > [参考博客: awk 入门教程](http://www.ruanyifeng.com/blog/2018/11/awk.html)
