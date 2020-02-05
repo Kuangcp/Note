@@ -74,7 +74,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2020-01-28 17:29_|
+**目录 end**|_2020-02-05 22:47_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -206,11 +206,12 @@ categories:
     - 第三行：记述更改的原因和详细内容
     - 使用下面方法关闭退出
 
-- `--amend` 追加文件到上次commit [Official Doc](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2)
+- `--amend` 追加文件到上次commit
     - 如果上次提交漏了文件, 只需把漏的文件加入到 index区中, 然后执行 git commit --amend 即可
     - 注意: 如果没有将前一个提交推送到远程, 那么没有任何影响, 
     - 如果已经推送上去了, 就相当于该次 --amend 操作是新开了个分支完成的修改, git log 里会出现一个分支的环
-
+- `--no-edit` 沿用上次 commit msg
+- `--allow-empty` 提交空提交
 
 ************************
 

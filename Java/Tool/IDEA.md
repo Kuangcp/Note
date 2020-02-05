@@ -35,7 +35,7 @@ categories:
     1. [Tips](#tips)
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
 
-**目录 end**|_2020-02-02 20:57_|
+**目录 end**|_2020-02-05 22:47_|
 ****************************************
 
 # IDEA 使用笔记
@@ -121,8 +121,11 @@ _例如修改为如下_
  */
 ```
 
-**自定义缩写模板**
-在 `Setting -> Editor -> Live Templates` 设置项下可以看到已有的配置, 新建一个即可
+**自定义模板**
+在 `Setting -> Editor -> Live Templates` 设置项下可以看到已有的配置
+
+1. `$SELECTION$` surrounding with 功能标记
+1. `$END$` 光标结束位置
 
 
 ### 个人IDEA配置
@@ -254,6 +257,7 @@ _例如修改为如下_
 |C| | | `J` |  提示代码片段 也就是 `Live Templates` |
 | | |A| `J` |  选中字符|
 |C| | | `J` |  提示 Live Templates |
+|C| |A| `J` |  提示 Surround Live Templates |
 |C| | | `Space` |  智能补全|
 |C|S| | `Space` |  结合上下文补全|
 |C| | | `W` |  选中代码，连续按会有其他效果|

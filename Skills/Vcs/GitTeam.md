@@ -26,7 +26,7 @@ categories:
 1. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
     1. [最终方案](#最终方案)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-02-05 22:47_|
 ****************************************
 
 # 使用Git进行团队协作
@@ -138,7 +138,7 @@ categories:
 > [Github](https://github.com/soramimi/Guitar)
 
 ## GitAhead
-> [Github](https://github.com/gitahead/gitahead) 
+> [Github](https://github.com/gitahead/gitahead) | [Official Site](https://gitahead.com)  
 
 - 美观够用
 
