@@ -92,8 +92,7 @@ categories:
 1. `Auto Reload Tab` 定时自动刷新标签页
 1. `ReloadMatic` 定时自动刷新
 1. `轻灵划译` 即刻翻译, 多种平台
-1. `Tab Counter` Tab计数 
-
+1. `Tab Counter` Tab计数 开发者 WaldiPL
 ### 配置
 > 大多是通过 about:config 页面配置
 

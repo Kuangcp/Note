@@ -204,17 +204,17 @@ _ss_
 
 `net-tools 和 iproute 对应关系`
 
-|      作用     |               net-tools用法                |                iproute2用法                |
-| :---------- | :-------------------------------------- | :-------------------------------------- |
-|  展示本机所有网络接口  |                 ifconfig                 |              ip link [show]              |
-| 开启/停止某个网络接口  |          ifconfig ech0 up/down           |           ip link up/down eth0           |
+|      作用           |               net-tools用法                |                iproute2用法                |
+| :----------        | :-------------------------------------- | :-------------------------------------- |
+|  展示本机所有网络接口 |                 ifconfig                 |              ip link [show]              |
+| 开启/停止某个网络接口 |          ifconfig ech0 up/down           |           ip link set eth0 up/down          |
 | 给网络接口设置/删除IP | ipconfig eth0 10.0.0.0.1/24 / ifconfig eth0 0 |   ip addr add/del 10.0.0.1/24 dev eth0   |
 | 显示某个网络接口的IP  |              ifconfig eth0               |          ip addr show dev eth0           |
-|    显示路由表     |                 route -n                 |              ip route show               |
-|   添加删除默认网关   | route add/del default gw 192.168.1.2 eth0 | ip route default via 192.168.1.2 eth0 / ip route replace default via 192.168.1.2 dev eth0 |
-|    添加ARP     |  arp -s 192.168.1.100 00:0c:29:c5:5a:ed  | ip neigh add 192.168.1.100 lladdr 00:0c:29:c5:5a:ed dev eth0 |
-|    删除ARP     |           arp -d 192.168.1.100           |   ip neigh del 192.168.1.100 dev eth0    |
-|   展示套接字状态    |                netstat -l                |                  ss -l                   |
+|    显示路由表        |                 route -n                 |              ip route show               |
+|   添加删除默认网关    | route add/del default gw 192.168.1.2 eth0 | ip route default via 192.168.1.2 eth0 <br/> ip route replace default via 192.168.1.2 dev eth0 |
+|    添加ARP          |  arp -s 192.168.1.100 00:0c:29:c5:5a:ed  | ip neigh add 192.168.1.100 lladdr 00:0c:29:c5:5a:ed dev eth0 |
+|    删除ARP          |           arp -d 192.168.1.100           |   ip neigh del 192.168.1.100 dev eth0    |
+|   展示套接字状态      |                netstat -l                |                  ss -l                   |
 
 - 默认网关： 如果主机找不到转发规则， 就把数据包发给默认的网关
 - 增加/删除一条路由规则 `ip route add/del 192.168.2.0/24 via 192.168.1.254`
