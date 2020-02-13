@@ -51,7 +51,7 @@ categories:
         1. [VNC](#vnc)
         1. [Xrdp](#xrdp)
 
-**目录 end**|_2020-01-19 21:18_|
+**目录 end**|_2020-02-13 22:51_|
 ****************************************
 # Linux网络管理
 ## Tips
@@ -163,6 +163,7 @@ categories:
     - 对于 Web 服务器，协议是 TCP，本地 IP 通常也只有一个，本地端口默认的 80 或者 443。只剩下远程 IP 和远程端口可以变了。
     - 如果远程 IP 是相同的话，就只有远程端口可以变了。这个只有几万个，所以当同一客户端向服务器建立了大量连接之后，会耗尽可用的五元组导致问题。
 
+************************
 
 ### curl
 > [Official site](https://curl.haxx.se/)
@@ -171,8 +172,8 @@ categories:
 1. 使用基础认证 发送JSON数据 `curl -i -H "Content-Type:application/json" -u admin:secret -X POST --data '{"title":"1","content":"1"}' http://tomcat.kcp/email/content`
 >  如果没有认证则会收到 401 返回码
 
-- [curl cookie](https://curl.haxx.se/docs/http-cookies.html) | [curl使用Cookie](https://aiezu.com/article/linux_curl_http_cookie.html)
-- `curl -v --cookie "USER_TOKEN=Yes" http://127.0.0.1:5000/`
+- 使用Cookie `curl -v --cookie "USER_TOKEN=Yes" http://127.0.0.1:5000/`
+- 使用代理  `-x, --proxy [protocol://]host[:port]`
 
 > [参考博客: curl返回常见错误码](http://www.cnblogs.com/wainiwann/p/3492939.html)
 - [56错误码](https://stackoverflow.com/questions/10285700/curl-error-recv-failure-connection-reset-by-peer-php-curl)

@@ -74,15 +74,15 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2020-02-05 22:47_|
+**目录 end**|_2020-02-13 22:51_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
 
-> [Github:git](https://github.com/git/git)  
-> [official doc: git](https://git-scm.com/docs) 
+> [Github:git](https://github.com/git/git) | [official doc: git](https://git-scm.com/docs)  
+> [arch wiki: Git](https://wiki.archlinux.org/index.php/Git)  
+
 > [Gitee: about git](https://gitee.com/all-about-git)  
-> [Git官网中文教程](https://git-scm.com/book/zh/v2) | [对应的仓库](https://github.com/progit/progit2)  
 
 - index stage work 三个概念上的区域
     - index: 已经 commit 的内容, 不可更改历史commit 

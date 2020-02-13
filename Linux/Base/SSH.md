@@ -21,7 +21,7 @@ categories:
 1. [Tips](#tips)
 1. [Mosh](#mosh)
 
-**目录 end**|_2020-01-19 21:18_|
+**目录 end**|_2020-02-13 22:51_|
 ****************************************
 # SSH
 > Secure Shell 
@@ -113,8 +113,7 @@ _参数解释_
 ## 多密钥对
 > [参考博客](http://blog.csdn.net/black_ox/article/details/17753943)   
 
-1. `ssh-keygen` 生成SSH密钥对
-    - 然后在询问中输入新的文件名
+1. `ssh-keygen` 生成SSH密钥对 在询问中输入新的文件名
 2. `ssh-add 私钥文件绝对路径`
     - 若执行ssh-add时出现Could not open a connection to your authentication agent
     - 就先执行 `ssh-agent bash` 对应自己的解释器环境
@@ -152,7 +151,7 @@ _config_
 
 ### 通过SSH执行命令时的环境变量问题
 详细在于不同的shell中 Linux 环境变量加载的不同
-[](/Linux/Base/LinuxBase.md)
+
 - 简单方式: 手动加载环境变量 `ssh name@host "source ~/.bashrc && java -version"`
 
 ************************
