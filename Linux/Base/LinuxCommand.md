@@ -27,7 +27,7 @@ categories:
     1. [ffmpeg](#ffmpeg)
     1. [视频播放器](#视频播放器)
 
-**目录 end**|_2019-12-09 01:35_|
+**目录 end**|_2020-02-16 14:34_|
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -93,6 +93,9 @@ categories:
 - -o 一行内多次匹配 
     - 统计所有 `main` 数量 `grep -o main test.log | wc -l` 
 - -i 忽略大小写
+
+- 匹配中文
+    1. `-P '[\p{Han}]'`
 
 ## script
 >  make typescript of terminal session

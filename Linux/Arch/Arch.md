@@ -18,7 +18,7 @@ categories:
         1. [Yay](#yay)
 1. [Tips](#tips)
 
-**目录 end**|_2019-12-03 18:08_|
+**目录 end**|_2020-02-16 14:34_|
 ****************************************
 
 # Arch
@@ -85,3 +85,9 @@ pacman -Syyu
 - deepin-wine
 - [企业微信](https://aur.archlinux.org/packages/deepin-wxwork/)
 - [go-for-it](https://aur.archlinux.org/packages/go-for-it/)
+
+- 无法识别 USB设备
+    1. 查看是usb模块 `sudo modprobe usb-storage`
+    1. 若报错 `modprobe: FATAL: Module usb-storage not found in directory /lib/modules/4.19**`
+    1. 查看 `ls /lib/modules` 
+    1. 内核滚动升级 grub 没有更新, `update-grub`即可
