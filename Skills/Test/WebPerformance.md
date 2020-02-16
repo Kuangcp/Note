@@ -19,7 +19,7 @@ categories:
         1. [MySQL](#mysql)
             1. [主从复制以及读写分离](#主从复制以及读写分离)
 
-**目录 end**|_2020-01-15 17:21_|
+**目录 end**|_2020-02-16 22:18_|
 ****************************************
 # Web性能
 
@@ -29,15 +29,18 @@ categories:
 `超出应用性能上限的表现`
 1. 对于web后端来说就是请求过多, 数据库连接池不够用, 线程池大量等待的线程, 请求非常缓慢, 直接返回 5xx 错误码...
 
+************************
+
 ## 测试工具
+> [Github: HTTP(S) Benchmark Tools](https://github.com/denji/awesome-http-benchmark)
 
 ### Apache BenchMark
-> 简称 ab
+> 简称 ab [Doc](https://httpd.apache.org/docs/2.4/programs/ab.html) 
 
-- 安装:`sudo apt install apache2-utils` `sudo pacman -S apache-tools`
+- 安装 `sudo apt install apache2-utils`| `sudo pacman -S apache-tools`
 - 简单使用 `ab -c 并发数 -n 总请求数 URL`
     - 查看文档:`man ab` 或 `ab -h`
-- [ab](https://httpd.apache.org/docs/2.4/programs/ab.html) `apt安装这个包即可apache2-utils` 
+
 
 - 测试本机超过100连接报错 104: 
     - [Blog:解决问题](http://www.cnblogs.com/archoncap/p/5883723.html)
@@ -59,7 +62,8 @@ categories:
 ### hey
 > [Github](https://github.com/rakyll/hey)
 
-******************
+************************
+
 ## 数据库性能
 
 ### MySQL

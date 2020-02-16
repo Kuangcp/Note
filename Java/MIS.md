@@ -22,12 +22,10 @@ categories:
     1. [分布式](#分布式)
         1. [CAP定理](#cap定理)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-02-16 22:18_|
 ****************************************
 # 完整的MIS构建经验
 > MIS: Management information system
-
-- [OAuth 2.0授权框架](https://github.com/jeansfish/RFC6749.zh-cn/blob/master/index.md)
 
 ## MVC
 ### 持久化层

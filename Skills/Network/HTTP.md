@@ -24,7 +24,7 @@ categories:
     1. [HSTS](#hsts)
 1. [CORS](#cors)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-02-16 22:18_|
 ****************************************
 # HTTP
 > HyperText Transfer Protocol 超文本传输协议 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -161,10 +161,22 @@ HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2
 > [wiki: HTTP/3](https://en.wikipedia.org/wiki/HTTP/3)
 
 # HTTPS
-> [SSL/TSL](/Skills/CS/WebSecurity.md#ssl和tsl)
+> [SSL & TLS](/Skills/Network/WebSecurity.md#ssl-tls)
+
+## HTTPS 认证流程
+1. 服务器生成一对密钥，私钥自己留着，公钥交给数字证书认证机构（CA）
+1. CA进行审核，并用CA自己的私钥对服务器提供的公钥进行签名生成数字证书
+1. 在 HTTPS 建立连接时，客户端从服务器获取数字证书，用CA的公钥（根证书）对数字证书进行验证，比对一致，说明该数字证书确实是CA颁发的
+    - 得此结论有一个前提就是：客户端的CA公钥确实是CA的公钥(反例：中间人攻击)，即该CA的公钥与CA对服务器提供的公钥进行签名的私钥确实是一对。
+    - 而CA又作为权威机构保证该公钥的确是服务器端提供的，从而可以确认该证书中的公钥确实是合法服务器端提供的。
+
+注：为保证第3步中提到的前提条件，CA的公钥必须要安全地转交给客户端（CA根证书必须先安装在客户端）  
+因此，CA的公钥一般来说由浏览器开发商内置在浏览器的内部。于是，该前提条件在各种信任机制上，基本保证成立。
 
 ## HSTS
-> HTTP Strict Transport Security 强制让客户端使用HTTPS进行通信
+> HTTP `Strict Transport Security` 强制让客户端使用HTTPS进行通信
+
+************************
 
 # CORS
 > 跨域
@@ -172,4 +184,3 @@ HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2
 > [mozilla CORS](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS)
 > [阮一峰 跨域资源共享 CORS 详解](http://www.ruanyifeng.com/blog/2016/04/cors.html)
 > [CORS详解.md](https://github.com/hstarorg/HstarDoc/blob/master/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/CORS%E8%AF%A6%E8%A7%A3.md)
-

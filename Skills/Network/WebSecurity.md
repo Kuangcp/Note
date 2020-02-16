@@ -11,15 +11,17 @@ categories:
  
 1. [Web安全](#web安全)
     1. [Authenticate](#authenticate)
+        1. [OAuth 2.0](#oauth-20)
+        1. [JWT](#jwt)
     1. [Verfication](#verfication)
-    1. [SSL和TSL](#ssl和tsl)
+    1. [SSL TLS](#ssl-tls)
+1. [攻击手段](#攻击手段)
     1. [ARP断网攻击](#arp断网攻击)
     1. [SYNFlood攻击](#synflood攻击)
-        1. [CSRF](#csrf)
-        1. [XSS](#xss)
-    1. [JWT](#jwt)
+    1. [CSRF](#csrf)
+    1. [XSS](#xss)
 
-**目录 end**|_2020-01-28 17:29_|
+**目录 end**|_2020-02-16 22:18_|
 ****************************************
 
 # Web安全
@@ -32,25 +34,61 @@ categories:
 ## Authenticate
 > [WWW-Authenticate](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/WWW-Authenticate)
 
-****************************
+### OAuth 2.0
+- [OAuth 2.0授权框架](https://github.com/jeansfish/RFC6749.zh-cn/blob/master/index.md)
+
+> [参考博客: 理解OAuth 2.0](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)  
+
+************************
+
+### JWT
+> [理解JWT的使用场景和优劣](http://www.qingpingshan.com/rjbc/java/384762.html)
+
+- [Blog:通过使用JWT来防御CSRF](https://segmentfault.com/a/1190000003716037)  
+- [Blog:介绍JWT](blog.leapoahead.com/2015/09/06/understanding-jwt/)`其实JWT还经常用于设计用户认证和授权系统，甚至实现Web应用的单点登录。`  
+- [Blog:单点登录](http://blog.leapoahead.com/2015/09/07/user-authentication-with-jwt/)  
+- [Web 安全之 XSS、CSRF 和 JWT](https://juejin.im/entry/58e67673a22b9d00588e7148)
+
+> [参考博客: 开箱即用 - jwt 无状态分布式授权](http://www.cnblogs.com/grissom007/p/6294746.html)
+
+> 需要注意的是，不是什么数据都适合放在 Cookie、localStorage 和 sessionStorage 中的。使用它们的时候，需要时刻注意是否有代码存在 XSS 注入的风险。  
+> 因为只要打开控制台，你就随意修改它们的值，也就是说如果你的网站中有 XSS 的风险，它们就能对你的 localStorage 肆意妄为。所以千万不要用它们存储你系统中的敏感数据
+
+************************
 
 ## Verfication 
-> 最简单的就是 数字验证码了
+> 最常见和简单的就是 数字验证码, 通常能在一些公共服务的API中发现校验码的存在
 
 **`CAPTCHA`**
 > CAPTCHA 全称 “全自动区分计算机和人类的图灵测试”（Completely Automated Public Turing Test to Tell Computers and Humans Apart）  
 > 它是一种区分用户是计算机还是人的计算程序，这种程序生成人类能很容易通过但计算机通不过的测试，并进行判定，人/机进行测试的过程称为一次“挑战”。
 
-**********************
-## SSL和TSL
+************************
+
+## SSL TLS
 > [SSL/TLS协议运行机制的概述](http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html)
+> [SSL，TLS，HTTPS](https://www.cnblogs.com/songhan/archive/2012/08/01/2617970.html)
 
-- [Githhub:mkcert](https://github.com/FiloSottile/mkcert)`自签证工具`
 
+- [ ] 完善 SSL
+
+### 数字证书
+1. 基本概念：
+    1. `CA (Certificate Authority)`  证书授权中心，是数字证书发放和管理的机构
+    1. `根证书` 根证书是CA认证中心给自己颁发的证书,是信任链的起始点。安装根证书意味着对这个CA认证中心的信任。
+    1. `数字证书` 数字证书颁发过程一般为：
+        1. 用户首先产生自己的密钥对，并将公共密钥及部分个人身份信息传送给认证中心。
+        1. 认证中心在核实身份后，将执行一些必要的步骤，以确信请求确实由用户发送而来。
+        1. 认证中心将发给用户一个数字证书，该证书内包含用户的个人信息和他的公钥信息，同时还附有认证中心的签名信息。
+
+- [Githhub:mkcert](https://github.com/FiloSottile/mkcert)`签发证书工具`
+
+************************
+# 攻击手段
 ## ARP断网攻击
 > [ARP 断网攻击的原理是什么？如何完全防护？](https://www.zhihu.com/question/20338649)
 
-********************
+************************
 ## SYNFlood攻击
 > 洪水攻击 [参考博客](http://xfocus.net/articles/200106/208.html) SYN Flood是当前最流行的DoS（拒绝服务攻击）与DDoS（分布式拒绝服务攻击）的方式之一，这是一种利用TCP协议缺陷，发送大量伪造的TCP连接请求，从而使得被攻击方资源耗尽（CPU满负荷或内存不足）的攻击方式。  
 > [参考博客](http://www.cnblogs.com/popduke/p/5823801.html)  
@@ -71,7 +109,10 @@ categories:
     net.ipv4.tcp_max_tw_buckets
     #参数决定TIME_WAIT状态的sockets总数量，可根据连接数和系统资源需要进行设置。 
 ```
-### CSRF
+
+************************
+
+## CSRF
 > CSRF (Cross Site Request Forgery) `跨站请求伪造` 
 
 指在一个浏览器中打开了两个标签页，其中一个页面通过窃取另一个页面的 cookie 来发送伪造的请求  
@@ -89,26 +130,11 @@ categories:
 
 - [ ] 问题是 CSRF 只是非法获取Cookie做操作么, 自己用Nginx配置两个域名的web页面试试 CSRF 
 
-### XSS
+************************
+
+## XSS
 > Cross Site Scripting `跨站脚本攻击` 
 
 > [xss攻击入门](http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html)  
 > [ XSS攻击及防御 ](https://blog.csdn.net/ghsau/article/details/17027893)  
 > [最新的黑客技术：详解XSS跨站脚本攻击 ](http://soft.yesky.com/security/hkjj/136/2233136.shtml) 
-
-
-## JWT
-> [理解JWT的使用场景和优劣](http://www.qingpingshan.com/rjbc/java/384762.html)
-
-- [Blog:通过使用JWT来防御CSRF](https://segmentfault.com/a/1190000003716037)  
-- [Blog:介绍JWT](blog.leapoahead.com/2015/09/06/understanding-jwt/)`其实JWT还经常用于设计用户认证和授权系统，甚至实现Web应用的单点登录。`  
-- [Blog:单点登录](http://blog.leapoahead.com/2015/09/07/user-authentication-with-jwt/)  
-- [Web 安全之 XSS、CSRF 和 JWT](https://juejin.im/entry/58e67673a22b9d00588e7148)
-
-> [参考博客: 开箱即用 - jwt 无状态分布式授权](http://www.cnblogs.com/grissom007/p/6294746.html)
-
-> 需要注意的是，不是什么数据都适合放在 Cookie、localStorage 和 sessionStorage 中的。使用它们的时候，需要时刻注意是否有代码存在 XSS 注入的风险。  
-> 因为只要打开控制台，你就随意修改它们的值，也就是说如果你的网站中有 XSS 的风险，它们就能对你的 localStorage 肆意妄为。所以千万不要用它们存储你系统中的敏感数据
-
-
-

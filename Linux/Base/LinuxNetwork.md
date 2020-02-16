@@ -11,8 +11,6 @@ categories:
 **目录 start**
  
 1. [Linux网络管理](#linux网络管理)
-    1. [Tips](#tips)
-        1. [查看进程占用的端口](#查看进程占用的端口)
     1. [DNS](#dns)
         1. [修改DNS](#修改dns)
     1. [Route](#route)
@@ -50,21 +48,12 @@ categories:
     1. [远程桌面](#远程桌面)
         1. [VNC](#vnc)
         1. [Xrdp](#xrdp)
+    1. [Tips](#tips)
+        1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2020-02-13 22:51_|
+**目录 end**|_2020-02-16 22:18_|
 ****************************************
 # Linux网络管理
-## Tips
-### 查看进程占用的端口
-> netstat lsof fuser  
-
-> [参考博客: linux下常用命令查看端口占用](http://blog.csdn.net/ws379374000/article/details/74218530)
-
-- `lsof -i:端口号` 用于查看某一端口的占用情况，缺省端口号显示全部
-    - 或者 `cat /etc/services` 查看系统以及使用的端口
-
-************************
-
 ## DNS
 > [Github: dns topic](https://github.com/topics/dns)
 
@@ -105,7 +94,8 @@ categories:
 ## Route
 > [参考博客: 路由表的建立算法和有关的刷新协议](https://blog.csdn.net/qq_34328833/article/details/60583183)
 
-******************
+************************
+
 ## IPv4和IPv6
 - IPv4 只有32bit IPv6 有128bit
 
@@ -247,11 +237,10 @@ _ss_
 ### netcat
 > sudo apt install netcat  
 
-- 开始监听端口 ： `nc -l 11044`
-    - 建立连接 `nc 127.0.0.1 11044` 任一方退出nc 就终止了连接
+- 监听端口 `nc -l 11044`
+    - 建立连接 `nc 127.0.0.1 11044` 任一方退出 netcat 就终止了该连接
 
-- 端口扫描 `nc -z -v -n -w 2 127.0.0.1 20-33`
-    - 扫描22-33端口，
+- 端口扫描 `nc -z -v -n -w 2 127.0.0.1 20-33` 扫描22-33端口
     - -z 一旦连接立马断开，不发送接收任何数据
     - -v 输出详细信息
     - -n 直接使用IP地址，不使用域名服务器来查询其域名
@@ -259,11 +248,10 @@ _ss_
     - -u 使用UDP 默认缺省则是TCP
 - 连接开放的端口 `nc -v host port`
 
-- 传输文件 （相同的还有 ftp scp）
-    - 服务端开启端口，准备好发送的文件 `nc -v -l 12345 < temp_out.md`
-    - 客户端接收文件：`nc -v -n host port > temp_in.md`
-    - 单次连接，传输完毕自动断开 服务端也可以是接收文件，将`< >`互换即可
-    - 没有进度提示,大文件也不支持
+- 传输文件 
+    - 服务端发送文件 `nc -v -l -p port < temp_out.md`
+    - 客户端接收文件 `nc -v -n host port > temp_in.md`
+    - *注意*  仅单次连接，传输完毕自动断开, 没有进度提示,大文件也不支持。也可以服务端接收文件客户端发，将 `< >` 互换即可
 
 - 传输文件夹 
     - 服务端 `tar -cvPf - /root/book/ | nc -l 12345`
@@ -324,10 +312,10 @@ _ss_
 
 ### wget
 > 特性和优势：支持 HTTP HTTPS FTP协议  
-> - 能够跟踪 HTML 和 XHTML 即可以下载整站，但是注意wget会不停的去下载HTML中的外链，无休无止  
-> - 遵守 robots.txt 标准的工具  
-> - 支持慢速网路和不稳定的下载，当下载失败就会不断重试，直到下载成功  
-> - 支持断点续传  
+>1. 能够跟踪 HTML 和 XHTML 即可以下载整站，但是注意wget会不停的去下载HTML中的外链，无休无止  
+>1. 遵守 robots.txt 标准的工具  
+>1. 支持慢速网路和不稳定的下载，当下载失败就会不断重试，直到下载成功  
+>1. 支持断点续传  
 
 - wget 配置文件 `/etc/wgetrc` `~/.wgetrc` 两个文件配置（区别是全局和当前用户）wget的默认行为
 
@@ -454,7 +442,6 @@ _ss_
 > [详细](/Linux/Base/SSH.md)
 
 ## Telnet
-> 远程控制服务器的一种协议和SSH类似
 
 > [linux telnet命令参数](http://www.linuxso.com/command/telnet.html)  
 > [每天一个linux命令（58）：telnet命令](http://www.cnblogs.com/peida/archive/2013/03/13/2956992.html)
@@ -466,7 +453,7 @@ _ss_
 ## Proxy
 > 代理
 
-- tinyproxy [Github](https://github.com/tinyproxy/tinyproxy) | [Simple Guide](https://www.rosehosting.com/blog/install-and-configure-tinyproxy/)
+- mitmproxy tinyproxy mars
 
 ## VPN
 ### tun/tap
@@ -503,9 +490,8 @@ _客户端_
         sudo pacman -S community/proxychains-ng # Arch
         sudo apt install proxychains  # apt
         ```
-- 配置
-配合楼上的 shadowsocks，修改文件 `/etc/proxychains.conf`
-    ```properties
+- 配置 配合楼上的 shadowsocks，修改文件 `/etc/proxychains.conf`
+    ```conf
     [ProxyList]
     # add proxy here ...
     # meanwile
@@ -589,4 +575,13 @@ _有时候会发生这样的事情_
 ### Xrdp
 > [参考博客: Xrdp - 通过Windows的RDP连接Linux远程桌面](https://www.linuxidc.com/Linux/2018-10/155073.htm)  
 
+************************
 
+## Tips
+### 查看进程占用的端口
+> netstat lsof fuser  
+
+> [参考博客: linux下常用命令查看端口占用](http://blog.csdn.net/ws379374000/article/details/74218530)
+
+- `lsof -i:端口号` 用于查看某一端口的占用情况，缺省端口号显示全部
+    - 或者 `cat /etc/services` 查看系统以及使用的端口

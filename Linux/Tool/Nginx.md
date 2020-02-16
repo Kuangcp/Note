@@ -232,7 +232,7 @@ server {
 }
 ```
 
-##### certbot来配置Https
+##### 通过 certbot 配置 HTTPS
 > 免费的网站, 并且现在支持泛域名了! [参考博客](http://www.cnblogs.com/lidong94/p/7156839.html) | [参考博客](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04)  
 > [Nginx反向代理https](http://linux.it.net.cn/e/server/nginx/2015/0131/12745.html)
 
