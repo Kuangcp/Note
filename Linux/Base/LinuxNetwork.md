@@ -51,7 +51,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2020-02-16 22:18_|
+**目录 end**|_2020-02-17 22:13_|
 ****************************************
 # Linux网络管理
 ## DNS
@@ -132,9 +132,7 @@ categories:
 > [prettyping](http://denilson.sa.nom.br/prettyping/)
 
 ### traceroute
-> [参考博客: traceroute/tracert--获取网络路由路径](https://www.cnblogs.com/embedded-linux/p/6937929.html)
-
-1. Debian系查看路由路径 `traceroute -I stackoverflow.com`
+1. `traceroute -I stackoverflow.com` icmp 查看路由表
 
 ### netstat 
 > 相关 [iproute2](#iproute2)
@@ -202,7 +200,7 @@ _ss_
 | 给网络接口设置/删除IP | ipconfig eth0 10.0.0.0.1/24 / ifconfig eth0 0 |   ip addr add/del 10.0.0.1/24 dev eth0   |
 | 显示某个网络接口的IP  |              ifconfig eth0               |          ip addr show dev eth0           |
 |    显示路由表        |                 route -n                 |              ip route show               |
-|   添加删除默认网关    | route add/del default gw 192.168.1.2 eth0 | ip route default via 192.168.1.2 eth0 <br/> ip route replace default via 192.168.1.2 dev eth0 |
+|   添加删除默认网关    | route add/del default gw 192.168.1.2 eth0 | ip route add/del via 192.168.1.2 eth0 <br/> ip route replace default via 192.168.1.2 dev eth0 |
 |    添加ARP          |  arp -s 192.168.1.100 00:0c:29:c5:5a:ed  | ip neigh add 192.168.1.100 lladdr 00:0c:29:c5:5a:ed dev eth0 |
 |    删除ARP          |           arp -d 192.168.1.100           |   ip neigh del 192.168.1.100 dev eth0    |
 |   展示套接字状态      |                netstat -l                |                  ss -l                   |

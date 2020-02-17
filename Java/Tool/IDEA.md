@@ -34,8 +34,9 @@ categories:
         1. [调优](#调优)
     1. [Tips](#tips)
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
+        1. [无法输入中文](#无法输入中文)
 
-**目录 end**|_2020-02-05 22:47_|
+**目录 end**|_2020-02-17 22:13_|
 ****************************************
 
 # IDEA 使用笔记
@@ -386,3 +387,10 @@ _例如修改为如下_
 ### Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"
 1. Project Structure -> 找到 XXX 项目 右击 -> Add -> 选择 Groovy
 
+### 无法输入中文
+1. 替换IDEA自带的JDK为OracleJDK idea.sh 首行加 export IDEA_JDK=/home/kcp/Application/SDK/jdk1.8.0_211 `时灵时不灵`
+1. 添加配置fcitx时的配置 ~/.xpfrofile 时的内容到 idea.sh 里面 `有效`
+    ```sh
+    export XMODIFIERS=@im=fcitx
+    export QT_IM_MODULE=fcitx
+    ```
