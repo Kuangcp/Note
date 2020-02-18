@@ -24,19 +24,21 @@ categories:
         1. [守护进程](#守护进程)
         1. [线程](#线程)
         1. [文件描述符 FD](#文件描述符-fd)
+    1. [时间](#时间)
+    1. [服务](#服务)
+        1. [systemd 管理服务](#systemd-管理服务)
+        1. [自启服务](#自启服务)
+1. [硬件](#硬件)
     1. [内存](#内存)
         1. [虚拟内存](#虚拟内存)
         1. [交换内存](#交换内存)
-    1. [时间](#时间)
-    1. [服务](#服务)
-        1. [自启服务](#自启服务)
 1. [终端快捷键](#终端快捷键)
     1. [Delete](#delete)
     1. [Convert](#convert)
     1. [Jump](#jump)
     1. [Search](#search)
     1. [Control](#control)
-1. [对比](#对比)
+1. [常见对比](#常见对比)
     1. [文件系统对比](#文件系统对比)
     1. [桌面环境对比](#桌面环境对比)
     1. [窗口管理器对比](#窗口管理器对比)
@@ -47,7 +49,7 @@ categories:
     1. [让命令在后台运行](#让命令在后台运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2020-02-02 20:57_|
+**目录 end**|_2020-02-19 00:03_|
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -240,16 +242,6 @@ categories:
 
 ************************
 
-## 内存
-### 虚拟内存
-> [参考博客: What does Virtual memory size in top mean?](https://serverfault.com/questions/138427/what-does-virtual-memory-size-in-top-mean)  
-
-> [参考博客: The Right Way to Monitor Virtual Memory on Linux](https://www.logicmonitor.com/blog/the-right-way-to-monitor-virtual-memory-on-linux/)  
-
-### 交换内存
-
-************************
-
 ## 时间
 > [同步Linux服务器时间](http://www.cnblogs.com/chenmh/p/5485829.html)
 
@@ -270,10 +262,29 @@ categories:
 ************************
 
 ## 服务
-> 采用 systemd 方式进行管理 [Arch Doc: systemd](https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+
+### systemd 管理服务
+> [Arch Doc: systemd](https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
 - systemctl start/stop/restart/reload/edit ... 详情见 man systemctl
 - 修改服务的配置 `systemctl edit docker.service` 当发现文件不存在时,这个是创建文件 对应的文件是 `/etc/systemd/system/docker.service.d/`
+
+- 重启服务
+  - 如果服务在运行中，则重启服务，若不在运行中，则将会启动：如，`systemctl restart httpd.service`
+  - 只在服务已存在运行的状态下启动服务：如，`systemctl try-restart httpd.service`
+  - 重新加载配置文件：如，`systemctl reload httpd.service`
+- 使用`enable/disable`控制服务是否开机启动，如设置开机启动， `systemctl enable httpd.service`
+  - 使用`status`查看运行状态：如，`systemctl status httpd.service`
+
+> 系统电源管理
+
+| systemctl命令            | 含义       |
+| ---------------------- | -------- |
+| systemctl poweroff     | 关闭系统     |
+| systemctl reboot       | 重启系统     |
+| systemctl suspend      | 进入待机模式   |
+| systemctl hibernate    | 进入休眠模式   |
+| systemctl hybrid-sleep | 进入混合休眠模式 |
 
 ### 自启服务
 > /etc/init.d/ 是服务的存放目录
@@ -295,6 +306,27 @@ _系统运行级别_
 ```
 
 ************************
+
+# 硬件
+- 查看系统PCI设备：`lspci`
+- 查看CPU信息：`more /proc/cpuinfo`
+  - 查看物理CPU数：`cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l`
+  - 查看每个物理CPU中的内核的个数：`cat /proc/cpuinfo | grep "cpu cores"`
+  - 查看系统所有逻辑CPU个数：`cat /proc/cpuinfo | grep "processor" | wc -l`
+- 查看系统内存信息：`more /proc/meminfo`
+- 查看磁盘分区信息：`df -l`
+
+## 内存
+### 虚拟内存
+> [参考博客: What does Virtual memory size in top mean?](https://serverfault.com/questions/138427/what-does-virtual-memory-size-in-top-mean)  
+
+> [参考博客: The Right Way to Monitor Virtual Memory on Linux](https://www.logicmonitor.com/blog/the-right-way-to-monitor-virtual-memory-on-linux/)  
+
+### 交换内存
+swapon swapoff 
+
+************************
+
 # 终端快捷键
 
 - `鼠标中键` 粘贴鼠标左键已选择的文本 **VSCode中也适用**
@@ -365,13 +397,11 @@ _系统运行级别_
 | Ctrl | Q | 恢复回显当前Shell |
 
 **********************
-# 对比
+# 常见对比
 ## 文件系统对比
 > [参考博客: 如何选择文件系统：EXT4、Btrfs 和 XFS ](https://linux.cn/article-7083-1.html)
 
-目前 Linux 大多采用 ext3,往 ext4 过渡
-
-以及 zfs 的优劣
+目前 Linux 大多采用 ext3,往 ext4 过渡 
 
 ## 桌面环境对比
 > [Arch Doc: desktop environment](https://wiki.archlinux.org/index.php/Desktop_environment_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))

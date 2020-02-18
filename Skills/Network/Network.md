@@ -24,7 +24,7 @@ categories:
     1. [传输层](#传输层)
         1. [TCP](#tcp)
         1. [UDP](#udp)
-        1. [对比](#对比)
+        1. [TCP UDP 对比](#tcp-udp-对比)
     1. [应用层](#应用层)
         1. [HTTP & HTTPS](#http-&-https)
         1. [Websocket](#websocket)
@@ -33,6 +33,8 @@ categories:
         1. [TTFB](#ttfb)
         1. [URL](#url)
         1. [DNS](#dns)
+        1. [Proxy](#proxy)
+            1. [PAC](#pac)
         1. [VPN](#vpn)
 1. [Socket](#socket)
 1. [单播 组播 广播](#单播-组播-广播)
@@ -54,7 +56,7 @@ categories:
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2020-02-17 22:13_|
+**目录 end**|_2020-02-19 00:03_|
 ****************************************
 # 网络
 
@@ -222,7 +224,7 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
     数据...
 ```
 
-### 对比
+### TCP UDP 对比
 > [参考博客: TCP和UDP的最完整的区别](https://blog.csdn.net/li_ning_/article/details/52117463)  
 > [参考博客: TCP和UDP的区别和优缺点](https://blog.csdn.net/xiaobangkuaipao/article/details/76793702)
 
@@ -307,9 +309,26 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
     - 递归加迭代， 区别在于，先迭代根， 得到下级一级服务器节点后，下级就是递归的入口和出口
 - 授权和非授权， 还是上面那个URL， 其他的都不是授权的， 只有离URL最近的DNS才是授权的 即 `bupt.edu.cn` 
 
-### VPN
+************************
 
-*******************************
+### Proxy
+
+#### PAC
+> proxy auto config 
+
+> [MDN: PAC File](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_(PAC)_file)
+```js
+function FindProxyForURL(url, host) {
+    return "PROXY 127.0.0.1:8080"; 
+}
+```
+************************
+
+### VPN
+>  Virtual Private Network (VPN) 
+
+************************
+
 
 # Socket
 > [参考博客: TCP/IP、Http、Socket的区别](https://blog.csdn.net/Pk_zsq/article/details/6087367)  

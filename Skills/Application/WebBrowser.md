@@ -22,7 +22,7 @@ categories:
     1. [Vivaldi](#vivaldi)
     1. [Opera](#opera)
 
-**目录 end**|_2020-01-10 11:30_|
+**目录 end**|_2020-02-19 00:03_|
 ****************************************
 # 浏览器
 ## FireFox
@@ -93,6 +93,7 @@ categories:
 1. `ReloadMatic` 定时自动刷新
 1. `轻灵划译` 即刻翻译, 多种平台
 1. `Tab Counter` Tab计数 开发者 WaldiPL
+
 ### 配置
 > 大多是通过 about:config 页面配置
 

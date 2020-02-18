@@ -1,3 +1,17 @@
+---
+title: OpenBSD
+date: 2020-02-18 21:06:01
+tags: 
+categories: 
+---
+
+**目录 start**
+ 
+1. [OpenBSD](#openbsd)
+    1. [安装](#安装)
+
+**目录 end**|_2020-02-19 00:03_|
+****************************************
 # OpenBSD
 > [Official Site](http://www.openbsd.org/)  
 

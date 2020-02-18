@@ -14,7 +14,7 @@ categories:
     1. [常识](#常识)
     1. [常用技巧](#常用技巧)
         1. [Tomcat的使用](#tomcat的使用)
-        1. [导出为可运行的JAR包 普通Java项目](#导出为可运行的jar包-普通java项目)
+        1. [导出为可运行JAR](#导出为可运行jar)
         1. [Springboot热加载](#springboot热加载)
         1. [Debug](#debug)
     1. [常用配置](#常用配置)
@@ -36,7 +36,7 @@ categories:
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
         1. [无法输入中文](#无法输入中文)
 
-**目录 end**|_2020-02-17 22:13_|
+**目录 end**|_2020-02-19 00:03_|
 ****************************************
 
 # IDEA 使用笔记
@@ -62,7 +62,7 @@ categories:
 ### Tomcat的使用
 > 直接配置解压的即可, 然后Idea会在 用户目录下的Idea主目录中配置一个专门放Tomcat的配置和日志等文件, 和原Tomcat进行了隔离, 这样就不会影响到该Tomcat.
 
-### 导出为可运行的JAR包 普通Java项目
+### 导出为可运行JAR
 - File -> project structure ->artifact 里面设置好 引入的库，设置Main类，引用的jar包的相对classpath
 - Build artifact -> Build
 - Maven或者Gradle的话直接就能得到，不过也要配置一下main

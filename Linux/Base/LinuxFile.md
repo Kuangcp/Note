@@ -10,35 +10,34 @@ categories:
 **目录 start**
  
 1. [文件管理](#文件管理)
-    1. [基本命令](#基本命令)
-        1. [查找文件](#查找文件)
-            1. [find](#find)
-        1. [查看文件](#查看文件)
-            1. [stat](#stat)
-            1. [file](#file)
-            1. [tree](#tree)
-            1. [ls](#ls)
-            1. [wc](#wc)
-            1. [cat](#cat)
-            1. [nl](#nl)
-            1. [less](#less)
-            1. [tail](#tail)
-            1. [head](#head)
-        1. [比较文件内容](#比较文件内容)
-            1. [diff](#diff)
-            1. [meld](#meld)
-            1. [kdiff3](#kdiff3)
-            1. [vimdiff](#vimdiff)
-        1. [文件变更命令](#文件变更命令)
-            1. [rename](#rename)
-            1. [chown](#chown)
-            1. [chgrp](#chgrp)
-            1. [ln](#ln)
-            1. [cp](#cp)
-            1. [rm](#rm)
-            1. [mv](#mv)
-            1. [文件的分割与合并](#文件的分割与合并)
-            1. [监控文件变更](#监控文件变更)
+    1. [查找文件](#查找文件)
+        1. [find](#find)
+    1. [查看文件](#查看文件)
+        1. [stat](#stat)
+        1. [file](#file)
+        1. [tree](#tree)
+        1. [ls](#ls)
+        1. [wc](#wc)
+        1. [cat](#cat)
+        1. [nl](#nl)
+        1. [less](#less)
+        1. [tail](#tail)
+        1. [head](#head)
+    1. [比较文件内容](#比较文件内容)
+        1. [diff](#diff)
+        1. [meld](#meld)
+        1. [kdiff3](#kdiff3)
+        1. [vimdiff](#vimdiff)
+    1. [文件变更命令](#文件变更命令)
+        1. [rename](#rename)
+        1. [chown](#chown)
+        1. [chgrp](#chgrp)
+        1. [ln](#ln)
+        1. [cp](#cp)
+        1. [rm](#rm)
+        1. [mv](#mv)
+        1. [文件的分割与合并](#文件的分割与合并)
+        1. [监控文件变更](#监控文件变更)
     1. [默认编码](#默认编码)
 1. [磁盘](#磁盘)
     1. [文件系统](#文件系统)
@@ -64,22 +63,19 @@ categories:
         1. [善用alias](#善用alias)
     1. [desktop文件](#desktop文件)
 
-**目录 end**|_2020-01-15 17:21_|
+**目录 end**|_2020-02-19 00:03_|
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
 
-## 基本命令 
-> cd_
 - `cd - ` 跳转到上一个目录
 - `cd !$` 把上个命令的参数作为cd参数使用。
-- `cd //` 系统根目录 
 
-### 查找文件
+## 查找文件
 
 > silversearcher-ag `快速搜索文件内容`
 
-#### find  
+### find  
 - `find . -name "*.txt"` 查找当前目录的txt后缀的文件
 - `sudo find / -name a.java` 全盘查找
 - `find -type f -name README.md` 默认当前目录查找
@@ -97,23 +93,23 @@ categories:
     - 递归当前文件夹下所有 log 找到 ERROR日志 `find -name "*.log" | xargs grep ERROR`
 1. 查找文件内容 `find etc/  |xargs grep -i java`
 
-### 查看文件
-#### stat
+## 查看文件
+### stat
 - 查看文件详细信息 `stat filename `
 
-#### file
+### file
 - file a.txt 查看文件类型
     - -i 输出文件的MIME类型
     - -F "#" 修改输出分隔符
 
-#### tree
+### tree
 - 展示目录结构
     - -p 匹配
     - -h 可读的显示文件大小
     - -F 和ls一样
     - -L 目录深度
 
-#### ls
+### ls
 - `参数`
     - `i` 详情 
     - `a` 全部包含隐藏文件 <> `A` 不显示当前目录和上级目录 `.` `..` 
@@ -140,20 +136,20 @@ categories:
 
 - `ls -lFh` 列出所有文件的详细信息, 并且文件大小是人类可阅读的
 
-#### wc
+### wc
 - `wc [-lmw] ` 参数说明： -l :多少行-m:多少字符 -w:多少字
 - cat mul.sh | wc -l
 - wc -l mul.sh
 
-#### cat
+### cat
 - 类似的还有 nl more less
 
 带行号输出 `cat -n file` 或者 `nl file`但是空行不会编号, 除非这样: `nl -b a file`
 
-#### nl
+### nl
 - [参考博客: 每天一个linux命令(11)：nl命令](http://www.cnblogs.com/peida/archive/2012/11/01/2749048.html#/)
 
-#### less
+### less
 - 该命令的导航是和Vi体系一样的, 建议打开大文件使用less或者more 如果用vim,文件全加载到内存了  
 - 诸多软件使用到了分页, 怀疑就是借助less实现的, 因为快捷键一模一样, 例如 man命令, 各个软件的-h, git的log 等等..优点很多
 - [ less命令简介](https://blog.csdn.net/caihaijiang/article/details/6113419)
@@ -173,7 +169,7 @@ categories:
     export LESS=' -R'
     ```
 
-#### tail
+### tail
 - tail命令用于输入文件中的尾部内容。tail命令默认在屏幕上显示指定文件的末尾10行。 来自: http://man.linuxde.net/tail
 
 - `--retry`：即是在tail命令启动时，文件不可访问或者文件稍后变得不可访问，都始终尝试打开文件。此选项需要与选项“——follow=name”连用； 
@@ -191,28 +187,28 @@ categories:
     tail +20 file （显示文件file的内容，从第20行至文件末尾） 
     tail -c 10 file （显示文件file的最后10个字符）
 ```
-#### head  
+### head  
 - 查看文件头部, 默认前十行 使用 -n 指定行数
 
-### 比较文件内容
+## 比较文件内容
 - `grep -vwf 文件1 文件2`
 
 > [阮一峰: 读懂diff](http://www.ruanyifeng.com/blog/2012/08/how_to_read_diff.html)
 
-#### diff
+### diff
 > [参考博客 linux下比较两个文本文件的不同——diff命令](http://www.cnblogs.com/chenjianhong/archive/2012/09/26/4144940.html)
 
-#### meld
+### meld
 > [Github: meld](https://github.com/GNOME/meld)
 
 > 可用于 git svn 查看差异, 或者简单的两个文件查看差异
 
-#### kdiff3
+### kdiff3
 
-#### vimdiff
+### vimdiff
 
-### 文件变更命令
-#### rename
+## 文件变更命令
+### rename
 `rename命令的使用(基于perl)`
 - `rename "s/.html/.php/" * ` //把.html 后缀的改成 .php后缀
 - `rename "s/$/.txt/" *  `   //把所有的文件名都以txt结尾
@@ -220,21 +216,21 @@ categories:
 - `rename "s/AA/aa/" * `  //把文件名中的AA替换成aa
 - `rename "s/ - 副本/_bak/" *` 将文件`-副本`结尾改成`_bak`结尾
 
-#### chown
+### chown
 - `chown [-R] 账号名称 文件或目录`
 - `chown [-R] 账号名称:用户组名称 文件或目录`
 
-#### chgrp
+### chgrp
 - 更改文件所属用户组 `chgrp group file`
     - -R 递归子目录
     
-#### ln
+### ln
 - `ln -s 源文件或目录 目标绝对路径` 生成软链接（快捷方式）
 ```sh
     ln -s `pwd`/a.md ~/a.md 
 ```
 
-#### cp
+### cp
 - cp   `cp -ri 目录或正则 目录` 目录所有文件复制过去
     - a 该选项通常在拷贝目录时使用。它保留链接、文件属性，并递归地拷贝目录，其作用等于dpR选项的组合。
     - d 拷贝时保留链接。
@@ -244,7 +240,7 @@ categories:
     - r 若给出的源文件是一目录文件，此时cp将递归复制该目录下所有的子目录和文件。此时目标文件必须为一个目录名。
     - l 不作拷贝，只是链接文件。
 
-#### rm
+### rm
 - rm  `rm -rf 目录` 不提示性删除
     - f 忽略不存在的文件，从不给出提示。
     - r 指示rm将参数中列出的全部目录和子目录均递归地删除。
@@ -253,12 +249,12 @@ categories:
 > 特别注意 rm -rf link 文件时, 如果只是想删除link文件 那么就不要在link文件后加上 / 例如:  
 > `rm -rf linkDir/ ` 这个命令是将 link到的目录下的文件全部删除而不是 删除link文件本身 
 
-#### mv
+### mv
 - mv `mv 目录或正则 目录` 移动
     - I 交互方式操作。如果mv操作将导致对已存在的目标文件的覆盖，此时系统询问要求用户回答y或n，这样可以避免误覆盖文件。
     - f 禁止交互操作。在mv操作要覆盖某已有的目标文件时不给任何指示，指定此选项后，i选项将不再起作用。
 
-#### 文件的分割与合并
+### 文件的分割与合并
 > [参考博客: 文件过滤分割与合并](http://man.linuxde.net/sub/%e6%96%87%e4%bb%b6%e8%bf%87%e6%bb%a4%e5%88%86%e5%89%b2%e4%b8%8e%e5%90%88%e5%b9%b6)
 
 > 分割
@@ -271,7 +267,7 @@ categories:
 
 1. 最简单就是 `cat file1 file2 > result`
 
-#### 监控文件变更
+### 监控文件变更
 > 原理是通过监听文件变更时发出的 signal
 
 - 借助 inotify-tool 包更容易使用
