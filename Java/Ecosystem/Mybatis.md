@@ -14,7 +14,6 @@ categories:
         1. [xml文件配置：](#xml文件配置)
             1. [主配置文件：](#主配置文件)
                 1. [操作配置文件：](#操作配置文件)
-        1. [导入JAR包：](#导入jar包)
         1. [创建SqlSessionFactory类 内容：](#创建sqlsessionfactory类-内容)
             1. [maven Spring-mybaits 配置](#maven-spring-mybaits-配置)
         1. [流程控制](#流程控制)
@@ -25,7 +24,7 @@ categories:
             1. [choose 相当于switch语句](#choose-相当于switch语句)
                 1. [$ 和  的区别：](#$-和--的区别)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-02-22 01:11_|
 ****************************************
 # Mybatis
 > 一个灵活的数据库中间件框架
@@ -106,13 +105,6 @@ categories:
         </update>
     </mapper> 
 ```
-### 导入JAR包：
-- **核心包**
-- mybatis-3.4.1.jar 主包
-- dom4j-1.6.1.jar 日志记录
-- log4j-1.2.15.jar
-- slf4j-api-1.5.8.jar
-- slf4j-log4j12.jar
 
 ###  创建SqlSessionFactory类 内容：
 ```java

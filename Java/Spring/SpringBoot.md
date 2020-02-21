@@ -32,16 +32,17 @@ categories:
     1. [全局异常处理](#全局异常处理)
     1. [HTTPS的配置](#https的配置)
     1. [线程池](#线程池)
-    1. [项目部署](#项目部署)
+    1. [运行和部署](#运行和部署)
+        1. [直接运行](#直接运行)
         1. [编译打包jar/war](#编译打包jarwar)
             1. [war](#war)
             1. [jar](#jar)
-        1. [构建docker镜像](#构建docker镜像)
+        1. [构建Docker镜像](#构建docker镜像)
             1. [手动方式](#手动方式)
-            1. [gradle结合docker](#gradle结合docker)
+            1. [Gradle结合Docker](#gradle结合docker)
         1. [热部署](#热部署)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-02-22 01:11_|
 ****************************************
 # SpringBoot
 > [首页](https://spring.io/projects/spring-boot#learn)
@@ -389,14 +390,21 @@ private Connector createHttpConnector() {
     keytool -importcert -keystore server.jks -file ca.crt
 ```
 
-****************
+************************
+
 ## 线程池
 - [参考博客](https://hacpai.com/article/1501152977477?p=1&m=0)
 - 多线程以及异常处理 [参考博客](http://www.liuhaihua.cn/archives/496733.html)
     - 因为多线程的特性，所以异常只能在子线程中处理不能抛出到主线程里，但是 Spring实现的线程池可以返回一个异常信息对象
 
-***************************************
-## 项目部署
+************************
+
+## 运行和部署
+
+### 直接运行
+- [Spring Boot Maven Plugin](https://docs.spring.io/spring-boot/docs/2.1.9.RELEASE/maven-plugin/run-mojo.html)
+- 例如开启远程调试 `mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000"`
+
 ### 编译打包jar/war
 #### war
 - 部署为war必须的类，一般在创建项目时选war就会自动生成，选jar就要手动添加
@@ -416,7 +424,7 @@ private Connector createHttpConnector() {
     - maven: `mvn package` 即可生成可执行的jar
     - gradle:`gradle jar` 然后 `gradle bootRepackage` 也生成可执行jar
 
-### 构建docker镜像
+### 构建Docker镜像
 > [Official Doc: spring boot docker](https://spring.io/guides/gs/spring-boot-docker/)
 
 #### 手动方式
@@ -427,7 +435,8 @@ private Connector createHttpConnector() {
     ENTRYPOINT ["java","-jar","/app.war"]
 ```
 
-#### gradle结合docker
+#### Gradle结合Docker
+
 
 ### 热部署
 > [参考博客: SpringBoot热部署](https://nilzzzz.github.io/2017/11/SpringBoot1/)
