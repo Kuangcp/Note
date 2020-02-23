@@ -17,6 +17,9 @@ categories:
         1. [堆外内存](#堆外内存)
 1. [主要指标分析](#主要指标分析)
     1. [JDK自带工具](#jdk自带工具)
+        1. [java](#java)
+            1. [环境变量的使用](#环境变量的使用)
+            1. [执行含main方法的类](#执行含main方法的类)
         1. [jps](#jps)
         1. [jstat](#jstat)
         1. [jinfo](#jinfo)
@@ -31,7 +34,7 @@ categories:
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2019-12-06 18:19_|
+**目录 end**|_2020-02-23 22:33_|
 ****************************************
 
 # Java的性能调优
@@ -80,6 +83,18 @@ categories:
 # 主要指标分析
 ## JDK自带工具
 > 都是jdk的bin目录下的工具
+
+### java
+#### 环境变量的使用
+> java [-options] -jar jarfile [args...]
+
+> [What is the java -D command-line option good for? ](https://coderanch.com/t/178539/certification/java-command-line-option-good)
+- 传入 `java -Dkey=true -jar xxx.jar`
+    - *-D 参数* 要前于 -jar
+- 获取 `System.getProperty("key", "defaultvalue");`
+
+#### 执行含main方法的类
+- `java -cp jarfile[:jarfile2] className`
 
 ### jps
 > 主要用来输出JVM中运行的进程状态信息

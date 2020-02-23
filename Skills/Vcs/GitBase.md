@@ -74,7 +74,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2020-02-13 22:51_|
+**目录 end**|_2020-02-23 22:33_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -149,11 +149,9 @@ categories:
 ************************
 
 ### clone
-
-- `-b branch` 克隆远程仓库的指定分支
 - `git clone URL 目录` 克隆下来后更名为指定目录
-- 克隆 指定标签 `git clone -b <tag_name> --single-branch <repo_url> [<dest_dir>] ` (从Git 1.7.10开始)
-
+- `-b branch` 克隆远程仓库的指定分支  **从Git 1.7.10开始支持**
+- `--single-branch` 只克隆当前分支
 
 > Shallow Clone
 - `git clone --depth 1 URL` 只克隆最近一次提交的历史, 能大大减小拉取的大小 
@@ -163,6 +161,8 @@ categories:
         - 只能用 `git fetch origin branch:branch`
         - 并且跟踪远程也需手动执行 `git push -u origin branch`
         - 并且 git log 的输出不会显示 origin/branch 的指针信息，需要在对应分支上手动执行 `git remote set-branches origin branch` 再 `git fetch`
+
+1. 只克隆 指定标签或分支 且不包含内容 `git clone -b <tag_name> --single-branch --depth 1 <repo_url>` **当从源码安装软件时能大大提高下载效率**
 
 ************************
 

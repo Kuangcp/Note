@@ -12,22 +12,18 @@ categories:
 1. [JDK And JRE](#jdk-and-jre)
 1. [Oracle](#oracle)
     1. [Oracle JDK](#oracle-jdk)
-        1. [jps](#jps)
-        1. [jstack](#jstack)
-        1. [java](#java)
-            1. [环境变量的使用](#环境变量的使用)
-            1. [执行含main方法的类](#执行含main方法的类)
     1. [Oracle JRE](#oracle-jre)
 1. [OpenJDK](#openjdk)
 
-**目录 end**|_2019-12-07 21:50_|
+**目录 end**|_2020-02-23 22:33_|
 ****************************************
 # JDK And JRE
-> LTS: 8 11
 
 但是11发布后, Oracle修改了使用协议, JDK商用需付费, 仅个人开发演示免费 [License](https://www.oracle.com/technetwork/java/javase/terms/license/javase-license.html)
 
 # Oracle
+> [roadmap](https://www.oracle.com/java/technologies/java-se-support-roadmap.html)
+
 ## Oracle JDK
 
 > 以下是Java8的结构
@@ -59,52 +55,20 @@ categories:
     └── release
 ```
 
-- bin目录下常用工具: 
+- bin目录下常用工具 [Useage: Java 性能分析](/Java/AdvancedLearning/JavaPerformance.md): 
     - java javac javap jar 
     - jconsole jmap jmc jps jstack jstat jstatd jvisualvm
 
->  [Useage: Java 性能分析](/Java/AdvancedLearning/JavaPerformance.md)
+************************
 
-### jps
-> 查看运行的Java进程
-
-### jstack
-
-### java
-
-#### 环境变量的使用
-> java [-options] -jar jarfile [args...]
-
-> [What is the java -D command-line option good for? ](https://coderanch.com/t/178539/certification/java-command-line-option-good)
-- 传入 `java -Dkey=true -jar xxx.jar`
-    - *-D 参数* 要前于 -jar
-- 获取 `System.getProperty("key", "defaultvalue");`
-
-#### 执行含main方法的类
-- `java -cp jarfile[:jarfile2] className`
-
-*******************
 ## Oracle JRE
-> Java11 开始, 已去掉了JRE
+> Java运行时环境
 
-> 以下是Java8的结构
-```
-    ├── bin/
-    ├── COPYRIGHT
-    ├── lib/
-    ├── LICENSE
-    ├── plugin/
-    ├── README
-    ├── THIRDPARTYLICENSEREADME-JAVAFX.txt
-    ├── THIRDPARTYLICENSEREADME.txt
-    └── Welcome.html
-```
-
+Java11 开始, JDK内去掉了JRE模块
 
 ************************
 
-
 # OpenJDK
-> [Official Site](http://openjdk.java.net/) | [Open JDK下载地址](https://adoptopenjdk.net/nightly.html)
+> [Official Site](http://openjdk.java.net/) |  [OpenJDK Source](http://hg.openjdk.java.net/jdk) | [Github:source](https://github.com/openjdk/jdk)
 
 > [Open JDK 11: Download](http://jdk.java.net/11/)

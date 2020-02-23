@@ -38,7 +38,7 @@ categories:
     1. [fte-terminal](#fte-terminal)
     1. [在线编辑器](#在线编辑器)
 
-**目录 end**|_2020-02-05 22:47_|
+**目录 end**|_2020-02-23 22:33_|
 ****************************************
 # 文本编辑器
 ## Ghex
@@ -111,11 +111,10 @@ _个人配置_
 
 ## VSCode
 
-> [官网](https://code.visualstudio.com/) 码笔记，码Python 比较方便，目录树，预览，整合终端  | [中文手册](https://jeasonstudio.gitbooks.io/vscode-cn-doc/)
+> [官网](https://code.visualstudio.com/) 码笔记，码Python 比较方便，目录树，预览，整合终端  | [中文手册](https://jeasonstudio.gitbooks.io/vscode-cn-doc/) | [code-server](https://github.com/cdr/code-server)
 
 1. 其所有用户自定义配置都缓存在此目录 `~/.config/Code/User/`
 1. vscode 书写 markdown [官方文档](https://code.visualstudio.com/Docs/languages/markdown)
-
 
 ### 快捷键
 > [快捷键官方PDF说明](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)

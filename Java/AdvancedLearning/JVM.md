@@ -45,7 +45,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2019-12-31 19:44_|
+**目录 end**|_2020-02-23 22:33_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -182,9 +182,14 @@ NIO 会经常使用, 提高性能
 # GC
 > Garbage Collection
 
+> [Github: OpenJDK 12 GC 算法源码](https://github.com/openjdk/jdk/tree/jdk-12+33/src/hotspot/share/gc)
+>> cms(JDK14中被移除) epsilon  g1 parallel serial shared shenandoah  z
+
 - [Oracle JDK8 GC调优指南](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/toc.html)
 - [JDK11 GC调优指南](https://docs.oracle.com/en/java/javase/11/gctuning/introduction-garbage-collection-tuning.html)
 > [How to Tune Java Garbage Collection](https://www.cubrid.org/blog/how-to-tune-java-garbage-collection/)
+
+************************
 
 GC 的目的是识别出不再使用的内存，并将其变为可用的。现代垃圾收集器通常分几个阶段以及根据不同的分代使用不同的垃圾收集器来完成回收过程
 
@@ -200,7 +205,7 @@ GC 的目的是识别出不再使用的内存，并将其变为可用的。现�
 
 > [What causes a full GC to run?](https://stackoverflow.com/questions/42226785/what-causes-a-full-gc-to-run)
 
-*************
+************************
 
 > [Generation](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/generations.html#sthref16)
 
