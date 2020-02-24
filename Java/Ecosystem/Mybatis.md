@@ -23,8 +23,9 @@ categories:
             1. [set 方便书写update语句](#set-方便书写update语句)
             1. [choose 相当于switch语句](#choose-相当于switch语句)
                 1. [$ 和  的区别：](#$-和--的区别)
+1. [Tips](#tips)
 
-**目录 end**|_2020-02-22 01:11_|
+**目录 end**|_2020-02-24 23:39_|
 ****************************************
 # Mybatis
 > 一个灵活的数据库中间件框架
@@ -236,3 +237,8 @@ categories:
 ```
 - 条件不能使用数值，
     条件是单独使用时也是String但是是有效的
+
+
+************************
+# Tips
+1. 展示执行SQL `logging.level.mapperAbsolutePackagePath=DEBUG` [Logging](https://mybatis.org/mybatis-3/logging.html)

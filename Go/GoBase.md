@@ -30,6 +30,7 @@ categories:
         1. [Set](#set)
     1. [基本语法](#基本语法)
         1. [标准输入输出](#标准输入输出)
+        1. [时间处理](#时间处理)
     1. [函数](#函数)
         1. [参数](#参数)
         1. [返回值](#返回值)
@@ -40,7 +41,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2020-01-19 21:18_|
+**目录 end**|_2020-02-24 23:39_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -250,6 +251,9 @@ _有关类型后置_
 > [参考博客: golang中的格式化输入输出](https://blog.csdn.net/xiaoyida11/article/details/51554022)
 
 - 打印结构体 `fmt.Printf("%+v\n", object)`
+
+### 时间处理
+> [Go: Format a time or date](https://programming.guide/go/format-parse-string-time-date-example.html)
 
 **************************
 
