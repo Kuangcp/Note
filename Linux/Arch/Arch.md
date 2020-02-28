@@ -18,7 +18,7 @@ categories:
         1. [Yay](#yay)
 1. [Tips](#tips)
 
-**目录 end**|_2020-02-16 14:34_|
+**目录 end**|_2020-02-29 01:11_|
 ****************************************
 
 # Arch
@@ -32,7 +32,7 @@ categories:
 
 ## 包管理
 ### Pacman 
-
+> [Arch wiki: pacman ](https://wiki.archlinux.org/index.php/Pacman_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E5%88%A0%E9%99%A4%E8%BD%AF%E4%BB%B6%E5%8C%85)  
 > Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的社区驱动软件仓库。Debian/Ubuntu 用户的对应类比是 PPA。
 
 1. `pacman-mirrors` generate pacman mirrorlist for Manjaro Linux 
@@ -40,6 +40,8 @@ categories:
 1. -S 安装
 1. -R 卸载
     - -Rs 卸载以及没有被其他软件依赖的软件包
+1. -Q 查询
+    - -Qdt 查询未被依赖的软件包
 
 ### snap
 > 安装 
