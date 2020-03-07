@@ -49,7 +49,7 @@ categories:
     1. [让命令在后台运行](#让命令在后台运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2020-02-19 00:03_|
+**目录 end**|_2020-03-08 00:29_|
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -69,6 +69,7 @@ categories:
 - [鳥哥的 Linux 私房菜](http://linux.vbird.org/linux_basic/)
 - [阿里云系统组技术博客](https://kernel.taobao.org/)
 
+- [Awesome Linux Software](https://github.com/luong-komorebi/Awesome-Linux-Software)
 
 ************************
 

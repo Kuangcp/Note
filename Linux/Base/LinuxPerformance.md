@@ -48,7 +48,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2020-01-19 21:18_|
+**目录 end**|_2020-03-08 00:29_|
 ****************************************
 # Linux性能分析和管理
 ## 运行状况信息
@@ -65,7 +65,7 @@ categories:
 > [vector](https://github.com/Netflix/vector)
 > [CPU-X ](http://x0rg.github.io/CPU-X/) | [Github:repo](https://github.com/X0rg/CPU-X)`简洁而详细`    
 
-- Glances [Linux 系统实时监控的瑞士军刀 —— Glances ](https://linux.cn/article-2782-1.html)
+- [Glances](https://github.com/nicolargo/glances)
 
 **********************
 
