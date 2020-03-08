@@ -26,16 +26,6 @@ categories:
 2. 使用类级别注解`@ServerEndpoint("uri路径")`，将类标注为一个WebSocket端点
 3. 使用方法级别注解`@OnMessage`，使方法在WebSocket事件发生，而不在WebSocket消息发生时被调用
 
-```java
-@ServerEndpoint("/echo")
-public class EchoServer {
-
-    @OnMessage
-    public String echo(String s) {
-        return "你好：" + s;
-    }
-}
-```
 
 ### 4个生命周期在注解式端点中的事件处理
 
@@ -51,30 +41,19 @@ public class EchoServer {
 WebSocket中 RemoteEndpoint 接口和它的子类( RemoteEndpoint.Basic 和 RemoteEndpoint.Async )提供了发送消息的所有方法，我们可以从Session中获取到RemoteEndpoint实例，从而发送消息  
 如：`session.getBasicRemote().sendText(text);`
 
-## 前端连接端点
-```js
-    var ws = new WebSocket("WebSocket端点URL");
-    ws.onopen = function () {
-        ws.send("hello");
-    };
-
-    ws.onmessage = function (evt) {
-        console.log(evt.data)
-    };
-
-    ws.onclose = function (evt) {
-        console.log("error");
-    };
-
-    ws.onerror = function (evt) {
-        console.log("error");
-    };
-```
-# Demo
-
 WebSocket服务器
 
 ```java
+@Configuration
+public class WebSocketAutoConfig {
+  @Bean
+  public ServerEndpointExporter endpointExporter() {
+    return new ServerEndpointExporter();
+  }
+}
+
+@Slf4j
+@Component
 @ServerEndpoint("/websocket/{id}")
 public class WebsocketServer {
 
@@ -155,4 +134,24 @@ public class WebSocketClient {
         return client;
     }
 }
+```
+
+## 前端连接端点
+```js
+    var ws = new WebSocket("WebSocket端点URL");
+    ws.onopen = function () {
+        ws.send("hello");
+    };
+
+    ws.onmessage = function (evt) {
+        console.log(evt.data)
+    };
+
+    ws.onclose = function (evt) {
+        console.log("error");
+    };
+
+    ws.onerror = function (evt) {
+        console.log("error");
+    };
 ```
