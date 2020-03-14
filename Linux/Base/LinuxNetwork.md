@@ -40,6 +40,7 @@ categories:
     1. [Proxy](#proxy)
     1. [VPN](#vpn)
         1. [tun/tap](#tuntap)
+            1. [TUN TAP 区别](#tun-tap-区别)
         1. [shadowsocks](#shadowsocks)
         1. [proxychains](#proxychains)
         1. [OpenVPN](#openvpn)
@@ -51,7 +52,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2020-02-19 00:03_|
+**目录 end**|_2020-03-14 22:04_|
 ****************************************
 # Linux网络管理
 ## DNS
@@ -474,6 +475,14 @@ _ss_
 ## VPN
 ### tun/tap
 > [参考博客: linux下TUN/TAP虚拟网卡的使用](https://blog.csdn.net/bytxl/article/details/26586109)  
+
+#### TUN TAP 区别
+
+> TUN 
+1. 工作在IP层 第三层 
+
+> TAP
+1. 工作在数据链路层，第二层 
 
 ### shadowsocks
 _服务端_

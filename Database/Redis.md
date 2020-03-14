@@ -45,7 +45,7 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2020-02-29 01:11_|
+**目录 end**|_2020-03-14 22:04_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -211,7 +211,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 - ZREMRANGEBYSCORE
 - ZREVRANGEBYSCORE
 - ZREVRANK
-- ZSCORE
+- `ZSCORE key member` 依据指定member获取score
 - ZUNIONSTORE
 - `zinterstore` 进行集合之间的并集（可以看作关系型数据库的多表连接）
 - ZSCAN

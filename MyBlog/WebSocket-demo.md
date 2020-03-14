@@ -9,39 +9,24 @@ categories:
 
 **目录 start**
  
-1. [一个简单的WebSocket示例](#一个简单的websocket示例)
-    1. [建立WebSocket端点](#建立websocket端点)
-        1. [4个生命周期在注解式端点中的事件处理](#4个生命周期在注解式端点中的事件处理)
-        1. [Java端发送消息](#java端发送消息)
-    1. [前端连接端点](#前端连接端点)
-1. [Demo](#demo)
+1. [简单 SpringBoot Websocket 示例](#简单-springboot-websocket-示例)
+    1. [WebSocket服务端](#websocket服务端)
+        1. [Tomcat 方式](#tomcat-方式)
+            1. [4个生命周期在注解式端点中的事件处理](#4个生命周期在注解式端点中的事件处理)
+            1. [服务端推送消息](#服务端推送消息)
+        1. [Spring-WebSocket](#spring-websocket)
+    1. [客户端](#客户端)
+        1. [Java](#java)
+        1. [JS](#js)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-03-14 22:04_|
 ****************************************
-#  一个简单的WebSocket示例
-
-## 建立WebSocket端点
-
-1. 创建一个Java类
-2. 使用类级别注解`@ServerEndpoint("uri路径")`，将类标注为一个WebSocket端点
-3. 使用方法级别注解`@OnMessage`，使方法在WebSocket事件发生，而不在WebSocket消息发生时被调用
+#  简单 SpringBoot Websocket 示例
 
 
-### 4个生命周期在注解式端点中的事件处理
+## WebSocket服务端
 
-| 注解         | 方法中可使用的形参                   |
-| ---------- | ---------------------------------------- |
-| @OnOpen    | WebSocket Session对象，EndpointConfig对象，URI中的参数(需使用@PathParam) |
-| @OnMessage | WebSocket Session对象，EndpointConfig对象，URI中的参数(需使用@PathParam)，消息 |
-| @OnError   | Throwable对象，Session，URI中的参数(需使用@PathParam) |
-| @OnClose   | CloseReason，URI中的参数(需使用@PathParam)       |
-
-### Java端发送消息
-
-WebSocket中 RemoteEndpoint 接口和它的子类( RemoteEndpoint.Basic 和 RemoteEndpoint.Async )提供了发送消息的所有方法，我们可以从Session中获取到RemoteEndpoint实例，从而发送消息  
-如：`session.getBasicRemote().sendText(text);`
-
-WebSocket服务器
+### Tomcat 方式
 
 ```java
 @Configuration
@@ -88,10 +73,86 @@ public class WebsocketServer {
         connections.remove(session);
         session.close();
     }
-
 }
 ```
 
+1. 使用类级别注解`@ServerEndpoint("uri路径")`，将类标注为一个WebSocket端点
+1. 使用方法级别注解`@OnMessage`，使方法在WebSocket事件发生，而不在WebSocket消息发生时被调用
+
+#### 4个生命周期在注解式端点中的事件处理
+
+| 注解         | 方法中可使用的形参                   |
+| ---------- | ---------------------------------------- |
+| @OnOpen    | WebSocket Session对象，EndpointConfig对象，URI中的参数(需使用@PathParam) |
+| @OnMessage | WebSocket Session对象，EndpointConfig对象，URI中的参数(需使用@PathParam)，消息 |
+| @OnError   | Throwable对象，Session，URI中的参数(需使用@PathParam) |
+| @OnClose   | CloseReason，URI中的参数(需使用@PathParam)       |
+
+#### 服务端推送消息
+
+WebSocket中 RemoteEndpoint 接口和它的子类( RemoteEndpoint.Basic 和 RemoteEndpoint.Async )提供了发送消息的所有方法，我们可以从Session中获取到RemoteEndpoint实例，从而发送消息  
+如：`session.getBasicRemote().sendText(text);`
+
+************************
+
+### Spring-WebSocket
+
+```java
+@Slf4j
+@Configuration
+@EnableWebSocket
+public class WebSocketConfig implements WebSocketConfigurer {
+    @Autowired
+    private MyWebSocketHandler MyWebSocketHandler;
+    @Override
+    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+        registry.addHandler(MyWebSocketHandler, "/ws/*/").setAllowedOrigins("*");
+    }
+
+    @Bean
+    public ServletServerContainerFactoryBean createWebSocketContainer() {
+        ServletServerContainerFactoryBean container = new ServletServerContainerFactoryBean();
+        // ws 传输数据的时候，数据过大有时候会接收不到，所以在此处设置bufferSize
+        container.setMaxTextMessageBufferSize(512000);
+        container.setMaxBinaryMessageBufferSize(512000);
+        container.setMaxSessionIdleTimeout(15 * 60000L);
+        return container;
+    }
+}
+
+@Slf4j
+@Service
+public class MyWebSocketHandler extends TextWebSocketHandler {
+
+    /**
+     * ws建立连接
+     * @param session websocket session
+     */
+    @Override
+    public void afterConnectionEstablished(WebSocketSession session) {
+    }
+
+    /**
+     * ws连接断开
+     */
+    @Override
+    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
+    }
+
+    /**
+     * ws收到消息时的方法
+     */
+    @Override
+    protected void handleTextMessage(WebSocketSession session, TextMessage message) {
+    }
+}
+```
+1. 推送消息 session.sendMessage(new TextMessage("text"));
+
+************************
+
+## 客户端
+### Java
 Java WebSocket客户端端点
 
 ```java
@@ -136,9 +197,9 @@ public class WebSocketClient {
 }
 ```
 
-## 前端连接端点
+### JS
 ```js
-    var ws = new WebSocket("WebSocket端点URL");
+    var ws = new WebSocket("ws:localhost:8080/websocket");
     ws.onopen = function () {
         ws.send("hello");
     };
