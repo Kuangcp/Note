@@ -10,14 +10,15 @@ categories:
  
 1. [Tmux](#tmux)
     1. [配置](#配置)
-    1. [键绑定](#键绑定)
+        1. [个人配置](#个人配置)
+        1. [键绑定](#键绑定)
         1. [切换](#切换)
     1. [TPM插件管理](#tpm插件管理)
         1. [tmux-resurrect](#tmux-resurrect)
         1. [maglev](#maglev)
         1. [copycat](#copycat)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-03-14 17:00_|
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -34,13 +35,19 @@ categories:
 - 连接会话 `tmux a -t test`
 - 显示所有 `tmux ls` 
 - 重新加载配置文件 `tmux source ~/.tmux.conf`
-- 帮助 `prefix ?`
+
+- prefix
+    - ? 帮助
+    - s 选择 window
+    - d deattach 脱离
+    - j 下窗口
+    - k 上窗口
 
 *************
 
 ## 配置
-> [个人Tmux配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf) 
-
+### 个人配置
+> [Tmux配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf) `步骤：` 
 1. `ln -s $(pwd)/tmux.conf ~/.tmux.conf` 
 1. `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 1. `tmux source ~/.tmux.conf`
@@ -55,7 +62,7 @@ categories:
 按住Shift即可照常使用鼠标选中文本
 
 *************
-## 键绑定
+### 键绑定
 > Prefix 默认是 C-b 也就是 Ctrl b
 
 ### 切换
