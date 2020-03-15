@@ -89,6 +89,8 @@ categories:
 
 >1. 修改配置文件中name的值为123 `sed -i "s/name=.*/name=123/g" config.conf`
 >1. 修改第3行 `sed -i '3 s/name/1/g'`
+>1. 匹配行的行尾追加 `sed 's/end.*/& ;/g' file`
+>1. 匹配行后第三行行尾追加`sed '/gradle/{n;n;n; s/.*/& 6.0/;}' file`
 
 >1. CRLF -> LF `sed -i 's/\r//g' file`  
     > 配合git: `git ls-files| xargs sed -i 's/\r//g'`
