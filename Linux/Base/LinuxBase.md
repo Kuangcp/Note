@@ -25,10 +25,10 @@ categories:
         1. [线程](#线程)
         1. [文件描述符 FD](#文件描述符-fd)
     1. [时间](#时间)
-    1. [服务](#服务)
-        1. [systemd 管理服务](#systemd-管理服务)
+    1. [服务管理](#服务管理)
+        1. [systemd管理服务](#systemd管理服务)
         1. [自启服务](#自启服务)
-1. [硬件](#硬件)
+1. [硬件信息](#硬件信息)
     1. [内存](#内存)
         1. [虚拟内存](#虚拟内存)
         1. [交换内存](#交换内存)
@@ -49,7 +49,7 @@ categories:
     1. [让命令在后台运行](#让命令在后台运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2020-03-08 00:29_|
+**目录 end**|_2020-03-16 22:11_|
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -262,24 +262,25 @@ categories:
 
 ************************
 
-## 服务
-
-### systemd 管理服务
+## 服务管理
+### systemd管理服务
 > [Arch Doc: systemd](https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
-- systemctl start/stop/restart/reload/edit ... 详情见 man systemctl
-- 修改服务的配置 `systemctl edit docker.service` 当发现文件不存在时,这个是创建文件 对应的文件是 `/etc/systemd/system/docker.service.d/`
+- systemctl start/stop/restart/reload/edit serviceName **例如 sshd docker 等服务**
 
-- 重启服务
-  - 如果服务在运行中，则重启服务，若不在运行中，则将会启动：如，`systemctl restart httpd.service`
-  - 只在服务已存在运行的状态下启动服务：如，`systemctl try-restart httpd.service`
-  - 重新加载配置文件：如，`systemctl reload httpd.service`
-- 使用`enable/disable`控制服务是否开机启动，如设置开机启动， `systemctl enable httpd.service`
-  - 使用`status`查看运行状态：如，`systemctl status httpd.service`
+| command | 作用 |
+|:----|:----|
+| start/stop     | 启动/停止服务 |
+| enable/disable | 开机启用/禁用
+| restart        | 如果服务在运行中，则重启服务，若不在运行中，则将会启动
+| try-restart    | 只在服务已存在运行的状态下启动服务
+| reload         | 重新加载配置文件
+| edit           | 修改服务配置
+| status         | 查看运行状态
 
 > 系统电源管理
 
-| systemctl命令            | 含义       |
+| systemctl 命令          |   作用   |
 | ---------------------- | -------- |
 | systemctl poweroff     | 关闭系统     |
 | systemctl reboot       | 重启系统     |
@@ -287,11 +288,13 @@ categories:
 | systemctl hibernate    | 进入休眠模式   |
 | systemctl hybrid-sleep | 进入混合休眠模式 |
 
+************************
+
 ### 自启服务
 > /etc/init.d/ 是服务的存放目录
-1. 列出所有服务的状态 `service --status-all`
 
-1. 移除MySQL的自启 `sudo update-rc.d -f mysql remove`
+1. 列出所有服务的状态 `service --status-all`
+1. 移除MySQL的自启   `sudo update-rc.d -f mysql remove`
 2. 设置MySQL随机启动 `sudo update-rc.d mysql defaults`
 3. 设定MySQL启动顺序 `update-rc.d mysql defaults 90` 数字越小, 启动顺序越前
 
@@ -308,7 +311,7 @@ _系统运行级别_
 
 ************************
 
-# 硬件
+# 硬件信息
 - 查看系统PCI设备：`lspci`
 - 查看CPU信息：`more /proc/cpuinfo`
   - 查看物理CPU数：`cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l`
@@ -324,7 +327,7 @@ _系统运行级别_
 > [参考博客: The Right Way to Monitor Virtual Memory on Linux](https://www.logicmonitor.com/blog/the-right-way-to-monitor-virtual-memory-on-linux/)  
 
 ### 交换内存
-swapon swapoff 
+> swapon, swapoff - enable/disable devices and files for paging and swapping
 
 ************************
 
