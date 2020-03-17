@@ -31,6 +31,12 @@ categories:
 
 > [ZGC](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
 
+通过 JVM 参数启用 ZGC
+```
+-XX:+UnlockExperimentalVMOptions
+-XX:+UseZGC
+```
+
 ### Linux
 ```sh
 JAVA_HOME=/path/to/java11

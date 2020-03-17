@@ -247,11 +247,11 @@ When importing the package, Python searches through the directories on `sys.path
 
 - `索引` 从左至右：`0,1,2...n` 从右至左：`-1,-2...-n`
 - `切片`（截取序列的部分） `temp[:]` 返回一个副本
-    - `temp[2:4]`就是`[2,4)` 
-    - `temp[1:]`1到最后 `temp[-3:]` *[-3,-1]*
-    - `temp[:4]` *[0,4)* `temp[:-3]` *[0,-3]*
-- `加` ：lista+listb 直接连接
-- `乘` ：lista*4
+    - `temp[2:4]` 数学中的 `[2,4)` 
+    - `temp[1:]` 1到最后 `temp[-3:]` *[-3,-1]*
+    - `temp[:4]` [0,4) `temp[:-3]` *[0,-3]*
+- `加 `：lista+listb 直接连接
+- `乘`：lista*4
 - `判断是否存在`：`in` `not int`
 - len() 
 - min() max() sum() 要求元素全是数值
