@@ -66,3 +66,5 @@
 >- [Java之美 从菜鸟到高手演变 系列](https://blog.csdn.net/zhangerqing/article/details/8245560)
 >- [Java Mission Control](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html)
 
+# 环境配置
+> [Linux搭建Java开发环境](/Linux/JavaDevInit.md)

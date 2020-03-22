@@ -38,7 +38,7 @@ categories:
     1. [安全工具](#安全工具)
         1. [gpg](#gpg)
 
-**目录 end**|_2020-03-14 17:00_|
+**目录 end**|_2020-03-22 12:35_|
 ****************************************
 # 软件使用记事
 ## 包管理
@@ -165,7 +165,7 @@ _批量修改_
 > [参考博客: Hello，Termux](https://tonybai.com/2017/11/09/hello-termux/)
 > [参考博客: Termux：让Android手机摇身一变成为高级Linux终端](https://www.asmodeus.cn/archives/769)
 
-- 开启ssh服务 pkg install openssh 端口是 8022
+- 开启ssh服务 pkg install openssh 对应端口默认 8022
 
 ************************
 
