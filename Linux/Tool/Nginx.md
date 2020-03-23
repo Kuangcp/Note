@@ -333,7 +333,8 @@ server {
     server_name dockerdd.net;
     location /api/ {
         # add_header 'Access-Control-Allow-Origin' '*';
-        proxy_pass http://127.0.0.1:8889;
+        proxy_pass http://127.0.0.1:8889/;
+        # proxy_pass http://127.0.0.1:8889; 这种方式不会去除 /api/
     }
     location / {
         root /home/kcp/IdeaProjects/Base/graduate/static;
