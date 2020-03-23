@@ -19,7 +19,7 @@ categories:
         1. [本地静态文件Web服务器](#本地静态文件web服务器)
             1. [反向代理多个服务](#反向代理多个服务)
             1. [配置https](#配置https)
-                1. [certbot来配置Https](#certbot来配置https)
+                1. [通过 certbot 配置 HTTPS](#通过-certbot-配置-https)
             1. [配置Websocket反向代理](#配置websocket反向代理)
         1. [防盗链](#防盗链)
         1. [负载均衡](#负载均衡)
@@ -28,7 +28,7 @@ categories:
 1. [Nginx Plus](#nginx-plus)
 1. [问题](#问题)
 
-**目录 end**|_2019-12-20 18:28_|
+**目录 end**|_2020-03-23 12:10_|
 ****************************************
 # Nginx
 
@@ -106,7 +106,7 @@ server {
   - stop 停止
   - quit 退出
   - reopen 重新打开
-  - reload 重载（修改配置文件常使用）
+  - reload 重载配置（修改配置文件常使用）
 - `-t` 测试配置
   - 使用 指定配置文件，或者默认配置文件 进行测试
 
@@ -120,7 +120,7 @@ server {
 
 nginx 配置文件的语法是自己独有的语法, 比较像 shell, 里面有用到正则, 变量的概念
 
-- `nginx -s reload` 重新加载配置文件
+- 读取目录下配置: nginx.conf 中 http 块内添加 `include /etc/nginx/conf.d/*.conf;`
 
 ### 本地静态文件Web服务器
 > [参考 nginx配置静态文件服务器 ](http://blog.yuansc.com/2015/04/29/nginx%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/)
@@ -330,7 +330,7 @@ _配置静态端_
 server {
     client_max_body_size 4G;
     listen  80;  ## listen for ipv4; this line is default and implied
-    server_name view.kcp;
+    server_name dockerdd.net;
     location /api/ {
         # add_header 'Access-Control-Allow-Origin' '*';
         proxy_pass http://127.0.0.1:8889;

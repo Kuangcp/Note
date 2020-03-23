@@ -12,6 +12,7 @@ categories:
 1. [高效的Linux](#高效的linux)
     1. [终端模拟器对比](#终端模拟器对比)
     1. [效率工具](#效率工具)
+        1. [协作工具](#协作工具)
         1. [目录跳转](#目录跳转)
     1. [网络工具](#网络工具)
     1. [其他工具](#其他工具)
@@ -29,7 +30,7 @@ categories:
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2019-12-04 22:06_|
+**目录 end**|_2020-03-23 12:10_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -64,6 +65,10 @@ categories:
 > 提高工作和开发效率
 
 > `通知提醒` [Desktop notifications](https://wiki.archlinux.org/index.php/Desktop_notifications) notify-send
+
+### 协作工具
+**synergy**
+> 多系统间共享键鼠
 
 ### 目录跳转
 **`Autojump`**

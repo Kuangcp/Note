@@ -74,7 +74,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2020-02-23 22:33_|
+**目录 end**|_2020-03-23 12:10_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -229,6 +229,7 @@ categories:
 > [Doc](https://git-scm.com/docs/git-revert)
 
 1. 取消所有暂存 `git revert .`
+1. 回滚上一次提交 `git revert HEAD`
 1. 撤销某次提交 `git revert commitId` 注意该操作可嵌套 即 撤销撤销某次提交
 1. 回滚代码至指定提交 `git revert --no-commit 032ac94ad...HEAD`
     - `git commit -m "rolled back"`

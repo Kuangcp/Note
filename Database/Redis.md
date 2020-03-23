@@ -45,7 +45,7 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2020-03-14 22:04_|
+**目录 end**|_2020-03-23 12:10_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -269,6 +269,9 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 - **ZSCAN** 命令用于迭代有序集合中的元素（包括元素成员和元素分值）
 
 > 使用SCAN命令代替原有全查询命令更安全，因为是部分查询不容易像全查询命令那样阻塞Redis进程，因此往往生产环境会禁止全查询命令 keys smembers 等 
+
+> 注意 scan 命令只能顺序依据返回的cursor进行查找，而且由于实现方式，不一定每次查询是有数据的  
+> 也就导致了在有大量key的db里面 找到 match pattern 的所有key 靠手工执行scan一次次找是不可能的
 
 ************************
 
