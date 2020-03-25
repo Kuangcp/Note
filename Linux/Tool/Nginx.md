@@ -302,6 +302,7 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
       proxy_set_header Connection $connection_upgrade;
 
       proxy_pass http://back_end;
+      proxy_http_version 1.1;
       proxy_redirect off;
       proxy_read_timeout 300s;
     }
