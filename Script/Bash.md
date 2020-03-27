@@ -11,12 +11,12 @@ categories:
  
 1. [Bash](#bash)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-03-27 14:26_|
 ****************************************
 
 # Bash
 
-- [ ] 从ShellLearn 中整理过来
+- 数组使用 字符串空格即是 `list='a b c'; for i in $list; do echo $i; done`
 
 > [参考博客: bash实现“多进程”](http://www.cnitblog.com/sysop/archive/2008/11/03/50974.aspx)
 

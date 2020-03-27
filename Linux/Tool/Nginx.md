@@ -26,9 +26,10 @@ categories:
         1. [跨域问题的配置](#跨域问题的配置)
             1. [静态服务器将后台反代理](#静态服务器将后台反代理)
 1. [Nginx Plus](#nginx-plus)
+1. [Keepalived](#keepalived)
 1. [问题](#问题)
 
-**目录 end**|_2020-03-23 12:10_|
+**目录 end**|_2020-03-27 14:26_|
 ****************************************
 # Nginx
 
@@ -302,7 +303,8 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
       proxy_set_header Connection $connection_upgrade;
 
       proxy_pass http://back_end;
-      proxy_http_version 1.1;
+      # 默认是 1.0 不支持 keepAlive
+      proxy_http_version 1.1; 
       proxy_redirect off;
       proxy_read_timeout 300s;
     }
@@ -352,7 +354,14 @@ server {
 
 > [5-reasons-switch-f5-big-ip-to-nginx-plus](https://www.nginx.com/blog/5-reasons-switch-f5-big-ip-to-nginx-plus/)
 
-*****************
+
+************************
+# Keepalived
+> [参考博客: keepalived实现服务高可用](https://www.cnblogs.com/clsn/p/8052649.html)  
+
+
+************************
+
 
 # 问题
 - 文件上传报错 413 

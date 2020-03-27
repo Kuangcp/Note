@@ -11,13 +11,13 @@ categories:
  
 1. [Zsh](#zsh)
     1. [为什么要使用](#为什么要使用)
-    1. [配置](#配置)
+    1. [Tips](#tips)
     1. [oh-my-zsh](#oh-my-zsh)
         1. [插件](#插件)
         1. [主题](#主题)
             1. [自己定制](#自己定制)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-03-27 14:26_|
 ****************************************
 # Zsh
 > [arch zsh wiki](https://wiki.archlinux.org/index.php/Zsh)
@@ -26,8 +26,14 @@ categories:
 > [mac 装了 oh my zsh 后比用 bash 具体好在哪儿？](https://www.zhihu.com/question/29977255)  
 > [终极 Shell——ZSH](https://zhuanlan.zhihu.com/mactalk/19556676)
 
-## 配置
 > [某人的配置](https://github.com/lilydjwg/dotzsh)
+
+## Tips 
+
+
+- 数组使用 `list=(a b c); for i in $list; do echo $i; done`
+
+************************
 
 ## oh-my-zsh
 > [Github](https://github.com/robbyrussell/oh-my-zsh) | [参考博客进行安装](https://segmentfault.com/a/1190000004695131)
