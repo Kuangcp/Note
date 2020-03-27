@@ -29,7 +29,7 @@ categories:
 1. [Keepalived](#keepalived)
 1. [问题](#问题)
 
-**目录 end**|_2020-03-27 14:26_|
+**目录 end**|_2020-03-27 15:27_|
 ****************************************
 # Nginx
 
@@ -190,7 +190,7 @@ nginx 配置文件的语法是自己独有的语法, 比较像 shell, 里面有�
 ```
 
 #### 配置https
-> 参考博客 [nginx搭建https服务](http://www.cnblogs.com/tintin1926/archive/2012/07/12/2587311.html) | [nginx http/2](http://letus.club/2016/04/08/nginx-http2-letsencrypt/)
+> [nginx搭建https服务](http://www.cnblogs.com/tintin1926/archive/2012/07/12/2587311.html) | [nginx http/2](http://letus.club/2016/04/08/nginx-http2-letsencrypt/)
 
 > 自签发证书 `命令运行`
 ```sh
@@ -221,6 +221,9 @@ server {
   ssl on;
   ssl_certificate  /home/youhuigo/https/server.crt;
   ssl_certificate_key  /home/youhuigo/https/server.key;
+  
+  # http 转向 https
+  return 302  https://$host$request_uri;
 
   location / {
     proxy_set_header X-Real-IP $remote_addr;

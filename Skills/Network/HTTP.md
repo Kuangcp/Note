@@ -21,10 +21,11 @@ categories:
     1. [HTTP/2](#http2)
     1. [HTTP/3](#http3)
 1. [HTTPS](#https)
+    1. [HTTPS 认证流程](#https-认证流程)
     1. [HSTS](#hsts)
 1. [CORS](#cors)
 
-**目录 end**|_2020-02-16 22:18_|
+**目录 end**|_2020-03-27 15:27_|
 ****************************************
 # HTTP
 > HyperText Transfer Protocol 超文本传输协议 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -174,7 +175,11 @@ HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2
 因此，CA的公钥一般来说由浏览器开发商内置在浏览器的内部。于是，该前提条件在各种信任机制上，基本保证成立。
 
 ## HSTS
-> HTTP `Strict Transport Security` 强制让客户端使用HTTPS进行通信
+> HTTP `Strict Transport Security` 强制让客户端使用HTTPS进行通信 
+
+通常能在请求的 Response 的 Header 中看到 `Strict-Transport-Security: max-age=`	
+
+> [MDN HSTS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security)
 
 ************************
 

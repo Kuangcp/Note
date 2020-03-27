@@ -21,9 +21,12 @@ categories:
     1. [NGINX-扩展状态码](#nginx-扩展状态码)
     1. [七牛扩展状态码](#七牛扩展状态码)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-03-27 15:27_|
 ****************************************
 # HTTP状态码大全
+
+这个状态码本质上是一个行业标准, 开发中是可以不按标准来的
+
 > [wiki: http status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)  
 > [MDN: HTTP 响应状态代码](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)
 
@@ -70,7 +73,7 @@ categories:
     400 Bad Request 错误的请求
     401 Unauthorized 未授权
     402 Payment Required 需要付费
-    403Forbidden 拒绝访问
+    403 Forbidden 拒绝访问
     404 Not Found 未找到
     405 Method Not Allowed 不允许的方法
     406 Not Acceptable 不可接受

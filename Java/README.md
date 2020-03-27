@@ -1,14 +1,20 @@
-`目录 start`
+---
+title: Java
+date: 2020-03-27 15:28:15
+tags: 
+categories: 
+---
+
+**目录 start**
  
 1. [计算机基础](#计算机基础)
 1. [Java](#java)
-    1. [规范](#规范)
-    1. [基础](#基础)
-    1. [深入](#深入)
-    1. [抽象](#抽象)
-    1. [相关资源](#相关资源)
+    1. [JDK](#jdk)
+1. [抽象](#抽象)
+1. [相关资源](#相关资源)
+1. [环境配置](#环境配置)
 
-`目录 end` |_2018-09-28_| [码云](https://gitee.com/gin9) | [CSDN](http://blog.csdn.net/kcp606) | [OSChina](https://my.oschina.net/kcp1104) | [cnblogs](http://www.cnblogs.com/kuangcp)
+**目录 end**|_2020-03-27 15:28_|
 ****************************************
 # 计算机基础
 
