@@ -4,6 +4,7 @@ date: 2018-11-21 10:56:52
 tags: 
     - 测试
     - Junit4
+    - Junit5
 categories: 
     - Java
 ---
@@ -23,8 +24,9 @@ categories:
     1. [测试套件](#测试套件)
     1. [分类测试](#分类测试)
 1. [Junit源码解析](#junit源码解析)
+1. [如何使用JUnit5](#如何使用junit5)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-03-27 15:34_|
 ****************************************
 # 如何使用Junit
 > [Official doc: 4.12](https://github.com/junit-team/junit4/blob/master/doc/ReleaseNotes4.12.md)
@@ -243,3 +245,13 @@ public class AssertTest {
 > [JUnit4源码初探](https://blog.csdn.net/baidu_33409651/article/details/51526582)
 
 > [Source: Junit 3.8.1](https://gitee.com/gin9/LearnJunit)
+
+************************
+
+# 如何使用JUnit5
+> [Official doc](http://junit.org/junit5/docs/current/user-guide/)
+
+> [参考博客](http://blog.csdn.net/bitgnu/article/details/78715836)
+> [参考博客: JUnit 5 新特性](https://www.ibm.com/developerworks/cn/java/j-junit5/index.html)
+
+> [参考博客: JUnit5用户指南](http://junit5.doczh.cn/overview/)
