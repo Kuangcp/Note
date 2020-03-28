@@ -1,5 +1,5 @@
 # OpenCV
-> 运作模式就是大量正负相关的样本训练精确度更好的分类器(xml文件)，再以此编写逻辑
+> 运作模式就是大量正负相关的样本训练精确度更好的分类器(xml文件 CascadeClassifier)，再以此编写逻辑
 
 ## 安装试运行 图片浏览器
 > [arch安装opencv](https://my.oschina.net/u/4125051/blog/3071866)
