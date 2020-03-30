@@ -1,5 +1,5 @@
 ---
-title: MulticaseRegistry.md
+title: MulticaseRegistry
 date: 2019-05-09 20:31:03
 tags: 
 categories: 
@@ -40,6 +40,6 @@ categories:
 
     unsubscribe provider://UUUU?application=first-dubbo-provider&bind.ip=172.17.0.1&bind.port=20880&category=configurators&check=false
 ```
-> UUU表示 172.17.0.1:20880/org.apache.dubbo.samples.api.GreetingsService
+> UUU表示 172.17.0.1:20880/org.apache.dubbo.samples.api.GreetingsService  
 > * 是customer, 其他的是 provider
 

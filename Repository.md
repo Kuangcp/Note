@@ -112,7 +112,6 @@ categories:
 - [zxing](https://github.com/zxing/zxing) `二维码处理的项目`
 
 ### 团队协作
-- [easypoi](https://gitee.com/lemur/easypoi) `虽然代码非常不规范，也没人维护的样子，但是这个开源精神要学习`
 - [uflo](https://gitee.com/youseries/uflo) `国内的流程引擎`
 - [jeewx](https://gitee.com/jeecg/jeewx)`微信管家平台`
 - [禅道](https://gitee.com/wwccss/zentaopms)`项目管理软件` 
