@@ -20,27 +20,28 @@ categories:
 1. [压缩文件内容预览搜索](#压缩文件内容预览搜索)
 1. [压缩文件密码](#压缩文件密码)
 
-**目录 end**|_2020-03-08 00:29_|
+**目录 end**|_2020-03-31 12:28_|
 ****************************************
 # Linux操作压缩文档
 > Linux默认自带ZIP压缩，最大支持4GB压缩，RAR的压缩比大于4GB.
 
 | 文件名模式 | 解压方式 |
 |:----|:----|
-| *.tar             | tar -xvf 解压 |
-| *.tar.gz 和 *.tgz | tar -xzf 解压|
-| *.tar.xz          | tar -xJf 解压|
-| *.tar.Z           | tar -xZf 解压|
-| *.tar.bz2         | tar -xjf 解压|
+| *.tar             | tar -xvf 解压
+| *.tar.gz 和 *.tgz | tar -xzf 解压
+| *.tar.xz          | tar -xJf 解压
+| *.tar.Z           | tar -xZf 解压
+| *.tar.bz2         | tar -xjf 解压
 |-|-|
-| *.gz              | gzip -d 或者 gunzip 解压|
-| *.bz2             | bzip2 -d或者用bunzip2 解压|
-| *.Z               | uncompress 解压|
-| *.xz              | xz -d 解压|
-| *.rar             | unrar e 解压|
-| *.zip             | unzip 解压|
+| *.gz              | gzip -d 或者 gunzip 解压
+| *.bz2             | bzip2 -d或者用bunzip2 解压
+| *.Z               | uncompress 解压
+| *.xz              | xz -d 解压
+| *.rar             | unrar e 解压
+| *.zip             | unzip 解压
+| *.zst             | unzstd 解压
 
-*********************************
+************************
 
 ## tar
 
@@ -96,7 +97,9 @@ categories:
 - `tar -xf file.tar`      // 解压 .tar 归档文件
     - tar -xzf a.tar.gz `解压使用gz格式压缩的压缩包, 以此类推`
 
-****************
+
+************************
+
 ## rar
 > 压缩
 - `rar a jpg.rar *.jpg`    // rar格式的压缩
@@ -163,11 +166,16 @@ categories:
 - 7z x file
     - `-o` 路径
 
+************************
+
 # 压缩文件内容预览搜索
 > [参考博客: Unix Z Commands – Zcat, Zless, Zgrep, Zegrep and Zdiff Examples ](https://linoxide.com/linux-how-to/z-commands-zcat-zless-zgrepzegrep-zdiff-examples/)  
 
 - `zcat log.tgz | grep -a "pattern"` 等价于 `zgrep "pattern" log.tgz`
     - 相关参数说明 man 文档
+
+
+************************
 
 # 压缩文件密码
 - rarcrack 暴力破解

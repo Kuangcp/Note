@@ -12,17 +12,17 @@ categories:
     1. [Linux上安装Protobuf](#linux上安装protobuf)
     1. [实现原理](#实现原理)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-03-31 12:28_|
 ****************************************
 # Protobuf
 > Google开源的序列化框架 全称 `Google Protocol Buffers` | [Github : Protobuf](https://github.com/google/protobuf)  
 
-- 他将数据结构以 proto后缀的文件进行描述, 通过代码生成工具, 可以生成对应数据结构的POJO对象和Protobuf相关的方法和属性
+- 他将数据结构以 proto 后缀的文件进行描述, 通过代码生成工具, 可以生成对应数据结构的 POJO 对象和 Protobuf 相关的方法和属性
     - 特点:
-        - 结构化数据存储格式: XML JSON等
+        - 结构化数据存储格式,类似于 XML JSON等
         - 高效的编解码性能
         - 语言无关, 平台无关, 扩展性好
-        - 官方支持 Java C++ Python三种语言, 并且Js的支持也比较好[](https://github.com/dcodeIO/ProtoBuf.js/)
+        - 官方支持 Java C++ Python Objective-C C# JavaScript Ruby
     - 数据描述文件和代码生成机制优点:
         - 文本化的数据结构描述语言, 可以实现语言和平台无关, 特别适合异构系统间的集成
         - 通过标识字段的顺序, 可以实现协议的前向兼容 _在不同版本的数据结构进程间进行数据传递_
@@ -31,31 +31,33 @@ categories:
 - 习惯性规则:
     - 命名: `packageName.MessageName.proto`
 
-> protobuf 只是编解码的工具, 本身不支持读半包, 不能处理粘包拆包问题
+> protobuf 只是编解码的工具, 本身不支持读半包, 不能处理 粘包 拆包问题
 
 > [参考博客: Protobuf语言指南](http://www.cnblogs.com/dkblog/archive/2012/03/27/2419010.html) `较为详细, 只是版本有点旧`  
 > [参考博客: 数据交换利器 Protobuf 技术浅析](http://blog.jobbole.com/107405/)  
 > [参考博客: Protobuf3语言指南](https://blog.csdn.net/u011518120/article/details/54604615)  
 
 ## proto文件定义
+
 ```protobuf
     // 用户数据信息
     message Article {
         required int32 articleId = 1;         // 文章id
-        optional string articleExcerpt = 4;    // 文章摘要
-        repeated string articlePicture = 5;   // 文章附图
+        optional string articleExcerpt = 2;    // 文章摘要
+        repeated string articlePicture = 3;   // 文章附图
     }
 ```
-> 上面定义了一个消息, 消息具有三个属性, 且行末的注释都会变成Javadoc注释  
+> 上面定义了一个消息, 消息具有三个属性, 且行末的注释 经 protoc 编译后都会变成Javadoc注释  
 
-1. message 是消息定义的关键字
-2. required 表示这个字段是必需的, 必须在序列化的时候被赋值。
-3. optional 代表这个字段是可选的，可以为0个或1个但不能大于1个。
-4. repeated 则代表此字段可以被重复任意多次包括0次。
-5. int32和string是字段的类型。后面是我们定义的字段名。
-6. 最后的1，2，3则是代表每个字段的一个唯一的编号标签，在同一个消息里不可以重复。这些编号标签用与在消息二进制格式中标识你的字段，并且消息一旦定义就不能更改。
-    - 需要说明的是标签在1到15范围的采用一个字节进行编码。所以通常将标签1到15用于频繁发生的消息字段。编号标签大小的范围是1 到 2的29次幂–1。
-    - 此外不能使用protobuf系统预留的编号标签（19000 －19999）。
+1. `message` 是定义消息的关键字
+2. `required` 表示这个字段是必需的, 必须在序列化的时候被赋值。
+3. `optional` 代表这个字段是可选的，可以为0个或1个但不能大于1个。
+4. `repeated` 则代表此字段可以被重复任意多次包括0次。
+5. `int32` 和 `string` 是字段的类型。后面是我们定义的字段名。
+6. 等号右边 1，2，3 则是代表每个字段的一个唯一的编号标签，在同一个消息里不可以重复
+    - 这些编号标签用与在消息二进制格式中标识你的字段，并且消息一旦定义就不能更改
+    - 需要说明的是标签在1到15范围的采用一个字节进行编码。所以通常将标签1到15用于频繁发生的消息字段
+    - 编号标签大小的范围是1 到 2的29次幂–1。此外不能使用protobuf系统预留的编号标签（19000 －19999）
 
 ![数据类型对应表](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Learn/java/protobuf/protobuf-type.jpeg)
 
