@@ -49,7 +49,7 @@ categories:
         1. [构建工具](#构建工具)
     1. [文档处理](#文档处理)
         1. [UML](#uml)
-        1. [Log文件](#log文件)
+        1. [Log处理](#log处理)
     1. [异步](#异步)
     1. [响应式](#响应式)
     1. [Database](#database)
@@ -60,7 +60,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2020-02-02 20:57_|
+**目录 end**|_2020-04-01 00:23_|
 ****************************************
 # 常用的网站
 ## 国内镜像源站点
@@ -129,6 +129,7 @@ categories:
 - [IBM 开发社区](https://www.ibm.com/developerworks/cn/)
 - [daocloud社区](http://open.daocloud.io/)
 - [techug.com](http://www.techug.com)`技术博客`
+- [https://www.yxgapp.com/](https://www.yxgapp.com/)
 
 ## 国外社区
 Podcast、Reddit 以及TechRadar 
@@ -308,7 +309,7 @@ yed astah dia
 
 - VSCode 加 plantUML 
 
-### Log文件
+### Log处理
 > 方便的查看Log文件
 - [otroslogviewer](https://github.com/otros-systems/otroslogviewer)
 - [chainsaw](http://logging.apache.org/chainsaw/2.x/)

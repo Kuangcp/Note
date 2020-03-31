@@ -10,7 +10,7 @@ categories:
 **目录 start**
  
 1. [Java并发](#java并发)
-    1. [Java内存模型](#java内存模型)
+    1. [JMM Java内存模型](#jmm-java内存模型)
     1. [理论知识](#理论知识)
         1. [可能的问题](#可能的问题)
         1. [好的习惯](#好的习惯)
@@ -37,9 +37,8 @@ categories:
     1. [线程池](#线程池)
         1. [ScheduledThreadPoolExecutor](#scheduledthreadpoolexecutor)
     1. [分支合并框架](#分支合并框架)
-    1. [Java内存模型](#java内存模型)
 
-**目录 end**|_2019-12-20 00:16_|
+**目录 end**|_2020-04-01 00:23_|
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -52,10 +51,13 @@ categories:
 > [参考博客: 不可变真的意味线程安全？](http://www.jdon.com/concurrent/immutable.html)
 > [Java Concurrency and Multithreading Tutorial](http://tutorials.jenkov.com/java-concurrency/index.html)  
 
-## Java内存模型
-> Java Memory Model -- JMM
+************************
 
-- 同步动作和被称为偏序的数据结构描述JMM， 
+## JMM Java内存模型
+> Java Memory Model
+
+> [Java内存模型是什么](https://mp.weixin.qq.com/s?__biz=MjM5OTMyNzQzMg==&mid=2257483738&idx=1&sn=856847463cc602962d027aa80dd55a6f&chksm=a447f47d93307d6b4f7bc74bf5dc502d306c01915c10da7ee924926dd8258c241b4265c23f4e&mpshare=1&scene=1&srcid=#rd)`借助CPU的多级缓存的概念理解线程间内存模型`
+
 - JMM 的主要规则：
     - 在监测对象上的解锁操作与后续的所操作之间存在同步约束关系
     - 对易失性变量的写入与后续对该变量的读取之间存在同步约束关系
@@ -72,6 +74,8 @@ categories:
 - 代码块之间的 `之前发生（Happens-Before）` 和 `同步约束（Synchronizes-With）`关系
     - 之前发生 这种关系表明一段代码在其他代码开始之前就已经全部完成了
     - 同步约束 这意味着动作继续执行之前必须把他的对象视图与主内存同步
+
+************************
 
 ## 理论知识
 `线程模型`

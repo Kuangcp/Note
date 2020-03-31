@@ -10,6 +10,7 @@ categories:
 **目录 start**
  
 1. [JVM](#jvm)
+1. [内存区域](#内存区域)
     1. [运行时数据区](#运行时数据区)
         1. [程序计数器](#程序计数器)
         1. [Java虚拟机栈](#java虚拟机栈)
@@ -20,7 +21,7 @@ categories:
             1. [运行时常量池](#运行时常量池)
         1. [直接内存](#直接内存)
     1. [元空间](#元空间)
-    1. [参数配置](#参数配置)
+1. [参数配置](#参数配置)
 1. [GC](#gc)
     1. [GC 术语](#gc-术语)
     1. [判断存活算法](#判断存活算法)
@@ -45,7 +46,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2020-03-24 17:22_|
+**目录 end**|_2020-04-01 00:23_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -76,6 +77,7 @@ categories:
 - 执行引擎
     - 是Java虚拟机的最核心组件之一，它负责执行虚拟机的字节码。
 
+# 内存区域
 ## 运行时数据区
 ![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Java/Jvm/MemoryArea.png)
 
@@ -172,7 +174,7 @@ NIO 会经常使用, 提高性能
 
 ************************
 
-## 参数配置
+# 参数配置
 - `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1
 - `-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000`  开启远程调试
     - If you want to debug from start of application use `suspend=y` , this will keep remote application suspended until you connect from eclipse.

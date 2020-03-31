@@ -79,7 +79,7 @@ categories:
     1. [ZonedDateTime](#zoneddatetime)
     1. [Clock](#clock)
 
-**目录 end**|_2020-01-26 17:11_|
+**目录 end**|_2020-04-01 00:23_|
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -416,9 +416,13 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 窍门在于，我们即将介绍的方法都是**默认方法**，也就是说它们不是抽象方法。
 
 ### 比较器复合
+> [Java Comparator 珍藏版 ](https://mp.weixin.qq.com/s?__biz=MzAxODcyNjEzNQ==&mid=2247487247&idx=1&sn=55dc46cdde683b79864997a183c258df&chksm=9bd0a297aca72b8106cb40bedade4a69d539dbdbb579bed6238a54cf30bb270b8b4a8e45ec04&mpshare=1&scene=1&srcid=#rd)
+
 1. 单一属性比较 `Comparator<Apple> c = Comparator.comparing(Apple::getWeight);` (实用的**Comparator.comparing**方法)
     - 顺序(小到大) 逆序则再调用下 reversed()
 1. 按重量排序, 重量一致则再按国家排序 `inventory.sort(comparing(Apple::getWeight).thenComparing(Apple::getCountry));`
+1. nullsFirst是Comparator功能接口的静态方法。Comparator.nullsFirst方法返回一个空值友好的比较器，该比较器将null视为小于非null。
+    1. nullLast 与之相反
 
 ### 谓词复合
 > 谓词接口包括三个方法： negate、 and和or，让你可以重用已有的Predicate来创建更复杂的谓词。  
