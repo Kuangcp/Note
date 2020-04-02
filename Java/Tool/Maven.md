@@ -38,6 +38,7 @@ categories:
         1. [lombok](#lombok)
         1. [protobuf](#protobuf)
     1. [Maven Enforcer Plugin](#maven-enforcer-plugin)
+    1. [deploy](#deploy)
     1. [构建工具对比](#构建工具对比)
         1. [Maven和Ant的区别一](#maven和ant的区别一)
         1. [Maven的优势](#maven的优势)
@@ -50,7 +51,7 @@ categories:
             1. [Gradle](#gradle)
             1. [Maven](#maven)
 
-**目录 end**|_2020-01-10 10:29_|
+**目录 end**|_2020-04-02 19:20_|
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -422,6 +423,21 @@ A 项目 compile
 
 [Maven Enforcer Plugin - Baeldung](https://www.baeldung.com/maven-enforcer-plugin)
 
+## deploy
+> [maven-deploy-plugin](https://maven.apache.org/plugins/maven-deploy-plugin/deploy-mojo.html)
+
+**跳过 deploy**
+```xml
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>3.0.0-M1</version>
+        <configuration>
+            <skip>true</skip>
+        </configuration>
+    </plugin>
+```
+
 ****************************
 
 ## 构建工具对比
@@ -468,6 +484,19 @@ A 项目 compile
 > 需要运行软件, 一般公司内部局域网使用, 如果自己有服务器也能开放给公众使用 [参考博客: maven私服搭建及gradle上传](https://www.jianshu.com/p/b1fe26d5b8c8)
 
 1. 设置 RELEASE 不可重复 deploy 管理后台 Repositories -> Releases -> ANALYZE -> Configuration -> Deployment Policy 设置为 Disable Redeploy
+
+```xml
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <url>http://192.168.0.221:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <url>http://192.168.0.221:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+```
 
 ************************
 

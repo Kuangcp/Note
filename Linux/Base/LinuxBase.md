@@ -49,7 +49,7 @@ categories:
     1. [让命令在后台运行](#让命令在后台运行)
     1. [修改主机名](#修改主机名)
 
-**目录 end**|_2020-03-16 22:11_|
+**目录 end**|_2020-04-02 19:20_|
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -127,7 +127,8 @@ categories:
 - finger 注：查看用户信息工具
 - id 注：查看用户的UID、GID及所归属的用户组
 - chfn 注：更改用户信息工具
-- visudo 注：visodo 是编辑 /etc/sudoers 的命令;也可以不用这个命令，直接用vi 来编辑 /etc/sudoers 的效果是一样的;
+- `visudo` 注：visodo 是编辑 /etc/sudoers 的命令;也可以不用这个命令，直接用vi 来编辑 /etc/sudoers 的效果是一样的;
+- `who /var/log/wtmp` 查看登录记录
 
 ## 用户组
 > [相关 博客](http://www.runoob.com/linux/linux-user-manage.html)
