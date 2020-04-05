@@ -22,7 +22,7 @@ categories:
     1. [Vivaldi](#vivaldi)
     1. [Opera](#opera)
 
-**目录 end**|_2020-02-19 00:03_|
+**目录 end**|_2020-04-05 16:03_|
 ****************************************
 # 浏览器
 ## FireFox
@@ -131,11 +131,6 @@ categories:
 ## Chrome
 - 的确快,几乎没有各种兼容和诡异问题，就是内存占用高, 还有就是主题被墙,fq才能配置好
 
-- [插件网](https://extfans.com/)
-- [chromefor](https://www.chromefor.com/)
-- [52crx](https://52crx.com/)
-- [Chrome插件英雄榜](https://github.com/zhaoolee/ChromeAppHeroes)
-
 1.  `Removing keychain login from Chormium` 启动命令添加如下参数 chromium --password-store=basic
 
 ### 主题
@@ -146,6 +141,10 @@ categories:
 1. Modern Flat
 
 ### 插件 
+- [插件网](https://extfans.com/)
+- [chromefor](https://www.chromefor.com/)
+- [Chrome插件英雄榜](https://github.com/zhaoolee/ChromeAppHeroes)
+
 1. Saka key
 1. cVim [Github](https://github.com/1995eaton/chromium-vim)
 1. crxMouse 
@@ -155,7 +154,9 @@ categories:
 ************************
 
 ## Vivaldi
-- 感觉采用的是chrome内核，做的更漂亮了，而且是内置了很多常用插件，的确很方便，相比于chrome更符合国内使用
+- 感觉采用的是chrome内核 内置了很多常用插件 相比于chrome更符合国内使用
+
+- vivaldi://settings
 
 ## Opera
 

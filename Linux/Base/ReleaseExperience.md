@@ -18,7 +18,7 @@ categories:
         1. [Ubuntu](#ubuntu)
         1. [Ubuntu Mint](#ubuntu-mint)
         1. [Deepin](#deepin)
-        1. [raspberry-pi](#raspberry-pi)
+        1. [Raspberry-pi](#raspberry-pi)
     1. [Arch](#arch)
         1. [Arch](#arch)
         1. [manjaro](#manjaro)
@@ -32,8 +32,9 @@ categories:
     1. [Gentoo](#gentoo)
     1. [Mageia](#mageia)
     1. [CDLinux](#cdlinux)
+    1. [Chromium OS](#chromium-os)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-05 16:03_|
 ****************************************
 # Linux常见发行版
 > [Repology](https://repology.org/)
@@ -100,7 +101,9 @@ categories:
 ### Deepin
 [Deepin](/Linux/Debian/Deepin.md)
 
-### raspberry-pi
+### Raspberry-pi
+> [Official](https://www.raspberrypi.org)
+
 - [树莓派桌面版下载](https://www.raspberrypi.org/downloads/raspberry-pi-desktop/) `分辨率不知道怎么调, 资源的消耗倒是低`
 
 ******************
@@ -150,3 +153,6 @@ categories:
 
 ## CDLinux
 > 小巧的Linux发行版, 带有很多工具 
+
+## Chromium OS
+> [Chromium OS](https://www.chromium.org/chromium-os)
