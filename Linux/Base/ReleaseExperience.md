@@ -33,8 +33,10 @@ categories:
     1. [Mageia](#mageia)
     1. [CDLinux](#cdlinux)
     1. [Chromium OS](#chromium-os)
+        1. [Chrome OS](#chrome-os)
+        1. [Fyde OS](#fyde-os)
 
-**目录 end**|_2020-04-05 16:03_|
+**目录 end**|_2020-04-05 19:41_|
 ****************************************
 # Linux常见发行版
 > [Repology](https://repology.org/)
@@ -156,3 +158,8 @@ categories:
 
 ## Chromium OS
 > [Chromium OS](https://www.chromium.org/chromium-os)
+
+### Chrome OS
+
+### Fyde OS
+> [Official](https://fydeos.com) `基于 Chromium OS`

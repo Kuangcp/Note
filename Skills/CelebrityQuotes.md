@@ -9,7 +9,7 @@ categories:
  
 1. [名言](#名言)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-05 19:41_|
 ****************************************
 # 名言
 
@@ -17,5 +17,5 @@ categories:
     1. All problems in computer science can be solved by another level of indirection.
     1. 计算机科学中的任何问题都可以通过加上一层间接层来解决
 
-*****************
+1. 安迪-比尔定理 （Andy and Bill’s Law）是对IT产业中软件和硬件升级换代关系的一个概括。原话是 “Andy gives, Bill takes away.（安迪提供什么，比尔拿走什么。）
 

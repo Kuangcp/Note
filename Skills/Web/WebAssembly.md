@@ -9,9 +9,9 @@ categories:
  
 1. [WebAssembly](#webassembly)
 
-**目录 end**|_2020-02-16 22:18_|
+**目录 end**|_2020-04-05 19:41_|
 ****************************************
 # WebAssembly
 > 字节码技术
 > [ WebAssembly 实践：如何写代码 ](https://segmentfault.com/a/1190000008402872)
-> [MDN](https://developer.mozilla.org/en-US/docs/WebAssembly)
+> [MDN WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly)

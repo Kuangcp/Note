@@ -9,20 +9,29 @@ categories:
 
 **目录 start**
  
+1. [网络安全](#网络安全)
+    1. [中间人攻击](#中间人攻击)
 1. [Web安全](#web安全)
     1. [Authenticate](#authenticate)
         1. [OAuth 2.0](#oauth-20)
         1. [JWT](#jwt)
     1. [Verfication](#verfication)
     1. [SSL TLS](#ssl-tls)
+        1. [数字证书](#数字证书)
 1. [攻击手段](#攻击手段)
     1. [ARP断网攻击](#arp断网攻击)
     1. [SYNFlood攻击](#synflood攻击)
     1. [CSRF](#csrf)
     1. [XSS](#xss)
 
-**目录 end**|_2020-02-16 22:18_|
+**目录 end**|_2020-04-05 19:41_|
 ****************************************
+
+# 网络安全
+## 中间人攻击
+> [Man in the middle](/Skills/Network/MITM.md)
+
+************************
 
 # Web安全
 > 关注常见的比如 XSS CSRF SQL注入 上传等问题的原理和修复方案。还有密码安全也基本上是面试必考点。
@@ -89,9 +98,11 @@ categories:
 > [ARP 断网攻击的原理是什么？如何完全防护？](https://www.zhihu.com/question/20338649)
 
 ************************
+
 ## SYNFlood攻击
 > 洪水攻击 [参考博客](http://xfocus.net/articles/200106/208.html) SYN Flood是当前最流行的DoS（拒绝服务攻击）与DDoS（分布式拒绝服务攻击）的方式之一，这是一种利用TCP协议缺陷，发送大量伪造的TCP连接请求，从而使得被攻击方资源耗尽（CPU满负荷或内存不足）的攻击方式。  
-> [参考博客](http://www.cnblogs.com/popduke/p/5823801.html)  
+
+> [参考博客 什么是SYN Flood攻击?](http://www.cnblogs.com/popduke/p/5823801.html)  
 
 - Linux:
     - 修改文件 `sudo vim /etc/sysctl.conf `
@@ -117,7 +128,7 @@ categories:
 
 指在一个浏览器中打开了两个标签页，其中一个页面通过窃取另一个页面的 cookie 来发送伪造的请求  
 
-例如域名A下页面a里一个 image标签 url是域名B的后端URL，利用 cookie 会随着当前页面的请求自动发送到服务端的特性，A站点的cookie会发送至站点B  
+例如: A站点某网页a.html 有一个 image 标签 其url 是B站点的URL，利用 cookie 会随着当前页面的请求自动发送到服务端的特性，A站点的cookie会发送至B站点
 
 > [维基百科定义 CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery) |
 > [百度百科 CSRF](https://baike.baidu.com/item/CSRF)

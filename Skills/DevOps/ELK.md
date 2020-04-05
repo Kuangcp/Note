@@ -11,7 +11,7 @@ categories:
     1. [ElasticSearch](#elasticsearch)
     1. [Logstash](#logstash)
 
-**目录 end**|_2020-01-09 15:19_|
+**目录 end**|_2020-04-05 19:41_|
 ****************************************
 # ELK
 
@@ -20,6 +20,7 @@ categories:
 ************************
 
 ## ElasticSearch
+> [ElasticSearch](/Skills/Search/Elasticsearch.md)
 
 ************************
 
