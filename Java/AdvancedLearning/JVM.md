@@ -21,7 +21,7 @@ categories:
             1. [运行时常量池](#运行时常量池)
         1. [直接内存](#直接内存)
     1. [元空间](#元空间)
-1. [参数配置](#参数配置)
+1. [JVM基本参数配置](#jvm基本参数配置)
 1. [GC](#gc)
     1. [GC 术语](#gc-术语)
     1. [判断存活算法](#判断存活算法)
@@ -46,7 +46,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2020-04-01 00:23_|
+**目录 end**|_2020-04-08 10:00_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -174,11 +174,13 @@ NIO 会经常使用, 提高性能
 
 ************************
 
-# 参数配置
+# JVM基本参数配置
 - `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1
 - `-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000`  开启远程调试
     - If you want to debug from start of application use `suspend=y` , this will keep remote application suspended until you connect from eclipse.
 - `-XX:CompressedClassSpaceSize=500m` 压缩类元空间大小 默认是1g
+- `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
+    - 开启无需认证 非SSL的JMX端口
 
 **********************
 

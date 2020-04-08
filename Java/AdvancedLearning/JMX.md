@@ -11,9 +11,9 @@ categories:
 1. [JMX](#jmx)
     1. [概念](#概念)
     1. [使用](#使用)
-        1. [JVM参数](#jvm参数)
+        1. [JMX的JVM参数配置](#jmx的jvm参数配置)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-08 10:00_|
 ****************************************
 
 # JMX
@@ -38,13 +38,13 @@ categories:
 
 ## 使用
 
-### JVM参数
+### JMX的JVM参数配置
 
 | 参数 | 类型 | 描述 |
 |:---|:---|:---|
 | -Dcom.sun.management.jmxremote | 布尔 | 是否支持远程JMX访问，默认true |
 | -Dcom.sun.management.jmxremote.port | 数值 | 监听端口号，方便远程访问 |
 | -Dcom.sun.management.jmxremote.authenticate | 布尔 |  是否需要开启用户认证,默认开启
-| -Dcom.sun.management.jmxremote.ssl | 布尔| 是否对连接开启SSL加密，默认开启
+| -Dcom.sun.management.jmxremote.ssl | 布尔 | 是否对连接开启SSL加密，默认开启
 | -Dcom.sun.management.jmxremote.access.file | 路径 | 对访问用户的权限授权的文件的路径，默认路径 `JRE_HOME/lib/management/jmxremote.access`
 | -Dcom.sun.management.jmxremote. password.file | 路径 | 设置访问用户的用户名和密码，默认路径 `JRE_HOME/lib/management/jmxremote.password`
