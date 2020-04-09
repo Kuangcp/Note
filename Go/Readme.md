@@ -36,11 +36,11 @@ Go 语言被设计成一门应用于搭载 Web 服务器，存储集群或类似
 
 - [从 0 到 1 学习 Go 语言 ](https://mp.weixin.qq.com/s?__biz=MjM5NzM0MjcyMQ==&mid=2650087380&idx=1&sn=56c77443ae171e1091e146704798647a&chksm=bedac4ba89ad4dac6dab9bd21355a13a692f3411d4242e02ce2be91534570167ee3b7afb5d82&mpshare=1&scene=1&srcid=0127jfIvpS2r7ItNbpOnjnr8#rd)
 
-> go相关应用 
+> 基于 Go 开发的应用 
 
 docker lantern kubernetes awesome-go gogs synching hugo grafana etcd hub influxdb  
 
-caddy beego martini cayley nsq codis delve cobra shadowsocks-go phcolus 
+caddy beego martini cayley nsq codis delve cobra shadowsocks-go phcolus traefik
 
 ************************
 
