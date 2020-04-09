@@ -11,7 +11,7 @@ categories:
 **目录 start**
  
 1. [Java的性能调优](#java的性能调优)
-    1. [JVM参数配置](#jvm参数配置)
+    1. [JVM参数调优](#jvm参数调优)
         1. [IDEA参数调优](#idea参数调优)
     1. [内存优化](#内存优化)
         1. [堆外内存](#堆外内存)
@@ -34,12 +34,12 @@ categories:
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2020-02-23 22:33_|
+**目录 end**|_2020-04-08 10:00_|
 ****************************************
 
 # Java的性能调优
 
-## JVM参数配置
+## JVM参数调优
 > [参考博客: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)
 
 - [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`
@@ -171,34 +171,26 @@ categories:
 > [visualgc plugin](https://www.oracle.com/technetwork/java/visualgc-136680.html)  
 
 > [参考博客: java内存泄漏的定位与分析](https://blog.csdn.net/lc0817/article/details/67014499)
-
-************************
-
-`Local`
-
-> [使用 VisualVM 进行性能分析及调优](https://www.ibm.com/developerworks/cn/java/j-lo-visualvm/index.html)
+> [使用 VisualVM 进行性能分析及调优](https://www.ibm.com/developerworks/cn/java/j-lo-visualvm/index.html)  
 > [参考博客: JVisualVM简介与内存泄漏实战分析](http://www.cnblogs.com/belen/p/5573501.html)
 
-********************
+- `Local`
+- `Remote`
+    -  通常使用两种方式连接远程JVM: JMX jstatd
+    
+    - **`jmx`**
+        - [JMX](/Java/AdvancedLearning/JMX.md)
 
-`Remote`
--  通常使用两种方式连接远程JVM: JMX jstatd
+    - **`jstatd`**
+        1. vim jstatd.all.policy 
+            ```
+                grant codebase "file:${java.home}/../lib/tools.jar" {
+                    permission java.security.AllPermission;
 
-> [参考博客: JVisualVM远程监控](https://blog.csdn.net/ericzx2008/article/details/23097403)
-
-**`jmx`**
-
-**`jstatd`**
-
-1. vim jstatd.all.policy 
-    ```
-        grant codebase "file:${java.home}/../lib/tools.jar" {
-            permission java.security.AllPermission;
-
-        };
-    ```
-1. jstatd -J-Djava.security.policy=jstatd.all.policy  -p 12028 -J-Djava.rmi.server.logCalls=true
-1. open jvisualvm create a remote with jstatd by above port 12028
+                };
+            ```
+        1. jstatd -J-Djava.security.policy=jstatd.all.policy  -p 12028 -J-Djava.rmi.server.logCalls=true
+        1. open jvisualvm create a remote with jstatd by above port 12028
 
 **************
 

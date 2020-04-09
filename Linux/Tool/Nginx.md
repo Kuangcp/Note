@@ -35,7 +35,7 @@ categories:
     1. [nuster](#nuster)
 1. [问题](#问题)
 
-**目录 end**|_2020-04-05 23:31_|
+**目录 end**|_2020-04-09 21:12_|
 ****************************************
 # Nginx
 
@@ -303,6 +303,7 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
     listen 80;
     server_name 127.0.0.1;
     location / {
+      # 设置转发真实ip
       proxy_set_header X-Real-IP $remote_addr;
       proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
       proxy_set_header Host $host;
