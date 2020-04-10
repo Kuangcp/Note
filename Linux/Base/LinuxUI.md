@@ -16,9 +16,8 @@ categories:
     1. [Theme](#theme)
     1. [Icon](#icon)
     1. [Terminal](#terminal)
-1. [测试 terminal 是否支持 256](#测试-terminal-是否支持-256)
 
-**目录 end**|_2020-01-30 12:28_|
+**目录 end**|_2020-04-10 17:32_|
 ****************************************
 
 # UI
@@ -40,7 +39,8 @@ categories:
 > [Font Configuration/Chinese (简体中文)](https://wiki.archlinux.org/index.php/Font_Configuration/Chinese_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))  
 > [参考博客: Fcitx (简体中文)](https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))  
 
-- 刷新字体缓存 `fc-cache -fv`  `~/.local/share/fonts`
+- 刷新字体缓存 `fc-cache -fv` 
+    - 对应于目录 `~/.local/share/fonts`
 
 *******************
 
@@ -65,13 +65,13 @@ categories:
 > 256 color
 
 ```sh
-# 测试 terminal 是否支持 256
-for i in {0..255} ; do
-    printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
-    if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
-        printf "\n";
-    fi
-done
+    # 测试 terminal 是否支持 256
+    for i in {0..255} ; do
+        printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
+        if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
+            printf "\n";
+        fi
+    done
 ```
 
 [Gihub: LS_COLORS](https://github.com/trapd00r/LS_COLORS)  

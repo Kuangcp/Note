@@ -19,7 +19,7 @@ categories:
     1. [IDEA](#idea)
     1. [终端](#终端)
 
-**目录 end**|_2019-11-25 22:54_|
+**目录 end**|_2020-04-10 17:32_|
 ****************************************
 # 字体
 > [Deepin wiki 字体](https://wiki.deepin.org/wiki/%E5%AD%97%E4%BD%93)  
@@ -76,6 +76,7 @@ categories:
 ## 编辑器
 - Fira Code Retina
 - IBM Plex Mono SemiBold [Download](https://fontmeme.com/fonts/ibm-plex-mono-font/)
+- [cascadia-code](https://github.com/microsoft/cascadia-code)
 
 ## IDEA
 - Roboto Mono Medium `Appearance custom font`
