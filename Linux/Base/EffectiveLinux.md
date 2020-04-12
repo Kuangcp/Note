@@ -30,7 +30,7 @@ categories:
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2020-03-23 12:10_|
+**目录 end**|_2020-04-12 23:01_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -64,7 +64,12 @@ categories:
 ## 效率工具
 > 提高工作和开发效率
 
-> `通知提醒` [Desktop notifications](https://wiki.archlinux.org/index.php/Desktop_notifications) notify-send
+> `通知提醒` 
+[Desktop notifications](https://wiki.archlinux.org/index.php/Desktop_notifications) | [xfce notify-send ](https://docs.xfce.org/apps/notifyd/preferences) 
+[Desktop Notifications Specification](https://developer.gnome.org/notification-spec/#protocol)  
+[Notification Development Guidelines](https://wiki.ubuntu.com/NotificationDevelopmentGuidelines)
+
+> [Github notify-send.sh](https://github.com/vlevit/notify-send.sh)
 
 ### 协作工具
 **synergy**
