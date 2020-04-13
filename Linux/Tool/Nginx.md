@@ -14,7 +14,7 @@ categories:
         1. [命令安装](#命令安装)
         1. [编译安装](#编译安装)
         1. [Docker安装并做反向代理](#docker安装并做反向代理)
-    1. [命令使用](#命令使用)
+    1. [命令参数](#命令参数)
 1. [配置使用](#配置使用)
     1. [本地静态文件Web服务器](#本地静态文件web服务器)
         1. [反向代理多个服务](#反向代理多个服务)
@@ -35,7 +35,7 @@ categories:
     1. [nuster](#nuster)
 1. [问题](#问题)
 
-**目录 end**|_2020-04-09 21:12_|
+**目录 end**|_2020-04-13 20:08_|
 ****************************************
 # Nginx
 
@@ -92,32 +92,13 @@ server {
 ```
 > [配置多域名反向代理](http://www.ttlsa.com/nginx/use-nginx-proxy/) `其实也就是多了 俩 upstream 监听80的server`
 
-## 命令使用
-`nginx -h 输出`
-```
-  nginx version: nginx/1.13.3
-  Usage: nginx [-?hvVtTq] [-s signal] [-c filename] [-p prefix] [-g directives]
-  Options:
-    -?,-h         : this help
-    -v            : show version and exit
-    -V            : show version and configure options then exit
-    -t            : test configuration and exit
-    -T            : test configuration, dump it and exit
-    -q            : suppress non-error messages during configuration testing
-    -s signal     : send signal to a master process: stop, quit, reopen, reload
-    -p prefix     : set prefix path (default: /usr/share/nginx/)
-    -c filename   : set configuration file (default: /etc/nginx/nginx.conf)
-    -g directives : set global directives out of configuration file
-```
+## 命令参数
 - `-s signal`
   - stop 停止
   - quit 退出
   - reopen 重新打开
   - reload 重载配置（修改配置文件常使用）
-- `-t` 测试配置
-  - 使用 指定配置文件，或者默认配置文件 进行测试
-
-***************
+- `-t` 测试配置文件
 
 # 配置使用
 > [Official Doc](https://www.nginx.com/resources/wiki/start/#pre-canned-configurations)  
