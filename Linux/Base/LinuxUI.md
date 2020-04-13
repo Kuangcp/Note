@@ -16,8 +16,9 @@ categories:
     1. [Theme](#theme)
     1. [Icon](#icon)
     1. [Terminal](#terminal)
+        1. [彩色输出](#彩色输出)
 
-**目录 end**|_2020-04-10 17:32_|
+**目录 end**|_2020-04-13 17:35_|
 ****************************************
 
 # UI
@@ -62,8 +63,22 @@ categories:
 1. Halo-icon-theme
 
 ## Terminal
-> 256 color
 
+### 彩色输出
+> [参考博客,比较详细](http://blog.csdn.net/magiclyj/article/details/72637666)
+
+```sh
+  red='\033[0;31m'
+  green='\033[0;32m'
+  yellow='\033[0;33m'
+  blue='\033[0;34m'
+  purple='\033[0;35m'
+  cyan='\033[0;36m'
+  white='\033[0;37m'
+  default='\033[0m'
+```
+
+> 256 color
 ```sh
     # 测试 terminal 是否支持 256
     for i in {0..255} ; do

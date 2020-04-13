@@ -15,7 +15,6 @@ categories:
     1. [输入输出](#输入输出)
         1. [输入](#输入)
         1. [输出](#输出)
-            1. [彩色输出](#彩色输出)
     1. [变量](#变量)
         1. [变量作用域](#变量作用域)
         1. [嵌套](#嵌套)
@@ -44,7 +43,7 @@ categories:
 1. [Tips](#tips)
     1. [常用代码片段](#常用代码片段)
 
-**目录 end**|_2020-01-31 12:34_|
+**目录 end**|_2020-04-13 17:35_|
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -90,20 +89,6 @@ done
 ```
 ### 输出
 echo  printf 
-
-#### 彩色输出
-> [参考博客,比较详细](http://blog.csdn.net/magiclyj/article/details/72637666)
-
-```sh
-  red='\033[0;31m'
-  green='\033[0;32m'
-  yellow='\033[0;33m'
-  blue='\033[0;34m'
-  purple='\033[0;35m'
-  cyan='\033[0;36m'
-  white='\033[0;37m'
-  default='\033[0m'
-```
 
 ******************
 ## 变量
@@ -375,8 +360,7 @@ _判断文件_
 # Tips
 ## 常用代码片段 
 
-1. 获取当前shell脚本的绝对路径 ```basepath=$(cd `dirname $0`; pwd)```
-1. 获取命名或函数标准输出 **`** 反引号包裹 或者 **$()**
+1. 获取命名或函数标准输出 **`** 反引号包裹命令 或者 **$()**
 1. 检查当前用户为Root用户
     ```sh
         if [ $(id -u) != "0" ]; then
