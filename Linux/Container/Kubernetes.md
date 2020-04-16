@@ -52,6 +52,10 @@ categories:
 > `deb http://apt.kubernetes.io/ kubernetes-xenial main` 虽然这才是官方源,奈何是Google服务器
 
 ## 简单使用
+> 大多数命令和Docker是类似的，只不过加上了namespace 的概念
+
+- kubectl logs --namespace namespace pod
+
 
 ## 容器编排
 
