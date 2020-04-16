@@ -438,18 +438,18 @@ _ss_
 - 重启服务 `sudo systemctl restart vsftpd.service`
 
 ```sh
-     ~$ sudo mkdir /home/common
-     ~$ sudo touch /home/common/welcome.txt
-     ~$ sudo useradd -d /home/common -s /bin/bash common
-     ~$ sudo passwd common
-     ~$ sudo rm /etc/pam.d/vsftpd
-     ~$ sudo usermod -s /sbin/nologin common
-     ~$ sudo chmod a+w /etc/vsftpd.conf
-     ~$ sudo vim /etc/vsftpd.conf
-     ~$ sudo vim /etc/vsftpd.user_list
-     ~$ sudo chmod a-w /home/common
-     ~$ sudo mkdir /home/common/public && sudo chmod 777 -R /home/common/public
-     ~$ sudo systemctl restart vsftpd.service
+    $ sudo mkdir /home/common
+    $ sudo touch /home/common/welcome.txt
+    $ sudo useradd -d /home/common -s /bin/bash common
+    $ sudo passwd common
+    $ sudo rm /etc/pam.d/vsftpd
+    $ sudo usermod -s /sbin/nologin common
+    $ sudo chmod a+w /etc/vsftpd.conf
+    $ sudo vim /etc/vsftpd.conf
+    $ sudo vim /etc/vsftpd.user_list
+    $ sudo chmod a-w /home/common
+    $ sudo mkdir /home/common/public && sudo chmod 777 -R /home/common/public
+    $ sudo systemctl restart vsftpd.service
 ```
 
 
