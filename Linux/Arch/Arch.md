@@ -93,3 +93,7 @@ pacman -Syyu
     1. 若报错 `modprobe: FATAL: Module usb-storage not found in directory /lib/modules/4.19**`
     1. 查看 `ls /lib/modules` 
     1. 内核滚动升级 grub 没有更新, `update-grub`即可
+
+ifconfig,route在net-tools中，nslookup,dig在dnsutils中，ftp,telnet等在inetutils中,ip命令在iproute2中。
+
+> sudo pacman -S net-tools dnsutils inetutils iproute2
