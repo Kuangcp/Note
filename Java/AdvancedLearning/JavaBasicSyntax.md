@@ -57,6 +57,7 @@ categories:
         1. [方法的传参方式](#方法的传参方式)
         1. [equals](#equals)
         1. [hashcode](#hashcode)
+        1. [finalize](#finalize)
     1. [JavaDoc](#javadoc)
 1. [抽象类](#抽象类)
 1. [对象](#对象)
@@ -74,7 +75,7 @@ categories:
     1. [try](#try)
     1. [transient](#transient)
 
-**目录 end**|_2020-01-30 12:28_|
+**目录 end**|_2020-04-22 10:14_|
 ****************************************
 # 基础语法
 
@@ -476,6 +477,10 @@ java.lnag.Object中对hashCode的约定：
 1. 在一个应用程序执行期间，如果一个对象的equals方法做比较所用到的信息没有被修改的话，则对该对象调用hashCode方法多次，它必须始终如一地返回同一个整数。
 2. 如果两个对象根据equals(Object o)方法是相等的，则调用这两个对象中任一对象的hashCode方法必须产生相同的整数结果。
 3. 如果两个对象根据equals(Object o)方法是不相等的，则调用这两个对象中任一个对象的hashCode方法，不要求产生不同的整数结果。但如果能不同，则可能提高散列表的性能。
+
+### finalize
+
+************************
 
 ## JavaDoc
 

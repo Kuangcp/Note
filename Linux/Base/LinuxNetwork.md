@@ -52,7 +52,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2020-03-14 22:04_|
+**目录 end**|_2020-04-22 10:14_|
 ****************************************
 # Linux网络管理
 ## DNS
@@ -430,12 +430,12 @@ _ss_
     # 使用utf8编码
     utf8_filesystem=YES
 ```
-- 新建文件 sudo touch /etc/vsftpd.user_list
-- 修改权限 `sudo chmod a+w /etc/vsftpd.user_list`
-- 添加用户名 `uftp`
-- 设置用户目录只读 `sudo chmod a-w /home/common`
-- 新建公共目录 设置权限 `mkdir /home/common/public && sudo chmod 777 -R /home/common/public`
-- 重启服务 `sudo systemctl restart vsftpd.service`
+1. 新建文件 sudo touch /etc/vsftpd.user_list
+1. 修改权限 `sudo chmod a+w /etc/vsftpd.user_list`
+1. 添加用户名 `uftp`
+1. 设置用户目录只读 `sudo chmod a-w /home/common`
+1. 新建公共目录 设置权限 `mkdir /home/common/public && sudo chmod 777 -R /home/common/public`
+1. 重启服务 `sudo systemctl restart vsftpd.service`
 
 ```sh
     $ sudo mkdir /home/common
@@ -451,7 +451,6 @@ _ss_
     $ sudo mkdir /home/common/public && sudo chmod 777 -R /home/common/public
     $ sudo systemctl restart vsftpd.service
 ```
-
 
 ************************
 
@@ -594,6 +593,7 @@ _有时候会发生这样的事情_
 
 1. 客户端 vnc-viewer(任意) 输入 ip 即可连接 
 
+> [noVNC](https://github.com/novnc/noVNC) `VNC client web application`
 
 ************************
 

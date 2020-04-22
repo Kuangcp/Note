@@ -46,7 +46,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2020-04-08 10:00_|
+**目录 end**|_2020-04-22 10:14_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -181,6 +181,7 @@ NIO 会经常使用, 提高性能
 - `-XX:CompressedClassSpaceSize=500m` 压缩类元空间大小 默认是1g
 - `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
     - 开启无需认证 非SSL的JMX端口
+- `-XX:+TraceClassUnloading -XX:+TraceClassLoading`
 
 **********************
 

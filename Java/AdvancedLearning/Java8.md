@@ -79,7 +79,7 @@ categories:
     1. [ZonedDateTime](#zoneddatetime)
     1. [Clock](#clock)
 
-**目录 end**|_2020-04-01 00:23_|
+**目录 end**|_2020-04-22 10:14_|
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -465,7 +465,6 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
     }
 ```
 ## 利用Lambda开发DSL框架
-- [ ] 可以将mythpoi改造一下
 
 **********************************
 
@@ -623,25 +622,25 @@ IntStream和LongStream 的 range() 或者 rangeClose() 方法能产生一个数�
 
 | 操作 | 类型 | 返回类型 | 参数 | 函数描述符 |
 |:----|:----|:----|:----|:----|
-| filter  | 无状态 | `Stream<T>` | `Predicate<T>` | T -> boolean |
-| peek | 无状态 | `Stream<T>` | `Consumer<T>` | T -> void |
-| unordered | 无状态 | `Stream<T>` |  | T -> boolean |
-| map/mapToXxx|无状态|`Stream<R>`|`Function<T, R>`| T -> R|
-| flatMap/flatMapToXxx|无状态|`Stream<R>`|`Function<T, Stream<R>>`| T -> `Stream<R>`|
-| sorted| 有状态 无界|`Stream<T>`|`Comparator<T>`|(T,T) -> int|
-| skip| 有状态 有界|`Stream<T>`|long||
-| limit| 有状态 有界|`Stream<T>`|long||
-| distinct| 有状态 无界|`Stream<T>`|||
+| filter                |无状态    |`Stream<T>` | `Predicate<T>` | T -> boolean |
+| peek                  |无状态    |`Stream<T>` | `Consumer<T>`  | T -> void |
+| unordered             |无状态    |`Stream<T>` |                | T -> boolean |
+| map/mapToXxx          |无状态    |`Stream<R>` |`Function<T, R>`| T -> R|
+| flatMap/flatMapToXxx  |无状态    |`Stream<R>` |`Function<T, Stream<R>>`| T -> `Stream<R>`|
+| sorted                |有状态 无界|`Stream<T>`| `Comparator<T>` |(T,T) -> int|
+| skip                  |有状态 有界|`Stream<T>`|long||
+| limit                 |有状态 有界|`Stream<T>`|long||
+| distinct              |有状态 无界|`Stream<T>`|||
 
 ### 终端操作
 > 非短路操作
 
 | 操作 | 类型 | 返回类型 | 参数 | 函数描述符 | 目的 | 
 |:----|:----|:----|:----|:----|:---|
-| forEach/forEachOrdered |无状态|void|``Consumer<T>``| T -> void| 消费流中的元素 |
-|collect|无状态|R|`Collector<T, A, R>`||
-|reduce|有状态 有界|`Optional<T>`|`BinaryOprator<T>`|(T, T) -> T| 把流归约成一个集合，比如List、Map甚至是Integer|
-|count|无状态|long||| 返回流中元素的个数|
+| forEach/forEachOrdered |无状态     |void|``Consumer<T>``| T -> void| 消费流中的元素 |
+|collect                 |无状态     |R|`Collector<T, A, R>`||
+|reduce                  |有状态 有界 |`Optional<T>`|`BinaryOprator<T>`|(T, T) -> T| 把流归约成一个集合，比如List、Map甚至是Integer|
+|count                   |无状态     |long||| 返回流中元素的个数|
 | toArray ||
 | min/max/count ||
 

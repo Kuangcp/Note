@@ -15,14 +15,15 @@ categories:
             1. [4个生命周期在注解式端点中的事件处理](#4个生命周期在注解式端点中的事件处理)
             1. [服务端推送消息](#服务端推送消息)
         1. [Spring-WebSocket](#spring-websocket)
+        1. [Undertow](#undertow)
     1. [客户端](#客户端)
         1. [Java](#java)
         1. [JS](#js)
 
-**目录 end**|_2020-03-14 22:04_|
+**目录 end**|_2020-04-22 10:14_|
 ****************************************
 #  简单 SpringBoot Websocket 示例
-
+JSR-356
 
 ## WebSocket服务端
 
@@ -148,6 +149,10 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 }
 ```
 1. 推送消息 session.sendMessage(new TextMessage("text"));
+
+### Undertow
+
+[doc](http://undertow.io/undertow-docs/undertow-docs-2.0.0/index.html#websockets)
 
 ************************
 

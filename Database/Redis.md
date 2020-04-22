@@ -45,7 +45,7 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2020-03-23 12:10_|
+**目录 end**|_2020-04-22 10:14_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -109,8 +109,15 @@ categories:
 ## String
 > 字符串就是字节组成的序列 可以放字节串，整数，浮点数
 
-- `set key newval nx `存在则set失败
-- `set key newval xx `不存在则set失败
+> `SET key value [EX seconds] [PX millisecounds] [NX|XX]`
+
+- EX seconds:设置键的过期时间为second秒
+- PX millisecounds:设置键的过期时间为millisecounds 毫秒
+- NX:只在键不存在的时候,才对键进行设置操作
+- XX:只在键已经存在的时候,才对键进行设置操作
+
+SET操作成功后,返回的是OK,失败返回NIL
+
 - `incr incrby decr decrby`  只要存入的String能被解析为数值,就能执行这些命令: 递增或者递减
 - `incr` 是原子操作即并发的情况下不会有脏读(可用于主键生成策略)
 - `getset key val` get旧值并且set新值
@@ -121,7 +128,6 @@ categories:
 - `del key` 返回1被删除，0 key不存在
 - `type key` 返回值的类型
 - `expire key secondes` 设置或改变超时时间，精度是秒或毫秒
-	- `set key val ex secondes` set时设置超时时间
 - `persist key` 去除超时时间
 - `ttl key` 查看剩余存活时间 -1表示永久 -2表示没有该key
 
