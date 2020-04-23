@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Tomcat](#tomcat)
     1. [原理](#原理)
     1. [目录结构](#目录结构)
@@ -33,7 +33,10 @@ categories:
 1. [优化](#优化)
     1. [参数优化](#参数优化)
     1. [Tomcat僵死问题](#tomcat僵死问题)
-1. [Tomcat和Jetty](#tomcat和jetty)
+1. [同类项目](#同类项目)
+    1. [Jetty](#jetty)
+        1. [配置](#配置)
+    1. [Undertow](#undertow)
 1. [Tips](#tips)
 
 **目录 end**|_2020-04-23 18:33_|
@@ -247,10 +250,23 @@ Tomcat 是提供一个支持 Servlet 和 JSP 运行的容器。Servlet 和 JSP �
 - [ ] 分析各种可能的原因
 
 *************************
-# Tomcat和Jetty
-> [参考博客: Jetty和Tomcat的选择：按场景而定](http://www.open-open.com/lib/view/open1322622094390.html)
-
+# 同类项目
+## Jetty
 - [Jetty官网](http://www.eclipse.org/jetty/) 
+
+[参考博客: Jetty使用教程（一）——开始使用Jetty ](http://www.cnblogs.com/yiwangzhibujian/p/5832597.html)
+
+### 配置
+_自身log配置_
+> [相关](http://zetcode.com/java/jetty/logging/)
+_resources/jetty-logging.properties_ 内容如下开启DEBUG
+```conf
+    org.eclipse.jetty.util.log.class=org.eclipse.jetty.util.log.StrErrLog
+    org.eclipse.jetty.LEVEL=DEBUG
+    jetty.logs=logs
+```
+
+> [参考博客: Jetty和Tomcat的选择：按场景而定](http://www.open-open.com/lib/view/open1322622094390.html)
 
 ```
     一个简单项目, 就是index.jsp 里面放了个 Hello 字符串
@@ -261,6 +277,11 @@ Tomcat 是提供一个支持 Servlet 和 JSP 运行的容器。Servlet 和 JSP �
     Tomcat涨到 460M 第二次480M  连续5次后上660M了 10次900M 最长时间时而220ms 时而 70ms
     Jetty涨到770M 第二次压测直接上900M了 十次后也是900M 最长响应时间稳定在 220ms
 ```
+
+## Undertow
+> [Official Site](http://undertow.io/)  
+
+************************
 
 #  Tips
 - servletContextLisner 和Spring环境的加载顺序要注意
