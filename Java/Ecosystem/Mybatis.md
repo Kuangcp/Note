@@ -22,10 +22,10 @@ categories:
             1. [if 判断语句:](#if-判断语句)
             1. [set 方便书写update语句](#set-方便书写update语句)
             1. [choose 相当于switch语句](#choose-相当于switch语句)
-                1. [$ 和  的区别：](#$-和--的区别)
+                1. [$ 和  的区别](#$-和--的区别)
 1. [Tips](#tips)
 
-**目录 end**|_2020-02-24 23:39_|
+**目录 end**|_2020-04-23 18:33_|
 ****************************************
 # Mybatis
 > 一个灵活的数据库中间件框架
@@ -226,7 +226,7 @@ categories:
 #### choose 相当于switch语句
 - `<choose><when test=""></when></choose>`
 
-#### $ 和 # 的区别：
+#### $ 和 # 的区别
 - \$ 会有SQL注入的漏洞，#则没有
 - 使用$ 是SQL进行String的拼接，使用#是preparstatement的预处理然后注入
 - 使用#的时候出现这个问题
