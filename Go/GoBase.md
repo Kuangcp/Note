@@ -9,14 +9,14 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Go](#go)
     1. [Modules](#modules)
         1. [配置](#配置)
     1. [数据类型](#数据类型)
-        1. [基本类型](#基本类型)
-            1. [int](#int)
-            1. [int64](#int64)
+        1. [string](#string)
+        1. [int](#int)
+        1. [int64](#int64)
         1. [Array](#array)
         1. [Slice](#slice)
         1. [Map](#map)
@@ -34,7 +34,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2020-03-22 12:35_|
+**目录 end**|_2020-04-25 18:17_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -68,9 +68,11 @@ _有关类型后置_
 > [螺旋形（C/C++）和顺序（Go）的声明语法](https://cxwangyi.wordpress.com/2011/03/14/%E8%9E%BA%E6%97%8B%E5%BD%A2%EF%BC%88cc%EF%BC%89%E5%92%8C%E9%A1%BA%E5%BA%8F%EF%BC%88go%EF%BC%89%E7%9A%84%E5%A3%B0%E6%98%8E%E8%AF%AD%E6%B3%95/)
 > [Why do a lot of programming languages put the type *after* the variable name?](https://stackoverflow.com/questions/1712274/why-do-a-lot-of-programming-languages-put-the-type-after-the-variable-name)
 
-### 基本类型
-#### int 
-#### int64
+### string
+strings 包 提供了常用字符串API
+
+### int 
+### int64
 
 ```go
     // string到int

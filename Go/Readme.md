@@ -6,17 +6,17 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Golang](#golang)
     1. [社区](#社区)
     1. [教程](#教程)
     1. [书籍](#书籍)
     1. [安装](#安装)
         1. [Docker](#docker)
-    1. [环境变量解释](#环境变量解释)
-    1. [开发环境搭建](#开发环境搭建)
+1. [环境变量解释](#环境变量解释)
+1. [开发环境搭建](#开发环境搭建)
 
-**目录 end**|_2020-03-22 12:40_|
+**目录 end**|_2020-04-25 18:17_|
 ****************************************
 # Golang
 
@@ -99,7 +99,7 @@ caddy beego martini cayley nsq codis delve cobra shadowsocks-go phcolus traefik
 
 *****************************************
 
-## 环境变量解释
+# 环境变量解释
 > [	关于GOROOT、GOPATH、GOBIN、project目录](https://blog.csdn.net/Alsmile/article/details/48290223)
 > [GOPATH 深度解析 ](https://studygolang.com/articles/3493)
 
@@ -118,7 +118,7 @@ caddy beego martini cayley nsq codis delve cobra shadowsocks-go phcolus traefik
 
 ********************************
 
-## 开发环境搭建
+# 开发环境搭建
 > [Github:Golang](https://github.com/golang) | [基础学习项目](https://github.com/Kuangcp/GoBase)
 
 入门时使用 VSCode 是比较方便的, VSCode 会推荐我们安装如下工具
