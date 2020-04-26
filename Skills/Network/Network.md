@@ -9,7 +9,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [网络](#网络)
     1. [相关书籍和资源](#相关书籍和资源)
 1. [网络分层架构](#网络分层架构)
@@ -36,6 +36,7 @@ categories:
         1. [Proxy](#proxy)
             1. [PAC](#pac)
         1. [VPN](#vpn)
+        1. [SSDP](#ssdp)
 1. [Socket](#socket)
 1. [单播 组播 广播](#单播-组播-广播)
     1. [单播](#单播)
@@ -55,7 +56,7 @@ categories:
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2020-04-22 10:14_|
+**目录 end**|_2020-04-26 21:27_|
 ****************************************
 # 网络
 
@@ -339,7 +340,10 @@ function FindProxyForURL(url, host) {
 >  Virtual Private Network (VPN) 
 
 ************************
+### SSDP
+> Simple Service Discovery Protocol
 
+************************
 
 # Socket
 > [参考博客: TCP/IP、Http、Socket的区别](https://blog.csdn.net/Pk_zsq/article/details/6087367)  

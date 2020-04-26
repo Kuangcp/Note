@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [HTTP](#http)
     1. [请求方法](#请求方法)
     1. [HTTP的返回码](#http的返回码)
@@ -25,7 +25,7 @@ categories:
     1. [HSTS](#hsts)
 1. [CORS](#cors)
 
-**目录 end**|_2020-03-27 15:27_|
+**目录 end**|_2020-04-26 21:27_|
 ****************************************
 # HTTP
 > HyperText Transfer Protocol 超文本传输协议 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -129,6 +129,7 @@ HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2
 > [参考博客: 面试官问：你了解HTTP2.0吗？](https://juejin.im/post/5c0ce870f265da61171c8c66)
 > [参考博客: HTTP/2 幕后原理](https://www.ibm.com/developerworks/cn/web/wa-http2-under-the-hood/index.html)
 > [参考博客: HTTP/2](http://www.hollischuang.com/archives/2066)
+> [参考博客: HTTP/2 服务器推送（Server Push）教程](http://www.ruanyifeng.com/blog/2018/03/http2_server_push.html)  
 
 > 新概念： 
 1. 流（Stream）：已建立的TCP连接上的双向字节流，可以承载一个或多个消息。 一个TCP连接上可以有任意数量的流。
@@ -154,12 +155,19 @@ HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2
     - 服务器端推送使得服务器可以预测客户端需要的资源，主动推送到客户端。
     - 例如：客户端请求index.html，服务器端能够额外推送script.js和style.css。
     - 实现原理就是客户端发出页面请求时，服务器端能够分析这个页面所依赖的其他资源，主动推送到客户端的缓存，当客户端收到原始网页的请求时，它需要的资源已经位于缓存。
+    - [Github: http2-chat-example](https://github.com/ebakhtarov/http2-chat-example )
 
 > HTTP 2.0 才是正常的 ISO 七层协议的实现，增加了第六层表示层  
-> 如果一开始就接触 HTTP 2.0，也就不会有所谓的“粘包”问题了，因为TCP发送数据时，数据本身就是结构化数据，实现了自我的边界定位！
+> 如果一开始就接触 HTTP 2.0，也就不会有所谓的“粘包”问题了，因为TCP发送数据时，数据本身就是结构化数据，实现了自我的边界定位
+
+Java: JDK9 才正式支持
+
+************************
 
 ## HTTP/3
 > [wiki: HTTP/3](https://en.wikipedia.org/wiki/HTTP/3)
+
+************************
 
 # HTTPS
 > [SSL & TLS](/Skills/Network/WebSecurity.md#ssl-tls)

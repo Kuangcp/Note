@@ -9,7 +9,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Mysql](#mysql)
     1. [规约](#规约)
 1. [安装](#安装)
@@ -79,7 +79,7 @@ categories:
         1. [授权](#授权)
 1. [查询](#查询)
 
-**目录 end**|_2020-03-23 12:10_|
+**目录 end**|_2020-04-26 21:27_|
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -189,6 +189,7 @@ _重命名表格_ `RENAME TABLE old TO new `
 ### 增删字段
 - 增加字段 `alter table name add field1 int, field2 varchar(20);`
 - 删除字段 `alter table name drop column field1, drop column field2;`
+- 重命名字段 `alter table name change old_name new_name bigint;`
 
 ## 索引
 > [Official Doc](https://dev.mysql.com/doc/refman/5.7/en/optimization-indexes.html)  
