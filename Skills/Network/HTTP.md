@@ -12,8 +12,9 @@ categories:
 1. [HTTP](#http)
     1. [请求方法](#请求方法)
     1. [HTTP的返回码](#http的返回码)
-    1. [HTTP的缓存](#http的缓存)
+    1. [HTTP 缓存](#http-缓存)
     1. [Session和Cookie](#session和cookie)
+        1. [SessionId](#sessionid)
 1. [HTTP各个实现版本](#http各个实现版本)
     1. [HTTP/0.9](#http09)
     1. [HTTP/1.0](#http10)
@@ -25,12 +26,12 @@ categories:
     1. [HSTS](#hsts)
 1. [CORS](#cors)
 
-**目录 end**|_2020-04-26 21:27_|
+**目录 end**|_2020-04-27 23:40_|
 ****************************************
 # HTTP
 > HyperText Transfer Protocol 超文本传输协议 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
 
-> [参考博客: HTTP详解](https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650123318&idx=1&sn=a0b20cfeda4bf0445de8c981533aca1b&chksm=f36bb117c41c3801a951407743aa9e850aa2d5e834fb87ecdc472c871b74d60254fe7d03cd4d&mpshare=1&scene=1&srcid=&pass_ticket=C2ojewcjO3f%2B94ARPux0b29jNh%2BTyGIKOzdhalFniunqbWndDpBOllbB79D9AqM0#rd)
+> [参考: HTTP详解](https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650123318&idx=1&sn=a0b20cfeda4bf0445de8c981533aca1b&chksm=f36bb117c41c3801a951407743aa9e850aa2d5e834fb87ecdc472c871b74d60254fe7d03cd4d&mpshare=1&scene=1&srcid=&pass_ticket=C2ojewcjO3f%2B94ARPux0b29jNh%2BTyGIKOzdhalFniunqbWndDpBOllbB79D9AqM0#rd)
 
 - 其实HTTP协议主要就是用来进行客户端和服务器之间进行通信的标准协议。
 - HTTP主要规定了客户端如何与服务器建立链接、客户端如何从服务器请求数据、服务器如何响应请求，以及最后连接如何关闭
@@ -64,11 +65,16 @@ categories:
 - [ ] Header中一些主要属性的含义和使用场景
 
 ## HTTP的返回码
-> [完整列表 ](/FrontEnd/ResponseCode.md)
+> [HTTP 状态码 完整列表](/FrontEnd/ResponseCode.md)
 
-## HTTP的缓存
+## HTTP 缓存
 
 ## Session和Cookie
+
+### SessionId 
+- [ ] Session 创建过程 生命周期
+
+************************
 
 # HTTP各个实现版本
 HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2
@@ -126,12 +132,12 @@ HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2
 > HTTP/2 是 HTTP 协议自 1999 年 HTTP 1.1 发布后的首个更新，主要基于 SPDY 协议(2012年google提出)  
 > [wiki HTTP/2](https://en.wikipedia.org/wiki/HTTP/2)
 
-> [参考博客: 面试官问：你了解HTTP2.0吗？](https://juejin.im/post/5c0ce870f265da61171c8c66)
-> [参考博客: HTTP/2 幕后原理](https://www.ibm.com/developerworks/cn/web/wa-http2-under-the-hood/index.html)
-> [参考博客: HTTP/2](http://www.hollischuang.com/archives/2066)
-> [参考博客: HTTP/2 服务器推送（Server Push）教程](http://www.ruanyifeng.com/blog/2018/03/http2_server_push.html)  
+> [参考: 面试官问：你了解HTTP2.0吗？](https://juejin.im/post/5c0ce870f265da61171c8c66)
+> [参考: HTTP/2 幕后原理](https://www.ibm.com/developerworks/cn/web/wa-http2-under-the-hood/index.html)
+> [参考: HTTP/2](http://www.hollischuang.com/archives/2066)
+> [参考: HTTP/2 服务器推送（Server Push）教程](http://www.ruanyifeng.com/blog/2018/03/http2_server_push.html)  
 
-> 新概念： 
+> 新概念
 1. 流（Stream）：已建立的TCP连接上的双向字节流，可以承载一个或多个消息。 一个TCP连接上可以有任意数量的流。
 1. 消息（Message）：一个完整的HTTP请求或响应，由一个或多个帧组成。特定消息的帧在同一个流上发送，这意味着一个HTTP请求或响应只能在一个流上发送。
 1. 帧（Frame）：通信的基本单位。
@@ -166,6 +172,12 @@ Java: JDK9 才正式支持
 
 ## HTTP/3
 > [wiki: HTTP/3](https://en.wikipedia.org/wiki/HTTP/3)
+
+> [参考: HTTP3.0(QUIC的实现机制)](https://www.cnblogs.com/chenjinxinlove/p/10104854.html)  
+> [参考: 一文看完 HTTP3 的演化历程](https://www.infoq.cn/article/IgME_4ebP3d46m3tHbaT)  
+> [参考: HTTP3](https://http3-explained.haxx.se/zh/)  
+
+HTTP/3 只是一种基于 IETF QUIC（一种基于 UDP 的多路复用和安全传输）的新 HTTP 语法。
 
 ************************
 

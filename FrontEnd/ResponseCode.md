@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [HTTP状态码大全](#http状态码大全)
     1. [标准扩展码](#标准扩展码)
         1. [1xx-Informational-信息化](#1xx-informational-信息化)
@@ -21,11 +21,11 @@ categories:
     1. [NGINX-扩展状态码](#nginx-扩展状态码)
     1. [七牛扩展状态码](#七牛扩展状态码)
 
-**目录 end**|_2020-03-27 15:27_|
+**目录 end**|_2020-04-27 23:40_|
 ****************************************
 # HTTP状态码大全
 
-这个状态码本质上是一个行业标准, 开发中是可以不按标准来的
+注意: 这个状态码本质上是一个行业标准, 开发中是可以不按标准来的, 在某公司遇到过 后端Tomcat报错5xx, 应用里面过滤器硬改成404 的操作
 
 > [wiki: http status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)  
 > [MDN: HTTP 响应状态代码](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)
