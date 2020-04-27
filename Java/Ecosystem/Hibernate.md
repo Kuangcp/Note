@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Hibernate](#hibernate)
     1. [Hibernate基础配置](#hibernate基础配置)
         1. [JDBC和Hibernate比较](#jdbc和hibernate比较)
@@ -39,7 +39,7 @@ categories:
     1. [could not find a getter](#could-not-find-a-getter)
     1. [个人总结](#个人总结)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Hibernate
 ## Hibernate基础配置
@@ -269,7 +269,7 @@ sessionFactory实例化，高位就会加一，生成算法是：hi*(max lo +1)+
     * 游离态delete后就成了删除态
     * 持久态delete后就成了删除态
 
-> [参考博客: merge attachDirty attachClean用法](http://www.cnblogs.com/zhangzhangkai/p/3434491.html)
+> [参考: merge attachDirty attachClean用法](http://www.cnblogs.com/zhangzhangkai/p/3434491.html)
 
 - [ ] 分析: JDK源码 DefaultMergeEventListener中的onMerge方法
 

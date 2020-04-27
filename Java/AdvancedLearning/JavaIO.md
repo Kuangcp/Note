@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Java中的IO](#java中的io)
     1. [IO 简史](#io-简史)
         1. [BIO](#bio)
@@ -25,14 +25,14 @@ categories:
 1. [NIO](#nio)
     1. [Buffer](#buffer)
 
-**目录 end**|_2019-11-17 21:38_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Java中的IO
 > [操作系统中的IO模型](/Skills/CS/IO.md)  
 
 > [Github: IO](https://github.com/Kuangcp/JavaBase/tree/io) | [Github Socket NIO](https://github.com/Kuangcp/JavaBase/tree/master/java-network/src/main/java/com/github/kuangcp/nio)  
 
-> [参考博客: 五种IO模型](https://www.jianshu.com/p/6a6845464770)  
+> [参考: 五种IO模型](https://www.jianshu.com/p/6a6845464770)  
 
 ## IO 简史
 > [BIO NIO AIO演变](http://www.cnblogs.com/itdragon/p/8337234.html)
@@ -93,7 +93,7 @@ categories:
 
 ByteArrayOutputStream, FileOutputStream, FilterOutputStream, ObjectOutputStream, OutputStream, PipedOutputStream
 
-> [参考博客:  FilterInputStream 与 装饰器模式](https://blog.csdn.net/zhao123h/article/details/52826682)
+> [参考:  FilterInputStream 与 装饰器模式](https://blog.csdn.net/zhao123h/article/details/52826682)
 
 - FilterInputStream
     - DataInputStream
@@ -126,7 +126,7 @@ Reader类的核心就是read()这个方法，由于这里直接操作InputStream
 
 ## 应用
 ### 文件IO
-> [参考博客: Read a text file from Java classpath](https://www.java-success.com/read-a-text-file-from-java-classpath/)  
+> [参考: Read a text file from Java classpath](https://www.java-success.com/read-a-text-file-from-java-classpath/)  
 > [Java：利用I/O流读取文件内容](https://blog.csdn.net/xuehyunyu/article/details/77873420)
 
 #### 读取配置文件
@@ -162,7 +162,7 @@ _读取resource目录下配置文件_
 ### 网络IO
 > [参考博客:网络IO之阻塞、非阻塞、同步、异步总结 ](https://www.cnblogs.com/Anker/p/3254269.html)
 
-> [参考博客: Java IO: 网络](http://ifeve.com/java-io-network/)
+> [参考: Java IO: 网络](http://ifeve.com/java-io-network/)
 当两个进程之间建立了网络连接之后，他们通信的方式如同操作文件一样：利用InputStream读取数据，利用OutputStream写入数据。换句话来说，Java网络API用来在不同进程之间建立网络连接，而Java IO则用来在建立了连接之后的进程之间交换数据。
 
 **********************************

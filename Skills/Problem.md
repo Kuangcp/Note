@@ -6,7 +6,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [问题及解决方案](#问题及解决方案)
     1. [Linux](#linux)
     1. [JDK](#jdk)
@@ -17,7 +17,7 @@ categories:
     1. [Firefox](#firefox)
         1. [SSL_ERROR_RX_RECORD_TOO_LONG](#ssl_error_rx_record_too_long)
 
-**目录 end**|_2020-01-31 12:34_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 问题及解决方案
 ## Linux 
@@ -26,9 +26,9 @@ categories:
 ## JDK
 > `Picked up _JAVA_OPTIONS: ` 例如这样的提示, 由于设置了 _JAVA_OPTIONS 或者 JAVA_OPTIONS 就一定会输出这个提示
 
-- [参考博客: Disabling Java_Options On Java Console Apps in Linux](https://nixmash.com/post/disabling-java_options-on-java-console-apps-in-linux)
-- [参考博客: Suppressing the “Picked up _JAVA_OPTIONS” message](https://superuser.com/questions/585695/suppressing-the-picked-up-java-options-message)
-- [参考博客: 理解环境变量 JAVA_TOOL_OPTIONS](https://segmentfault.com/a/1190000008545160)
+- [参考: Disabling Java_Options On Java Console Apps in Linux](https://nixmash.com/post/disabling-java_options-on-java-console-apps-in-linux)
+- [参考: Suppressing the “Picked up _JAVA_OPTIONS” message](https://superuser.com/questions/585695/suppressing-the-picked-up-java-options-message)
+- [参考: 理解环境变量 JAVA_TOOL_OPTIONS](https://segmentfault.com/a/1190000008545160)
 
 但是又不能直接 unset, 这个变量似乎是用来解决字体锯齿问题的, 所以需要如下配置
 ```sh

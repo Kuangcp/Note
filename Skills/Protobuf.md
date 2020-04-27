@@ -6,13 +6,13 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Protobuf](#protobuf)
     1. [proto文件定义](#proto文件定义)
     1. [Linux上安装Protobuf](#linux上安装protobuf)
     1. [实现原理](#实现原理)
 
-**目录 end**|_2020-03-31 12:28_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Protobuf
 > Google开源的序列化框架 全称 `Google Protocol Buffers` | [Github : Protobuf](https://github.com/google/protobuf)  
@@ -33,9 +33,9 @@ categories:
 
 > protobuf 只是编解码的工具, 本身不支持读半包, 不能处理 粘包 拆包问题
 
-> [参考博客: Protobuf语言指南](http://www.cnblogs.com/dkblog/archive/2012/03/27/2419010.html) `较为详细, 只是版本有点旧`  
-> [参考博客: 数据交换利器 Protobuf 技术浅析](http://blog.jobbole.com/107405/)  
-> [参考博客: Protobuf3语言指南](https://blog.csdn.net/u011518120/article/details/54604615)  
+> [参考: Protobuf语言指南](http://www.cnblogs.com/dkblog/archive/2012/03/27/2419010.html) `较为详细, 只是版本有点旧`  
+> [参考: 数据交换利器 Protobuf 技术浅析](http://blog.jobbole.com/107405/)  
+> [参考: Protobuf3语言指南](https://blog.csdn.net/u011518120/article/details/54604615)  
 
 ## proto文件定义
 
@@ -125,7 +125,7 @@ _复杂类型_
 ************************
 
 ## Linux上安装Protobuf
-> [参考博客: linux下Google的Protobuf安装及使用笔记](http://www.cnblogs.com/brainy/archive/2012/05/13/2498671.html) | [参考:proto buffer 安装 及 调用](http://dofound.blog.163.com/blog/static/1711432462013524111644655/)
+> [参考: linux下Google的Protobuf安装及使用笔记](http://www.cnblogs.com/brainy/archive/2012/05/13/2498671.html) | [参考:proto buffer 安装 及 调用](http://dofound.blog.163.com/blog/static/1711432462013524111644655/)
 
 - `下载二进制(推荐)` [各个版本,平台的 protoc](https://repo1.maven.org/maven2/com/google/protobuf/protoc/)
 
@@ -143,6 +143,6 @@ _复杂类型_
 ************************
 
 ## 实现原理
-> [参考博客: 图解Protobuf编码](https://blog.csdn.net/zxhoo/article/details/53228303)  
-> [参考博客: protobuf 编码实现解析（java）](https://www.cnblogs.com/onlysun/p/4574850.html)  
+> [参考: 图解Protobuf编码](https://blog.csdn.net/zxhoo/article/details/53228303)  
+> [参考: protobuf 编码实现解析（java）](https://www.cnblogs.com/onlysun/p/4574850.html)  
 > [Google Protocol Buffer 的使用和原理](https://www.ibm.com/developerworks/cn/linux/l-cn-gpb/index.html) `C++ 但是原理差不多`  

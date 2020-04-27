@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Kubernetes](#kubernetes)
     1. [相关博客](#相关博客)
     1. [安装](#安装)
@@ -16,7 +16,7 @@ categories:
     1. [容器编排](#容器编排)
 1. [Kubeless](#kubeless)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Kubernetes
 > 又称 k8s [Official site](https://kubernetes.io/) | [Github:](https://github.com/kubernetes/kubernetes)
@@ -26,15 +26,15 @@ categories:
 > [Kubernetes 学习笔记 ](http://wdxtub.com/2017/06/05/k8s-note/)
 > [Kubernetes中文社区](https://www.kubernetes.org.cn/doc-45)  
 
-> [参考博客: Kubernetes会不会被自身的复杂性压垮？](http://www.infoq.com/cn/articles/will-kubernetes-collapse-under-the-weight-of-its-complexity)  
-> [参考博客: 一文带你看透kubernetes 容器编排系统](https://my.oschina.net/qcloudcommunity/blog/2998211)
+> [参考: Kubernetes会不会被自身的复杂性压垮？](http://www.infoq.com/cn/articles/will-kubernetes-collapse-under-the-weight-of-its-complexity)  
+> [参考: 一文带你看透kubernetes 容器编排系统](https://my.oschina.net/qcloudcommunity/blog/2998211)
 
 ## 安装
 > [official doc](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-> [参考博客: kubeadm 搭建 kubernetes 集群](https://mritd.me/2016/10/29/set-up-kubernetes-cluster-by-kubeadm/)  
-> [参考博客: Kubernetes国内镜像、下载安装包和拉取gcr.io镜像](https://blog.csdn.net/nklinsirui/article/details/80581286)  
-> [参考博客: 国内服务器安装kubernetes一路坑，求大神指点 ](http://dockone.io/question/1225#!answer_form)  
+> [参考: kubeadm 搭建 kubernetes 集群](https://mritd.me/2016/10/29/set-up-kubernetes-cluster-by-kubeadm/)  
+> [参考: Kubernetes国内镜像、下载安装包和拉取gcr.io镜像](https://blog.csdn.net/nklinsirui/article/details/80581286)  
+> [参考: 国内服务器安装kubernetes一路坑，求大神指点 ](http://dockone.io/question/1225#!answer_form)  
 
 - **注意** Deepin上不要安装 kubernetes-client 这个是 1.7 版本, 类似于 docker.io 这样的老旧版本
 

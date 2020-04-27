@@ -39,7 +39,7 @@ categories:
     1. [Undertow](#undertow)
 1. [Tips](#tips)
 
-**目录 end**|_2020-04-23 18:33_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Tomcat
 > [官方网站](http://tomcat.apache.org/)
@@ -180,7 +180,7 @@ categories:
 > 默认http1.1是nio, 还有aio ajp bio
 
 ## Tomcat Native
-> [官方文档](http://tomcat.apache.org/native-doc/) | [参考博客: tomcat安装与配置native,apr](https://blog.csdn.net/shangruo/article/details/52776212)
+> [官方文档](http://tomcat.apache.org/native-doc/) | [参考: tomcat安装与配置native,apr](https://blog.csdn.net/shangruo/article/details/52776212)
 
 
 *************************
@@ -254,7 +254,7 @@ Tomcat 是提供一个支持 Servlet 和 JSP 运行的容器。Servlet 和 JSP �
 ## Jetty
 - [Jetty官网](http://www.eclipse.org/jetty/) 
 
-[参考博客: Jetty使用教程（一）——开始使用Jetty ](http://www.cnblogs.com/yiwangzhibujian/p/5832597.html)
+[参考: Jetty使用教程（一）——开始使用Jetty ](http://www.cnblogs.com/yiwangzhibujian/p/5832597.html)
 
 ### 配置
 _自身log配置_
@@ -266,7 +266,7 @@ _resources/jetty-logging.properties_ 内容如下开启DEBUG
     jetty.logs=logs
 ```
 
-> [参考博客: Jetty和Tomcat的选择：按场景而定](http://www.open-open.com/lib/view/open1322622094390.html)
+> [参考: Jetty和Tomcat的选择：按场景而定](http://www.open-open.com/lib/view/open1322622094390.html)
 
 ```
     一个简单项目, 就是index.jsp 里面放了个 Hello 字符串

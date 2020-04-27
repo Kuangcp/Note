@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Gradle进阶知识](#gradle进阶知识)
     1. [Gradle 使用和配置](#gradle-使用和配置)
         1. [主配置目录](#主配置目录)
@@ -35,7 +35,7 @@ categories:
         1. [下载安装和配置](#下载安装和配置)
 1. [发布自己的构件](#发布自己的构件)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Gradle进阶知识
 > [gradle api ](https://docs.gradle.org/4.9/dsl/org.gradle.api.Project.html) `所有{}结构 以及配置`

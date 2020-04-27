@@ -10,7 +10,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [如何使用Junit](#如何使用junit)
     1. [引入依赖](#引入依赖)
         1. [Maven项目](#maven项目)
@@ -26,7 +26,7 @@ categories:
 1. [Junit源码解析](#junit源码解析)
 1. [如何使用JUnit5](#如何使用junit5)
 
-**目录 end**|_2020-03-27 15:34_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 如何使用Junit
 > [Official doc: 4.12](https://github.com/junit-team/junit4/blob/master/doc/ReleaseNotes4.12.md)
@@ -95,7 +95,7 @@ _一个基本的JUnit测试_
 *****************
 
 ## 常用注解
-- [参考博客: JUnit4使用教程-快速入门](http://blog.csdn.net/chenleixing/article/details/44259453) | [参考博客: JUnit4单元测试入门教程](https://www.jianshu.com/p/7088822e21a3):
+- [参考: JUnit4使用教程-快速入门](http://blog.csdn.net/chenleixing/article/details/44259453) | [参考: JUnit4单元测试入门教程](https://www.jianshu.com/p/7088822e21a3):
 
 1. @Test : 测试方法，测试程序会运行的方法,可设置参数
     - (expected=XXException.class) 期望该测试方法应该抛出某异常
@@ -165,7 +165,7 @@ public class AssertTest {
 
 ### assertThat
 
-> [参考博客: assertThat详解](http://www.cnblogs.com/Firefly727/archive/2011/07/05/2098625.html)
+> [参考: assertThat详解](http://www.cnblogs.com/Firefly727/archive/2011/07/05/2098625.html)
 
 **********************************
 ## 参数化测试
@@ -252,6 +252,6 @@ public class AssertTest {
 > [Official doc](http://junit.org/junit5/docs/current/user-guide/)
 
 > [参考博客](http://blog.csdn.net/bitgnu/article/details/78715836)
-> [参考博客: JUnit 5 新特性](https://www.ibm.com/developerworks/cn/java/j-junit5/index.html)
+> [参考: JUnit 5 新特性](https://www.ibm.com/developerworks/cn/java/j-junit5/index.html)
 
-> [参考博客: JUnit5用户指南](http://junit5.doczh.cn/overview/)
+> [参考: JUnit5用户指南](http://junit5.doczh.cn/overview/)

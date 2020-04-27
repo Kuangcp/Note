@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [VirtualBox](#virtualbox)
     1. [网络管理](#网络管理)
     1. [硬盘管理](#硬盘管理)
@@ -20,7 +20,7 @@ categories:
     1. [安装 Android](#安装-android)
         1. [Android-x86](#android-x86)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # VirtualBox
 
@@ -52,11 +52,11 @@ categories:
 ************************
 
 ## 安装 Android
-> [参考博客: 5 Best Android Emulators for Linux](https://beebom.com/android-emulators-linux/)  
+> [参考: 5 Best Android Emulators for Linux](https://beebom.com/android-emulators-linux/)  
 
 ### Android-x86
 > [下载](https://www.fosshub.com/Android-x86.html)  
-> [参考博客: ](https://www.cnblogs.com/wynn0123/p/6288344.html)  
+> [参考: ](https://www.cnblogs.com/wynn0123/p/6288344.html)  
 
 > 启动后不进图形化:
 1. `mount –o remount,rw /mnt`

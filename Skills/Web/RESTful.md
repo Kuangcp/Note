@@ -8,21 +8,21 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [RESTful风格](#restful风格)
     1. [Rest](#rest)
         1. [资源 Resources](#资源-resources)
         1. [表现层 Representation](#表现层-representation)
         1. [状态转化 State Transfer](#状态转化-state-transfer)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # RESTful风格
 > 要理解RESTful架构，最好的方法就是去理解Representational State Transfer这个词组到底是什么意思，它的每一个词代表了什么涵义。
 
 > [知乎: 使用通俗的语言解释RESTful](https://www.zhihu.com/question/28557115)
 
-> [参考博客:  RPC vs REST vs GraphQL ](https://segmentfault.com/a/1190000013961872)  
+> [参考:  RPC vs REST vs GraphQL ](https://segmentfault.com/a/1190000013961872)  
 
 ## Rest
 > Representational State Transfer  表现层状态转化  
@@ -38,7 +38,7 @@ categories:
     - 按需编码: 服务器可以提供可执行代码或脚本，为客户端在它们的环境中执行。这个约束是唯一一个是可选的。
 
 
-> [参考博客: 理解RESTful架构](http://www.ruanyifeng.com/blog/2011/09/restful.html)
+> [参考: 理解RESTful架构](http://www.ruanyifeng.com/blog/2011/09/restful.html)
 
 > [RESTful Best Practices](https://segmentfault.com/a/1190000002949234)
 > [理解本真的REST架构风格](http://www.infoq.com/cn/articles/understanding-restful-style)

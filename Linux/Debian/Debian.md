@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Debian](#debian)
     1. [配置](#配置)
         1. [配置语言环境](#配置语言环境)
@@ -17,12 +17,12 @@ categories:
         1. [包管理器](#包管理器)
         1. [源码编译安装](#源码编译安装)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Debian 
 > 很古老但是很好用的系统 [官网](https://www.debian.org/index.zh-cn.html)
 
-> [参考博客: Debian8最小安装](https://www.howtoforge.com/tutorial/debian-8-jessie-minimal-server/)
+> [参考: Debian8最小安装](https://www.howtoforge.com/tutorial/debian-8-jessie-minimal-server/)
 - 奇怪的是我在虚拟机里装了好几个好几次装不上, 装完一登录就只有壁纸
 
 _服务器_

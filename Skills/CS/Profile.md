@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [数据序列化格式](#数据序列化格式)
     1. [conf或者ini](#conf或者ini)
     1. [properties](#properties)
@@ -21,7 +21,7 @@ categories:
     1. [Smile](#smile)
         1. [Jackson](#jackson)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 数据序列化格式
 

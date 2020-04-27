@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [开发思想](#开发思想)
     1. [抽象](#抽象)
     1. [编程范式](#编程范式)
@@ -48,7 +48,7 @@ categories:
         1. [强类型和弱类型](#强类型和弱类型)
         1. [动态和静态类型](#动态和静态类型)
 
-**目录 end**|_2020-04-01 00:23_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 开发思想
 > 有关开发的理论性思想,编写,测试,部署等
@@ -82,7 +82,7 @@ categories:
 ### 面向对象
 > OO  Object Oriented
 
-> [参考博客: 再见面向对象编程？](http://www.jdon.com/48231)
+> [参考: 再见面向对象编程？](http://www.jdon.com/48231)
 
 > 思考:
 >- 遇到需求时, 先分析需要哪些独立的实体, 然后分析用户的行为, 行为就是API
@@ -118,8 +118,8 @@ categories:
 
 > [参考博客](http://kb.cnblogs.com/page/117717/) | [讨论](http://www.cnblogs.com/netfocus/p/3307971.html) | [基础](http://www.cnblogs.com/netfocus/archive/2011/10/10/2204949.html)
 
-> [参考博客: 危险的DDD聚合根](http://www.cnblogs.com/netfocus/archive/2012/09/08/2676985.html) 初步感受是DDD禁不起变化, 必须要在起初就设计好一个完备的体系
-> [参考博客: DDD应用的思考](http://www.jdon.com/47313)`提出了关于领域设计的困惑`
+> [参考: 危险的DDD聚合根](http://www.cnblogs.com/netfocus/archive/2012/09/08/2676985.html) 初步感受是DDD禁不起变化, 必须要在起初就设计好一个完备的体系
+> [参考: DDD应用的思考](http://www.jdon.com/47313)`提出了关于领域设计的困惑`
 
 ### 聚合
 聚合根的修改行为应该属于聚合根实体对象自己，用聚合根行为守护其内部状态的一致性是DDD设计核心，如果聚合根内部的状态直接暴露给外界（通过领域服务）任意修改，那么会导致状态变化混乱，难以调试和跟踪。
@@ -140,8 +140,8 @@ categories:
 > [event-sourcing](https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing)| [中文版](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/event-sourcing)   `微软关于azure的技术性文档`  
 
 > [event-sourcing-in-practice](https://ookami86.github.io/event-sourcing-in-practice/) 
-> [参考博客:  CQRS & Event Sourcing ](https://www.cnblogs.com/netfocus/category/361988.html)  
-> [参考博客: 领域驱动设计的实践 – CQRS & Event Sourcing](https://www.jianshu.com/p/9a3f8d514fcd) `图文并茂的讲解CQRS思想`
+> [参考:  CQRS & Event Sourcing ](https://www.cnblogs.com/netfocus/category/361988.html)  
+> [参考: 领域驱动设计的实践 – CQRS & Event Sourcing](https://www.jianshu.com/p/9a3f8d514fcd) `图文并茂的讲解CQRS思想`
 
 > [eventapis](https://github.com/kloiasoft/eventapis)`Java实现的CQRS`
 > [CQRS journey](http://cqrsjourney.github.io/) `微软团队的项目`
@@ -149,7 +149,7 @@ categories:
 *************************
 ## 组件模型
 ### SOA
-> [参考博客: SOA面向服务架构](http://www.jdon.com/soa.html)
+> [参考: SOA面向服务架构](http://www.jdon.com/soa.html)
 
 _[Spring Web 应用的最大败笔](http://www.jdon.com/45857)_
 - 传统意义上的SOA 内部封装的是数据表的DTO 也被称为 失血模型,贫血模型,  从而导致SOA服务内部腐烂堵塞，违背SOA自治和可用性等原则约束
@@ -163,7 +163,7 @@ _[Spring Web 应用的最大败笔](http://www.jdon.com/45857)_
 ### MSA
 > 微服务
 
->　[参考博客: SOA 与 MSA（微服务架构）](https://blog.csdn.net/ztguang/article/details/52894794)
+>　[参考: SOA 与 MSA（微服务架构）](https://blog.csdn.net/ztguang/article/details/52894794)
 > [码农翻身:从SOA到微服务](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513674&idx=1&sn=fbc727b7c8ff6d03f5d53478b6d4e585&chksm=80d67a89b7a1f39ff0c3589a4a4076e323fab18379fc8d085c133b88e4db104f87988b29d246&scene=21#wechat_redirect)
 
 - [码农翻身:我是一个函数](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513873&idx=1&sn=2383f099fb353e59649167e723575158&chksm=80d67bd2b7a1f2c4ae61704b8a2bd330764d20f0e2fafa6fdff55c99ea68272b3cff851684cc&scene=21#wechat_redirect) `详解了RPC, 也就是RMI(远程过程调用)规范的实现`

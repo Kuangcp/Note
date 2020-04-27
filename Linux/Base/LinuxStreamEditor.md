@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [流编辑器](#流编辑器)
     1. [tr](#tr)
     1. [colrm](#colrm)
@@ -17,10 +17,10 @@ categories:
     1. [sed](#sed)
     1. [awk](#awk)
 
-**目录 end**|_2020-01-31 12:34_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 流编辑器
-> [参考博客: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
+> [参考: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
 
 ## tr
 > 转换字符
@@ -99,7 +99,7 @@ categories:
 >1. 去除换行符 `sed ':label;N;s/\n/ /;b label'` [参考](http://www.cnblogs.com/lykm02/p/4479098.html)
 >1. 文件内容倒置 `sed '1!G;h;$!d' filename`
 
-> [参考博客: linux sed 命令单行任务快速参考](http://www.techug.com/post/linux-sed1line.html)
+> [参考: linux sed 命令单行任务快速参考](http://www.techug.com/post/linux-sed1line.html)
 
 > [sokoban sed](https://github.com/aureliojargas/sokoban.sed)`sed 写的推箱子游戏`
 
@@ -123,4 +123,4 @@ categories:
 1. 添加行号  `awk '{printf("%2d %s\n", NR, $0);`
 1. 读取标准输出 `awk '{print $0}' - `
 
-> [参考博客: awk 入门教程](http://www.ruanyifeng.com/blog/2018/11/awk.html)
+> [参考: awk 入门教程](http://www.ruanyifeng.com/blog/2018/11/awk.html)

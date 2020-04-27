@@ -6,14 +6,14 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [JPA](#jpa)
     1. [JPA和Mybatis](#jpa和mybatis)
     1. [配置](#配置)
     1. [使用](#使用)
         1. [注解](#注解)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # JPA
 ## JPA和Mybatis
@@ -23,7 +23,7 @@ categories:
 
 ## 使用
  
-> [参考博客: spring boot(五)：spring data jpa的使用](https://www.cnblogs.com/ityouknow/p/5891443.html)
+> [参考: spring boot(五)：spring data jpa的使用](https://www.cnblogs.com/ityouknow/p/5891443.html)
 ### 注解
 > [Java、Hibernate(JPA)注解大全](http://www.cnblogs.com/zr520/p/5003478.html)
 > [jpa注解大全](http://www.cnblogs.com/cxyzl/archive/2012/12/05/2803548.html)

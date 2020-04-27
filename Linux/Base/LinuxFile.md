@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [文件管理](#文件管理)
     1. [查找文件](#查找文件)
         1. [find](#find)
@@ -63,7 +63,7 @@ categories:
         1. [善用alias](#善用alias)
     1. [desktop文件](#desktop文件)
 
-**目录 end**|_2020-02-19 00:03_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -147,7 +147,7 @@ categories:
 带行号输出 `cat -n file` 或者 `nl file`但是空行不会编号, 除非这样: `nl -b a file`
 
 ### nl
-- [参考博客: 每天一个linux命令(11)：nl命令](http://www.cnblogs.com/peida/archive/2012/11/01/2749048.html#/)
+- [参考: 每天一个linux命令(11)：nl命令](http://www.cnblogs.com/peida/archive/2012/11/01/2749048.html#/)
 
 ### less
 - 该命令的导航是和Vi体系一样的, 建议打开大文件使用less或者more 如果用vim,文件全加载到内存了  
@@ -255,7 +255,7 @@ categories:
     - f 禁止交互操作。在mv操作要覆盖某已有的目标文件时不给任何指示，指定此选项后，i选项将不再起作用。
 
 ### 文件的分割与合并
-> [参考博客: 文件过滤分割与合并](http://man.linuxde.net/sub/%e6%96%87%e4%bb%b6%e8%bf%87%e6%bb%a4%e5%88%86%e5%89%b2%e4%b8%8e%e5%90%88%e5%b9%b6)
+> [参考: 文件过滤分割与合并](http://man.linuxde.net/sub/%e6%96%87%e4%bb%b6%e8%bf%87%e6%bb%a4%e5%88%86%e5%89%b2%e4%b8%8e%e5%90%88%e5%b9%b6)
 
 > 分割
 
@@ -292,12 +292,12 @@ export LANG="zh_CN.UTF-8"
 # 磁盘
 > [Linux系统基本目录结构](/Linux/Base/LinuxDirectoryStructure.md)
 
-> [参考博客: 在 Linux 上检测硬盘上的坏道和坏块 ](https://linux.cn/article-7961-1.html)  
+> [参考: 在 Linux 上检测硬盘上的坏道和坏块 ](https://linux.cn/article-7961-1.html)  
 
 ## 文件系统
-> [参考博客: Linux 文件系统剖析](https://www.ibm.com/developerworks/cn/linux/l-linux-filesystem/index.htmlQ)
-> [参考博客: 详解NTFS文件系统](http://www.blogfshare.com/detail-ntfs-filesys.html)
-> [参考博客: 使用 FUSE 开发自己的文件系统](https://www.ibm.com/developerworks/cn/linux/l-fuse/)
+> [参考: Linux 文件系统剖析](https://www.ibm.com/developerworks/cn/linux/l-linux-filesystem/index.htmlQ)
+> [参考: 详解NTFS文件系统](http://www.blogfshare.com/detail-ntfs-filesys.html)
+> [参考: 使用 FUSE 开发自己的文件系统](https://www.ibm.com/developerworks/cn/linux/l-fuse/)
 
 > tmpfs [wiki](https://wiki.archlinux.org/index.php/Tmpfs)
 
@@ -418,7 +418,7 @@ export LANG="zh_CN.UTF-8"
 
 ## 清除缓存
 > [参考: 如何在 Linux 中清除缓存（Cache）？](https://linux.cn/article-5627-1.html) `注意要切换到root再运行命令`  
-> [参考博客: Linux 内存中的Cache，真的能被回收么？](https://www.cnblogs.com/276815076/p/5478966.html)  
+> [参考: Linux 内存中的Cache，真的能被回收么？](https://www.cnblogs.com/276815076/p/5478966.html)  
 
 > `/proc/sys/vm/drop_caches`
 > 设置值 `sync; echo 1 > /proc/sys/vm/drop_caches`

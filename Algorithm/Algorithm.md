@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [数据结构和算法](#数据结构和算法)
     1. [相关书籍和资源](#相关书籍和资源)
     1. [基础概念](#基础概念)
@@ -38,7 +38,7 @@ categories:
 1. [实际问题](#实际问题)
     1. [斐波那契数列](#斐波那契数列)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 数据结构和算法
 > 数据结构是指一组数据的存储结构 算法就是操作数据的方法 数据结构和算法是相辅相成的，数据结构是为算法服务的，而算法要作用在特定的数据结构之上
@@ -344,7 +344,7 @@ Java 中 ArrayList 和 数组的对比
 - [字符串相似度匹配](http://zjwyhll.blog.163.com/blog/static/75149781201281142630851/)
 
 ## 排序算法
-> [参考博客: 九种排序算法的可视化及比较](https://zhuanlan.zhihu.com/p/34421623?group_id=955945213303250944)
+> [参考: 九种排序算法的可视化及比较](https://zhuanlan.zhihu.com/p/34421623?group_id=955945213303250944)
 
 ## 搜索算法
 > [Trie](https://en.wikipedia.org/wiki/Trie) `字典树`
@@ -386,9 +386,9 @@ Java 中 ArrayList 和 数组的对比
 取键值的hashCode, 然后高低16位做异或运算, 然后再与`哈希表大小`做与运算, 才得到哈希地址
 
 ### 哈希冲突
-> [参考博客: hash是如何处理冲突的?](http://www.cnblogs.com/jillzhang/archive/2006/11/03/548671.html)
+> [参考: hash是如何处理冲突的?](http://www.cnblogs.com/jillzhang/archive/2006/11/03/548671.html)
 
-> [参考博客: 一种高级的DoS攻击-Hash碰撞攻击 ](https://yq.aliyun.com/articles/92194?utm_campaign=wenzhang&utm_medium=article&utm_source=QQ-qun&201762&utm_content=m_22308)
+> [参考: 一种高级的DoS攻击-Hash碰撞攻击 ](https://yq.aliyun.com/articles/92194?utm_campaign=wenzhang&utm_medium=article&utm_source=QQ-qun&201762&utm_content=m_22308)
 > [Application vulnerability due to Non Random Hash Functions](https://stackoverflow.com/questions/8669946/application-vulnerability-due-to-non-random-hash-functions)  
 
 #### 开放定址法

@@ -6,11 +6,11 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [OpenBSD](#openbsd)
     1. [安装](#安装)
 
-**目录 end**|_2020-02-19 00:03_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # OpenBSD
 > [Official Site](http://www.openbsd.org/)  

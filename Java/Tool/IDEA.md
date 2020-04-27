@@ -9,7 +9,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [IDEA 使用笔记](#idea-使用笔记)
     1. [常识](#常识)
     1. [常用技巧](#常用技巧)
@@ -36,7 +36,7 @@ categories:
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
         1. [无法输入中文](#无法输入中文)
 
-**目录 end**|_2020-02-19 00:03_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 
 # IDEA 使用笔记
@@ -140,7 +140,7 @@ _例如修改为如下_
 
 ************************
 ## IDEA快捷键
-> [参考博客: Intellij IDEA神器居然还有这些小技巧](https://my.oschina.net/samgege/blog/1808622)  
+> [参考: Intellij IDEA神器居然还有这些小技巧](https://my.oschina.net/samgege/blog/1808622)  
 > 如果一时不习惯idea, 可以在 设置中 的keymap 选择eclipse系列即可
 
 ### 默认快捷键
@@ -378,7 +378,7 @@ _例如修改为如下_
 > [IntelliJ IDEA 内存优化最佳实践](http://blog.oneapm.com/apm-tech/426.html)
 
 ### 调优
-> [参考博客: 记一次idea性能调优](http://www.cnblogs.com/nevermorewang/p/10061377.html)  
+> [参考: 记一次idea性能调优](http://www.cnblogs.com/nevermorewang/p/10061377.html)  
 
 ************************
 

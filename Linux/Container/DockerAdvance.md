@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Docker Advance](#docker-advance)
     1. [文件系统](#文件系统)
         1. [AUFS](#aufs)
@@ -20,7 +20,7 @@ categories:
 1. [Tips](#tips)
     1. [孤儿进程以及僵死进程](#孤儿进程以及僵死进程)
 
-**目录 end**|_2020-01-02 20:57_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Docker Advance
 
@@ -30,15 +30,15 @@ categories:
 ### AUFS
 > Docker旧版本 采用的是 AUFS 文件系统
 
-> [参考博客: 剖析Docker文件系统：Aufs与Devicemapper](http://www.infoq.com/cn/articles/analysis-of-docker-file-system-aufs-and-devicemapper)
-> [参考博客: 理解Docker（7）：Docker 存储 - AUFS](http://www.cnblogs.com/sammyliu/p/5931383.html)
+> [参考: 剖析Docker文件系统：Aufs与Devicemapper](http://www.infoq.com/cn/articles/analysis-of-docker-file-system-aufs-and-devicemapper)
+> [参考: 理解Docker（7）：Docker 存储 - AUFS](http://www.cnblogs.com/sammyliu/p/5931383.html)
 
-> [参考博客: Docker: Just Stop Using AUFS](https://sthbrx.github.io/blog/2015/10/30/docker-just-stop-using-aufs/)
+> [参考: Docker: Just Stop Using AUFS](https://sthbrx.github.io/blog/2015/10/30/docker-just-stop-using-aufs/)
 
 ### OverlayFS
 > 最新的Docker都是采用这种文件系统, 并具有 overlay overlay2 两代驱动
 
-> [参考博客: docker 存储驱动之overlay](https://blog.csdn.net/u010278923/article/details/79215828)
+> [参考: docker 存储驱动之overlay](https://blog.csdn.net/u010278923/article/details/79215828)
 
 > 查看占用大小 docker system df 
 
@@ -52,8 +52,8 @@ categories:
 > docker 默认是将数据放在了 `/var/lib/docker` 下, 包括所有的镜像, 容器, 卷...
 
 1. `挂载新的目录到 /var/lib/docker 上`
-> [参考博客: Docker数据将跟分区磁盘占满了 ](http://dockone.io/question/531)
-> [参考博客: Docker 常见问题 (FAQ)](https://www.lsproc.com/post/docker-faq/#toc_1)
+> [参考: Docker数据将跟分区磁盘占满了 ](http://dockone.io/question/531)
+> [参考: Docker 常见问题 (FAQ)](https://www.lsproc.com/post/docker-faq/#toc_1)
 ```sh
 service docker stop
 cp -prf /var/lib/docker /data/
@@ -118,7 +118,7 @@ DOCKER_OPTS="--graph=/opt/docker "
 > [进程相关知识](/Linux/Base/LinuxBase.md#进程)  
 > 当父进程结束后,原来的僵死子进程, 会成为孤儿进程且是僵死进程, 此时会被1号进程收养  
 
-> [参考博客: Docker和孤儿进程、僵死进程 ](https://yq.aliyun.com/articles/61894)  
+> [参考: Docker和孤儿进程、僵死进程 ](https://yq.aliyun.com/articles/61894)  
 > 在 Docker 中, 由于没有 init 这个1号进程(往往是应用进程作为1号进程) 很有可能子进程称为僵死进程且一直存在  
 > Docker1.11之前的版本，孤儿进程是否有可能成为僵死进程取决于容器内pid为1的进程是否在子进程退出时调用wait/waitpid  
 > Docker1.11版本之后孤儿进程不会成为僵死进程

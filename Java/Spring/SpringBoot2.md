@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [SringBoot2](#sringboot2)
     1. [从1迁移到2](#从1迁移到2)
     1. [新特性](#新特性)
@@ -23,7 +23,7 @@ categories:
             1. [多数据源](#多数据源)
         1. [No Relation Database](#no-relation-database)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # SringBoot2
 [官方文档](https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/)
@@ -40,7 +40,7 @@ categories:
 
 ## 新特性
 > [Spring Boot 2.0系列文章(二)：Spring Boot 2.0 新特性详解 ](http://www.54tianzhisheng.cn/2018/03/06/SpringBoot2-new-features/)
-> [参考博客: Spring Boot 2.0 新特性和发展方向 ](https://mp.weixin.qq.com/s/EWmuzsgHueHcSB0WH-3AQw)
+> [参考: Spring Boot 2.0 新特性和发展方向 ](https://mp.weixin.qq.com/s/EWmuzsgHueHcSB0WH-3AQw)
 
 ## Web模块
 ### Web容器
@@ -101,6 +101,6 @@ public class Listener implements ApplicationListener {
 ### Relation Database
 
 #### 多数据源
-- [参考博客: Spring Boot 2.0 多数据源编程 原](https://my.oschina.net/chinesedragon/blog/1647846) | [源码](https://gitee.com/shupengluo/SpringBoot2.0-MultiDataSource)
+- [参考: Spring Boot 2.0 多数据源编程 原](https://my.oschina.net/chinesedragon/blog/1647846) | [源码](https://gitee.com/shupengluo/SpringBoot2.0-MultiDataSource)
 
 ### No Relation Database

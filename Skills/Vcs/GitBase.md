@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Git基础](#git基础)
 1. [开源许可证](#开源许可证)
 1. [Git常用命令](#git常用命令)
@@ -75,7 +75,7 @@ categories:
     1. [SVN](#svn)
 1. [repos的使用](#repos的使用)
 
-**目录 end**|_2020-04-16 10:51_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -107,7 +107,7 @@ categories:
 > [使用原理视角看 Git](https://coding.net/help/doc/practice/git-principle.html)
 > [如何高效地使用 Git](https://zhuanlan.zhihu.com/p/30561653)
 
-> [参考博客: 重看”Linus Torvalds on Git”视频](http://www.techug.com/post/review-of-linus-torvalds-on-git.html)
+> [参考: 重看”Linus Torvalds on Git”视频](http://www.techug.com/post/review-of-linus-torvalds-on-git.html)
 > [GUI客户端](https://git-scm.com/downloads/guisQ)
 
 - [tig](http://jonas.nitro.dk/tig/manual.html) `tig命令，git的加强版`
@@ -351,7 +351,7 @@ categories:
 
 ### format-patch
 > Prepare patches for e-mail submission  
-> [参考博客: How To Create and Apply Git Patch Files](https://devconnected.com/how-to-create-and-apply-git-patch-files/)  
+> [参考: How To Create and Apply Git Patch Files](https://devconnected.com/how-to-create-and-apply-git-patch-files/)  
 
 - `git format-patch -1 commit-sha` 指定commit 创建 patch
     - 参数选项可以为 `-2` `-3`... 数字表示 commit id 之前的 几个 commit 也创建 patch
@@ -484,8 +484,8 @@ categories:
 
 > 将当前修改缓存起来, 避免不必要的残缺提交 stash命令的缓存都是基于某个提交上的修改, 是一个栈的用法
 
-> [参考博客: Git Stash的用法](http://www.cppblog.com/deercoder/archive/2011/11/13/160007.html)`底下的评论也很有价值, 值得思考`
-> [参考博客: git-stash用法小结](https://www.cnblogs.com/tocy/p/git-stash-reference.html)
+> [参考: Git Stash的用法](http://www.cppblog.com/deercoder/archive/2011/11/13/160007.html)`底下的评论也很有价值, 值得思考`
+> [参考: git-stash用法小结](https://www.cnblogs.com/tocy/p/git-stash-reference.html)
 
 > git stash --help 查看完整的使用说明
 
@@ -583,7 +583,7 @@ categories:
 - [官方文档](https://git-scm.com/docs/git-merge)
 
 > [Official Doc: 高级合并](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%AB%98%E7%BA%A7%E5%90%88%E5%B9%B6)
-> [参考博客: 解决 Git 冲突的 14 个建议和工具](http://blog.jobbole.com/97911/)
+> [参考: 解决 Git 冲突的 14 个建议和工具](http://blog.jobbole.com/97911/)
 
 - `git merge develop `默认会直接将当前分支指向Develop分支。(一条拐弯的分支线)
 - 推荐: `git merge --no-ff develop` 在当前分支`主动合并`分支Develop，在当前分支上生成一个新节点(有一个环的线)
@@ -748,7 +748,7 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 > [Official Doc](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 
 > [git submodule的使用](https://blog.csdn.net/wangjia55/article/details/24400501)
-> [参考博客: Git Submodule使用完整教程](http://www.kafeitu.me/git/2012/03/27/git-submodule.html)
+> [参考: Git Submodule使用完整教程](http://www.kafeitu.me/git/2012/03/27/git-submodule.html)
 
 - 能够在一个git仓库中将一个文件夹作为一些独立的子仓库进行管理
 - 添加子模块 `git submodule add url dir` 目录为可选项
@@ -854,7 +854,7 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 > [Official doc: git-svn](https://git-scm.com/docs/git-svn)
 
 > 但是个人目前在用的方式是直接 git 和 svn 一起用, 因为项目只能用SVN的原因  
-> [参考博客: 为啥要同时用 SVN 和 Git 管理项目](https://www.cnblogs.com/dasusu/p/7774469.html)
+> [参考: 为啥要同时用 SVN 和 Git 管理项目](https://www.cnblogs.com/dasusu/p/7774469.html)
 
 1. 避免LRLF LF 问题
 ```sh

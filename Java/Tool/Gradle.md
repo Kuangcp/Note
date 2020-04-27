@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Gradle](#gradle)
     1. [书籍](#书籍)
     1. [发行版本列表](#发行版本列表)
@@ -48,13 +48,13 @@ categories:
     1. [构建Docker镜像](#构建docker镜像)
         1. [插件方式构建Docker镜像](#插件方式构建docker镜像)
 
-**目录 end**|_2019-12-03 18:08_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 
 # Gradle
 > [Official Guide](https://gradle.org/guides/?q=JVM) | [tutorials](https://www.tutorialspoint.com/gradle/index.htm)  
 
-> [参考博客: 零散知识点总结(1) - Gradle 使用配置总结](https://www.jianshu.com/p/47cbbb4eab13)
+> [参考: 零散知识点总结(1) - Gradle 使用配置总结](https://www.jianshu.com/p/47cbbb4eab13)
 
 > [Github: Gradle samples](https://github.com/gradle/gradle/tree/master/subprojects/docs/src/samples)
 ******************************
@@ -341,7 +341,7 @@ C 项目就能使用 A 中的类了
 
 ###  配置镜像源
 **阿里云**
-> [参考博客: 配置Gradle的镜像为阿里云镜像](https://tvzr.com/change-the-mirror-of-gradle-to-aliyun.html)
+> [参考: 配置Gradle的镜像为阿里云镜像](https://tvzr.com/change-the-mirror-of-gradle-to-aliyun.html)
 
 > **当前项目的build.gradle**
 ```Groovy
@@ -502,7 +502,7 @@ C 项目就能使用 A 中的类了
 ************************
 
 # 打包部署
-> [参考博客: Building Java Applications](https://guides.gradle.org/building-java-applications/)
+> [参考: Building Java Applications](https://guides.gradle.org/building-java-applications/)
 
 **不依赖Jar的项目**
 1. 依据模板新建项目 `gradle init --type java-application` 

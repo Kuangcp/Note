@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [泛型](#泛型)
     1. [简单使用](#简单使用)
     1. [类型擦除](#类型擦除)
@@ -21,7 +21,7 @@ categories:
         1. [通配符捕获](#通配符捕获)
     1. [反射和泛型](#反射和泛型)
 
-**目录 end**|_2020-01-26 17:11_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 泛型
 > [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
@@ -33,10 +33,10 @@ categories:
 
 > [开始学习的兴趣来源 Java帝国之泛型 ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514015&idx=1&sn=12409f705c6d266e4cd062e78ce50be0&chksm=80d67c5cb7a1f54a68ed83580b63b4acded0df525bb046166db2c00623a6bba0de3c5ad71884&scene=21#wechat_redirect)
 
-[参考博客: Java总结篇系列：Java泛型](http://www.cnblogs.com/lwbqqyumidi/p/3837629.html)  
+[参考: Java总结篇系列：Java泛型](http://www.cnblogs.com/lwbqqyumidi/p/3837629.html)  
 泛型，即“参数化类型”。一提到参数，最熟悉的就是定义方法时有形参，然后调用此方法时传递实参。  
 那么参数化类型怎么理解呢？顾名思义，就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参），然后在使用/调用时传入具体的类型（类型实参）。  
-[参考博客: Java深度历险（五）——Java泛型](http://www.infoq.com/cn/articles/cf-java-generics)
+[参考: Java深度历险（五）——Java泛型](http://www.infoq.com/cn/articles/cf-java-generics)
 
 ## 简单使用
 >- [简单泛型类示例](https://github.com/Kuangcp/JavaBase/blob/master/src/main/java/com/generic/simple/Pair.java)
@@ -54,7 +54,7 @@ categories:
     type = ((ParameterizedType) superClass).getActualTypeArguments()[1];
 ```
 
-> [参考博客: 使用通配符简化泛型使用](https://www.ibm.com/developerworks/cn/java/j-jtp04298.html)
+> [参考: 使用通配符简化泛型使用](https://www.ibm.com/developerworks/cn/java/j-jtp04298.html)
 
 - 场景1:`public static <T extends Comparable<T>> T min(T[] list);`
     - 限定了入参和返回值是 是实现了Comparable接口的某个类型 因为Comparable也是一个泛型类, 所以也进行限定类型

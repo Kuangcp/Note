@@ -29,7 +29,7 @@ categories:
         1. [操作注解](#操作注解)
 1. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2020-04-27 22:43_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
@@ -39,11 +39,11 @@ categories:
 
 > [ Java反射异常处理之InvocationTargetException ](https://blog.csdn.net/zhangzeyuaaa/article/details/39611467)
 
-> [参考博客: java8--类加载机制与反射(java疯狂讲义3复习笔记)](https://www.cnblogs.com/lakeslove/p/5978382.html)
-> [参考博客: Java8替代传统反射动态获取成员变量值的一个示例](https://segmentfault.com/a/1190000007492958)
+> [参考: java8--类加载机制与反射(java疯狂讲义3复习笔记)](https://www.cnblogs.com/lakeslove/p/5978382.html)
+> [参考: Java8替代传统反射动态获取成员变量值的一个示例](https://segmentfault.com/a/1190000007492958)
 
-> [参考博客: java反射的性能问题](http://www.cnblogs.com/zhishan/p/3195771.html)  
-> [参考博客: RednaxelaFX 关于反射调用方法的一个log ](https://www.iteye.com/blog/rednaxelafx-548536)  
+> [参考: java反射的性能问题](http://www.cnblogs.com/zhishan/p/3195771.html)  
+> [参考: RednaxelaFX 关于反射调用方法的一个log ](https://www.iteye.com/blog/rednaxelafx-548536)  
 
 # 概念
 
@@ -273,7 +273,7 @@ set 和 get 属性的值
 **********************
 
 # 反射的性能问题
-> [参考博客: java反射的性能问题 ](http://www.cnblogs.com/zhishan/p/3195771.html)
+> [参考: java反射的性能问题 ](http://www.cnblogs.com/zhishan/p/3195771.html)
 
 > [性能测试对比: 反射 setter cglib](https://github.com/Kuangcp/JavaBase/blob/class/src/test/java/com/github/kuangcp/reflects/ReflectPerformanceTest.java)
 

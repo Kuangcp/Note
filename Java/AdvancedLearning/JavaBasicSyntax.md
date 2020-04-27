@@ -9,7 +9,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [基础语法](#基础语法)
     1. [代码风格](#代码风格)
     1. [结构](#结构)
@@ -75,7 +75,7 @@ categories:
     1. [try](#try)
     1. [transient](#transient)
 
-**目录 end**|_2020-04-22 10:14_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 基础语法
 
@@ -154,7 +154,7 @@ categories:
 
 > [The Java™ Tutorials: Primitive Data Types](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)  
 
-> [参考博客: Java 有值类型吗？](http://www.yinwang.org/blog-cn/2016/06/08/java-value-type)
+> [参考: Java 有值类型吗？](http://www.yinwang.org/blog-cn/2016/06/08/java-value-type)
 
 确实, 这样来看Java没有值类型才是更统一的, 不过有没有对程序都是一样的, 因为Java没有解引用, 基本数据类型又没有成员, 所以值还是引用, 没差
 
@@ -165,7 +165,7 @@ categories:
 
 用 2 个字节来表示 Unicode 值 取值范围: '\u0000' (or 0) , '\uffff' (or 65,535 inclusive).
 
-> [参考博客: isn't the size of character in java 2 bytes](https://stackoverflow.com/questions/5078314/isnt-the-size-of-character-in-java-2-bytes)  
+> [参考: isn't the size of character in java 2 bytes](https://stackoverflow.com/questions/5078314/isnt-the-size-of-character-in-java-2-bytes)  
 
 ### boolean
 > [参考 你真的知道Java中boolean类型占用多少个字节吗？](https://www.jianshu.com/p/2f663dc820d0)
@@ -243,7 +243,7 @@ true 和 false 也是缓存了的
 
 无符号Long: `Long.parseUnsignedLong();` `Long.toUnsignedString();` 
 
-> [参考博客: Java 中的无符号类型是怎么回事儿？](https://www.cnblogs.com/yuanyq/p/java_unsigned_types.html)
+> [参考: Java 中的无符号类型是怎么回事儿？](https://www.cnblogs.com/yuanyq/p/java_unsigned_types.html)
 
 ### Boolean
 > 内含两个单例 TRUE FALSE
@@ -253,9 +253,9 @@ true 和 false 也是缓存了的
 
 > The Void class is an uninstantiable placeholder class to hold a reference to the Class object representing the Java keyword void.
 
-> [参考博客: What is the need of Void class in Java](https://stackoverflow.com/questions/2352447/what-is-the-need-of-void-class-in-java)
+> [参考: What is the need of Void class in Java](https://stackoverflow.com/questions/2352447/what-is-the-need-of-void-class-in-java)
 
-> [参考博客: Uses for the Java Void Reference Type?](https://stackoverflow.com/questions/643906/uses-for-the-java-void-reference-type)
+> [参考: Uses for the Java Void Reference Type?](https://stackoverflow.com/questions/643906/uses-for-the-java-void-reference-type)
 
 1. 在AOP中, 增强根据切点的返回值类型, 做出不同的逻辑, 有可能用到Void
 1. Void 强调 the nothing, null 强调 nothing
@@ -298,7 +298,7 @@ true 和 false 也是缓存了的
 
 枚举类的构造器必须是 private 或者 package private (也就是缺省)
 
-> [参考博客: Java 语言中 Enum 类型的使用介绍](https://www.ibm.com/developerworks/cn/java/j-lo-enum/index.html)
+> [参考: Java 语言中 Enum 类型的使用介绍](https://www.ibm.com/developerworks/cn/java/j-lo-enum/index.html)
 
 从上面的定义形式来看，似乎 Java 中的枚举类型很简单，但实际上 Java 语言规范赋予枚举类型的功能非常的强大，它不仅是简单地将整形数值转换成对象，而是将枚举类型定义转变成一个完整功能的类定义。
 
@@ -321,7 +321,7 @@ true 和 false 也是缓存了的
     Tool.INSTANCE.getNum();
 ```
 
-> [参考博客: 关于java枚举类型的疑问 ](https://segmentfault.com/q/1010000000306839)  
+> [参考: 关于java枚举类型的疑问 ](https://segmentfault.com/q/1010000000306839)  
 > [compilation-error-switch-with-enum](https://stackoverflow.com/questions/5551568/compilation-error-switch-with-enum)  
 
 ***************************
@@ -404,7 +404,7 @@ true 和 false 也是缓存了的
 ## 修饰符
 
 ### 权限修饰符
-> [参考博客: java 权限修饰符](https://blog.csdn.net/yan8024/article/details/6426451)
+> [参考: java 权限修饰符](https://blog.csdn.net/yan8024/article/details/6426451)
 
 | 权限修饰符 | 范围 | 注释 |
 |:----|:----|:----|
@@ -461,13 +461,13 @@ true 和 false 也是缓存了的
 
 ### equals
 > [Java提高篇——equals()与hashCode()方法详解](http://www.cnblogs.com/Qian123/p/5703507.html)
-> [参考博客: equals()和hashCode()区别？](https://www.cnblogs.com/jesonjason/p/5492208.html)
+> [参考: equals()和hashCode()区别？](https://www.cnblogs.com/jesonjason/p/5492208.html)
 
 - Object中equals是比较内存地址， hashcode是比较散列函数的值， 后者性能更好，但是可能出现哈希碰撞  
 - equals相等hashcode一定相等，equals不等 hashcode可能一致可能不一致
 
 > 重写equals方法  
-> [参考博客: 关于重写entity的equals()和hashCode()方法的必要性](https://blog.csdn.net/hiroyuki/article/details/6247244) 
+> [参考: 关于重写entity的equals()和hashCode()方法的必要性](https://blog.csdn.net/hiroyuki/article/details/6247244) 
 
 Double, Integer, Math, String 都是重写了equals方法， 因此比较的都是值不是内存地址
 
@@ -509,7 +509,7 @@ java.lnag.Object中对hashCode的约定：
 ************************
 
 # 对象
-> [参考博客: 计算Java对象内存大小](https://www.cnblogs.com/E-star/p/10222250.html)  
+> [参考: 计算Java对象内存大小](https://www.cnblogs.com/E-star/p/10222250.html)  
 
 ************************
 
@@ -530,7 +530,7 @@ java.lnag.Object中对hashCode的约定：
 
 # Object 
 
-> [参考博客:  java的(PO,VO,TO,BO,DAO,POJO)解释](http://www.cnblogs.com/yxnchinahlj/archive/2012/02/24/2366110.html) | [VO DAO BO 等缩写的意义](https://zhuanlan.zhihu.com/p/35762537?group_id=969493512006373376)
+> [参考:  java的(PO,VO,TO,BO,DAO,POJO)解释](http://www.cnblogs.com/yxnchinahlj/archive/2012/02/24/2366110.html) | [VO DAO BO 等缩写的意义](https://zhuanlan.zhihu.com/p/35762537?group_id=969493512006373376)
 
 - [ ] 原因? 场景是 类继承了一个实现了自定义接口的自定义抽象类
 

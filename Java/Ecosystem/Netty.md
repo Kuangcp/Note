@@ -6,7 +6,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Netty](#netty)
     1. [使用](#使用)
         1. [编解码相关](#编解码相关)
@@ -14,7 +14,7 @@ categories:
     1. [原理](#原理)
         1. [源码](#源码)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Netty
 > [trustlin](https://github.com/trustin)`Netty Mina 的作者`
@@ -31,7 +31,7 @@ Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件�
 > [Reactive Extension (Rx) Adaptor for Netty ](https://github.com/ReactiveX/RxNetty)
 
 > [《Netty 实战》 Netty In Action 中文版](https://github.com/ReactivePlatform/netty-in-action-cn)
-> [参考博客: 从线程模型的角度看 Netty 为什么是高性能的？ ](https://crossoverjie.top/2018/07/04/netty/Netty(2)Thread-model/)  
+> [参考: 从线程模型的角度看 Netty 为什么是高性能的？ ](https://crossoverjie.top/2018/07/04/netty/Netty(2)Thread-model/)  
 
 
 
@@ -47,7 +47,7 @@ Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件�
 
 
 ### 编解码相关
-> [参考博客: Netty(三) 什么是 TCP 拆、粘包？如何解决？](https://crossoverjie.top/2018/08/03/netty/Netty(3)TCP-Sticky/)  
+> [参考: Netty(三) 什么是 TCP 拆、粘包？如何解决？](https://crossoverjie.top/2018/08/03/netty/Netty(3)TCP-Sticky/)  
 
 #### Protobuf
 > [Protobuf基础](/Java/AdvancedLearning/ClassFile.md#protobuf) | 

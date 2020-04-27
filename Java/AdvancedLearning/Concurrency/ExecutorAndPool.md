@@ -6,13 +6,13 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Executor框架](#executor框架)
     1. [线程池](#线程池)
         1. [常用方法](#常用方法)
     1. [创建线程池的方法](#创建线程池的方法)
 
-**目录 end**|_2020-01-26 17:11_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Executor框架
 > 为什么要使用线程池? 为什么要使用该框架?
@@ -22,10 +22,10 @@ categories:
 > [使用默认的线程池策略](https://github.com/Kuangcp/JavaBase/blob/thread/src/main/java/com/github/kuangcp/UseThreadPool.java)
 
 > [线程池 BlockingQueue synchronized volatile](https://segmentfault.com/a/1190000012916473)
-> [参考博客: Java(Android)线程池](http://www.trinea.cn/android/java-android-thread-pool/)
-> [参考博客: Java ThreadPoolExecutor线程池使用的一个误区](http://codefine.site/2941.html)
-> [参考博客: 聊聊并发（三）Java线程池的分析和使用](http://ifeve.com/java-threadpool/)
-> [参考博客: 线程池](http://ifeve.com/thread-pools/)
+> [参考: Java(Android)线程池](http://www.trinea.cn/android/java-android-thread-pool/)
+> [参考: Java ThreadPoolExecutor线程池使用的一个误区](http://codefine.site/2941.html)
+> [参考: 聊聊并发（三）Java线程池的分析和使用](http://ifeve.com/java-threadpool/)
+> [参考: 线程池](http://ifeve.com/thread-pools/)
 
 ### 常用方法
 

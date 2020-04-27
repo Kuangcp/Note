@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Docker](#docker)
     1. [简介](#简介)
     1. [个人理解](#个人理解)
@@ -55,7 +55,7 @@ categories:
 1. [Dockerfile](#dockerfile)
     1. [dockerignore文件的使用](#dockerignore文件的使用)
 
-**目录 end**|_2020-01-28 17:29_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -365,7 +365,7 @@ _登录镜像仓库_
 - 配置交换内存不受限制 `--memory-swap -1`
     - 不配置该项 或者 该项小于 --memory 则都是采用默认值, --memory 的两倍
 
-> [参考博客: Docker 资源限制之内存](https://blog.opskumu.com/docker-memory-limit.html)
+> [参考: Docker 资源限制之内存](https://blog.opskumu.com/docker-memory-limit.html)
 
 ### exec
 - 登录容器：
@@ -404,7 +404,7 @@ _登录镜像仓库_
 
 # 数据卷
 > [Docker 中管理数据](http://www.open-open.com/lib/view/open1403571027233.html)
-> [参考博客: 给一个正在运行的Docker容器动态添加Volume](http://www.open-open.com/lib/view/open1421996521062.html)
+> [参考: 给一个正在运行的Docker容器动态添加Volume](http://www.open-open.com/lib/view/open1421996521062.html)
 
 - 数据卷是一个可供容器使用的特殊目录，它将宿主机操作系统目录映射进容器 类似于 mount操作
     - 数据卷可以在容器之间共享重用
@@ -569,7 +569,7 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
 ## 跨主机容器通信
 
 ### overlay
-> [参考博客: DOCKER的内置OVERLAY网络](http://dockone.io/article/2717)
+> [参考: DOCKER的内置OVERLAY网络](http://dockone.io/article/2717)
 
 ***********************
 # Dockerfile

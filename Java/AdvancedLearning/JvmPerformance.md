@@ -9,7 +9,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Java的性能调优](#java的性能调优)
     1. [JVM参数调优](#jvm参数调优)
         1. [IDEA参数调优](#idea参数调优)
@@ -30,17 +30,18 @@ categories:
     1. [开源项目](#开源项目)
         1. [Arthas](#arthas)
     1. [图形化](#图形化)
+        1. [JProfiler](#jprofiler)
         1. [jvisualvm](#jvisualvm)
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2020-04-08 10:00_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 
 # Java的性能调优
 
 ## JVM参数调优
-> [参考博客: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)
+> [参考: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)
 
 - [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`
 
@@ -60,8 +61,8 @@ categories:
     -XX:ReservedCodeCacheSize=320m # 编译时代码缓存 IDEA 警告不能低于240M
 ```
 
-> [参考博客: Java’s -XX:+AggressiveOpts: Can it slow you down?](https://www.opsian.com/blog/aggressive-opts/)  
-> [参考博客: JVM参数MetaspaceSize的误解 ](https://mp.weixin.qq.com/s/jqfppqqd98DfAJHZhFbmxA?)
+> [参考: Java’s -XX:+AggressiveOpts: Can it slow you down?](https://www.opsian.com/blog/aggressive-opts/)  
+> [参考: JVM参数MetaspaceSize的误解 ](https://mp.weixin.qq.com/s/jqfppqqd98DfAJHZhFbmxA?)
 
 *********************
 
@@ -173,9 +174,9 @@ categories:
 > [Github:visualvm](https://github.com/oracle/visualvm)  
 > [visualgc plugin](https://www.oracle.com/technetwork/java/visualgc-136680.html)  
 
-> [参考博客: java内存泄漏的定位与分析](https://blog.csdn.net/lc0817/article/details/67014499)
+> [参考: java内存泄漏的定位与分析](https://blog.csdn.net/lc0817/article/details/67014499)
 > [使用 VisualVM 进行性能分析及调优](https://www.ibm.com/developerworks/cn/java/j-lo-visualvm/index.html)  
-> [参考博客: JVisualVM简介与内存泄漏实战分析](http://www.cnblogs.com/belen/p/5573501.html)
+> [参考: JVisualVM简介与内存泄漏实战分析](http://www.cnblogs.com/belen/p/5573501.html)
 
 - `Local`
 - `Remote`
@@ -200,8 +201,8 @@ categories:
 ### MAT
 > Memory Analyzer tool(MAT) | [Official Site](http://www.eclipse.org/mat/)
 
-> [参考博客: JAVA Shallow heap & Retained heap](http://www.cnblogs.com/lipeineng/p/5824799.html)  
-> [参考博客:  利用MAT分析JVM内存问题，从入门到精通](https://www.cnblogs.com/javaadu/p/11161380.html)  
+> [参考: JAVA Shallow heap & Retained heap](http://www.cnblogs.com/lipeineng/p/5824799.html)  
+> [参考:  利用MAT分析JVM内存问题，从入门到精通](https://www.cnblogs.com/javaadu/p/11161380.html)  
 > [ Official Doc: OQL Syntax](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Freference%2Foqlsyntax.html)  
 
 他的 OQL 比较方便, 像写 SQL 一样去查询对象

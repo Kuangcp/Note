@@ -6,19 +6,19 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Deepin](#deepin)
     1. [关于显卡](#关于显卡)
     1. [电源管理](#电源管理)
         1. [系统休眠](#系统休眠)
     1. [双系统安装](#双系统安装)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Deepin
 
 > [官方wiki](wiki.deepin.org)
-> [参考博客: 一些工具](https://bbs.deepin.org/forum.php?mod=viewthread&tid=143022z)
+> [参考: 一些工具](https://bbs.deepin.org/forum.php?mod=viewthread&tid=143022z)
 - [FAQ](https://bbs.deepin.org/forum.php?mod=viewthread&tid=146921&extra=page%3D1)
 
 - 优点:
@@ -49,7 +49,7 @@ categories:
     - 又得进恢复模式注释掉, 才能进入系统
 
 - 2018-09-02 21:44:21 ` Driver 'pcspkr' is already registered, aborting,`
-    >- [参考博客: 社区帖子](https://bbs.deepin.org/forum.php?mod=viewthread&tid=166517&highlight=pcspkr)
+    >- [参考: 社区帖子](https://bbs.deepin.org/forum.php?mod=viewthread&tid=166517&highlight=pcspkr)
 
 - 2018-11-22 10:19:27 
     - 升级到 15.8 后 xorg 和 deepin-wm 内存泄露, 显卡是 GTX1060x 笔记本的 820m 没有这种情况出现
@@ -65,7 +65,7 @@ categories:
     - `(killall deepin-wm-switcher; deepin-wm --replace &)` 这样就能守护进程方式在运行了
 
 ## 关于显卡
-> [参考博客: 显卡驱动作死录](https://www.jianshu.com/p/f53c8223bac6)
+> [参考: 显卡驱动作死录](https://www.jianshu.com/p/f53c8223bac6)
 
 > 个人折腾的整理
 当前系统为 Deepin15.7 已经支持多种解决方案了, 还有一个 `深度显卡驱动管理器`

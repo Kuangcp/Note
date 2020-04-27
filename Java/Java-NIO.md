@@ -6,7 +6,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [NIO](#nio)
     1. [Java IO 与 NIO的主要区别](#java-io-与-nio的主要区别)
     1. [通道(Channel)与缓冲区(Buffer)](#通道channel与缓冲区buffer)
@@ -27,7 +27,7 @@ categories:
                 1. [2、[UDP连接](./src/channel/UDPChannel.java)](#2、[udp连接]srcchanneludpchanneljava)
         1. [3、[管道](./src/pipe/TestPipe.java)](#3、[管道]srcpipetestpipejava)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # NIO
 

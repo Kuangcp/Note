@@ -35,7 +35,7 @@ categories:
 1. [哨兵](#哨兵)
 1. [cluster集群](#cluster集群)
 
-**目录 end**|_2020-04-27 22:43_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Redis底层数据结构
 ## 简单动态字符串
@@ -176,7 +176,7 @@ TODO
         1. 没有内存空间了, 由于执行save操作时, 会进行fork子进程 然后进行持久化 TODO 验证
 
 ************************
-> [参考博客: redis哨兵、集群](https://blog.csdn.net/u012129558/article/details/77146287)  
+> [参考: redis哨兵、集群](https://blog.csdn.net/u012129558/article/details/77146287)  
 
 https://www.jianshu.com/p/42ee966f96e5
 https://www.jianshu.com/p/06ab9daf921d

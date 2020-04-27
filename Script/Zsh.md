@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Zsh](#zsh)
     1. [为什么要使用](#为什么要使用)
     1. [Tips](#tips)
@@ -17,7 +17,7 @@ categories:
         1. [主题](#主题)
             1. [自己定制](#自己定制)
 
-**目录 end**|_2020-03-27 14:26_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Zsh
 > [arch zsh wiki](https://wiki.archlinux.org/index.php/Zsh)

@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Linux性能分析和管理](#linux性能分析和管理)
     1. [运行状况信息](#运行状况信息)
         1. [工具](#工具)
@@ -48,7 +48,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2020-03-08 00:29_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Linux性能分析和管理
 ## 运行状况信息
@@ -307,7 +307,7 @@ categories:
 - 发送信号量 `fuser -v -k /home/kuang/sdk` 会把占用该文件夹的进程全部杀掉 (如果是ssh登录的服务器,当前目录就是这个的话, 会掉线)
 
 ### ps
-> [参考博客: ps命令输出](http://www.cnblogs.com/lidabo/p/5505610.html) `输出的信息解释`
+> [参考: ps命令输出](http://www.cnblogs.com/lidabo/p/5505610.html) `输出的信息解释`
 
 - 直接运行 `ps` 就会显示当前会话中的进程
 - `ps aux` 显示系统中所有进程的状态信息 `可根据需要自由组合`
@@ -364,7 +364,7 @@ categories:
 ### pstree
 > 顾名思义 树状图展示进程 线程关系
 
-> [参考博客: Linux下查看线程数的几种方法汇总](https://www.cnblogs.com/yinzhengjie/p/9998771.html)  
+> [参考: Linux下查看线程数的几种方法汇总](https://www.cnblogs.com/yinzhengjie/p/9998771.html)  
 
 ************************
 

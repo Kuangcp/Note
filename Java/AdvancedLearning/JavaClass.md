@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [字节码以及类加载](#字节码以及类加载)
     1. [编译优化](#编译优化)
     1. [字节码](#字节码)
@@ -23,7 +23,7 @@ categories:
 1. [字节码相关框架](#字节码相关框架)
 1. [热更新](#热更新)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 字节码以及类加载
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
@@ -40,7 +40,7 @@ categories:
 字面值就是无需运算的值, 而不是表达式 例如 `final int num = 2;` 反例 `final int num = 3>2?1:2;`
 
 ## 字节码
-> [参考博客: 学会阅读Java字节码](https://www.cnblogs.com/beautiful-code/p/6425376.html)
+> [参考: 学会阅读Java字节码](https://www.cnblogs.com/beautiful-code/p/6425376.html)
 
 字节码是程序的中间表达形式，源码和机器码之间的产物 字节码是由源文件执行javac产生的  
 某些高级语言特性（语法糖）在字节码中给去掉了，例如循环结构，会转换成为分支指令
@@ -98,7 +98,7 @@ categories:
 ### 加载和连接
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p107.jpg)
 
-[参考博客: 第七章.虚拟机类加载机制](http://ifeve.com/%e7%ac%ac%e4%b8%83%e7%ab%a0-%e8%99%9a%e6%8b%9f%e6%9c%ba%e7%b1%bb%e5%8a%a0%e8%bd%bd%e6%9c%ba%e5%88%b6/)
+[参考: 第七章.虚拟机类加载机制](http://ifeve.com/%e7%ac%ac%e4%b8%83%e7%ab%a0-%e8%99%9a%e6%8b%9f%e6%9c%ba%e7%b1%bb%e5%8a%a0%e8%bd%bd%e6%9c%ba%e5%88%b6/)
 `加载`
 - 这个过程就是读取字节码文件，创建一个字节数组装在这些内容，加载结束后这个对象还不能直接调用 
 

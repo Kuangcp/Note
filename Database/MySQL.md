@@ -79,7 +79,7 @@ categories:
         1. [授权](#授权)
 1. [查询](#查询)
 
-**目录 end**|_2020-04-26 21:27_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -278,7 +278,7 @@ _重命名表格_ `RENAME TABLE old TO new `
 # 视图
 > 保障数据安全性，提高查询效率
 
-> [参考博客: ](http://www.jb51.net/article/36363.htm)
+> [参考: ](http://www.jb51.net/article/36363.htm)
 ```sql
     CREATE [ALGORITHM]={UNDEFINED|MERGE|TEMPTABLE}]
         VIEW 视图名 [(属性清单)]

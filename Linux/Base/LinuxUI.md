@@ -9,7 +9,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [UI](#ui)
     1. [Font](#font)
         1. [字体渲染](#字体渲染)
@@ -18,7 +18,7 @@ categories:
     1. [Terminal](#terminal)
         1. [彩色输出](#彩色输出)
 
-**目录 end**|_2020-04-13 17:35_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 
 # UI
@@ -38,7 +38,7 @@ categories:
 > [Debian8安装Infinality改善字体渲染，安装Ubuntu字体](https://www.linuxdashen.com/debian8%E5%AE%89%E8%A3%85infinality%E6%94%B9%E5%96%84%E5%AD%97%E4%BD%93%E6%B8%B2%E6%9F%93%EF%BC%8C%E5%AE%89%E8%A3%85ubuntu%E5%AD%97%E4%BD%93)  
 > [一条命令搞定Linux字体渲染](https://www.lulinux.com/archives/278)  
 > [Font Configuration/Chinese (简体中文)](https://wiki.archlinux.org/index.php/Font_Configuration/Chinese_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))  
-> [参考博客: Fcitx (简体中文)](https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))  
+> [参考: Fcitx (简体中文)](https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))  
 
 - 刷新字体缓存 `fc-cache -fv` 
     - 对应于目录 `~/.local/share/fonts`
@@ -48,7 +48,7 @@ categories:
 ## Theme
 - [Github:vimix](https://github.com/vinceliuice/vimix-gtk-themes)`material design theme`
 
-> [参考博客: 10 Great Linux GTK Themes For 2018 ](https://www.maketecheasier.com/gtk-themes-for-linux/)
+> [参考: 10 Great Linux GTK Themes For 2018 ](https://www.maketecheasier.com/gtk-themes-for-linux/)
 
 - [pingguo](https://www.gnome-look.org/p/1239453/)
 

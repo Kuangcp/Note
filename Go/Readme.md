@@ -28,10 +28,10 @@ Go 语言被设计成一门应用于搭载 Web 服务器，存储集群或类似
 - [Go1.0的吐槽](http://blog.csdn.net/liigo/article/details/23699459)
 - [Java 20年：转角遇到Go](http://www.infoq.com/cn/news/2015/05/java20-from-language-to-platform)
 
-> [参考博客: Golang官网被墙解决办法](https://golangtc.com/t/504072ca320b5276e2000004)
-> [参考博客: why is go popular in china](http://herman.asia/why-is-go-popular-in-china)
-> [参考博客: 我为什么放弃Go语言](https://blog.csdn.net/liigo/article/details/23699459)
-> [参考博客: 使用Go语言工作400天后的感受](https://blog.csdn.net/erlib/article/details/50998026)
+> [参考: Golang官网被墙解决办法](https://golangtc.com/t/504072ca320b5276e2000004)
+> [参考: why is go popular in china](http://herman.asia/why-is-go-popular-in-china)
+> [参考: 我为什么放弃Go语言](https://blog.csdn.net/liigo/article/details/23699459)
+> [参考: 使用Go语言工作400天后的感受](https://blog.csdn.net/erlib/article/details/50998026)
 > [Golang vs Rust vs Dlang 哪个更有前途](https://www.zhihu.com/question/27226962)`大致就是go偏向Java Python Rust 偏向 C++ 的领域`
 
 - [从 0 到 1 学习 Go 语言 ](https://mp.weixin.qq.com/s?__biz=MjM5NzM0MjcyMQ==&mid=2650087380&idx=1&sn=56c77443ae171e1091e146704798647a&chksm=bedac4ba89ad4dac6dab9bd21355a13a692f3411d4242e02ce2be91534570167ee3b7afb5d82&mpshare=1&scene=1&srcid=0127jfIvpS2r7ItNbpOnjnr8#rd)

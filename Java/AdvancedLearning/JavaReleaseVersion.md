@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Java主要发行版本](#java主要发行版本)
     1. [Java5](#java5)
     1. [Java6](#java6)
@@ -17,7 +17,7 @@ categories:
     1. [Java10](#java10)
     1. [Java11](#java11)
 
-**目录 end**|_2020-01-26 17:11_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)
@@ -50,11 +50,11 @@ JDBC4.0  JAX-WS 2.0
 - 181 版本移除了 Derby 
 
 ## Java9
-> [参考博客: Java 9 新特性概览 ](http://www.runoob.com/java/java9-new-features.html)
+> [参考: Java 9 新特性概览 ](http://www.runoob.com/java/java9-new-features.html)
 
-> [参考博客: Java9 新特性汇总](http://www.infoq.com/cn/news/2014/09/java9)  
-> [参考博客: Java 9 新特性概述](https://www.ibm.com/developerworks/cn/java/the-new-features-of-Java-9/index.html)  
-> [参考博客: 深入解读 Java 9 新特性 ](https://mp.weixin.qq.com/s?__biz=MzAwMDU1MTE1OQ==&mid=2653549131&idx=1&sn=77997b94cc91fb7cbead6b7888f26474&chksm=813a63d3b64deac5506a5c0080718eb759720ec17538223af71b865f260428cc7c644d2d97de&scene=21#wechat_redirect)  
+> [参考: Java9 新特性汇总](http://www.infoq.com/cn/news/2014/09/java9)  
+> [参考: Java 9 新特性概述](https://www.ibm.com/developerworks/cn/java/the-new-features-of-Java-9/index.html)  
+> [参考: 深入解读 Java 9 新特性 ](https://mp.weixin.qq.com/s?__biz=MzAwMDU1MTE1OQ==&mid=2653549131&idx=1&sn=77997b94cc91fb7cbead6b7888f26474&chksm=813a63d3b64deac5506a5c0080718eb759720ec17538223af71b865f260428cc7c644d2d97de&scene=21#wechat_redirect)  
 
 1. Jigsaw 模块化
 1. Stream Optional 改进
@@ -62,7 +62,7 @@ JDBC4.0  JAX-WS 2.0
 1. HTTP2 客户端
 
 ## Java10 
-> [参考博客: Java10的新特性](https://segmentfault.com/a/1190000014076481)
+> [参考: Java10的新特性](https://segmentfault.com/a/1190000014076481)
 
 1. 类型推断
 1. String 类 API 增强
@@ -74,5 +74,5 @@ JDBC4.0  JAX-WS 2.0
 ## Java11
 > [详情](/Java/AdvancedLearning/Java11.md)
 
-> [参考博客: Java11的新特性](https://segmentfault.com/a/1190000016527932#articleHeader5)
+> [参考: Java11的新特性](https://segmentfault.com/a/1190000016527932#articleHeader5)
 

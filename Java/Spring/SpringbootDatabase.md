@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [数据库模块](#数据库模块)
     1. [Relational Database](#relational-database)
         1. [多数据源配置](#多数据源配置)
@@ -37,7 +37,7 @@ categories:
             1. [关于StringRedisTemplate的方法使用](#关于stringredistemplate的方法使用)
             1. [消息订阅和发布](#消息订阅和发布)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 数据库模块
 > 主要是采用的JPA，极大的缩减了代码量，但是要注意不要过度依赖框架，丧失了基本的能力
@@ -63,7 +63,7 @@ categories:
 ### JPA
 > 连接池:1.x 默认是tomcat-jdbc连接池 2.x 是 HikariPool
 
-> [参考博客: spring boot2 整合（二）JPA](https://www.jianshu.com/p/3b31270a44b1)
+> [参考: spring boot2 整合（二）JPA](https://www.jianshu.com/p/3b31270a44b1)
 #### Configuration
 > [Official Doc](https://docs.spring.io/spring-boot/docs/2.0.6.RELEASE/reference/htmlsingle/#howto-configure-jpa-properties)
 **`ddl-auto`**
@@ -305,6 +305,6 @@ _配置连接信息_
     - `redisTemplate.expire("max",tempTime,TimeUnit.SECONDS);`
 
 #### 消息订阅和发布
-[参考博客: Spring Boot使用Redis进行消息的发布订阅](https://www.tianmaying.com/tutorial/springboot-redis-message)
+[参考: Spring Boot使用Redis进行消息的发布订阅](https://www.tianmaying.com/tutorial/springboot-redis-message)
 
 

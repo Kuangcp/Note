@@ -26,7 +26,7 @@ categories:
 1. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
     1. [最终方案](#最终方案)
 
-**目录 end**|_2020-04-27 11:39_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 
 # 使用Git进行团队协作
@@ -47,8 +47,8 @@ categories:
 
 - [依据以上思想开发的 git flow工具](https://github.com/nvie/gitflow)
     - [介绍 Git Flow](https://datasift.github.io/gitflow/IntroducingGitFlow.html)
-- [参考博客:  Git 在团队中的最佳实践--如何正确使用Git Flow](http://www.cnblogs.com/cnblogsfans/p/5075073.html)
-    - [参考博客: Getting Started – Git-Flow](https://yakiloo.com/getting-started-git-flow/)
+- [参考:  Git 在团队中的最佳实践--如何正确使用Git Flow](http://www.cnblogs.com/cnblogsfans/p/5075073.html)
+    - [参考: Getting Started – Git-Flow](https://yakiloo.com/getting-started-git-flow/)
 
 ![规范的分支图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Git/git-team-model.png)
 
@@ -72,7 +72,7 @@ categories:
 ***********************
 
 ## 提交准则
-> [参考博客: SVN提交更新的一个准则](http://www.cnblogs.com/chenlong828/archive/2008/09/22/1296193.html)
+> [参考: SVN提交更新的一个准则](http://www.cnblogs.com/chenlong828/archive/2008/09/22/1296193.html)
 
 1. 提交之前先更新
     - SVN更新的原则是要随时更新，随时提交。当完成了一个小功能，能够通过编译并且并且自己测试之后，谨慎地提交。

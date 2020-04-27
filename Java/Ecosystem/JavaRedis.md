@@ -6,7 +6,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Java使用redis](#java使用redis)
     1. [Jedis](#jedis)
         1. [jedis遇到的异常](#jedis遇到的异常)
@@ -14,7 +14,7 @@ categories:
     1. [Lettuce](#lettuce)
     1. [vertx-redis-client](#vertx-redis-client)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Java使用redis
 > [Official List](https://redis.io/clients#java)

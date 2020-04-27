@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Maven](#maven)
     1. [安装](#安装)
         1. [Maven常用命令](#maven常用命令)
@@ -51,7 +51,7 @@ categories:
             1. [Gradle](#gradle)
             1. [Maven](#maven)
 
-**目录 end**|_2020-04-02 19:20_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -340,7 +340,7 @@ mvn install:install-file
 
 > [Maven实战（九）——打包的技巧](http://www.infoq.com/cn/news/2011/06/xxb-maven-9-package)
 > [Maven打包成可执行jar](https://blog.csdn.net/u013177446/article/details/53944424)
-> [参考博客: 使用MAVEN打包可执行的jar包](https://www.jianshu.com/p/afb79650b606)
+> [参考: 使用MAVEN打包可执行的jar包](https://www.jianshu.com/p/afb79650b606)
 
 > war和jar一样使用
 - Springboot项目能够做到, 其实就是 Main 方法, 然后配置了一个Servlet的加载类就可以当war用了
@@ -481,7 +481,7 @@ A 项目 compile
 > 不用去跑审核流程, 私有, 快速, 便捷
 
 ## nexus
-> 需要运行软件, 一般公司内部局域网使用, 如果自己有服务器也能开放给公众使用 [参考博客: maven私服搭建及gradle上传](https://www.jianshu.com/p/b1fe26d5b8c8)
+> 需要运行软件, 一般公司内部局域网使用, 如果自己有服务器也能开放给公众使用 [参考: maven私服搭建及gradle上传](https://www.jianshu.com/p/b1fe26d5b8c8)
 
 1. 设置 RELEASE 不可重复 deploy 管理后台 Repositories -> Releases -> ANALYZE -> Configuration -> Deployment Policy 设置为 Disable Redeploy
 
@@ -501,7 +501,7 @@ A 项目 compile
 ************************
 
 ## 码云
-> 利用公开仓库来搭建私服 | [参考博客:  使用git仓库搭建maven私服 ](https://my.oschina.net/polly/blog/1649362)
+> 利用公开仓库来搭建私服 | [参考:  使用git仓库搭建maven私服 ](https://my.oschina.net/polly/blog/1649362)
 
 ### 创建仓库
 > 当然了在各个托管平台都可以的, 只不过码云是国内的, 毕竟要快 github gitlab bitbucket 就....

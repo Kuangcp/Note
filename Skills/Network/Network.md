@@ -56,7 +56,7 @@ categories:
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2020-04-26 21:27_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 网络
 
@@ -89,7 +89,7 @@ OSI制定的OSI七层参考模型的过于庞大、复杂。与此对照，由�
 
 事实上, 现在的应用不是严格按照OSI分层的, 应用层可以使用 传输层(TCP UDP), 也可以直接使用网络层(IP),甚至直接使用网络接口层
 
-> [参考博客: 以太网帧结构](https://blog.csdn.net/wdkirchhoff/article/details/43915825)
+> [参考: 以太网帧结构](https://blog.csdn.net/wdkirchhoff/article/details/43915825)
 
 ************************
 
@@ -151,7 +151,7 @@ OSI制定的OSI七层参考模型的过于庞大、复杂。与此对照，由�
 
 - IPv4 & IPv6
 
-> [参考博客: 浏览器访问IPv6地址](http://www.cnblogs.com/cuihongyu3503319/p/7422877.html)
+> [参考: 浏览器访问IPv6地址](http://www.cnblogs.com/cuihongyu3503319/p/7422877.html)
 
 #### IP地址分类
 > IP地址的由 网络号 主机号 组成
@@ -234,8 +234,8 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 ```
 
 ### TCP UDP 对比
-> [参考博客: TCP和UDP的最完整的区别](https://blog.csdn.net/li_ning_/article/details/52117463)  
-> [参考博客: TCP和UDP的区别和优缺点](https://blog.csdn.net/xiaobangkuaipao/article/details/76793702)
+> [参考: TCP和UDP的最完整的区别](https://blog.csdn.net/li_ning_/article/details/52117463)  
+> [参考: TCP和UDP的区别和优缺点](https://blog.csdn.net/xiaobangkuaipao/article/details/76793702)
 
 - 可使用 wireshark 抓包对比的方式进行学习: 基于udp(默认)的dns方式，对比 基于tcp的dns方式 更直观看出 tcp 三次握手 四次挥手 -- 《Wireshark 网络分析就这么简单》
 
@@ -280,7 +280,7 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 3. 错误事件：此事件在WebSocket连接或者端点发生错误时产生
 4. 关闭事件：此事件表示WebSocket端点的连接目前正在部分的关闭，他可以有参与连接的任意一个端点发出
 
-> [参考博客: WebSocket 和 Socket 的区别](http://blog.jobbole.com/106009/)  
+> [参考: WebSocket 和 Socket 的区别](http://blog.jobbole.com/106009/)  
 
 ************************
 
@@ -346,7 +346,7 @@ function FindProxyForURL(url, host) {
 ************************
 
 # Socket
-> [参考博客: TCP/IP、Http、Socket的区别](https://blog.csdn.net/Pk_zsq/article/details/6087367)  
+> [参考: TCP/IP、Http、Socket的区别](https://blog.csdn.net/Pk_zsq/article/details/6087367)  
 > [what is socket](https://unix.stackexchange.com/questions/16311/what-is-a-socket)
 
 Socket是应用层与TCP/IP协议族通信的中间软件抽象层，是对TCP/IP协议的封装，Socket本身并不是协议，而是一个调用接口（API），通过Socket，我们才能使用TCP/IP协议
@@ -355,8 +355,8 @@ Socket是应用层与TCP/IP协议族通信的中间软件抽象层，是对TCP/I
 
 Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开发
 
-> [参考博客: Socket编程](http://www.cnblogs.com/skynet/archive/2010/12/12/1903949.html)  
-> [参考博客: Linux socket 编程](https://www.ibm.com/developerworks/cn/education/linux/l-sock/l-sock.html)
+> [参考: Socket编程](http://www.cnblogs.com/skynet/archive/2010/12/12/1903949.html)  
+> [参考: Linux socket 编程](https://www.ibm.com/developerworks/cn/education/linux/l-sock/l-sock.html)
 
 
 ************************
@@ -370,7 +370,7 @@ Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开�
 
 ## 组播
 
-> [参考博客: 组播（Multicast）传输](http://www.cnblogs.com/ghj1976/p/5276452.html)  
+> [参考: 组播（Multicast）传输](http://www.cnblogs.com/ghj1976/p/5276452.html)  
 
 ## 广播
 

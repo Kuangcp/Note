@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Postgresql](#postgresql)
     1. [概述](#概述)
     1. [和MySQL对比](#和mysql对比)
@@ -28,7 +28,7 @@ categories:
         1. [Java使用](#java使用)
     1. [基础数据](#基础数据)
 
-**目录 end**|_2020-01-19 00:19_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Postgresql
 - [ ] [该公司对于PostgreSQL的缺点陈列是否属实](http://www.onexsoft.com/onesql.html)

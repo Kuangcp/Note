@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Vim](#vim)
     1. [Tips](#tips)
     1. [基本配置](#基本配置)
@@ -27,7 +27,7 @@ categories:
     1. [SpaceVim](#spacevim)
     1. [space-vim](#space-vim)
 
-**目录 end**|_2020-01-31 11:57_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Vim 
 > 学习曲线很高，但是学会熟练使用后就效率很高 `官方教程程序 vimtutor`
@@ -87,7 +87,7 @@ syntax on
 
 - v 可视化操作
 
-> [参考博客: vim中执行shell命令小结](https://blog.csdn.net/topgun_chenlingyun/article/details/8013115)
+> [参考: vim中执行shell命令小结](https://blog.csdn.net/topgun_chenlingyun/article/details/8013115)
 
 ### 跳转
 - K J H L 上下左右
@@ -184,7 +184,7 @@ syntax on
 ## 插件管理
 > [vim-plug](https://github.com/junegunn/vim-plug)  
 
-> [参考博客: VIM插件推荐](https://zhuanlan.zhihu.com/p/58816186)  
+> [参考: VIM插件推荐](https://zhuanlan.zhihu.com/p/58816186)  
 
 > 语言插件
 - vim-python   
@@ -200,8 +200,8 @@ syntax on
 - [official site](http://vim.spf13.com/)
 
 ## SpaceVim
-> [参考博客: SpaceVim 中文手册](https://ruby-china.org/topics/32020)`主要看评论, 两个作者理念不同`
-> [参考博客: 如何评价Vim配置文件SpaceVim?](https://www.zhihu.com/question/54270182)
+> [参考: SpaceVim 中文手册](https://ruby-china.org/topics/32020)`主要看评论, 两个作者理念不同`
+> [参考: 如何评价Vim配置文件SpaceVim?](https://www.zhihu.com/question/54270182)
 
 - [Space Vim](https://github.com/topics/spacevim)
     - [GitBook : Space Vim Guide](https://legacy.gitbook.com/book/everettjf/spacevimtutorial/details)

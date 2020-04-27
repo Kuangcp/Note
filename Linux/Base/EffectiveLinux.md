@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [高效的Linux](#高效的linux)
     1. [终端模拟器对比](#终端模拟器对比)
     1. [效率工具](#效率工具)
@@ -30,7 +30,7 @@ categories:
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2020-04-12 23:01_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -207,13 +207,13 @@ categories:
 1. ImageMagick
 
 ### 剪贴板管理
-> [参考博客: 面向 Linux 的 10 款最佳剪贴板管理器](https://linux.cn/article-7329-1.html)
+> [参考: 面向 Linux 的 10 款最佳剪贴板管理器](https://linux.cn/article-7329-1.html)
 
 - CopyQ 比较好用
 
-> [参考博客: 这9个Linux命令非常危险 请大家慎用](https://www.jb51.net/LINUXjishu/498660.html)
+> [参考: 这9个Linux命令非常危险 请大家慎用](https://www.jb51.net/LINUXjishu/498660.html)
 
-> [参考博客: 关于 Linux 你可能不是非常了解的七件事](https://linux.cn/article-8934-1.html)
+> [参考: 关于 Linux 你可能不是非常了解的七件事](https://linux.cn/article-8934-1.html)
 
 ### 截图
 - Flameshot 截图工具  类似于 snipaste
@@ -228,7 +228,7 @@ categories:
 
 > `sudo echo "Text I want to write" > /path/to/file` not work  
 
-> [参考博客: "sudo echo" does not work together in Ubuntu ](https://blogs.oracle.com/joshis/sudo-echo-does-not-work-together-in-ubuntu-another-waste-of-time-issue)
+> [参考: "sudo echo" does not work together in Ubuntu ](https://blogs.oracle.com/joshis/sudo-echo-does-not-work-together-in-ubuntu-another-waste-of-time-issue)
 > [stack over flow](https://stackoverflow.com/questions/84882/sudo-echo-something-etc-privilegedfile-doesnt-work-is-there-an-alterna)
 
 - `sudo sh -c 'echo "Text I want to write" >> /path/to/file'`

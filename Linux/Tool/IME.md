@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [IME](#ime)
 1. [fcitx](#fcitx)
 1. [ibus](#ibus)
@@ -17,7 +17,7 @@ categories:
     1. [Google拼音](#google拼音)
 1. [Tips](#tips)
 
-**目录 end**|_2019-12-20 00:16_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # IME
 > 输入法
@@ -51,7 +51,7 @@ Ctrl ` 进入设置
 ## 搜狗
 > [Official Site](https://pinyin.sogou.com/linux/)  
 
-> [参考博客: Linux安装搜狗拼音和谷歌拼音输入法](https://www.jianshu.com/p/429b8f75af2c)
+> [参考: Linux安装搜狗拼音和谷歌拼音输入法](https://www.jianshu.com/p/429b8f75af2c)
 
 比较良心， 一直希望百度输入法能出Linux版， 最后还是没有， 优点就是能同步帐号， 云词库什么的， 但是bug比较多， 容易奔溃（可能和Deepin有关）
 

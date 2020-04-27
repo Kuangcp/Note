@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [保证同步的方式](#保证同步的方式)
 1. [关键字 synchronized](#关键字-synchronized)
     1. [使用wait() notify() 和 notifyAll()](#使用wait-notify-和-notifyall)
@@ -20,7 +20,7 @@ categories:
 1. [4、使用`Phaser`控制并发阶段任务的运行](#4、使用`phaser`控制并发阶段任务的运行)
 1. [5、使用`Exchanger`控制并发任务间的数据交换](#5、使用`exchanger`控制并发任务间的数据交换)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 保证同步的方式
 

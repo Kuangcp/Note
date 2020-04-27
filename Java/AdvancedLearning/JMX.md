@@ -7,13 +7,13 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [JMX](#jmx)
     1. [概念](#概念)
     1. [使用](#使用)
         1. [JMX的JVM参数配置](#jmx的jvm参数配置)
 
-**目录 end**|_2020-04-08 10:00_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 
 # JMX
@@ -21,8 +21,8 @@ categories:
 
 > [Official Doc](https://www.oracle.com/technetwork/java/javase/tech/javamanagement-140525.html) | [wiki](https://en.wikipedia.org/wiki/Java_Management_Extensions) | [wici zh](https://zh.wikipedia.org/zh-hans/JMX)
 
-> [参考博客: JMX学习笔记](https://www.jianshu.com/p/414647c1179e)
-> [参考博客: java常见命令及Java Dump介绍](http://www.cnblogs.com/kongzhongqijing/articles/5534624.html)
+> [参考: JMX学习笔记](https://www.jianshu.com/p/414647c1179e)
+> [参考: java常见命令及Java Dump介绍](http://www.cnblogs.com/kongzhongqijing/articles/5534624.html)
 
 > [What is JMX? 10 mins Quick Start JMX Tutorial](https://www.journaldev.com/1352/what-is-jmx-mbean-jconsole-tutorial)
 

@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Java的测试](#java的测试)
     1. [断言](#断言)
         1. [正式代码](#正式代码)
@@ -26,14 +26,14 @@ categories:
         1. [JMH](#jmh)
 1. [感悟](#感悟)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Java的测试
 > [测试的基础理论](/Skills/Base/Test.md)
 
 ## 断言
 ### 正式代码
-[参考博客: Java陷阱之assert关键字详解_java](https://yq.aliyun.com/ziliao/131292)
+[参考: Java陷阱之assert关键字详解_java](https://yq.aliyun.com/ziliao/131292)
 [java 中assert的使用](http://www.cnblogs.com/mylove7/articles/3457157.html)
 
 首先可以用在单元测试代码中。junit侵入性是很强的，如果整个工程大量的代码都使用了junit，就难以去掉或者是选择另外一个框架。如果单元测试代码 很多，并且想复用这些单元测试案例，应该选择assert而不是junit，便于使用别的单元测试框架，比如TestNG。同理正式的功能代码根本就不应 该出现Junit，应该使用assert.
@@ -100,8 +100,8 @@ http://static.javadoc.io/org.mockito/mockito-core/2.19.0/org/mockito/Mockito.htm
 > [Mockito Tutorial](https://www.tutorialspoint.com/mockito/index.htm)
 > [Unit tests with Mockito - Tutorial](http://www.vogella.com/tutorials/Mockito/article.html)
 
-> [参考博客: TDD：什么是桩（stub）和模拟（mock）？](http://www.cnblogs.com/happyframework/p/3595547.html)
-> [参考博客: mockito](http://www.testclass.net/mockito/)
+> [参考: TDD：什么是桩（stub）和模拟（mock）？](http://www.cnblogs.com/happyframework/p/3595547.html)
+> [参考: mockito](http://www.testclass.net/mockito/)
 > [mockito](http://static.javadoc.io/org.mockito/mockito-core/2.19.0/org/mockito/Mockito.html#1)
 
 > 官网提示:
@@ -136,7 +136,7 @@ http://static.javadoc.io/org.mockito/mockito-core/2.19.0/org/mockito/Mockito.htm
 
 - [jmh demos](http://hg.openjdk.java.net/code-tools/jmh/file/tip/jmh-samples/src/main/java/org/openjdk/jmh/samples/)
 
-> [参考博客: Java微基准测试框架JMH](https://www.xncoding.com/2018/01/07/java/jmh.html)  
+> [参考: Java微基准测试框架JMH](https://www.xncoding.com/2018/01/07/java/jmh.html)  
 
 > [Benchmark comparing serialization libraries on the JVM ](https://github.com/eishay/jvm-serializers)  
 

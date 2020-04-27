@@ -6,16 +6,16 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Elasticsearch](#elasticsearch)
     1. [Install](#install)
     1. [Java](#java)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Elasticsearch
 > [Official Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)  
-> [参考博客: Elasticsearch 快速开始](https://www.cnblogs.com/cjsblog/p/9439331.html)  
+> [参考: Elasticsearch 快速开始](https://www.cnblogs.com/cjsblog/p/9439331.html)  
 
 ## Install
 > [install](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html)  

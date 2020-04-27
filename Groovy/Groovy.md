@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Groovy](#groovy)
     1. [书籍](#书籍)
     1. [语言特性](#语言特性)
@@ -41,7 +41,7 @@ categories:
         1. [默认return](#默认return)
     1. [Grails](#grails)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Groovy
 > [Groovy 官网](http://www.groovy-lang.org/) | 
@@ -171,7 +171,7 @@ categories:
 ```
 
 ### 函数
-> [参考博客: Groovy进阶之函数、闭包和类](https://www.tuicool.com/articles/iEBJnqF)
+> [参考: Groovy进阶之函数、闭包和类](https://www.tuicool.com/articles/iEBJnqF)
 
 ### 闭包
 ```groovy
@@ -183,7 +183,7 @@ categories:
 ```
 
 ### 测试
-[参考博客: 用 Groovy 更迅速地对 Java 代码进行单元测试](https://www.ibm.com/developerworks/cn/java/j-pg11094/)
+[参考: 用 Groovy 更迅速地对 Java 代码进行单元测试](https://www.ibm.com/developerworks/cn/java/j-pg11094/)
 
 *************************
 ### 调用系统命令行
@@ -198,7 +198,7 @@ categories:
 > 和Java不同的是, Groovy提供具有功能性的注解, Java大多是接口规范性注解
 
 @ToString 自动实现toString方法, 但是字符串有点冗余
-> [参考博客: Groovy中那些神奇注解之ToString](http://www.cnblogs.com/varlxj/p/5181788.html)
+> [参考: Groovy中那些神奇注解之ToString](http://www.cnblogs.com/varlxj/p/5181788.html)
 
 _日志相关_ 只需要引入对应的依赖, 就和lombok一样的使用
 ```java
@@ -373,7 +373,7 @@ class Person{
 > [示例代码](https://github.com/kuangcp/JavaBase/blob/master/src/main/java/com/classfile/JavaUseGroovy.java)
 
 ### Groovy和Spring
-> [参考博客: Groovy 使 Spring 更出色，第 1 部分](https://www.ibm.com/developerworks/cn/java/j-groovierspring1.html)
+> [参考: Groovy 使 Spring 更出色，第 1 部分](https://www.ibm.com/developerworks/cn/java/j-groovierspring1.html)
 
 **************************************
 ## 坑

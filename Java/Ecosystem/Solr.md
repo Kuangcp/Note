@@ -6,11 +6,11 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Solr](#solr)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Solr
 
-> [参考博客: 用容器快速上手Apache Solr](http://qinghua.github.io/solr/)
+> [参考: 用容器快速上手Apache Solr](http://qinghua.github.io/solr/)

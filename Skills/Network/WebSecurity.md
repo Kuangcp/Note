@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [网络安全](#网络安全)
     1. [中间人攻击](#中间人攻击)
 1. [Web安全](#web安全)
@@ -24,7 +24,7 @@ categories:
     1. [CSRF](#csrf)
     1. [XSS](#xss)
 
-**目录 end**|_2020-04-05 19:41_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 
 # 网络安全
@@ -46,7 +46,7 @@ categories:
 ### OAuth 2.0
 - [OAuth 2.0授权框架](https://github.com/jeansfish/RFC6749.zh-cn/blob/master/index.md)
 
-> [参考博客: 理解OAuth 2.0](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)  
+> [参考: 理解OAuth 2.0](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)  
 
 ************************
 
@@ -58,7 +58,7 @@ categories:
 - [Blog:单点登录](http://blog.leapoahead.com/2015/09/07/user-authentication-with-jwt/)  
 - [Web 安全之 XSS、CSRF 和 JWT](https://juejin.im/entry/58e67673a22b9d00588e7148)
 
-> [参考博客: 开箱即用 - jwt 无状态分布式授权](http://www.cnblogs.com/grissom007/p/6294746.html)
+> [参考: 开箱即用 - jwt 无状态分布式授权](http://www.cnblogs.com/grissom007/p/6294746.html)
 
 > 需要注意的是，不是什么数据都适合放在 Cookie、localStorage 和 sessionStorage 中的。使用它们的时候，需要时刻注意是否有代码存在 XSS 注入的风险。  
 > 因为只要打开控制台，你就随意修改它们的值，也就是说如果你的网站中有 XSS 的风险，它们就能对你的 localStorage 肆意妄为。所以千万不要用它们存储你系统中的敏感数据

@@ -6,7 +6,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Java 实例化对象的方式](#java-实例化对象的方式)
     1. [new](#new)
     1. [反射](#反射)
@@ -14,7 +14,7 @@ categories:
     1. [反序列化](#反序列化)
     1. [Unsafe](#unsafe)
 
-**目录 end**|_2020-02-02 20:57_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Java 实例化对象的方式
 > [Github: 实例代码](https://github.com/kuangcp/JavaBase/blob/master/class/src/test/java/com/github/kuangcp/instantiation/InstantiationAndConstructorTest.java)

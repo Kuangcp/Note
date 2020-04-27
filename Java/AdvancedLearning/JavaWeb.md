@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Java Web](#java-web)
     1. [JSP/Servlet](#jspservlet)
         1. [Servlet](#servlet)
@@ -19,14 +19,14 @@ categories:
         1. [缓存](#缓存)
     1. [Tips](#tips)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Java Web
 ## JSP/Servlet
 
 ### Servlet
 ### JSP
-> [参考博客: JSP面试题及答案](http://www.cnblogs.com/iOS-mt/p/5717631.html)
+> [参考: JSP面试题及答案](http://www.cnblogs.com/iOS-mt/p/5717631.html)
 
 #### 九大内置对象
 
@@ -43,7 +43,7 @@ categories:
 | exception   |     例外对象      |           类型 javax.lang.Throwable              |       作用域    page  
 
 #### 四个作用域
-> [参考博客: JSP的四大作用域](http://www.cnblogs.com/featherfly/p/3513656.html)
+> [参考: JSP的四大作用域](http://www.cnblogs.com/featherfly/p/3513656.html)
 
 | 域 | 说明 |
 |:----|:----|

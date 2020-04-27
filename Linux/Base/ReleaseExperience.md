@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Linux常见发行版](#linux常见发行版)
     1. [基础知识](#基础知识)
         1. [安装系统](#安装系统)
@@ -36,7 +36,7 @@ categories:
         1. [Chrome OS](#chrome-os)
         1. [Fyde OS](#fyde-os)
 
-**目录 end**|_2020-04-05 19:41_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Linux常见发行版
 > [Repology](https://repology.org/)
@@ -78,7 +78,7 @@ categories:
 1. 引导会自动追加到硬盘引导分区, 不会覆盖原有系统, 目前 manjaro deepin windows10 三系统双硬盘并存
 1. 安装完成, 重启前拔掉U盘 即可
 
-> [参考博客: 迁移到 GRUB 2](https://www.ibm.com/developerworks/cn/linux/l-grub2/)
+> [参考: 迁移到 GRUB 2](https://www.ibm.com/developerworks/cn/linux/l-grub2/)
 
 > UEFI  | [Doc](https://wiki.manjaro.org/index.php?title=UEFI_-_Install_Guide)
 

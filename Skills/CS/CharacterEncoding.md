@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [字符编码](#字符编码)
     1. [ASCII](#ascii)
     1. [ANSI](#ansi)
@@ -19,15 +19,15 @@ categories:
     1. [汉字编码发展史](#汉字编码发展史)
     1. [Java中的编码](#java中的编码)
 
-**目录 end**|_2020-04-09 21:12_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 字符编码
 
 > [字符编码笔记：ASCII，Unicode 和 UTF-8](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html) | [阮一峰的文章有哪些常见性错误](https://www.v2ex.com/t/343634)
 
 > [字符编码](http://blog.jobbole.com/39309/)
-> [参考博客: Ansi,UTF8,Unicode,ASCII编码的区别](https://blog.csdn.net/xiongxiao/article/details/3741731)
-> [参考博客: 字符编码的前世今生](https://tgideas.qq.com/webplat/info/news_version3/804/808/811/m579/201307/218730.shtml)
+> [参考: Ansi,UTF8,Unicode,ASCII编码的区别](https://blog.csdn.net/xiongxiao/article/details/3741731)
+> [参考: 字符编码的前世今生](https://tgideas.qq.com/webplat/info/news_version3/804/808/811/m579/201307/218730.shtml)
 
 - 字符内码(charcter code)指的是用来代表字符的内码.读者在输入和存储文档时都要使用内码,内码分为
     - 单字节内码 -- Single-Byte character sets (SBCS), 也就是第一个字节 0-127 
@@ -47,7 +47,7 @@ categories:
 
 同时还要注意，在标准ASCII中，其最高位(b7)用作奇偶校验位。   Linux `man ascii` 就可以查看
 
-> [参考博客: ASCII码表](http://www.cnblogs.com/xmxu/archive/2012/07/10/2584032.html)
+> [参考: ASCII码表](http://www.cnblogs.com/xmxu/archive/2012/07/10/2584032.html)
 
 
 ************************
@@ -104,7 +104,7 @@ Unicode 是一个囊括了世界上所有字符的字符集，其中每一个字
 - 5 字节 111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 
 - 6 字节 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 
 
-> [参考博客: UTF-8编码规则（转） ](http://www.cnblogs.com/chenwenbiao/archive/2011/08/11/2134503.html)
+> [参考: UTF-8编码规则（转） ](http://www.cnblogs.com/chenwenbiao/archive/2011/08/11/2134503.html)
 
 #### UTF-16
 - [CESU-8](https://en.wikipedia.org/wiki/CESU-8)
@@ -123,8 +123,8 @@ GBK兼容GB2312，并增加了大量不常用汉字，还加入了几乎所有�
 **GB2312 GBK GB18030 都属于`双字节`字符集 (DBCS)**
 
 > [字体编辑用中日韩汉字Unicode编码表](http://www.chi2ko.com/tool/CJK.htm)  
-> [参考博客: Unicode中文和特殊字符的编码范围](http://www.cnblogs.com/sosoft/p/3456631.html)  
-> [参考博客: 中文标点符号具体unicode码](https://blog.csdn.net/yuan892173701/article/details/8731490)
+> [参考: Unicode中文和特殊字符的编码范围](http://www.cnblogs.com/sosoft/p/3456631.html)  
+> [参考: 中文标点符号具体unicode码](https://blog.csdn.net/yuan892173701/article/details/8731490)
 > [汉字 Unicode 编码范围](https://www.qqxiuzi.cn/zh/hanzi-unicode-bianma.php)
 
 
