@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Redis底层数据结构](#redis底层数据结构)
     1. [简单动态字符串](#简单动态字符串)
     1. [链表](#链表)
@@ -29,11 +29,13 @@ categories:
     1. [复制](#复制)
     1. [数据迁移](#数据迁移)
     1. [错误分析](#错误分析)
+1. [应用](#应用)
+    1. [分布式锁](#分布式锁)
 1. [主从](#主从)
 1. [哨兵](#哨兵)
 1. [cluster集群](#cluster集群)
 
-**目录 end**|_2020-03-24 17:22_|
+**目录 end**|_2020-04-27 22:43_|
 ****************************************
 # Redis底层数据结构
 ## 简单动态字符串
@@ -179,6 +181,16 @@ TODO
 https://www.jianshu.com/p/42ee966f96e5
 https://www.jianshu.com/p/06ab9daf921d
 https://www.cnblogs.com/demingblog/p/10295236.html
+
+************************
+
+# 应用
+## 分布式锁
+
+> [基于Redis的分布式锁到底安全吗（上）？](https://mp.weixin.qq.com/s/JTsJCDuasgIJ0j95K8Ay8w)  
+> [基于Redis的分布式锁到底安全吗（下）？](https://mp.weixin.qq.com/s/4CUe7OpM6y1kQRK8TOC_qQ?)  
+
+************************
 
 # 主从
 

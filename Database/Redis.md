@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Redis](#redis)
     1. [Book](#book)
 1. [安装和配置](#安装和配置)
@@ -45,7 +45,7 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2020-04-22 10:14_|
+**目录 end**|_2020-04-27 22:43_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -289,6 +289,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 ************************
 
 # Pub/Sub发布和订阅
+> 基于阻塞 list 实现
 
 - `PSUBSCRIBE pattern [pattern ...]`
     - 订阅一个或多个符合给定模式的频道。每个模式以 * 作为匹配符，比如 it* 匹配所有以 it 开头的频道( it.news 、 it.blog 、 it.tweets 等等)，
