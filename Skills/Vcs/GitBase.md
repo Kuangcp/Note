@@ -73,9 +73,8 @@ categories:
 1. [常见VCS工具](#常见vcs工具)
     1. [Git](#git)
     1. [SVN](#svn)
-1. [repos的使用](#repos的使用)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-04-28 11:04_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -869,7 +868,3 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 - 还有一个点就是分工比较明确，开发中没有互相依赖，不然就需要在Git SVN都需要频繁解决冲突
 - 所以这只是权宜之计
 
-*********************
-
-# repos的使用
-> 综合各个VCS的管理方式

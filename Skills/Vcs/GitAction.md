@@ -28,8 +28,9 @@ categories:
     1. [Tips](#tips)
         1. [清理仓库大文件](#清理仓库大文件)
         1. [CRLF与LF](#crlf与lf)
+        1. [仓库统计](#仓库统计)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-04-28 11:04_|
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -286,3 +287,6 @@ Git提供了一个“换行符自动转换”功能。这个功能默认处于�
 > [参考: git 换行符LF与CRLF转换问题](https://www.cnblogs.com/sdgf/p/6237847.html)
 
 >1. CRLF -> LF `sed -i 's/\r//g' file` 配合git 就是 `git ls-files| sed -i 's/\r//g' `
+
+### 仓库统计
+> [https://github.com/hoxu/gitstats](https://github.com/hoxu/gitstats)  

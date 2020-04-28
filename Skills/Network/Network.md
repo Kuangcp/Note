@@ -33,8 +33,6 @@ categories:
         1. [TTFB](#ttfb)
         1. [URL](#url)
         1. [DNS](#dns)
-        1. [Proxy](#proxy)
-            1. [PAC](#pac)
         1. [VPN](#vpn)
         1. [SSDP](#ssdp)
 1. [Socket](#socket)
@@ -43,6 +41,7 @@ categories:
     1. [组播](#组播)
     1. [广播](#广播)
 1. [代理 Proxy](#代理-proxy)
+    1. [PAC](#pac)
     1. [正向代理](#正向代理)
     1. [反向代理](#反向代理)
     1. [透明代理](#透明代理)
@@ -56,7 +55,7 @@ categories:
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-04-28 11:04_|
 ****************************************
 # 网络
 
@@ -323,19 +322,6 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 
 ************************
 
-### Proxy
-
-#### PAC
-> proxy auto config 
-
-> [MDN: PAC File](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_(PAC)_file)
-```js
-function FindProxyForURL(url, host) {
-    return "PROXY 127.0.0.1:8080"; 
-}
-```
-************************
-
 ### VPN
 >  Virtual Private Network (VPN) 
 
@@ -378,6 +364,17 @@ Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开�
 
 # 代理 Proxy
 > [wikipedia](https://en.wikipedia.org/wiki/Proxy) 
+
+
+## PAC
+> proxy auto config 
+
+> [MDN: PAC File](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_(PAC)_file)
+```js
+function FindProxyForURL(url, host) {
+    return "PROXY 127.0.0.1:8080"; 
+}
+```
 
 ## 正向代理
 > 隐藏 客户端 地址, 去访问地址明确的服务端
@@ -425,6 +422,7 @@ Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开�
 - 配置证书 访问 [mitm.it](mitm.it) 选择对应的平台即可
     - 实际上是安装了 mitmproxy-ca-cert.pem 文件 信任了 mitmproxy 这个CA
 
+> [gomitproxy](https://github.com/zboya/gomitmproxy) `Go 实现`  
 > 简评：过滤和搜索功能强大且支持重放但是用久了占用内存大，因为抓包的数据都在内存里
 
 ### Mars
