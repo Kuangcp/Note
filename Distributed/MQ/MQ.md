@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [MQ](#mq)
     1. [为何需要使用](#为何需要使用)
     1. [风险分析](#风险分析)
@@ -19,11 +19,11 @@ categories:
     1. [RabbitMQ](#rabbitmq)
     1. [Pulsar](#pulsar)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # MQ
 
-> [参考博客: MQ消息中间件](https://blog.csdn.net/qq_29676623/article/details/85108070)
+> [参考: MQ消息中间件](https://blog.csdn.net/qq_29676623/article/details/85108070)
 
 ## 为何需要使用
 解耦、异步、削峰
@@ -51,6 +51,6 @@ categories:
 ## RabbitMQ
 采用 Erlang 开发
 
-> [参考博客: 我为什么要选择RabbitMQ ](https://www.sojson.com/blog/48.html)
+> [参考: 我为什么要选择RabbitMQ ](https://www.sojson.com/blog/48.html)
 
 ## Pulsar

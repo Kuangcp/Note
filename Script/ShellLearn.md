@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [学习Shell](#学习shell)
     1. [shell类别](#shell类别)
     1. [执行方式](#执行方式)
@@ -43,7 +43,7 @@ categories:
 1. [Tips](#tips)
     1. [常用代码片段](#常用代码片段)
 
-**目录 end**|_2020-04-13 17:35_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -65,7 +65,7 @@ categories:
 - fish
   - 交互式的, 补全功能比较好 
 
-> [参考博客: 常见shell类型](http://www.cnblogs.com/happycxz/p/7840077.html)  
+> [参考: 常见shell类型](http://www.cnblogs.com/happycxz/p/7840077.html)  
 > [Github: zsh guide](https://github.com/goreliu/zshguide)  
 
 *******************
@@ -329,11 +329,11 @@ _判断文件_
 - 如果没有 `[block]` 这样的声明就可以当sh用, 直接 source file 就加载了配置内容
 
 ## 多线程
-> [参考博客: shell如何实现多线程](https://www.cnblogs.com/signjing/p/7074778.html)  
+> [参考: shell如何实现多线程](https://www.cnblogs.com/signjing/p/7074778.html)  
 
 ********************
 ## 脚本的参数自动补全
-> [参考博客: 命令行自动补全原理 ](http://www.cnblogs.com/wang_yb/p/5969451.html)
+> [参考: 命令行自动补全原理 ](http://www.cnblogs.com/wang_yb/p/5969451.html)
 
 ### Bash
 

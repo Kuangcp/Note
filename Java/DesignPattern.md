@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [软件设计的一些原则](#软件设计的一些原则)
     1. [思维原则](#思维原则)
         1. [奥卡姆剃刀原理](#奥卡姆剃刀原理)
@@ -57,7 +57,7 @@ categories:
     1. [经验之谈](#经验之谈)
     1. [反模式](#反模式)
 
-**目录 end**|_2020-01-31 12:34_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 软件设计的一些原则
 
@@ -103,8 +103,8 @@ KISS原则在设计上可能最被推崇的，在家装设计，界面设计，�
 2. 将功能委托给所组合的一个对象，从而获得新功能。
 3. 有些时候也称之为"聚合"（aggregation）或"包容"（containment），尽管有些作者对这些术语赋予了专门的含义
 
-> [参考博客: 组合、委托与继承，面向对象中类之间的基本关系漫游](http://www.cnblogs.com/narutow/p/8117352.html)
-> [参考博客: 优先使用（对象）组合，而非（类）继承](https://www.xuebuyuan.com/1639556.html)
+> [参考: 组合、委托与继承，面向对象中类之间的基本关系漫游](http://www.cnblogs.com/narutow/p/8117352.html)
+> [参考: 优先使用（对象）组合，而非（类）继承](https://www.xuebuyuan.com/1639556.html)
 
 ### 查询与命令分离
 `CQS: Command-Query Separation`
@@ -193,7 +193,7 @@ KISS原则在设计上可能最被推崇的，在家装设计，界面设计，�
     - 由方法 M 创建或者实例化的对象；
     - 作为方法 M 的参数的对象。
 
-> [参考博客: 迪米特法则与重构](http://zhangyi.xyz/demeter-law-and-refactoring/)
+> [参考: 迪米特法则与重构](http://zhangyi.xyz/demeter-law-and-refactoring/)
 
 ### 开闭原则
 `Open/Closed Principle (OCP)`
@@ -262,7 +262,7 @@ CCP则让系统的维护者受益。CCP让包尽可能大（CCP原则加入功�
     - 耦合：一个软件结构内不同模块之间互连程度的度量
 - 内聚意味着重用和独立，耦合意味着多米诺效应牵一发动全身
 
-> 凝聚>松耦合>重用  [参考博客: 为什么我停止使用Spring?](http://www.jdon.com/forum/messageList.shtml?thread=45977#23144139)
+> 凝聚>松耦合>重用  [参考: 为什么我停止使用Spring?](http://www.jdon.com/forum/messageList.shtml?thread=45977#23144139)
 
 ### 惯例优于配置原则
 `Convention over Configuration（CoC）`
@@ -295,7 +295,7 @@ JavaEE就是一个标准的大集合。每个开发者只需要关注于标准�
 
 诸如组件，分层，面向服务，等等这些概念都是在不同的层次上做抽像和包装，以使得使用者不用关心它的内部实现细节。 说白了还是“高内聚，低耦合”。
 
-> [参考博客: 理论篇：关注点分离(Separation of concerns, SoC)](http://www.cnblogs.com/wenhongyu/p/7992028.html)
+> [参考: 理论篇：关注点分离(Separation of concerns, SoC)](http://www.cnblogs.com/wenhongyu/p/7992028.html)
 
 ### 契约式设计
 `Design by Contract (DbC)`
@@ -350,13 +350,13 @@ DbC的核心思想是对软件系统中的元素之间相互合作以及“责�
 - 《软件秘笈：设计模式那点事》
 
 > [设计模式基础](http://www.cnblogs.com/x-xk/archive/2013/01/21/2864916.html)  
-[参考博客: GoF解释](http://www.baike.com/wiki/GoF)  
-[参考博客: 设计模式专栏](http://blog.csdn.net/column/details/zsxdesignpattern.html)
+[参考: GoF解释](http://www.baike.com/wiki/GoF)  
+[参考: 设计模式专栏](http://blog.csdn.net/column/details/zsxdesignpattern.html)
 
 > [23种经典设计模式UML类图汇总 ](http://blog.csdn.net/u011240877/article/details/45381071)  
-[参考博客: 23种设计模式UML表示形式](http://blog.csdn.net/chen4013874/article/details/51347535)  
-[参考博客: 23中设计模式类图和原理详解](http://blog.csdn.net/tingting256/article/details/52534663) 
-[参考博客: 23种设计模式类图总结 ](http://blog.csdn.net/qq_25827845/article/details/52510803) 
+[参考: 23种设计模式UML表示形式](http://blog.csdn.net/chen4013874/article/details/51347535)  
+[参考: 23中设计模式类图和原理详解](http://blog.csdn.net/tingting256/article/details/52534663) 
+[参考: 23种设计模式类图总结 ](http://blog.csdn.net/qq_25827845/article/details/52510803) 
 
 > [如何正确地使用设计模式？](https://www.zhihu.com/question/23757906)  
 > [设计模式有何不妥，所谓的荼毒体现在哪？](https://www.zhihu.com/question/23757237)
@@ -477,8 +477,8 @@ DbC的核心思想是对软件系统中的元素之间相互合作以及“责�
 
 - 当某个单例对象中含有不具有并发性的对象 就会发生并发问题, 由于只有一个对象, 为了确保数据一致, 就需要加锁, 这样就带来了严重的性能下降 而Spring是怎么做的呢
     - [参考博客 Spring如何处理线程并发](https://blog.csdn.net/java_fancy/article/details/7439657)
-    - [参考博客: springmvc是单例的，开发的时候会不会影响性能呢？](https://bbs.csdn.net/topics/390873889)
-    - [参考博客: Spring并发访问的线程安全性问题](http://www.xuebuyuan.com/1628190.html) `Controller或者Service层中定义共享对象, 但是使用线程安全对象`
+    - [参考: springmvc是单例的，开发的时候会不会影响性能呢？](https://bbs.csdn.net/topics/390873889)
+    - [参考: Spring并发访问的线程安全性问题](http://www.xuebuyuan.com/1628190.html) `Controller或者Service层中定义共享对象, 但是使用线程安全对象`
 
 ### 建造者模式
 
@@ -498,8 +498,8 @@ DbC的核心思想是对软件系统中的元素之间相互合作以及“责�
 
 ### 策略模式
 > 定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法的变化独立于使用算法的用户。  
-[参考博客: 设计模式 ( 十八 ) 策略模式Strategy（对象行为型） ](http://blog.csdn.net/hguisu/article/details/7558249)
-[参考博客: Java消除ifelse](http://www.cnblogs.com/zdd-java/p/6143935.html)
+[参考: 设计模式 ( 十八 ) 策略模式Strategy（对象行为型） ](http://blog.csdn.net/hguisu/article/details/7558249)
+[参考: Java消除ifelse](http://www.cnblogs.com/zdd-java/p/6143935.html)
 
 也就是说将一种需求的多种实现算法分别封装起来, 然后利用多态, 让调用方选择任一实现
 
@@ -560,7 +560,7 @@ DbC的核心思想是对软件系统中的元素之间相互合作以及“责�
 - [一个鸭子游戏引发的设计（多态，继承，抽象，接口，策略者模式）](http://www.cnblogs.com/x-xk/archive/2012/12/21/2823401.html)
 - [不要再盲目的new了！你要学着针对接口编程！（具体方法，Factory，Abstract Factory](www.cnblogs.com/x-xk/archive/2013/01/06/2830742.html)
 
-- [参考博客: 为什么我墙裂建议大家使用枚举来实现单例。](https://mp.weixin.qq.com/s/aGMz1u0Oh4ZHTDBFvgq0lg)`但是枚举的实现不利于扩展`
+- [参考: 为什么我墙裂建议大家使用枚举来实现单例。](https://mp.weixin.qq.com/s/aGMz1u0Oh4ZHTDBFvgq0lg)`但是枚举的实现不利于扩展`
 
 ## 反模式
 - 末日金字塔: if while 代码块多层嵌套

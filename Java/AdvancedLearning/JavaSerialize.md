@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [序列化](#序列化)
     1. [serialVersionUID](#serialversionuid)
 1. [主流编解码框架](#主流编解码框架)
@@ -16,7 +16,7 @@ categories:
     1. [Thrift](#thrift)
         1. [Marshalling](#marshalling)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 序列化
 > [码农翻身:序列化： 一个老家伙的咸鱼翻身](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513589&idx=1&sn=d402d623d9121453f1e570395c7f99d7&chksm=80d67a36b7a1f32054d4c779dd26e8f97a075cf4d9ed1281f16d09f1df50a29319cd37520377&scene=21#wechat_redirect) `对象转化为二进制流`
@@ -42,7 +42,7 @@ Window ==> Preferences ==> Java ==> Compiler ==> Error/Warnings ==>Potential pro
 > 因为Java序列化的性能和存储开销都表现不好,而且不能跨语言, 所以一般不使用Java的序列化而是使用以下流行的库
 
 ## MessagePack
-> [Github:msgpack](https://github.com/msgpack) | [参考博客: MessagePack：一种高效二进制序列化格式](http://hao.jobbole.com/messagepack/)
+> [Github:msgpack](https://github.com/msgpack) | [参考: MessagePack：一种高效二进制序列化格式](http://hao.jobbole.com/messagepack/)
 
 ## Protobuf
 > [protobuf-gradle-plugin](https://github.com/google/protobuf-gradle-plugin)

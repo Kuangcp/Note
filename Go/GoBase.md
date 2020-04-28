@@ -34,7 +34,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2020-04-25 18:17_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -52,7 +52,7 @@ export GOSUMDB=sum.golang.google.cn
 ```
 
 > [wiki Modules](https://github.com/golang/go/wiki/Modules)  
-> [参考博客: Go模块简明教程](https://github.com/wuyumin/tutorial/blob/master/zh-cn/Modules/README.md)  
+> [参考: Go模块简明教程](https://github.com/wuyumin/tutorial/blob/master/zh-cn/Modules/README.md)  
 
 ************************
 
@@ -95,7 +95,7 @@ strings 包 提供了常用字符串API
 ## 基本语法
 
 ### 标准输入输出
-> [参考博客: golang中的格式化输入输出](https://blog.csdn.net/xiaoyida11/article/details/51554022)
+> [参考: golang中的格式化输入输出](https://blog.csdn.net/xiaoyida11/article/details/51554022)
 
 - 打印结构体 `fmt.Printf("%+v\n", object)`
 
@@ -156,9 +156,9 @@ func walkfunc(path string, info os.FileInfo, err error) error {
 ## JSON
 > `结构体必须是大写字母开头的成员才会被处理(大写字母开头才有对外权限)`
 
-> [参考博客: Go操作JSON](https://blog.csdn.net/u011304970/article/details/70769949)
-> [参考博客: go and json](https://eager.io/blog/go-and-json/)
-> [参考博客: 在Go语言中使用JSON](https://blog.csdn.net/tiaotiaoyly/article/details/38942311) 
+> [参考: Go操作JSON](https://blog.csdn.net/u011304970/article/details/70769949)
+> [参考: go and json](https://eager.io/blog/go-and-json/)
+> [参考: 在Go语言中使用JSON](https://blog.csdn.net/tiaotiaoyly/article/details/38942311) 
 
 > [website: json to go struct](https://mholt.github.io/json-to-go/)
 
@@ -211,5 +211,5 @@ func (*GenerateGrid) ReadConfig() []GridConfig {
 ```
 # Tips
 ## 通过字符串调用指定函数
-> [参考博客: Go 根据字符串调用指定函数](https://blog.csdn.net/HOOKTTG/article/details/52184500)
-> [参考博客: WebAssembly 和 Go语言：对未来的观望](http://www.techug.com/post/webassembly-and-go-a-look-to-the-future.html)
+> [参考: Go 根据字符串调用指定函数](https://blog.csdn.net/HOOKTTG/article/details/52184500)
+> [参考: WebAssembly 和 Go语言：对未来的观望](http://www.techug.com/post/webassembly-and-go-a-look-to-the-future.html)

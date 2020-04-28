@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [SpringBoot](#springboot)
     1. [思考](#思考)
     1. [参考教程](#参考教程)
@@ -42,7 +42,7 @@ categories:
             1. [Gradle结合Docker](#gradle结合docker)
         1. [热部署](#热部署)
 
-**目录 end**|_2020-02-22 01:11_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # SpringBoot
 > [首页](https://spring.io/projects/spring-boot#learn)
@@ -67,7 +67,7 @@ categories:
 
 ## 参考教程
 - [SpringBoot中文索引](http://springboot.fun/)
-- [参考博客: Spring Boot 入门系列](http://www.spring4all.com/article/246)
+- [参考: Spring Boot 入门系列](http://www.spring4all.com/article/246)
 - [Springboot探索](https://juejin.im/post/598dd709f265da3e213f0c57)
 - [SpringBoot入门](http://blog.csdn.net/jsyxcjw/article/details/46763639)
 
@@ -149,7 +149,7 @@ _目录结构最好如下_ `*Application类要处于所有用了Springboot注解
 - [自定义配置文件](http://www.cnblogs.com/java-zhao/p/5542154.html)`将应用配置外置并注入成bean`
 - [配置文件外置](http://www.cnblogs.com/xiaoqi/p/6955288.html)
 
-> [参考博客: Spring Boot(五) - 外化配置](https://www.hifreud.com/2017/06/23/spring-boot-05-Externalized-Configuration/)
+> [参考: Spring Boot(五) - 外化配置](https://www.hifreud.com/2017/06/23/spring-boot-05-Externalized-Configuration/)
 
 ### 多种配置文件并切换
 #### yml方式
@@ -229,8 +229,8 @@ graduate:
 ## Logging
 默认可以通过 application.properties 配置框架的日志,以及应用具体到包和类的日志等级,日志文件等等
 
-> [参考博客: Spring boot——logback 基础使用篇（一）](https://www.cnblogs.com/lixuwu/p/5804793.html)
-> [参考博客: springboot use logback](https://springframework.guru/using-logback-spring-boot/)`能根据Profile配置,还能写if`  
+> [参考: Spring boot——logback 基础使用篇（一）](https://www.cnblogs.com/lixuwu/p/5804793.html)
+> [参考: springboot use logback](https://springframework.guru/using-logback-spring-boot/)`能根据Profile配置,还能写if`  
 > [spring boot logging](https://www.baeldung.com/spring-boot-logging)
 
 使用 logback 则需要配置 logback.xml 或者 logback-spring.xml 建议使用后者
@@ -439,4 +439,4 @@ private Connector createHttpConnector() {
 
 
 ### 热部署
-> [参考博客: SpringBoot热部署](https://nilzzzz.github.io/2017/11/SpringBoot1/)
+> [参考: SpringBoot热部署](https://nilzzzz.github.io/2017/11/SpringBoot1/)

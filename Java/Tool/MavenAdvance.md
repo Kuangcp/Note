@@ -8,11 +8,11 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Maven Advance](#maven-advance)
     1. [Custom Maven plugin](#custom-maven-plugin)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Maven Advance
 
@@ -22,4 +22,4 @@ categories:
 
 > [github: maven plugin](https://github.com/search?q=maven+plugin)
 
-> [参考博客: custom plugin](https://javabeat.net/writing-a-custom-plugin-for-maven/)
+> [参考: custom plugin](https://javabeat.net/writing-a-custom-plugin-for-maven/)

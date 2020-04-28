@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [GitInAction](#gitinaction)
     1. [安装](#安装)
         1. [Linux(debian系)](#linuxdebian系)
@@ -28,8 +28,9 @@ categories:
     1. [Tips](#tips)
         1. [清理仓库大文件](#清理仓库大文件)
         1. [CRLF与LF](#crlf与lf)
+        1. [仓库统计](#仓库统计)
 
-**目录 end**|_2020-01-28 17:29_|
+**目录 end**|_2020-04-28 11:04_|
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -262,7 +263,7 @@ categories:
 > [删除仓库的某个时间点之前的历史记录，减少.git 目录大小](https://www.v2ex.com/t/297802)  
 > [如何清洗 Git Repo 代码仓库](http://www.open-open.com/lib/view/open1414632626075.html)  
 
-> [参考博客: 寻找并删除Git记录中的大文件](https://www.tuicool.com/articles/vAVVZrA)
+> [参考: 寻找并删除Git记录中的大文件](https://www.tuicool.com/articles/vAVVZrA)
 1. 找出大文件 `git rev-list --objects --all | grep "$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -10 | awk '{print$1}')"`
 1. 删除文件, 重写提交 `git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch 文件的路径' --prune-empty --tag-name-filter cat -- --all`
 1. 强制推送 `git push origin --force --all`
@@ -282,7 +283,10 @@ Git提供了一个“换行符自动转换”功能。这个功能默认处于�
     git config --global core.safecrlf true
 ```
 
-> [参考博客: CRLF和LF](https://www.tuicool.com/articles/IJjQVb)
-> [参考博客: git 换行符LF与CRLF转换问题](https://www.cnblogs.com/sdgf/p/6237847.html)
+> [参考: CRLF和LF](https://www.tuicool.com/articles/IJjQVb)
+> [参考: git 换行符LF与CRLF转换问题](https://www.cnblogs.com/sdgf/p/6237847.html)
 
 >1. CRLF -> LF `sed -i 's/\r//g' file` 配合git 就是 `git ls-files| sed -i 's/\r//g' `
+
+### 仓库统计
+> [https://github.com/hoxu/gitstats](https://github.com/hoxu/gitstats)  

@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [部署运行](#部署运行)
     1. [打包可执行jar](#打包可执行jar)
     1. [打包war](#打包war)
@@ -17,13 +17,13 @@ categories:
 1. [Tips](#tips)
     1. [Java在Linux上的时区问题](#java在linux上的时区问题)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 部署运行
 > 传统的可执行jar, war 以及Docker镜像
 
-> [参考博客: JAR 文件揭密](https://www.ibm.com/developerworks/cn/java/j-jar/index.html)
-> [参考博客: maven-assembly-plugin 入门指南](https://www.jianshu.com/p/14bcb17b99e0)
+> [参考: JAR 文件揭密](https://www.ibm.com/developerworks/cn/java/j-jar/index.html)
+> [参考: maven-assembly-plugin 入门指南](https://www.jianshu.com/p/14bcb17b99e0)
 
 > [Maven 打包部署](/Java/Tool/Maven.md#打包部署)  |  [Gradle 打包部署](/Java/Tool/Gradle.md#打包部署)  
 
@@ -85,7 +85,7 @@ _MANIFEST.MF示例_
 
 12-Factor 应用中，环境变量的粒度要足够小，且相对独立。它们永远也不会组合成一个所谓的“环境”，而是独立存在于每个部署之中。当应用程序不断扩展，需要更多种类的部署时，这种配置管理方式能够做到平滑过渡。 
 
-> [参考博客: 在环境中存储配置](https://12factor.net/zh_cn/config)
+> [参考: 在环境中存储配置](https://12factor.net/zh_cn/config)
 
 # Tips
 

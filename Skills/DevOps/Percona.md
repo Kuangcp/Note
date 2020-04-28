@@ -6,12 +6,12 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Percona](#percona)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Percona
 [Official Doc](https://www.percona.com/) | [DockerHub](https://hub.docker.com/_/percona)
 
-> [参考博客: 简单安装](https://www.jianshu.com/p/aca3dfee6503)  
+> [参考: 简单安装](https://www.jianshu.com/p/aca3dfee6503)  

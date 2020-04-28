@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [JVM](#jvm)
 1. [内存区域](#内存区域)
     1. [运行时数据区](#运行时数据区)
@@ -46,7 +46,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2020-04-22 10:14_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -118,7 +118,7 @@ Native Method Stack, 与虚拟机栈所发挥的作用是相似的, 只不过虚
 JVM是基于堆栈的虚拟机.JVM为每个新创建的线程都分配一个堆栈.也就是说,对于一个Java程序来说，它的运行就是通过对堆栈的操作来完成的。  
 堆栈以栈帧为单位保存线程的状态。JVM对堆栈只进行两种操作:以帧为单位的压栈和出栈操作。 
 
-> [参考博客: Java中堆内存和栈内存详解](http://www.cnblogs.com/whgw/archive/2011/09/29/2194997.html)
+> [参考: Java中堆内存和栈内存详解](http://www.cnblogs.com/whgw/archive/2011/09/29/2194997.html)
 
 #### 堆内存分配策略
 - 对象的内存分配, 粗略讲就是在堆上分配(但也可能经过JIT编译后被拆散成标量类型并间接地栈上分配)   
@@ -169,8 +169,8 @@ NIO 会经常使用, 提高性能
 - 元空间里的对象不会被转移
 - 如果GC发现某个类加载器不再存活，会对整个元空间进行集体回收
 
-> [参考博客: Metaspace Architecture](https://stuefe.de/posts/metaspace/metaspace-architecture/)  
-> [参考博客: What is Compressed Class Space?](https://stuefe.de/posts/metaspace/what-is-compressed-class-space/)  
+> [参考: Metaspace Architecture](https://stuefe.de/posts/metaspace/metaspace-architecture/)  
+> [参考: What is Compressed Class Space?](https://stuefe.de/posts/metaspace/what-is-compressed-class-space/)  
 
 ************************
 
@@ -217,8 +217,8 @@ GC 的目的是识别出不再使用的内存，并将其变为可用的。现�
 
 ![Generation](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Java/Jvm/Generation.png)
 
-> [参考博客: JVM中新生代为什么要有两个Survivor（form,to）？](https://www.zhihu.com/question/44929481)  
-> [参考博客: 为什么新生代内存需要有两个Survivor区](https://blog.csdn.net/antony9118/article/details/51425581)  
+> [参考: JVM中新生代为什么要有两个Survivor（form,to）？](https://www.zhihu.com/question/44929481)  
+> [参考: 为什么新生代内存需要有两个Survivor区](https://blog.csdn.net/antony9118/article/details/51425581)  
 
 > [聊聊JVM的年轻代](http://ifeve.com/jvm-yong-generation/)  
 > 我是一个普通的java对象，我出生在Eden区，在Eden区我还看到和我长的很像的小兄弟，我们在Eden区中玩了挺长时间。  
@@ -255,7 +255,7 @@ GC Roots 对象包含:
 ************************
 
 ## GC算法
-> [参考博客: Major GC和Full GC的区别是什么？](https://www.zhihu.com/question/41922036)
+> [参考: Major GC和Full GC的区别是什么？](https://www.zhihu.com/question/41922036)
 
 *****
 
@@ -401,7 +401,7 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
 可通过 `-XXCMSInitiatingOccupancyFraction` 进行设置. 如果CMS执行期间发现剩余内存不足以让程序正常运行, 就会临时启用 Serial Old  
 所以该参数不可设置过高, 否则容易导致频繁采用单线程版的垃圾回收器, 大大延长 STW 时间
 
-> [参考博客: JVM 源码解读之 CMS GC 触发条件 ](https://mp.weixin.qq.com/s?__biz=MzUyMDE1ODQ3NQ==&mid=2247483851&idx=1&sn=8cb444039449848531b7ca72c396e07e&chksm=f9efedafce9864b9dbb645863d7d3c8b34e83888d07e175dd9c931576db2ecc0aa90835fcf50&scene=21#wechat_redirect)  
+> [参考: JVM 源码解读之 CMS GC 触发条件 ](https://mp.weixin.qq.com/s?__biz=MzUyMDE1ODQ3NQ==&mid=2247483851&idx=1&sn=8cb444039449848531b7ca72c396e07e&chksm=f9efedafce9864b9dbb645863d7d3c8b34e83888d07e175dd9c931576db2ecc0aa90835fcf50&scene=21#wechat_redirect)  
 
 ### G1
 > Garbage First 面向服务端应用的垃圾收集器, JDK7发布, JDK9作为默认GC [Oracle Doc](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc.html#garbage_first_garbage_collection)
@@ -416,21 +416,21 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
     - G1除了追求低停顿, 还能建立可预测的停顿时间模型, 能让使用者明确指定在一个长度为M毫秒的时间片段内, 消耗在垃圾收集上的时间不得超过N毫秒
     - 几乎是RTSJ的特征
 
-> [参考博客: JVM系列篇：深入剖析G1收集器](https://my.oschina.net/u/3959491/blog/3029276)
+> [参考: JVM系列篇：深入剖析G1收集器](https://my.oschina.net/u/3959491/blog/3029276)
 
 ### ZGC
 > JDK11  [wiki: ZGC](https://wiki.openjdk.java.net/display/zgc/Main) | [ZGC Release note](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
 
 `-XX:+UnlockExperimentalVMOptions -XX:+UseZGC`
 
-> [参考博客: Oracle 即将发布的全新 Java 垃圾收集器 ZGC](https://www.infoq.cn/article/oracle-release-java-gc-zgc)
+> [参考: Oracle 即将发布的全新 Java 垃圾收集器 ZGC](https://www.infoq.cn/article/oracle-release-java-gc-zgc)
 
 IDEA 切换使用该GC后CPU使用率高涨到20%, 用 CMS G1 则为1%, 均指无动作的情况
 
 ### ShenandoahGC
 > JDK12  [wiki: ShenandoahGC](https://wiki.openjdk.java.net/display/shenandoah/Main)
 
-> [参考博客: JDK12 ShenandoahGC小试牛刀](https://juejin.im/post/5c934a5d5188252dad05d82a)  
+> [参考: JDK12 ShenandoahGC小试牛刀](https://juejin.im/post/5c934a5d5188252dad05d82a)  
 
 ********************************
 
@@ -445,8 +445,8 @@ IBM主导开发, 捐赠给Eclipse基金会
 
 - [Github:](https://github.com/eclipse/openj9)
 
-> [参考博客: IBM开源JVM实现OpenJ9，并提交Eclipse基金会托管)](http://www.infoq.com/cn/news/2017/09/IBM-JVM-OpenJ9-Eclipse)
-> [参考博客: Eclipse Open J9：Eclipse OMR项目提供的开源JVM](http://www.infoq.com/cn/news/2018/03/OMR-OpenJ9)
+> [参考: IBM开源JVM实现OpenJ9，并提交Eclipse基金会托管)](http://www.infoq.com/cn/news/2017/09/IBM-JVM-OpenJ9-Eclipse)
+> [参考: Eclipse Open J9：Eclipse OMR项目提供的开源JVM](http://www.infoq.com/cn/news/2018/03/OMR-OpenJ9)
 
 ## GraalVM
 > [Official Site](https://www.graalvm.org/)  
@@ -455,6 +455,6 @@ IBM主导开发, 捐赠给Eclipse基金会
 
 - 安装模块 `gu install native-image`
 
-> [参考博客: Oracle 发布多语种虚拟机平台 GraalVM 1.0](https://www.infoq.cn/article/2018%2F05%2Foracle-graalvm-v1)  
-> [参考博客: 全栈虚拟机GraalVM初体验](https://zhuanlan.zhihu.com/p/35849246)  
+> [参考: Oracle 发布多语种虚拟机平台 GraalVM 1.0](https://www.infoq.cn/article/2018%2F05%2Foracle-graalvm-v1)  
+> [参考: 全栈虚拟机GraalVM初体验](https://zhuanlan.zhihu.com/p/35849246)  
 > 目前来看仅够实验，一个简短的Hello world 需要消耗40s 1g 内存才能编译成原生可执行程序  

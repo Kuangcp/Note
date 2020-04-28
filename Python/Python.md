@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Python](#python)
     1. [简介](#简介)
         1. [关于Python2与3的使用](#关于python2与3的使用)
@@ -65,14 +65,14 @@ categories:
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
 > [Doc: Python2](https://docs.python.org/2/) | [Doc: Python3](https://docs.python.org/3/)
 
 > [Python初学者（零基础学习Python、Python入门）书籍、视频、资料、社区推荐](https://github.com/Yixiaohan/codeparkshare)
-> [参考博客: Python3的主要应用](http://www.techug.com/post/what-can-you-do-with-python-the-3-main-applications.html)
+> [参考: Python3的主要应用](http://www.techug.com/post/what-can-you-do-with-python-the-3-main-applications.html)
 - [Python中的多态](http://blog.csdn.net/shangzhihaohao/article/details/7065675)
 - [python输出带颜色的字体](http://www.cnblogs.com/oleli/p/5228880.html)
 
@@ -554,7 +554,7 @@ def show_help():
     -  导入指定的函数 `from create import create_aliens, type_button` 多个就，分隔 同理 as给函数加别名 * 通配所有
 - 注意：递归深度，Python中递归默认深度是 989， 要么更改实现，要么就 `sys.setrecursionlimit(10000000)`
 
-> [参考博客: Magic Method](https://segmentfault.com/a/1190000007256392) `__xxx__ 方法`
+> [参考: Magic Method](https://segmentfault.com/a/1190000007256392) `__xxx__ 方法`
 
 *******************
 ## 类
@@ -753,7 +753,7 @@ def show_help():
 ```
 
 ### conf或者ini
-> [参考博客: python操作ini文件](https://www.oschina.net/code/snippet_782578_14344)
+> [参考: python操作ini文件](https://www.oschina.net/code/snippet_782578_14344)
 
 ```python
     import os

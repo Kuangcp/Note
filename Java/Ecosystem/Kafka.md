@@ -6,26 +6,26 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Kafaka](#kafaka)
     1. [安装](#安装)
         1. [Docker](#docker)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Kafaka
 > [Official Doc](https://kafka.apache.org/21/documentation.html)  
 
-> [参考博客: 初探Kafka Streams](http://ifeve.com/%e5%88%9d%e6%8e%a2kafka-streams/)  
+> [参考: 初探Kafka Streams](http://ifeve.com/%e5%88%9d%e6%8e%a2kafka-streams/)  
 - [ksql](https://github.com/confluentinc/ksql)  
-> [参考博客: Kafka Topic Architecture](http://cloudurable.com/blog/kafka-architecture-topics/index.html)  
+> [参考: Kafka Topic Architecture](http://cloudurable.com/blog/kafka-architecture-topics/index.html)  
 
-> [参考博客: Apche Kafka 的生与死 – failover 机制详解](https://www.cnblogs.com/fxjwind/p/4972244.html) `解释 I wrote this conflicted ephemeral node`  
+> [参考: Apche Kafka 的生与死 – failover 机制详解](https://www.cnblogs.com/fxjwind/p/4972244.html) `解释 I wrote this conflicted ephemeral node`  
 
 ## 安装
 
 ### Docker
-> [参考博客: docker部署kafka](https://blog.csdn.net/luanpeng825485697/article/details/81562755#commentBox)  
+> [参考: docker部署kafka](https://blog.csdn.net/luanpeng825485697/article/details/81562755#commentBox)  
 
 > Kafka 容器的创建强制性依赖 Zookeeper, 但是在使用中可以直接使用Kafka
 ```sh

@@ -6,13 +6,13 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Dubbo 的 Multicast 实现](#dubbo-的-multicast-实现)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Dubbo 的 Multicast 实现
-> [参考博客: Dubbo Multicast 注册中心即相关代码实现](http://www.cnblogs.com/ghj1976/p/5328376.html)  
+> [参考: Dubbo Multicast 注册中心即相关代码实现](http://www.cnblogs.com/ghj1976/p/5328376.html)  
 
 - 通过 wireshark 抓包， 可以看到大致的流程
     - provider 或者 customer 都是先 register 然后 subscribe

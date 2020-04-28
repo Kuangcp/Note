@@ -8,28 +8,28 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [反射](#反射)
-    1. [概念](#概念)
-    1. [实现原理](#实现原理)
-    1. [基础类](#基础类)
-        1. [AccessibleObject](#accessibleobject)
-        1. [Annotation](#annotation)
-        1. [Class](#class)
-        1. [Field](#field)
-        1. [Method](#method)
-        1. [Constructor](#constructor)
-        1. [Modifier](#modifier)
-    1. [使用](#使用)
-        1. [获取到Class对象](#获取到class对象)
-        1. [反射的基本使用](#反射的基本使用)
-            1. [操作构造方法](#操作构造方法)
-            1. [操作类中方法](#操作类中方法)
-            1. [操作类的成员属性](#操作类的成员属性)
-            1. [操作注解](#操作注解)
+1. [概念](#概念)
+1. [实现原理](#实现原理)
+1. [基础类](#基础类)
+    1. [AccessibleObject](#accessibleobject)
+    1. [Annotation](#annotation)
+    1. [Class](#class)
+    1. [Field](#field)
+    1. [Method](#method)
+    1. [Constructor](#constructor)
+    1. [Modifier](#modifier)
+1. [使用](#使用)
+    1. [获取到Class对象](#获取到class对象)
+    1. [反射的基本使用](#反射的基本使用)
+        1. [操作构造方法](#操作构造方法)
+        1. [操作类中方法](#操作类中方法)
+        1. [操作类的成员属性](#操作类的成员属性)
+        1. [操作注解](#操作注解)
 1. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
@@ -39,22 +39,25 @@ categories:
 
 > [ Java反射异常处理之InvocationTargetException ](https://blog.csdn.net/zhangzeyuaaa/article/details/39611467)
 
-> [参考博客: java8--类加载机制与反射(java疯狂讲义3复习笔记)](https://www.cnblogs.com/lakeslove/p/5978382.html)
-> [参考博客: Java8替代传统反射动态获取成员变量值的一个示例](https://segmentfault.com/a/1190000007492958)
+> [参考: java8--类加载机制与反射(java疯狂讲义3复习笔记)](https://www.cnblogs.com/lakeslove/p/5978382.html)
+> [参考: Java8替代传统反射动态获取成员变量值的一个示例](https://segmentfault.com/a/1190000007492958)
 
-> [参考博客: java反射的性能问题](http://www.cnblogs.com/zhishan/p/3195771.html)
+> [参考: java反射的性能问题](http://www.cnblogs.com/zhishan/p/3195771.html)  
+> [参考: RednaxelaFX 关于反射调用方法的一个log ](https://www.iteye.com/blog/rednaxelafx-548536)  
 
-## 概念
+# 概念
 
 在运行时 反射使程序能够在运行时探知类的结构信息:构造器,方法,字段... 并且依赖这些结构信息完成相应的操作,比如创建对象,方法调用,字段赋值...  
 这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。
 
-## 实现原理
+# 实现原理
 
-## 基础类
+************************
+
+# 基础类
 > Java 反射的实现类
 
-### AccessibleObject
+## AccessibleObject
 > The AccessibleObject class is the base class for Field, Method and Constructor objects. It provides the ability to flag a reflected object as suppressing default Java language access control checks when it is used.  
 
 > AccessibleObject 类是 Field、Method 和 Constructor 对象的基类。它提供了将反射的对象标记为 具有在使用时禁止Java语言的`默认访问控制检查`的能力。
@@ -74,13 +77,13 @@ categories:
 
 - [ ] 仍然存疑, 什么情况下才是 默认可访问的
 
-### Annotation
-### Class
-### Field
-### Method
-### Constructor
+## Annotation
+## Class
+## Field
+## Method
+## Constructor
 
-### Modifier
+## Modifier
 > The Modifier class provides static methods and constants to decode class and member access modifiers.   
 > [API: modifier](https://docs.oracle.com/javase/8/docs/api/index.html?java/lang/reflect/Modifier.html)
 
@@ -120,7 +123,7 @@ categories:
 
 *****************************
 
-## 使用
+# 使用
 > 具有的功能
 1. 在运行时获取任意一个类所具有的成员变量和方法以及泛型类型；
 1. 在运行时构造任意一个类的对象；
@@ -131,7 +134,7 @@ categories:
 > 而泛型如果被用来使用,常见的方法体中带泛型的局部变量,其类型信息不会被编译进Class文件中。  
 > 前者因为存在于Class文件中，所以运行时通过反射还是能够获得其类型信息的;
 
-### 获取到Class对象
+## 获取到Class对象
 > 所有的反射操作的入口都是从Class对象开始的, 获取Class对象有多种方式:
 
 1. 通过类加载器加载class文件
@@ -145,9 +148,9 @@ categories:
 
 ************************
 
-### 反射的基本使用
+## 反射的基本使用
 
-#### 操作构造方法 
+### 操作构造方法 
 使用newInstance()操作无参构造方法  
 > 使用Class类中的newInstance()方法进行实例化操作， 但该方法必须要求类有无参构造方法
 
@@ -166,7 +169,7 @@ categories:
   System.out.println(book);
 ```
 
-#### 操作类中方法
+### 操作类中方法
 `getDeclaredMethods()` 获取类本身定义的所有方法， 不包含由继承获取到的方法
 ```java
     Class<?> cls = Class.forName("first.Book");
@@ -204,7 +207,7 @@ categories:
     // 调用方法
     method.invoke(object, "hello");
 ```
-#### 操作类的成员属性
+### 操作类的成员属性
 取得所有成员
 ```java
     Class<?> cls = Class.forName("first.Book");
@@ -241,7 +244,7 @@ set 和 get 属性的值
     System.out.println(field.get(object));
 ```
 
-#### 操作注解
+### 操作注解
 获取类的注解
 ```java
     Class<?> cls = Class.forName("first.Book");
@@ -270,7 +273,7 @@ set 和 get 属性的值
 **********************
 
 # 反射的性能问题
-> [参考博客: java反射的性能问题 ](http://www.cnblogs.com/zhishan/p/3195771.html)
+> [参考: java反射的性能问题 ](http://www.cnblogs.com/zhishan/p/3195771.html)
 
 > [性能测试对比: 反射 setter cglib](https://github.com/Kuangcp/JavaBase/blob/class/src/test/java/com/github/kuangcp/reflects/ReflectPerformanceTest.java)
 

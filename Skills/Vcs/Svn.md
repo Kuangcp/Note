@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [SVN](#svn)
     1. [服务端安装](#服务端安装)
         1. [svnadmin使用](#svnadmin使用)
@@ -27,13 +27,13 @@ categories:
 1. [Tips](#tips)
     1. [下载Github子目录](#下载github子目录)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # SVN
 > 传统的中心化版本控制工具,能够精确控制每个目录的权限, Apache顶级项目  
 > [SVN 官网](http://subversion.apache.org/) | [SVN中文网](http://www.svn.org.cn) [Subversion 与版本控制 书籍](http://svnbook.red-bean.com/)
 
-> [参考博客: SVN与Git比较的优缺点差异](https://www.cnblogs.com/Sungeek/p/9152223.html)
+> [参考: SVN与Git比较的优缺点差异](https://www.cnblogs.com/Sungeek/p/9152223.html)
 
 > svn 不能提交单个文件里的部分提交, 要么就整个文件提交, 要么不提交, git则可以
 
@@ -69,7 +69,7 @@ categories:
 
 *********************************
 ## 使用
-> [参考博客: linux-svn命令](http://blog.csdn.net/gexiaobaohelloworld/article/details/7752862) | [SVN常用命令](http://www.cnblogs.com/SanMaoSpace/p/5102878.html)
+> [参考: linux-svn命令](http://blog.csdn.net/gexiaobaohelloworld/article/details/7752862) | [SVN常用命令](http://www.cnblogs.com/SanMaoSpace/p/5102878.html)
 > | [Linux下SVN客户端使用教程（全）](https://blog.csdn.net/qq_27968607/article/details/55253997)  
 
 - _下拉代码_ `svn co URL`  
@@ -84,8 +84,8 @@ categories:
 
 - _删除文件_ `svn remove|rm path`
 
-> [参考博客: svn下忽略文件和文件夹](http://blog.sina.com.cn/s/blog_6e165cc101017m0j.html)
-> [参考博客: svn 忽略文件、文件夹](https://ztgame.shenyu.me/svn/svn-ignore.html)
+> [参考: svn下忽略文件和文件夹](http://blog.sina.com.cn/s/blog_6e165cc101017m0j.html)
+> [参考: svn 忽略文件、文件夹](https://ztgame.shenyu.me/svn/svn-ignore.html)
 
 ### 配置忽略文件
 > svn:ignore 和 svn:global-ignores
@@ -105,7 +105,7 @@ categories:
     - 导入忽略文件 `svn propset -F .svnignore .`
 
 ### 提交
-> [参考博客: SVN提交注意点](http://www.cnblogs.com/masb/archive/2012/01/12/2320182.html) 
+> [参考: SVN提交注意点](http://www.cnblogs.com/masb/archive/2012/01/12/2320182.html) 
 
 > 部分提交 [参考](https://blog.mimvp.com/article/15666.html)
 
@@ -129,8 +129,8 @@ categories:
 #### 树冲突
 > 多个开发人员修改了同一个文件夹, 并且一方修改, 一方做了删除 
 
-> [参考博客: SVN 树冲突解决详解](https://blog.csdn.net/xgf415/article/details/75196714)
-> [参考博客: 使用SVN命令行解决树冲突(tree conflict)](https://www.jianshu.com/p/e3cc83ca512d)
+> [参考: SVN 树冲突解决详解](https://blog.csdn.net/xgf415/article/details/75196714)
+> [参考: 使用SVN命令行解决树冲突(tree conflict)](https://www.jianshu.com/p/e3cc83ca512d)
 
 1. 标记冲突已解决(使用本地的状态, 本地该文件的状态是Delete, 提交后服务端对应的文件就会被删除)
     - `svn resolve --accept=working file/dir`

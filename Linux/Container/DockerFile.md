@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Dockerfile](#dockerfile)
     1. [使用入门案例](#使用入门案例)
     1. [Tips](#tips)
@@ -35,7 +35,7 @@ categories:
         1. [打包最新版git](#打包最新版git)
         1. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-**目录 end**|_2020-01-02 20:57_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Dockerfile
 ## 使用入门案例
@@ -104,7 +104,7 @@ _docker build_
     - 所以就尽量是将所有的命令 放在一个RUN命令里减少镜像层数。
 
 #### 修改容器时区设置
-> [参考博客: Docker修改默认时区](https://www.jianshu.com/p/004ddf941aac) 
+> [参考: Docker修改默认时区](https://www.jianshu.com/p/004ddf941aac) 
 
 ```sh
     # Alpine 
@@ -259,6 +259,6 @@ _docker build_
     WORKDIR /home/mythos
 ```
 **************************
-> [参考博客: 在 Docker 上开发应用 - 编写 Dockerfile 的最佳实践](https://blog.csdn.net/kikajack/article/details/79366043) | [英文原文](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+> [参考: 在 Docker 上开发应用 - 编写 Dockerfile 的最佳实践](https://blog.csdn.net/kikajack/article/details/79366043) | [英文原文](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
 

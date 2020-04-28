@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Linux操作压缩文档](#linux操作压缩文档)
     1. [tar](#tar)
         1. [tar归档和压缩](#tar归档和压缩)
@@ -20,7 +20,7 @@ categories:
 1. [压缩文件内容预览搜索](#压缩文件内容预览搜索)
 1. [压缩文件密码](#压缩文件密码)
 
-**目录 end**|_2020-03-31 12:28_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Linux操作压缩文档
 > Linux默认自带ZIP压缩，最大支持4GB压缩，RAR的压缩比大于4GB.
@@ -169,7 +169,7 @@ categories:
 ************************
 
 # 压缩文件内容预览搜索
-> [参考博客: Unix Z Commands – Zcat, Zless, Zgrep, Zegrep and Zdiff Examples ](https://linoxide.com/linux-how-to/z-commands-zcat-zless-zgrepzegrep-zdiff-examples/)  
+> [参考: Unix Z Commands – Zcat, Zless, Zgrep, Zegrep and Zdiff Examples ](https://linoxide.com/linux-how-to/z-commands-zcat-zless-zgrepzegrep-zdiff-examples/)  
 
 - `zcat log.tgz | grep -a "pattern"` 等价于 `zgrep "pattern" log.tgz`
     - 相关参数说明 man 文档

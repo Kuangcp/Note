@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [文本编辑器](#文本编辑器)
     1. [Ghex](#ghex)
     1. [Kate](#kate)
@@ -38,7 +38,7 @@ categories:
     1. [fte-terminal](#fte-terminal)
     1. [在线编辑器](#在线编辑器)
 
-**目录 end**|_2020-02-23 22:33_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 文本编辑器
 ## Ghex
@@ -98,7 +98,7 @@ _个人配置_
 - setting 中 "update_check":false
 
 ### 快捷键
-> [参考博客: Sublime Text 3 快捷键](http://www.cnblogs.com/roadone/p/7745641.html)
+> [参考: Sublime Text 3 快捷键](http://www.cnblogs.com/roadone/p/7745641.html)
 > [sublime的常用快捷键](http://www.cnblogs.com/kristen-zou/p/7641158.html)
 
 ### crack
@@ -131,14 +131,14 @@ _个人配置_
 - `Alt Shift` 列编辑
 - `C S .` 显示面包屑 版本:1.26+
 
-> [参考博客: 快捷键大全](https://blog.csdn.net/crper/article/details/54099319)
-> [参考博客: VS Code 使用小技巧](https://zhuanlan.zhihu.com/p/22880087)
+> [参考: 快捷键大全](https://blog.csdn.net/crper/article/details/54099319)
+> [参考: VS Code 使用小技巧](https://zhuanlan.zhihu.com/p/22880087)
 
 ### 代码片段
 > 配置地点 文件-首选项-用户代码片段 可以新建一个代码片段  
 > 默认是放在用户的配置目录下 `~/.config/Code/User/snippets/`
 
-- [参考博客: VS Code 折腾记 - (6) 基本配置/快捷键定义/代码片段的录入（snippet）](https://juejin.im/post/58aeeca22f301e006cf65c8b)
+- [参考: VS Code 折腾记 - (6) 基本配置/快捷键定义/代码片段的录入（snippet）](https://juejin.im/post/58aeeca22f301e006cf65c8b)
 - [巧用VScode“用户代码片段”来提高效率](https://www.dogxu.cn/2017/06/10/vscode-snippet/)
     - 然后自定义一下insert snippet的快捷键,就很方便使用了 个人配置为`Ctrl L`, **其实 直接 Ctrl Space 直接提示就行了**
     - 注意,每次修改片段配置文件,都需要重启Vscode才会生效最新修改...emm
@@ -160,8 +160,8 @@ _个人配置_
 1. vscode-proto3 
 
 ### 实践
-> [参考博客: 用Git在Visual Studio Code内进行版本控制[指导]](https://sdk.cn/news/4041)
-> [参考博客: 使用vscocd进行python开发 ](http://www.cnblogs.com/bloglkl/archive/2016/08/23/5797805.html)
+> [参考: 用Git在Visual Studio Code内进行版本控制[指导]](https://sdk.cn/news/4041)
+> [参考: 使用vscocd进行python开发 ](http://www.cnblogs.com/bloglkl/archive/2016/08/23/5797805.html)
 
 ***********************************
 ## Atom

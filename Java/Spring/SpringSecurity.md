@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [SpringSecurity](#springsecurity)
     1. [配置](#配置)
         1. [配置静态口令使用](#配置静态口令使用)
@@ -29,12 +29,12 @@ categories:
         1. [保护方法应用](#保护方法应用)
     1. [社交登录](#社交登录)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # SpringSecurity
 > [Spring Security 5.0.6 doc](https://docs.spring.io/spring-security/site/docs/5.0.6.RELEASE/reference/htmlsingle)
 
-[参考博客: Spring Security 入门系列](http://www.spring4all.com/article/428)
+[参考: Spring Security 入门系列](http://www.spring4all.com/article/428)
 
 
 ## 配置

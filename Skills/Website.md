@@ -6,7 +6,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [常用的网站](#常用的网站)
     1. [国内镜像源站点](#国内镜像源站点)
         1. [镜像站点](#镜像站点)
@@ -60,7 +60,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2020-04-01 00:23_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 常用的网站
 ## 国内镜像源站点
@@ -152,7 +152,7 @@ Podcast、Reddit 以及TechRadar
 - [安卓在X86设备上的ISO下载](http://www.android-x86.org/download)
 
 ## 字典网站
-> [参考博客: 搜索列表](http://www.lingoes.cn/zh/translator/webengine.htm)
+> [参考: 搜索列表](http://www.lingoes.cn/zh/translator/webengine.htm)
 
 - [海词词典](http://dict.cn/)
 - [汉典](http://www.zdic.net/)

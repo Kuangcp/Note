@@ -6,7 +6,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [持续集成](#持续集成)
     1. [Jenkins](#jenkins)
     1. [GoCD](#gocd)
@@ -17,10 +17,10 @@ categories:
     1. [sonarqube](#sonarqube)
         1. [小型项目目前使用的方案](#小型项目目前使用的方案)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 持续集成
-> 参考博客: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  
+> 参考: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  
 > [廖雪峰 使用Travis进行持续集成](https://www.liaoxuefeng.com/article/0014631488240837e3633d3d180476cb684ba7c10fda6f6000)  
 > 目前个人理解: 使用jenkins 结合gradle docker ，一键上传代码之后自动构建得到镜像
 
@@ -35,17 +35,17 @@ categories:
 ## GoCD
 > [Github:GoCD](https://github.com/GoCD) 
 
-> [参考博客: GoCD的正确打开方式](https://insights.thoughtworks.cn/the-right-interpretation-of-gocd/)
+> [参考: GoCD的正确打开方式](https://insights.thoughtworks.cn/the-right-interpretation-of-gocd/)
 
-> [参考博客: GoCD概念篇](http://www.cnblogs.com/elisun/p/7071536.html)
+> [参考: GoCD概念篇](http://www.cnblogs.com/elisun/p/7071536.html)
 ************************
 ## Drone 
 > [官网](https://drone.io/)
 
 一个原生支持 docker 的 CI
 
-> [参考博客: Drone 一个原生支持 docker 的 CI](https://aisensiy.github.io/2017/08/04/drone-best-ci/)  
-> [参考博客: Drone CI + GitLab持续集成的基础设施搭建](https://zmcdbp.com/drone-ci-gitlab-base-build/) | [参考博客: Drone CI的持续集成的基本使用](https://zmcdbp.com/drone-ci-basic-use/)
+> [参考: Drone 一个原生支持 docker 的 CI](https://aisensiy.github.io/2017/08/04/drone-best-ci/)  
+> [参考: Drone CI + GitLab持续集成的基础设施搭建](https://zmcdbp.com/drone-ci-gitlab-base-build/) | [参考: Drone CI的持续集成的基本使用](https://zmcdbp.com/drone-ci-basic-use/)
 
 *******************
 ## flow.ci

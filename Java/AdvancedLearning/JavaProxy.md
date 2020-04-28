@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Java中的代理](#java中的代理)
     1. [静态代理](#静态代理)
     1. [动态代理](#动态代理)
@@ -15,11 +15,11 @@ categories:
         1. [cglib](#cglib)
         1. [ASM](#asm)
 
-**目录 end**|_2020-04-01 00:23_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Java中的代理
 
-> [参考博客: Java代理模式汇编](https://blog.csdn.net/JQ_AK47/article/details/85344634)
+> [参考: Java代理模式汇编](https://blog.csdn.net/JQ_AK47/article/details/85344634)
 
 在某些情况下，一个客户不想或者不能直接引用一个对象，此时可以通过一个称之为“代理”的第三者来实现间接引用。代理对象可以在客户端和目标对象之间起到中介的作用，并且可以通过代理对象去掉客户不能看到的内容和服务或者添加客户需要的额外服务。
 
@@ -84,7 +84,7 @@ categories:
 ## 动态代理
 > 动态代理类：在程序运行时，运用反射机制动态创建而成。动态代理中的代理类并不要求在编译期就确定，而是可以在运行期动态生成，从而实现对目标对象的代理功能。
 
-> [参考博客: Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）](https://blog.csdn.net/luanlouis/article/details/24589193)
+> [参考: Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）](https://blog.csdn.net/luanlouis/article/details/24589193)
 
 静态代理的缺点是想用这样的代理就必须要手动硬编码实现, 比较繁琐, 尤其是接口中的方法很多的时候, 动态代理就能解决这个问题  
 在我们平时使用的框架中，像servlet的filter、包括spring提供的aop以及struts2的拦截器, mybatis分页插件，以及日志拦截、事务拦截、权限拦截这些几乎全部有动态代理的身影。

@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Docker容器化应用](#docker容器化应用)
     1. [个人镜像](#个人镜像)
     1. [Linux发行版](#linux发行版)
@@ -40,7 +40,7 @@ categories:
     1. [图形化管理工具](#图形化管理工具)
 1. [运行图形化应用](#运行图形化应用)
 
-**目录 end**|_2020-01-02 20:57_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Docker容器化应用
 > [https://docs.docker.com/samples/](https://docs.docker.com/samples/)  
@@ -50,7 +50,7 @@ categories:
 - [Official: registry](https://hub.docker.com/_/registry/)
 
 > [如何创建尽可能小的Docker容器教程](http://www.open-open.com/lib/view/open1419760974078.html)
-> [参考博客: 一次 Docker 容器内大量僵死进程排查分析](https://juejin.im/post/5e0002adf265da33dc7a3a1f?from=singlemessage)  
+> [参考: 一次 Docker 容器内大量僵死进程排查分析](https://juejin.im/post/5e0002adf265da33dc7a3a1f?from=singlemessage)  
 
 ## 个人镜像
 `百度云`
@@ -121,10 +121,10 @@ categories:
 - Java7 `docker pull java:7u121-jdk-alpine`
 - Java8 `docker pull frolvlad/alpine-java:jdk8.202.08-slim`
 
-> [参考博客: Java和Docker限制的那些事儿](http://www.techug.com/post/java-and-docker-memory-limits.html)`描述了一个天坑`
+> [参考: Java和Docker限制的那些事儿](http://www.techug.com/post/java-and-docker-memory-limits.html)`描述了一个天坑`
 
 #### Jib
-> [参考博客: GOOGLE JIB](https://my.oschina.net/u/3666671/blog/1845065) | [Github:jib](https://github.com/GoogleContainerTools/jib)
+> [参考: GOOGLE JIB](https://my.oschina.net/u/3666671/blog/1845065) | [Github:jib](https://github.com/GoogleContainerTools/jib)
 
 ### Node
 - [Official](https://hub.docker.com/_/node/)
@@ -173,7 +173,7 @@ categories:
 *****************************************
 ## 持续集成
 
-> [参考博客: 如何Docker化端到端验收测试](https://www.tuicool.com/articles/YZJzAzF)
+> [参考: 如何Docker化端到端验收测试](https://www.tuicool.com/articles/YZJzAzF)
 ### flow.ci
 - [flow.ci](https://github.com/flowci/docker) 可以学习compose
 
@@ -234,7 +234,7 @@ categories:
 
 ## 博客
 
-> [参考博客: 使用Docker 实现微服务并搭建博客，一文全掌握。 ](https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650121506&idx=1&sn=39e3ba8c5d9698bbfb8acfc6b7e772bf&chksm=f36bb803c41c3115371b69cbd1e626fcaf5a85c7034f96fe495cfbf6dc1630a42dfdd6e342da&mpshare=1&scene=1&srcid=06219wgtCPJNvZP66ccQXRCj#rd)
+> [参考: 使用Docker 实现微服务并搭建博客，一文全掌握。 ](https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650121506&idx=1&sn=39e3ba8c5d9698bbfb8acfc6b7e772bf&chksm=f36bb803c41c3115371b69cbd1e626fcaf5a85c7034f96fe495cfbf6dc1630a42dfdd6e342da&mpshare=1&scene=1&srcid=06219wgtCPJNvZP66ccQXRCj#rd)
 
 ************************
 

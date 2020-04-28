@@ -9,7 +9,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [网络](#网络)
     1. [相关书籍和资源](#相关书籍和资源)
 1. [网络分层架构](#网络分层架构)
@@ -33,15 +33,15 @@ categories:
         1. [TTFB](#ttfb)
         1. [URL](#url)
         1. [DNS](#dns)
-        1. [Proxy](#proxy)
-            1. [PAC](#pac)
         1. [VPN](#vpn)
+        1. [SSDP](#ssdp)
 1. [Socket](#socket)
 1. [单播 组播 广播](#单播-组播-广播)
     1. [单播](#单播)
     1. [组播](#组播)
     1. [广播](#广播)
 1. [代理 Proxy](#代理-proxy)
+    1. [PAC](#pac)
     1. [正向代理](#正向代理)
     1. [反向代理](#反向代理)
     1. [透明代理](#透明代理)
@@ -55,7 +55,7 @@ categories:
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2020-04-22 10:14_|
+**目录 end**|_2020-04-28 11:04_|
 ****************************************
 # 网络
 
@@ -88,7 +88,7 @@ OSI制定的OSI七层参考模型的过于庞大、复杂。与此对照，由�
 
 事实上, 现在的应用不是严格按照OSI分层的, 应用层可以使用 传输层(TCP UDP), 也可以直接使用网络层(IP),甚至直接使用网络接口层
 
-> [参考博客: 以太网帧结构](https://blog.csdn.net/wdkirchhoff/article/details/43915825)
+> [参考: 以太网帧结构](https://blog.csdn.net/wdkirchhoff/article/details/43915825)
 
 ************************
 
@@ -150,7 +150,7 @@ OSI制定的OSI七层参考模型的过于庞大、复杂。与此对照，由�
 
 - IPv4 & IPv6
 
-> [参考博客: 浏览器访问IPv6地址](http://www.cnblogs.com/cuihongyu3503319/p/7422877.html)
+> [参考: 浏览器访问IPv6地址](http://www.cnblogs.com/cuihongyu3503319/p/7422877.html)
 
 #### IP地址分类
 > IP地址的由 网络号 主机号 组成
@@ -233,8 +233,8 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 ```
 
 ### TCP UDP 对比
-> [参考博客: TCP和UDP的最完整的区别](https://blog.csdn.net/li_ning_/article/details/52117463)  
-> [参考博客: TCP和UDP的区别和优缺点](https://blog.csdn.net/xiaobangkuaipao/article/details/76793702)
+> [参考: TCP和UDP的最完整的区别](https://blog.csdn.net/li_ning_/article/details/52117463)  
+> [参考: TCP和UDP的区别和优缺点](https://blog.csdn.net/xiaobangkuaipao/article/details/76793702)
 
 - 可使用 wireshark 抓包对比的方式进行学习: 基于udp(默认)的dns方式，对比 基于tcp的dns方式 更直观看出 tcp 三次握手 四次挥手 -- 《Wireshark 网络分析就这么简单》
 
@@ -279,7 +279,7 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 3. 错误事件：此事件在WebSocket连接或者端点发生错误时产生
 4. 关闭事件：此事件表示WebSocket端点的连接目前正在部分的关闭，他可以有参与连接的任意一个端点发出
 
-> [参考博客: WebSocket 和 Socket 的区别](http://blog.jobbole.com/106009/)  
+> [参考: WebSocket 和 Socket 的区别](http://blog.jobbole.com/106009/)  
 
 ************************
 
@@ -322,27 +322,17 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 
 ************************
 
-### Proxy
-
-#### PAC
-> proxy auto config 
-
-> [MDN: PAC File](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_(PAC)_file)
-```js
-function FindProxyForURL(url, host) {
-    return "PROXY 127.0.0.1:8080"; 
-}
-```
-************************
-
 ### VPN
 >  Virtual Private Network (VPN) 
 
 ************************
+### SSDP
+> Simple Service Discovery Protocol
 
+************************
 
 # Socket
-> [参考博客: TCP/IP、Http、Socket的区别](https://blog.csdn.net/Pk_zsq/article/details/6087367)  
+> [参考: TCP/IP、Http、Socket的区别](https://blog.csdn.net/Pk_zsq/article/details/6087367)  
 > [what is socket](https://unix.stackexchange.com/questions/16311/what-is-a-socket)
 
 Socket是应用层与TCP/IP协议族通信的中间软件抽象层，是对TCP/IP协议的封装，Socket本身并不是协议，而是一个调用接口（API），通过Socket，我们才能使用TCP/IP协议
@@ -351,8 +341,8 @@ Socket是应用层与TCP/IP协议族通信的中间软件抽象层，是对TCP/I
 
 Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开发
 
-> [参考博客: Socket编程](http://www.cnblogs.com/skynet/archive/2010/12/12/1903949.html)  
-> [参考博客: Linux socket 编程](https://www.ibm.com/developerworks/cn/education/linux/l-sock/l-sock.html)
+> [参考: Socket编程](http://www.cnblogs.com/skynet/archive/2010/12/12/1903949.html)  
+> [参考: Linux socket 编程](https://www.ibm.com/developerworks/cn/education/linux/l-sock/l-sock.html)
 
 
 ************************
@@ -366,7 +356,7 @@ Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开�
 
 ## 组播
 
-> [参考博客: 组播（Multicast）传输](http://www.cnblogs.com/ghj1976/p/5276452.html)  
+> [参考: 组播（Multicast）传输](http://www.cnblogs.com/ghj1976/p/5276452.html)  
 
 ## 广播
 
@@ -374,6 +364,17 @@ Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开�
 
 # 代理 Proxy
 > [wikipedia](https://en.wikipedia.org/wiki/Proxy) 
+
+
+## PAC
+> proxy auto config 
+
+> [MDN: PAC File](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_(PAC)_file)
+```js
+function FindProxyForURL(url, host) {
+    return "PROXY 127.0.0.1:8080"; 
+}
+```
 
 ## 正向代理
 > 隐藏 客户端 地址, 去访问地址明确的服务端
@@ -421,6 +422,7 @@ Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开�
 - 配置证书 访问 [mitm.it](mitm.it) 选择对应的平台即可
     - 实际上是安装了 mitmproxy-ca-cert.pem 文件 信任了 mitmproxy 这个CA
 
+> [gomitproxy](https://github.com/zboya/gomitmproxy) `Go 实现`  
 > 简评：过滤和搜索功能强大且支持重放但是用久了占用内存大，因为抓包的数据都在内存里
 
 ### Mars

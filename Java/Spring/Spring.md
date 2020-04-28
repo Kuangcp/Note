@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Spring](#spring)
     1. [配置使用](#配置使用)
         1. [通过构建工具](#通过构建工具)
@@ -32,7 +32,7 @@ categories:
         1. [ReflectionUtils](#reflectionutils)
 1. [Web开发的最佳实践](#web开发的最佳实践)
 
-**目录 end**|_2020-01-28 17:29_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -107,7 +107,7 @@ _其他,可选_
 - bean扫描
     - ComponentScan 扫描指定包下Spring注解的类
 
-> [参考博客: Why field injection is evil](http://olivergierke.de/2013/11/why-field-injection-is-evil/)
+> [参考: Why field injection is evil](http://olivergierke.de/2013/11/why-field-injection-is-evil/)
 ***********************
 ###  xml方式
 - 只用到bean的头，主要配置内容：`<bean><property></property></bean>`
@@ -212,10 +212,10 @@ _其他,可选_
 ## Scheduling
 > [Official Doc](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/integration.html#scheduling)
 
-> [参考博客: The @Scheduled Annotation in Spring](https://www.baeldung.com/spring-scheduled-tasks)  
-> [参考博客: Spring Scheduler的使用与坑](http://qinghua.github.io/spring-scheduler/)
-> [参考博客: [Spring]支持注解的Spring调度器](https://www.cnblogs.com/jingmoxukong/p/5825806.html#%E5%AE%8C%E6%95%B4%E8%8C%83%E4%BE%8B)
-> [参考博客: spring scheduled的动态线程池调度和任务进度的监控](https://blog.csdn.net/yyx1025988443/article/details/78698046)
+> [参考: The @Scheduled Annotation in Spring](https://www.baeldung.com/spring-scheduled-tasks)  
+> [参考: Spring Scheduler的使用与坑](http://qinghua.github.io/spring-scheduler/)
+> [参考: [Spring]支持注解的Spring调度器](https://www.cnblogs.com/jingmoxukong/p/5825806.html#%E5%AE%8C%E6%95%B4%E8%8C%83%E4%BE%8B)
+> [参考: spring scheduled的动态线程池调度和任务进度的监控](https://blog.csdn.net/yyx1025988443/article/details/78698046)
 
 其主体是 TaskExecutor 和 TaskScheduler 组成的, 也就是调度和执行
 
@@ -232,7 +232,7 @@ _其他,可选_
 异步事件处理
 - 类上 @EnableAsync 方法上 @Async 并指定配置的线程池名字
 
-> [参考博客: spring线程池(同步、异步）](http://www.cnblogs.com/duanxz/p/9435343.html)
+> [参考: spring线程池(同步、异步）](http://www.cnblogs.com/duanxz/p/9435343.html)
 
 ## Websocket
 ### maven配置

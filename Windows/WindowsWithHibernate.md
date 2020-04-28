@@ -7,14 +7,14 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Windows的快速启动](#windows的快速启动)
     1. [解决Linux下挂载hibernate状态分区的问题](#解决linux下挂载hibernate状态分区的问题)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Windows的快速启动 
-> [参考博客: Windows快速启动背后的功臣：休眠](https://zhuanlan.zhihu.com/p/28639474)
+> [参考: Windows快速启动背后的功臣：休眠](https://zhuanlan.zhihu.com/p/28639474)
 
 - 从8开始, Windows开机速度显著加快了, 因为引入了快速启动这个东西, 也就是在关机的时候将一些数据缓存到 hiberfil.sys 文件上, 下次开机能加载该文件从而快速开机
 

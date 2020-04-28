@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [计算机中的IO](#计算机中的io)
     1. [IO模型](#io模型)
         1. [Blocking IO](#blocking-io)
@@ -29,10 +29,10 @@ categories:
         1. [poll](#poll)
         1. [epoll](#epoll)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 计算机中的IO
-> [参考博客: IO - 同步，异步，阻塞，非阻塞 ](https://blog.csdn.net/historyasamirror/article/details/5778378)  
+> [参考: IO - 同步，异步，阻塞，非阻塞 ](https://blog.csdn.net/historyasamirror/article/details/5778378)  
 
 IO在计算机中指 Input/Output，也就是输入和输出。由于程序和运行时数据是在内存中驻留，由CPU这个超快的计算核心来执行，涉及到数据交换的地方，通常是磁盘、网络等，就需要IO接口。
 
@@ -44,7 +44,7 @@ IO在计算机中指 Input/Output，也就是输入和输出。由于程序和�
 - Signal driven IO
 - Asynchronous IO
 
-> [参考博客: 使用异步 I/O 大大提高应用程序的性能](https://www.ibm.com/developerworks/cn/linux/l-async/)  
+> [参考: 使用异步 I/O 大大提高应用程序的性能](https://www.ibm.com/developerworks/cn/linux/l-async/)  
 
 对于一个network IO (这里我们以read举例)，它会涉及到两个系统对象: 
 - 调用这个IO的process (or thread)
@@ -74,7 +74,7 @@ IO在计算机中指 Input/Output，也就是输入和输出。由于程序和�
 当内核数据就绪时会发送一个信号给用户线程，用户线程接收到信号之后，便在信号函数中调用IO读写操作来进行实际的IO请求操作。
 
 ### Asynchronous IO
-> [参考博客: 异步AIO的研究](http://rango.swoole.com/archives/282)  
+> [参考: 异步AIO的研究](http://rango.swoole.com/archives/282)  
 
 用户进程发起read操作之后，立刻就可以开始去做其它的事。而另一方面，从kernel的角度，当它受到一个asynchronous read之后，首先它会立刻返回，所以不会对用户进程产生任何block。  
 然后kernel会等待数据准备完成，然后将数据拷贝到用户内存，当这一切都完成之后，kernel会给用户进程发送一个signal，告诉它read操作完成了。  
@@ -149,7 +149,7 @@ IO在计算机中指 Input/Output，也就是输入和输出。由于程序和�
 ************************
 
 # 多路复用
-> [参考博客: IO多路复用](https://blog.csdn.net/chewbee/article/details/78108223)   
+> [参考: IO多路复用](https://blog.csdn.net/chewbee/article/details/78108223)   
 
 ## 多路复用模型
 Reactor 和 Proactor: 前者 使用同步IO, 后者使用异步IO
@@ -170,8 +170,8 @@ Reactor 和 Proactor: 前者 使用同步IO, 后者使用异步IO
 即通过epoll方式来观察多个流，epoll只会把发生了I/O事件的流通知我们，我们对这些流的操作都是有意义的，时间复杂度降低到O（k），其中k为产生I/O事件的流个数。
 
 ## IO多路复用函数
-> [参考博客: IO多路复用之select、poll、epoll详解](https://www.cnblogs.com/jeakeven/p/5435916.html)   
-> [参考博客: select、poll、epoll之间的区别总结](https://www.cnblogs.com/Anker/p/3265058.html)  
+> [参考: IO多路复用之select、poll、epoll详解](https://www.cnblogs.com/jeakeven/p/5435916.html)   
+> [参考: select、poll、epoll之间的区别总结](https://www.cnblogs.com/Anker/p/3265058.html)  
 
 IO复用机制可以同时监控多个描述符，当某个描述符就绪（读或写就绪），则立即通知相应程序进行读或写操作。   
 select/poll/epoll都是采用I/O多路复用机制的，其中select/poll是采用无差别轮询方式，而epoll是采用最小的轮询方式。  

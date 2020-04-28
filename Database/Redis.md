@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Redis](#redis)
     1. [Book](#book)
 1. [安装和配置](#安装和配置)
@@ -45,14 +45,14 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2020-04-22 10:14_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
 
 - [Redis Official doc zh](http://redisdoc.com/index.html)
 
-> [参考博客: nodejs + redis/mysql 连接池问题](https://www.cnblogs.com/laozhbook/p/nodejs_redis_connection_pool.html)`单线程问题`
+> [参考: nodejs + redis/mysql 连接池问题](https://www.cnblogs.com/laozhbook/p/nodejs_redis_connection_pool.html)`单线程问题`
 
 ## Book 
 > [Redis设计与实现 第二版](http://www.shouce.ren/api/view/a/13483)  
@@ -134,7 +134,7 @@ SET操作成功后,返回的是OK,失败返回NIL
 ************************
 
 ### BitMap
-> [参考博客: redis的bitset实战](https://segmentfault.com/a/1190000016296106)  
+> [参考: redis的bitset实战](https://segmentfault.com/a/1190000016296106)  
 
 基于string, 可以操作每个 bit 的值
 - setbit key offset value
@@ -289,6 +289,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 ************************
 
 # Pub/Sub发布和订阅
+> 基于阻塞 list 实现
 
 - `PSUBSCRIBE pattern [pattern ...]`
     - 订阅一个或多个符合给定模式的频道。每个模式以 * 作为匹配符，比如 it* 匹配所有以 it 开头的频道( it.news 、 it.blog 、 it.tweets 等等)，
@@ -348,7 +349,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 # Redis的应用场景
 > [Redis的n种妙用，不仅仅是缓存 ](https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650123010&idx=2&sn=c17bd9192daa15c00502b7e27acacc61&chksm=f36bb623c41c3f35060bf244eddddc25ea6e2b96900f57299e0d8ffe548a08823b057dee5baf&mpshare=1&scene=1&srcid=0109PazxT49BtR2oCJ6Od32h&pass_ticket=ZX4WKje%2FJzbdB6LEivhrNCtzmljNugDZul02fl5SX4snt5QLMa6Cle9o1I5CumfQ#rd)
 
-> [参考博客: 为什么我们做分布式使用Redis？](https://my.oschina.net/u/3971241/blog/2221560)`缓存的场景和应对措施`
+> [参考: 为什么我们做分布式使用Redis？](https://my.oschina.net/u/3971241/blog/2221560)`缓存的场景和应对措施`
 
 ## 作为日志记录
 ## 作为网站统计数据

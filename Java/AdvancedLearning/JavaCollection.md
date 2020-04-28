@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [JDK中的集合](#jdk中的集合)
     1. [集合继承和实现关系](#集合继承和实现关系)
     1. [Iterator](#iterator)
@@ -23,7 +23,7 @@ categories:
     1. [Koloboke](#koloboke)
     1. [Trove](#trove)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # JDK中的集合
 
@@ -54,7 +54,7 @@ categories:
 ## Map
 > HashMap 键能为null, HashTable则不可以, 而且HashTable是线程安全的(依靠 synchronized 关键字实现) 
 
-> [参考博客: Java Map 集合类简介 ](https://www.oracle.com/technetwork/cn/articles/maps1-100947-zhs.html)
+> [参考: Java Map 集合类简介 ](https://www.oracle.com/technetwork/cn/articles/maps1-100947-zhs.html)
 
 ### HashMap
 
@@ -62,7 +62,7 @@ categories:
 > 避免 ConcurrentModificationException 
 
 ### TreeMap
-> [参考博客: TreeMap 红黑树算法实现](https://www.ibm.com/developerworks/cn/java/j-lo-tree/index.html)
+> [参考: TreeMap 红黑树算法实现](https://www.ibm.com/developerworks/cn/java/j-lo-tree/index.html)
 
 ********************************************
 

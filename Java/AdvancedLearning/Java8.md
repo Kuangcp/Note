@@ -9,7 +9,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Java8](#java8)
 1. [接口的变化](#接口的变化)
     1. [default方法](#default方法)
@@ -79,7 +79,7 @@ categories:
     1. [ZonedDateTime](#zoneddatetime)
     1. [Clock](#clock)
 
-**目录 end**|_2020-04-22 10:14_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -91,7 +91,7 @@ categories:
 > [Java8 tools](https://docs.oracle.com/javase/8/docs/technotes/tools/)`介绍目录 bin/* 下的工具` | [jdk structure](https://docs.oracle.com/javase/8/docs/technotes/guides/desc_jdk_structure.html)  
 - [Oracle:Java8故障排除指南](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/)
 
-> [参考博客: Java 8 特性 – 终极手册](http://ifeve.com/java-8-features-tutorial/)
+> [参考: Java 8 特性 – 终极手册](http://ifeve.com/java-8-features-tutorial/)
 
 **`参考书籍`**
 1. Java8 in action 
@@ -233,9 +233,9 @@ An informative annotation type used to indicate that an interface type declarati
 1. 方法引用让你重复使用现有的方法实现并直接传递它们。
 1. Comparator、 Predicate和Function等函数式接口都有几个可以用来结合Lambda表达式的默认方法。
 
-> [参考博客: 你真的了解lambda吗？一文让你明白lambda用法与源码分析 ](https://mp.weixin.qq.com/s?__biz=MzAxODcyNjEzNQ==&mid=2247485682&idx=1&sn=f3fb281b49a029b607f9377853a644bf&chksm=9bd0a56aaca72c7c8beebbea8f9471446cb444bd8e1e7d21016e906d1227e8f87770e2f8f31e&mpshare=1&scene=1&srcid=0810geQnLXB2oMjfoAOEJ39L#rd)
-> [参考博客: 级联 lambda 表达式的函数重用与代码简短问题](http://www.techug.com/post/java-lambda.html)
-> [参考博客: Java8：Lambda表达式增强版Comparator和排序](http://www.importnew.com/15259.html)
+> [参考: 你真的了解lambda吗？一文让你明白lambda用法与源码分析 ](https://mp.weixin.qq.com/s?__biz=MzAxODcyNjEzNQ==&mid=2247485682&idx=1&sn=f3fb281b49a029b607f9377853a644bf&chksm=9bd0a56aaca72c7c8beebbea8f9471446cb444bd8e1e7d21016e906d1227e8f87770e2f8f31e&mpshare=1&scene=1&srcid=0810geQnLXB2oMjfoAOEJ39L#rd)
+> [参考: 级联 lambda 表达式的函数重用与代码简短问题](http://www.techug.com/post/java-lambda.html)
+> [参考: Java8：Lambda表达式增强版Comparator和排序](http://www.importnew.com/15259.html)
 
 ## 行为参数化
 >1. 行为参数化，就是一个方法接受多个不同的行为作为参数，并在内部使用它们， 完成不同行为的能力。
@@ -469,7 +469,7 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 **********************************
 
 # Stream
-> [参考博客: Java 8 中的 Streams API 详解](https://www.ibm.com/developerworks/cn/java/j-lo-java8streamapi/)
+> [参考: Java 8 中的 Streams API 详解](https://www.ibm.com/developerworks/cn/java/j-lo-java8streamapi/)
 
 - Java 8中的Stream API可以让你写出这样的代码
     1. 声明性, 更简洁, 更易读
@@ -917,7 +917,7 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 #### 分区
 
 ### 自定义收集器 Collector
-> [参考博客: 自定义收集器深度剖析：](http://www.cnblogs.com/webor2006/p/8353314.html)
+> [参考: 自定义收集器深度剖析：](http://www.cnblogs.com/webor2006/p/8353314.html)
 
 ************************
 

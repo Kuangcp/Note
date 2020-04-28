@@ -6,7 +6,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [软件使用记事](#软件使用记事)
     1. [包管理](#包管理)
         1. [使用sdkman](#使用sdkman)
@@ -38,7 +38,7 @@ categories:
     1. [安全工具](#安全工具)
         1. [gpg](#gpg)
 
-**目录 end**|_2020-03-22 12:35_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 软件使用记事
 ## 包管理
@@ -162,8 +162,8 @@ _批量修改_
 ### termux
 > [wiki FAQ](https://wiki.termux.com/wiki/FAQ)
 
-> [参考博客: Hello，Termux](https://tonybai.com/2017/11/09/hello-termux/)
-> [参考博客: Termux：让Android手机摇身一变成为高级Linux终端](https://www.asmodeus.cn/archives/769)
+> [参考: Hello，Termux](https://tonybai.com/2017/11/09/hello-termux/)
+> [参考: Termux：让Android手机摇身一变成为高级Linux终端](https://www.asmodeus.cn/archives/769)
 
 - 开启ssh服务 pkg install openssh 对应端口默认 8022
 
@@ -181,7 +181,7 @@ _批量修改_
 
 ## 绘图工具
 ### 思维导图
-> [参考博客: 这 7 款开源思维导图工具真的很神奇](https://blog.csdn.net/zuochao_2013/article/details/68928381)
+> [参考: 这 7 款开源思维导图工具真的很神奇](https://blog.csdn.net/zuochao_2013/article/details/68928381)
 
 1. [processon](https://www.processon.com/)`免费额度比较小, 但是使用很方便`
 

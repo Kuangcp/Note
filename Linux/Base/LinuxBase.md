@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Linux系统](#linux系统)
     1. [用户](#用户)
     1. [用户组](#用户组)
@@ -50,7 +50,7 @@ categories:
     1. [修改主机名](#修改主机名)
     1. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
 
-**目录 end**|_2020-04-04 11:39_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -209,7 +209,7 @@ categories:
 > [fork bomb](https://en.wikipedia.org/wiki/Fork_bomb)
 
 ### 孤儿进程和僵死进程
-> [参考博客: 孤儿进程与僵死进程[总结]](http://www.cnblogs.com/Anker/p/3271773.html)
+> [参考: 孤儿进程与僵死进程[总结]](http://www.cnblogs.com/Anker/p/3271773.html)
 
 #### 孤儿进程
 > 一个父进程退出，而它的子进程还在运行，那么那些子进程将成为孤儿进程。孤儿进程将被init进程(进程号为1)所收养，并由init进程对它们完成状态收集工作。
@@ -230,13 +230,13 @@ categories:
 > 暴力方案: 直接 kill 掉父进程, 父进程和僵死状态的子进程就一起被回收了
 
 ### 守护进程
-> [参考博客: 守护进程](https://blog.csdn.net/lianghe_work/article/details/47659889)
+> [参考: 守护进程](https://blog.csdn.net/lianghe_work/article/details/47659889)
 
 ### 线程
 1. 查看创建一个线程占用内存大小 `ulimit -s`
 
 ### 文件描述符 FD
-> [参考博客: Linux下 文件描述符（fd）与 文件指针（FILE*）](https://blog.csdn.net/mm_hh/article/details/71374474)  
+> [参考: Linux下 文件描述符（fd）与 文件指针（FILE*）](https://blog.csdn.net/mm_hh/article/details/71374474)  
 
 每一个进程在PCB（Process Control Block）即进程控制块中都保存着一分文件描述符表，文件描述符就是这个表的索引文件，描述符表中每个表项都有一个指向已打开文件的指针。  
 现在我们明确一下：已打开的文件在内核中用file结构体表示，文件描述符表中的指针指向file结构体。  
@@ -324,9 +324,9 @@ _系统运行级别_
 
 ## 内存
 ### 虚拟内存
-> [参考博客: What does Virtual memory size in top mean?](https://serverfault.com/questions/138427/what-does-virtual-memory-size-in-top-mean)  
+> [参考: What does Virtual memory size in top mean?](https://serverfault.com/questions/138427/what-does-virtual-memory-size-in-top-mean)  
 
-> [参考博客: The Right Way to Monitor Virtual Memory on Linux](https://www.logicmonitor.com/blog/the-right-way-to-monitor-virtual-memory-on-linux/)  
+> [参考: The Right Way to Monitor Virtual Memory on Linux](https://www.logicmonitor.com/blog/the-right-way-to-monitor-virtual-memory-on-linux/)  
 
 ### 交换内存
 > swapon, swapoff - enable/disable devices and files for paging and swapping
@@ -405,7 +405,7 @@ _系统运行级别_
 **********************
 # 常见对比
 ## 文件系统对比
-> [参考博客: 如何选择文件系统：EXT4、Btrfs 和 XFS ](https://linux.cn/article-7083-1.html)
+> [参考: 如何选择文件系统：EXT4、Btrfs 和 XFS ](https://linux.cn/article-7083-1.html)
 
 目前 Linux 大多采用 ext3,往 ext4 过渡 
 

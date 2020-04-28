@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Tmux](#tmux)
     1. [配置](#配置)
         1. [个人配置](#个人配置)
@@ -18,15 +18,15 @@ categories:
         1. [maglev](#maglev)
         1. [copycat](#copycat)
 
-**目录 end**|_2020-03-14 17:00_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
 > [tmux 入门](http://blog.jobbole.com/87278/) | [tmux简洁教程及config关键配置](https://www.jianshu.com/p/fd3bbdba9dc9)
 
-> [参考博客: 文本三巨头：zsh、tmux 和 vim](http://blog.jobbole.com/86571/)
-> [参考博客: 程序员高效技巧系列](http://cenalulu.github.io/linux/professional-tmux-skills/)  
+> [参考: 文本三巨头：zsh、tmux 和 vim](http://blog.jobbole.com/86571/)
+> [参考: 程序员高效技巧系列](http://cenalulu.github.io/linux/professional-tmux-skills/)  
 
 ************************
 > 基本操作
@@ -75,7 +75,7 @@ categories:
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) `查看Readme下载安装`
 > `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
-> [参考博客: 保存和恢复 Tmux 会话 ](https://liam.page/2016/09/10/tmux-plugin-resurrect/)
+> [参考: 保存和恢复 Tmux 会话 ](https://liam.page/2016/09/10/tmux-plugin-resurrect/)
 
 - `Prefix I` 安装新增的插件 
 

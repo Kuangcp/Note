@@ -8,10 +8,10 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [RPC](#rpc)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # RPC
 > Remote Procedure Calls 
@@ -23,5 +23,5 @@ categories:
 - 通常使用 IDL(Interface Definition) 建立接口定义, 达成约束, 一般指一种开发方式和规范, 具体的实现可以多样
 - 也可以用 HTTP 接口来实现RPC, 也就是说 Dubbo 的websocket和hessian二进制序列化方式和 SpringCloud 的 HTTP 接口广义上讲都属于RPC接口
 
-> [参考博客: 良好的RPC接口设计，需要注意这些方面](https://www.jianshu.com/p/dca5b00e72e4)
+> [参考: 良好的RPC接口设计，需要注意这些方面](https://www.jianshu.com/p/dca5b00e72e4)
 

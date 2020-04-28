@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Web性能](#web性能)
     1. [性能基准](#性能基准)
     1. [测试工具](#测试工具)
@@ -19,12 +19,12 @@ categories:
         1. [MySQL](#mysql)
             1. [主从复制以及读写分离](#主从复制以及读写分离)
 
-**目录 end**|_2020-02-16 22:18_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Web性能
 
 ## 性能基准
-> [参考博客: 系统吞吐量（TPS）、用户并发量、性能测试概念和公式](http://www.cnblogs.com/freeton/archive/2013/05/31/3109815.html)
+> [参考: 系统吞吐量（TPS）、用户并发量、性能测试概念和公式](http://www.cnblogs.com/freeton/archive/2013/05/31/3109815.html)
 
 `超出应用性能上限的表现`
 1. 对于web后端来说就是请求过多, 数据库连接池不够用, 线程池大量等待的线程, 请求非常缓慢, 直接返回 5xx 错误码...
@@ -54,8 +54,8 @@ categories:
 
 ### wrk
 > [Github地址](https://github.com/wg/wrk)  
-> [参考博客:  wrk 压力测试 http benchmark POST接口](http://www.cnblogs.com/felixzh/p/8400729.html)  
-> [参考博客: 性能测试之－wrk(转)](http://www.cnblogs.com/rainy-shurun/p/5867946.html)  
+> [参考:  wrk 压力测试 http benchmark POST接口](http://www.cnblogs.com/felixzh/p/8400729.html)  
+> [参考: 性能测试之－wrk(转)](http://www.cnblogs.com/rainy-shurun/p/5867946.html)  
 
 1. 需要手动编译安装 make
 

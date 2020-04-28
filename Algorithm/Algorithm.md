@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [数据结构和算法](#数据结构和算法)
     1. [相关书籍和资源](#相关书籍和资源)
     1. [基础概念](#基础概念)
@@ -30,7 +30,7 @@ categories:
         1. [构造哈希函数](#构造哈希函数)
         1. [哈希冲突](#哈希冲突)
             1. [开放定址法](#开放定址法)
-            1. [再 hash 法](#再-hash-法)
+            1. [再 HASH 法](#再-hash-法)
             1. [链地址法](#链地址法)
             1. [公共溢出区](#公共溢出区)
 1. [密码学](#密码学)
@@ -38,7 +38,7 @@ categories:
 1. [实际问题](#实际问题)
     1. [斐波那契数列](#斐波那契数列)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-28 17:51_|
 ****************************************
 # 数据结构和算法
 > 数据结构是指一组数据的存储结构 算法就是操作数据的方法 数据结构和算法是相辅相成的，数据结构是为算法服务的，而算法要作用在特定的数据结构之上
@@ -344,7 +344,7 @@ Java 中 ArrayList 和 数组的对比
 - [字符串相似度匹配](http://zjwyhll.blog.163.com/blog/static/75149781201281142630851/)
 
 ## 排序算法
-> [参考博客: 九种排序算法的可视化及比较](https://zhuanlan.zhihu.com/p/34421623?group_id=955945213303250944)
+> [参考: 九种排序算法的可视化及比较](https://zhuanlan.zhihu.com/p/34421623?group_id=955945213303250944)
 
 ## 搜索算法
 > [Trie](https://en.wikipedia.org/wiki/Trie) `字典树`
@@ -355,6 +355,9 @@ Java 中 ArrayList 和 数组的对比
 基本思想: 在元素的关键字 k 和元素的存储位置 p 之间建立一个对应关系 H, 使得 p = H(k) H 则称为哈希函数
 - 在创建哈希表时, 把关键字为 k 的元素放到地址为 H(k) 的单元
 - 在查找时则根据关键字 k 计算出地址, 直接获取到元素, 时间复杂度达到 O(1)
+
+- MurmurHash 
+    - 是一种非加密型哈希函数，和其它流行哈希函数相比，对于规律性较强的 key 随机分布特性表现更良好，很多开源的软件项目使用（Redis，Memcached，Cassandra，HBase，Lucene）
 
 ### 构造哈希函数
 设计哈希函数常考虑
@@ -386,22 +389,22 @@ Java 中 ArrayList 和 数组的对比
 取键值的hashCode, 然后高低16位做异或运算, 然后再与`哈希表大小`做与运算, 才得到哈希地址
 
 ### 哈希冲突
-> [参考博客: hash是如何处理冲突的?](http://www.cnblogs.com/jillzhang/archive/2006/11/03/548671.html)
+> [参考: hash是如何处理冲突的?](http://www.cnblogs.com/jillzhang/archive/2006/11/03/548671.html)
 
-> [参考博客: 一种高级的DoS攻击-Hash碰撞攻击 ](https://yq.aliyun.com/articles/92194?utm_campaign=wenzhang&utm_medium=article&utm_source=QQ-qun&201762&utm_content=m_22308)
+> [参考: 一种高级的DoS攻击-Hash碰撞攻击 ](https://yq.aliyun.com/articles/92194?utm_campaign=wenzhang&utm_medium=article&utm_source=QQ-qun&201762&utm_content=m_22308)
 > [Application vulnerability due to Non Random Hash Functions](https://stackoverflow.com/questions/8669946/application-vulnerability-due-to-non-random-hash-functions)  
 
 #### 开放定址法
 - 开放定址法有一个公式: `Hi=(H(key)+di) % m` i=1,2,...,k(k<=m-1)
     - 其中，m为哈希表的表长。di 是产生冲突的时候的`增量序列`。
 
--称线性探测再散列:
+-称线性探测再散列
     - 如果di值可能为1,2,3,...m-1, 顺序查看表单元, 直到找到空单元。
-- 称二次探测再散列:
+- 称二次探测再散列
     - 如果di取1，则每次冲突之后，向后移动1个位置.如果di取值可能为 `1,-1^2,2^2,-2^2,...k*k,-k*k` (k<=m/2)
 - 如果di取值可能为伪随机数列。称伪随机探测再散列。
 
-#### 再 hash 法
+#### 再 HASH 法
 基本思想时构造多个不同的哈希函数, 当发生冲突时，使用第二个、第三个、哈希函数计算地址，直到无冲突。
 
 缺点时增加了时间复杂度

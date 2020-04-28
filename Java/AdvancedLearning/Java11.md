@@ -9,7 +9,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Java11](#java11)
     1. [安装配置](#安装配置)
         1. [Linux](#linux)
@@ -17,7 +17,7 @@ categories:
         1. [ZGC](#zgc)
         1. [部分API转为内部API](#部分api转为内部api)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Java11 
 > [Official: JDK 11 Documentation](https://docs.oracle.com/en/java/javase/11/) | [Official:api](https://docs.oracle.com/en/java/javase/11/docs/api/index.html)
@@ -52,9 +52,9 @@ export PATH=${JAVA_HOME}/bin:$PATH
 > [ZGC](/Java/AdvancedLearning/JVM.md#ZGC)  
 
 *******************************
-> [参考博客: Java 11 Tutorial](https://winterbe.com/posts/2018/09/24/java-11-tutorial/)
+> [参考: Java 11 Tutorial](https://winterbe.com/posts/2018/09/24/java-11-tutorial/)
 
-> [参考博客: Java 11 正式发布，带来ZGC、Http Client等重要特性！ ](https://mp.weixin.qq.com/s/CA_snRZ0kw9i-p1YCnHRKA)
+> [参考: Java 11 正式发布，带来ZGC、Http Client等重要特性！ ](https://mp.weixin.qq.com/s/CA_snRZ0kw9i-p1YCnHRKA)
 
 > [Java11](https://blog.csdn.net/weixin_38055381/article/details/82865385)
 

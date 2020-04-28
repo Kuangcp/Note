@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Scala](#scala)
     1. [安装](#安装)
     1. [基础了解](#基础了解)
@@ -25,14 +25,14 @@ categories:
         1. [数据结构和集合](#数据结构和集合)
         1. [actor](#actor)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Scala
 > [Official tour](https://docs.scala-lang.org/tour/tour-of-scala.html)
 
 > [Groovy创始人：Java面临终结 Scala将取而代之](http://developer.51cto.com/art/200907/134785.htm)
 
-> [参考博客: 20 Best Scala Books To Go From Beginner To Expert](https://whatpixel.com/best-scala-books/)
+> [参考: 20 Best Scala Books To Go From Beginner To Expert](https://whatpixel.com/best-scala-books/)
 ## 安装
 - 通过sdkman安装，或者下载解压配置环境变量 [sdkman使用](/Skills/usually_app.md)
 

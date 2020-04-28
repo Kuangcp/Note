@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [系统常用基础命令](#系统常用基础命令)
     1. [系统内置命令](#系统内置命令)
         1. [Shell内建命令](#shell内建命令)
@@ -27,7 +27,7 @@ categories:
     1. [ffmpeg](#ffmpeg)
     1. [视频播放器](#视频播放器)
 
-**目录 end**|_2020-04-12 23:01_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -60,8 +60,8 @@ categories:
 ******************
 
 ## 管道
-> [参考博客: linux 管道 ](http://www.cnblogs.com/davidwang456/p/3839874.html)
-> [参考博客: linux shell 管道命令(pipe)使用及与shell重定向区别](http://www.cnblogs.com/chengmo/archive/2010/10/21/1856577.html)
+> [参考: linux 管道 ](http://www.cnblogs.com/davidwang456/p/3839874.html)
+> [参考: linux shell 管道命令(pipe)使用及与shell重定向区别](http://www.cnblogs.com/chengmo/archive/2010/10/21/1856577.html)
 
 - 接收输入流且输出流 类似于 Java8 中的 peek() 函数
     - `cat README.md | grep Java | tee > java.log | grep -v Maven`
@@ -128,7 +128,7 @@ categories:
 ```
 
 ### Systemd
-> [参考博客: Systemd 定时器教程](http://www.ruanyifeng.com/blog/2018/03/systemd-timer.html) `配置和使用上比Crontab更繁杂, 但是有更多的可控制项`
+> [参考: Systemd 定时器教程](http://www.ruanyifeng.com/blog/2018/03/systemd-timer.html) `配置和使用上比Crontab更繁杂, 但是有更多的可控制项`
 
 ************************
 
@@ -151,4 +151,4 @@ categories:
     - `-ss` 开始时间 `-t` 截取时长  `-q 0` 无损 `-c copy`表示不必重新编码
 
 ## 视频播放器
-> [参考博客: Top 10 Best Linux Video Players](https://www.ubuntupit.com/top-10-best-linux-video-players-enjoy-ultimate-movie-music/)  
+> [参考: Top 10 Best Linux Video Players](https://www.ubuntupit.com/top-10-best-linux-video-players-enjoy-ultimate-movie-music/)  

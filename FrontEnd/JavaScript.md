@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [JavaScript](#javascript)
     1. [数据类型](#数据类型)
         1. [字符串](#字符串)
@@ -29,7 +29,7 @@ categories:
     1. [资源文件](#资源文件)
         1. [图片](#图片)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # JavaScript
 
@@ -103,7 +103,7 @@ categories:
 ## Ajax
 > [js 原生 post请求](https://segmentfault.com/q/1010000005162727)
 
-> [参考博客: 使用 Fetch](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)
+> [参考: 使用 Fetch](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)
 
 ## 事件
 
@@ -160,4 +160,4 @@ _原生方式异步提交_
 
 ## 资源文件
 ### 图片
-> [参考博客: JS 图片转Base64](http://www.cnblogs.com/wujingtao/p/5196836.html)
+> [参考: JS 图片转Base64](http://www.cnblogs.com/wujingtao/p/5196836.html)

@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Java](#java)
     1. [社区](#社区)
     1. [SE](#se)
@@ -22,7 +22,7 @@ categories:
         1. [架构师](#架构师)
     1. [Java语言讨论](#java语言讨论)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Java
 > 和Java有关的博客和网页  
@@ -40,7 +40,7 @@ categories:
 - [推荐！国外程序员整理的Java资源大全](http://www.codeceo.com/article/java-resource-collection.html)
 
 - [oracle magazine](https://blogs.oracle.com/java/java-magazine-design-pattern)
-- [参考博客: 一个牛人给Java初学者的建议(必看篇)](https://www.jb51.net/article/113819.htm)  
+- [参考: 一个牛人给Java初学者的建议(必看篇)](https://www.jb51.net/article/113819.htm)  
 
 ***************
 - [Java动态代理机制详解](http://blog.csdn.net/luanlouis/article/details/24589193) `博客很细致，深入原理`
@@ -96,10 +96,10 @@ categories:
 
 ## Java语言讨论
 > [冷眼看Java](http://swiftlet.net/archives/2530)
-> [参考博客: 王垠：为Java说句公道话](http://www.techug.com/post/java-python.html)
-> [参考博客: 比较 Rust 和 Java](http://www.techug.com/post/comparing-rust-and-java.html)
-> [参考博客: Kotlin与Java的主客观比较](http://www.techug.com/post/kotlin-vs-java-the-whole-story.html)
-> [参考博客: 10个实用的但偏执的Java编程技术](http://www.techug.com/post/10-java-tips.html)
-> [参考博客: 王垠：编程的智慧](http://www.techug.com/post/programming-philosophy.html)
+> [参考: 王垠：为Java说句公道话](http://www.techug.com/post/java-python.html)
+> [参考: 比较 Rust 和 Java](http://www.techug.com/post/comparing-rust-and-java.html)
+> [参考: Kotlin与Java的主客观比较](http://www.techug.com/post/kotlin-vs-java-the-whole-story.html)
+> [参考: 10个实用的但偏执的Java编程技术](http://www.techug.com/post/10-java-tips.html)
+> [参考: 王垠：编程的智慧](http://www.techug.com/post/programming-philosophy.html)
 
 

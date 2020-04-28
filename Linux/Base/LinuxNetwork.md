@@ -9,7 +9,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Linux网络管理](#linux网络管理)
     1. [DNS](#dns)
         1. [修改DNS](#修改dns)
@@ -52,7 +52,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2020-04-22 10:14_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Linux网络管理
 ## DNS
@@ -93,7 +93,7 @@ categories:
 **********************
 
 ## Route
-> [参考博客: 路由表的建立算法和有关的刷新协议](https://blog.csdn.net/qq_34328833/article/details/60583183)
+> [参考: 路由表的建立算法和有关的刷新协议](https://blog.csdn.net/qq_34328833/article/details/60583183)
 
 ************************
 
@@ -182,9 +182,9 @@ categories:
 - 使用Cookie `curl -v --cookie "USER_TOKEN=Yes" http://127.0.0.1:5000/`
 - 使用代理  `-x, --proxy [protocol://]host[:port]`
 
-> [参考博客: curl返回常见错误码](http://www.cnblogs.com/wainiwann/p/3492939.html)
+> [参考: curl返回常见错误码](http://www.cnblogs.com/wainiwann/p/3492939.html)
 - [56错误码](https://stackoverflow.com/questions/10285700/curl-error-recv-failure-connection-reset-by-peer-php-curl)
-> [参考博客: 使用cURL和用户名和密码？](http://www.cnblogs.com/seasonzone/p/7527218.html)
+> [参考: 使用cURL和用户名和密码？](http://www.cnblogs.com/seasonzone/p/7527218.html)
 
 ************************
 
@@ -202,7 +202,7 @@ categories:
 |   统计       | netstat   |        ss        |
 
 _ss_
-> [参考博客: Linux网络状态工具ss命令使用详解](http://www.ttlsa.com/linux-command/ss-replace-netstat/)
+> [参考: Linux网络状态工具ss命令使用详解](http://www.ttlsa.com/linux-command/ss-replace-netstat/)
 
 - 查看网络连接统计 `ss -s`
 - 查看打开的端口 `ss -l`
@@ -375,7 +375,7 @@ _ss_
         - 其效果 其实应该是 设置值的累加 (理解为重试次数似乎更好)
     
 > [wget cookie](http://blog.csdn.net/adream307/article/details/47379149)  
-> [参考博客: wget命令详解](http://blog.csdn.net/RichardYSteven/article/details/4565931)
+> [参考: wget命令详解](http://blog.csdn.net/RichardYSteven/article/details/4565931)
 
 - 镜像整站 `wget --mirror -p --convert-links -P . URL`
     - –miror: 镜像下载
@@ -473,7 +473,7 @@ _ss_
 
 ## VPN
 ### tun/tap
-> [参考博客: linux下TUN/TAP虚拟网卡的使用](https://blog.csdn.net/bytxl/article/details/26586109)  
+> [参考: linux下TUN/TAP虚拟网卡的使用](https://blog.csdn.net/bytxl/article/details/26586109)  
 
 #### TUN TAP 区别
 
@@ -560,7 +560,7 @@ _客户端_
 ## 防火墙
 
 ### iptables
-> [参考博客: linux下IPTABLES配置详解](http://www.cnblogs.com/JemBai/archive/2009/03/19/1416364.html)
+> [参考: linux下IPTABLES配置详解](http://www.cnblogs.com/JemBai/archive/2009/03/19/1416364.html)
 
 > 其主要配置文件为: `/etc/sysconfig/iptables`
 
@@ -578,13 +578,13 @@ _有时候会发生这样的事情_
 
 ************************
 ## 远程桌面
-> [参考博客: 连接Linux远程桌面的四个方法](https://www.cnblogs.com/hw-1015/articles/5910969.html)  
-> [参考博客: 你会在linux服务器上安装远程桌面吗？](https://www.zhihu.com/question/20301978)  
+> [参考: 连接Linux远程桌面的四个方法](https://www.cnblogs.com/hw-1015/articles/5910969.html)  
+> [参考: 你会在linux服务器上安装远程桌面吗？](https://www.zhihu.com/question/20301978)  
 
 ### VNC
 > Virtual Network Computing 
 
-> [参考博客: Ubuntu远程SSH及x11vnc远程桌面连接](https://blog.csdn.net/ywueoei/article/details/79952727)  
+> [参考: Ubuntu远程SSH及x11vnc远程桌面连接](https://blog.csdn.net/ywueoei/article/details/79952727)  
 
 1. 服务端 安装 `yay realvnc-vnc-server`
 1. 设置密码 `x11vnc -storepasswd`
@@ -598,7 +598,7 @@ _有时候会发生这样的事情_
 ************************
 
 ### Xrdp
-> [参考博客: Xrdp - 通过Windows的RDP连接Linux远程桌面](https://www.linuxidc.com/Linux/2018-10/155073.htm)  
+> [参考: Xrdp - 通过Windows的RDP连接Linux远程桌面](https://www.linuxidc.com/Linux/2018-10/155073.htm)  
 
 ************************
 
@@ -606,7 +606,7 @@ _有时候会发生这样的事情_
 ### 查看进程占用的端口
 > netstat lsof fuser  
 
-> [参考博客: linux下常用命令查看端口占用](http://blog.csdn.net/ws379374000/article/details/74218530)
+> [参考: linux下常用命令查看端口占用](http://blog.csdn.net/ws379374000/article/details/74218530)
 
 - `lsof -i:端口号` 用于查看某一端口的占用情况，缺省端口号显示全部
     - 或者 `cat /etc/services` 查看系统以及使用的端口

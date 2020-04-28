@@ -10,7 +10,7 @@ categories:
 **目录 start**
 
 1. [Redis底层数据结构](#redis底层数据结构)
-    1. [简单动态字符串](#简单动态字符串)
+    1. [SDS](#sds)
     1. [链表](#链表)
     1. [字典](#字典)
     1. [跳表](#跳表)
@@ -29,16 +29,30 @@ categories:
     1. [复制](#复制)
     1. [数据迁移](#数据迁移)
     1. [错误分析](#错误分析)
+        1. [big key](#big-key)
+1. [应用](#应用)
+    1. [分布式锁](#分布式锁)
 1. [主从](#主从)
 1. [哨兵](#哨兵)
 1. [cluster集群](#cluster集群)
 1. [应用](#应用)
     1. [分布式锁](#分布式锁)
 
-**目录 end**|_2020-04-25 18:46_|
+**目录 end**|_2020-04-28 17:51_|
 ****************************************
 # Redis底层数据结构
-## 简单动态字符串
+## SDS
+> 简单动态字符串
+
+- [ ] 存储数值的方式
+```
+0           00110000
+(short 0)   0011000001010011
+0L          0011000001001100
+""          0010001000100010
+new byte[0] 011110000010011100100111
+```
+
 ## 链表
 ## 字典
 
@@ -175,12 +189,27 @@ TODO
         1. Redis 存放数据的 rdb 文件所在目录 没有存储空间了
         1. 没有内存空间了, 由于执行save操作时, 会进行fork子进程 然后进行持久化 TODO 验证
 
+### big key
+- `redis-cli --bigkeys`
+- `memory usage key`
+
+
 ************************
-> [参考博客: redis哨兵、集群](https://blog.csdn.net/u012129558/article/details/77146287)  
+> [参考: redis哨兵、集群](https://blog.csdn.net/u012129558/article/details/77146287)  
 
 https://www.jianshu.com/p/42ee966f96e5
 https://www.jianshu.com/p/06ab9daf921d
 https://www.cnblogs.com/demingblog/p/10295236.html
+
+************************
+
+# 应用
+## 分布式锁
+
+> [基于Redis的分布式锁到底安全吗（上）？](https://mp.weixin.qq.com/s/JTsJCDuasgIJ0j95K8Ay8w)  
+> [基于Redis的分布式锁到底安全吗（下）？](https://mp.weixin.qq.com/s/4CUe7OpM6y1kQRK8TOC_qQ?)  
+
+************************
 
 # 主从
 

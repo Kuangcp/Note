@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Java并发](#java并发)
     1. [JMM Java内存模型](#jmm-java内存模型)
     1. [理论知识](#理论知识)
@@ -38,7 +38,7 @@ categories:
         1. [ScheduledThreadPoolExecutor](#scheduledthreadpoolexecutor)
     1. [分支合并框架](#分支合并框架)
 
-**目录 end**|_2020-04-01 00:23_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -47,8 +47,8 @@ categories:
 
 > 该模块最早在1.5引入,由 [Doug Lea](http://g.oswego.edu/) 开发 |  [doug lea博客中文版](http://ifeve.com/doug-lea/)
 
-> [参考博客: 并发编程 ](http://www.jdon.com/concurrency.html)
-> [参考博客: 不可变真的意味线程安全？](http://www.jdon.com/concurrent/immutable.html)
+> [参考: 并发编程 ](http://www.jdon.com/concurrency.html)
+> [参考: 不可变真的意味线程安全？](http://www.jdon.com/concurrent/immutable.html)
 > [Java Concurrency and Multithreading Tutorial](http://tutorials.jenkov.com/java-concurrency/index.html)  
 
 ************************

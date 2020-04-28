@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Jenkins](#jenkins)
     1. [安装](#安装)
         1. [直接运行jar](#直接运行jar)
@@ -19,12 +19,12 @@ categories:
         1. [Pipeline](#pipeline)
         1. [个人经验](#个人经验)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Jenkins
 > [官网](https://jenkins.io/)
 
-> [参考博客: 用 Docker, maven, jenkins 完成 CI](http://www.open-open.com/lib/view/open1436922756240.html)
+> [参考: 用 Docker, maven, jenkins 完成 CI](http://www.open-open.com/lib/view/open1436922756240.html)
 
 ## 安装
 > [官方下载地址](https://jenkins.io/download/) | 由于是一个Java的Web服务, 所以也有war版本, 资源消耗都挺大的
@@ -66,7 +66,7 @@ categories:
 
 `配置时区`
 
-[Official Wiki](https://wiki.jenkins.io/display/JENKINS/Change+time+zone) | [参考博客: Jenkins修改时区（Docker）](https://blog.csdn.net/k_zombie/article/details/50754253)  
+[Official Wiki](https://wiki.jenkins.io/display/JENKINS/Change+time+zone) | [参考: Jenkins修改时区（Docker）](https://blog.csdn.net/k_zombie/article/details/50754253)  
 或者在 Script Console 中 运行 `System.setProperty('org.apache.commons.jelly.tags.fmt.timeZone', 'Asia/Shanghai');`
 
 ### 配置Gradle

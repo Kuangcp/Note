@@ -7,12 +7,12 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Selenium](#selenium)
 
-**目录 end**|_2019-11-10 01:49_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Selenium
 
-> [参考博客: Selenium Python](http://www.testclass.net/selenium_python)  
+> [参考: Selenium Python](http://www.testclass.net/selenium_python)  
 

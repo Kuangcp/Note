@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Mybatis](#mybatis)
     1. [Mybatis](#mybatis)
         1. [xml文件配置：](#xml文件配置)
@@ -22,14 +22,14 @@ categories:
             1. [if 判断语句:](#if-判断语句)
             1. [set 方便书写update语句](#set-方便书写update语句)
             1. [choose 相当于switch语句](#choose-相当于switch语句)
-                1. [$ 和  的区别](#$-和--的区别)
+            1. [$ 和  的区别](#$-和--的区别)
 1. [Tips](#tips)
 
-**目录 end**|_2020-04-23 18:33_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Mybatis
 > 一个灵活的数据库中间件框架
-> [参考博客: 如何在MyBatis中优雅的使用枚举](https://segmentfault.com/a/1190000010755321)
+> [参考: 如何在MyBatis中优雅的使用枚举](https://segmentfault.com/a/1190000010755321)
 
 - [ ] 系统学习
 

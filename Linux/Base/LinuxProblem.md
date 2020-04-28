@@ -8,7 +8,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [遇到的常见问题](#遇到的常见问题)
     1. [软件问题](#软件问题)
         1. [命令找不到](#命令找不到)
@@ -28,7 +28,7 @@ categories:
     1. [系统问题](#系统问题)
         1. [突然掉电关机](#突然掉电关机)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # 遇到的常见问题
 
@@ -40,7 +40,7 @@ categories:
 > Linux上的报错, 提示说找不到共享库 | [参考解决方式 ](http://www.cnblogs.com/Anker/p/3209876.html)
 
 ### 终端响铃
-> [参考博客: Linux中关闭响铃](https://blog.csdn.net/u010691256/article/details/9048729)
+> [参考: Linux中关闭响铃](https://blog.csdn.net/u010691256/article/details/9048729)
 
 1. 临时关闭：`rmmod pcspkr` 临时开启：`modprobe pcspkr`
 1. 编辑 `/etc/inputrc`，找到`#set bell-style none`这一行，去掉前面的注释符号
@@ -85,7 +85,7 @@ categories:
 > [Bumblebee ](https://wiki.archlinux.org/index.php/Bumblebee_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))  
 
 大多数笔记本都是 Intel集显和 Nvidia 或者 AMD 双显卡, 双显卡的管理就成了问题(指的是Linux下)
-> [参考博客: 使用 Bumblebee 控制 NVIDIA 双显卡](https://www.cnblogs.com/congbo/archive/2012/09/12/2682105.html)
+> [参考: 使用 Bumblebee 控制 NVIDIA 双显卡](https://www.cnblogs.com/congbo/archive/2012/09/12/2682105.html)
 
 
 

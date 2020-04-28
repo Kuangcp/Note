@@ -7,7 +7,7 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [Java中的SPI](#java中的spi)
     1. [项目中的实现](#项目中的实现)
         1. [JDBC](#jdbc)
@@ -16,14 +16,14 @@ categories:
         1. [Dubbo](#dubbo)
         1. [Jigsaw](#jigsaw)
 
-**目录 end**|_2019-10-19 17:04_|
+**目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Java中的SPI
 > Service Provider Interface
 
 > [Offcial Tutorials](https://docs.oracle.com/javase/tutorial/ext/basics/spi.html)  
-> [参考博客: Java SPI思想梳理](https://zhuanlan.zhihu.com/p/28909673)  
-> [参考博客: SPI 概述](https://zhoukaibo.com/2019/03/16/java-spi/)  
+> [参考: Java SPI思想梳理](https://zhuanlan.zhihu.com/p/28909673)  
+> [参考: SPI 概述](https://zhoukaibo.com/2019/03/16/java-spi/)  
 
 
 Java spi的具体约定如下：   
@@ -34,7 +34,7 @@ Java spi的具体约定如下：
 jdk提供服务实现查找的一个工具类：java.util.ServiceLoader
 
 ## 项目中的实现
-> [参考博客: Slf4j框架理解与分析 ](https://blog.mythsman.com/2018/02/04/1/)  
+> [参考: Slf4j框架理解与分析 ](https://blog.mythsman.com/2018/02/04/1/)  
 
 ### JDBC
 我们在入门的时候都学过用jdbc包，用的时候我们都被要求写这行代码, 加载驱动类 `Class.forName("com.mysql.cj.jdbc.Driver");`  
@@ -48,7 +48,7 @@ lombok的原理也是类似，他用自己写的 AnnotationProcessor 去实现 j
 ### SLF4J
 
 ### Dubbo
-> [参考博客: SPI Loading](http://dubbo.apache.org/zh-cn/docs/dev/SPI.html)  
+> [参考: SPI Loading](http://dubbo.apache.org/zh-cn/docs/dev/SPI.html)  
 
 ### Jigsaw
 Java9推出的模块化系统 JPMS Java Platform Module System
