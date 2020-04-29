@@ -50,7 +50,7 @@ categories:
     1. [修改主机名](#修改主机名)
     1. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-04-29 14:34_|
 ****************************************
 # Linux系统
 > 只是记录了debian系的Linux, 不过也是大同小异
@@ -81,7 +81,7 @@ categories:
     - 或者：添加用户到用户组：`adduser user group`
     - 或者：使用修改文件的方式：（不推荐） 但是在docker中跑Ubuntu新建用户时很有用，也可以不用动文件，添加进组是有效的，看情况吧
         - `chmod 777 /etc/sudoers`  然后直接`sudo visudo`就是调用vi来打开文件的简写
-        - 添加一行 `kuang  ALL=(ALL:ALL)ALL` Centos:`kuang   ALL=(ALL)       ALL`
+        - 添加一行 Debian: `kuang  ALL=(ALL:ALL)ALL` 注意 Centos:`kuang   ALL=(ALL)       ALL`
         - `chmod 440 /etc/sudoers`
         - `rwx 对应一个三位的二进制数， 1/0 表示开关`
 - 查看是否设置成功 ： `groups username`

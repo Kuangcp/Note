@@ -11,17 +11,19 @@ categories:
 
 1. [SSH](#ssh)
     1. [安装](#安装)
-    1. [复制粘贴建立密钥对](#复制粘贴建立密钥对)
-    1. [使用脚本更简单](#使用脚本更简单)
-    1. [SSH配置文件](#ssh配置文件)
-    1. [多密钥对](#多密钥对)
+    1. [建立连接](#建立连接)
+        1. [复制粘贴建立密钥对](#复制粘贴建立密钥对)
+        1. [使用 ssh-copy-id 脚本](#使用-ssh-copy-id-脚本)
+    1. [SSH客户端配置](#ssh客户端配置)
+        1. [多密钥对](#多密钥对)
+    1. [服务端配置](#服务端配置)
     1. [访问图形化](#访问图形化)
     1. [SSH登录并执行一系列命令](#ssh登录并执行一系列命令)
         1. [通过SSH执行命令时的环境变量问题](#通过ssh执行命令时的环境变量问题)
 1. [Tips](#tips)
 1. [Mosh](#mosh)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-04-29 14:34_|
 ****************************************
 # SSH
 > Secure Shell 
@@ -58,7 +60,8 @@ _服务端_
 - 查看对否启动sshd`ps -e |grep ssh`
 - 关闭服务 `/etc/init.d/ssh stop`
 
-## 复制粘贴建立密钥对
+## 建立连接
+### 复制粘贴建立密钥对
 _客户端_
 - 进入.ssh文件夹下 `gedit id_rsa.pub` 然后复制该公钥内容
     - 或者 `cat ~/.ssh/id_rsa.pub | xclip -sel clip` 将文件复制到剪贴板 
@@ -69,7 +72,7 @@ _服务器端_
 - 进入.ssh文件夹下 `sudo vim authorized_keys` 粘贴客户端公钥内容
 - 更改文件权限 `sudo chmod 600 authorized_keys` 确保 其 group和other位没有 w 权限
 
-## 使用脚本更简单
+### 使用 ssh-copy-id 脚本
 - 两方安装好软件 客户端生成好了秘钥对之后
 - 默认端口:`ssh-copy-id "username@host"` 输密码就可以了
 - 指定端口 `ssh-copy-id ”-p port username@host“` 
@@ -84,8 +87,8 @@ _服务器端_
     - 再次连接新的系统按着提示来运行一条命令即可
     - 例如 `ssh-keygen -f "/home/kcp/.ssh/known_hosts" -R 120.78.154.52`
 
-## SSH配置文件
-`vim ~/.ssh/config`
+## SSH客户端配置
+`~/.ssh/config`
 ```
     Host aliyun
         HostName www.ttlsa.com
@@ -108,9 +111,7 @@ _参数解释_
     - 如果生成公钥时_没有_设置密码就要错三次，然后输入用户密码，
     - 不觉得有多方便，还不如 alias进行配置
 
-> 修改欢迎信息 /etc/motd
-
-## 多密钥对
+### 多密钥对
 > [参考博客](http://blog.csdn.net/black_ox/article/details/17753943)   
 
 1. `ssh-keygen` 生成SSH密钥对 在询问中输入新的文件名
@@ -132,6 +133,18 @@ _config_
     IdentityFile ~/.ssh/default_id_rsa.pub
 ```
 - 测试配置是否正确: `ssh -T git@default`
+
+## 服务端配置
+> 修改登录后的欢迎信息 /etc/motd
+
+一般需要重启ssh服务才生效`/etc/ssh/sshd_config`
+```conf
+    #禁用密码验证 
+    PasswordAuthentication no
+    #启用密钥验证
+    RSAAuthentication yes
+    PubkeyAuthentication yes
+```
 
 ## 访问图形化
 

@@ -18,7 +18,7 @@ categories:
         1. [maglev](#maglev)
         1. [copycat](#copycat)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-04-29 14:34_|
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -31,17 +31,19 @@ categories:
 ************************
 > 基本操作
 
-- 新建会话 `tmux new -s myth`  
+- 新建会话 `tmux new -s myth`
 - 连接会话 `tmux a -t test`
-- 显示所有 `tmux ls` 
+- 显示所有 `tmux ls`
 - 重新加载配置文件 `tmux source ~/.tmux.conf`
 
 - prefix
     - ? 帮助
-    - s 选择 window
+    - s 选择 Session
+    - w 选择 window
     - d deattach 脱离
-    - j 下窗口
-    - k 上窗口
+    - j 下window
+    - k 上window
+    - ; 最近的window
 
 *************
 
@@ -66,8 +68,8 @@ categories:
 > Prefix 默认是 C-b 也就是 Ctrl b
 
 ### 切换
-- prefix w 切换 panel 或者 window
-- Prefix () 切换Session
+- prefix w 切换 window 或者 Session
+- Prefix () 切换 Session
 
 ************************
 
