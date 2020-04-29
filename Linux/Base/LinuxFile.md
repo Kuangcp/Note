@@ -12,6 +12,9 @@ categories:
 1. [文件管理](#文件管理)
     1. [查找文件](#查找文件)
         1. [find](#find)
+        1. [locate](#locate)
+        1. [Anything](#anything)
+        1. [Synapse](#synapse)
     1. [查看文件](#查看文件)
         1. [stat](#stat)
         1. [file](#file)
@@ -63,7 +66,7 @@ categories:
         1. [善用alias](#善用alias)
     1. [desktop文件](#desktop文件)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-04-29 11:57_|
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -73,9 +76,9 @@ categories:
 
 ## 查找文件
 
-> silversearcher-ag `快速搜索文件内容`
+> silversearcher-ag `快速搜索文件的内容`
 
-### find  
+### find
 - `find . -name "*.txt"` 查找当前目录的txt后缀的文件
 - `sudo find / -name a.java` 全盘查找
 - `find -type f -name README.md` 默认当前目录查找
@@ -92,6 +95,17 @@ categories:
 1. 递归删除目录下所有run后缀的文件 `find . -name "*.run"  | xargs rm -f`
     - 递归当前文件夹下所有 log 找到 ERROR日志 `find -name "*.log" | xargs grep ERROR`
 1. 查找文件内容 `find etc/  |xargs grep -i java`
+
+### locate
+> 预先建立数据库，依此查询 速度较快，但是有时效问题
+
+### Anything
+> 图形化 搜索文件 工具，也是预先建立数据库
+
+### Synapse
+> 搜索文件 启动应用等功能
+
+************************
 
 ## 查看文件
 ### stat

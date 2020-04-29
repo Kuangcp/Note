@@ -52,7 +52,6 @@ categories:
         1. [Log处理](#log处理)
     1. [异步](#异步)
     1. [响应式](#响应式)
-    1. [Database](#database)
     1. [前端](#前端)
         1. [富文本编辑器](#富文本编辑器)
     1. [模拟器](#模拟器)
@@ -60,7 +59,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-04-29 11:57_|
 ****************************************
 # 常用的网站
 ## 国内镜像源站点
@@ -321,14 +320,6 @@ yed astah dia
 
 ## 响应式
 - [vertx](http://vertx.io/)`构建响应式应用程序`
-
-****************************
-## Database
-- [sssdb](https://github.com/ideawu/ssdb) `键值对数据库`
-- [MySQL官方下载地址](https://dev.mysql.com/downloads/mysql/)
-    - [Mysql-Font](https://github.com/NilsHoyer/MySQL-Front) `连接Mysql的客户端`
-    - [HeidiSQL](https://github.com/HeidiSQL/HeidiSQL)`十分好用`
-- [sqlectron](https://github.com/sqlectron/sqlectron-gui) `简单直观的数据库图形化软件`
 
 *******************************
 ## 前端

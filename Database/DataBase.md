@@ -38,8 +38,9 @@ categories:
     1. [视图的设计](#视图的设计)
 1. [非关系型数据库设计](#非关系型数据库设计)
 1. [数据库中间件](#数据库中间件)
+1. [图形化工具](#图形化工具)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-04-29 11:57_|
 ****************************************
 # 数据库
 > [码农翻身:爱炫耀的数据库老头儿](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514001&idx=1&sn=17b72c3e69db6c4277e3045c699b7b6b&chksm=80d67c52b7a1f5446020826841869221873f4578524181384592839d19c4810dc68807117e13&scene=21#wechat_redirect) `事务,undo日志`
@@ -136,6 +137,8 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 > 图数据库: Neo4j  
 > 时序数据库: InfluxDB TSDB  
 
+- [sssdb](https://github.com/ideawu/ssdb) `键值对数据库`
+
 ## Redis
 > 数据类型丰富,处理非关系型并且结构化的数据十分方便, 结合Python使用就行云流水一般了
 
@@ -175,3 +178,9 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 # 数据库中间件
 > [MyCat：开源分布式数据库中间件](https://www.csdn.net/article/2015-07-16/2825228)
 
+# 图形化工具
+
+- [Mysql-Font](https://github.com/NilsHoyer/MySQL-Front) `连接Mysql的客户端`
+- [HeidiSQL](https://github.com/HeidiSQL/HeidiSQL)
+- [sqlectron](https://github.com/sqlectron/sqlectron-gui) `简单直观的数据库图形化软件`
+- [dbeaver](https://github.com/dbeaver/dbeaver)

@@ -21,7 +21,7 @@ categories:
     1. [Constructor](#constructor)
     1. [Modifier](#modifier)
 1. [使用](#使用)
-    1. [获取到Class对象](#获取到class对象)
+    1. [获取Class对象的方式](#获取class对象的方式)
     1. [反射的基本使用](#反射的基本使用)
         1. [操作构造方法](#操作构造方法)
         1. [操作类中方法](#操作类中方法)
@@ -29,7 +29,7 @@ categories:
         1. [操作注解](#操作注解)
 1. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-04-29 11:57_|
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
@@ -43,7 +43,6 @@ categories:
 > [参考: Java8替代传统反射动态获取成员变量值的一个示例](https://segmentfault.com/a/1190000007492958)
 
 > [参考: java反射的性能问题](http://www.cnblogs.com/zhishan/p/3195771.html)  
-> [参考: RednaxelaFX 关于反射调用方法的一个log ](https://www.iteye.com/blog/rednaxelafx-548536)  
 
 # 概念
 
@@ -51,6 +50,7 @@ categories:
 这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。
 
 # 实现原理
+> [参考: RednaxelaFX 关于反射调用方法的一个log ](https://www.iteye.com/blog/rednaxelafx-548536)  
 
 ************************
 
@@ -103,13 +103,13 @@ categories:
     ABSTRACT         = 0x00000400;
     STRICT           = 0x00000800;
 
-    // 不公开, 意义依据方法或者属性不定
-    BRIDGE    = 0x00000040;
-    VARARGS   = 0x00000080;
-    SYNTHETIC = 0x00001000;
+    // 不公开, 意义依据方法或者属性 不定
+    BRIDGE      = 0x00000040;
+    VARARGS     = 0x00000080;
+    SYNTHETIC   = 0x00001000;
     ANNOTATION  = 0x00002000;
-    ENUM      = 0x00004000;
-    MANDATED  = 0x00008000;
+    ENUM        = 0x00004000;
+    MANDATED    = 0x00008000;
 ```
 - 判断属性是否被 final 修饰 `(field.getModifiers() & Modifier.FINAL) != 0`
 - 移除 final 修饰符 `field.getModifiers() & ~Modifier.FINAL`
@@ -134,17 +134,17 @@ categories:
 > 而泛型如果被用来使用,常见的方法体中带泛型的局部变量,其类型信息不会被编译进Class文件中。  
 > 前者因为存在于Class文件中，所以运行时通过反射还是能够获得其类型信息的;
 
-## 获取到Class对象
-> 所有的反射操作的入口都是从Class对象开始的, 获取Class对象有多种方式:
+## 获取Class对象的方式
+> 所有的反射操作的入口都是从Class对象开始的, 获取Class对象有多种方式
 
 1. 通过类加载器加载class文件
     - `Class<?> clazz = Thread.currentThread().getContextClassLoader().loadClass("com.takumiCX.reflect.ClassTest");`
-1. 通过静态方法Class.forName()获取,需要传入类的全限定名字符串作参数
+1. 通过静态方法 Class.forName() 获取,需要传入类的全限定名字符串作参数
     - `Class<?> clazz = Class.forName("com.takumiCX.reflect.ClassTest");`
-1. 通过类.class获得类的Class对象
+1. 通过 类.class 获得类的Class对象
     - `Class<ClassTest> clazz = ClassTest.class;`
 
-除了获得的Class对象的泛型类型信息不一样外,还有一个不同点值得注意。只有 forName() 在获得class对象的同时会引起类的初始化
+除了获得的Class对象的泛型类型信息不一样外,还有一个不同点值得注意。只有 forName() 方式 在获得class对象的同时会引起类的初始化
 
 ************************
 
@@ -266,8 +266,8 @@ set 和 get 属性的值
 
 [Github: 更多反射Demo](https://github.com/Kuangcp/JavaBase/tree/class/src/test/java/com/github/kuangcp/reflects)
 
-正常情况下 final修饰的类，变量，方法, 表示不可继承，不可修改，不可重写(override), 但是使用反射能在一定程度上进行修改
-被final修饰过的变量，只是说栈存储的地址不能再改变，但是却没有说地址指向的内容不能改变，所以反射可以破final，因为它修改该了以前地址的具体内容，但是没有改地址的信息。
+正常情况下 final修饰的类，变量，方法, 表示不可继承，不可修改，不可重写(override), 但是使用反射能在一定程度上进行修改  
+被final修饰过的变量，只是说栈存储的地址不能再改变，但是却没有说地址指向的内容不能改变，所以反射可以破final，因为它修改该了以前地址的具体内容，但是没有改地址的信息。  
 > 参考 [doc: java8](https://docs.oracle.com/javase/8/docs/api/) `Field.set()`的文档
 
 **********************
@@ -277,4 +277,4 @@ set 和 get 属性的值
 
 > [性能测试对比: 反射 setter cglib](https://github.com/Kuangcp/JavaBase/blob/class/src/test/java/com/github/kuangcp/reflects/ReflectPerformanceTest.java)
 
-Spring 中的 IOC 主要是依据反射来实现的, 只在启动阶段性能有所损耗, 关注性能以及热点代码最好避免使用反射
+Spring 中的 IOC 主要是依据反射来实现的, 只在启动阶段性能有所损耗, 关注性能以及热点代码最好避免使用反射例如常见的BeanCopy，可以使用 MapStruct框架自动生成get set 取代反射

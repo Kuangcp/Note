@@ -6,13 +6,13 @@ categories:
 ---
 
 **目录 start**
- 
+
 1. [类加载导致的迷惑](#类加载导致的迷惑)
     1. [主题](#主题)
     1. [解决方案](#解决方案)
     1. [场景](#场景)
 
-**目录 end**|_2020-04-29 01:07_|
+**目录 end**|_2020-04-29 11:57_|
 ****************************************
 
 # 类加载导致的迷惑
@@ -21,6 +21,8 @@ categories:
 > [参考: 为什么SpringBoot的 jar 可以直接运行？](https://blog.csdn.net/b644ROfP20z37485O35M/article/details/105671696)  
 > [参考: 重新看待Jar包冲突问题及解决方案](https://www.jianshu.com/p/100439269148)  
 > [参考: jar包冲突与inode](https://www.bbsmax.com/A/gVdnYM985W/)  
+
+> [Maven: Introduction to the Dependency Mechanism](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html)  
 
 ## 主题
 1. Java 类加载
