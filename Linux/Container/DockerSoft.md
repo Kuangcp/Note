@@ -40,7 +40,7 @@ categories:
     1. [图形化管理工具](#图形化管理工具)
 1. [运行图形化应用](#运行图形化应用)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-04-30 14:20_|
 ****************************************
 # Docker容器化应用
 > [https://docs.docker.com/samples/](https://docs.docker.com/samples/)  
@@ -164,11 +164,10 @@ categories:
 ### Redis
 > [Official](https://hub.docker.com/_/redis/)
 
-- 获取镜像：`docker pull redis ` 如果使用`redis:alpine`镜像可以更小
-- 运行默认配置的容器：`docker run --name test-redis -d redis`
-- 使用本地配置文件启动redis容器
-- `sudo docker run -v /myredis/conf/redis.conf:/usr/local/etc/redis/redis.conf --name myredis redis redis-server /usr/local/etc/redis/redis.conf`
-- port-redis容器的端口映射：`sudo docker run -d -p 6379:6379 --name port-redis redis` 左本机右容器
+1. 获取镜像：`docker pull redis ` 使用 `docker pull redis:alpine` 镜像可以更小
+1. 运行默认配置的容器：`docker run --name test-redis -d redis`
+1. 或者 使用本地配置文件启动redis容器
+    - `sudo docker run -v /myredis/conf/redis.conf:/usr/local/etc/redis/redis.conf --name myredis redis redis-server /usr/local/etc/redis/redis.conf`
 
 *****************************************
 ## 持续集成

@@ -14,8 +14,7 @@ categories:
 1. [安装和配置](#安装和配置)
     1. [Windows](#windows)
     1. [Linux](#linux)
-        1. [docker安装redis](#docker安装redis)
-        1. [命令安装](#命令安装)
+        1. [Docker方式安装](#docker方式安装)
         1. [解压即用](#解压即用)
     1. [Redis配置文件](#redis配置文件)
 1. [数据类型](#数据类型)
@@ -45,7 +44,7 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-04-30 14:20_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -71,15 +70,10 @@ categories:
 	- 客户端登录 `auth redis1104`
 
 ## Linux
-### docker安装redis
+包管理器安装 redis 如 debian系`apt install redis` arch系`pacman -S redis`
+
+### Docker方式安装
 > [docker-install-redis](/Linux/Container/DockerSoft.md#redis)
-
-### 命令安装
-> 这样不太好做多个redis, 个人不喜欢这种方式
-
-- 安装 `apt install redis`
-- 开启数据库服务 `redis-server`
-- 打开客户端 `redis-cli`
 
 ### 解压即用
 > [下载我打包好的(仅适用于Linux平台)](https://github.com/Kuangcp/Configs/tree/master/Database/redis)  
