@@ -14,13 +14,14 @@ categories:
         1. [gorm](#gorm)
         1. [xorm](#xorm)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-01 17:56_|
 ****************************************
 # Go的数据库操作
 
 
 ## Redis
-> [github:go-redis](https://github.com/go-redis/redis)
+> [Github: go-redis](https://github.com/go-redis/redis)  
+> [Github: radix](https://github.com/mediocregopher/radix)  
 
 ## MySQL
 ### gorm
