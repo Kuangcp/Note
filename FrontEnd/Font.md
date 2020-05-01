@@ -19,7 +19,7 @@ categories:
     1. [IDEA](#idea)
     1. [终端](#终端)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-01 11:26_|
 ****************************************
 # 字体
 > [Deepin wiki 字体](https://wiki.deepin.org/wiki/%E5%AD%97%E4%BD%93)  
@@ -30,10 +30,21 @@ categories:
 ## 基础知识 
 > ttf otf eot woff woff2 
 
+> [参考: Web 字体简介: TTF, OTF, WOFF, EOT & SVG](https://zhuanlan.zhihu.com/p/28179203)  
+
+1. TTF (TrueType Font) 字体格式是由苹果和微软为 PostScript 而开发的字体格式。
+1. OTF (OpenType Font) 由 TTF 演化而来，是 Adobe 和微软共同努力的结果。
+1. EOT (Embedded Open Type) 字体是微软设计用来在 Web 上使用的字体。
+1. WOFF (Web Open Font Format) 本质上是 metadata + 基于 SFNT 的字体（如 TTF、OTF 或其他开放字体格式）。
+1. WOFF2 是 WOFF 的下一代。 WOFF2 格式在原有的基础上提升了 30% 的压缩率。
+1. SVG (Scalable Vector Graphics font) 字体格式使用 SVG 的字体元素定义。
+
 ********************************
 ## 资源
 > Github
 - [IBM字体](https://github.com/IBM/type)`2017年发布的新字体`
+- [cascadia-code](https://github.com/microsoft/cascadia-code)
+
 - [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)`系列字体图标`
 - [Font-Awesome](https://github.com/FortAwesome/Font-Awesome)`一大堆字体图标`
 
@@ -83,6 +94,7 @@ categories:
 - IBM Plex Mono SemiBold `Editor`
 
 ## 终端
+- Cascadia Mono PL 
 - Source Code Pro for Powerline
     - 并且 + [Powerline](https://github.com/powerline/powerline) + Awesonme 的 Bold 最适合ZSH的 Bullet Train 主题
 - Droid Sans Mono for Powerline

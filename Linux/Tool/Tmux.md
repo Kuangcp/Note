@@ -18,7 +18,7 @@ categories:
         1. [maglev](#maglev)
         1. [copycat](#copycat)
 
-**目录 end**|_2020-04-29 14:34_|
+**目录 end**|_2020-05-01 11:26_|
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -38,12 +38,12 @@ categories:
 
 - prefix
     - ? 帮助
-    - s 选择 Session
+    - s 选择 session
     - w 选择 window
     - d deattach 脱离
-    - j 下window
-    - k 上window
-    - ; 最近的window
+    - j 下 panel
+    - k 上 panel
+    - ; 最近的 panel
 
 *************
 
