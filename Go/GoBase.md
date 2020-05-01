@@ -97,10 +97,12 @@ strings 包 提供了常用字符串API
 ### 标准输入输出
 > [参考: golang中的格式化输入输出](https://blog.csdn.net/xiaoyida11/article/details/51554022)
 
-- 打印结构体 `fmt.Printf("%+v\n", object)`
+- 打印结构体 `fmt.Printf("%v\n", object)`
 
 ### 时间处理
 > [Go: Format a time or date](https://programming.guide/go/format-parse-string-time-date-example.html)
+
+记住这个神奇的时间 `2006-01-02 03:04:05` Go 中不是寻常的 YYYY-mm-dd 这种格式
 
 **************************
 
@@ -108,15 +110,21 @@ strings 包 提供了常用字符串API
 基本结构
 ```go
 // 函数名 (参数 ) 返回值{函数体}
-func functionName (param1 int) int {
+func functionName (param int) int {
 
 }
 ```
-> 函数作为参数 `functionName func(string, string)`
-
 
 ### 参数
+> 使用函数作为参数 `func doAny(functionName func(string, string)){}`
+
 ### 返回值
+> 可以多返回值 元组
+
+### defer
+> 类似于 Java 中的 finally 语句 例如 `defer openFile.Close()`
+
+一个函数中可以定义多个 defer 语句, 执行顺序按定义顺序的逆序, 也就是栈的概念
 
 *************************
 
