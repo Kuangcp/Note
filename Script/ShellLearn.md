@@ -51,6 +51,8 @@ categories:
 > [菜鸟教程: Shell 教程](http://www.runoob.com/linux/linux-shell.html)  
 > [C语言中文网: Shell教程](http://c.biancheng.net/shell/)  
 
+> [参考: 编写 Bash Shell 脚本的最佳实践](https://blog.mythsman.com/post/5d2ab67ff678ba2eb3bd346f/)  
+
 ## shell类别
 > 切换shell `chsh -s /bin/bash`
 

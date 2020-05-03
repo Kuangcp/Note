@@ -226,14 +226,19 @@ _docker build_
 ******************************************
 
 # Practice
-- [alpine构建ssh](/Linux/Docker/alpine/Dockerfile)
-- [docker-wordpress-nginx](https://github.com/eugeneware/docker-wordpress-nginx)
-- [rails-meets-docker](https://github.com/gemnasium/rails-meets-docker)
+> [docker: best-practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
 - [官方文档 dockerfile](https://www.docker.io/learn/dockerfile/)
 - [官方文档 builder](http://docs.docker.io/reference/builder/)
 
+## dockerignore文件的使用
+- .dockerignore文件是依据 Go 的 PathMatch 规范来的，使用和.gitignore类似
+
 ## Exercises
+- [alpine构建ssh](/Linux/Docker/alpine/Dockerfile)
+- [docker-wordpress-nginx](https://github.com/eugeneware/docker-wordpress-nginx)
+- [rails-meets-docker](https://github.com/gemnasium/rails-meets-docker)
+
 ### 打包最新版git
 - 注意其运行环境是容器内，不是宿主机，入口点的命令运行完了就退出了，不能当成宿主机上的git使用，只能说是学习一些操作
     - 所以不可能说在容器中安装软件然后在宿主机上交互运行

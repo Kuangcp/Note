@@ -258,7 +258,7 @@ _[Spring Web 应用的最大败笔](http://www.jdon.com/45857)_
 ************************
 
 ## 软件版本
-> [语义化版本](https://semver.org/lang/zh-CN/)
+> [语义化版本 SemVer ](https://semver.org/lang/zh-CN/)
 
 ************************
 

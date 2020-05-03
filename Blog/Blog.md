@@ -61,6 +61,7 @@ categories:
 - [Hollis](http://www.hollischuang.com/)
 
 - [java3y](https://zhongfucheng.bitcron.com/)`技术比较全面`
+- [mythsman](https://blog.mythsman.com/#blog)
 
 - [冰封千里](http://ice1000.org/)`Javaer,JavaFX和JVM类语言擅长`
 - [hushuang.me](https://hushuang.me/)

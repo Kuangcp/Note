@@ -39,8 +39,11 @@ categories:
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
 
+
+> [Rethinking Visual Programming with Go](https://divan.dev/posts/visual_programming_go/)
+
 ## Modules
-> [Wiki](https://github.com/golang/go/wiki/Modules)  
+> 1.11 开始支持 [Wiki](https://github.com/golang/go/wiki/Modules)  
 
 ### 配置
 - `go env -w GOSUMDB=off` 关闭官方 sum 校验服务

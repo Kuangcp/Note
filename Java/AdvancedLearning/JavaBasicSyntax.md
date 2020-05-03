@@ -344,8 +344,9 @@ true 和 false 也是缓存了的
 ## 时间类型
 > java.time 包
 
-1. 最早常用是 Date 然后 Calendar 
-1. 目前Java8: Instant LocalDateTime Duration ...
+> [Java8 JavaDoc: DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html)`注意格式化中字符的准确含义`
+
+1. 最早常用是 Date 然后 Calendar  目前Java8: Instant LocalDateTime Duration ...
 
 ## 非原生类型
 ### 元组

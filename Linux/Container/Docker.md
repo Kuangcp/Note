@@ -65,8 +65,7 @@ categories:
 - [Gitbook: docker 从入门到实践](https://yeasy.gitbooks.io/docker_practice/content/)
 
 ## 简介
-- `Docker 是一个开源的应用容器引擎` 理解为加强版虚拟机
-- 让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
+> `Docker 是一个开源的应用容器引擎` 理解为轻量版虚拟机(不模拟硬件层)
 
 ## 个人理解
 - docker中的容器是动态的，随时创建和销毁，只有镜像是持久化的
@@ -80,10 +79,14 @@ categories:
     - 非官方的例如阿里 `registry.cn-hangzhou.aliyuncs.com/myth/jdk8:alpine` jdk8是镜像名，前面的是仓库地址
 
 ## 学习资源
-- [PMD: player with docker](https://labs.play-with-docker.com/)`啥都不说了, 直接干`
+- [PMD: player with docker](https://labs.play-with-docker.com/)`线上练习Docker环境`
+- [docker-slim](https://github.com/docker-slim/docker-slim)`镜像瘦身`
+- [ ] todo [Use multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/) `17.05+`
+
+
+************************
 
 > [码云上Docke相关资源](https://gitee.com/explore/starred?lang=Docker)
-
 - [docker-training 开源项目](https://gitee.com/dockerf/docker-training)
     - [第二课](https://gitee.com/dockerf/second)
 - [Dockerfile集锦](https://gitee.com/kennylee/docker)
@@ -95,7 +98,6 @@ categories:
 > [docker资源汇总 ](http://www.open-open.com/lib/view/open1443075440623.html)
 > [简述 Docker](http://www.importnew.com/24658.html)
 
-- [ ] todo [Use multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/) `17.05+`
 
 ***************************************
 # 安装与卸载
@@ -187,6 +189,9 @@ categories:
 
 # 基础管理
 > docker 所有的数据默认存储在 `/var/lib/docker`
+
+> [ctop](https://github.com/bcicen/ctop)`Top-like interface for container metrics`  
+> [lazydocker](https://github.com/jesseduffield/lazydocker)  
 
 ## 镜像仓库
 > 默认的DockerHub因为在国外所以网络不太稳定
@@ -574,6 +579,3 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
 ***********************
 # Dockerfile
 >[Dockerfile文件学习](/Linux/Container/DockerFile.md)
-
-## dockerignore文件的使用
-- .dockerignore文件是依据 Go 的 PathMatch 规范来的，使用和.gitignore类似

@@ -34,19 +34,15 @@ categories:
 > [Github: lombok](https://github.com/rzwitserloot/lombok) | [Official site](https://projectlombok.org/)
 
 ## 为什么要用
-> 简化JavaBean 更为直观 省去了Setter Getter toString hashCode 构造器等方法  
-> 一定有人就会跳出来说 在IDE中几个快捷键的事情,何必这么复杂, 
->> 那他们一定是没有遇到修改的时候吧, 改个属性的名字,类型, 对应的方法你需要改吧, 但是使用lombok就不用担心了
-
-> 还有很多方便的注解 例如 NonNull 加载入参上时, 会检查是否为 null 如果是, 就直接抛出NPE
+> 简化 JavaBean 省去了 Setter Getter toString hashCode 等方法，提供 生成构造器 Builder Log 等功能
 
 ## 为什么不要用
 > 破坏了阅读代码的完整性, 当使用了构造器这样的注解, 如果想通过看构造器的引用方来找到调用方, 这时候是没有办法的 只能通过查看类的所有引用方再一个个找  
-> IDE都没有原生支持, 必须要安装对应的插件才能正常编译项目  
+> 常见IDE都没有原生支持, 必须要安装对应的插件才能正常编译运行项目  
 
 ## 个人见解
 > Lombok在IDE中安装插件是为了编译和构建中能够动态的添加Getter Setter 等方法  而在Maven或者Gradle中添加是为了引入注解的包  
-> 取决于团队风格，用不用都不是大问题 Java14 新出的 record 类型也能满足lombok部分需求
+> 取决于团队风格，用不用都不是大问题 `Java14` 新出的 `record` 类型也能满足lombok部分需求
 
 ************************************************
 
@@ -168,6 +164,5 @@ _添加依赖_
 # 实现原理
 > [参考: Lombok原理分析与功能实现 ](https://blog.mythsman.com/2017/12/19/1/)  
 
-Lombok的注解都是编译期注解, 运行期通过类是拿不到这些注解的
-
+Lombok的注解都是编译期源码注解(RetentionPolicy.SOURCE), 运行期是拿不到这些注解的
 

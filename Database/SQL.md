@@ -18,3 +18,15 @@ categories:
 
 > [soar](https://github.com/XiaoMi/soar)`SQL Optimizer And Rewriter `
 
+
+## 条件语句
+`case when then else end `
+```sql
+update table_test set mark = 
+    case
+        when id = 2 then '2'
+        when id = 5 then '5' 
+        else ''
+    end
+where id in (2,5);
+```

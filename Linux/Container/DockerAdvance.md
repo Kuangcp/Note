@@ -123,4 +123,5 @@ DOCKER_OPTS="--graph=/opt/docker "
 > Docker1.11之前的版本，孤儿进程是否有可能成为僵死进程取决于容器内pid为1的进程是否在子进程退出时调用wait/waitpid  
 > Docker1.11版本之后孤儿进程不会成为僵死进程
 
-> [tini](https://github.com/krallin/tini#using-tini)  `tini 轻量级init进程`
+**解决策略**
+> [tini](https://github.com/krallin/tini#using-tini)  `tini 轻量级init进程 更好的管理进程等资源`

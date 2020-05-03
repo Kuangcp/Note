@@ -259,3 +259,6 @@ _其他,可选_
 
 - 使用AOP来简化开发MVC的代码
 - 繁杂的代码如何简化
+
+# Tips
+- 不要对有@Configuration注解的配置类进行Field级的依赖注入 否则容易引发循环依赖 [Spring循环依赖问题分析](https://blog.mythsman.com/post/5d838c7c2db8a452e9b7082c/)
