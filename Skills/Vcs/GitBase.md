@@ -86,14 +86,10 @@ categories:
     - stage: 执行 add 命令, 将文件缓存到该区
     - work: 工作目录, 日常做修改的就是该分区
 
+- [tig](https://github.com/jonas/tig)
+
 # 开源许可证
-
-关于许可证 [Github许可证网](https://choosealicense.com/licenses/) 
-新建项目的时候可以选择 添加.gitignore和许可证类别 许可证大致分为 MIT Apache2.0 GPL 
-
-- `MIT` 简单宽松的许可证，任何人可以拿代码做任何事与我无关` eg: jQuery、Rails` 
-- `Apache` 关注于专利，这类似于MIT许可证，但它同时还包含了贡献者向用户提供专利授权相关的条款。 `Apache、SVN和NuGet`
-- `GPL` 关注于共享改进，这是一种copyleft许可证，要求修改项目代码的用户再次分发源码或二进制代码时，必须公布他的相关修改。 `Linux、Git`
+> [License](/Skills/Document/License.md)
 
 **********************
 # Git常用命令
