@@ -19,13 +19,12 @@ categories:
     1. [汉字编码发展史](#汉字编码发展史)
     1. [Java中的编码](#java中的编码)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-04 18:05_|
 ****************************************
 # 字符编码
 
 > [字符编码笔记：ASCII，Unicode 和 UTF-8](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html) | [阮一峰的文章有哪些常见性错误](https://www.v2ex.com/t/343634)
 
-> [字符编码](http://blog.jobbole.com/39309/)
 > [参考: Ansi,UTF8,Unicode,ASCII编码的区别](https://blog.csdn.net/xiongxiao/article/details/3741731)
 > [参考: 字符编码的前世今生](https://tgideas.qq.com/webplat/info/news_version3/804/808/811/m579/201307/218730.shtml)
 
@@ -153,5 +152,4 @@ GBK兼容GB2312，并增加了大量不常用汉字，还加入了几乎所有�
 
 ## Java中的编码
 > [字符、编码和Java中的编码](https://www.jianshu.com/p/1b00ca07b003)
-
 

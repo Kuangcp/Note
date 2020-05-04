@@ -16,8 +16,9 @@ categories:
 1. [代码质量管理](#代码质量管理)
     1. [sonarqube](#sonarqube)
         1. [小型项目目前使用的方案](#小型项目目前使用的方案)
+1. [监控](#监控)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-04 18:05_|
 ****************************************
 # 持续集成
 > 参考: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  
@@ -65,3 +66,7 @@ categories:
 
 ### 小型项目目前使用的方案
 - 在开发机上进行开发，然后使用脚本将war上传scp到指定文件夹下，然后执行docker命令进行构建镜像，然后运行容器
+
+
+# 监控
+> [cat](https://github.com/dianping/cat)

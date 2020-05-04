@@ -48,7 +48,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2020-05-04 14:13_|
+**目录 end**|_2020-05-04 18:05_|
 ****************************************
 # Linux性能分析和管理
 ## 运行状况信息
@@ -64,8 +64,6 @@ categories:
 ### 分析工具
 > [vector](https://github.com/Netflix/vector)
 > [CPU-X ](http://x0rg.github.io/CPU-X/) | [Github:repo](https://github.com/X0rg/CPU-X)`简洁而详细`    
-
-- [Glances](https://github.com/nicolargo/glances)
 
 **********************
 
@@ -99,6 +97,7 @@ categories:
 > 来源 procps, 用于查看 进程详细信息, CPU占用率 内存 网络等...
 
 > [Github: htop](https://github.com/hishamhm/htop)`Htop更好用`
+- [Glances](https://github.com/nicolargo/glances) `信息全面 资源消耗大些`
 
 ### smem
 > Report memory usage with shared memory divided proportionally.  

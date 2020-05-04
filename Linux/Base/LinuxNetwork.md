@@ -20,13 +20,14 @@ categories:
         1. [ping](#ping)
         1. [traceroute](#traceroute)
         1. [netstat](#netstat)
-        1. [curl](#curl)
         1. [iproute2](#iproute2)
         1. [tcpdump](#tcpdump)
         1. [netcat](#netcat)
         1. [scp](#scp)
         1. [rsync](#rsync)
+        1. [curl](#curl)
         1. [wget](#wget)
+        1. [axel](#axel)
 1. [常用服务](#常用服务)
     1. [邮件服务器postfix和devecot](#邮件服务器postfix和devecot)
     1. [FTP](#ftp)
@@ -52,7 +53,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-04 18:05_|
 ****************************************
 # Linux网络管理
 ## DNS
@@ -169,22 +170,6 @@ categories:
     - 会占用一个五元组：（协议，本地IP，本地端口，远程IP，远程端口）
     - 对于 Web 服务器，协议是 TCP，本地 IP 通常也只有一个，本地端口默认的 80 或者 443。只剩下远程 IP 和远程端口可以变了。
     - 如果远程 IP 是相同的话，就只有远程端口可以变了。这个只有几万个，所以当同一客户端向服务器建立了大量连接之后，会耗尽可用的五元组导致问题。
-
-************************
-
-### curl
-> [Official site](https://curl.haxx.se/)
-
-1. 不输出，重定向到*黑洞设备*  ` curl -s -o /dev/null URL`
-1. 使用基础认证 发送JSON数据 `curl -i -H "Content-Type:application/json" -u admin:secret -X POST --data '{"title":"1","content":"1"}' http://tomcat.kcp/email/content`
->  如果没有认证则会收到 401 返回码
-
-- 使用Cookie `curl -v --cookie "USER_TOKEN=Yes" http://127.0.0.1:5000/`
-- 使用代理  `-x, --proxy [protocol://]host[:port]`
-
-> [参考: curl返回常见错误码](http://www.cnblogs.com/wainiwann/p/3492939.html)
-- [56错误码](https://stackoverflow.com/questions/10285700/curl-error-recv-failure-connection-reset-by-peer-php-curl)
-> [参考: 使用cURL和用户名和密码？](http://www.cnblogs.com/seasonzone/p/7527218.html)
 
 ************************
 
@@ -329,6 +314,24 @@ _ss_
 - `--partial` 断点续传 可以简写-P
 - `--progress` 显示传输进度信息
 
+************************
+
+### curl
+> [Official site](https://curl.haxx.se/)
+
+1. 不输出，重定向到*黑洞设备*  ` curl -s -o /dev/null URL`
+1. 使用基础认证 发送JSON数据 `curl -i -H "Content-Type:application/json" -u admin:secret -X POST --data '{"title":"1","content":"1"}' http://tomcat.kcp/email/content`
+>  如果没有认证则会收到 401 返回码
+
+- 使用Cookie `curl -v --cookie "USER_TOKEN=Yes" http://127.0.0.1:5000/`
+- 使用代理  `-x, --proxy [protocol://]host[:port]`
+
+> [参考: curl返回常见错误码](http://www.cnblogs.com/wainiwann/p/3492939.html)
+- [56错误码](https://stackoverflow.com/questions/10285700/curl-error-recv-failure-connection-reset-by-peer-php-curl)
+> [参考: 使用cURL和用户名和密码？](http://www.cnblogs.com/seasonzone/p/7527218.html)
+
+************************
+
 ### wget
 > 特性和优势：支持 HTTP HTTPS FTP协议  
 >1. 能够跟踪 HTML 和 XHTML 即可以下载整站，但是注意wget会不停的去下载HTML中的外链，无休无止  
@@ -386,6 +389,9 @@ _ss_
     - `-P .`： 保存所有文件和目录 到当前目录
 
 - 获取API返回数据 `wget -q url -O -`
+
+### axel
+> [Github](https://github.com/axel-download-accelerator/axel)
 
 ****************************
 # 常用服务

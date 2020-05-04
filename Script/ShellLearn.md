@@ -43,7 +43,7 @@ categories:
 1. [Tips](#tips)
     1. [常用代码片段](#常用代码片段)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-04 18:05_|
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -52,6 +52,8 @@ categories:
 > [C语言中文网: Shell教程](http://c.biancheng.net/shell/)  
 
 > [参考: 编写 Bash Shell 脚本的最佳实践](https://blog.mythsman.com/post/5d2ab67ff678ba2eb3bd346f/)  
+
+> [shellcheck](https://github.com/koalaman/shellcheck)`Shell语法检测`
 
 ## shell类别
 > 切换shell `chsh -s /bin/bash`

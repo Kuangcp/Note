@@ -21,9 +21,10 @@ categories:
     1. [SSH登录并执行一系列命令](#ssh登录并执行一系列命令)
         1. [通过SSH执行命令时的环境变量问题](#通过ssh执行命令时的环境变量问题)
 1. [Tips](#tips)
+    1. [保持SSH连接稳定](#保持ssh连接稳定)
 1. [Mosh](#mosh)
 
-**目录 end**|_2020-04-29 14:34_|
+**目录 end**|_2020-05-04 18:05_|
 ****************************************
 # SSH
 > Secure Shell 
@@ -177,6 +178,14 @@ _config_
 ```
 - 或者尝试 `echo "sshd: ALL" >> /etc/hosts.allow && service sshd restart`
 
+## 保持SSH连接稳定
+> man ssh_config
+
+服务端和客户端配置
+```conf
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+```
 ************************
 
 > 连接时提示错误信息 前提：配置好了公钥，即使有这个信息，但是却已经连上了

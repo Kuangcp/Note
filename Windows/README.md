@@ -20,3 +20,6 @@
 - HD Tune 硬盘测试
 - Ctystal Disk Mark 更专业硬盘测试
 - 3D Mark 电脑性能测试
+
+## WSL
+> [利用WSL打造Arch开发环境](https://zhuanlan.zhihu.com/p/51270874)
