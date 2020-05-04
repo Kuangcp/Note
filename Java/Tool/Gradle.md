@@ -48,7 +48,7 @@ categories:
     1. [构建Docker镜像](#构建docker镜像)
         1. [插件方式构建Docker镜像](#插件方式构建docker镜像)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-05 00:58_|
 ****************************************
 
 # Gradle
@@ -265,14 +265,25 @@ Gradle 中取代 compile 的方式, 使用范围比 compile 略小, 比如
 C 项目就能使用 A 中的类了
 
 ***************
+
 > Java applications
 
 就是 Java 上加上了 MainClass 的配置, 使得打包的jar包可执行
 
-**************
-其他依赖方式: 
->1. 使用本地jar依赖 `implementation files('lib/ojdbc-14.jar')`  lib 与 src 为同级目录  
->1. 项目间依赖 `implementation project(':projectName')`
+************************
+
+> 其他依赖方式: 
+
+1. 使用本地jar依赖 `implementation files('lib/ojdbc-14.jar')`  lib 与 src 为同级目录  
+1. 项目间依赖 `implementation project(':projectName')`
+1. 本地目录依赖
+    ```groovy
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    ```
 
 *********************
 

@@ -21,10 +21,12 @@ categories:
         1. [Shell](#shell)
 1. [Tips](#tips)
 
-**目录 end**|_2020-05-01 11:26_|
+**目录 end**|_2020-05-05 00:58_|
 ****************************************
 # 正则表达式学习
 > [shell regex](http://man.linuxde.net/docs/shell_regex.html)
+
+正则匹配的本质是[自动机](https://baike.baidu.com/item/%E8%87%AA%E5%8A%A8%E6%9C%BA)
 
 ## 基本字符 
 
