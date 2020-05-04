@@ -10,7 +10,7 @@ categories:
 **目录 start**
 
 1. [高效的Linux](#高效的linux)
-    1. [终端模拟器对比](#终端模拟器对比)
+    1. [Terminal 对比](#terminal-对比)
     1. [效率工具](#效率工具)
         1. [协作工具](#协作工具)
         1. [目录跳转](#目录跳转)
@@ -30,7 +30,7 @@ categories:
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2020-05-04 14:13_|
+**目录 end**|_2020-05-04 19:32_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -38,7 +38,7 @@ categories:
 > [命令行：增强版 ](https://linux.cn/article-10171-1.html)  
 > [工具](https://www.lulinux.com/archives/2787)  
 
-## 终端模拟器对比
+## Terminal 对比
 > 列举出系统可安装终端  
 >1. Debian: `sudo apt search terminal | grep -E terminal.+amd64`
 >1. Arch: `yay terminal`

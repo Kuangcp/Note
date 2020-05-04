@@ -10,8 +10,10 @@ categories:
 **目录 start**
 
 1. [Linux系统](#linux系统)
-    1. [用户](#用户)
-    1. [用户组](#用户组)
+    1. [用户管理](#用户管理)
+        1. [用户](#用户)
+        1. [用户组](#用户组)
+        1. [sudo](#sudo)
     1. [环境变量](#环境变量)
         1. [全局环境变量](#全局环境变量)
         1. [局部环境变量](#局部环境变量)
@@ -50,12 +52,9 @@ categories:
     1. [修改主机名](#修改主机名)
     1. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
 
-**目录 end**|_2020-04-29 14:34_|
+**目录 end**|_2020-05-04 19:32_|
 ****************************************
 # Linux系统
-> 只是记录了debian系的Linux, 不过也是大同小异
-
-> 新手的话特别注意不要随意用sudo然后更改配置文件，容易导致系统crash（除非你明确的知道这个更改操作的作用）
 
 - [Arch wiki](https://wiki.archlinux.org/)
 - [Deepin wiki](https://wiki.deepin.org/)
@@ -72,30 +71,23 @@ categories:
 
 - [Awesome Linux Software](https://github.com/luong-komorebi/Awesome-Linux-Software)
 
+> 新手的话 特别注意不要随意 root权限 直接更改配置文件，容易导致系统crash（除非你明确的知道这个更改操作的作用， 即使如此也需要先备份原文件）
+
 ************************
 
-## 用户
-- 添加用户 `sudo adduser username` 
-    - 注意 `useradd` 命令只新建用户不会创建用户主目录
-- 添加到sudo组 ，使用命令更安全：`sudo gpasswd -a $USER sudo` 但是要注销或者重启才生效
-    - 或者：添加用户到用户组：`adduser user group`
-    - 或者：使用修改文件的方式：（不推荐） 但是在docker中跑Ubuntu新建用户时很有用，也可以不用动文件，添加进组是有效的，看情况吧
-        - `chmod 777 /etc/sudoers`  然后直接`sudo visudo`就是调用vi来打开文件的简写
-        - 添加一行 Debian: `kuang  ALL=(ALL:ALL)ALL` 注意 Centos:`kuang   ALL=(ALL)       ALL`
-        - `chmod 440 /etc/sudoers`
-        - `rwx 对应一个三位的二进制数， 1/0 表示开关`
-- 查看是否设置成功 ： `groups username`
+## 用户管理
+### 用户
+- 添加用户 test1 `sudo adduser test1` 
+    - 注意 `useradd` 只新建用户不会创建对应的主目录
 - 删除用户以及对应的home目录：`sudo deluser username --remove-home` 
 
-*****
 - _切换用户_ `su` 
 - `su -l username` 当前用户的环境下登录用户（当成一个程序一样可以退出登录）
 
-*****
 - _修改密码_ `passwd`
     - `passwd user`
     - `echo "root:caishi" | chpasswd` 如果是普通用户就是 sudo chpasswd
-*****
+
 - _修改相关信息_ `usermod` 
 
 | verb | long verb | comment |
@@ -131,7 +123,7 @@ categories:
 - `visudo` 注：visodo 是编辑 /etc/sudoers 的命令;也可以不用这个命令，直接用vi 来编辑 /etc/sudoers 的效果是一样的;
 - `who /var/log/wtmp` 查看登录记录
 
-## 用户组
+### 用户组
 > [相关 博客](http://www.runoob.com/linux/linux-user-manage.html)
 
 - 修改用户至指定组 `sudo usermod -G 用户组 用户`
@@ -153,7 +145,16 @@ categories:
 - grpconv 注：通过/etc/group和/etc/gshadow 的文件内容来同步或创建/etc/gshadow ，如果/etc/gshadow 不存在则创建;
 -  注：通过/etc/group 和/etc/gshadow 文件内容来同步或创建/etc/group ，然后删除gshadow文件
 
+### sudo
+- 添加用户 test1 到sudo组  注意： *将用户加入sudo组，debian系有效 alpine无效 只能改文件*
+    1. 将用户 testUser 加入 sudo 组 `sudo gpasswd -a test1 sudo`  *或者* `usermod -G sudo test1`
+    1. *或者*：使用修改文件的方式：（不推荐） 
+        - `chmod 777 /etc/sudoers`  然后直接 `sudo visudo`就是调用vi来打开文件的简写
+        - 添加一行 Debian: `test1  ALL=(ALL:ALL)ALL` 注意 Centos:`test1   ALL=(ALL)       ALL`
+        - `chmod 440 /etc/sudoers`
+
 ************************
+
 ## 环境变量
 
 ### 全局环境变量

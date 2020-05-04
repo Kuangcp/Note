@@ -19,6 +19,6 @@ categories:
 ## 安装
 > [install](https://www.rust-lang.org/zh-CN/tools/install)
 
-## Terminal App
+## Rust Terminal App
 > [参考: Making Terminal Applications in Rust with Termion](http://ticki.github.io/blog/making-terminal-applications-in-rust-with-termion/)
 

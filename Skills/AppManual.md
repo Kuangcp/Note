@@ -26,7 +26,8 @@ categories:
             1. [rime](#rime)
             1. [小小输入法](#小小输入法)
         1. [qgit](#qgit)
-        1. [convert](#convert)
+        1. [ImageMagick](#imagemagick)
+            1. [convert](#convert)
         1. [todo.txt](#todotxt)
             1. [todo.txt-cli](#todotxt-cli)
         1. [termux](#termux)
@@ -38,7 +39,7 @@ categories:
     1. [安全工具](#安全工具)
         1. [gpg](#gpg)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-04 19:32_|
 ****************************************
 # 软件使用记事
 ## 包管理
@@ -128,7 +129,10 @@ categories:
 - git查看仓库的命令行式图形化界面
 
 ***********************************
-### convert
+### ImageMagick
+1. display 
+
+#### convert
 > convert between image formats as well as resize an image, blur, crop, despeckle, dither, draw on, flip, join, re-sample, and much more
 
 - 将图片转换成指定大小 这是保持比例的 `convert -resize 600X600 src.jpg dst.jpg` 中间是字母X

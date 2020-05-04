@@ -18,7 +18,7 @@ categories:
     1. [Terminal](#terminal)
         1. [彩色输出](#彩色输出)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-04 19:32_|
 ****************************************
 
 # UI
@@ -90,7 +90,7 @@ categories:
 ```
 
 [Gihub: LS_COLORS](https://github.com/trapd00r/LS_COLORS)  
-[customize bash prompt](https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/)
+[customize bash prompt](https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/)  
 
 1. `curl https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS -o /etc/lscolor-256color`
 1. add to *sh.rc
@@ -101,5 +101,3 @@ categories:
                 eval $(dircolors)
     fi
     ```
-    
-***********************
