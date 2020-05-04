@@ -30,7 +30,7 @@ categories:
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-04 14:13_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -39,27 +39,31 @@ categories:
 > [工具](https://www.lulinux.com/archives/2787)  
 
 ## 终端模拟器对比
-> 列举出系统可安装终端 `sudo apt search terminal | grep -E terminal.+amd64`
+> 列举出系统可安装终端  
+>1. Debian: `sudo apt search terminal | grep -E terminal.+amd64`
+>1. Arch: `yay terminal`
 
-1. 功能点： 终端透明化，终端背景图，快捷键设置，终端内颜色自定义，下拉式，标签水平垂直拆分，鼠标键盘交互性，资源占用少
+终端可参考功能点： 终端透明化，终端背景图，快捷键设置，终端内颜色自定义，下拉式，标签水平垂直拆分，鼠标键盘交互性，资源占用少  
+终极工具 [Tmux](/Linux/Tool/Tmux.md)  远离终端模拟器的对比和选择 
 
-- `xiki` 鼠标和键盘高度交互， 交互性和复杂度比较高
-- `qterminal` 设置比较简单，基本功能都有，终端内容显示时兼容性略有问题
-- `gnome-terminal` gnome 自带 很简洁，但是多标签时，标签栏太大,标签页底部有白边
-    - 鼠标中键无法复制时需安装 `parcellite`
-- `xfce-terminal` xfce 自带
-    - `~/.config/xfce4/terminal/accels.scm`
-- `mate-terminal` 和gnome-terminal 基本配置什么的几乎一样，标签栏更简洁
-- `sakura` 外观上和前两个几乎一样，标签页可以更简洁
+| 终端 | 优点 | 缺点 | 备注 |
+|:---|:---|:---|:---|
+|`xiki`           | 鼠标和键盘高度交互 <br> 交互性和复杂度比较高 | | |
+|`qterminal`      | 设置设计清晰，功能完备 | 终端内容显示兼容性略有问题 资源消耗中等 | 
+|`xfce-terminal`  | | | `~/.config/xfce4/terminal/accels.scm`|
+|`gnome-terminal` | 简洁 资源消耗少 | 缺 多标签时，标签栏太大,标签页底部有白边 无法透明化 |  鼠标中键无法复制时需安装 `parcellite`|
+|`mate-terminal`  | 标签栏更简洁，其余和 `gnome-terminal` 一致|||
+|`sakura`         | 外观上和前两个几乎一样，标签页可以更简洁 | 配置复杂 繁琐 | |
+|`deepin-terminal`| 功能很多，主题很多，功能最为强大 | 字体仅可选择内置不可自定义
+|`tilda`          | 内嵌于桌面上, 小命令方便 | 需要查看文件时不方便
+|`terminology`    | 样式高度自定义
+
+> 备注
+- sakura 配置
     - `~/.config/xfce4/terminal/accels.scm` 
     - [doc](http://troubleshooters.com/linux/sakura.htm) | [config shortcut](https://unix.stackexchange.com/questions/102474/configuring-shortcuts-for-sakura)  
-- `deepin-terminal` 功能很多，主题很多，功能最为强大，但是字体可以选的很少
-- `terminator` 可以定制背景图片，但是在我这deppin系统里有bug，多标签是假的，命令全是在共享的，不能用。。
-- `tilda` 内嵌于桌面上, 小命令方便, 需要查看文件就不方便了
-- `terminology` 样式高度自定义，甚至能运行在没有图形化的Linux上
 
-> [更多可安装终端](https://gitee.com/gin9/codes/gca14wtqvm67l9j5r0deb56#Terminals.md)  
-> 终极工具 `tmux` 运维必备软件 远离终端模拟器的对比和选择, 仅需单标签简洁可配色
+************************
 
 ## 效率工具
 > 提高工作和开发效率

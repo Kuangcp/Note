@@ -41,7 +41,7 @@ categories:
         1. [mv](#mv)
         1. [文件的分割与合并](#文件的分割与合并)
         1. [监控文件变更](#监控文件变更)
-    1. [默认编码](#默认编码)
+    1. [默认字符编码](#默认字符编码)
 1. [磁盘](#磁盘)
     1. [文件系统](#文件系统)
         1. [fsck](#fsck)
@@ -54,9 +54,7 @@ categories:
         1. [df](#df)
         1. [du](#du)
 1. [日志](#日志)
-    1. [用户日志](#用户日志)
-    1. [系统日志](#系统日志)
-        1. [Systemd](#systemd)
+    1. [Systemd](#systemd)
     1. [应用日志](#应用日志)
 1. [Tips](#tips)
     1. [设置交换内存文件](#设置交换内存文件)
@@ -66,7 +64,7 @@ categories:
         1. [善用alias](#善用alias)
     1. [desktop文件](#desktop文件)
 
-**目录 end**|_2020-04-29 11:57_|
+**目录 end**|_2020-05-04 14:13_|
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -292,7 +290,7 @@ categories:
 
 ************************
 
-## 默认编码
+## 默认字符编码
 > 查看当前编码  locale 或者 echo $LANG
 
 1. 修改编码 `/etc/profile` 
@@ -307,6 +305,8 @@ export LANG="zh_CN.UTF-8"
 > [Linux系统基本目录结构](/Linux/Base/LinuxDirectoryStructure.md)
 
 > [参考: 在 Linux 上检测硬盘上的坏道和坏块 ](https://linux.cn/article-7961-1.html)  
+
+- bleachbit 应用占用磁盘 清理
 
 ## 文件系统
 > [参考: Linux 文件系统剖析](https://www.ibm.com/developerworks/cn/linux/l-linux-filesystem/index.htmlQ)
@@ -385,18 +385,15 @@ export LANG="zh_CN.UTF-8"
 # 日志
 > 基本都在 `/var/log` 下
 
-## 用户日志
 - last 查看用户最后登录时间
 
-## 系统日志
-- 系统启动日志 `/var/log/boot.log` 
-- 系统消息日志 `/var/log/messages`
-
-### Systemd
+## Systemd
 > 通常使用 journalctl 查询 Systemd 的日志
 
 - message catalog: `journalctl -xe` 
 - 内核模块的日志 `journalctl -u systemd-modules-load.service`
+- **/var/log/journal**
+    - `journalctl --vacuum-time=1w` 只保留1周日志
 
 ## 应用日志
 > [处理Apache日志的Bash脚本](http://www.ruanyifeng.com/blog/2012/01/a_bash_script_of_apache_log_analysis.html)

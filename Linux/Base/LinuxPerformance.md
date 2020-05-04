@@ -11,7 +11,7 @@ categories:
 
 1. [Linux性能分析和管理](#linux性能分析和管理)
     1. [运行状况信息](#运行状况信息)
-        1. [工具](#工具)
+        1. [分析工具](#分析工具)
     1. [内存情况](#内存情况)
         1. [free](#free)
     1. [性能监测](#性能监测)
@@ -25,7 +25,7 @@ categories:
         1. [pgrep](#pgrep)
         1. [sar](#sar)
         1. [lsof](#lsof)
-            1. [删除文件相关情况](#删除文件相关情况)
+            1. [深入分析 文件删除](#深入分析-文件删除)
         1. [fuser](#fuser)
         1. [ps](#ps)
         1. [pstree](#pstree)
@@ -48,7 +48,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2020-05-01 11:26_|
+**目录 end**|_2020-05-04 14:13_|
 ****************************************
 # Linux性能分析和管理
 ## 运行状况信息
@@ -61,7 +61,7 @@ categories:
 > 常规: 单核:平均负载0.7以下是安全的,大于就需要优化了,多核则是 0.7*N(核心数)  
 > [从源码看Load计算方式](http://www.penglixun.com/tech/system/how_to_calc_load_cpu.html)  
 
-### 工具
+### 分析工具
 > [vector](https://github.com/Netflix/vector)
 > [CPU-X ](http://x0rg.github.io/CPU-X/) | [Github:repo](https://github.com/X0rg/CPU-X)`简洁而详细`    
 
@@ -255,7 +255,7 @@ categories:
     - :port 端口 可以多个 逗号分隔
 - lsof -Pni 所有套接字连接
 
-#### 删除文件相关情况
+#### 深入分析 文件删除
 
 > 真正删除文件
 - 创建一个0填充的1g文件 `dd if=/dev/zero bs=1024 count=1000000 of=./1gb.file` 
