@@ -26,7 +26,7 @@ categories:
         1. [JMH](#jmh)
 1. [感悟](#感悟)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-06 01:45_|
 ****************************************
 # Java的测试
 > [测试的基础理论](/Skills/Base/Test.md)
@@ -132,13 +132,7 @@ http://static.javadoc.io/org.mockito/mockito-core/2.19.0/org/mockito/Mockito.htm
 
 ## 基准测试
 ### JMH
-> [Official Site](http://openjdk.java.net/projects/code-tools/jmh/)  
-
-- [jmh demos](http://hg.openjdk.java.net/code-tools/jmh/file/tip/jmh-samples/src/main/java/org/openjdk/jmh/samples/)
-
-> [参考: Java微基准测试框架JMH](https://www.xncoding.com/2018/01/07/java/jmh.html)  
-
-> [Benchmark comparing serialization libraries on the JVM ](https://github.com/eishay/jvm-serializers)  
+> [详情](/Java/Test/JMH.md)
 
 **********************
 # 感悟
