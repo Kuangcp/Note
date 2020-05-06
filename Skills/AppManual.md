@@ -39,12 +39,11 @@ categories:
     1. [安全工具](#安全工具)
         1. [gpg](#gpg)
 
-**目录 end**|_2020-05-04 19:32_|
+**目录 end**|_2020-05-06 21:24_|
 ****************************************
 # 软件使用记事
 ## 包管理
 ### 使用sdkman
-> 但是总会莫名其妙的冒出问题，sdk命令掉线始终连不上网，终端打开巨慢
 
 `安装`
 - 安装sdkman `curl -s "https://get.sdkman.io" | bash` 遇到提示zip 就是需要安装zip `sudo apt install zip` 然后重新执行命令
@@ -170,6 +169,8 @@ _批量修改_
 > [参考: Termux：让Android手机摇身一变成为高级Linux终端](https://www.asmodeus.cn/archives/769)
 
 - 开启ssh服务 pkg install openssh 对应端口默认 8022
+
+> [a shell](https://holzschu.github.io/a-Shell_iOS/) `IOS13`
 
 ************************
 

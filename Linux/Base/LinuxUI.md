@@ -18,7 +18,7 @@ categories:
     1. [Terminal](#terminal)
         1. [彩色输出](#彩色输出)
 
-**目录 end**|_2020-05-04 19:32_|
+**目录 end**|_2020-05-06 21:24_|
 ****************************************
 
 # UI
@@ -65,7 +65,8 @@ categories:
 ## Terminal
 
 ### 彩色输出
-> [参考博客,比较详细](http://blog.csdn.net/magiclyj/article/details/72637666)
+> [参考博客,比较详细](http://blog.csdn.net/magiclyj/article/details/72637666)  
+> [Linux Terminal Color](https://blog.csdn.net/y2701310012/article/details/40142809)  
 
 ```sh
   red='\033[0;31m'

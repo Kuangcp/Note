@@ -22,7 +22,7 @@ categories:
     1. [Vivaldi](#vivaldi)
     1. [Opera](#opera)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-06 21:24_|
 ****************************************
 # 浏览器
 ## FireFox
@@ -98,7 +98,7 @@ categories:
 > 大多是通过 about:config 页面配置
 
 1. 配置火狐访问80以外的端口
-    1. `about:config` 页面上 右键新建字符串 `network.security.ports.banned.override` 
+    1. 打开 `about:config?filter=network.security.ports.banned.override` 新建字符串类型
     1. 输入值 81,88,98, 也可以是 6000-6005, 省事就 0-65535(不建议)
 
 1. 对于自己喜欢多开火狐的习惯, 整理如下习惯
@@ -107,7 +107,8 @@ categories:
     1. 前者是重度使用(往往很多标签20+), 常用的标签页全部固定, 一些TODO的tab也放在这里, 用于开发和娱乐(1000M-2000M)
     1. 后者是轻度使用(开10个以下标签), 仅在内存不够时, 只用于内存不足时开发必需 (一般400M左右)
 
-1. 当前标签页右边打开新标签页: 打开 `about:config?filter=browser.tabs.insertAfterCurrent`, 设置为true
+1. 当前标签页右边打开新标签页: 
+    - 打开 `about:config?filter=browser.tabs.insertAfterCurrent` 新建Bool类型, 设置为true
 
 1. 网页重定向次数限制 默认 20 `network.http.redirection-limit` 设置为0就禁止了网页的重定向
 
