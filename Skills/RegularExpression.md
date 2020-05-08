@@ -21,9 +21,11 @@ categories:
         1. [Shell](#shell)
 1. [Tips](#tips)
 
-**目录 end**|_2020-05-05 00:58_|
+**目录 end**|_2020-05-08 18:06_|
 ****************************************
 # 正则表达式学习
+> [Regular Expression Language - Quick Reference](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference)  
+
 > [shell regex](http://man.linuxde.net/docs/shell_regex.html)
 
 正则匹配的本质是[自动机](https://baike.baidu.com/item/%E8%87%AA%E5%8A%A8%E6%9C%BA)
