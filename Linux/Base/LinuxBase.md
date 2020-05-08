@@ -15,9 +15,6 @@ categories:
         1. [用户组](#用户组)
         1. [sudo](#sudo)
     1. [环境变量](#环境变量)
-        1. [全局环境变量](#全局环境变量)
-        1. [局部环境变量](#局部环境变量)
-        1. [加载环境变量](#加载环境变量)
     1. [信号量](#信号量)
     1. [进程](#进程)
         1. [孤儿进程和僵死进程](#孤儿进程和僵死进程)
@@ -52,7 +49,7 @@ categories:
     1. [修改主机名](#修改主机名)
     1. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
 
-**目录 end**|_2020-05-04 19:32_|
+**目录 end**|_2020-05-08 14:28_|
 ****************************************
 # Linux系统
 
@@ -156,19 +153,18 @@ categories:
 ************************
 
 ## 环境变量
+> [zsh 环境变量](http://zsh.sourceforge.net/Doc/Release/Files.html#Startup_002fShutdown-Files)   
+>> `.zshenv → [.zprofile if login] → [.zshrc if interactive] → [.zlogin if login] → [.zlogout sometimes].`
 
-### 全局环境变量
-### 局部环境变量
-### 加载环境变量
- 
+> Bash 环境变量加载顺序
 1. /etc/profile
 1. $HOME/.bash_profile
 1. $HOME/.bashrc
 1. $HOME/.bash_login
 1. $HOME/.profile
 
-> [千万别混淆 Bash/Zsh 的四种运行模式](https://zhuanlan.zhihu.com/p/47819029)
-> [	ssh连接远程主机执行脚本的环境变量问题](https://blog.csdn.net/whitehack/article/details/51705889)
+> [千万别混淆 Bash/Zsh 的四种运行模式](https://zhuanlan.zhihu.com/p/47819029)  
+> [	ssh连接远程主机执行脚本的环境变量问题](https://blog.csdn.net/whitehack/article/details/51705889)  
 
 ************************
 ## 信号量

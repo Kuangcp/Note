@@ -15,10 +15,9 @@ categories:
     1. [三方平台](#三方平台)
 1. [代码质量管理](#代码质量管理)
     1. [sonarqube](#sonarqube)
-        1. [小型项目目前使用的方案](#小型项目目前使用的方案)
 1. [监控](#监控)
 
-**目录 end**|_2020-05-04 18:05_|
+**目录 end**|_2020-05-08 14:28_|
 ****************************************
 # 持续集成
 > 参考: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  
@@ -27,7 +26,6 @@ categories:
 
 > [利用Travis CI更新github page](https://github.com/steveklabnik/automatically_update_github_pages_with_travis_example)
 - 使用bitbucket配置私有仓库，在hub上配置docker文件的目录，进行构建，这样就会得到一个可用的镜像
-    - 源码是过去了，构建呢，这是个问题，可以使用Jenkins么？
 
 **************************
 ## Jenkins
@@ -62,11 +60,12 @@ categories:
 # 代码质量管理
 
 ## sonarqube
-> [官网](https://www.sonarqube.org/)
+> [官网](https://www.sonarqube.org/) | [Docker Hub](https://hub.docker.com/_/sonarqube/)
 
-### 小型项目目前使用的方案
-- 在开发机上进行开发，然后使用脚本将war上传scp到指定文件夹下，然后执行docker命令进行构建镜像，然后运行容器
-
+> 快速使用
+1. `docker run -d --name sonarqube -p 9000:9000  sonarqube:8-community`
+1. [maven集成](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
+1. Maven会输出当前分析项目的结果URL
 
 # 监控
 > [cat](https://github.com/dianping/cat)
