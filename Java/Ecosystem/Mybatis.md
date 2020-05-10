@@ -10,233 +10,73 @@ categories:
 **目录 start**
 
 1. [Mybatis](#mybatis)
-    1. [Mybatis](#mybatis)
-        1. [xml文件配置：](#xml文件配置)
-            1. [主配置文件：](#主配置文件)
-                1. [操作配置文件：](#操作配置文件)
-        1. [创建SqlSessionFactory类 内容：](#创建sqlsessionfactory类-内容)
-            1. [maven Spring-mybaits 配置](#maven-spring-mybaits-配置)
-        1. [流程控制](#流程控制)
-            1. [foreach 循环语句](#foreach-循环语句)
-                1. [collection](#collection)
-            1. [if 判断语句:](#if-判断语句)
-            1. [set 方便书写update语句](#set-方便书写update语句)
-            1. [choose 相当于switch语句](#choose-相当于switch语句)
-            1. [$ 和  的区别](#$-和--的区别)
+    1. [流程控制](#流程控制)
+        1. [foreach 循环语句](#foreach-循环语句)
+            1. [collection](#collection)
+        1. [if 判断语句](#if-判断语句)
+        1. [choose 相当于switch语句](#choose-相当于switch语句)
+    1. [延迟加载](#延迟加载)
+    1. [缓存](#缓存)
+        1. [分布式缓存](#分布式缓存)
+    1. [Spring整合](#spring整合)
 1. [Tips](#tips)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-11 01:08_|
 ****************************************
 # Mybatis
+> [Official](https://mybatis.org/mybatis-3/)  
+
 > 一个灵活的数据库中间件框架
 > [参考: 如何在MyBatis中优雅的使用枚举](https://segmentfault.com/a/1190000010755321)
 
-- [ ] 系统学习
+> [mybatis系统学习](https://github.com/brianway/springmvc-mybatis-learning)
 
-## Mybatis
-### xml文件配置：
-- 创建mybatis-config.xml文件
-    - 该文件是主配置文件，配置了sessionFactory
-- 创建generatorConfig.xml文件
-    - 是各种操作的配置，一个操作对应一个SQL的配置
+> $ 和 # 的区别 
+- `${}` 会有SQL注入的漏洞，`#{}`则没有
+    - 使用 $ 是SQL进行String直接进行拼接，使用#是preparstatement的预处理然后注入
+- 都遵循 [OGNL](https://www.ibm.com/developerworks/cn/opensource/os-cn-ognl/) 语法
 
-#### 主配置文件：
-```xml
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-config.dtd">
-    <configuration>
-    <!-- 配置别名 为了方便配置操作文件--> 
-    <typeAliases> 
-        <typeAlias type="cn.mybatis.test.Human" alias="Human" />  
-    </typeAliases> 
-    <!-- 配置环境变量 --> 
-    <environments default="development">
-        <environment id="development">
-            <transactionManager type="JDBC"/>
-            <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8"/>
-                <property name="username" value="root"/>
-                <property name="password" value="123456"/>
-            </dataSource>
-        </environment>
-    </environments>
-    <!-- 配置mappers --> 
-    <mappers> 
-        <mapper resource="cn/mybatis/test/HumanDao.xml" />  
-    </mappers> 
-    </configuration>
-```
-##### 操作配置文件：
-```xml
-    <?xml version="1.0" encoding="UTF-8" ?> 
-    <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
-    <mapper namespace="cn.mybatis.test"> 
-        <!-- 按id查询 -->
-        <select id="queryUsersById" parameterType="Human" resultType="Human">  
-            <!-- useCache="false" -->
-            <![CDATA[ 
-          select * from inserts t where t.id=#{id}
-          ]]>  
-        </select>  
-        <!-- 查询全部 -->
-        <select id="queryUsers" resultType="Human">
-            select * from inserts
-        </select>
-        <!-- 插入记录 -->    
-        <insert id="insertUser" parameterType="Human" >
-        <!-- 该字段是必须要在数据库中自增长的
-            可能会有并发问题
-            useGeneratedKeys="true" keyProperty="id"
-            所以用查询方式好点， 写语句就不要考虑主键了
-         -->
-            <selectKey resultType="int" keyProperty="id">
-                select LAST_INSERT_ID()
-            </selectKey>
-            insert into inserts (name) values(#{name})
-        </insert>
-        <!-- 删除记录 -->
-        <delete id="deleteUser" parameterType="String">
-            delete from inserts where id=#{id}
-        </delete>
-        <!-- 更新记录 -->
-        <update id="updateUserById" parameterType="Human">
-            update inserts set name=#{name} where id=#{id}
-        </update>
-    </mapper> 
-```
+## 流程控制
 
-###  创建SqlSessionFactory类 内容：
-```java
-    private static SqlSessionFactory sessionFactory;
-    static{
-        try{
-            String resource = "cn/mybatis/test/mybatis-config.xml";
-            InputStream inputStream = Resources.getResourceAsStream(resource);
-            sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        }catch (Exception e) {
-            System.out.println("获取Session失败");
-        }
-    }
-    /**
-     * 获取Session
-     */
-    public static SqlSession getSession(){
-        SqlSession session = null;
-        session = sessionFactory.openSession();
-        return session;
-    }
-```
-
-#### maven Spring-mybaits 配置
-- 使用Spring自动注入对象,方便别名和SessionFactory的管理
-- pom引入必须的JAR包就可以了
-
-```xml
-      <!--基本属性-->
-      <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-           <property name="driverClass" value="${driver}"/>
-           <property name="jdbcUrl" value="${url}"/>
-           <property name="user" value="${username}"/>
-           <property name="password" value="${password}"/>
-           <property name="initialPoolSize" value="${initialSize}"/>
-           <property name="maxPoolSize" value="${maxSize}"/>
-       </bean>
-       <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-           <property name="dataSource" ref="dataSource"/>
-           <!--操作配置文件的路径-->
-           <property name="mapperLocations" value="classpath:bean/*.xml"/>
-           <!--bean的路径，进行别名的自动扫描-->
-           <property name="typeAliasesPackage" value="com.book.bean"/>
-       </bean>
-       <bean id="mybatisSessionFactory" class="com.book.dao.MybatisSessionFactory">
-           <property name="sessionFactory" ref="sqlSessionFactory"/>
-       </bean>
-       <!--定义数据源-->
-       <tx:annotation-driven transaction-manager="transactionManager" />
-       <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-           <property name="dataSource" ref="dataSource"/>
-       </bean>
-```
-
-> **SessionFactory类，使用Spring注入一个工厂类，然后使用本地线程组，节省Session开销**
-
-```java
-    @Component
-    public class MybatisSessionFactory {注意
-       @Autowired
-       private  SqlSessionFactory sessionFactory;
-       // 日志
-       private static org.slf4j.Logger Log = LoggerFactory.getLogger(MybatisSessionFactory.class);
-       //使用本地线程组能避免不必要的Session开支，加强性能
-       private static final ThreadLocal<SqlSession> THREAD_LOCAL = new ThreadLocal<SqlSession>();
-       /**
-        * 获取Session
-        * @return
-        */
-       public  SqlSession getSession(){
-           SqlSession session = (SqlSession)THREAD_LOCAL.get();
-           if(session==null ){
-               session = this.sessionFactory.openSession();
-               THREAD_LOCAL.set(session);
-           }
-           Log.info("__获取了一个Session__"+session);
-           return session;
-       }
-       /*
-           关闭连接
-        */
-       public void closeSession(){
-           SqlSession session = (SqlSession)THREAD_LOCAL.get();
-           THREAD_LOCAL.set(null);
-           if(session!=null){
-               session.close();
-           }
-       }
-       public  SqlSessionFactory getSessionFactory() {
-           return sessionFactory;
-       }
-       public  void setSessionFactory(SqlSessionFactory sessionFactory) {
-           this.sessionFactory = sessionFactory;
-       }
-    }
-```
-
-### 流程控制
-
-#### foreach 循环语句
+### foreach 循环语句
 ```xml
     <foreach collection="param_list 自定义的话就是Map中的key，或者使用 @Param("")来指定 " item="params" index="currentIndex 当前索引"  separator="循环分隔符" open="在循环前加上字符" close="循环结束后加上字符">
         ${params}
     </foreach>
 ```
-##### collection
+#### collection
 
 有 arry list map 几种 还有item是必写，其他的是可选的
 
-#### if 判断语句:
+### if 判断语句
 - `<if test=""></if>`
 
-#### set 方便书写update语句
-- `<set><if test="col!=null">col=#{col},</if></set>`
+- update 判空 set `<set><if test="col!=null">col=#{col},</if></set>`
+    - mybatis会自动去除多余的逗号
 
-> mybatis会自动去除多余的逗号，但是每一行书写要写逗号
-
-#### choose 相当于switch语句
+### choose 相当于switch语句
 - `<choose><when test=""></when></choose>`
 
-#### $ 和 # 的区别
-- \$ 会有SQL注入的漏洞，#则没有
-- 使用$ 是SQL进行String的拼接，使用#是preparstatement的预处理然后注入
-- 使用#的时候出现这个问题
+************************
 
-```
-2017-01-22 11:16:11.046 [main] DEBUG myth.book.getAll_Param_BookType - ==>  Preparing: select * from book_type where ? and ? and 1=1; 
-2017-01-22 11:16:11.136 [main] DEBUG myth.book.getAll_Param_BookType - ==> Parameters:  book_type<10 (String),  'father_type='2 (String)
-```
-- 条件不能使用数值，
-    条件是单独使用时也是String但是是有效的
+## 延迟加载
+- [ ] 
+
+************************
+
+## 缓存
+- 一级缓存
+    - 一级缓存是SqlSession级别的缓存。在操作数据库时需要构造sqlSession对象，在对象中有一个数据结构（HashMap）用于存储缓存数据。不同的sqlSession之间的缓存数据区域（HashMap）是互相不影响的。
+- 二级缓存
+    - 二级缓存是mapper级别的缓存，多个SqlSession去操作同一个Mapper的sql语句，多个SqlSession可以共用二级缓存，二级缓存是跨SqlSession的。
+
+### 分布式缓存
+mybatis提供了一个cache接口，可用于实现自己的缓存逻辑  
+
+> [整合ehcache](https://github.com/brianway/springmvc-mybatis-learning/blob/master/mybatis/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)-mybatis%E6%95%B4%E5%90%88ehcache.md)`其中使用ehcache是本地单机模式的，实际上ehcache是支持分布式的`
+
+## Spring整合
+> [spring和mybatis整合](https://github.com/brianway/springmvc-mybatis-learning/blob/master/mybatis/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(17)-spring%E5%92%8Cmybatis%E6%95%B4%E5%90%88.md)
 
 
 ************************

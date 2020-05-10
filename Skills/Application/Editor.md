@@ -38,7 +38,7 @@ categories:
     1. [fte-terminal](#fte-terminal)
     1. [在线编辑器](#在线编辑器)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-11 01:08_|
 ****************************************
 # 文本编辑器
 ## Ghex
@@ -156,8 +156,10 @@ _个人配置_
 1. Prettier
 1. Auto Rename Tag
 1. Todo Tree 
-1. GitLens `方便查看更改`
+1. GitLens 
 1. vscode-proto3 
+1. PlantUML
+1. Markdown PDF
 
 ### 实践
 > [参考: 用Git在Visual Studio Code内进行版本控制[指导]](https://sdk.cn/news/4041)
