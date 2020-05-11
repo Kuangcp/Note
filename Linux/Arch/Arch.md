@@ -18,7 +18,7 @@ categories:
         1. [Yay](#yay)
 1. [Tips](#tips)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-11 17:51_|
 ****************************************
 
 # Arch
@@ -51,7 +51,6 @@ categories:
 
 - 使用 sudo snap install redis-desktop-manager
     - 可执行文件 /var/lib/snapd/snap/bin/redis-desktop-manager.rdm
-
 
 ### Yaourt
 > [Arch User Repository](https://wiki.archlinux.org/index.php/Arch_User_Repository)`但是已经暂停开发了`
@@ -94,6 +93,5 @@ pacman -Syyu
     1. 查看 `ls /lib/modules` 
     1. 内核滚动升级 grub 没有更新, `update-grub`即可
 
-ifconfig,route在net-tools中，nslookup,dig在dnsutils中，ftp,telnet等在inetutils中,ip命令在iproute2中。
-
-> sudo pacman -S net-tools dnsutils inetutils iproute2
+- ifconfig,route在net-tools中，nslookup,dig在dnsutils中，ftp,telnet等在inetutils中,ip命令在iproute2中。
+    - sudo pacman -S net-tools dnsutils inetutils iproute2

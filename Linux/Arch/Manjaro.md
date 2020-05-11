@@ -13,7 +13,7 @@ categories:
 1. [Manjaro](#manjaro)
     1. [Tips](#tips)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-11 17:51_|
 ****************************************
 # Manjaro
 > [Gitlab source code](https://gitlab.manjaro.org/explore/groups)
@@ -30,15 +30,14 @@ categories:
 由于是基于arch的, 滚动更新的特性, 所以需要在每次在安装软件前 `pacman -Syu` 更新整个系统
 
 ## Tips
+> U盘启动盘运行Live系统时, 默认用户名和密码都为 manjaro
 
 - 这次下载解压运行 VSCode 就是这样, 报错为 
    - `error while loading shared libraries: libgconf-2.so.4: cannot open shared object file: No such file or directory`
    - 尝试安装 libgconf libgconf2 ...
    - 其实真正的包是 gconf , 而这个也是尝试过的,  但是还是说找不到package, 更新了下系统,才找到了这个包
 
-************************
-
-> U盘启动盘启动准备安装系统时, 默认用户名和密码都为 manjaro
+- Linux5 内核和 VirtualBox 有兼容问题，需要版本匹配，如果内核从4升级到5 VirtualBox要相应更新
 
 ************************
 
