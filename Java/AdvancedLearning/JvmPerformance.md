@@ -35,7 +35,7 @@ categories:
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-11 01:08_|
 ****************************************
 
 # Java的性能调优
@@ -44,6 +44,8 @@ categories:
 > [参考: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)
 
 - [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`
+
+> [参考: JVM动态反优化](https://blog.mythsman.com/post/5d2c12cc67f841464434a3ec/)  
 
 ### IDEA参数调优
 ```conf

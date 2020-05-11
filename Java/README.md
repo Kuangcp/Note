@@ -110,13 +110,23 @@ categories:
 
 
 >- [Github Topic: Java](https://github.com/topics/java)
+
+>- [Java成神之路](https://github.com/hollischuang/toBeTopJavaer)
+>- [awesome-java](https://github.com/akullpp/awesome-java)
 >- [architect-awesome](https://github.com/xingshaocheng/architect-awesome)
 >- [Java资源大全](http://www.codeceo.com/article/java-resource-collection.html)
+>- [advanced-java](https://github.com/doocs/advanced-java)
+>- [java-learning](https://github.com/brianway/java-learning)
+>- [tutorials](https://github.com/eugenp/tutorials)`Java生态Demo集`
+
 >- [google: style guide](https://google.github.io/styleguide/javaguide.html)
 >- [Java8 api 中文版 Google翻译](https://blog.fondme.cn/posts/21004/)
->- [Java成神之路](https://github.com/hollischuang/toBeTopJavaer)
+
+>- [99 Problems](https://github.com/shekhargulati/99-problems)
 >- [Java之美 从菜鸟到高手演变 系列](https://blog.csdn.net/zhangerqing/article/details/8245560)
 >- [Java Mission Control](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html)
+
+[jvm-tools](https://github.com/aragozin/jvm-tools)
 
 # 环境配置
 > [Linux搭建Java开发环境](/Linux/JavaDevInit.md)

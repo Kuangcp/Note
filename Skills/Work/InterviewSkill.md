@@ -11,13 +11,15 @@ categories:
     1. [铺垫](#铺垫)
     1. [简历](#简历)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-11 01:08_|
 ****************************************
 # 面试技巧
 > [参考: 面试的时候问：你的期望薪资多少？怎么谈？](http://blog.csdn.net/Z1XpIYDj9sn/article/details/79049373)
 > [一个两年Java的面试总结](https://segmentfault.com/a/1190000013550405#articleHeader5)
 
 > [参考: 反问](http://www.ruanyifeng.com/blog/2012/08/questions_you_need_to_ask_in_an_interview.html)
+
+> [interviews](https://github.com/kdn251/interviews)  
 
 - [ ] 重新整理
 
