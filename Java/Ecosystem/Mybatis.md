@@ -21,7 +21,7 @@ categories:
     1. [Spring整合](#spring整合)
 1. [Tips](#tips)
 
-**目录 end**|_2020-05-11 01:08_|
+**目录 end**|_2020-05-12 01:07_|
 ****************************************
 # Mybatis
 > [Official](https://mybatis.org/mybatis-3/)  
@@ -31,7 +31,7 @@ categories:
 
 > [mybatis系统学习](https://github.com/brianway/springmvc-mybatis-learning)
 
-> $ 和 # 的区别 
+> $ 和 # 的区别 =-]
 - `${}` 会有SQL注入的漏洞，`#{}`则没有
     - 使用 $ 是SQL进行String直接进行拼接，使用#是preparstatement的预处理然后注入
 - 都遵循 [OGNL](https://www.ibm.com/developerworks/cn/opensource/os-cn-ognl/) 语法

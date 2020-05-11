@@ -27,7 +27,6 @@ categories:
         1. [rsync](#rsync)
         1. [curl](#curl)
         1. [wget](#wget)
-        1. [axel](#axel)
 1. [常用服务](#常用服务)
     1. [邮件服务器postfix和devecot](#邮件服务器postfix和devecot)
     1. [FTP](#ftp)
@@ -53,7 +52,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2020-05-04 18:05_|
+**目录 end**|_2020-05-12 01:07_|
 ****************************************
 # Linux网络管理
 ## DNS
@@ -390,8 +389,10 @@ _ss_
 
 - 获取API返回数据 `wget -q url -O -`
 
-### axel
-> [Github](https://github.com/axel-download-accelerator/axel)
+************************
+
+> [axel](https://github.com/axel-download-accelerator/axel)  
+> [aria2](https://github.com/aria2/aria2)  
 
 ****************************
 # 常用服务
