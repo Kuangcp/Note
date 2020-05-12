@@ -92,17 +92,6 @@
 ## Linux 
 - [judasn](https://github.com/judasn/hexo-blog) `善于归纳的人 相关:[Javaer眼中的Linux](https://github.com/judasn/Linux-Tutorial)`
 
-## Java
-- [Java Core Sprout](https://github.com/crossoverJie/JCSprout)
-- [Java guide](https://github.com/Snailclimb/JavaGuide)
-- [Java工程师成神之路](https://github.com/hollischuang/toBeTopJavaer)`Hollis`
-- [唯品会的规范文档](https://github.com/vipshop/vjtools)`规范这种东西, 各有各家的说法, 适合自己就好`
-- [daydayup](https://github.com/ITDragonBlog/daydayup)`Java架构师成长之路`
-- [LearningNotes](https://github.com/francistao/LearningNotes)`安卓`
-- [advanced-java](https://github.com/doocs/advanced-java)
-- [Java资源大全中文版](https://github.com/jobbole/awesome-java-cn)
-- [Java思维导图](https://gitee.com/java-mindmap/mapSource)
-
 ## Python
 - [老齐的笔记](https://github.com/qiwsir/ITArticles)`跟老齐学Python的轻松入门 作者`
 - [Python Tutorial vamei](https://github.com/Vamei/Python-Tutorial-Vamei)

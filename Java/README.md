@@ -65,6 +65,33 @@ categories:
 
 > [effective-java-3rd ](https://github.com/sjsdfg/effective-java-3rd-chinese)  
 
+>- [Github Topic: Java](https://github.com/topics/java)
+
+>- [Java成神之路](https://github.com/hollischuang/toBeTopJavaer)
+>- [JCSprout](https://github.com/crossoverJie/JCSprout)
+>- [awesome-java](https://github.com/akullpp/awesome-java)
+>- [awesome-java-cn](https://github.com/jobbole/awesome-java-cn)
+>- [architect-awesome](https://github.com/xingshaocheng/architect-awesome)
+>- [Java资源大全](http://www.codeceo.com/article/java-resource-collection.html)
+>- [advanced-java](https://github.com/doocs/advanced-java)
+>- [java-learning](https://github.com/brianway/java-learning)
+>- [tutorials](https://github.com/eugenp/tutorials)`Java生态Demo集`
+>- [Java guide](https://github.com/Snailclimb/JavaGuide)
+>- [LearningNotes](https://github.com/francistao/LearningNotes)`安卓`
+>- [Java思维导图](https://gitee.com/java-mindmap/mapSource)
+
+>- [google: style guide](https://google.github.io/styleguide/javaguide.html)
+>- [Java8 api 中文版 Google翻译](https://blog.fondme.cn/posts/21004/)
+>- [唯品会的规范文档](https://github.com/vipshop/vjtools)`规范这种东西, 各有各家的说法, 适合自己就好`
+>- [daydayup](https://github.com/ITDragonBlog/daydayup)`Java架构师成长之路`
+
+>- [99 Problems](https://github.com/shekhargulati/99-problems)
+>- [Java之美 从菜鸟到高手演变 系列](https://blog.csdn.net/zhangerqing/article/details/8245560)
+>- [Java Mission Control](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html)
+
+[jvm-tools](https://github.com/aragozin/jvm-tools)
+
+
 ## Java Programer Suggestion
 
 - 在 Java 中除了最为基础的东西之外，你只要看三样东西就可以了：
@@ -108,25 +135,6 @@ categories:
 - javax.crypto（密码学）
 - keytool 的 JDK 工具 
 
-
->- [Github Topic: Java](https://github.com/topics/java)
-
->- [Java成神之路](https://github.com/hollischuang/toBeTopJavaer)
->- [awesome-java](https://github.com/akullpp/awesome-java)
->- [architect-awesome](https://github.com/xingshaocheng/architect-awesome)
->- [Java资源大全](http://www.codeceo.com/article/java-resource-collection.html)
->- [advanced-java](https://github.com/doocs/advanced-java)
->- [java-learning](https://github.com/brianway/java-learning)
->- [tutorials](https://github.com/eugenp/tutorials)`Java生态Demo集`
-
->- [google: style guide](https://google.github.io/styleguide/javaguide.html)
->- [Java8 api 中文版 Google翻译](https://blog.fondme.cn/posts/21004/)
-
->- [99 Problems](https://github.com/shekhargulati/99-problems)
->- [Java之美 从菜鸟到高手演变 系列](https://blog.csdn.net/zhangerqing/article/details/8245560)
->- [Java Mission Control](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html)
-
-[jvm-tools](https://github.com/aragozin/jvm-tools)
 
 # 环境配置
 > [Linux搭建Java开发环境](/Linux/JavaDevInit.md)
