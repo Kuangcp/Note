@@ -30,7 +30,7 @@ categories:
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2020-05-04 19:32_|
+**目录 end**|_2020-05-16 21:26_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -50,7 +50,7 @@ categories:
 |:---|:---|:---|:---|
 |`xiki`           | 鼠标和键盘高度交互 <br> 交互性和复杂度比较高 | | |
 |`qterminal`      | 设置设计清晰，功能完备 | 终端内容显示兼容性略有问题 资源消耗中等 | 
-|`xfce-terminal`  | | | `~/.config/xfce4/terminal/accels.scm`|
+|`xfce4-terminal`  | | | |
 |`gnome-terminal` | 简洁 资源消耗少 | 缺 多标签时，标签栏太大,标签页底部有白边 无法透明化 |  鼠标中键无法复制时需安装 `parcellite`|
 |`mate-terminal`  | 标签栏更简洁，其余和 `gnome-terminal` 一致|||
 |`sakura`         | 外观上和前两个几乎一样，标签页可以更简洁 | 配置复杂 繁琐 | |
@@ -59,7 +59,7 @@ categories:
 |`terminology`    | 样式高度自定义
 
 > 备注
-- sakura 配置
+- sakura xfce4-terminal 快捷键配置
     - `~/.config/xfce4/terminal/accels.scm` 
     - [doc](http://troubleshooters.com/linux/sakura.htm) | [config shortcut](https://unix.stackexchange.com/questions/102474/configuring-shortcuts-for-sakura)  
 
@@ -221,6 +221,7 @@ categories:
 
 ### 截图
 - Flameshot 截图工具  类似于 snipaste
+    - Ctrl 鼠标滚动 调整线条粗细
 - deepin-screenshot
 
 ### 资源管理

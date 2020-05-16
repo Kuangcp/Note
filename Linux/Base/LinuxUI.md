@@ -11,6 +11,7 @@ categories:
 **目录 start**
 
 1. [UI](#ui)
+    1. [桌面管理器](#桌面管理器)
     1. [Font](#font)
         1. [字体渲染](#字体渲染)
     1. [Theme](#theme)
@@ -18,21 +19,22 @@ categories:
     1. [Terminal](#terminal)
         1. [彩色输出](#彩色输出)
 
-**目录 end**|_2020-05-06 21:24_|
+**目录 end**|_2020-05-16 21:26_|
 ****************************************
-
 # UI
 > themes icons fonts 
 
-- [www.gnome-look.org](https://www.gnome-look.org/)
-
-- 所有用户通用, 安装新的后需要重启 `/usr/share/themes`
-- 当前用户, 直接复制进来立即生效:  `~/.themes` 或者 `~/.local/share/themes`
-
-- 问题: Deepin上 全放 ~/.local/share/themes 会有bug, 只能全放 ~/.themes
+## 桌面管理器
+1. [Gnome](/Linux/Window/Gnome.md)
+1. [Xfce](/Linux/Window/Xfce.md)
 
 ## Font
-> [字体](/FrontEnd/Font.md)  
+1. /usr/share/fonts/
+1. ~/.local/share/fonts
+
+- 刷新字体缓存 `fc-cache -fv` 
+
+> [字体文件 详情](/FrontEnd/Font.md)  
 
 ### 字体渲染
 > [Debian8安装Infinality改善字体渲染，安装Ubuntu字体](https://www.linuxdashen.com/debian8%E5%AE%89%E8%A3%85infinality%E6%94%B9%E5%96%84%E5%AD%97%E4%BD%93%E6%B8%B2%E6%9F%93%EF%BC%8C%E5%AE%89%E8%A3%85ubuntu%E5%AD%97%E4%BD%93)  
@@ -40,12 +42,17 @@ categories:
 > [Font Configuration/Chinese (简体中文)](https://wiki.archlinux.org/index.php/Font_Configuration/Chinese_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))  
 > [参考: Fcitx (简体中文)](https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))  
 
-- 刷新字体缓存 `fc-cache -fv` 
-    - 对应于目录 `~/.local/share/fonts`
 
 *******************
 
 ## Theme
+1. /usr/share/themes/
+1. ~/.themes/  ~/.local/share/themes
+
+`问题:` Deepin上 全放 ~/.local/share/themes 会有bug, 只能全放 ~/.themes
+
+> [McMojave](https://www.xfce-look.org/p/1275087/)
+
 - [Github:vimix](https://github.com/vinceliuice/vimix-gtk-themes)`material design theme`
 
 > [参考: 10 Great Linux GTK Themes For 2018 ](https://www.maketecheasier.com/gtk-themes-for-linux/)
@@ -53,11 +60,13 @@ categories:
 - [pingguo](https://www.gnome-look.org/p/1239453/)
 
 - [Sierra](https://www.gnome-look.org/p/1013714/)
-- [GTK3主题：OSX-Arc](https://www.linuxidc.com/Linux/2017-01/139053.htm) `解压到 /usr/share/themes/ 下即可,或者 ~/.themes/ `
+- [GTK3主题：OSX-Arc](https://www.linuxidc.com/Linux/2017-01/139053.htm)
 
 ***********************
 
 ## Icon
+1. /usr/share/icons
+
 > sudo apt search icon-theme  也能看到很多icon
 
 1. Halo-icon-theme

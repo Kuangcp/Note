@@ -36,7 +36,7 @@ categories:
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
         1. [无法输入中文](#无法输入中文)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-16 21:26_|
 ****************************************
 
 # IDEA 使用笔记
@@ -135,6 +135,7 @@ _例如修改为如下_
     1. IBM Plex Mono SemiBold 15 0.9 
 - 设置字体
     1. Robot Mono Medium for Powershell 14 
+    1. Cascadia Code
 
 - [Google java style](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml)
 
@@ -334,7 +335,7 @@ _例如修改为如下_
 *********************
 ## 常用插件
 1. rainbow brackets 将括号变成彩色, 更方便查看
-1. Alibaba Java Code Guidelineshuo
+1. Alibaba Java Code Guideline
     - 阿里巴巴的代码规范插件
     - [《阿里巴巴Java开发规约》IDEA插件与Eclipse插件使用指南](https://zhuanlan.zhihu.com/p/30191998)
 

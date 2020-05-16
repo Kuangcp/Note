@@ -11,9 +11,10 @@ categories:
 
 1. [Xfce](#xfce)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-16 21:26_|
 ****************************************
 # Xfce 
+> [www.xfce-look.org](https://www.xfce-look.org)  
 
 1. notify-send 发送新通知
     - notify-send -i iconFilePath title detail -t 1500
