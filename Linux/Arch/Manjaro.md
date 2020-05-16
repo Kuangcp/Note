@@ -13,7 +13,7 @@ categories:
 1. [Manjaro](#manjaro)
     1. [Tips](#tips)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-16 14:22_|
 ****************************************
 # Manjaro
 > [Gitlab source code](https://gitlab.manjaro.org/explore/groups)
@@ -39,6 +39,10 @@ categories:
 ************************
 
 > U盘启动盘启动准备安装系统时, 默认用户名和密码都为 manjaro
+> parted -l 
+
+msdos => legacy 
+gpt => uefi 
 
 ************************
 

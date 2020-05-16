@@ -20,11 +20,6 @@ categories:
         1. [图片查看工具](#图片查看工具)
         1. [BaiduPCS](#baidupcs)
         1. [you-get](#you-get)
-        1. [输入法](#输入法)
-            1. [输入引擎](#输入引擎)
-            1. [搜狗输入法](#搜狗输入法)
-            1. [rime](#rime)
-            1. [小小输入法](#小小输入法)
         1. [qgit](#qgit)
         1. [ImageMagick](#imagemagick)
             1. [convert](#convert)
@@ -39,7 +34,7 @@ categories:
     1. [安全工具](#安全工具)
         1. [gpg](#gpg)
 
-**目录 end**|_2020-05-06 21:24_|
+**目录 end**|_2020-05-16 14:22_|
 ****************************************
 # 软件使用记事
 ## 包管理
@@ -107,22 +102,6 @@ categories:
 等等，只需一个命令就能直接下载视频、音频以及图片回来，并且可以自动合并视频。
 
 而对于有弹幕的网站，比如 B 站，还可以将弹幕下载回来
-
-### 输入法
-#### 输入引擎
-> fcitx ibus ...
-
-> [wiki: fcitx](https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
-
-#### 搜狗输入法
-
-- Ctrl Alt B 显示/关闭 特殊字符面板
-
-#### rime
-- [rime](http://rime.im/) 
-
-#### 小小输入法
-[小小输入法在Deepin上的使用](https://bbs.deepin.org/forum.php?mod=viewthread&tid=138500&highlight=%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95)
 
 ### qgit
 - git查看仓库的命令行式图形化界面

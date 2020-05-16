@@ -15,9 +15,10 @@ categories:
     1. [Rime](#rime)
     1. [搜狗](#搜狗)
     1. [Google拼音](#google拼音)
+            1. [小小输入法](#小小输入法)
 1. [Tips](#tips)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-16 14:22_|
 ****************************************
 # IME
 > 输入法
@@ -26,6 +27,8 @@ categories:
 
 # fcitx 
 > fcitx  fcitx-im  fcitx-configtool
+
+> [wiki: fcitx](https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
 `~/.xprofile`
 ```sh
@@ -54,11 +57,17 @@ Ctrl ` 进入设置
 > [参考: Linux安装搜狗拼音和谷歌拼音输入法](https://www.jianshu.com/p/429b8f75af2c)
 
 比较良心， 一直希望百度输入法能出Linux版， 最后还是没有， 优点就是能同步帐号， 云词库什么的， 但是bug比较多， 容易奔溃（可能和Deepin有关）
+- Ctrl Alt B 显示/关闭 特殊字符面板
+
 
 ## Google拼音
 > fcitx-googlepinyin
 
 速度比较快， 但是不够聪明， 打字舒适度上没有rime好用
+
+#### 小小输入法
+[小小输入法在Deepin上的使用](https://bbs.deepin.org/forum.php?mod=viewthread&tid=138500&highlight=%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95)
+
 
 # Tips 
 > fcitx + sogou 输入法经常出现 `单CPU 100%满载`
