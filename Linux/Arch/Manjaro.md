@@ -12,9 +12,10 @@ categories:
 
 1. [Manjaro](#manjaro)
     1. [Tips](#tips)
-        1. [多系统安装](#多系统安装)
+1. [安装](#安装)
+    1. [多系统安装](#多系统安装)
 
-**目录 end**|_2020-05-17 16:13_|
+**目录 end**|_2020-05-17 17:24_|
 ****************************************
 # Manjaro
 > [Gitlab source code](https://gitlab.manjaro.org/explore/groups)  
@@ -39,10 +40,15 @@ categories:
 
 - `Linux5 内核和 VirtualBox 有兼容问题`，需要版本匹配，如果内核从4升级到5 VirtualBox要相应更新
 
-### 多系统安装
-例如这次 Win10(先)和Majaro安装
+# 安装
+> [Installation Guides](https://wiki.manjaro.org/index.php?title=Installation_Guides)
 
-1. 首先通过 rufus 制作器启动U盘，切记注意所下载ISO的正确性
+参考 [Using livecd v17.0.1 (and above) as grub to boot OS with broken bootloader](https://forum.manjaro.org/t/using-livecd-v17-0-1-and-above-as-grub-to-boot-os-with-broken-bootloader/24916) 
+
+## 多系统安装
+例如 Win10(先)和Majaro安装
+
+1. 首先通过 rufus 制作器启动U盘[wiki](https://wiki.manjaro.org/index.php?title=Burn_an_ISO_File)，切记注意所下载ISO的正确性
 1. `parted -l` 查看当前硬盘系统分区模式， 来判断安装Manjaro时BIOS配置和安装模式
    1. msdos => legacy 
    1. gpt   => uefi 

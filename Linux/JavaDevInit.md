@@ -16,23 +16,21 @@ categories:
     1. [配置JDK](#配置jdk)
         1. [解压配置](#解压配置)
         1. [sdkman方式](#sdkman方式)
-        1. [mythsdk](#mythsdk)
     1. [配置MySQL](#配置mysql)
     1. [配置Redis](#配置redis)
-        1. [从源码编译运行并测试](#从源码编译运行并测试)
     1. [问题以及解决方案](#问题以及解决方案)
     1. [双硬盘的折腾记录](#双硬盘的折腾记录)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-17 17:24_|
 ****************************************
 # 配置Deepin的Java开发环境
 
-修改Hostname需要重启, 设置java默认需要重启, docker添加用户组需要重启
+修改Hostname需要重启, 设置默认java需要重启, docker添加用户组需要重启
 ## 新增用户
-> [详细](/Linux/Base/LinuxBase.md#用户管理)
+> [详细文档](/Linux/Base/LinuxBase.md#用户管理)
 
 ## 安装Docker
-> [详细文档](/Linux/Container/Docker.md)
+> [详细文档](/Linux/Container/Docker.md#安装与卸载)
 
 # 在Linux上配置Java环境
 ## 配置JDK
@@ -79,29 +77,14 @@ categories:
 - 指定默认版本 `sdk default java 8u131-zulu`
 - 验证是否成功：`java -version`
 
-### mythsdk
-> 个人用py开发的脚本， 实现了和sdkman一致的内容， 并且很简单 | [使用文档](https://github.com/Kuangcp/Script/tree/master/python/mythsdk)
-
 ********************************
 ## 配置MySQL
-> [安装MySQL](/Database/MySQL.md)
+> [安装MySQL](/Database/MySQL.md#安装)
 
 **************************************
 ## 配置Redis
-> [安装Redis](/Database/Redis.md)
+> [安装Redis](/Database/Redis.md#安装和配置)
 
-### 从源码编译运行并测试
-> 新建文件夹将源码下拉下来运行，然后就可以将该目录删除
-
-```sh
-    wget http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz
-    sudo tar xzvf tcl8.6.1-src.tar.gz  -C /usr/local/
-    cd  /usr/local/tcl8.6.1/unix/
-    sudo ./configure
-    sudo make
-    sudo make install
-```
-**************
 ## 问题以及解决方案
 > QQ
 - `sudo apt-get install deepin-crossover deepinwine-qq`

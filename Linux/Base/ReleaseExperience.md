@@ -36,7 +36,7 @@ categories:
         1. [Chrome OS](#chrome-os)
         1. [Fyde OS](#fyde-os)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-17 17:24_|
 ****************************************
 # Linux常见发行版
 > [Repology](https://repology.org/)
@@ -90,6 +90,8 @@ categories:
 
 ## Debian
 > Debian系 包含 Debian *buntu Deepin 等等
+
+个人经历，大版本号升级时不稳定，升级失败或者搞挂系统
 
 ### Debain
 [Debian](/Linux/Debian/Debian.md)
