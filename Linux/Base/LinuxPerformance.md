@@ -48,7 +48,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2020-05-16 14:22_|
+**目录 end**|_2020-05-17 16:07_|
 ****************************************
 # Linux性能分析和管理
 ## 运行状况信息
@@ -60,6 +60,8 @@ categories:
     - 运行结果 : 1,5,15分钟的平均负载 | 当前运行的进程/总进程 | 最近一个启动的进程的id 
 > 常规: 单核:平均负载0.7以下是安全的,大于就需要优化了,多核则是 0.7*N(核心数)  
 > [从源码看Load计算方式](http://www.penglixun.com/tech/system/how_to_calc_load_cpu.html)  
+
+- `lm-sensors` CPU等硬件温度等信息检测 [参考](https://www.ostechnix.com/view-cpu-temperature-linux/)
 
 ### 分析工具
 > [vector](https://github.com/Netflix/vector)
