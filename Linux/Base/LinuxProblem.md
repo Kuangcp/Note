@@ -24,11 +24,9 @@ categories:
         1. [Ubuntu与Windows10时间相差8小时的解决](#ubuntu与windows10时间相差8小时的解决)
         1. [终端开启慢](#终端开启慢)
     1. [数据问题](#数据问题)
-        1. [笔记本突然断电导致开机报错](#笔记本突然断电导致开机报错)
-    1. [系统问题](#系统问题)
-        1. [突然掉电关机](#突然掉电关机)
+        1. [突然断电](#突然断电)
 
-**目录 end**|_2020-05-16 21:26_|
+**目录 end**|_2020-05-17 16:13_|
 ****************************************
 # 遇到的常见问题
 
@@ -109,24 +107,21 @@ categories:
 *********************************************
 
 ## 数据问题
-### 笔记本突然断电导致开机报错
-> 报错信息: fsck exited with status code 4
+### 突然断电
+> 开机报错信息: fsck exited with status code 4
 
-1. 根据报错提示的分区, 进行修复, 由于我的Linux是ext3文件系统
+1. 根据报错提示的分区, 进行修复, 由于我的Linux是ext3文件系统 ext4 则是 `fsck.ext4`
 1. `fsck.ext3 -y /dev/sda9` **分区根据实际情况**
 1. 完成后重启即可
 
 ************************
 
-## 系统问题
-### 突然掉电关机
 > 导致了 Git 仓库都损坏了 `fatal: loose object`  
 
-> ZSH: corrupt history file
+ZSH: corrupt history file
 
 ```shell
 mv .zsh_history .zsh_history_bad
 strings .zsh_history_bad > .zsh_history
 fc -R .zsh_history
 ```
-两天发生了两次...

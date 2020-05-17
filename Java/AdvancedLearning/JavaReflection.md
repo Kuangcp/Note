@@ -29,7 +29,7 @@ categories:
         1. [操作注解](#操作注解)
 1. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2020-04-29 11:57_|
+**目录 end**|_2020-05-17 16:13_|
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
@@ -208,7 +208,8 @@ categories:
     method.invoke(object, "hello");
 ```
 ### 操作类的成员属性
-取得所有成员
+
+> 取得所有成员
 ```java
     Class<?> cls = Class.forName("first.Book");
     Field[] fields = cls.getDeclaredFields();
@@ -216,14 +217,15 @@ categories:
         System.out.println(field);
     }
 ```
-获取单个成员
+
+> 获取单个成员
 ```java
     Class<?> cls = Class.forName("first.Book");
     Field field = cls.getDeclaredField("name");
     System.out.println(field);
 ```
 
-取得所有成员， 包含由继承获取的成员， 但无法取得自身私有成员
+> 取得所有成员， 包含由继承获取的成员， 但无法取得自身私有成员
 ```java
     Class<?> cls = Class.forName("first.Book");
     Field[] fields = cls.getFields();
@@ -232,7 +234,7 @@ categories:
     }
 ```
 
-set 和 get 属性的值
+> set 和 get 属性的值
 ```java
     Class<?> cls = Class.forName("first.Book");
     Object object = cls.newInstance();
@@ -245,7 +247,7 @@ set 和 get 属性的值
 ```
 
 ### 操作注解
-获取类的注解
+> 获取类的注解
 ```java
     Class<?> cls = Class.forName("first.Book");
     Annotation[] as = cls.getAnnotations();
@@ -254,7 +256,7 @@ set 和 get 属性的值
     }
 ```
 
-获取指定的Annotation
+> 获取指定的Annotation
 ```java
     Class<?> cls = Class.forName("first.Book");
     GetItem annotation = cls.getAnnotation(Deprecated.class);
@@ -268,13 +270,16 @@ set 和 get 属性的值
 
 正常情况下 final修饰的类，变量，方法, 表示不可继承，不可修改，不可重写(override), 但是使用反射能在一定程度上进行修改  
 被final修饰过的变量，只是说栈存储的地址不能再改变，但是却没有说地址指向的内容不能改变，所以反射可以破final，因为它修改该了以前地址的具体内容，但是没有改地址的信息。  
-> 参考 [doc: java8](https://docs.oracle.com/javase/8/docs/api/) `Field.set()`的文档
+> 参考 [JavaDoc: Java8](https://docs.oracle.com/javase/8/docs/api/) `Field.set()`的文档说明
 
 **********************
 
 # 反射的性能问题
 > [参考: java反射的性能问题 ](http://www.cnblogs.com/zhishan/p/3195771.html)
+> [性能测试对比: 反射 set/get cglib mapstruct](https://github.com/Kuangcp/JavaBase/blob/class/src/test/java/com/github/kuangcp/reflects/ReflectPerformanceTest.java)
 
-> [性能测试对比: 反射 setter cglib](https://github.com/Kuangcp/JavaBase/blob/class/src/test/java/com/github/kuangcp/reflects/ReflectPerformanceTest.java)
+Spring 中的 IOC 主要是依据反射来实现的, 只在启动阶段性能有所损耗, 关注性能以及热点代码最好避免使用反射 例如常见的BeanCopy
 
-Spring 中的 IOC 主要是依据反射来实现的, 只在启动阶段性能有所损耗, 关注性能以及热点代码最好避免使用反射例如常见的BeanCopy，可以使用 MapStruct框架自动生成get set 取代反射
+> 优化方案
+1. [使用 MapStruct 预先生成转换代码避免反射](/Java/Tool/MapStruct.md)
+

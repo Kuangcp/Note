@@ -23,7 +23,7 @@ categories:
 1. [字节码相关框架](#字节码相关框架)
 1. [热更新](#热更新)
 
-**目录 end**|_2020-04-29 11:57_|
+**目录 end**|_2020-05-17 16:13_|
 ****************************************
 # 字节码以及类加载
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
@@ -88,13 +88,13 @@ categories:
 - `BootStrap ClassLoader` (启动类加载器)：一般负责加载系统的核心类，如，`rt.jar` 中的Java类
 - `Extendsion ClassLoader` (扩展类加载器)：用于加载 `%JAVA_HOME%/lib/ext/*.jar` 中的Java类
 - `App ClassLoader` (应用类加载器，系统类加载器)：用于加载用户程序的类
-- 自定义ClassLoader： 加载一些特殊途径的类，一般也是用户类
+- `自定义ClassLoader` 加载一些特殊途径的类，一般也是用户类
 
 ![JavaClassLoader](https://github.com/dragonhht/GitImgs/blob/master/Notes/JavaClassLoader.png?raw=true)
 
 > 注意：  
 >1. 例如在读取类路径下文件时，可以通过 `classA.getClassLoader().getResourceAsStream("app.properties")` 但是如果类classA对象是由 BootStrap 类加载器加载的， getClassLoader() 将返回 null  
->1. 当出现jar包多版本时，先加载了其中一个版本就不会加载另一个版本，而这个加载顺序往往是由操作系统的文件排序决定的 
+>1. 当出现jar包多版本时，先加载了其中一个版本就不会加载另一个版本，而这个加载顺序往往是由操作系统的文件排序决定的 [相关案例](/Java/Blog/Java-ClassLoad-Confuse.md) 
 
 ### 加载和连接
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p107.jpg)

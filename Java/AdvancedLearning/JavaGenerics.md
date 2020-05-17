@@ -21,7 +21,7 @@ categories:
         1. [通配符捕获](#通配符捕获)
     1. [反射和泛型](#反射和泛型)
 
-**目录 end**|_2020-04-29 11:57_|
+**目录 end**|_2020-05-17 16:13_|
 ****************************************
 # 泛型
 > [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
@@ -92,9 +92,7 @@ categories:
 
 > 在Java的继承中,可以根据需要拥有多个接口超类型,但限定中至多只有一个类,如果用一个类作为限定,他必须是限定列表中的第一个
 
-> [参考: Java泛型-4（类型擦除后如何获取泛型参数）](https://www.jianshu.com/p/cb8ff202797c)  
-
-泛型记录在类上 Signature LocalVariableTypeTable
+注意：泛型记录在类字节码中的 Signature LocalVariableTypeTable 属性上， [参考: Java泛型-4（类型擦除后如何获取泛型参数）](https://www.jianshu.com/p/cb8ff202797c)  
 
 ******************************
 ## 约束和局限性
@@ -339,10 +337,12 @@ categories:
 *******************
 
 ## 反射和泛型
-> [Official Doc: Class](https://docs.oracle.com/javase/7/docs/api/java/lang/Class.html) | []()
+> [Official Doc: Class](https://docs.oracle.com/javase/7/docs/api/java/lang/Class.html)
 
-> 现在Class类是泛型的, 例如String.class实际上是Class<String>类的对象(事实上是唯一的对象)  
-> 类型参数十分有用, 这是因为他允许Class<T>方法的返回类型更加具有针对性.下面Class<T>的方法就使用了类型参数
+> JDK中Class类也泛型化了, 例如String.class实际上是`Class<String>`类的对象(事实上是唯一的对象)  
+> 类型参数十分有用, 这是因为他允许`Class<T>`方法的返回类型更加具有针对性.
+
+`Class<T>`的方法就使用了类型参数
 ```java
     T newInstance()
     T cast(Object obj)
@@ -351,16 +351,16 @@ categories:
     Constructor<T> getConstructor(Class... paramterTypes)
     Constructor<T> getDeclaredConstructor(Class... paramterTypes)
 ```
-- newInstance方法返回一个示例, 这个实例所属的类由默认的构造器获得, 它的返回类型目前被声明为T, 其类型与Class<T>描述的类相同, 这样就免除了类型转换.
+- newInstance方法返回一个示例, 这个实例所属的类由默认的构造器获得, 它的返回类型目前被声明为T, 其类型与`Class<T>`描述的类相同, 这样就免除了类型转换.
 - 如果给定的类型确实是T的一个子类型, cast方法就会返回一个现在声明为类型T的对象, 否则, 抛出一个BadCastException异常
 - 如果这个类不是enum类或类型T的枚举值的数组, getEnumConstants方法将返回Null.
-- 最后, getConstructor与getDeclaredConstructor方法返回一个Constructor<T>对象.Constructor类也已经变成泛型, 以便 newInstance方法有一个正确的返回类型.
+- `getConstructor`与`getDeclaredConstructor`方法返回一个`Constructor<T>`对象.Constructor类也加上了泛型, 方便newInstance方法有正确返回类型.
 
 TODO 还要继续看书
 
 ```java
     // 传入一个Class对象, 得到Class对应类型的实例
-    public <T> T get(Class<T> target, String name);
-    // 加上约束
-    public <T extends Runable> T get(Class<T> target, String name);
+    public <T> T get(Class<T> target);
+    // 类型加上约束
+    public <T extends Runable> T get(Class<T> target);
 ```

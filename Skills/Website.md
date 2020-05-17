@@ -59,7 +59,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2020-04-29 11:57_|
+**目录 end**|_2020-05-17 16:13_|
 ****************************************
 # 常用的网站
 ## 国内镜像源站点
@@ -293,7 +293,6 @@ _自建Git服务_
 ## 文档处理
 - [Gitbook](https://github.com/GitbookIO/gitbook)
     - [gitbook-use](https://github.com/zhangjikai/gitbook-use)`Gitbook的使用`
-- [pandoc](https://github.com/jgm/pandoc) `一个文档格式转换的软件，markdown docx`
 - [retext](https://github.com/retext-project/retext)`markdown书写软件`
 - [API文档管理](http://doclever.cn/controller/index/index.html)
 

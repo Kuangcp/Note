@@ -31,12 +31,15 @@ categories:
             1. [WebSocket](#websocket)
         1. [Q&A](#q&a)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-17 16:13_|
 ****************************************
 
 # SpringMVC
 
 > [Spring MVC 4.2.4.RELEASE 中文文档](https://legacy.gitbook.com/book/linesh/spring-mvc-documentation-linesh-translation/details)
+
+> [springmvc + mybatis](https://github.com/brianway/springmvc-mybatis-learning)  
+
 ## MVC思想
 > [参考博客](http://blog.csdn.net/besley/article/details/8479943)
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Model/mvc.png)
