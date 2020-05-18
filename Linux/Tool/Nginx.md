@@ -13,7 +13,7 @@ categories:
     1. [Nginx的安装](#nginx的安装)
         1. [命令安装](#命令安装)
         1. [编译安装](#编译安装)
-        1. [Docker安装并做反向代理](#docker安装并做反向代理)
+        1. [Docker安装](#docker安装)
     1. [命令参数](#命令参数)
 1. [配置使用](#配置使用)
     1. [本地静态文件Web服务器](#本地静态文件web服务器)
@@ -35,7 +35,7 @@ categories:
     1. [nuster](#nuster)
 1. [Tips](#tips)
 
-**目录 end**|_2020-05-17 16:07_|
+**目录 end**|_2020-05-18 20:50_|
 ****************************************
 # Nginx
 
@@ -71,7 +71,7 @@ categories:
     --with-zlib=/home/kuang/zlib-1.2.11
 ```
 
-### Docker安装并做反向代理
+### Docker安装
 > [nginx hub 官方镜像](https://hub.docker.com/r/library/nginx/)
 
 ## 命令参数
@@ -94,7 +94,8 @@ categories:
 nginx 配置文件的语法是自己独有的语法, 比较像 shell, 里面有用到正则, 变量等概念
 
 - 读取自定义目录配置: 
-  - nginx.conf 中 http 块内添加 `include /etc/nginx/conf.d/*.conf;`
+    - nginx.conf 中 http 块内添加 `include /etc/nginx/conf.d/*.conf;`
+- 错误页面重定向 `error_page   404  /404.html;` 也可以填完整URL
 
 ## 本地静态文件Web服务器
 > [参考 nginx配置静态文件服务器 ](http://blog.yuansc.com/2015/04/29/nginx%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/)
