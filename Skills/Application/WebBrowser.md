@@ -80,7 +80,7 @@ categories:
 1. `New Tab Tools` 新建标签页的自定义工具 
 1. `cliget` 能将下载中的任务转化为 curl wget命令 牛
 1. `eolinker` 接口测试工具
-1. `Simple Tab Groups` 58版本有bug
+1. `Simple Tab Groups` 懒加载式隔离标签组
 1. `RESTer` rest客户端工具
 1. `Download all Images`下载图片
 1. `octotree` github 目录查看

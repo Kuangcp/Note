@@ -185,15 +185,6 @@ categories:
 |   组播       | ipmaddr   |     ip maddr     |
 |   统计       | netstat   |        ss        |
 
-_ss_
-> [参考: Linux网络状态工具ss命令使用详解](http://www.ttlsa.com/linux-command/ss-replace-netstat/)
-
-- 查看网络连接统计 `ss -s`
-- 查看打开的端口 `ss -l`
-- 查看打开的端口以及进程pid `ss -pl`
-- 查看所有socket连接 `ss -a`
-- 隧道术： 网络协议的数据包被封装在另一种网络协议的数据包之中 `这是VPN的技术理论基础`
-
 `net-tools 和 iproute 对应关系`
 
 |      作用           |               net-tools用法                |                iproute2用法                |
@@ -213,6 +204,17 @@ _ss_
     - 当使用 VPN 时，建立新的虚拟网卡 tun， 可以手动设置路由让指定ip走虚拟网卡 从而访问到VPN内局域网地址(网络号和真实网卡一样，默认会把数据包转发至本地局域网)
 - 关闭 启用 `ifconfig name down/up`
 - 设置网卡 eno1 MAC 地址`ip link set eno1 address b4:xx:xx`
+
+************************
+_iproute-ss_
+
+> [参考: Linux网络状态工具ss命令使用详解](http://www.ttlsa.com/linux-command/ss-replace-netstat/)
+
+- 查看网络连接统计 `ss -s`
+- 查看打开的端口 `ss -l`
+- 查看打开的端口以及进程pid `ss -pl`
+- 查看所有socket连接 `ss -a`
+- 隧道术： 网络协议的数据包被封装在另一种网络协议的数据包之中 `这是VPN的技术理论基础`
 
 ************************
 

@@ -132,7 +132,7 @@ SET操作成功后,返回的是OK,失败返回NIL
 
 基于string, 可以操作每个 bit 的值
 - setbit key offset value
-    - `set key 上便宜量offset(2^32) 的 值 value(0/1)`
+    - `set key 上偏移量offset(2^32) 的 值 value(0/1)`
 - getbit key offset 
 - bitop 
     - 主要做bitset的and、or、xor、not操作，结果存在新的bitset中，注意时间复杂度为O(N)
