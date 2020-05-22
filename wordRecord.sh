@@ -9,11 +9,8 @@ hasCommandByType(){
 result=$(hasCommandByType count)
 result=$(echo $result | grep is)
 if test -z "$result" ; then
-    echo "count not install"
-    go get github.com/kuangcp/gobase/count
-    cd $GOPATH
-    cd github.com/kuangcp/gobase/count
-    go install
+    echo "count not install, start install"
+    go get github.com/kuangcp/gobase/toolbox/count
 fi
 
 logFile=submission.log

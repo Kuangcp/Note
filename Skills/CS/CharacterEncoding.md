@@ -19,7 +19,7 @@ categories:
     1. [汉字编码发展史](#汉字编码发展史)
     1. [Java中的编码](#java中的编码)
 
-**目录 end**|_2020-05-04 18:05_|
+**目录 end**|_2020-05-22 18:43_|
 ****************************************
 # 字符编码
 
@@ -37,6 +37,8 @@ categories:
 ## ASCII
 > ASCII (American Standard Code for Information Interchange)  美国信息交换标准代码 属于单字节内码 并等同于国际标准ISO/IEC 646
 
+> [0-255 ascii 码表](https://www.cnblogs.com/xmxu/archive/2012/07/10/2584032.html)
+
 1. 0-31 以及 127 是控制字符或通信专用字符 （其余为可显示字符）
 1. 32～126(共95个)是字符(32是空格）
     - 其中48～57为0到9十个阿拉伯数字
@@ -44,10 +46,11 @@ categories:
     - 97～122号为26个小写英文字母
     - 其余为一些标点符号、运算符号等。
 
-同时还要注意，在标准ASCII中，其最高位(b7)用作奇偶校验位。   Linux `man ascii` 就可以查看
+> 注意
+>- 在标准ASCII中，其最高位(b7)用作奇偶校验位。 Linux上 `man ascii` 就可以查看完整表
+>- 经过扩充后 ascii 可大于127 `ASCII扩展字符`
 
-> [参考: ASCII码表](http://www.cnblogs.com/xmxu/archive/2012/07/10/2584032.html)
-
+1. ascii 160 不间断空格 non-breaking space
 
 ************************
 
@@ -63,9 +66,8 @@ categories:
 ## Unicode
 > [unicode.org](http://www.unicode.org/) | [wikipedia](https://en.wikipedia.org/wiki/Unicode) | [unicode table](https://unicode-table.com/cn/)  
 
-Unicode 是一个囊括了世界上所有字符的字符集，其中每一个字符都对应有唯一的编码值, 但是并不是一个具体实现的编码方案, 不能直接使用  
-其实现有 UTF-8 UTF-16 UTF-32 ...
-目前最新版本 11 已经包括 137,439 个字符
+Unicode 是一个囊括了世界上所有字符的字符集，其中每一个字符都对应有唯一的编码值, 但是并不是一个已实现的编码方案, 不能直接使用  
+其实现有 UTF-8 UTF-16 UTF-32 ...  目前最新版本 11 已经包括 137,439 个字符
 
 > 问题 直接看, 看不到的字符, 可能带来一些坑
 1. 零宽间隔 `U+200B`  

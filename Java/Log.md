@@ -32,7 +32,7 @@ categories:
     1. [Linux上查看日志](#linux上查看日志)
     1. [lnav](#lnav)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-22 18:43_|
 ****************************************
 # 日志系统
 > [码农翻身: 一个著名的日志系统是怎么设计出来的？ ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45&chksm=80d67bacb7a1f2ba38aa37620d273dfd7d7227667df556d36c84d125cafd73fef16464288cf9&scene=21#wechat_redirect)`深刻的理解了日志系统的来源以及相关关系`  
@@ -90,7 +90,7 @@ categories:
 > [参考博客](http://www.cnblogs.com/lixuwu/p/5811273.html)
 
 ### 根节点 <configuration> 属性
-- _scan_ : 当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。
+- _scan_ : 当此属性设置为true时，配置文件如果发生改变，将会被`重新加载`，默认值为true。
 - _scanPeriod_ : 设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。
 - _debug_ : 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
 
@@ -103,7 +103,7 @@ categories:
 ### 设置上下文名称：<contextName>
 每个logger都关联到logger上下文，默认上下文名称为“default”。但可以使用`<contextName>`设置成其他名字，用于区分不同应用程序的记录。一旦设置，不能修改。
 ```xml
-    <configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <configuration>
       <contextName>myAppName</contextName>
       <!-- 其他配置省略-->
     </configuration> 
@@ -112,7 +112,7 @@ categories:
 用来定义变量值的标签，`<property>` 有两个属性，name和value；其中name的值是变量的名称，value的值时变量定义的值。通过`<property>`定义的值会被插入到logger上下文中。
 定义变量后，可以通过`${}`来使用变量。例如使用`<property>`定义上下文名称，然后在`<contentName>`设置logger上下文时使用。
 ```xml
-    <configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <configuration>
       <property name="APP_Name" value="myAppName" /> 
       <contextName>${APP_Name}</contextName>
       <!-- 其他配置省略-->
@@ -122,7 +122,7 @@ categories:
 两个属性 key:标识此`<timestamp>` 的名字；datePattern：设置将当前时间（解析配置文件的时间）转换为字符串的模式，遵循`java.txt.SimpleDateFormat`的格式。
 例如将解析配置文件的时间作为上下文名称：
 ```xml
-    <configuration scan="true" scanPeriod="60 seconds" debug="false"> 
+    <configuration> 
       <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/> 
       <contextName>${bySecond}</contextName> 
       <!-- 其他配置省略--> 

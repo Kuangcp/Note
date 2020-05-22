@@ -46,7 +46,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2020-05-16 21:26_|
+**目录 end**|_2020-05-22 18:43_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -420,14 +420,14 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
 
 > [参考: JVM系列篇：深入剖析G1收集器](https://my.oschina.net/u/3959491/blog/3029276)
 
+能够通过GC将内存归还给操作系统
+
 ### ZGC
 > JDK11  [wiki: ZGC](https://wiki.openjdk.java.net/display/zgc/Main) | [ZGC Release note](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
 
 `-XX:+UnlockExperimentalVMOptions -XX:+UseZGC`
 
 > [参考: Oracle 即将发布的全新 Java 垃圾收集器 ZGC](https://www.infoq.cn/article/oracle-release-java-gc-zgc)
-
-IDEA 切换使用该GC后CPU使用率高涨到20%, 用 CMS G1 则为1%, 均指无动作的情况
 
 ### ShenandoahGC
 > JDK12  [wiki: ShenandoahGC](https://wiki.openjdk.java.net/display/shenandoah/Main)

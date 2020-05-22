@@ -35,7 +35,7 @@ categories:
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2020-05-17 16:13_|
+**目录 end**|_2020-05-22 18:43_|
 ****************************************
 
 # Java的性能调优
@@ -121,7 +121,7 @@ categories:
     - `jstat -gcutil -t -h5 7919 1000 50`
 
 ### jinfo 
-> 观察运行中的 java 进程的运行环境参数：参数包括Java System 属性和 JVM 命令行参数
+> 观察运行中的 java 进程的运行环境参数：参数包括 Java System 属性和 JVM 命令行参数
 - Demo:
     - jinfo 14352
     - jinfo -sysprops 14352
