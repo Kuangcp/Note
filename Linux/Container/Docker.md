@@ -16,11 +16,11 @@ categories:
 1. [安装与卸载](#安装与卸载)
     1. [Linux](#linux)
         1. [安装包安装](#安装包安装)
+        1. [不加sudo执行docker命令](#不加sudo执行docker命令)
         1. [Ubuntu](#ubuntu)
         1. [Debian](#debian)
         1. [Centos](#centos)
         1. [Arch](#arch)
-        1. [不加sudo执行docker命令](#不加sudo执行docker命令)
     1. [Windows](#windows)
 1. [基础管理](#基础管理)
     1. [镜像仓库](#镜像仓库)
@@ -53,9 +53,8 @@ categories:
     1. [跨主机容器通信](#跨主机容器通信)
         1. [overlay](#overlay)
 1. [Dockerfile](#dockerfile)
-    1. [dockerignore文件的使用](#dockerignore文件的使用)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-23 17:52_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -103,6 +102,8 @@ categories:
 # 安装与卸载
 > [daocloud安装帮助](http://get.daocloud.io/#install-docker) | [Docker 加速器](http://guide.daocloud.io/dcs/daocloud-9153151.html)
 
+> [中科大Docker仓库镜像源](https://lug.ustc.edu.cn/wiki/mirrors/help/docker)
+
 ## Linux
 > [Official doc](https://docs.docker.com/install/linux/docker-ce/) `所有的发行版`
 
@@ -119,6 +120,13 @@ categories:
     - `这两种方式装的是同一个版本号` 
     - 双击或者`sudo dpkg -i deb文件`
     - 测试安装成功 `sudo docker run hello-world`
+
+### 不加sudo执行docker命令
+> [官方文档](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user)
+
+- 如果没有docker组，添加组 `sudo groupadd docker `
+- 将当前用户加入用户组 `sudo gpasswd -a $USER docker`
+- 然后重新注销登录，或者退出会话重新登录即可
 
 ### Ubuntu
 - [Official: Ubuntu安装最新版](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1)
@@ -145,23 +153,6 @@ categories:
 
 > [使用清华大学镜像源安装](https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/)
 
-> 使用阿里云镜像源
-1. curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/debian/gpg | sudo apt-key add -
-1. sudo add-apt-repository \
-    "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/debian \
-    $(lsb_release -cs) stable"
-
-> 1. 特别注意 `lsb_release -cs` 命令的执行结果, 本应该获取到的是发行代号 jessie stretch 等等, 但是Deepin15.8执行结果是 unstable ...
-> 1. 所以要手动添加 或修改为 jessie `deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/debian jessie stable`
-
-**********************
-
-> 使用官方源
-1. curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-1. sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/debian \
-    $(lsb_release -cs) stable"
-
 ### Centos
 - `sudo yum install docker`
     - Ubuntu的话,Docker没有启动, 只要一执行Docker相关命令就会自动启动, 但是Centos要手动启动
@@ -170,12 +161,7 @@ categories:
 ### Arch
 - `pacman -S docker`
 
-### 不加sudo执行docker命令
-> [官方文档](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user)
-
-- 如果没有docker组，添加组 `sudo groupadd docker `
-- 将当前用户加入用户组 `sudo gpasswd -a $USER docker`
-- 然后重新注销登录，或者退出会话重新登录即可
+************************
 
 ## Windows
 > Windows上本质是用了VirtualBox创建虚拟机来跑Docker, 屎一般的体验, 然而Win10的WSL因为不能模拟aufs 以及 cgroup 所以能装不能用  

@@ -15,7 +15,7 @@ categories:
 1. [安装](#安装)
     1. [多系统安装](#多系统安装)
 
-**目录 end**|_2020-05-17 17:24_|
+**目录 end**|_2020-05-23 17:52_|
 ****************************************
 # Manjaro
 > [Gitlab source code](https://gitlab.manjaro.org/explore/groups)  
@@ -44,6 +44,8 @@ categories:
 > [Installation Guides](https://wiki.manjaro.org/index.php?title=Installation_Guides)
 
 参考 [Using livecd v17.0.1 (and above) as grub to boot OS with broken bootloader](https://forum.manjaro.org/t/using-livecd-v17-0-1-and-above-as-grub-to-boot-os-with-broken-bootloader/24916) 
+
+> [config NVIDIA](https://wiki.manjaro.org/index.php?title=Configure_NVIDIA_(non-free)_settings_and_load_them_on_Startup) `一键安装配置Nvidia显卡驱动`
 
 ## 多系统安装
 例如 Win10(先)和Majaro安装

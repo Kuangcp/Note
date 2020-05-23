@@ -48,7 +48,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2020-05-17 16:07_|
+**目录 end**|_2020-05-23 17:52_|
 ****************************************
 # Linux性能分析和管理
 ## 运行状况信息
@@ -207,7 +207,9 @@ categories:
 ### sar
 > Collect, report, or save system activity information.
 
-> 需要启动 sysstat 服务 才能使用
+**需要启动 sysstat 服务 才能使用**
+
+> [ksar](https://sourceforge.net/projects/ksar/)
 
 - 默认持续执行除非Ctrl C退出,指定参数后就和vmstat一样 `sar 2 3` 
 - 输出到指定文件中: `-o filename` 注意这个不是文本结构,是特殊的结构化方式, 查看需要 `sar -f filename`

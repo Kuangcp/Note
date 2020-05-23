@@ -30,7 +30,7 @@ categories:
         1. [资源管理](#资源管理)
 1. [Tips](#tips)
 
-**目录 end**|_2020-05-16 21:26_|
+**目录 end**|_2020-05-23 17:52_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -139,6 +139,7 @@ categories:
 - dircolors [Linux dircolors命令](http://www.runoob.com/linux/linux-comm-dircolors.html)`用于设置 ls 命令输出时的色彩`
 
 - gtypist 用于练习打字
+- watch 全屏周期执行命令并输出
 
 `xclip`
 > 便捷的文本复制
@@ -213,7 +214,7 @@ categories:
 ### 剪贴板管理
 > [参考: 面向 Linux 的 10 款最佳剪贴板管理器](https://linux.cn/article-7329-1.html)
 
-- CopyQ 比较好用
+- CopyQ，Manjaro额clipman 
 
 > [参考: 这9个Linux命令非常危险 请大家慎用](https://www.jb51.net/LINUXjishu/498660.html)
 
