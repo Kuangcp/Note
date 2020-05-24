@@ -42,7 +42,7 @@ categories:
 
 ## 使用
 
-> [Hexo](/Skills/View/Hexo.md)
+> [Hexo](/FrontEnd/Hexo.md)
 
 
 ### 安装Vue

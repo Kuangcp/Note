@@ -134,6 +134,12 @@ func functionName (param int) int {
 ## 接口
 > [参考:接口的定义和使用](http://www.cnblogs.com/yjf512/archive/2012/06/09/2543628.html)
 
+************************
+
+## Channel 
+> [参考 如何优雅地关闭Go channel](https://www.jianshu.com/p/d24dfbb33781)
+> [Go Channel 详解 ](https://colobu.com/2016/04/14/Golang-Channels/)  
+
 ***************
 
 ## 文件操作

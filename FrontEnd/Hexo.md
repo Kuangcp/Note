@@ -52,7 +52,6 @@ travis 令人发指的缺点是 Git Commit 信息无法自定义
 - URL
     - url: 填写你自己网站的域名
     - root: 如果你的网站首页就在你github仓库的根目录下，则不用修改，否则改成你网站首页所在目录即可。
-    - 后面默认。
 
 - Extensions
     - theme 填写`/themes`文件夹下的`主题文件夹名字` [官方主题](https://hexo.io/themes/)    
