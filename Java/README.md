@@ -26,7 +26,7 @@ categories:
 
 *************************************
 # Java
-[Oracle JavaSE Overview](http://www.oracle.com/technetwork/java/javase/overview/index.html) | [openjdk ](http://openjdk.java.net/)   
+[Oracle JavaSE Overview](http://www.oracle.com/technetwork/java/javase/overview/index.html) | [openjdk ](http://openjdk.java.net/) | [AdoptOpenJDK mirrors](https://mirrors.tuna.tsinghua.edu.cn/AdoptOpenJDK/)   
 
 > [Oracle: java tutorial](https://docs.oracle.com/javase/tutorial/java/) `入门时首先通读一遍`  
 > [java turtorials](https://www.geeksforgeeks.org/java-tutorials/) `能在线运行简易Java代码`

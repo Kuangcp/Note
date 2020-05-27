@@ -208,13 +208,14 @@ categories:
 ### 图片管理
 1. gthumb
 1. Viewnior
+    - 安装 webp-pixbuf-loader 可支持浏览 webp 
 1. webp
 1. ImageMagick
 
 ### 剪贴板管理
 > [参考: 面向 Linux 的 10 款最佳剪贴板管理器](https://linux.cn/article-7329-1.html)
 
-- CopyQ，Manjaro额clipman 
+- CopyQ，Manjaro 的 clipman 
 
 > [参考: 这9个Linux命令非常危险 请大家慎用](https://www.jb51.net/LINUXjishu/498660.html)
 
