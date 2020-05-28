@@ -61,9 +61,9 @@ categories:
     1. [主键约束的修改](#主键约束的修改)
     1. [修改表名](#修改表名)
     1. [定界符](#定界符)
-    1. [已有表数据，新建表](#已有表数据新建表)
     1. [查看所有连接状态](#查看所有连接状态)
     1. [查看表的状态](#查看表的状态)
+    1. [统计数据库各表大小](#统计数据库各表大小)
     1. [关于时间](#关于时间)
         1. [常用函数](#常用函数)
         1. [获取当前时间与i个月之间的天数](#获取当前时间与i个月之间的天数)
@@ -79,7 +79,7 @@ categories:
         1. [授权](#授权)
 1. [查询](#查询)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-28 16:05_|
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -380,18 +380,32 @@ _重命名表格_ `RENAME TABLE old TO new `
 
 ## 主键约束的修改
 alter table 表名  add constraint (PK_表名) primary key (j,k,l); 关于一些约束条件constraint好像没有起到作用比如 check
+
 ## 修改表名
 rename table table1 to table2; 	切记不可随便修改表名，改了就要修改相应的 外键，触发器，函数，存储过程！！！
+
 ## 定界符
 delimiter 任意字符除了转义字符：\
-## 已有表数据，新建表
-create table temp as select * from test;
+
 ## 查看所有连接状态
 show processlist  如果是普通用户，只能查看自己当前的连接状态
-## 查看表的状态
-show table status like 'assitant' 可以看到当前自动增长的id当前值 dev.mysql.com/downloads/mysql/#downloads
 
-*****
+## 查看表的状态
+show table status like 'assitant' 可以看到当前自动增长的id当前值 
+
+## 统计数据库各表大小
+```sql
+    select  table_schema as 'DB',
+    table_name as 'TABLE',
+    table_rows as 'TOTAL',
+    truncate(data_length/1024/1024, 2) as 'Data MiB',
+    truncate(index_length/1024/1024, 2) as 'Index MiB'
+    from information_schema.tables
+    where table_schema='test-db'
+    order by data_length desc, index_length desc;
+```
+************************
+
 ## 关于时间 
 ### 常用函数
 - **NOW()**函数以 'YYYY-MM-DD HH:MM:SS' 返回当前的日期时间，可以直接存到**DATETIME**字段中。
@@ -419,15 +433,14 @@ show table status like 'assitant' 可以看到当前自动增长的id当前值 d
 ```
 ### datetime和timestamp区别
 ```sql
-      -- 问题：为什么 5.5的环境下运行两句命令得到不同的结果（5.6不会有错误）
-      -- 没错误
-      creata table test1(one_time timestamp not null default current_timestamp,two_time timestamp);
-      -- 报错：Incorrect table definition; there can be only one TIMESTAMP column with CURRENT_TIMESTAMP in DEFAULT or ON UPDATE clause
-      create table test2(one_time timestamp,two_time timestamp not null default current_timestamp);
-      或者 将timestamp 改成datetime 也不会有错，那么问题来了 区别是什么？
-      -- 上面报错原因不明，大意是只能有一个timestamp的列有默认值
-      
+    -- 问题：为什么 5.5的环境下运行两句命令得到不同的结果（5.6不会报错）
+    creata table test1(one_time timestamp not null default current_timestamp,two_time timestamp);
+    -- 报错：Incorrect table definition; there can be only one TIMESTAMP column with CURRENT_TIMESTAMP in DEFAULT or ON UPDATE clause
+    create table test2(one_time timestamp,two_time timestamp not null default current_timestamp);
+    或者 将timestamp 改成datetime 也不会有错，那么问题来了 区别是什么？
+    -- 上面报错原因不明，大意是只能有一个timestamp的列有默认值
 ```
+
 **DATETIME、DATE 和 TIMESTAMP 区别：**
 - **DATETIME** 类型可用于需要同时包含日期和时间信息的值。MySQL以'YYYY-MM-DD HH:MM:SS' 格式检索与显示DATETIME类型。
     - 支持的范围是 '1000-01-01 00:00:00' 到 '9999-12-31 23:59:59'。
@@ -437,12 +450,12 @@ show table status like 'assitant' 可以看到当前自动增长的id当前值 d
 - **TIMESTAMP** 列类型提供了一种类型，通过它你可以以当前操作的日期和时间自动地标记 Insert 或Update 操作。
     - 如果一张表中有多个 TIMESTAMP 列，只有第一个被自动更新。
 
->“完整”TIMESTAMP格式是14位，但TIMESTAMP列也可以用更短的显示尺寸创造
+> “完整”TIMESTAMP格式是14位，但TIMESTAMP列也可以用更短的显示尺寸创造
 最常见的显示尺寸是6、8、12、和14。
 你可以在创建表时指定一个任意的显示尺寸，但是定义列长为0或比14大均会被强制定义为列长14
 列长在从1～13范围的奇数值尺寸均被强制为下一个更大的偶数。
 
->列如：
+> 例如：
 定义字段长度 强制字段长度
 ```
 TIMESTAMP(0) -> TIMESTAMP(14)
@@ -450,7 +463,7 @@ TIMESTAMP(15)-> TIMESTAMP(14)
 TIMESTAMP(1) -> TIMESTAMP(2)
 TIMESTAMP(5) -> TIMESTAMP(6)
 ```
->所有的TIMESTAMP列都有同样的存储大小，
+> 所有的TIMESTAMP列都有同样的存储大小，
 使用被指定的时期时间值的完整精度（14位）存储合法的值不考虑显示尺寸。
 不合法的日期，将会被强制为0存储
 

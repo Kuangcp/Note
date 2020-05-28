@@ -38,7 +38,7 @@ categories:
 1. [应用](#应用)
     1. [分布式锁](#分布式锁)
 
-**目录 end**|_2020-04-28 17:51_|
+**目录 end**|_2020-05-28 16:05_|
 ****************************************
 # Redis底层数据结构
 ## SDS
@@ -213,9 +213,14 @@ https://www.cnblogs.com/demingblog/p/10295236.html
 
 # 主从
 
+************************
+
 # 哨兵
 
+************************
+
 # cluster集群
+> [cluster-tutorial](https://redis.io/topics/cluster-tutorial)
 
 # 应用
 ## 分布式锁

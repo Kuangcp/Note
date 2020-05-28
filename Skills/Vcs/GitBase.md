@@ -71,7 +71,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2020-04-28 17:51_|
+**目录 end**|_2020-05-28 16:05_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -727,6 +727,10 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 - 删除远程没有但本地有的那些分支 `git fetch -p`
 
 - `git fetch origin dev-test` 下拉指定远程的指定分支 至 origin/dev-test 但不会创建本地分支
+
+> fetch 不到所有远程分支的原因和解决方案
+- 查看fetch的源 `git config --get remote.origin.fetch`
+- 需要配置为通配方式 `git config --add remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"`
 
 ### pull
 > 不仅仅是 fetch 代码, 还会进行 merge 操作, 所以安全起见, 是先 fetch 然后再手动 merge
