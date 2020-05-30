@@ -25,8 +25,10 @@ categories:
         1. [文件描述符 FD](#文件描述符-fd)
     1. [时间](#时间)
     1. [服务管理](#服务管理)
-        1. [systemd管理服务](#systemd管理服务)
-        1. [自启服务](#自启服务)
+        1. [init进程](#init进程)
+        1. [systemd 方式服务管理](#systemd-方式服务管理)
+        1. [service 方式管理](#service-方式管理)
+        1. [update-rc.d 方式管理](#update-rcd-方式管理)
 1. [硬件信息](#硬件信息)
     1. [内存](#内存)
         1. [虚拟内存](#虚拟内存)
@@ -49,7 +51,7 @@ categories:
     1. [修改主机名](#修改主机名)
     1. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
 
-**目录 end**|_2020-05-28 16:05_|
+**目录 end**|_2020-05-30 10:49_|
 ****************************************
 # Linux系统
 
@@ -202,8 +204,10 @@ categories:
 1. pid_t来表示一个进程的pid，因此能表示的进程的范围一定不会超过pid_t类型的大小
     - 查看 pid 范围 `cat /proc/sys/kernel/pid_max`
 
-> [doc: fork](http://pubs.opengroup.org/onlinepubs/7908799/xsh/fork.html)
-> [fork bomb](https://en.wikipedia.org/wiki/Fork_bomb)
+> [doc: fork](http://pubs.opengroup.org/onlinepubs/7908799/xsh/fork.html)  
+> [wiki: fork bomb](https://en.wikipedia.org/wiki/Fork_bomb)  
+
+> [参考: linux常见进程与内核线程](https://www.cnblogs.com/createyuan/p/3979142.html)`0 1 2 等内核进程`  
 
 ### 孤儿进程和僵死进程
 > [参考: 孤儿进程与僵死进程[总结]](http://www.cnblogs.com/Anker/p/3271773.html)
@@ -262,7 +266,10 @@ categories:
 ************************
 
 ## 服务管理
-### systemd管理服务
+### init进程
+> [参考: 服务相关命令](https://blog.csdn.net/qq_37993487/article/details/79868857)  
+
+### systemd 方式服务管理
 > [Arch Doc: systemd](https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
 - systemctl start/stop/restart/reload/edit serviceName **例如 sshd docker 等服务**
@@ -289,10 +296,13 @@ categories:
 
 ************************
 
-### 自启服务
+### service 方式管理
 > /etc/init.d/ 是服务的存放目录
 
 1. 列出所有服务的状态 `service --status-all`
+1. 启动/关闭服务 `service ssh start/stop`
+
+### update-rc.d 方式管理
 1. 移除MySQL的自启   `sudo update-rc.d -f mysql remove`
 2. 设置MySQL随机启动 `sudo update-rc.d mysql defaults`
 3. 设定MySQL启动顺序 `update-rc.d mysql defaults 90` 数字越小, 启动顺序越前

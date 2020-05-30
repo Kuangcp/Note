@@ -38,7 +38,7 @@ categories:
     1. [fte-terminal](#fte-terminal)
     1. [在线编辑器](#在线编辑器)
 
-**目录 end**|_2020-05-17 16:13_|
+**目录 end**|_2020-05-30 10:49_|
 ****************************************
 # 文本编辑器
 ## Ghex
@@ -85,6 +85,8 @@ _个人配置_
 
 ## Sublime 
 > [常用配置](https://segmentfault.com/a/1190000002596724)
+
+- 直接下载压缩包 `wget https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2`
 
 - 如果出现小bug，就直接删除 ～/.config 下的 sublime文件夹注意注册证书拷出来
 - 中文不兼容解决方法： 3143版本号下：
