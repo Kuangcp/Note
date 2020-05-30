@@ -33,6 +33,7 @@ categories:
         1. [format-patch](#format-patch)
         1. [am](#am)
         1. [tag](#tag)
+        1. [notes](#notes)
         1. [reset](#reset)
             1. [回滚add操作](#回滚add操作)
             1. [回滚最近一次commit](#回滚最近一次commit)
@@ -54,6 +55,7 @@ categories:
         1. [rebase](#rebase)
         1. [cherry-pick](#cherry-pick)
         1. [bisect](#bisect)
+        1. [worktree](#worktree)
     1. [远程操作](#远程操作)
         1. [remote](#remote)
         1. [push](#push)
@@ -71,7 +73,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2020-05-28 16:05_|
+**目录 end**|_2020-05-30 15:48_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -378,6 +380,9 @@ categories:
     - `git push origin -d tag <tagname>` 
     - 如果本地已经删除了标签, 就可以 `git push origin :refs/tags/<tagname>`
 
+### notes
+> [doc](https://git-scm.com/docs/git-notes)
+
 *******************
 
 ### reset
@@ -641,6 +646,9 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 
 - [git bisect 命令教程](http://www.ruanyifeng.com/blog/2018/12/git-bisect.html)
 - [二分查找捉虫记](http://www.worldhello.net/2016/02/29/git-bisect-on-git.html)`通过分析提交历史查到哪次提交引起的Bug然后检出,修复`
+
+### worktree 
+> Manage multiple working trees [doc](https://git-scm.com/docs/git-worktree)
 
 ***************************
 

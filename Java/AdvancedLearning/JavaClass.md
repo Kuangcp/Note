@@ -22,8 +22,9 @@ categories:
     1. [Jad](#jad)
 1. [字节码相关框架](#字节码相关框架)
 1. [热更新](#热更新)
+1. [分析工具](#分析工具)
 
-**目录 end**|_2020-05-17 16:13_|
+**目录 end**|_2020-05-30 15:48_|
 ****************************************
 # 字节码以及类加载
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
@@ -159,3 +160,8 @@ javassist
 
 [game-hot-update](https://github.com/youxijishu/game-hot-update) https://www.cnblogs.com/wgslucky/p/9127681.html
 [groovy hotswap demo](https://github.com/chaopeng/groovy-hotswap-demo)
+
+************************
+
+# 分析工具
+> [github.com/dingjs/javaagent](https://github.com/dingjs/javaagent)  
