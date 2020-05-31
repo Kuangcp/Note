@@ -17,12 +17,12 @@ categories:
     1. [Java10](#java10)
     1. [Java11](#java11)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-31 21:44_|
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)
 
-> [Java语言特性系列](https://segmentfault.com/a/1190000004417288#articleHeader1)
+> [Java语言特性系列 5-最新](https://segmentfault.com/a/1190000004417288)
 
 ## Java5
 泛型 枚举 装箱拆箱 静态导入 foreach

@@ -13,7 +13,7 @@ categories:
         1. [系统休眠](#系统休眠)
     1. [双系统安装](#双系统安装)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-05-31 21:44_|
 ****************************************
 # Deepin
 
@@ -74,8 +74,7 @@ categories:
 1. 大黄蜂方案 采用闭源驱动, 省电
 1. PRIME方案 高性能
 
-但是和我笔记本完美兼容的是 大黄蜂方案, 也就是之前安装的 `nvidia-driver`, `nvidia-setting`, `bumblebee-nvidia` 这一系列包
-PRIME方案切换后差点把内核挂了, 一顿瞎操作把系统救活了
+但是和我笔记本完美兼容的是 大黄蜂方案, 也就是之前安装的 `nvidia-driver`, `nvidia-setting`, `bumblebee-nvidia` 这一系列软件包， PRIME方案切换后差点把内核挂了, U盘进系统切换会原有方案才把系统救活了
 
 > Enable Window effect 失败
 尝试切换显卡驱动方案为闭源驱动, 重启下就挂掉了, [社区相关问题](https://bbs.deepin.org/forum.php?mod=viewthread&tid=159333) 

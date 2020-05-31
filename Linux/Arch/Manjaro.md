@@ -15,7 +15,7 @@ categories:
 1. [安装](#安装)
     1. [多系统安装](#多系统安装)
 
-**目录 end**|_2020-05-23 17:52_|
+**目录 end**|_2020-05-31 21:44_|
 ****************************************
 # Manjaro
 > [Gitlab source code](https://gitlab.manjaro.org/explore/groups)  
@@ -38,7 +38,7 @@ categories:
    - 尝试安装 libgconf libgconf2 ...
    - 其实真正的包是 gconf , 而这个也是尝试过的,  但是还是说找不到package, 更新了下系统,才找到了这个包
 
-- `Linux5 内核和 VirtualBox 有兼容问题`，需要版本匹配，如果内核从4升级到5 VirtualBox要相应更新
+- `VirtualBox 和内核是高度耦合的`，需要内核驱动版本匹配才能正常运行，`yay virtualbox-host-modules` 选择对应内核版本安装即可
 
 # 安装
 > [Installation Guides](https://wiki.manjaro.org/index.php?title=Installation_Guides)

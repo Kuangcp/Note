@@ -34,7 +34,7 @@ categories:
     1. [安全工具](#安全工具)
         1. [gpg](#gpg)
 
-**目录 end**|_2020-05-16 14:22_|
+**目录 end**|_2020-05-31 21:44_|
 ****************************************
 # 软件使用记事
 ## 包管理
@@ -129,7 +129,7 @@ _批量修改_
 1. x/y 得到比例 在 原图中裁剪出同样比例的图片 (Viewnior就很好用)
 1. 将裁剪出来的图片转换指定大小 `convert -resize xXy src.jpg dst.jpg`
 
--  convert origin.jpg target.pdf
+-  转PDF `convert origin1.jpg origin2.jpg target.pdf`
 
 ***********************************************
 
@@ -171,6 +171,7 @@ _批量修改_
 
 1. [百度脑图在线版](https://github.com/fex-team/kityminder)
     - [百度脑图客户端](https://github.com/NaoTu/DesktopNaotu)
+    - vscode-mindmap 百度脑图VSCode插件版
 
 1. [my-mind](https://github.com/ondras/my-mind)`简单轻巧`
 1. FreeMind 

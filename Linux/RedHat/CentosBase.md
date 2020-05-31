@@ -40,6 +40,5 @@ categories:
 ### 新增
 > 和Ubuntu类似, 但是adduser会新建用户并且建立home目录,而且没有废话的交互, ubuntu就有
 
-`adduser kuang` 新增用户和对应目录
-`passwd kuang` 修改密码 , 奇怪的是使用gpasswd就更改成功了用不了
-
+- `adduser kuang` 新增用户和对应目录
+- `passwd kuang` 修改密码 , 奇怪的是使用gpasswd更改成功但是无法登录
