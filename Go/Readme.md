@@ -46,6 +46,8 @@ categories:
 - [build web application with golang](https://www.gitbook.com/book/astaxie/build-web-application-with-golang)  
 - [Go 语言学习资料与社区索引](https://github.com/Unknwon/go-study-index)
 - [Go语言资料收集](https://github.com/wonderfo/wonderfogo/wiki)
+- [go](http://www.runoob.com/go/go-tutorial.html)
+- [在线编译执行 学习go](http://www.vaikan.com/go/a-tour-of-go/#1) `在线编辑运行`
 
 ************************
 

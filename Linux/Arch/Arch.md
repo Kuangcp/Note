@@ -18,7 +18,7 @@ categories:
         1. [Yay](#yay)
 1. [Tips](#tips)
 
-**目录 end**|_2020-05-17 16:13_|
+**目录 end**|_2020-06-03 23:26_|
 ****************************************
 
 # Arch
@@ -34,6 +34,15 @@ categories:
 ### Pacman 
 > [Arch wiki: pacman ](https://wiki.archlinux.org/index.php/Pacman_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E5%88%A0%E9%99%A4%E8%BD%AF%E4%BB%B6%E5%8C%85)  
 > Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的社区驱动软件仓库。Debian/Ubuntu 用户的对应类比是 PPA。
+
+/etc/pacman.conf 追加
+```conf
+    [archlinuxcn]
+    #The Chinese Arch Linux communities packages.
+    SigLevel = Optional TrustAll
+    #Server   = http://repo.archlinuxcn.org/$arch
+    Server   = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+```
 
 1. `pacman-mirrors` generate pacman mirrorlist for Manjaro Linux 
 

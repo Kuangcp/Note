@@ -81,15 +81,10 @@ categories:
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p110.jpg)
 
 - Java平台经典类加载器：
-    - 根（引导）加载器： 通常在VM启动后不久就实例化，作用是加载系统的基础JAR(主要是rt.jar)，并且不做验证工作
-    - 扩展类加载器： 加载安装时自带的标准扩展，一般包括安全性扩展
-    - 应用或系统类加载器： 应用最广泛的类加载器，负责加载应用类，在大多SE环境中主要工作是由他完成
-    - 定制类载器： 为了企业框架定制的加载器
-
-- `BootStrap ClassLoader` (启动类加载器)：一般负责加载系统的核心类，如，`rt.jar` 中的Java类
-- `Extendsion ClassLoader` (扩展类加载器)：用于加载 `%JAVA_HOME%/lib/ext/*.jar` 中的Java类
-- `App ClassLoader` (应用类加载器，系统类加载器)：用于加载用户程序的类
-- `自定义ClassLoader` 加载一些特殊途径的类，一般也是用户类
+    - `BootStrap ClassLoader`  根（引导）加载器： 通常在VM启动后不久就实例化，作用是加载系统的基础JAR(主要是rt.jar)，并且不做验证工作
+    - `Extendsion ClassLoader` 扩展类加载器：加载安装时自带的标准扩展`%JAVA_HOME%/lib/ext/*.jar`，一般包括安全性扩展
+    - `App ClassLoader`  应用或系统类加载器：应用最广泛的类加载器，负责加载应用类，在大多SE环境中主要工作是由他完成
+    - `自定义ClassLoader` 定制类载器： 为了企业框架定制的加载器
 
 ![JavaClassLoader](https://github.com/dragonhht/GitImgs/blob/master/Notes/JavaClassLoader.png?raw=true)
 

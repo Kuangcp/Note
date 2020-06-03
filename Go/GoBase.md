@@ -27,18 +27,19 @@ categories:
     1. [函数](#函数)
         1. [参数](#参数)
         1. [返回值](#返回值)
+        1. [defer](#defer)
     1. [接口](#接口)
+    1. [Channel](#channel)
     1. [文件操作](#文件操作)
     1. [Test](#test)
     1. [JSON](#json)
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-03 23:26_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
-
 
 > [Rethinking Visual Programming with Go](https://divan.dev/posts/visual_programming_go/)
 
@@ -50,6 +51,7 @@ categories:
 
 > 配置国内源
 ```sh
+export GO111MODULE=on
 export GOPROXY=https://mirrors.aliyun.com/goproxy/
 export GOSUMDB=sum.golang.google.cn
 ```
@@ -75,8 +77,7 @@ _有关类型后置_
 strings 包 提供了常用字符串API
 
 ### int
-### int64
-
+> int8 int16 int32 int64 int(位数按操作系统字长而定 32/64)
 ```go
     // string到int
     int,err:=strconv.Atoi(string)

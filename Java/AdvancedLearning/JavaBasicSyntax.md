@@ -106,7 +106,9 @@ categories:
     - .printf() 格式化输出, 和C语法类似
 
 ## Runtime
-> Runtime.getRuntime().addShutdownHook(Thread thread) 
+> 获取操作系统信息，JVM运行时操作
+
+- `Runtime.getRuntime().addShutdownHook(Thread thread)`
 1. 在JVM正常退出时会调用注册的Hook
 1. 例如 System.exit(), 或者 Java 进程收到退出的信号 SIGTERM SIGINT SIGQUIT 等等, 但是暴力退出是不会被调用到Hook的
 
@@ -117,17 +119,17 @@ categories:
 ## 自动拆装箱
 > 在日常Java开发中, 基本数据类型和包装类型是可以视为等价的(唯一差别就是包装类型能表达null), 就是因为自动拆装箱的存在
 
-| 基本数据类型 | 包装类型 |
+| 基本数据类型 | 包装类型
 |:----|:----|
-| byte | Byte |
-| char | Character |
-| boolean | Boolean |
-| short | Short |
-| int | Integer |
-| long | Long |
-| float | Float |
-| double | Double |
-| void | Void |
+| byte    | Byte
+| char    | Character
+| boolean | Boolean
+| short   | Short
+| int     | Integer
+| long    | Long
+| float   | Float
+| double  | Double
+| void    | Void
 
 > 区别
 - 存储方式及位置的不同，基本类型是直接存储变量的值保存在堆栈中能高效的存取，包装类型需要通过引用指向实例，具体的实例保存在堆中。

@@ -194,17 +194,6 @@ Podcast、Reddit 以及TechRadar
 #### Elixir
 > [官网](https://elixir-lang.org/)
 
-### Go
-- [go](http://www.runoob.com/go/go-tutorial.html)
-- [在线编译执行 学习go](http://www.vaikan.com/go/a-tour-of-go/#1) `在线编辑运行`
-
-********************************************
-## Git
-- [廖雪峰学习网站](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
-
-### Github相关
-- [Github-page优秀示例](https://github.com/collections/github-pages-examples)`大厂的网页`
-
 ## 持续集成 
 - [国内一个产品](https://flow.ci/) | [文档](https://github.com/FlowCI/docs/blob/master/intro_base.md)
 

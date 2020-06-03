@@ -24,20 +24,20 @@ categories:
 
 ## 简易Demo
 ```java
-@BenchmarkMode(Mode.Throughput)
-@Warmup(iterations = 5)
-@Measurement(iterations = 10, time = 1)
-@Threads(2)
-@OutputTimeUnit(TimeUnit.MILLISECONDS)
-class Target{
-    @Benchmark
-    public void max(){
+    @BenchmarkMode(Mode.Throughput)
+    @Warmup(iterations = 5)
+    @Measurement(iterations = 10, time = 1)
+    @Threads(2)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+    class Target{
+        @Benchmark
+        public void max(){
 
+        }
     }
-}
 
-// 运行 JMH
-new Runner(new OptionsBuilder().include(Target.class.getSimpleName()).build()).run();
+    // 运行 JMH
+    new Runner(new OptionsBuilder().include(Target.class.getSimpleName()).build()).run();
 ```
 
 ## 最佳实践
