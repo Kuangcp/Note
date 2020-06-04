@@ -50,7 +50,7 @@ categories:
 |:---|:---|:---|:---|
 |`xiki`           | 鼠标和键盘高度交互 <br> 交互性和复杂度比较高 | | |
 |`qterminal`      | 设置设计清晰，功能完备 | 终端内容显示兼容性略有问题 资源消耗中等 | 
-|`xfce4-terminal`  | | | |
+|`xfce4-terminal` | | | |
 |`gnome-terminal` | 简洁 资源消耗少 | 缺 多标签时，标签栏太大,标签页底部有白边 无法透明化 |  鼠标中键无法复制时需安装 `parcellite`|
 |`mate-terminal`  | 标签栏更简洁，其余和 `gnome-terminal` 一致|||
 |`sakura`         | 外观上和前两个几乎一样，标签页可以更简洁 | 配置复杂 繁琐 | |
@@ -98,10 +98,16 @@ categories:
     - *qr --help* 终端内生成二维码
 
 ## 网络工具
+> [参考: Linux查看网络流量](https://tlanyan.me/linux-traffic-commands/)  
+
+iftop
+
+## 进程管理
+Supervisor 进程监控管理
 
 ************************
 
-## 其他工具
+## 零散工具集合
 > 最终都会安装到 /usr/bin/*  目录下
 
 - sudo 是需要安装的
@@ -160,6 +166,9 @@ categories:
 
 `starDict`
 > 终端内字典
+
+`upx`
+> [upx](https://github.com/upx/upx)压缩构建出来的可执行文件
 
 ***********
 

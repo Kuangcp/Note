@@ -54,19 +54,24 @@ categories:
 
 - `Saka Key` 快捷键神器 大幅度脱离鼠标 [官方文档](https://key.saka.io/)
     1. 浏览器默认: 脱离输入框焦点 _Esc_ | 切换标签 _ctrl-Tab_  _shift-ctrl-Tab_ | 关闭标签 _ctrl-w_
-    1. 滑动: 下滑 `d/j` 上滑 `s/k `
+    1. 滑动: 
+        - 下滑 `d/j` 上滑 `s/k `
         - 上下滑半屏幕 `Shift d/s` | 上下滑全屏 `Shift j/k` 
         - 滑到底/顶 `Shift-g` / `gg`
         - 滑左/右 `alt-s or alt-k` / `alt-d or alt-j`
-    1. 缩放: 放大/缩小 `z/shift-z` | 重置大小 `shift-alt-z`
-    1. 前进/后退: `cc/vv` | 跳上级URL `uu` | 跳URL域名 `u shift-u`
-    1. 标签页: 新建 `t` | 恢复关闭 `shift t` | 复制 `b`
+    1. 缩放: 
+        - 放大/缩小 `z/shift-z` | 重置大小 `shift-alt-z`
+    1. 前进/后退: 
+        - `cc/vv` | 跳上级URL `uu` | 跳URL域名 `u shift-u`
+    1. 标签页: 
+        - 新建 `t` | 恢复关闭 `shift t` | 复制 `b`
         - 关闭 `xx` | 关闭其他 `x shift x` | 关闭左边 `x [` | 关闭右边 `x ]`
         - 刷新 `rr` | 刷新全部标签 `r shift r` | 深度刷新 `shift r shift r `
         - 切换: 左右 `q/w` 或者 `[/]` | 第一个/最后一个 `1/0`或者`shift-q`/`shift-w or 0 `
         - 移动: 左右 `i/o` 或者 `shift-[` / `shift-]` 第一个/最后一个 `shift-i/shift-o` 或者 `alt-[/alt-]`
         - 静音: `m` 静音所有标签 `shift-m`
-    1. 窗口: 新建 `n` | 新建隐私 `shift n`
+    1. 窗口: 
+        - 新建 `n` | 新建隐私 `shift n`
     1. 页面上所有页面链接 `ff` _神操作_ [文档](https://key.saka.io/tutorial/clicking_and_link_hints)
     1. 传递快捷键即绕过插件的事件监听 `;` [文档](https://key.saka.io/tutorial/pass_keys)
         - 比如要在网页上敲英文的时候,就需要每次都要输入分号,才能绕过监听, 真是麻烦
@@ -93,6 +98,7 @@ categories:
 1. `ReloadMatic` 定时自动刷新
 1. `轻灵划译` 即刻翻译, 多种平台
 1. `Tab Counter` Tab计数 开发者 WaldiPL
+1. `Elasticvue` Elasticsearch 插件
 
 ### 配置
 > 大多是通过 about:config 页面配置

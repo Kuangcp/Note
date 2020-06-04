@@ -460,6 +460,8 @@ categories:
 
 > Remove untracked files from the working tree `git clean --help`
 
+`-n` 参数预览删除文件列表
+
 ************************
 
 ## 本地分支
