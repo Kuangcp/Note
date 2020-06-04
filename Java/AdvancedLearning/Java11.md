@@ -2,7 +2,6 @@
 title: Java11
 date: 2018-11-21 10:56:52
 tags: 
-    - Java11
     - 基础
 categories: 
     - Java

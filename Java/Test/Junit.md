@@ -3,8 +3,7 @@ title: Junit
 date: 2018-11-21 10:56:52
 tags: 
     - 测试
-    - Junit4
-    - Junit5
+    - Junit
 categories: 
     - Java
 ---
@@ -26,7 +25,7 @@ categories:
 1. [Junit源码解析](#junit源码解析)
 1. [如何使用JUnit5](#如何使用junit5)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-04 19:41_|
 ****************************************
 # 如何使用Junit
 > [Official doc: 4.12](https://github.com/junit-team/junit4/blob/master/doc/ReleaseNotes4.12.md)

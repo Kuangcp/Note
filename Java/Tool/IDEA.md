@@ -2,9 +2,10 @@
 title: IDEA
 date: 2018-11-14 21:29:09
 tags: 
-    - IDE
+    - IDEA
 categories: 
     - Java
+    - IDE
 ---
 
 **目录 start**
@@ -35,7 +36,7 @@ categories:
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
         1. [无法输入中文](#无法输入中文)
 
-**目录 end**|_2020-05-16 21:26_|
+**目录 end**|_2020-06-04 19:41_|
 ****************************************
 
 # IDEA 使用笔记

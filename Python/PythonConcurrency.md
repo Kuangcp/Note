@@ -1,8 +1,8 @@
 ---
-title: PythonConcurrent.md
+title: Python Concurrency
 date: 2018-12-13 16:00:40
 tags: 
-    - Concurrent
+    - Concurrency
 categories: 
     - Python
 ---
@@ -14,7 +14,7 @@ categories:
 
 **目录 end**|_2020-04-27 23:42_|
 ****************************************
-# Concurrent
+# Concurrency
 
 ## GIL 
 > [Python的GIL是什么鬼，多线程性能究竟如何](http://cenalulu.github.io/python/gil-in-python/)`讲解了GIL以及使用其他并发库`

@@ -1,3 +1,17 @@
+---
+title: install manjaro20 with windows10 
+date: 2020-06-04 19:42:04
+tags: 
+categories: 
+    - Blog
+---
+
+**目录 start**
+
+1. [安装Manjaro20](#安装manjaro20)
+
+**目录 end**|_2020-06-04 19:42_|
+****************************************
 # 安装Manjaro20
 
 前提；首先系统已经安装Win10, 固态硬盘
@@ -14,6 +28,7 @@
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2020051717181055.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tjcDYwNg==,size_16,color_FFFFFF,t_70)
 
 ************************
+
 
 - 顺带一提，公司电脑也是主力使用Manajro，某次滚动升级了内核到5.4后，由于没有升级virtualbox的对应包，导致virtualbox一运行就假死，然后尝试了多次后整个系统无任何响应  
 - 然后就强制关机了，没想到这个强制关机引起了BIOS的错误，BIOS莫名其妙被设置成了 legacy  

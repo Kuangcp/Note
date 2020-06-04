@@ -3,6 +3,7 @@ title: Flink-with-batch
 date: 2019-06-17 17:00:27
 tags: 
 categories: 
+    - Blog
 ---
 
 **目录 start**
@@ -17,7 +18,7 @@ categories:
     1. [批处理](#批处理)
         1. [Rest API](#rest-api)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-04 19:41_|
 ****************************************
 # Flink 中的批处理
 

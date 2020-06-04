@@ -5,6 +5,7 @@ tags:
     - Eclipse
 categories: 
     - Java
+    - IDE
 ---
 
 **目录 start**
@@ -14,7 +15,7 @@ categories:
     1. [Eclipse Che](#eclipse-che)
         1. [Install](#install)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-04 19:41_|
 ****************************************
 # Eclipse 
 ## Mars

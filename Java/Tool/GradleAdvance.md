@@ -3,6 +3,7 @@ title: Gradle进阶
 date: 2018-12-11 21:29:29
 tags: 
     - Gradle
+    - Advanced
 categories: 
     - Java
 ---
@@ -35,7 +36,7 @@ categories:
         1. [下载安装和配置](#下载安装和配置)
 1. [发布自己的构件](#发布自己的构件)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-04 19:41_|
 ****************************************
 # Gradle进阶知识
 > [gradle api ](https://docs.gradle.org/4.9/dsl/org.gradle.api.Project.html) `所有{}结构 以及配置`

@@ -2,11 +2,10 @@
 title: Jacoco
 date: 2018-12-17 21:27:14
 tags: 
-    - Blog
-    - 代码覆盖率
-    - 基础
+    - CI
 categories: 
     - Java
+    - Blog
 ---
 **目录 start**
 
@@ -15,7 +14,7 @@ categories:
         1. [Maven插件方式](#maven插件方式)
         1. [Jenkins集成](#jenkins集成)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-04 19:41_|
 ****************************************
 
 # Jacoco
