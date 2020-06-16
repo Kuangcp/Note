@@ -73,7 +73,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2020-05-30 15:48_|
+**目录 end**|_2020-06-16 10:25_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -140,6 +140,12 @@ categories:
 
 > 可用： opendiff kdiff3 tkdiff xxdiff meld kompare gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare smerge vimdiff emerge  
 > [工具 详细](/Linux/Base/LinuxFile.md#比较文件内容)
+
+************************
+
+1. git config pull.rebase false  # merge (the default strategy)
+1. git config pull.rebase true   # rebase
+1. git config pull.ff only       # fast-forward only
 
 ************************
 

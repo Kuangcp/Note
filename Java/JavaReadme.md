@@ -12,7 +12,6 @@ categories:
 1. [计算机基础](#计算机基础)
 1. [Java](#java)
     1. [JDK](#jdk)
-1. [抽象](#抽象)
 1. [相关资源](#相关资源)
 1. [环境配置](#环境配置)
 
@@ -58,8 +57,8 @@ categories:
 >- [Java8](/Java/AdvancedLearning/Java8.md)
 >- [Java11](/Java/AdvancedLearning/Java11.md)
 
-# 抽象
->- [模式之禅](/Java/DesignPattern.md)
+## JavaFX
+> [OpenJFX](https://wiki.openjdk.java.net/display/OpenJFX)
 
 # 相关资源
 > [Java核心知识思维导图](https://gitee.com/gin9/MindMap)  
@@ -91,8 +90,8 @@ categories:
 >- [Java之美 从菜鸟到高手演变 系列](https://blog.csdn.net/zhangerqing/article/details/8245560)
 >- [Java Mission Control](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html)
 
-[jvm-tools](https://github.com/aragozin/jvm-tools)
-
+>- [jvm-tools](https://github.com/aragozin/jvm-tools)
+>- [模式之禅](/Java/DesignPattern.md)
 
 ## Java Programer Suggestion
 

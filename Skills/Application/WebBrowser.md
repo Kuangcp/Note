@@ -22,7 +22,7 @@ categories:
     1. [Vivaldi](#vivaldi)
     1. [Opera](#opera)
 
-**目录 end**|_2020-05-06 21:24_|
+**目录 end**|_2020-06-16 10:25_|
 ****************************************
 # 浏览器
 ## FireFox
@@ -92,7 +92,6 @@ categories:
 1. `Web Developer` 各种Web调试开发工具
 1. `One Tab` tab归组,十分好用
 1. `Remove Cookies Button`
-1. `围脖是个好图床哟` 方便的图床,但是要登录微博
 1. `滴答清单` 全平台可使用
 1. `Auto Reload Tab` 定时自动刷新标签页
 1. `ReloadMatic` 定时自动刷新

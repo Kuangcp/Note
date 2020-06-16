@@ -12,8 +12,9 @@ categories:
     1. [KVM](#kvm)
     1. [XEN](#xen)
     1. [HVM](#hvm)
+    1. [Proxmox](#proxmox)
 
-**目录 end**|_2020-05-04 18:05_|
+**目录 end**|_2020-06-16 10:25_|
 ****************************************
 # 虚拟化技术
 
@@ -29,3 +30,6 @@ categories:
 ## XEN
 
 ## HVM
+
+## Proxmox
+> [Official](https://www.proxmox.com/en/)
