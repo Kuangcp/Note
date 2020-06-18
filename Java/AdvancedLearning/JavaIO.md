@@ -130,10 +130,9 @@ Reader类的核心就是read()这个方法，由于这里直接操作InputStream
 > [Java：利用I/O流读取文件内容](https://blog.csdn.net/xuehyunyu/article/details/77873420)
 
 #### 读取配置文件
-- maven格式路径，会从resources下获取文件例如 /a.xml
-- `InputStream is = this.getClass().getResourceAsStream(path);`
-    - 读取properties文件 ：`new Properties().load(is);`
-    - 按行读取文件 `BufferedReader bf = new BufferedReader(new InputStreamReader(is));`
+- maven项目，从resources下获取文件 例如 /a.xml `InputStream is = this.getClass().getResourceAsStream("/a.xml");`
+    1. 读取properties文件 ：`new Properties().load(is);`
+    1. 按行读取文件 `BufferedReader bf = new BufferedReader(new InputStreamReader(is));`
 
 ************************
 
