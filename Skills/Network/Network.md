@@ -55,7 +55,7 @@ categories:
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2020-04-28 11:04_|
+**目录 end**|_2020-06-19 10:22_|
 ****************************************
 # 网络
 
@@ -418,9 +418,11 @@ function FindProxyForURL(url, host) {
 ### mitmproxy
 > [Official Site](https://mitmproxy.org/) | [Docker Hub](https://hub.docker.com/r/mitmproxy/mitmproxy/)
 
-- 启动 mit-web `docker run --name proxy -d -p 8888:8080 -p 8081:8081 mitmproxy/mitmproxy mitmweb --web-iface 0.0.0.0`
-- 配置证书 访问 [mitm.it](mitm.it) 选择对应的平台即可
-    - 实际上是安装了 mitmproxy-ca-cert.pem 文件 信任了 mitmproxy 这个CA
+- docker 启动 `docker run --name mitmproxy -d -p 8888:8080 -p 8081:8081 mitmproxy/mitmproxy mitmweb --web-host 0.0.0.0`
+    - 5.0 版本之前 使用 `--web-iface 0.0.0.0`
+
+- **配置证书** 访问 [mitm.it](http://mitm.it) 选择对应的平台即可
+    - 实际上是安装了 mitmproxy-ca-cert.pem 文件 进而信任了 mitmproxy 这个CA
 
 > [gomitproxy](https://github.com/zboya/gomitmproxy) `Go 实现`  
 > 简评：过滤和搜索功能强大且支持重放但是用久了占用内存大，因为抓包的数据都在内存里

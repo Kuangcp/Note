@@ -58,7 +58,7 @@ categories:
 >- [Java11](/Java/AdvancedLearning/Java11.md)
 
 ## JavaFX
-> [OpenJFX](https://wiki.openjdk.java.net/display/OpenJFX)
+> [OpenJFX](https://wiki.openjdk.java.net/display/OpenJFX) | [official site](https://openjfx.io)
 
 # 相关资源
 > [Java核心知识思维导图](https://gitee.com/gin9/MindMap)  
