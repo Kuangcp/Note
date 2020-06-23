@@ -17,7 +17,7 @@ categories:
         1. [主题](#主题)
             1. [自己定制](#自己定制)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-24 01:07_|
 ****************************************
 # Zsh
 > [arch zsh wiki](https://wiki.archlinux.org/index.php/Zsh)
@@ -60,14 +60,17 @@ categories:
 
 ### 主题
 > [官网主题列表](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes) 
-- 自带主题:
-    - 个人偏好 amuse clean wedisagree, muse也还好,就是没时间
 
-_额外安装_
+- 自带主题: amuse clean wedisagree, muse也还好,就是没时间
+
 > [额外主题列表](https://github.com/robbyrussell/oh-my-zsh/wiki/External-themes)
 
+- `推荐` powerlevel10k **性能强劲，交互式配置**
+    - [Github](https://github.com/romkatv/powerlevel10k)
+    - install nerd-fonts-meslo-lg 
+
 - powerlevel9k
-    - [官方文档](https://github.com/bhilburn/powerlevel9k/wiki/Install-Instructions#option-2-install-for-oh-my-zsh)
+    - [Github Doc](https://github.com/bhilburn/powerlevel9k/wiki/Install-Instructions#option-2-install-for-oh-my-zsh)
     - `git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k`
     - `powerlevel9k/powerlevel9k`
 
@@ -76,13 +79,13 @@ _额外安装_
     - Source Code Pro for Powerline + Powerline + Awesonme 的 Bold 字体搭配最合适
 
 ```sh
-wget https://raw.githubusercontent.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme -O /home/kcp/.oh-my-zsh/custom/themes
+    wget https://raw.githubusercontent.com/caiogondim/bullet-train.zsh/master/bullet-train.zsh-theme -O /home/kcp/.oh-my-zsh/custom/themes
 
-wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
-wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
-mv PowerlineSymbols.otf ~/.local/share/fonts/
-fc-cache -vf ~/.local/share/fonts/
-mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+    wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+    wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+    mv PowerlineSymbols.otf ~/.local/share/fonts/
+    fc-cache -vf ~/.local/share/fonts/
+    mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 ```
 
 - Maglev `Tmux 主题 和上面的Zsh主题搭配使用`
