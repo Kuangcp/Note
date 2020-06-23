@@ -1,5 +1,5 @@
 ---
-title: Shiro.md
+title: Shiro Sprinboog kotlin
 date: 2019-10-19 17:03:42
 tags: 
 categories: 
@@ -12,7 +12,7 @@ categories:
         1. [使用Java配置](#使用java配置)
         1. [使用注解](#使用注解)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 # Shiro学习
 

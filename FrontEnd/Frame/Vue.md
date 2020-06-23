@@ -1,5 +1,5 @@
 ---
-title: Vue.md
+title: Vue
 date: 2018-11-21 10:56:52
 tags: 
     - Vue
@@ -12,7 +12,7 @@ categories:
 1. [Vue](#vue)
         1. [构建前后端分离的应用](#构建前后端分离的应用)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 # Vue
 > [vue.js guide](https://cn.vuejs.org/v2/guide/) | [iview](https://www.iviewui.com/)

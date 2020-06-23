@@ -27,9 +27,6 @@ categories:
         1. [Python](#python)
         1. [Erlang](#erlang)
             1. [Elixir](#elixir)
-        1. [Go](#go)
-    1. [Git](#git)
-        1. [Github相关](#github相关)
     1. [持续集成](#持续集成)
     1. [前端](#前端)
         1. [素材网](#素材网)
@@ -37,11 +34,9 @@ categories:
     1. [人工智能](#人工智能)
     1. [在线工具](#在线工具)
 1. [工具软件](#工具软件)
-    1. [IDE](#ide)
     1. [VCS](#vcs)
     1. [网络](#网络)
         1. [穿透工具](#穿透工具)
-        1. [抓包工具](#抓包工具)
         1. [Web服务器](#web服务器)
         1. [镜像](#镜像)
     1. [安全](#安全)
@@ -59,7 +54,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2020-05-17 16:13_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 # 常用的网站
 ## 国内镜像源站点
@@ -229,12 +224,6 @@ Podcast、Reddit 以及TechRadar
 > [runnable.com](https://runnable.com)
 - [coder.com](https://coder.com/)`BS模式的 VsCode`
 
-## IDE
-- [IDEA](https://www.jetbrains.com/idea/)
-    - [lanyus](http://blog.lanyus.com/6.html)
-- [Eclipse](http://www.eclipse.org/)
-    - [中科大eclipse镜像源](http://mirrors.ustc.edu.cn/eclipse/technology/epp/downloads/release/)
-
 **************************
 ## VCS
 - [SVN](https://subversion.apache.org/)
@@ -254,12 +243,6 @@ _自建Git服务_
 - [ngrok](https://ngrok.com/)`随机域名到穿透到内网 eg: ngrok http 8080`
 - [frp](https://diannaobos.com/frp/)`自己服务器外网到内网穿透`
     - [下载地址](https://file.diannaobos.com/frp_releases/)[使用帮助](https://diannaobos.com/post/470.html)
-
-### 抓包工具
-- [whistle](https://github.com/avwo/whistle) `nodejs 平台的抓包工具`
-- [fiddler](https://www.telerik.com/fiddler)`windows平台抓包工具`
-- [charles](https://www.charlesproxy.com/)`跨平台收费`
-    - [咳咳](http://charles.iiilab.com/)
 
 ### Web服务器
 - [tomcat](http://tomcat.apache.org/)`Apache基金会`
@@ -294,7 +277,7 @@ _自建Git服务_
 
 yed astah dia 
 
-- VSCode 加 plantUML 
+- VSCode 安装 plantUML 插件
 
 ### Log处理
 > 方便的查看Log文件

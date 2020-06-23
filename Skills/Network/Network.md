@@ -55,7 +55,7 @@ categories:
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2020-06-19 10:22_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 # 网络
 
@@ -399,6 +399,7 @@ function FindProxyForURL(url, host) {
 
 ## 代理工具
 > [Alternatives to Charles for Linux](https://alternativeto.net/software/charles/?platform=linux)
+- [whistle](https://github.com/avwo/whistle) `nodejs 平台的抓包工具`
 
 ### Fiddler 
 > [fiddler](https://www.telerik.com/fiddler)  
@@ -413,7 +414,7 @@ function FindProxyForURL(url, host) {
 - 如果不想每次都看到 修改 `/usr/wireshark/init.lua` 第一行（非注释，有效代码） 改成 `disable_lua = true`
 
 ### Charles
-> [Offcial Site](https://www.charlesproxy.com/)
+> [Offcial Site](https://www.charlesproxy.com/) | [_](http://charles.iiilab.com/)
 
 ### mitmproxy
 > [Official Site](https://mitmproxy.org/) | [Docker Hub](https://hub.docker.com/r/mitmproxy/mitmproxy/)

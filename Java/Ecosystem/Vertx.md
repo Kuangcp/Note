@@ -1,5 +1,5 @@
 ---
-title: Vertx.md
+title: Vertx
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -9,7 +9,7 @@ categories:
 
 1. [Vert.x](#vertx)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 # Vert.x
 

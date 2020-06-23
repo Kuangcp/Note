@@ -25,7 +25,6 @@ categories:
     1. [Android](#android)
     1. [Web](#web)
         1. [前后端综合](#前后端综合)
-    1. [BuildTool](#buildtool)
     1. [Tool](#tool)
 1. [Docker](#docker)
     1. [web](#web)
@@ -43,7 +42,7 @@ categories:
 1. [工作](#工作)
     1. [简历](#简历)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 
 # Git Repository
@@ -162,12 +161,6 @@ categories:
 
 ### 前后端综合
 - [vue vuex Springboot ](https://github.com/xwjie/ElementVueSpringbootCodeTemplate)`代码模板`
-
-*******************
-## BuildTool
-- ant maven gradle
-- [sbt](https://github.com/sbt/sbt)
-
 
 ************************
 ## Tool

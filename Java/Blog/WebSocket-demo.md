@@ -1,5 +1,5 @@
 ---
-title: WebSocket Demo
+title: Java WebSocket Demo
 date: 2019-07-07 11:43:37
 tags: 
     - Websocket
@@ -20,7 +20,7 @@ categories:
         1. [Java](#java)
         1. [JS](#js)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 #  简单 SpringBoot Websocket 示例
 JSR-356

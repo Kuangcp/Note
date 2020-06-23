@@ -1,5 +1,5 @@
 ---
-title: Netty.md
+title: Netty
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -14,7 +14,7 @@ categories:
     1. [原理](#原理)
         1. [源码](#源码)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 # Netty
 > [trustlin](https://github.com/trustin)`Netty Mina 的作者`

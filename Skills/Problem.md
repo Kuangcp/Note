@@ -3,6 +3,7 @@ title: 问题及解决方案
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
+    - WIKI
 ---
 
 **目录 start**
@@ -17,7 +18,7 @@ categories:
     1. [Firefox](#firefox)
         1. [SSL_ERROR_RX_RECORD_TOO_LONG](#ssl_error_rx_record_too_long)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 # 问题及解决方案
 ## Linux 

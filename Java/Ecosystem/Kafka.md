@@ -1,5 +1,5 @@
 ---
-title: Kafaka.md
+title: Kafka
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -7,13 +7,13 @@ categories:
 
 **目录 start**
 
-1. [Kafaka](#kafaka)
+1. [Kafka](#kafka)
     1. [安装](#安装)
         1. [Docker](#docker)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
-# Kafaka
+# Kafka
 > [Official Doc](https://kafka.apache.org/21/documentation.html)  
 
 > [参考: 初探Kafka Streams](http://ifeve.com/%e5%88%9d%e6%8e%a2kafka-streams/)  

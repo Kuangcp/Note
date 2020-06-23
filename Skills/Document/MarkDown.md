@@ -3,7 +3,6 @@ title: MarkDown基本语法
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
-    - 基础知识
 ---
 
 **目录 start**
@@ -22,7 +21,7 @@ categories:
     1. [流程图](#流程图)
     1. [Github](#github)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 # Markdown
 > [Github: markdown](https://guides.github.com/features/mastering-markdown/) 

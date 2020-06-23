@@ -2,7 +2,6 @@
 title: Go基础
 date: 2018-12-14 09:25:49
 tags: 
-    - 基础
     - 函数式编程
 categories: 
     - Go
@@ -16,7 +15,6 @@ categories:
     1. [数据类型](#数据类型)
         1. [string](#string)
         1. [int](#int)
-        1. [int64](#int64)
         1. [Array](#array)
         1. [Slice](#slice)
         1. [Map](#map)
@@ -36,7 +34,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2020-06-03 23:26_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)

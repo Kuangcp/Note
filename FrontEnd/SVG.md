@@ -1,5 +1,5 @@
 ---
-title: SVG.md
+title: SVG
 date: 2018-12-14 09:24:04
 tags: 
     - 基础
@@ -10,7 +10,7 @@ categories:
 **目录 start**
 
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 > [MDN:SVG ](https://developer.mozilla.org/zh-CN/docs/Web/SVG)
 

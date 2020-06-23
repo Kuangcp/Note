@@ -4,14 +4,14 @@ date: 2019-03-17 14:23:29
 tags: 
     - 网络
 categories: 
-    - 计算机科学
+    - 计算机基础
 ---
 
 **目录 start**
 
 1. [HTTP](#http)
     1. [请求方法](#请求方法)
-    1. [HTTP的返回码](#http的返回码)
+    1. [HTTP的状态码](#http的状态码)
     1. [HTTP 缓存](#http-缓存)
     1. [Session和Cookie](#session和cookie)
         1. [SessionId](#sessionid)
@@ -26,7 +26,7 @@ categories:
     1. [HSTS](#hsts)
 1. [CORS](#cors)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 # HTTP
 > HyperText Transfer Protocol 超文本传输协议 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -64,7 +64,7 @@ categories:
 
 - [ ] Header中一些主要属性的含义和使用场景
 
-## HTTP的返回码
+## HTTP的状态码
 > [HTTP 状态码 完整列表](/FrontEnd/ResponseCode.md)
 
 ## HTTP 缓存

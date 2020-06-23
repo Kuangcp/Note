@@ -1,5 +1,5 @@
 ---
-title: ContinuousIntegration.md
+title: ContinuousIntegration
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -17,7 +17,7 @@ categories:
     1. [sonarqube](#sonarqube)
 1. [监控](#监控)
 
-**目录 end**|_2020-05-08 14:28_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 # 持续集成
 > 参考: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  

@@ -1,5 +1,5 @@
 ---
-title: JavaRedis.md
+title: JavaRedis
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -14,7 +14,7 @@ categories:
     1. [Lettuce](#lettuce)
     1. [vertx-redis-client](#vertx-redis-client)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 # Java使用redis
 > [Official List](https://redis.io/clients#java)

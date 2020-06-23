@@ -1,5 +1,5 @@
 ---
-title: ViewSolution.md
+title: ViewSolution
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -14,7 +14,7 @@ categories:
             1. [使用图片还是BASE64](#使用图片还是base64)
     1. [HTML调用exe程序](#html调用exe程序)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-24 02:06_|
 ****************************************
 # 与前端有关的问题
 
