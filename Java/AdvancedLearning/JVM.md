@@ -46,7 +46,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2020-05-22 18:43_|
+**目录 end**|_2020-06-24 16:51_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -175,6 +175,8 @@ NIO 会经常使用, 提高性能
 ************************
 
 # JVM基本参数配置
+> [JDK8 java](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)  
+
 - `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1
 - `-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000`  开启远程调试
     - If you want to debug from start of application use `suspend=y` , this will keep remote application suspended until you connect from eclipse.

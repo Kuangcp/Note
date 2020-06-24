@@ -35,7 +35,7 @@ categories:
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2020-05-22 18:43_|
+**目录 end**|_2020-06-24 16:51_|
 ****************************************
 
 # Java的性能调优
@@ -45,7 +45,8 @@ categories:
 
 - [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`
 
-> [参考: JVM动态反优化](https://blog.mythsman.com/post/5d2c12cc67f841464434a3ec/)  
+> [参考: JVM动态反优化](https://blog.mythsman.com/post/5d2c12cc67f841464434a3ec/)   
+> [General Java Troubleshooting ](https://docs.oracle.com/en/java/javase/11/troubleshoot/general-java-troubleshooting.html)  
 
 ### IDEA参数调优
 ```conf

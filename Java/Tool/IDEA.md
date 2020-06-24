@@ -36,10 +36,12 @@ categories:
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
         1. [无法输入中文](#无法输入中文)
 
-**目录 end**|_2020-06-04 19:41_|
+**目录 end**|_2020-06-24 16:51_|
 ****************************************
 
 # IDEA 使用笔记
+> [Doc](https://www.jetbrains.com/help/idea/getting-started.html)  
+
 > [学生授权申请方式](https://sales.jetbrains.com/hc/zh-cn/articles/207154369) | [click](http://idea.lanyus.com/)
 > [rover12421博客](http://ju.outofmemory.cn/feed/2608/?page=1) | [IDEA主题](http://www.riaway.com/index.php)
 
