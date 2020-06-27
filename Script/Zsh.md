@@ -17,7 +17,7 @@ categories:
         1. [主题](#主题)
             1. [自己定制](#自己定制)
 
-**目录 end**|_2020-06-24 01:07_|
+**目录 end**|_2020-06-28 02:11_|
 ****************************************
 # Zsh
 > [arch zsh wiki](https://wiki.archlinux.org/index.php/Zsh)
@@ -30,14 +30,12 @@ categories:
 
 ## Tips 
 
-
 - 数组使用 `list=(a b c); for i in $list; do echo $i; done`
 
 ************************
 
 ## oh-my-zsh
-> [Github](https://github.com/robbyrussell/oh-my-zsh) | [参考博客进行安装](https://segmentfault.com/a/1190000004695131)
-
+> [Github](https://github.com/robbyrussell/oh-my-zsh)  
 > [关于PS1环境变量的折腾](https://gitee.com/kcp1104/codes/gca14wtqvm67l9j5r0deb56#Zsh.md) `因为含特殊字符GitBook构建通不过,只能放出去了`
 
 1. 安装好 zsh wget git

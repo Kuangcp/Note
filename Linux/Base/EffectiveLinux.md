@@ -15,7 +15,8 @@ categories:
         1. [协作工具](#协作工具)
         1. [目录跳转](#目录跳转)
     1. [网络工具](#网络工具)
-    1. [其他工具](#其他工具)
+    1. [进程管理](#进程管理)
+    1. [零散工具集合](#零散工具集合)
     1. [检测工具](#检测工具)
         1. [硬盘](#硬盘)
             1. [smartmontools](#smartmontools)
@@ -27,10 +28,11 @@ categories:
         1. [图片管理](#图片管理)
         1. [剪贴板管理](#剪贴板管理)
         1. [截图](#截图)
-        1. [资源管理](#资源管理)
+        1. [系统资源监控](#系统资源监控)
+    1. [影音](#影音)
 1. [Tips](#tips)
 
-**目录 end**|_2020-05-23 17:52_|
+**目录 end**|_2020-06-28 02:11_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -235,14 +237,17 @@ Supervisor 进程监控管理
     - Ctrl 鼠标滚动 调整线条粗细
 - deepin-screenshot
 
-### 资源管理
+### 系统资源监控
 > gnome-system-monitor
+
+## 影音
+- [netease-cloud-music-gtk](https://github.com/gmg137/netease-cloud-music-gtk)
 
 ************************
 
 # Tips
 
-> `sudo echo "Text I want to write" > /path/to/file` not work  
+- 问题： `sudo echo "Text I want to write" > /path/to/file` 失败
 
 > [参考: "sudo echo" does not work together in Ubuntu ](https://blogs.oracle.com/joshis/sudo-echo-does-not-work-together-in-ubuntu-another-waste-of-time-issue)
 > [stack over flow](https://stackoverflow.com/questions/84882/sudo-echo-something-etc-privilegedfile-doesnt-work-is-there-an-alterna)
