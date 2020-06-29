@@ -14,13 +14,13 @@
 * [ 正则表达式 ](/Skills/RegularExpression.md)
 * [ 软考相关 ](/Skills/SoftwareDesignEngineer.md)
 * [ 日期与时间 ](/Skills/CS/Time.md)
-*********
+************************
 * [ Git实践细节 ](/Skills/Vcs/GitAction.md)
 * [ Git进阶 ](/Skills/Vcs/GitAdvance.md)
 * [ Git基础 ](/Skills/Vcs/GitBase.md)
 * [ Git协作 ](/Skills/Vcs/GitTeam.md)
 * [ Svn ](/Skills/Vcs/Svn.md)
-********************
+************************
 * [ 编辑器对比 ](/Skills/Application/Editor.md)
 * [ Web浏览器对比 ](/Skills/Application/WebBrowser.md)
 
@@ -70,7 +70,7 @@
 * [ PythonOffices ](/Python/PythonOffices.md)
 * [ PythonWeb ](/Python/PythonWeb.md)
 
-*******************
+************************
 
 # 其他笔记仓库
 - [CS Notes](https://github.com/CyC2018/CS-Notes)`技术面试必备基础知识`
@@ -108,7 +108,7 @@
 > [dragonhht](https://github.com/dragonhht/Note)  
 > [yi-yun](https://github.com/yi-yun/Memo)  
 
-# 工具
-- 统一重建md文件目录工具
-    - [三个文件放在项目根目录下](https://gitee.com/gin9/codes/a1mynf0c7kg5ov2hrswbe48)
-    - sh deal_md.sh -h 即可
+************************
+
+# 辅助工具
+- [md-formatter](https://github.com/Kuangcp/GoBase/tree/master/toolbox/md-formatter) `生成markdown文件目录`

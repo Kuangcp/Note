@@ -2,7 +2,7 @@
 title: Java的JDK以及JRE
 date: 2018-11-21 10:56:52
 tags: 
-    - JDK
+    - JVM
 categories: 
     - Java
 ---
@@ -15,7 +15,7 @@ categories:
     1. [Oracle JRE](#oracle-jre)
 1. [OpenJDK](#openjdk)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-29 19:16_|
 ****************************************
 # JDK And JRE
 

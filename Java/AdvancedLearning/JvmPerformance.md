@@ -2,7 +2,6 @@
 title: Jvm 性能调优
 date: 2018-11-21 10:56:52
 tags: 
-    - JDK
     - JVM
 categories: 
     - Java
@@ -35,7 +34,7 @@ categories:
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2020-06-24 16:51_|
+**目录 end**|_2020-06-29 19:16_|
 ****************************************
 
 # Java的性能调优
