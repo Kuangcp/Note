@@ -13,8 +13,9 @@ categories:
     1. [MySQL](#mysql)
         1. [gorm](#gorm)
         1. [xorm](#xorm)
+    1. [LevelDB](#leveldb)
 
-**目录 end**|_2020-05-01 17:56_|
+**目录 end**|_2020-06-30 19:47_|
 ****************************************
 # Go的数据库操作
 
@@ -23,6 +24,13 @@ categories:
 > [Github: go-redis](https://github.com/go-redis/redis)  
 > [Github: radix](https://github.com/mediocregopher/radix)  
 
+************************
+
 ## MySQL
 ### gorm
 ### xorm
+
+************************
+
+## LevelDB
+> [Github: goleveldb](https://github.com/syndtr/goleveldb)

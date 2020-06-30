@@ -11,7 +11,7 @@ categories:
 
 1. [Linux Command Manual](#linux-command-manual)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-06-30 19:47_|
 ****************************************
 # Linux Command Manual 
 
@@ -19,3 +19,5 @@ categories:
 troff
 
 man 
+
+> [pls](https://github.com/chenjiandongx/pls) `go 实现 终端man中文手册`

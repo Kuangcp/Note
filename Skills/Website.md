@@ -54,7 +54,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2020-06-24 02:06_|
+**目录 end**|_2020-06-30 19:47_|
 ****************************************
 # 常用的网站
 ## 国内镜像源站点
@@ -124,6 +124,7 @@ categories:
 - [daocloud社区](http://open.daocloud.io/)
 - [techug.com](http://www.techug.com)`技术博客`
 - [https://www.yxgapp.com/](https://www.yxgapp.com/)
+- [www.52im.net](http://www.52im.net/)`IM社区`
 
 ## 国外社区
 Podcast、Reddit 以及TechRadar 
