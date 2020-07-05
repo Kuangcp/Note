@@ -22,6 +22,7 @@ categories:
             1. [smartmontools](#smartmontools)
     1. [文本处理](#文本处理)
     1. [文件操作](#文件操作)
+        1. [PDF](#pdf)
     1. [分享](#分享)
         1. [asciinema](#asciinema)
     1. [图形化工具](#图形化工具)
@@ -32,7 +33,7 @@ categories:
     1. [影音](#影音)
 1. [Tips](#tips)
 
-**目录 end**|_2020-06-28 02:11_|
+**目录 end**|_2020-07-05 14:58_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -203,6 +204,16 @@ Supervisor 进程监控管理
 > Portable Document Format (PDF) page merger
 
 - pdfunite 1.pdf 2.pdf merged.pdf
+
+### PDF
+`ghostscript`
+> [ghostscript.com](https://ghostscript.com/)
+> [参考: Ubuntu上压缩PDF文件的方法](https://blog.csdn.net/lx_ros/article/details/79887562)  
+
+`gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dBATCH -dQUIET -sOutputFile=output.pdf input.pdf`
+
+`smallpdf.com`
+> [smallpdf.com](https://smallpdf.com)
 
 ************************
 

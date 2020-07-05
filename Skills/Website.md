@@ -9,7 +9,6 @@ categories:
 
 1. [常用的网站](#常用的网站)
     1. [国内镜像源站点](#国内镜像源站点)
-        1. [镜像站点](#镜像站点)
     1. [特别网站](#特别网站)
     1. [库托管](#库托管)
 1. [社区网站](#社区网站)
@@ -34,16 +33,11 @@ categories:
     1. [人工智能](#人工智能)
     1. [在线工具](#在线工具)
 1. [工具软件](#工具软件)
-    1. [VCS](#vcs)
     1. [网络](#网络)
         1. [穿透工具](#穿透工具)
         1. [Web服务器](#web服务器)
         1. [镜像](#镜像)
-    1. [安全](#安全)
-        1. [授权](#授权)
-        1. [构建工具](#构建工具)
     1. [文档处理](#文档处理)
-        1. [UML](#uml)
         1. [Log处理](#log处理)
     1. [异步](#异步)
     1. [响应式](#响应式)
@@ -54,7 +48,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2020-06-30 19:47_|
+**目录 end**|_2020-07-05 14:58_|
 ****************************************
 # 常用的网站
 ## 国内镜像源站点
@@ -68,11 +62,6 @@ categories:
 - [程序员应该访问的最佳网站中文版](https://github.com/tuteng/Best-websites-a-programmer-should-visit-zh)
 
 - [mycat镜像站](http://dl.mycat.io/)
-
-### 镜像站点
-> Google
-- [3](http://www.kaseng.top/)
-
 
 ******************************
 ## 特别网站
@@ -131,8 +120,9 @@ Podcast、Reddit 以及TechRadar
 - [Hacker News](https://news.ycombinator.com)
 
 ## 娱乐
-- [数字尾巴](http://www.dgtle.com/portal.php) `小清新的数字技术`
+- [数字尾巴](http://www.dgtle.com) `小清新的数字技术`
 - [粤语影院](http://www.yueyuyy.com/)
+- [子米影院](http://zimiyy.com/)
 
 ********************************
 
@@ -225,18 +215,6 @@ Podcast、Reddit 以及TechRadar
 > [runnable.com](https://runnable.com)
 - [coder.com](https://coder.com/)`BS模式的 VsCode`
 
-**************************
-## VCS
-- [SVN](https://subversion.apache.org/)
-    - [submin](https://supermind.nl/submin/)`SVN管理的Web界面`
-- [git](https://git-scm.com/) `最好用的vcs`
-
-_自建Git服务_
-- [gogs](https://github.com/gogits/gogs) `自建git服务器`
-- [gitea](https://github.com/go-gitea/gitea) `gogs加强`
-    - [docker安装](https://docs.gitea.io/zh-cn/install-with-docker/)
-
-
 ***************
 ## 网络
 ### 穿透工具
@@ -253,32 +231,7 @@ _自建Git服务_
 ### 镜像
 > [浙大镜像工具](https://github.com/aploium/zmirror)
 
-## 安全
-### 授权
-- [jwt](https://jwt.io)`JSON WEB TOKEN`
-
-### 构建工具
-- [Maven](http://maven.apache.org/)
-- [service.gradle.org](http://service.gradle.org)`Official download`
-    - [gradle-tomcat-plugin](https://github.com/bmuschko/gradle-tomcat-plugin)`gradle中tomcat插件`
-- [sbt](https://github.com/sbt/sbt)
-
 ## 文档处理
-- [Gitbook](https://github.com/GitbookIO/gitbook)
-    - [gitbook-use](https://github.com/zhangjikai/gitbook-use)`Gitbook的使用`
-- [retext](https://github.com/retext-project/retext)`markdown书写软件`
-- [API文档管理](http://doclever.cn/controller/index/index.html)
-
-### UML
-- [wiki: list of uml tools](https://en.wikipedia.org/wiki/List_of_Unified_Modeling_Language_tools)
-- [免费UML软件统计 博客](http://blog.csdn.net/s464036801/article/details/8469166)
-- [bouml](http://www.bouml.fr/download.html#Debian) `官方网站下载`
-- [argouml](http://argouml.tigris.org/) `argouml官网`
-- [visual paradigm](https://online.visual-paradigm.com)
-
-yed astah dia 
-
-- VSCode 安装 plantUML 插件
 
 ### Log处理
 > 方便的查看Log文件

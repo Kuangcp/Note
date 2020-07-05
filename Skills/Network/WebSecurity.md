@@ -24,7 +24,7 @@ categories:
     1. [CSRF](#csrf)
     1. [XSS](#xss)
 
-**目录 end**|_2020-05-17 16:07_|
+**目录 end**|_2020-07-05 14:58_|
 ****************************************
 
 # 网络安全
@@ -51,6 +51,8 @@ categories:
 ************************
 
 ### JWT
+> [jwt](https://jwt.io)`JSON WEB TOKEN`
+
 > [理解JWT的使用场景和优劣](http://www.qingpingshan.com/rjbc/java/384762.html)
 
 - [Blog:通过使用JWT来防御CSRF](https://segmentfault.com/a/1190000003716037)  

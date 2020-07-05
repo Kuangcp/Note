@@ -9,58 +9,74 @@ categories:
 
 **目录 start**
 
-1. [数据序列化格式](#数据序列化格式)
+1. [配置文件格式](#配置文件格式)
     1. [conf或者ini](#conf或者ini)
-    1. [properties](#properties)
+    1. [Toml](#toml)
+    1. [HOCON](#hocon)
+    1. [Properties](#properties)
         1. [Java中的使用](#java中的使用)
     1. [XML](#xml)
     1. [YAML](#yaml)
         1. [Java中的使用](#java中的使用)
     1. [JSON](#json)
-    1. [BSON](#bson)
-    1. [Smile](#smile)
-        1. [Jackson](#jackson)
+        1. [BSON](#bson)
+        1. [Smile](#smile)
 
-**目录 end**|_2020-06-24 02:06_|
+**目录 end**|_2020-07-05 14:58_|
 ****************************************
-# 数据序列化格式
+# 配置文件格式
 
 ## conf或者ini
+
 ```ini
-[main]
-debug=true
-[client]
-timeOut=10
+    [main]
+    debug=true
+    [client]
+    timeOut=10
 ```
 
-## properties
+************************
+## Toml
+> [Github: toml](https://github.com/toml-lang/toml)
+
+## HOCON
+Human-Optimized Config Object Notation
+
+> [Official Doc](https://docs.spongepowered.org/stable/zh-CN/server/getting-started/configuration/hocon.html)
+
+> Nginx 的配置文件就是使用该格式
+
+************************
+## Properties
 
 ### Java中的使用
 
 通过ResourceBundle获取classPath下的属性文件
 ```java
-ResourceBundle bundle = ResourceBundle.getBundle("test");
-String city = bundle.getString("name");
+    ResourceBundle bundle = ResourceBundle.getBundle("test");
+    String city = bundle.getString("name");
 ```
 
 通过Properties对象获取配置文件
 ```java
-Properties pro = new Properties();
-pro.load(new FileInputStream(new File("./test.properties")));
-String name = (String) pro.get("name");
+    Properties pro = new Properties();
+    pro.load(new FileInputStream(new File("./test.properties")));
+    String name = (String) pro.get("name");
 ```
 
 使用Properties保存配置文件
 ```java
-Properties pro = new Properties();
-pro.setProperty("name", "java");
-pro.setProperty("study", "sdf");
-pro.store(new FileOutputStream(new File("test.properties")), "one file");
+    Properties pro = new Properties();
+    pro.setProperty("name", "java");
+    pro.setProperty("study", "sdf");
+    pro.store(new FileOutputStream(new File("test.properties")), "one file");
 ```
 
+************************
 ## XML
 > 可阅读性强, 结构清晰, 但是太繁杂, 信息承载比重小
 
+************************
 ## YAML
 > yaml is ain't markup language
 
@@ -72,15 +88,14 @@ pro.store(new FileOutputStream(new File("test.properties")), "one file");
 
 - [Jackson操作yaml](https://dzone.com/articles/read-yaml-in-java-with-jackson)
 
+************************
+
 ## JSON
 > [Google 规范](https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md)
 
 > [JSON in Java](https://www.baeldung.com/java-json)  
 
-## BSON
+### BSON
 
-## Smile
+### Smile
 > 二进制的JSON [Wikipedia: Smile](https://en.wikipedia.org/wiki/Smile_%28data_interchange_format%29)
-
-### Jackson
-- [Jackcon 注解的讲解](http://blog.csdn.net/sdyy321/article/details/40298081)
