@@ -2,7 +2,6 @@
 title: Java8
 date: 2018-12-13 16:05:51
 tags: 
-    - 基础
 categories: 
     - Java
 ---
@@ -78,7 +77,7 @@ categories:
     1. [ZonedDateTime](#zoneddatetime)
     1. [Clock](#clock)
 
-**目录 end**|_2020-05-05 00:58_|
+**目录 end**|_2020-07-05 16:28_|
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  

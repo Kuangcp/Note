@@ -2,7 +2,6 @@
 title: Java11
 date: 2018-11-21 10:56:52
 tags: 
-    - 基础
 categories: 
     - Java
 ---
@@ -16,7 +15,7 @@ categories:
         1. [ZGC](#zgc)
         1. [部分API转为内部API](#部分api转为内部api)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-07-05 16:28_|
 ****************************************
 # Java11 
 > [Official: JDK 11 Documentation](https://docs.oracle.com/en/java/javase/11/) | [Official:api](https://docs.oracle.com/en/java/javase/11/docs/api/index.html)

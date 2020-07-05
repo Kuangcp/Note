@@ -33,7 +33,7 @@ categories:
     1. [影音](#影音)
 1. [Tips](#tips)
 
-**目录 end**|_2020-07-05 14:58_|
+**目录 end**|_2020-07-05 16:28_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -200,11 +200,6 @@ Supervisor 进程监控管理
 
 - [参考博客](http://blog.csdn.net/ygm_linux/article/details/32321729)
 
-`pdfunite`
-> Portable Document Format (PDF) page merger
-
-- pdfunite 1.pdf 2.pdf merged.pdf
-
 ### PDF
 `ghostscript`
 > [ghostscript.com](https://ghostscript.com/)
@@ -212,8 +207,20 @@ Supervisor 进程监控管理
 
 `gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dBATCH -dQUIET -sOutputFile=output.pdf input.pdf`
 
-`smallpdf.com`
-> [smallpdf.com](https://smallpdf.com)
+************************
+
+`pdftk`
+> [pdflabs](https://www.pdflabs.com/)
+
+************************
+
+`pdfunite`
+> Portable Document Format (PDF) page merger
+
+- pdfunite 1.pdf 2.pdf merged.pdf
+************************
+
+> [smallpdf.com](https://smallpdf.com) 在线处理
 
 ************************
 
