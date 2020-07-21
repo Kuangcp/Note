@@ -24,7 +24,7 @@ categories:
     1. [保持SSH连接稳定](#保持ssh连接稳定)
 1. [Mosh](#mosh)
 
-**目录 end**|_2020-05-04 18:05_|
+**目录 end**|_2020-07-21 20:07_|
 ****************************************
 # SSH
 > Secure Shell 
@@ -71,7 +71,8 @@ _客户端_
 
 _服务器端_
 - 进入.ssh文件夹下 `sudo vim authorized_keys` 粘贴客户端公钥内容
-- 更改文件权限 `sudo chmod 600 authorized_keys` 确保 其 group和other位没有 w 权限
+- 更改文件权限 `sudo chmod 600 authorized_keys`
+    - 注意 该文件 group 和 other 位不能有 w 权限
 
 ### 使用 ssh-copy-id 脚本
 - 两方安装好软件 客户端生成好了秘钥对之后

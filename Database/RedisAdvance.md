@@ -32,13 +32,13 @@ categories:
         1. [big key](#big-key)
 1. [应用](#应用)
     1. [分布式锁](#分布式锁)
+1. [Tip](#tip)
+    1. [禁用 O(N) 命令](#禁用-on-命令)
 1. [主从](#主从)
 1. [哨兵](#哨兵)
 1. [cluster集群](#cluster集群)
-1. [应用](#应用)
-    1. [分布式锁](#分布式锁)
 
-**目录 end**|_2020-05-28 16:05_|
+**目录 end**|_2020-07-21 20:07_|
 ****************************************
 # Redis底层数据结构
 ## SDS
@@ -211,6 +211,19 @@ https://www.cnblogs.com/demingblog/p/10295236.html
 
 ************************
 
+# Tip
+## 禁用 O(N) 命令
+keys flushdb flushall
+ 
+- List： lindex、lset、linsert
+- Hash： hgetall、hkeys、hvals
+- Set： smembers、sunion、sunionstore、sinter、sinterstore、sdiff、sdiffstore
+- Sorted Set： zrange、zrevrange、zrangebyscore、zrevrangebyscore、zremrangebyrank、zremrangebyscore
+
+在 redis.conf 中通过配置 rename-command 进行禁用
+
+************************
+
 # 主从
 
 ************************
@@ -221,6 +234,3 @@ https://www.cnblogs.com/demingblog/p/10295236.html
 
 # cluster集群
 > [cluster-tutorial](https://redis.io/topics/cluster-tutorial)
-
-# 应用
-## 分布式锁

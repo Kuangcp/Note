@@ -19,7 +19,7 @@ categories:
     1. [IDEA](#idea)
     1. [终端](#终端)
 
-**目录 end**|_2020-05-16 21:26_|
+**目录 end**|_2020-07-21 20:07_|
 ****************************************
 # 字体
 > [Deepin wiki 字体](https://wiki.deepin.org/wiki/%E5%AD%97%E4%BD%93)  
@@ -42,7 +42,7 @@ categories:
 ********************************
 ## 资源
 > Github
-- [IBM字体](https://github.com/IBM/type)`2017年发布的新字体`
+- [IBM字体](https://github.com/IBM/plex)`2017年发布的新字体`
 - [cascadia-code](https://github.com/microsoft/cascadia-code)
 
 - [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)`系列字体图标`
