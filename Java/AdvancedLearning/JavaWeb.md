@@ -32,15 +32,15 @@ categories:
 
 | 对象 | 说明 | 类型 | 作用域 |
 |:----|:----|:----|:----|
-| request     |       请求对象　   |             类型 javax.servlet.ServletRequest    |    作用域 Request
-| response    |      响应对象     |              类型 javax.servlet.SrvletResponse   |    作用域  Page
-| pageContext |   页面上下文对象     |  类型 javax.servlet.jsp.PageContext |     作用域    Page
-| session     |       会话对象    |               类型 javax.servlet.http.HttpSession|       作用域    Session
-| application |      应用程序对象   |       类型 javax.servlet.ServletContext          |作用域    Application
-| out         |          输出对象 |                  类型 javax.servlet.jsp.JspWriter|             作用域    Page
-| config      |        配置对象   |               类型 javax.servlet.ServletConfig   |         作用域    Page
-| page        |       页面对象    |              类型 javax.lang.Object              |              作用域    Page
-| exception   |     例外对象      |           类型 javax.lang.Throwable              |       作用域    page  
+| request     |  请求对象　    |  类型 javax.servlet.ServletRequest    | 作用域   Request
+| response    |  响应对象      |  类型 javax.servlet.SrvletResponse    | 作用域   Page
+| pageContext |  页面上下文对象 |  类型 javax.servlet.jsp.PageContext   | 作用域   Page
+| session     |  会话对象      |  类型 javax.servlet.http.HttpSession  | 作用域   Session
+| application |  应用程序对象   |  类型 javax.servlet.ServletContext    | 作用域   Application
+| out         |  输出对象      |  类型 javax.servlet.jsp.JspWriter     | 作用域   Page
+| config      |  配置对象      |  类型 javax.servlet.ServletConfig     | 作用域   Page
+| page        |  页面对象      |  类型 javax.lang.Object               | 作用域   Page
+| exception   |  例外对象      |  类型 javax.lang.Throwable            | 作用域   page  
 
 #### 四个作用域
 > [参考: JSP的四大作用域](http://www.cnblogs.com/featherfly/p/3513656.html)
@@ -99,23 +99,20 @@ _如何做Etag缓存_
 *  5、Servlet 是单例多线程的
 *  6、**eclipse中将java项目转成web项目**
     *  经常在eclipse中导入web项目时，出现转不了项目类型的问题，导入后就是一个java项目，有过很多次经历，今天也有同事遇到类似问题，就把这个解决方法记下来吧，免得以后再到处去搜索。 
-    **解决步骤**： 
-  
--  1、进入项目目录，可看到.project文件，打开。 
--  2、找到`<natures>...</natures>`代码段。 
--  3、在第2步的代码段中加入如下标签内容并保存： 
- 
-``` xml
-    <nature>org.eclipse.wst.common.project.facet.core.nature</nature>
-    <nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature> 
-    <nature>org.eclipse.jem.workbench.JavaEMFNature</nature> 
+    - **解决步骤**： 
+        -  1、进入项目目录，可看到.project文件，打开。 
+        -  2、找到`<natures>...</natures>`代码段。 
+        -  3、在第2步的代码段中加入如下标签内容并保存： 
+        
+        ``` xml
+            <nature>org.eclipse.wst.common.project.facet.core.nature</nature>
+            <nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature> 
+            <nature>org.eclipse.jem.workbench.JavaEMFNature</nature> 
+        ``` 
+        - 4、在eclipse的项目上点右键，刷新项目。 
+        - 5、在项目上点右键，进入属性（properties） 
+        - 6、在左侧列表项目中点击选择“Project Facets”，在右侧选择“Dynamic Web Module”和"Java"，点击OK保存即可。
 
-``` 
-- 4、在eclipse的项目上点右键，刷新项目。 
-- 5、在项目上点右键，进入属性（properties） 
-- 6、在左侧列表项目中点击选择“Project Facets”，在右侧选择“Dynamic Web Module”和"Java"，点击OK保存即可。
+************************
 
-
-1. RPC RMI
-    - RPC Remote Process Calls 
-    - RMI Remote Method Invocation 
+> [参考: httpclient SocketTimeout ConnectTimeout](https://blog.csdn.net/btlas/article/details/53710854)  

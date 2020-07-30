@@ -484,6 +484,8 @@ categories:
 ### show-branch 
 > 按颜色列出分支上的提交和图示
 
+************************
+
 ### stash
 > [Official Doc](https://git-scm.com/docs/git-stash)  
 
@@ -540,7 +542,6 @@ categories:
 - `git fsck --no-reflog | awk '/dangling commit/ {print $3}'`
 - WIP 开头的就是 stash 对应的 commit , 找到对应的 sha1 id 建立新分支即可
     - 也就是说 stash 仍然是采用 分支 来实现的, 在某个分支stash 就相当于在该分支进行 commit
-    - 所以不是我一开始认为的是游离的数据, gc 会被清理
 
 ************************
 
@@ -561,6 +562,8 @@ categories:
 
 - 设置当前分支跟踪的远程分支 `--set-upstream-to=<remote>/<branch> <branch>`
 
+************************
+
 ### checkout
 > [Official Doc: git checkout](https://git-scm.com/docs/git-checkout)
 
@@ -574,15 +577,15 @@ categories:
     - `gh 文件1 文件2...` 同上, 但是只操作指定的文件
 
 - `gh [commit-hash] 文件1 文件2...` 根据指定的 commit 对应hash值, 作如上操作, 但是区别在于 从 index 直接覆盖掉 stage 区, 并丢弃 work 区
-    - `gh [commit-hash] .` **`如在项目根目录执行该命令, 会将当前项目的所有未提交修改全部丢失, 不可恢复!!!!`**
+    - `gh [commit-hash] .` 
+    - **`如在项目根目录执行该命令, 会将当前项目的所有未提交修改全部丢失, 不可恢复!!!!`**
+    - 所以应尽量使用 stash 命令，即使pop也能恢复
 
 - `git checkout [commit-hash] 节点标识符或者标签 文件名 文件名 ...` 
     - 取出指定节点状态的某文件，而且执行完命令后，取出的那个状态会成为head状态，
     - 需要执行  `git reset HEAD` 来清除这种状态
 
-### switch 
-> switch branch 
-
+> 实验性命令： git switch branch 
 
 ### merge
 - [官方文档](https://git-scm.com/docs/git-merge)
@@ -605,6 +608,8 @@ categories:
 - `git config --global mergetool.prompt false`
 - `git config --global mergetool.kdiff3.trustExitCode true`
 - `git config --global mergetool.keepBackup false`
+
+************************
 
 ### rebase
 > [Official Doc](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) 
@@ -637,6 +642,8 @@ master: a - b - c - d' - e'
 
 merge 会保留分支图, rebase 会保持提交记录为单分支
 
+************************
+
 ### cherry-pick
 > [Official Doc](https://git-scm.com/docs/git-cherry-pick)
 
@@ -662,32 +669,27 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 
 ## 远程操作
 
-> 大部分命令都是本地的, 所以执行效率很高, 但是协同开发肯定需要有同步的操作了
+> Git大部分命令都是本地的, 所以执行效率很高, 但是协同开发必须有同步的操作
 
-> 其实单独的两个主机也能完成同步, 两个IP之间要使用同一个仓库进行开发  
-> 两个人互为对方的远程库(使用 git daemon 即可搭建简易服务端), 互为服务器即可完成(即使使用的是动态IP, 应该也不会受太大影响???)
+其实单独的两个主机也能完成同步, 两个主机之间 使用同一个仓库进行开发  
+两个人互为对方的远程库(使用 git daemon 即可搭建简易服务端), 添加为 remote 即可操作
 
-- 指定本地开发分支和远程的绑定关系 `git branch --set-upstream dev origin/dev` 而且 一个本地库是能够绑定多个远程的
+指定本地开发分支和远程的绑定关系 `git branch --set-upstream dev origin/dev` 而且 一个本地库是能够绑定多个远程的
 
-*****************
-
-> Github上的fork
+> Github上fork的项目
 
 **合并对方最新代码**
-> 1. 首先fork一个项目, 然后clone自己所属的该项目下来,假设 原作者为A 自己为B  
-> 1. 添加原作者项目的URL 到该项目的远程分支列表中 `git add remote A A_URL`  
-> 1. fetch作者的代码到本地 `git fetch A`  
-> 1. 新建本地分支, 并与A的远程分支绑定 `git branch A A/master` 
-> 1. 合并两个分支代码 `git merge --no-ff A/master`  
-> 1. push即可  
-
-************************
+1. 首先fork一个项目, 然后clone自己所属的该项目下来,假设 原作者为A 自己为B
+1. 添加原作者项目的URL 到该项目的远程分支列表中 `git add remote A A_URL`
+1. fetch作者的代码到本地 `git fetch A`
+1. 在B分支上合并作者分支代码 `git merge --no-ff A/master`
+1. push即可
 
 > Github上PR  
 
 [Using git to prepare your PR to have a clean history](https://github.com/mockito/mockito/wiki/Using-git-to-prepare-your-PR-to-have-a-clean-history)
 
-********************
+************************
 
 ### remote
 > [Official Doc](https://git-scm.com/docs/git-remote)
@@ -703,6 +705,8 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 1. 查看关联远程仓库的详情(push和pull的地址) `git remote -v` 
 
 - [参考: 删除，重命名远程分支](http://zengrong.net/post/1746.htm)
+
+************************
 
 ### push
 - _常用参数_
@@ -727,6 +731,8 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 - 出现 `RPC failed; result=22, HTTP code = 411` 的错误
     - 就是因为一次提交的文件太大，需要改大缓冲区 例如改成500m  `git config http.postBuffer 524288000`
 
+************************
+
 ### fetch
 > 访问远程仓库, 拉取本地没有的远程数据 
 
@@ -747,6 +753,8 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 > fetch 不到所有远程分支的原因和解决方案
 - 查看fetch的源 `git config --get remote.origin.fetch`
 - 需要配置为通配方式 `git config --add remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"`
+
+************************
 
 ### pull
 > 不仅仅是 fetch 代码, 还会进行 merge 操作, 所以安全起见, 是先 fetch 然后再手动 merge
@@ -825,6 +833,8 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
     a.[abc] #忽略 后缀为 a或者b或者c 的文件
     doc/*.txt #忽略 doc一级子目录的txt文件, 不忽略多级子目录中txt
 ```
+
+************************
 
 ## gitattributes
 > [gitattributes](http://schacon.github.io/git/gitattributes.html)
