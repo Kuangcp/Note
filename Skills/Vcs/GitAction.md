@@ -252,6 +252,7 @@ categories:
     - `git ls-files | xargs cat | wc -l` 计算行数总和
 
 - [API: github开发接口](https://developer.github.com/v3/)
+- [Github: Search 技巧](https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github)
 
 ### 清理仓库大文件
 - [official:7.6 Git 工具 - 重写历史](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2)
