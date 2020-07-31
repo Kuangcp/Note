@@ -30,7 +30,7 @@ categories:
         1. [CRLF与LF](#crlf与lf)
         1. [仓库统计](#仓库统计)
 
-**目录 end**|_2020-04-28 11:04_|
+**目录 end**|_2020-07-31 14:30_|
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -223,7 +223,7 @@ categories:
     Include conf/extra...
 ```
 - 因为是自己建立的SSL证书 所以要去掉SSL验证 `git -c http.sslVerify=false clone URL `
-- 或者直接改配置文件，省的每次输这么多 `git config http.sslVerify false`
+- 或者写入配置文件 `git config http.sslVerify false`
 
 #### 使用SSH登录GitServer
 
