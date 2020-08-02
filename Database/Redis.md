@@ -44,7 +44,7 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2020-05-30 10:49_|
+**目录 end**|_2020-08-03 01:00_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -323,6 +323,11 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 > [官方收录 客户端](https://redis.io/clients) | [alternativeto 列表](https://alternativeto.net/software/redily/)
 
 > [Redis Desktop Manager](https://github.com/uglide/RedisDesktopManager/)  
+> [Another Redis DeskTop Manager](https://gitee.com/qishibo/AnotherRedisDesktopManager)
+> [RedisInsight](https://docs.redislabs.com/)
+
+************************
+
 > [FastoRedis](https://fastoredis.com/)  
 > [Redis Plus](https://gitee.com/MaxBill/RedisPlus)  
 > Redily  

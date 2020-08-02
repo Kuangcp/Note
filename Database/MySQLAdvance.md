@@ -20,7 +20,7 @@ categories:
 1. [Tips](#tips)
     1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-08-03 01:00_|
 ****************************************
 # MySQL进阶
 
@@ -64,6 +64,10 @@ categories:
 > 5.6及以上版本时间类型效率 int > datetime > timestamp
 
 > limit 做分页时 记录上次分页最后一条记录的id使用上where进行过滤 提高性能, 前提id是int自增的
+
+explain 
+
+show profile
 
 ### 查看状态变量
 > [ SHOW VARIABLES](https://dev.mysql.com/doc/refman/5.7/en/show-variables.html)  
