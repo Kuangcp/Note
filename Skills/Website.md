@@ -114,6 +114,7 @@ categories:
 - [techug.com](http://www.techug.com)`技术博客`
 - [https://www.yxgapp.com/](https://www.yxgapp.com/)
 - [www.52im.net](http://www.52im.net/)`IM社区`
+- [freebuf](https://www.freebuf.com/)`安全`
 
 ## 国外社区
 Podcast、Reddit 以及TechRadar 

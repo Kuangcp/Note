@@ -112,6 +112,7 @@ categories:
 *************************************************
 ## DDD 领域驱动设计
 > [领域驱动设计(DDD:Domain-Driven Design)](http://www.jdon.com/ddd.html)`入门贴`
+> [领域驱动设计：软件核心复杂性应对之道](https://github.com/gdut-yy/Domain-Driven-Design-zh)  
 
 > [领域驱动设计 软件核心复杂性应对之道 Eric J. Evans 在线阅读](http://ishare.iask.sina.com.cn/f/69200951.html)
 > [领域驱动设计精简版 ](http://www.infoq.com/cn/minibooks/domain-driven-design-quickly)

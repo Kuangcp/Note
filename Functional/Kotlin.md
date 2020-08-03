@@ -19,6 +19,8 @@ categories:
 > [Kotlin官网](https://kotlinlang.org/)
 > 一个能够跨越多个平台和领域的语言 
 
+> [mirai](https://github.com/mamoe/mirai)`Kotlin写的QQ客户端`
+
 ## 教程资源
 - [Kotlin For Android](https://github.com/wangjiegulu/kotlin-for-android-developers-zh)`中文教程`
 - [EasyKotlin组织](https://github.com/EasyKotlin)
