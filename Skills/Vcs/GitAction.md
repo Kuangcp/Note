@@ -14,6 +14,7 @@ categories:
         1. [windows](#windows)
         1. [GUI](#gui)
     1. [配置记住密码](#配置记住密码)
+    1. [配置GPG签名](#配置gpg签名)
     1. [简单使用](#简单使用)
         1. [配置GPG](#配置gpg)
         1. [码云](#码云)
@@ -30,7 +31,7 @@ categories:
         1. [CRLF与LF](#crlf与lf)
         1. [仓库统计](#仓库统计)
 
-**目录 end**|_2020-07-31 14:30_|
+**目录 end**|_2020-08-03 17:06_|
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -86,7 +87,14 @@ categories:
     - `ssh-keygen` 不设置密码
     - `cat ~/.ssh/id_rsa.pub | xclip -sel clip`  添加即可
 
-**************
+## 配置GPG签名
+> [Github Doc](https://docs.github.com/en/github/authenticating-to-github/managing-commit-signature-verification)
+
+- [Git error - gpg failed to sign data](https://stackoverflow.com/questions/41052538/git-error-gpg-failed-to-sign-data)
+    - `git config --global user.signingkey 指纹`
+
+************************
+
 ## 简单使用
 
 *Github下拉到eclipse*
