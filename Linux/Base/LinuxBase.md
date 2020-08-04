@@ -50,8 +50,9 @@ categories:
     1. [让命令在后台运行](#让命令在后台运行)
     1. [修改主机名](#修改主机名)
     1. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
+    1. [熵池](#熵池)
 
-**目录 end**|_2020-05-30 10:49_|
+**目录 end**|_2020-08-04 18:36_|
 ****************************************
 # Linux系统
 
@@ -499,4 +500,18 @@ _系统运行级别_
 ************************
 ## 文件类型默认打开方式 MIME
 > xdg-open 命令
+
+************************
+## 熵池
+> [参考: Linux下熵池大小导致的一些问题](https://blog.csdn.net/chinoukin/article/details/102566755)  
+
+机器的环境中充满了各种各样的噪声，如硬件设备发生中断的时间，用户点击鼠标的时间间隔等是完全随机的，事先无法预测，以此作为熵池来源。
+
+查看当前熵池大小  cat /proc/sys/kernel/random/entropy_avail
+熵池最大值 cat /proc/sys/kernel/random/poolsize
+
+当熵池不够时，会导致 gpg tomcat 等应用出现阻塞
+
+可使用 [rng-tools](https://wiki.archlinux.org/index.php/Rng-tools)进行补充熵池
+- [ ] 但是 rng 项目的实现原理呢 
 
