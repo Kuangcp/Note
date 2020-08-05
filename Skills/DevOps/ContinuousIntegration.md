@@ -66,6 +66,3 @@ categories:
 1. `docker run -d --name sonarqube -p 9000:9000  sonarqube:8-community`
 1. [maven集成](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
 1. Maven会输出当前分析项目的结果URL
-
-# 监控
-> [cat](https://github.com/dianping/cat)

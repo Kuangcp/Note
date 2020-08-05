@@ -228,6 +228,16 @@ func (*GenerateGrid) ReadConfig() []GridConfig {
 }
 
 ```
+
+> 忽略空字段
+
+1. 字段是指针类型 且注明 omitempty
+```go
+Msg struct{
+ Text     *Content `json:"text,omitempty"`
+}
+```
+
 # Tips
 ## 通过字符串调用指定函数
 > [参考: Go 根据字符串调用指定函数](https://blog.csdn.net/HOOKTTG/article/details/52184500)

@@ -512,6 +512,6 @@ _系统运行级别_
 
 当熵池不够时，会导致 gpg tomcat 等应用出现阻塞
 
-可使用 [rng-tools](https://wiki.archlinux.org/index.php/Rng-tools)进行补充熵池
+可使用 [rng-tools](https://wiki.archlinux.org/index.php/Rng-tools) [Github](https://github.com/nhorman/rng-tools)进行补充熵池
 - [ ] 但是 rng 项目的实现原理呢 
 
