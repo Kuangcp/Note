@@ -55,7 +55,7 @@ categories:
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2020-06-24 02:09_|
+**目录 end**|_2020-08-18 17:49_|
 ****************************************
 # 网络
 
@@ -234,7 +234,8 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 
 ### TCP UDP 对比
 > [参考: TCP和UDP的最完整的区别](https://blog.csdn.net/li_ning_/article/details/52117463)  
-> [参考: TCP和UDP的区别和优缺点](https://blog.csdn.net/xiaobangkuaipao/article/details/76793702)
+> [参考: TCP和UDP的区别和优缺点](https://blog.csdn.net/xiaobangkuaipao/article/details/76793702)  
+> [参考: TCP、UDP数据包大小的限制](https://blog.csdn.net/caoshangpa/article/details/51530685)  
 
 - 可使用 wireshark 抓包对比的方式进行学习: 基于udp(默认)的dns方式，对比 基于tcp的dns方式 更直观看出 tcp 三次握手 四次挥手 -- 《Wireshark 网络分析就这么简单》
 
@@ -243,6 +244,8 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
   1. TCP要求系统资源较多，UDP较少； 
   1. UDP程序结构较简单 
   1. 流模式（TCP）与数据报模式(UDP); 
+    - 开发者在使用TCP服务的时候，不必去关心数据包的大小，只需将SOCKET看作一条数据流的入口，直接传入数据，TCP协议本身会进行拥塞/流量控制
+    - [ ] UDP 包大小
   1. TCP保证数据正确性，UDP可能丢包 
   1. TCP保证数据顺序，UDP不保证 
 　　

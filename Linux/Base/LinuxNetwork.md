@@ -52,7 +52,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2020-05-22 18:43_|
+**目录 end**|_2020-08-18 17:49_|
 ****************************************
 # Linux网络管理
 ## DNS
@@ -175,15 +175,15 @@ categories:
 ### iproute2
 > 代替 netstat 的强大工具
 
-|   用途        | net-tool |     iproute2     |
-| :-----       | :------  | :-------------- |
+|   用途       | net-tool |     iproute2     |
+| :-----      | :------  | :--------------  |
 | 地址和链路配置 | ifconfig | ip addr, ip link |
-|   路由表      |  route   |     ip route     |
+|   路由表     |  route   |     ip route     |
 |  ARP表       |   arp    |     ip neigh     |
-|  VLAN        | vconfig  |     ip link      |
-|   隧道       | iptunnel  |    ip tunnel     |
-|   组播       | ipmaddr   |     ip maddr     |
-|   统计       | netstat   |        ss        |
+|  VLAN       | vconfig  |     ip link      |
+|   隧道       | iptunnel  |    ip tunnel    |
+|   组播       | ipmaddr   |     ip maddr    |
+|   统计       | netstat   |        ss       |
 
 `net-tools 和 iproute 对应关系`
 
