@@ -37,9 +37,9 @@ categories:
 | 事务隔离级别 | 脏读 | 不可重复读 | 幻读
 |:---|:---:|:---:|:---:|
 | 读未提交（read-uncommitted） | 会 | 会 | 会
-| 提交读（read-committed） | \ | 会 | 会
-| 可重复读（repeatable-read）  | \ | \ | 会
-| 串行化（serializable） 	   | \ | \ | \ 
+| 提交读（read-committed）     |   | 会  | 会
+| 可重复读（repeatable-read）  |   |     | 会
+| 串行化（serializable） 	   |   |     | 
 
 ### 事务死锁
 
@@ -84,6 +84,8 @@ show profile
 
 # Tips
 - 将需要执行的SQL写入文件 并将结果输出到文件 `mysql -u root -h 192.168.10.201 -p123 < query.sql  > result.log`
+- [参考: 自增主键不连续的几种情况](https://cloud.tencent.com/developer/article/1634218)  
+    - 事务回滚，插入语句报错，MySQL自增锁优化
 
 ## SQL 片段
 
