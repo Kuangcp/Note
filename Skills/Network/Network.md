@@ -41,6 +41,9 @@ categories:
     1. [组播](#组播)
     1. [广播](#广播)
 1. [代理 Proxy](#代理-proxy)
+    1. [代理协议](#代理协议)
+        1. [HTTP代理](#http代理)
+        1. [SOCKS](#socks)
     1. [PAC](#pac)
     1. [正向代理](#正向代理)
     1. [反向代理](#反向代理)
@@ -55,7 +58,7 @@ categories:
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2020-08-18 17:49_|
+**目录 end**|_2020-08-20 13:49_|
 ****************************************
 # 网络
 
@@ -372,6 +375,14 @@ Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开�
 # 代理 Proxy
 > [wikipedia](https://en.wikipedia.org/wiki/Proxy) 
 
+## 代理协议
+### HTTP代理
+
+例如 mitmproxy 
+
+### SOCKS
+由于SOCKS作用在会话层上，因此它是一个提供会话层到会话层间安全服务的方案，不受高层应用程序变更的影响。  
+Socks代理只是简单地传递数据包，而不必关心是何种应用协议(比如FTP、HTTP和NNTP请求)，所以Socks代理服务器比应用层代理服务器要快。
 
 ## PAC
 > proxy auto config 
@@ -424,7 +435,7 @@ function FindProxyForURL(url, host) {
 > [Offcial Site](https://www.charlesproxy.com/) | [_](http://charles.iiilab.com/)
 
 ### mitmproxy
-> [Official Site](https://mitmproxy.org/) | [Docker Hub](https://hub.docker.com/r/mitmproxy/mitmproxy/)
+> [Official Site](https://mitmproxy.org/) | [Docker Hub](https://hub.docker.com/r/mitmproxy/mitmproxy/) | [Github](https://github.com/mitmproxy/mitmproxy)
 
 - docker 启动 `docker run --name mitmproxy -d -p 8888:8080 -p 8081:8081 mitmproxy/mitmproxy mitmweb --web-host 0.0.0.0`
     - 5.0 版本之前 使用 `--web-iface 0.0.0.0`
