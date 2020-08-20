@@ -26,8 +26,8 @@ categories:
     1. [镜像仓库](#镜像仓库)
         1. [搭建本地镜像仓库](#搭建本地镜像仓库)
     1. [基础命令](#基础命令)
-    1. [镜像命令](#镜像命令)
-    1. [容器命令](#容器命令)
+    1. [镜像](#镜像)
+    1. [容器](#容器)
         1. [ps](#ps)
         1. [create](#create)
         1. [run](#run)
@@ -54,7 +54,7 @@ categories:
         1. [overlay](#overlay)
 1. [Dockerfile](#dockerfile)
 
-**目录 end**|_2020-05-23 17:52_|
+**目录 end**|_2020-08-20 10:19_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -259,7 +259,7 @@ _登录镜像仓库_
 - 登录时速云：`sudo docker login index.tenxcloud.com`
 - 登录百度云： `docker login --username=[username] hub.baidubce.com`
 
-## 镜像命令
+## 镜像
 - 查看所有 ： `docker images`
     - docker images -a 查看所有镜像(包括中间镜像)
 - 搜索 ： `docker search 镜像名`
@@ -274,7 +274,7 @@ _登录镜像仓库_
 
 ************************
 
-## 容器命令
+## 容器
 - 查看所有容器的状态：`docker stats` 能看到正在运行的容器内存 cpu io net等信息
     - `-a` 所有容器
     - `--no-stream` 不阻塞标准输出流，只输出一次信息
@@ -299,6 +299,23 @@ _登录镜像仓库_
     - -c | --change=[] 选项在导入的同时执行对容器就行修改的Dockerfile指令。
 
 > [Attach a volume to a container while it is running](http://jpetazzo.github.io/2015/01/13/docker-mount-dynamic-volumes/)
+
+> 修改端口映射
+
+- 停止容器和Docker服务
+- cd /var/lib/docker/containers/{id} 
+- 修改 hostconfig.json 
+    - `PortBindings` 节点 新增或修改
+    ```json
+    "PortBindings":{"3306/tcp":[{"HostIp":"","HostPort":"3360"}]}
+    ```
+- config.v2.json
+    - `NetworkSettings.Ports` 节点下 新增或修改
+    ```json
+    "Ports":{"8080/tcp":[{"HostIp":"0.0.0.0","HostPort":"8888"}],"8081/tcp":[{"HostIp":"0.0.0.0","HostPort":"8881"}]}
+    ```
+
+************************
 
 ### ps
 - 查看当前运行的容器：`docker ps `
