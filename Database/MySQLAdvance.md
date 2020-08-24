@@ -29,17 +29,40 @@ categories:
 > [参考: shell 下执行mysql 命令](http://www.cnblogs.com/wangkangluo1/archive/2012/04/27/2472898.html)
 
 > [参考: 轻松理解MYSQL MVCC 实现机制](https://blog.csdn.net/whoamiyang/article/details/51901888#commentBox)  
+## 锁
+### Innodb
+> [InnoDB Locking](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
 
 ## 事务
+- 查看当前会话隔离级别 select @@tx_isolation;
+- 查看系统当前隔离级别 select @@global.tx_isolation;
+- 设置当前会话隔离级别 SET TRANSACTION ISOLATION LEVEL repeatable read;
+- 设置系统当前隔离级别 set global transaction isolation level repeatable read;
+
+[Doc 隔离级别](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html)
+
+### 幻读
+> [Phantom Rows](https://dev.mysql.com/doc/refman/8.0/en/innodb-next-key-locking.html)
+
 ### 事务隔离级别
 > [参考: MySQL的四种事务隔离级别](https://www.cnblogs.com/huanongying/p/7021555.html)  
 
 | 事务隔离级别 | 脏读 | 不可重复读 | 幻读
 |:---|:---:|:---:|:---:|
-| 读未提交（read-uncommitted） | 会 | 会 | 会
-| 提交读（read-committed）     |   | 会  | 会
-| 可重复读（repeatable-read）  |   |     | 会
-| 串行化（serializable） 	   |   |     | 
+| 读未提交（read-uncommitted）    | 会 | 会 | 会
+| 提交读（read-committed）        |   | 会 | 会
+| 可重复读（repeatable-read）     |   |    | 会
+| 串行化（serializable） 	      |   |    | 
+
+************************
+
+- InnoDB 默认隔离级别为 可重复读
+
+- InnoDB和Falcon存储引擎通过多版本并发控制(MVCC，Multiversion Concurrency Control)机制(快照读)解决了 可重复读的 幻读问题
+    - 但是某种特殊场景下，幻读还是存在: 
+    1. 当 事务T1, 对事务T2已提交数据A进行了修改，此时数据A 的 trx_id隐藏列就变成了T1事务id
+        - 此时 事务 T1 就能查出此条数据
+    1. 事务T1 准备提交id为10的一条数据，但是发现报错，因为别的事务已经提交了这条数据
 
 ### 事务死锁
 

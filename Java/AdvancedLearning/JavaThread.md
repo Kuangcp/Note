@@ -36,7 +36,7 @@ categories:
 
 
 ### 创建
-- 创建线程有三种创建方式： 继承，实现接口，实例化匿名内部方法。-> [示例代码](https://github.com/Kuangcp/JavaBase/blob/master/src/main/java/com/threads/HowToCreateThread.java)
+- 创建线程有三种创建方式： 继承，实现接口，实例化匿名内部方法。-> [示例代码](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/main/java/thread/HowToCreateThread.java)
 
 > 查看Thread类源码 看看Thread类源码，捋清Runnable，target,run,start关系
 - Runnable是一个接口

@@ -427,6 +427,12 @@ public int current(){
 
 ## 线程池
 
+> 依赖 common-lang3, 快速创建命名策略的线程池
+```java
+new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
+        new LinkedBlockingQueue<>(), new BasicThreadFactory.Builder().namingPattern("yunxin-%d").build());
+```
+
 ### ScheduledThreadPoolExecutor
 > ScheduledThreadPoolExecutor  简称 STPE 线程池类中很重要的类
 
