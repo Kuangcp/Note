@@ -19,7 +19,7 @@ categories:
         1. [2 Spring AOP中使用@AspectJ还是XML？](#2-spring-aop中使用@aspectj还是xml)
         1. [3 混合切面类型](#3-混合切面类型)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-08-25 16:11_|
 ****************************************
 # AOP
 > Aspect Oriented Programming  面向切面编程
@@ -77,6 +77,7 @@ categories:
     </aop:aspect>
 </aop:config>
 ```
+
 ## 注意
 - 要注意环绕的写法 `public void around(ProceedingJoinPoint m)throws Throwable{`  
     - [Spring AOP中的around](https://www.oschina.net/code/snippet_246557_9205)  
