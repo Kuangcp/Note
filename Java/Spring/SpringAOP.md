@@ -1,5 +1,5 @@
 ---
-title: SpringAOP
+title: Spring AOP
 date: 2018-12-21 10:49:23
 tags: 
     - AOP
@@ -19,7 +19,7 @@ categories:
         1. [2 Spring AOP中使用@AspectJ还是XML？](#2-spring-aop中使用@aspectj还是xml)
         1. [3 混合切面类型](#3-混合切面类型)
 
-**目录 end**|_2020-08-25 16:11_|
+**目录 end**|_2020-08-26 18:31_|
 ****************************************
 # AOP
 > Aspect Oriented Programming  面向切面编程
@@ -27,7 +27,7 @@ categories:
 ## 动态代理
 > 这是AOP的起源, 最初是JDK的动态Proxy -> cglib/asm 
 
-> [笔记: 代理](/Java/AdvancedLearning/Proxy.md)
+> [笔记: Java中的代理](/Java/AdvancedLearning/JavaProxy.md)
 
 ## 基本概念
 | 英文 | 解释 |
@@ -40,6 +40,9 @@ categories:
 |`Weave`|织入（增强切点的过程）|
 |`Proxy`|代理（增强后的类，一般是使用了代理类） 装饰器模式|
 |`Introduction`|引介（为类添加属性和方法） 用的较少因为破坏了OOP思想|
+
+
+1. 多个 AOP 时，切面可实现 Ordered 接口 自定义 AOP 顺序
 
 *********************
 ##  基本配置

@@ -30,13 +30,14 @@ categories:
             1. [View](#view)
             1. [Setting](#setting)
     1. [常用插件](#常用插件)
+        1. [HTTP Client](#http-client)
     1. [启动配置](#启动配置)
         1. [调优](#调优)
     1. [Tips](#tips)
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
         1. [无法输入中文](#无法输入中文)
 
-**目录 end**|_2020-06-24 16:51_|
+**目录 end**|_2020-08-26 18:31_|
 ****************************************
 
 # IDEA 使用笔记
@@ -364,6 +365,18 @@ _例如修改为如下_
 1. Kubernates
 1. Maven helper
 1. grep console 控制台搜索工具
+
+### HTTP Client
+
+1. 登录设置 cookie
+    ```
+    POST http://localhost/coolsoftware/rest/authentication?login=username&password=1234
+    > {% client.global.set("yourVariable", response.headers.valueOf('Set-Cookie')); %}
+    
+    按实际情况来设置，例如 提取接口返回(JSON类型)中的 data 字段：
+    > {% client.global.set("token", response.body.data); %}
+    ```
+
 
 **************************
 
