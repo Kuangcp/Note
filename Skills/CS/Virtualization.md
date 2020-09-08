@@ -32,5 +32,5 @@ categories:
 
 ## HVM
 
-## Proxmox
-> [Official](https://www.proxmox.com/en/)
+## Proxmox VE
+> [Official](https://www.proxmox.com/en/)`虚拟机管理平台`
