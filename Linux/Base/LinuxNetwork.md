@@ -19,6 +19,7 @@ categories:
     1. [基础命令工具](#基础命令工具)
         1. [ping](#ping)
         1. [traceroute](#traceroute)
+        1. [tc](#tc)
         1. [netstat](#netstat)
         1. [iproute2](#iproute2)
         1. [tcpdump](#tcpdump)
@@ -52,7 +53,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2020-08-18 17:49_|
+**目录 end**|_2020-08-25 01:06_|
 ****************************************
 # Linux网络管理
 ## DNS
@@ -145,6 +146,15 @@ categories:
     - -g<网关地址>	：	设置来源的路由网关，最多可设置8个
 
 1. `traceroute -I stackoverflow.com` icmp 查看路由表
+
+### tc
+> Traffic Control
+
+tc -s -d qdisc ls dev eno1
+
+限速 `tc qdisc add dev eno1 root tbf rate 400kbit latency 1ms burst 1000`
+解除 `tc qdisc del dev eno1 root tbf rate 400kbit latency 1ms burst 1000`
+tbf 指令牌桶算法
 
 ### netstat 
 > 相关 [iproute2](#iproute2)
