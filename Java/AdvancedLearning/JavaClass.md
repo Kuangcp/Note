@@ -12,6 +12,7 @@ categories:
 1. [字节码以及类加载](#字节码以及类加载)
 1. [编译优化](#编译优化)
 1. [字节码](#字节码)
+    1. [字节码相关框架](#字节码相关框架)
     1. [常量池](#常量池)
 1. [类加载机制](#类加载机制)
     1. [类加载器](#类加载器)
@@ -22,11 +23,10 @@ categories:
 1. [反编译](#反编译)
     1. [JD](#jd)
     1. [Jad](#jad)
-1. [字节码相关框架](#字节码相关框架)
 1. [热更新](#热更新)
 1. [分析工具](#分析工具)
 
-**目录 end**|_2020-09-12 20:13_|
+**目录 end**|_2020-09-13 07:50_|
 ****************************************
 # 字节码以及类加载
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
@@ -102,6 +102,15 @@ javassist
 ### 特殊场景
 #### Tomcat
 > [参考: 图解Tomcat类加载机制](https://www.cnblogs.com/aspirant/p/8991830.html)  
+
+- *CommonClassLoader* Tomcat最基本的类加载器，加载路径`/common/*`中的class可以被Tomcat容器本身以及各个Webapp访问；
+- *CatalinaClassLoader* Tomcat容器私有的类加载器，加载路径`/server/*`中的class对于Webapp不可见；
+- *SharedClassLoader* 各个Webapp共享的类加载器，加载路径`/shared/*`中的class对于所有Webapp可见，但是对于Tomcat容器不可见；
+- *WebappClassLoader* 各个Webapp私有的类加载器，加载路径`/WebApp/WEB-INF/*`中的class只对当前Webapp可见；
+
+其中WebApp类加载器和Jsp类加载器通常会存在多个实例，每一个Web应用程序对应一个WebApp类加载器，每一个JSP文件对应一个Jsp类加载器。
+
+WebApp类加载器就为了类隔离而违背了双亲委派模型，仅自身负责加载类，不向上传递
 
 ************************
 
