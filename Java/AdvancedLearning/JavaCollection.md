@@ -27,6 +27,8 @@ categories:
 ****************************************
 # JDK中的集合
 
+[ Java集合必会14问（精选面试题整理）](https://www.cnblogs.com/wmyskxz/p/9381848.html)
+
 ## 集合继承和实现关系
 
 - Collection 接口
