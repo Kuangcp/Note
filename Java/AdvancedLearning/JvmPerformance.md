@@ -97,7 +97,7 @@ categories:
     - *-D 参数* 要前于 -jar
 - 获取 `System.getProperty("key", "defaultvalue");`
 
-#### 执行含main方法的类
+> 执行含main方法的类
 - `java -cp jarfile[:jarfile2] className`
 
 ### jps
@@ -175,6 +175,9 @@ categories:
 ## 图形化
 ### JProfiler
 > [Official Site](https://www.ej-technologies.com/products/jprofiler/overview.html)  
+
+### GCViewer
+> [Github: GCViewer](https://github.com/chewiebug/GCViewer)
 
 ### jvisualvm
 > [Github:visualvm](https://github.com/oracle/visualvm)  

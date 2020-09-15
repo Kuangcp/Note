@@ -195,7 +195,8 @@ NIO 会经常使用, 提高性能
 
 - [Oracle JDK8 GC调优指南](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/toc.html)
 - [JDK11 GC调优指南](https://docs.oracle.com/en/java/javase/11/gctuning/introduction-garbage-collection-tuning.html)
-> [How to Tune Java Garbage Collection](https://www.cubrid.org/blog/how-to-tune-java-garbage-collection/)
+- [How to Tune Java Garbage Collection](https://www.cubrid.org/blog/how-to-tune-java-garbage-collection/)
+- [《沙盘模拟系列》JVM如何调优](https://my.oschina.net/u/4030990/blog/3149182)
 
 ************************
 
@@ -303,6 +304,8 @@ GC Roots 对象包含:
     - CMS收集器在Minor GC时会暂停所有的应用线程，并以多线程的方式进行垃圾回收。在Full GC时不再暂停应用线程，而是使用若干个后台线程定期的对老年代空间进行扫描，及时回收其中不再使用的对象。
 - 第四阶段，G1（并发）收集器
     - G1收集器（或者垃圾优先收集器）的设计初衷是为了尽量缩短处理超大堆（大于4GB）时产生的停顿。相对于CMS的优势而言是内存碎片的产生率大大降低。
+
+> `java -XX:+PrintCommandLineFlags -version` 可以通过该命令快速知道当前版本JDK默认垃圾收集器
 
 *******************
 
@@ -421,8 +424,6 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
     - 几乎是RTSJ的特征
 
 > [参考: JVM系列篇：深入剖析G1收集器](https://my.oschina.net/u/3959491/blog/3029276)
-
-能够通过GC将内存归还给操作系统
 
 ### ZGC
 > JDK11  [wiki: ZGC](https://wiki.openjdk.java.net/display/zgc/Main) | [ZGC Release note](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
