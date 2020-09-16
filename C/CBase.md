@@ -28,6 +28,8 @@ categories:
 
 > [Github: 个人学习记录](https://github.com/Kuangcp/LearnC)  
 
+- The C Programming Language, Second Edition, Prentice Hall, 1988 
+
 ## 资源
 > [C 语言教程](https://www.runoob.com/cprogramming/c-tutorial.html)  
 

@@ -165,7 +165,11 @@ func walkfunc(path string, info os.FileInfo, err error) error {
 }
 ```
 
-*************************************
+************************
+
+> [statik](github.com/rakyll/statik) `将文件打包入二进制执行文件中去`
+
+************************
 
 ## Test
 > [Github: assert](https://godoc.org/github.com/stretchr/testify/assert)
