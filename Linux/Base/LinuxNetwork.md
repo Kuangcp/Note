@@ -53,7 +53,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2020-08-25 01:06_|
+**目录 end**|_2020-09-18 19:39_|
 ****************************************
 # Linux网络管理
 ## DNS
@@ -332,10 +332,13 @@ _iproute-ss_
 
 1. 不输出，重定向到*黑洞设备*  ` curl -s -o /dev/null URL`
 1. 使用基础认证 发送JSON数据 `curl -i -H "Content-Type:application/json" -u admin:secret -X POST --data '{"title":"1","content":"1"}' http://tomcat.kcp/email/content`
->  如果没有认证则会收到 401 返回码
+    - 如果没有认证则会收到 401 返回码
 
 - 使用Cookie `curl -v --cookie "USER_TOKEN=Yes" http://127.0.0.1:5000/`
 - 使用代理  `-x, --proxy [protocol://]host[:port]`
+- 设置 Header `-H "xxx:xxx"` 例如 `-H "Content-Type:application/json" -H "token:xxx"`
+- 设置POST请求 body `-d '{"title":"1","content":"1"}'`
+    - 本地文件 `-d '@data.json'`
 
 > [参考: curl返回常见错误码](http://www.cnblogs.com/wainiwann/p/3492939.html)
 - [56错误码](https://stackoverflow.com/questions/10285700/curl-error-recv-failure-connection-reset-by-peer-php-curl)

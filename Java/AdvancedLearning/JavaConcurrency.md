@@ -38,7 +38,7 @@ categories:
         1. [ScheduledThreadPoolExecutor](#scheduledthreadpoolexecutor)
     1. [分支合并框架](#分支合并框架)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-09-18 19:39_|
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -135,7 +135,8 @@ categories:
     - 非同步的方法不查看或关心任何锁的状态，而且在同步方法运行时，他们仍能继续运行
     - Java的线程锁是可重入的。也就是说持有线程锁的线程在遇到同一个锁的同步点 时是可以继续的
         - 比如 一个同步方法调用另一个类的另一个同步方法
-      
+
+- [JDK15 将移除 偏向锁](https://openjdk.java.net/jeps/374)
 
 ![线程状态模型](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Java/concurrent/Model.jpg)  
 - 线程的状态模型：

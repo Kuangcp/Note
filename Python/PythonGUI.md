@@ -16,14 +16,13 @@ categories:
     1. [kivy](#kivy)
     1. [wxPython](#wxpython)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-09-18 19:39_|
 ****************************************
 # GUI
 ## GTK3
 > [Official Doc](https://python-gtk-3-tutorial.readthedocs.io/en/latest/) | [pygtk](http://www.pygtk.org/)  
 > [pygtk wiki ](https://wiki.python.org/moin/PyGtk)
 
-- 自从忘掉如何安装后, 就不会安装了!!!
 
 ## Tkinter
 > [Offcial Site](https://wiki.python.org/moin/TkInter/) | [Official Doc](https://docs.python.org/3.5/library/tkinter.html)
