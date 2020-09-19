@@ -37,8 +37,9 @@ categories:
     1. [常用插件](#常用插件)
         1. [lombok](#lombok)
         1. [protobuf](#protobuf)
-    1. [Maven Enforcer Plugin](#maven-enforcer-plugin)
-    1. [deploy](#deploy)
+        1. [Versions Maven Plugin](#versions-maven-plugin)
+        1. [Maven Enforcer Plugin](#maven-enforcer-plugin)
+        1. [Maven Deploy plugin](#maven-deploy-plugin)
     1. [构建工具对比](#构建工具对比)
         1. [Maven和Ant的区别一](#maven和ant的区别一)
         1. [Maven的优势](#maven的优势)
@@ -51,7 +52,7 @@ categories:
             1. [Gradle](#gradle)
             1. [Maven](#maven)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-09-19 23:13_|
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -418,12 +419,15 @@ A 项目 compile
 
 - [protoc-jar](https://github.com/os72/protoc-jar-maven-plugin)`自动识别平台, 使用对应的编译器编译得到java文件, 但是目前还有一些bug`
 
-## Maven Enforcer Plugin
+### Versions Maven Plugin
+> [Official Site](http://www.mojohaus.org/versions-maven-plugin/)
+
+### Maven Enforcer Plugin
 > [Official Site](http://maven.apache.org/enforcer/maven-enforcer-plugin/)  
 
 [Maven Enforcer Plugin - Baeldung](https://www.baeldung.com/maven-enforcer-plugin)
 
-## deploy
+### Maven Deploy plugin
 > [maven-deploy-plugin](https://maven.apache.org/plugins/maven-deploy-plugin/deploy-mojo.html)
 
 **跳过 deploy**
