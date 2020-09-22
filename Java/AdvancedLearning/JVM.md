@@ -46,7 +46,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2020-06-24 16:51_|
+**目录 end**|_2020-09-22 22:46_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -426,7 +426,7 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
 > [参考: JVM系列篇：深入剖析G1收集器](https://my.oschina.net/u/3959491/blog/3029276)
 
 ### ZGC
-> JDK11  [wiki: ZGC](https://wiki.openjdk.java.net/display/zgc/Main) | [ZGC Release note](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
+> JDK11引入 JDK15正式使用 [wiki: ZGC](https://wiki.openjdk.java.net/display/zgc/Main) | [ZGC Release note](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
 
 `-XX:+UnlockExperimentalVMOptions -XX:+UseZGC`
 

@@ -13,9 +13,10 @@ categories:
 1. [Manjaro](#manjaro)
     1. [Tips](#tips)
 1. [安装](#安装)
+    1. [显卡驱动](#显卡驱动)
     1. [多系统安装](#多系统安装)
 
-**目录 end**|_2020-05-31 21:44_|
+**目录 end**|_2020-09-22 22:46_|
 ****************************************
 # Manjaro
 > [Gitlab source code](https://gitlab.manjaro.org/explore/groups)  
@@ -45,7 +46,16 @@ categories:
 
 参考 [Using livecd v17.0.1 (and above) as grub to boot OS with broken bootloader](https://forum.manjaro.org/t/using-livecd-v17-0-1-and-above-as-grub-to-boot-os-with-broken-bootloader/24916) 
 
+## 显卡驱动
+
 > [config NVIDIA](https://wiki.manjaro.org/index.php?title=Configure_NVIDIA_(non-free)_settings_and_load_them_on_Startup) `一键安装配置Nvidia显卡驱动`
+
+> 升级驱动 
+- pacman -R linux-latest-nvidia-440xx
+- sudo mhwd -r pci video-nvidia-440xx 
+
+- install video-nvidia-450xx drivers. 
+- sudo mhwd -i pci video-nvidia-450xx 
 
 ## 多系统安装
 例如 Win10(先)和Majaro安装
