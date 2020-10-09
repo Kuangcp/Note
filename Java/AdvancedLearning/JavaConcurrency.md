@@ -38,7 +38,7 @@ categories:
         1. [ScheduledThreadPoolExecutor](#scheduledthreadpoolexecutor)
     1. [分支合并框架](#分支合并框架)
 
-**目录 end**|_2020-09-18 19:39_|
+**目录 end**|_2020-10-09 17:22_|
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -433,6 +433,15 @@ public int current(){
 new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
         new LinkedBlockingQueue<>(), new BasicThreadFactory.Builder().namingPattern("yunxin-%d").build());
 ```
+
+************************
+
+> [根据CPU核心数确定线程池并发线程数](https://www.cnblogs.com/dennyzhangdd/p/6909771.html)  
+
+- Nthreads=Ncpu*Ucpu*(1+w/c)，其中
+    - Ncpu=CPU核心数
+    - Ucpu=cpu使用率，0~1
+    - W/C=等待时间与计算时间的比率
 
 ### ScheduledThreadPoolExecutor
 > ScheduledThreadPoolExecutor  简称 STPE 线程池类中很重要的类

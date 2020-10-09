@@ -33,7 +33,7 @@ categories:
     1. [影音](#影音)
 1. [Tips](#tips)
 
-**目录 end**|_2020-07-05 16:28_|
+**目录 end**|_2020-10-09 17:22_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -104,6 +104,8 @@ categories:
 > [参考: Linux查看网络流量](https://tlanyan.me/linux-traffic-commands/)  
 
 iftop
+
+- nethogs `流量监控`
 
 ## 进程管理
 Supervisor 进程监控管理
