@@ -17,8 +17,9 @@ categories:
         1. [tmux-resurrect](#tmux-resurrect)
         1. [maglev](#maglev)
         1. [copycat](#copycat)
+1. [Tips](#tips)
 
-**目录 end**|_2020-05-01 11:26_|
+**目录 end**|_2020-10-12 10:49_|
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -96,3 +97,9 @@ prefix c-r 加载历史会话
 > [Github](https://github.com/tmux-plugins/tmux-copycat)  
 
 使用: `Prefix /` 可用 less 一样的方式搜索
+
+
+# Tips 
+> [bash: append_path: command not found when open tmux](https://superuser.com/questions/1590651/bash-append-path-command-not-found-when-open-tmux)
+
+`set-option -g default-command '/bin/bash'` 追加到 tmux.conf 即可解决，如果使用 zsh 则是 /usr/bin/zsh
