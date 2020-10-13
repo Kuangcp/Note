@@ -9,36 +9,22 @@ categories:
 
 1. [软件使用记事](#软件使用记事)
     1. [包管理](#包管理)
-        1. [使用sdkman](#使用sdkman)
+        1. [sdkman](#sdkman)
     1. [服务管理](#服务管理)
         1. [oneinstack](#oneinstack)
-1. [常用工具](#常用工具)
-    1. [网络工具](#网络工具)
-        1. [nmap](#nmap)
-        1. [whatportis](#whatportis)
     1. [日常工具](#日常工具)
-        1. [图片查看工具](#图片查看工具)
-        1. [BaiduPCS](#baidupcs)
-        1. [you-get](#you-get)
-        1. [qgit](#qgit)
-        1. [ImageMagick](#imagemagick)
-            1. [convert](#convert)
-        1. [todo.txt](#todotxt)
-            1. [todo.txt-cli](#todotxt-cli)
         1. [termux](#termux)
     1. [IDE](#ide)
         1. [Idea](#idea)
         1. [Eclipse](#eclipse)
     1. [绘图工具](#绘图工具)
         1. [思维导图](#思维导图)
-    1. [安全工具](#安全工具)
-        1. [gpg](#gpg)
 
-**目录 end**|_2020-05-31 21:44_|
+**目录 end**|_2020-10-13 10:53_|
 ****************************************
 # 软件使用记事
 ## 包管理
-### 使用sdkman
+### sdkman
 
 `安装`
 - 安装sdkman `curl -s "https://get.sdkman.io" | bash` 遇到提示zip 就是需要安装zip `sudo apt install zip` 然后重新执行命令
@@ -70,78 +56,10 @@ categories:
 - `sudo ./install.sh` #注：请勿sh install.sh或者bash install.sh这样执行
 
 ******************
-# 常用工具
-> 基本是Linux工具，因为主力是用Linux
-
-## 网络工具
-### nmap
-> 端口扫描 [参考博客](http://aaaxiang000.blog.163.com/blog/static/2063491220113284325531/)
-
-- 扫描`nmap <param> IP`
-    - -sP
-    - -sT
-    - -sR
-    - -n `最简单直接的参数`
-
-### whatportis
-> whatportis 是一款可以通过服务查询默认端口，或者是通过端口查询默认服务的工具
-
-************************************
 ## 日常工具
-### 图片查看工具
-1. Viewnior  轻量简洁
-1. Eye of GNOME Image Viewer 功能比上面多了一点
-
-### BaiduPCS
-- [百度网盘命令客户端](https://github.com/iikira/BaiduPCS-Go) `Go语言实现`
-
-### you-get
-是一款命令行工具，用来下载网页中的视频、音频、图片，支持众多网站，包含 41 家国内主流视频、音乐网站，  
-如 网易云音乐、AB站、
-百度贴吧、斗鱼、熊猫、爱奇艺、凤凰视频、酷狗音乐、乐视、荔枝 FM、秒拍、腾讯视频、优酷土豆、央视网、芒果 TV
-等等，只需一个命令就能直接下载视频、音频以及图片回来，并且可以自动合并视频。
-
-而对于有弹幕的网站，比如 B 站，还可以将弹幕下载回来
-
-### qgit
-- git查看仓库的命令行式图形化界面
-
-***********************************
-### ImageMagick
-1. display 
-
-#### convert
-> convert between image formats as well as resize an image, blur, crop, despeckle, dither, draw on, flip, join, re-sample, and much more
-
-- 将图片转换成指定大小 这是保持比例的 `convert -resize 600X600 src.jpg dst.jpg` 中间是字母X
-    - 如果不保持比例，就在宽高后加上感叹号 
-    - 可以只指定高度，那么宽度会等比例缩放 `convert -resize 400 src.jpg dst.jpg`
-    - 还可以按百分比缩放
-
-_批量修改_
-> 如果没有 -path 语句，新生成的 png 文件将会覆盖原始文件 [参考博客](http://www.cnblogs.com/jkmiao/p/6756929.html)
-
-- `mogrify -path newdir -resize 40X40 *.png` 把png图片全部转成40X40大小并放在新文件夹下
-- `mogrify -path newdir -format png  *.gif` 将所有gif转成png放在新目录下
-
-> 将原有大小图片转换成其他指定大小的图片(保持比例)  
-1. 原图片 a * b -> x * y 
-1. x/y 得到比例 在 原图中裁剪出同样比例的图片 (Viewnior就很好用)
-1. 将裁剪出来的图片转换指定大小 `convert -resize xXy src.jpg dst.jpg`
-
--  转PDF `convert origin1.jpg origin2.jpg target.pdf`
-
-***********************************************
-
-### todo.txt
-> [官网](http://todotxt.org/) 一个简约的 TODO 软件
-
-#### todo.txt-cli
-> 终端中的TODO 
-
-- [todo.txt-cli](https://github.com/todotxt/todo.txt-cli)
-
 ### termux
+> 安卓上安装的Linux模拟器
+
 > [wiki FAQ](https://wiki.termux.com/wiki/FAQ)
 
 > [参考: Hello，Termux](https://tonybai.com/2017/11/09/hello-termux/)
@@ -149,7 +67,9 @@ _批量修改_
 
 - 开启ssh服务 pkg install openssh 对应端口默认 8022
 
-> [a shell](https://holzschu.github.io/a-Shell_iOS/) `IOS13`
+> iOS 相关
+
+[a shell](https://holzschu.github.io/a-Shell_iOS/) `iOS13`
 
 ************************
 
@@ -159,7 +79,6 @@ _批量修改_
 
 ### Eclipse
 > [详细内容](/Java/Tool/Eclipse.md)
-
 
 ************************
 
@@ -177,17 +96,3 @@ _批量修改_
 1. FreeMind 
 1. [freeplane](https://github.com/freeplane/freeplane)`Java编写的, FreeMind衍生`
 1. XMind 收费,占用资源大, 文件是二进制,不方便做版本控制
-
-*****************
-## 安全工具
-### gpg
-> [参考博客](http://www.ruanyifeng.com/blog/2013/07/gpg.html)
-
-常用参数
-```
-gpg --list-key
-    --gen-key
-```
-- 生成的过程, 输入相关的提示信息, 最后输完密码后需要输入随机字符, 就也是按照提示, 但是1.4是正常的, 其他的直接假死,不是很理解这种操作
-
-

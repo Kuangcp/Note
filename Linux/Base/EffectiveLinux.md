@@ -15,6 +15,8 @@ categories:
         1. [协作工具](#协作工具)
         1. [目录跳转](#目录跳转)
     1. [网络工具](#网络工具)
+        1. [nmap](#nmap)
+        1. [whatportis](#whatportis)
     1. [进程管理](#进程管理)
     1. [零散工具集合](#零散工具集合)
     1. [检测工具](#检测工具)
@@ -22,21 +24,25 @@ categories:
             1. [smartmontools](#smartmontools)
     1. [文本处理](#文本处理)
     1. [文件操作](#文件操作)
+    1. [安全工具](#安全工具)
+        1. [gpg](#gpg)
 1. [图形化工具](#图形化工具)
     1. [剪贴板管理](#剪贴板管理)
     1. [系统资源监控](#系统资源监控)
 1. [多媒体](#多媒体)
     1. [ffmpeg](#ffmpeg)
     1. [图片处理](#图片处理)
+        1. [ImageMagick](#imagemagick)
+            1. [convert](#convert)
         1. [asciinema](#asciinema)
         1. [图片浏览器](#图片浏览器)
         1. [截图](#截图)
-    1. [视频播放器](#视频播放器)
-    1. [音频播放器](#音频播放器)
+    1. [视频](#视频)
+    1. [音频](#音频)
     1. [PDF](#pdf)
 1. [Tips](#tips)
 
-**目录 end**|_2020-10-13 10:21_|
+**目录 end**|_2020-10-13 10:53_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -109,6 +115,19 @@ categories:
 iftop
 
 - nethogs `流量监控`
+- dig 
+
+### nmap
+> 端口扫描 [参考博客](http://aaaxiang000.blog.163.com/blog/static/2063491220113284325531/)
+
+- 扫描`nmap <param> IP`
+    - -sP
+    - -sT
+    - -sR
+    - -n `最简单直接的参数`
+
+### whatportis
+> whatportis 是一款可以通过服务查询默认端口，或者是通过端口查询默认服务的工具
 
 ## 进程管理
 Supervisor 进程监控管理
@@ -204,6 +223,17 @@ Supervisor 进程监控管理
 
 - [参考博客](http://blog.csdn.net/ygm_linux/article/details/32321729)
 
+## 安全工具
+### gpg
+> [参考博客](http://www.ruanyifeng.com/blog/2013/07/gpg.html)
+
+常用参数
+```
+gpg --list-key
+    --gen-key
+```
+- 生成的过程, 输入相关的提示信息, 最后输完密码后需要输入随机字符, 就也是按照提示, 但是1.4是正常的, 其他的直接假死,不是很理解这种操作
+
 ************************
 
 # 图形化工具
@@ -242,6 +272,31 @@ Supervisor 进程监控管理
 
 ## 图片处理
 - byzanz 录制屏幕为gif
+
+### ImageMagick
+1. display 
+
+#### convert
+> convert between image formats as well as resize an image, blur, crop, despeckle, dither, draw on, flip, join, re-sample, and much more
+
+- 将图片转换成指定大小 这是保持比例的 `convert -resize 600X600 src.jpg dst.jpg` 中间是字母X
+    - 如果不保持比例，就在宽高后加上感叹号 
+    - 可以只指定高度，那么宽度会等比例缩放 `convert -resize 400 src.jpg dst.jpg`
+    - 还可以按百分比缩放
+
+_批量修改_
+> 如果没有 -path 语句，新生成的 png 文件将会覆盖原始文件 [参考博客](http://www.cnblogs.com/jkmiao/p/6756929.html)
+
+- `mogrify -path newdir -resize 40X40 *.png` 把png图片全部转成40X40大小并放在新文件夹下
+- `mogrify -path newdir -format png  *.gif` 将所有gif转成png放在新目录下
+
+> 将原有大小图片转换成其他指定大小的图片(保持比例)  
+1. 原图片 a * b -> x * y 
+1. x/y 得到比例 在 原图中裁剪出同样比例的图片 (Viewnior就很好用)
+1. 将裁剪出来的图片转换指定大小 `convert -resize xXy src.jpg dst.jpg`
+
+-  转PDF `convert origin1.jpg origin2.jpg target.pdf`
+
 ### asciinema
 - [asciinema](https://asciinema.org) `终端屏幕录制和分享网`
 
@@ -252,16 +307,21 @@ Supervisor 进程监控管理
 1. gthumb
 1. Viewnior
     - 安装 webp-pixbuf-loader 可支持浏览 webp 
+1. Eye of GNOME Image Viewer 功能比上面多了一点
 1. ImageMagick
 
 ### 截图
 - Flameshot 截图工具  类似于 snipaste
     - Ctrl 鼠标滚动 调整线条粗细
 - deepin-screenshot
-## 视频播放器
+
+## 视频
 > [参考: Top 10 Best Linux Video Players](https://www.ubuntupit.com/top-10-best-linux-video-players-enjoy-ultimate-movie-music/)  
 
-## 音频播放器
+- [百度网盘命令客户端](https://github.com/iikira/BaiduPCS-Go) `Go语言实现`
+- [you-get](https://github.com/soimort/you-get)
+
+## 音频
 - [netease-cloud-music-gtk](https://github.com/gmg137/netease-cloud-music-gtk)
 
 ************************

@@ -52,7 +52,7 @@ categories:
     1. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     1. [熵池](#熵池)
 
-**目录 end**|_2020-08-04 18:36_|
+**目录 end**|_2020-10-13 10:53_|
 ****************************************
 # Linux系统
 
@@ -453,7 +453,7 @@ _系统运行级别_
 - `tuxcmd` Tux Commander 双列，小，直接的目录树，学习成本高点 `2M`
 
 ## 包管理
-> [A universal app store for Linux](https://snapcraft.io/)
+- [A universal app store for Linux](https://snapcraft.io/) `snap` 跨Linux发行版 但是褒贬不一
 
 ************************
 
