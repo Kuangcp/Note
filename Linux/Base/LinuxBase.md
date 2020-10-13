@@ -52,7 +52,7 @@ categories:
     1. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     1. [熵池](#熵池)
 
-**目录 end**|_2020-10-13 10:53_|
+**目录 end**|_2020-10-13 12:19_|
 ****************************************
 # Linux系统
 
@@ -445,12 +445,14 @@ _系统运行级别_
 
 - `nautilus` Gnome默认 挺好用，但是不能自动挂载分区
 - `deepin-filemanager` deepin默认，较为方便，但是打开手机会卡根本打不开
-- `pcmanfm` 左边侧栏目录树 会同步nautilus的配置`5m`
+- `pcmanfm` 左边侧栏目录树 会同步nautilus的配置
 - `rox-filer` 特别小，单击打开，迅速定位文件，适合找东西用
-- `thunar` 解决了nautilus的缺点，内存也很省 `21M`
+- `thunar` 解决了nautilus的缺点，内存也很省 
 - `dolphin` 多标签页，目录树方式查看
-- `nemo` mint默认的，功能齐全，会同步nautilus的配置，同样有目录树而且是两边都有 `21M`
-- `tuxcmd` Tux Commander 双列，小，直接的目录树，学习成本高点 `2M`
+- `nemo` mint默认的，功能齐全，会同步nautilus的配置，同样有目录树而且是两边都有 
+
+- `tuxcmd` Tux Commander 双列，小，直接的目录树，学习成本高点 
+- `ranger` 命令行内文件浏览和操作
 
 ## 包管理
 - [A universal app store for Linux](https://snapcraft.io/) `snap` 跨Linux发行版 但是褒贬不一

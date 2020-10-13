@@ -8,21 +8,23 @@ categories:
 
 **目录 start**
 
-1. [Web性能调优](#web性能调优)
+1. [APM](#apm)
 1. [客户端](#客户端)
 1. [服务端](#服务端)
     1. [压力测试准备](#压力测试准备)
     1. [性能基准 指标](#性能基准-指标)
+        1. [性能监控平台](#性能监控平台)
     1. [测试工具](#测试工具)
         1. [Apache BenchMark](#apache-benchmark)
         1. [Jmeter](#jmeter)
         1. [wrk](#wrk)
         1. [hey](#hey)
+        1. [Httperf](#httperf)
 1. [数据库](#数据库)
         1. [MySQL](#mysql)
             1. [主从复制以及读写分离](#主从复制以及读写分离)
 
-**目录 end**|_2020-07-31 14:30_|
+**目录 end**|_2020-10-13 12:19_|
 ****************************************
 # APM
 > Application Perfomance Management
@@ -62,8 +64,9 @@ categories:
 4.  网络。主要包括网络流量和网络连接状态的监控,使用nmon工具；
 5.  磁盘IO linux下可以用iostat监控磁盘状态。
 
-### 性能监控工具
-> [cat](https://github.com/dianping/cat)
+### 性能监控平台
+- [cat](https://github.com/dianping/cat)
+- Prometheus
 
 ************************
 
@@ -99,6 +102,9 @@ categories:
 
 ### hey
 > [Github](https://github.com/rakyll/hey)
+
+### Httperf
+> [Github](https://github.com/httperf/httperf) `比 ab 更强大，能测试出 web 服务能承载的最大服务量及发现潜在问题；比如：内存使用、稳定性。最大优势：可以指定规律进行压力测试，模拟真实环境。`
 
 ************************
 

@@ -42,7 +42,7 @@ categories:
     1. [PDF](#pdf)
 1. [Tips](#tips)
 
-**目录 end**|_2020-10-13 10:53_|
+**目录 end**|_2020-10-13 12:19_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -115,6 +115,7 @@ categories:
 iftop
 
 - nethogs `流量监控`
+- slurm 网卡带宽监控
 - dig 
 
 ### nmap
@@ -155,7 +156,6 @@ Supervisor 进程监控管理
 - xsel 
     - `cat a.md | xsel -b` _将文件所有内容复制到剪贴板_ 但是处理大文件时会失效 xclip 更有效
 
-- htop _终端里的任务管理器_
 - strace -p PID _查看系统调用_
 - cmatrix _装13,字符雨_
 - logkeys 记录键盘输入 [Github](https://github.com/kernc/logkeys)
@@ -208,9 +208,8 @@ Supervisor 进程监控管理
 ************************
 
 ## 文本处理
-`wc`
-> 单词 行数 统计
-
+> `wc` 单词 行数 统计
+> `ccze` 日志高亮
 
 ************************
 

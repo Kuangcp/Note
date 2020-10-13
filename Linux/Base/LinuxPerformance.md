@@ -48,11 +48,16 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2020-05-23 17:52_|
+**目录 end**|_2020-10-13 12:19_|
 ****************************************
 # Linux性能分析和管理
 ## 运行状况信息
 > 系统实时状态信息
+
+- top
+- [Github: htop](https://github.com/hishamhm/htop)`Htop更好用`
+- [Glances](https://github.com/nicolargo/glances) `信息全面 资源消耗大些`
+- nmon
 
 - `uptime ` 执行结果
     - 系统当前时间 | 主机已运行时间 | 用户连接数 | 1,5,15,分钟的系统平均负载
@@ -97,9 +102,6 @@ categories:
 ## 性能监测
 ### top
 > 来源 procps, 用于查看 进程详细信息, CPU占用率 内存 网络等...
-
-> [Github: htop](https://github.com/hishamhm/htop)`Htop更好用`
-- [Glances](https://github.com/nicolargo/glances) `信息全面 资源消耗大些`
 
 ### smem
 > Report memory usage with shared memory divided proportionally.  
