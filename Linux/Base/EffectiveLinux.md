@@ -22,18 +22,21 @@ categories:
             1. [smartmontools](#smartmontools)
     1. [文本处理](#文本处理)
     1. [文件操作](#文件操作)
-        1. [PDF](#pdf)
-    1. [分享](#分享)
+1. [图形化工具](#图形化工具)
+    1. [剪贴板管理](#剪贴板管理)
+    1. [系统资源监控](#系统资源监控)
+1. [多媒体](#多媒体)
+    1. [ffmpeg](#ffmpeg)
+    1. [图片处理](#图片处理)
         1. [asciinema](#asciinema)
-    1. [图形化工具](#图形化工具)
-        1. [图片管理](#图片管理)
-        1. [剪贴板管理](#剪贴板管理)
+        1. [图片浏览器](#图片浏览器)
         1. [截图](#截图)
-        1. [系统资源监控](#系统资源监控)
-    1. [影音](#影音)
+    1. [视频播放器](#视频播放器)
+    1. [音频播放器](#音频播放器)
+    1. [PDF](#pdf)
 1. [Tips](#tips)
 
-**目录 end**|_2020-10-09 17:22_|
+**目录 end**|_2020-10-13 10:21_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -142,7 +145,7 @@ Supervisor 进程监控管理
 - [WTF](https://wtfutil.com/posts/overview/) | [Github Repo](https://github.com/senorprogrammer/wtf)
     - 丰富的功能, 一个方便的终端控制面板
 
-- ag `快速当前目录下, 全文内容搜索, 快到可怕` ubuntu:silversearcher-ag  alpine:the_silver_searcher
+- ag `在当前目录下, 快速全文内容搜索` ubuntu:silversearcher-ag  alpine:the_silver_searcher
     - [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
 
 - when-changed 监控文件变化 执行命令 pip install when-changed
@@ -150,7 +153,7 @@ Supervisor 进程监控管理
 - dircolors [Linux dircolors命令](http://www.runoob.com/linux/linux-comm-dircolors.html)`用于设置 ls 命令输出时的色彩`
 
 - gtypist 用于练习打字
-- watch 全屏周期执行命令并输出
+- watch 周期执行命令并输出
 
 `xclip`
 > 便捷的文本复制
@@ -173,7 +176,7 @@ Supervisor 进程监控管理
 > 终端内字典
 
 `upx`
-> [upx](https://github.com/upx/upx)压缩构建出来的可执行文件
+> [upx](https://github.com/upx/upx)压缩构建的可执行文件
 
 ***********
 
@@ -182,7 +185,6 @@ Supervisor 进程监控管理
 #### smartmontools
 
 - 检测健康状况 `smartctl -Hc /dev/sda9`
-
 
 ************************
 
@@ -202,7 +204,69 @@ Supervisor 进程监控管理
 
 - [参考博客](http://blog.csdn.net/ygm_linux/article/details/32321729)
 
-### PDF
+************************
+
+# 图形化工具
+
+## 剪贴板管理
+> [参考: 面向 Linux 的 10 款最佳剪贴板管理器](https://linux.cn/article-7329-1.html)
+
+- CopyQ，Manjaro 的 clipman 
+
+> [参考: 这9个Linux命令非常危险 请大家慎用](https://www.jb51.net/LINUXjishu/498660.html)
+
+> [参考: 关于 Linux 你可能不是非常了解的七件事](https://linux.cn/article-8934-1.html)
+
+## 系统资源监控
+> gnome-system-monitor
+
+************************
+
+# 多媒体
+
+## ffmpeg
+> [Official Site](http://ffmpeg.org/ffmpeg.html)  
+
+- 查看属性 `ffprobe -pretty target.mp4`
+
+> m3u8 URL 转换为mp4
+- `ffmpeg -i http://xxx.m3u8 -c copy -bsf:a aac_adtstoasc output.mp4`
+
+- 获取视频中的音频 `ffmpeg -i input.mp4 -vn -y -acodec copy output.m4a`
+- 去掉视频中的音频 `ffmpeg -i input.mp4 -an output.mp4`
+
+- 合并视频 `ffmpeg -f concat -safe 0 -i file.cfg  -c copy result.mp4`
+    - file.cfg 内容为多行文件 : `file '/path/to/file'`
+- 截取视频 `ffmpeg -ss 00:00:00 -t 00:00:30 -i input.mp4 -vcodec copy -acodec copy output.mp4`
+    - `-ss` 开始时间 `-t` 截取时长  `-q 0` 无损 `-c copy`表示不必重新编码
+
+## 图片处理
+- byzanz 录制屏幕为gif
+### asciinema
+- [asciinema](https://asciinema.org) `终端屏幕录制和分享网`
+
+- 执行 `asciinema`或`asciinema rec` 即可开始录制
+- 要注册就运行 `asciinema auth` 进入输出的网址，填邮箱和名字即可（每次登录都要这样。或者使用邮件来确认，麻烦ing）
+
+### 图片浏览器
+1. gthumb
+1. Viewnior
+    - 安装 webp-pixbuf-loader 可支持浏览 webp 
+1. ImageMagick
+
+### 截图
+- Flameshot 截图工具  类似于 snipaste
+    - Ctrl 鼠标滚动 调整线条粗细
+- deepin-screenshot
+## 视频播放器
+> [参考: Top 10 Best Linux Video Players](https://www.ubuntupit.com/top-10-best-linux-video-players-enjoy-ultimate-movie-music/)  
+
+## 音频播放器
+- [netease-cloud-music-gtk](https://github.com/gmg137/netease-cloud-music-gtk)
+
+************************
+
+## PDF
 `ghostscript`
 > [ghostscript.com](https://ghostscript.com/)
 > [参考: Ubuntu上压缩PDF文件的方法](https://blog.csdn.net/lx_ros/article/details/79887562)  
@@ -223,45 +287,6 @@ Supervisor 进程监控管理
 ************************
 
 > [smallpdf.com](https://smallpdf.com) 在线处理
-
-************************
-
-## 分享
-### asciinema
-- [asciinema](https://asciinema.org) `终端屏幕录制和分享网`
-
-- 执行 `asciinema`或`asciinema rec` 即可开始录制
-- 要注册就运行 `asciinema auth` 进入输出的网址，填邮箱和名字即可（每次登录都要这样。或者使用邮件来确认，麻烦ing）
-
-************************
-
-## 图形化工具
-### 图片管理
-1. gthumb
-1. Viewnior
-    - 安装 webp-pixbuf-loader 可支持浏览 webp 
-1. webp
-1. ImageMagick
-
-### 剪贴板管理
-> [参考: 面向 Linux 的 10 款最佳剪贴板管理器](https://linux.cn/article-7329-1.html)
-
-- CopyQ，Manjaro 的 clipman 
-
-> [参考: 这9个Linux命令非常危险 请大家慎用](https://www.jb51.net/LINUXjishu/498660.html)
-
-> [参考: 关于 Linux 你可能不是非常了解的七件事](https://linux.cn/article-8934-1.html)
-
-### 截图
-- Flameshot 截图工具  类似于 snipaste
-    - Ctrl 鼠标滚动 调整线条粗细
-- deepin-screenshot
-
-### 系统资源监控
-> gnome-system-monitor
-
-## 影音
-- [netease-cloud-music-gtk](https://github.com/gmg137/netease-cloud-music-gtk)
 
 ************************
 

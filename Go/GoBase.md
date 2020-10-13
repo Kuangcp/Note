@@ -34,7 +34,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2020-06-28 02:11_|
+**目录 end**|_2020-10-13 10:21_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -242,7 +242,11 @@ Msg struct{
 }
 ```
 
+************************
+
 # Tips
+> [lorca](https://github.com/zserge/lorca.git) `H5 + chromium + Golang`桌面端
+
 ## 通过字符串调用指定函数
 > [参考: Go 根据字符串调用指定函数](https://blog.csdn.net/HOOKTTG/article/details/52184500)
 > [参考: WebAssembly 和 Go语言：对未来的观望](http://www.techug.com/post/webassembly-and-go-a-look-to-the-future.html)
