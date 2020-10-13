@@ -4,14 +4,15 @@
 * [ Linux文件管理 ](/Linux/Base/LinuxFile.md)
 * [ Linux处理压缩文件 ](/Linux/Base/LinuxCompressFile.md)
 * [ Shell学习 ](/Script/ShellLearn.md)
-* [ Linux工具命令 ](/Linux/Base/LinuxCommand.md)
+* [ Linux系统工具命令 ](/Linux/Base/LinuxCommand.md)
+* [ 高效的Linux ](/Linux/Base/EffectiveLinux.md)
 * [ Linux目录结构 ](/Linux/Base/LinuxDirectoryStructure.md)
 * [ Linux网络 ](/Linux/Base/LinuxNetwork.md)
 * [ Linux性能 ](/Linux/Base/LinuxPerformance.md)
 * [ 流编辑器 ](/Linux/Base/LinuxStreamEditor.md)
 * [ Linux美化 ](/Linux/Base/LinuxUI.md)
 * [ Linux各种发行版 ](/Linux/Base/ReleaseExperience.md)
-* [ SSH ](/Linux/Base/Ssh.md)
+* [ SSH ](/Linux/Base/SSH.md)
 * [ Nginx ](/Linux/Tool/Nginx.md)
 
 ## 容器
