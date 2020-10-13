@@ -18,9 +18,8 @@ categories:
     1. [配置MySQL](#配置mysql)
     1. [配置Redis](#配置redis)
     1. [问题以及解决方案](#问题以及解决方案)
-    1. [双硬盘的折腾记录](#双硬盘的折腾记录)
 
-**目录 end**|_2020-06-24 02:06_|
+**目录 end**|_2020-10-13 11:11_|
 ****************************************
 # 配置Deepin的Java开发环境
 
@@ -59,28 +58,14 @@ categories:
 > jdk不推荐使用sdkman安装，这里的jdk是开源版估计，会少javafx等一些闭源包 Oracle版本才是完整的
 > 但是最近SDKMAN出了一个oracle的版本貌似是完整的，因为有个同意协议的过程 `sdk install java 8u144-oracle`
 
-- 安装sdkman `curl -s "https://get.sdkman.io" | bash`
+>  [sdkman](/Skills/AppManual.md#sdkman)
 
-```
-    Looking for a previous installation of SDKMAN...
-    Looking for unzip...
-    Not found.
-    Please install unzip on your system using your favourite package manager.
-    Restart after installing unzip.
-```
-- 遇到这种提示就是需要安装zip `sudo apt install zip unzip` 然后重新执行命令
-- 执行脚本：`source "/home/kuang/.sdkman/bin/sdkman-init.sh"` 或者重启终端就可以使用 `sdk`命令了
-- 查看sdkman 版本 ：`sdk version`
-- 查看可用版本 `sdk list java` 
-- 不指定版本就是安装最新版 `sdk install java` 
-- 指定默认版本 `sdk default java 8u131-zulu`
-- 验证是否成功：`java -version`
+************************
 
-********************************
 ## 配置MySQL
 > [安装MySQL](/Database/MySQL.md#安装)
 
-**************************************
+************************
 ## 配置Redis
 > [安装Redis](/Database/Redis.md#安装和配置)
 
@@ -99,5 +84,4 @@ categories:
 
 ********************
 
-## 双硬盘的折腾记录
-> [记录](/MyBlog/2018-3-15-install-deepin.md)
+> [双硬盘的折腾记录](/MyBlog/2018-3-15-install-deepin.md)

@@ -18,7 +18,7 @@ categories:
         1. [Yay](#yay)
 1. [Tips](#tips)
 
-**目录 end**|_2020-06-03 23:26_|
+**目录 end**|_2020-10-13 11:11_|
 ****************************************
 
 # Arch
@@ -76,12 +76,12 @@ categories:
 > 若遇到 签名错误  signature from ... is unknown trust
 
 ```sh 
-rm -R /etc/pacman.d/gnupg/
-rm -R /root/.gnupg/ 
-gpg --refresh-keys
-pacman-key --init && pacman-key --populate archlinux manjaro
-pacman-key --refresh-keys
-pacman -Syyu
+    rm -R /etc/pacman.d/gnupg/
+    rm -R /root/.gnupg/ 
+    gpg --refresh-keys
+    pacman-key --init && pacman-key --populate archlinux manjaro
+    pacman-key --refresh-keys
+    pacman -Syyu
 ```
 
 ### Yay

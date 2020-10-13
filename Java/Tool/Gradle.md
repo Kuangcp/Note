@@ -13,7 +13,6 @@ categories:
     1. [书籍](#书籍)
     1. [发行版本列表](#发行版本列表)
 1. [安装](#安装)
-    1. [SDKMAN安装](#sdkman安装)
     1. [Chocolate](#chocolate)
     1. [Docker安装](#docker安装)
     1. [手动配置](#手动配置)
@@ -48,7 +47,7 @@ categories:
     1. [构建Docker镜像](#构建docker镜像)
         1. [插件方式构建Docker镜像](#插件方式构建docker镜像)
 
-**目录 end**|_2020-05-05 00:58_|
+**目录 end**|_2020-10-13 11:11_|
 ****************************************
 
 # Gradle
@@ -87,9 +86,7 @@ categories:
 > 会将 `~/.m2/repository` 复制到 `~/.gradle/caches/modules-2/files-2.1/`, 目录结构也发生改变  
 - [Gradle 使用Maven的本地仓库](https://blog.csdn.net/kcp606/article/details/81636426)
 
-## SDKMAN安装
-- 先安装sdkman `curl -s "https://get.sdkman.io" | bash`
-- `sdk install gradle` 即可安装
+> 或者 SDKMAN安装 `sdk install gradle`
 
 ## Chocolate
 - windows 上安装 chocolate
