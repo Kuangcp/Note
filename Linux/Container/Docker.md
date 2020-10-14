@@ -23,6 +23,8 @@ categories:
         1. [Arch](#arch)
     1. [Windows](#windows)
 1. [基础管理](#基础管理)
+    1. [图形化管理工具](#图形化管理工具)
+        1. [Portainer](#portainer)
     1. [镜像仓库](#镜像仓库)
         1. [搭建本地镜像仓库](#搭建本地镜像仓库)
     1. [基础命令](#基础命令)
@@ -54,7 +56,7 @@ categories:
         1. [overlay](#overlay)
 1. [Dockerfile](#dockerfile)
 
-**目录 end**|_2020-08-20 10:19_|
+**目录 end**|_2020-10-14 14:54_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -177,7 +179,16 @@ categories:
 > docker 所有的数据默认存储在 `/var/lib/docker`
 
 > [ctop](https://github.com/bcicen/ctop)`Top-like interface for container metrics`  
+
+
+## 图形化管理工具
 > [lazydocker](https://github.com/jesseduffield/lazydocker)  
+
+### Portainer
+> [Official Site](https://www.portainer.io/)  
+
+1. `docker volume create portainer_data`
+1. `docker run --name portainer -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer `
 
 ## 镜像仓库
 > 默认的DockerHub因为在国外所以网络不太稳定
