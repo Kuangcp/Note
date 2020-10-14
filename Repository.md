@@ -175,8 +175,6 @@ categories:
 # Docker
 - [Docker官方github组织](https://github.com/docker-library) `docker的官方Dockerfile以及doc文档`
 - [openoffice in docker](https://github.com/tobegit3hub/dockerized-openoffice)
-- [shipyard](https://github.com/shipyard/shipyardhttps://github.com/shipyard/shipyard) `docker图形化，功能稍多，配置略麻烦`
-- [ui-for-docker](https://github.com/kevana/ui-for-docker) `docker 简单易用图形化`
 - [openjdk](https://github.com/docker-library/openjdk) `openjdk的dockerfile仓库`
 - [docker-alpine-java](https://github.com/anapsix/docker-alpine-java) `java 运行环境 alpine为基础镜像`
 
