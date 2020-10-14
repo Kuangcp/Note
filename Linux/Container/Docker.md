@@ -56,7 +56,7 @@ categories:
         1. [overlay](#overlay)
 1. [Dockerfile](#dockerfile)
 
-**目录 end**|_2020-10-14 14:54_|
+**目录 end**|_2020-10-14 15:02_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -185,10 +185,10 @@ categories:
 > [lazydocker](https://github.com/jesseduffield/lazydocker)  
 
 ### Portainer
-> [Official Site](https://www.portainer.io/)  
+> [Official Site](https://www.portainer.io/)  | [installation](https://www.portainer.io/installation/)
 
 1. `docker volume create portainer_data`
-1. `docker run --name portainer -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer `
+1. `docker run --name portainer -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer -ce`
 
 ## 镜像仓库
 > 默认的DockerHub因为在国外所以网络不太稳定
