@@ -18,7 +18,7 @@ categories:
         1. [Yay](#yay)
 1. [Tips](#tips)
 
-**目录 end**|_2020-10-13 11:11_|
+**目录 end**|_2020-10-14 22:54_|
 ****************************************
 
 # Arch
@@ -53,13 +53,17 @@ categories:
     - -Qdt 查询未被依赖的软件包
 
 ### snap
-> 安装 
+> 使用 pacman 安装 
 1. sudo pacman -S snapd
 1. sudo systemctl enable --now snapd.socket
 1. sudo ln -s /var/lib/snapd/snap /snap
 
-- 使用 sudo snap install redis-desktop-manager
-    - 可执行文件 /var/lib/snapd/snap/bin/redis-desktop-manager.rdm
+- 例如安装 sudo snap install redis-desktop-manager
+    - 可执行文件 /snap/bin/redis-desktop-manager.rdm
+
+- 但是国内会很慢，此时可以手动下载安装 [参考: snapInstall](https://kuricat.com/gist/snap-install-too-slow-zmbjy)  
+    - curl -H 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/{{packageName}} 例如 `redis-desktop-manager`
+    - sudo snap install xxx.snap --dangerous
 
 ### Yaourt
 > [Arch User Repository](https://wiki.archlinux.org/index.php/Arch_User_Repository)`但是已经暂停开发了`
