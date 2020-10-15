@@ -79,7 +79,7 @@ categories:
         1. [授权](#授权)
 1. [查询](#查询)
 
-**目录 end**|_2020-10-15 20:26_|
+**目录 end**|_2020-10-15 20:34_|
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -129,7 +129,7 @@ _重启_
 > Windows平台上 MySQL-Font HeidiSQL | [10个Mysql图形客户端](http://www.linuxidc.com/Linux/2015-01/111421.htm)
 
 ## 命令行辅助工具
-> [mycli](https://github.com/dbcli/mycli)`具有自动提示`
+> [mycli](https://github.com/dbcli/mycli) `自动补全功能`
 
 ********************************
 # 基本数据类型
@@ -557,10 +557,14 @@ alter table `Bookinfo` add constraint `F_N` foreign key `F_N`(`classno`) referen
 ************************
 
 # 查询
-> 数据库中最主要的还是查询， 多角度复杂的查询
 
 _全自段模糊查询_
 1. `select * from target where concat(ifnull(host, ''), ifnull(username, '')) like '%localhost%' > 0 limit 0,1;`
     - 将全字段(空的替换为空串)连接成一个字符再模糊查询, 
 2. `select * from target where host like '%localhost%' or username like '%localhost%' limit 0,1;`
     - 这种查询虽然也能实现, 但是性能差一些
+
+- 分页查询性能优化 [MySQL分页查询的性能优化](https://www.cnblogs.com/scotth/p/7995856.html)
+    - 尽量使用索引优化扫描行数
+    - 子查询法
+    - 只读索引方法

@@ -10,7 +10,10 @@ categories:
 **目录 start**
 
 1. [MySQL进阶](#mysql进阶)
+    1. [锁](#锁)
+        1. [Innodb](#innodb)
     1. [事务](#事务)
+        1. [幻读](#幻读)
         1. [事务隔离级别](#事务隔离级别)
         1. [事务死锁](#事务死锁)
     1. [性能调优](#性能调优)
@@ -20,7 +23,7 @@ categories:
 1. [Tips](#tips)
     1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2020-08-03 01:00_|
+**目录 end**|_2020-10-15 20:34_|
 ****************************************
 # MySQL进阶
 
@@ -29,6 +32,7 @@ categories:
 > [参考: shell 下执行mysql 命令](http://www.cnblogs.com/wangkangluo1/archive/2012/04/27/2472898.html)
 
 > [参考: 轻松理解MYSQL MVCC 实现机制](https://blog.csdn.net/whoamiyang/article/details/51901888#commentBox)  
+
 ## 锁
 ### Innodb
 > [InnoDB Locking](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
@@ -107,6 +111,7 @@ show profile
 
 # Tips
 - 将需要执行的SQL写入文件 并将结果输出到文件 `mysql -u root -h 192.168.10.201 -p123 < query.sql  > result.log`
+
 - [参考: 自增主键不连续的几种情况](https://cloud.tencent.com/developer/article/1634218)  
     - 事务回滚，插入语句报错，MySQL自增锁优化
 
