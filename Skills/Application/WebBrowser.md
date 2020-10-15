@@ -22,7 +22,7 @@ categories:
     1. [Vivaldi](#vivaldi)
     1. [Opera](#opera)
 
-**目录 end**|_2020-06-16 10:25_|
+**目录 end**|_2020-10-15 20:26_|
 ****************************************
 # 浏览器
 ## FireFox
@@ -155,6 +155,7 @@ categories:
 1. cVim [Github](https://github.com/1995eaton/chromium-vim)
 1. crxMouse 
 1. TabsFolder
+1. Cluster Window & Tab Manager
 1. Chrome Download Manager
 
 ************************

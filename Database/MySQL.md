@@ -79,7 +79,7 @@ categories:
         1. [授权](#授权)
 1. [查询](#查询)
 
-**目录 end**|_2020-05-28 16:05_|
+**目录 end**|_2020-10-15 20:26_|
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -191,13 +191,15 @@ _重命名表格_ `RENAME TABLE old TO new `
 - 删除字段 `alter table name drop column field1, drop column field2;`
 - 重命名字段 `alter table name change old_name new_name bigint;`
 
+************************
+
 ## 索引
 > [Official Doc](https://dev.mysql.com/doc/refman/5.7/en/optimization-indexes.html)  
 
 索引是采用特定的数据结构设计(BTree 或者 Hash), 为了对若干列进行快速访问  
 
 > 优点
-1. 大大加快查询速度
+1. 加快查询速度
 1. 如果使用唯一索引，保证数据库表中每条数据的唯一性；
 1. 加快表与表之间的连接操作
 1. 使用排序和分组检索数据时，可以显著的加快排序和分组的时间
@@ -210,9 +212,12 @@ _重命名表格_ `RENAME TABLE old TO new `
 
 - 业务上具有唯一特性的字段，即使是多个字段的组合，也必须建成唯一索引
 - 对长度大于50的 varchar 字段建立索引时，按需求恰当的使用前缀索引，或使用其他方法(例如增加int类型列col_crc32，然后对col_crc32建立索引)
-- 合理创建联合索引(避免冗余)，区分度最高的在最左边，单个索引的字段数不超过5个
+- 合理创建联合索引(避免冗余)，区分度最高的在`最左边`，单个索引的字段数`不超过5个`
 - 单张表的索引数量控制在5个以内，若单张表多个字段在查询需求上都要单独用到索引，需要经过DBA评估。查询性能问题无法解决的，应从产品设计上进行重构
-- 使用 explain 判断SQL语句是否合理使用索引，尽量避免 extra 列出现：using file sort，using temporary
+- 使用 explain 判断SQL语句是否合理使用索引，`尽量避免` extra 列出现：using file sort，using temporary
+
+- 通常情况下一个SQL语句只能在表上命中一个索引，但还有 索引合并 的情况 [参考: MySQL索引合并的使用与原理](https://blog.csdn.net/gentlezuo/article/details/107677543)  
+    - intersect， union， sort-union
 
 ### 基本使用
 1. **创建**
