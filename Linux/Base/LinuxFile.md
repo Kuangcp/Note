@@ -64,7 +64,7 @@ categories:
         1. [善用alias](#善用alias)
     1. [desktop文件](#desktop文件)
 
-**目录 end**|_2020-05-04 18:05_|
+**目录 end**|_2020-10-18 13:59_|
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -389,6 +389,7 @@ export LANG="zh_CN.UTF-8"
 > 基本都在 `/var/log` 下
 
 - last 查看用户最后登录时间
+- logrotate 日志处理工具（切分，压缩，邮件通知等功能）
 
 ## Systemd
 > 通常使用 journalctl 查询 Systemd 的日志

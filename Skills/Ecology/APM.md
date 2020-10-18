@@ -19,12 +19,13 @@ categories:
         1. [Jmeter](#jmeter)
         1. [wrk](#wrk)
         1. [hey](#hey)
+        1. [ali](#ali)
         1. [Httperf](#httperf)
 1. [数据库](#数据库)
         1. [MySQL](#mysql)
             1. [主从复制以及读写分离](#主从复制以及读写分离)
 
-**目录 end**|_2020-10-13 12:19_|
+**目录 end**|_2020-10-18 13:59_|
 ****************************************
 # APM
 > Application Perfomance Management
@@ -102,6 +103,9 @@ categories:
 
 ### hey
 > [Github](https://github.com/rakyll/hey)
+
+### ali
+> [ali](https://github.com/nakabonne/ali)`终端内图形化展示结果`
 
 ### Httperf
 > [Github](https://github.com/httperf/httperf) `比 ab 更强大，能测试出 web 服务能承载的最大服务量及发现潜在问题；比如：内存使用、稳定性。最大优势：可以指定规律进行压力测试，模拟真实环境。`

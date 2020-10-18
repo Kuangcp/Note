@@ -14,9 +14,12 @@ categories:
         1. [用户](#用户)
         1. [用户组](#用户组)
         1. [sudo](#sudo)
+        1. [终端和登录](#终端和登录)
     1. [环境变量](#环境变量)
-    1. [信号量](#信号量)
+    1. [系统资源管理](#系统资源管理)
+        1. [ulimit](#ulimit)
     1. [进程](#进程)
+        1. [信号量](#信号量)
         1. [孤儿进程和僵死进程](#孤儿进程和僵死进程)
             1. [孤儿进程](#孤儿进程)
             1. [僵死进程](#僵死进程)
@@ -52,7 +55,7 @@ categories:
     1. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     1. [熵池](#熵池)
 
-**目录 end**|_2020-10-13 12:19_|
+**目录 end**|_2020-10-18 13:59_|
 ****************************************
 # Linux系统
 
@@ -108,12 +111,13 @@ categories:
 
 > [所有参数说明](https://gitee.com/kcp1104/codes/gca14wtqvm67l9j5r0deb56#usermod.md)
 
-******
+************************
+
 - `passwd 选项 用户名` 更改口令(密码)
     - `-l 锁定口令，禁用账号`  `-u 口令解锁` `-d 账号无口令` `-f 强迫用户下次登录时修改口令`
     - 当前用户 `passwd` 就是修改当前用户口令 超级用户就可以命令后接用户名，修改任意用户
 
-******
+************************
 - pwcov 注：同步用户从/etc/passwd 到/etc/shadow
 - pwck 注：pwck是校验用户配置文件/etc/passwd 和/etc/shadow 文件内容是否合法或完整;
 - pwunconv 注：是pwcov 的立逆向操作，是从/etc/shadow和 /etc/passwd 创建/etc/passwd ，然后会删除 /etc/shadow 文件;
@@ -153,6 +157,18 @@ categories:
         - 添加一行 Debian: `test1  ALL=(ALL:ALL)ALL` 注意 Centos:`test1   ALL=(ALL)       ALL`
         - `chmod 440 /etc/sudoers`
 
+### 终端和登录
+> [参考: linux终端相关概念解释及描述](https://www.cnblogs.com/xiangtingshen/p/10889195.html)  
+> [参考: 终端基本概念&终端登录过程详解](https://blog.csdn.net/summy_j/article/details/73870353)  
+
+1. tty 终端设备的统称
+    - 通常使用tty来简称各种类型的终端设备
+1. pty 虚拟终端
+    - 远程登录，图形化终端模拟器等操作使用
+    - pts(pseudo-terminal slave)是pty的实现方法，与ptmx(pseudo-terminal master)配合使用实现pty。
+
+> 通常Linux平台的终端模拟器新建tab时都是新建 pty， 但是Mac平台上则是新建tty
+
 ************************
 
 ## 环境变量
@@ -170,7 +186,27 @@ categories:
 > [	ssh连接远程主机执行脚本的环境变量问题](https://blog.csdn.net/whitehack/article/details/51705889)  
 
 ************************
-## 信号量
+
+## 系统资源管理
+### ulimit
+> [参考:  Linux下设置最大文件打开数nofile及nr_open、file-max](https://www.cnblogs.com/zengkefu/p/5635153.html)  
+
+**注意** ulimit命令只对当前终端(tty)生效
+
+************************
+
+## 进程
+> 参考 深入理解计算机系统 书籍
+
+1. pid_t来表示一个进程的pid，因此能表示的进程的范围一定不会超过pid_t类型的大小
+    - 查看 pid 范围 `cat /proc/sys/kernel/pid_max`
+
+> [doc: fork](http://pubs.opengroup.org/onlinepubs/7908799/xsh/fork.html)  
+> [wiki: fork bomb](https://en.wikipedia.org/wiki/Fork_bomb)  
+
+> [参考: linux常见进程与内核线程](https://www.cnblogs.com/createyuan/p/3979142.html)`0 1 2 等内核进程`  
+
+### 信号量
 `进程通信的一种标准化的方式`
 
 > /bin/kill -L 可查看所有信号量
@@ -193,22 +229,7 @@ categories:
 - 9 KILL
     - kill 进程不可忽略
 - 15 TERM
-    - terminate 终止信号 
-
-************************
-
-## 进程
-> 参考 深入理解计算机系统 书籍
-
-1. 查看 Linux平台 进程最大数限制 `ulimit -u`
-1. 设置最大值 `ulimit -u 5120`
-1. pid_t来表示一个进程的pid，因此能表示的进程的范围一定不会超过pid_t类型的大小
-    - 查看 pid 范围 `cat /proc/sys/kernel/pid_max`
-
-> [doc: fork](http://pubs.opengroup.org/onlinepubs/7908799/xsh/fork.html)  
-> [wiki: fork bomb](https://en.wikipedia.org/wiki/Fork_bomb)  
-
-> [参考: linux常见进程与内核线程](https://www.cnblogs.com/createyuan/p/3979142.html)`0 1 2 等内核进程`  
+    - terminate 终止信号
 
 ### 孤儿进程和僵死进程
 > [参考: 孤儿进程与僵死进程[总结]](http://www.cnblogs.com/Anker/p/3271773.html)
