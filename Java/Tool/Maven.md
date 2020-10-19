@@ -279,7 +279,22 @@ mvn install:install-file
 - 执行指定测试类 `mvn test -Dtest=类名`
 
 ### 打包部署
+
 > [deploy with source](https://stackoverflow.com/questions/4725668/how-to-deploy-snapshot-with-sources-and-javadoc)
+```xml
+<plugin>
+    <artifactId>maven-source-plugin</artifactId>
+    <executions>
+        <execution>
+            <id>attach-sources</id>
+            <phase>verify</phase>
+            <goals>
+                <goal>jar-no-fork</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+```
 
 **不依赖Jar的项目**
 > [Demo项目](https://gitee.com/gin9/codes/ri4x8cut3awgh0e271lfb54) 
