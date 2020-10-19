@@ -10,6 +10,7 @@ categories:
 **目录 start**
 
 1. [MySQL进阶](#mysql进阶)
+    1. [查询](#查询)
     1. [锁](#锁)
         1. [Innodb](#innodb)
     1. [事务](#事务)
@@ -23,7 +24,7 @@ categories:
 1. [Tips](#tips)
     1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2020-10-15 20:34_|
+**目录 end**|_2020-10-19 15:56_|
 ****************************************
 # MySQL进阶
 
@@ -32,6 +33,18 @@ categories:
 > [参考: shell 下执行mysql 命令](http://www.cnblogs.com/wangkangluo1/archive/2012/04/27/2472898.html)
 
 > [参考: 轻松理解MYSQL MVCC 实现机制](https://blog.csdn.net/whoamiyang/article/details/51901888#commentBox)  
+
+## 查询
+_全字段模糊查询_
+1. `select * from target where concat(ifnull(host, ''), ifnull(username, '')) like '%localhost%' > 0 limit 0,1;`
+    - 将全字段(空的替换为空串)连接成一个字符再模糊查询, 
+2. `select * from target where host like '%localhost%' or username like '%localhost%' limit 0,1;`
+    - 这种查询虽然也能实现, 但是性能差一些
+
+- 分页查询性能优化 [MySQL分页查询的性能优化](https://www.cnblogs.com/scotth/p/7995856.html)
+    - 尽量使用索引优化扫描行数
+    - 子查询法
+    - 只读索引方法
 
 ## 锁
 ### Innodb
@@ -62,7 +75,7 @@ categories:
 
 - InnoDB 默认隔离级别为 可重复读
 
-- InnoDB和Falcon存储引擎通过多版本并发控制(MVCC，Multiversion Concurrency Control)机制(快照读)解决了 可重复读的 幻读问题
+- InnoDB和Falcon存储引擎通过多版本并发控制(MVCC，Multiversion Concurrency Control)机制(快照读) **解决了 可重复读级别的 幻读问题**
     - 但是某种特殊场景下，幻读还是存在: 
     1. 当 事务T1, 对事务T2已提交数据A进行了修改，此时数据A 的 trx_id隐藏列就变成了T1事务id
         - 此时 事务 T1 就能查出此条数据
@@ -82,7 +95,7 @@ categories:
 ************************
 
 ## 性能调优
-> [Doc: Optimizing Queries with EXPLAIN](https://dev.mysql.com/doc/refman/5.7/en/using-explain.html)
+> [Doc: Optimizing Queries with EXPLAIN](https://dev.mysql.com/doc/refman/5.7/en/using-explain.html)`依据 explain 调优`
 
 > [MySQL下INNODB引擎的SELECT COUNT(*)性能优化及思考](http://www.piaoyi.org/database/MySQL-INNODB-SELECT-COUNT.html)
 
@@ -91,10 +104,6 @@ categories:
 > 5.6及以上版本时间类型效率 int > datetime > timestamp
 
 > limit 做分页时 记录上次分页最后一条记录的id使用上where进行过滤 提高性能, 前提id是int自增的
-
-explain 
-
-show profile
 
 ### 查看状态变量
 > [ SHOW VARIABLES](https://dev.mysql.com/doc/refman/5.7/en/show-variables.html)  

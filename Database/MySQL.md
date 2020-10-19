@@ -51,7 +51,7 @@ categories:
     1. [创建多语句的触发器](#创建多语句的触发器)
     1. [NEW 和 OLD关键字](#new-和-old关键字)
 1. [存储过程](#存储过程)
-    1. [基本结构示例：](#基本结构示例)
+    1. [基本结构示例](#基本结构示例)
 1. [函数](#函数)
     1. [简单示例](#简单示例)
 1. [常用命令集合](#常用命令集合)
@@ -61,12 +61,10 @@ categories:
     1. [主键约束的修改](#主键约束的修改)
     1. [修改表名](#修改表名)
     1. [定界符](#定界符)
-    1. [查看所有连接状态](#查看所有连接状态)
-    1. [查看表的状态](#查看表的状态)
     1. [统计数据库各表大小](#统计数据库各表大小)
     1. [关于时间](#关于时间)
         1. [常用函数](#常用函数)
-        1. [获取当前时间与i个月之间的天数](#获取当前时间与i个月之间的天数)
+        1. [获取当前时间与n个月之间的天数](#获取当前时间与n个月之间的天数)
         1. [datetime和timestamp区别](#datetime和timestamp区别)
     1. [插入外码](#插入外码)
 1. [变量](#变量)
@@ -77,9 +75,8 @@ categories:
     1. [创建](#创建)
     1. [修改](#修改)
         1. [授权](#授权)
-1. [查询](#查询)
 
-**目录 end**|_2020-10-15 20:34_|
+**目录 end**|_2020-10-19 15:56_|
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -325,7 +322,7 @@ _重命名表格_ `RENAME TABLE old TO new `
 ************************
 
 # 存储过程
-## 基本结构示例：
+## 基本结构示例
 ```sql
        -- loop 要有iterate 和leave才是完整的
     CREATE PROCEDURE doiterate(p1 INT)
@@ -373,6 +370,9 @@ _重命名表格_ `RENAME TABLE old TO new `
 ### 查看连接状况
 > [查看mysql数据库连接数、并发数相关信息。](https://blog.csdn.net/caodongfang126/article/details/52764213)`show status like 'Threads%';`
 
+- 查看连接 show processlist  如果是普通用户，只能查看自己当前的连接状态
+- 查看表的状态 show table status like 'assitant' 可以看到当前自动增长的id当前值 
+
 ## 自增长
 - 创建表时设置自增长，并设置起始值
     - create table cc( id int auto_increment,name varchar(20),primary key(id) ) auto_increment=1000;
@@ -391,12 +391,6 @@ rename table table1 to table2; 	切记不可随便修改表名，改了就要修
 
 ## 定界符
 delimiter 任意字符除了转义字符：\
-
-## 查看所有连接状态
-show processlist  如果是普通用户，只能查看自己当前的连接状态
-
-## 查看表的状态
-show table status like 'assitant' 可以看到当前自动增长的id当前值 
 
 ## 统计数据库各表大小
 ```sql
@@ -421,21 +415,20 @@ show table status like 'assitant' 可以看到当前自动增长的id当前值
    - select datediff(curdate(), date_sub(curdate(), interval i month)); 
 - 一般函数是不能作为 default默认值的，使用只能在插入修改数据时使用
 
-### 获取当前时间与i个月之间的天数
-- 问题：假设当前是5月19 且（提前月份）i=1 就是计算从4月19到今天的天数
-    - 解答：
+### 获取当前时间与n个月之间的天数
+- 问题：假设当前是5月19 且（提前月份）n=1 就是计算从4月19到今天的天数
+    ```sql
+        -- 时间格式的简单操作：
+        select DATE_FORMAT(produceDate, '%Y') as yeahr from historybarcodesort
+            where DATE_FORMAT(produceDate, '%Y')='2013'
+        select date_format('1997-10-04 22:23:00','%y %M %b %D %W %a %Y-%m-%d %H:%i:%s %r %T');
+            显示结果：97 October Oct 4th Saturday Sat 1997-10-04 22:23:00 10:23:00 PM 22:23:00
+        -- 查询指定时间：
+        get_date = "2006-12-07"
+        SELECT count(*) FROM t_get_video_temp Where DATE_FORMAT(get_date, '%Y-%d')='2006-07';
+        SELECT count(*) FROM t_get_video_temp Where get_date like '2006%-07%';
+    ```
 
-```sql
-      -- 时间格式的简单操作：
-      select DATE_FORMAT(produceDate, '%Y') as yeahr from historybarcodesort
-         where DATE_FORMAT(produceDate, '%Y')='2013'
-      select date_format('1997-10-04 22:23:00','%y %M %b %D %W %a %Y-%m-%d %H:%i:%s %r %T');
-          显示结果：97 October Oct 4th Saturday Sat 1997-10-04 22:23:00 10:23:00 PM 22:23:00
-      -- 查询指定时间：
-      get_date = "2006-12-07"
-      SELECT count(*) FROM t_get_video_temp Where DATE_FORMAT(get_date, '%Y-%d')='2006-07';
-      SELECT count(*) FROM t_get_video_temp Where get_date like '2006%-07%';
-```
 ### datetime和timestamp区别
 ```sql
     -- 问题：为什么 5.5的环境下运行两句命令得到不同的结果（5.6不会报错）
@@ -553,18 +546,3 @@ alter table `Bookinfo` add constraint `F_N` foreign key `F_N`(`classno`) referen
 2. 回收权限 revoke, 用法和 grant 一样
 
 - 刷新权限缓存 `flush privileges;`
-
-************************
-
-# 查询
-
-_全自段模糊查询_
-1. `select * from target where concat(ifnull(host, ''), ifnull(username, '')) like '%localhost%' > 0 limit 0,1;`
-    - 将全字段(空的替换为空串)连接成一个字符再模糊查询, 
-2. `select * from target where host like '%localhost%' or username like '%localhost%' limit 0,1;`
-    - 这种查询虽然也能实现, 但是性能差一些
-
-- 分页查询性能优化 [MySQL分页查询的性能优化](https://www.cnblogs.com/scotth/p/7995856.html)
-    - 尽量使用索引优化扫描行数
-    - 子查询法
-    - 只读索引方法
