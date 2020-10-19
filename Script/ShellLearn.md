@@ -29,7 +29,7 @@ categories:
             1. [case](#case)
         1. [循环](#循环)
     1. [函数](#函数)
-    1. [文件读写](#文件读写)
+    1. [文件处理](#文件处理)
         1. [配置文件](#配置文件)
             1. [ini和conf](#ini和conf)
     1. [多线程](#多线程)
@@ -43,7 +43,7 @@ categories:
 1. [Tips](#tips)
     1. [常用代码片段](#常用代码片段)
 
-**目录 end**|_2020-05-04 18:05_|
+**目录 end**|_2020-10-19 08:27_|
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -279,6 +279,10 @@ _判断文件_
   for i in $(seq 1 5); do
     echo $i
   done
+
+  for (( a=0; a<10; a++)) do
+    echo $a;
+  done
 ```
 
 `while`
@@ -289,11 +293,20 @@ _判断文件_
         i=$(($i+1))
     done
 ```
+1. break continue: break能跳出多层循环，只需带上数字 `break num`，也可以理解为无参的break默认带了1参数
+1. done 后面可以接重定向，将循环的输出转到文件而不是终端
 
 *****************
 
 ## 函数
 > Shell的函数只能返回整型数据类型
+
+- 定义函数
+    - `function a {}`
+    - `a(){}`
+    - 注意：
+        - Shell是解释执行，必须先定义，然后调用，而且函数没有重载，只覆盖
+        - 命令行内定义函数: `function hi { echo hi;};` 注意左括号和命令的空格，以及命令;结尾
 
 ```sh
     simple(){
@@ -303,14 +316,17 @@ _判断文件_
     zero(){
         return 0
     }
+    # 函数退出状态码（0-255）
     echo "return "$?
+    
+    # 使用输出返回值
+    result=$(simple)
 ```
-
-> 命令行内定义函数
-- `function hi { echo hi;};` 注意左括号和命令的空格，以及命令;结尾
+- 引用 shell 文件 `source shell文件相对路径` source可以简写为 `.`
 
 **********************
-## 文件读写
+
+## 文件处理
 ```bash
     # 1
     while IFS= read -r -u3 line; do
@@ -322,6 +338,12 @@ _判断文件_
         echo "line: "$line;
     done
 ```
+
+1. 当前目录创建临时文件，并输出创建的文件名 `mktmp data.XXXXXX`
+  - `-t` 在 /tmp/目录下创建，并返回全路径
+  - `-d` 创建目录
+
+1. 输出到终端并写入文件 `echo "test" | tee a.log`
 
 ### 配置文件
 
