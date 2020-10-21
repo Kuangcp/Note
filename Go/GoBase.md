@@ -34,7 +34,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2020-10-13 10:21_|
+**目录 end**|_2020-10-21 14:49_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -42,6 +42,8 @@ categories:
 > [Rethinking Visual Programming with Go](https://divan.dev/posts/visual_programming_go/)
 
 > [Goplus](https://github.com/qiniu/goplus)
+
+> [project-layout](https://github.com/golang-standards/project-layout)`项目结构规范`
 
 ## Modules
 > 1.11 开始支持 [Wiki](https://github.com/golang/go/wiki/Modules)  
