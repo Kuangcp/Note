@@ -38,7 +38,7 @@ categories:
         1. [ScheduledThreadPoolExecutor](#scheduledthreadpoolexecutor)
     1. [分支合并框架](#分支合并框架)
 
-**目录 end**|_2020-10-09 17:22_|
+**目录 end**|_2020-10-23 21:05_|
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -431,7 +431,7 @@ public int current(){
 > 依赖 common-lang3, 快速创建命名策略的线程池
 ```java
 new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
-        new LinkedBlockingQueue<>(), new BasicThreadFactory.Builder().namingPattern("yunxin-%d").build());
+        new LinkedBlockingQueue<>(), new BasicThreadFactory.Builder().namingPattern("test-%d").build());
 ```
 
 ************************

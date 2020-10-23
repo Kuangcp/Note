@@ -24,7 +24,7 @@ categories:
         1. [crontab](#crontab)
         1. [Systemd](#systemd)
 
-**目录 end**|_2020-10-13 10:21_|
+**目录 end**|_2020-10-23 21:05_|
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -123,6 +123,12 @@ categories:
     # |  |  |  |  |
     # *  *  *  *  * user-name command to be executed
 ```
+
+- * 表示所有值； 
+- ? 表示未说明的值，即不关心它为何值； 
+- - 表示一个指定的范围； 
+- , 表示附加一个可能值； 
+- / 符号前表示开始时间，符号后表示每次递增的值； 
 
 ### Systemd
 > [参考: Systemd 定时器教程](http://www.ruanyifeng.com/blog/2018/03/systemd-timer.html) `配置和使用上比Crontab更繁杂, 但是有更多的可控制项`
