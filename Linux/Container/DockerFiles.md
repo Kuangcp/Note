@@ -223,6 +223,20 @@ _docker build_
 ### ONBUILD
 - 注入下游镜像。如果生成的镜像是作为另一个镜像的基础镜像，则该指令定义了需要被执行的那些指令
 
+
+### 中间镜像
+
+```dockerfile
+    FROM imageA AS builder
+    RUN ...
+
+    FROM imageB AS final
+    RUN ...
+
+    # 可以引用builder镜像中的文件
+    COPY --from=builder /path/to/a /app
+    ENTRYPOINT ["/app"]
+```
 ******************************************
 
 # Practice
