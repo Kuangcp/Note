@@ -18,6 +18,7 @@ categories:
     1. [Verfication](#verfication)
     1. [SSL TLS](#ssl-tls)
         1. [数字证书](#数字证书)
+    1. [盗链与防盗链](#盗链与防盗链)
     1. [工具或平台](#工具或平台)
 1. [攻击手段](#攻击手段)
     1. [ARP断网攻击](#arp断网攻击)
@@ -25,7 +26,7 @@ categories:
     1. [CSRF](#csrf)
     1. [XSS](#xss)
 
-**目录 end**|_2020-10-14 14:54_|
+**目录 end**|_2020-10-26 12:04_|
 ****************************************
 
 # 网络安全
@@ -98,6 +99,17 @@ categories:
 - [Githhub:mkcert](https://github.com/FiloSottile/mkcert)`签发证书工具`
 
 ************************
+## 盗链与防盗链
+> [referer 教程](https://www.ruanyifeng.com/blog/2019/06/http-referer.html)
+
+> [防盗链](https://www.jianshu.com/p/c02064db8b5b)
+
+1. 利用 referer 来控制
+    1. 实现简单，绕过也简单
+1. 设想 中间使用一个认证中间件(请求静态文件需要携带token，token需要js方式计算获取，且有有效期)，提高盗链难度
+
+************************
+
 
 ## 工具或平台
 > [Official Site](https://www.zaproxy.org/)  
