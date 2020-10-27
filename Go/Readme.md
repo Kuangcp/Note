@@ -137,20 +137,24 @@ categories:
     mkdir -p src/golang.org/x/lint
     git clone --depth 1 https://github.com/golang/lint  src/golang.org/x/lint
 
-    mkdir -p src/github.com/golang/dep
-    git clone --depth 1 https://github.com/golang/dep src/github.com/golang/dep
-
     go get golang.org/x/tools/cmd/guru 
     go get golang.org/x/tools/cmd/gorename 
     go get golang.org/x/tools/cmd/goimports
+
     go get golang.org/x/lint
     go get golang.org/x/lint/golint
+```
 
+```sh
     # 可在任意目录执行
     go get github.com/ramya-rao-a/go-outline
     go get github.com/acroca/go-symbols
     
+    ## 仅为了提速
+    mkdir -p src/github.com/golang/dep
+    git clone --depth 1 https://github.com/golang/dep src/github.com/golang/dep
     go get github.com/golang/dep
+
     go get github.com/sqs/goreturns
     go get github.com/rogpeppe/godef
     go get github.com/uudashr/gopkgs/cmd/gopkgs
