@@ -11,7 +11,7 @@ categories:
 **目录 start**
 
 1. [IDEA 使用笔记](#idea-使用笔记)
-    1. [常识](#常识)
+    1. [基础概念](#基础概念)
     1. [常用技巧](#常用技巧)
         1. [Tomcat的使用](#tomcat的使用)
         1. [导出为可运行JAR](#导出为可运行jar)
@@ -37,7 +37,7 @@ categories:
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
         1. [无法输入中文](#无法输入中文)
 
-**目录 end**|_2020-08-26 18:31_|
+**目录 end**|_2020-10-30 18:12_|
 ****************************************
 
 # IDEA 使用笔记
@@ -48,8 +48,9 @@ categories:
 
 > [Idea Doc: Gradle](https://www.jetbrains.com/help/idea/gradle.html)
 > [IDEA Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
-## 常识
--  project 就是一个工作空间，一个Module就是一个项目
+
+## 基础概念
+- Project 就是一个工作空间，一个Module就是一个项目
 - 新建一个empty项目可以作为一个工作空间，放很多module,新建的时候不要选中任何目录，*光标选中JRE库*，再菜单栏点击File然后new，
     - 不然项目结构很乱, 会在光标停留的文件夹下新建module
 - 一个项目一个空间也是可以的，就是跨项目查看代码会有点麻烦，而且每个项目的IDEA的配置都是不一样的，同样的配置可能要配置很多遍
@@ -364,7 +365,8 @@ _例如修改为如下_
 1. Docker
 1. Kubernates
 1. Maven helper
-1. grep console 控制台搜索工具
+1. Grep console 控制台搜索工具
+1. Code with me 远程协作插件
 
 ### HTTP Client
 
