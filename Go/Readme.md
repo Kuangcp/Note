@@ -21,19 +21,21 @@ categories:
 # Golang
 > [awesome-go](https://github.com/avelino/awesome-go) | [awesome-go-cn](https://github.com/yinggaozhen/awesome-go-cn)
 
+
 - [学习Go的知乎话题](https://www.zhihu.com/question/23486344)
 - [Java 20年：转角遇到Go](http://www.infoq.com/cn/news/2015/05/java20-from-language-to-platform)
 
-> [参考: why is go popular in china](http://herman.asia/why-is-go-popular-in-china)  
-> [参考: 使用Go语言工作400天后的感受](https://blog.csdn.net/erlib/article/details/50998026)  
 > [Golang vs Rust vs Dlang 哪个更有前途](https://www.zhihu.com/question/27226962)`大致就是go偏向Java Python, Rust 偏向 C++ 的领域`  
-> [从 0 到 1 学习 Go 语言 ](https://mp.weixin.qq.com/s?__biz=MjM5NzM0MjcyMQ==&mid=2650087380&idx=1&sn=56c77443ae171e1091e146704798647a&chksm=bedac4ba89ad4dac6dab9bd21355a13a692f3411d4242e02ce2be91534570167ee3b7afb5d82&mpshare=1&scene=1&srcid=0127jfIvpS2r7ItNbpOnjnr8#rd)
+> [从 0 到 1 学习 Go 语言 ](https://mp.weixin.qq.com/s?__biz=MjM5NzM0MjcyMQ==&mid=2650087380&idx=1&sn=56c77443ae171e1091e146704798647a)
 
 ************************
 
 > 负面
 - [Go1.0的吐槽](http://blog.csdn.net/liigo/article/details/23699459)
 - [参考: 我为什么放弃Go语言](https://blog.csdn.net/liigo/article/details/23699459)
+- [对 Go 语言的综合评价](http://www.yinwang.org/blog-cn/2014/04/18/golang)`设计角度：泛型，接口和排序的问题！！`
+
+工程角度： 包管理，错误处理
 
 ## 社区
 - [GoCN Forum](https://gocn.vip/)
@@ -48,6 +50,7 @@ categories:
 - [Go语言资料收集](https://github.com/wonderfo/wonderfogo/wiki)
 - [go](http://www.runoob.com/go/go-tutorial.html)
 - [在线编译执行 学习go](http://www.vaikan.com/go/a-tour-of-go/#1) `在线编辑运行`
+- [go101](https://github.com/go101/go101)
 
 ************************
 
