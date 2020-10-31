@@ -9,9 +9,10 @@ categories:
 
 1. [名言](#名言)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-11-01 00:05_|
 ****************************************
 # 名言
+> [对开发人员有用的定律、理论](https://github.com/nusr/hacker-laws-zh)
 
 1. [David Wheeler](https://en.wikipedia.org/wiki/David_Wheeler_%28computer_scientist%29)
     1. All problems in computer science can be solved by another level of indirection.

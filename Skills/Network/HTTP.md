@@ -13,8 +13,9 @@ categories:
     1. [请求方法](#请求方法)
     1. [HTTP的状态码](#http的状态码)
     1. [HTTP 缓存](#http-缓存)
-    1. [Session和Cookie](#session和cookie)
-        1. [SessionId](#sessionid)
+    1. [Session 和 Cookie](#session-和-cookie)
+        1. [Cookie](#cookie)
+        1. [Session](#session)
 1. [HTTP各个实现版本](#http各个实现版本)
     1. [HTTP/0.9](#http09)
     1. [HTTP/1.0](#http10)
@@ -26,7 +27,7 @@ categories:
     1. [HSTS](#hsts)
 1. [CORS](#cors)
 
-**目录 end**|_2020-06-24 02:06_|
+**目录 end**|_2020-11-01 00:05_|
 ****************************************
 # HTTP
 > HyperText Transfer Protocol 超文本传输协议 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -67,20 +68,35 @@ categories:
 ## HTTP的状态码
 > [HTTP 状态码 完整列表](/FrontEnd/ResponseCode.md)
 
+************************
+
 ## HTTP 缓存
 
-## Session和Cookie
+************************
 
-### SessionId 
+## Session 和 Cookie
+> 最简单的区别是session存储在服务端，cookie是存储在客户端
+
+例如在Tomcat的实现：Session存储在Tomcat内存中，客户端与服务端建立会话后，生成Session并返回JSESSIONID给客户端
+客户端将值存储在cookie中供请求使用（请求会默认携带同域名的cookie），使得无状态的HTTP请求状态化
+
+### Cookie
+- Cookie具有不可跨站性(但这是浏览器安全标准，主流浏览器都实现了，但也意味着可以开发恶意浏览器无视该规范)
+    - [MDN SameSite](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
+    - > [参考: Cookie 的 SameSite 属性](http://www.ruanyifeng.com/blog/2019/09/cookie-samesite.html)  
+
+### Session
 - [ ] Session 创建过程 生命周期
 
 ************************
 
 # HTTP各个实现版本
-HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2
+目前HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2
 
 ## HTTP/0.9
 > HTTP于1990年问世，那时候HTTP非常简单：只支持GET方法；没有首部；只能获取纯文本。
+
+************************
 
 ## HTTP/1.0
 > 1996年5月，HTTP/1.0 版本发布，为了提高系统的效率，HTTP/1.0规定浏览器与服务器只保持短暂的连接
@@ -89,6 +105,8 @@ HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2
 - HTTP/1.0中浏览器与服务器只保持短暂的连接，连接无法复用。也就是说每个TCP连接只能发送一个请求。发送数据完毕，连接就关闭，如果还要请求其他资源，就必须再新建一个连接。  
 - 我们知道TCP连接的建立需要三次握手，是很耗费时间的一个过程。所以，HTTP/1.0版本的性能比较差。
 - 对于同一个tcp连接，所有的http1.0请求放入队列中，只有前一个请求的响应收到了，然后才能发送下一个请求。可见，http1.0的队首组塞发生在客户端。
+
+************************
 
 ## HTTP/1.1
 > HTTP/1.1于1999年诞生。相比较于HTTP/1.0来说，最主要的改进就是引入了持久连接(PersistentConnection)和请求的流水线（Pipelining）处理 
@@ -107,7 +125,7 @@ HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2
 >1. 头部冗余，采用文本格式 HTTP/1.X版本是采用文本格式，首部未压缩，而且每一个请求都会带上cookie、user-agent等完全相同的首部。  
 >1. 客户端需要主动请求
 
-*****************
+***
 
 `持久连接` 即TCP连接默认不关闭，可以被多个请求复用。HTTP 1.1的持久连接，也需要增加新的请求头来帮助实现 例如
 - Connection请求头的值为Keep-Alive时，客户端通知服务器返回本次请求结果后保持连接；
@@ -115,7 +133,7 @@ HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2
     - 在一次请求结束之后，TCP 链接才可被复用进行下一次请求，否则根本无法判断当前传送的数据属于哪次请求的
 - Connection请求头的值为close时，客户端通知服务器返回本次请求结果后关闭连接。
 
-****************************
+***
 
 请求的流水线（Pipelining）处理，在一个TCP连接上可以传送多个HTTP请求和响应，减少了建立和关闭连接的消耗和延迟。例如：
 > 一个包含有许多图像的网页文件上的多个资源请求和应答可以在一个连接中传输  
@@ -126,7 +144,7 @@ HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2
 - 也就是说，先接收到的请求的响应也要先发送。这样造成的问题是，如果最先收到的请求的处理时间长的话，响应生成也慢，就会阻塞已经生成了的响应的发送。  
 - 也会造成队首阻塞。队首阻塞是发生在服务端的
 
-********************
+************************
 
 ## HTTP/2
 > HTTP/2 是 HTTP 协议自 1999 年 HTTP 1.1 发布后的首个更新，主要基于 SPDY 协议(2012年google提出)  

@@ -24,9 +24,10 @@ categories:
     1. [ARP断网攻击](#arp断网攻击)
     1. [SYNFlood攻击](#synflood攻击)
     1. [CSRF](#csrf)
+        1. [解决方案](#解决方案)
     1. [XSS](#xss)
 
-**目录 end**|_2020-10-26 12:04_|
+**目录 end**|_2020-11-01 00:05_|
 ****************************************
 
 # 网络安全
@@ -44,6 +45,9 @@ categories:
 
 ## Authenticate
 > [WWW-Authenticate](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/WWW-Authenticate)
+
+> [参考: 设计安全的账号系统的正确姿势](https://blog.coderzh.com/2016/01/03/security-design/)  
+> [参考: 即使被拖库，也可以保证密码不泄露](https://blog.coderzh.com/2016/01/10/a-password-security-design-example/)  
 
 ### OAuth 2.0
 - [OAuth 2.0授权框架](https://github.com/jeansfish/RFC6749.zh-cn/blob/master/index.md)
@@ -150,7 +154,7 @@ categories:
 
 指在一个浏览器中打开了两个标签页，其中一个页面通过窃取另一个页面的 cookie 来发送伪造的请求  
 
-例如: A站点某网页a.html 有一个 image 标签 其url 是B站点的URL，利用 cookie 会随着当前页面的请求自动发送到服务端的特性，A站点的cookie会发送至B站点
+例如: A站点某网页 a.html 有一个 image 标签 其 url 是B站点的URL，利用 cookie 会随着当前页面的请求自动发送到服务端的特性，A站点的cookie会发送至B站点
 
 > [维基百科定义 CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery) |
 > [百度百科 CSRF](https://baike.baidu.com/item/CSRF)
@@ -161,7 +165,11 @@ categories:
 > [浅谈CSRF攻击方式](http://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html)  
 > [参考提问下的回答](https://segmentfault.com/q/1010000000713614)
 
-- [ ] 问题是 CSRF 只是非法获取Cookie做操作么, 自己用Nginx配置两个域名的web页面试试 CSRF 
+### 解决方案
+> token
+- 打开当前页面时服务端先传递一个token给前端，前端后续的请求都需要携带该token(作请求参数或者Header)，否则拒绝请求，这样能避免img标签方式的 CSRF
+
+> Cookie 中的 SameSite属性 [Cookie详情](/Skills/Network/HTTP.md#Cookie)
 
 ************************
 
