@@ -29,17 +29,18 @@ categories:
     1. [搜索算法](#搜索算法)
     1. [哈希算法](#哈希算法)
         1. [构造哈希函数](#构造哈希函数)
-        1. [哈希冲突](#哈希冲突)
+        1. [HSAH 冲突](#hsah-冲突)
             1. [开放定址法](#开放定址法)
             1. [再 HASH 法](#再-hash-法)
             1. [链地址法](#链地址法)
             1. [公共溢出区](#公共溢出区)
+        1. [安全相关](#安全相关)
 1. [密码学](#密码学)
     1. [Diffie-Hellman Key Exchange算法](#diffie-hellman-key-exchange算法)
 1. [实际问题](#实际问题)
     1. [斐波那契数列](#斐波那契数列)
 
-**目录 end**|_2020-05-01 17:56_|
+**目录 end**|_2020-11-01 17:43_|
 ****************************************
 # 数据结构和算法
 > 数据结构是指一组数据的存储结构 算法就是操作数据的方法 数据结构和算法是相辅相成的，数据结构是为算法服务的，而算法要作用在特定的数据结构之上
@@ -355,14 +356,20 @@ Java 中 ArrayList 和 数组的对比
 > [Trie](https://en.wikipedia.org/wiki/Trie) `字典树`
 
 ## 哈希算法
-也称 散列法 关键字地址计算法
+> 也称 散列法 关键字地址计算法
 
-基本思想: 在元素的关键字 k 和元素的存储位置 p 之间建立一个对应关系 H, 使得 p = H(k) H 则称为哈希函数
+基本思想: 在元素的关键字 k 和元素的存储位置 p 之间建立一个对应关系 H, 使得 p = H(k)，则 H 被称为哈希函数
 - 在创建哈希表时, 把关键字为 k 的元素放到地址为 H(k) 的单元
 - 在查找时则根据关键字 k 计算出地址, 直接获取到元素, 时间复杂度达到 O(1)
 
+- MD5
+- SHA
+    - SHA家族算法有SHA-1、SHA-224、SHA-256、SHA-384和SHA-512（后四者通常并称SHA2）
+- CRC
+    - 循环冗余校验, CRC32（12、16、32等值均是指多项式的最高阶N次幂）
 - MurmurHash 
     - 是一种非加密型哈希函数，和其它流行哈希函数相比，对于规律性较强的 key 随机分布特性表现更良好，很多开源的软件项目使用（Redis，Memcached，Cassandra，HBase，Lucene）
+- Bcrypt `慢Hash函数`
 
 ### 构造哈希函数
 设计哈希函数常考虑
@@ -393,7 +400,7 @@ Java 中 ArrayList 和 数组的对比
 `JDK中的HashMap实现方式`
 取键值的hashCode, 然后高低16位做异或运算, 然后再与`哈希表大小`做与运算, 才得到哈希地址
 
-### 哈希冲突
+### HSAH 冲突
 > [参考: hash是如何处理冲突的?](http://www.cnblogs.com/jillzhang/archive/2006/11/03/548671.html)
 
 > [参考: 一种高级的DoS攻击-Hash碰撞攻击 ](https://yq.aliyun.com/articles/92194?utm_campaign=wenzhang&utm_medium=article&utm_source=QQ-qun&201762&utm_content=m_22308)
@@ -426,10 +433,16 @@ JDK中的HashMap就是采用该方式实现
 
 ************************
 
+### 安全相关
+1. HASH攻击，例如针对Java中HashMap的算法，通过构造特定的参数，使得HashMap退化为链表，浪费服务器资源
+1. 通常不同的参数进入Hash函数运行时间会不一致，理论上利用这一点可以提高爆破密码的准确性
+
+************************
+
 # 密码学
 
 ## Diffie-Hellman Key Exchange算法
-> Whitfield Diffie 和 Martin Hellman ，他们于２０１５年获得了计算机科学领域的最高奖：图灵奖
+> Whitfield Diffie 和 Martin Hellman ，他们于2015年获得了计算机科学领域的最高奖：图灵奖
 
 ![码农翻身](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/arithmetic/Diffie-HellmanKeyExchange.png)
 

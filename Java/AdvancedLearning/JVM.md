@@ -46,7 +46,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2020-09-22 22:46_|
+**目录 end**|_2020-11-01 17:43_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -79,7 +79,7 @@ categories:
 
 # 内存区域
 ## 运行时数据区
-![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Java/Jvm/MemoryArea.png)
+<img src="img/001-jvm-runtime-memory.drawio.svg">
 
 线程私有的内存区域: 程序计数器 本地方法栈 虚拟机栈. 生命周期与线程保持一致
 
