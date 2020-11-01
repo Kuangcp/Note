@@ -371,7 +371,7 @@ Java 中 ArrayList 和 数组的对比
     - 是一种非加密型哈希函数，和其它流行哈希函数相比，对于规律性较强的 key 随机分布特性表现更良好，很多开源的软件项目使用（Redis，Memcached，Cassandra，HBase，Lucene）
 - Bcrypt `慢Hash函数`
 
-### 构造哈希函数
+### 构造HASH函数
 设计哈希函数常考虑
 1. 哈希函数的时间复杂度
 1. 关键字长度
@@ -400,7 +400,7 @@ Java 中 ArrayList 和 数组的对比
 `JDK中的HashMap实现方式`
 取键值的hashCode, 然后高低16位做异或运算, 然后再与`哈希表大小`做与运算, 才得到哈希地址
 
-### HSAH 冲突
+### HASH 冲突
 > [参考: hash是如何处理冲突的?](http://www.cnblogs.com/jillzhang/archive/2006/11/03/548671.html)
 
 > [参考: 一种高级的DoS攻击-Hash碰撞攻击 ](https://yq.aliyun.com/articles/92194?utm_campaign=wenzhang&utm_medium=article&utm_source=QQ-qun&201762&utm_content=m_22308)
