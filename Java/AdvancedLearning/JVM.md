@@ -79,7 +79,7 @@ categories:
 
 # 内存区域
 ## 运行时数据区
-![](img/001-jvm-runtime-memory.drawio.svg)
+<img src="img/001-jvm-runtime-memory.drawio.svg">
 
 线程私有的内存区域: 程序计数器 本地方法栈 虚拟机栈. 生命周期与线程保持一致
 
@@ -89,7 +89,7 @@ categories:
 ### Java虚拟机栈
 > HotSpot 中不区分Java虚拟机栈和本地方法栈, 虽然 -Xoss 存在(设置本地方法栈大小)但是是无效的, 只能通过 -Xss 设置
 
-![](img/002-method-stack.drawio.svg)
+<img src="img/002-method-stack.drawio.svg">
 
 - 虚拟机栈描述的是Java方法执行的内存模型: 每个方法在执行的同时, 都会创建一个`栈帧`(Stack Frame)
     - 用于存储局部变量表, 操作数栈, 动态链接, 方法出口等信息  
