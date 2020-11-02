@@ -22,7 +22,7 @@ categories:
     1. [Vivaldi](#vivaldi)
     1. [Opera](#opera)
 
-**目录 end**|_2020-10-15 20:26_|
+**目录 end**|_2020-11-02 23:23_|
 ****************************************
 # 浏览器
 ## FireFox
@@ -157,6 +157,7 @@ categories:
 1. TabsFolder
 1. Cluster Window & Tab Manager
 1. Chrome Download Manager
+1. Fatkun 图片批量保存
 
 ************************
 

@@ -76,7 +76,7 @@ categories:
     1. [try](#try)
     1. [transient](#transient)
 
-**目录 end**|_2020-10-21 14:49_|
+**目录 end**|_2020-11-02 23:23_|
 ****************************************
 # 基础语法
 
@@ -205,8 +205,8 @@ Java8 以上可以使用无符号的 long, 值范围: 0, 2^64-1
 
 > 封装类型的缓存行为 
 
-Integer, 有 IntegerCache 类缓存 [-128, 127] 范围内的值. 可以通过 `-XX:AutoBoxCacheMax` 修改上限值  
-且 Byte Short Long Character 都有对应的缓存对象和缓存值范围, 但是只有Integer的缓存范围可变  
+Integer, 有 IntegerCache 类缓存了 [-128, 127] 范围内的值. 可以通过 `-XX:AutoBoxCacheMax` 参数修改上限值  
+且 Byte Short Long Character 都有对应的缓存对象和缓存值范围, **但是只有Integer的缓存范围可变**  
 
 Byte, Short, Long 有固定范围: [-128, 127]   
 Character  范围是 ‘\u0000’ 至 ‘\u007f’ 即 [0,127]  
@@ -225,12 +225,8 @@ true 和 false 也是缓存了的
 字符串对象是不可变的，这意味着一旦创建，它们的值就不能更改。 String类在技术上不是基本数据类型，但考虑到语言给予它的特殊支持，倾向于将其视为基本数据类型。
 
 - 常量池
-    - 字符串常量池存在于方法区 
+    - 字符串常量池存在于方法区 1.7之前存于永久区，1.7及之后都在堆中(方法区处于堆中)
     - [String：字符串常量池](https://segmentfault.com/a/1190000009888357)
-
-- 常见编码转换
-    - 一般Windows文件默认编码：`str = new String(str.getBytes("iso8859-1"), "gb2312"); ` 
-    - properties文件中获取中文 `str = new String(str.getBytes("utf-8"), "utf-8");`
 
 > [字符串拼接](/Java/AdvancedLearning/Basic/StringConcat.md)
 
@@ -250,6 +246,8 @@ true 和 false 也是缓存了的
 
 ### Boolean
 > 内含两个单例 TRUE FALSE
+
+但是能通过反射修改两个单例的值，导致逻辑错乱 [com.github.kuangcp.reflects.ReflectTargetObjectTest#testModifyStaticFinalBoolean](https://github.com/Kuangcp/JavaBase/blob/d43a97f458862f8ac5f9adf1b46ff98310518465/class/src/test/java/com/github/kuangcp/reflects/ReflectTargetObjectTest.java)
 
 ### Void
 - void 的包装类型, 常用于反射时对应上 返回值为void的方法(总得有个类型 Void.TYPE) 该类型在 jdk1.1就有了, 1.5出了泛型后, 又多了一个用途(因为泛型不支持原始类型)
