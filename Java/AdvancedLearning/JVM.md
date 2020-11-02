@@ -59,7 +59,8 @@ categories:
 `书籍`
 - 《深入理解 Java 虚拟机》(周志明 第二版) 大部分内容来源于此, 但是部分内容是依据Java8有所改动
 
-![JVM基本结构](https://github.com/dragonhht/GitImgs/blob/master/Notes/JVM%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png?raw=true)
+************************
+![JVM基本结构](img/004-jvm-structure.drawio.svg)
 
 - 类加载器子系统
     - 负责从文件系统或者网络中记载Class信息，加载的类信息存放于一块称为方法区的内存空间。除了类的信息外，方法区中可能还会存放运行时的常量池信息，包含字符串字面量和数字常量（这部分常量信息是Class文件中常量池部分的内存映射）
@@ -79,7 +80,7 @@ categories:
 
 # 内存区域
 ## 运行时数据区
-<img src="img/001-jvm-runtime-memory.drawio.svg">
+![](img/001-jvm-runtime-memory.drawio.svg)
 
 线程私有的内存区域: 程序计数器 本地方法栈 虚拟机栈. 生命周期与线程保持一致
 
@@ -89,7 +90,7 @@ categories:
 ### Java虚拟机栈
 > HotSpot 中不区分Java虚拟机栈和本地方法栈, 虽然 -Xoss 存在(设置本地方法栈大小)但是是无效的, 只能通过 -Xss 设置
 
-<img src="img/002-method-stack.drawio.svg">
+![](img/002-method-stack.drawio.svg)
 
 - 虚拟机栈描述的是Java方法执行的内存模型: 每个方法在执行的同时, 都会创建一个`栈帧`(Stack Frame)
     - 用于存储局部变量表, 操作数栈, 动态链接, 方法出口等信息  
@@ -216,9 +217,9 @@ GC 的目的是识别出不再使用的内存，并将其变为可用的。现�
 
 ************************
 
-> [Generation](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/generations.html#sthref16)
+> [Oracle Java8 Doc: Generation](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/generations.html#sthref16)
 
-<img src="img/003-jvm-generation-design.drawio.svg">
+![](img/003-jvm-generation-design.drawio.svg)
 
 > [参考: JVM中新生代为什么要有两个Survivor（form,to）？](https://www.zhihu.com/question/44929481)  
 > [参考: 为什么新生代内存需要有两个Survivor区](https://blog.csdn.net/antony9118/article/details/51425581)  
