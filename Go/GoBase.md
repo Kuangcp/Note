@@ -63,10 +63,13 @@ export GOSUMDB=sum.golang.google.cn
 
 ************************
 
-1. `go mod init moduleName` 按名初始化模块
+1. `go mod init moduleName` 按名字初始化模块
+    1. *注意*，如果想通过 `go get URL`方式进行安装，就必须使用代码托管的完整地址, 不需要就可以简化包名
+    - 例如 `module github.com/{username}/{repo}/path/to`
+
 1. `go mod edit -replace github.com/kuangcp/gobase/cuibase=./../cuibase`
+    - go.mod文件会新增: `replace github.com/kuangcp/gobase/cuibase => ./../cuibase`
     - 多模块开发时，使用本地开发的模块取代发布的版本
-    - 效果: `replace github.com/kuangcp/gobase/cuibase => ./../cuibase`
 
 ************************
 
