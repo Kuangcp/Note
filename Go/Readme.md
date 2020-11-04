@@ -51,6 +51,7 @@ categories:
 - [go](http://www.runoob.com/go/go-tutorial.html)
 - [在线编译执行 学习go](http://www.vaikan.com/go/a-tour-of-go/#1) `在线编辑运行`
 - [go101](https://github.com/go101/go101)
+- [build-web-application-with-golang](https://github.com/astaxie/build-web-application-with-golang)
 
 ************************
 
@@ -58,8 +59,11 @@ categories:
 > [Go相关书籍的知乎话题](https://www.zhihu.com/question/30461290)  
 > [Go语言高级编程(Advanced Go Programming)](https://books.studygolang.com/advanced-go-programming-book/index.html)
 
+
 # 安装
-> [Official Download](https://golang.google.cn/dl/) | [Official Doc](https://golang.google.cn/doc/install) | [参考 教程](http://www.runoob.com/go/go-environment.html)
+
+## Linux 下安装
+> [Official Download](https://golang.google.cn/dl/) | [Official Doc](https://golang.google.cn/doc/install) 
 
 1. `sudo tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz` 安装和升级都是如此
     - 注意: 升级前必须 `rm -rf /usr/local/go` 以免造成文件的混乱
@@ -72,14 +76,14 @@ categories:
 	```
 1. **查看版本** `go version`正常输出go的版本则是配置成功  
 
-************************
+### Hello World
 
 1. 在 `$HOME/Code/go` 下 新建 test.go
     ```go
         package main
         import "fmt"
         func main() {
-            fmt.Printf("hello, world\n")
+            fmt.Println("hello, world")
         }
     ```
 1. go run test.go 或者 go build 然后执行可执行文件

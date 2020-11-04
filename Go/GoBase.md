@@ -34,7 +34,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2020-10-28 20:53_|
+**目录 end**|_2020-11-04 20:24_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -70,6 +70,28 @@ export GOSUMDB=sum.golang.google.cn
 1. `go mod edit -replace github.com/kuangcp/gobase/cuibase=./../cuibase`
     - go.mod文件会新增: `replace github.com/kuangcp/gobase/cuibase => ./../cuibase`
     - 多模块开发时，使用本地开发的模块取代发布的版本
+
+1. go clean -modcache
+
+| | |
+|:----|:----|
+| go mod graph  | 列出模块依赖(包含依赖传递)
+| go mod tidy   | 删除错误或者不使用的modules
+| go mod vendor | 生成vendor目录
+| go mod verify | 验证依赖是否正确
+| go mod why    | 查找依赖
+
+> go get 
+
+| | |
+|:----|:----|
+| go get golang.org/x/text@latest        | 拉取最新的版本(优先择取 tag)
+| go get golang.org/x/text@master        | 拉取 master 分支的最新 commit
+| go get golang.org/x/text@v0.3.2        | 拉取 指定 tag 
+| go get golang.org/x/text@342b2e        | 拉取 指定 commit
+| go get github.com/smartwalle/alipay/v3 | 拉取v3版本 `设计最坑`
+| go get -u                              | 更新 mod
+| go list -m -versions golang.org/x/text | 列出可安装版本
 
 ************************
 
