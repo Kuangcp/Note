@@ -43,7 +43,7 @@ categories:
 1. [Tips](#tips)
     1. [常用代码片段](#常用代码片段)
 
-**目录 end**|_2020-10-19 08:27_|
+**目录 end**|_2020-11-05 16:05_|
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -85,11 +85,21 @@ categories:
 ### 输入
 - `read answer`
 
-并且在处理管道的输入也是一样的使用 read
+处理管道的输入也是使用 read
 ```sh
 while read line; do
   echo $line
 done
+```
+
+- `select`
+
+```sh
+  echo "What is your favourite OS?"
+  select var in "Linux" "Gnu Hurd" "Free BSD" "Other"; do
+    break;
+  done
+  echo "You have selected $var"
 ```
 ### 输出
 echo  printf 

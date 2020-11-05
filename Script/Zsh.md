@@ -17,7 +17,7 @@ categories:
         1. [主题](#主题)
             1. [自己定制](#自己定制)
 
-**目录 end**|_2020-06-28 02:11_|
+**目录 end**|_2020-11-05 16:05_|
 ****************************************
 # Zsh
 > [arch zsh wiki](https://wiki.archlinux.org/index.php/Zsh)
@@ -27,6 +27,8 @@ categories:
 > [终极 Shell——ZSH](https://zhuanlan.zhihu.com/mactalk/19556676)
 
 > [某人的配置](https://github.com/lilydjwg/dotzsh)
+
+- [Zsh 开发指南](https://www.zhihu.com/column/zshguide)
 
 ## Tips 
 
@@ -52,7 +54,7 @@ categories:
 > [wiki: plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins)  
 > [zsh oh-my-zsh 插件推荐 ](https://hufangyun.com/2017/zsh-plugin/)
 
-- 个人常用 git gitfast mvn gradle go docker kubectl sudo  
+- 个人常用 git gitfast mvn gradle golang docker kubectl sudo  
 
 **********************
 

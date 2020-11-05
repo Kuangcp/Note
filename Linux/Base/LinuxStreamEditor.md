@@ -17,7 +17,7 @@ categories:
     1. [sed](#sed)
     1. [awk](#awk)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-11-05 16:05_|
 ****************************************
 # 流编辑器
 > [参考: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
@@ -108,7 +108,8 @@ categories:
     - `echo Tolstoy is worldly | sed 's/T.*y/Camus/'` 这里的pattern就有问题， 会把整行替换掉
     - `echo Tolstoy is worldly | sed 's/T[a-z]*y/Camus/'` 只把第一个单词替换
 
-> 处理管道流 `echo syx is a good body | sed 's/syx/zsf/'`
+> 处理管道流 `echo syx is a good body | sed 's/syx/zsf/'`  
+> 多个指令 `sed 's/a//g;s/b//g'`
 
 ************************
 
