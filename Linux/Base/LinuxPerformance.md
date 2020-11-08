@@ -369,6 +369,8 @@ categories:
     - `ps -a -x -o rss,comm | grep java | awk '{sum+=$1};END {print sum "K " sum/1024"M "}'`
 1. 按内存排序 列出所有进程 `ps aux | grep -v RSS | awk "{print $6 "\t" $11 }" | sort --human-numeric-sort -r | less`
 
+统计的是RSS，也就是会包含共享内存，实际上应该减去共享内存
+
 ************************
 
 ### pstree

@@ -70,6 +70,13 @@ categories:
 - 将文件复制进火狐插件目录:`sudo cp libflashplayer.so  /usr/lib64/mozilla/plugins`
 - 添加其他用户可执行权限`chmod 755 /usr/lib64/mozilla/plugins/libflashplayer.so`
 
+### tracker-extract 高CPU内存占用
+> [参考: Go Away, tracker-store](https://www.soimort.org/notes/171103/)  
+> [参考: tracker store](https://askubuntu.com/questions/346211/tracker-store-and-tracker-miner-fs-eating-up-my-cpu-on-every-startup)  
+
+1. 复制 `cp /etc/xdg/autostart/tracker-miner-fs-3.desktop ~/.config/autostart/` 等若干文件 并追加 `Hidden=true`
+1. 禁用服务 : `systemctl --user mask tracker-store` 
+
 ******************************************************
 
 ## 驱动问题
