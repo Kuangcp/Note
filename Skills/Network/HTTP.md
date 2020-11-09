@@ -27,7 +27,7 @@ categories:
     1. [HSTS](#hsts)
 1. [CORS](#cors)
 
-**目录 end**|_2020-11-01 00:05_|
+**目录 end**|_2020-11-09 22:52_|
 ****************************************
 # HTTP
 > HyperText Transfer Protocol 超文本传输协议 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -83,10 +83,26 @@ categories:
 ### Cookie
 - Cookie具有不可跨站性(但这是浏览器安全标准，主流浏览器都实现了，但也意味着可以开发恶意浏览器无视该规范)
     - [MDN SameSite](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
-    - > [参考: Cookie 的 SameSite 属性](http://www.ruanyifeng.com/blog/2019/09/cookie-samesite.html)  
+    - [参考: Cookie 的 SameSite 属性](http://www.ruanyifeng.com/blog/2019/09/cookie-samesite.html)  
+
+************************
+
+> 禁用Cookie如何正常使用Session
+首先明确场景，客户端禁用Cookie后，服务端无差别的在response的Header中携带Cookie信息，但是客户端会拒绝写入
+1. URL 重写的方式，将SessionId编码进URL 
+1. 是否可以使用LocalStorage 或者 SessionStorage 存储SessionId，因为本质上Cookie内的SessionId只是为了能对应于在服务器保存的Session实现有状态的HTTP
 
 ### Session
-- [ ] Session 创建过程 生命周期
+> 通常各种语言，Web服务器的实现逻辑都不一样
+
+
+1. 例如在Tomcat中，Session的实现默认是存储在内存中(也可以存储在文件，数据库中)，具有过期时间 [Tomcat 中的 Session 和 Cookie ](https://www.cnblogs.com/chuonye/p/10846998.html)
+    1. SessionInitializerFilter 过滤器中会调用 request的getSession方法
+        - 设置为过滤器的原因 该类的JavaDoc 有说明，例如为了 Websocket
+    1. 最终调用 org.apache.catalina.connector.Request#doGetSession 判断是否有Session没有就创建
+        - 创建Session的同时会在 request 关联的 response中写入对应的Cookie
+
+1. [参考: PHP中Session 的实现](https://www.runoob.com/w3cnote/php-session-login.html)  
 
 ************************
 

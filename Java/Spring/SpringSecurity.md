@@ -18,7 +18,7 @@ categories:
         1. [多用户多角色的实现思路](#多用户多角色的实现思路)
             1. [每个身份都使用一个登录实体类](#每个身份都使用一个登录实体类)
             1. [另一种思路：](#另一种思路)
-    1. [JWT](#jwt)
+    1. [JWT 和 Spring](#jwt-和-spring)
         1. [跨域问题](#跨域问题)
     1. [Oauth](#oauth)
     1. [实现细节](#实现细节)
@@ -29,7 +29,7 @@ categories:
         1. [保护方法应用](#保护方法应用)
     1. [社交登录](#社交登录)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-11-09 22:52_|
 ****************************************
 # SpringSecurity
 > [Spring Security 5.0.6 doc](https://docs.spring.io/spring-security/site/docs/5.0.6.RELEASE/reference/htmlsingle)
@@ -95,7 +95,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 >- 其实这个安全框架使用的是角色控制，而不是权限控制，目前的了解，达不到Oracle那样的权限加角色的精细化控制
 
 *********
-## JWT
+
+## JWT 和 Spring
 > [JWT相关原理](/Skills/Base/WebSecurity.md#jwt) | [Github SpringBoot2使用Security整合Jwt案例项目](https://github.com/Kuangcp/SpringBoot2-Security-Jwt)  
 
 - [个人代码片段](https://gitee.com/kcp1104/codes/kw31qf40iz9p8mt2x7bcd49)  |
@@ -109,7 +110,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 > [WEB应用前后端分离实践 关键词：rest架构+跨域访问+JWT校验](https://bbs.csdn.net/topics/392006333)
 
 [csrf](https://docs.spring.io/spring-security/site/docs/5.0.6.RELEASE/reference/htmlsingle/#csrf)
+
 *******************
+
 ## Oauth
 > [oauth](https://github.com/spring-projects/spring-security-oauth)
 
