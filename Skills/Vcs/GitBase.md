@@ -50,7 +50,6 @@ categories:
             1. [恢复被drop的stash](#恢复被drop的stash)
         1. [branch](#branch)
         1. [checkout](#checkout)
-        1. [switch](#switch)
         1. [merge](#merge)
         1. [rebase](#rebase)
         1. [cherry-pick](#cherry-pick)
@@ -73,7 +72,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2020-06-16 10:25_|
+**目录 end**|_2020-11-11 21:09_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -120,6 +119,7 @@ categories:
 - `git config user.email ***`  和   `git config user.name ***` 这两个是必须的，
 - `git config http.postBuffer 524288000` 设置缓存区大小为 500m
 - `git config core.fileMode false` 忽略文件的mode变化，一般发生在文件放在挂载盘的时(默认755)
+- `git config branch.master.description` **查看**master分支描述信息，命令后附带信息则是**设置**
 
 打开`~/.gitconfig`文件能够发现这是 ini 格式的配置文件
 ```ini
@@ -540,7 +540,7 @@ categories:
 可以恢复 误操作 stash drop 或者 clean 的内容 
 
 - `git fsck --no-reflog | awk '/dangling commit/ {print $3}'`
-- WIP 开头的就是 stash 对应的 commit , 找到对应的 sha1 id 建立新分支即可
+- WIP 开头的就是 stash 对应的 commit , 找到对应的 sha1 id 建立新分支即可 (在命令后接管道 ` | xargs git show`, 查找代码内容)
     - 也就是说 stash 仍然是采用 分支 来实现的, 在某个分支stash 就相当于在该分支进行 commit
 
 ************************
@@ -566,8 +566,6 @@ categories:
 
 ### checkout
 > [Official Doc: git checkout](https://git-scm.com/docs/git-checkout)
-
-> alias gh='git checkout'
 
 1. 切换分支 `gh feature/a`
 1. 切换分支并设置该分支的远程分支 `gh feature/a origin/feature/a`

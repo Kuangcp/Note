@@ -42,7 +42,7 @@ categories:
     1. [PDF](#pdf)
 1. [Tips](#tips)
 
-**目录 end**|_2020-10-13 12:19_|
+**目录 end**|_2020-11-11 21:09_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -335,7 +335,7 @@ _批量修改_
 ************************
 
 `pdftk`
-> [pdflabs](https://www.pdflabs.com/)
+> [pdflabs](https://www.pdflabs.com/) | [Docs](https://www.pdflabs.com/docs/pdftk-cli-examples/)
 
 ************************
 
@@ -360,4 +360,3 @@ _批量修改_
 - `echo "Text I want to write" | sudo tee -a /path/to/file > /dev/null`
 
 ************************
-
