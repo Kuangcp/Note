@@ -522,6 +522,11 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
 # 网络
 > [Official Doc](https://docs.docker.com/network/) 分为 none host brige user-defined 几种类型
 
+> Connection reset by peer
+1. 可能是 docker0 和本身网段冲突了 `docker network inspect bridge` 对比 `netstat -nr` 查看
+    - [Docker: connection reset by peer](https://serverfault.com/questions/848075/docker-connection-reset-by-peer)
+1. 重置网桥 [Connection reset by peer](https://blog.csdn.net/Alphr/article/details/107969190) `原因待寻找`
+
 ## None
 > docker run -it --network none  busybox
 
