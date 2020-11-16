@@ -24,7 +24,7 @@ categories:
 1. [Tips](#tips)
     1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2020-10-19 15:56_|
+**目录 end**|_2020-11-16 12:11_|
 ****************************************
 # MySQL进阶
 
@@ -75,7 +75,7 @@ _全字段模糊查询_
 
 - InnoDB 默认隔离级别为 可重复读
 
-- InnoDB和Falcon存储引擎通过多版本并发控制(MVCC，Multiversion Concurrency Control)机制(快照读) **解决了 可重复读级别的 幻读问题**
+- InnoDB和Falcon存储引擎通过多版本并发控制(MVCC，Multiversion Concurrency Control)机制(快照读) **部分解决了 可重复读级别的 幻读问题**
     - 但是某种特殊场景下，幻读还是存在: 
     1. 当 事务T1, 对事务T2已提交数据A进行了修改，此时数据A 的 trx_id隐藏列就变成了T1事务id
         - 此时 事务 T1 就能查出此条数据
