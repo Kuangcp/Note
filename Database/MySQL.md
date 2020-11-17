@@ -76,7 +76,7 @@ categories:
     1. [修改](#修改)
         1. [授权](#授权)
 
-**目录 end**|_2020-10-19 15:56_|
+**目录 end**|_2020-11-18 00:14_|
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -193,7 +193,7 @@ _重命名表格_ `RENAME TABLE old TO new `
 ## 索引
 > [Official Doc](https://dev.mysql.com/doc/refman/5.7/en/optimization-indexes.html)  
 
-索引是采用特定的数据结构设计(BTree 或者 Hash), 为了对若干列进行快速访问  
+索引是采用特定的数据结构设计(B+Tree 或者 Hash), 为了对若干列进行快速访问  
 
 > 优点
 1. 加快查询速度
@@ -203,7 +203,7 @@ _重命名表格_ `RENAME TABLE old TO new `
 
 > 缺点
 1. 需要额外占用存储空间
-1. 当对被索引的数据进行`增删改`, 需要重建索引, 有一定性能影响
+1. 当对被索引的数据进行DML(增删改), 需要重建索引, 有一定性能影响
 
 > 注意: [Avoiding Full Table Scans](https://dev.mysql.com/doc/refman/5.7/en/table-scan-avoidance.html)
 
@@ -215,6 +215,8 @@ _重命名表格_ `RENAME TABLE old TO new `
 
 - 通常情况下一个SQL语句只能在表上命中一个索引，但还有 索引合并 的情况 [参考: MySQL索引合并的使用与原理](https://blog.csdn.net/gentlezuo/article/details/107677543)  
     - intersect， union， sort-union
+
+> [参考: 【原创】为什么Mongodb索引用B树，而Mysql用B+树?](https://www.cnblogs.com/rjzheng/p/12316685.html)  `MongoDB PostgreSQL 都是使用B-Tree`
 
 ### 基本使用
 1. **创建**

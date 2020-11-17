@@ -10,14 +10,11 @@ categories:
 **目录 start**
 
 1. [PostgreSQL Advance](#postgresql-advance)
-    1. [性能分析](#性能分析)
+1. [索引](#索引)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-11-18 00:14_|
 ****************************************
 # PostgreSQL Advance
 
-
-## 性能分析
-
-查询分析 同MySQL一样, 使用 `EXPLAIN` + SQL
+# 索引
 

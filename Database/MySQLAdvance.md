@@ -24,7 +24,7 @@ categories:
 1. [Tips](#tips)
     1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2020-11-16 12:11_|
+**目录 end**|_2020-11-18 00:14_|
 ****************************************
 # MySQL进阶
 
@@ -51,10 +51,12 @@ _全字段模糊查询_
 > [InnoDB Locking](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
 
 ## 事务
-- 查看当前会话隔离级别 select @@tx_isolation;
-- 查看系统当前隔离级别 select @@global.tx_isolation;
-- 设置当前会话隔离级别 SET TRANSACTION ISOLATION LEVEL repeatable read;
-- 设置系统当前隔离级别 set global transaction isolation level repeatable read;
+- 当前会话隔离级别
+    - 查看 select @@tx_isolation;
+    - 设置 SET TRANSACTION ISOLATION LEVEL repeatable read;
+- 当前系统隔离级别
+    - 查看 select @@global.tx_isolation;
+    - 设置 set global transaction isolation level repeatable read;
 
 [Doc 隔离级别](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html)
 

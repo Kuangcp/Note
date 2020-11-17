@@ -11,15 +11,10 @@ categories:
 
 1. [Postgresql](#postgresql)
     1. [概述](#概述)
-    1. [和MySQL对比](#和mysql对比)
     1. [安装](#安装)
-        1. [安装客户端](#安装客户端)
-        1. [安装服务端](#安装服务端)
         1. [Docker方式安装服务端](#docker方式安装服务端)
             1. [pull完整版](#pull完整版)
             1. [pull精简版](#pull精简版)
-            1. [Dockerfile构建](#dockerfile构建)
-            1. [解释Dockerfile文件](#解释dockerfile文件)
     1. [使用](#使用)
         1. [Postgresql终端命令行使用](#postgresql终端命令行使用)
         1. [用户和角色权限](#用户和角色权限)
@@ -28,7 +23,7 @@ categories:
         1. [Java使用](#java使用)
     1. [基础数据](#基础数据)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-11-18 00:14_|
 ****************************************
 # Postgresql
 - [ ] [该公司对于PostgreSQL的缺点陈列是否属实](http://www.onexsoft.com/onesql.html)
@@ -36,26 +31,23 @@ categories:
 ## 概述
 > [PostgreSQL](http://www.cnblogs.com/fcode/articles/PostgreSQL.html) | [wiki](https://wiki.postgresql.org/wiki/Main_Page)
 
-- 严格SQL标准
+- 严格实现SQL标准
 - Schemas 和表，用户的关系：
     - Schemas相当于是一个数据库进行分类的文件夹
 
-## 和MySQL对比
+`PostgreSQL和MySQL对比`
 > [PostgreSQL 与 MySQL 相比，优势何在？](https://www.zhihu.com/question/20010554)
 > [Converting MySQL to PostgreSQL](https://en.wikibooks.org/wiki/Converting_MySQL_to_PostgreSQL)
 
 ## 安装
-### 安装客户端
-> `sudo apt-get install postgresql-client`
-
-### 安装服务端
-> `sudo apt install postgresql`
+安装客户端 `sudo apt-get install postgresql-client`  
+安装服务端 `sudo apt install postgresql`  
 
 ### Docker方式安装服务端
-> [官方镜像](https://hub.docker.com/_/postgres/)
+> [Dockerhub 官方镜像](https://hub.docker.com/_/postgres/)
 
 #### pull完整版
-- 或者： `docker pull postgres` [Docker Hub](https://hub.docker.com/_/postgres/)
+- 或者： `docker pull postgres`
     - 运行容器 `docker run --name mypostgre -i -t -p 5432:5432 postgres`
     - 客户端连接 `psql -h localhost -p 5432 -U postgres`
 
@@ -72,34 +64,6 @@ categories:
 - 容器中连接 进入postgresql终端 `docker exec -it postgre psql -U postgres`
     - 客户端连接 `psql -h localhost -U postgres`
 - 连接后 输入`\l` 列出所有数据库 即可查看连接成功与否
-
-#### Dockerfile构建
-`Dockerfile`
-```dockerfile
-    FROM ubuntu:16.04
-    RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8
-    RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc/apt/sources.list.d/pgdg.list
-    RUN apt-get update && apt-get -y -q install python-software-properties software-properties-common \
-        && apt-get -y -q install postgresql-9.4 postgresql-client-9.4 postgresql-contrib-9.4
-    USER postgres
-    RUN /etc/init.d/postgresql start \
-        && psql --command "CREATE USER pger WITH SUPERUSER PASSWORD 'pger';" \
-        && createdb -O pger pgerdb
-    USER root
-    RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.4/main/pg_hba.conf
-    RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
-    EXPOSE 5432
-    RUN mkdir -p /var/run/postgresql && chown -R postgres /var/run/postgresql
-    VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
-    USER postgres
-    CMD ["/usr/lib/postgresql/9.4/bin/postgres", "-D", "/var/lib/postgresql/9.4/main", "-c", "config_file=/etc/postgresql/9.4/main/postgresql.conf"]
-```
-- 构建容器 `docker build -t mypostgresql:9.4 .`
-    - 运行容器 `docker run --name mypostgre -i -t -p 5432:5432 mypostgresql:9.4`
-    - 使用客户端连接`psql -h localhost -p 5432 -U pger -W pgerdb` 口令：`pger`
-
-#### 解释Dockerfile文件
-> 待学习解释
 
 ************************************
 ## 使用
