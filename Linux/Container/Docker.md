@@ -11,7 +11,6 @@ categories:
 
 1. [Docker](#docker)
     1. [简介](#简介)
-    1. [个人理解](#个人理解)
     1. [学习资源](#学习资源)
 1. [安装与卸载](#安装与卸载)
     1. [Linux](#linux)
@@ -38,7 +37,9 @@ categories:
         1. [commit](#commit)
         1. [port](#port)
     1. [端口映射](#端口映射)
-1. [数据卷](#数据卷)
+1. [数据存储](#数据存储)
+    1. [文件系统](#文件系统)
+    1. [数据卷](#数据卷)
     1. [数据卷容器](#数据卷容器)
 1. [容器编排](#容器编排)
     1. [Docker-Compose](#docker-compose)
@@ -56,7 +57,7 @@ categories:
         1. [overlay](#overlay)
 1. [Dockerfile](#dockerfile)
 
-**目录 end**|_2020-10-14 23:07_|
+**目录 end**|_2020-11-17 14:17_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -67,17 +68,6 @@ categories:
 
 ## 简介
 > `Docker 是一个开源的应用容器引擎` 理解为轻量版虚拟机(不模拟硬件层)
-
-## 个人理解
-- docker中的容器是动态的，随时创建和销毁，只有镜像是持久化的
-- 而且容器是一个虚拟出来的功能完备的Linux操作系统可以进行登录运行命令
-- `docker images`来得到所有的本地镜像名
-    - 使用`docker run --name {name} -d {image-name} `新命名一个容器来启动某个镜像
-    - 然后`docker ps`查看容器运行状况
-- 镜像的命名：
-    - 如果要push到仓库就要遵循这个规范，本地用就无所谓了，而且以后也可以取新的名字 `docker tag 原名 新名` 
-    - 官方的hub： `用户名/镜像名：tag`
-    - 非官方的例如阿里 `registry.cn-hangzhou.aliyuncs.com/myth/jdk8:alpine` jdk8是镜像名，前面的是仓库地址
 
 ## 学习资源
 - [PMD: player with docker](https://labs.play-with-docker.com/)`线上练习Docker环境`
@@ -270,6 +260,10 @@ _登录镜像仓库_
 - 登录百度云： `docker login --username=[username] hub.baidubce.com`
 
 ## 镜像
+> Docker 的镜像是采用分层文件系统， Dockerfile中每个RUN命令造成的修改或新增都是新的一层layer，旧文件不变
+
+> [dive](https://github.com/wagoodman/dive)`查看镜像内各layer文件`
+
 - 查看所有 ： `docker images`
     - docker images -a 查看所有镜像(包括中间镜像)
 - 搜索 ： `docker search 镜像名`
@@ -420,7 +414,12 @@ _登录镜像仓库_
 
 *********************
 
-# 数据卷
+# 数据存储
+## 文件系统
+- AUFS (AnotherUnionFS)  `Ubuntu/Debian默认`
+- Device Mapper：`CentOS/RedHat默认`
+
+## 数据卷
 > [Docker 中管理数据](http://www.open-open.com/lib/view/open1403571027233.html)
 > [参考: 给一个正在运行的Docker容器动态添加Volume](http://www.open-open.com/lib/view/open1421996521062.html)
 

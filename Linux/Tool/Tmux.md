@@ -19,7 +19,7 @@ categories:
         1. [copycat](#copycat)
 1. [Tips](#tips)
 
-**目录 end**|_2020-10-12 10:49_|
+**目录 end**|_2020-11-17 14:17_|
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -49,6 +49,8 @@ categories:
 *************
 
 ## 配置
+> [Oh My Tmux!](https://github.com/gpakosz/.tmux)
+
 ### 个人配置
 > [Tmux配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf) `步骤：` 
 1. `ln -s $(pwd)/tmux.conf ~/.tmux.conf` 

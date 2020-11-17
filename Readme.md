@@ -87,6 +87,7 @@
 - [ZXBlog](https://github.com/UIZXZxin/ZXBlog)
 - [天赋好书](https://www.cntofu.com/)`爬虫爬开源笔记项目然后转换成GitBook一样的网页?`
 - [coderzh-hugo-blog ](https://github.com/coderzh/coderzh-hugo-blog)
+- [Java-Summarize](https://github.com/zaiyunduan123/Java-Summarize)
 
 ## 
 - [skill-map](https://github.com/TeamStuQ/skill-map)
