@@ -70,6 +70,7 @@ export GOSUMDB=sum.golang.google.cn
 1. `go mod edit -replace github.com/kuangcp/gobase/cuibase=./../cuibase`
     - go.mod文件会新增: `replace github.com/kuangcp/gobase/cuibase => ./../cuibase`
     - 多模块开发时，使用本地开发的模块取代发布的版本
+    - fork 别人项目后开发，可用来替换成自己的模块 `replace gihub.com/aaa/bbb => gihub.com/ccc/bbb`
 
 1. go clean -modcache
 
