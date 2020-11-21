@@ -171,6 +171,10 @@ categories:
 > [参考: HTTP/2](http://www.hollischuang.com/archives/2066)
 > [参考: HTTP/2 服务器推送（Server Push）教程](http://www.ruanyifeng.com/blog/2018/03/http2_server_push.html)  
 
+- [http2 golang](https://http2.golang.org/)
+- [golang gin http2](https://github.com/gin-gonic/examples/tree/master/http2)
+- [h2o](https://h2o.examp1e.net/)
+
 > 新概念
 1. 流（Stream）：已建立的TCP连接上的双向字节流，可以承载一个或多个消息。 一个TCP连接上可以有任意数量的流。
 1. 消息（Message）：一个完整的HTTP请求或响应，由一个或多个帧组成。特定消息的帧在同一个流上发送，这意味着一个HTTP请求或响应只能在一个流上发送。
