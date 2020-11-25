@@ -10,12 +10,12 @@ categories:
 1. [字符串拼接](#字符串拼接)
     1. [StringBuffer 和 StringBuilder](#stringbuffer-和-stringbuilder)
 
-**目录 end**|_2020-11-02 23:23_|
+**目录 end**|_2020-11-25 20:35_|
 ****************************************
 # 字符串拼接
 
-1. 当有少量连接操作时，使用 +
-    - 如果都是字面量，编译器会直接连接，如果包含变量，编译器会自动替换为 StringBuilder append 方式
+1. 当有少量连接操作时，直接使用 `+` 。
+    - 因为如果都是字面量，编译器会直接连接，如果包含变量，编译器会自动替换为 StringBuilder append 方式
 1. 当`单线程`下有大量连接操作时，使用 StringBuilder
 1. 当`多线程`下有大量连接操作时，使用 StringBuffer
 

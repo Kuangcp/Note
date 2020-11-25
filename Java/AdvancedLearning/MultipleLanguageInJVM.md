@@ -18,7 +18,7 @@ categories:
         1. [JVM对备选语言的支持](#jvm对备选语言的支持)
         1. [编译器小说](#编译器小说)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-11-25 20:35_|
 ****************************************
 # JVM上的多语言使用
 
@@ -48,21 +48,23 @@ categories:
 1. 喜欢LISP，喜欢STM功能 => 用Clojure
 1. 喜欢C++ => 用Kotlin
 
-Scala有两个流派：FP和Better Java。FP派喜欢scalaz，喜欢shapeless，喜欢type level programming。这一派特点是程序高度抽象但可读性奇差。
+Scala有两个流派：FP和Better Java。FP派喜欢scalaz，喜欢shapeless，喜欢type level programming。这一派特点是程序高度抽象但可读性奇差。  
 适合PL研究者验证概念，适合业余项目自嗨，也适合学习PL概念。不适合多人协作的工程项目。Better Java派以前之所以存在，单纯是因为Java语法设计太烂，烂到无法忍受。
-而JVM上当时也没有其它更好的选择。
-那些告诉你“写了n年Java以后，我切换到Scala，现在每天都活在幸福中”的人，基本都是这一派。但Scala as a better Java的工程性也不好，因为特性太多太复杂，除非有高手带队，否则很难只用到它“better java”的那个子集。
+而JVM上当时也没有其它更好的选择。  
+那些告诉你“写了n年Java以后，我切换到Scala，现在每天都活在幸福中”的人，基本都是这一派。但Scala as a better Java的工程性也不好，因为特性太多太复杂，除非有高手带队，否则很难只用到它“better java”的那个子集。  
 解决一个问题的同时，往往引入更多的问题。所以会有Java8发布以后Linkedin所有新项目全部回归Java这种事情。
 
-Groovy是动态语言，工程性比Scala还差。但是因为有Gradle这种被广泛采用的项目，所以会存活下去。但是请记住爱因斯坦曾经说过：“任何超过两百行的新项目，都不应该采用动态语言开发，无论是Ruby，Python，Perl，Groovy还是Clojure”。
+Groovy是动态语言，工程性比Scala还差。但是因为有Gradle这种被广泛采用的项目，所以会存活下去。但是请记住爱因斯坦曾经说过：“任何超过两百行的新项目，都不应该采用动态语言开发，无论是Ruby，Python，Perl，Groovy还是Clojure”。  
 哦，对了，也不要用Clojure。因为它是动态语言，而且是Lisp系的动态语言。“Lisp系”意味着，读书的时候可以靠它开眼界。毕业工作以后，对于这一类语言，能躲多远就躲多远。
 
-刚刚发布的Kotlin看上去靠谱。它不讲究FP有多纯，目标就一个：“a better java”。Kotlin在“到底引入多少FP特性”上面做得恰到好处。 看到Kotlin，我马上就想起了这个演讲：“Please stop polluting our imperative languages with pure concepts”。
+刚刚发布的Kotlin看上去靠谱。它不讲究FP有多纯，目标就一个：“a better java”。Kotlin在“到底引入多少FP特性”上面做得恰到好处。 看到Kotlin，我马上就想起了这个演讲：“Please stop polluting our imperative languages with pure concepts”。  
 Kotlin有以下好处：
 1. 强大的IDE。而且是JetBrains第一方支持，不是3年更新一次的第三方插件；
 2. 库多生态强。Kotlin的设计者非常重视和Java的互操作，所以Kotlin号称可以无缝衔接所有Java库。
 3. 宇宙第一运行时：JVM。
-4. Android上不能用Java8的新语法，Kotlin恰逢其时的出现，抓了一波完美的timing。如果Kotlin依靠Android开发爆发，那服务器端，大数据界，也会收益，最后多面开花，势不可挡。
+4. Android上不能用Java8的新语法，Kotlin恰逢其时的出现，抓了一波完美的timing。
+
+如果Kotlin依靠Android开发爆发，那服务器端，大数据界，也会收益，最后多面开花，势不可挡。
 但是Kotlin刚出来，到底有没有它自称的那么好用还待观察。另外，Kotlin社区现在集中力量攻坚Android，在服务器和大数据方向没什么靠谱项目。所以还是得用Java8。
 总之，“魔镜啊魔镜，谁是JVM上最好的语言”之最后决战，将是Java10 vs Kotlin（Java9在语法特性上已经输了）。而在这场最终决战之前，C#已经靠着CoreCLR统一世界了。
 

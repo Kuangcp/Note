@@ -8,21 +8,23 @@ categories:
 
 **目录 start**
 
-1. [保证同步的方式](#保证同步的方式)
+1. [Java中的同步](#java中的同步)
 1. [关键字 synchronized](#关键字-synchronized)
     1. [使用wait() notify() 和 notifyAll()](#使用wait-notify-和-notifyall)
 1. [使用Lock](#使用lock)
-1. [4、使用读写锁实现同步数据访问](#4、使用读写锁实现同步数据访问)
-1. [5、使用`Condition`](#5、使用`condition`)
-1. [1、信号量：`Semaphore`](#1、信号量`semaphore`)
-1. [2、使用`CountDownLatch`等待并发事件完成](#2、使用`countdownlatch`等待并发事件完成)
-1. [3、使用`CyclicBarrier`让多个线程同步](#3、使用`cyclicbarrier`让多个线程同步)
-1. [4、使用`Phaser`控制并发阶段任务的运行](#4、使用`phaser`控制并发阶段任务的运行)
-1. [5、使用`Exchanger`控制并发任务间的数据交换](#5、使用`exchanger`控制并发任务间的数据交换)
+1. [使用读写锁实现同步数据访问](#使用读写锁实现同步数据访问)
+1. [使用`Condition`](#使用`condition`)
+1. [信号量 `Semaphore`](#信号量-`semaphore`)
+1. [使用`CountDownLatch`等待并发事件完成](#使用`countdownlatch`等待并发事件完成)
+1. [使用`CyclicBarrier`让多个线程同步](#使用`cyclicbarrier`让多个线程同步)
+1. [使用`Phaser`控制并发阶段任务的运行](#使用`phaser`控制并发阶段任务的运行)
+1. [使用`Exchanger`控制并发任务间的数据交换](#使用`exchanger`控制并发任务间的数据交换)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-11-25 20:35_|
 ****************************************
-# 保证同步的方式
+# Java中的同步
+
+由于线程和主存是独立存储，以及JMM的模型，才需要同步
 
 # 关键字 synchronized
 
@@ -34,9 +36,9 @@ categories:
 
 ## 使用wait() notify() 和 notifyAll()
 
--   `wait()`方法可让线程挂起
--   `notify()`和`notifyAll()`用于唤醒线程
--   使用队列实现生产-消费者模型
+- `wait()`方法可让线程挂起
+- `notify()`和`notifyAll()`用于唤醒线程
+- 使用队列实现生产-消费者模型
 
     ```java
     public class WaitAndNotify {
@@ -118,23 +120,19 @@ categories:
 
 # 使用Lock
 
->   Java除了使用`synchronized`实现同步代码块外，还提供了另一种同步代码块机制，这种机制基于`Lock`及其实现类(如：ReentrantLock)
+> Java除了使用`synchronized`实现同步代码块外，还提供了另一种同步代码块机制，这种机制基于`Lock`及其实现类(如：ReentrantLock)
 
--   `Lock`与`synchronized`的区别
+- `Lock`与`synchronized`的区别
+    - `Lock`更加灵活：使用`synchronized`关键字，只能在同一块`synchronized`块结构中获取和释放。而`Lock`可实现更复杂的临界结构，如获取和释放不再同一块结构中
+    - `Lock`提供了更多的功能：如`tryLock()`
+    - `Lock`接口允许读写分离操作，允许多个读线程和一个写线程
+    - `Lock`的性能更好
 
-    -   `Lock`更加灵活：使用`synchronized`关键字，只能在同一块`synchronized`块结构中获取和释放。而`Lock`可实现更复杂的临界结构，如获取和释放不再同一块结构中
-
-    -   `Lock`提供了更多的功能：如`tryLock()`
-
-    -   `Lock`接口允许读写分离操作，允许多个读线程和一个写线程
-
-    -   `Lock`的性能更好
-
-# 4、使用读写锁实现同步数据访问
+# 使用读写锁实现同步数据访问
 
 > 接口`ReadWriteLock`和其唯一实现类`ReentrantReadWriteLock`(该类有两个锁，分别为读操作锁和写操作锁)可实现读写锁
 
--   读写锁示例
+- 读写锁示例
 
     ```java
     public class ReadAndWriter {
@@ -212,7 +210,7 @@ categories:
     }
     ```
 
-# 5、使用`Condition`
+# 使用`Condition`
 
 > 一个锁可能关联一个或多个条件，这些条件通过`Condition`接口声明，`Condition`接口提供了线程的挂起和唤醒机制
 
@@ -298,12 +296,11 @@ public class ConditionTest {
 }
 ```
 
-# 1、信号量：`Semaphore`
+# 信号量 `Semaphore`
 
 > 信号量是一个计数器，用来保护一个或多个共享资源的访问。当线程访问一个一个共享资源时，它必须得先获取信号量，如果信号量大于0，则信号量减一，该线程允许访问共享资源。当信号量等于0,则线程将会被置于休眠，直到信号量大于0  
 
 -   注意：`当线程用完某个共享资源后，信号量必须释放，释放操作将会是信号量的内部计数器加1`
-
 -   使用`二进制信号量`控制队列中数据的添加和获取的同步(此处使用`公平模式`，在非公平模式下，多个死循环线程中出现信号量一直被一个线程占用的情况)
 
 ```java
@@ -392,10 +389,9 @@ public class SemaphoreTest {
 
 -   除二进制信号量外，信号量还可以让实现被多个线程同时访问的临界区
 
-# 2、使用`CountDownLatch`等待并发事件完成
+# 使用`CountDownLatch`等待并发事件完成
 
 -   `CountDownLatch`可以完成一组正在其他线程中执行的操作前，允许他一直等待
-
 -   实例：在20个线程完全准备好前，让线程等待
 
 ```java
@@ -432,14 +428,11 @@ public class CountDownLatchTest {
 }
 ```
 
-# 3、使用`CyclicBarrier`让多个线程同步
+# 使用`CyclicBarrier`让多个线程同步
 
 -   `CyclicBarrier`与`CountDownLatch`很相似，但`CyclicBarrier`的功能要更强大些。`CyclicBarrier`除了可以让线程在某个集合点同步外，还能在所有线程都达到集合点后再运行一个新的线程。这可以很好的实现分治思想
-
 -   `CyclicBarrier`可使用`reset()`方法，将内部计数器重置为初始化的值。重置后，正在await()方法中等待的线程将会收到`BrokenBarrierException`异常，这是可处理异常或将操作重新执行或恢复到被中断时的状态
-
 -   `损坏的CyclicBarrier`：Cyclicbarrier对象有一种特殊的状态即`损坏状态(Broken)`。当很多线程在`await()`方法上等待的时候，如果其中一个线程被中断，这个线程将抛出`Interruptedexception`异常，其他的等待线程将抛出`Brokenbarrierexception`异常，于是Cyclicbarrier对象就处于损坏状态了。Cyclicbarrier类提供了`isBroken()`方法，如果处于损坏状态就返回true,否则返回false。
-
 -   使用`CyclicBarrier`，计算某个数值再二维数组中出现的次数(先将二维数组分为若干个一维数组，每个线程计算各自分配的一维数组中数值出现的次数。当所有线程计算完各自一维数组后，再使用另一个线程计算前面每个线程所计算出的数量的总和)
 
 ```java
@@ -511,20 +504,14 @@ public class CyclicBarrierStudy {
 }
 ```
 
-# 4、使用`Phaser`控制并发阶段任务的运行
+# 使用`Phaser`控制并发阶段任务的运行
 
 -   `Phaser`在每一步结束的位置对线程进行同步，当所有线程都完成到该处后，才允许执行下一步
-
 -   必须对`Phaser`中参与同步操作的任务数进行初始化，我们可以动态的添加和减少任务数
-
 -   几个重要方法:
-
     -   `arriveAndAwaitAdvance()`: 当一个线程调用该方法后，`Phaser`对象减一，并且把该线程置为休眠状态，直到其他线程完成该阶段
-
     -   `arriveAndDeregister()`: 该方法主要用于通知`Phaser`参与同步的线程数减一，表示不参与下一阶段的任务，因此`Phaser`在开始下一阶段时不会等待该线程
-
     -   `onAdvance`: `Phaser`提供的一个方法，可覆盖该方法。`onAdvance()`会在阶段改变的时候被调用。方法的返回值，`true`表示`phaser`已经执行完成并进入了终止态，`false`表示`phaser`在继续执行。我们可通过覆盖`onAdvance`方法，在每个阶段改变的时候执行某些操作
-
 -   `Phaser`示例，控制各阶段的同步
 
 ```java
@@ -564,10 +551,9 @@ public class PhaserTest {
 }
 ```
 
-# 5、使用`Exchanger`控制并发任务间的数据交换
+# 使用`Exchanger`控制并发任务间的数据交换
 
 -   `Exchanger`允许在两个线程之间定义同步点，当两个线程都到达同步点时，他们交换数据
-
 -   消费者与生产者交换数据
 
 ```java

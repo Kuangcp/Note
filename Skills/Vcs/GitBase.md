@@ -72,7 +72,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2020-11-11 21:09_|
+**目录 end**|_2020-11-25 20:35_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -243,7 +243,7 @@ categories:
 ************************
 
 ### show
-> 展示提交信息
+> 展示提交的详细信息 注意show和 diff 的输出仅仅相似 不可用于 patch
 
 - 显示当前提交的差异 `git show HEAD` 
     - HEAD替换成具体的 commit id就是显示指定提交的修改内容
@@ -537,10 +537,12 @@ categories:
 #### 恢复被drop的stash
 > [How to recover a dropped stash in Git?](https://stackoverflow.com/questions/89332/how-to-recover-a-dropped-stash-in-git)  
 
-可以恢复 误操作 stash drop 或者 clean 的内容 
+可以恢复 误操作 stash drop 或者 clean 的内容, 稍加留意会发现drop会输出 `Dropped refs/stash@{0} (ab6f2334......)`， 括号内就是该stash对应的commitId
 
 - `git fsck --no-reflog | awk '/dangling commit/ {print $3}'`
-- WIP 开头的就是 stash 对应的 commit , 找到对应的 sha1 id 建立新分支即可 (在命令后接管道 ` | xargs git show`, 查找代码内容)
+    - 使用 gitk 显示`gitk --all $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')`
+    - 或者在命令后接管道 ` | xargs git show`, 查找代码内容
+- WIP 开头的就是 stash 对应的 commit , 找到对应的 sha1 id 建立新分支即可 
     - 也就是说 stash 仍然是采用 分支 来实现的, 在某个分支stash 就相当于在该分支进行 commit
 
 ************************
