@@ -76,7 +76,7 @@ categories:
     1. [try](#try)
     1. [transient](#transient)
 
-**目录 end**|_2020-11-02 23:23_|
+**目录 end**|_2020-11-25 16:19_|
 ****************************************
 # 基础语法
 
@@ -415,10 +415,10 @@ true 和 false 也是缓存了的
 
 | 权限修饰符 | 范围 | 注释 |
 |:----|:----|:----|
-| public | 任意范围 |  |
-| protected | 子类/同包 | 子类是可以在任意包的 |
-| package private | 同包 | 顾名思义就是包级别的private(缺省) |
-| private | 当前类 | 当前类级别private, 内部类从属于当前类 |
+| public                | 任意范围   |  |
+| protected             | 子类/同包  | 子类是可以在任意包的 |
+| package private(缺省)  | 同包      | 顾名思义就是包级别的private |
+| private               | 当前类     | 当前类级别private, 内部类从属于当前类 |
 
 > 同包是指 `package xxx;` 语句完全一样, 而 `package a;` 与 `package a.b;` 不是同包  
 

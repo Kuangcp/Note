@@ -42,7 +42,7 @@ categories:
 1. [数据库中间件](#数据库中间件)
 1. [图形化工具](#图形化工具)
 
-**目录 end**|_2020-10-19 15:56_|
+**目录 end**|_2020-11-25 16:19_|
 ****************************************
 # 数据库
 > [码农翻身:爱炫耀的数据库老头儿](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514001&idx=1&sn=17b72c3e69db6c4277e3045c699b7b6b&chksm=80d67c52b7a1f5446020826841869221873f4578524181384592839d19c4810dc68807117e13&scene=21#wechat_redirect) `事务,undo日志`
@@ -192,3 +192,4 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 - [HeidiSQL](https://github.com/HeidiSQL/HeidiSQL)
 - [sqlectron](https://github.com/sqlectron/sqlectron-gui) `简单直观的数据库图形化软件`
 - [dbeaver](https://github.com/dbeaver/dbeaver)
+    - 配置文件 `/usr/share/dbeaver/dbeaver.ini`

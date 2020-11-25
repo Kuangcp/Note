@@ -14,11 +14,11 @@ categories:
         1. [IDEA参数调优](#idea参数调优)
     1. [内存优化](#内存优化)
         1. [堆外内存](#堆外内存)
+        1. [Metaspace](#metaspace)
 1. [主要指标分析](#主要指标分析)
     1. [JDK自带工具](#jdk自带工具)
         1. [java](#java)
             1. [环境变量的使用](#环境变量的使用)
-            1. [执行含main方法的类](#执行含main方法的类)
         1. [jps](#jps)
         1. [jstat](#jstat)
         1. [jinfo](#jinfo)
@@ -31,11 +31,12 @@ categories:
         1. [async-profiler](#async-profiler)
     1. [图形化](#图形化)
         1. [JProfiler](#jprofiler)
+        1. [GCViewer](#gcviewer)
         1. [jvisualvm](#jvisualvm)
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2020-08-03 01:00_|
+**目录 end**|_2020-11-25 16:19_|
 ****************************************
 
 # Java的性能调优
@@ -81,7 +82,13 @@ categories:
 
 堆外内存堆外内存主要是JNI、Deflater/Inflater、DirectByteBuffer（nio中会用到）使用的。
 
+- [Github: 测试代码](https://github.com/Kuangcp/JavaBase/blob/master/class/src/test/java/jvm/oom/DirectMemoryOOMTest.java)
 - [how to see memory useage of nio buffers](https://stackoverflow.com/questions/2689914/how-to-see-the-memory-usage-of-nio-buffers)
+
+> [参考: 聊聊JVM 堆外内存泄露的BUG是如何查找的](https://cloud.tencent.com/developer/article/1129904)  
+
+### Metaspace
+> [参考: Metaspace 之一：Metaspace整体介绍](https://www.cnblogs.com/duanxz/p/3520829.html)  
 
 *********************
 # 主要指标分析
@@ -110,6 +117,8 @@ categories:
     - -V 输出通过标记的文件传递给JVM的参数（.hotspotrc文件，或者是通过参数-XX:Flags=指定的文件）
 
 ### jstat
+> [Oracle Doc](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstat.html)
+
 - option:
     - -gcutil 统计heap的gc情况
     - -t 在第一列输出时间戳。该时间戳从jvm启动开始

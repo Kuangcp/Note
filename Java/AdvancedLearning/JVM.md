@@ -46,7 +46,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2020-11-01 17:43_|
+**目录 end**|_2020-11-25 16:19_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -185,6 +185,7 @@ NIO 会经常使用, 提高性能
 - `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
     - 开启无需认证 非SSL的JMX端口
 - `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 打印类装载
+- `-Xloggc:/home/logs/gc.log`
 
 **********************
 
@@ -204,6 +205,15 @@ NIO 会经常使用, 提高性能
 GC 的目的是识别出不再使用的内存，并将其变为可用的。现代垃圾收集器通常分几个阶段以及根据不同的分代使用不同的垃圾收集器来完成回收过程
 
 > 什么时候, 对什么东西, 做了什么
+
+> [RednaxelaFX](https://www.zhihu.com/question/41922036/answer/93079526)
+- `Partial GC`：并不收集整个GC堆的模式
+    - `Young GC`：只收集young gen的GC
+    - `Old GC`：只收集old gen的GC。只有CMS的concurrent collection是这个模式
+    - `Mixed GC`：收集整个young gen以及部分old gen的GC。只有G1有这个模式
+- `Full GC`：收集整个堆，包括young gen、old gen、perm gen（如果存在的话）等所有部分的模式。
+
+***
 
 `新生代GC Minor GC`  
 发生在新生代的垃圾收集动作, 因为大多数对象都是存活时间很短, 所以 Minor GC 非常频繁, 一般回收速度也比较快.   
@@ -392,8 +402,25 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
 工作流程, 依次执行
 1. 初始标记 CMS initial mark
 1. 并发标记 CMS concurrent mark
-1. 重新标记 CMS remark
+1. 最终标记 CMS final remark
 1. 并发清除 CMS concurrent sweep
+
+> 例如：
+```log
+4936.782: [GC (CMS Initial Mark) [1 CMS-initial-mark: 747140K(1494272K)] 752384K(1800960K), 0.0043788 secs] [Times: user=0.01 sys=0.00, real=0.00 secs] 
+4936.787: [CMS-concurrent-mark-start]
+4936.942: [CMS-concurrent-mark: 0.156/0.156 secs] [Times: user=0.23 sys=0.01, real=0.16 secs] 
+4936.942: [CMS-concurrent-preclean-start]
+4936.948: [CMS-concurrent-preclean: 0.005/0.005 secs] [Times: user=0.01 sys=0.00, real=0.00 secs] 
+4936.948: [CMS-concurrent-abortable-preclean-start]
+4938.832: [GC (Allocation Failure) 2020-11-23T17:06:01.905+0800: 4938.832: [ParNew: 277821K->4257K(306688K), 0.0088608 secs] 1024961K->751463K(1800960K), 0.0089994 secs] [Times: user=
+4939.249: [CMS-concurrent-abortable-preclean: 0.774/2.301 secs] [Times: user=1.32 sys=0.09, real=2.31 secs] 
+4939.250: [GC (CMS Final Remark) [YG occupancy: 142153 K (306688 K)]2020-11-23T17:06:02.323+0800: 4939.250: [Rescan (parallel) , 0.0225236 secs]2020-11-23T17:06:02.346+0800: 4939.273:
+4939.382: [CMS-concurrent-sweep-start]
+4939.627: [CMS-concurrent-sweep: 0.235/0.245 secs] [Times: user=0.43 sys=0.03, real=0.24 secs] 
+4939.627: [CMS-concurrent-reset-start]
+4939.631: [CMS-concurrent-reset: 0.004/0.004 secs] [Times: user=0.00 sys=0.00, real=0.01 secs]
+```
 
 - 优点: 并发低停顿  
 - 缺点: 
