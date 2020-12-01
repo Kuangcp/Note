@@ -72,7 +72,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2020-11-25 20:35_|
+**目录 end**|_2020-12-01 22:05_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -537,7 +537,7 @@ categories:
 #### 恢复被drop的stash
 > [How to recover a dropped stash in Git?](https://stackoverflow.com/questions/89332/how-to-recover-a-dropped-stash-in-git)  
 
-可以恢复 误操作 stash drop 或者 clean 的内容, 稍加留意会发现drop会输出 `Dropped refs/stash@{0} (ab6f2334......)`， 括号内就是该stash对应的commitId
+可以恢复 stash drop 或者 clean 的内容。stash drop后会输出 `Dropped refs/stash@{0} (......)`， 括号内就是该次stash对应的commitId
 
 - `git fsck --no-reflog | awk '/dangling commit/ {print $3}'`
     - 使用 gitk 显示`gitk --all $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')`
@@ -616,10 +616,9 @@ categories:
 
 > 衍和操作 [参考博客](http://blog.csdn.net/endlu/article/details/51605861) | 
 > [Git rebase -i 交互变基](http://blog.csdn.net/zwlove5280/article/details/46649799) | 
-> [git rebase的原理之多人合作分支管理](http://blog.csdn.net/zwlove5280/article/details/46708969)    
-> 他会将分支中的圈, 消除掉, 成为线性结构
+> [git rebase的原理之多人合作分支管理](http://blog.csdn.net/zwlove5280/article/details/46708969)  
+> 这种合并方式，不会像merge方式那样在分支图上出现多个圈，而是线性演进, 但是遇到冲突后会改动历史提交，导致提交不是按时间演进，不利于分布式协作  
 
-- 效果和merge差不多，但是分支图更清晰?TODO 有待详细学习
 - 与master合并：`git merge master` 换成 `git rebase master`
 - 当遇到冲突：
     - `git rebase --abort` 放弃rebase
