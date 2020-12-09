@@ -10,14 +10,14 @@ categories:
 **目录 start**
 
 1. [SQL](#sql)
+    1. [条件语句](#条件语句)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-12-09 14:09_|
 ****************************************
 # SQL
-> 基础SQL语言的学习使用
-
 > [soar](https://github.com/XiaoMi/soar)`SQL Optimizer And Rewriter `
 
+SQL语言共分为四大类：数据查询语言DQL，数据操纵语言DML，数据定义语言DDL，数据控制语言DCL
 
 ## 条件语句
 `case when then else end `
