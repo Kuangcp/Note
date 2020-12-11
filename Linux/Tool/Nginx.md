@@ -308,6 +308,7 @@ _配置静态端_
         
         location / {
             root /data/static;
+            # proxy_pass http://127.0.0.1:8889/; 如果静态资源在别的端口上，这样配置也可以
         }
 
         location /api/ {
