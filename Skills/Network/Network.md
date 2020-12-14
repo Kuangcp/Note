@@ -58,7 +58,7 @@ categories:
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2020-08-20 13:49_|
+**目录 end**|_2020-12-14 19:57_|
 ****************************************
 # 网络
 
@@ -289,7 +289,9 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 3. 错误事件：此事件在WebSocket连接或者端点发生错误时产生
 4. 关闭事件：此事件表示WebSocket端点的连接目前正在部分的关闭，他可以有参与连接的任意一个端点发出
 
-> [参考: WebSocket 和 Socket 的区别](http://blog.jobbole.com/106009/)  
+> 关闭状态码
+1. [WebSocket RFC](https://tools.ietf.org/html/rfc6455#section-7.4)
+1. [WebSocket断开原因分析](https://wdd.js.org/websocket-close-reasons.html)
 
 ************************
 

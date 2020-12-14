@@ -12,7 +12,7 @@ categories:
     1. [Linux上安装Protobuf](#linux上安装protobuf)
     1. [实现原理](#实现原理)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-12-14 19:57_|
 ****************************************
 # Protobuf
 > Google开源的序列化框架 全称 `Google Protocol Buffers` | [Github : Protobuf](https://github.com/google/protobuf)  
@@ -34,7 +34,6 @@ categories:
 > protobuf 只是编解码的工具, 本身不支持读半包, 不能处理 粘包 拆包问题
 
 > [参考: Protobuf语言指南](http://www.cnblogs.com/dkblog/archive/2012/03/27/2419010.html) `较为详细, 只是版本有点旧`  
-> [参考: 数据交换利器 Protobuf 技术浅析](http://blog.jobbole.com/107405/)  
 > [参考: Protobuf3语言指南](https://blog.csdn.net/u011518120/article/details/54604615)  
 
 ## proto文件定义

@@ -19,14 +19,12 @@ categories:
         1. [copycat](#copycat)
 1. [Tips](#tips)
 
-**目录 end**|_2020-11-17 14:17_|
+**目录 end**|_2020-12-14 19:57_|
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
-> [tmux 入门](http://blog.jobbole.com/87278/) | [tmux简洁教程及config关键配置](https://www.jianshu.com/p/fd3bbdba9dc9)
-
-> [参考: 文本三巨头：zsh、tmux 和 vim](http://blog.jobbole.com/86571/)
+> [tmux简洁教程及config关键配置](https://www.jianshu.com/p/fd3bbdba9dc9)
 > [参考: 程序员高效技巧系列](http://cenalulu.github.io/linux/professional-tmux-skills/)  
 
 ************************

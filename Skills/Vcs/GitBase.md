@@ -72,7 +72,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2020-12-01 22:05_|
+**目录 end**|_2020-12-14 19:57_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -591,7 +591,6 @@ categories:
 - [官方文档](https://git-scm.com/docs/git-merge)
 
 > [Official Doc: 高级合并](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%AB%98%E7%BA%A7%E5%90%88%E5%B9%B6)
-> [参考: 解决 Git 冲突的 14 个建议和工具](http://blog.jobbole.com/97911/)
 
 - `git merge develop `默认会直接将当前分支指向Develop分支。(一条拐弯的分支线)
 - 推荐: `git merge --no-ff develop` 在当前分支`主动合并`分支Develop，在当前分支上生成一个新节点(有一个环的线)
