@@ -53,7 +53,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2020-12-08 19:23_|
+**目录 end**|_2020-12-15 19:22_|
 ****************************************
 # Linux网络管理
 ## DNS
@@ -610,9 +610,9 @@ _有时候会发生这样的事情_
 
 > [参考: Ubuntu远程SSH及x11vnc远程桌面连接](https://blog.csdn.net/ywueoei/article/details/79952727)  
 
-1. 服务端 安装 `yay realvnc-vnc-server`
+1. 服务端安装 `x11vnc`
 1. 设置密码 `x11vnc -storepasswd`
-1. 使用密码启动 `x11vnc -forever -shared -rfbauth ~/.vnc/passwd`
+1. 使用密码启动 `x11vnc -auth guess -once -loop -noxdamage -repeat -rfbauth ~/.vnc/passwd -rfbport 5900 -shared`
     - 设置分辨率 `-geometry 1280×1024`
 
 1. 客户端 vnc-viewer(任意) 输入 ip 即可连接 
