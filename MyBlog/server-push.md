@@ -18,7 +18,7 @@ categories:
     1. [DWR](#dwr)
     1. [HTTP2协议](#http2协议)
 
-**目录 end**|_2020-12-15 14:16_|
+**目录 end**|_2020-12-16 16:27_|
 ****************************************
 # Server push
 
@@ -41,7 +41,11 @@ categories:
 - [sse demo](https://github.com/jokerwangJL/ssedemo)
 
 - 优点
+    - 当数据变更不频繁时大大减少请求次数，即使数据变更频繁也近似于轮询
 - 缺点
+    - 维持长连接占用资源
+- 案例
+    - QQ邮箱
 
 ### Comet
 - [github: comet4j 项目](https://github.com/jwangkun/comet4j) 可以直接下载配置jar到tomcat下使用
@@ -51,10 +55,10 @@ categories:
 - 缺点
 
 ### Websocket
-- [使用Websocket进行消息推送](Skills/Network/Network.md#websocket)
-- [代码片段：Springboot使用Websocket进行消息推送](https://gitee.com/kcp1104/codes/14ipgcbjyenxqu6tf9d0543)
+> [Websocket 详解](/Skills/Network/Network.md#websocket)
 
 - 优点
+    - 标准协议，兼容性好，使用广泛
 - 缺点
 
 ## DWR
