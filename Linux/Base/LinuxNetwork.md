@@ -53,7 +53,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2020-12-15 19:22_|
+**目录 end**|_2020-12-18 12:15_|
 ****************************************
 # Linux网络管理
 ## DNS
@@ -339,6 +339,7 @@ _iproute-ss_
 - 设置 Header `-H "xxx:xxx"` 例如 `-H "Content-Type:application/json" -H "token:xxx"`
 - 设置POST请求 body `-d '{"title":"1","content":"1"}'`
     - 本地文件 `-d '@data.json'`
+- 上传文件 `curl -X POST -H "Content-Type: multipart/form-data" -F "file=@index.html" URL` 
 
 > [参考: curl返回常见错误码](http://www.cnblogs.com/wainiwann/p/3492939.html)
 - [56错误码](https://stackoverflow.com/questions/10285700/curl-error-recv-failure-connection-reset-by-peer-php-curl)
