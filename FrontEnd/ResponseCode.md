@@ -21,15 +21,14 @@ categories:
     1. [NGINX-扩展状态码](#nginx-扩展状态码)
     1. [七牛云扩展状态码](#七牛云扩展状态码)
 
-**目录 end**|_2020-12-18 12:15_|
+**目录 end**|_2020-12-18 15:50_|
 ****************************************
 # HTTP状态码大全
-
-注意: 这个状态码本质上是一个行业标准，并不限制实现, 在某公司遇到过 后端Tomcat报错5xx, 应用里面过滤器硬改成404 的操作
-
 > [wiki: http status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)  
 > [W3C RFC 2616 ](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)  
 > [MDN: HTTP 响应状态代码](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)  
+
+注意: 这个状态码本质上是一个行业标准，并不限制实现, 在某公司遇到过 后端Tomcat报错5xx, 应用里面过滤器硬改成404 的操作
 
 > [HTTP状态码](http://www.runoob.com/http/http-status-codes.html)  
 > [常见状态码](https://blog.csdn.net/huwei2003/article/details/70139062)  

@@ -12,11 +12,9 @@ categories:
 1. [NodeJs](#nodejs)
     1. [安装](#安装)
     1. [配置](#配置)
-        1. [使用淘宝的镜像](#使用淘宝的镜像)
-    1. [使用](#使用)
-        1. [安装Vue](#安装vue)
+        1. [镜像](#镜像)
 
-**目录 end**|_2020-06-24 02:06_|
+**目录 end**|_2020-12-18 15:50_|
 ****************************************
 # NodeJs
 
@@ -31,21 +29,7 @@ categories:
 ```
 
 ## 配置
-### 使用淘宝的镜像
+### 镜像
 > [镜像地址](http://npm.taobao.org/) `还包括各种常用软件`
 
-1. 临时使用 `npm --registry https://registry.npm.taobao.org install express`
-2. 永久使用 `npm config set registry https://registry.npm.taobao.org`
-3. 通过cnpm使用 `npm install -g cnpm --registry=https://registry.npm.taobao.org` _emmm, 为什么我就配置不成功_
-
-> 查看配置是否成功: `npm config get registry`
-
-## 使用
-
-> [Hexo](/FrontEnd/Hexo.md)
-
-
-### 安装Vue
-> `npm install -g vue-cli --registry=https://registry.npm.taobao.org`
-
-
+可使用 nrm 管理 `npm instal -g nrm`

@@ -14,17 +14,16 @@ categories:
     1. [安装](#安装)
     1. [基础](#基础)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2020-12-18 15:50_|
 ****************************************
 # Clojure
-> 似乎是Lisp的方言 [参考博客 Clojure 学习笔记 :0 零基础教程](https://www.jianshu.com/p/32b7ef3659db)
+> Lisp的方言 [参考博客 Clojure 学习笔记 :0 零基础教程](https://www.jianshu.com/p/32b7ef3659db)
 
 ## 安装
 - [Clojure官网下载地址](https://clojure.org/community/downloads)
     - 解压后运行jar包进入REPL `java -cp clojure-1.8.0.jar clojure.main`
 - Linux 下推荐 [leiningen](https://leiningen.org/)
-    - Arch  
-    `yay -S leiningen`
+    - Arch `yay -S leiningen`
 
 ## 基础
 
@@ -39,8 +38,10 @@ Clojure的设计原则可以概括成5个词汇：简单、专注、实用、一
     - Clojure是将值作为重点，Clojure的值一旦创建就不能修改。变量和值建立映射关系，如果再次赋值，不是修改变量，而是映射到新的值上
     - (def <名称> <值>)
 
+************************
 
-`Hello World`
+> Hello World
+
 `java -cp clojure-1.8.0.jar clojure.main`进入REPL终端
 ```clojure
     user => (def hello(fn [] "hello"))

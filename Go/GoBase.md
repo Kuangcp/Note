@@ -34,7 +34,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2020-11-04 20:24_|
+**目录 end**|_2020-12-18 15:50_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -128,13 +128,15 @@ strings 包 提供了常用字符串API
 ```
 
 ### Set
+> 官方没有提供set类型 可使用社区提供的库 [golang-set](https://github.com/deckarep/golang-set)
 
 ******************
 
 ## 基本语法
 
 ### 标准输入输出
-> [参考: golang中的格式化输入输出](https://blog.csdn.net/xiaoyida11/article/details/51554022)
+- 输出 fmt.Print*
+- 输入 fmt.Scan*
 
 - 打印结构体 `fmt.Printf("%v\n", object)`
 
@@ -146,7 +148,6 @@ strings 包 提供了常用字符串API
 **************************
 
 ## 函数
-基本结构
 ```go
 // 函数名 (参数 ) 返回值{函数体}
 func functionName (param int) int {
@@ -155,7 +156,7 @@ func functionName (param int) int {
 ```
 
 ### 参数
-> 使用函数作为参数 `func doAny(functionName func(string, string)){}`
+> 函数作为参数传入函数 `func doAny(functionName func(string, string)){}`
 
 ### 返回值
 > 可以多返回值 元组
@@ -163,7 +164,7 @@ func functionName (param int) int {
 ### defer
 > 类似于 Java 中的 finally 语句 例如 `defer openFile.Close()`
 
-一个函数中可以定义多个 defer 语句, 执行顺序按定义顺序的逆序, 也就是栈的概念
+一个函数中可以定义多个 defer 语句, 执行的顺序是按定义次序的逆序, 也就是栈的概念
 
 *************************
 
