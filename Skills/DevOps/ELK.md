@@ -25,6 +25,7 @@ categories:
 > UI
 1. [appbaseio/dejavu](https://github.com/appbaseio/dejavu)
 1. [cars10/elasticvue](https://github.com/cars10/elasticvue)
+1. cerebro
 
 ************************
 
