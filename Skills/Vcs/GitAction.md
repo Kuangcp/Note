@@ -31,7 +31,7 @@ categories:
         1. [CRLF与LF](#crlf与lf)
         1. [仓库统计](#仓库统计)
 
-**目录 end**|_2020-08-03 17:06_|
+**目录 end**|_2020-12-21 14:28_|
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -92,6 +92,8 @@ categories:
 
 - [Git error - gpg failed to sign data](https://stackoverflow.com/questions/41052538/git-error-gpg-failed-to-sign-data)
     - `git config --global user.signingkey 指纹`
+
+因为Github等代码托管网站通常是使用 commit 信息里的邮箱来标记提交者的，但是这个信息是可以任意填的，这个时候就需要GPG签名来对该次提交签名，确认是本人提交
 
 ************************
 
