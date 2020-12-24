@@ -24,7 +24,7 @@ categories:
 1. [Tips](#tips)
     1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2020-12-16 16:27_|
+**目录 end**|_2020-12-24 10:51_|
 ****************************************
 # MySQL进阶
 
@@ -103,11 +103,16 @@ InnoDB 默认隔离级别为 可重复读
 
 > [MySQL下INNODB引擎的SELECT COUNT(*)性能优化及思考](http://www.piaoyi.org/database/MySQL-INNODB-SELECT-COUNT.html)
 
-> `set max_execution_time=3000;` (5.7.8 新增) 设置SQL执行最大时间, 超时报错, 单位 ms
+> `set max_execution_time=3000;`MySQL服务器设置SQL执行最大时间 (5.7.8 新增), 执行超时则报错, 单位 ms
 
-> 5.6及以上版本时间类型效率 int > datetime > timestamp
+> 5.6及以上版本存储`时间类型`效率： int > datetime > timestamp
 
 > limit 做分页时 记录上次分页最后一条记录的id使用上where进行过滤 提高性能, 前提id是int自增的
+
+************************
+
+> [我们公司不让开发使用 join 包括 left join,不让用子查询，合理吗？](https://www.v2ex.com/t/678312)
+> [业务多表 join，单条 SQL 梭哈一把好还是多次查询在代码整合好](https://www.v2ex.com/t/557498)
 
 ### 查看状态变量
 > [ SHOW VARIABLES](https://dev.mysql.com/doc/refman/5.7/en/show-variables.html)  

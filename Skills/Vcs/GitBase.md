@@ -50,6 +50,7 @@ categories:
             1. [恢复被drop的stash](#恢复被drop的stash)
         1. [branch](#branch)
         1. [checkout](#checkout)
+        1. [分支合并](#分支合并)
         1. [merge](#merge)
         1. [rebase](#rebase)
         1. [cherry-pick](#cherry-pick)
@@ -72,7 +73,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2020-12-14 19:57_|
+**目录 end**|_2020-12-24 10:51_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -586,6 +587,19 @@ categories:
     - 需要执行  `git reset HEAD` 来清除这种状态
 
 > 实验性命令： git switch branch 
+
+### 分支合并
+> merge rebase 
+
+[这才是真正的 Git——分支合并](https://zhuanlan.zhihu.com/p/192972614)
+
+Git 在合并分支的时候使用的是 三向合并策略，即当前分支和目标分支的共同祖先commit节点， 和两个分支的当前commmit节点进行比较确定哪一方发生修改需要纳入，如果两方都修改就要提示冲突
+
+> ![](img/git-merge-situation.drawio.svg)
+
+根据 Git 的合并策略，在合并两个有分叉的分支（上图中的 D、E‘）时，Git 默认会选择 Recursive 策略。找到 D 和 E’的最短路径共同祖先节点 B，以 B 为 base，对 D，E‘做三向合并。
+
+B 中有 http.js，D 中有 http.js 和 main.js，E’中什么都没有。根据三向合并，B、D 中都有 http.js 且没有变更，E‘删除了 http.js，所以合并结果就是没有 http.js，没有冲突，所以 http.js 最终会被删除。
 
 ### merge
 - [官方文档](https://git-scm.com/docs/git-merge)
