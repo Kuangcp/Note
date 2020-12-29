@@ -23,6 +23,7 @@ categories:
         1. [通过 certbot 配置 HTTPS](#通过-certbot-配置-https)
     1. [配置Websocket反向代理](#配置websocket反向代理)
     1. [防盗链](#防盗链)
+    1. [gzip](#gzip)
     1. [负载均衡](#负载均衡)
     1. [跨域问题的配置](#跨域问题的配置)
         1. [静态服务器反代理后台接口](#静态服务器反代理后台接口)
@@ -36,7 +37,7 @@ categories:
     1. [nuster](#nuster)
 1. [Tips](#tips)
 
-**目录 end**|_2020-10-27 15:40_|
+**目录 end**|_2020-12-29 22:15_|
 ****************************************
 # Nginx
 
@@ -284,6 +285,17 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
 ```
 
 ## 防盗链
+
+## gzip
+> [nginx 启用 gzip压缩](https://www.jianshu.com/p/c5d1fc829855)
+
+```conf
+  gzip  on;
+  gzip_comp_level 4;
+  gzip_buffers 4 16k;
+  gzip_http_version 1.1;
+  gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+```
 
 ## 负载均衡
 > [Nginx 反向代理 负载均衡 虚拟主机配置](https://segmentfault.com/a/1190000012479902)

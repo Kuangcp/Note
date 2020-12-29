@@ -17,7 +17,7 @@ categories:
     1. [sed](#sed)
     1. [awk](#awk)
 
-**目录 end**|_2020-11-05 16:05_|
+**目录 end**|_2020-12-29 22:15_|
 ****************************************
 # 流编辑器
 > [参考: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
@@ -45,13 +45,13 @@ categories:
 ## sed
 > 使用方式: `操作类型 命令 文件` | sed --help 查看详细
 
-- `操作类型`
-    - `-n` suppress automatic printing of pattern space
-    - `-e` 只在控制台输出的操作的结果内容(全部)，源文件不变 
-    - `-i` 直接在源文件中进行修改
-    - `-f file` 执行一个 sed 脚本文件中的指令
+`操作类型`
+- `-n` suppress automatic printing of pattern space
+- `-e` 只在控制台输出的操作的结果内容(全部)，源文件不变 **缺省选项**
+- `-i` 直接在源文件中进行修改
+- `-f file` 执行一个 sed 脚本文件中的指令
 
-- `命令`
+`命令`
 
 | 命令 | 效果 |
 |:----:|:----|
@@ -86,30 +86,26 @@ categories:
         - w filename : 替换后的文件写入到新文件
 
 >1. 截取指定行数到新文件 `sed -n ‘开始行数，结束行数p’ info.log > newFile.log`
-
 >1. 修改配置文件中name的值为123 `sed -i "s/name=.*/name=123/g" config.conf`
 >1. 修改第3行 `sed -i '3 s/name/1/g'`
->1. 匹配行的行尾追加 `sed 's/end.*/& ;/g' file`
->1. 匹配行后第三行行尾追加`sed '/gradle/{n;n;n; s/.*/& 6.0/;}' file`
-
+>1. 匹配行的行尾追加 `sed -i 's/end.*/& ;/g' file`
+>1. 匹配行后第三行行尾追加`sed -i '/gradle/{n;n;n; s/.*/& 6.0/;}' file`
 >1. CRLF -> LF `sed -i 's/\r//g' file`  
-    > 配合git: `git ls-files| xargs sed -i 's/\r//g'`
+    > 配合 git 使用: `git ls-files| xargs sed -i 's/\r//g'`
 >1. 注意特殊字符的转义 `git ls-files | xargs  sed -i 's/@a.*/\//g'`
+>1. 去除换行符 `sed -i ':label;N;s/\n/ /;b label'` [参考](http://www.cnblogs.com/lykm02/p/4479098.html)
+>1. 文件内容倒置 `sed -i '1!G;h;$!d' filename`
+>1. 处理管道流 `echo syx is a good body | sed 's/syx/zsf/'`  
+>1. 多个指令 `sed 's/a//g;s/b//g'`
 
->1. 去除换行符 `sed ':label;N;s/\n/ /;b label'` [参考](http://www.cnblogs.com/lykm02/p/4479098.html)
->1. 文件内容倒置 `sed '1!G;h;$!d' filename`
-
-> [参考: linux sed 命令单行任务快速参考](http://www.techug.com/post/linux-sed1line.html)
-
-> [sokoban sed](https://github.com/aureliojargas/sokoban.sed)`sed 写的推箱子游戏`
-
+- [参考: linux sed 命令单行任务快速参考](http://www.techug.com/post/linux-sed1line.html)
 - [参考：sed 查找与替换](http://wiki.jikexueyuan.com/project/shell-learning/sed-search-and-replace.html)
 - [sed 正则的精确控制](http://wiki.jikexueyuan.com/project/shell-learning/sed-accurate-control-of-regular.html)
-    - `echo Tolstoy is worldly | sed 's/T.*y/Camus/'` 这里的pattern就有问题， 会把整行替换掉
+    - `echo Tolstoy is worldly | sed 's/T.*y/Camus/'` 这里的 pattern 就有问题， 会把整行替换掉
     - `echo Tolstoy is worldly | sed 's/T[a-z]*y/Camus/'` 只把第一个单词替换
 
-> 处理管道流 `echo syx is a good body | sed 's/syx/zsf/'`  
-> 多个指令 `sed 's/a//g;s/b//g'`
+************************
+> [sokoban sed](https://github.com/aureliojargas/sokoban.sed) `sed 写的推箱子游戏`
 
 ************************
 
