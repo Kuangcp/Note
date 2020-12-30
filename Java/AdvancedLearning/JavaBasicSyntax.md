@@ -17,6 +17,7 @@ categories:
         1. [循环](#循环)
     1. [标准输入输出](#标准输入输出)
     1. [Runtime](#runtime)
+        1. [优雅关机](#优雅关机)
 1. [数据类型](#数据类型)
     1. [自动拆装箱](#自动拆装箱)
     1. [基础数据类型](#基础数据类型)
@@ -76,7 +77,7 @@ categories:
     1. [try](#try)
     1. [transient](#transient)
 
-**目录 end**|_2020-11-25 16:19_|
+**目录 end**|_2020-12-30 17:02_|
 ****************************************
 # 基础语法
 
@@ -110,8 +111,15 @@ categories:
 > 获取操作系统信息，JVM运行时操作
 
 - `Runtime.getRuntime().addShutdownHook(Thread thread)`
-1. 在JVM正常退出时会调用注册的Hook
-1. 例如 System.exit(), 或者 Java 进程收到退出的信号 SIGTERM SIGINT SIGQUIT 等等, 但是暴力退出是不会被调用到Hook的
+1. 在JVM正常退出时会调用 已注册的Hook
+    1. 例如 System.exit(), 或者 Java 进程收到退出的信号 SIGTERM SIGINT SIGQUIT 等等
+    1. 但是 SIGKILL 方式， Runtime.halt(), 断电， 系统Crash 等问题不可能有时机执行Hook
+
+### 优雅关机
+当关闭服务器A时，先将该服务器的入口流量屏蔽，防止新的请求进入，然后等服务器完成原有请求的响应，以及一些资源清理行为后，完全关闭
+
+> [参考: Kubernetes 中如何保证优雅地停止 Pod](https://cloud.tencent.com/developer/article/1409225)  
+> [参考: JVM安全退出（如何优雅的关闭java服务）](https://www.cnblogs.com/yuandluck/p/9517700.html)  
 
 ***********************
 # 数据类型
