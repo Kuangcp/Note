@@ -23,11 +23,12 @@ categories:
 1. [攻击手段](#攻击手段)
     1. [ARP断网攻击](#arp断网攻击)
     1. [SYNFlood攻击](#synflood攻击)
+    1. [ClickJacking](#clickjacking)
     1. [CSRF](#csrf)
         1. [解决方案](#解决方案)
     1. [XSS](#xss)
 
-**目录 end**|_2020-11-17 14:17_|
+**目录 end**|_2021-01-04 10:29_|
 ****************************************
 
 # 网络安全
@@ -150,6 +151,14 @@ categories:
 ```
 
 ************************
+## ClickJacking
+点击劫持是一种视觉上的欺骗手段。攻击者使用一个透明的iframe，覆盖在一个网页上，然后诱使用户在网页上进行操作，此时用户将在不知情的情况下点击透明的iframe页面。通过调整iframe页面的位置，可以诱使用户恰好点击在iframe页面的一些功能性按钮上。
+
+> [X-Frame-Options](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options)  
+
+1. DENY：不能被嵌入到任何iframe或者frame中。
+1. SAMEORIGIN：页面只能被本站页面嵌入到iframe或者frame中
+1. ALLOW-FROM uri：只能被嵌入到指定域名的框架中
 
 ## CSRF
 > CSRF (Cross Site Request Forgery) `跨站请求伪造` 

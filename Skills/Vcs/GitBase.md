@@ -73,7 +73,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2020-12-24 10:51_|
+**目录 end**|_2021-01-04 10:29_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -604,13 +604,15 @@ B 中有 http.js，D 中有 http.js 和 main.js，E’中什么都没有。根�
 ### merge
 - [官方文档](https://git-scm.com/docs/git-merge)
 
-> [Official Doc: 高级合并](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%AB%98%E7%BA%A7%E5%90%88%E5%B9%B6)
+> [Official Doc: 高级合并](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%AB%98%E7%BA%A7%E5%90%88%E5%B9%B6)   
+> [参考: git-merge完全解析](https://www.jianshu.com/p/58a166f24c81)  
 
-- `git merge develop `默认会直接将当前分支指向Develop分支。(一条拐弯的分支线)
-- 推荐: `git merge --no-ff develop` 在当前分支`主动合并`分支Develop，在当前分支上生成一个新节点(有一个环的线)
+- `git merge develop` 默认 是 ff(fast forward) 不生成新节点，直接将当前分支指向Develop分支。(一条拐弯的分支线)
+    - 推荐: `git merge --no-ff develop` 在当前分支`主动合并`分支Develop，生成一个新节点，分支图的合并路径清晰
 
-1. merge 就是获取对方的修改, 与自己这一份进行合并(对 对方没有任何影响)
-    - `master merge dev` 就是 master 下载 dev 的那一份代码, 与自己的这份代码合并为一份
+- `--squash` 和 `--no-squash` 该参数和 `--no-ff` 冲突 
+    - 使用 `--squash` 时，当一个合并发生时，从当前分支和对方分支的共同祖先节点，一直到对方分支的顶部节点内的所有提交内容将修改当前工作区，使用者可以经过审视后进行提交，产生一个新的节点。
+    - 这种情况下分支图看不到合并的环，只会看作一个简单的提交
 
 - 如果遇到冲突：
     - `git mergetool` 使用工具进行分析冲突文件方便修改
@@ -621,6 +623,7 @@ B 中有 http.js，D 中有 http.js 和 main.js，E’中什么都没有。根�
 - `git config --global mergetool.prompt false`
 - `git config --global mergetool.kdiff3.trustExitCode true`
 - `git config --global mergetool.keepBackup false`
+
 
 ************************
 
