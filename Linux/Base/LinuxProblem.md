@@ -16,17 +16,19 @@ categories:
         1. [输入法](#输入法)
             1. [fcitx](#fcitx)
         1. [Flash](#flash)
+        1. [tracker-extract 高CPU内存占用](#tracker-extract-高cpu内存占用)
     1. [驱动问题](#驱动问题)
         1. [显卡](#显卡)
             1. [Nvidia](#nvidia)
-            1. [Deepin的NVIDIA驱动问题](#deepin的nvidia驱动问题)
+            1. [Manjaro 的NVIDIA驱动问题](#manjaro-的nvidia驱动问题)
+            1. [Deepin 的NVIDIA驱动问题](#deepin-的nvidia驱动问题)
     1. [配置问题](#配置问题)
         1. [Ubuntu与Windows10时间相差8小时的解决](#ubuntu与windows10时间相差8小时的解决)
         1. [终端开启慢](#终端开启慢)
     1. [数据问题](#数据问题)
         1. [突然断电](#突然断电)
 
-**目录 end**|_2020-05-17 16:13_|
+**目录 end**|_2021-01-05 23:12_|
 ****************************************
 # 遇到的常见问题
 
@@ -87,16 +89,23 @@ categories:
 #### Nvidia
 > [NVIDIA](https://wiki.archlinux.org/index.php/NVIDIA_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.AE.89.E8.A3.85)
 
-驱动有: Nouveau, bumblebee, NV_Prime  
+常见驱动方案有: Nouveau, bumblebee, NV_Prime  
 
 > [Bumblebee ](https://wiki.archlinux.org/index.php/Bumblebee_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))  
 
 大多数笔记本都是 Intel集显和 Nvidia 或者 AMD 双显卡, 双显卡的管理就成了问题(指的是Linux下)
 > [参考: 使用 Bumblebee 控制 NVIDIA 双显卡](https://www.cnblogs.com/congbo/archive/2012/09/12/2682105.html)
 
+************************
+#### Manjaro 的NVIDIA驱动问题
+> [参考: Manjaro NVIDIA驱动问题的解决方案](https://blog.csdn.net/qq_39828850/article/details/87919188)  
 
+1. `inxi -G` 检查已安装的驱动程序   
+1. `sudo mhwd -a pci nonfree 0300` 安装NVIDIA驱动
+1. 重启
+1. `mhwd -li` 执行确认驱动程序(Bumbee)已安装并且正在运行,此时不要着急使用nvidia-settings
 
-#### Deepin的NVIDIA驱动问题
+#### Deepin 的NVIDIA驱动问题
 - [论坛博客](https://bbs.deepin.org/forum.php?mod=viewthread&tid=132312)
     - `sudo apt-get install bumblebee-nvidia nvidia-driver nvidia-settings`
 
