@@ -16,6 +16,7 @@ categories:
         1. [config](#config)
         1. [clone](#clone)
             1. [Shallow Clone](#shallow-clone)
+            1. [sparse checkout 稀疏检出](#sparse-checkout-稀疏检出)
         1. [add](#add)
         1. [rm](#rm)
         1. [status](#status)
@@ -73,7 +74,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2021-01-06 09:45_|
+**目录 end**|_2021-01-06 10:36_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -163,7 +164,21 @@ categories:
         - 并且 git log 的输出不会显示 origin/branch 的指针信息，需要在对应分支上手动执行 `git remote set-branches origin branch` 再 `git fetch`
 
 1. 只克隆 指定标签或分支 且不包含内容 `git clone -b <tag_name> --single-branch --depth 1 <repo_url>` **大大缩减需下载的仓库大小**
-1. TODO 变基 补充 shallow commit
+- [ ] 变基 补充 shallow commit
+
+
+#### sparse checkout 稀疏检出
+> [参考: git sparse checkout (稀疏检出)](https://www.jianshu.com/p/680f2c6c84de)  
+
+1. git init name
+1. cd name
+1. git remote add origin URL
+1. git config core.sparsecheckout true
+1. echo "path1/" >> .git/info/sparse-checkout
+1. echo "path2/" >> .git/info/sparse-checkout
+1. git pull origin master
+
+此时，只会pull下符合 sparse-checkout 文件内规则(与 .gitignore 写法一致)的目录或文件
 
 ************************
 

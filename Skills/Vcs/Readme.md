@@ -1,7 +1,8 @@
 # 常见VCS
 
 ## Git
-> 分布式的去中心化的, 大多数操作是本地化操作, 速度快, 更方便, 缺点是 处理大仓库时会很慢
+> 分布式的去中心化的, 大多数操作是本地化操作, 速度快, 更方便
+> 缺点有 处理大仓库时会很慢, 没有访问权限的控制， 不适用二进制文件管理， submodules使用不方便
 - 最大的区别是其他的 VCS 都是 一个增量式的文件集合, git 是文件的一系列快照, 类似于 AUFS 文件系统一层一层那样
 
 ## Repo
@@ -24,7 +25,7 @@ Repo 简化了跨多个代码库运行的流程，与 Git 相辅相成
 > 但是个人目前在用的方式是直接 git 和 svn 一起用, 因为项目只能用SVN的原因  
 > [参考: 为啥要同时用 SVN 和 Git 管理项目](https://www.cnblogs.com/dasusu/p/7774469.html)
 
-1. 避免LRLF LF 问题
+1. 避免 CRLF LF 问题
 ```sh
     git config --global core.autocrlf false
     git config --global core.safecrlf false
