@@ -1,13 +1,14 @@
 # 常见VCS
 
 ## Git
-> 分布式的去中心化的, 大多数操作是本地化操作, 速度快, 更方便
+> 分布式的去中心化的, 大多数操作是本地化操作, 速度快, 更方便, 缺点是 处理大仓库时会很慢
 - 最大的区别是其他的 VCS 都是 一个增量式的文件集合, git 是文件的一系列快照, 类似于 AUFS 文件系统一层一层那样
 
-[Git LFS](https://git-lfs.github.com/)
+## Repo
+Repo 简化了跨多个代码库运行的流程，与 Git 相辅相成
 
 ## SVN
-> [Svn笔记](/Linux/Svn.md)
+> [Svn笔记](/Skills/Vcs/Svn.md)
 
 1. 中心化的, 代码统一保存, 如果中心发生错误, 代码会全部毁掉, 提交是必须要和服务端通信才能完成
 2. 允许部分的进行修改, 下拉, 提交. 而对于Git来说一个仓库就是一个整体(Git submodule 目前也能完成, 但是还是没有SVN灵活)
@@ -15,7 +16,7 @@
 
 ************************
 
-**`git和SVN一起用`**
+**`Git和SVN同时使用`**
 
 可以通过 git-svn 使用Git的命令与SVN服务器进行交互
 > [Official doc: git-svn](https://git-scm.com/docs/git-svn)

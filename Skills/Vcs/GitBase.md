@@ -73,22 +73,22 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2021-01-04 10:29_|
+**目录 end**|_2021-01-06 09:45_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
 
-> [Github:git](https://github.com/git/git) | [official doc: git](https://git-scm.com/docs)  
-> [arch wiki: Git](https://wiki.archlinux.org/index.php/Git)  
-
-> [Gitee: about git](https://gitee.com/all-about-git)  
+> [Github:git](https://github.com/git/git) | [Official Doc: git](https://git-scm.com/docs) | [Arch Wiki: Git](https://wiki.archlinux.org/index.php/Git) | [Gitee: about git](https://gitee.com/all-about-git)  
 
 - index stage work 三个概念上的区域
     - index: 已经 commit 的内容, 不可更改历史commit 
     - stage: 执行 add 命令, 将文件缓存到该区
     - work: 工作目录, 日常做修改的就是该分区
 
+************************
+
 - [tig](https://github.com/jonas/tig)
+- [Git LFS](https://git-lfs.github.com/) large file system
 
 # 开源许可证
 > [License](/Skills/Document/License.md)
@@ -103,8 +103,6 @@ categories:
 
 > [参考: 重看”Linus Torvalds on Git”视频](http://www.techug.com/post/review-of-linus-torvalds-on-git.html)
 > [GUI客户端](https://git-scm.com/downloads/guisQ)
-
-- [tig](http://jonas.nitro.dk/tig/manual.html) `tig命令，git的加强版`
 
 ***************
 
