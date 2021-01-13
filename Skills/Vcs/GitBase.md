@@ -74,7 +74,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2021-01-06 10:36_|
+**目录 end**|_2021-01-13 11:43_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -607,6 +607,8 @@ categories:
 [这才是真正的 Git——分支合并](https://zhuanlan.zhihu.com/p/192972614)
 
 Git 在合并分支的时候使用的是 三向合并策略，即当前分支和目标分支的共同祖先commit节点， 和两个分支的当前commmit节点进行比较确定哪一方发生修改需要纳入，如果两方都修改就要提示冲突
+
+`git merge-base 分支1 分支2` 可以查看两个分支的共同祖先
 
 > ![](img/git-merge-situation.drawio.svg)
 
