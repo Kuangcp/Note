@@ -36,7 +36,7 @@ categories:
 1. [Web开发的最佳实践](#web开发的最佳实践)
 1. [Tips](#tips)
 
-**目录 end**|_2020-08-25 16:24_|
+**目录 end**|_2021-01-15 21:26_|
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -317,4 +317,7 @@ _其他,可选_
 - 繁杂的代码如何简化
 
 # Tips
-- 不要对有@Configuration注解的配置类进行Field级的依赖注入 否则容易引发循环依赖 [Spring循环依赖问题分析](https://blog.mythsman.com/post/5d838c7c2db8a452e9b7082c/)
+- 不要对有 @Configuration 注解的配置类进行 Field 级的依赖注入 否则容易引发循环依赖 [Spring循环依赖问题分析](https://blog.mythsman.com/post/5d838c7c2db8a452e9b7082c/)
+
+如果有两个maven模块， A依赖B 假如 A和B中有相同 package 的同名类 a b，此时A模块是启动模块，配置了注解扫描
+此时是a还是b注册到IOC容器内

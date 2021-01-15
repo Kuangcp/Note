@@ -36,7 +36,7 @@ categories:
         1. [MAT](#mat)
         1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2020-11-25 16:19_|
+**目录 end**|_2021-01-15 21:26_|
 ****************************************
 
 # Java的性能调优
@@ -214,7 +214,8 @@ categories:
         1. jstatd -J-Djava.security.policy=jstatd.all.policy  -p 12028 -J-Djava.rmi.server.logCalls=true
         1. open jvisualvm create a remote with jstatd by above port 12028
 
-**************
+> 应用开发时的使用
+1. 可以使用 Profiler 下的JDBC，操作业务流程，获取所有执行的SQL，用来优化索引，或者排查问题
 
 ### MAT
 > Memory Analyzer tool(MAT) | [Official Site](http://www.eclipse.org/mat/)
