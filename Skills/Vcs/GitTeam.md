@@ -15,6 +15,8 @@ categories:
         1. [Github Flow](#github-flow)
     1. [提交准则](#提交准则)
         1. [commit template](#commit-template)
+    1. [Tips](#tips)
+        1. [master作为线上分支，误提交并推送怎么处理](#master作为线上分支误提交并推送怎么处理)
 1. [GUI](#gui)
     1. [git-cola](#git-cola)
     1. [GitBlade](#gitblade)
@@ -26,7 +28,7 @@ categories:
 1. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
     1. [最终方案](#最终方案)
 
-**目录 end**|_2020-12-14 19:57_|
+**目录 end**|_2021-01-20 19:07_|
 ****************************************
 
 # 使用Git进行团队协作
@@ -128,7 +130,17 @@ commit message 包含三个部分，header, body和footer，其中header必须�
 
 > 配置好后 git commit 不指定-m 参数就会调用该模板
 
-*******************************
+************************
+## Tips
+### master作为线上分支，误提交并推送怎么处理
+1. 从 master 分支新建功能分支 dev
+1. 通过 `git reset --soft HEAD^` 把修改的提交全部撤销到工作区 stash 起来
+1. git revert master 分支上的所有错误提交 (当中merge提交需要 通过 -m 指定base(git log 中看到的commit id 左为0 右为1 选择revert到哪个commit))
+1. 此时 dev 分支合并master, pop stash 的内容，并提交
+
+> 经过这系列操作后，master分支会多出很多 revert 提交，但是不会对其他人的部分产生影响，最后功能上线后，也能正确的合入master
+
+************************
 
 # GUI
 > 诚然, 命令行是高效的, 从学Git开始就是用命令行, 这只是在单兵作战或者说没有使用多分支的情况下是没有问题的  
