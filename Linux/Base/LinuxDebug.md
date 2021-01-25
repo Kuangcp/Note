@@ -10,11 +10,15 @@ categories:
 1. [Linux上的调试](#linux上的调试)
     1. [strace](#strace)
 
-**目录 end**|_2020-12-24 10:51_|
+**目录 end**|_2021-01-25 14:22_|
 ****************************************
 # Linux上的调试
 
 > [参考: Linux调试工具](https://www.cnblogs.com/lidabo/p/4377545.html)  
+> [参考: 在 Linux 上分析二进制文件的 10 种方法 ](https://linux.cn/article-12187-1.html)  
 
 ## strace
 > [Github strace](https://github.com/strace/strace)
+
+## radare2
+> [Github](https://github.com/radareorg/radare2)  

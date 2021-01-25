@@ -42,7 +42,7 @@ categories:
     1. [PDF](#pdf)
 1. [Tips](#tips)
 
-**目录 end**|_2020-11-11 21:09_|
+**目录 end**|_2021-01-25 14:22_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -220,7 +220,7 @@ Supervisor 进程监控管理
 `zssh`
 > 便捷的文件传输
 
-- [参考博客](http://blog.csdn.net/ygm_linux/article/details/32321729)
+> [参考 zssh, rz, sz互相传输](http://blog.csdn.net/ygm_linux/article/details/32321729)  
 
 ## 安全工具
 ### gpg

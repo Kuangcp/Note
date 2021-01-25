@@ -21,7 +21,7 @@ categories:
         1. [Raspberry-pi](#raspberry-pi)
     1. [Arch](#arch)
         1. [Arch](#arch)
-        1. [manjaro](#manjaro)
+        1. [Manjaro](#manjaro)
     1. [RedHat](#redhat)
         1. [Fedora](#fedora)
         1. [Centos](#centos)
@@ -36,7 +36,7 @@ categories:
         1. [Chrome OS](#chrome-os)
         1. [Fyde OS](#fyde-os)
 
-**目录 end**|_2020-05-17 17:24_|
+**目录 end**|_2021-01-25 14:22_|
 ****************************************
 # Linux常见发行版
 > [Repology](https://repology.org/)
@@ -120,7 +120,7 @@ categories:
     - [打造完美的 Linux 桌面 — Arch Linux 2007.08-2 (3)](https://linuxtoy.org/archives/the-perfect-linux-desktop-arch-linux-2007-08-2-3.html)
     - [打造完美的 Linux 桌面 — Arch Linux 2007.08-2 (4)](https://linuxtoy.org/archives/the-perfect-linux-desktop-arch-linux-2007-08-2-4.html)
     
-### manjaro
+### Manjaro
 > [官网](https://manjaro.org/community-editions/)
 > [人生苦短我用Manjaro](https://www.manjaro.cn/451) | [什么Linux发行版软件最多？](https://www.lulinux.com/archives/2787)
 > | [Manjaro: 一种不同的野兽](https://www.manjaro.cn/195) | [为什么要用Manjaro？](https://www.manjaro.cn/150)

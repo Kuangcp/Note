@@ -10,7 +10,6 @@ categories:
 **目录 start**
 
 1. [文本编辑器](#文本编辑器)
-    1. [Ghex](#ghex)
     1. [Kate](#kate)
     1. [Geany](#geany)
     1. [scite](#scite)
@@ -37,14 +36,14 @@ categories:
     1. [Micro](#micro)
     1. [fte-terminal](#fte-terminal)
     1. [在线编辑器](#在线编辑器)
+1. [十六进制](#十六进制)
+    1. [Ghex](#ghex)
+    1. [hexedit](#hexedit)
 
-**目录 end**|_2020-10-14 23:07_|
+**目录 end**|_2021-01-25 14:22_|
 ****************************************
 # 文本编辑器
-## Ghex
-- 十六进制文件编辑器
 
-************************
 
 ## Kate
 > [Official site](https://kate-editor.org/) 相关: KWrite(Kate的轻量版)
@@ -249,3 +248,16 @@ _[stackedit.io](https://stackedit.io/)_
 - [Github地址](https://github.com/benweet/stackedit/)
 
 CMD编辑器
+
+************************
+
+# 十六进制
+
+> 十六进制查看
+
+xxd hexdump od
+
+## Ghex
+- 十六进制文件编辑器
+
+## hexedit
