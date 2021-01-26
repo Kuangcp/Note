@@ -25,8 +25,8 @@ categories:
             1. [孤儿进程](#孤儿进程)
             1. [僵死进程](#僵死进程)
         1. [守护进程](#守护进程)
-        1. [线程](#线程)
         1. [文件描述符 FD](#文件描述符-fd)
+        1. [线程](#线程)
     1. [时间](#时间)
     1. [服务管理](#服务管理)
         1. [init进程](#init进程)
@@ -56,7 +56,7 @@ categories:
     1. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     1. [熵池](#熵池)
 
-**目录 end**|_2020-12-23 16:09_|
+**目录 end**|_2021-01-26 14:22_|
 ****************************************
 # Linux系统
 
@@ -202,10 +202,12 @@ categories:
 ************************
 
 ## 进程
+> 进程是由多个线程(至少有一个)以及持有资源的组合体， 线程可以理解为进程的执行单元
+
 > 参考 深入理解计算机系统 书籍
 
-1. pid_t来表示一个进程的pid，因此能表示的进程的范围一定不会超过pid_t类型的大小
-    - 查看 pid 范围 `cat /proc/sys/kernel/pid_max`
+1. pid_t 来表示一个进程的 pid，因此能表示的进程的范围一定不会超过pid_t类型的大小
+    - 查看 pid 最大数量 `cat /proc/sys/kernel/pid_max`
 
 > [doc: fork](http://pubs.opengroup.org/onlinepubs/7908799/xsh/fork.html)  
 > [wiki: fork bomb](https://en.wikipedia.org/wiki/Fork_bomb)  
@@ -226,7 +228,7 @@ categories:
 编号为`1 ~ 31`的信号为传统UNIX支持的信号，是不可靠信号(非实时的)，编号为`32 ~ 63`的信号是后来扩充的，称做可靠信号(实时信号)。  
 不可靠信号和可靠信号的区别在于前者不支持排队，只是负责发送, 不负责存储和接收, 可能会造成信号丢失，而后者不会。  
 
-> [参考](https://blog.csdn.net/baobao8505/article/details/1115820)
+> [参考 Linux信号列表](https://blog.csdn.net/baobao8505/article/details/1115820)
 
 > 常用信号
 
@@ -263,9 +265,6 @@ categories:
 ### 守护进程
 > [参考: 守护进程](https://blog.csdn.net/lianghe_work/article/details/47659889)
 
-### 线程
-1. 查看创建一个线程占用内存大小 `ulimit -s`
-
 ### 文件描述符 FD
 > [参考: Linux下 文件描述符（fd）与 文件指针（FILE*）](https://blog.csdn.net/mm_hh/article/details/71374474)  
 
@@ -273,6 +272,12 @@ categories:
 现在我们明确一下：已打开的文件在内核中用file结构体表示，文件描述符表中的指针指向file结构体。  
 
 - 每个进程默认FD有 0 标准输入 1 标准输出 2 错误输出
+
+### 线程
+
+1. 查看创建一个线程占用内存大小 `ulimit -s`
+1. 查看进程下的线程 `ps -T pid`
+1. 查看最大线程数 `cat /proc/sys/kernel/threads-max`
 
 ************************
 

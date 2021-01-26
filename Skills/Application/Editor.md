@@ -40,10 +40,9 @@ categories:
     1. [Ghex](#ghex)
     1. [hexedit](#hexedit)
 
-**目录 end**|_2021-01-25 14:22_|
+**目录 end**|_2021-01-26 14:22_|
 ****************************************
 # 文本编辑器
-
 
 ## Kate
 > [Official site](https://kate-editor.org/) 相关: KWrite(Kate的轻量版)
@@ -253,9 +252,9 @@ CMD编辑器
 
 # 十六进制
 
-> 十六进制查看
+> 十六进制查看 
 
-xxd hexdump od
+xxd hexdump od vim
 
 ## Ghex
 - 十六进制文件编辑器
