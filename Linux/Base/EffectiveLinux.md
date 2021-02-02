@@ -42,7 +42,7 @@ categories:
     1. [PDF](#pdf)
 1. [Tips](#tips)
 
-**目录 end**|_2021-01-25 14:22_|
+**目录 end**|_2021-02-02 15:04_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -210,7 +210,7 @@ Supervisor 进程监控管理
 ## 文本处理
 > `wc` 单词 行数 统计
 > `ccze` 日志高亮
-
+> `lolcat` 给输出包装上彩虹颜色 有 c python ruby 版
 ************************
 
 ## 文件操作

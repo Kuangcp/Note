@@ -17,16 +17,20 @@ categories:
         1. [PNG](#png)
         1. [SVG](#svg)
 
-**目录 end**|_2021-01-15 21:26_|
+**目录 end**|_2021-02-02 15:04_|
 ****************************************
 # 图片格式
 > [参考: 图片格式 jpg、png、gif各有什么优缺点？什么情况下用什么格式的图片呢？](https://www.zhihu.com/question/20028452)  
+
+图片的格式，表面上是后缀不同，实际上是图片的压缩标准不一样
 
 ## 压缩
 
 ### Webp
 
 ### JPEG
+
+JPEG文件必须以`0xFF DB`开头和以 `0xFF D9` 结尾（EOI）
 
 ### HEIF
 High Efficiency Image File Format
@@ -39,6 +43,7 @@ High Efficiency Image File Format
 ### PNG
 > [PNG文件格式详解](https://blog.mythsman.com/post/5d2d62b4a2005d74040ef7eb/)  
 
+- 数据标识总是IEND（49 45 4E 44），因此，CRC码也总是AE 42 60 82。 `00 00 00 00 49 45 4E 44 AE 42 60 82`
 
 ### SVG
 

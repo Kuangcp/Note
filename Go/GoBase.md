@@ -31,10 +31,12 @@ categories:
     1. [文件操作](#文件操作)
     1. [Test](#test)
     1. [JSON](#json)
+    1. [Debug](#debug)
+        1. [pprof](#pprof)
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2020-12-18 15:50_|
+**目录 end**|_2021-02-02 15:04_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -276,6 +278,11 @@ Msg struct{
  Text     *Content `json:"text,omitempty"`
 }
 ```
+
+************************
+## Debug
+### pprof
+> [参考: 【实践】使用Go pprof做内存性能分析](https://cloud.tencent.com/developer/article/1489186)  
 
 ************************
 
