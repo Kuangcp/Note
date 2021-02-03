@@ -16,7 +16,7 @@ categories:
     1. [显卡驱动](#显卡驱动)
     1. [多系统安装](#多系统安装)
 
-**目录 end**|_2020-09-22 22:46_|
+**目录 end**|_2021-02-03 17:25_|
 ****************************************
 # Manjaro
 > [Gitlab source code](https://gitlab.manjaro.org/explore/groups)  

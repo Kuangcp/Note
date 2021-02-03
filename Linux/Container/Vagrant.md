@@ -1,3 +1,16 @@
+---
+title: Vagrant
+date: 2021-02-03 17:28:18
+tags: 
+categories: 
+---
+
+**目录 start**
+
+1. [Vagrant](#vagrant)
+
+**目录 end**|_2021-02-03 17:28_|
+****************************************
 # Vagrant
 [Official](https://www.vagrantup.com)
 

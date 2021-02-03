@@ -36,7 +36,7 @@ categories:
         1. [Chrome OS](#chrome-os)
         1. [Fyde OS](#fyde-os)
 
-**目录 end**|_2021-01-25 14:22_|
+**目录 end**|_2021-02-03 17:25_|
 ****************************************
 # Linux常见发行版
 > [Repology](https://repology.org/)

@@ -283,6 +283,7 @@ Msg struct{
 ## Debug
 ### pprof
 > [参考: 【实践】使用Go pprof做内存性能分析](https://cloud.tencent.com/developer/article/1489186)  
+> [参考: 实战Go内存泄露](https://www.codercto.com/a/79118.html)  
 
 ************************
 

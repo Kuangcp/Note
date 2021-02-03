@@ -30,12 +30,14 @@ categories:
         1. [WORKDIR](#workdir)
         1. [STOPSIGNAL](#stopsignal)
         1. [ONBUILD](#onbuild)
+        1. [中间镜像](#中间镜像)
 1. [Practice](#practice)
+    1. [dockerignore文件的使用](#dockerignore文件的使用)
     1. [Exercises](#exercises)
         1. [打包最新版git](#打包最新版git)
         1. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2021-02-03 17:25_|
 ****************************************
 # Dockerfile
 ## 使用入门案例

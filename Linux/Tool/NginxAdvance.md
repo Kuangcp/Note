@@ -1,10 +1,23 @@
+---
+title: NginxAdvance
+date: 2021-02-03 17:28:26
+tags: 
+categories: 
+---
+
+**目录 start**
+
+1. [Nginx设计与实现](#nginx设计与实现)
+
+**目录 end**|_2021-02-03 17:28_|
+****************************************
 # Nginx设计与实现
 - 《深入理解Nginx：模块开发与架构解析（第2版）》
 - 《Nginx高性能Web服务器详解》
 
 > [参考: Nginx从听说到学会](https://www.jianshu.com/p/630e2e1ca57f)  
 
-<img src="nginx.drawio.svg">
+<img src="img/nginx.drawio.svg">
 
 > 参考 图 1 
 

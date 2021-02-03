@@ -57,7 +57,7 @@ categories:
         1. [overlay](#overlay)
 1. [Dockerfile](#dockerfile)
 
-**目录 end**|_2020-11-17 14:17_|
+**目录 end**|_2021-02-03 17:25_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -519,7 +519,7 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
 ***********************************
 
 # 网络
-> [Official Doc](https://docs.docker.com/network/) 分为 none host brige user-defined 几种类型
+> [Official Doc](https://docs.docker.com/network/) 分为 none host brige(缺省) user-defined 几种类型
 
 > Connection reset by peer
 1. 可能是 docker0 和本身网段冲突了 `docker network inspect bridge` 对比 `netstat -nr` 查看

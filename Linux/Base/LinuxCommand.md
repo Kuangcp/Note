@@ -24,7 +24,7 @@ categories:
         1. [crontab](#crontab)
         1. [Systemd](#systemd)
 
-**目录 end**|_2020-10-23 21:05_|
+**目录 end**|_2021-02-03 17:25_|
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
