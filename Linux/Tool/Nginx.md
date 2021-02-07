@@ -38,7 +38,7 @@ categories:
     1. [nuster](#nuster)
 1. [Tips](#tips)
 
-**目录 end**|_2021-02-03 17:25_|
+**目录 end**|_2021-02-07 18:56_|
 ****************************************
 # Nginx
 
@@ -394,3 +394,4 @@ Keepalived软件起初是专为LVS负载均衡软件设计的，用来管理并�
 # Tips
 - 文件上传报错 413 
   - http{} 中添加 `client_max_body_size 80M;`
+- request_time 比实际时间长 [Nginx的延迟关闭](http://shibing.github.io/2016/11/18/nginx%E7%9A%84%E5%BB%B6%E8%BF%9F%E5%85%B3%E9%97%AD-lingering-close/)`lingering_timeout`

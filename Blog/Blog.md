@@ -31,7 +31,7 @@ categories:
         1. [玩机](#玩机)
     1. [商业](#商业)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2021-02-07 18:56_|
 ****************************************
 
 > 只用来记录非技术类的文章,技术类的直接放到对应的笔记中去  
@@ -100,6 +100,7 @@ categories:
 
 - [xxl](https://www.cnblogs.com/xuxueli/)`开发了一套分布式组件`
 - [infotech](http://www.infotech.vip) 
+- [yourbatman](https://www.yourbatman.cn/)`励志成长`
 
 ## 博客能人
 - [赵劼](http://www.cnblogs.com/JeffreyZhao/) `对函数式编程，并行程序开发，代码之美以及程序员能力与修养等相关问题`
