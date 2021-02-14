@@ -4,7 +4,9 @@
 [![JavaSE](https://img.shields.io/badge/JavaSE-Java基础-blue.svg)](./Java/) 
 [![目录](https://img.shields.io/badge/wiki-Note-brightgreen.svg)](https://gitee.com/gin9/Memo/wikis/pages) 
 
-> 建议将该仓库克隆下来后，将该项目作为工作空间, 在 [Visual Studio Code](https://code.visualstudio.com/) 中搜索阅读 **笔记中的svg 可使用 draw.io 插件进行编辑**
+> 建议将该仓库克隆下来后，将该项目作为工作空间, 在 [Visual Studio Code](https://code.visualstudio.com/) 中搜索阅读 
+>- `*.drawio.svg 使用 draw.io 插件查看和编辑`
+>- `*.km.svg 使用 vscode-mindmap 插件查看和编辑`
 
 ## 基础
 * [ 算法 ](/Skills/CS/Algorithm.md)
