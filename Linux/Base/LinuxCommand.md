@@ -24,7 +24,7 @@ categories:
         1. [crontab](#crontab)
         1. [Systemd](#systemd)
 
-**目录 end**|_2021-02-03 17:25_|
+**目录 end**|_2021-02-19 10:14_|
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -81,6 +81,7 @@ categories:
 
 - 获取前一天日期 `date --date='1 day ago' -R`
 - 将秒时间戳转换为日期 `date --date='@1524738626'`
+- 设置日期或时间 `date -s '2020-12-01'` 或 `date -s '23:00:20'`
 
 ## grep
 > g (globally) search for a re (regular expression ) and p (print ) the results.
