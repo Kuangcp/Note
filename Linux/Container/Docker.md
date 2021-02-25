@@ -57,7 +57,7 @@ categories:
         1. [overlay](#overlay)
 1. [Dockerfile](#dockerfile)
 
-**目录 end**|_2021-02-07 18:56_|
+**目录 end**|_2021-02-25 22:17_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -560,16 +560,16 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
 
 - 例如：`创建一个Nginx和一个Springboot搭建的web服务`
     - 构建Springboot应用镜像，构建应用容器 开放8888端口
-    - 新建nginx容器：`docker run --name youhuigo -d -p 80:80 -v /home/kuang/nginx/conf/:/etc/nginx/conf.d/:ro --link you:web nginx`
+    - 新建nginx容器：`docker run --name test-nginx -d -p 80:80 -v /home/kuang/nginx/conf/:/etc/nginx/conf.d/:ro --link you:web nginx`
 - 配置文件：`一样的cat /etc/hosts 查看容器的IP`， 其实最简单就是用link配置时的别名即可，因为Docker已经帮我们配置好了host。。。
 ```
-    upstream youhui {
+    upstream backend {
         server 172.17.0.4:8888;
     }
 
     server {
         listen 80;
-        server_name youhui;
+        server_name backend;
 
         location / {
             proxy_set_header X-Real-IP $remote_addr;
@@ -577,7 +577,7 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
             proxy_set_header Host $http_host;
             proxy_set_header X-Nginx-Proxt true;
 
-            proxy_pass http://youhui;
+            proxy_pass http://backend;
             proxy_redirect off;
         }
     }
@@ -587,6 +587,13 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
 
 ## User-defined 
 > Docker 提供三种 网络驱动 bridge overlay macvlan, 后两者可用于跨主机的容器通信
+
+> 容器分配独立ip
+
+1. 宿主机新建网络 `docker network create --subnet=172.13.0.0/24 test-standby`
+1. 宿主机新建容器并分配ip `docker run -it --net test-standby --ip 172.13.0.8 -p 6379 --name redis-stand redis:5.0.9-alpine`
+1. 宿主机上 route 查看路由表，并 ping 172.13.0.8 查看路由表是否正确
+1. 其他主机上加上这个路由，就可以访问 容器了 `route add 172.13.0.0 mask 255.255.255.0 192.168.7.110`
 
 ## 跨主机容器通信
 
