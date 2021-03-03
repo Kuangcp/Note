@@ -57,7 +57,7 @@ categories:
         1. [overlay](#overlay)
 1. [Dockerfile](#dockerfile)
 
-**目录 end**|_2021-02-07 18:56_|
+**目录 end**|_2021-03-03 19:13_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -592,8 +592,11 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
 
 1. 宿主机新建网络 `docker network create --subnet=172.13.0.0/24 test-standby`
 1. 宿主机新建容器并分配ip `docker run -it --net test-standby --ip 172.13.0.8 -p 6379 --name redis-stand redis:5.0.9-alpine`
-1. 宿主机上 route 查看路由表，并 ping 172.13.0.8 查看路由表是否正确
-1. 其他主机上加上这个路由，就可以访问 容器了 `route add 172.13.0.0 mask 255.255.255.0 192.168.7.110`
+1. 宿主机 配置为虚拟路由器 完成转发
+    - `sysctl -w net.ipv4.ip_forward=1`
+    - route 查看路由表，并 ping 172.13.0.8 查看路由表是否正确
+1. 其他主机上加上这个路由，就可以访问 容器了  
+    - Windows: `route add 172.13.0.0 mask 255.255.255.0 192.168.7.110`
 
 ## 跨主机容器通信
 

@@ -15,9 +15,8 @@ categories:
     1. [三方平台](#三方平台)
 1. [代码质量管理](#代码质量管理)
     1. [sonarqube](#sonarqube)
-1. [监控](#监控)
 
-**目录 end**|_2020-06-24 02:06_|
+**目录 end**|_2021-03-03 19:13_|
 ****************************************
 # 持续集成
 > 参考: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  
@@ -66,3 +65,6 @@ categories:
 1. `docker run -d --name sonarqube -p 9000:9000  sonarqube:8-community`
 1. [maven集成](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
 1. Maven会输出当前分析项目的结果URL
+
+> [参考: 有赞 GO 项目单测、集成、增量覆盖率统计与分析](https://cloud.tencent.com/developer/article/1684515)  
+> [支持 Go](https://docs.sonarqube.org/latest/analysis/languages/go/)
