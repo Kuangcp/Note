@@ -19,7 +19,7 @@ categories:
 **目录 end**|_2020-05-04 17:40_|
 ****************************************
 # Golang
-> [awesome-go](https://github.com/avelino/awesome-go) | [awesome-go-cn](https://github.com/yinggaozhen/awesome-go-cn)
+> [go dev](https://learn.go.dev/) | [awesome-go](https://github.com/avelino/awesome-go) | [awesome-go-cn](https://github.com/yinggaozhen/awesome-go-cn)
 
 
 - [学习Go的知乎话题](https://www.zhihu.com/question/23486344)
