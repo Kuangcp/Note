@@ -28,6 +28,8 @@ categories:
 > [Golang vs Rust vs Dlang 哪个更有前途](https://www.zhihu.com/question/27226962)`大致就是go偏向Java Python, Rust 偏向 C++ 的领域`  
 > [从 0 到 1 学习 Go 语言 ](https://mp.weixin.qq.com/s?__biz=MjM5NzM0MjcyMQ==&mid=2650087380&idx=1&sn=56c77443ae171e1091e146704798647a)
 
+- [go-gtk alternatives](https://go.libhunt.com/go-gtk-alternatives)`gui框架对比`
+
 ************************
 
 > 负面
