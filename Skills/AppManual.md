@@ -14,13 +14,14 @@ categories:
         1. [oneinstack](#oneinstack)
     1. [日常工具](#日常工具)
         1. [termux](#termux)
+        1. [kite](#kite)
     1. [IDE](#ide)
         1. [Idea](#idea)
         1. [Eclipse](#eclipse)
     1. [绘图工具](#绘图工具)
         1. [思维导图](#思维导图)
 
-**目录 end**|_2020-10-13 10:53_|
+**目录 end**|_2021-03-05 17:53_|
 ****************************************
 # 软件使用记事
 ## 包管理
@@ -70,6 +71,12 @@ categories:
 > iOS 相关
 
 [a shell](https://holzschu.github.io/a-Shell_iOS/) `iOS13`
+
+### kite
+> [Official Site](https://www.kite.com/)  
+> Free AI Coding Assistant and Code Auto-Complete  
+
+支持 VS Code IDEA Vim 等等
 
 ************************
 

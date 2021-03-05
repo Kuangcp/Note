@@ -58,7 +58,7 @@ categories:
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2021-01-05 15:40_|
+**目录 end**|_2021-03-05 17:53_|
 ****************************************
 # 网络
 
@@ -298,6 +298,12 @@ TCP连接四元组是源IP地址、源端口、目的IP地址和目的端口。�
 > 关闭状态码
 1. [WebSocket RFC](https://tools.ietf.org/html/rfc6455#section-7.4)
 1. [WebSocket断开原因分析](https://wdd.js.org/websocket-close-reasons.html)
+
+- [理解websocket的原理](https://zhuanlan.zhihu.com/p/149680021)
+    - 三次握手建立 TCP 连接(如果是 wss 还需要建立 tls 连接), 并从HTTP协议协商升级到WS协议
+    - 正常关闭时 TCP 的四次挥手，异常关闭则是 TCP 协议 发送 rst 包
+
+客户端和服务端建立连接后 客户端网络发生变化(例如VPN关闭,服务端在VPN网络下才可访问)，此时客户端的定时ping会累积起来，等恢复后，一次发送多条数据，可以通过抓包观察到
 
 ************************
 

@@ -42,7 +42,7 @@ categories:
     1. [PDF](#pdf)
 1. [Tips](#tips)
 
-**目录 end**|_2021-02-03 17:25_|
+**目录 end**|_2021-03-05 17:53_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -294,7 +294,7 @@ _批量修改_
 1. x/y 得到比例 在 原图中裁剪出同样比例的图片 (Viewnior就很好用)
 1. 将裁剪出来的图片转换指定大小 `convert -resize xXy src.jpg dst.jpg`
 
--  转PDF `convert origin1.jpg origin2.jpg target.pdf`
+- 若干图片合并转PDF `convert origin1.jpg origin2.jpg target.pdf`
 
 ### asciinema
 - [asciinema](https://asciinema.org) `终端屏幕录制和分享网`
