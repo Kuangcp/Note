@@ -57,7 +57,7 @@ categories:
         1. [overlay](#overlay)
 1. [Dockerfile](#dockerfile)
 
-**目录 end**|_2021-03-03 19:13_|
+**目录 end**|_2021-03-09 14:24_|
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -469,6 +469,18 @@ _登录镜像仓库_
 > 一个配置文件就表示了一组容器, 以及相关的网络,文件等配置, docker-compose 都是基于该配置文件进行基本命令操作  
 > 语法上和 docker run 基本一致, 只不过以 yml 形式配置而已
 
+> 声明一个 xxx 网络 供 service 使用
+```yml
+networks:
+  xxx:
+    external: false
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.12.0.0/16
+```
+
 ```yml
 version: "2.1"
 services:
@@ -480,6 +492,8 @@ services:
       - "6666:6666"
     volumes:
       - /etc/localtime:/etc/localtime
+    networks: # 可不配置，Docker会默认分配一个ip 172.xx 开头
+      - xxx 
     command: ./bin/start.sh
     links:
         - "mysql:mysql"
@@ -505,6 +519,7 @@ services:
 
 ### Tips
 > yml所在的目录名会作为容器名的前缀
+
 
 ************************
 
