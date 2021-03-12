@@ -79,7 +79,7 @@ categories:
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
 
-> [Github:git](https://github.com/git/git) | [Official Doc: git](https://git-scm.com/docs) | [Arch Wiki: Git](https://wiki.archlinux.org/index.php/Git) | [Gitee: about git](https://gitee.com/all-about-git)  
+> [Github:git](https://github.com/git/git) | [Official Doc: git](https://git-scm.com/docs) | [Arch Wiki: Git](https://wiki.archlinux.org/index.php/Git) | [Gitee: about git](https://gitee.com/all-about-git) | [git-for-windows mirrors](https://npm.taobao.org/mirrors/git-for-windows/)  
 
 - index stage work 三个概念上的区域
     - index: 已经 commit 的内容, 不可更改历史commit 
@@ -88,7 +88,6 @@ categories:
 
 ************************
 
-- [tig](https://github.com/jonas/tig)
 - [Git LFS](https://git-lfs.github.com/) large file system
 
 # 开源许可证
