@@ -41,7 +41,7 @@ categories:
     1. [Cluster 集群](#cluster-集群)
 1. [Redis 持久化](#redis-持久化)
 
-**目录 end**|_2020-12-25 15:42_|
+**目录 end**|_2021-03-16 18:28_|
 ****************************************
 # Redis底层数据结构
 ## SDS
@@ -205,7 +205,7 @@ TODO
 > [参考: Redis 分布式锁进化史解读 + 缺陷分析](https://zhuanlan.zhihu.com/p/161078350)  
 
 > [参考: redis分布式锁在MySQL事务代码中使用](https://blog.csdn.net/seapeak007/article/details/99337781)  
-
+> [参考: Lua脚本在redis分布式锁场景的运用](https://www.cnblogs.com/demingblog/p/9542124.html)  
 ************************
 
 # Tip
