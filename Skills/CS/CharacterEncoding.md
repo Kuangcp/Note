@@ -19,7 +19,7 @@ categories:
 1. [汉字编码发展史](#汉字编码发展史)
 1. [Java中的编码](#java中的编码)
 
-**目录 end**|_2020-06-24 02:06_|
+**目录 end**|_2021-03-17 18:06_|
 ****************************************
 # 字符编码
 
@@ -64,14 +64,18 @@ categories:
 ************************
 
 ## Unicode
-> [unicode.org](http://www.unicode.org/) | [wikipedia](https://en.wikipedia.org/wiki/Unicode) | [unicode table](https://unicode-table.com/cn/)  
+> [wikipedia](https://en.wikipedia.org/wiki/Unicode) | [unicode.org](http://www.unicode.org/) | [unicode table](https://unicode-table.com/cn/)  
 
 Unicode 是一个囊括了世界上所有字符的字符集，其中每一个字符都对应有唯一的编码值, 但是并不是一个已实现的编码方案, 不能直接使用  
 其实现有 UTF-8 UTF-16 UTF-32 ...  目前最新版本 11 已经包括 137,439 个字符
 
 > 问题 直接看, 看不到的字符, 可能带来一些坑
-1. 零宽间隔 `U+200B`  
-1. 零宽不折行空格 unicode: `U+FEFF` html: `&#65279;` 
+
+|  |  |
+|:----|:----|
+| 零宽间隔         | `U+200B` |
+| NO-BREAK SPACE  | `U+00A0` |
+| 零宽不折行空格    | `U+FEFF` html: `&#65279;` |
 
 ************************
 
