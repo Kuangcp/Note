@@ -14,42 +14,43 @@ categories:
     1. [事务](#事务)
         1. [事务的并发问题](#事务的并发问题)
     1. [数据库并发控制](#数据库并发控制)
+1. [关系型和非关系型](#关系型和非关系型)
 1. [关系型数据库](#关系型数据库)
     1. [SQLite](#sqlite)
     1. [SQL Server](#sql-server)
     1. [Mysql](#mysql)
     1. [Oracle](#oracle)
     1. [PostgreSQL](#postgresql)
+1. [非关系型数据库](#非关系型数据库)
+    1. [Redis](#redis)
+    1. [LevelDB](#leveldb)
+    1. [MangoDB](#mangodb)
+    1. [GemFire](#gemfire)
+1. [关系型数据库设计](#关系型数据库设计)
     1. [范式](#范式)
         1. [1NF](#1nf)
         1. [2NF](#2nf)
         1. [3NF](#3nf)
         1. [BCNF](#bcnf)
         1. [4NF](#4nf)
-1. [非关系型数据库](#非关系型数据库)
-    1. [Redis](#redis)
-    1. [LevelDB](#leveldb)
-    1. [MangoDB](#mangodb)
-    1. [GemFire](#gemfire)
-1. [关系型和非关系型的对比](#关系型和非关系型的对比)
-1. [关系型数据库设计](#关系型数据库设计)
     1. [基本表的设计](#基本表的设计)
         1. [关于主键的设计](#关于主键的设计)
     1. [视图的设计](#视图的设计)
 1. [非关系型数据库设计](#非关系型数据库设计)
 1. [大数据](#大数据)
     1. [Greenplum](#greenplum)
+    1. [TiDB](#tidb)
 1. [数据库中间件](#数据库中间件)
 1. [图形化工具](#图形化工具)
 
-**目录 end**|_2020-11-25 16:19_|
+**目录 end**|_2021-03-19 14:38_|
 ****************************************
 # 数据库
 > [码农翻身:爱炫耀的数据库老头儿](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514001&idx=1&sn=17b72c3e69db6c4277e3045c699b7b6b&chksm=80d67c52b7a1f5446020826841869221873f4578524181384592839d19c4810dc68807117e13&scene=21#wechat_redirect) `事务,undo日志`
 
 > [DB-Engines Ranking](https://db-engines.com/en/ranking) `数据库评分排行`
 
-## 事务 
+## 事务特性 ACID
 
 1. `原子性（Atomicity）`
     - 事务开始后所有操作，要么全部做完，要么全部不做，不可能停滞在中间环节。
@@ -78,8 +79,13 @@ MVCC
 
 ************************
 
+# 关系型和非关系型
+> [为什么说SQL正在击败NoSQL，这对数据的未来意味着什么？](http://www.infoq.com/cn/news/2017/10/SQL-NoSQL-mean-what?utm_source=news_about_rdbms&utm_medium=link&utm_campaign=rdbms)
+
+************************
+
 # 关系型数据库
-> 代表性: Oracle MySQL PostgreSQL SQL Server
+> 代表性: Oracle, MySQL, PostgreSQL, SQL Server
 
 > [List of Relational Database Management Systems (RDBMSs)](https://database.guide/list-of-relational-database-management-systems-rdbms/)  
 
@@ -91,16 +97,41 @@ MVCC
 ## SQL Server
 
 ## Mysql
-> 结合docker配置很快，就是默认编码是latin 每次要改成 utf8mb4
+> [MySQL](/Database/MySQL.md)  
+
+## PolorDB
+> [Doc](https://help.aliyun.com/product/58609.html)
 
 ## Oracle
 > [Official Site](https://www.oracle.com/database/)  
 
-> 十分的庞大, 学习了他理念的设计, 感受良多
-
 ## PostgreSQL
 > [Official Site](https://www.postgresql.org/)  
 
+************************
+
+# 非关系型数据库
+> key-value 数据库: redis memcached   
+> 文档数据库: MongoDB  
+> 图数据库: Neo4j  
+> 时序数据库: InfluxDB TSDB  
+
+- [sssdb](https://github.com/ideawu/ssdb) `键值对数据库`
+
+## Redis
+> 数据类型丰富,处理非关系型并且结构化的数据十分方便, 结合Python使用就行云流水一般了
+
+## LevelDB
+> [Github](https://github.com/google/leveldb)  
+
+## MangoDB
+> 文档性数据库, 混合类型: 关系型非关系型
+
+## GemFire
+> 分布式内存数据库 12306 采用的解决方案
+
+************************
+# 关系型数据库设计
 ## 范式
 > 范式越高意味着数据冗余更低，表的划分更细，但是在查询数据时需要做大量表连接操作，会严重降低性能
 
@@ -131,33 +162,6 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 
 ### 4NF
 
-************************
-
-# 非关系型数据库
-> key-value 数据库: redis memcached   
-> 文档数据库: MongoDB  
-> 图数据库: Neo4j  
-> 时序数据库: InfluxDB TSDB  
-
-- [sssdb](https://github.com/ideawu/ssdb) `键值对数据库`
-
-## Redis
-> 数据类型丰富,处理非关系型并且结构化的数据十分方便, 结合Python使用就行云流水一般了
-
-## LevelDB
-> [Github](https://github.com/google/leveldb)  
-
-## MangoDB
-> 文档性数据库, 混合类型: 关系型非关系型
-
-## GemFire
-> 分布式内存数据库 12306 采用的解决方案
-
-# 关系型和非关系型的对比
-> [为什么说SQL正在击败NoSQL，这对数据的未来意味着什么？](http://www.infoq.com/cn/news/2017/10/SQL-NoSQL-mean-what?utm_source=news_about_rdbms&utm_medium=link&utm_campaign=rdbms)
-
-************************
-# 关系型数据库设计
 ## 基本表的设计
 1. 应尽量避免 字段默认值和业务值发生重叠, 便于后期排查问题，减少一个值的含义
 1. 字段应尽量紧凑，达到业务要求的最小设计，利于索引和IO
@@ -180,6 +184,9 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 # 大数据
 ## Greenplum
 > [Official Site](https://cn.greenplum.org)  
+
+## TiDB
+> [Official Doc](https://docs.pingcap.com/zh/)  
 
 ***********************
 
