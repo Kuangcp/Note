@@ -63,8 +63,20 @@ categories:
 
 > 快速使用
 1. `docker run -d --name sonarqube -p 9000:9000  sonarqube:8-community`
-1. [maven集成](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
-1. Maven会输出当前分析项目的结果URL
+
+1. [sonarscanner](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
+    1. Maven会输出当前分析项目的结果URL
+1. sonar-scanner 命令行工具安装
+    1. 配置工具 `/etc/sonar-scanner/sonar-scanner.properties`
+        - ```ini
+            sonar.host.url=http://localhost:9000
+            sonar.sourceEncoding=UTF-8
+            sonar.login=admin
+            sonar.password=admin```
+    1. 配置项目根路径 `sonar-project.properties`
+        - ```ini
+            sonar.projectKey=com.github.kuangcp.gobase
+            sonar.projectName=GoBase```
 
 > [参考: 有赞 GO 项目单测、集成、增量覆盖率统计与分析](https://cloud.tencent.com/developer/article/1684515)  
 > [支持 Go](https://docs.sonarqube.org/latest/analysis/languages/go/)
