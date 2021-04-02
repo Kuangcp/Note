@@ -58,6 +58,10 @@ categories:
 ****************************
 # 代码质量管理
 
+## Bug跟踪
+- [bugzilla](https://bugzilla.readthedocs.io/en/latest/installing/quick-start.html)
+- redmine 
+
 ## sonarqube
 > [官网](https://www.sonarqube.org/) | [Docker Hub](https://hub.docker.com/_/sonarqube/)
 
@@ -80,3 +84,8 @@ categories:
 
 > [参考: 有赞 GO 项目单测、集成、增量覆盖率统计与分析](https://cloud.tencent.com/developer/article/1684515)  
 > [支持 Go](https://docs.sonarqube.org/latest/analysis/languages/go/)
+
+************************
+
+# 测试平台
+> [metersphere.io](https://metersphere.io/)

@@ -237,10 +237,6 @@ strict-ssl=false
 ## Micro
 > [Github: micro](https://github.com/zyedidia/micro)
 
-************
-## fte-terminal
-- 文件树浏览，快速打开文件进行修改是比较方便的
-
 *****************
 ## 在线编辑器
 _[stackedit.io](https://stackedit.io/)_

@@ -162,10 +162,9 @@ categories:
 ************************
 
 ## Vivaldi
-- 感觉采用的是chrome内核 内置了很多常用插件 相比于chrome更符合国内使用
+- 采用的是chrome内核 内置了很多常用插件 相比于chrome更符合国内使用
 
 - vivaldi://settings
 
 ## Opera
-
-
+- 定制化比较多，但是设置不开放
