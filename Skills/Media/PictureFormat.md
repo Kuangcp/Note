@@ -1,5 +1,5 @@
 ---
-title: 图片格式
+title: 图像格式
 date: 2020-05-04 19:34:08
 tags: 
 categories: 

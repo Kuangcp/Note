@@ -13,12 +13,12 @@ categories:
     1. [Panel](#panel)
         1. [Plugin](#plugin)
 
-**目录 end**|_2021-02-03 17:25_|
+**目录 end**|_2021-04-14 14:37_|
 ****************************************
 # Xfce 
 > [www.xfce-look.org](https://www.xfce-look.org)  
 
-1. notify-send 发送新通知
+1. notify-send 发送新通知 [使用notify-send发送桌面通知](https://blog.csdn.net/lujun9972/article/details/53292620)
     - notify-send -i iconFilePath title detail -t 1500
 1. xflock4 锁屏
 

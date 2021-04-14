@@ -14,9 +14,11 @@ categories:
     1. [flow.ci](#flowci)
     1. [三方平台](#三方平台)
 1. [代码质量管理](#代码质量管理)
+    1. [Bug跟踪](#bug跟踪)
     1. [sonarqube](#sonarqube)
+1. [测试平台](#测试平台)
 
-**目录 end**|_2021-03-03 19:13_|
+**目录 end**|_2021-04-14 14:37_|
 ****************************************
 # 持续集成
 > 参考: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  
@@ -49,6 +51,9 @@ categories:
 ## flow.ci
 > [官网](https://flow.ci/) | [文档](https://github.com/FlowCI/docs/blob/master/intro_base.md)
 
+************************
+- [gopub](https://gitee.com/dev-ops/gopub)
+- [gokins](https://gitee.com/gokins/gokins)  
 
 ## 三方平台
 - [appveyor](https://ci.appveyor.com/projects)
