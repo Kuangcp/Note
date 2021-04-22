@@ -27,6 +27,7 @@ categories:
     1. [Hash](#hash)
     1. [GEO地理位置](#geo地理位置)
 1. [Scan](#scan)
+    1. [O(n) 复杂度的命令](#on-复杂度的命令)
 1. [Pipelining](#pipelining)
 1. [Pub/Sub发布和订阅](#pubsub发布和订阅)
 1. [客户端](#客户端)
@@ -44,7 +45,7 @@ categories:
     1. [构建锁](#构建锁)
     1. [任务队列](#任务队列)
 
-**目录 end**|_2021-04-15 10:44_|
+**目录 end**|_2021-04-22 21:33_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -257,7 +258,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 
 由于 Redis 是单线程多路复用机制(Redis6引入多线程)，使用 O(n) 复杂度的命令容易阻塞进程，因此需要 scan 命令来实现分批执行 (`注意 scan如果模式匹配的范围比较大会有 keys 一样的影响`)
 
-> O(n) 复杂度的命令
+## O(n) 复杂度的命令
 - List： lindex、lset、linsert
 - Hash： hgetall、hkeys、hvals
 - Set： smembers、sunion、sunionstore、sinter、sinterstore、sdiff、sdiffstore

@@ -10,6 +10,7 @@ categories:
 **目录 start**
 
 1. [C语言](#c语言)
+    1. [GCC 环境](#gcc-环境)
     1. [资源](#资源)
 1. [基础](#基础)
     1. [基本语法](#基本语法)
@@ -17,11 +18,11 @@ categories:
     1. [变量和常量](#变量和常量)
     1. [函数](#函数)
         1. [main函数](#main函数)
-1. [高级](#高级)
+1. [抽象设计](#抽象设计)
     1. [使用C实现元组](#使用c实现元组)
     1. [使用C实现面向对象思想](#使用c实现面向对象思想)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2021-04-22 21:33_|
 ****************************************
 # C语言
 > 个人入门编程语言, 个人觉得比用Python入门更好点, Python入门简单是不错, 但是后面如果要入手别的语言, 有C语言基础更好  
@@ -29,6 +30,9 @@ categories:
 > [Github: 个人学习记录](https://github.com/Kuangcp/LearnC)  
 
 - The C Programming Language, Second Edition, Prentice Hall, 1988 
+
+## GCC 环境
+- [mingw64](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/)
 
 ## 资源
 > [C 语言教程](https://www.runoob.com/cprogramming/c-tutorial.html)  
@@ -69,7 +73,9 @@ categories:
     1. `int main(){return 0;}` 有隐式的入参 void
     1. `int main(int argc, char *args[]){return 0;}`
 
-# 高级
+************************
+
+# 抽象设计
 
 ## 使用C实现元组
 > [making a tuple in c](https://stackoverflow.com/questions/22727404/making-a-tuple-in-c)

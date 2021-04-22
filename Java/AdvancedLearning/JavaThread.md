@@ -17,8 +17,11 @@ categories:
         1. [控制](#控制)
         1. [销毁](#销毁)
     1. [线程的优先级](#线程的优先级)
+1. [协程](#协程)
+    1. [Loom](#loom)
+    1. [Quasar](#quasar)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2021-04-22 21:33_|
 ****************************************
 # 线程的基础学习
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/thread/src/main/java/com/github/kuangcp)
@@ -34,6 +37,13 @@ categories:
 ## 线程的生命周期
 > [参考博客](https://segmentfault.com/a/1190000005006079) | [Blog: 线程详解](http://www.cnblogs.com/riskyer/p/3263032.html) | [参考Java-learning仓库](https://github.com/brianway/java-learning)
 
+1. 初始
+1. 可运行
+1. 休眠
+    - 等锁的 block
+    - 等条件的 waiting
+    - 时间限制 timed_waitting
+1. 终止
 
 ### 创建
 - 创建线程有三种创建方式： 继承，实现接口，实例化匿名内部方法。-> [示例代码](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/main/java/thread/HowToCreateThread.java)
