@@ -253,3 +253,13 @@ categories:
 > [Github Topic](https://github.com/search?p=4&q=docker+desktop&type=Repositories&utf8=%E2%9C%93)
 > [Running GUI apps with Docker](https://www.tuicool.com/articles/ayIzI3)
 https://www.cnblogs.com/larva-zhh/p/10531824.html
+
+
+************************
+
+# 工具
+## nextcloud
+> [nextcloud](https://nextcloud.com/install/)
+
+`docker run -d --name nextcloud -p 8008:80 -v /data/nextcloud:/var/www/html nextcloud`
+
