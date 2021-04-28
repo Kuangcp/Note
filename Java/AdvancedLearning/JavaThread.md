@@ -21,14 +21,13 @@ categories:
     1. [Loom](#loom)
     1. [Quasar](#quasar)
 
-**目录 end**|_2021-04-22 21:33_|
+**目录 end**|_2021-04-28 15:31_|
 ****************************************
 # 线程的基础学习
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/thread/src/main/java/com/github/kuangcp)
 
 - [ ] 线程的多种创建方式
 - [ ] 线程池的创建方式
-- [ ] 线程的状态转化
 
 ## 基础
 - [码农翻身:我是一个线程](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=416915373&idx=1&sn=f80a13b099237534a3ef777d511d831a&scene=21#wechat_redirect) | [码农翻身:编程世界的那把锁](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513653&idx=1&sn=e30c18c0c1780fb3ef0cdb858ee5201e&chksm=80d67af6b7a1f3e059466302c2c04c14d097c1a5de01cf986df84d4677299542f12b974dfde3&scene=21#wechat_redirect) | [码农翻身:加锁还是不加锁，这是一个问题 ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513692&idx=1&sn=ef2416a4bb96d64db77e32d5b4c7967e&chksm=80d67a9fb7a1f3898e513cc1d9e96841610bb84aed2dc24cab2d403e74e317e3c447e45e7611&scene=21#wechat_redirect)

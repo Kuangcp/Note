@@ -65,7 +65,7 @@ categories:
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-**目录 end**|_2020-06-04 00:02_|
+**目录 end**|_2021-04-28 15:31_|
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -368,8 +368,6 @@ When importing the package, Python searches through the directories on `sys.path
     - 列表套字典，当成普通类型包含即可
     - 字典套字典
     
-- [ ] 字典的排序问题
-
 ### 运算符
 - 算术运算符
     - 加减一样，`*` 乘,不仅可以用于数字，还可以用于字符串 ，`/` 除，和Java不一样，整数相除也会得到浮点数

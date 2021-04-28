@@ -15,7 +15,7 @@ categories:
         1. [连接池](#连接池)
             1. [c3p0](#c3p0)
             1. [druid](#druid)
-            1. [HikariPool](#hikaripool)
+            1. [HikariCP](#hikaricp)
         1. [JPA](#jpa)
             1. [Configuration](#configuration)
         1. [Mybatis](#mybatis)
@@ -37,7 +37,7 @@ categories:
             1. [关于StringRedisTemplate的方法使用](#关于stringredistemplate的方法使用)
             1. [消息订阅和发布](#消息订阅和发布)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2021-04-28 15:31_|
 ****************************************
 # 数据库模块
 > 主要是采用的JPA，极大的缩减了代码量，但是要注意不要过度依赖框架，丧失了基本的能力
@@ -55,10 +55,9 @@ categories:
 #### druid
 - [druid连接池的配置](http://makaidong.com/L_Sail/1/40930_11573921.html)
 
-#### HikariPool
-> 性能最好的数据库连接池
+#### HikariCP
+> [HikariCP](https://github.com/brettwooldridge/HikariCP)
 
-- [ ] 听说代码很精简, 阅读源码学习
 *******************
 ### JPA
 > 连接池:1.x 默认是tomcat-jdbc连接池 2.x 是 HikariPool
