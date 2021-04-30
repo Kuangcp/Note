@@ -53,7 +53,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2021-02-23 20:53_|
+**目录 end**|_2021-04-30 18:07_|
 ****************************************
 # Linux网络管理
 ## DNS
@@ -183,11 +183,11 @@ tbf 指令牌桶算法
 ************************
 
 ### iproute2
-> 代替 netstat 的强大工具
+> 代替 netstat ifconfig 的强大工具 [基于iproute命令集配置Linux网络](https://cloud.tencent.com/developer/article/1183389)
 
 |   用途       | net-tool |     iproute2     |
 | :-----      | :------  | :--------------  |
-| 地址和链路配置 | ifconfig | ip addr, ip link |
+| 地址和链路配置 | ifconfig |  ip addr/link   |
 |   路由表     |  route   |     ip route     |
 |  ARP表       |   arp    |     ip neigh     |
 |  VLAN       | vconfig  |     ip link      |
@@ -212,8 +212,10 @@ tbf 指令牌桶算法
 - 默认网关： 如果主机找不到转发规则， 就把数据包发给默认的网关(家用网络一般是路由器的ip)
 - 增加/删除一条路由规则 `ip route add/del 192.168.2.0/24 via 192.168.1.254`
     - 当使用 VPN 时，建立新的虚拟网卡 tun， 可以手动设置路由让指定ip走虚拟网卡 从而访问到VPN内局域网地址(网络号和真实网卡一样，默认会把数据包转发至本地局域网)
-- 关闭 启用 `ifconfig name down/up`
 - 设置网卡 eno1 MAC 地址`ip link set eno1 address b4:xx:xx`
+
+- 关闭 启用 `ifconfig name down/up`
+- 修改IP `ifconfig eth0 192.168.1.200/24`
 
 ************************
 _iproute-ss_
