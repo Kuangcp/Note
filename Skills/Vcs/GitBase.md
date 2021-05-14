@@ -74,7 +74,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2021-01-13 11:43_|
+**目录 end**|_2021-05-14 20:37_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -154,8 +154,10 @@ categories:
 - `--single-branch` 只克隆当前分支
 
 #### Shallow Clone
+- `git fetch --unshallow` 转换为完整仓库
+
 - `git clone --depth 1 URL` 只克隆最近一次提交的历史, 能大大减小拉取的大小 
-    - 但是如果要新建一个远程仓库, 并推送过去，会报错:`shallow update not allowed` 因为本地库是残缺的
+    - 但是如果要新建一个分支, 并推送过去，会报错:`shallow update not allowed` 因为本地库是残缺的
         - 此时需要 `git remote set-branches origin '*'` 然后 `git pull` 就会拉取所有信息成为完整的仓库
     - 由于库是残缺的，拉取远程分支到本地不能直接用 `git checkout -b branch origin/branch` 的方式，
         - 只能用 `git fetch origin branch:branch`
@@ -163,8 +165,6 @@ categories:
         - 并且 git log 的输出不会显示 origin/branch 的指针信息，需要在对应分支上手动执行 `git remote set-branches origin branch` 再 `git fetch`
 
 1. 只克隆 指定标签或分支 且不包含内容 `git clone -b <tag_name> --single-branch --depth 1 <repo_url>` **大大缩减需下载的仓库大小**
-- [ ] 变基 补充 shallow commit
-
 
 #### sparse checkout 稀疏检出
 > [参考: git sparse checkout (稀疏检出)](https://www.jianshu.com/p/680f2c6c84de)  

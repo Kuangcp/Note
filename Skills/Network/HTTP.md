@@ -25,9 +25,9 @@ categories:
 1. [HTTPS](#https)
     1. [HTTPS 认证流程](#https-认证流程)
     1. [HSTS](#hsts)
-1. [CORS](#cors)
+1. [CORS 跨域](#cors-跨域)
 
-**目录 end**|_2020-11-09 22:52_|
+**目录 end**|_2021-05-14 20:37_|
 ****************************************
 # HTTP
 > HyperText Transfer Protocol 超文本传输协议 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -241,7 +241,7 @@ HTTP/3 只是一种基于 IETF QUIC（一种基于 UDP 的多路复用和安全�
 
 ************************
 
-# CORS
+# CORS 跨域
 > 跨域
 
 > [mozilla CORS](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS)

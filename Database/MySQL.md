@@ -22,6 +22,7 @@ categories:
         1. [short](#short)
         1. [int](#int)
         1. [decimal](#decimal)
+    1. [时间类型](#时间类型)
     1. [字符类型](#字符类型)
         1. [varchar](#varchar)
         1. [text](#text)
@@ -78,7 +79,7 @@ categories:
     1. [修改](#修改)
         1. [授权](#授权)
 
-**目录 end**|_2021-03-19 14:38_|
+**目录 end**|_2021-05-14 20:37_|
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -148,6 +149,12 @@ _重启_
 1. 当插入的整数部分的值超过了其表示范围后就直接忽略了小数部分的值，并以最大值填充。 
 2. 当整数部分合法，小数部分多余的位数，直接截断。
 
+## 时间类型
+
+datetime timestamp
+
+************************
+
 ## 字符类型
 ### varchar
 ### text
@@ -165,6 +172,10 @@ _重启_
 
 ## 修改
 - [ ] TODO 修改数据库
+
+
+- 转换表所有字段编码 `alter table a convert to character set utf8mb4;`
+- 修改单个字段编码 `alter table a modify name  varchar(100) character set utf8mb4;`
 
 ## 导出和导入
 > 以下的 -p -h 参数依数据库的配置情况而定
