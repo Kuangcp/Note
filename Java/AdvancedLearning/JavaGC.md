@@ -32,14 +32,20 @@ categories:
     1. [基本JVM参数](#基本jvm参数)
     1. [主要关注指标](#主要关注指标)
 
-**目录 end**|_2021-05-17 00:15_|
+**目录 end**|_2021-05-17 00:27_|
 ****************************************
 # GC
 > Garbage Collection
 
 GC 的目的是识别出不再使用的内存，并将其变为可用的。现代垃圾收集器通常分几个阶段以及根据不同的分代使用不同的垃圾收集器来完成回收过程
 
-> 要点： 什么时候, 对什么东西, 做了什么
+- [你能不能谈谈，java GC是在什么时候，对什么东西，做了什么事情？” ](http://itindex.net/detail/54188-java-gc-%E4%B8%9C%E8%A5%BF) `什么时候, 对什么东西, 做了什么`
+> 什么时候
+- 程序员不能具体控制时间，系统在不可预测的时间调用System.gc()函数的时候；当然可以通过调优，用NewRatio 控制newObject和oldObject的比例，用MaxTenuringThreshold  控制 进入oldObject的次数，使得oldObject 存储空间延迟达到full gc,从而使得计时器引发gc时间延迟OOM的时间延迟 ，以延长对象生存期。 
+> 对什么东西
+- 超出了作用域或引用计数为空的对象；从gc root开始搜索找不到的对象，而且经过一次标记、清理，仍然没有复活的对象。
+> 做了什么
+- 删除不使用的对象，回收内存空间；运行默认的finalize,当然程序员想立刻调用就用dipose调用以释放资源如文件句柄，JVM用from survivor、to survivor对它进行标记清理，对象序列化后也可以使它复活。
 
 cms(JDK14中被移除)，epsilon，g1，parallel，serial，shenandoah，zgc
 

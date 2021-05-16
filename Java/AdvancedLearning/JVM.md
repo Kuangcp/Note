@@ -27,7 +27,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2021-05-17 00:15_|
+**目录 end**|_2021-05-17 00:27_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -39,6 +39,9 @@ categories:
  
 `书籍`
 - 《深入理解 Java 虚拟机》(周志明 第二版) 大部分内容来源于此, 但是部分内容是依据Java8有所改动
+
+`社区`
+- [prefma](https://club.perfma.com/)
 
 ************************
 ![JVM基本结构](img/004-jvm-structure.drawio.svg)

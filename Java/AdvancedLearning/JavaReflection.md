@@ -29,7 +29,7 @@ categories:
         1. [操作注解](#操作注解)
 1. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2020-05-17 16:13_|
+**目录 end**|_2021-05-17 00:27_|
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
@@ -281,6 +281,8 @@ categories:
 > [性能测试对比: 反射 set/get cglib mapstruct](https://github.com/Kuangcp/JavaBase/blob/class/src/test/java/com/github/kuangcp/reflects/ReflectPerformanceTest.java)
 
 Spring 中的 IOC 主要是依据反射来实现的, 只在启动阶段性能有所损耗, 关注性能以及热点代码最好避免使用反射 例如常见的BeanCopy
+
+[从一起GC血案谈到反射原理](https://club.perfma.com/article/54786)`总结： Method等Accessor对象每次get时会复制构造出新的对象，所以一般需要缓存； 反射数据是软引用`
 
 > 优化方案
 1. [使用 MapStruct 预先生成转换代码避免反射](/Java/Tool/MapStruct.md)

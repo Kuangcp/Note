@@ -35,7 +35,7 @@ categories:
     1. [MAT](#mat)
     1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2021-05-17 00:15_|
+**目录 end**|_2021-05-17 00:27_|
 ****************************************
 
 # Java的性能调优
@@ -95,7 +95,8 @@ categories:
 
 - [GC 性能优化 专栏](https://blog.csdn.net/column/details/14851.html)
 - [Java调优经验谈](http://www.importnew.com/22336.html)
-- [你能不能谈谈，java GC是在什么时候，对什么东西，做了什么事情？” ](http://itindex.net/detail/54188-java-gc-%E4%B8%9C%E8%A5%BF)
+
+- [Memory Footprint of A Java Process](https://zhuanlan.zhihu.com/p/158712025)
 
 ### 堆外内存
 
@@ -105,6 +106,7 @@ categories:
 - [how to see memory useage of nio buffers](https://stackoverflow.com/questions/2689914/how-to-see-the-memory-usage-of-nio-buffers)
 
 > [参考: 聊聊JVM 堆外内存泄露的BUG是如何查找的](https://cloud.tencent.com/developer/article/1129904)  
+> [JAVA堆外内存排查小结](https://zhuanlan.zhihu.com/p/60976273)  
 
 ### Metaspace
 > [参考: Metaspace 之一：Metaspace整体介绍](https://www.cnblogs.com/duanxz/p/3520829.html)  
