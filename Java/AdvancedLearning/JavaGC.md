@@ -29,9 +29,10 @@ categories:
     1. [ZGC](#zgc)
     1. [ShenandoahGC](#shenandoahgc)
 1. [Tuning](#tuning)
-    1. [Tool](#tool)
+    1. [基本JVM参数](#基本jvm参数)
+    1. [主要关注指标](#主要关注指标)
 
-**目录 end**|_2021-05-14 20:41_|
+**目录 end**|_2021-05-17 00:15_|
 ****************************************
 # GC
 > Garbage Collection
@@ -42,23 +43,18 @@ GC 的目的是识别出不再使用的内存，并将其变为可用的。现�
 
 cms(JDK14中被移除)，epsilon，g1，parallel，serial，shenandoah，zgc
 
-- [Oracle JDK8 GC调优指南](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/toc.html)
-- [Oracle JDK11 GC调优指南](https://docs.oracle.com/en/java/javase/11/gctuning/introduction-garbage-collection-tuning.html)
-
 > [Github: OpenJDK 12 GC 算法源码](https://github.com/openjdk/jdk/tree/jdk-12+33/src/hotspot/share/gc)  
-> [《沙盘模拟系列》JVM如何调优](https://my.oschina.net/u/4030990/blog/3149182)  
-> [参考: CMS Deprecated. Next Steps?](https://dzone.com/articles/cms-deprecated-next-steps)  
 
 ************************
 
 ## GC类型
+> [RednaxelaFX](https://www.zhihu.com/question/41922036/answer/93079526) | [Major GC和Full GC的区别是什么？触发条件呢？](https://www.zhihu.com/question/41922036/answer/93079526)
 
-> [RednaxelaFX](https://www.zhihu.com/question/41922036/answer/93079526)
 - `Partial GC`：并不收集整个GC堆的模式
     - `Young GC`：只收集young gen的GC
     - `Old GC`：只收集old gen的GC。只有CMS的concurrent collection是这个模式
     - `Mixed GC`：收集整个young gen以及部分old gen的GC。只有G1有这个模式
-- `Full GC`：收集整个堆，包括young gen、old gen、perm gen（如果存在的话）等所有部分的模式。
+- `Full GC`：收集整个堆，包括young gen、old gen、perm gen（如果存在的话），metaspace等所有部分的模式。
     - gc日志中有明确的 [Full GC ]
 
 `新生代GC Minor GC`  
@@ -112,7 +108,11 @@ cms(JDK14中被移除)，epsilon，g1，parallel，serial，shenandoah，zgc
 ### 引用计数算法
 > 给对象添加一个引用计数器, 每当有一个地方引用该对象就加一, 引用失效就减一; 计数器值为零的对象就是不可能被使用的对象
 
-但是该算法无法解决 对象间循环引用的问题, 例如 A 引用 B, B 引用 A, 但是这两个对象都是没有被别的对象引用，此时遍历对象才能解决。
+但是该算法无法解决 对象间循环引用的问题, 例如：A 引用 B, B 引用 A, 此时两个对象的计数大于0，但是这两个对象都没被其他对象引用。
+
+可引入 Recycler算法 进行解决 --《垃圾回收算法手册》
+
+`思路大致是 找出循环引用的环，尝试遍历（可能有多个环混合，这里是一个图结构）并打破环并移除环内对象的内部引用，如果计数仍大于0表明该环有被其他对象引用，需要恢复破坏的引用关系，否则全部清除`
 
 ### 可达性分析算法
 当一个对象到 GC Roots 对象没有任何引用链相连时(或者说从 GC Roots 到该对象的路径不可达), 则证明该对象是可回收的
@@ -128,7 +128,9 @@ GC Roots 对象包含:
 
 ## GC算法
 ### 标记清除算法
-> 首先标记出所有需要回收的对象, 在标记完成后统一回收
+> Mark-Sweep 首先标记出所有需要回收的对象, 在标记完成后统一回收
+
+ 回收过程主要分为两个阶段，第一阶段为追踪（Tracing）阶段，即从 GC Root 开始遍历对象图，并标记（Mark）所遇到的每个对象，第二阶段为清除（Sweep）阶段，即回收器检查堆中每一个对象，并将所有未被标记的对象进行回收，整个过程不会发生对象移动。整个算法在不同的实现中会使用三色抽象（Tricolour Abstraction）、位图标记（BitMap）等技术来提高算法的效率，存活对象较多时较高效。
 
 `缺点`
 1. 效率问题: 标记和清除两个过程的效率不高
@@ -136,13 +138,23 @@ GC Roots 对象包含:
     - 并因此触发一次垃圾收集动作
 
 ### 复制算法
-> 将内存按容量划分为等大的两块, 每次只使用其中的一块, 当这块的内存用到需要回收了, 就将需要存活的对象复制到另一块上去, 将该块全部清理掉  
+> Copying 将内存按容量划分为等大的两块, 每次只使用其中的一块, 当这块的内存用到需要回收了, 就将需要存活的对象复制到另一块上去, 将该块全部清理掉  
 > 转而只使用另一个块 这样就不会有内存碎片化问题, 但是可使用的内存只有原来的一半
 
-适用于新生代
+将空间分为两个大小相同的 From 和 To 两个半区，同一时间只会使用其中一个，每次进行回收时将一个半区的存活对象通过复制的方式转移到另一个半区。有递归（Robert R. Fenichel 和 Jerome C. Yochelson提出）和迭代（Cheney 提出）算法，以及解决了前两者递归栈、缓存行等问题的近似优先搜索算法。复制算法可以通过碰撞指针的方式进行快速地分配内存，但是也存在着空间利用率不高的缺点，另外就是存活对象比较大时复制的成本比较高。
+
+适用于新生代, 因为新生代对象大部分是存活时间短的
+
+标记-复制算法可以分为三个阶段：
+
+标记阶段，即从GC Roots集合开始，标记活跃对象；
+转移阶段，即把活跃对象复制到新的内存地址上；
+重定位阶段，因为转移导致对象的地址发生了变化，在重定位阶段，所有指向对象旧地址的指针都要调整到对象新的地址上。
 
 ### 标记整理算法
-> 标记过程和标记清除算法是一致的, 但是后续是让存活的对象往一端移动, 清理掉端边界以外的内存.
+> Mark-Compact 标记过程和标记清除算法是一致的, 但是后续是让存活的对象往一端移动, 清理掉端边界以外的内存.
+
+这个算法的主要目的就是解决在非移动式回收器中都会存在的碎片化问题，也分为两个阶段，第一阶段与 Mark-Sweep 类似，第二阶段则会对存活对象按照整理顺序（Compaction Order）进行整理。主要实现有双指针（Two-Finger）回收算法、滑动回收（Lisp2）算法和引线整理（Threaded Compaction）算法等。
 
 适用于老年代
 
@@ -208,7 +220,7 @@ GC Roots 对象包含:
 ## ParNew
 > Serial 收集器的多线程版本, 仅用于新生代
 
-仅有该收集器和Serial收集器能和CMS收集器一起使用, 当使用CMS的时候默认是ParNew
+仅有该收集器和Serial收集器能和CMS收集器一起使用, 当使用CMS的时候默认新生代使用ParNew
 
 > 注: 单核服务器时, 该收集器性能必然比Serial差, 因为线程调度开销
 
@@ -252,9 +264,9 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
 `-XX:+UseConcMarkSweepGC`
 
 工作流程, 依次执行
-1. 初始标记 CMS initial mark
+1. `初始标记` CMS initial mark
 1. 并发标记 CMS concurrent mark
-1. 最终标记 CMS final remark
+1. `最终标记` CMS final remark
 1. 并发清除 CMS concurrent sweep
 
 > 例如：
@@ -288,7 +300,8 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
 可通过 `-XXCMSInitiatingOccupancyFraction` 进行设置. 如果CMS执行期间发现剩余内存不足以让程序正常运行, 就会临时启用 Serial Old  
 所以该参数不可设置过高, 否则容易导致频繁采用单线程版的垃圾回收器, 大大延长 STW 时间
 
-> [参考: JVM 源码解读之 CMS GC 触发条件 ](https://mp.weixin.qq.com/s?__biz=MzUyMDE1ODQ3NQ==&mid=2247483851&idx=1&sn=8cb444039449848531b7ca72c396e07e&chksm=f9efedafce9864b9dbb645863d7d3c8b34e83888d07e175dd9c931576db2ecc0aa90835fcf50&scene=21#wechat_redirect)  
+> [参考: JVM 源码解读之 CMS GC 触发条件 ](https://club.perfma.com/article/190389)  
+> [参考: JVM 源码解读之 CMS 何时会进行 Full GC](https://club.perfma.com/article/244846)  
 
 CMS自己会进入full GC的情况就是它的并发收集模式跟不上应用分配内存的速度了，或者是碎片化开始变严重了。  
 主要体现是GC日志里可以看到concurrent mode failure字样，然后就开始可以看到 [Full GC ... ] 的日志了  
@@ -309,7 +322,9 @@ CMS自己会进入full GC的情况就是它的并发收集模式跟不上应用�
 
 > [参考: JVM系列篇：深入剖析G1收集器](https://my.oschina.net/u/3959491/blog/3029276)
 
-- 字符串常量池去重 特性 `-XX:+UseStringDeduplication -XX:+PrintStringDeduplicationStatistics`
+- 字符串常量池去重 特性(8u20引入) `-XX:+UseStringDeduplication` 适用于大量相似字符串的场景降低内存占用，但会增加GC负担，默认不开启
+    - 查看字符串去重统计信息 `-XX:+PrintStringDeduplicationStatistics` `-XX:+PrintStringTableStatistics`
+    - 达到该年龄的String对象被认为是去重的候选对象 `-XX:StringDeDuplicationAgeThreshold`
 
 ************************
 
@@ -319,6 +334,7 @@ CMS自己会进入full GC的情况就是它的并发收集模式跟不上应用�
 `-XX:+UnlockExperimentalVMOptions -XX:+UseZGC`
 
 > [参考: Oracle 即将发布的全新 Java 垃圾收集器 ZGC](https://www.infoq.cn/article/oracle-release-java-gc-zgc)
+> [参考: 美团：新一代垃圾回收器ZGC的探索与实践](https://tech.meituan.com/2020/08/06/new-zgc-practice-in-meituan.html)  
 
 ************************
 
@@ -329,5 +345,22 @@ CMS自己会进入full GC的情况就是它的并发收集模式跟不上应用�
 
 ************************
 # Tuning
-## Tool
-- [GCViewer](https://github.com/chewiebug/GCViewer)  
+> [参考: 译：谁是 JDK8 中最快的 GC](https://club.perfma.com/article/233480)  
+> [《沙盘模拟系列》JVM如何调优](https://my.oschina.net/u/4030990/blog/3149182)  
+> [深入浅出GC问题排查](https://blog.ysboke.cn/archives/242.html)
+> [参考: CMS Deprecated. Next Steps?](https://dzone.com/articles/cms-deprecated-next-steps)  
+
+- [Oracle JDK8 GC调优指南](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/toc.html)
+- [Oracle JDK11 GC调优指南](https://docs.oracle.com/en/java/javase/11/gctuning/introduction-garbage-collection-tuning.html)
+
+## 基本JVM参数
+
+## 主要关注指标
+> [garbage-collection-kpi](https://blog.gceasy.io/2016/10/01/garbage-collection-kpi/)`其中FootPrint定义应有误，JVM应指代内存占用而不是CPU资源`
+
+- 延迟（Latency）： 也可以理解为最大停顿时间，即垃圾收集过程中一次 STW 的最长时间，越短越好，一定程度上可以接受频次的增大，GC 技术的主要发展方向。
+- 吞吐量（Throughput）： 应用系统的生命周期内，由于 GC 线程会占用 Mutator 当前可用的 CPU 时钟周期，吞吐量即为 Mutator 有效花费的时间占系统总运行时间的百分比
+    - 例如系统运行了 100 min，GC 耗时 1 min，则系统吞吐量为 99%，吞吐量优先的收集器可以接受较长的停顿。
+- 内存占用(Footprint)
+
+> 以上三者不可兼得，通常兼顾两者舍弃一方。

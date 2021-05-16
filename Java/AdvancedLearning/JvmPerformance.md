@@ -11,32 +11,31 @@ categories:
 
 1. [Java的性能调优](#java的性能调优)
     1. [JVM参数调优](#jvm参数调优)
-        1. [IDEA参数调优](#idea参数调优)
+        1. [GC调优](#gc调优)
     1. [内存优化](#内存优化)
         1. [堆外内存](#堆外内存)
         1. [Metaspace](#metaspace)
-1. [主要指标分析](#主要指标分析)
-    1. [JDK自带工具](#jdk自带工具)
-        1. [java](#java)
-            1. [环境变量的使用](#环境变量的使用)
-        1. [jps](#jps)
-        1. [jstat](#jstat)
-        1. [jinfo](#jinfo)
-        1. [jmap](#jmap)
-        1. [jhat](#jhat)
-        1. [jstack](#jstack)
-        1. [jcmd](#jcmd)
-    1. [开源项目](#开源项目)
-        1. [Arthas](#arthas)
-        1. [async-profiler](#async-profiler)
-    1. [图形化](#图形化)
-        1. [JProfiler](#jprofiler)
-        1. [GCViewer](#gcviewer)
-        1. [jvisualvm](#jvisualvm)
-        1. [MAT](#mat)
-        1. [IBM Heap Analyzer](#ibm-heap-analyzer)
+1. [JDK自带工具](#jdk自带工具)
+    1. [java](#java)
+        1. [环境变量的使用](#环境变量的使用)
+    1. [jps](#jps)
+    1. [jstat](#jstat)
+    1. [jinfo](#jinfo)
+    1. [jmap](#jmap)
+    1. [jhat](#jhat)
+    1. [jstack](#jstack)
+    1. [jcmd](#jcmd)
+1. [终端类工具](#终端类工具)
+    1. [Arthas](#arthas)
+    1. [async-profiler](#async-profiler)
+1. [图形化工具](#图形化工具)
+    1. [JProfiler](#jprofiler)
+    1. [GCViewer](#gcviewer)
+    1. [jvisualvm](#jvisualvm)
+    1. [MAT](#mat)
+    1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2021-01-15 21:26_|
+**目录 end**|_2021-05-17 00:15_|
 ****************************************
 
 # Java的性能调优
@@ -48,8 +47,23 @@ categories:
 
 > [参考: JVM动态反优化](https://blog.mythsman.com/post/5d2c12cc67f841464434a3ec/)   
 > [General Java Troubleshooting ](https://docs.oracle.com/en/java/javase/11/troubleshoot/general-java-troubleshooting.html)  
+> [目前最全的Java服务问题排查套路](https://juejin.cn/post/6844903816379236360)  
 
-### IDEA参数调优
+************************
+> 工具
+
+命令行终端
+- 标准终端类：jps、jinfo、jstat、jstack、jmap
+- 功能整合类：jcmd、vjtools、arthas、greys
+
+可视化界面
+- 简易：JConsole、JVisualvm、HA、GCHisto、GCViewer
+- 进阶：MAT、JProfiler
+
+命令行推荐 arthas ，可视化界面推荐 JProfiler，此外还有一些在线的平台 [gceasy](https://gceasy.io/)、heaphero、fastthread 。
+
+************************
+> IDEA调优
 ```conf
     -server
     -Xms600m  # 最小堆
@@ -67,6 +81,11 @@ categories:
 
 > [参考: Java’s -XX:+AggressiveOpts: Can it slow you down?](https://www.opsian.com/blog/aggressive-opts/)  
 > [参考: JVM参数MetaspaceSize的误解 ](https://mp.weixin.qq.com/s/jqfppqqd98DfAJHZhFbmxA?)
+
+************************
+
+### GC调优
+> [Java GC](/Java/AdvancedLearning/JavaGC.md)
 
 *********************
 
@@ -90,13 +109,13 @@ categories:
 ### Metaspace
 > [参考: Metaspace 之一：Metaspace整体介绍](https://www.cnblogs.com/duanxz/p/3520829.html)  
 
-*********************
-# 主要指标分析
-## JDK自带工具
+************************
+
+# JDK自带工具
 > 都是jdk的bin目录下的工具
 
-### java
-#### 环境变量的使用
+## java
+### 环境变量的使用
 > java [-options] -jar jarfile [args...]
 
 > [What is the java -D command-line option good for? ](https://coderanch.com/t/178539/certification/java-command-line-option-good)
@@ -107,7 +126,7 @@ categories:
 > 执行含main方法的类
 - `java -cp jarfile[:jarfile2] className`
 
-### jps
+## jps
 > 主要用来输出JVM中运行的进程状态信息
 - option:
     - -q 忽略输出的类名、Jar名以及传递给main方法的参数，只输出pid。
@@ -116,7 +135,7 @@ categories:
     - -v 输出传给JVM的参数。
     - -V 输出通过标记的文件传递给JVM的参数（.hotspotrc文件，或者是通过参数-XX:Flags=指定的文件）
 
-### jstat
+## jstat
 > [Oracle Doc](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstat.html)
 
 - option:
@@ -130,7 +149,7 @@ categories:
 - Demo:
     - `jstat -gcutil -t -h5 7919 1000 50`
 
-### jinfo 
+## jinfo 
 > 观察运行中的 java 进程的运行环境参数：参数包括 Java System 属性和 JVM 命令行参数
 - Demo:
     - jinfo 14352
@@ -138,19 +157,19 @@ categories:
     - jinfo -flags 14352
     - jinfo -flag MaxPermSize 14352
 
-### jmap 
+## jmap 
 > 用来查看堆内存使用状况
 - Demo:
     - jmap -histo $PID 展示class的内存情况
     - jmap -heap $PID 展示Java堆详细信息
     - jmap -dump:live,format=b,file=heapLive.hprof 2576
 
-### jhat
+## jhat
 >  Java Head Analyse Tool
 
 用于分析 jmap 转储出来的堆文件, 分析完后启动一个WebServer 通过浏览器查看
 
-### jstack 
+## jstack 
 > jstack [option] pid  主要用来查看某个Java进程内的线程堆栈信息
 - Option:
     - -F: 强制产生一个线程dump
@@ -163,16 +182,16 @@ categories:
     1. `printf %x 线程id` 得到 16进制 线程id
     1. `jstack 进程id | grep -A 20 16进制线程id` 查看该线程的栈,进而分析到代码
 
-### jcmd
+## jcmd
 
 ********************
 
-## 开源项目
+# 终端类工具
 
-### Arthas
+## Arthas
 > [Github: Arthas](https://github.com/alibaba/arthas)`阿里巴巴`
 
-### async-profiler
+## async-profiler
 > [async-profiler](https://github.com/jvm-profiling-tools/async-profiler)
 
 **********************
@@ -181,14 +200,14 @@ categories:
 
 ************************
 
-## 图形化
-### JProfiler
+# 图形化工具
+## JProfiler
 > [Official Site](https://www.ej-technologies.com/products/jprofiler/overview.html)  
 
-### GCViewer
+## GCViewer
 > [Github: GCViewer](https://github.com/chewiebug/GCViewer)
 
-### jvisualvm
+## jvisualvm
 > [Github:visualvm](https://github.com/oracle/visualvm)  
 > [visualgc plugin](https://www.oracle.com/technetwork/java/visualgc-136680.html)  
 
@@ -217,7 +236,7 @@ categories:
 > 应用开发时的使用
 1. 可以使用 Profiler 下的JDBC，操作业务流程，获取所有执行的SQL，用来优化索引，或者排查问题
 
-### MAT
+## MAT
 > Memory Analyzer tool(MAT) | [Official Site](http://www.eclipse.org/mat/)
 
 > [参考: JAVA Shallow heap & Retained heap](http://www.cnblogs.com/lipeineng/p/5824799.html)  
@@ -228,6 +247,6 @@ categories:
 
 注意: 有这样的一种场景, 从数据库获取大量的数据创建为对象, 导致瞬间的OOM 这时候即使使用 jmap 去 dump 了快照, 也看不到占用大量内存的对象, 很有可能这些对象就是gc不可达的, 而mat只能分析可达对象
 
-### IBM Heap Analyzer
+## IBM Heap Analyzer
 > [Official Site](https://www.ibm.com/developerworks/community/alphaworks/tech/heapanalyzer)
 

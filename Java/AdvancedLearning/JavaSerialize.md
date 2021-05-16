@@ -14,12 +14,14 @@ categories:
     1. [MessagePack](#messagepack)
     1. [Protobuf](#protobuf)
     1. [Thrift](#thrift)
-        1. [Marshalling](#marshalling)
+    1. [Marshalling](#marshalling)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2021-05-17 00:15_|
 ****************************************
 # 序列化
 > [码农翻身:序列化： 一个老家伙的咸鱼翻身](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513589&idx=1&sn=d402d623d9121453f1e570395c7f99d7&chksm=80d67a36b7a1f32054d4c779dd26e8f97a075cf4d9ed1281f16d09f1df50a29319cd37520377&scene=21#wechat_redirect) `对象转化为二进制流`
+
+> 反序列化生成对象时不会调用构造器
 
 ## serialVersionUID
 > 简单的说就是类的版本控制, 标明类序列化时的版本, 版本一致表明这两个类定义一致  
@@ -64,5 +66,5 @@ Window ==> Preferences ==> Java ==> Compiler ==> Error/Warnings ==>Potential pro
 > [官网](https://thrift.apache.org/)源于Facebook, 支持多种语言: C++ C# Cocoa Erlang Haskell Java Ocami Perl PHP Python Ruby Smalltalk
 
 - 它支持数据(对象)序列化和多种类型的RPC服务, Thrift适用于静态的数据交换, 需要预先确定好他的数据结构, 当数据结构发生变化时,需要重新编辑IDL文件
-### Marshalling
+## Marshalling
 > JBOSS 内部使用的编解码框架

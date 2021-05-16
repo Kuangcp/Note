@@ -15,7 +15,7 @@ categories:
         1. [ZGC](#zgc)
         1. [部分API转为内部API](#部分api转为内部api)
 
-**目录 end**|_2020-07-05 16:28_|
+**目录 end**|_2021-05-17 00:15_|
 ****************************************
 # Java11 
 > [Official: JDK 11 Documentation](https://docs.oracle.com/en/java/javase/11/) | [Official:api](https://docs.oracle.com/en/java/javase/11/docs/api/index.html)
@@ -47,7 +47,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
 > [JDK 11 Release Notes](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
 
 ### ZGC
-> [ZGC](/Java/AdvancedLearning/JVM.md#ZGC)  
+> [ZGC](/Java/AdvancedLearning/JavaGC.md#ZGC)  
 
 *******************************
 > [参考: Java 11 Tutorial](https://winterbe.com/posts/2018/09/24/java-11-tutorial/)

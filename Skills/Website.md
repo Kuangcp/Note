@@ -49,7 +49,7 @@ categories:
 1. [安卓手机](#安卓手机)
     1. [Google](#google)
 
-**目录 end**|_2020-10-15 20:34_|
+**目录 end**|_2021-05-17 00:15_|
 ****************************************
 # 常用的网站
 ## 国内镜像源站点
@@ -130,6 +130,7 @@ Podcast、Reddit 以及TechRadar
 - [数字尾巴](http://www.dgtle.com) `小清新的数字技术`
 - [粤语影院](http://www.yueyuyy.com/)
 - [子米影院](http://zimiyy.com/)
+- [tv](http://tv.freeshadow.cn/)
 
 ********************************
 

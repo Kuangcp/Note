@@ -27,7 +27,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2021-05-14 20:37_|
+**目录 end**|_2021-05-17 00:15_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -160,11 +160,11 @@ NIO 会经常使用, 提高性能
 > [JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)  
 
 - `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1
-- `-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000`  开启远程调试
+- `-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000`  开启远程调试端口 8000
     - If you want to debug from start of application use `suspend=y` , this will keep remote application suspended until you connect from eclipse.
 - `-XX:CompressedClassSpaceSize=500m` 压缩类元空间大小 默认是1g
 - `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
-    - 开启无需认证 非SSL的JMX端口
+    - 开启无需认证 非SSL的JMX端口: 9999
 - `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 打印类装载
 - `-Xloggc:/home/logs/gc.log`
 

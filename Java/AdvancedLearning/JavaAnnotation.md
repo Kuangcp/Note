@@ -13,7 +13,7 @@ categories:
     1. [自定义Annotation](#自定义annotation)
     1. [读取](#读取)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2021-05-17 00:15_|
 ****************************************
 # 注解
 
@@ -52,6 +52,8 @@ categories:
       String value();
   }
 ```
+
+> [自定义 JSR303 Validation 注解](https://github.com/Kuangcp/JavaBase/tree/master/web/src/main/java/com/github/kuangcp/validation)
 
 ## 读取
 > [相关代码片段](https://gitee.com/gin9/codes/s148mbplxo06qgn25d3wc23)
