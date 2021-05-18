@@ -8,7 +8,7 @@ categories:
 
 **目录 start**
 
-1. [APM](#apm)
+1. [应用性能优化](#应用性能优化)
 1. [客户端](#客户端)
 1. [服务端](#服务端)
     1. [压力测试准备](#压力测试准备)
@@ -25,7 +25,7 @@ categories:
         1. [MySQL](#mysql)
             1. [主从复制以及读写分离](#主从复制以及读写分离)
 
-**目录 end**|_2020-10-18 13:59_|
+**目录 end**|_2021-05-18 21:48_|
 ****************************************
 # 应用性能优化
 
@@ -82,11 +82,11 @@ categories:
 - 简单使用 `ab -c 并发数 -n 总请求数 URL`
     - 查看文档:`man ab` 或 `ab -h`
 
-
 - 测试本机超过100连接报错 104: 
     - [Blog:解决问题](http://www.cnblogs.com/archoncap/p/5883723.html)
 
-- `ab -c 5 -n 1000 -X 127.0.0.1:8888 -T application/json -p list.json -C 'JSESSIONID=xxx' URL` 使用 Cookie 使用代理 对json接口发起请求
+- `ab -c 5 -n 1000 -X 127.0.0.1:8888 -T application/json -p list.json -C 'JSESSIONID=xxx' URL` 使用 Cookie并使用代理 对参数为json的接口发起请求
+- 设置Header`-H “AUTHORIZATION: Basic YWRtaW46YWRtaW4=“`
 
 ### Jmeter
 > 具有图形化客户端

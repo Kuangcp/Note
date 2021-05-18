@@ -16,11 +16,12 @@ categories:
             1. [服务端推送消息](#服务端推送消息)
         1. [Spring-WebSocket](#spring-websocket)
         1. [Undertow](#undertow)
+        1. [Netty](#netty)
     1. [客户端](#客户端)
         1. [Java](#java)
         1. [JS](#js)
 
-**目录 end**|_2020-06-24 02:06_|
+**目录 end**|_2021-05-18 21:48_|
 ****************************************
 #  简单 SpringBoot Websocket 示例
 JSR-356
@@ -152,7 +153,10 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 
 ### Undertow
 
-[doc](http://undertow.io/undertow-docs/undertow-docs-2.0.0/index.html#websockets)
+> [doc](http://undertow.io/undertow-docs/undertow-docs-2.0.0/index.html#websockets)
+
+### Netty
+> [Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/netty/websocket)
 
 ************************
 

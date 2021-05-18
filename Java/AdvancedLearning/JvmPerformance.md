@@ -35,7 +35,7 @@ categories:
     1. [MAT](#mat)
     1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2021-05-17 00:27_|
+**目录 end**|_2021-05-18 21:48_|
 ****************************************
 
 # Java的性能调优
@@ -162,9 +162,9 @@ categories:
 ## jmap 
 > 用来查看堆内存使用状况
 - Demo:
-    - jmap -histo $PID 展示class的内存情况
-    - jmap -heap $PID 展示Java堆详细信息
-    - jmap -dump:live,format=b,file=heapLive.hprof 2576
+    - `jmap -histo $PID` 展示实例和占用内存情况
+    - `jmap -heap $PID` 展示Java堆详细信息
+    - `jmap -dump:live,format=b,file=heapLive.hprof $PID` dump堆
 
 ## jhat
 >  Java Head Analyse Tool
@@ -178,11 +178,11 @@ categories:
     - -m: 打印java和native frames
     - -l: 打印关于锁的附加信息
 
-- 找出占用CPU最高的线程:
-    1. `jps 或者 ps aux | grep xxx` 得到想要的Java进程id
-    1. `top -Hp 进程id` 查看 time 占用最长 或者 CPU占用最高 的线程
-    1. `printf %x 线程id` 得到 16进制 线程id
-    1. `jstack 进程id | grep -A 20 16进制线程id` 查看该线程的栈,进而分析到代码
+> 找出占用CPU最高的线程:
+1. `jps 或者 ps aux | grep xxx` 得到对应Java进程id
+1. `top -Hp 进程id` 查看 time 占用最长 或者 CPU占用最高 的线程id
+1. `printf %x 线程id` 得到 16进制线程id
+1. `jstack 进程id | grep -A 20 16进制线程id` 查看该线程的栈,进而分析到代码
 
 ## jcmd
 
