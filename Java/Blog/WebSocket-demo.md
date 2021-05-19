@@ -17,11 +17,12 @@ categories:
         1. [Spring-WebSocket](#spring-websocket)
         1. [Undertow](#undertow)
         1. [Netty](#netty)
+    1. [性能测试对比](#性能测试对比)
     1. [客户端](#客户端)
         1. [Java](#java)
         1. [JS](#js)
 
-**目录 end**|_2021-05-18 21:48_|
+**目录 end**|_2021-05-19 14:34_|
 ****************************************
 #  简单 SpringBoot Websocket 示例
 JSR-356
@@ -115,6 +116,9 @@ public class WebSocketConfig implements WebSocketConfigurer {
     public ServletServerContainerFactoryBean createWebSocketContainer() {
         ServletServerContainerFactoryBean container = new ServletServerContainerFactoryBean();
         // ws 传输数据的时候，数据过大有时候会接收不到，所以在此处设置bufferSize
+        // 注意： 这里设置的大小是每个连接初始化 HeapByteBuffer 的实际大小，也就是设置多大每个连接就会占用多大内存，要慎重考虑
+        // https://my.oschina.net/xiaoshushu/blog/1586349
+        // org.apache.tomcat.websocket.WsFrameBase#WsFrameBase 
         container.setMaxTextMessageBufferSize(512000);
         container.setMaxBinaryMessageBufferSize(512000);
         container.setMaxSessionIdleTimeout(15 * 60000L);
@@ -157,6 +161,9 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 
 ### Netty
 > [Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/netty/websocket)
+
+## 性能测试对比
+TODO 相同JVM参数，处理逻辑 指标：最大连接数，请求应答模型 延迟分布情况、吞吐量
 
 ************************
 
