@@ -24,7 +24,7 @@ categories:
 1. [Tips](#tips)
     1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2021-04-22 21:33_|
+**目录 end**|_2021-05-27 21:59_|
 ****************************************
 # MySQL进阶
 
@@ -97,15 +97,22 @@ InnoDB通过加间隙锁来防止幻读
 ************************
 
 ## 性能调优
-> [Doc: Optimizing Queries with EXPLAIN](https://dev.mysql.com/doc/refman/5.7/en/using-explain.html)`依据 explain 调优`
+> [Doc: Optimizing Queries with EXPLAIN](https://dev.mysql.com/doc/refman/5.7/en/using-explain.html)`依据 explain 输出结果调优`
 
 > [MySQL下INNODB引擎的SELECT COUNT(*)性能优化及思考](http://www.piaoyi.org/database/MySQL-INNODB-SELECT-COUNT.html)
 
-> `set max_execution_time=3000;`MySQL服务器设置SQL执行最大时间 (5.7.8 新增), 执行超时则报错, 单位 ms
+> `set max_execution_time=3000;`MySQL服务器设置SQL执行最大时间 (5.7.8 新增), 如果SQL执行超时则报错, 单位 ms
 
-> 5.6及以上版本存储`时间类型`效率： int > datetime > timestamp
+1. 字段在满足业务需求前提下越小越好
+1. 使用 JOIN 代替子查询
+1. 使用 UNION 代替手动创建临时表
+1. 5.6及以上版本，存储`时间类型`时的效率： int > datetime > timestamp
+1. limit 做分页时 记录上次分页最后一条记录的id使用上where进行过滤 提高性能, 前提id是int自增的
 
-> limit 做分页时 记录上次分页最后一条记录的id使用上where进行过滤 提高性能, 前提id是int自增的
+> 业务代码层面 `容易被忽视`
+1. 减少不必要的SQL交互，例如 多次重复查询
+1. 精简SQL大小，避免操作无需操作的字段，例如更新仅更新一个字段，但是SQL写了更新所有字段
+1. for循环执行SQL
 
 ************************
 

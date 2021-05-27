@@ -1,5 +1,5 @@
 ---
-title: Git小技巧
+title: Git实践技巧
 date: 2018-11-21 10:56:52
 tags: 
 categories: 
@@ -12,7 +12,7 @@ categories:
     1. [安装](#安装)
         1. [Linux(debian系)](#linuxdebian系)
         1. [windows](#windows)
-        1. [GUI](#gui)
+        1. [GUI Client](#gui-client)
     1. [配置记住密码](#配置记住密码)
     1. [配置GPG签名](#配置gpg签名)
     1. [简单使用](#简单使用)
@@ -31,7 +31,7 @@ categories:
         1. [CRLF与LF](#crlf与lf)
         1. [仓库统计](#仓库统计)
 
-**目录 end**|_2020-12-21 14:28_|
+**目录 end**|_2021-05-27 21:59_|
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -62,9 +62,9 @@ categories:
     - sudo find /usr/local -depth -iname 'git*' -exec rm -rf {} \;
 
 ### windows
-- 搜索下载 git-for-windows 
+- [git-for-windows](https://npm.taobao.org/mirrors/git-for-windows/)
 
-### GUI
+### GUI Client
 > [官方列表](https://git-scm.com/downloads/guis)
 
 *******************
