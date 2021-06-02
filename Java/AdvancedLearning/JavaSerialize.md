@@ -16,7 +16,7 @@ categories:
     1. [Thrift](#thrift)
     1. [Marshalling](#marshalling)
 
-**目录 end**|_2021-05-17 00:15_|
+**目录 end**|_2021-06-02 23:06_|
 ****************************************
 # 序列化
 > [码农翻身:序列化： 一个老家伙的咸鱼翻身](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513589&idx=1&sn=d402d623d9121453f1e570395c7f99d7&chksm=80d67a36b7a1f32054d4c779dd26e8f97a075cf4d9ed1281f16d09f1df50a29319cd37520377&scene=21#wechat_redirect) `对象转化为二进制流`
@@ -29,14 +29,10 @@ categories:
 [参考博客](http://swiftlet.net/archives/1268)
 
 - serialVersionUID有两种显示的生成方式： 
-    -  一个是默认的1L
-    -  一个是根据类名、接口名、成员方法及属性等来生成一个64位的哈希字段
+    - 一种是固定常量值，例如1L
+    - 一种是根据类名、接口名、成员方法及属性等来生成一个64位的哈希字段
 
-> 当你一个类实现了Serializable接口，如果没有定义serialVersionUID，Eclipse会提供这个提示功能告诉你去定义 。
-在Eclipse中点击类中warning的图标一下，Eclipse就会自动给定两种生成的方式。
-如果不想定义它，在Eclipse的设置中也可以把它关掉的，设置如下：
-Window ==> Preferences ==> Java ==> Compiler ==> Error/Warnings ==>Potential programming problems
-将Serializable class without serialVersionUID的warning改成ignore即可。
+> 当你一个类实现了Serializable接口，如果没有定义serialVersionUID，可通过IDE进行提醒显示定义。
 
 ******************************
 

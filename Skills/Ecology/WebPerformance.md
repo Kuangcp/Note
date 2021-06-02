@@ -25,7 +25,7 @@ categories:
         1. [MySQL](#mysql)
             1. [主从复制以及读写分离](#主从复制以及读写分离)
 
-**目录 end**|_2021-05-18 21:48_|
+**目录 end**|_2021-06-02 23:06_|
 ****************************************
 # 应用性能优化
 
@@ -89,9 +89,8 @@ categories:
 - 设置Header`-H “AUTHORIZATION: Basic YWRtaW46YWRtaW4=“`
 
 ### Jmeter
-> 具有图形化客户端
-
 - [jmeter](http://jmeter.apache.org/download_jmeter.cgi) `apache 下的开源压测工具`
+- [Jmeter中文网](http://www.jmeter.com.cn/)
 
 ### wrk
 > [Github地址](https://github.com/wg/wrk)  
