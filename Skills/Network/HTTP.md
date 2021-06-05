@@ -27,7 +27,7 @@ categories:
     1. [HSTS](#hsts)
 1. [CORS 跨域](#cors-跨域)
 
-**目录 end**|_2021-05-14 20:37_|
+**目录 end**|_2021-06-05 18:22_|
 ****************************************
 # HTTP
 > HyperText Transfer Protocol 超文本传输协议 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -242,7 +242,7 @@ HTTP/3 只是一种基于 IETF QUIC（一种基于 UDP 的多路复用和安全�
 ************************
 
 # CORS 跨域
-> 跨域
+> [浏览器的同源策略](https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy)
 
 > [mozilla CORS](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS)
 > [阮一峰 跨域资源共享 CORS 详解](http://www.ruanyifeng.com/blog/2016/04/cors.html)
