@@ -17,8 +17,6 @@ categories:
         1. [终端和登录](#终端和登录)
     1. [输入输出](#输入输出)
     1. [环境变量](#环境变量)
-    1. [系统资源管理](#系统资源管理)
-        1. [ulimit](#ulimit)
     1. [进程](#进程)
         1. [信号量](#信号量)
         1. [孤儿进程和僵死进程](#孤儿进程和僵死进程)
@@ -33,7 +31,9 @@ categories:
         1. [systemd 方式服务管理](#systemd-方式服务管理)
         1. [service 方式管理](#service-方式管理)
         1. [update-rc.d 方式管理](#update-rcd-方式管理)
-1. [硬件信息](#硬件信息)
+1. [系统资源管理](#系统资源管理)
+    1. [ulimit](#ulimit)
+    1. [CPU](#cpu)
     1. [内存](#内存)
         1. [虚拟内存](#虚拟内存)
         1. [交换内存](#交换内存)
@@ -56,7 +56,7 @@ categories:
     1. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     1. [熵池](#熵池)
 
-**目录 end**|_2021-02-03 17:25_|
+**目录 end**|_2021-06-05 10:44_|
 ****************************************
 # Linux系统
 
@@ -190,14 +190,6 @@ categories:
 
 > [千万别混淆 Bash/Zsh 的四种运行模式](https://zhuanlan.zhihu.com/p/47819029)  
 > [	ssh连接远程主机执行脚本的环境变量问题](https://blog.csdn.net/whitehack/article/details/51705889)  
-
-************************
-
-## 系统资源管理
-### ulimit
-> [参考:  Linux下设置最大文件打开数nofile及nr_open、file-max](https://www.cnblogs.com/zengkefu/p/5635153.html)  
-
-**注意** ulimit命令只对当前终端(tty)生效
 
 ************************
 
@@ -355,7 +347,7 @@ _系统运行级别_
 
 ************************
 
-# 硬件信息
+# 系统资源管理
 - 查看系统PCI设备：`lspci`
 - 查看CPU信息：`more /proc/cpuinfo`
   - 查看物理CPU数：`cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l`
@@ -363,6 +355,20 @@ _系统运行级别_
   - 查看系统所有逻辑CPU个数：`cat /proc/cpuinfo | grep "processor" | wc -l`
 - 查看系统内存信息：`more /proc/meminfo`
 - 查看磁盘分区信息：`df -l`
+
+## ulimit
+> [参考:  Linux下设置最大文件打开数nofile及nr_open、file-max](https://www.cnblogs.com/zengkefu/p/5635153.html)  
+
+**注意** ulimit命令只对当前终端(tty)生效
+
+## CPU
+> [linux cpu load](https://www.scalyr.com/blog/linux-cpu-load/) 
+
+- Usage 和 Load 的区别， 使用率针对于Cpu 时间，负载针对于等待和进行中的线程
+- 使用uptime、top或者`cat /proc/loadavg`都可以看到CPU的load 1 5 15 分钟的负载。
+- LOAD AVERAGE：一段时间内处于可运行状态和不可中断状态的进程平均数量。（可运行分为正在运行进程和正在等待CPU的进程，状态为R；不可中断则是它正在做某些工作不能被中断比如等待磁盘IO等，其状态为D），它是从另外一个角度体现CPU的使用状态。
+
+> 注意: 一个核负载为1表示有线程一直在等待（满载），四个核负载为4表示四个核心都是一直有线程在等待（满载）
 
 ## 内存
 ### 虚拟内存

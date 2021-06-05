@@ -49,7 +49,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2021-02-03 17:25_|
+**目录 end**|_2021-06-05 10:44_|
 ****************************************
 # Linux性能分析和管理
 ## 基准测试
@@ -106,6 +106,10 @@ categories:
 **************************
 
 ## 性能监测
+> 通过各类软件的输出，快速定位问题点
+
+1. 监测CPU利用率 top,sysstat,mpstat,iostat,sar
+
 ### top
 > 来源 procps, 用于查看 进程详细信息, CPU占用率 内存 网络等...
 
@@ -115,7 +119,7 @@ categories:
 ### vmstat
 > Report virtual memory statistics
 
-- 最初是设计为查看虚拟内存的,现在用于性能监测
+- 最初是设计为查看虚拟内存的,现在常用于性能监测
 - `vmstat 1 4` 输出信息,间隔1s 共4次 特别注意第一行数据是指开机以来的平均值,后面的才是当前值
     - 输出内容:
     - procs 区域:
@@ -158,7 +162,7 @@ categories:
 ### mpstat
 > 对多处理器的统计, 和iostat同属于systat软件下,可能需要手动安装
 
-- `mpstat -P ALL 1 1` 查询所有CPU信息,后两个参数是和vmstat一样的,如果只看0号CPU 就ALL改成0即可
+- `mpstat -P ALL 1 1` 查询所有CPU信息,后两个参数是和vmstat一样的, `如果只看0号CPU 就ALL改成0即可`
     - 运行结果:
         - %user 用户进程 %
         - %nice 进程降级时CPU %
@@ -169,7 +173,7 @@ categories:
         - %steal 虚机管理程序占用的 CPU %
         - %guest 运行虚拟处理器占用的CPU %
         - %idle CPU空闲时间
-- 参数        
+- 参数
     - `-I ` 值可选, SUM CPU ALL 
     - 分别表示 CPU总的中断数, 展示每一个CPU的中断数 SUM和CPU数据综合展示
 
