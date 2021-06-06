@@ -16,16 +16,18 @@ categories:
         1. [Docker安装](#docker安装)
     1. [命令参数](#命令参数)
 1. [可视化管理工具](#可视化管理工具)
+1. [内置变量](#内置变量)
 1. [配置使用](#配置使用)
     1. [本地静态文件Web服务器](#本地静态文件web服务器)
     1. [反向代理多个服务](#反向代理多个服务)
     1. [配置https](#配置https)
         1. [通过 certbot 配置 HTTPS](#通过-certbot-配置-https)
     1. [配置Websocket反向代理](#配置websocket反向代理)
-    1. [代理](#代理)
+    1. [转发代理](#转发代理)
     1. [防盗链](#防盗链)
     1. [gzip](#gzip)
     1. [负载均衡](#负载均衡)
+        1. [负载均衡策略](#负载均衡策略)
     1. [前后端分离时避免跨域](#前后端分离时避免跨域)
         1. [静态服务器反代理后台接口](#静态服务器反代理后台接口)
 1. [Nginx Plus](#nginx-plus)
@@ -38,7 +40,7 @@ categories:
     1. [nuster](#nuster)
 1. [Tips](#tips)
 
-**目录 end**|_2021-05-14 20:37_|
+**目录 end**|_2021-06-07 00:27_|
 ****************************************
 # Nginx
 
@@ -88,6 +90,13 @@ categories:
 ************************
 # 可视化管理工具
 > [nginxWebUI](https://github.com/cym1102/nginxWebUI)  
+
+************************
+# 内置变量
+> [Official Doc](https://nginx.org/en/docs/varindex.html) | [Nginx 内置变量](https://www.jianshu.com/p/deccac3a4fd0)
+
+- `$remote_addr` 客户端地址
+- `$remote_port` 客户端端口
 
 ************************
 
@@ -286,7 +295,7 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
   }
 ```
 
-## 代理
+## 转发代理
 > 例如 aaa.com 需要VPN等方式才能访问，Nginx所在的主机能访问，就可以这么配置，然后配置DNS将 aaa.com 解析到Nginx的主机上，就可以实现其他客户机不安装VPN 直接访问 aaa.com
 
 ```ini
@@ -319,9 +328,46 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
 ## 负载均衡
 > [Nginx 反向代理 负载均衡 虚拟主机配置](https://segmentfault.com/a/1190000012479902)
 
+### 负载均衡策略
+1. Round Robin：
+    - 默认方式，对所有backend无差别按序轮询, 如果backend宕机会自动移除掉
+1. Weight：
+    - 对所有backend按权重进行轮询，权重越高分发到的请求就越多，默认值为1。适合硬件差别比较大的多个节点
+    ```ini
+        #动态服务器组
+        upstream dynamic_server {
+            server localhost:8080 weight=2;
+            server localhost:8081;
+            server localhost:8082 backup;
+            server localhost:8083 max_fails=3 fail_timeout=20s;
+        }
+    ```
+1. Least Connections(least_conn): 
+    - 依据每个backend当前活跃连接数，将请求分发到连接数最少的backend上，此时会考虑backend的weight权重比例
+    - upstream配置块中在首行添加 `least_conn;`即可
+1. IP Hash(ip_hash): 对请求来源IP地址计算hash值，通过某种映射（例如取余，详细可查看ip_hash相关源码）分发至对应backend
+    - upstream配置块中在首行添加 `ip_hash;`即可
+1. Generic Hash(hash): 用户自定义资源（例如URL）计算hash完成分发，可选consistent关键字支持`一致性hash`特性
+
+************************
+
+> TCP & UDP 负载均衡
+
+************************
+1. `slow_start=30s` 防止新添加/恢复的节点，被突然增加的请求打垮，该参数可以设置该主机的weight在30s内从0增加至设置值
+1. `max_conns=100` 对backend限流
+
+************************
+
+> Q & A
+1. 如果负载均衡了A B两个节点，请求进入了A节点后，立马移除了对A节点的负载均衡，该请求是否能正常执行
+    - 能正常执行，假如此时请求A失败，例如A节点宕机, 请求还会转移至B节点（failover）
+1. 如果负载均衡了A B两个节点, A节点宕机了，后续请求是否还会分发到A节点
+    - 不会，原理： TODO
+
 ## 前后端分离时避免跨域
 在需要被跨域访问的服务端，添加如下配置
-```
+```ini
     add_header Access-Control-Allow-Origin *;
     add_header Access-Control-Allow-Headers X-Requested-With;
     add_header Access-Control-Allow-Methods GET,POST,OPTIONS; 
