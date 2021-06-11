@@ -58,7 +58,7 @@ categories:
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2021-05-27 21:59_|
+**目录 end**|_2021-06-11 21:58_|
 ****************************************
 # 网络
 
@@ -305,6 +305,12 @@ TCP连接四元组是源IP地址、源端口、目的IP地址和目的端口。�
 
 客户端和服务端建立连接后 客户端网络发生变化(例如VPN关闭,服务端在VPN网络下才可访问)，此时客户端的定时ping会累积起来，等恢复后，一次发送多条数据，可以通过抓包观察到
 
+> 抓包工具
+1. wireshark 
+1. mitmproxy python定制化
+1. Fiddler2 C#定制化
+1. [whistle](https://github.com/avwo/whistle)
+
 ************************
 
 ### WebDAV
@@ -455,6 +461,8 @@ function FindProxyForURL(url, host) {
 ### mitmproxy
 > [Official Site](https://mitmproxy.org/) | [Docker Hub](https://hub.docker.com/r/mitmproxy/mitmproxy/) | [Github](https://github.com/mitmproxy/mitmproxy)
 
+> 简评：过滤和搜索功能强大且支持重放但是用久了占用内存大，因为抓包的数据都在内存里
+
 - docker 启动 `docker run --name mitmproxy -d -p 8888:8080 -p 8081:8081 mitmproxy/mitmproxy mitmweb --web-host 0.0.0.0`
     - 5.0 版本之前 使用 `--web-iface 0.0.0.0`
 
@@ -462,7 +470,6 @@ function FindProxyForURL(url, host) {
     - 实际上是安装了 mitmproxy-ca-cert.pem 文件 进而信任了 mitmproxy 这个CA
 
 > [gomitproxy](https://github.com/zboya/gomitmproxy) `Go 实现`  
-> 简评：过滤和搜索功能强大且支持重放但是用久了占用内存大，因为抓包的数据都在内存里
 
 ### Mars
 > [Github](https://github.com/ouqiang/mars)

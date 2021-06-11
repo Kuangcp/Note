@@ -29,14 +29,12 @@ categories:
     1. [IOC/DI 控制反转](#iocdi-控制反转)
     1. [Scheduling](#scheduling)
     1. [Events](#events)
-    1. [Websocket](#websocket)
-        1. [maven配置](#maven配置)
     1. [Utils](#utils)
         1. [ReflectionUtils](#reflectionutils)
 1. [Web开发的最佳实践](#web开发的最佳实践)
 1. [Tips](#tips)
 
-**目录 end**|_2021-01-15 21:26_|
+**目录 end**|_2021-06-11 21:58_|
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -289,22 +287,6 @@ _其他,可选_
 - 类上 @EnableAsync 方法上 @Async 并指定配置的线程池名字
 
 > [参考: spring线程池(同步、异步）](http://www.cnblogs.com/duanxz/p/9435343.html)
-
-## Websocket
-### maven配置
-
-```xml
-  <dependency>
-     <groupId>org.springframework</groupId>
-     <artifactId>spring-websocket</artifactId>
-     <version>${spring.version}</version>
-   </dependency>
-   <dependency>
-     <groupId>org.springframework</groupId>
-     <artifactId>spring-messaging</artifactId>
-     <version>${spring.version}</version>
-   </dependency>
-```
 
 ## Utils
 ### ReflectionUtils

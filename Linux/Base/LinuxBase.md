@@ -56,7 +56,7 @@ categories:
     1. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     1. [熵池](#熵池)
 
-**目录 end**|_2021-06-05 10:44_|
+**目录 end**|_2021-06-11 21:58_|
 ****************************************
 # Linux系统
 
@@ -359,7 +359,14 @@ _系统运行级别_
 ## ulimit
 > [参考:  Linux下设置最大文件打开数nofile及nr_open、file-max](https://www.cnblogs.com/zengkefu/p/5635153.html)  
 
-**注意** ulimit命令只对当前终端(tty)生效
+1. 查看某进程limit状态 `cat /proc/xxxpid/limits`
+
+1. 执行ulimit修改命令只对当前终端(tty)生效
+1. 持久化修改设置： **/etc/security/limits.conf** 文件中添加，注销或重启后生效
+    ```sh
+    * soft nofile 4096
+    * hard nofile 4096
+    ```
 
 ## CPU
 > [linux cpu load](https://www.scalyr.com/blog/linux-cpu-load/) 

@@ -18,7 +18,7 @@ categories:
         1. [Yay](#yay)
 1. [Tips](#tips)
 
-**目录 end**|_2021-02-03 17:25_|
+**目录 end**|_2021-06-11 21:58_|
 ****************************************
 
 # Arch
@@ -31,6 +31,8 @@ categories:
 - [Arch Linux 安装、配置、美化和优化](http://www.cnblogs.com/bluestorm/p/5929172.html)
 
 ## 包管理
+> [Creating Arch Linux Packages](https://www.theurbanpenguin.com/creating-arch-linux-packages/)
+
 ### Pacman 
 > [Arch wiki: pacman ](https://wiki.archlinux.org/index.php/Pacman_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E5%88%A0%E9%99%A4%E8%BD%AF%E4%BB%B6%E5%8C%85)  
 > Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的社区驱动软件仓库。Debian/Ubuntu 用户的对应类比是 PPA。
