@@ -32,23 +32,12 @@ categories:
 # HTTP
 > HyperText Transfer Protocol 超文本传输协议 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
 
+- [MDN HTTP教程](https://developer.mozilla.org/zh-CN/docs/Web/HTTP)
+
 > [参考: HTTP详解](https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650123318&idx=1&sn=a0b20cfeda4bf0445de8c981533aca1b&chksm=f36bb117c41c3801a951407743aa9e850aa2d5e834fb87ecdc472c871b74d60254fe7d03cd4d&mpshare=1&scene=1&srcid=&pass_ticket=C2ojewcjO3f%2B94ARPux0b29jNh%2BTyGIKOzdhalFniunqbWndDpBOllbB79D9AqM0#rd)
 
 - 其实HTTP协议主要就是用来进行客户端和服务器之间进行通信的标准协议。
 - HTTP主要规定了客户端如何与服务器建立链接、客户端如何从服务器请求数据、服务器如何响应请求，以及最后连接如何关闭
-
-> 整个流程: 建立连接 进行请求 响应 关闭连接
-
-`建立连接`
-根据用户输入的URL地址，通过DNS、负载均衡等技术找到一台服务器，客户端与服务器的80端口建立一个TCP链接。
-`进行请求`
-客户端向服务器发送消息，请求URL中指定的页面，要求执行指定的操作
-`响应`
-服务器向客户端发送响应。响应以状态码开头。常见的状态码有：200、302、404、500等。
-`关闭连接`
-客户端或服务端都可以关闭连接。每个请求都是用一个单独的网络连接。
-
-> 服务器不回记忆前面一次连接或者其结果，这种不记忆过去请求的协议被称为无状态(stateless)协议
 
 ## 请求方法
 - HTTP/1.1协议中共定义了八种方法（有时也叫“动作”）来表明Request-URI指定的资源的不同操作方式：
