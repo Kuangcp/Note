@@ -40,11 +40,11 @@ categories:
     1. [nuster](#nuster)
 1. [Tips](#tips)
 
-**目录 end**|_2021-06-07 00:27_|
+**目录 end**|_2021-06-20 14:26_|
 ****************************************
 # Nginx
 
-> [Official Site](https://www.nginx.com/)  
+> [Official Site](https://www.nginx.com/) | [Official Doc](https://docs.nginx.com)  
 > [Tengine](http://tengine.taobao.org/)  
 
 ## Nginx的安装
@@ -329,6 +329,8 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
 > [Nginx 反向代理 负载均衡 虚拟主机配置](https://segmentfault.com/a/1190000012479902)
 
 ### 负载均衡策略
+> [Doc: Http Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
+
 1. Round Robin：
     - 默认方式，对所有backend无差别按序轮询, 如果backend宕机会自动移除掉
 1. Weight：
@@ -348,14 +350,6 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
 1. IP Hash(ip_hash): 对请求来源IP地址计算hash值，通过某种映射（例如取余，详细可查看ip_hash相关源码）分发至对应backend
     - upstream配置块中在首行添加 `ip_hash;`即可
 1. Generic Hash(hash): 用户自定义资源（例如URL）计算hash完成分发，可选consistent关键字支持`一致性hash`特性
-
-************************
-
-> TCP & UDP 负载均衡
-
-************************
-1. `slow_start=30s` 防止新添加/恢复的节点，被突然增加的请求打垮，该参数可以设置该主机的weight在30s内从0增加至设置值
-1. `max_conns=100` 对backend限流
 
 ************************
 

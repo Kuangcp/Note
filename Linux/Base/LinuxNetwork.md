@@ -11,6 +11,7 @@ categories:
 **目录 start**
 
 1. [Linux网络管理](#linux网络管理)
+    1. [内核配置](#内核配置)
     1. [DNS](#dns)
         1. [修改DNS](#修改dns)
     1. [Route](#route)
@@ -53,9 +54,15 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2021-04-30 18:07_|
+**目录 end**|_2021-06-20 14:26_|
 ****************************************
 # Linux网络管理
+## 内核配置
+
+> ip_local_port_range [Linux increase ip_local_port_range TCP port range](https://ma.ttias.be/linux-increase-ip_local_port_range-tcp-port-range/)
+
+************************
+
 ## DNS
 > [Github: dns topic](https://github.com/topics/dns)
 

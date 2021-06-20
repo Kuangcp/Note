@@ -33,10 +33,11 @@ categories:
     1. [JSON](#json)
     1. [Debug](#debug)
         1. [pprof](#pprof)
+    1. [部署](#部署)
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2021-02-02 15:04_|
+**目录 end**|_2021-06-20 14:26_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -284,6 +285,19 @@ Msg struct{
 ### pprof
 > [参考: 【实践】使用Go pprof做内存性能分析](https://cloud.tencent.com/developer/article/1489186)  
 > [参考: 实战Go内存泄露](https://www.codercto.com/a/79118.html)  
+
+************************
+
+## 部署
+> 打包的二进制文件在alpine中无法运行
+
+报错： `/bin/sh: ./appName: not found`
+方案： CGO_ENABLED=0 go build
+
+> 打开文件数超出限制或者tcp连接未及时关闭
+
+报错： [cannot assign requested address](https://github.com/golang/go/issues/16012)
+方案： `ulimit -n 10000 && ./app`
 
 ************************
 

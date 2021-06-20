@@ -22,7 +22,7 @@ categories:
         1. [Java](#java)
         1. [JS](#js)
 
-**目录 end**|_2021-05-19 14:34_|
+**目录 end**|_2021-06-20 14:26_|
 ****************************************
 #  简单 SpringBoot Websocket 示例
 JSR-356
@@ -164,6 +164,13 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 
 ## 性能测试对比
 TODO 相同JVM参数，处理逻辑 指标：最大连接数，请求应答模型 延迟分布情况、吞吐量
+
+> 遇到的问题和调整
+1. 客户端发起连接需要设置最大打开文件数 ulimit -n 80000 
+1. 服务端建立到 28232 个连接后 遇到 Cannot assign requested address 
+    - `cat /proc/sys/net/ipv4/ip_local_port_range` 设置项代表Linux作为客户端(与服务端建立连接时会在区间内随机分配一个端口给客户端进程)可分配的端口范围（防止耗尽端口）
+    - 临时修改 `echo 1024 65000 > /proc/sys/net/ipv4/ip_local_port_range`
+    - 如果客户端在Docker容器中，需在 docker run 时加上 `--sysctl net.ipv4.ip_local_port_range="1024 65000"`
 
 ************************
 
