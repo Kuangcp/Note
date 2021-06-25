@@ -21,8 +21,11 @@ categories:
 
 > [双刃剑MongoDB的学习和避坑](https://segmentfault.com/a/1190000013589617)
 
+> [release-notes](https://docs.mongodb.com/manual/release-notes/)
 
 ## 安装
+### 服务端
+1. [Docker 安装](https://hub.docker.com/_/mongo/)
 
 ### 客户端
 > [参考: 最佳的MongoDB客户端管理工具](https://blog.csdn.net/chszs/article/details/51348248)  
