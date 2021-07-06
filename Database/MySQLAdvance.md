@@ -24,7 +24,7 @@ categories:
 1. [Tips](#tips)
     1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2021-05-27 21:59_|
+**目录 end**|_2021-07-05 00:14_|
 ****************************************
 # MySQL进阶
 
@@ -35,16 +35,38 @@ categories:
 > [参考: 轻松理解MYSQL MVCC 实现机制](https://blog.csdn.net/whoamiyang/article/details/51901888#commentBox)  
 
 ## 查询
-_全字段模糊查询_
+> [SQL通用优化方案(where优化、索引优化、分页优化、事务优化、临时表优化)](https://www.cnblogs.com/sochishun/p/7003513.html)
+
+> SQL 执行顺序： FROM， ON， JOIN，WHERE，GROUP BY，SUM，COUNT，HAVING，SELECT，DISTINCT，ORDER BY，LIMIT  
+> [SQL执行顺序（以MySQL为准）](https://segmentfault.com/a/1190000024577490)  
+1. FROM：先去获取from里面的表，拿到对应的数据，生成虚拟表1。
+2. ON：对虚拟表1应用ON筛选，符合条件的数据生成虚拟表2。
+3. JOIN：根据JOIN的类型去执行相对应的操作，获取对应的数据，生成虚拟表3。
+4. WHERE：对虚拟表3的数据进行条件过滤，符合记录的数据生成虚拟表4。
+5. GROUP BY：根据group by中的列，对虚拟表4进行数据分组操作，生成虚拟表5。
+6. CUBE|ROLLUP（聚合函数使用）：主要是使用相关的聚合函数，生成虚拟表6。
+7. HAVING：对虚拟表6的数据过滤，生成虚拟表7，这个过滤是在where中无法完成的，同时count（expr）返回不为NULL的行数，而count（1）和count（*）是会返回包括NULL在内的行数。
+8. SELECT：选择指定的列，生成虚拟表8。
+9. DISTINCT：数据去重，生成虚拟表9。
+10. ORDER BY：对虚拟表9中的数据进行指定列的排序，生成虚拟表10。
+11. LIMIT：取出指定行的记录，生成虚拟表11，返回给查询用户。
+
+> 全字段模糊查询
 1. `select * from target where concat(ifnull(host, ''), ifnull(username, '')) like '%localhost%' > 0 limit 0,1;`
     - 将全字段(空的替换为空串)连接成一个字符再模糊查询, 
 2. `select * from target where host like '%localhost%' or username like '%localhost%' limit 0,1;`
     - 这种查询虽然也能实现, 但是性能差一些
 
-- 分页查询性能优化 [MySQL分页查询的性能优化](https://www.cnblogs.com/scotth/p/7995856.html)
-    - 尽量使用索引优化扫描行数
-    - 子查询法
-    - 只读索引方法
+************************
+
+> 分页查询性能优化 [MySQL分页查询的性能优化](https://www.cnblogs.com/scotth/p/7995856.html)
+- 尽量使用索引优化扫描行数
+- 子查询法
+- 只读索引方法
+
+************************
+1. 尽量少用select *
+1. 尽量少用or，同时尽量用union all 代替union
 
 ## 锁
 ### Innodb

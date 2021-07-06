@@ -21,7 +21,7 @@ categories:
 1. [需要使用索引的场景](#需要使用索引的场景)
 1. [SQL执行时不走索引的场景](#sql执行时不走索引的场景)
 
-**目录 end**|_2021-05-27 21:59_|
+**目录 end**|_2021-07-05 00:14_|
 ****************************************
 
 # 索引
@@ -45,7 +45,41 @@ categories:
 - 对长度大于50的 varchar 字段建立索引时，按需求恰当的使用前缀索引，或使用其他方法(例如增加int类型列col_crc32，然后对col_crc32建立索引)
 - 合理创建联合索引(避免冗余)，区分度最高的在`最左边`，单个索引的字段数`不超过5个`
 - 单张表的索引数量控制在5个以内，若单张表多个字段在查询需求上都要单独用到索引，需要经过DBA评估。查询性能问题无法解决的，应从产品设计上进行重构
-- 使用 explain 判断SQL语句是否合理使用索引，`尽量避免` extra 列出现：using file sort，using temporary
+- 使用 explain 判断SQL语句是否合理使用索引
+    1. id：数字越大越先执行，一样大则从上往下执行，如果为NULL则表示是结果集，不需要用来查询。
+    2. select_type：
+        - simple： 不需要union的操作或者是不包含子查询的简单select语句。
+        - primary： 需要union操作或者含有子查询的select语句。
+        - union： 连接两个select查询，第一个查询是dervied派生表，第二个及后面的表select_type都是union。
+        - dependent union： 与union一样，出现在union 或union all语句中，但是这个查询要受到外部查询的影响。
+        - union result： 包含union的结果集。
+        - subquery： 除了from字句中包含的子查询外，其他地方出现的子查询都可能是subquery。
+        - dependent subquery： 与dependent union类似，表示这个subquery的查询要受到外部表查询的影响。
+        - derived： from字句中出现的子查询，也叫做派生表，其他数据库中可能叫做内联视图或嵌套select。
+    3. table: 表名，如果是用了别名，则显示别名
+    4. type 从上至下，好到差：除了all之外，其他的type都可以使用到索引，除了index_merge之外，其他的type只可以用到一个索引。
+        - system： 表中只有一行数据或者是空表。
+        - const： 使用唯一索引或者主键，返回记录一定是1行记录的等值where条件时，通常type是const。
+        - eq_ref： 出现在要连接过个表的查询计划中，驱动表只返回一行数据，且这行数据是第二个表的主键或者唯一索引，且必须为not null，唯一索引和主键是多列时，只有所有的列都用作比较时才会出现eq_ref。
+        - ref： 不像eq_ref那样要求连接顺序，也没有主键和唯一索引的要求，只要使用相等条件检索时就可能出现，常见与辅助索引的等值查找。
+        - fulltext： 全文索引检索，要注意，全文索引的优先级很高，若全文索引和普通索引同时存在时，mysql不管代价，优先选择使用全文索引。
+        - ref_or_null： 与ref方法类似，只是增加了null值的比较。实际用的不多。
+        - unique_subquery： 用于where中的in形式子查询，子查询返回不重复值唯一值。
+        - index_subquery： 用于in形式子查询使用到了辅助索引或者in常数列表，子查询可能返回重复值，可以使用索引将子查询去重。
+        - range： 索引范围扫描，常见于使用>,<,is null,between ,in ,like等运算符的查询中。
+        - index_merge： 表示查询使用了两个以上的索引，最后取交集或者并集，常见and ，or的条件使用了不同的索引。
+        - index： 索引全表扫描，把索引从头到尾扫一遍，常见于使用索引列就可以处理不需要读取数据文件的查询、可以使用索引排序或者分组的查询。
+        - all： 这个就是全表扫描数据文件，然后再在server层进行过滤返回符合要求的记录。
+    5. possible_keys： 查询可能使用到的索引。
+    6. key： 查询真正使用到的索引。
+    7. key_len： 用于处理查询的索引长度。
+    8. ref： 常数等值查询显示const，连接查询则显示表的关联字段。
+    9. rows： 执行计划中估算的扫描行数，不是精确值。
+    10. filtered： 表示存储引擎返回的数据在server层过滤后，剩下多少满足查询的记录数量的比例。
+    11. extra： 该字段信息较多，这里就不一一叙述了。
+
+- 在实际的使用过程中, 需要重点去关注type、key、key_len、rows、extra这几个参数， type要努力优化到range级别，all要尽量少的出现，在查询的过程中要尽量使用索引
+- 在extra里面出现Using filesort, Using temporary是不太好的，要去优化提高性能。
 
 - 通常情况下一个SQL语句只能在表上命中一个索引，但还有 索引合并 的情况 [参考: MySQL索引合并的使用与原理](https://blog.csdn.net/gentlezuo/article/details/107677543)  
     - intersect， union， sort-union

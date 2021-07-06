@@ -38,7 +38,7 @@ categories:
         1. [ScheduledThreadPoolExecutor](#scheduledthreadpoolexecutor)
     1. [分支合并框架](#分支合并框架)
 
-**目录 end**|_2020-10-23 21:05_|
+**目录 end**|_2021-07-02 02:28_|
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -207,6 +207,7 @@ public int current(){
 
 ### volatile
 > [Java多线程i++线程安全问题，volatile和AtomicInteger解释？](https://segmentfault.com/q/1010000006733274)
+> [DCL的单例一定是线程安全的吗](https://www.cnblogs.com/amberJava/p/12546798.html)`如果new 还需要自定义初始化逻辑，需要使用本地变量初始化完成后赋值给对象属性`
 
 - 线程所读的值在使用之前总会从内存中读入线程缓存
 - 线程所写的值总会在指令完成之前同步回内存中
@@ -216,8 +217,11 @@ public int current(){
 
 - volatile是Java提供的最轻量级的同步机制,Java内存模型为volatile专门定义了一些特殊的访问规则, 当一个变量被volatile修饰后:
     - `线程可见性`  当一个线程修改了被volatile修饰的变量后,无论是否加锁,其他线程都能立即看到最新的修改
-    - `禁止指令重排序优化` 普通的变量仅仅保证在该方法的执行过程中, 所有依赖赋值结果的地方都能获取正确的结果
-        - 而不能保证变量赋值操作的顺序和程序代码的执行顺序一致
+    - `禁止指令重排序优化` 普通的变量仅仅保证在该方法的执行过程中, 所有依赖赋值结果的地方都能获取正确的结果,而不能保证变量赋值操作的顺序和程序代码的执行顺序一致
+        - 实现原理是在指令序列中插入了内存屏障： 
+            - volatile 写操作前 StoreStore 后 StoreLoad
+            - volatile 读操作前 LoadLoad 后 LoadStore
+
 
 #### 正确使用
 > 打开Netty中NioEventLoop的源码 有一个属性 `private volatile int ioRatio = 50;` 该变量是用于控制IO操作和其他任务运行比例的
