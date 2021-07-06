@@ -29,6 +29,7 @@ categories:
         1. [VOLUME](#volume)
         1. [WORKDIR](#workdir)
         1. [STOPSIGNAL](#stopsignal)
+        1. [HEALTHCHECK](#healthcheck)
         1. [ONBUILD](#onbuild)
         1. [中间镜像](#中间镜像)
 1. [Practice](#practice)
@@ -37,9 +38,10 @@ categories:
         1. [打包最新版git](#打包最新版git)
         1. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-**目录 end**|_2021-02-03 17:25_|
+**目录 end**|_2021-07-06 22:01_|
 ****************************************
 # Dockerfile
+
 ## 使用入门案例
 - `mkdir test && cd test && touch Dockerfile ` 输入如下文本
 ```Dockerfile
@@ -193,8 +195,11 @@ _docker build_
 ### ARG
 > 用来指定一些镜像中使用的参数，例如版本信息 
 
--  `ARG <name> [=<default value>]`
-- 使用`docker build --build=-arg<name>=<value>` 来传入值
+- 定义 `ARG <name> [=<default value>]`
+- 使用 `$name`
+- 传入 `docker build --build-arg<name>=<value>`
+
+ARG 指令有生效范围，如果在 FROM 指令之前指定，那么只能用于 声明到 FROM 指令中间的命令上。所以多阶段构建使用FROM分离变量
 
 ### COPY
 > 当复制本地目录时，推荐使用copy
@@ -221,6 +226,8 @@ _docker build_
 
 ### STOPSIGNAL
 
+### HEALTHCHECK
+健康检查
 
 ### ONBUILD
 - 注入下游镜像。如果生成的镜像是作为另一个镜像的基础镜像，则该指令定义了需要被执行的那些指令
