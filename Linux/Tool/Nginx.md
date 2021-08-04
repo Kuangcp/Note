@@ -328,6 +328,10 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
 ## 负载均衡
 > [Nginx 反向代理 负载均衡 虚拟主机配置](https://segmentfault.com/a/1190000012479902)
 
+分为四层和七层： 
+- 在四层只依据ip的报文转发（修改进入时目的ip`从nginx改成upstream的IP`，修改返回时发送ip）
+- 在七层依据数据内容做转发，例如按http请求后缀做转发 *.jpg 到A服务器 *.jsp到B服务器
+
 ### 负载均衡策略
 > [Doc: Http Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
 

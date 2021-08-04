@@ -183,7 +183,7 @@ categories:
 ## 配置镜像源
 > 默认的DockerHub因为在国外所以网络不太稳定，需要使用国内镜像源
 
-- [Official doc](https://www.docker.com/registry-mirror)
+- [Official doc](https://docs.docker.com/registry/recipes/mirror/)
 
 `三种使用的方式`
 1. 使用指定的URL `docker pull registry.docker-cn.com/myname/myrepo:mytag`
@@ -541,6 +541,14 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
     - [Docker: connection reset by peer](https://serverfault.com/questions/848075/docker-connection-reset-by-peer)
 1. 重置网桥 [Connection reset by peer](https://blog.csdn.net/Alphr/article/details/107969190) `原因待寻找`
 
+[规避网段冲突](https://www.jb51.net/article/208255.htm)
+
+/etc/docker/daemon.json 顶级元素加入如下配置网段
+```json
+  "default-address-pools":[
+     {"scope":"local","base":"172.80.0.0/16","size":24},
+     {"scope":"global","base":"172.90.0.0/16","size":24}
+```
 ## None
 > docker run -it --network none  busybox
 
