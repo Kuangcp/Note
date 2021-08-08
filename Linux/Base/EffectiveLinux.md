@@ -116,7 +116,6 @@ iftop
 
 - nethogs `流量监控`
 - slurm 网卡带宽监控
-- dig 
 
 ### nmap
 > 端口扫描 [参考博客](http://aaaxiang000.blog.163.com/blog/static/2063491220113284325531/)
@@ -295,6 +294,10 @@ _批量修改_
 1. 将裁剪出来的图片转换指定大小 `convert -resize xXy src.jpg dst.jpg`
 
 - 若干图片合并转PDF `convert origin1.jpg origin2.jpg target.pdf`
+
+> svg to ico
+`magick convert -background none icon.svg -define icon:auto-resize icon.ico`
+or `convert -background none icon.svg -define icon:auto-resize icon.ico`
 
 ### asciinema
 - [asciinema](https://asciinema.org) `终端屏幕录制和分享网`

@@ -431,6 +431,8 @@ public int current(){
 **************************
 
 ## 线程池
+> [Java线程池实现原理及其在美团业务中的实践](https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html)
+
 
 > 依赖 common-lang3, 快速创建命名策略的线程池
 ```java
@@ -441,6 +443,7 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 ************************
 
 > [根据CPU核心数确定线程池并发线程数](https://www.cnblogs.com/dennyzhangdd/p/6909771.html)  
+> [如何设置线程池参数？](https://www.cnblogs.com/thisiswhy/p/12690630.html)
 
 - Nthreads=Ncpu*Ucpu*(1+w/c)，其中
     - Ncpu=CPU核心数

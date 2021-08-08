@@ -232,7 +232,8 @@ categories:
 
 ### restore
 
-- 将 Readme.md 回滚到 master倒数第三个 commit 的状态 `git restore -s master~2 Readme.md`
+- 丢弃所有改动，将 Readme.md 
+    - 回滚到 master倒数第三个 commit `git restore -s master~2 Readme.md`
     - 回滚至指定提交 `git restore -s commitid filepath`
 - 撤销所有Java文件修改 `git restore '*.java'` 注意支持 regex
 - 撤销工作目录所有修改 `git restore :/`

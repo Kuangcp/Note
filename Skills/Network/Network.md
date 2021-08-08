@@ -215,6 +215,9 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 按照 OSI 的术语, 两个对等运输实体在通信时传送的数据单位叫做 运输协议数据单元 TPDU Transport Protocol Data Unit.
 但在 TCP/IP 体系中, 则根据使用的所使用的协议是 TCP 或 UDP, 分别称之为 TCP报文段 segment, UDP用户数据报
 
+- Socket接口： 并不是一个协议，而是为了方便使用TCP或UDP而抽象出来的一层，是位于应用层和传输控制层之间的一组接口。
+- Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部
+
 ### TCP
 > 传输控制协议（英语：Transmission Control Protocol，缩写为 TCP, 是一种面向连接的、可靠的、基于**字节流**的传输层通信协议，由IETF的RFC 793定义。
 
@@ -281,12 +284,15 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 ### Websocket
 > Websocket协议 本质就是TCP的简单封装, 不像HTTP那样应答模式, 而是一次连接后就保持全双工模式
 
+> [参考: Netty WebSocket 拆包浅析](https://www.jianshu.com/p/30c26a755a87)  
+- io.netty.handler.codec.http.websocketx.WebSocket08FrameDecoder#decode
+- [ ] 文本数据达到多大，会遇到拆包问题
 
-1. 单一的TCP连接, 采用全双工模式通信
+1. 单一的封装TCP连接, 采用全双工模式通信
 2. 对代理, 防火墙和路由器透明
 3. 无头部信息, Cookie, 身份验证
 4. 无安全开销
-5. 通过 ping/pong 帧 保持链路激活
+5. 通过 ping/pong 二进制帧 保持链路激活
 6. 服务器可以主动传递消息给客户端, 不需要客户端轮询
 
 > 4个生命周期事件
@@ -336,11 +342,12 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
     - 不能在URL的关键位置出现%号，作为参数的值是允许的。
 
 ### DNS
-> 域名和资源转换的服务
+> 域名和资源转换的服务；完成域名解析需要依赖 基于UDP实现的 DNS 协议
 
 > [www.ipaddress.com](https://www.ipaddress.com/)`查询域名的真实IP` 可协助解决DNS污染攻击
 
 > [Wikipedia: DNS](https://en.wikipedia.org/wiki/Domain_Name_System)
+> [面试官:讲讲DNS的原理？](https://zhuanlan.zhihu.com/p/79350395)
 
 - 解析域名的顺序一般是， 先在本机找，找不到去找上连DNS服务器， 然后根域DNS服务器
     - 这时候就有了几种方式，递归， 迭代， 递归加迭代（为了减轻全球13台根的压力）
@@ -353,6 +360,10 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 > 自建DNS服务器
 - smartDNS
 - dnsmasq
+
+#### 安全性问题
+DOH `DNS over HTTPS` 443端口
+DOT `DNS over TLS` 853端口
 
 ************************
 

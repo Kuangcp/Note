@@ -66,17 +66,20 @@ categories:
 ## DNS
 > [Github: dns topic](https://github.com/topics/dns)
 
-- `nslookup`  dnsutils
-    - 强大的调试DNS工具
-    - `nslookup - 8.8.8.8` 进入 REPL 方便调试, 8.8.8.8 是Google开放的DNS 备选 8.8.4.4
-        - 结果解释：Non-authoritative answer: 表示这是从缓存得到的结果，不一定准确
-        - Server：上连DNS服务器的IP， Address：`上连DNS的IP#端口` 通常是53
-        - canonical name 即CNAME 别名
-- `dig`
-    - 比nslookup更强大 Domain Information Groper
-    - 例如：`dig +tcp @8.8.8.8 www.baidu.com` 采用TCP进行DNS通信（默认UDP）
-        - +short 精简输出
-        - +nocmd+nocomment+nostat 输出最核心内容
+`nslookup`  强大的调试DNS工具， 来自 dnsutils 包
+- `nslookup - 8.8.8.8` 进入 REPL 方便调试, 8.8.8.8 是Google开放的DNS 备选 8.8.4.4
+    - 结果解释：Non-authoritative answer: 表示这是从缓存得到的结果，不一定准确
+    - Server：上连DNS服务器的IP， Address：`上连DNS的IP#端口` 通常是53
+    - canonical name 即CNAME 别名
+
+`dig`比 nslookup 更强大 Domain Information Groper
+- 例如：`dig +tcp @8.8.8.8 www.baidu.com` 
+    - @xxx 指定DNS服务器
+    - -p 53 指定DNS服务器端口
+    - +tcp 采用TCP进行DNS通信（默认UDP）
+    - +short 精简输出
+    - +nocmd+nocomment+nostat 输出最核心内容
+    - -p 
 
 - `drill`
     - [doc](https://linux.die.net/man/1/drill)

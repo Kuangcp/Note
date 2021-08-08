@@ -43,7 +43,19 @@ Err错误，一般是指与虚拟机相关的问题，如系统崩溃，虚拟�
 - 常发生于集合并发修改和迭代时
 
 ****************************
-## 异常常见问题
+## 常见问题
+### 异常栈被隐藏
+> [Java堆栈信息不见了 ](https://jjlu521016.github.io/2018/12/12/java%E5%A0%86%E6%A0%88%E4%BF%A1%E6%81%AF%E4%B8%8D%E8%A7%81%E4%BA%86.html)
+
+在使用服务器模式下，会默认开启 Fast Throw 机制， 以下异常被频繁抛出时(大于5000)，会隐藏错误栈
+- NullPointerException
+- ArithmeticException
+- ArrayIndexOutOfBoundsException
+- ArrayStoreException
+- ClassCastException
+
+JVM参数关闭该特性 `-XX:-OmitStackTraceInFastThrow`
+
 ### 应该使用大块的try还是细颗粒度的try?
 > 为了避免我们遗漏掉一些可能会出现异常的代码, 所以建议使用大块的try, 因为检查型异常是容易发现的, 但是运行时异常却往往不能在编码的第一时间发现
 

@@ -1,0 +1,1 @@
+常见容错机制：failover、failfast、failback、failsafe
