@@ -143,7 +143,14 @@ categories:
 
 - 配置包日志级别 `<logger name="com.github.kuangcp.hi" level="DEBUG"/>`
 
-
+```xml
+    <springProfile name="!online">
+        <root level="${LOG_LEVEL}"> </root>
+    </springProfile>
+    <springProfile name="online">
+        <root level="${LOG_LEVEL}"> </root>
+    </springProfile>
+```
 ************************
 
 - `<root>`

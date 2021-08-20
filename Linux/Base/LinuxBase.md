@@ -198,7 +198,7 @@ categories:
 
 > 参考 深入理解计算机系统 书籍
 
-1. pid_t 来表示一个进程的 pid，因此能表示的进程的范围一定不会超过pid_t类型的大小
+1. pid_t 来表示一个进程的 pid，因此能表示的进程的范围一定不会超过 pid_t 数据类型的范围
     - 查看 pid 最大数量 `cat /proc/sys/kernel/pid_max`
 
 > [doc: fork](http://pubs.opengroup.org/onlinepubs/7908799/xsh/fork.html)  
