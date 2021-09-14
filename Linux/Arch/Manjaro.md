@@ -40,6 +40,7 @@ categories:
    - 其实真正的包是 gconf , 而这个也是尝试过的,  但是还是说找不到package, 更新了下系统,才找到了这个包
 
 - `VirtualBox 和内核是高度耦合的`，需要内核驱动版本匹配才能正常运行，`yay virtualbox-host-modules` 选择对应内核版本安装即可
+- 某应用开机自启动 `sudo ln -s /usr/share/applications/xxx.desktop /etc/xdg/autostart/`
 
 # 安装
 > [Installation Guides](https://wiki.manjaro.org/index.php?title=Installation_Guides)

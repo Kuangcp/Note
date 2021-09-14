@@ -119,7 +119,7 @@ categories:
 ```
 - 运行 gradle wrapper 一次即可开始使用包装器的脚本来构建项目了
 - 生成gradle包管理器：`gradle wrapper --gradle-version 2.0`
-
+- 下载的多版本gradle `~/.gradle/wrapper/dists`
 ************************
 
 ## CUI使用
@@ -157,7 +157,7 @@ categories:
 # 配置
 ## 全局配置文件
 _~/.gradle/init.gradle_
-```Groovy
+```groovy
     allprojects{
         repositories {
             def ALIYUN_REPOSITORY_URL = 'https://maven.aliyun.com/nexus/content/groups/public'

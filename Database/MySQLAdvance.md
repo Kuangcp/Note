@@ -130,6 +130,7 @@ InnoDB通过加间隙锁来防止幻读
 1. 使用 UNION 代替手动创建临时表
 1. 5.6及以上版本，存储`时间类型`时的效率： int > datetime > timestamp
 1. limit 做分页时 记录上次分页最后一条记录的id使用上where进行过滤 提高性能, 前提id是int自增的
+1. 批量更新 `rewriteBatchedStatements`
 
 > 业务代码层面 `容易被忽视`
 1. 减少不必要的SQL交互，例如 多次重复查询
