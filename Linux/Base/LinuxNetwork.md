@@ -54,7 +54,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2021-06-20 14:26_|
+**目录 end**|_2021-09-28 22:41_|
 ****************************************
 # Linux网络管理
 ## 内核配置
@@ -565,7 +565,8 @@ _客户端_
 ### OpenVPN
 > [arch wiki](https://wiki.archlinux.org/index.php/OpenVPN)
 
-1. 服务端提供 ca 文件
+以下文件都在同一目录下
+1. 服务端提供 ca 文件 
 1. 配置文件 `connect.ovpn`
     ```
         client
@@ -584,10 +585,12 @@ _客户端_
         comp-lzo
         verb 3
     ```
-1. 账户密码文件
+1. 账户密码文件 `passwd`
     ```
-        sudo openvpn --daemon --cd /etc/openvpn/client --config connect.ovpn --auth-user-pass /etc/openvpn/client/passwd --log-append /path/to/log.log
+    用户名
+    密码
     ```
+1. 启动 sudo openvpn --daemon --cd /etc/openvpn/client --config connect.ovpn --auth-user-pass /etc/openvpn/client/passwd --log-append /path/to/log.log
 
 > ERROR: Cannot open TUN/TAP dev /dev/net/tun: No such device
 1. modinfo tun 查看内核模块是否存在
