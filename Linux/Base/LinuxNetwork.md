@@ -380,7 +380,7 @@ _iproute-ss_
     - `-o` 指定日志输出。默认当前目录的 wget-log
     - `--content-disposition` 支持HTTP Content-Disposition标头，通常包含文件名信息
     - `-O` 将下载的所有文件的内容追加到指定的文件
-    - `-c` 断点续传 但是有潜在bug,当源站的文件头部分或者已下载部分修改了,wget是不知道的,只会继续下载之前没下载的内容
+    - `-c` 断点续传 但是有潜在问题, 例如当源站的文件头部分或者已下载部分修改了，但wget只从上次下载的进度开始继续下载
     - 避开robots.txt 协议 `--execute robots=off`
         - 尝试使用 Tomcat 构建一个有robots协议的网站，然后wget还是绕过了协议
         - 对 Github 测试这个参数是正常的

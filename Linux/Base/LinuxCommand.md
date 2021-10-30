@@ -67,6 +67,7 @@ categories:
 > 常在管道中使用 能将输入流转为 命令 的参数
 
 - 输出所有的md文件的内容 `find . -name "*.md" | xargs cat | less`
+- 定义替换符 `xargs -I {} echo {}`
 
 ***************************
 

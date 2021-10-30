@@ -21,7 +21,8 @@ categories:
     - 远程过程调用（RPC)RPC类似于LPC，只是调用方和被调用方中间夹入网络这一层
 
 - 通常使用 IDL(Interface Definition) 建立接口定义, 达成约束, 一般指一种开发方式和规范, 具体的实现可以多样
-- 也可以用 HTTP 接口来实现RPC, 也就是说 Dubbo 的websocket和hessian二进制序列化方式和 SpringCloud 的 HTTP 接口广义上讲都属于RPC接口
+- 也可以用 HTTP 接口来实现RPC, 也就是说 Dubbo 二进制序列化方式和 SpringCloud 的 HTTP 接口广义上讲都属于RPC接口
 
 > [参考: 良好的RPC接口设计，需要注意这些方面](https://www.jianshu.com/p/dca5b00e72e4)
 
+通常涉及： 通信，服务发现，序列化和反序列化，服务治理（熔断，降级）

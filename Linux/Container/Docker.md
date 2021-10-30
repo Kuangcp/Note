@@ -371,6 +371,7 @@ _登录镜像仓库_
 `-e TZ="Asia/Shanghai" -v /etc/localtime:/etc/localtime:ro`
 
 #### 资源限制
+> [Docker CPU 内存 资源限制](https://www.cnblogs.com/zhuochong/p/9728383.html)
 
 > **`内存限制`**
 - 限制最大内存100M `--memory 100M` 或者 `-m 100M`

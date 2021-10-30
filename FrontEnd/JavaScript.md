@@ -34,7 +34,6 @@ categories:
 # JavaScript
 
 ## 数据类型
-> 虽然是弱类型,但还是要注意一下
 
 ### 字符串
 - 字符串转码:
@@ -101,19 +100,46 @@ categories:
 - [Blog:关于Input的输入校验](http://yuncode.net/code/c_5039bb4a3fccf28)`数字,字母汉字等限制`
 
 ## Ajax
-> [js 原生 post请求](https://segmentfault.com/q/1010000005162727)
-
 > [参考: 使用 Fetch](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)
 
-## 事件
+```js
+function get(url, handle) {
+    let httpRequest = new XMLHttpRequest();
+    httpRequest.open('GET', url, true);
+    httpRequest.send();
+    /**
+        * 获取数据后的处理程序
+        */
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+            handle(httpRequest)
+        }
+    };
+}
 
+function post(url, data, handle) {
+    let xhr = new XMLHttpRequest();
+    //使用HTTP POST请求与服务器交互数据
+    xhr.open("POST", url, true);
+    //设置发送数据的请求格式
+    xhr.setRequestHeader('content-type', 'application/json');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            handle(xhr.responseText)
+        }
+    }
+    //将用户输入值序列化成字符串
+    xhr.send(JSON.stringify(data));
+}
+```
+
+## 事件
+### 键盘
 
 ### 鼠标
-
-#### 滚轮
 > [JavaScript 鼠标滚轮事件](https://www.web-tinker.com/article/20037.html)
 
-
+************************
 
 ## 常用库和框架
 - lozad.js 懒加载
@@ -125,32 +151,12 @@ categories:
 - 事件绑定 `$('#Button').on('click', function(){})`
 - 在HTML的DOM上绑定数据:设置 `data-*` 属性 然后jq拿到元素直接调用 `$(this).data('id')`拿到值就可以避免函数传值
 
-_原生方式异步提交_
+_原生方式异步提交Form_
 ```js
     $("#set-form").submit(function(e){
         e.preventDefault();
         console.log('prepare submit')
     });
-```
-#### Ajax
-> [ajax文档](https://api.jquery.com/jQuery.ajax/)
-
-#### form插件
-```js
-    // 使用jquery 的 form插件进行异步提交
-    $(".submit").on('click', function () {
-        console.log('dfs')
-        // var jk = $("#contents").submit()
-        var options = {
-            // target:'#contents', //后台将把传递过来的值赋给该元素
-            url:'../teacher/topic/add', //提交给哪个执行
-            type:'POST',
-            success: function(data){
-                console.log(data)
-            } //显示操作提示
-        };
-        $('#contents').ajaxSubmit(options);
-    })
 ```
 
 ### echarts

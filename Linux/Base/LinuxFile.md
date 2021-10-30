@@ -150,6 +150,14 @@ categories:
 
 - `ls -lFh` 列出所有文件的详细信息, 并且文件大小是人类可阅读的
 
+ls * | xargs md5sum > b.log
+find . | xargs md5sum > b.log
+le b.log | awk '{print $1}'| kp.count  | head -n 17 > re.log
+cat re.log | awk '{print $2}' | xargs -I {} grep  {} b.log  > fin.log
+
+le fin.log | awk '{print $2}' | xargs -I {} mv {} ../
+le fin.log | grep -v VID | awk '{print $2}' | xargs rm -f
+
 ### wc
 - `wc [-lmw] ` 参数说明： -l :多少行-m:多少字符 -w:多少字
 - cat mul.sh | wc -l

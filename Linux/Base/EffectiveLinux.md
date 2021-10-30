@@ -216,6 +216,8 @@ Supervisor 进程监控管理
 `iconv`
 > 可以将一种已知的字符集文件转换成另一种已知的字符集文件
 
+例如 将git仓库内所有Java文件 GBK 转 UTF8 `git ls-files | grep "\.java" | tee  | xargs -I {}  iconv -f GBK -t UTF-8 {} -o {}`
+
 `zssh`
 > 便捷的文件传输
 

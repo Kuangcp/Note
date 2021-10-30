@@ -111,17 +111,20 @@ categories:
 
 ## 编程语言开发环境
 ### Java
-- [Official:Java](https://hub.docker.com/_/java/) `Oracle` | [Official: OpenJDK](https://hub.docker.com/_/openjdk/)`从7开始` 
+- [Official: Java](https://hub.docker.com/_/java/) `Oracle` | [Official: OpenJDK](https://hub.docker.com/_/openjdk/)`从7开始` 
 
 - [frolvlad alpine-java](https://hub.docker.com/r/frolvlad/alpine-java)`非常精简`
     - `个人基于以上镜像 设置好CST中国时区`[jdk-alpine-cst](https://hub.docker.com/r/mythkuang/jdk-alpine-cst/)
     - `可以学习一波Dockerfile` [Github: Dockerfile](https://github.com/frol/docker-alpine-java)
 
-> 个人习惯
 - Java7 `docker pull java:7u121-jdk-alpine`
-- Java8 `docker pull frolvlad/alpine-java:jdk8.202.08-slim`
+- Java8 `docker pull frolvlad/alpine-java:jdk8.202.08-slim` 或者配置好时区的镜像 `mythkuang/jdk-alpine-cst:8.181`
 
 > [参考: Java和Docker限制的那些事儿](http://www.techug.com/post/java-and-docker-memory-limits.html)`描述了一个天坑`
+
+> `Tips`
+
+1. docker run 时加上 `--cap-add=SYS_PTRACE` 解决 jmap -heap 1 时报错： Can't attach to the process: ptrace
 
 #### Jib
 > [参考: GOOGLE JIB](https://my.oschina.net/u/3666671/blog/1845065) | [Github:jib](https://github.com/GoogleContainerTools/jib)
