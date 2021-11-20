@@ -31,7 +31,7 @@ categories:
 - 习惯性规则:
     - 命名: `packageName.MessageName.proto`
 
-> protobuf 只是编解码的工具, 本身不支持读半包, 不能处理 粘包 拆包问题
+> protobuf 只是编解码的工具, 本身不支持处理TCP中读半包、粘包、拆包问题
 
 > [参考: Protobuf语言指南](http://www.cnblogs.com/dkblog/archive/2012/03/27/2419010.html) `较为详细, 只是版本有点旧`  
 > [参考: Protobuf3语言指南](https://blog.csdn.net/u011518120/article/details/54604615)  

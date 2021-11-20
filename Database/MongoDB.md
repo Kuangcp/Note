@@ -23,6 +23,8 @@ categories:
 
 > [release-notes](https://docs.mongodb.com/manual/release-notes/)
 
+> [参考: 数据存储设计](http://source.wiredtiger.com/10.0.0/tune_page_size_and_comp.html)`Mongo同样使用B+Tree`  
+
 ## 安装
 ### 服务端
 1. [Docker 安装](https://hub.docker.com/_/mongo/)
