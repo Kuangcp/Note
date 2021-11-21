@@ -186,10 +186,15 @@ TODO
         1. 根本没有连接上Redis, 配置有问题 端口 bind 什么的
         1. Redis 存放数据的 rdb 文件所在目录 没有存储空间了
         1. 没有内存空间了, 由于执行save操作时, 会进行fork子进程 然后进行持久化 TODO 验证
+1. `ERR 'EVAL' command keys must in same slot`
+    - 由于Lua脚本执行在Cluster模式下需要保证操作的key在相同的slot中。
+    - 解决方案 强制加入花括号 指定计算slot的部分，保证key会分配到相同的slot。例如：`{prefix}a` 和 `{prefix}b`
 
 ### big key
 - `redis-cli --bigkeys`
 - `memory usage key`
+
+### hot key
 
 ************************
 

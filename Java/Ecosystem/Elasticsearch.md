@@ -15,3 +15,5 @@ categories:
 
 > [参考: 用容器快速上手Elasticsearch](http://qinghua.github.io/elastic-search/)
 
+入门：构建出 RestHighLevelClient  使用 bulk search 接口 
+
