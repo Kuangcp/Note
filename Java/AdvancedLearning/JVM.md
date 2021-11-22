@@ -27,7 +27,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2021-05-17 00:27_|
+**目录 end**|_2021-11-22 22:56_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -170,7 +170,7 @@ NIO 会经常使用, 提高性能
     - 开启无需认证 非SSL的JMX端口: 9999
 - `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 打印类装载
 - `-Xloggc:/home/logs/gc.log`
-
+- `-Xmn` TODO  未设置时默认值的计算方式
 **********************
 
 # JVM不同实现

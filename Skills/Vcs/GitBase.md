@@ -74,7 +74,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2021-05-14 20:37_|
+**目录 end**|_2021-11-22 22:56_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -356,7 +356,7 @@ categories:
 ************************
 
 ### apply
-> 使用 diff 或者 stash 得到的 patch 文件
+> 将patch文件应用到 index区。  Apply a patch to files and/or to the index
 
 - `git apply --ignore-space-change --ignore-whitespace first.patch`
 - `patch -p1 < first.patch`
@@ -364,14 +364,19 @@ categories:
 ************************
 
 ### format-patch
-> Prepare patches for e-mail submission  
+> 将patch文件应用为commit。 Prepare patches for e-mail submission  
 > [参考: How To Create and Apply Git Patch Files](https://devconnected.com/how-to-create-and-apply-git-patch-files/)  
 
+> 创建 patch
 - `git format-patch -1 commit-sha` 指定commit 创建 patch
     - 参数选项可以为 `-2` `-3`... 数字表示 commit id 之前的 几个 commit 也创建 patch
 - `git format-patch master -o patches` 对那些 master分支 中有而当前分支没有的 commit 创建 patch 到 patches 目录
 
 - `git format-patch master  --stdout > total.patch` 将所有patch文件合并为一个 
+
+> 使用 patch
+
+使用[am](#am) 或者 [apply](#apply) 命令
 
 ************************
 
