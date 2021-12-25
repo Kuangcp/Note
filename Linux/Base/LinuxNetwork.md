@@ -607,15 +607,15 @@ _客户端_
 
 - 查看配置情况 ` iptables -L -n`
 
-- 开启端口 `iptables -A INPUT -p tcp --dport 8000 -j ACCEPT`
+- 开启/屏蔽 端口 `iptables -A INPUT -p tcp --dport 8000 -j ACCEPT`
     - -A 参数表示添加规则，此外-D表示删除规则
     - -p 表示协议，一般都是tcp
     - --dport 就是指定端口号
-    - -j 指定是ACCEPT还是DROP，接收还是抛弃
+    - -j 指定 ACCEPT/DROP，接收还是抛弃
 
-_有时候会发生这样的事情_
-1. 服务器的服务是正常启动的, 但是客户端连不上, 然后使用curl 去访问那个端口, 报错说 curl: (7) Failed to connect to xxxx port 8080: 没有到主机的路由
-2. 那么这时候就要检查防火墙了
+_问题场景_
+1. 服务器的端口服务是正常启动的, 但是客户端连不上；使用curl 去访问那个端口, 报错说 curl: (7) Failed to connect to xxxx port 8080: 没有到主机的路由
+1. curl 无响应
 
 ************************
 ## 远程桌面

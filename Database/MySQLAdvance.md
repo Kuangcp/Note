@@ -51,18 +51,18 @@ categories:
 10. ORDER BY：对虚拟表9中的数据进行指定列的排序，生成虚拟表10。
 11. LIMIT：取出指定行的记录，生成虚拟表11，返回给查询用户。
 
-> 全字段模糊查询
+> 多字段模糊查询
 1. `select * from target where concat(ifnull(host, ''), ifnull(username, '')) like '%localhost%' > 0 limit 0,1;`
-    - 将全字段(空的替换为空串)连接成一个字符再模糊查询, 
+    - 将多个字段(空的替换为空串)拼接成一个字符 或 提前拼接为一个新字段， 再模糊查询
 2. `select * from target where host like '%localhost%' or username like '%localhost%' limit 0,1;`
     - 这种查询虽然也能实现, 但是性能差一些
 
 ************************
 
 > 分页查询性能优化 [MySQL分页查询的性能优化](https://www.cnblogs.com/scotth/p/7995856.html)
-- 尽量使用索引优化扫描行数
+- 使用索引降低扫描总行数
 - 子查询法
-- 只读索引方法
+- 只查询索引内字段
 
 ************************
 1. 尽量少用select *

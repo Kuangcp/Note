@@ -170,7 +170,21 @@ categories:
 该书签用来告诉InnoDB存储引擎哪里可以找到与索引相对应的行数据。辅助索引的书签就是相应行数据的聚集索引键。  
 辅助索引的存在并不影响数据在聚集索引中的组织，因此每张表上可以有多个辅助索引。  
 
-当通过辅助索引来寻找数据时，InnoDB存储引擎会遍历辅助索引并通过叶级别的指针获得指向主键索引的主键，然后再通过主键索引来找到一个完整的行记录。
+当通过辅助索引来寻找数据时，InnoDB存储引擎会遍历辅助索引并通过叶节点级别的指针获得指向主键索引的`主键`，然后再通过`主键索引`来找到一个完整的行记录，而 MyISAM 没有这个特性。
+```sql
+-- MySQL 5.7 
+create table report_user_date(id bigint primary key auto_increment, user_id bigint,
+ name varchar(32), avatar varchar(32), phone varchar(16), a_c int , b_c int, d_c int , e_c int, crea datetime);
+
+alter table report_user_date add index idx_user(user_id,crea);
+
+-- 如果只查询索引字段（user_id 或 crea），还能利用上联合索引，即使查询条件没有最左列
+-- innodb 引擎时，由上述特性 查id 也能使用上联合索引，myisam 就不能了
+explain select id  from report_user_date where crea < '2021-12-26';
+
+-- 如果查询非索引字段，就用不上联合索引了; 字段越多，查询越慢
+select name  from report_user_date where crea < '2021-12-26';
+```
 
 非聚集索引的使用场合为 查询所获数据量较少时 或者 某字段中的数据的唯一性比较高时， 非聚集索引必须是稠密索引
 
@@ -208,6 +222,34 @@ categories:
 2. 宁缺勿滥。认为索引会消耗空间、严重拖慢更新和新增速度。
 3. 抵制唯一索引。认为业务的唯一性一律需要在应用层通过“先查后插”方式解决。
 
+## 索引优化场景
+### 统计报表
+> 如果使用MySQL存储 一定数据量的统计报表数据，使用 MyISAM 有更多优势, 没有事务，行锁等开销
+
+1. 构造测试数据
+```go
+    // 生成随机数据
+    insertOne := "insert into report_user_date( user_id, name, avatar, phone, a_c, b_c, d_c, e_c,crea) value (?,?,?,?,?,?,?,?,?);"
+	stmt, _ := db.Prepare(insertOne)
+	now := time.Now()
+	for i := 0; i < 100000; i++ {
+		stmt.Exec(i%2000, fmt.Sprint(i), fmt.Sprint(i), fmt.Sprint(i), i, i+1, i+2, i+3, now.Add(time.Second*time.Duration(i)))
+	}
+    // 多次复制自身数据 扩大数据量 
+    // insert into report_user_date( user_id, name, avatar, phone, a_c, b_c, d_c, e_c,crea) select user_id, name, avatar, phone, a_c, b_c, d_c, e_c,crea from report_user_date;
+```
+2. 对比查询效率
+```sql
+-- MySQL 5.7 340w数据
+
+select user_id, count(a_c )  from report_user_date where user_id between 100 and 700  group by user_id ;
+-- innodb 2700ms
+-- myisam 900ms
+
+select user_id, count(distinct a_c ),count(distinct b_c ) from report_user_date where user_id between 100 and 700 and crea < '2021-12-26 18:00:00' group by user_id ;
+-- innodb 2700ms
+-- myisam 1100ms
+```
 ************************
 
 # SQL查询时不使用索引的场景
