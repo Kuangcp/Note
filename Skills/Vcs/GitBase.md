@@ -394,7 +394,7 @@ categories:
 
 - 查看所有标签 `git tag` 
     - `-l 'v1.0.*'` 列出v1.0.*
-    - `git show tagname`　展示标签注释信息
+    - `git show tagname` 展示标签注释信息
 - 新建一个标签并打上注释 `git tag -a v1.0.0 -m "初始版本"` 
     - 由指定的commit打标签  `git tag -a v1.2.4 commit-id` 
 - 切换标签 `git checkout tagname` 和切换分支一样的，但是标签只是一个镜像，不能做提交

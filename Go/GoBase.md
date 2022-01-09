@@ -85,7 +85,7 @@ export GOSUMDB=sum.golang.google.cn
 | go mod verify | 验证依赖是否正确
 | go mod why    | 查找依赖
 
-> go get 
+## go get 
 
 | | |
 |:----|:----|
@@ -96,6 +96,16 @@ export GOSUMDB=sum.golang.google.cn
 | go get github.com/smartwalle/alipay/v3 | 拉取v3版本 `设计最坑`
 | go get -u                              | 更新 mod
 | go list -m -versions golang.org/x/text | 列出可安装版本
+
+## 单个Git仓库发布多个包
+- go mod init github.com/username/repo-name/{path}
+- git tag -a {path}/v1.0.0
+
+例如 
+```sh
+    go mod init github.com/username/repo-name/pkg/app/util
+    git tag -a pkg/app/util/v1.0.0
+```
 
 ************************
 
