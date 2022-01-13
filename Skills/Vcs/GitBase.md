@@ -322,6 +322,11 @@ categories:
 1. git log fileName 或者 git log --pretty=oneline fileName 更容易看到 sha-1 值
 1. git show sha-1的值 就能看到该次提交的所有修改
 
+#### 全局搜索修改内容
+> 如果忘记了修改的分支名，仅记得修改部分的关键字
+
+git log --oneline -S "search keyword" --source --all
+
 ************************
 
 ### blame
@@ -798,6 +803,13 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 
 - `git pull origin dev` 下拉指定远程的指定分支
 - `git pull --all` 下拉默认远程的所有分支代码并自动合并
+
+- 拉取项目所有远程分支到本地
+```sh
+git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+git fetch --all
+git pull --all
+```
 
 ************************
 
