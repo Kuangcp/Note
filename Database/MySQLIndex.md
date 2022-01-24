@@ -8,6 +8,7 @@ categories:
 **目录 start**
 
 1. [索引](#索引)
+    1. [Explain](#explain)
     1. [为何选择 B+ 树结构](#为何选择-b+-树结构)
     1. [基本SQL用法](#基本sql用法)
 1. [索引的类型](#索引的类型)
@@ -19,9 +20,11 @@ categories:
     1. [Hash 索引](#hash-索引)
     1. [倒排索引](#倒排索引)
 1. [需要使用索引的场景](#需要使用索引的场景)
-1. [SQL执行时不走索引的场景](#sql执行时不走索引的场景)
+    1. [索引优化场景](#索引优化场景)
+        1. [统计报表](#统计报表)
+1. [SQL查询时不使用索引的场景](#sql查询时不使用索引的场景)
 
-**目录 end**|_2021-07-05 00:14_|
+**目录 end**|_2022-01-25 01:55_|
 ****************************************
 
 # 索引
@@ -45,6 +48,8 @@ categories:
 - 对长度大于50的 varchar 字段建立索引时，按需求恰当的使用前缀索引，或使用其他方法(例如增加int类型列col_crc32，然后对col_crc32建立索引)
 - 合理创建联合索引(避免冗余)，区分度最高的在`最左边`，单个索引的字段数`不超过5个`
 - 单张表的索引数量控制在5个以内，若单张表多个字段在查询需求上都要单独用到索引，需要经过DBA评估。查询性能问题无法解决的，应从产品设计上进行重构
+
+## Explain
 - 使用 explain 判断SQL语句是否合理使用索引
     1. id：数字越大越先执行，一样大则从上往下执行，如果为NULL则表示是结果集，不需要用来查询。
     2. select_type：
@@ -105,6 +110,8 @@ categories:
 - 叶子节点上存放的数据：
     - 如果是聚簇索引，则保存的是实际数据
     - 如果是非聚簇索引，则依然是和中间节点一样的索引节点，但是会有一个指针指向对应的数据块
+
+相较于平衡二叉树，由于单节点具有多叉，数据节点发生变化时，调整成本低
 
 ## 基本SQL用法
 1. **创建**
@@ -226,6 +233,23 @@ select name  from report_user_date where crea < '2021-12-26';
 ### 统计报表
 > 如果使用MySQL存储 一定数据量的统计报表数据，使用 MyISAM 有更多优势, 没有事务，行锁等开销
 
+```sql
+    CREATE TABLE `report_user_date` (
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `user_id` bigint(20) DEFAULT NULL,
+    `name` varchar(32) DEFAULT NULL,
+    `avatar` varchar(32) DEFAULT NULL,
+    `phone` varchar(16) DEFAULT NULL,
+    `a_c` int(11) DEFAULT NULL,
+    `b_c` int(11) DEFAULT NULL,
+    `d_c` int(11) DEFAULT NULL,
+    `e_c` int(11) DEFAULT NULL,
+    `crea` datetime DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    KEY `idx_user` (`user_id`,`crea`)
+    )
+```
+
 1. 构造测试数据
 ```go
     // 生成随机数据
@@ -249,6 +273,10 @@ select user_id, count(a_c )  from report_user_date where user_id between 100 and
 select user_id, count(distinct a_c ),count(distinct b_c ) from report_user_date where user_id between 100 and 700 and crea < '2021-12-26 18:00:00' group by user_id ;
 -- innodb 2700ms
 -- myisam 1100ms
+
+select user_id from report_user_date where crea < '2021-12-26';
+-- 如果只查询索引字段，还能利用上联合索引，即使查询条件没有最左列字段， 如果查询非索引字段，就用不上联合索引了，字段越多，查询越慢
+-- 如果查询的是id 主键字段：innodb 会使用上索引，myisam 就不能了
 ```
 ************************
 

@@ -19,12 +19,14 @@ categories:
         1. [事务死锁](#事务死锁)
     1. [性能调优](#性能调优)
         1. [查看状态变量](#查看状态变量)
+        1. [统计数据库各表存储和索引大小](#统计数据库各表存储和索引大小)
     1. [存储引擎](#存储引擎)
         1. [InnoDB](#innodb)
+        1. [MyIsAM](#myisam)
 1. [Tips](#tips)
     1. [SQL 片段](#sql-片段)
 
-**目录 end**|_2021-07-05 00:14_|
+**目录 end**|_2022-01-25 01:55_|
 ****************************************
 # MySQL进阶
 
@@ -149,9 +151,23 @@ InnoDB通过加间隙锁来防止幻读
 - 查看最大连接数 `show variables like "max_conn%";`
     - 设置最大连接数 `set global max_connections=5000;`
 
+### 统计数据库各表存储和索引大小
+```sql
+    select  table_schema as 'DB',
+    table_name as 'TABLE',
+    table_rows as 'TOTAL',
+    truncate(data_length/1024/1024, 2) as 'Data MiB',
+    truncate(index_length/1024/1024, 2) as 'Index MiB'
+    from information_schema.tables
+    where table_schema='test-db'
+    order by data_length desc, index_length desc;
+```
+
 ## 存储引擎
 ### InnoDB
 行溢出
+
+### MyIsAM
 
 *****************************
 

@@ -52,7 +52,6 @@ categories:
     1. [主键约束的修改](#主键约束的修改)
     1. [修改表名](#修改表名)
     1. [定界符](#定界符)
-    1. [统计数据库各表大小](#统计数据库各表大小)
     1. [关于时间](#关于时间)
         1. [常用函数](#常用函数)
         1. [获取当前时间与n个月之间的天数](#获取当前时间与n个月之间的天数)
@@ -67,7 +66,7 @@ categories:
     1. [修改](#修改)
         1. [授权](#授权)
 
-**目录 end**|_2021-05-27 21:59_|
+**目录 end**|_2022-01-25 01:55_|
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -315,17 +314,6 @@ rename table table1 to table2; 	切记不可随便修改表名，改了就要修
 ## 定界符
 delimiter 任意字符除了转义字符：\
 
-## 统计数据库各表大小
-```sql
-    select  table_schema as 'DB',
-    table_name as 'TABLE',
-    table_rows as 'TOTAL',
-    truncate(data_length/1024/1024, 2) as 'Data MiB',
-    truncate(index_length/1024/1024, 2) as 'Index MiB'
-    from information_schema.tables
-    where table_schema='test-db'
-    order by data_length desc, index_length desc;
-```
 ************************
 
 ## 关于时间 
