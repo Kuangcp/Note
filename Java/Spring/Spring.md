@@ -262,6 +262,9 @@ _其他,可选_
     }
 ```
 
+### 循环依赖
+- [Spring循环依赖](https://cloud.tencent.com/developer/article/1769948) 
+
 *****************
 ## Scheduling
 > [Official Doc](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/integration.html#scheduling)
@@ -301,5 +304,5 @@ _其他,可选_
 # Tips
 - 不要对有 @Configuration 注解的配置类进行 Field 级的依赖注入 否则容易引发循环依赖 [Spring循环依赖问题分析](https://blog.mythsman.com/post/5d838c7c2db8a452e9b7082c/)
 
-如果有两个maven模块， A依赖B 假如 A和B中有相同 package 的同名类 a b，此时A模块是启动模块，配置了注解扫描
-此时是a还是b注册到IOC容器内
+如果有两个maven模块， A依赖B 假如 A和B中有相同 package 的同名类 a b，此时A模块是main入口模块，配置了对应package注解扫描
+- [ ] 此时会是a还是b，将注册到IOC容器内

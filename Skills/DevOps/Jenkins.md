@@ -98,7 +98,7 @@ pipeline {
         stage('package') {
                 steps {
                 echo "start to build"
-                checkout changelog: false, poll: false, scm: [$class: 'SubversionSCM', additionalCredentials: [], excludedCommitMessages: '', excludedRegions: '', excludedRevprop: '', excludedUsers: '', filterChangelog: false, ignoreDirPropChanges: false, includedRegions: '', locations: [[cancelProcessOnExternalsFail: true, credentialsId: '22f6f4c9-f19e-4120-af4b-7946ea7cc2ef', depthOption: 'infinity', ignoreExternalsOption: true, local: '.', remote: 'http://192.168.10.200/svn/hecheng/dev/server/trunk']], quietOperation: true, workspaceUpdater: [$class: 'UpdateUpdater']]
+                checkout changelog: false, poll: false, scm: [$class: 'SubversionSCM', additionalCredentials: [], excludedCommitMessages: '', excludedRegions: '', excludedRevprop: '', excludedUsers: '', filterChangelog: false, ignoreDirPropChanges: false, includedRegions: '', locations: [[cancelProcessOnExternalsFail: true, credentialsId: '22f6f4c9-f19', depthOption: 'infinity', ignoreExternalsOption: true, local: '.', remote: 'http://xxxx/svn/project-name/dev/server/trunk']], quietOperation: true, workspaceUpdater: [$class: 'UpdateUpdater']]
                  sh "mvn -B -V -U clean package -DskipTest=true"
                 }
         }
@@ -115,8 +115,8 @@ pipeline {
                 /* This builds the actual image; synonymous to
                 * docker build on the command line */
                 sh "pwd && ls . && docker info"
-                withDockerRegistry(url: 'http://192.168.10.6:5000/') {
-                    def app = docker.build "192.168.10.6:5000/synthesizer-dev:${env.BUILD_ID}"
+                withDockerRegistry(url: 'http://xxx:5000/') {
+                    def app = docker.build "xxx:5000/project-dev:${env.BUILD_ID}"
                     app.push()
                     echo "pushed into local registry"
                     }
@@ -127,7 +127,7 @@ pipeline {
             steps {
                 echo 'killing old server and start new server....'
                 script {
-                    sh "docker container rm -f synthesizer-dev  &&  docker run -d -p 3070:3070 -p 16888:16888 --name synthesizer-dev 192.168.10.6:5000/synthesizer-dev:${env.BUILD_ID}"
+                    sh "docker container rm -f project-dev  &&  docker run -d -p 3070:3070 -p 16888:16888 --name project-dev xxx:5000/project-dev:${env.BUILD_ID}"
                 }
             }
         }
@@ -148,56 +148,4 @@ slave 配置
     /home/ai/rs/jenkins-slave/m2:/home/jenkins/.m2
     /var/run/docker.sock:/var/run/docker.sock
     /usr/bin/docker:/usr/bin/docker
-```
-### 个人经验
-> 从Gitlab私有库(Maven SpringBooot项目)建好一个任务, 并构建好镜像和容器, 更新容器
-> 做法是在运行Docker的服务器上建立一个目录专门用来更新该项目, 然后在Jenkins构建完成后将 jar 包传过去, 执行该目录下的脚本完成容器和镜像的更迭
-
-1. 复制项目URL, Credentials 中添加一个 username/password 类型的授权即可(就是gitlab上的用户名密码)
-    - 可以选择指定的 分支 进行构建
-1. 添加一个构建, 选择Maven的版本, Goal 中添加 命令 clean package 
-1. 在Build 这里添加一个Post-build step 这里 选择添加一个 Shell, 写入要执行的脚本即可
-```sh
-echo "...构建完成, 开始建立镜像..."
-jarFile=$WORKSPACE/target/app.jar
-if [ -f $jarFile ];then
-	scp $WORKSPACE/target/app.jar xx@xxx:/home/xxx/
-    ssh xx@xxx "cd /home/xx/ && sh deploy.sh dev"
-fi
-```
-
-`deploy.sh`
-```sh
-version=`date +%Y-%m-%d-%H-%M`
-num=`docker ps | grep app | wc -l`
-if [ $num = 1 ];then
-    docker logs app >> /home/ai/xx/log/$version.log
-    docker rm -f app
-fi
-if [ "$1" = "dev" ];then
-    docker build -t app:$version -f /home/xx/build-dev.dockerfile .
-else
-    docker build -t app:$version -f /home/xx/build-prod.dockerfile . 
-fi
-echo "版本:"$version"镜像构建完成"
-docker run --name app -d -p 16888:16888 -p 3070:3070 app:$version
-echo "容器启动成功"
-```
-
-`build-dev.dockerfile`
-```dockerfile
-FROM frolvlad/alpine-oraclejdk8:slim
-COPY . .
-EXPOSE 16888
-EXPOSE 3070
-CMD ["java", "-jar", "app.jar", "--spring.profiles.active=jenkins"]
-```
-
-`build-prod.dockerfile`
-```dockerfile
-FROM frolvlad/alpine-oraclejdk8:slim
-COPY upload/* .
-EXPOSE 16888
-EXPOSE 3070
-CMD ["java", "-jar", "app.jar", "--spring.profiles.active=production", ">>/var/log/game.log"]
 ```

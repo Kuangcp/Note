@@ -42,7 +42,7 @@ categories:
 ## Drone 
 > [官网](https://drone.io/)
 
-一个原生支持 docker 的 CI
+go语言实现，一个原生支持 docker 的 CI
 
 > [参考: Drone 一个原生支持 docker 的 CI](https://aisensiy.github.io/2017/08/04/drone-best-ci/)  
 > [参考: Drone CI + GitLab持续集成的基础设施搭建](https://zmcdbp.com/drone-ci-gitlab-base-build/) | [参考: Drone CI的持续集成的基本使用](https://zmcdbp.com/drone-ci-basic-use/)
@@ -81,11 +81,13 @@ categories:
             sonar.host.url=http://localhost:9000
             sonar.sourceEncoding=UTF-8
             sonar.login=admin
-            sonar.password=admin```
+            sonar.password=admin
+            ```
     1. 配置项目根路径 `sonar-project.properties`
         - ```ini
             sonar.projectKey=com.github.kuangcp.gobase
-            sonar.projectName=GoBase```
+            sonar.projectName=GoBase
+            ```
 
 > [参考: 有赞 GO 项目单测、集成、增量覆盖率统计与分析](https://cloud.tencent.com/developer/article/1684515)  
 > [支持 Go](https://docs.sonarqube.org/latest/analysis/languages/go/)

@@ -332,6 +332,8 @@ CMS自己会进入full GC的情况就是它的并发收集模式跟不上应用�
     - 查看字符串去重统计信息 `-XX:+PrintStringDeduplicationStatistics` `-XX:+PrintStringTableStatistics`
     - 达到该年龄的String对象被认为是去重的候选对象 `-XX:StringDeDuplicationAgeThreshold`
 
+> JDK1.8 FullGC是单线程的 JDK10 开始支持并行
+
 ************************
 
 ## ZGC

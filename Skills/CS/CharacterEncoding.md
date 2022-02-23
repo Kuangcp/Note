@@ -73,9 +73,13 @@ Unicode 是一个囊括了世界上所有字符的字符集，其中每一个字
 
 |  |  |
 |:----|:----|
-| 零宽间隔         | `U+200B` |
-| NO-BREAK SPACE  | `U+00A0` |
-| 零宽不折行空格    | `U+FEFF` html: `&#65279;` |
+| 零宽间隔  zero-width space          | `U+200B` |
+| NO-BREAK SPACE                     | `U+C2A0` |
+| 零宽不折行空格                       | `U+FEFF` html: `&#65279;` |
+| 零宽度连字符 (zero-width joiner)     |  \u200D|
+| 零宽度断字符 (zero-width non-joiner) | \u200C |
+| 左至右符 (left-to-right mark)       | \u200E |
+| 右至左符 (right-to-left mark)       | \u200F |
 
 ************************
 
