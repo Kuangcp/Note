@@ -445,10 +445,19 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 > [根据CPU核心数确定线程池并发线程数](https://www.cnblogs.com/dennyzhangdd/p/6909771.html)  
 > [如何设置线程池参数？](https://www.cnblogs.com/thisiswhy/p/12690630.html)
 
-- Nthreads=Ncpu*Ucpu*(1+w/c)，其中
-    - Ncpu=CPU核心数
-    - Ucpu=cpu使用率，0~1
-    - W/C=等待时间与计算时间的比率
+[线程池实时管理与监控工具的实现与思考](https://www.jianshu.com/p/6f6e2bcb8128)
+
+公式1：Nthreads = Ncpu * Ucpu * W/C
+
+其中：
+Ncpu = cpu的核心数 ，Ucpu = cpu的利用率
+W = 线程等待时间，C = 线程计算时间
+
+此方案偏理论化，cpu的实际利用率（即分配多少cpu给线程池使用）和线程的计算，等待时间非常难评估，并且最后计算出来的结果也很容易偏离实际应用场景。
+公式2：coreSize = 2 * Ncpu , maxSize = 25 * Ncpu
+
+实际使用过程中不同的业务对线程池的需求不一样，所以统一采用cpu核心数来配置显然不太合理
+公式3：coreSize = tps * time , maxSize = tps * time * (1.7~2)
 
 ### ScheduledThreadPoolExecutor
 > ScheduledThreadPoolExecutor  简称 STPE 线程池类中很重要的类

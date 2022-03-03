@@ -286,6 +286,8 @@ A/B测试其实也是谷歌管理方法论，具体文章请参考：
 
 ![p276.jpg](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p276.jpg)
 
+[辩证看待QA人员和Unittest](https://mp.weixin.qq.com/s/EFMhFazZGVAoKkfwegm_TQ)
+
 `TDD带来的好处`
 - 更清晰的代码 只写需要的代码
 - 更好的设计  有些开发人员管TDD叫测试驱动的设计
