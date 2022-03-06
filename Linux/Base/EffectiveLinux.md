@@ -91,6 +91,30 @@ categories:
 **synergy**
 > 多系统间共享键鼠
 
+**scrpy**
+
+[scrcpy](https://github.com/Genymobile/scrcpy)
+- [操作流程](http://blog.lujun9972.win/blog/2019/03/20/%E4%BD%BF%E7%94%A8scrcpy%E6%8E%A7%E5%88%B6%E4%BD%A0%E7%9A%84%E6%89%8B%E6%9C%BA/)
+
+> USB 连接方式
+推荐使用USB连接，这样操作起来比较流畅。手机通过USB连接到PC上,在弹出的USB用途中选择 传输文件(MTP)
+
+> WIFI 方式连接
+- 确保PC和手机在同一Wifi中
+- 手机先通过USB与PC相连
+- 在PC上运行 `adb tcpip 端口`, 令手机开启端口
+- 断开手机和PC的USB连接
+- 在PC上运行 `adb connect 手机IP:端口`
+- 运行scrcpy
+
+> 使用技巧
+- 鼠标左键: 模拟点击
+- 鼠标右键/Ctrl+b: 返回上一页
+- Ctrl+s: 切换app
+- 手机录屏: scrcpy --record file.mp4
+- 帮助信息: scrcpy --help
+- 远程成功并关闭设备屏幕: scrcpy --turn-screen-off
+
 ### 目录跳转
 **`Autojump`**
 > 统计cd 目录，方便目录跳转  *shrc 中要有 : `. /usr/share/autojump/autojump.sh`  

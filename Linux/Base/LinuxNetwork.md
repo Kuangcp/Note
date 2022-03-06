@@ -89,6 +89,7 @@ categories:
 
 - `whois`
     - 查询域名详细信息
+- `nali` [Github](https://github.com/zu1k/nali)
 
 ***************************
 

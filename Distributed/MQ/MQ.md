@@ -18,8 +18,9 @@ categories:
     1. [Kafka](#kafka)
     1. [RabbitMQ](#rabbitmq)
     1. [Pulsar](#pulsar)
+    1. [nsq](#nsq)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2022-01-25 01:55_|
 ****************************************
 # MQ
 
@@ -54,3 +55,5 @@ categories:
 > [参考: 我为什么要选择RabbitMQ ](https://www.sojson.com/blog/48.html)
 
 ## Pulsar
+
+## nsq
