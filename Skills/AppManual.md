@@ -67,6 +67,7 @@ categories:
 > [参考: Termux：让Android手机摇身一变成为高级Linux终端](https://www.asmodeus.cn/archives/769)
 
 - 开启ssh服务 pkg install openssh 对应端口默认 8022
+- 执行 termux-setup-storage 命令，建立常用目录软链接
 
 > iOS 相关
 

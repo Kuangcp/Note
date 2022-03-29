@@ -121,6 +121,9 @@ _复杂类型_
 
 >- 使用上, 因为有多个消息类型, 那么会采用一个数值id作为code, 进行对应 方便沟通
 
+### Protobuf3
+[why remove required and optional](https://stackoverflow.com/questions/31801257/why-required-and-optional-is-removed-in-protocol-buffers-3)
+
 ************************
 
 ## Linux上安装Protobuf
@@ -138,6 +141,12 @@ _复杂类型_
 >- 如果不加, 上述参数就要执行 `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib`  
 >- 当然,可以将这个环境变量的设置加在 .zshrc 或者 .bashrc 里  
 >- 不然就会报错: `protoc: error while loading shared libraries: libprotobuf.so.8: cannot open shared object file: No such file or directory`
+
+************************
+
+## Java中的使用
+
+
 
 ************************
 

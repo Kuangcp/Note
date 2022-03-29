@@ -61,6 +61,12 @@ _服务端_
 - 查看对否启动sshd`ps -e |grep ssh`
 - 关闭服务 `/etc/init.d/ssh stop`
 
+当新增用户testA并开启ssh登录时
+
+- /etc/ssh/sshd_config  新增 AllowUsers testA
+- chmod 700 /home/testA/.ssh 
+- chmod 600 /home/testA/.ssh/authorized_keys
+
 ## 建立连接
 ### 复制粘贴建立密钥对
 _客户端_

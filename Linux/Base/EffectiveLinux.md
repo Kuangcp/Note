@@ -92,6 +92,7 @@ categories:
 > 多系统间共享键鼠
 
 **scrpy**
+> PC远程操作安卓
 
 [scrcpy](https://github.com/Genymobile/scrcpy)
 - [操作流程](http://blog.lujun9972.win/blog/2019/03/20/%E4%BD%BF%E7%94%A8scrcpy%E6%8E%A7%E5%88%B6%E4%BD%A0%E7%9A%84%E6%89%8B%E6%9C%BA/)
