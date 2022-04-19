@@ -179,6 +179,8 @@ func functionName (param int) int {
 
 一个函数中可以定义多个 defer 语句, 执行的顺序是按定义次序的逆序, 也就是栈的概念
 
+常见需要回收的是http请求 `defer http.Response.Body.Close()` 如果不Close会同时影响客户端和服务端资源泄漏
+
 *************************
 
 ## 接口

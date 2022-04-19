@@ -225,6 +225,8 @@ Supervisor 进程监控管理
 
 ## 检测工具
 ### 硬盘
+duf 
+
 #### smartmontools
 
 - 检测健康状况 `smartctl -Hc /dev/sda9`
