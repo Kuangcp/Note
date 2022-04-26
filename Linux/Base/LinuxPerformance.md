@@ -62,6 +62,7 @@ categories:
 
 - top
 - [Github: htop](https://github.com/hishamhm/htop)`Htop更好用`
+- ctop 
 - [Glances](https://github.com/nicolargo/glances) `信息全面 资源消耗大些`
 - nmon
 

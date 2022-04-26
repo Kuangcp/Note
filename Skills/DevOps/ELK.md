@@ -17,6 +17,9 @@ categories:
 
 > [5 Good Reasons to Use a Log Server ](https://reflectoring.io/log-server/)
 
+- 整体架构为Logstash采集日志输出文件，制定解析格式，存入ES，Kibana用于展示
+- 此时可以优化日志输出，区分不同的字段（时间，线程，方法），方便解析为不同字段，索引优化
+
 ************************
 
 ## ElasticSearch

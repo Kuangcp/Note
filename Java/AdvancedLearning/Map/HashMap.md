@@ -27,6 +27,8 @@ categories:
 # HashMap 
 > [API: HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)
 
+> [参考: Java 8系列之重新认识HashMap](https://tech.meituan.com/2016/06/24/java-hashmap.html)  
+
 > [参考: 死磕 java集合之HashMap源码分析](https://juejin.im/post/5cb163bee51d456e46603dfe#heading-17)  
 > [Java HashMap工作原理及实现 ](http://yikun.github.io/2015/04/01/Java-HashMap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/)  
 > [HashMap 怎么 hash？又如何 map？](https://my.oschina.net/editorial-story/blog/2396106)  
@@ -80,7 +82,7 @@ HashMap的数据结构是 数组(称为bucket)加单链表 (数组是只放一�
 1. 移动元素
     1. `if` 该下标只有一个节点, 就rehash下直接放过去 `newTab[e.hash & (newCap - 1)] = e;`
     1. `if` 该下标上是一个树节点 则打散成两棵树 `((TreeNode<K, V>) e).split(this, newTab, j, oldCap);`
-    1. `else` 也就是说这是一个长链表 原链表分化成两个链表，低位链表存储在原来桶的位置，高位链表搬移到原来桶的位置加旧容量的位置；
+    1. `else` 也就是说将原链表分化成两个链表，低位链表存储在原来桶的位置，高位链表搬移到原来位置加旧容量偏移的位置上去；
         - 例如桶的原大小4 , 节点的hash 3、7、11、15 `index = ((4-1) & hash)`
         - 扩容一次 3和11保持不变(因为`hash&oldCap == 0`)， 而 7和15要搬移到`(4-1) & hash + oldCap`中去 
 
