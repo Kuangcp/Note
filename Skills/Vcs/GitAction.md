@@ -62,7 +62,7 @@ categories:
     - sudo find /usr/local -depth -iname 'git*' -exec rm -rf {} \;
 
 ### windows
-- [git-for-windows](https://npm.taobao.org/mirrors/git-for-windows/)
+- [git-for-windows 淘宝镜像源](https://npm.taobao.org/mirrors/git-for-windows/)
 
 ### GUI Client
 > [官方列表](https://git-scm.com/downloads/guis)

@@ -651,6 +651,9 @@ B 中有 http.js，D 中有 http.js 和 main.js，E’中什么都没有。根�
 - `git config --global mergetool.kdiff3.trustExitCode true`
 - `git config --global mergetool.keepBackup false`
 
+> [merge 策略](https://git-scm.com/docs/merge-strategies)
+
+2.34 新增 ort 策略
 
 ************************
 
