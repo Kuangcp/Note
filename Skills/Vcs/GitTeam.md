@@ -41,6 +41,8 @@ categories:
 > 个人和个人开发者之间是并行master，只适合偶尔开发提交一些代码  
 > 组织就是适合给多个人，等同的稳定开发时，分支就会比较明确，这个笔记就是记录组织中git的使用
 
+- 《Git团队协作》
+
 ## 基础思想
 ### Git Flow
 > [Vincent Driessen 提出了 A Successful Git Branching Model](http://nvie.com/posts/a-successful-git-branching-model/)

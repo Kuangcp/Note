@@ -411,6 +411,50 @@ export LANG="zh_CN.UTF-8"
 > [处理Apache日志的Bash脚本](http://www.ruanyifeng.com/blog/2012/01/a_bash_script_of_apache_log_analysis.html)
 
 ************************
+# 文件共享
+## Samba 
+> [参考: ](https://www.jianshu.com/p/b0fcf29a857a)  
+
+
+### 搭建匿名Samba服务器
+
+1. /etc/samba/smb.conf
+    ```ini
+        [global]
+        workgroup = WORKGROUP       
+        #所要加入的工作组或者域
+        netbios name = Manjaro      
+        #用于在 Windows 网上邻居上显示的主机名
+        security = user             
+        #定义安全级别
+        map to guest = bad user     
+        #将所有samba系统主机所不能正确识别的用户都映射成guest用户
+        dns proxy = no              
+        #是否开启dns代理服务
+
+        [share]                    
+        #共享显示的目录名 注意每级目录samba用户都要有权限 最简单就放最高层级的目录上
+        path = /share
+        #实际共享路径
+        browsable = yes             
+        #共享的目录是否让所有人可见
+        writable = yes              
+        #是否可写
+        guest ok = yes              
+        #是否允许匿名(guest)访问,等同于public
+        create mask = 0777          
+        #客户端上传文件的默认权限
+        directory mask = 0777       
+        #客户端创建目录的默认权限
+        #注意共享文件在系统本地的权限不能低于以上设置的共享权限。
+    ```
+1. smbpasswd -a share #共享显示的目录名
+1. pdbedit -L 查看所有Samba用户
+1. chmod 777 -R /share
+1. systemctl restart smb nmb
+1. 测试可用性 smbclient //192.168.0.10/share
+
+************************
 
 # Tips
 - 清空文件内容 `true > a.txt ` 
