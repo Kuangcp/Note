@@ -27,6 +27,7 @@ categories:
         1. [log](#log)
             1. [对比两个分支的差异](#对比两个分支的差异)
             1. [查看文件的修改记录](#查看文件的修改记录)
+            1. [全局搜索修改内容](#全局搜索修改内容)
         1. [blame](#blame)
         1. [diff](#diff)
             1. [diff 创建 patch](#diff-创建-patch)
@@ -74,7 +75,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2021-11-22 22:56_|
+**目录 end**|_2022-05-17 22:56_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -694,8 +695,7 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 
 - `git cherry-pick <commit-id>`
 
-简单来讲, 就是将指定的某个提交(任意分支上的)上的修改, 重放到当前分支上  
-和 stash pop 命令相比, 在重放上是一致的
+简单来讲, 就是将指定的某个提交(任意分支上的)上的修改, 重放到当前分支上 和 stash pop 命令相比, 在重放上是一致的， 使修改内容生效，commitId会变化
 
 > 用途
 1. 可用于合并已有的若干个提交, 为了改动最小, 一般新建分支来做这件事

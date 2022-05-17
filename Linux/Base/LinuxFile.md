@@ -56,6 +56,10 @@ categories:
 1. [日志](#日志)
     1. [Systemd](#systemd)
     1. [应用日志](#应用日志)
+1. [文件共享](#文件共享)
+    1. [Samba](#samba)
+        1. [搭建匿名Samba服务器](#搭建匿名samba服务器)
+    1. [WebDAV](#webdav)
 1. [Tips](#tips)
     1. [设置交换内存文件](#设置交换内存文件)
         1. [清空交换内存](#清空交换内存)
@@ -64,7 +68,7 @@ categories:
         1. [善用alias](#善用alias)
     1. [desktop文件](#desktop文件)
 
-**目录 end**|_2021-02-03 17:25_|
+**目录 end**|_2022-05-17 22:56_|
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -453,6 +457,13 @@ export LANG="zh_CN.UTF-8"
 1. chmod 777 -R /share
 1. systemctl restart smb nmb
 1. 测试可用性 smbclient //192.168.0.10/share
+
+## WebDAV
+- [Wiki](https://en.wikipedia.org/wiki/WebDAV)
+
+Windows 客户端 RaiDrive
+
+- [go开发WebDAV服务端](https://pkg.go.dev/golang.org/x/net/webdav)
 
 ************************
 

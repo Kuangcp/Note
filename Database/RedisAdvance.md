@@ -30,6 +30,7 @@ categories:
     1. [数据迁移](#数据迁移)
     1. [错误分析](#错误分析)
         1. [big key](#big-key)
+        1. [hot key](#hot-key)
 1. [应用](#应用)
     1. [分布式锁](#分布式锁)
 1. [Tip](#tip)
@@ -41,7 +42,7 @@ categories:
     1. [Cluster 集群](#cluster-集群)
 1. [Redis 持久化](#redis-持久化)
 
-**目录 end**|_2021-03-16 18:28_|
+**目录 end**|_2022-05-17 22:56_|
 ****************************************
 # Redis底层数据结构
 ## SDS
@@ -284,7 +285,7 @@ Redis Sentinel的节点数量 推荐 2n+1（n>=1）的奇数个。[为什么redi
 ************************
 
 ## Cluster 集群
-> [cluster-tutorial](https://redis.io/topics/cluster-tutorial)
+> [cluster-tutorial](https://redis.io/docs/manual/scaling/)
 
 Redis Cluster是社区版推出的Redis分布式集群解决方案，主要解决Redis分布式方面的需求，比如，当遇到单机内存，并发和流量等瓶颈的时候，Redis Cluster能起到很好的负载均衡的目的。  
 Redis Cluster集群节点最小配置6个节点以上（3主3从），其中主节点提供读写操作，从节点作为备用节点，不提供请求，只作为故障转移使用。  
