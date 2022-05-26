@@ -81,6 +81,8 @@ categories:
     - +nocmd+nocomment+nostat 输出最核心内容
     - -p 
 
+`dog` 类似dig
+
 - `drill`
     - [doc](https://linux.die.net/man/1/drill)
 

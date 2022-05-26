@@ -100,6 +100,8 @@ categories:
     - 递归当前文件夹下所有 log 找到 ERROR日志 `find -name "*.log" | xargs grep ERROR`
 1. 查找文件内容 `find etc/  |xargs grep -i java`
 
+### fzf
+
 ### locate
 > 预先建立数据库，依此查询 速度较快，但是有时效问题
 
@@ -162,6 +164,9 @@ cat re.log | awk '{print $2}' | xargs -I {} grep  {} b.log  > fin.log
 le fin.log | awk '{print $2}' | xargs -I {} mv {} ../
 le fin.log | grep -v VID | awk '{print $2}' | xargs rm -f
 
+> 改进版
+- exa
+
 ### wc
 - `wc [-lmw] ` 参数说明： -l :多少行-m:多少字符 -w:多少字
 - cat mul.sh | wc -l
@@ -172,8 +177,9 @@ le fin.log | grep -v VID | awk '{print $2}' | xargs rm -f
 
 带行号输出 `cat -n file` 或者 `nl file`但是空行不会编号, 除非这样: `nl -b a file`
 
-### nl
-- [参考: 每天一个linux命令(11)：nl命令](http://www.cnblogs.com/peida/archive/2012/11/01/2749048.html#/)
+> 改进版
+- bat 
+- nl [参考: 每天一个linux命令(11)：nl命令](http://www.cnblogs.com/peida/archive/2012/11/01/2749048.html#/)
 
 ### less
 - 该命令的导航是和Vi体系一样的, 建议打开大文件使用less或者more 如果用vim,文件全加载到内存了  
@@ -383,6 +389,10 @@ export LANG="zh_CN.UTF-8"
 - -a 所有文件系统
 - -l 只显示本地文件系统
 
+> 改进版
+- duf 现代化 du
+- pydf
+
 ### du
 - `du -sh 目录` 查看磁盘占用总大小 h 自动搭配单位（human read ）
 - `du --max-depth` 一级子目录使用情况
@@ -393,6 +403,8 @@ export LANG="zh_CN.UTF-8"
     - -hsx – （-h）更易读的格式，（-s）汇总输出，（-x）跳过其他文件系统的文件
     - sort – 对文本文件按行排序 （-r）将比较的结果逆序输出，（-f）忽略大小写 -h 可读
     - head – 输出文件的前几行
+
+> 改进版
 - [ncdu](https://dev.yorhel.nl/ncdu)
 
 ************************

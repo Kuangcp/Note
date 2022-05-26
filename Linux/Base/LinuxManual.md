@@ -21,3 +21,6 @@ troff
 man 
 
 > [pls](https://github.com/chenjiandongx/pls) `go 实现 终端man中文手册`
+
+- tldr
+    - `Too Long, Don't Read`

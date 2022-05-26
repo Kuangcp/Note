@@ -141,6 +141,8 @@ iftop
 
 - nethogs `流量监控`
 - slurm 网卡带宽监控
+- httpie
+- curlie
 
 ### nmap
 > 端口扫描 [参考博客](http://aaaxiang000.blog.163.com/blog/static/2063491220113284325531/)
@@ -180,6 +182,8 @@ Supervisor 进程监控管理
 - xsel 
     - `cat a.md | xsel -b` _将文件所有内容复制到剪贴板_ 但是处理大文件时会失效 xclip 更有效
 
+- mcfly _方便 Ctrl R 命令历史_
+
 - strace -p PID _查看系统调用_
 - cmatrix _装13,字符雨_
 - logkeys 记录键盘输入 [Github](https://github.com/kernc/logkeys)
@@ -188,8 +192,6 @@ Supervisor 进程监控管理
 - [WTF](https://wtfutil.com/posts/overview/) | [Github Repo](https://github.com/senorprogrammer/wtf)
     - 丰富的功能, 一个方便的终端控制面板
 
-- ag `在当前目录下, 快速全文内容搜索` ubuntu:silversearcher-ag  alpine:the_silver_searcher
-    - [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
 
 - when-changed 监控文件变化 执行命令 pip install when-changed
 
@@ -234,9 +236,19 @@ duf
 ************************
 
 ## 文本处理
-> `wc` 单词 行数 统计
-> `ccze` 日志高亮
-> `lolcat` 给输出包装上彩虹颜色 有 c python ruby 版
+- `wc` 单词 行数 统计
+- `ccze` 日志高亮
+- `lolcat` 给输出包装上彩虹颜色 有 c python ruby 版
+- choose _方便的cut_
+
+> `在当前目录下, 快速全文内容搜索`
+- ag _The Silver Searcher_
+    - ubuntu:silversearcher-ag  alpine:the_silver_searcher
+    - [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
+
+- rg _ripgrep_
+    - 
+
 ************************
 
 ## 文件操作

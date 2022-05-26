@@ -61,7 +61,7 @@ categories:
 > 系统实时状态信息
 
 - top
-- [Github: htop](https://github.com/hishamhm/htop)`Htop更好用`
+- [htop](https://github.com/hishamhm/htop)`Htop更好用`
 - ctop 
 - [Glances](https://github.com/nicolargo/glances) `信息全面 资源消耗大些`
 - nmon
@@ -385,6 +385,9 @@ categories:
 1. 按内存排序 列出所有进程 `ps aux | grep -v RSS | awk "{print $6 "\t" $11 }" | sort --human-numeric-sort -r | less`
 
 统计的是RSS，也就是会包含共享内存，实际上应该减去共享内存
+
+### procs 
+Rust 编写的 现代 ps
 
 ************************
 
