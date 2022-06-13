@@ -18,7 +18,7 @@ categories:
         1. [Yay](#yay)
 1. [Tips](#tips)
 
-**目录 end**|_2021-06-11 21:58_|
+**目录 end**|_2022-06-09 11:22_|
 ****************************************
 
 # Arch
@@ -29,6 +29,8 @@ categories:
 
 - [什么Linux发行版软件最多？](https://www.lulinux.com/archives/2787)
 - [Arch Linux 安装、配置、美化和优化](http://www.cnblogs.com/bluestorm/p/5929172.html)
+
+> [参考: archlinux简明教程](https://arch.icekylin.online/prologue.html)  
 
 ## 包管理
 > [Creating Arch Linux Packages](https://www.theurbanpenguin.com/creating-arch-linux-packages/)
