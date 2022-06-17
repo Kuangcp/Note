@@ -413,11 +413,16 @@ _iproute-ss_
 > [wget cookie](http://blog.csdn.net/adream307/article/details/47379149)  
 > [参考: wget命令详解](http://blog.csdn.net/RichardYSteven/article/details/4565931)
 
+
 - 镜像整站 `wget --mirror -p --convert-links -P . URL`
     - –miror: 镜像下载
     - -p: 下载所有为了html页面显示正常的文件
     - –convert-links: 下载后，转换成本地的链接
     - `-P .`： 保存所有文件和目录 到当前目录
+
+- 镜像SPA等使用了前端动态路由的网站 `wget --mirror -w 2 -p --html-extension --tries=3 -k -P stackperl.html "https://docs.egret.com/uieditor/docs/api/eui/eui.AddItems"`
+    - 但是下载后无法正常使用子页面，还需要web服务器处理应用动态路由到静态资源文件上去 有点麻烦
+    - [参考: how-do-i-completely-mirror-a-web-page](https://stackoverflow.com/questions/400935/how-do-i-completely-mirror-a-web-page)  
 
 - 获取API返回数据 `wget -q url -O -`
 
