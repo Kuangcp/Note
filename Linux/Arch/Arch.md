@@ -22,10 +22,10 @@ categories:
 ****************************************
 
 # Arch
-> [参考: 为什么 Archlinux 不适合服务器使用](https://www.tuicool.com/articles/byAFZr)
-> [参考: Arch Linux的用户都有理想主义倾向吗？](https://www.zhihu.com/question/49439472)
-> [参考: ArchLinux你可能需要知道的操作与软件包推荐](https://www.viseator.com/2017/07/02/arch_more/)
-> [参考: 长期使用Arch，Gentoo等滚动更新的发行版是怎样的一种体验？](https://www.zhihu.com/question/37720991?sort=created)
+> [参考: 为什么 Archlinux 不适合服务器使用](https://www.tuicool.com/articles/byAFZr)  
+> [参考: Arch Linux的用户都有理想主义倾向吗？](https://www.zhihu.com/question/49439472)  
+> [参考: ArchLinux你可能需要知道的操作与软件包推荐](https://www.viseator.com/2017/07/02/arch_more/)  
+> [参考: 长期使用Arch，Gentoo等滚动更新的发行版是怎样的一种体验？](https://www.zhihu.com/question/37720991?sort=created)  
 
 - [什么Linux发行版软件最多？](https://www.lulinux.com/archives/2787)
 - [Arch Linux 安装、配置、美化和优化](http://www.cnblogs.com/bluestorm/p/5929172.html)
@@ -104,11 +104,32 @@ categories:
 - [企业微信](https://aur.archlinux.org/packages/deepin-wxwork/)
 - [go-for-it](https://aur.archlinux.org/packages/go-for-it/)
 
-- 无法识别 USB设备
-    1. 查看是usb模块 `sudo modprobe usb-storage`
+
+> 无法识别 USB设备（键盘 鼠标 移动硬盘） 可能原因
+1. 查看是usb模块 `sudo modprobe usb-storage`
     1. 若报错 `modprobe: FATAL: Module usb-storage not found in directory /lib/modules/4.19**`
     1. 查看 `ls /lib/modules` 
-    1. 内核滚动升级 grub 没有更新, `update-grub`即可
+1. Linux内核滚动升级了 但是grub 没有更新, `update-grub`即可
+1. 滚动升级了，没有重启电脑
 
 - ifconfig,route在net-tools中，nslookup,dig在dnsutils中，ftp,telnet等在inetutils中,ip命令在iproute2中。
     - sudo pacman -S net-tools dnsutils inetutils iproute2
+
+
+> 键盘 F区 按键映射错误
+- [Arch Wiki](https://wiki.archlinux.org/index.php/Apple_Keyboard#Function_keys_do_not_work)  
+- `echo 2 > /sys/module/hid_apple/parameters/fnmode` 注意重启会失效
+
+- 向 /sys/module/hid_apple/parameters/fnmode 文件中写入不同的值，可切换不同的模式：
+```
+    0  禁用功能键，按 ‘Fn’ + ‘F8’ 等同于 F8
+    1  默认功能键，按 ‘F8’ 触发功能键 (play/pause)，按 ‘Fn’ + ‘F8’ 触发 F8 键
+    2  默认非功能键，按 ‘F8’ 触发 F8 键，按 ‘Fn’ + ‘F8’ 触发功能键 (play/pause)
+```
+- 以上方法重启后失效，如果要让配置永久生效： `Manjaro中没有这个文件`
+    ```	
+        # vi /etc/modprobe.d/hid_apple.conf
+        options hid_apple fnmode=2
+    ```
+- 或者将命令写入登录shell /etc/profile 
+
