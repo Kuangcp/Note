@@ -1,3 +1,25 @@
+---
+title: MySQLInnodbLock
+date: 2022-06-27 14:23:03
+tags: 
+categories: 
+---
+
+**目录 start**
+
+1. [MySQL innodb锁设计细节](#mysql-innodb锁设计细节)
+    1. [共享/排他锁(Shared and Exclusive Locks)](#共享排他锁shared-and-exclusive-locks)
+    1. [意向锁(Intention Locks)](#意向锁intention-locks)
+    1. [记录锁(Record Locks)](#记录锁record-locks)
+    1. [间隙锁(Gap Locks)](#间隙锁gap-locks)
+    1. [临键锁(Next-key Locks)](#临键锁next-key-locks)
+    1. [插入意向锁(Insert Intention Locks)](#插入意向锁insert-intention-locks)
+    1. [自增锁(Auto-inc Locks)](#自增锁auto-inc-locks)
+    1. [MVCC机制](#mvcc机制)
+    1. [锁类型](#锁类型)
+
+**目录 end**|_2022-06-27 14:23_|
+****************************************
 # MySQL innodb锁设计细节
 > [InnoDB Locking and Transaction Model](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-transaction-model.html)
 

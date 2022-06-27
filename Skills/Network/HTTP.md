@@ -11,6 +11,7 @@ categories:
 
 1. [HTTP](#http)
     1. [请求方法](#请求方法)
+        1. [GET](#get)
     1. [HTTP的状态码](#http的状态码)
     1. [HTTP 缓存](#http-缓存)
     1. [Session 和 Cookie](#session-和-cookie)
@@ -27,7 +28,7 @@ categories:
     1. [HSTS](#hsts)
 1. [CORS 跨域](#cors-跨域)
 
-**目录 end**|_2021-06-05 18:22_|
+**目录 end**|_2022-06-27 14:23_|
 ****************************************
 # HTTP
 > HyperText Transfer Protocol 超文本传输协议 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -52,7 +53,15 @@ categories:
     
 > 方法名称是区分大小写的。当某个请求所针对的资源不支持对应的请求方法的时候，服务器应当返回状态码405（Method Not Allowed）；当服务器不认识或者不支持对应的请求方法的时候，应当返回状态码501（Not Implemented）。
 
-- [ ] Header中一些主要属性的含义和使用场景
+- [ ] Header中一些常用属性的含义和使用场景
+
+### GET
+> [参考: GET 请求中 URL 的最大长度限制](https://blog.csdn.net/dream_weave/article/details/105143562)  
+
+get 方式下的http请求会限制URL长度，会有多方面不同的限制 短板效应：客户端 代理端 服务端
+- 客户端 各大浏览器会有实现上的差异 从 2083 到20000 不等
+- 代理端 Nginx Apache IIS
+- 服务端 Java的SpringMVC 等
 
 ## HTTP的状态码
 > [HTTP 状态码 完整列表](/FrontEnd/ResponseCode.md)
