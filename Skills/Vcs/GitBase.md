@@ -159,7 +159,7 @@ categories:
 
 - `git clone --depth 1 URL` 只克隆最近一次提交的历史, 能大大减小拉取的大小 
     - 但是如果要新建一个分支, 并推送过去，会报错:`shallow update not allowed` 因为本地库是残缺的
-        - 此时需要 `git remote set-branches origin '*'` 然后 `git pull` 就会拉取所有信息成为完整的仓库
+        - 此时需要 `git remote set-branches origin '*'` 然后 `git pull` 就会拉取最新所有分支成为可正常checkout的仓库，但仍旧残缺
     - 由于库是残缺的，拉取远程分支到本地不能直接用 `git checkout -b branch origin/branch` 的方式，
         - 只能用 `git fetch origin branch:branch`
         - 并且跟踪远程也需手动执行 `git push -u origin branch`
