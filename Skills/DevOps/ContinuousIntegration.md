@@ -70,8 +70,14 @@ go语言实现，一个原生支持 docker 的 CI
 ## sonarqube
 > [官网](https://www.sonarqube.org/) | [Docker Hub](https://hub.docker.com/_/sonarqube/)
 
-> 快速使用
-1. `docker run -d --name sonarqube -p 9000:9000  sonarqube:8-community`
+> 快速使用 H2 内存数据库
+1. `docker run -d --name sonarqube -p 9000:9000  sonarqube:8-community` 
+
+> PG 数据库
+- docker run --name db_sonar -e POSTGRES_USER=sonar -e POSTGRES_PASSWORD=sonar -d postgres
+- docker run --name sonarqube_test --link db_sonar -e SONARQUBE_JDBC_URL=jdbc:postgresql://db_sonar:5432/sonar -e SONARQUBE_JDBC_USERNAME=sonar -e SONARQUBE_JDBC_PASSWORD=sonar  -p 9000:9000 -d sonarqube:8-community
+
+sysctl -w vm.max_map_count=524288
 
 1. [sonarscanner](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
     1. Maven会输出当前分析项目的结果URL

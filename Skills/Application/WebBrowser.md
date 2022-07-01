@@ -137,7 +137,8 @@ categories:
 ## Chrome
 - 的确快,几乎没有各种兼容和诡异问题，就是内存占用高, 还有就是主题被墙,fq才能配置好
 
-1.  `Removing keychain login from Chormium` 启动命令添加如下参数 chromium --password-store=basic
+1. `Removing keychain login from Chormium` 启动命令添加如下参数 chromium --password-store=basic
+1. `设置代理` chrome追加启动参数 --proxy-server=192.168.7.77:8888 --ignore-certificate-errors 
 
 ### 主题
 1. Aero Trans Brushed Metal Theme

@@ -156,7 +156,7 @@ categories:
 - Demo:
     - jinfo 14352
     - jinfo -sysprops 14352
-    - jinfo -flags 14352
+    - 查看JVM参数 `jinfo -flags 14352`
     - jinfo -flag MaxPermSize 14352
 
 ## jmap 

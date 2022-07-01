@@ -34,6 +34,8 @@ categories:
 
 - 当使用synchronized修饰静态方法时，该方法同时只能被同一线程访问，但其他线程可访问该对象的其他非静态方法
 
+> [参考: 难搞的偏向锁终于被 Java 移除了](https://juejin.cn/post/7046921350065160206)  
+
 ## 使用wait() notify() 和 notifyAll()
 
 - `wait()`方法可让线程挂起
