@@ -248,14 +248,10 @@ categories:
 
 ************************
 
-## 图形化管理工具
-- DockerUI
-- [Portainer](https://github.com/portainer/portainer)
-
 # 运行图形化应用
-> [Github Topic](https://github.com/search?p=4&q=docker+desktop&type=Repositories&utf8=%E2%9C%93)
-> [Running GUI apps with Docker](https://www.tuicool.com/articles/ayIzI3)
-https://www.cnblogs.com/larva-zhh/p/10531824.html
+> [Github Topic](https://github.com/search?p=4&q=docker+desktop&type=Repositories&utf8=%E2%9C%93)  
+> [Running GUI apps with Docker](https://www.tuicool.com/articles/ayIzI3)  
+> [在Docker for Windows中运行GUI程序 ](https://www.cnblogs.com/larva-zhh/p/10531824.html)  
 
 
 ************************

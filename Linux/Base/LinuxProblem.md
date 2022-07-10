@@ -86,6 +86,8 @@ categories:
 - 查看显卡列表  `lspci -vnn | grep '\''[030[02]\]'`
 - 测试显卡 FPS `glxgears`
 
+休眠后的唤起 vscode vivaldi chrome 均出现假死半分钟后才恢复的情况，禁用硬件加速可避免
+
 #### Nvidia
 > [NVIDIA](https://wiki.archlinux.org/index.php/NVIDIA_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.AE.89.E8.A3.85)
 

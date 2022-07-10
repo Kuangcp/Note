@@ -238,6 +238,8 @@ categories:
 ## 微信相关
 - [微信小程序Demo](https://gitee.com/yuzeng84/wxapp)
 
+视频目录： \Android\data\com.tencent.mm\MicroMsg\xxx\video
+
 ## 网络有关
 - [frp](https://github.com/fatedier/frp/blob/master/README_zh.md)`内网穿透`
 

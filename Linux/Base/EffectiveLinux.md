@@ -367,6 +367,8 @@ or `convert -background none icon.svg -define icon:auto-resize icon.ico`
 - [netease-cloud-music-gtk](https://github.com/gmg137/netease-cloud-music-gtk)
 
 audacious 
+lollypop GNOME 环境简单应用
+
 
 ************************
 
