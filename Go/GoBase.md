@@ -310,6 +310,7 @@ Msg struct{
 ### pprof
 > [参考: 【实践】使用Go pprof做内存性能分析](https://cloud.tencent.com/developer/article/1489186)  
 > [参考: 实战Go内存泄露](https://www.codercto.com/a/79118.html)  
+> [参考: Go 程序内存泄露问题快速定位](https://zhuanlan.zhihu.com/p/368567370)  
 
 ************************
 

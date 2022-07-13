@@ -119,6 +119,7 @@ categories:
 > 键盘 F区 按键映射错误
 - [Arch Wiki](https://wiki.archlinux.org/index.php/Apple_Keyboard#Function_keys_do_not_work)  
 - `echo 2 > /sys/module/hid_apple/parameters/fnmode` 注意重启会失效
+    - `echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode`
 
 - 向 /sys/module/hid_apple/parameters/fnmode 文件中写入不同的值，可切换不同的模式：
 ```
