@@ -111,6 +111,13 @@ categories:
 
 1. 监测CPU利用率 top,sysstat,mpstat,iostat,sar
 
+### perf
+> [参考: Perf 使用说明](https://yoc.docs.t-head.cn/linuxbook/Chapter4/perf.html)  
+
+> arch: yay linux-tools 选择 perf 进行安装
+
+> [FlameGraph](https://github.com/brendangregg/FlameGraph)  `结合使用`  
+
 ### top
 > 来源 procps, 用于查看 进程详细信息, CPU占用率 内存 网络等...
 
