@@ -410,9 +410,9 @@ G1提供了两种GC模式，Young GC和Mixed GC，两种都是完全Stop The Wor
 
 上文中，多次提到了global concurrent marking，它的执行过程类似CMS，但是不同的是，在G1 GC中，它主要是为Mixed GC提供标记服务的，并不是一次GC过程的一个必须环节。  
 global concurrent marking的执行过程分为四个步骤：  
-- 初始标记（initial mark，STW）。它标记了从GC Root开始直接可达的对象。
+- 初始标记（initial mark，`STW`）。它标记了从GC Root开始直接可达的对象。
 - 并发标记（Concurrent Marking）。这个阶段从GC Root开始对heap中的对象标记，标记线程与应用程序线程并行执行，并且收集各个Region的存活对象信息。 
-- 最终标记（Remark，STW）。标记那些在并发标记阶段发生变化的对象，将被回收。
+- 最终标记（Remark，`STW`）。标记那些在并发标记阶段发生变化的对象，将被回收。
 - 清除垃圾（Cleanup）。清除空Region（没有存活对象的），加入到free list。
 
 第一阶段initial mark是共用了Young GC的暂停，这是因为他们可以复用root scan操作，所以可以说global concurrent marking是伴随Young GC而发生的。
