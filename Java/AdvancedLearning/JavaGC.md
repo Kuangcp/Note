@@ -36,7 +36,7 @@ categories:
     1. [基本JVM参数](#基本jvm参数)
     1. [主要关注指标](#主要关注指标)
 
-**目录 end**|_2022-06-27 14:23_|
+**目录 end**|_2022-08-03 10:37_|
 ****************************************
 # GC
 > Garbage Collection
@@ -442,6 +442,8 @@ Young GC发生的时机大家都知道，那什么时候发生Mixed GC呢？其�
 > JDK12  [wiki: ShenandoahGC](https://wiki.openjdk.java.net/display/shenandoah/Main)
 
 > [参考: JDK12 ShenandoahGC小试牛刀](https://juejin.im/post/5c934a5d5188252dad05d82a)  
+
+-XX:+UnlockExperimentalVMOptions  -XX:+UseShenandoahGC
 
 ************************
 # Tuning

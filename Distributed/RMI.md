@@ -1,5 +1,5 @@
 ---
-title: RPC
+title: 远程调用
 date: 2018-11-21 10:56:52
 tags: 
     - RPC
@@ -9,10 +9,18 @@ categories:
 
 **目录 start**
 
-1. [RPC](#rpc)
+1. [RMI](#rmi)
+    1. [RMI vs MQ](#rmi-vs-mq)
+    1. [RPC](#rpc)
+    1. [HTTP](#http)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2022-08-03 10:38_|
 ****************************************
+# RMI
+远程调用
+
+## RMI vs MQ 
+
 # RPC
 > Remote Procedure Calls 
 
@@ -26,3 +34,6 @@ categories:
 > [参考: 良好的RPC接口设计，需要注意这些方面](https://www.jianshu.com/p/dca5b00e72e4)
 
 通常涉及： 通信，服务发现，序列化和反序列化，服务治理（熔断，降级）
+
+# HTTP
+
