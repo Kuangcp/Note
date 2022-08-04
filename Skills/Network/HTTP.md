@@ -58,7 +58,7 @@ categories:
 ### GET
 > [参考: GET 请求中 URL 的最大长度限制](https://blog.csdn.net/dream_weave/article/details/105143562)  
 
-get 方式下的http请求会限制URL长度，会有多方面不同的限制 短板效应：客户端 代理端 服务端
+get 方式下的http请求会限制URL长度，会有多方面不同的限制 请求经过的三层后的短板效应：客户端 代理端 服务端
 - 客户端 各大浏览器会有实现上的差异 从 2083 到20000 不等
 - 代理端 Nginx Apache IIS
 - 服务端 Java的SpringMVC 等

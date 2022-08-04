@@ -223,6 +223,9 @@ Supervisor 进程监控管理
 `upx`
 > [upx](https://github.com/upx/upx)压缩构建的可执行文件
 
+https://kbumsik.io/using-ipad-as-a-2nd-monitor-on-linux
+https://snapdensing.com/2020/04/07/ipad-as-an-extended-screen-in-linux/
+
 ***********
 
 ## 检测工具
