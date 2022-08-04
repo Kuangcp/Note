@@ -3,8 +3,9 @@
 限流
 熔断
 降级
+请求合并
 自动扩缩容
 
-Hystrix 限流 熔断 降级
+Hystrix `Resilience4j` 限流 熔断 降级
 Sentinel 
 
