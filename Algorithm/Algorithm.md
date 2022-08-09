@@ -80,7 +80,7 @@ categories:
 > [Data structure.pdf](https://www.cs.auckland.ac.nz/textbookCS220/ebook/DGW2.pdf)
 > [algorithms](http://jeffe.cs.illinois.edu/teaching/algorithms/)
 
-> [TheAlgorithms-Java ](https://github.com/TheAlgorithms/Java)
+> [The Algorithms Java ](https://github.com/TheAlgorithms/Java)
 > [数据结构和算法必知必会的50个代码实现](https://github.com/wangzheng0822/algo)
 
 **********************
