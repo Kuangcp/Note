@@ -13,25 +13,25 @@ categories:
     1. [MVC思想](#mvc思想)
         1. [原理](#原理)
     1. [API](#api)
-    1. [传统项目配置完整流程](#传统项目配置完整流程)
-        1. [配置依赖](#配置依赖)
-            1. [Maven](#maven)
-            1. [Gradle](#gradle)
-        1. [web.xml](#webxml)
-        1. [ApplicationContext.xml](#applicationcontextxml)
-            1. [全局异常处理](#全局异常处理)
-            1. [自定义错误页面](#自定义错误页面)
-            1. [中文编码问题](#中文编码问题)
-        1. [创建Controller](#创建controller)
-    1. [使用](#使用)
-        1. [配置类型转换](#配置类型转换)
-        1. [拦截器](#拦截器)
-            1. [拦截器机制](#拦截器机制)
-            1. [自定义拦截器](#自定义拦截器)
-            1. [WebSocket](#websocket)
-        1. [Q&A](#q&a)
+1. [传统项目配置完整流程](#传统项目配置完整流程)
+    1. [配置依赖](#配置依赖)
+        1. [Maven](#maven)
+        1. [Gradle](#gradle)
+    1. [web.xml](#webxml)
+    1. [ApplicationContext.xml](#applicationcontextxml)
+        1. [全局异常处理](#全局异常处理)
+        1. [自定义错误页面](#自定义错误页面)
+        1. [中文编码问题](#中文编码问题)
+    1. [创建Controller](#创建controller)
+1. [使用](#使用)
+    1. [配置类型转换](#配置类型转换)
+    1. [拦截器](#拦截器)
+        1. [拦截器机制](#拦截器机制)
+        1. [自定义拦截器](#自定义拦截器)
+        1. [WebSocket](#websocket)
+1. [Q&A](#q&a)
 
-**目录 end**|_2020-05-17 16:13_|
+**目录 end**|_2022-08-09 15:46_|
 ****************************************
 
 # SpringMVC
@@ -59,12 +59,12 @@ categories:
 
 ***********************
 
-## 传统项目配置完整流程
+# 传统项目配置完整流程
 > 也就是Maven的Web结构，甚至是Eclipse那样的DynamicWeb项目结构， [参考 博客](https://www.cnblogs.com/Sinte-Beuve/p/5730553.html)
 
-### 配置依赖
+## 配置依赖
 
-#### Maven
+### Maven
 ```xml
     <properties>
         <spring.version>4.3.9.RELEASE</spring.version>
@@ -98,12 +98,12 @@ categories:
     </dependency>
     <dependency>
 ```
-#### Gradle
+### Gradle
 ```groovy
     compile('org.springframework:spring-web:4.3.9.RELEASE')
     compile('org.springframework:spring-webmvc:4.3.9.RELEASE')
 ```
-### web.xml
+## web.xml
 
 ```xml
   <servlet>
@@ -125,7 +125,7 @@ categories:
   </servlet-mapping>
 ```
 
-### ApplicationContext.xml
+## ApplicationContext.xml
 ```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <beans xmlns="http://www.springframework.org/schema/beans"
@@ -171,7 +171,7 @@ categories:
     </bean>
     </beans>
 ```
-#### 全局异常处理
+### 全局异常处理
 ```java
 public class ExceptionHandler implements HandlerExceptionResolver {
     @Override
@@ -209,7 +209,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
 > [参考博客](http://www.cnblogs.com/exmyth/p/5601288.html)
 > [ResponseBody方案](https://blog.csdn.net/xin917480852/article/details/78023911)
 
-#### 自定义错误页面
+### 自定义错误页面
 ```java
     // 自定义错误页面 需要放在静态资源下面
     @Bean
@@ -222,7 +222,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
         });
     }
 ```
-#### 中文编码问题
+### 中文编码问题
 > [参考博客](http://www.cnblogs.com/dyllove98/p/3180158.html) `但是奇怪的是某些方法用第二种正常，有些还是要用第一种`
 1. 单个方法：`@GetMapping(value = "/target/all",  produces = "application/json; charset=utf-8")`
 2. 或者整个应用 注意：`</mvc:annotation-driven>` 只能有一个，要将上面的覆盖掉
@@ -243,7 +243,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
     </mvc:annotation-driven>
 ```
 
-### 创建Controller
+## 创建Controller
 
 包 com.test.controller 下创建一个类
 ```java
@@ -269,11 +269,11 @@ public class Hi {
 ```
 
 ************************
-## 使用
+# 使用
 > 在Springboot框架中，static templates 文件夹下分别代表了tomcat管理的静态文件和MVC负责跳转的HTML文件或JSP文件
 > 在static中对于路径的使用一定要带上应用路径，而在templates中就只要写相对路径即可
 
-### 配置类型转换
+## 配置类型转换
 
 ```xml
     <mvc:annotation-driven conversion-service="conversionService" />
@@ -287,8 +287,8 @@ public class Hi {
         </property>
     </bean>
 ```
-### 拦截器
-#### 拦截器机制
+## 拦截器
+### 拦截器机制
 implements HandleInterceptor 有三个方法
 
 preHandle 返回true就继续往后，false就被拦截
@@ -303,7 +303,7 @@ afterCompletion 渲染视图之后调用，释放资源
         </mvc:interceptor>
     </mvc:interceptors>
 ```
-#### 自定义拦截器
+### 自定义拦截器
 - [相关博客](http://www.jianshu.com/p/f14ed6ca4e56)|[相关博客](http://blog.csdn.net/catoop/article/details/50501696)
 
 `定义拦截器类`
@@ -343,12 +343,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter{
 }
 ```
 
-#### WebSocket 
-- [Springboot中使用Websocket进行消息推送](https://gitee.com/kcp1104/codes/14ipgcbjyenxqu6tf9d0543)
-- [SpringBoot 使用WebSocket](https://blog.csdn.net/kangkanglou/article/details/78253747)
-- [SpringBoot系列 - 集成WebSocket实时通信](https://www.xncoding.com/2017/07/15/spring/sb-websocket.html)
-
-### Q&A
+# Tips
 > URL 中带了 jsessionid 参数，导致页面各种问题
 - 一种原因：禁用cookie导致的
 - 最终解决： chrome中在设置里清除localhost的所有cookie和缓存

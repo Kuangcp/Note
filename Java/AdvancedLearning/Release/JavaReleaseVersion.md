@@ -12,17 +12,25 @@ categories:
     1. [Java5](#java5)
     1. [Java6](#java6)
     1. [Java7](#java7)
-    1. [Java8](#java8)
+    1. [Java8 LST](#java8-lst)
     1. [Java9](#java9)
     1. [Java10](#java10)
-    1. [Java11](#java11)
+    1. [Java11 LST](#java11-lst)
+    1. [Java12](#java12)
+    1. [Java13](#java13)
+    1. [Java14](#java14)
+    1. [Java15](#java15)
+    1. [Java16](#java16)
+    1. [Java17 LST](#java17-lst)
 
-**目录 end**|_2020-05-31 21:44_|
+**目录 end**|_2022-08-09 15:41_|
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)
 
 > [Java语言特性系列 5-最新](https://segmentfault.com/a/1190000004417288)
+
+> [参考: JDK的版本号解惑](https://blog.csdn.net/bisal/article/details/118947676)  
 
 ## Java5
 泛型 枚举 装箱拆箱 静态导入 foreach
@@ -31,15 +39,16 @@ categories:
 JDBC4.0  JAX-WS 2.0
 
 ## Java7
-> [详情](/Java/AdvancedLearning/Java7.md)
+> [详情](/Java/AdvancedLearning/Release/Java7.md)
 
 1. 语法糖:数字中的下划线
 1. 新的语言小特性:TWR(try with resources)
 1. 类文件格式的变化:注解
 1. JVM的新特性: 动态调用
+1. 引入G1收集器
 
-## Java8
-> [详情](/Java/AdvancedLearning/Java8.md)
+## Java8 LST
+> [详情](/Java/AdvancedLearning/Release/Java8.md)
 
 1. 接口中新增 静态方法,默认方法
 1. 新增 Optional
@@ -71,8 +80,24 @@ JDBC4.0  JAX-WS 2.0
 1. Optional 增强
 1. java javac 合并
 
-## Java11
-> [详情](/Java/AdvancedLearning/Java11.md)
+## Java11 LST
+> [详情](/Java/AdvancedLearning/Release/Java11.md)
 
 > [参考: Java11的新特性](https://segmentfault.com/a/1190000016527932#articleHeader5)
 
+
+## Java12 
+1. Shenandoah GC
+1. Switch Expressions
+
+## Java13 
+
+## Java14
+
+## Java15 
+
+## Java16 
+
+## Java17 LST
+
+## Java18

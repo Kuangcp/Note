@@ -186,6 +186,8 @@ strict-ssl=false
 
 - 安装markdown预览插件 `该插件早已经停止维护了，还是只用来简单的查看修改文件就好了`
 
+## notepadqq
+
 ## MousePad
 
 ## Xed 

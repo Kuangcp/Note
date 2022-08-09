@@ -138,13 +138,16 @@ categories:
 - ping URL ： Linux是默认无休止的
     - -c 次数
     - -q 安静模式 不输出
-    - -s 默认64字节， 可以指定大小
+    - -s 默认64字节
     - -t 设定 TTL值，Linux默认是64或255 经过一个路由器就会减一
     - -i 每次ping的时间间隔 默认1s root用户才可以设置 0.2 以下
     - -f 暴力尽可能大量包的传送 至少每秒100个
-    - 注意：得到的结果中的 mdev 表示ICMP包的RTT偏离平均值的程度，mdev 越大表示网速不稳定 Linux有，mac下叫stddev win系列没有
+        - 注意：得到的结果中的 mdev 表示ICMP包的RTT偏离平均值的程度，mdev 越大表示网速不稳定 Linux有，mac下叫stddev win系列没有
+    - -r 记录经过的路由
 
 > [prettyping](http://denilson.sa.nom.br/prettyping/)
+
+- ping -s 1472 -M do 192.168.15.205 测试网络环境下可用MTU
 
 ### traceroute
 > 显示网络数据包传输到指定主机的路径信息，追踪数据传输路由状况

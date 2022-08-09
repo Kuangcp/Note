@@ -33,6 +33,9 @@ categories:
         1. [配置文件](#配置文件)
             1. [ini和conf](#ini和conf)
     1. [多线程](#多线程)
+    1. [定时执行](#定时执行)
+        1. [watch](#watch)
+        1. [sleep](#sleep)
     1. [脚本的参数自动补全](#脚本的参数自动补全)
         1. [Bash](#bash)
         1. [Zsh](#zsh)
@@ -43,7 +46,7 @@ categories:
 1. [Tips](#tips)
     1. [常用代码片段](#常用代码片段)
 
-**目录 end**|_2020-11-05 16:05_|
+**目录 end**|_2022-08-09 15:46_|
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -381,6 +384,23 @@ _判断文件_
 
 ## 多线程
 > [参考: shell如何实现多线程](https://www.cnblogs.com/signjing/p/7074778.html)  
+
+************************
+
+## 定时执行
+### watch
+watch 等待命令对应进程执行完成后才进入计时到下一个周期执行，可以利用这个特性来执行异步shell
+
+> demo.sh 
+```sh 
+for i in $(seq 1 100); do
+  doSomething &
+done
+```
+
+watch demo.sh 达到的效果为：等到sh中的100个子进程执行结束后，主进程退出，才会等2s再执行一次demo.sh 
+
+### sleep
 
 ********************
 ## 脚本的参数自动补全
