@@ -115,6 +115,7 @@ _个人配置_
 
 1. 其所有用户自定义配置都缓存在此目录 `~/.config/Code/User/`
 1. vscode 书写 markdown [官方文档](https://code.visualstudio.com/Docs/languages/markdown)
+1. 禁用GPU加速 ctrp+shift+p打开命令面板，找到 Preferences: Configure Runtime Arguments 命令，然后加上 "disable-hardware-acceleration": true 即可
 
 ### 快捷键
 > [快捷键官方PDF说明](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)

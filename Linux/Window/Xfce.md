@@ -32,3 +32,6 @@ categories:
 `可参考项目`
 > [xfce4-weather-plugin](https://gitlab.xfce.org/panel-plugins/xfce4-weather-plugin)  
 > [xfce4-sensors-plugin](https://launchpad.net/ubuntu/+source/xfce4-sensors-plugin)  
+
+# Tips 
+1. Dock相关软件 出现阴影 `Window Manager Tweaks -> Compositor -> 关闭 Show shadow under dock windows`
