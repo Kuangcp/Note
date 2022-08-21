@@ -57,21 +57,28 @@ categories:
 
 > [Github: Gradle samples](https://github.com/gradle/gradle/tree/master/subprojects/docs/src/samples)
 ******************************
+个人决定弃用Gradle
 
 **优缺点**
 > [Gradle大吐槽](https://blog.csdn.net/MCL529/article/details/79341706)
 > [官方对比Gradle和Maven](https://gradle.org/maven-vs-gradle/)
 
 > 优点  
-1. 相对于Maven, 配置文件简洁了很多, 所以才入坑学习使用的
-2. 对于一些需要自定义的任务,因为核心为Groovy,所以实现能力高
-	- 例如:将一个SpringBoot项目构建成一个镜像,并tag上当前构建的镜像为release,然后删除旧有容器,使用新的镜像启动容器
+1. 相较Maven,Gradle配置文件更简洁，灵活度高（groovy语言实现各种自定义操作：多目标构建，多端发布）
+1. 知名项目在使用，阅读调试源码需要使用到，例如：Srping全家桶、Andriod等等
+1. 支持编程式任务，相较于Maven的XML配置文件，Gradle的配置文件为Groovy或Kotlin脚本，更灵活 功能强大。
+    - 常见的 多目标构建，多端发布 等等
+	- 例如自定义的本地ci流程: 将SpringBoot项目打包构建Docker镜像,并打上 release且带上git commitId 的 tag, 然后删除应用旧有运行时容器,使用新的镜像启动新的容器
 
 > 缺点  
-1. 内存占用巨大,存在内存泄露问题, 以至于在IDEA上不敢使用自动导入, 不然每动一下build.gradle 就会卡半天, 8G内存都不够用!!
-2. 编译速度慢, 如果和Maven进行对比, 编译速度和资源占用确实慢
+1. 内存和CPU等资源占用大于Maven，虽然新出的mvnd资源占用更大 emm。
+1. Gradle本身设计使用的API和规范一直在变，有些改动不考虑兼容性，`不稳定`。
+    - 当你想要捡起一个多年前的项目编译运行时发现要看文档，调整一堆才能正常用，当然，不更新Gradle就没问题 但是每年一个大版本，强迫症不适应
+1. 多项目管理没有Maven方便，多项目结构或依赖发生变更需要更复杂更慢的流程才能刷新重新加载完成。
+1. Gradle 缺省使用wrapper，并且Gradle发布非常频繁，容易导致本地一堆gradle版本占用磁盘，加载新项目还需要等待下载不同的gradle版本
+    - 虽然可以通过手动快速取消IDEA自动下载，手动指定Gradle版本来避免，但是过程就很恶心。
+1. IDEA对Gradle的支持远没有Maven好（例如依赖跳转，依赖冲突，依赖树等功能 Gradle全没有），一方面也是Gradle变更太快，设计太灵活导致的
 
-**个人看法**
 > [参考: Gradle在大型Java项目上的应用](www.infoq.com/cn/articles/Gradle-application-in-large-Java-projects)
 
 ********************

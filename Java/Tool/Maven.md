@@ -271,8 +271,6 @@ mvn install:install-file
 
 - 使用 test profile 执行命令 `mvn clean package -P test`
 
-- [ ] 子项目编译打包各自独立，怎么整合成一个
-
 ### 测试
 > mvn test 
 

@@ -52,7 +52,7 @@ categories:
     - 客户端连接 `psql -h localhost -p 5432 -U postgres`
 
 #### pull精简版
-- 下拉镜像：`docker pull postgres:alpine` | 因为个人系统客户端是9.6, 所以用`9.6-alpine`镜像
+- 下拉镜像：`docker pull postgres:alpine`
 - 构建容器：
 ```sh
     docker run -d --name postgre \
@@ -122,5 +122,9 @@ categories:
 - [官方：springboot使用](https://springframework.guru/configuring-spring-boot-for-postgresql/)
     - [参考博客](https://www.netkiller.cn/java/spring/boot/postgresql.html)
 
-## 基础数据
+## 基础数据类型
 > [ PostgreSQL中的数据类型](https://blog.csdn.net/jpzhu16/article/details/52140048)
+
+## DDL
+
+
