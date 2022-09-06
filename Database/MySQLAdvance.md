@@ -122,6 +122,15 @@ InnoDB通过加间隙锁来防止幻读
         - 此时如果能对 A B 做排序按相同的顺序做更新操作即可避免死锁
     - 一个事务方法更新A表 另一个事务方法 更新B表 A B 两个表有外键关联 然后两个方法更新的又恰好是关联的数据，因为 innodb引擎，更新A表也会锁住B表 从而导致死锁
 
+### 隐含事务
+> 以下语句执行时会创建独立事务
+
+- DDL语句，ALTER DATABASE、ALTER EVENT、ALTER PROCEDURE、ALTER TABLE、ALTER VIEW、CREATE TABLE、DROP TABLE、RENAME TABLE、TRUNCATE TABLE等；
+- 修改MYSQL架构的语句，CREATE USER、DROP USER、GRANT、RENAME USER、REVOKE、SET PASSWORD；
+- 管理语句，ANALYZE TABLE、CACHE INDEX、CHECK TABLE、LOAD INDEX INTO CACHE、OPTIMIZE TABLE、REPAIR TABLE等
+
+需要注意业务逻辑事务中不能包含这些语句，后果 TODO 
+
 ************************
 
 ## 性能调优
