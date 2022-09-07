@@ -149,7 +149,7 @@ categories:
     - count 输出次数
 
 - Demo:
-    - `jstat -gcutil -t -h5 7919 1000 50`
+    - `jstat -gcutil -t -h5 7919 1000 50` 查看gc情况
 
 ## jinfo 
 > 观察运行中的 java 进程的运行环境参数：参数包括 Java System 属性和 JVM 命令行参数

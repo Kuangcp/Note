@@ -43,6 +43,8 @@ categories:
     - j 下 panel
     - k 上 panel
     - ; 最近的 panel
+    - $ 重命名 session
+    - , 重命名 panel
 
 *************
 

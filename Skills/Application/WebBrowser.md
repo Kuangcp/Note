@@ -117,6 +117,11 @@ categories:
 
 1. 网页重定向次数限制 默认 20 `network.http.redirection-limit` 设置为0就禁止了网页的重定向
 
+1. 内存资源占用大
+    1. `about:memory` 查看内存情况
+    1. `dom.ipc.processCount` 降低进程数
+    1. `browser.tabs.remote.autostart` 设置 false
+
 ### 使用
 1. 地址栏 `@bing @baidu...` 即可使用指定的搜索引擎进行搜索
 1. 地址栏 `* Java` 即可在所有书签中搜索 Java

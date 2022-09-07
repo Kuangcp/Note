@@ -171,6 +171,10 @@ NIO 会经常使用, 提高性能
 - `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 打印类装载
 - `-Xloggc:/home/logs/gc.log`
 - `-Xmn` TODO  未设置时默认值的计算方式
+
+- -XX:+PrintFlagsFinal jvm最终属性值
+    - java -XX:+PrintFlagsFinal -version
+
 **********************
 
 # JVM不同实现

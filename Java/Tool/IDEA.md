@@ -261,7 +261,7 @@ _例如修改为如下_
 | |S|A| `上/下` |  `代码行`上/下移动|
 |C|S| | `上/下` |  `代码块`上/下移动 |
 |C| | | `J` |  提示代码片段 也就是 `Live Templates` |
-| | |A| `J` |  选中字符|
+| | |A| `J` |  选中字符 Add Selection for Next Occurence|
 |C| | | `J` |  提示 Live Templates |
 |C| |A| `J` |  提示 Surround Live Templates |
 |C| | | `Space` |  智能补全|

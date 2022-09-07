@@ -62,7 +62,7 @@ categories:
 |:---|:---|:---|:---|
 |`xiki`           | 鼠标和键盘高度交互 <br> 交互性和复杂度比较高 | | |
 |`qterminal`      | 设置设计清晰，功能完备 | 终端内容显示兼容性略有问题 资源消耗中等 | 
-|`xfce4-terminal` | | | |
+|`xfce4-terminal` | 配合Xfce启动快| 配置繁琐| |
 |`gnome-terminal` | 简洁 资源消耗少 | 缺 多标签时，标签栏太大,标签页底部有白边 无法透明化 |  鼠标中键无法复制时需安装 `parcellite`|
 |`mate-terminal`  | 标签栏更简洁，其余和 `gnome-terminal` 一致|||
 |`sakura`         | 外观上和前两个几乎一样，标签页可以更简洁 | 配置复杂 繁琐 | |
@@ -70,10 +70,15 @@ categories:
 |`tilda`          | 内嵌于桌面上, 小命令方便 | 需要查看文件时不方便
 |`terminology`    | 样式高度自定义
 
-> 备注
-- sakura xfce4-terminal 快捷键配置
-    - `~/.config/xfce4/terminal/accels.scm` 
-    - [doc](http://troubleshooters.com/linux/sakura.htm) | [config shortcut](https://unix.stackexchange.com/questions/102474/configuring-shortcuts-for-sakura)  
+> 备注 sakura xfce4-terminal 快捷键配置
+- `~/.config/xfce4/terminal/accels.scm` 
+- 配置语法： [doc](http://troubleshooters.com/linux/sakura.htm) | [config shortcut](https://unix.stackexchange.com/questions/102474/configuring-shortcuts-for-sakura)  
+
+- 例如 [修改 Ctrl C V 为复制快捷键](https://bbs.archlinux.org/viewtopic.php?id=260755) `Gtk3起 不支持所谓的鼠标悬浮改快捷键`
+```lua
+(gtk_accel_path "<Actions>/terminal-window/copy" "<Primary>c")
+(gtk_accel_path "<Actions>/terminal-window/paste" "<Primary>v")
+```
 
 ************************
 
