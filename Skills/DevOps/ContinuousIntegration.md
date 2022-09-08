@@ -81,7 +81,8 @@ sysctl -w vm.max_map_count=524288
 
 1. [sonarscanner](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
     1. Maven会输出当前分析项目的结果URL
-1. sonar-scanner 命令行工具安装
+
+1. sonar-scanner 命令工具 方式
     1. 配置工具 `/etc/sonar-scanner/sonar-scanner.properties`
         - ```ini
             sonar.host.url=http://localhost:9000
@@ -89,11 +90,21 @@ sysctl -w vm.max_map_count=524288
             sonar.login=admin
             sonar.password=admin
             ```
+    1. 配置环境变量
+        ```
+            export SONAR_SCANNER_HOME="/opt/sonar-scanner"
+            export PATH="${SONAR_SCANNER_HOME}/bin:${PATH}" 
+        ```
     1. 配置项目根路径 `sonar-project.properties`
         - ```ini
             sonar.projectKey=com.github.kuangcp.gobase
             sonar.projectName=GoBase
+            sonar.sources=.
+            sonar.java.binaries=.
             ```
+
+1. [Maven 方式](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
+
 
 > [参考: 有赞 GO 项目单测、集成、增量覆盖率统计与分析](https://cloud.tencent.com/developer/article/1684515)  
 > [支持 Go](https://docs.sonarqube.org/latest/analysis/languages/go/)

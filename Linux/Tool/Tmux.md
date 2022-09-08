@@ -80,7 +80,11 @@ categories:
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) `查看Readme下载安装`
 > `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
+- [tmux-plugins list 插件列表](https://github.com/tmux-plugins/list)
+
 > [参考: 保存和恢复 Tmux 会话 ](https://liam.page/2016/09/10/tmux-plugin-resurrect/)
+
+https://github.com/whame/tmux-modal 快速操作切换和创建 window panel
 
 - `Prefix I` 安装新增的插件 
 
