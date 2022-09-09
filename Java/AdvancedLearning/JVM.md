@@ -162,18 +162,26 @@ NIO 会经常使用, 提高性能
 # JVM基本参数配置
 > [JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)  
 
-- `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1
 - `-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000`  开启远程调试端口 8000
     - If you want to debug from start of application use `suspend=y` , this will keep remote application suspended until you connect from eclipse.
-- `-XX:CompressedClassSpaceSize=500m` 压缩类元空间大小 默认是1g
 - `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
     - 开启无需认证 非SSL的JMX端口: 9999
+
 - `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 打印类装载
 - `-Xloggc:/home/logs/gc.log`
-- `-Xmn` TODO  未设置时默认值的计算方式
 
-- -XX:+PrintFlagsFinal jvm最终属性值
-    - java -XX:+PrintFlagsFinal -version
+## 内存类参数
+> 堆(老年代 年轻代)，堆外，元空间，栈
+
+- `-XX:CompressedClassSpaceSize=500m` 压缩类元空间大小 默认是1g
+- `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1
+
+- -XX:+PrintFlagsFinal 输出JVM最终属性值 例如 `java -XX:+PrintFlagsFinal -version`
+    - MaxHeapSize 最大堆内存
+    - MaxRAMFraction 默认最大内存占物理内存的比例 JDK678 都是4 也就是1/4
+    - `java -XX:+PrintFlagsFinal -version | grep "Use.*GC"` 查看默认GC
+    - `-Xmn` 默认值是Xmx的1/3 即最大堆内存的1/3
+    - NUMA 机制
 
 **********************
 

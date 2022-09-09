@@ -141,15 +141,26 @@ categories:
 > [Oracle Doc](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstat.html)
 
 - option:
-    - -gcutil 统计heap的gc情况
+    - -class 类加载情况
+    - -compiler 编译统计
+    - -printcompilation JVM编译方法统计
+    - 查看内存相关指标
+        - -gcutil 总gc统计情况
+        - -gc gc统计情况
+        - -gccapacity 堆内存空间
+        - -gcnew 和 -gcnewcapacity 新生代gc和内存统计
+        - -gcold 和 -gcoldcapacity 老年代gc和内存统计
+        - -gcpermcapacity JDK7永久代 -gcmetacapacity JDK8+ 元空间
     - -t 在第一列输出时间戳。该时间戳从jvm启动开始
     - -h3 每隔N行输出一次列表头
     - $PID 进程号
     - interval 输出间隔时间，单位毫秒
     - count 输出次数
 
-- Demo:
-    - `jstat -gcutil -t -h5 7919 1000 50` 查看gc情况
+> [CSDN: jstat](https://blog.csdn.net/achuo/article/details/107793361)
+
+> Demo:
+- `jstat -gcutil -t -h5 7919 1000 50` 查看gc情况
 
 ## jinfo 
 > 观察运行中的 java 进程的运行环境参数：参数包括 Java System 属性和 JVM 命令行参数
