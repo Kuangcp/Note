@@ -111,11 +111,13 @@ _个人配置_
 
 ## VSCode
 
-> [官网](https://code.visualstudio.com/) 码笔记，码Python 比较方便，目录树，预览，整合终端  | [中文手册](https://jeasonstudio.gitbooks.io/vscode-cn-doc/) | [code-server](https://github.com/cdr/code-server)
+> [Official Site](https://code.visualstudio.com/) | [中文手册](https://jeasonstudio.gitbooks.io/vscode-cn-doc/) | [code-server](https://github.com/cdr/code-server)
 
-1. 其所有用户自定义配置都缓存在此目录 `~/.config/Code/User/`
+1. 注意：用户自定义配置都缓存在 `~/.config/Code/User/`
 1. vscode 书写 markdown [官方文档](https://code.visualstudio.com/Docs/languages/markdown)
-1. 禁用GPU加速 ctrp+shift+p打开命令面板，找到 Preferences: Configure Runtime Arguments 命令，然后加上 "disable-hardware-acceleration": true 即可
+1. 禁用GPU加速 ctrp+shift+p 中的 Preferences: Configure Runtime Arguments 命令
+    - 加上 "disable-hardware-acceleration": true
+1. 设置tab多行展示 `workbench.editor.wrapTabs`
 
 ### 快捷键
 > [快捷键官方PDF说明](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)
@@ -124,6 +126,7 @@ _个人配置_
     - 直接输入文件名就是搜文件
     - `>` 作为前缀则等同 `Ctrl Shift P`
     - `#` 作为前缀则等同 `Ctrl T`
+    - `@` 当前文件内标题 版本1.71.1+
 - `Ctrl T ` 搜索打开所有Markdown文件的所有标题 1.25+
 - `Ctrl Shift P ` 执行命令
 - `Ctrl+K Ctrl+S` 设置用户快捷键  Keyboard Shortcuts
@@ -197,9 +200,10 @@ strict-ssl=false
 ******************************
 
 ## 小书匠
-- [在线使用](http://markdown.xiaoshujiang.com/) | [github地址](https://github.com/suziwen/markdownxiaoshujiang)
-- 本来是很合适的，但是对文件操作不干净，总有些bug不好用,文件闪退出错,终端不方便
-    - 不适合编程适合写作,所支持的md的格式非常强大
+> [在线使用](https://markdown.xiaoshujiang.com/) | [github地址](https://github.com/suziwen/markdownxiaoshujiang)
+
+- 本来是很合适的，但是对文件操作不干净（引入自定义的文本和格式），文件偶尔闪退出错,终端不方便，资源占用大
+    - 不适合编程适合写作,所支持的md的格式非常方便
 - 快捷键
     - 加粗    `Ctrl + B` 
     - 斜体    `Ctrl + I` 
@@ -241,11 +245,11 @@ strict-ssl=false
 > [Github: micro](https://github.com/zyedidia/micro)
 
 *****************
-## 在线编辑器
-_[stackedit.io](https://stackedit.io/)_
+## BS在线编辑器
+- _[stackedit.io](https://stackedit.io/)_
 - [Github地址](https://github.com/benweet/stackedit/)
-
-CMD编辑器
+- [小书匠](https://markdown.xiaoshujiang.com/)
+- CMD编辑器
 
 ************************
 

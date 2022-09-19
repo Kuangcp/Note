@@ -17,8 +17,9 @@ categories:
     1. [Icon](#icon)
     1. [Terminal](#terminal)
         1. [彩色输出](#彩色输出)
+            1. [ls配置彩色输出](#ls配置彩色输出)
 
-**目录 end**|_2021-02-03 17:25_|
+**目录 end**|_2022-09-14 13:34_|
 ****************************************
 # UI
 > themes icons fonts 
@@ -98,6 +99,7 @@ categories:
     done
 ```
 
+#### ls配置彩色输出
 [Gihub: LS_COLORS](https://github.com/trapd00r/LS_COLORS)  
 [customize bash prompt](https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/)  
 
