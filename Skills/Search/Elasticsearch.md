@@ -24,6 +24,10 @@ categories:
 
 `docker run -d --name es7 --net es-network -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms2560m -Xmx2560m"   elasticsearch:7.14.2`
 
+> [参考: 用容器快速上手Elasticsearch](http://qinghua.github.io/elastic-search/)
+
+入门：构建出 RestHighLevelClient  使用 bulk search 接口 
+
 ### GUI
 浏览器插件： Elasticvue
 

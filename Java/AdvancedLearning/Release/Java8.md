@@ -95,6 +95,10 @@ categories:
 1. Java8 in action 
 1. 写给大忙人看的Java8
 
+## 实战库项目
+- [vavr](https://github.com/vavr-io/vavr) `改进Java8函数式`
+- [resilience4j](https://github.com/resilience4j/resilience4j) `Hystrix继任者`
+
 *****************************
 # 接口的变化
 

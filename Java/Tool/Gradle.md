@@ -106,7 +106,7 @@ categories:
 ## Docker安装
 > [Docker 文档](https://docs.docker.com/samples/library/gradle/) `虽然在开发时感觉意义不大, 还要把项目映射进去..`
 
-## 手动配置
+## 解压配置
 > [官方下载网址](http://services.gradle.org/) 有各个版本的下载以及版本发行说明
 
 1. 解压到任意目录, 并将 bin 目录加入 环境变量即可
