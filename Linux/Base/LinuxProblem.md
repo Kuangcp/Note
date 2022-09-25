@@ -28,7 +28,7 @@ categories:
     1. [数据问题](#数据问题)
         1. [突然断电](#突然断电)
 
-**目录 end**|_2021-02-03 17:25_|
+**目录 end**|_2022-09-25 17:08_|
 ****************************************
 # 遇到的常见问题
 
@@ -125,16 +125,20 @@ categories:
 *********************************************
 
 ## 数据问题
+
 ### 突然断电
-> 开机报错信息: fsck exited with status code 4
+> 由于Linux延迟写的特性，如果遇到操作系统突然断电，会导致文件损坏或缺失，从而引发各种诡异问题
+
+************************
+
+>1. 开机报错信息: fsck exited with status code 4
 
 1. 根据报错提示的分区, 进行修复, 由于我的Linux是ext3文件系统 ext4 则是 `fsck.ext4`
 1. `fsck.ext3 -y /dev/sda9` **分区根据实际情况**
 1. 完成后重启即可
 
 ************************
-
-> 导致了 Git 仓库都损坏了 `fatal: loose object`  
+>2. 导致了 Git 仓库都损坏了 `fatal: loose object`  
 
 ZSH: corrupt history file
 
@@ -143,3 +147,7 @@ mv .zsh_history .zsh_history_bad
 strings .zsh_history_bad > .zsh_history
 fc -R .zsh_history
 ```
+
+************************
+>3. 导致了终端输出中文乱码 Unicode乱码，但是应用内(firefox vscode)中文输入正常，且粘贴板复制中文内容
+

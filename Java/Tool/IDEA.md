@@ -37,7 +37,7 @@ categories:
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
         1. [无法输入中文](#无法输入中文)
 
-**目录 end**|_2020-10-30 18:12_|
+**目录 end**|_2022-09-25 17:08_|
 ****************************************
 
 # IDEA 使用笔记
@@ -338,6 +338,7 @@ _例如修改为如下_
 
 *********************
 ## 常用插件
+1. Atom Material Icons
 1. rainbow brackets 将括号变成彩色, 更方便查看
 1. Alibaba Java Code Guideline
     - 阿里巴巴的代码规范插件

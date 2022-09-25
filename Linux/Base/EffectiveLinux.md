@@ -42,7 +42,7 @@ categories:
     1. [PDF](#pdf)
 1. [Tips](#tips)
 
-**目录 end**|_2021-03-05 17:53_|
+**目录 end**|_2022-09-25 17:08_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -75,6 +75,8 @@ categories:
 - 配置语法： [doc](http://troubleshooters.com/linux/sakura.htm) | [config shortcut](https://unix.stackexchange.com/questions/102474/configuring-shortcuts-for-sakura)  
 
 - 例如 [修改 Ctrl C V 为复制快捷键](https://bbs.archlinux.org/viewtopic.php?id=260755) `Gtk3起 不支持所谓的鼠标悬浮改快捷键`
+
+修改 `~/.config/xfce4/terminal/accels.scm`
 ```lua
 (gtk_accel_path "<Actions>/terminal-window/copy" "<Primary>c")
 (gtk_accel_path "<Actions>/terminal-window/paste" "<Primary>v")
@@ -363,6 +365,9 @@ or `convert -background none icon.svg -define icon:auto-resize icon.ico`
 ### 截图
 - Flameshot 截图工具  类似于 snipaste
     - Ctrl 鼠标滚动 调整线条粗细
+    - 习惯：
+        - Ctrl Alt S 截图
+        - Alt Q pin
 - deepin-screenshot
 
 ## 视频
