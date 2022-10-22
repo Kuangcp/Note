@@ -11,8 +11,9 @@ categories:
 
 1. [PostgreSQL Advance](#postgresql-advance)
 1. [索引](#索引)
+1. [Explain](#explain)
 
-**目录 end**|_2022-09-14 13:34_|
+**目录 end**|_2022-10-22 22:59_|
 ****************************************
 # PostgreSQL Advance
 
@@ -48,4 +49,3 @@ where attstattarget = -1
 
 # Explain 
 [Official Doc](https://www.postgresql.org/docs/current/sql-explain.html)
-

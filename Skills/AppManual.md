@@ -13,15 +13,19 @@ categories:
     1. [服务管理](#服务管理)
         1. [oneinstack](#oneinstack)
     1. [日常工具](#日常工具)
-        1. [termux](#termux)
+        1. [Termux](#termux)
+        1. [iSH](#ish)
         1. [kite](#kite)
+    1. [开发调试工具&技巧](#开发调试工具&技巧)
+        1. [网络](#网络)
+        1. [Debug](#debug)
     1. [IDE](#ide)
         1. [Idea](#idea)
         1. [Eclipse](#eclipse)
     1. [绘图工具](#绘图工具)
         1. [思维导图](#思维导图)
 
-**目录 end**|_2021-03-05 17:53_|
+**目录 end**|_2022-10-22 22:59_|
 ****************************************
 # 软件使用记事
 ## 包管理
@@ -86,6 +90,19 @@ categories:
 支持 VS Code IDEA Vim 等等
 
 ************************
+## 开发调试工具&技巧
+### 网络
+- xswtich `Chrome插件`
+    - 浏览器层面通过劫持ajax请求，修改请求的实际地址从而达到访问某网站时指定替换加载的静态资源（js css）,或者是替换请求的服务端地址
+    - 场景：访问前后端分离的某应用服务，浏览器打开测试环境时，修改配置使前端对测试环境后端发起请求实际被替换请求到本地，方便调试
+    - 由于Firefox不兼容，替代品 [dev-proxy](https://github.com/Kuangcp/GoBase/tree/master/toolbox/dev-proxy)
+- Multi-Account-Container `Firefox 插件`
+    - 同一网站同时登录多个帐号，帐号之间cookie等信息会隔离
+
+### Debug
+
+************************
+
 
 ## IDE
 ### Idea

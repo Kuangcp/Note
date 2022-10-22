@@ -11,12 +11,16 @@ categories:
 
 1. [HTTP](#http)
     1. [请求方法](#请求方法)
+        1. [CONNECT](#connect)
         1. [GET](#get)
+        1. [POST](#post)
     1. [HTTP的状态码](#http的状态码)
     1. [HTTP 缓存](#http-缓存)
     1. [Session 和 Cookie](#session-和-cookie)
         1. [Cookie](#cookie)
         1. [Session](#session)
+    1. [Auth](#auth)
+        1. [Basic-Auth](#basic-auth)
 1. [HTTP各个实现版本](#http各个实现版本)
     1. [HTTP/0.9](#http09)
     1. [HTTP/1.0](#http10)
@@ -24,11 +28,11 @@ categories:
     1. [HTTP/2](#http2)
     1. [HTTP/3](#http3)
 1. [HTTPS](#https)
-    1. [HTTPS 认证流程](#https-认证流程)
+    1. [HTTPS 证书认证流程](#https-证书认证流程)
     1. [HSTS](#hsts)
 1. [CORS 跨域](#cors-跨域)
 
-**目录 end**|_2022-06-27 14:23_|
+**目录 end**|_2022-10-22 22:59_|
 ****************************************
 # HTTP
 > HyperText Transfer Protocol 超文本传输协议 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -55,6 +59,19 @@ categories:
 
 - [ ] Header中一些常用属性的含义和使用场景
 
+HTTP请求实际是就是文本协议，报文样例：
+```
+POST /pageList HTTP/1.1\r\n
+Host: www.jd.com\r\n
+User-Agent: xx\r\n
+Content-Length: 121\r\n
+\r\n
+{"pageSize":2}
+```
+
+### CONNECT
+代理服务器代理 HTTPS请求时，客户端会先发起一个 `CONNECT host:443 HTTP/1.1` 请求尝试建立连接 [参考Doc: mitmproxy](https://docs.mitmproxy.org/stable/concepts-howmitmproxyworks/)
+
 ### GET
 > [参考: GET 请求中 URL 的最大长度限制](https://blog.csdn.net/dream_weave/article/details/105143562)  
 
@@ -62,6 +79,12 @@ get 方式下的http请求会限制URL长度，会有多方面不同的限制 �
 - 客户端 各大浏览器会有实现上的差异 从 2083 到20000 不等
 - 代理端 Nginx Apache IIS
 - 服务端 Java的SpringMVC 等
+
+### POST
+
+- 标准的HTTP使用规范是参数全部使用body来传递，但是为了实现授权等功能的通用性，某些大厂会折腾出这样的接口
+    - https://api.com/getUserInfo?token=xxx body传输JSON格式的userId等参数
+
 
 ## HTTP的状态码
 > [HTTP 状态码 完整列表](/FrontEnd/ResponseCode.md)
@@ -93,7 +116,6 @@ get 方式下的http请求会限制URL长度，会有多方面不同的限制 �
 ### Session
 > 通常各种语言，Web服务器的实现逻辑都不一样
 
-
 1. 例如在Tomcat中，Session的实现默认是存储在内存中(也可以存储在文件，数据库中)，具有过期时间 [Tomcat 中的 Session 和 Cookie ](https://www.cnblogs.com/chuonye/p/10846998.html)
     1. SessionInitializerFilter 过滤器中会调用 request的getSession方法
         - 设置为过滤器的原因 该类的JavaDoc 有说明，例如为了 Websocket
@@ -101,6 +123,11 @@ get 方式下的http请求会限制URL长度，会有多方面不同的限制 �
         - 创建Session的同时会在 request 关联的 response中写入对应的Cookie
 
 1. [参考: PHP中Session 的实现](https://www.runoob.com/w3cnote/php-session-login.html)  
+
+************************
+
+## Auth
+### Basic-Auth
 
 ************************
 
@@ -220,7 +247,7 @@ HTTP/3 只是一种基于 IETF QUIC（一种基于 UDP 的多路复用和安全�
 # HTTPS
 > [SSL & TLS](/Skills/Network/WebSecurity.md#ssl-tls)
 
-## HTTPS 认证流程
+## HTTPS 证书认证流程
 1. 服务器生成一对密钥，私钥自己留着，公钥交给数字证书认证机构（CA）
 1. CA进行审核，并用CA自己的私钥对服务器提供的公钥进行签名生成数字证书
 1. 在 HTTPS 建立连接时，客户端从服务器获取数字证书，用CA的公钥（根证书）对数字证书进行验证，比对一致，说明该数字证书确实是CA颁发的

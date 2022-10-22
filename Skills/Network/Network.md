@@ -33,6 +33,8 @@ categories:
         1. [TTFB](#ttfb)
         1. [URL](#url)
         1. [DNS](#dns)
+        1. [MDNS](#mdns)
+            1. [安全性问题](#安全性问题)
         1. [VPN](#vpn)
         1. [SSDP](#ssdp)
 1. [Socket](#socket)
@@ -49,16 +51,19 @@ categories:
     1. [反向代理](#反向代理)
     1. [透明代理](#透明代理)
     1. [代理工具](#代理工具)
+        1. [Clash](#clash)
         1. [Fiddler](#fiddler)
         1. [Wireshark](#wireshark)
         1. [Charles](#charles)
         1. [mitmproxy](#mitmproxy)
+        1. [tinyproxy](#tinyproxy)
         1. [Mars](#mars)
         1. [camilla](#camilla)
+        1. [dev-proxy](#dev-proxy)
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2021-06-20 14:26_|
+**目录 end**|_2022-10-22 22:59_|
 ****************************************
 # 网络
 
@@ -334,6 +339,8 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 
 它扩展了HTTP 1.1，在GET、POST、HEAD等几个HTTP标准方法以外添加了一些新的方法，使应用程序可直接对Web Server直接读写，并支持写文件锁定(Locking)及解锁(Unlock)，还可以支持文件的版本控制。
 
+云盘类平台（例如坚果云）会提供webdav协议接口，从而让操作云盘上的文件达到与本地目录和文件的使用体验
+
 ************************
 
 ### 网络延迟
@@ -460,15 +467,18 @@ function FindProxyForURL(url, host) {
 ## 透明代理
 > 客户端根本不需要知道有代理服务器的存在，它改变你的 request fields（报文），并会传送客户端真实IP给服务端，多用于路由器的NAT转发中
 
-能用缓存技术提高浏览速度，能用内存过滤提高安全性  
+透明代理的这层可以同时部署正向代理和反向代理
 
-- eg: 内网中的硬件防火墙
+应用方无感使用缓存技术提高访问速度，能提高网络安全性(内网中的硬件防火墙。企业中的行为管理软件)
 
 ************************
 
 ## 代理工具
 > [Alternatives to Charles for Linux](https://alternativeto.net/software/charles/?platform=linux)
 - [whistle](https://github.com/avwo/whistle) `nodejs 平台的抓包工具`
+
+### Clash
+[Github](https://github.com/Dreamacro/clash)
 
 ### Fiddler 
 > [fiddler](https://www.telerik.com/fiddler)  
@@ -498,6 +508,9 @@ function FindProxyForURL(url, host) {
 
 > [gomitproxy](https://github.com/zboya/gomitmproxy) `Go 实现`  
 
+### tinyproxy
+[Github](https://github.com/tinyproxy)
+
 ### Mars
 > [Github](https://github.com/ouqiang/mars)
 
@@ -509,6 +522,11 @@ function FindProxyForURL(url, host) {
 > [docker-compose](https://gitee.com/gin9/DockerfileList/tree/master/docker-compose/camilla)
 
 功能简单只能查看抓包的数据，数据只缓存浏览器，刷新就会消失，但是占用内存小
+
+### dev-proxy
+> [Github](https://github.com/Kuangcp/GoBase/tree/master/toolbox/dev-proxy)`个人开发 用于代理HTTP请求 方便前后端联调`
+
+其实 xswitch 会更好用，但是不兼容firefox，即便使用debug方式安装上插件也会有报错和API不兼容
 
 ************************
 

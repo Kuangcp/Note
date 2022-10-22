@@ -12,41 +12,27 @@ categories:
     1. [使用](#使用)
     1. [Java API](#java-api)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2022-10-22 22:59_|
 ****************************************
 # 安装并启动
 
 -   进官网下载ZooKeeper，地址为`https://www.apache.org/dyn/closer.cgi/zookeeper/`
-
 -   将下载好的压缩包，解压缩，并进入ZooKeeper的文件夹
-
 -   查看目录`conf`下是否含有`zoo.cfg`配置文件(因我下载的版本是3.4.12,发现conf下有文件`zoo_sample.cfg`,将文件`zoo_sample.cfg`在原有目录下复制并改名为`zoo.cfg`，因ZooKeeper的启动脚本默认是使用配置`conf/zoo.cfg`，若没有该配置，则会报错)
-
 -   启动服务器命令为`bin/zkServer.sh start`
-
 -   启动CLI的命令为`bin/zkCli.sh`
-
 -   停止ZooKeeper服务的命令为`bin/zkServer.sh stop`
 
 ## 使用
-
 -   创建Znodes：`create [参数] /path 数据`，例如：`create /FirstZnode "first ZooKeeper-app"`，起命令参数如下
-
     -   `-s`： 创建连续的Znode
     -   `-e`: 创建一个零时的Znode
-
 -   获取Znodes: `get /path`,`/path`要与创建时的一直
-
 -   监视znode的数据变化：`get /path [watch] 1`, 例如：`get /FirstZnode 1`，当`/FirstZnode`的数据发生变化时，将输出变化
-
 -   设置znode的数据：`set /path data`，例如：`set /FirstNode "Hello"`
-
 -   创建子Znode的方法与创建Znode的方法一样，但需要在路径中包含父路径：`create /parent/path data`,例如：`create /FirstNode/TestNode "test"`
-
 -   显示子Znode：`ls /parent`,例如列出上一步创建的Znode`ls /FirstNode`
-
 -   检查状态：`stat /path`,例如：`stat /FirstNode`
-
 -   删除Znode:`rmr /path`,仅适用于无子Znode
 
 ## Java API

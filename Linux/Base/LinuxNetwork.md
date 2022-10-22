@@ -39,7 +39,6 @@ categories:
         1. [配置FTP服务器](#配置ftp服务器)
     1. [SSH](#ssh)
     1. [Telnet](#telnet)
-    1. [Proxy](#proxy)
     1. [VPN](#vpn)
         1. [tun/tap](#tuntap)
             1. [TUN TAP 区别](#tun-tap-区别)
@@ -54,7 +53,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2021-09-28 22:41_|
+**目录 end**|_2022-10-22 22:59_|
 ****************************************
 # Linux网络管理
 ## 内核配置
@@ -513,12 +512,6 @@ _iproute-ss_
 
 - 测试端口连通性 `telnet ip port` 如果端口开放则提示 Connected, 否则会提示 refused 
     - netcat 具有同样效果 `nc -v -z -n ip port`
-
-************************
-## Proxy
-> 代理
-
-- mitmproxy tinyproxy mars
 
 ## VPN
 ### tun/tap
