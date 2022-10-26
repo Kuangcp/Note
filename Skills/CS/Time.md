@@ -30,6 +30,16 @@ categories:
 
 协调世界时，又称世界统一时间、世界标准时间、国际协调时间, 也会被称为"Zulu time"
 
+> 实际地区无关的夏令时缩写：
+- 主要的夏令时包括EDT(Eastern Daylight Time)，CDT(Central Daylight Time )，PDT(Pacific Daylight Time)。非夏令时包括CST(Central Standard Time)，PST(Pacific Standard Time)。
+
+### CDT
+
+中国标准时间（CST）和中国夏令时(CDT)
+
+1986年至1991年，中华人民共和国在全国范围实行了六年夏令时，每年从4月中旬的第一个星期日2时整（北京时间）到9月中旬第一个星期日的凌晨2时整（北京夏令时）。除1986
+年因是实行夏令时的第一年，从5月4日开始到9月14日结束外，其它年份均按规定的时段施行。1992年4月5日后不再实行。
+
 ### CST
 > 中国处于东八区 所以是 UTC+8 
 
@@ -46,3 +56,4 @@ categories:
 > DST是Daylight Saving Time的缩写，称为阳光节约时，在我国称为夏时制，又称夏令时，是一种为节约能源而人为调整地方时间的制度。
 
 > [Daylight saving time](https://en.wikipedia.org/wiki/Daylight_saving_time)
+

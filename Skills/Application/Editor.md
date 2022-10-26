@@ -111,9 +111,9 @@ _个人配置_
 
 ## VSCode
 
-> [Official Site](https://code.visualstudio.com/) | [中文手册](https://jeasonstudio.gitbooks.io/vscode-cn-doc/) | [code-server](https://github.com/cdr/code-server)
+> [Official Site](https://code.visualstudio.com/) | [中文手册](https://jeasonstudio.gitbooks.io/vscode-cn-doc/) | [code-server](https://github.com/cdr/code-server) 
+> 用户自定义配置目录 `~/.config/Code/User/`
 
-1. 注意：用户自定义配置都缓存在 `~/.config/Code/User/`
 1. vscode 书写 markdown [官方文档](https://code.visualstudio.com/Docs/languages/markdown)
 1. 禁用GPU加速 ctrp+shift+p 中的 Preferences: Configure Runtime Arguments 命令
     - 加上 "disable-hardware-acceleration": true
@@ -149,10 +149,11 @@ _个人配置_
 
 ### 插件
 **美化**
+>1. Material Icon Theme
+>1. Snazzy Operator
+
 1. vscode-icons
-1. Material Icon Theme
 1. One Dark Pro
-1. snazzy operator
 1. Gruvbox Theme
 
 **工具**

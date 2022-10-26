@@ -28,7 +28,8 @@ categories:
 **目录 end**|_2020-04-27 23:42_|
 ****************************************
 # Java中的IO
-> [操作系统中的IO模型](/Skills/CS/IO.md)  
+> [Note：操作系统中的IO模型](/Skills/CS/IO.md)  
+> [Oracle Doc: Java I/O, NIO, and NIO.2](https://docs.oracle.com/javase/8/docs/technotes/guides/io/index.html)  
 
 > [Github: IO](https://github.com/Kuangcp/JavaBase/tree/io) | [Github Socket NIO](https://github.com/Kuangcp/JavaBase/tree/master/java-network/src/main/java/com/github/kuangcp/nio)  
 
@@ -83,9 +84,11 @@ categories:
 - 复用模式: 一个线程睡眠很短的时间, 不停去检查 方法的时间到了没有, 到了就执行, 这样就只要一个线程就能处理多个任务  
 
 ### AIO
-> Java1.7 引入; 真正的异步非阻塞IO, NIO2.0
+> Java1.7 引入; 真正的异步非阻塞IO
 
 - 引入了新的异步通道的概念, 以及异步文件通道和异步套接字通道的实现
+
+Asynchronous*的类 读写操作都被Future封装了，均交给操作系统异步完成，需要应用系统手动处理
 
 **************
 ## 字节流 

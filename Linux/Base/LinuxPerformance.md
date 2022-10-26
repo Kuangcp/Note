@@ -104,6 +104,14 @@ categories:
 
 >- 注意: 如果是新版的free, shared 那一栏总是为0, 因为shared本就是说明进程共享内存容量, free认为不能显示数有效信息, 就抛弃了这个指标,总是显示为0
 
+### 交换内存分析
+VIRT = SWAP + RES or equal
+SWAP = VIRT - RES
+
+- 查看进程使用交换内存 `grep -i VmSwap /proc/*/status` 
+- 进程按交换内存使用大小排序`for file in /proc/*/status ; do awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $file; done | sort -k 2 -n -r | less`
+- `smem`  Report memory usage with shared memory divided proportionally
+
 **************************
 
 ## 性能监测
