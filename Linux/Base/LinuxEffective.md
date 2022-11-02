@@ -141,6 +141,13 @@ categories:
 - `pip install qrcode` 
     - *qr --help* 终端内生成二维码
 
+## 远程工具
+[rdesktop and xfreerdp](https://www.joxrays.com/linux-rdp-windows/)
+
+rdesktop xfreerdp
+
+************************
+
 ## 网络工具
 > [参考: Linux查看网络流量](https://tlanyan.me/linux-traffic-commands/)  
 
