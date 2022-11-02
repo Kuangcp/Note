@@ -23,6 +23,8 @@ categories:
     - notify-send -i iconFilePath title detail -t 1500
 1. xflock4 锁屏
 
+[xfce4 install xrdp](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop?tabs=azure-cli)
+
 ## Panel 
 
 ### Plugin

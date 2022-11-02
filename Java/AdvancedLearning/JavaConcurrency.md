@@ -449,14 +449,17 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 
 公式1：Nthreads = Ncpu * Ucpu * W/C
 
-其中：
-Ncpu = cpu的核心数 ，Ucpu = cpu的利用率
-W = 线程等待时间，C = 线程计算时间
+    Ncpu = cpu的核心数， 
+    Ucpu = cpu的利用率
+    W = 线程等待时间
+    C = 线程执行计算时间
 
 此方案偏理论化，cpu的实际利用率（即分配多少cpu给线程池使用）和线程的计算，等待时间非常难评估，并且最后计算出来的结果也很容易偏离实际应用场景。
+
 公式2：coreSize = 2 * Ncpu , maxSize = 25 * Ncpu
 
 实际使用过程中不同的业务对线程池的需求不一样，所以统一采用cpu核心数来配置显然不太合理
+
 公式3：coreSize = tps * time , maxSize = tps * time * (1.7~2)
 
 ### ScheduledThreadPoolExecutor
