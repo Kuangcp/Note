@@ -53,6 +53,7 @@ categories:
         1. [branch](#branch)
         1. [checkout](#checkout)
         1. [分支合并](#分支合并)
+            1. [分支问题排查](#分支问题排查)
         1. [merge](#merge)
         1. [rebase](#rebase)
         1. [cherry-pick](#cherry-pick)
@@ -75,7 +76,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2022-05-17 22:56_|
+**目录 end**|_2022-11-08 20:44_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -619,13 +620,15 @@ git log --oneline -S "search keyword" --source --all
 
 Git 在合并分支的时候使用的是 三向合并策略，即当前分支和目标分支的共同祖先commit节点， 和两个分支的当前commmit节点进行比较确定哪一方发生修改需要纳入，如果两方都修改就要提示冲突
 
-`git merge-base 分支1 分支2` 可以查看两个分支的共同祖先
-
 > ![](img/git-merge-situation.drawio.svg)
 
 根据 Git 的合并策略，在合并两个有分叉的分支（上图中的 D、E‘）时，Git 默认会选择 Recursive 策略。找到 D 和 E’的最短路径共同祖先节点 B，以 B 为 base，对 D，E‘做三向合并。
 
 B 中有 http.js，D 中有 http.js 和 main.js，E’中什么都没有。根据三向合并，B、D 中都有 http.js 且没有变更，E‘删除了 http.js，所以合并结果就是没有 http.js，没有冲突，所以 http.js 最终会被删除。
+
+#### 分支问题排查
+- `git merge-base 分支1 分支2` 查看两个分支共同祖先（前提:两个分支通过merge命令发生的合并，如果是rebase则找不到真正的祖先节点）
+- `git show-branch 分支1 分支2 分支3` 查看若干分支差异提交情况
 
 ### merge
 - [官方文档](https://git-scm.com/docs/git-merge)
@@ -639,8 +642,6 @@ B 中有 http.js，D 中有 http.js 和 main.js，E’中什么都没有。根�
 - `--squash` 和 `--no-squash` 该参数和 `--no-ff` 冲突 
     - 使用 `--squash` 时，当一个合并发生时，从当前分支和对方分支的共同祖先节点，一直到对方分支的顶部节点内的所有提交内容将修改当前工作区，使用者可以经过审视后进行提交，产生一个新的节点。
     - 这种情况下分支图看不到合并的环，只会看作一个简单的提交
-
-- 查看两个分支共同祖先 `git merge-base 分支1 分支2`
 
 - 如果遇到冲突：
     - `git mergetool` 使用工具进行分析冲突文件方便修改
