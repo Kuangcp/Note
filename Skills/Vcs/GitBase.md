@@ -810,10 +810,15 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 
 - 拉取项目所有远程分支到本地
 ```sh
-git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
-git fetch --all
-git pull --all
+    git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+    git fetch --all
+    git pull --all
 ```
+
+> git pull 默认策略配置
+- git config pull.rebase false  # merge
+- git config pull.rebase true   # rebase
+- git config pull.ff only       # fast-forward only
 
 ************************
 
