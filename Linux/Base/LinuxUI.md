@@ -65,7 +65,8 @@ categories:
 ***********************
 
 ## Icon
-1. /usr/share/icons
+1. /usr/share/icons 
+    - 例如： `/usr/share/icons/Papirus/128x128/apps/`
 
 > sudo apt search icon-theme  也能看到很多icon
 
