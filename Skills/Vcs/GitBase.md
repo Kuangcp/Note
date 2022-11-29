@@ -133,10 +133,6 @@ categories:
     safecrlf = false
 [credential]
     helper = store
-[merge]
-    tool = kdiff3 # 用于比较差异时使用的工具
-[diff]    
-    tool = meld # 配置在merge中发生冲突时的编辑工具,和diff中的tool近乎一致
 ```
 
 > 可用： opendiff kdiff3 tkdiff xxdiff meld kompare gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare smerge vimdiff emerge  

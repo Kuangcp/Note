@@ -3,8 +3,6 @@
 > 常用路径 
 1. Windows 所有字体 C盘Windows/Fonts 目录下
 
-模拟Linux环境
-
 - git-for-windows
 - [cygin](http://x.cygwin.com/)
 
@@ -27,5 +25,5 @@
 > [利用WSL打造Arch开发环境](https://zhuanlan.zhihu.com/p/51270874)
 
 ## 网络
-- tracert 等同于Linux的traceroute
-- ipconfig 等同于 Linux 的 ifconfig
+- tracert 等同于Linux的 traceroute
+- ipconfig 等同于Linux的 ifconfig
