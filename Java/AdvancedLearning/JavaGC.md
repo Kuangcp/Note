@@ -297,7 +297,7 @@ GC Roots 对象包含:
 ## Parallel Scavenge
 > 并行多线程收集器, 同样使用标记复制算法 着重点是可控制的吞吐量, 可以高效率利用CPU时间, 仅用于新生代
 
-`-XX:-UseParallelGC`
+`-XX:+UseParallelGC`
 
 - 控制最大垃圾收集停顿时间 `-XX:MaxGCPauseMillis` (大于0的整数 millis)
     - 该值并不是越小越好, GC停顿时间缩短是牺牲吞吐量和新生代空间来换取的 

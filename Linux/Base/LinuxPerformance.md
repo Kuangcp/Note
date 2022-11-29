@@ -399,7 +399,12 @@ SWAP = VIRT - RES
     - `ps -a -x -o rss,comm | grep java | awk '{sum+=$1};END {print sum "K " sum/1024"M "}'`
 1. 按内存排序 列出所有进程 `ps aux | grep -v RSS | awk "{print $6 "\t" $11 }" | sort --human-numeric-sort -r | less`
 
-统计的是RSS，也就是会包含共享内存，实际上应该减去共享内存
+1. 按实际执行的二进制命令展示 `ps -ely`
+
+- [Difference Between Resident Set Size and Virtual Memory Size](https://www.baeldung.com/linux/resident-set-vs-virtual-memory-size)
+    - RSS 驻留内存（共享库+堆+栈） 注意当前进程可能共用别的进程已加载的共享库，所以这部分内存是被重复计算了
+    - VSZ 虚拟内存
+
 
 ### procs 
 Rust 编写的 现代 ps
