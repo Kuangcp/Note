@@ -179,6 +179,8 @@ categories:
 1. 或者 使用本地配置文件启动redis容器
     - `sudo docker run -v /myredis/conf/redis.conf:/usr/local/etc/redis/redis.conf --name myredis redis redis-server /usr/local/etc/redis/redis.conf`
 
+- `迁移` 复制rdb文件到容器内 /data/dump.rdb ， kill掉redis进程，启动 redis 加载数据。
+
 *****************************************
 ## 持续集成
 
