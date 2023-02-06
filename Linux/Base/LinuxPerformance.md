@@ -53,7 +53,8 @@ categories:
 ****************************************
 # Linux性能分析和管理
 ## 基准测试
-> [几款优秀的Linux基准测试工具](https://blog.csdn.net/gatieme/article/details/54296440)
+> [几款优秀的Linux基准测试工具](https://blog.csdn.net/gatieme/article/details/54296440)  
+> [Arch wiki: Improving performance](https://wiki.archlinux.org/title/Improving_performance)  
 
 1. unixbench
 
