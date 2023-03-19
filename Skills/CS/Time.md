@@ -19,6 +19,11 @@ categories:
 **目录 end**|_2020-06-24 02:06_|
 ****************************************
 # 时间
+> 上下四方为宇，古往今来为宙
+
+计算机内部的计时器为石英钟，存在误差，所以需要依靠NTP服务来对时(例如： `sudo /usr/sbin/ntpdate -u cn.pool.ntp.org`)
+
+
 ## 基础概念
 ### GMT
 > 格林尼治标准时间（Greenwich Mean Time，GMT）是指位于伦敦郊区的皇家格林尼治天文台的标准时间，因为本初子午线被定义在通过那里的经线。
@@ -28,11 +33,14 @@ categories:
 ### UTC
 > [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)
 
-协调世界时，又称世界统一时间、世界标准时间、国际协调时间, 也会被称为"Zulu time"
+协调世界时（为了协调世界时和原子时 采用闰秒实现），又称世界统一时间、世界标准时间、国际协调时间, 也会被称为"Zulu time"
 
 > 实际地区无关的夏令时缩写：
 - 主要的夏令时包括EDT(Eastern Daylight Time)，CDT(Central Daylight Time )，PDT(Pacific Daylight Time)。非夏令时包括CST(Central Standard Time)，PST(Pacific Standard Time)。
 
+************************
+
+## 时区
 ### CDT
 
 中国标准时间（CST）和中国夏令时(CDT)

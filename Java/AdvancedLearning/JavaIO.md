@@ -31,7 +31,7 @@ categories:
 > [Note：操作系统中的IO模型](/Skills/CS/IO.md)  
 > [Oracle Doc: Java I/O, NIO, and NIO.2](https://docs.oracle.com/javase/8/docs/technotes/guides/io/index.html)  
 
-> [Github: IO](https://github.com/Kuangcp/JavaBase/tree/io) | [Github Socket NIO](https://github.com/Kuangcp/JavaBase/tree/master/java-network/src/main/java/com/github/kuangcp/nio)  
+> [Github: IO demo](https://github.com/Kuangcp/JavaBase/tree/io) 
 
 > [参考: 五种IO模型](https://www.jianshu.com/p/6a6845464770)  
 
