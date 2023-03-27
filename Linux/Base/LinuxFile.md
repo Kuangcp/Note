@@ -486,16 +486,17 @@ Windows 客户端 RaiDrive
 
 ## 设置交换内存文件
 - 查看内存 `free -h` 
-- 创建一个4g 交换文件 `dd if=/dev/zero of=/swapfile bs=1024k count=4096` 
+- 创建一个4G交换文件 `dd if=/dev/zero of=/swapfile bs=1024k count=4096` 
+- 设置文件权限 `chmod 0600 /swapfile`
 - 格式化成交换文件的格式 `mkswap /swapfile` 
 - 启用该文件作为交换分区的文件 ` swapon /swapfile` 
-- `/swapfile swap swap defaults 0 0` 写入`/etc/fstab`文件中，让交换分区的设置开机自启
+- `/etc/fstab` 中配置 `/swapfile swap swap defaults 0 0` 让交换分区在开机后自动被挂载
 
 - 修改交换内存开始使用的阈值
     - `sudo sysctl vm.swappiness=15` 临时修改重启注销失效， 查看：`cat /proc/sys/vm/swappiness`
     - 永久修改：`/etc/sysctl.conf ` 文件中设置开始使用交换分区的触发值： `vm.swappiness=10`
     - 表示物理内存剩余`10%` 才会开始使用交换分区
-    - `建议，笔记本的硬盘低于 7200 转的不要设置太高的交换分区使用，大大影响性能，因为交换分区就是在硬盘上，频繁的交换数据`
+    - `建议，笔记本的硬盘低于 7200 转的不要设置太高的交换分区使用，会大大影响性能，因为交换分区就是在硬盘上，频繁的交换数据`
 
 ```sh
     # 完整命令: root身份运行
@@ -504,7 +505,8 @@ Windows 客户端 RaiDrive
 ### 清空交换内存
 - 1.关闭交换分区 `sudo swapoff 交换分区文件`
     - 2.开启交换分区 `sudo swapon 交换分区文件`
-- 或者 `swapoff -a && swapon -a`
+- `swapoff -a && swapon -a`
+    - 前提是交换分区已在 `/etc/fstab` 中配置
 
 ## 清除缓存
 > [参考: 如何在 Linux 中清除缓存（Cache）？](https://linux.cn/article-5627-1.html) `注意要切换到root再运行命令`  

@@ -162,7 +162,7 @@ NIO 会经常使用, 提高性能
 # JVM基本参数配置
 > [JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)  
 
-- `-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000`  开启远程调试端口 8000
+- `-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000` 开启远程调试端口 8000
     - If you want to debug from start of application use `suspend=y` , this will keep remote application suspended until you connect from eclipse.
 - `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
     - 开启无需认证 非SSL的JMX端口: 9999

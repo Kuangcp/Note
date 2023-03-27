@@ -41,3 +41,7 @@ where id in (2,5);
 
 ## 分析函数
 
+### 窗口函数
+统计不止发生一次，而是发生多次。统计不止发生在记录集形成后，而是发生在记录集形成的过程中
+
+> [窗口函数](https://blog.csdn.net/huozhicheng/article/details/5843782/)

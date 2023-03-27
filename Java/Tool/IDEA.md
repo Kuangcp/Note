@@ -399,6 +399,8 @@ _例如修改为如下_
 ### 调优
 > [参考: 记一次idea性能调优](http://www.cnblogs.com/nevermorewang/p/10061377.html)  
 
+- 如果有 node_modules 等大量文件的目录 可以配置文件类型中 忽略这个指定目录的索引
+
 ************************
 
 ## Tips

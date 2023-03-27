@@ -53,7 +53,8 @@ categories:
 ****************************************
 # Linux性能分析和管理
 ## 基准测试
-> [几款优秀的Linux基准测试工具](https://blog.csdn.net/gatieme/article/details/54296440)
+> [几款优秀的Linux基准测试工具](https://blog.csdn.net/gatieme/article/details/54296440)  
+> [Arch wiki: Improving performance](https://wiki.archlinux.org/title/Improving_performance)  
 
 1. unixbench
 
@@ -572,6 +573,9 @@ Rust 编写的 现代 ps
 |-x | 　|恢复之前离线的screen作业。 
 |-ls或--list | |　显示目前所有的screen作业。 
 |-wipe |　| 检查目前所有的screen作业，并删除已经无法使用的screen作业。
+
+### IPC
+> 进程间通信: 管道/信号量/共享内存/Socket
 
 ****************
 ## 系统管理

@@ -49,11 +49,11 @@ IO在计算机中指 Input/Output，也就是输入和输出。由于程序和�
 
 ### 基础概念
 
-对于一个network IO (这里我们以read举例)，它会涉及到两个系统对象: 
+对于一次Network IO (这里我们以read举例)，它会涉及到两个系统对象: 
 - 调用这个 IO 的 用户线程 (process/thread) 
 - 系统内核(kernel) 
 
-当一个 read 操作发生时，它会经历两个阶段：
+当一次 read 操作发生时，它会经历两个阶段：
 1. `等待数据准备` (Waiting for the data to be ready)
 1. `将数据从内核缓存中拷贝到用户缓存(用户进程)中` (Copying the data from the kernel to the process)
 

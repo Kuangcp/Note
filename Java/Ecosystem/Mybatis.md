@@ -83,3 +83,4 @@ mybatis提供了一个cache接口，可用于实现自己的缓存逻辑
 ************************
 # Tips
 1. 展示执行SQL `logging.level.mapperAbsolutePackagePath=DEBUG` [Logging](https://mybatis.org/mybatis-3/logging.html)
+1. Mybatis-Plus 有个 ActiveRecords 模式，想要让实体具有持久层的能力。整个框架都不利于寻找数据的流入 入口。

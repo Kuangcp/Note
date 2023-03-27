@@ -193,7 +193,10 @@ TODO
 
 ### big key
 - `redis-cli --bigkeys`
-- `memory usage key`
+- `memory usage key` 返回字节数
+- `debug object key`
+- `redis-memory-for-key -s localhost -p 6667 key`
+    - pip install rdbtools
 
 ### hot key
 

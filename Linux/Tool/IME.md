@@ -47,9 +47,16 @@ export XMODIFIERS="@im=fcitx"
 ## Rime
 > [rime](https://rime.im/)  中州韵 
 
-响应速度快， 除了切换输入法的时候响应慢了点
+响应速度快，配置方式均为配置文件方式，扩展性高
 
 Ctrl ` 进入设置
+
+> 双拼方案
+- yay rime-double-pinyin 
+
+[rime 输入法小鹤双拼配置](https://blog.moe233.net/posts/3c46778c/)
+
+[自然码双拼](https://jingyan.baidu.com/article/64d05a027cac09de55f73b18.html)
 
 ## 搜狗
 > [Official Site](https://pinyin.sogou.com/linux/)  

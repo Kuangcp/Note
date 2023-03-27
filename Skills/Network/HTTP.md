@@ -85,6 +85,29 @@ get 方式下的http请求会限制URL长度，会有多方面不同的限制 �
 - 标准的HTTP使用规范是参数全部使用body来传递，但是为了实现授权等功能的通用性，某些大厂会折腾出这样的接口
     - https://api.com/getUserInfo?token=xxx body传输JSON格式的userId等参数
 
+`文件上传` 
+
+echo "sss" > b.docx
+
+```sh
+    # firefox
+    -----------------------------234019508041567584373971060997
+    Content-Disposition: form-data; name="file"; filename="b.docx"
+    Content-Type: application/wps-office.docx
+
+    sss
+
+    -----------------------------234019508041567584373971060997--
+
+    # chrome
+    ------WebKitFormBoundarybgjKLu2gfBqPLex4
+    Content-Disposition: form-data; name="file"; filename="b.docx"
+    Content-Type: application/wps-office.docx
+
+
+    ------WebKitFormBoundarybgjKLu2gfBqPLex4--
+```
+可以看出 Body 组成部分： 开始标记，文件元信息，结束标记
 
 ## HTTP的状态码
 > [HTTP 状态码 完整列表](/FrontEnd/ResponseCode.md)

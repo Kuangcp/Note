@@ -23,8 +23,10 @@ categories:
         1. [代码片段](#代码片段)
         1. [插件](#插件)
         1. [实践](#实践)
+        1. [vscode server](#vscode-server)
     1. [Atom](#atom)
     1. [Gedit](#gedit)
+    1. [notepadqq](#notepadqq)
     1. [MousePad](#mousepad)
     1. [Xed](#xed)
     1. [小书匠](#小书匠)
@@ -34,13 +36,12 @@ categories:
     1. [Vi/Vim](#vivim)
     1. [Nano](#nano)
     1. [Micro](#micro)
-    1. [fte-terminal](#fte-terminal)
-    1. [在线编辑器](#在线编辑器)
+    1. [BS在线编辑器](#bs在线编辑器)
 1. [十六进制](#十六进制)
     1. [Ghex](#ghex)
     1. [hexedit](#hexedit)
 
-**目录 end**|_2021-01-26 14:22_|
+**目录 end**|_2023-01-30 17:52_|
 ****************************************
 # 文本编辑器
 
@@ -173,6 +174,11 @@ _个人配置_
 ### 实践
 > [参考: 用Git在Visual Studio Code内进行版本控制[指导]](https://sdk.cn/news/4041)
 > [参考: 使用vscocd进行python开发 ](http://www.cnblogs.com/bloglkl/archive/2016/08/23/5797805.html)
+
+### vscode server
+> [vscode-server](https://code.visualstudio.com/docs/remote/vscode-server)
+
+[Docker: vscode-server](https://hub.docker.com/r/ahmadnassri/vscode-server)
 
 ***********************************
 ## Atom
