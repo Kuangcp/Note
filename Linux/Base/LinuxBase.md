@@ -151,7 +151,7 @@ categories:
 -  注：通过/etc/group 和/etc/gshadow 文件内容来同步或创建/etc/group ，然后删除gshadow文件
 
 ### sudo
-- 添加用户 test1 到sudo组  注意： *将用户加入sudo组，debian系有效 alpine无效 只能改文件*
+- 添加用户 test1 到sudo组  注意： *将用户加入sudo组，debian系有效 alpine和arch无效 只能改文件*
     1. 将用户 testUser 加入 sudo 组 `sudo gpasswd -a test1 sudo`  *或者* `usermod -G sudo test1`
     1. *或者*：使用修改文件的方式：（不推荐） 
         - `chmod 777 /etc/sudoers`  然后直接 `sudo visudo`就是调用vi来打开文件的简写

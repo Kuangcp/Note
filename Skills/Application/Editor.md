@@ -134,6 +134,7 @@ _个人配置_
 - `Ctrl Space` 智能提示 变量,代码片段... **需要注意这个快捷键和Windows以及Linux上切换输入法快捷键有冲突,修改即可**
 - `Alt Shift` 列编辑
 - `C S .` 显示面包屑 版本:1.26+
+- `workbench.editor.wrapTabs` 启用多tab同时展示
 
 > [参考: 快捷键大全](https://blog.csdn.net/crper/article/details/54099319)
 > [参考: VS Code 使用小技巧](https://zhuanlan.zhihu.com/p/22880087)

@@ -92,12 +92,15 @@ categories:
 ************************
 ## 开发调试工具&技巧
 ### 网络
-- xswtich `Chrome插件`
+- **xswtich** `Chrome插件`
     - 浏览器层面通过劫持ajax请求，修改请求的实际地址从而达到访问某网站时指定替换加载的静态资源（js css）,或者是替换请求的服务端地址
     - 场景：访问前后端分离的某应用服务，浏览器打开测试环境时，修改配置使前端对测试环境后端发起请求实际被替换请求到本地，方便调试
-    - 由于Firefox不兼容，替代品 [dev-proxy](https://github.com/Kuangcp/GoBase/tree/master/toolbox/dev-proxy)
-- Multi-Account-Container `Firefox 插件`
+    - 由于Firefox不兼容，自己基于go开发的替代品 [dev-proxy](https://github.com/Kuangcp/GoBase/tree/master/toolbox/dev-proxy)
+
+- **Multi-Account-Container** `Firefox 插件`
     - 同一网站同时登录多个帐号，帐号之间cookie等信息会隔离
+
+- **potatso** iOS体系内代理软件 iOS 15兼容有问题
 
 ### Debug
 

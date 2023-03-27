@@ -13,6 +13,10 @@
 - 资源管理器插件, 支持多标签, 类似于Chrome的使用 [clover](http://cn.ejie.me/)`但是有广告`
 - 可以用来根据鼠标查询进程 [process-explorer](https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer)`有效定位广告窗口`
 
+## 工具
+> Windows Terminal 
+- Alt Shift -/= 横向/竖向切分窗口
+
 ## 性能测试
 - Msi after burner 显卡超频 硬件监控
 - Aida64 电脑信息检测，稳定性测试
@@ -21,8 +25,6 @@
 - Ctystal Disk Mark 更专业硬盘测试
 - 3D Mark 电脑性能测试
 
-## WSL
-> [利用WSL打造Arch开发环境](https://zhuanlan.zhihu.com/p/51270874)
 
 ## 网络
 - tracert 等同于Linux的 traceroute
