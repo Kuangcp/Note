@@ -296,6 +296,49 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
   }
 ```
 
+> 绕过Grafana，免密登录，需要预先生成key
+```ini
+map $http_upgrade $connection_upgrade{
+    default upgrade;
+    ''  close;
+}
+
+  # http://grafana-user.test/d/spring_boot_21/shang-shu-tai-jian-kong-mian-ban?orgId=1
+server {
+    listen 80;
+    server_name  grafana-user.test;
+
+    location / {
+        proxy_pass http://192.168.1.1:9091/;
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Connection "";
+        proxy_set_header Authorization "Bearer xxxxx";
+        # add_header X-Frame-Options SAMEORIGIN;
+        proxy_hide_header X-Frame-Options;
+    }
+    location /api/live/ws {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_set_header X-Nginx-Proxt true;
+        
+        proxy_set_header Authorization "Bearer cccc";
+        
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        
+        proxy_http_version 1.1; 
+        proxy_redirect off;
+        proxy_read_timeout 300s;
+
+        proxy_pass http://192.168.1.1:9091;
+    }
+}
+```
+
 ## 转发代理
 > 例如 aaa.com 需要VPN等方式才能访问，Nginx所在的主机能访问，就可以这么配置，然后配置DNS将 aaa.com 解析到Nginx的主机上，就可以实现其他客户机不安装VPN 直接访问 aaa.com
 
