@@ -191,6 +191,8 @@ categories:
 > [千万别混淆 Bash/Zsh 的四种运行模式](https://zhuanlan.zhihu.com/p/47819029)  
 > [	ssh连接远程主机执行脚本的环境变量问题](https://blog.csdn.net/whitehack/article/details/51705889)  
 
+alpine 里的sh和ash 默认是不登录shell 需要使用 sh -l 或者 ash -l 才会加载对应的文件
+
 ************************
 
 ## 进程
