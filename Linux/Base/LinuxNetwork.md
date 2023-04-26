@@ -144,9 +144,10 @@ categories:
         - 注意：得到的结果中的 mdev 表示ICMP包的RTT偏离平均值的程度，mdev 越大表示网速不稳定 Linux有，mac下叫stddev win系列没有
     - -r 记录经过的路由
 
-> [prettyping](http://denilson.sa.nom.br/prettyping/)
+> [prettyping](http://denilson.sa.nom.br/prettyping/)  
+> [gping](https://github.com/orf/gping)  
 
-- ping -s 1472 -M do 192.168.15.205 测试网络环境下可用MTU
+- ping -s 1472 -M do 192.168.15.205 测试网络环境下最大可用MTU
 
 ### traceroute
 > 显示网络数据包传输到指定主机的路径信息，追踪数据传输路由状况
