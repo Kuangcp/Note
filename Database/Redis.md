@@ -260,7 +260,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 # Scan
 > [Doc: Scan](http://doc.redisfans.com/key/scan.html) 
 
-由于 Redis 是单线程多路复用机制(Redis6引入多线程)，使用 O(n) 复杂度的命令容易阻塞进程，因此需要 scan 命令来实现分批执行 (`注意 scan如果模式匹配的范围比较大会有 keys 一样的影响`)
+由于 Redis 是单线程多路复用机制(Redis6引入多线程)，使用 O(n) 复杂度的命令容易阻塞进程，因此需要 scan 命令来实现分批执行 (`注意 scan如果模式匹配的范围比较大，同样有 keys 一样的影响`)
 
 ## O(n) 复杂度的命令
 - List： lindex、lset、linsert
