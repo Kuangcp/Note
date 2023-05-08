@@ -145,6 +145,7 @@ categories:
     - -g GID 为用户组指定新的组标识号。
     - -o 与-g选项同时使用，用户组的新GID可以与系统已有用户组的GID相同。
     - -n 新用户组 将用户组的名字改为新名字
+    - -a `gpasswd -a user group`
 
 - grpck 检查`/etc/group`文件是否正确
 - grpconv 注：通过/etc/group和/etc/gshadow 的文件内容来同步或创建/etc/gshadow ，如果/etc/gshadow 不存在则创建;
@@ -156,7 +157,22 @@ categories:
     1. *或者*：使用修改文件的方式：（不推荐） 
         - `chmod 777 /etc/sudoers`  然后直接 `sudo visudo`就是调用vi来打开文件的简写
         - 添加一行 Debian: `test1  ALL=(ALL:ALL)ALL` 注意 Centos:`test1   ALL=(ALL)       ALL`
+            - 设置sudo无需密码 `test1 ALL=(ALL) NOPASSWD: ALL`
         - `chmod 440 /etc/sudoers`
+
+> 绝对路径执行shell报错无权限
+环境：
+- a 和 b 用户都属于用户组 b
+- 当前工作目录是 /home/b/app/
+现象： 
+1. sudo -u a sh run.sh 正常执行
+1. sudo -u a sh /home/b/app/run.sh 报错无权限
+
+原因：
+1. /home/b/ 目录对于用户组b没有任何权限，chmod 740 b 加上组的读权限后仍报错，改成750后正常了
+1. [Commands don't have permission when using absolute path](https://askubuntu.com/questions/367176/commands-dont-have-permission-when-using-absolute-path)
+
+方案：逐级排查shell所有父目录对于`sudo指定用户`是否有执行权限
 
 ### 终端和登录
 > [参考: linux终端相关概念解释及描述](https://www.cnblogs.com/xiangtingshen/p/10889195.html)  
