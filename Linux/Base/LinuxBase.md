@@ -56,7 +56,7 @@ categories:
     1. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     1. [熵池](#熵池)
 
-**目录 end**|_2021-06-11 21:58_|
+**目录 end**|_2023-05-09 20:27_|
 ****************************************
 # Linux系统
 
@@ -173,6 +173,9 @@ categories:
 1. [Commands don't have permission when using absolute path](https://askubuntu.com/questions/367176/commands-dont-have-permission-when-using-absolute-path)
 
 方案：逐级排查shell所有父目录对于`sudo指定用户`是否有执行权限
+
+> sudo: 没有终端存在,且未指定 askpass 程序
+- 设置用户为NOPASSWD
 
 ### 终端和登录
 > [参考: linux终端相关概念解释及描述](https://www.cnblogs.com/xiangtingshen/p/10889195.html)  

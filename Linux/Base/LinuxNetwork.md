@@ -41,10 +41,10 @@ categories:
     1. [Telnet](#telnet)
     1. [VPN](#vpn)
         1. [tun/tap](#tuntap)
-            1. [TUN TAP 区别](#tun-tap-区别)
         1. [shadowsocks](#shadowsocks)
-        1. [proxychains](#proxychains)
         1. [OpenVPN](#openvpn)
+    1. [代理](#代理)
+        1. [proxychains](#proxychains)
     1. [防火墙](#防火墙)
         1. [iptables](#iptables)
     1. [远程桌面](#远程桌面)
@@ -53,7 +53,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2022-10-22 22:59_|
+**目录 end**|_2023-05-09 20:27_|
 ****************************************
 # Linux网络管理
 ## 内核配置
@@ -519,7 +519,7 @@ _iproute-ss_
 ### tun/tap
 > [参考: linux下TUN/TAP虚拟网卡的使用](https://blog.csdn.net/bytxl/article/details/26586109)  
 
-#### TUN TAP 区别
+`TUN TAP 区别`
 
 > TUN 
 1. 工作在IP层 第三层 
@@ -549,24 +549,6 @@ _客户端_
 ```
 - `sslocal -c /etc/ss/json`
 - 设置代理是1080端口即可
-
-### proxychains
-- 安装
-    - [编译安装](https://github.com/rofl0r/proxychains-ng)
-    - 包管理器  
-        ```shell
-        sudo pacman -S community/proxychains-ng # Arch
-        sudo apt install proxychains  # apt
-        ```
-- 配置 配合楼上的 shadowsocks，修改文件 `/etc/proxychains.conf`
-    ```conf
-    [ProxyList]
-    # add proxy here ...
-    # meanwile
-    # defaults set to "tor"
-    # socks4        127.0.0.1 9050
-    socks5  127.0.0.1  1080
-    ```
 
 ### OpenVPN
 > [arch wiki](https://wiki.archlinux.org/index.php/OpenVPN)
@@ -601,6 +583,29 @@ _客户端_
 > ERROR: Cannot open TUN/TAP dev /dev/net/tun: No such device
 1. modinfo tun 查看内核模块是否存在
 1. 尝试 sudo pacman -S networkmanager-vpnc 并重启
+
+************************
+
+## 代理
+
+### proxychains
+- 安装
+    - [编译安装](https://github.com/rofl0r/proxychains-ng)
+    - 包管理器  
+        ```shell
+        sudo pacman -S community/proxychains-ng # Arch
+        sudo apt install proxychains  # apt
+        ```
+- 配置文件 `/etc/proxychains.conf`
+    ```conf
+    [ProxyList]
+    # add proxy here ...
+    # meanwile
+    # defaults set to "tor"
+    # socks4        127.0.0.1 9050
+    # socks5  127.0.0.1  1080
+    http  127.0.0.1 7890
+    ```
 
 ************************
 
