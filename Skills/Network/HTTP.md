@@ -15,6 +15,8 @@ categories:
         1. [GET](#get)
         1. [POST](#post)
     1. [HTTP的状态码](#http的状态码)
+    1. [响应](#响应)
+        1. [Header](#header)
     1. [HTTP 缓存](#http-缓存)
     1. [Session 和 Cookie](#session-和-cookie)
         1. [Cookie](#cookie)
@@ -32,7 +34,7 @@ categories:
     1. [HSTS](#hsts)
 1. [CORS 跨域](#cors-跨域)
 
-**目录 end**|_2022-10-22 22:59_|
+**目录 end**|_2023-05-11 10:28_|
 ****************************************
 # HTTP
 > HyperText Transfer Protocol 超文本传输协议 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -111,6 +113,16 @@ echo "sss" > b.docx
 
 ## HTTP的状态码
 > [HTTP 状态码 完整列表](/FrontEnd/ResponseCode.md)
+
+************************
+
+## 响应
+### Header 
+
+> Transfer-Encoding: chunked 
+- `异常` curl: (56) Illegal or missing hexadecimal sequence in chunked-encoding
+- [MDN: Transfer-Encoding](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Transfer-Encoding)
+- [wiki ](https://en.wikipedia.org/wiki/Chunked_transfer_encoding#Format)
 
 ************************
 

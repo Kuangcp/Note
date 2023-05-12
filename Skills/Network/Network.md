@@ -25,6 +25,7 @@ categories:
         1. [TCP](#tcp)
         1. [UDP](#udp)
         1. [TCP UDP 对比](#tcp-udp-对比)
+        1. [SCTP](#sctp)
     1. [应用层](#应用层)
         1. [HTTP & HTTPS](#http-&-https)
         1. [Websocket](#websocket)
@@ -53,17 +54,18 @@ categories:
     1. [代理工具](#代理工具)
         1. [Clash](#clash)
         1. [Fiddler](#fiddler)
-        1. [Wireshark](#wireshark)
         1. [Charles](#charles)
         1. [mitmproxy](#mitmproxy)
         1. [tinyproxy](#tinyproxy)
         1. [Mars](#mars)
         1. [camilla](#camilla)
         1. [dev-proxy](#dev-proxy)
+1. [工具](#工具)
+    1. [Wireshark](#wireshark)
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2022-10-22 22:59_|
+**目录 end**|_2023-05-11 10:28_|
 ****************************************
 # 网络
 
@@ -225,6 +227,8 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 
 ### TCP
 > 传输控制协议（英语：Transmission Control Protocol，缩写为 TCP, 是一种面向连接的、可靠的、基于**字节流**的传输层通信协议，由IETF的RFC 793定义。
+
+- [wireshark tcp](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvTCPAnalysis.html)
 
 > TCP 段的头部信息 20字节 也就是160位
 ```
@@ -487,13 +491,6 @@ function FindProxyForURL(url, host) {
 
 > [fiddler-everywhere](https://www.telerik.com/fiddler-everywhere) `Linux 免费`
 
-### Wireshark
-> [Official Site](https://www.wireshark.org/)  
-
-> 问题  `Error during loading:[string "/usr/wireshark/init.lua"]:44:`  
-- 这是由于Wireshark为了防止以root用户身份执行Lua脚本，避免对系统造成损坏，而显示警告弹窗。通常，用户只需要确认 
-- 如果不想每次都看到 修改 `/usr/wireshark/init.lua` 第一行（非注释，有效代码） 改成 `disable_lua = true`
-
 ### Charles
 > [Offcial Site](https://www.charlesproxy.com/) | [_](http://charles.iiilab.com/)
 
@@ -529,6 +526,18 @@ function FindProxyForURL(url, host) {
 > [Github](https://github.com/Kuangcp/GoBase/tree/master/toolbox/dev-proxy)`个人开发 用于代理HTTP请求 方便前后端联调`
 
 其实 xswitch 会更好用，但是不兼容firefox，即便使用debug方式安装上插件也会有报错和API不兼容
+
+************************
+
+# 网络工具
+## Wireshark
+> [Official Site](https://www.wireshark.org/)  
+
+> 问题  `Error during loading:[string "/usr/wireshark/init.lua"]:44:`  
+- 这是由于Wireshark为了防止以root用户身份执行Lua脚本，避免对系统造成损坏，而显示警告弹窗。通常，用户只需要确认 
+- 如果不想每次都看到 修改 `/usr/wireshark/init.lua` 第一行（非注释，有效代码） 改成 `disable_lua = true`
+
+> TCP HTTP 抓包可选中右击 Follow 查看 TCP和HTTP流完整字符
 
 ************************
 
