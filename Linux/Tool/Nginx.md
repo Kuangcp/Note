@@ -41,7 +41,7 @@ categories:
     1. [nuster](#nuster)
 1. [Tips](#tips)
 
-**目录 end**|_2021-11-22 22:56_|
+**目录 end**|_2023-05-18 23:53_|
 ****************************************
 # Nginx
 
@@ -434,6 +434,10 @@ _配置统一出口_
             # add_header 'Access-Control-Allow-Origin' '*';
             proxy_pass http://127.0.0.1:8889/; # 去除 api 路径，并访问后端
             # proxy_pass http://127.0.0.1:8889; 这种方式不会去除 /api/
+        }
+
+        location /api/a-service {
+          proxy_pass http://127.0.0.1:8889/a-service; # 移除 /api/ 路径，保留a-service （api路径下多个服务时使用此类型配置）
         }
     }
 ```

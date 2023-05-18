@@ -53,7 +53,7 @@ categories:
     1. [Tips](#tips)
         1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2023-05-09 20:27_|
+**目录 end**|_2023-05-18 23:53_|
 ****************************************
 # Linux网络管理
 ## 内核配置
@@ -142,7 +142,7 @@ categories:
     - -i 每次ping的时间间隔 默认1s root用户才可以设置 0.2 以下
     - -f 暴力尽可能大量包的传送 至少每秒100个
         - 注意：得到的结果中的 mdev 表示ICMP包的RTT偏离平均值的程度，mdev 越大表示网速不稳定 Linux有，mac下叫stddev win系列没有
-    - -r 记录经过的路由
+    - -r 记录经过的路由 （路由节点均支持ICMP协议）
 
 > [prettyping](http://denilson.sa.nom.br/prettyping/)  
 > [gping](https://github.com/orf/gping)  
