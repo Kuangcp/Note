@@ -453,9 +453,31 @@ Socks代理只是简单地传递数据包，而不必关心是何种应用协议
 > proxy auto config 
 
 > [MDN: PAC File](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_(PAC)_file)
+
+本质上是一个js文件，提供了FindProxyForURL函数的自定义实现（依据不同的URL选择不同的Proxy或者不使用Proxy）
+
+> 示例1：全部走代理
 ```js
 function FindProxyForURL(url, host) {
     return "PROXY 127.0.0.1:8080"; 
+}
+```
+
+> 示例2： 局域网使用A代理，域名通配使用B代理，直连不走代理
+```js
+function FindProxyForURL(url, host) {
+  url = url.toLowerCase();
+  host = host.toLowerCase();
+
+  if (url.startsWith("http:")) {
+    return "PROXY localhost:1234";
+  }
+
+  if (shExpMatch(url, "*github.com*")) {
+    return "PROXY 127.0.0.1:7890";
+  }
+
+  return "DIRECT";
 }
 ```
 
