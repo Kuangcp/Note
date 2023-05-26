@@ -29,6 +29,8 @@ categories:
         1. [rsync](#rsync)
         1. [curl](#curl)
         1. [wget](#wget)
+1. [证书](#证书)
+    1. [自签发证书](#自签发证书)
 1. [常用服务](#常用服务)
     1. [邮件服务器postfix和devecot](#邮件服务器postfix和devecot)
     1. [FTP](#ftp)
@@ -50,10 +52,10 @@ categories:
     1. [远程桌面](#远程桌面)
         1. [VNC](#vnc)
         1. [Xrdp](#xrdp)
-    1. [Tips](#tips)
-        1. [查看进程占用的端口](#查看进程占用的端口)
+1. [Tips](#tips)
+    1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2023-05-18 23:53_|
+**目录 end**|_2023-05-26 11:28_|
 ****************************************
 # Linux网络管理
 ## 内核配置
@@ -435,6 +437,33 @@ _iproute-ss_
 > [axel](https://github.com/axel-download-accelerator/axel)  
 > [aria2](https://github.com/aria2/aria2)  
 
+************************
+
+# 证书
+
+## 自签发证书
+```sh
+  ############ 证书颁发机构
+  # CA机构私钥
+  openssl genrsa -out ca.key 2048
+  # CA证书
+  openssl req -x509 -new -key ca.key -out ca.crt
+  ############ 服务端
+  # 生成服务端私钥
+  openssl genrsa -out server.key 2048
+  # 生成服务端证书请求文件
+  openssl req -new -key server.key -out server.csr
+  # 使用CA证书生成服务端证书  关于sha256，默认使用的是sha1，在新版本的chrome中会被认为是不安全的，因为使用了过时的加密算法。
+  openssl x509 -req -sha256 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -days 3650 -out server.crt    
+  # 打包服务端的资料为pkcs12格式(非必要，只是换一种格式存储上一步生成的证书) 生成过程中，需要创建访问密码，请记录下来。
+  openssl pkcs12 -export -in server.crt -inkey server.key -out server.pkcs12
+```
+
+> Manjaro 导入自定义证书
+
+sudo trust anchor --store my-root.crt
+sudo update-ca-trust
+
 ****************************
 # 常用服务
 
@@ -654,8 +683,8 @@ _问题场景_
 
 ************************
 
-## Tips
-### 查看进程占用的端口
+# Tips
+## 查看进程占用的端口
 > netstat lsof fuser  
 
 > [参考: linux下常用命令查看端口占用](http://blog.csdn.net/ws379374000/article/details/74218530)

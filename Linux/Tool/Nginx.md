@@ -41,7 +41,7 @@ categories:
     1. [nuster](#nuster)
 1. [Tips](#tips)
 
-**目录 end**|_2023-05-18 23:53_|
+**目录 end**|_2023-05-26 11:28_|
 ****************************************
 # Nginx
 
@@ -183,22 +183,7 @@ nginx 配置文件的语法是自己独有的语法, 比较像 shell, 里面有�
 > [nginx搭建https服务](http://www.cnblogs.com/tintin1926/archive/2012/07/12/2587311.html) | [nginx http/2](http://letus.club/2016/04/08/nginx-http2-letsencrypt/)
 
 ### 自签发证书
-```sh
-  ############ 证书颁发机构
-  # CA机构私钥
-  openssl genrsa -out ca.key 2048
-  # CA证书
-  openssl req -x509 -new -key ca.key -out ca.crt
-  ############ 服务端
-  # 生成服务端私钥
-  openssl genrsa -out server.key 2048
-  # 生成服务端证书请求文件
-  openssl req -new -key server.key -out server.csr
-  # 使用CA证书生成服务端证书  关于sha256，默认使用的是sha1，在新版本的chrome中会被认为是不安全的，因为使用了过时的加密算法。
-  openssl x509 -req -sha256 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -days 3650 -out server.crt    
-  # 打包服务端的资料为pkcs12格式(非必要，只是换一种格式存储上一步生成的证书) 生成过程中，需要创建访问密码，请记录下来。
-  openssl pkcs12 -export -in server.crt -inkey server.key -out server.pkcs12
-```
+- [Linux: 自签发证书](/Linux/Base/LinuxNetwork.md#自签发证书)
 
 `配置HTTPS`
 
