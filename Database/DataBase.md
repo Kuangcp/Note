@@ -125,6 +125,8 @@ MVCC
 ## LevelDB
 > [Github](https://github.com/google/leveldb)  
 
+> [LedisDB](https://github.com/ledisdb/ledisdb) 基于LevelDB构建Redis协议的数据库实例
+
 ## MangoDB
 > 文档性数据库, 混合类型: 关系型非关系型
 
