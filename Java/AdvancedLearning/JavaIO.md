@@ -25,7 +25,7 @@ categories:
 1. [NIO](#nio)
     1. [Buffer](#buffer)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2023-06-07 11:00_|
 ****************************************
 # Java中的IO
 > [Note：操作系统中的IO模型](/Skills/CS/IO.md)  
@@ -101,21 +101,6 @@ ByteArrayOutputStream, FileOutputStream, FilterOutputStream, ObjectOutputStream,
 - FilterInputStream
     - DataInputStream
     - BufferedInputStream
-
-`序列化以及反序列化一个对象`
-```java
-    TargetObject targetObject = new TargetObject("name");
-
-    ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
-    ObjectOutputStream output = new ObjectOutputStream(byteOutput);
-    output.writeObject(targetObject);
-
-    ByteArrayInputStream byteInput = new ByteArrayInputStream(byteOutput.toByteArray());
-
-    ObjectInputStream input = new ObjectInputStream(byteInput);
-    TargetObject result = (TargetObject) input.readObject();
-    assertThat(result.getName(), equalTo("name"));
-```
 
 ***************
 
