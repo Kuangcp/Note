@@ -21,7 +21,7 @@ categories:
         1. [Shell](#shell)
 1. [Tips](#tips)
 
-**目录 end**|_2020-06-24 16:51_|
+**目录 end**|_2023-06-08 17:08_|
 ****************************************
 # 正则表达式学习
 > [Regular Expression Language - Quick Reference](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference)  
@@ -45,7 +45,7 @@ categories:
 | `*`     | 匹配前面的子表达式 0或多次。 
 | `+`     | 匹配前面的子表达式 1或多次。
 | `?`     | 匹配前面的子表达式 0或1次，或指明一个非贪婪限定符。
-| `.`     | 匹配除换行符 `\n`之外的任何 单个字符。
+| `.`     | 匹配除换行符 `\r` `\n` 之外的任何 单个字符。
 | `\`     | 将下一个字符标记为或转义字符、或原义字符、或向后引用、或八进制转义符。'\n' 匹配换行符。 
 | `|`     | 指明两项之间的一个选择。
 

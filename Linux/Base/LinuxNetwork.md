@@ -55,7 +55,7 @@ categories:
 1. [Tips](#tips)
     1. [查看进程占用的端口](#查看进程占用的端口)
 
-**目录 end**|_2023-05-26 11:28_|
+**目录 end**|_2023-06-08 17:08_|
 ****************************************
 # Linux网络管理
 ## 内核配置
@@ -168,10 +168,27 @@ categories:
 ### tc
 > Traffic Control
 
-tc -s -d qdisc ls dev eno1
+- 限速 `tc qdisc add dev eno1 root tbf rate 400kbit latency 1ms burst 1000`
+- 解除 `tc qdisc del dev eno1 root tbf rate 400kbit latency 1ms burst 1000`
 
-限速 `tc qdisc add dev eno1 root tbf rate 400kbit latency 1ms burst 1000`
-解除 `tc qdisc del dev eno1 root tbf rate 400kbit latency 1ms burst 1000`
+- 网卡100%丢包 `tc qdisc add dev enp3s0 root netem loss 100%` 移除： add 换成 del
+- 移除指定网卡添加的所有规则 `tc qdisc del dev enp3s0 root`
+- 指定IP网段 丢包 
+```sh
+    #! /bin/sh
+    interface=enp3s0
+    ip=192.168.16.0/24
+    delay=30ms
+    loss=90%
+
+    tc qdisc add dev $interface root handle 1: prio
+    # 此命令立即创建了类: 1:1, 1:2, 1:3 ( 缺省三个子类 )
+    tc filter add dev $interface parent 1:0 protocol ip prio 1 u32 match ip dst $ip flowid 2:1
+    # 在 1:1 节点添加一个过滤规则 , 优先权 1: 凡是去往目的地址是 $ip( 精确匹配 ) 的 IP 数据包 , 发送到频道 2:1.
+    tc qdisc add dev $interface parent 1:1 handle 2: netem delay $delay loss $loss
+```
+
+
 tbf 指令牌桶算法
 
 ### netstat 
