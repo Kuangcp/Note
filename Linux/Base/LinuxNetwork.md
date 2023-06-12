@@ -21,6 +21,7 @@ categories:
         1. [ping](#ping)
         1. [traceroute](#traceroute)
         1. [tc](#tc)
+        1. [iperf3](#iperf3)
         1. [netstat](#netstat)
         1. [iproute2](#iproute2)
         1. [tcpdump](#tcpdump)
@@ -54,8 +55,9 @@ categories:
         1. [Xrdp](#xrdp)
 1. [Tips](#tips)
     1. [查看进程占用的端口](#查看进程占用的端口)
+    1. [网络问题排查](#网络问题排查)
 
-**目录 end**|_2023-06-08 17:08_|
+**目录 end**|_2023-06-12 20:24_|
 ****************************************
 # Linux网络管理
 ## 内核配置
@@ -190,6 +192,10 @@ categories:
 
 
 tbf 指令牌桶算法
+### iperf3
+TCP UDP 测速， 在两个节点上使用iperf启动服务端和客户端进程，从而计算TCP和UDP指标信息
+
+- [Ethr](https://github.com/microsoft/ethr) Golang 仿写
 
 ### netstat 
 > 相关 [iproute2](#iproute2)
@@ -708,3 +714,6 @@ _问题场景_
 
 - `lsof -i:端口号` 用于查看某一端口的占用情况，缺省端口号显示全部
     - 或者 `cat /etc/services` 查看系统以及使用的端口
+
+## 网络问题排查
+- [TCP 内网下载慢速分析](https://christmica.cc/archives/tcp-download-analysis)

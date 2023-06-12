@@ -50,6 +50,7 @@ categories:
     1. [设备列表](#设备列表)
     1. [常用命令](#常用命令)
         1. [dd](#dd)
+        1. [truncate](#truncate)
         1. [mount](#mount)
         1. [fdisk](#fdisk)
         1. [df](#df)
@@ -70,7 +71,7 @@ categories:
         1. [善用alias](#善用alias)
     1. [desktop文件](#desktop文件)
 
-**目录 end**|_2023-06-08 17:08_|
+**目录 end**|_2023-06-12 20:24_|
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -369,6 +370,10 @@ export LANG="zh_CN.UTF-8"
 > [使用 dd 命令进行硬盘 I/O 性能检测 ](https://linux.cn/article-6104-1.html)
 
 - 例如创建一个空4G文件: `dd if=/dev/zero of=/testfile bs=1024k count=4096`
+
+### truncate 
+
+创建一个 5G 全0文件 `truncate -s 5G test.file`
 
 ### mount
 - `mount [options] [source] [directory] `
