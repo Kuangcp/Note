@@ -22,6 +22,7 @@ categories:
 1. notify-send 发送新通知 [使用notify-send发送桌面通知](https://blog.csdn.net/lujun9972/article/details/53292620)
     - notify-send -i iconFilePath title detail -t 1500
 1. xflock4 锁屏
+1. zenity GTK实现，各种输入组件，弹窗提示
 
 [xfce4 install xrdp](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop?tabs=azure-cli)
 

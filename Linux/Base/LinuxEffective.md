@@ -382,6 +382,12 @@ or `convert -background none icon.svg -define icon:auto-resize icon.ico`
         - Alt Q pin
 - deepin-screenshot
 
+### 录屏
+- `kazam` 支持选进程窗口，输出mp4
+- `peek` 顶层窗口选择录屏区域，输出 gif 有较高压缩比
+
+************************
+
 ## 视频
 > [参考: Top 10 Best Linux Video Players](https://www.ubuntupit.com/top-10-best-linux-video-players-enjoy-ultimate-movie-music/)  
 
