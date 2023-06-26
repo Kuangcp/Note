@@ -416,11 +416,13 @@ python -m module_name
 #### pip
 > [pip](https://pip.readthedocs.io/en/stable/) | [doc](https://pip.pypa.io/en/stable/reference/pip_install/) | [guide](https://packaging.python.org/tutorials/installing-packages/) 
 
+> 3.10 后使用 pip 的方式 
+- 安装 python -m ensurepip --upgrade
+- 使用 python -m pip install pkgName 
+- 升级pip `python -m pip install --upgrade pip`
+
 1. 作为Python的包管理器, 包的可执行文件默认在 /usr/local/bin 目录下(全局)
     - 如果安装时加了该参数 --user 就是安装在 ~/.local/bin 目录下
-    - 升级pip `python -m pip install --upgrade pip`
-
-1. 也可以这样使用 `python -m pip install xxx`
 
 1. 安装指定版本的包 `install name==version` 
 

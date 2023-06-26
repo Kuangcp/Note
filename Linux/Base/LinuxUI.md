@@ -36,14 +36,16 @@ categories:
 
 > [字体文件 详情](/FrontEnd/Font.md)  
 
+> 终端内 Emoji 支持
+- npm vue minikube 等命令行的工具输出的日志提示会包含emoji的Unicode字符集, 需要终端的字体支持展示unicode
+
 ### 字体渲染
 > [Debian8安装Infinality改善字体渲染，安装Ubuntu字体](https://www.linuxdashen.com/debian8%E5%AE%89%E8%A3%85infinality%E6%94%B9%E5%96%84%E5%AD%97%E4%BD%93%E6%B8%B2%E6%9F%93%EF%BC%8C%E5%AE%89%E8%A3%85ubuntu%E5%AD%97%E4%BD%93)  
 > [一条命令搞定Linux字体渲染](https://www.lulinux.com/archives/278)  
 > [Font Configuration/Chinese (简体中文)](https://wiki.archlinux.org/index.php/Font_Configuration/Chinese_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))  
 > [参考: Fcitx (简体中文)](https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))  
 
-
-*******************
+************************
 
 ## Theme
 1. /usr/share/themes/
@@ -105,7 +107,7 @@ categories:
 [customize bash prompt](https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/)  
 
 1. `curl https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS -o /etc/lscolor-256color`
-1. add to *sh.rc
+1. 追加到 `*sh.rc`
     ```sh
     if [[ ("$TERM" = *256color || "$TERM" = screen* || "$TERM" = xterm* ) && -f /etc/lscolor-256color ]]; then
             eval $(dircolors -b /etc/lscolor-256color)

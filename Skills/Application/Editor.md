@@ -170,6 +170,7 @@ _个人配置_
 1. Markdown PDF
 1. Draw.io Integration
 1. vscode-mindmap
+1. rainbow csv 
 
 ### 实践
 > [参考: 用Git在Visual Studio Code内进行版本控制[指导]](https://sdk.cn/news/4041)
