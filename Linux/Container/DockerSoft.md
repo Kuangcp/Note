@@ -81,24 +81,26 @@ categories:
 **********
 
 ```Dockerfile
-    FROM ubuntu
-    MAINTAINER kuangcp myth.kuang@gmail.com
-    ENTRYPOINT echo "Welcome login server by ssh"
-    ENV DEBIAN_FRONTEND noninteractive
+FROM ubuntu
+ENV DEBIAN_FRONTEND noninteractive
 
-    ADD id_rsa.pub /root/.ssh/authorized_keys
+ADD id_rsa.pub /root/.ssh/authorized_keys
 
-    RUN apt-get update; \
-        apt-get install -y apt-utils debconf-utils iputils-ping wget curl mc htop ssh; \ 
-        chmod 700 /root/.ssh; \
-        chmod 600 /root/.ssh/authorized_keys; \
-        service ssh start; \ 
-    EXPOSE 22
+RUN apt-get update; \
+    apt-get install -y apt-utils debconf-utils iputils-ping wget curl htop ssh tini;
+
+RUN chmod 700 /root/.ssh; \
+    chmod 600 /root/.ssh/authorized_keys;
+
+ENTRYPOINT ["/usr/bin/tini", "--"]
+
+EXPOSE 22
 ```
-
-1. `docker build . -t myth:ssh`
-1. `docker run -d -t --name myth -p 8989:22 myth:ssh`
+1. `mkdir tmp && cd tmp && cp ~/.ssh/id_rsa.pub .` 复制公钥
+1. `docker build . -t myth:ssh` 构建镜像
+1. `docker run -i -t  --name myth -p 30001:22 myth:ssh /bin/bash`
 1. `docker start myth`
+每次启动容器需要手动执行 service ssh start
 
 ### Alpine-ssh
 - [dockerfile: alpine-ssh](https://github.com/Kuangcp/DockerfileList/blob/master/alpine/alpine-ssh.dockerfile) 
@@ -125,6 +127,29 @@ categories:
 > `Tips`
 
 1. docker run 时加上 `--cap-add=SYS_PTRACE` 解决 jmap -heap 1 时报错： Can't attach to the process: ptrace
+
+#### Local
+> env.sh
+```sh
+
+JAVA_HOME=/path/to
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+```
+
+```Dockerfile
+FROM myth:ssh
+
+ADD *.tgz jdk.tgz
+ADD env.sh
+RUN apt install vim unzip ; \
+    cat env.sh >> /root/.bashrc;
+
+EXPOSE 22
+
+ENTRYPOINT ["/usr/bin/tini", "--"]
+```
 
 #### Jib
 > [参考: GOOGLE JIB](https://my.oschina.net/u/3666671/blog/1845065) | [Github:jib](https://github.com/GoogleContainerTools/jib)

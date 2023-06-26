@@ -15,7 +15,9 @@ categories:
         1. [分析工具](#分析工具)
     1. [内存情况](#内存情况)
         1. [free](#free)
+        1. [交换内存分析](#交换内存分析)
     1. [性能监测](#性能监测)
+        1. [perf](#perf)
         1. [top](#top)
         1. [smem](#smem)
         1. [vmstat](#vmstat)
@@ -29,6 +31,7 @@ categories:
             1. [深入分析 文件删除](#深入分析-文件删除)
         1. [fuser](#fuser)
         1. [ps](#ps)
+        1. [procs](#procs)
         1. [pstree](#pstree)
         1. [kill](#kill)
         1. [killall](#killall)
@@ -39,6 +42,7 @@ categories:
             1. [disown](#disown)
             1. [setid](#setid)
             1. [screen](#screen)
+        1. [IPC](#ipc)
     1. [系统管理](#系统管理)
         1. [uname](#uname)
         1. [who](#who)
@@ -49,7 +53,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2021-06-05 10:44_|
+**目录 end**|_2023-06-05 14:10_|
 ****************************************
 # Linux性能分析和管理
 ## 基准测试
@@ -396,16 +400,17 @@ SWAP = VIRT - RES
 
 **实践**
 1. 列出Java进程 `ps aux | grep RSS | grep -v "grep" && ps aux | egrep -v "grep" | grep -i java` 
+
 1. 统计所有java进程内存使用 `ps aux|grep java | grep -v grep | awk '{sum+=$6};END {print sum "K " sum/1024"M "}'` 
     - `ps -a -x -o rss,comm | grep java | awk '{sum+=$1};END {print sum "K " sum/1024"M "}'`
 1. 按内存排序 列出所有进程 `ps aux | grep -v RSS | awk "{print $6 "\t" $11 }" | sort --human-numeric-sort -r | less`
 
 1. 按实际执行的二进制命令展示 `ps -ely`
+1. 查看进程下的线程 `ps huH p pid`
 
 - [Difference Between Resident Set Size and Virtual Memory Size](https://www.baeldung.com/linux/resident-set-vs-virtual-memory-size)
     - RSS 驻留内存（共享库+堆+栈） 注意当前进程可能共用别的进程已加载的共享库，所以这部分内存是被重复计算了
     - VSZ 虚拟内存
-
 
 ### procs 
 Rust 编写的 现代 ps

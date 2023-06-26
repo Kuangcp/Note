@@ -65,7 +65,7 @@ categories:
         1. [三方库](#三方库)
     1. [QT](#qt)
 
-**目录 end**|_2021-04-28 15:31_|
+**目录 end**|_2023-05-23 10:51_|
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -424,6 +424,10 @@ python -m module_name
 1. 作为Python的包管理器, 包的可执行文件默认在 /usr/local/bin 目录下(全局)
     - 如果安装时加了该参数 --user 就是安装在 ~/.local/bin 目录下
 
+    - 升级pip `python -m pip install --upgrade pip`
+
+1. `python -m pip install xxx`
+    - 镜像源和代理 `-i https://pypi.doubanio.com/simple/  --proxy 192.168.9.155:1234`
 1. 安装指定版本的包 `install name==version` 
 
 > [修改Pip 管理工具默认下载源](https://blog.csdn.net/JQ_AK47/article/details/77944444)

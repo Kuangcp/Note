@@ -30,6 +30,9 @@ categories:
         1. [错误页面跳转配置](#错误页面跳转配置)
         1. [跨域](#跨域)
     1. [全局异常处理](#全局异常处理)
+    1. [Web](#web)
+        1. [Validator](#validator)
+        1. [Response](#response)
     1. [HTTPS的配置](#https的配置)
     1. [线程池](#线程池)
     1. [运行和部署](#运行和部署)
@@ -42,7 +45,7 @@ categories:
             1. [Gradle结合Docker](#gradle结合docker)
         1. [热部署](#热部署)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2023-06-07 11:00_|
 ****************************************
 # SpringBoot
 > [首页](https://spring.io/projects/spring-boot#learn)
@@ -312,11 +315,23 @@ public class CorsConfig {
 ```
 
 ## 全局异常处理
-1. 新建类, 加上注解 ControllerAdvice
-2. 方法上使用注解 `ExceptionHandler(Exception.class)` 处理所有异常
+1. 新建类 并加类注解 ControllerAdvice 或 RestControllerAdvice（省去方法ResponseBody）
+2. 新建方法上添加注解 `ExceptionHandler(Exception.class)` 处理对应异常类型
 3. 然后返回值的写法和普通Controller一样, 返回JSON就`ResponseBody`
 
-*******************
+************************
+## Web
+### Validator
+> [Validation with Spring Boot](https://reflectoring.io/bean-validation-with-spring-boot/)
+
+### Response 
+> 全局切面增强
+
+1. `implements ResponseBodyAdvice<Object>`
+1. 重写 supports 和 beforeBodyWrite 并依据 后者的 body和returnType参数自行封装成统一结构
+1. 降低Mvc接口层 `Result<List<Item>>` 等结构，简化为 `List<Item>`， 异常返回可以用全局异常处理成Result结构
+
+************************
 ## HTTPS的配置
 > [参考博客](https://www.drissamri.be/blog/java/enable-https-in-spring-boot/)
 

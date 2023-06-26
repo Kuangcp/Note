@@ -18,7 +18,7 @@ categories:
     1. [sonarqube](#sonarqube)
 1. [测试平台](#测试平台)
 
-**目录 end**|_2021-04-14 14:37_|
+**目录 end**|_2023-05-26 11:28_|
 ****************************************
 # 持续集成
 > 参考: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  
@@ -70,44 +70,46 @@ go语言实现，一个原生支持 docker 的 CI
 ## sonarqube
 > [官网](https://www.sonarqube.org/) | [Docker Hub](https://hub.docker.com/_/sonarqube/)
 
-> 快速使用 H2 内存数据库
+> 快速使用 (H2 内存数据库存储)
 1. `docker run -d --name sonarqube -p 9000:9000  sonarqube:8-community` 
 
-> PG 数据库
+> 使用 PG 数据库存储
 - docker run --name db_sonar -e POSTGRES_USER=sonar -e POSTGRES_PASSWORD=sonar -d postgres
 - docker run --name sonarqube_test --link db_sonar -e SONARQUBE_JDBC_URL=jdbc:postgresql://db_sonar:5432/sonar -e SONARQUBE_JDBC_USERNAME=sonar -e SONARQUBE_JDBC_PASSWORD=sonar  -p 9000:9000 -d sonarqube:8-community
 
-sysctl -w vm.max_map_count=524288
+> 调整虚拟内存
+- sysctl -w vm.max_map_count=524288
 
 1. [sonarscanner](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
-    1. Maven会输出当前分析项目的结果URL
+    1. Maven构建的过程会输出当前分析项目的结果URL
 
-1. sonar-scanner 命令工具 方式
-    1. 配置工具 `/etc/sonar-scanner/sonar-scanner.properties`
-        - ```ini
-            sonar.host.url=http://localhost:9000
-            sonar.sourceEncoding=UTF-8
-            sonar.login=admin
-            sonar.password=admin
-            ```
-    1. 配置环境变量
-        ```
-            export SONAR_SCANNER_HOME="/opt/sonar-scanner"
-            export PATH="${SONAR_SCANNER_HOME}/bin:${PATH}" 
-        ```
-    1. 配置项目根路径 `sonar-project.properties`
-        - ```ini
-            sonar.projectKey=com.github.kuangcp.gobase
-            sonar.projectName=GoBase
-            sonar.sources=.
-            sonar.java.binaries=.
-            ```
+> 第一种 sonar-scanner 命令工具 方式
+1. 配置 基础配置 `/etc/sonar-scanner/sonar-scanner.properties`
+```ini
+sonar.host.url=http://localhost:9000
+sonar.sourceEncoding=UTF-8
+sonar.login=admin
+sonar.password=admin
+```
+2. 配置环境变量
+```
+export SONAR_SCANNER_HOME="/opt/sonar-scanner"
+export PATH="${SONAR_SCANNER_HOME}/bin:${PATH}" 
+```
+3. 配置项目根路径 `sonar-project.properties`
+```ini
+sonar.projectKey=com.github.kuangcp.gobase
+sonar.projectName=GoBase
+sonar.sources=.
+sonar.java.binaries=.
+```
 
-1. [Maven 方式](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
+> 第二种 [Maven插件方式](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
 
+************************
 
 > [参考: 有赞 GO 项目单测、集成、增量覆盖率统计与分析](https://cloud.tencent.com/developer/article/1684515)  
-> [支持 Go](https://docs.sonarqube.org/latest/analysis/languages/go/)
+> [sonar Go](https://docs.sonarqube.org/latest/analysis/languages/go/)
 
 ************************
 

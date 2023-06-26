@@ -25,6 +25,7 @@ categories:
         1. [TCP](#tcp)
         1. [UDP](#udp)
         1. [TCP UDP 对比](#tcp-udp-对比)
+        1. [SCTP](#sctp)
     1. [应用层](#应用层)
         1. [HTTP & HTTPS](#http-&-https)
         1. [Websocket](#websocket)
@@ -53,17 +54,18 @@ categories:
     1. [代理工具](#代理工具)
         1. [Clash](#clash)
         1. [Fiddler](#fiddler)
-        1. [Wireshark](#wireshark)
         1. [Charles](#charles)
         1. [mitmproxy](#mitmproxy)
         1. [tinyproxy](#tinyproxy)
         1. [Mars](#mars)
         1. [camilla](#camilla)
         1. [dev-proxy](#dev-proxy)
+1. [网络工具](#网络工具)
+    1. [Wireshark](#wireshark)
 1. [Tips](#tips)
     1. [移动通信技术规格](#移动通信技术规格)
 
-**目录 end**|_2022-10-22 22:59_|
+**目录 end**|_2023-05-18 23:53_|
 ****************************************
 # 网络
 
@@ -193,9 +195,10 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 - E类 保留地址
 
 #### 无分类编址 CIDR
-> 为了解决IPv4地址耗尽的问题
+> 超网（supernetting），也称无类别域间路由选择，为了解决IPv4地址耗尽的问题
 
 - IP ::= {<网络前缀>, <主机号>}
+- 例如 Docker 使用的网段 `172.17.0.1/16` 
 
 ### ARP协议
 > 同一局域网内，通过已知的IP地址和找到对应的硬件地址
@@ -225,6 +228,8 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 
 ### TCP
 > 传输控制协议（英语：Transmission Control Protocol，缩写为 TCP, 是一种面向连接的、可靠的、基于**字节流**的传输层通信协议，由IETF的RFC 793定义。
+
+- [wireshark tcp](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvTCPAnalysis.html)
 
 > TCP 段的头部信息 20字节 也就是160位
 ```
@@ -448,9 +453,31 @@ Socks代理只是简单地传递数据包，而不必关心是何种应用协议
 > proxy auto config 
 
 > [MDN: PAC File](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_(PAC)_file)
+
+本质上是一个js文件，提供了FindProxyForURL函数的自定义实现（依据不同的URL选择不同的Proxy或者不使用Proxy）
+
+> 示例1：全部走代理
 ```js
 function FindProxyForURL(url, host) {
     return "PROXY 127.0.0.1:8080"; 
+}
+```
+
+> 示例2： 局域网使用A代理，域名通配使用B代理，直连不走代理
+```js
+function FindProxyForURL(url, host) {
+  url = url.toLowerCase();
+  host = host.toLowerCase();
+
+  if (url.startsWith("http:")) {
+    return "PROXY localhost:1234";
+  }
+
+  if (shExpMatch(url, "*github.com*")) {
+    return "PROXY 127.0.0.1:7890";
+  }
+
+  return "DIRECT";
 }
 ```
 
@@ -487,13 +514,6 @@ function FindProxyForURL(url, host) {
 
 > [fiddler-everywhere](https://www.telerik.com/fiddler-everywhere) `Linux 免费`
 
-### Wireshark
-> [Official Site](https://www.wireshark.org/)  
-
-> 问题  `Error during loading:[string "/usr/wireshark/init.lua"]:44:`  
-- 这是由于Wireshark为了防止以root用户身份执行Lua脚本，避免对系统造成损坏，而显示警告弹窗。通常，用户只需要确认 
-- 如果不想每次都看到 修改 `/usr/wireshark/init.lua` 第一行（非注释，有效代码） 改成 `disable_lua = true`
-
 ### Charles
 > [Offcial Site](https://www.charlesproxy.com/) | [_](http://charles.iiilab.com/)
 
@@ -529,6 +549,18 @@ function FindProxyForURL(url, host) {
 > [Github](https://github.com/Kuangcp/GoBase/tree/master/toolbox/dev-proxy)`个人开发 用于代理HTTP请求 方便前后端联调`
 
 其实 xswitch 会更好用，但是不兼容firefox，即便使用debug方式安装上插件也会有报错和API不兼容
+
+************************
+
+# 网络工具
+## Wireshark
+> [Official Site](https://www.wireshark.org/)  
+
+> 问题  `Error during loading:[string "/usr/wireshark/init.lua"]:44:`  
+- 这是由于Wireshark为了防止以root用户身份执行Lua脚本，避免对系统造成损坏，而显示警告弹窗。通常，用户只需要确认 
+- 如果不想每次都看到 修改 `/usr/wireshark/init.lua` 第一行（非注释，有效代码） 改成 `disable_lua = true`
+
+> TCP HTTP 抓包可选中右击 Follow 查看 TCP和HTTP流完整字符
 
 ************************
 

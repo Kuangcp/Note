@@ -41,7 +41,7 @@ categories:
     1. [nuster](#nuster)
 1. [Tips](#tips)
 
-**目录 end**|_2021-11-22 22:56_|
+**目录 end**|_2023-05-26 11:28_|
 ****************************************
 # Nginx
 
@@ -183,22 +183,7 @@ nginx 配置文件的语法是自己独有的语法, 比较像 shell, 里面有�
 > [nginx搭建https服务](http://www.cnblogs.com/tintin1926/archive/2012/07/12/2587311.html) | [nginx http/2](http://letus.club/2016/04/08/nginx-http2-letsencrypt/)
 
 ### 自签发证书
-```sh
-  ############ 证书颁发机构
-  # CA机构私钥
-  openssl genrsa -out ca.key 2048
-  # CA证书
-  openssl req -x509 -new -key ca.key -out ca.crt
-  ############ 服务端
-  # 生成服务端私钥
-  openssl genrsa -out server.key 2048
-  # 生成服务端证书请求文件
-  openssl req -new -key server.key -out server.csr
-  # 使用CA证书生成服务端证书  关于sha256，默认使用的是sha1，在新版本的chrome中会被认为是不安全的，因为使用了过时的加密算法。
-  openssl x509 -req -sha256 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -days 3650 -out server.crt    
-  # 打包服务端的资料为pkcs12格式(非必要，只是换一种格式存储上一步生成的证书) 生成过程中，需要创建访问密码，请记录下来。
-  openssl pkcs12 -export -in server.crt -inkey server.key -out server.pkcs12
-```
+- [Linux: 自签发证书](/Linux/Base/LinuxNetwork.md#自签发证书)
 
 `配置HTTPS`
 
@@ -296,6 +281,49 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
   }
 ```
 
+> 绕过Grafana，免密登录，需要预先生成key
+```ini
+map $http_upgrade $connection_upgrade{
+    default upgrade;
+    ''  close;
+}
+
+  # http://grafana-user.test/d/spring_boot_21/shang-shu-tai-jian-kong-mian-ban?orgId=1
+server {
+    listen 80;
+    server_name  grafana-user.test;
+
+    location / {
+        proxy_pass http://192.168.1.1:9091/;
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Connection "";
+        proxy_set_header Authorization "Bearer xxxxx";
+        # add_header X-Frame-Options SAMEORIGIN;
+        proxy_hide_header X-Frame-Options;
+    }
+    location /api/live/ws {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_set_header X-Nginx-Proxt true;
+        
+        proxy_set_header Authorization "Bearer cccc";
+        
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        
+        proxy_http_version 1.1; 
+        proxy_redirect off;
+        proxy_read_timeout 300s;
+
+        proxy_pass http://192.168.1.1:9091;
+    }
+}
+```
+
 ## 转发代理
 > 例如 aaa.com 需要VPN等方式才能访问，Nginx所在的主机能访问，就可以这么配置，然后配置DNS将 aaa.com 解析到Nginx的主机上，就可以实现其他客户机不安装VPN 直接访问 aaa.com
 
@@ -391,6 +419,10 @@ _配置统一出口_
             # add_header 'Access-Control-Allow-Origin' '*';
             proxy_pass http://127.0.0.1:8889/; # 去除 api 路径，并访问后端
             # proxy_pass http://127.0.0.1:8889; 这种方式不会去除 /api/
+        }
+
+        location /api/a-service {
+          proxy_pass http://127.0.0.1:8889/a-service; # 移除 /api/ 路径，保留a-service （api路径下多个服务时使用此类型配置）
         }
     }
 ```

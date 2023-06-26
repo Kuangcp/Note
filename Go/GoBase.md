@@ -46,7 +46,7 @@ categories:
 
 > [Goplus](https://github.com/qiniu/goplus)
 
-> [project-layout](https://github.com/golang-standards/project-layout)`项目结构规范`
+> [project-layout](https://github.com/golang-standards/project-layout)`Go 项目结构规范`
 
 ## Modules
 > 1.11 开始支持 [Wiki](https://github.com/golang/go/wiki/Modules)  
@@ -230,10 +230,6 @@ func walkfunc(path string, info os.FileInfo, err error) error {
 
 ************************
 
-> [statik](github.com/rakyll/statik) `将文件打包入二进制执行文件中去`
-
-************************
-
 ## Test
 > [Github: assert](https://godoc.org/github.com/stretchr/testify/assert)
 
@@ -329,6 +325,9 @@ Msg struct{
 
 # Tips
 > [lorca](https://github.com/zserge/lorca.git) `H5 + chromium + Golang`桌面端
+
+> interface{} 类型判断nil
+- vo == nil || (reflect.ValueOf(vo).Kind() == reflect.Ptr && reflect.ValueOf(vo).IsNil())
 
 ## 通过字符串调用指定函数
 > [参考: Go 根据字符串调用指定函数](https://blog.csdn.net/HOOKTTG/article/details/52184500)

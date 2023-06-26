@@ -22,9 +22,10 @@ categories:
         1. [修改权限](#修改权限)
     1. [Java使用](#java使用)
 1. [基础数据类型](#基础数据类型)
+1. [图数据库](#图数据库)
 1. [DDL](#ddl)
 
-**目录 end**|_2022-09-14 13:34_|
+**目录 end**|_2023-06-05 14:10_|
 ****************************************
 # Postgresql
 - [ ] [该公司对于PostgreSQL的缺点陈列是否属实](http://www.onexsoft.com/onesql.html)
@@ -116,6 +117,7 @@ categories:
     - 在PostgreSQL中，首先需要创建一个代表组的角色，之后再将该角色的membership 权限赋给独立的角色即可。
 - `GRANT CONNECT ON DATABASE test to father;` 角色赋予数据库test 连接权限和相关表的查询权限。
 
+> 注意：如果一个库授权给了用户A，库里面新建了表C 需要再次单独授权给用户A 否则A没有C表的权限
 
 ## Java使用
 > [Postgresql JDBC Driver](https://github.com/pgjdbc/pgjdbc)
@@ -125,6 +127,9 @@ categories:
 
 # 基础数据类型
 > [ PostgreSQL中的数据类型](https://blog.csdn.net/jpzhu16/article/details/52140048)
+
+# 图数据库
+[PostgreSQL 图式搜索(graph search)实践 ](https://developer.aliyun.com/article/328141)
 
 # DDL
 

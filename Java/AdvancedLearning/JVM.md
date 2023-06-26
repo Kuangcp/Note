@@ -22,12 +22,13 @@ categories:
         1. [直接内存](#直接内存)
     1. [元空间](#元空间)
 1. [JVM基本参数配置](#jvm基本参数配置)
+    1. [内存类参数 Tips](#内存类参数-tips)
 1. [JVM不同实现](#jvm不同实现)
     1. [Hotspot JVM](#hotspot-jvm)
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2021-11-22 22:56_|
+**目录 end**|_2023-04-27 22:00_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -170,7 +171,8 @@ NIO 会经常使用, 提高性能
 - `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 打印类装载
 - `-Xloggc:/home/logs/gc.log`
 
-## 内存类参数
+
+## 内存类参数 Tips 
 > 堆(老年代 年轻代)，堆外，元空间，栈
 
 - `-XX:CompressedClassSpaceSize=500m` 压缩类元空间大小 默认是1g
@@ -183,6 +185,12 @@ NIO 会经常使用, 提高性能
     - `-Xmn` 默认值是Xmx的1/3 即最大堆内存的1/3
     - NUMA 机制
 
+> 如何快速确认进程内存配置
+1. OpenJDK
+    - 
+1. OracleJDK
+    - jmap -heap pid
+    
 **********************
 
 # JVM不同实现

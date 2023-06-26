@@ -34,6 +34,7 @@ categories:
     1. [Java](#java)
     1. [Python](#python)
     1. [GUI客户端](#gui客户端)
+    1. [Cli](#cli)
 1. [Project](#project)
     1. [Codis](#codis)
     1. [webdis](#webdis)
@@ -48,7 +49,7 @@ categories:
     1. [击穿](#击穿)
     1. [穿透](#穿透)
 
-**目录 end**|_2021-05-27 21:59_|
+**目录 end**|_2023-03-31 09:59_|
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -259,7 +260,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 # Scan
 > [Doc: Scan](http://doc.redisfans.com/key/scan.html) 
 
-由于 Redis 是单线程多路复用机制(Redis6引入多线程)，使用 O(n) 复杂度的命令容易阻塞进程，因此需要 scan 命令来实现分批执行 (`注意 scan如果模式匹配的范围比较大会有 keys 一样的影响`)
+由于 Redis 是单线程多路复用机制(Redis6引入多线程)，使用 O(n) 复杂度的命令容易阻塞进程，因此需要 scan 命令来实现分批执行 (`注意 scan如果模式匹配的范围比较大，同样有 keys 一样的影响`)
 
 ## O(n) 复杂度的命令
 - List： lindex、lset、linsert
@@ -318,7 +319,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
     - 指示客户端退订给定的频道。如果没有频道被指定，也即是，一个无参数的 UNSUBSCRIBE 调用被执行，
     - 那么客户端使用 SUBSCRIBE 命令订阅的所有频道都会被退订。在这种情况下，命令会返回一个信息，告知客户端所有被退订的频道。
 
-*******************************
+************************
 
 # 客户端
 > [program language client](http://www.redis.com.cn/clients)
@@ -326,7 +327,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 ## Java
 > [详细](/Java/Ecosystem/JavaRedis.md)
 
-*******************
+************************
 
 ## Python
 > pip install redis 该模块和redis命令的用法几乎一模一样, 上手很快
@@ -337,12 +338,16 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 
 > [Redis Desktop Manager](https://github.com/uglide/RedisDesktopManager/)  
 > [Another Redis DeskTop Manager](https://gitee.com/qishibo/AnotherRedisDesktopManager)  
-> [RedisInsight](https://docs.redislabs.com/)
 
 > arch 上暂时存在这个问题导致无法使用 Redis Desktop Manager [Github Issues](https://github.com/uglide/RedisDesktopManager/issues/4826)
 1. rm -rf ~/.cache/fontconfig
 1. rm -rf ~/snap/redis-desktop-manager/common/.cache/fontconfig
 1. fc-cache -r
+
+## Cli 
+- redis-cli 
+- redli 
+    - go install github.com/IBM-Cloud/redli@latest
 
 ************************
 
@@ -401,7 +406,8 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 
 1. 当某个Key失效后，瞬间涌入大量的请求同一个Key，这些请求不会命中Redis，都会请求到DB，导致数据库压力过大
     1. 设置热点Key，自动检测热点Key，将热点Key的过期时间加大或者永不过期。
-    2. 在更新缓存时加互斥锁。当发现没有命中Redis，去查数据库的时候，在执行更新缓存的操作上加锁，当一个线程访问时，其它线程等待，这个线程访问过后，缓存中的数据会被重建，这样其他线程就可以从缓存中取值。
+    2. 在更新缓存时加互斥锁。当发现没有命中Redis，去查数据库的时候，在执行更新缓存的操作上加锁，当一个线程访问时，其它线程等待
+        - 这个线程访问过后，缓存中的数据会被重建，这样其他线程就可以从缓存中取值。
 
 ## 穿透
 针对缓存和 DB 都没有的数据 请求

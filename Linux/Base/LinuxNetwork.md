@@ -21,6 +21,7 @@ categories:
         1. [ping](#ping)
         1. [traceroute](#traceroute)
         1. [tc](#tc)
+        1. [iperf3](#iperf3)
         1. [netstat](#netstat)
         1. [iproute2](#iproute2)
         1. [tcpdump](#tcpdump)
@@ -29,6 +30,8 @@ categories:
         1. [rsync](#rsync)
         1. [curl](#curl)
         1. [wget](#wget)
+1. [证书](#证书)
+    1. [自签发证书](#自签发证书)
 1. [常用服务](#常用服务)
     1. [邮件服务器postfix和devecot](#邮件服务器postfix和devecot)
     1. [FTP](#ftp)
@@ -41,19 +44,20 @@ categories:
     1. [Telnet](#telnet)
     1. [VPN](#vpn)
         1. [tun/tap](#tuntap)
-            1. [TUN TAP 区别](#tun-tap-区别)
         1. [shadowsocks](#shadowsocks)
-        1. [proxychains](#proxychains)
         1. [OpenVPN](#openvpn)
+    1. [代理](#代理)
+        1. [proxychains](#proxychains)
     1. [防火墙](#防火墙)
         1. [iptables](#iptables)
     1. [远程桌面](#远程桌面)
         1. [VNC](#vnc)
         1. [Xrdp](#xrdp)
-    1. [Tips](#tips)
-        1. [查看进程占用的端口](#查看进程占用的端口)
+1. [Tips](#tips)
+    1. [查看进程占用的端口](#查看进程占用的端口)
+    1. [网络问题排查](#网络问题排查)
 
-**目录 end**|_2022-10-22 22:59_|
+**目录 end**|_2023-06-12 20:24_|
 ****************************************
 # Linux网络管理
 ## 内核配置
@@ -142,11 +146,12 @@ categories:
     - -i 每次ping的时间间隔 默认1s root用户才可以设置 0.2 以下
     - -f 暴力尽可能大量包的传送 至少每秒100个
         - 注意：得到的结果中的 mdev 表示ICMP包的RTT偏离平均值的程度，mdev 越大表示网速不稳定 Linux有，mac下叫stddev win系列没有
-    - -r 记录经过的路由
+    - -r 记录经过的路由 （路由节点均支持ICMP协议）
 
-> [prettyping](http://denilson.sa.nom.br/prettyping/)
+> [prettyping](http://denilson.sa.nom.br/prettyping/)  
+> [gping](https://github.com/orf/gping)  
 
-- ping -s 1472 -M do 192.168.15.205 测试网络环境下可用MTU
+- ping -s 1472 -M do 192.168.15.205 测试网络环境下最大可用MTU
 
 ### traceroute
 > 显示网络数据包传输到指定主机的路径信息，追踪数据传输路由状况
@@ -165,11 +170,32 @@ categories:
 ### tc
 > Traffic Control
 
-tc -s -d qdisc ls dev eno1
+- 限速 `tc qdisc add dev eno1 root tbf rate 400kbit latency 1ms burst 1000`
+- 解除 `tc qdisc del dev eno1 root tbf rate 400kbit latency 1ms burst 1000`
 
-限速 `tc qdisc add dev eno1 root tbf rate 400kbit latency 1ms burst 1000`
-解除 `tc qdisc del dev eno1 root tbf rate 400kbit latency 1ms burst 1000`
+- 网卡100%丢包 `tc qdisc add dev enp3s0 root netem loss 100%` 移除： add 换成 del
+- 移除指定网卡添加的所有规则 `tc qdisc del dev enp3s0 root`
+- 指定IP网段 丢包 
+```sh
+    #! /bin/sh
+    interface=enp3s0
+    ip=192.168.16.0/24
+    delay=30ms
+    loss=90%
+
+    tc qdisc add dev $interface root handle 1: prio
+    # 此命令立即创建了类: 1:1, 1:2, 1:3 ( 缺省三个子类 )
+    tc filter add dev $interface parent 1:0 protocol ip prio 1 u32 match ip dst $ip flowid 2:1
+    # 在 1:1 节点添加一个过滤规则 , 优先权 1: 凡是去往目的地址是 $ip( 精确匹配 ) 的 IP 数据包 , 发送到频道 2:1.
+    tc qdisc add dev $interface parent 1:1 handle 2: netem delay $delay loss $loss
+```
+
+
 tbf 指令牌桶算法
+### iperf3
+TCP UDP 测速， 在两个节点上使用iperf启动服务端和客户端进程，从而计算TCP和UDP指标信息
+
+- [Ethr](https://github.com/microsoft/ethr) Golang 仿写
 
 ### netstat 
 > 相关 [iproute2](#iproute2)
@@ -242,6 +268,7 @@ _iproute-ss_
 - 查看打开的端口以及进程pid `ss -pl`
 - 查看所有socket连接 `ss -a`
 - 隧道术： 网络协议的数据包被封装在另一种网络协议的数据包之中 `这是VPN的技术理论基础`
+- 按指定端口过滤 `ss -at '( dport = :3308 )'`
 
 ************************
 
@@ -433,6 +460,33 @@ _iproute-ss_
 > [axel](https://github.com/axel-download-accelerator/axel)  
 > [aria2](https://github.com/aria2/aria2)  
 
+************************
+
+# 证书
+
+## 自签发证书
+```sh
+  ############ 证书颁发机构
+  # CA机构私钥
+  openssl genrsa -out ca.key 2048
+  # CA证书
+  openssl req -x509 -new -key ca.key -out ca.crt
+  ############ 服务端
+  # 生成服务端私钥
+  openssl genrsa -out server.key 2048
+  # 生成服务端证书请求文件
+  openssl req -new -key server.key -out server.csr
+  # 使用CA证书生成服务端证书  关于sha256，默认使用的是sha1，在新版本的chrome中会被认为是不安全的，因为使用了过时的加密算法。
+  openssl x509 -req -sha256 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -days 3650 -out server.crt    
+  # 打包服务端的资料为pkcs12格式(非必要，只是换一种格式存储上一步生成的证书) 生成过程中，需要创建访问密码，请记录下来。
+  openssl pkcs12 -export -in server.crt -inkey server.key -out server.pkcs12
+```
+
+> Manjaro 导入自定义证书
+
+sudo trust anchor --store my-root.crt
+sudo update-ca-trust
+
 ****************************
 # 常用服务
 
@@ -517,7 +571,7 @@ _iproute-ss_
 ### tun/tap
 > [参考: linux下TUN/TAP虚拟网卡的使用](https://blog.csdn.net/bytxl/article/details/26586109)  
 
-#### TUN TAP 区别
+`TUN TAP 区别`
 
 > TUN 
 1. 工作在IP层 第三层 
@@ -547,24 +601,6 @@ _客户端_
 ```
 - `sslocal -c /etc/ss/json`
 - 设置代理是1080端口即可
-
-### proxychains
-- 安装
-    - [编译安装](https://github.com/rofl0r/proxychains-ng)
-    - 包管理器  
-        ```shell
-        sudo pacman -S community/proxychains-ng # Arch
-        sudo apt install proxychains  # apt
-        ```
-- 配置 配合楼上的 shadowsocks，修改文件 `/etc/proxychains.conf`
-    ```conf
-    [ProxyList]
-    # add proxy here ...
-    # meanwile
-    # defaults set to "tor"
-    # socks4        127.0.0.1 9050
-    socks5  127.0.0.1  1080
-    ```
 
 ### OpenVPN
 > [arch wiki](https://wiki.archlinux.org/index.php/OpenVPN)
@@ -599,6 +635,29 @@ _客户端_
 > ERROR: Cannot open TUN/TAP dev /dev/net/tun: No such device
 1. modinfo tun 查看内核模块是否存在
 1. 尝试 sudo pacman -S networkmanager-vpnc 并重启
+
+************************
+
+## 代理
+
+### proxychains
+- 安装
+    - [编译安装](https://github.com/rofl0r/proxychains-ng)
+    - 包管理器  
+        ```shell
+        sudo pacman -S community/proxychains-ng # Arch
+        sudo apt install proxychains  # apt
+        ```
+- 配置文件 `/etc/proxychains.conf`
+    ```conf
+    [ProxyList]
+    # add proxy here ...
+    # meanwile
+    # defaults set to "tor"
+    # socks4        127.0.0.1 9050
+    # socks5  127.0.0.1  1080
+    http  127.0.0.1 7890
+    ```
 
 ************************
 
@@ -647,11 +706,14 @@ _问题场景_
 
 ************************
 
-## Tips
-### 查看进程占用的端口
+# Tips
+## 查看进程占用的端口
 > netstat lsof fuser  
 
 > [参考: linux下常用命令查看端口占用](http://blog.csdn.net/ws379374000/article/details/74218530)
 
 - `lsof -i:端口号` 用于查看某一端口的占用情况，缺省端口号显示全部
     - 或者 `cat /etc/services` 查看系统以及使用的端口
+
+## 网络问题排查
+- [TCP 内网下载慢速分析](https://christmica.cc/archives/tcp-download-analysis)

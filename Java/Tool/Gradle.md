@@ -103,11 +103,10 @@ categories:
 1. 执行“开始/运行”命令（或者WIN + R），输入“regedit”，打开注册表。
 2. 展开注册表到下面的分支[HKEY＿LOCAL＿MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion]，在右侧窗口中找到名为“ProgramFilesDir”的字符串，双击把数值“C:\Program Files”修改为“D：\ProgramFiles”，确定退出后,即可更改常用软件的安装路径了。
 
-## Docker安装
-> [Docker 文档](https://docs.docker.com/samples/library/gradle/) `虽然在开发时感觉意义不大, 还要把项目映射进去..`
-
 ## 解压配置
 > [官方下载网址](http://services.gradle.org/) 有各个版本的下载以及版本发行说明
+
+- [腾讯云镜像](https://mirrors.cloud.tencent.com/gradle/)
 
 1. 解压到任意目录, 并将 bin 目录加入 环境变量即可
 

@@ -77,9 +77,13 @@ categories:
         - 比如要在网页上敲英文的时候,就需要每次都要输入分号,才能绕过监听, 真是麻烦
     1. [剪贴板](https://key.saka.io/tutorial/clipboard): 复制当前页面的URL:`yy`
         - 当前标签页打开链接 `yf`| 后台打开 `yb` | 新窗口打开 `yn` | 隐私窗口 `y shift-n`
-- Vimium
-    - Vim风格操作浏览器日常操作，命令简单 功能也都差不多有
 
+- `Vimium`
+    - Vim风格操作浏览器日常操作，命令简单，基本功能一致
+    - 可以按域名配置启用禁用规则
+    - FF113版本不能正常工作了
+- `Vimium C - All by Keyboard`
+    - Vim风格操作浏览器日常操作
 1. `Dark Reader` 设置网页黑夜模式
 1. `Greasemonkey` 传说中的油猴, 可以自己写脚本 [wiki](https://wiki.greasespot.net/User_Script_Hosting)
 1. `New Tab Tools` 新建标签页的自定义工具 

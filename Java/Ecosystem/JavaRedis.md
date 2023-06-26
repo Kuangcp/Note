@@ -22,55 +22,6 @@ categories:
 ## Jedis
 > [Github: Jedis](https://github.com/xetorthio/jedis) 简单直接 
 
-- maven依赖(Spring 4.1.7)：
-```xml
-    <dependency>
-        <groupId>org.springframework.data</groupId>
-        <artifactId>spring-data-redis</artifactId>
-        <version>1.6.0.RELEASE</version>
-    </dependency>
-    <dependency>
-        <groupId>redis.clients</groupId>
-        <artifactId>jedis</artifactId>
-        <version>2.9.0</version>
-        <type>jar</type>
-    <scope>compile</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>3.3.2</version>
-    </dependency>
-```
-`Spring配置文件`
-```xml
-    <!--
-        加载redis配置文件 
-        如果已经加载了一个文件，那么第一个就要写这个配置项，
-        <property name="ignoreUnresolvablePlaceholders" value="true"/>
-        第二个要加 后面的配置 
-        不然就只会加载前面那个文件
-    -->
-    <context:property-placeholder location="classpath:redis.properties" ignore-unresolvable="true"/>
-    <!-- redis连接池的配置 -->
-    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-        <property name="maxActive" value="${redis.pool.maxActive}"/>
-        <property name="maxIdle" value="${redis.pool.maxIdle}"/>
-        <property name="minIdle" value="${redis.pool.minIdle}"/>
-        <property name="maxWait" value="${redis.pool.maxWait}"/>
-        <property name="testOnBorrow" value="${redis.pool.testOnBorrow}"/>
-        <property name="testOnReturn" value="${redis.pool.testOnReturn}"/>
-    </bean>
-    <!-- redis的连接池pool，不是必选项：timeout/password  -->
-    <bean id = "jedisPool" class="redis.clients.jedis.JedisPool">
-        <constructor-arg index="0" ref="jedisPoolConfig"/>
-        <constructor-arg index="1" value="${redis.host}"/>
-        <constructor-arg index="2" value="${redis.port}" type="int"/>
-        <constructor-arg index="3" value="${redis.timeout}" type="int"/>
-        <constructor-arg index="4" value="${redis.password}"/>
-    </bean>
-```
-
 - java实际测试类[JedisUtilsTest.java](https://github.com/Kuangcp/Maven_SSM/blob/master/src/test/java/redis/JedisUtilTest.java)
 
 - jedis 使用后要disconnect释放连接,最新版本close就不用了，使用连接池就不用
@@ -83,6 +34,17 @@ categories:
 
 ## Redisson
 > [Github: Redisson](https://github.com/redisson/redisson)
+
+> WatchDog机制
+- org.redisson.RedissonBaseLock#renewExpiration 续约逻辑入口
+    - 加锁时初始设置的过期时间为 异步线程续约的周期时间，所以不能设置太短，初始设置TTL后，异步线程来不及去续约key就过期删除了
+    - Netty中的HashedWheelTimer实现定时调度 延时时使用的Lua脚本
+
+- [watch dog](https://www.cnblogs.com/jelly12345/p/14699492.html)  
+- [Redis分布式锁过期了但业务还没有执行完](https://www.51cto.com/article/679902.html)  
+
+> 问题： 如果此时JVM发生大于TTL的FullGC，后续又恢复了，锁没有续约，被别的JVM进程抢到了锁
+- 方案： 
 
 *********************
 ## Lettuce

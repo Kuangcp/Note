@@ -14,6 +14,7 @@ categories:
     1. [效率工具](#效率工具)
         1. [协作工具](#协作工具)
         1. [目录跳转](#目录跳转)
+    1. [远程工具](#远程工具)
     1. [网络工具](#网络工具)
         1. [nmap](#nmap)
         1. [whatportis](#whatportis)
@@ -42,7 +43,7 @@ categories:
     1. [PDF](#pdf)
 1. [Tips](#tips)
 
-**目录 end**|_2022-09-25 17:08_|
+**目录 end**|_2023-05-18 23:53_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
@@ -69,6 +70,7 @@ categories:
 |`deepin-terminal`| 功能很多，主题很多，功能最为强大 | 字体仅可选择内置不可自定义
 |`tilda`          | 内嵌于桌面上, 小命令方便 | 需要查看文件时不方便
 |`terminology`    | 样式高度自定义
+| |
 
 > 备注 sakura xfce4-terminal 快捷键配置
 - `~/.config/xfce4/terminal/accels.scm` 
@@ -182,8 +184,11 @@ Supervisor 进程监控管理
     1. `alias sudo='sudo'` 能够在别名上使用 sudo *神奇*
 
 - md5sum 报文摘要算法 Message-Digest Algorithm 5 的实现 
+    - `printf 'Who?123' | md5sum` 
     - `md5sum file` 计算出md5值
     - `md5sum -c file.md5` file 和 file.md5 在同一目录下, 执行这个命令就是检查md5是否匹配, 确保文件的完整性和正确性
+- sha256sum 
+    - `printf 'Who?123' | sha256sum`
 
 - last _查看Linux登录信息_
     - last -n 5 最近五次登录
@@ -376,6 +381,12 @@ or `convert -background none icon.svg -define icon:auto-resize icon.ico`
         - Ctrl Alt S 截图
         - Alt Q pin
 - deepin-screenshot
+
+### 录屏
+- `kazam` 支持选进程窗口，输出mp4
+- `peek` 顶层窗口选择录屏区域，输出 gif 有较高压缩比
+
+************************
 
 ## 视频
 > [参考: Top 10 Best Linux Video Players](https://www.ubuntupit.com/top-10-best-linux-video-players-enjoy-ultimate-movie-music/)  

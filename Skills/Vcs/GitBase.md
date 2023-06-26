@@ -506,6 +506,8 @@ git log --oneline -S "search keyword" --source --all
 ### show-branch 
 > 按颜色列出分支上的提交和图示
 
+可以查看到每次提交所属的分支
+
 ************************
 
 ### stash

@@ -12,6 +12,7 @@ categories:
 1. [文件管理](#文件管理)
     1. [查找文件](#查找文件)
         1. [find](#find)
+        1. [fzf](#fzf)
         1. [locate](#locate)
         1. [Anything](#anything)
         1. [Synapse](#synapse)
@@ -22,10 +23,10 @@ categories:
         1. [ls](#ls)
         1. [wc](#wc)
         1. [cat](#cat)
-        1. [nl](#nl)
         1. [less](#less)
         1. [tail](#tail)
         1. [head](#head)
+        1. [ldd](#ldd)
     1. [比较文件内容](#比较文件内容)
         1. [diff](#diff)
         1. [meld](#meld)
@@ -49,12 +50,14 @@ categories:
     1. [设备列表](#设备列表)
     1. [常用命令](#常用命令)
         1. [dd](#dd)
+        1. [truncate](#truncate)
         1. [mount](#mount)
         1. [fdisk](#fdisk)
         1. [df](#df)
         1. [du](#du)
 1. [日志](#日志)
     1. [Systemd](#systemd)
+        1. [journalctl](#journalctl)
     1. [应用日志](#应用日志)
 1. [文件共享](#文件共享)
     1. [Samba](#samba)
@@ -68,7 +71,7 @@ categories:
         1. [善用alias](#善用alias)
     1. [desktop文件](#desktop文件)
 
-**目录 end**|_2022-05-17 22:56_|
+**目录 end**|_2023-06-12 20:24_|
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -222,6 +225,11 @@ le fin.log | grep -v VID | awk '{print $2}' | xargs rm -f
 ### head  
 - 查看文件头部, 默认前十行 使用 -n 指定行数
 
+### ldd
+查看二进制执行文件依赖的动态库
+
+************************
+
 ## 比较文件内容
 - `grep -vwf 文件1 文件2`
 
@@ -363,6 +371,10 @@ export LANG="zh_CN.UTF-8"
 
 - 例如创建一个空4G文件: `dd if=/dev/zero of=/testfile bs=1024k count=4096`
 
+### truncate 
+
+创建一个 5G 全0文件 `truncate -s 5G test.file`
+
 ### mount
 - `mount [options] [source] [directory] `
 - `mount [-o [操作选项]] [-t 文件系统类型] [-w|--rw|--ro] [文件系统源] [挂载点]`
@@ -422,6 +434,11 @@ export LANG="zh_CN.UTF-8"
 - 内核模块的日志 `journalctl -u systemd-modules-load.service`
 - **/var/log/journal**
     - `journalctl --vacuum-time=1w` 只保留1周日志
+
+
+### journalctl 
+1. `查看相对启动次日志 0标识当前` -b -1
+1. `时间段` --since"2015-01-10" --until "2015-01-11 03:00"
 
 ## 应用日志
 > [处理Apache日志的Bash脚本](http://www.ruanyifeng.com/blog/2012/01/a_bash_script_of_apache_log_analysis.html)
