@@ -240,7 +240,7 @@ SWAP = VIRT - RES
 ### sar
 > Collect, report, or save system activity information.
 
-**需要启动 sysstat 服务 才能使用**
+**需要安装和启动 sysstat 服务 才能使用**
 
 > [ksar](https://sourceforge.net/projects/ksar/)
 

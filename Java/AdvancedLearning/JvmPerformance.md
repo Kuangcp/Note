@@ -181,6 +181,8 @@ categories:
 >  Java Head Analyse Tool
 
 用于分析 jmap 转储出来的堆文件, 分析完后启动一个WebServer 通过浏览器查看
+- -J-mx16g 设置最大内存
+- -J-d64 64位模式
 
 ## jstack 
 > jstack [option] pid  主要用来查看某个Java进程内的线程堆栈信息
