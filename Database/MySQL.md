@@ -114,6 +114,9 @@ default-character-set = utf8
 _重启_
 - 重启MySQL ：`sudo systemctl restart mysql`
 
+- 命令行连接
+> mysql -h host -P port -u username  -p'password' database
+
 ## Docker安装
 > [Docker安装MySQL](/Linux/Container/DockerSoft.md#MySQL) | [博客：Mysql有没有必要Docker化](http://www.infoq.com/cn/articles/can-mysql-run-in-docker)
 
