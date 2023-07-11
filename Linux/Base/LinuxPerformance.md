@@ -394,9 +394,14 @@ SWAP = VIRT - RES
 
 - 进程树:
     - BSD格式 : `ps axjf` 
-        - a 所有进程, x 显示没有控制终端的进程, j 任务格式显示进程, f ascaii字符显示树状结果
+        - a 所有进程
+        - x 显示没有控制终端的进程
+        - j 任务格式显示进程
+        - f ascaii字符显示树状结果
     - UNIX : `ps -ejH`
-        - e 显示所有进程, j 任务格式来显示进程, H 显示数状结构 
+        - e 显示所有进程
+        - j 任务格式来显示进程
+        - H 显示数状结构 
 
 **实践**
 1. 列出Java进程 `ps aux | grep RSS | grep -v "grep" && ps aux | egrep -v "grep" | grep -i java` 
