@@ -13,7 +13,10 @@ categories:
     1. [基准测试](#基准测试)
     1. [运行状况信息](#运行状况信息)
         1. [分析工具](#分析工具)
+    1. [内核参数](#内核参数)
     1. [内存情况](#内存情况)
+        1. [overcommit](#overcommit)
+        1. [oom](#oom)
         1. [free](#free)
         1. [交换内存分析](#交换内存分析)
     1. [性能监测](#性能监测)
@@ -53,7 +56,7 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2023-06-05 14:10_|
+**目录 end**|_2023-07-12 14:50_|
 ****************************************
 # Linux性能分析和管理
 ## 基准测试
@@ -84,6 +87,14 @@ categories:
 > [vector](https://github.com/Netflix/vector)
 > [CPU-X ](http://x0rg.github.io/CPU-X/) | [Github:repo](https://github.com/X0rg/CPU-X)`简洁而详细`    
 
+
+************************
+
+## 内核参数
+- sysctl -n name 读取配置
+- sysctl -w name value 写入配置
+- sysctl -p 不重启的情况下reload配置
+
 ************************
 
 ## 内存情况
@@ -94,6 +105,27 @@ categories:
 - Virtual Memory   虚拟内存
 - Resident Memory  持久内存
 - Shared Memory    共享内存(多进程间共享)
+
+### overcommit 
+> [参考: Linux Overcommit Modes](https://www.baeldung.com/linux/overcommit-modes)  
+
+- 内核参数： vm.overcommit_memory 
+    - 0 允许overcommit但是算法判断是否合理，不合理会拒绝对应进程的内存申请
+    - 1 允许overcommit
+    - 2 禁止overcommit
+
+- cat /proc/meminfo | grep commit 
+    - CommitLimit 就是overcommit的阈值，申请的内存总数超过CommitLimit的话就算是overcommit。
+        - CommitLimit = (Physical RAM * vm.overcommit_ratio / 100) + Swap
+    - Committed_AS 表示所有进程已经申请的内存总大小，（注意是已经申请的，不是已经分配的），如果 Committed_AS 超过 CommitLimit 就表示发生了 overcommit
+        - 超出越多表示 overcommit 越严重。Committed_AS 的含义换一种说法就是，如果要绝对保证不发生OOM (out of memory) 需要多少物理内存。
+
+### oom
+当操作系统认为内存不足时，会选择分数值较高的进程kill掉（用户进程，非内核进程）
+- /proc/pid/oom_score 操作系统所计算值
+- /proc/pid/oom_score_adj 可以修改的值，当前值加上oom_score后才是最终值
+    - 降低分值 echo -50 > /proc/pid/oom_score_adj
+- /proc/pid/oom_adj 对应进程的优先级 
 
 ### free
 - 直接运行得到的就是内存情况,默认是kb为单位,可以指定 -b -m -g (后两种不推荐,因为向下取整的特性)

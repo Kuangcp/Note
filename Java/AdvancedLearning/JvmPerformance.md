@@ -35,7 +35,7 @@ categories:
     1. [MAT](#mat)
     1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2021-05-18 21:48_|
+**目录 end**|_2023-07-12 14:50_|
 ****************************************
 
 # Java的性能调优
@@ -251,6 +251,8 @@ categories:
 > 应用开发时的使用
 1. 可以使用 Profiler 下的JDBC，操作业务流程，获取所有执行的SQL，用来优化索引，或者排查问题
 
+************************
+
 ## MAT
 > Memory Analyzer tool(MAT) | [Official Site](http://www.eclipse.org/mat/)
 
@@ -260,7 +262,9 @@ categories:
 
 他的 OQL 比较方便, 像写 SQL 一样去查询对象
 
-注意: 有这样的一种场景, 从数据库获取大量的数据创建为对象, 导致瞬间的OOM 这时候即使使用 jmap 去 dump 了快照, 也看不到占用大量内存的对象, 很有可能这些对象就是gc不可达的, 而mat只能分析可达对象
+注意: 有这样的一种场景, 从数据库获取大量的数据创建为对象, 导致瞬间的OOM 这时候即使使用 jmap 去 dump 了快照, 也看不到占用大量内存的对象, 因为MAT默认展示的是GC可达对象，需要在菜单选择看不可达对象
+
+************************
 
 ## IBM Heap Analyzer
 > [Official Site](https://www.ibm.com/developerworks/community/alphaworks/tech/heapanalyzer)
