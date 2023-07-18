@@ -34,10 +34,11 @@ categories:
     1. [启动配置](#启动配置)
         1. [调优](#调优)
     1. [Tips](#tips)
+        1. [使用项目外配置文件](#使用项目外配置文件)
         1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
         1. [无法输入中文](#无法输入中文)
 
-**目录 end**|_2022-09-25 17:08_|
+**目录 end**|_2023-07-18 13:37_|
 ****************************************
 
 # IDEA 使用笔记
@@ -404,6 +405,10 @@ _例如修改为如下_
 ************************
 
 ## Tips
+
+### 使用项目外配置文件
+IDEA中Java项目启动时Console里灰色被折叠的第一行是完整的Java命令，可以复制出classpath参数，在头部追加自定义目录，然后把这一长串填回到VM Options中
+就能实现自定义目录下的文件对IDEA中classpath下的同名文件替换
 
 ### Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"
 1. Project Structure -> 找到 XXX 项目 右击 -> Add -> 选择 Groovy

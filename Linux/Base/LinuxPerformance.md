@@ -56,14 +56,19 @@ categories:
         1. [chroot](#chroot)
     1. [关机重启](#关机重启)
 
-**目录 end**|_2023-07-12 14:50_|
+**目录 end**|_2023-07-18 13:37_|
 ****************************************
 # Linux性能分析和管理
 ## 基准测试
 > [几款优秀的Linux基准测试工具](https://blog.csdn.net/gatieme/article/details/54296440)  
 > [Arch wiki: Improving performance](https://wiki.archlinux.org/title/Improving_performance)  
 
-1. unixbench
+1. [byte-unixbench](https://github.com/kdlucas/byte-unixbench)
+1. [geekbench](https://www.geekbench.com)
+
+1. 简易评测
+    - 单核CPU: `time echo "scale=9000; 4*a(1)" | bc -l -q` 
+    - Mac Book Pro 2023 32G: 4s
 
 ## 运行状况信息
 > 系统实时状态信息

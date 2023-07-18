@@ -45,6 +45,7 @@ categories:
     1. [默认字符编码](#默认字符编码)
 1. [磁盘](#磁盘)
     1. [文件系统](#文件系统)
+        1. [Tmpfs](#tmpfs)
         1. [fsck](#fsck)
     1. [安装系统时基本分区](#安装系统时基本分区)
     1. [设备列表](#设备列表)
@@ -71,7 +72,7 @@ categories:
         1. [善用alias](#善用alias)
     1. [desktop文件](#desktop文件)
 
-**目录 end**|_2023-06-12 20:24_|
+**目录 end**|_2023-07-18 13:37_|
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -341,7 +342,10 @@ export LANG="zh_CN.UTF-8"
 > [参考: 详解NTFS文件系统](http://www.blogfshare.com/detail-ntfs-filesys.html)
 > [参考: 使用 FUSE 开发自己的文件系统](https://www.ibm.com/developerworks/cn/linux/l-fuse/)
 
-> tmpfs [wiki](https://wiki.archlinux.org/index.php/Tmpfs)
+### Tmpfs 
+> 虚拟内存文件系统 [wiki](https://wiki.archlinux.org/index.php/Tmpfs)
+
+mount -t tmpfs -o size=100m tmpfs /mnt/tmp
 
 ### fsck
 > check and repair a Linux filesystem
