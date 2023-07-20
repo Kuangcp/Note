@@ -301,6 +301,20 @@ An informative annotation type used to indicate that an interface type declarati
 
 > [参考: Java Lambda表达式 实现原理分析](https://blog.csdn.net/jiankunking/article/details/79825928)
 
+> 为什么Lambda范围内的代码引用外部变量时得是final修饰的。
+因为匿名内部类的引用不允许此操作
+```
+    int b = 0;
+    new Runnable(){
+        @Override
+        public void run() {
+            System.out.println(i++);//类属性，正常
+            System.out.println(b++);//编译错误
+        }
+    };
+```
+
+
 ### Lambda 局限性
 1. 当方法上具有`类范围`的泛型参数时无法使用 Lambda 写法
     ```java
