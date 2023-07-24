@@ -10,13 +10,14 @@ categories:
 **目录 start**
 
 1. [Kubernetes](#kubernetes)
-   1. [相关博客](#相关博客)
-   1. [安装](#安装)
-   1. [简单使用](#简单使用)
-   1. [容器编排](#容器编排)
+    1. [相关博客](#相关博客)
+    1. [安装](#安装)
+        1. [minikube](#minikube)
+    1. [简单使用](#简单使用)
+    1. [容器编排](#容器编排)
 1. [Kubeless](#kubeless)
 
-**目录 end**|_2021-02-03 17:25_|
+**目录 end**|_2023-07-24 18:06_|
 
 ---
 
@@ -56,6 +57,11 @@ categories:
 ```
 
 > `deb http://apt.kubernetes.io/ kubernetes-xenial main` 虽然这才是官方源,奈何是 Google 服务器
+
+************************
+
+### minikube
+> [minikube](https://minikube.sigs.k8s.io/docs/start/)
 
 ## 简单使用
 

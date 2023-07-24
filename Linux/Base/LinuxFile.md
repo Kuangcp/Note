@@ -72,7 +72,7 @@ categories:
         1. [善用alias](#善用alias)
     1. [desktop文件](#desktop文件)
 
-**目录 end**|_2023-07-18 13:37_|
+**目录 end**|_2023-07-24 18:06_|
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -374,6 +374,7 @@ mount -t tmpfs -o size=100m tmpfs /mnt/tmp
 > [使用 dd 命令进行硬盘 I/O 性能检测 ](https://linux.cn/article-6104-1.html)
 
 - 例如创建一个空4G文件: `dd if=/dev/zero of=/testfile bs=1024k count=4096`
+- 创建全0填充文件，标准输出后计算MD5 `dd if=/dev/zero bs=1M count=1024 | md5sum`
 
 ### truncate 
 
@@ -422,6 +423,7 @@ mount -t tmpfs -o size=100m tmpfs /mnt/tmp
 
 > 改进版
 - [ncdu](https://dev.yorhel.nl/ncdu)
+- [dust](https://github.com/bootandy/dust)
 
 ************************
 

@@ -25,7 +25,7 @@ categories:
 1. [NIO](#nio)
     1. [Buffer](#buffer)
 
-**目录 end**|_2023-06-07 11:00_|
+**目录 end**|_2023-07-24 18:06_|
 ****************************************
 # Java中的IO
 > [Note：操作系统中的IO模型](/Skills/CS/IO.md)  
@@ -110,6 +110,13 @@ ByteArrayOutputStream, FileOutputStream, FilterOutputStream, ObjectOutputStream,
 Reader类的核心就是read()这个方法，由于这里直接操作InputStream进行read()，因此可以读取出2个字节，java中每两个字节转成一个字符。
 这就是Reader可以读取字符的原因，只不过是利用InputStream先将字节读取出来，再按照一定的编码方式转码.
 
+> Java8 快速读取字符流
+```java
+    String text = new BufferedReader(
+        new InputStreamReader(((Response.InputStreamBody) response.body).inputStream, StandardCharsets.UTF_8))
+        .lines()
+        .collect(Collectors.joining("\n"));
+```
 ***************
 
 ## 应用
