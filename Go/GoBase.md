@@ -10,8 +10,10 @@ categories:
 **目录 start**
 
 1. [Go](#go)
-    1. [Modules](#modules)
+    1. [Go Modules](#go-modules)
         1. [配置](#配置)
+        1. [go get](#go-get)
+        1. [单个Git仓库发布多个包](#单个git仓库发布多个包)
     1. [数据类型](#数据类型)
         1. [string](#string)
         1. [int](#int)
@@ -28,6 +30,7 @@ categories:
         1. [defer](#defer)
     1. [接口](#接口)
     1. [Channel](#channel)
+    1. [协程](#协程)
     1. [文件操作](#文件操作)
     1. [Test](#test)
     1. [JSON](#json)
@@ -37,7 +40,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2021-06-20 14:26_|
+**目录 end**|_2023-07-28 15:22_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -48,7 +51,7 @@ categories:
 
 > [project-layout](https://github.com/golang-standards/project-layout)`Go 项目结构规范`
 
-## Modules
+## Go Modules
 > 1.11 开始支持 [Wiki](https://github.com/golang/go/wiki/Modules)  
 
 ### 配置
@@ -85,7 +88,7 @@ export GOSUMDB=sum.golang.google.cn
 | go mod verify | 验证依赖是否正确
 | go mod why    | 查找依赖
 
-## go get 
+### go get 
 
 | | |
 |:----|:----|
@@ -97,7 +100,7 @@ export GOSUMDB=sum.golang.google.cn
 | go get -u                              | 更新 mod
 | go list -m -versions golang.org/x/text | 列出可安装版本
 
-## 单个Git仓库发布多个包
+### 单个Git仓库发布多个包
 - go mod init github.com/username/repo-name/{path}
 - git tag -a {path}/v1.0.0
 
@@ -113,7 +116,7 @@ export GOSUMDB=sum.golang.google.cn
 _类型后置的设计相关文章_
 
 > [螺旋形（C/C++）和顺序（Go）的声明语法](https://cxwangyi.wordpress.com/2011/03/14/%E8%9E%BA%E6%97%8B%E5%BD%A2%EF%BC%88cc%EF%BC%89%E5%92%8C%E9%A1%BA%E5%BA%8F%EF%BC%88go%EF%BC%89%E7%9A%84%E5%A3%B0%E6%98%8E%E8%AF%AD%E6%B3%95/)  
-> [Why do a lot of programming languages put the type *after* the variable name?](https://stackoverflow.com/questions/1712274/why-do-a-lot-of-programming-languages-put-the-type-after-the-variable-name)
+> [Why do a lot of programming languages put the type after the variable name?](https://stackoverflow.com/questions/1712274/why-do-a-lot-of-programming-languages-put-the-type-after-the-variable-name)
 
 ### string
 strings 包 提供了常用字符串API

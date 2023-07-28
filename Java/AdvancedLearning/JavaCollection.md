@@ -12,6 +12,7 @@ categories:
 1. [JDK中的集合](#jdk中的集合)
     1. [集合继承和实现关系](#集合继承和实现关系)
     1. [Iterator](#iterator)
+        1. [规避 ConcurrentModificationException](#规避-concurrentmodificationexception)
     1. [Map](#map)
         1. [HashMap](#hashmap)
         1. [ConcurrentHashMap](#concurrenthashmap)
@@ -23,7 +24,7 @@ categories:
     1. [Koloboke](#koloboke)
     1. [Trove](#trove)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2023-07-28 15:22_|
 ****************************************
 # JDK中的集合
 
@@ -52,7 +53,13 @@ categories:
 ## Iterator
 > 迭代器
 
-********************
+### 规避 ConcurrentModificationException 
+1. 使用迭代器进行删除， 或者Java8的removeIf
+1. 使用没有这个特性的容器，例如： LinkedBlockingQueue
+    1. 关联此特性的容器可以查看 java.util.ConcurrentModificationException 的JavaDoc
+
+************************
+
 ## Map
 > HashMap 键能为null, HashTable则不可以, 而且HashTable是线程安全的(依靠 synchronized 关键字实现) 
 
@@ -66,7 +73,7 @@ categories:
 ### TreeMap
 > [参考: TreeMap 红黑树算法实现](https://www.ibm.com/developerworks/cn/java/j-lo-tree/index.html)
 
-********************************************
+************************
 
 ## List
 > interface 
