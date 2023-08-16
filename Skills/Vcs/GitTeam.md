@@ -180,12 +180,15 @@ commit message 包含三个部分，header, body和footer，其中header必须�
 > [client on linux ](https://unix.stackexchange.com/questions/144100/is-there-a-usable-gui-front-end-to-git-on-linux)
 
 ## git-cola
-> [Github: repo](https://github.com/git-cola/git-cola)`轻量, 简洁, 跨平台, 正是我想要的`
+> [Github: repo](https://github.com/git-cola/git-cola)`轻量, 简洁, 跨平台`
 
 从源码安装是最快最简单的, 而且能安装到最新的
 
 1. git clone --depth 1 git://github.com/git-cola/git-cola.git
 1. sudo make prefix=/usr install
+
+> Tips
+- 无法输入中文，实际上是无法调起Fcitx
 
 ## GitBlade
 - 功能强大 付费软件。
@@ -201,10 +204,10 @@ Sublime 作者开发的另一个软件
 ## Guitar
 > [Github](https://github.com/soramimi/Guitar)
 
-## GitAhead
-> [Github](https://github.com/gitahead/gitahead) | [Official Site](https://gitahead.com)  
+## Gittyup 
+> [Gittyup](https://github.com/Murmele/Gittyup)
 
-- 美观够用
+> [Github](https://github.com/gitahead/gitahead) | [Official Site](https://gitahead.com)  
 
 ## SourceTree
 > [Official site](https://sourcetreeapp.com) 仅支持 Windows 和 Mac
