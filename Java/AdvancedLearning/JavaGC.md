@@ -30,13 +30,14 @@ categories:
     1. [ZGC](#zgc)
     1. [ShenandoahGC](#shenandoahgc)
 1. [Tuning](#tuning)
+    1. [GC日志](#gc日志)
     1. [工具](#工具)
         1. [GCEasy](#gceasy)
         1. [GCViewer](#gcviewer)
     1. [基本JVM参数](#基本jvm参数)
     1. [主要关注指标](#主要关注指标)
 
-**目录 end**|_2022-08-03 10:37_|
+**目录 end**|_2023-08-19 23:25_|
 ****************************************
 # GC
 > Garbage Collection
@@ -454,6 +455,14 @@ Young GC发生的时机大家都知道，那什么时候发生Mixed GC呢？其�
 
 - [Oracle JDK8 GC调优指南](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/toc.html)
 - [Oracle JDK11 GC调优指南](https://docs.oracle.com/en/java/javase/11/gctuning/introduction-garbage-collection-tuning.html)
+
+************************
+
+## GC日志
+1. 默认日志下 第一列是JVM启动的秒数，为了可读性一般会加配置 `-XX:+PrintGCDateStamps`, 
+1. gc日志路径也可以追加进程id方便关联排查 `-Xloggc:/apps/logs/gc-%p.log`
+
+************************
 
 ## 工具
 ### GCEasy
