@@ -167,7 +167,7 @@ categories:
 
 1. `traceroute -I stackoverflow.com` icmp 查看路由表
 
-### tc
+### tc 流量控制
 > Traffic Control
 
 - 限速 `tc qdisc add dev eno1 root tbf rate 400kbit latency 1ms burst 1000`

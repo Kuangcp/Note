@@ -293,6 +293,7 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
   1. 网络负担非常重，但对响应速度要求高
 
 ### SCTP
+> [Stream Control Transmission Protocol](https://es.wikipedia.org/wiki/Stream_Control_Transmission_Protocol)
 
 ************************
 
@@ -334,10 +335,11 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 客户端和服务端建立连接后 客户端网络发生变化(例如VPN关闭,服务端在VPN网络下才可访问)，此时客户端的定时ping会累积起来，等恢复后，一次发送多条数据，可以通过抓包观察到
 
 > 抓包工具
-1. wireshark 
-1. mitmproxy python定制化
-1. Fiddler2 C#定制化
-1. [whistle](https://github.com/avwo/whistle)
+1. Wireshark 
+1. mitmproxy `Python定制化`
+1. Fiddler2 `C#定制化`
+1. [whistle](https://github.com/avwo/whistle) 
+1. [dev-proxy](https://github.com/Kuangcp/GoBase/tree/master/toolbox/dev-proxy) Go实现抓包
 
 ************************
 
@@ -346,7 +348,7 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 
 它扩展了HTTP 1.1，在GET、POST、HEAD等几个HTTP标准方法以外添加了一些新的方法，使应用程序可直接对Web Server直接读写，并支持写文件锁定(Locking)及解锁(Unlock)，还可以支持文件的版本控制。
 
-云盘类平台（例如坚果云）会提供webdav协议接口，从而让操作云盘上的文件达到与本地目录和文件的使用体验
+云盘类平台（例如坚果云）会提供 WebDAV 协议接口，从而让操作云盘上的文件达到与本地目录和文件的使用体验。
 
 ************************
 
