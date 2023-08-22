@@ -38,18 +38,21 @@ categories:
         1. [asciinema](#asciinema)
         1. [图片浏览器](#图片浏览器)
         1. [截图](#截图)
+        1. [录屏](#录屏)
     1. [视频](#视频)
     1. [音频](#音频)
     1. [PDF](#pdf)
 1. [Tips](#tips)
 
-**目录 end**|_2023-05-18 23:53_|
+**目录 end**|_2023-08-22 17:23_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
 
 > [命令行：增强版 ](https://linux.cn/article-10171-1.html)  
 > [工具](https://www.lulinux.com/archives/2787)  
+
+> [MAC平台 工具列表](https://github.com/hsdji/tools)`部分Linux可用`
 
 ## Terminal 对比
 > 列举出系统可安装终端  

@@ -28,7 +28,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2023-04-27 22:00_|
+**目录 end**|_2023-08-22 17:23_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -185,12 +185,14 @@ NIO 会经常使用, 提高性能
     - `-Xmn` 默认值是Xmx的1/3 即最大堆内存的1/3
     - NUMA 机制
 
+- [初始和最大堆内存设置为一样的好处](https://gceasy.ycrash.cn/gc-recommendations/benefits-of-setting-initial-and-maximum-memory-size.jsp)
+
 > 如何快速确认进程内存配置
 1. OpenJDK
     - 
 1. OracleJDK
     - jmap -heap pid
-    
+
 **********************
 
 # JVM不同实现

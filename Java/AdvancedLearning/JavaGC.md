@@ -37,7 +37,7 @@ categories:
     1. [基本JVM参数](#基本jvm参数)
     1. [主要关注指标](#主要关注指标)
 
-**目录 end**|_2023-08-19 23:25_|
+**目录 end**|_2023-08-22 17:23_|
 ****************************************
 # GC
 > Garbage Collection
@@ -393,9 +393,10 @@ CMS自己会进入full GC的情况就是它的并发收集模式跟不上应用�
 
 > [参考: JVM系列篇：深入剖析G1收集器](https://my.oschina.net/u/3959491/blog/3029276)
 
-- 字符串常量池去重 特性(8u20引入) `-XX:+UseStringDeduplication` 适用于大量相似字符串的场景降低内存占用，但会增加GC负担，默认不开启
-    - 查看字符串去重统计信息 `-XX:+PrintStringDeduplicationStatistics` `-XX:+PrintStringTableStatistics`
-    - 达到该年龄的String对象被认为是去重的候选对象 `-XX:StringDeDuplicationAgeThreshold`
+- 字符串常量池去重 特性(8u20引入)  [UseStringDeduplication - 优缺点](https://gceasy.ycrash.cn/gc-recommendations/stringdeduplication-solution.jsp)
+    - `-XX:+UseStringDeduplication` 适用于大量相似字符串的场景降低内存占用，但会增加GC负担，默认不开启
+    - 查看字符串去重统计信息（调试用） `-XX:+PrintStringDeduplicationStatistics` `-XX:+PrintStringTableStatistics`
+    - 达到该年龄(经过GC次数)的String对象被认为是去重的候选对象 `-XX:StringDeDuplicationAgeThreshold`
 
 > JDK1.8 FullGC是单线程的 JDK10 开始支持并行
 
@@ -425,7 +426,21 @@ Young GC发生的时机大家都知道，那什么时候发生Mixed GC呢？其�
 - G1MixedGCCountTarget：一次global concurrent marking之后，最多执行Mixed GC的次数。 
 - G1OldCSetRegionThresholdPercent：一次Mixed GC中能被选入CSet的最多old generation region数量。
 
-> gc.log 参数配置 TODO 
+> G1 相关的重要参数
+
+| 参数 | 描述 |
+|:----|:----|
+| -XX:MaxGCPauseMillis=200  |  	设置最大停顿时间值。默认值为 200 毫秒。|
+| -XX:G1HeapRegionSize=n  |  	设置 G1 区域大小。值必须为 2 的 N 次幂，如：256、512、1024...范围是 1MB 至 32MB。|
+| -XX:GCTimeRatio=12  |  	    设置应用于 GC 的总目标时间与处理客户事务的总时间。确定目标 GC 时间的实际公式为 [1 / (1 + GCTimeRatio)]。默认值 12 表示目标 GC 时间为 [1 / (1 + 12)]，即 7.69%。这意味着 JVM 可将 7.69％ 的时间用于 GC 活动，其余 92.3％ 用于处理客户活动。|
+| -XX:ParallelGCThreads=n  |  	设置 Stop-the-world 工作线程的数量。如果逻辑处理器的数量小于或等于 8 个，则将 n 值设置为逻辑处理器的数量。如果您的服务器有 5 个逻辑处理器，则将 n 设为 5.如果有 8 个以上的逻辑处理器，请将该值设置为逻辑处理器数量的大约 5/8。这种设置在大多数情况下都有效，除了较大规模的 SPARC 系统——其中 n 值可以大约是逻辑处理器数的 5/16。|
+| -XX:ConcGCThreads=n  |  	    设置并行标记线程的数量。将 n 值设为并行垃圾回收线程（ParallelGCThreads）数的大约 1/4。|
+| -XX:InitiatingHeapOccupancyPercent=45  |  	当堆内存使用率超过此百分比时会触发 GC 标记周期。默认值为 45%。|
+| -XX:G1NewSizePercent=5  |  	设置用作 Young 代空间大小的最低堆内存百分比。默认值为 Java 堆内存的 5%。|
+| -XX:G1MaxNewSizePercent=60  | 设置用作 Young 代空间大小的最高堆内存百分比。默认值为 Java 堆内存的 60%。|
+| -XX:G1OldCSetRegionThresholdPercent=10  |  	设置混合垃圾回收周期中要收集的 Old 区域数量上限。默认为 Java 堆内存的 10%。|
+| -XX:G1ReservePercent=10  |  	设置需保留的内存百分比。默认为 10%。G1 垃圾回收器会始终尝试保留 10% 的堆内存空间空闲。|
+
 
 ************************
 
