@@ -28,7 +28,7 @@ categories:
     1. [OpenJ9](#openj9)
     1. [GraalVM](#graalvm)
 
-**目录 end**|_2023-08-22 17:23_|
+**目录 end**|_2023-08-25 15:50_|
 ****************************************
 # JVM
 > Oracle 默认采用的是 Hotspot JVM
@@ -132,7 +132,7 @@ JVM是基于堆栈的虚拟机.JVM为每个新创建的线程都分配一个堆�
 
 用于存放 Class 相关信息, 常量, 静态变量, 访问修饰符, 字段描述, 方法描述, JIT编译器编译后的代码等数据   
 在 HotSpot 虚拟机上, 方法区也看做是 永久代 Permanent Gen, 两者关系是: 方法区是Java虚拟机规范, 永久代是方法区在Hotspot上的实现  
-从Java8开始, 永久代已经被 MetaSpace(操作的直接内存) 取代   
+从Java8开始, 永久代已经被 MetaSpace(操作系统的直接内存) 取代   
 
 JDK7中符号表被移动到 Native Heap中，字符串常量池和类引用被移动到 Java Heap中。
 
@@ -147,6 +147,12 @@ NIO 会经常使用, 提高性能
 ## 元空间
 > MetaSpace Java8 引入, 取代了以往的 Perm Gen
 
+- 存放内容：
+    - Klass结构
+    - 匿名类， Lambda表达式
+    - String.intern 的字符串
+
+> 特性
 - 充分利用了Java语言规范：类及相关的元数据的生命周期与类加载器的一致。
 - 每个类加载器都有它的内存区域-元空间
 - 只进行线性分配
@@ -157,6 +163,14 @@ NIO 会经常使用, 提高性能
 
 > [参考: Metaspace Architecture](https://stuefe.de/posts/metaspace/metaspace-architecture/)  
 > [参考: What is Compressed Class Space?](https://stuefe.de/posts/metaspace/what-is-compressed-class-space/)  
+> [深入理解堆外内存 Metaspace](https://www.javadoop.com/post/metaspace)
+
+[Metaspace 解密](https://heapdump.cn/article/210111)
+
+
+- Java8 以后，关于元空间的JVM参数有两个：
+    - -XX:MetaspaceSize=N 和 -XX:MaxMetaspaceSize=N
+    - 对于64位JVM来说，元空间的默认初始大小是20.75MB，默认的元空间的最大值是无限（16EB）。
 
 ************************
 
@@ -170,7 +184,7 @@ NIO 会经常使用, 提高性能
 
 - `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 打印类装载
 - `-Xloggc:/home/logs/gc.log`
-
+- `-XX:+HeapDumpOnOutOfMemoryError` 注意路径的文件名不能重复
 
 ## 内存类参数 Tips 
 > 堆(老年代 年轻代)，堆外，元空间，栈
@@ -178,7 +192,9 @@ NIO 会经常使用, 提高性能
 - `-XX:CompressedClassSpaceSize=500m` 压缩类元空间大小 默认是1g
 - `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1
 
-- -XX:+PrintFlagsFinal 输出JVM最终属性值 例如 `java -XX:+PrintFlagsFinal -version`
+- `-XX:+PrintFlagsInitial` 输出初始默认值
+- `-XX:+PrintFlagsFinal` 输出JVM最终属性值 
+    - 例如 `java -XX:+PrintFlagsFinal -version`
     - MaxHeapSize 最大堆内存
     - MaxRAMFraction 默认最大内存占物理内存的比例 JDK678 都是4 也就是1/4
     - `java -XX:+PrintFlagsFinal -version | grep "Use.*GC"` 查看默认GC

@@ -35,7 +35,7 @@ categories:
     1. [MAT](#mat)
     1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2023-07-12 14:50_|
+**目录 end**|_2023-08-25 15:50_|
 ****************************************
 
 # Java的性能调优
@@ -254,7 +254,7 @@ categories:
 ************************
 
 ## MAT
-> Memory Analyzer tool(MAT) | [Official Site](http://www.eclipse.org/mat/)
+> Memory Analyzer tool(MAT) | [Official Site](http://www.eclipse.org/mat/) | [download](https://eclipse.dev/mat/downloads.php)
 
 > [参考: JAVA Shallow heap & Retained heap](http://www.cnblogs.com/lipeineng/p/5824799.html)  
 > [参考:  利用MAT分析JVM内存问题，从入门到精通](https://www.cnblogs.com/javaadu/p/11161380.html)  
@@ -263,6 +263,12 @@ categories:
 他的 OQL 比较方便, 像写 SQL 一样去查询对象
 
 注意: 有这样的一种场景, 从数据库获取大量的数据创建为对象, 导致瞬间的OOM 这时候即使使用 jmap 去 dump 了快照, 也看不到占用大量内存的对象, 因为MAT默认展示的是GC可达对象，需要在菜单选择看不可达对象
+
+分析思路：
+对象: histogram, Top ,
+线程: 
+类加载器： histogram -> basic -> merge classloader
+不可达对象：
 
 ************************
 
