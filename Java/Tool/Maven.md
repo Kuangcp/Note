@@ -27,9 +27,10 @@ categories:
         1. [打包部署](#打包部署)
             1. [assembly](#assembly)
             1. [shade](#shade)
-    1. [maven的依赖](#maven的依赖)
-        1. [1 依赖的范围](#1-依赖的范围)
-            1. [依赖的传递](#依赖的传递)
+    1. [Maven 依赖](#maven-依赖)
+        1. [依赖类型](#依赖类型)
+        1. [依赖的范围](#依赖的范围)
+        1. [依赖的传递](#依赖的传递)
         1. [处理项目间依赖方法](#处理项目间依赖方法)
         1. [依赖冲突](#依赖冲突)
             1. [排除依赖](#排除依赖)
@@ -52,7 +53,7 @@ categories:
             1. [Gradle](#gradle)
             1. [Maven](#maven)
 
-**目录 end**|_2021-01-15 21:26_|
+**目录 end**|_2023-08-28 23:31_|
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -366,8 +367,11 @@ mvn install:install-file
 > [一个项目生成若干不同内容的Jar](https://stackoverflow.com/questions/2424015/maven-best-practice-for-generating-multiple-jars-with-different-filtered-classes)
 
 ******************
-## maven的依赖
-### 1 依赖的范围
+## Maven 依赖
+### 依赖类型
+默认是jar类型。扩展了 pom（引入复合项目时使用 例如 groovy-all） war maven-plugin test-jar 等。
+
+### 依赖的范围
 > 依赖范围就是用来控制依赖和三种classpath(编译classpath，测试classpath、运行classpath)的关系
 
 - `compile`:编译依赖范围。如果没有指定，就会默认使用该依赖范围。使用此依赖范围的Maven依赖，对于编译、测试、运行三种classpath都有效。
@@ -387,7 +391,7 @@ mvn install:install-file
 | runtime |  | Y | Y | JDBC的实现Jar |
 | system | Y | Y |  | Maven仓库之外的类库文件 |
 
-#### 依赖的传递
+### 依赖的传递
 - 比如一个account-email项目为例
     - account-email有一个compile范围的spring-code依赖，
     - spring-core有一个compile范围的commons-logging依赖，

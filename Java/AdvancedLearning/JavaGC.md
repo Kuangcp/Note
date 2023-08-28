@@ -37,7 +37,7 @@ categories:
     1. [基本JVM参数](#基本jvm参数)
     1. [主要关注指标](#主要关注指标)
 
-**目录 end**|_2023-08-22 17:23_|
+**目录 end**|_2023-08-28 23:31_|
 ****************************************
 # GC
 > Garbage Collection
@@ -393,10 +393,12 @@ CMS自己会进入full GC的情况就是它的并发收集模式跟不上应用�
 
 > [参考: JVM系列篇：深入剖析G1收集器](https://my.oschina.net/u/3959491/blog/3029276)
 
-- 字符串常量池去重 特性(8u20引入)  [UseStringDeduplication - 优缺点](https://gceasy.ycrash.cn/gc-recommendations/stringdeduplication-solution.jsp)
-    - `-XX:+UseStringDeduplication` 适用于大量相似字符串的场景降低内存占用，但会增加GC负担，默认不开启
+> 字符串常量池去重 特性(8u20引入)  [UseStringDeduplication - 优缺点](https://gceasy.ycrash.cn/gc-recommendations/stringdeduplication-solution.jsp)
+- `-XX:+UseStringDeduplication` 适用于大量相似字符串的场景降低内存占用，但会增加GC负担，默认不开启
     - 查看字符串去重统计信息（调试用） `-XX:+PrintStringDeduplicationStatistics` `-XX:+PrintStringTableStatistics`
     - 达到该年龄(经过GC次数)的String对象被认为是去重的候选对象 `-XX:StringDeDuplicationAgeThreshold`
+- 该策略不会清除重复字符串对象本身。其只会替换底层 char[ ] 达到复用内存的目的 [Gitee 测试代码](https://gitee.com/gin9/JavaBase/blob/master/class/src/main/java/jvm/gc/g1/StringDeduplication.java)
+
 
 > JDK1.8 FullGC是单线程的 JDK10 开始支持并行
 

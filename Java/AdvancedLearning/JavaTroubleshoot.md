@@ -14,7 +14,7 @@ categories:
         1. [Compressed Class Space OOM](#compressed-class-space-oom)
     1. [CPU](#cpu)
 
-**目录 end**|_2023-08-25 15:51_|
+**目录 end**|_2023-08-28 23:31_|
 ****************************************
 # Troubleshoot
 
@@ -33,7 +33,6 @@ categories:
 
 原理理解比较复杂，但定位和解决问题会比较简单，经常会出问题的几个点有 Orika 的 classMap、JSON 的 ASMSerializer、Groovy 动态加载类等，基本都集中在反射、Javasisit 字节码增强、CGLIB 动态代理、OSGi 自定义类加载器等的技术点上
 
-https://www.dongcb.com/818.html
 
 https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/memleaks.html
 
