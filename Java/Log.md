@@ -68,6 +68,8 @@ categories:
 > `log4j:WARN No appenders could be found for logger` 这是路径下没有对应的配置文件, 那么这时就有了神奇的事情, maven项目按道理是resources下就行了, 
 > 但如果你项目配置文件自己新建目录然后再复制过去什么的, 这么瞎搞的话,虽然在ide是能运行的, 但是一大包就没用了, 那么直接把log的配置单独放在 src/main/java 下就行了
 
+************************
+
 # Log4j2
 > [官方文档, 配置详解](https://logging.apache.org/log4j/2.x/manual/configuration.html)
 > 听说是为了解决Log4j无法在多环境使用的问题 , 也就是类似于 SpringBoot 多profile的功能

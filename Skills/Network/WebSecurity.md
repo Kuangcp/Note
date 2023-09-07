@@ -99,6 +99,11 @@ categories:
 > CAPTCHA 全称 “全自动区分计算机和人类的图灵测试”（Completely Automated Public Turing Test to Tell Computers and Humans Apart）  
 > 它是一种区分用户是计算机还是人的计算程序，这种程序生成人类能很容易通过但计算机通不过的测试，并进行判定，人/机进行测试的过程称为一次“挑战”。
 
+### 签名与验签
+> 常见于外部接口的签名验证，安全防护
+
+[企点： 消息加解密指引](https://api.qidian.qq.com/wiki/doc/open/epko939s7aq8br19gz0i)`对接企点API对消息的加解密`
+
 ************************
 
 ## SSL TLS
