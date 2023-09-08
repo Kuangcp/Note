@@ -24,6 +24,7 @@ categories:
     1. [基本语法](#基本语法)
         1. [标准输入输出](#标准输入输出)
         1. [时间处理](#时间处理)
+    1. [泛型](#泛型)
     1. [函数](#函数)
         1. [参数](#参数)
         1. [返回值](#返回值)
@@ -40,7 +41,7 @@ categories:
 1. [Tips](#tips)
     1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2023-07-28 15:22_|
+**目录 end**|_2023-09-08 11:55_|
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -160,6 +161,19 @@ strings 包 提供了常用字符串API
 > [Go: Format a time or date](https://programming.guide/go/format-parse-string-time-date-example.html)
 
 记住这个神奇的时间 `2006-01-02 03:04:05` Go 中不是寻常的 YYYY-mm-dd 这种格式
+
+************************
+
+## 泛型
+> 1.18 开始支持
+
+> [Github: Lightweight anonymous function syntax](https://github.com/golang/go/issues/21498)`讨论可简写的Lambda表达式,类似js`
+
+
+> 不支持成员方法泛型，只支持结构体附加泛型或函数泛型。[no-parameterized-methods](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#no-parameterized-methods)  
+go是编译型泛型，在编译器期确定所有的类型，跟go的反射冲突，想要解决只能像C#一样运行时支持泛型，或者像java用类型擦除，这个目前来看基本不可能
+
+导致 map reduce 库实现困难
 
 **************************
 
