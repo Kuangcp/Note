@@ -288,7 +288,7 @@ Redis Sentinel的节点数量 推荐 2n+1（n>=1）的奇数个。[为什么redi
 ************************
 
 ## Cluster 集群
-> [cluster-tutorial](https://redis.io/docs/manual/scaling/)
+> [cluster-tutorial](https://redis.io/docs/manual/scaling/) | [docker-compose 部署](https://gitee.com/gin9/DockerfileList/tree/master/docker-compose/redis-cluster/third-nodes)
 
 Redis Cluster是社区版推出的Redis分布式集群解决方案，主要解决Redis分布式方面的需求，比如，当遇到单机内存，并发和流量等瓶颈的时候，Redis Cluster能起到很好的负载均衡的目的。  
 Redis Cluster集群节点最小配置6个节点以上（3主3从），其中主节点提供读写操作，从节点作为备用节点，不提供请求，只作为故障转移使用。  
@@ -303,7 +303,6 @@ Redis Cluster采用虚拟槽分区，所有的键根据哈希函数映射到0～
     1. 降低运维成本，提高系统的扩展性和可用性。
 
 - 缺点：
-
     1. Client实现复杂，驱动要求实现Smart Client，缓存slots mapping信息并及时更新，提高了开发难度，客户端的不成熟影响业务的稳定性。目前仅JedisCluster相对成熟，异常处理部分还不完善，比如常见的“max redirect exception”。
     1. 节点会因为某些原因发生阻塞（阻塞时间大于clutser-node-timeout），被判断下线，这种failover是没有必要的。
     1. 数据通过异步复制，不保证数据的强一致性。
@@ -318,6 +317,14 @@ Redis Cluster采用虚拟槽分区，所有的键根据哈希函数映射到0～
     1. 避免产生big-key，导致网卡撑爆、慢查询等。
     1. 重试时间应该大于cluster-node-time时间。
     1. Redis Cluster不建议使用pipeline和multi-keys操作，减少max redirect产生的场景。
+
+> 业务使用时注意事项： 操作多key时，需要保证多个key要在一个slot内（例如Lua脚本实现的一些复杂操作）
+
+cluster 命令使用：
+- 查看key的slot `cluster keyslot key`
+- 查看slot和Node关系 `cluster slots`
+
+************************
 
 # Redis 持久化
 由于Redis的数据都存放在内存中，如果没有配置持久化，redis重启后数据就全丢失了，于是需要开启redis的持久化功能，将数据保存到磁盘上，当redis重启后，可以从磁盘中恢复数据。
