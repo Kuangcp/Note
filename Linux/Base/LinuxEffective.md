@@ -38,18 +38,21 @@ categories:
         1. [asciinema](#asciinema)
         1. [图片浏览器](#图片浏览器)
         1. [截图](#截图)
+        1. [录屏](#录屏)
     1. [视频](#视频)
     1. [音频](#音频)
     1. [PDF](#pdf)
 1. [Tips](#tips)
 
-**目录 end**|_2023-05-18 23:53_|
+**目录 end**|_2023-08-22 17:23_|
 ****************************************
 # 高效的Linux
 > [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)`一整套工具`
 
 > [命令行：增强版 ](https://linux.cn/article-10171-1.html)  
 > [工具](https://www.lulinux.com/archives/2787)  
+
+> [MAC平台 工具列表](https://github.com/hsdji/tools)`部分Linux可用`
 
 ## Terminal 对比
 > 列举出系统可安装终端  
@@ -161,13 +164,35 @@ iftop
 - curlie
 
 ### nmap
-> 端口扫描 [参考博客](http://aaaxiang000.blog.163.com/blog/static/2063491220113284325531/)
+> 端口扫描 
 
-- 扫描`nmap <param> IP`
-    - -sP
-    - -sT
-    - -sR
-    - -n `最简单直接的参数`
+> [参考博客](http://aaaxiang000.blog.163.com/blog/static/2063491220113284325531/)
+
+- 主机扫描
+    - nmap -sS 192.168.1.1   　//TCP、SYN扫描,使用最多，最快 `无参数扫描默认添加-sS参数`
+    - nmap -Pn 192.168.1.1  　 //当目标主机禁ping时使用，假设主机存活扫描端口（耗时长）
+    - nmap -p- 192.168.1.1  　 //扫描目标主机全部端口 
+    - nmap -sP 192.168.1.1   　//只对目标进行ping检测，快速 
+    - nmap 192.168.1.1/24   　 //对网段进行扫描 
+
+- 进阶用法 
+    - nmap -V 192.168.1.1    //显示扫描细节 
+    - nmap -A 192.168.1.1    //综合扫描 
+    - nmap -sT 192.168.1.1   //进行tcp扫描 
+    - nmap -sU 192.168.1.1   //进行udp扫描 
+    - nmap -sV 192.168.1.1   //对目标上的服务程序版本进行扫描 
+    - nmap -T4 192.168.1.1   //设置扫描速度1~5 
+    - nmap -sn 192.168.1.1   //相比sP检验存活使用更多方式 
+    - nmap -O 192.168.1.1    //对目标主机的操作系统进行扫描（-A获得更多信息） 
+    - nmap --data-length:55 192.168.1.1 //添加垃圾数据避免nmap被识别 
+    - nmap -D IP1,IP2... IP   //发送参杂着假ip的数据包检测 
+
+- 使用环境 
+    - 扫描网段存活IP：nmap -sP 192.168.1.1/24
+    - 扫描所有端口开放情况：nmap -sS -p 1-65535 192.168.1.1 
+    - 当目标主机禁ping时：nmap -Pn 192.168.1.1 
+    - 当目标可能存在waf拦截时：nmap -sS --data-length:55 192.168.1.1 
+    - 尽可能收集目标主机信息：nmap -p 1-65535 -sV -A -V 192.168.1.1
 
 ### whatportis
 > whatportis 是一款可以通过服务查询默认端口，或者是通过端口查询默认服务的工具

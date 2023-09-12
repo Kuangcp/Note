@@ -13,6 +13,8 @@ categories:
 1. [Linux网络管理](#linux网络管理)
     1. [内核配置](#内核配置)
     1. [DNS](#dns)
+        1. [nslookup](#nslookup)
+        1. [dig](#dig)
         1. [修改DNS](#修改dns)
     1. [Route](#route)
     1. [IPv4和IPv6](#ipv4和ipv6)
@@ -57,7 +59,7 @@ categories:
     1. [查看进程占用的端口](#查看进程占用的端口)
     1. [网络问题排查](#网络问题排查)
 
-**目录 end**|_2023-06-12 20:24_|
+**目录 end**|_2023-08-28 15:52_|
 ****************************************
 # Linux网络管理
 ## 内核配置
@@ -69,20 +71,28 @@ categories:
 ## DNS
 > [Github: dns topic](https://github.com/topics/dns)
 
-`nslookup`  强大的调试DNS工具， 来自 dnsutils 包
+### nslookup
+> 来自 dnsutils 包
+
+快速使用 `nslookup jd.com 223.5.5.5`
+
 - `nslookup - 8.8.8.8` 进入 REPL 方便调试, 8.8.8.8 是Google开放的DNS 备选 8.8.4.4
     - 结果解释：Non-authoritative answer: 表示这是从缓存得到的结果，不一定准确
     - Server：上连DNS服务器的IP， Address：`上连DNS的IP#端口` 通常是53
     - canonical name 即CNAME 别名
 
-`dig`比 nslookup 更强大 Domain Information Groper
-- 例如：`dig +tcp @8.8.8.8 www.baidu.com` 
-    - @xxx 指定DNS服务器
-    - -p 53 指定DNS服务器端口
-    - +tcp 采用TCP进行DNS通信（默认UDP）
-    - +short 精简输出
-    - +nocmd+nocomment+nostat 输出最核心内容
-    - -p 
+### dig
+> 比 nslookup 更强大 **Domain Information Groper**
+
+快速使用 `dig @8.8.8.8 www.baidu.com` 
+
+> dig [option] @8.8.8.8 www.baidu.com
+- @xxx 指定DNS服务器
+- -p 53 指定DNS服务器端口
+- +tcp 采用TCP进行DNS通信（默认UDP）
+- +short 精简输出
+- +nocmd+nocomment+nostat 输出最核心内容
+- -p 
 
 `dog` 类似dig
 
@@ -104,6 +114,7 @@ categories:
     nameserver 8.8.8.8 
     nameserver 8.8.8.4
 ```
+
 > 刷新本地缓存
 1. sudo /etc/init.d/nscd restart 或者 service nscd restart , 其实就是重启 nscd 服务
 

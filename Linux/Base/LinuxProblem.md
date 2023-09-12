@@ -157,3 +157,10 @@ fc -R .zsh_history
 ### can't resume from suspend 
 
 
+### i386-pc not found
+- /boot/grub/i386-pc BIOS 安装的引导
+- /boot/grub/x86_64-efi EFI安装的引导
+
+`/boot/grub/i386-pc/normal.mod` not found.
+
+[gist](https://gist.github.com/AndersonIncorp/3acb1d657cb5eba285f4fb31f323d1c3?permalink_comment_id=3310958)

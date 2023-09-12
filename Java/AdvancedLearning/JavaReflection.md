@@ -12,6 +12,7 @@ categories:
 1. [反射](#反射)
 1. [概念](#概念)
 1. [实现原理](#实现原理)
+    1. [Inflation](#inflation)
 1. [基础类](#基础类)
     1. [AccessibleObject](#accessibleobject)
     1. [Annotation](#annotation)
@@ -29,7 +30,7 @@ categories:
         1. [操作注解](#操作注解)
 1. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2021-05-17 00:27_|
+**目录 end**|_2023-08-25 15:50_|
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
@@ -51,6 +52,14 @@ categories:
 
 # 实现原理
 > [参考: RednaxelaFX 关于反射调用方法的一个log ](https://www.iteye.com/blog/rednaxelafx-548536)  
+> [Java 虚拟机：JVM是如何实现反射的？](https://cloud.tencent.com/developer/article/1786456)  
+
+## Inflation
+考虑到许多反射调用仅会执行一次，Java 虚拟机设置了一个阈值 15（可以通过 -Dsun.reflect.inflationThreshold= 来调整），当某个反射调用的调用次数在 15 之下时，采用本地实现；当达到 15 时，便开始动态生成字节码，并将委派实现的委派对象切换至动态实现，这个过程我们称之为 Inflation。
+
+
+https://www.jianshu.com/p/20b7ab284c0a
+https://cloud.tencent.com/developer/news/663586
 
 ************************
 
@@ -285,5 +294,5 @@ Spring 中的 IOC 主要是依据反射来实现的, 只在启动阶段性能有
 [从一起GC血案谈到反射原理](https://club.perfma.com/article/54786)`总结： Method等Accessor对象每次get时会复制构造出新的对象，所以一般需要缓存； 反射数据是软引用`
 
 > 优化方案
-1. [使用 MapStruct 预先生成转换代码避免反射](/Java/Tool/MapStruct.md)
+1. [使用 MapStruct 预生成转换代码避免反射](/Java/Tool/MapStruct.md)
 

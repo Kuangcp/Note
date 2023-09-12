@@ -34,7 +34,9 @@ categories:
 
 > [wiki: java language](https://en.wikipedia.org/wiki/Java_%28programming_language%29)  
 
-> [如何快速打好Java基础？](https://www.zhihu.com/question/50904128)
+> [如何快速打好Java基础？](https://www.zhihu.com/question/50904128)  
+> [tutorials](https://github.com/eugenp/tutorials)  
+
 ********************
 
 | 基础 | 进阶 |

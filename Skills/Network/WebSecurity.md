@@ -11,13 +11,12 @@ categories:
 
 1. [网络安全](#网络安全)
     1. [中间人攻击](#中间人攻击)
+    1. [运营商劫持](#运营商劫持)
 1. [Web安全](#web安全)
     1. [Authenticate](#authenticate)
         1. [OAuth 2.0](#oauth-20)
         1. [JWT](#jwt)
     1. [Verfication](#verfication)
-    1. [SSL TLS](#ssl-tls)
-        1. [数字证书](#数字证书)
     1. [盗链与防盗链](#盗链与防盗链)
     1. [工具或平台](#工具或平台)
 1. [攻击手段](#攻击手段)
@@ -28,7 +27,7 @@ categories:
         1. [解决方案](#解决方案)
     1. [XSS](#xss)
 
-**目录 end**|_2021-06-05 18:22_|
+**目录 end**|_2023-09-10 17:24_|
 ****************************************
 
 # 网络安全
@@ -98,26 +97,6 @@ categories:
 **`CAPTCHA`**
 > CAPTCHA 全称 “全自动区分计算机和人类的图灵测试”（Completely Automated Public Turing Test to Tell Computers and Humans Apart）  
 > 它是一种区分用户是计算机还是人的计算程序，这种程序生成人类能很容易通过但计算机通不过的测试，并进行判定，人/机进行测试的过程称为一次“挑战”。
-
-************************
-
-## SSL TLS
-> [SSL/TLS协议运行机制的概述](http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html)
-> [SSL，TLS，HTTPS](https://www.cnblogs.com/songhan/archive/2012/08/01/2617970.html)
-
-
-- [ ] 完善 SSL
-
-### 数字证书
-1. 基本概念：
-    1. `CA (Certificate Authority)`  证书授权中心，是数字证书发放和管理的机构
-    1. `根证书` 根证书是CA认证中心给自己颁发的证书,是信任链的起始点。安装根证书意味着对这个CA认证中心的信任。
-    1. `数字证书` 数字证书颁发过程一般为：
-        1. 用户首先产生自己的密钥对，并将公共密钥及部分个人身份信息传送给认证中心。
-        1. 认证中心在核实身份后，将执行一些必要的步骤，以确信请求确实由用户发送而来。
-        1. 认证中心将发给用户一个数字证书，该证书内包含用户的个人信息和他的公钥信息，同时还附有认证中心的签名信息。
-
-- [Githhub:mkcert](https://github.com/FiloSottile/mkcert)`签发证书工具`
 
 ************************
 ## 盗链与防盗链
