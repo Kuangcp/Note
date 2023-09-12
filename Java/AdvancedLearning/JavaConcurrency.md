@@ -45,7 +45,7 @@ categories:
 
 > 主要知识来源 Java程序员修炼之道  | [并发编程网](http://ifeve.com/)  
 
-> 该模块最早在1.5引入,由 [Doug Lea](http://g.oswego.edu/) 开发 |  [doug lea博客中文版](http://ifeve.com/doug-lea/)
+> 该模块最早在JDK1.5引入,由 [Doug Lea](http://g.oswego.edu/) 开发 |  [doug lea博客中文版](http://ifeve.com/doug-lea/)
 
 > [参考: 并发编程 ](http://www.jdon.com/concurrency.html)
 > [参考: 不可变真的意味线程安全？](http://www.jdon.com/concurrent/immutable.html)

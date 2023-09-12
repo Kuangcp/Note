@@ -170,7 +170,7 @@ WebApp类加载器就为了类隔离而违背了双亲委派模型，仅自身�
 
 相关项目: 
 
-[game-hot-update](https://github.com/youxijishu/game-hot-update) https://www.cnblogs.com/wgslucky/p/9127681.html
+[game-hot-update](https://github.com/youxijishu/game-hot-update) | [游戏服务器之Java热更新](https://www.cnblogs.com/wgslucky/p/9127681.html)
 [groovy hotswap demo](https://github.com/chaopeng/groovy-hotswap-demo)
 
 ************************
