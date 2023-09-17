@@ -19,7 +19,7 @@ categories:
         1. [彩色输出](#彩色输出)
             1. [ls配置彩色输出](#ls配置彩色输出)
 
-**目录 end**|_2022-09-14 13:34_|
+**目录 end**|_2023-09-17 23:21_|
 ****************************************
 # UI
 > themes icons fonts 
@@ -33,11 +33,12 @@ categories:
 1. ~/.local/share/fonts
 
 - 刷新字体缓存 `fc-cache -fv` 
+    - 注意还有一个32位命令 fc-cache-32 
 
 > [字体文件 详情](/FrontEnd/Font.md)  
 
-> 终端内 Emoji 支持
-- npm vue minikube 等命令行的工具输出的日志提示会包含emoji的Unicode字符集, 需要终端的字体支持展示unicode
+> 终端内 Emoji 支持 [emoji](https://blog.sebastian-daschner.com/entries/linux-terminal-font-alacritty-jetbrains-mono-emoji) `noto-color-emoji 字体 支持颜色`
+- npm vue minikube 等命令行的工具输出的日志提示会包含emoji, 需要终端字体支持展示unicode
 
 ### 字体渲染
 > [Debian8安装Infinality改善字体渲染，安装Ubuntu字体](https://www.linuxdashen.com/debian8%E5%AE%89%E8%A3%85infinality%E6%94%B9%E5%96%84%E5%AD%97%E4%BD%93%E6%B8%B2%E6%9F%93%EF%BC%8C%E5%AE%89%E8%A3%85ubuntu%E5%AD%97%E4%BD%93)  
