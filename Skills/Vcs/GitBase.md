@@ -150,19 +150,33 @@ categories:
 - `git clone URL 目录` 克隆下来后更名为指定目录
 - `-b branch` 克隆远程仓库的指定分支  **从Git 1.7.10开始支持**
 - `--single-branch` 只克隆当前分支
+- `git clone --depth n URL` 只克隆最近n次提交的历史, 能大大减小拉取的大小 
+
+只克隆 指定标签或分支 且不包含内容 `git clone -b <tag_name> --single-branch --depth 1 <repo_url>` **大大缩减需下载的仓库大小**
 
 #### Shallow Clone
-- `git fetch --unshallow` 转换为完整仓库
+Shallow Clone： `git clone --depth n URL` 克隆的本地仓库
 
-- `git clone --depth 1 URL` 只克隆最近一次提交的历史, 能大大减小拉取的大小 
-    - 但是如果要新建一个分支, 并推送过去，会报错:`shallow update not allowed` 因为本地库是残缺的
-        - 此时需要 `git remote set-branches origin '*'` 然后 `git pull` 就会拉取最新所有分支成为可正常checkout的仓库，但仍旧残缺
-    - 由于库是残缺的，拉取远程分支到本地不能直接用 `git checkout -b branch origin/branch` 的方式，
-        - 只能用 `git fetch origin branch:branch`
-        - 并且跟踪远程也需手动执行 `git push -u origin branch`
-        - 并且 git log 的输出不会显示 origin/branch 的指针信息，需要在对应分支上手动执行 `git remote set-branches origin branch` 再 `git fetch`
+> 限制：
+- 但是如果要新建一个分支, 并推送过去，会报错:`shallow update not allowed` 
+- 拉取远程分支到本地不能直接用 `git checkout -b branch origin/branch` 的方式，
+    - 只能用 `git fetch origin branch:branch`
+    - 并且跟踪远程也需手动执行 `git push -u origin branch`
+    - 并且 git log 的输出不会显示 origin/branch 的指针信息，需要在对应分支上手动执行 `git remote set-branches origin branch` 再 `git fetch`
 
-1. 只克隆 指定标签或分支 且不包含内容 `git clone -b <tag_name> --single-branch --depth 1 <repo_url>` **大大缩减需下载的仓库大小**
+> 转为完整库的方案：
+1. `git fetch --unshallow` 转换为完整仓库
+2. 补全历史提交 `git remote set-branches origin '*'` 然后 `git pull` 就会拉取最新所有分支成为可正常checkout的仓库，但仍旧残缺
+3. 篡改初始提交，丢弃残缺提交前的提交历史
+    - 残缺库的第一个提交会有一个`graft`的标记
+    - START_COMMIT=$(git rev-list master|tail -n 1)
+    - git checkout --orphan temp_branch
+    - git commit -m "Initial commit"
+    - git rebase --onto temp_branch $START_COMMIT master
+    - 此时第一个提交hash变化了，graft也消失了，这个提交就成了正常的原始提交
+    - 但是注意问题：master分支改了，其他同残缺提交作为第一个提交的分支会无法merge和rebase 即作废，无法修复。 所以需要找一个有最完整提交的分支执行，然后作废其他同源分支。
+    - 如果其他分支都是残缺提交后创建的，那就不受影响，因为 git merge-base 会检查到两个分支的组件节点是一致的。
+4. 简单粗暴：删除 .git 目录，从头开始
 
 #### sparse checkout 稀疏检出
 > [参考: git sparse checkout (稀疏检出)](https://www.jianshu.com/p/680f2c6c84de)  
@@ -175,7 +189,7 @@ categories:
 1. echo "path2/" >> .git/info/sparse-checkout
 1. git pull origin master
 
-此时，只会pull下符合 sparse-checkout 文件内规则(与 .gitignore 写法一致)的目录或文件
+此时，只会从remote端pull下来符合 sparse-checkout 文件内规则(与 .gitignore 写法一致)的目录或文件，适合拉取大仓库中的局部目录和文件
 
 ************************
 
