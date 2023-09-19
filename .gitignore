@@ -6,3 +6,5 @@
 ignore.ini
 refresh_catalog.py
 refresh_md.sh
+
+bin/

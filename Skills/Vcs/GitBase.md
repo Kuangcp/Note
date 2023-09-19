@@ -76,7 +76,7 @@ categories:
     1. [gitattributes](#gitattributes)
 1. [自定义插件](#自定义插件)
 
-**目录 end**|_2022-11-08 20:44_|
+**目录 end**|_2023-09-19 23:27_|
 ****************************************
 # Git基础
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
@@ -174,8 +174,8 @@ Shallow Clone： `git clone --depth n URL` 克隆的本地仓库
     - git commit -m "Initial commit"
     - git rebase --onto temp_branch $START_COMMIT master
     - 此时第一个提交hash变化了，graft也消失了，这个提交就成了正常的原始提交
-    - 但是注意问题：master分支改了，其他同残缺提交作为第一个提交的分支会无法merge和rebase 即作废，无法修复。 所以需要找一个有最完整提交的分支执行，然后作废其他同源分支。
-    - 如果其他分支都是残缺提交后创建的，那就不受影响，因为 git merge-base 会检查到两个分支的组件节点是一致的。
+    - 但是注意这个问题：假如master分支做了以上操作，其他同样是残缺提交作为第一个提交的分支（例如dev分支）会无法merge和rebase，push 即已作废，无法修复。 所以需要找一个有最完整提交的分支执行以上操作，然后作废其他同源分支。
+    - 如果其他分支（feature/xxx-1.0）都是残缺提交节点后创建的，那就不受影响，因为 git merge-base 会检查到两个分支的祖先节点是一致的，能正常merge和push。
 4. 简单粗暴：删除 .git 目录，从头开始
 
 #### sparse checkout 稀疏检出
