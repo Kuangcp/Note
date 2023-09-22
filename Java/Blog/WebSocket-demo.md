@@ -9,7 +9,7 @@ categories:
 
 **目录 start**
 
-1. [简单 SpringBoot Websocket 示例](#简单-springboot-websocket-示例)
+1. [Java中的Websocket](#java中的websocket)
     1. [WebSocket服务端](#websocket服务端)
         1. [Tomcat 方式](#tomcat-方式)
             1. [4个生命周期在注解式端点中的事件处理](#4个生命周期在注解式端点中的事件处理)
@@ -18,13 +18,14 @@ categories:
         1. [Undertow](#undertow)
         1. [Netty](#netty)
     1. [性能测试对比](#性能测试对比)
+    1. [Websocket集群设计](#websocket集群设计)
     1. [客户端](#客户端)
         1. [Java](#java)
         1. [JS](#js)
 
-**目录 end**|_2021-06-20 14:26_|
+**目录 end**|_2023-09-22 16:16_|
 ****************************************
-#  简单 SpringBoot Websocket 示例
+# Java中的Websocket
 JSR-356
 
 ## WebSocket服务端
@@ -162,8 +163,13 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 ### Netty
 > [Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/netty/websocket)
 
+通过go写客户端Docker中运行，16G电脑可以轻松上到百万级ws活跃连接。
+
 ## 性能测试对比
-TODO 相同JVM参数，处理逻辑 指标：最大连接数，请求应答模型 延迟分布情况、吞吐量
+TODO 
+- 相同JVM参数，处理逻辑 
+- 指标：最大连接数，请求应答模型 延迟分布情况、吞吐量
+- 多次测试：
 
 > 遇到的问题和调整
 1. 客户端发起连接需要设置最大打开文件数 ulimit -n 80000 
@@ -178,6 +184,13 @@ TODO 相同JVM参数，处理逻辑 指标：最大连接数，请求应答模�
 |:---|:---|:---|
 | Tomcat |  |  |
 | Netty |  |  |
+
+## Websocket集群设计
+TODO
+
+核心矛盾在于长连接是有状态且无法共享，但是业务处理端都是无状态的集群
+
+简单实现就是用Redis或者Nacos等注册中心，发送接收消息都从注册中心拿到ws连接所在服务器，再转发过去
 
 ************************
 
