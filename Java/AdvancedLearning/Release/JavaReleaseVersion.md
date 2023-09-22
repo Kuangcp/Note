@@ -15,15 +15,17 @@ categories:
     1. [Java8 LST](#java8-lst)
     1. [Java9](#java9)
     1. [Java10](#java10)
-    1. [Java11 LST](#java11-lst)
+    1. [Java11 LTS](#java11-lts)
     1. [Java12](#java12)
     1. [Java13](#java13)
     1. [Java14](#java14)
     1. [Java15](#java15)
     1. [Java16](#java16)
-    1. [Java17 LST](#java17-lst)
+    1. [Java17 LTS](#java17-lts)
+    1. [Java18](#java18)
+    1. [Java21 LTS](#java21-lts)
 
-**目录 end**|_2022-08-09 15:41_|
+**目录 end**|_2023-09-22 09:52_|
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)
@@ -80,7 +82,7 @@ JDBC4.0  JAX-WS 2.0
 1. Optional 增强
 1. java javac 合并
 
-## Java11 LST
+## Java11 LTS
 > [详情](/Java/AdvancedLearning/Release/Java11.md)
 
 > [参考: Java11的新特性](https://segmentfault.com/a/1190000016527932#articleHeader5)
@@ -98,6 +100,10 @@ JDBC4.0  JAX-WS 2.0
 
 ## Java16 
 
-## Java17 LST
+## Java17 LTS
 
 ## Java18
+
+## Java21 LTS
+1. 分代ZGC
+1. 虚拟线程

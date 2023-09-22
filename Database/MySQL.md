@@ -66,7 +66,7 @@ categories:
     1. [修改](#修改)
         1. [授权](#授权)
 
-**目录 end**|_2022-01-25 01:55_|
+**目录 end**|_2023-09-22 09:52_|
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -180,6 +180,10 @@ datetime timestamp
     - 或者 `mysql -uusername -ppassword database < /path/sqlfile.sql;`
 
 > [数据库迁移 Java工具的实现](https://blog.csdn.net/EASYgoing00/article/details/72885280)  主要的思路是Java调用系统命令行执行命令后得到导出文件， 然后读取导出的文件 进一步操作
+
+大数据量表的导出： 常规使用分页分批加载到Excel中，改进版则使用固定的连接流方式加载数据
+
+************************
 
 # 表
 ## 创建

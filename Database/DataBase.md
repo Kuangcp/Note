@@ -22,6 +22,8 @@ categories:
     1. [PolorDB](#polordb)
     1. [Oracle](#oracle)
     1. [PostgreSQL](#postgresql)
+    1. [Greenplum](#greenplum)
+    1. [Clickhouse](#clickhouse)
 1. [非关系型数据库](#非关系型数据库)
     1. [Redis](#redis)
     1. [LevelDB](#leveldb)
@@ -44,7 +46,7 @@ categories:
 1. [数据库中间件](#数据库中间件)
 1. [图形化工具](#图形化工具)
 
-**目录 end**|_2023-06-05 14:10_|
+**目录 end**|_2023-09-22 09:52_|
 ****************************************
 # 数据库
 > [码农翻身:爱炫耀的数据库老头儿](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514001&idx=1&sn=17b72c3e69db6c4277e3045c699b7b6b&chksm=80d67c52b7a1f5446020826841869221873f4578524181384592839d19c4810dc68807117e13&scene=21#wechat_redirect) `事务,undo日志`
@@ -109,6 +111,10 @@ MVCC
 
 ## PostgreSQL
 > [Official Site](https://www.postgresql.org/)  
+
+## Greenplum
+
+## Clickhouse 
 
 ************************
 
