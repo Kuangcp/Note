@@ -9,11 +9,12 @@ categories:
 **目录 start**
 
 1. [JDBC](#jdbc)
+    1. [长连接流式导出数据](#长连接流式导出数据)
     1. [MySQL](#mysql)
     1. [Java内置数据库Derby](#java内置数据库derby)
 1. [Tips](#tips)
 
-**目录 end**|_2021-05-17 00:15_|
+**目录 end**|_2023-09-22 18:34_|
 ****************************************
 # JDBC
 > [码农翻身:JDBC的诞生](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513438&idx=1&sn=2967d595bb7d4ffdd2dacd3ab7501bbd&chksm=80d6799db7a1f08b27dc97650434fb2fc0e2570628945db99d9300a99e52828fd05c42fdb441&scene=21#wechat_redirect)
@@ -27,6 +28,68 @@ categories:
 - 处理返回结果 resultst
 
 Statement 和 PrepareStatement 的区别， 掌握PrepareStatement的主要用法(推荐使用)
+
+## 长连接流式导出数据
+```java
+private void fetchBatchWithDataResource(DataSource ds, String sql, String where, int fetchSize, Consumer<List<LinkedHashMap<String, Object>>> handle) {
+    Connection connection = null;
+    Statement stmt = null;
+    ResultSet rs = null;
+    try {
+        connection = ds.getConnection();
+        String query;
+        if (StringUtils.isNotBlank(where)) {
+            query = sql + " WHERE " + where;
+        } else {
+            query = sql;
+        }
+
+        log.info("stream export: query={}", query);
+
+        stmt = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+        stmt.setQueryTimeout(3600);
+        stmt.setFetchSize(fetchSize);
+
+        rs = stmt.executeQuery(query);
+        boolean handled = false;
+        int counter = 0;
+
+        List<LinkedHashMap<String, Object>> data = new ArrayList<>();
+        while (rs.next()) {
+            ResultSetMetaData meta = rs.getMetaData();
+            int columnCount = meta.getColumnCount();
+            LinkedHashMap<String, Object> row = new LinkedHashMap<>();
+            for (int i = 1; i <= columnCount; i++) {
+                row.put(meta.getColumnName(i), rs.getObject(i));
+            }
+            data.add(row);
+
+            if (data.size() > fetchSize) {
+                handle.accept(data);
+                counter++;
+                data = new ArrayList<>();
+                handled = true;
+            } else {
+                handled = false;
+            }
+        }
+        if (!handled) {
+            handle.accept(data);
+            counter++;
+        }
+
+        log.info("stream export: size={} count={}", data.size(), counter);
+    } catch (Exception e) {
+        log.error("", e);
+    } finally {
+        close(connection, stmt, rs);
+    }
+}
+```
+- Statement 设置了 fetchSize 或者 TYPE_FORWARD_ONLY 模式后，都会采用游标的方式获取全部的数据
+- handle 则是 CSV Excel 的消费处理逻辑
+
+************************
 
 ## MySQL
 > 与MySQL的互操作
