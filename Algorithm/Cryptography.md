@@ -42,7 +42,7 @@ categories:
     1. [SSL TLS](#ssl-tls)
 1. [扩展](#扩展)
 
-**目录 end**|_2023-09-22 09:52_|
+**目录 end**|_2023-09-22 19:13_|
 ****************************************
 # 密码学
 > [wikipedia](https://zh.wikipedia.org/wiki/%E5%AF%86%E7%A0%81%E5%AD%A6)
@@ -165,6 +165,12 @@ Advanced Encryption Standard。在全世界范围进行公开竞选， 有15个�
 同为分组加密算法，分组长度为128比特，密钥长度可选（128，192，256位），使用SPN结构进行多轮加密。 详细过程参考书籍《图解密码技术》  
 而且加密过程的步骤可以并行计算，性能较DES也更好。  
 Rijndael算法背后是严谨的数学论证：明文到密文的计算过程全部可以用数学公式来表达。  
+
+> AES-CCM
+- AES算法采用CTR/CBC模式
+
+> AES-GCM 
+- AES算法采用CTR模式，并带有GMAC消息认证码。能防篡改（认证码实现） [wiki: GCM](https://en.wikipedia.org/wiki/Galois/Counter_Mode)
 
 ### 分组密码和流密码
 分组密码(block cipher)是指每次只能处理固定长度数据的一类密码算法。例如 DES，AES等

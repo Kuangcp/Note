@@ -14,7 +14,7 @@ categories:
         1. [Socket](#socket)
     1. [Tips](#tips)
 
-**目录 end**|_2020-04-27 23:42_|
+**目录 end**|_2023-09-22 19:13_|
 ****************************************
 # Java网络编程
 
@@ -29,7 +29,3 @@ categories:
 - 得到URL文件的输入流
     - `new URL(url).openStream()`
 
-- 使用Linux编程开启web容器时`java.net.SocketException: 权限不够`
-    - [参考博客](http://www.xuebuyuan.com/1432737.html)
-    - 快速解决，不使用小于1024的端口即可，或者 sudo 提权
-   

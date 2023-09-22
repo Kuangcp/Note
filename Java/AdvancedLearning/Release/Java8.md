@@ -9,6 +9,7 @@ categories:
 **目录 start**
 
 1. [Java8](#java8)
+    1. [实战库项目](#实战库项目)
 1. [接口的变化](#接口的变化)
     1. [default方法](#default方法)
     1. [static方法](#static方法)
@@ -73,11 +74,13 @@ categories:
     1. [Period](#period)
     1. [Instant](#instant)
     1. [LocalDateTime](#localdatetime)
+        1. [LocalDate](#localdate)
+        1. [LocalTime](#localtime)
     1. [ZoneOffset](#zoneoffset)
     1. [ZonedDateTime](#zoneddatetime)
     1. [Clock](#clock)
 
-**目录 end**|_2020-07-05 16:28_|
+**目录 end**|_2023-09-22 19:13_|
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -492,7 +495,7 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
     1. 可复合, 更灵活
     1. 可并行, 性能更好
 
-- Stream 简短的定义就是“从支持数据处理操作的源生成的元素序列”
+- Stream 简短的定义就是 “从支持数据处理操作的源，生成的元素序列”
     - **元素序列** 
         - 就像集合一样，流也提供了一个接口，可以访问特定元素类型的一组有序值。
         - 因为集合是数据结构，所以它的主要目的是以特定的时间/空间复杂度存储和素（如ArrayList与LinkedList）。
@@ -504,7 +507,10 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
     - **内部迭代**
         - 与使用迭代器显式迭代的集合不同，流的迭代操作是在背后进行的。
 
-通常简单的迭代使用外部迭代性能会更好，复杂操作使用Stream能让JDK为你在迭代时做优化
+> 注意：
+- 通常简单的迭代使用外部迭代性能会更好，复杂操作使用Stream能让JDK为你在迭代时做优化
+- 使用 parallel() 开启并行流时要注意此时并行是依赖JVM内全局共用的Forkjoin线程池实现的，也就是说理论上会发生：
+    - 使用了并行流的业务代码A耗时很久会卡住使用了并行流业务代码B，这种问题发生了就比较难排查了，所以并行流通常使用较少，有异步场景均按业务独立线程池统一管理会更好
 
 ************************
 
