@@ -35,7 +35,7 @@ ForkJoinPool 服务处理一种比线程更小的并发单元 ForkJoinTask
 - 提供了支持大型任务分解的基本方法，还有自动调度和重新调度的能力
 
 - 这个框架的关键特性之一就是：这些轻量的任务都能够生成新的ForkJoinTask实例，而这些实例仍然由执行他们父任务的线程池来安排调度，这就是分而治之
-- 工作窃取： [一个简单的例子](https://github.com/Kuangcp/JavaBase/blob/concurrency/src/main/java/com/github/kuangcp/forkjoin/ForkJoinEasyDemo.groovy)
+- 工作窃取： [简单样例：Groovy 实现](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/main/java/com/github/kuangcp/forkjoin/ForkJoinEasyDemo.groovy)
 
 - 由 RecursiveAction 或者 RecursiveTask 派生出来的才能作为任务单元 这俩也是派生ForkJoinTask而来
     - RecursiveAction 要重写的方法：`protected void compute()`  
