@@ -1,33 +1,9 @@
 ---
-title: ForkAndJoin 
-date: 2023-09-25 12:58:05
-tags: 
-categories: 
----
-
-**目录 start**
-
-1. [Fork Join](#fork-join)
-    1. [最佳实践](#最佳实践)
-    1. [设计](#设计)
-    1. [使用](#使用)
-
-**目录 end**|_2023-09-25 13:21_|
-****************************************
----
 title: Fork/Join
-date: 2019-06-04 19:44:41
+date: 2023-09-25 13:22:47
 tags: 
 categories: 
 ---
-
-**目录 start**
-
-1. [ForkJoin方式](#forkjoin方式)
-
-**目录 start**
-
-1. [Fork Join](#fork-join)
 
 **目录 start**
 
@@ -36,7 +12,7 @@ categories:
     1. [设计](#设计)
     1. [使用](#使用)
 
-**目录 end**|_2023-09-25 13:21_|
+**目录 end**|_2023-09-25 13:23_|
 ****************************************
 # Fork Join
 > 自 Java7 引入，存在感不怎么高但实际上很多地方用到的一个库(`Stream，VirtualThread`)
