@@ -31,11 +31,12 @@ categories:
 1. [图形化工具](#图形化工具)
     1. [JProfiler](#jprofiler)
     1. [GCViewer](#gcviewer)
-    1. [jvisualvm](#jvisualvm)
+    1. [Visualvm](#visualvm)
     1. [MAT](#mat)
+    1. [JMC](#jmc)
     1. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2023-08-25 15:50_|
+**目录 end**|_2023-09-27 20:37_|
 ****************************************
 
 # Java的性能调优
@@ -222,7 +223,7 @@ categories:
 ## GCViewer
 > [Github: GCViewer](https://github.com/chewiebug/GCViewer)
 
-## jvisualvm
+## Visualvm
 > [Github:visualvm](https://github.com/oracle/visualvm)  
 > [visualgc plugin](https://www.oracle.com/technetwork/java/visualgc-136680.html)  
 
@@ -269,6 +270,12 @@ categories:
 线程: 
 类加载器： histogram -> basic -> merge classloader
 不可达对象：
+
+************************
+## JMC
+> JDK Mission Control
+
+通过对运行中的JVM进行飞行记录 Flight Recorder, 分析指定时间内代码的可优化点，指标值变化情况（内存，CPU，GC，类加载等等）
 
 ************************
 
