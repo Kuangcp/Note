@@ -1,5 +1,5 @@
 ---
-title: MySQLInnodbLock
+title: MySQLInnodb
 date: 2022-06-27 14:23:03
 tags: 
 categories: 
@@ -7,7 +7,7 @@ categories:
 
 **目录 start**
 
-1. [MySQL innodb锁设计细节](#mysql-innodb锁设计细节)
+1. [锁设计细节](#锁设计细节)
     1. [共享/排他锁(Shared and Exclusive Locks)](#共享排他锁shared-and-exclusive-locks)
     1. [意向锁(Intention Locks)](#意向锁intention-locks)
     1. [记录锁(Record Locks)](#记录锁record-locks)
@@ -17,10 +17,13 @@ categories:
     1. [自增锁(Auto-inc Locks)](#自增锁auto-inc-locks)
     1. [MVCC机制](#mvcc机制)
     1. [锁类型](#锁类型)
+1. [索引设计](#索引设计)
+1. [行设计](#行设计)
 
-**目录 end**|_2022-06-27 14:23_|
+**目录 end**|_2023-09-27 19:16_|
 ****************************************
-# MySQL innodb锁设计细节
+
+# 锁设计细节
 > [InnoDB Locking and Transaction Model](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-transaction-model.html)
 
 ## 共享/排他锁(Shared and Exclusive Locks)
@@ -100,3 +103,12 @@ Innodb 内部在每行有隐藏列：
 页面锁：开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般
 
 > [死锁原因和方案](https://zhuanlan.zhihu.com/p/267522634)
+
+************************
+# 索引设计
+
+
+************************
+
+# 行设计
+> [row size limits](https://dev.mysql.com/doc/refman/8.0/en/column-count-limit.html#row-size-limits)
