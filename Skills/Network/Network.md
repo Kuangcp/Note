@@ -334,12 +334,6 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 
 客户端和服务端建立连接后 客户端网络发生变化(例如VPN关闭,服务端在VPN网络下才可访问)，此时客户端的定时ping会累积起来，等恢复后，一次发送多条数据，可以通过抓包观察到
 
-> 抓包工具
-1. Wireshark 
-1. mitmproxy `Python定制化`
-1. Fiddler2 `C#定制化`
-1. [whistle](https://github.com/avwo/whistle) 
-1. [dev-proxy](https://github.com/Kuangcp/GoBase/tree/master/toolbox/dev-proxy) Go实现抓包
 
 ************************
 
@@ -503,7 +497,7 @@ function FindProxyForURL(url, host) {
 应用方无感使用缓存技术提高访问速度，能提高网络安全性(内网中的硬件防火墙。企业中的行为管理软件)
 
 ************************
-
+# 网络工具
 ## 代理工具
 > [Alternatives to Charles for Linux](https://alternativeto.net/software/charles/?platform=linux)
 - [whistle](https://github.com/avwo/whistle) `nodejs 平台的抓包工具`
@@ -512,7 +506,7 @@ function FindProxyForURL(url, host) {
 [Github](https://github.com/Dreamacro/clash)
 
 ### Fiddler 
-> [fiddler](https://www.telerik.com/fiddler)  
+> [fiddler](https://www.telerik.com/fiddler)`由C#开发, 自定义脚本为C#`  
 
 > [fiddler-everywhere](https://www.telerik.com/fiddler-everywhere) `Linux 免费`
 
@@ -521,6 +515,8 @@ function FindProxyForURL(url, host) {
 
 ### mitmproxy
 > [Official Site](https://mitmproxy.org/) | [Docker Hub](https://hub.docker.com/r/mitmproxy/mitmproxy/) | [Github](https://github.com/mitmproxy/mitmproxy)
+
+自定义脚本为Python
 
 > 简评：过滤和搜索功能强大且支持重放但是用久了占用内存大，因为抓包的数据都在内存里
 
@@ -548,13 +544,12 @@ function FindProxyForURL(url, host) {
 功能简单只能查看抓包的数据，数据只缓存浏览器，刷新就会消失，但是占用内存小
 
 ### dev-proxy
-> [Github](https://github.com/Kuangcp/GoBase/tree/master/toolbox/dev-proxy)`个人开发 用于代理HTTP请求 方便前后端联调`
+> [Github: dev-proxy](https://github.com/Kuangcp/GoBase/tree/master/toolbox/dev-proxy)`个人开发, 功能有: 代理转发, 抓包, 重放, 统计QPS`
 
-其实 xswitch 会更好用，但是不兼容firefox，即便使用debug方式安装上插件也会有报错和API不兼容
+其实 xswitch 会更简单易用，但是不兼容firefox，即便使用debug方式安装上插件也会有报错和API不兼容. 而且只是浏览器级别的代理转发,不支持系统级
 
 ************************
 
-# 网络工具
 ## Wireshark
 > [Official Site](https://www.wireshark.org/)  
 

@@ -145,8 +145,11 @@ _复杂类型_
 ************************
 
 ## Java中的使用
+> [Protocol Buffer Basics: Java](https://protobuf.dev/getting-started/javatutorial/) 
 
+使用流程简述: Maven插件将所有proto文件编译到对应目录(该目录设置为source)下的Java类, 项目编译和运行时就可以试试引用这些类
 
+- maven-protoc-plugin 
 
 ************************
 

@@ -53,7 +53,7 @@ categories:
 > [project-layout](https://github.com/golang-standards/project-layout)`Go 项目结构规范`
 
 ## Go Modules
-> 1.11 开始支持 [Wiki](https://github.com/golang/go/wiki/Modules)  
+> 自 1.11 开始支持 [Wiki](https://github.com/golang/go/wiki/Modules)  
 
 ### 配置
 - `go env -w GOSUMDB=off` 关闭官方 sum 校验服务
@@ -87,7 +87,7 @@ export GOSUMDB=sum.golang.google.cn
 | go mod tidy   | 删除错误或者不使用的modules
 | go mod vendor | 生成vendor目录
 | go mod verify | 验证依赖是否正确
-| go mod why    | 查找依赖
+| go mod why    | 查找某个依赖项被引入的路径
 
 ### go get 
 
@@ -98,8 +98,10 @@ export GOSUMDB=sum.golang.google.cn
 | go get golang.org/x/text@v0.3.2        | 拉取 指定 tag 
 | go get golang.org/x/text@342b2e        | 拉取 指定 commit
 | go get github.com/smartwalle/alipay/v3 | 拉取v3版本 `设计最坑`
+| |
 | go get -u                              | 更新 mod
 | go list -m -versions golang.org/x/text | 列出可安装版本
+| go get -insecure                       | 不对依赖进行verify 常用于内网的依赖
 
 ### 单个Git仓库发布多个包
 - go mod init github.com/username/repo-name/{path}
@@ -111,6 +113,46 @@ export GOSUMDB=sum.golang.google.cn
     git tag -a pkg/app/util/v1.0.0
 ```
 
+### go.mod
+> 关键字
+- module	指定包的名字（路径）
+- require	指定依赖项模块
+- replace	替换依赖项模块
+- exclude	忽略依赖项模块
+
+注意依赖项后 有 // indirect 标记的意味着是传递依赖项
+
+### go.work
+关键字和go.mod一致, 并追加了use关键字
+
+use指定使用的模块目录，可以使用go work use添加模块，也可以手动修改go.work工作区添加新的模块，在工作区中添加了模块路径，编译时会自动使用use中的本地代码进行编译
+replaces替换依赖仓库地址，replaces命令与go.mod指令相同，用于替换项目中依赖的仓库地址，需要注意的是，replaces和use不能同时指定相同的本地代码路径
+
+通常情况下 go.work不提交到git上, 可以让每个开发人员使用不同的构建规则. 
+
+但是目前有个场景下, 如果要实现 demo-gui 依赖 demo/util 下的代码, 有两种方式: 
+- demo/
+    - util/
+    - demo-gui/ 
+        - go.mod
+        - go.work
+    - go.mod 
+
+
+1. replace 方式
+    - demo-gui 中的 go.mod 显示依赖一个不存在的版本 然后replace掉
+    ```go
+    require demo v1.0.0 
+    replace demo v1.0.0 => ../
+    ```
+1. go.work 方式, 如果提交该文件会让依赖管理更简单`看起来`
+    - use父级目录即可
+    ```go
+    use (
+        .
+        ../../demo
+    )
+    ```
 ************************
 
 ## 数据类型
