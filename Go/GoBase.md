@@ -130,29 +130,31 @@ replaces替换依赖仓库地址，replaces命令与go.mod指令相同，用于�
 
 通常情况下 go.work不提交到git上, 可以让每个开发人员使用不同的构建规则. 
 
-但是目前有个场景下, 如果要实现 demo-gui 依赖 demo/util 下的代码, 有两种方式: 
+但是以下场景, 如果要实现 demo-gui模块 依赖 demo/util模块 下的 api.go, 有两种方式: 
 - demo/
     - util/
+        - api.go 
     - demo-gui/ 
+        - main.go
         - go.mod
         - go.work
     - go.mod 
 
-
-1. replace 方式
-    - demo-gui 中的 go.mod 显示依赖一个不存在的版本 然后replace掉
+1. `replace 方式`: demo-gui 中的 go.mod 显示依赖一个假版本 然后replace到本地目录
     ```go
     require demo v1.0.0 
     replace demo v1.0.0 => ../
     ```
-1. go.work 方式, 如果提交该文件会让依赖管理更简单`看起来`
-    - use父级目录即可
+1. `go.work 方式`: 依赖父目录即可. 如果提交该文件到git, 会让依赖管理更简单`看起来`, 但是这样就和go.work设计相违背了
     ```go
     use (
         .
         ../../demo
     )
     ```
+
+- [ ] 待思考: 如何像Java一样管理多模块的大项目
+
 ************************
 
 ## 数据类型
