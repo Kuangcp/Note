@@ -29,3 +29,6 @@
 ## 网络
 - tracert 等同于Linux的 traceroute
 - ipconfig 等同于Linux的 ifconfig
+
+## 影音
+[Potplayer](http://potplayer.tv/?lang=zh_CN)

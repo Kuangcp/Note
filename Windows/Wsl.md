@@ -15,3 +15,6 @@
 ## GUI
 
 
+
+# WSA
+[适用于 Android™️ 的 Windows 子系统](https://learn.microsoft.com/zh-cn/windows/android/wsa/)
