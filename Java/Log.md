@@ -1,13 +1,13 @@
 ---
-title: Java 中的 Log
-date: 2018-12-20 10:42:15
+title: Java中的日志
+date: 2023-10-04 11:46:08
 tags: 
     - Log
 categories: 
     - Java
 ---
 
-**目录 start**
+💠
 
 1. [日志系统](#日志系统)
     1. [概念](#概念)
@@ -16,8 +16,7 @@ categories:
 1. [Log4j](#log4j)
     1. [问题](#问题)
 1. [Log4j2](#log4j2)
-1. [LogBack](#logback)
-    1. [Gradle中使用](#gradle中使用)
+1. [Logback](#logback)
     1. [配置理解](#配置理解)
         1. [根节点 <configuration> 属性](#根节点-<configuration>-属性)
         1. [子节点](#子节点)
@@ -31,8 +30,11 @@ categories:
 1. [分析日志](#分析日志)
     1. [Linux上查看日志](#linux上查看日志)
     1. [lnav](#lnav)
+1. [日志采集](#日志采集)
+    1. [Filebeat](#filebeat)
+    1. [K8s](#k8s)
 
-**目录 end**|_2020-05-22 18:43_|
+💠 2023-10-04 11:47
 ****************************************
 # 日志系统
 > [码农翻身: 一个著名的日志系统是怎么设计出来的？ ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45&chksm=80d67bacb7a1f2ba38aa37620d273dfd7d7227667df556d36c84d125cafd73fef16464288cf9&scene=21#wechat_redirect)`深刻的理解了日志系统的来源以及相关关系`  
@@ -75,17 +77,11 @@ categories:
 > 听说是为了解决Log4j无法在多环境使用的问题 , 也就是类似于 SpringBoot 多profile的功能
 
 **************************
-# LogBack
+# Logback
 
 - [logback简单示例](https://github.com/Kuangcp/Notes/blob/master/ConfigFiles/Log/logback.xml)
 
 > [xml to groovy config](https://logback.qos.ch/translator/asGroovy.html)
-
-
-## Gradle中使用
-1. 添加依赖 `  testCompile 'ch.qos.logback:logback-classic:1.2.3'`
-    - `compile 'org.projectlombok:lombok:1.16.16'`
-2. 类上加注解 `@Slf4j` 然后 就能用了
 
 
 ## 配置理解
@@ -416,3 +412,9 @@ _4.另外还有SocketAppender、SMTPAppender、DBAppender、SyslogAppender、Sif
 ## lnav
 > 一个专门用于浏览日志文件的软件  | [官网](http://lnav.org/) | [文档](http://lnav.readthedocs.io/en/latest/)
 > [博客: LNAV：基于 Ncurses 的日志文件阅读器 ](https://linux.cn/article-6677-1.html)
+
+********************
+# 日志采集
+## Filebeat 
+
+## K8s

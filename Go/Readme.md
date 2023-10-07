@@ -61,6 +61,7 @@ categories:
 > [Go相关书籍的知乎话题](https://www.zhihu.com/question/30461290)  
 > [Go语言高级编程(Advanced Go Programming)](https://books.studygolang.com/advanced-go-programming-book/index.html)
 
+- [The Go Programming Language](http://www.gopl.io/)
 
 # 安装
 
