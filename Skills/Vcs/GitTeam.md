@@ -7,7 +7,7 @@ categories:
     - 版本控制
 ---
 
-**目录 start**
+💠
 
 1. [使用Git进行团队协作](#使用git进行团队协作)
     1. [基础思想](#基础思想)
@@ -19,16 +19,17 @@ categories:
         1. [master作为线上分支时，误提交功能并推送怎么处理](#master作为线上分支时误提交功能并推送怎么处理)
 1. [GUI](#gui)
     1. [git-cola](#git-cola)
+    1. [Gitnuro](#gitnuro)
     1. [GitBlade](#gitblade)
     1. [gitg](#gitg)
     1. [tig](#tig)
     1. [Guitar](#guitar)
-    1. [GitAhead](#gitahead)
+    1. [Gittyup](#gittyup)
     1. [SourceTree](#sourcetree)
 1. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
     1. [最终方案](#最终方案)
 
-**目录 end**|_2021-04-28 15:31_|
+💠 2023-10-09 15:56
 ****************************************
 
 # 使用Git进行团队协作
@@ -188,12 +189,13 @@ commit message 包含三个部分，header, body和footer，其中header必须�
 1. sudo make prefix=/usr install
 
 > Tips
-- 无法输入中文，实际上是无法调起Fcitx
+- [ ] 无法输入中文，实际上是无法调起Fcitx
+
+## Gitnuro
+> [Github: Gitnuro](https://github.com/JetpackDuba/Gitnuro)`Java17 + Compose`
 
 ## GitBlade
-- 功能强大 付费软件。
-
-Sublime 作者开发的另一个软件
+- 功能强大 付费软件 Sublime作者所开发
 
 ## gitg
 > [Official](https://wiki.gnome.org/Apps/Gitg)
