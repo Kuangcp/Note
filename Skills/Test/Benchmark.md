@@ -18,7 +18,7 @@ categories:
     - 1.5. [测试方式](#测试方式)
     - 1.6. [测试环境准备](#测试环境准备)
 
-💠 2023-10-09 17:53
+💠 2023-10-09 19:16
 ****************************************
 
 # 基准测试
@@ -69,19 +69,22 @@ CPU Load 逻辑核心数1.2以下?
 出向和入向流量
 
 ### client
+- [前端框架基准测试](https://www.infoq.cn/article/uhsl0goghtl2bm*vjios)
+    - TTI（Time to Interactive）：让一个页面变得可交互需要多长时间。
+    - 速度指数（Speed Index）：页面处理内容的速度，分数越低也好。
+    - FCP（First Contentful Paint）：从导航一个页面到浏览器开始渲染 DOM 第一个字节的时间。
+    - FCI（First CPU Idle）：页面达到最小化可交互的时间（不需要等到页面上的所有元素都可交互，只要可以对大部分用户输入做出响应即可）。
+    - FMP（First Meaningful Paint）：用户感知到页面主要内容可见的时间。
+    - 预估的输入延迟（Estimated Input Latency）。
 
+### server
+- PV
 - QPS
 - RT
 - 成功率
-
-页面平均响应时间 （重要）。
-并发量（其实没那么重要，主要还是qps）。
-最大用户同时在线数 （用户登录系统，一般不需要额外压测，除非业务场景特殊）。
-网络质量（延迟，波动等，不展开）。
-
-### server
 - cpu usage
 - load
+    - 最大用户同时在线数 （用户登录系统，一般不需要额外压测，除非业务场景特殊）。
 - mem
 - jvm/fullGC
 - 连接数(netstat)
