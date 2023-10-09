@@ -7,37 +7,38 @@ categories:
     - 计算机基础
 ---
 
-**目录 start**
+💠
 
-1. [HTTP](#http)
-    1. [请求方法](#请求方法)
-        1. [CONNECT](#connect)
-        1. [GET](#get)
-        1. [POST](#post)
-    1. [HTTP的状态码](#http的状态码)
-    1. [响应](#响应)
-        1. [Header](#header)
-    1. [HTTP 缓存](#http-缓存)
-    1. [Session 和 Cookie](#session-和-cookie)
-        1. [Cookie](#cookie)
-        1. [Session](#session)
-    1. [Auth](#auth)
-        1. [Basic-Auth](#basic-auth)
-1. [HTTP各个实现版本](#http各个实现版本)
-    1. [HTTP/0.9](#http09)
-    1. [HTTP/1.0](#http10)
-    1. [HTTP/1.1](#http11)
-    1. [HTTP/2](#http2)
-    1. [HTTP/3](#http3)
-1. [HTTPS](#https)
-    1. [HTTPS 证书认证流程](#https-证书认证流程)
-    1. [HSTS](#hsts)
-1. [CORS 跨域](#cors-跨域)
+- 1. [HTTP](#http)
+    - 1.1. [请求方法](#请求方法)
+        - 1.1.1. [CONNECT](#connect)
+        - 1.1.2. [GET](#get)
+        - 1.1.3. [POST](#post)
+    - 1.2. [HTTP的状态码](#http的状态码)
+    - 1.3. [响应](#响应)
+        - 1.3.1. [Header](#header)
+    - 1.4. [HTTP 缓存](#http-缓存)
+    - 1.5. [Session 和 Cookie](#session-和-cookie)
+        - 1.5.1. [Cookie](#cookie)
+        - 1.5.2. [Session](#session)
+    - 1.6. [Auth](#auth)
+        - 1.6.1. [Basic-Auth](#basic-auth)
+- 2. [HTTP各个实现版本](#http各个实现版本)
+    - 2.1. [HTTP/0.9](#http09)
+    - 2.2. [HTTP/1.0](#http10)
+    - 2.3. [HTTP/1.1](#http11)
+    - 2.4. [HTTP/2](#http2)
+    - 2.5. [HTTP/3](#http3)
+- 3. [HTTPS](#https)
+    - 3.1. [HTTPS 证书认证流程](#https-证书认证流程)
+    - 3.2. [HSTS](#hsts)
+- 4. [Tips](#tips)
+    - 4.1. [CORS 跨域](#cors-跨域)
 
-**目录 end**|_2023-05-11 10:28_|
+💠 2023-10-09 17:53
 ****************************************
 # HTTP
-> HyperText Transfer Protocol 超文本传输协议 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
+> HyperText Transfer Protocol (超文本传输协议) 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
 
 - [MDN HTTP教程](https://developer.mozilla.org/zh-CN/docs/Web/HTTP)
 
@@ -300,9 +301,9 @@ HTTP/3 只是一种基于 IETF QUIC（一种基于 UDP 的多路复用和安全�
 > [MDN HSTS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security)
 
 ************************
-
-# CORS 跨域
-> [浏览器的同源策略](https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy)
+# Tips
+## CORS 跨域
+> [浏览器的同源策略](https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy)`重点在于这个是浏览器的实现规范，众多浏览器厂商约定实现，如果是自定义的HTTP客户端，可以不按此规范实现也就不用考虑这个限制`
 
 > [mozilla CORS](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS)
 > [阮一峰 跨域资源共享 CORS 详解](http://www.ruanyifeng.com/blog/2016/04/cors.html)
