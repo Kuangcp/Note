@@ -229,7 +229,7 @@ Podcast、Reddit 以及TechRadar
 ## 网络
 ### 穿透工具
 - [lanproxy](https://github.com/ffay/lanproxy) `将局域网个人电脑、服务器代理到公网的内网穿透工具`
-- [ngrok](https://ngrok.com/)`随机域名到穿透到内网 eg: ngrok http 8080`
+- [ngrok](https://ngrok.com/)`随机域名穿透到内网 eg: ngrok http 8080`
 - [frp](https://diannaobos.com/frp/)`自己服务器外网到内网穿透`
     - [下载地址](https://file.diannaobos.com/frp_releases/)[使用帮助](https://diannaobos.com/post/470.html)
 

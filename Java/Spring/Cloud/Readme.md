@@ -1,21 +1,3 @@
----
-title: SpringCloud
-date: 2018-12-21 10:50:56
-tags: 
-    - SpringCloud
-categories: 
-    - Java
----
-
-**目录 start**
-
-1. [SpringCloud](#springcloud)
-    1. [集成docker](#集成docker)
-    1. [微服务](#微服务)
-        1. [通信方式](#通信方式)
-
-**目录 end**|_2020-05-17 16:13_|
-****************************************
 # SpringCloud 
 > [SpringCloudLearning](https://github.com/forezp/SpringCloudLearning)  
 > [参考: Spring Cloud 入门系列](http://www.spring4all.com/article/320)  
@@ -27,7 +9,6 @@ categories:
 
 - 基于此镜像构建小于Ubuntu`frolvlad/alpine-oraclejdk8:slim`
 - [maven 和 gradle两种集成](https://github.com/waylau/docker-demos)
-
 
 ## 微服务
 > [《Spring Cloud实战》一书的配套示例代码](https://github.com/dyc87112/SpringCloudBook)
