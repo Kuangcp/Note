@@ -7,23 +7,24 @@ categories:
     - Java 
 ---
 
-**目录 start**
+💠
 
-1. [Java中的Websocket](#java中的websocket)
-    1. [WebSocket服务端](#websocket服务端)
-        1. [Tomcat 方式](#tomcat-方式)
-            1. [4个生命周期在注解式端点中的事件处理](#4个生命周期在注解式端点中的事件处理)
-            1. [服务端推送消息](#服务端推送消息)
-        1. [Spring-WebSocket](#spring-websocket)
-        1. [Undertow](#undertow)
-        1. [Netty](#netty)
-    1. [性能测试对比](#性能测试对比)
-    1. [Websocket集群设计](#websocket集群设计)
-    1. [客户端](#客户端)
-        1. [Java](#java)
-        1. [JS](#js)
+- 1. [Java中的Websocket](#java中的websocket)
+    - 1.1. [WebSocket服务端](#websocket服务端)
+        - 1.1.1. [Tomcat 方式](#tomcat-方式)
+            - 1.1.1.1. [4个生命周期在注解式端点中的事件处理](#4个生命周期在注解式端点中的事件处理)
+            - 1.1.1.2. [服务端推送消息](#服务端推送消息)
+        - 1.1.2. [Spring-WebSocket](#spring-websocket)
+        - 1.1.3. [Undertow](#undertow)
+        - 1.1.4. [Netty](#netty)
+        - 1.1.5. [Reactor Netty](#reactor-netty)
+    - 1.2. [性能测试对比](#性能测试对比)
+    - 1.3. [Websocket集群设计](#websocket集群设计)
+    - 1.4. [客户端](#客户端)
+        - 1.4.1. [Java](#java)
+        - 1.4.2. [JS](#js)
 
-**目录 end**|_2023-09-22 16:16_|
+💠 2023-10-10 12:10
 ****************************************
 # Java中的Websocket
 JSR-356
@@ -163,7 +164,12 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 ### Netty
 > [Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/netty/websocket)
 
-通过go写客户端Docker中运行，16G电脑可以轻松上到百万级ws活跃连接。
+通过go开发的客户端在多个Docker容器中运行（解决65535个端口限制），16G电脑可以轻松发起和支撑百万级ws活跃连接。
+
+### Reactor Netty
+> [Official Doc](https://projectreactor.io/docs/netty/release/reference/index.html#http-server)
+
+************************
 
 ## 性能测试对比
 TODO 
