@@ -5,13 +5,13 @@ tags:
 categories: 
 ---
 
-**目录 start**
+💠
 
-1. [Kafka](#kafka)
-    1. [安装](#安装)
-        1. [Docker](#docker)
+- 1. [Kafka](#kafka)
+    - 1.1. [安装](#安装)
+        - 1.1.1. [Docker](#docker)
 
-**目录 end**|_2020-06-24 02:06_|
+💠 2023-10-12 11:48
 ****************************************
 # Kafka
 > [Official Doc](https://kafka.apache.org/21/documentation.html)  
@@ -47,3 +47,10 @@ categories:
     - 或者 `bin/kafka-topics.sh --list --bootstrap-server 127.0.0.1:9092`
 1. 运行一个消费者并指定topic `bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic mykafka --from-beginning`
     - 会收到消息生产者输入的内容
+
+************************
+> [参考: 深度解读：Kafka 放弃 ZooKeeper，消息系统兴起二次革命](https://www.infoq.cn/article/phf3gfjutdhwmctg6kxe)  
+
+> 自2.8.0开始 Kafka移除了Zookeeper依赖 可单独启动 [Docker: bitnami/kafka](https://hub.docker.com/r/bitnami/kafka)  
+
+
