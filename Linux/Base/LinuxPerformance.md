@@ -7,56 +7,56 @@ categories:
     - Linux
 ---
 
-**目录 start**
+💠
 
-1. [Linux性能分析和管理](#linux性能分析和管理)
-    1. [基准测试](#基准测试)
-    1. [运行状况信息](#运行状况信息)
-        1. [分析工具](#分析工具)
-    1. [内核参数](#内核参数)
-    1. [内存情况](#内存情况)
-        1. [overcommit](#overcommit)
-        1. [oom](#oom)
-        1. [free](#free)
-        1. [交换内存分析](#交换内存分析)
-    1. [性能监测](#性能监测)
-        1. [perf](#perf)
-        1. [top](#top)
-        1. [smem](#smem)
-        1. [vmstat](#vmstat)
-        1. [mpstat](#mpstat)
-        1. [iostat](#iostat)
-    1. [进程管理](#进程管理)
-        1. [pidof](#pidof)
-        1. [pgrep](#pgrep)
-        1. [sar](#sar)
-        1. [lsof](#lsof)
-            1. [深入分析 文件删除](#深入分析-文件删除)
-        1. [fuser](#fuser)
-        1. [ps](#ps)
-        1. [procs](#procs)
-        1. [pstree](#pstree)
-        1. [kill](#kill)
-        1. [killall](#killall)
-        1. [trap](#trap)
-        1. [作业控制](#作业控制)
-        1. [守护进程](#守护进程)
-            1. [nohup](#nohup)
-            1. [disown](#disown)
-            1. [setid](#setid)
-            1. [screen](#screen)
-        1. [IPC](#ipc)
-    1. [系统管理](#系统管理)
-        1. [uname](#uname)
-        1. [who](#who)
-        1. [service](#service)
-        1. [chkconfig](#chkconfig)
-        1. [dmidecode](#dmidecode)
-        1. [lsmod](#lsmod)
-        1. [chroot](#chroot)
-    1. [关机重启](#关机重启)
+- 1. [Linux性能分析和管理](#linux性能分析和管理)
+    - 1.1. [基准测试](#基准测试)
+    - 1.2. [运行状况信息](#运行状况信息)
+        - 1.2.1. [分析工具](#分析工具)
+    - 1.3. [内核参数](#内核参数)
+    - 1.4. [内存情况](#内存情况)
+        - 1.4.1. [overcommit](#overcommit)
+        - 1.4.2. [oom](#oom)
+        - 1.4.3. [free](#free)
+        - 1.4.4. [交换内存分析](#交换内存分析)
+    - 1.5. [性能监测](#性能监测)
+        - 1.5.1. [perf](#perf)
+        - 1.5.2. [top](#top)
+        - 1.5.3. [smem](#smem)
+        - 1.5.4. [vmstat](#vmstat)
+        - 1.5.5. [mpstat](#mpstat)
+        - 1.5.6. [iostat](#iostat)
+    - 1.6. [进程管理](#进程管理)
+        - 1.6.1. [pidof](#pidof)
+        - 1.6.2. [pgrep](#pgrep)
+        - 1.6.3. [sar](#sar)
+        - 1.6.4. [lsof](#lsof)
+            - 1.6.4.1. [深入分析 文件删除](#深入分析-文件删除)
+        - 1.6.5. [fuser](#fuser)
+        - 1.6.6. [ps](#ps)
+        - 1.6.7. [procs](#procs)
+        - 1.6.8. [pstree](#pstree)
+        - 1.6.9. [kill](#kill)
+        - 1.6.10. [killall](#killall)
+        - 1.6.11. [trap](#trap)
+        - 1.6.12. [作业控制](#作业控制)
+        - 1.6.13. [守护进程](#守护进程)
+            - 1.6.13.1. [nohup](#nohup)
+            - 1.6.13.2. [disown](#disown)
+            - 1.6.13.3. [setid](#setid)
+            - 1.6.13.4. [screen](#screen)
+        - 1.6.14. [IPC](#ipc)
+    - 1.7. [系统管理](#系统管理)
+        - 1.7.1. [uname](#uname)
+        - 1.7.2. [who](#who)
+        - 1.7.3. [service](#service)
+        - 1.7.4. [chkconfig](#chkconfig)
+        - 1.7.5. [dmidecode](#dmidecode)
+        - 1.7.6. [lsmod](#lsmod)
+        - 1.7.7. [chroot](#chroot)
+    - 1.8. [关机重启](#关机重启)
 
-**目录 end**|_2023-07-24 18:06_|
+💠 2023-10-13 18:44
 ****************************************
 # Linux性能分析和管理
 
@@ -423,8 +423,7 @@ SWAP = VIRT - RES
 > Debian 上 `ps -ef` 和 `ps ef` 执行效果不一样
 
 - `-o` 输出指定列 `ps -eo pid,user,cmd,start ... ` 更多需要查看手册 `man ps`
-
-- ![p200](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p200.jpg)
+    - ![p200](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p200.jpg)
 
 - 对范围进行筛选 
     - 根据用户 `ps -u root`
@@ -433,7 +432,7 @@ SWAP = VIRT - RES
         - -u 有效用户 EUID
         - u 按用户名和进程号的顺序来显示进程, 多列构成
     - 根据命令名称查找pid `ps -C sshd` 
-    
+
 - 排序 :
     - `ps aux --sort -pcpu/+pcpu/` 按CPU使用率,进行降序/升序排列
     - 多个条件 `--sort=+pcpu, -pmem` CPU升序,内存降序排列
@@ -456,9 +455,11 @@ SWAP = VIRT - RES
 
 **实践**
 1. 列出Java进程 `ps aux | grep RSS | grep -v "grep" && ps aux | egrep -v "grep" | grep -i java` 
-
-1. 统计所有java进程内存使用 `ps aux|grep java | grep -v grep | awk '{sum+=$6};END {print sum "K " sum/1024"M "}'` 
+1. 统计所有Java进程的内存 `ps aux | grep java | grep -v grep | awk '{sum+=$6};END {print sum "K " sum/1024"M "}'` 
     - `ps -a -x -o rss,comm | grep java | awk '{sum+=$1};END {print sum "K " sum/1024"M "}'`
+1. 统计某个用户下进程所有内存 `ps -o pid,ppid,pgid,rss,comm  -u deployer | awk '{sum+=$4};END {print sum "K " sum/1024"M "}'`
+1. 统计某个应用进程所有内存（自己和所有子进程） ` `
+
 1. 按内存排序 列出所有进程 `ps aux | grep -v RSS | awk "{print $6 "\t" $11 }" | sort --human-numeric-sort -r | less`
 
 1. 按实际执行的二进制命令展示 `ps -ely`
