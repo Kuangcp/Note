@@ -7,41 +7,44 @@ categories:
     - Go
 ---
 
-**目录 start**
+💠
 
-1. [Go](#go)
-    1. [Go Modules](#go-modules)
-        1. [配置](#配置)
-        1. [go get](#go-get)
-        1. [单个Git仓库发布多个包](#单个git仓库发布多个包)
-    1. [数据类型](#数据类型)
-        1. [string](#string)
-        1. [int](#int)
-        1. [Array](#array)
-        1. [Slice](#slice)
-        1. [Map](#map)
-        1. [Set](#set)
-    1. [基本语法](#基本语法)
-        1. [标准输入输出](#标准输入输出)
-        1. [时间处理](#时间处理)
-    1. [泛型](#泛型)
-    1. [函数](#函数)
-        1. [参数](#参数)
-        1. [返回值](#返回值)
-        1. [defer](#defer)
-    1. [接口](#接口)
-    1. [Channel](#channel)
-    1. [协程](#协程)
-    1. [文件操作](#文件操作)
-    1. [Test](#test)
-    1. [JSON](#json)
-    1. [Debug](#debug)
-        1. [pprof](#pprof)
-    1. [部署](#部署)
-1. [Tips](#tips)
-    1. [通过字符串调用指定函数](#通过字符串调用指定函数)
+- 1. [Go](#go)
+    - 1.1. [Go Modules](#go-modules)
+        - 1.1.1. [配置](#配置)
+        - 1.1.2. [go get](#go-get)
+        - 1.1.3. [单个Git仓库发布多个包](#单个git仓库发布多个包)
+        - 1.1.4. [go.mod](#gomod)
+        - 1.1.5. [go.work](#gowork)
+        - 1.1.6. [现存问题](#现存问题)
+    - 1.2. [数据类型](#数据类型)
+        - 1.2.1. [string](#string)
+        - 1.2.2. [int](#int)
+        - 1.2.3. [Array](#array)
+        - 1.2.4. [Slice](#slice)
+        - 1.2.5. [Map](#map)
+        - 1.2.6. [Set](#set)
+    - 1.3. [基本语法](#基本语法)
+        - 1.3.1. [标准输入输出](#标准输入输出)
+        - 1.3.2. [时间处理](#时间处理)
+    - 1.4. [泛型](#泛型)
+    - 1.5. [函数](#函数)
+        - 1.5.1. [参数](#参数)
+        - 1.5.2. [返回值](#返回值)
+        - 1.5.3. [defer](#defer)
+    - 1.6. [接口](#接口)
+    - 1.7. [Channel](#channel)
+    - 1.8. [协程](#协程)
+    - 1.9. [文件操作](#文件操作)
+    - 1.10. [Test](#test)
+    - 1.11. [JSON](#json)
+    - 1.12. [Debug](#debug)
+        - 1.12.1. [pprof](#pprof)
+    - 1.13. [部署](#部署)
+- 2. [Tips](#tips)
+    - 2.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-**目录 end**|_2023-09-08 11:55_|
+💠 2023-10-13 17:25
 ****************************************
 # Go
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -122,6 +125,9 @@ export GOSUMDB=sum.golang.google.cn
 
 注意依赖项后 有 // indirect 标记的意味着是传递依赖项
 
+
+当有依赖包更换了路径后，可以此方式统一更换: `gofmt -w -r '"github.com/dgrijalva/jwt-go" -> "github.com/golang-jwt/jwt"' .`
+
 ### go.work
 关键字和go.mod一致, 并追加了use关键字
 
@@ -153,7 +159,10 @@ replaces替换依赖仓库地址，replaces命令与go.mod指令相同，用于�
     )
     ```
 
+### 现存问题
 - [ ] 待思考: 如何像Java一样管理多模块的大项目
+- [ ] 当需要从Github上fork一个包并修改了内容及API后，想给自己其他项目依赖时， 就必须要修改这个包的 go.mod 里的 module 为自己的url路径，否则就无法被使用
+    - 这里会带来一个问题，无法直接pr回原项目 要倒腾下 go.mod
 
 ************************
 
