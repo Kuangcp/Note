@@ -7,38 +7,38 @@ categories:
     - Docker
 ---
 
-**目录 start**
+💠
 
-1. [Dockerfile](#dockerfile)
-    1. [使用入门案例](#使用入门案例)
-    1. [Tips](#tips)
-    1. [Dockerfile命令](#dockerfile命令)
-        1. [FROM](#from)
-        1. [MAINTAINER](#maintainer)
-        1. [RUN](#run)
-            1. [修改容器时区设置](#修改容器时区设置)
-        1. [CMD](#cmd)
-        1. [ENTRYPOINT](#entrypoint)
-        1. [USER](#user)
-        1. [EXPOSE](#expose)
-        1. [ENV](#env)
-        1. [LABEL](#label)
-        1. [ARG](#arg)
-        1. [COPY](#copy)
-        1. [ADD](#add)
-        1. [VOLUME](#volume)
-        1. [WORKDIR](#workdir)
-        1. [STOPSIGNAL](#stopsignal)
-        1. [HEALTHCHECK](#healthcheck)
-        1. [ONBUILD](#onbuild)
-        1. [中间镜像](#中间镜像)
-1. [Practice](#practice)
-    1. [dockerignore文件的使用](#dockerignore文件的使用)
-    1. [Exercises](#exercises)
-        1. [打包最新版git](#打包最新版git)
-        1. [Dockerfile中新建用户](#dockerfile中新建用户)
+- 1. [Dockerfile](#dockerfile)
+    - 1.1. [使用入门案例](#使用入门案例)
+    - 1.2. [Tips](#tips)
+    - 1.3. [Dockerfile命令](#dockerfile命令)
+        - 1.3.1. [FROM](#from)
+        - 1.3.2. [MAINTAINER](#maintainer)
+        - 1.3.3. [RUN](#run)
+            - 1.3.3.1. [修改容器时区设置](#修改容器时区设置)
+        - 1.3.4. [CMD](#cmd)
+        - 1.3.5. [ENTRYPOINT](#entrypoint)
+        - 1.3.6. [USER](#user)
+        - 1.3.7. [EXPOSE](#expose)
+        - 1.3.8. [ENV](#env)
+        - 1.3.9. [LABEL](#label)
+        - 1.3.10. [ARG](#arg)
+        - 1.3.11. [COPY](#copy)
+        - 1.3.12. [ADD](#add)
+        - 1.3.13. [VOLUME](#volume)
+        - 1.3.14. [WORKDIR](#workdir)
+        - 1.3.15. [STOPSIGNAL](#stopsignal)
+        - 1.3.16. [HEALTHCHECK](#healthcheck)
+        - 1.3.17. [ONBUILD](#onbuild)
+        - 1.3.18. [中间镜像](#中间镜像)
+- 2. [Practice](#practice)
+    - 2.1. [dockerignore文件的使用](#dockerignore文件的使用)
+    - 2.2. [Exercises](#exercises)
+        - 2.2.1. [打包最新版git](#打包最新版git)
+        - 2.2.2. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-**目录 end**|_2021-07-06 22:01_|
+💠 2023-10-18 13:43
 ****************************************
 # Dockerfile
 
@@ -161,8 +161,8 @@ CMD ["java", "-jar", "demo.jar"]
 > `容器入口点` 命令设置在容器启动时执行命令 一般用来做初始化容器，或者运行持久软件  
 
 - `ENTRYPOINT echo "Welcome!"` 那么每次启动容器都有这个输出
-- `ENTRYPOINT cmd param1 param2 ...`
-- `ENTRYPOINT ["cmd", "param1", "param2"...]`
+- `ENTRYPOINT java param1 param2 ...` 注意这种写法会使用默认shell去解释执行这个命令，即sh进程下才是java进程
+- `ENTRYPOINT ["java", "param1", "param2"...]` 这种写法则会直接调用java命令 
 
 ### USER
 - 切换用户，其后的命令都将以该用户执行

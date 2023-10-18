@@ -7,57 +7,57 @@ categories:
     - Docker
 ---
 
-**目录 start**
+💠
 
-1. [Docker](#docker)
-    1. [简介](#简介)
-    1. [学习资源](#学习资源)
-1. [安装与卸载](#安装与卸载)
-    1. [Linux](#linux)
-        1. [安装包安装](#安装包安装)
-        1. [不加sudo执行docker命令](#不加sudo执行docker命令)
-        1. [Ubuntu](#ubuntu)
-        1. [Debian](#debian)
-        1. [Centos](#centos)
-        1. [Arch](#arch)
-    1. [Windows](#windows)
-1. [基础管理](#基础管理)
-    1. [图形化管理工具](#图形化管理工具)
-        1. [Portainer](#portainer)
-    1. [配置镜像源](#配置镜像源)
-        1. [搭建本地镜像仓库](#搭建本地镜像仓库)
-    1. [基础命令](#基础命令)
-    1. [镜像](#镜像)
-    1. [容器](#容器)
-        1. [ps](#ps)
-        1. [create](#create)
-        1. [run](#run)
-            1. [资源限制](#资源限制)
-        1. [exec](#exec)
-        1. [commit](#commit)
-        1. [port](#port)
-    1. [端口映射](#端口映射)
-1. [数据存储](#数据存储)
-    1. [文件系统](#文件系统)
-    1. [数据卷](#数据卷)
-    1. [数据卷容器](#数据卷容器)
-1. [容器编排](#容器编排)
-    1. [Docker-Compose](#docker-compose)
-        1. [配置文件](#配置文件)
-        1. [使用命令](#使用命令)
-        1. [Tips](#tips)
-    1. [Docker-Machine](#docker-machine)
-    1. [Docker-Swarm](#docker-swarm)
-1. [网络](#网络)
-    1. [None](#none)
-    1. [Host](#host)
-    1. [Bridge](#bridge)
-    1. [User-defined](#user-defined)
-    1. [跨主机容器通信](#跨主机容器通信)
-        1. [overlay](#overlay)
-1. [Dockerfile](#dockerfile)
+- 1. [Docker](#docker)
+    - 1.1. [简介](#简介)
+    - 1.2. [学习资源](#学习资源)
+- 2. [安装与卸载](#安装与卸载)
+    - 2.1. [Linux](#linux)
+        - 2.1.1. [安装包安装](#安装包安装)
+        - 2.1.2. [不加sudo执行docker命令](#不加sudo执行docker命令)
+        - 2.1.3. [Ubuntu](#ubuntu)
+        - 2.1.4. [Debian](#debian)
+        - 2.1.5. [Centos](#centos)
+        - 2.1.6. [Arch](#arch)
+    - 2.2. [Windows](#windows)
+- 3. [基础管理](#基础管理)
+    - 3.1. [图形化管理工具](#图形化管理工具)
+        - 3.1.1. [Portainer](#portainer)
+    - 3.2. [配置镜像源](#配置镜像源)
+        - 3.2.1. [搭建本地镜像仓库](#搭建本地镜像仓库)
+    - 3.3. [基础命令](#基础命令)
+    - 3.4. [镜像](#镜像)
+    - 3.5. [容器](#容器)
+        - 3.5.1. [ps](#ps)
+        - 3.5.2. [create](#create)
+        - 3.5.3. [run](#run)
+            - 3.5.3.1. [资源限制](#资源限制)
+        - 3.5.4. [exec](#exec)
+        - 3.5.5. [commit](#commit)
+        - 3.5.6. [port](#port)
+    - 3.6. [端口映射](#端口映射)
+- 4. [数据存储](#数据存储)
+    - 4.1. [文件系统](#文件系统)
+    - 4.2. [数据卷](#数据卷)
+    - 4.3. [数据卷容器](#数据卷容器)
+- 5. [容器编排](#容器编排)
+    - 5.1. [Docker-Compose](#docker-compose)
+        - 5.1.1. [配置文件](#配置文件)
+        - 5.1.2. [使用命令](#使用命令)
+        - 5.1.3. [Tips](#tips)
+    - 5.2. [Docker-Machine](#docker-machine)
+    - 5.3. [Docker-Swarm](#docker-swarm)
+- 6. [网络](#网络)
+    - 6.1. [None](#none)
+    - 6.2. [Host](#host)
+    - 6.3. [Bridge](#bridge)
+    - 6.4. [User-defined](#user-defined)
+    - 6.5. [跨主机容器通信](#跨主机容器通信)
+        - 6.5.1. [overlay](#overlay)
+- 7. [Dockerfile](#dockerfile)
 
-**目录 end**|_2021-07-02 02:28_|
+💠 2023-10-18 13:43
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -356,7 +356,8 @@ _登录镜像仓库_
     - `-i` 交互模式运行容器(标准输入和标准输出) `docker run  -it ubuntu /bin/bash`
     - `-t` 容器启动后进入其命令行
     - `-v` 将本地文件夹建立映射到容器内 `-v 本机:容器`
-    - `-p` 端口映射左本机右容器：`-p 44:22`, 主机容器端口相同：`-p 22`, 将容器所有EXPOSE的端口映射到宿主机随机端口`-P`
+    - `-p` 端口映射左本机右容器：`-p 44:22`, 主机容器端口相同：`-p 22`
+        - 将所有EXPOSE的端口映射到宿主机上的随机端口`-P`
         - 绑定udp端口 `-p 44:22/udp`
     - `--env name="tanky"` 设置环境变量
     - `--cpu-shares` 设置CPU的相对权重，只在link之间容器的权重比例
@@ -366,7 +367,8 @@ _登录镜像仓库_
     - `--link` 链接其他容器
     - `--rm` 容器运行结束退出就自动删除该容器 注意和`-d`不能共存
     - `--restart=always` 设置该容器随dokcer 服务自启动
-    - `--hostname 容器hostname` 指定容器的hostname
+    - `--hostname hostname` 指定容器的 hostname
+    - `--init` 能增加 docker-init 进程作为1号进程 entrypoint 或 cmd 中的命令成为docker-init 子进程
 
 `-e TZ="Asia/Shanghai" -v /etc/localtime:/etc/localtime:ro`
 
