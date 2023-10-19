@@ -60,16 +60,21 @@ categories:
 > [Reducing Your Docker Image Size](https://blog.codeship.com/reduce-docker-image-size/)
 
 ************************
+## docker build 
 
-## Dockerfile命令
-- Dockerfile是一个`镜像`的表示，可以通过Dockerfile来描述构建镜像的步骤，且可以自动构建一个容器
-- 所有的 Dockerfile 命令格式都是: `INSTRUCTION arguments` 
-
-_docker build_
 - 如果文件名是默认的`Dockerfile` 就使用 `.` 
     - 否则就是 `docker build -t image:tag- < 文件名` 或者使用-f参数:
     - `-f` 指向任意位置的文件进行配置 `docker build -f /path/to/a/Dockerfile .`
 - `-t`如果构建成功 可以指定保存新镜像的image和tag (多个的话就多个 -t就行了，例如 `docker build -t shykes/myapp:1.0.2 -t shykes/myapp:latest .`)
+
+### docker buildx
+- [docker buildx](https://github.com/docker/buildx)
+
+************************
+
+## Dockerfile命令
+- Dockerfile是一个`镜像`的表示，可以通过Dockerfile来描述构建镜像的步骤，且可以自动构建一个容器
+- 所有的 Dockerfile 命令格式都是: `INSTRUCTION arguments` 
 
 > 注意
 - 在运行配置文件时，dockerfile所在目录应尽量减少无关文件，因为当前dockerfile所在目录递归传入Docker构建进程中
@@ -129,7 +134,7 @@ CMD ["java", "-jar", "demo.jar"]
         ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
         echo "Asia/Shanghai" > /etc/timezone
 
-    # Ubuntu
+    # Ubuntu 可能需要安装tzdata
     RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
         echo "Asia/Shanghai" > /etc/timezone && \
         dpkg-reconfigure -f noninteractive tzdata
