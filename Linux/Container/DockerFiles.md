@@ -144,6 +144,14 @@ CMD ["java", "-jar", "demo.jar"]
 ```
 > 对于 alpine 以及 Ubuntu ln -s 建立到时间文件的软链接就已经够了, 但是确保没问题就最好还是修改下 时区文件
 
+#### 软件安装后缓存文件的清理
+```sh
+    # Ubuntu 
+    apt update && apt install tzdata && apt autoclean && rm -rf /var/lib/apt/lists/
+
+    # Alpine 
+    apk update && apk add bash && 
+```
 **************
 
 > 关于Java的时区问题
