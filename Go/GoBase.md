@@ -17,6 +17,7 @@ categories:
         - 1.1.4. [go.mod](#gomod)
         - 1.1.5. [go.work](#gowork)
         - 1.1.6. [现存问题](#现存问题)
+        - 1.1.7. [模板项目初始化](#模板项目初始化)
     - 1.2. [数据类型](#数据类型)
         - 1.2.1. [string](#string)
         - 1.2.2. [int](#int)
@@ -44,16 +45,16 @@ categories:
 - 2. [Tips](#tips)
     - 2.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2023-10-13 17:25
+💠 2023-10-20 13:50
 ****************************************
 # Go
-> [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
+> [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)  
+> [Rethinking Visual Programming with Go](https://divan.dev/posts/visual_programming_go/)  
+> [Goplus](https://github.com/qiniu/goplus)  
 
-> [Rethinking Visual Programming with Go](https://divan.dev/posts/visual_programming_go/)
-
-> [Goplus](https://github.com/qiniu/goplus)
-
-> [project-layout](https://github.com/golang-standards/project-layout)`Go 项目结构规范`
+`Go 项目结构规范`
+> [project-layout](https://github.com/golang-standards/project-layout)  
+> [go-dev: layout](https://go.dev/doc/modules/layout)  
 
 ## Go Modules
 > 自 1.11 开始支持 [Wiki](https://github.com/golang/go/wiki/Modules)  
@@ -163,6 +164,11 @@ replaces替换依赖仓库地址，replaces命令与go.mod指令相同，用于�
 - [ ] 待思考: 如何像Java一样管理多模块的大项目
 - [ ] 当需要从Github上fork一个包并修改了内容及API后，想给自己其他项目依赖时， 就必须要修改这个包的 go.mod 里的 module 为自己的url路径，否则就无法被使用
     - 这里会带来一个问题，无法直接pr回原项目 要倒腾下 go.mod
+
+### 模板项目初始化
+> [gonew](https://pkg.go.dev/golang.org/x/tools/cmd/gonew)
+
+> [go-zero](https://github.com/zeromicro/go-zero)
 
 ************************
 
