@@ -65,7 +65,7 @@ categories:
 - 7. [Tips](#tips)
     - 7.1. [移动通信技术规格](#移动通信技术规格)
 
-💠 2023-10-13 17:25
+💠 2023-10-21 21:26
 ****************************************
 # 网络
 
@@ -341,11 +341,21 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 ************************
 
 ### WebDAV
-> WebDAV （Web-based Distributed Authoring and Versioning） 一种基于 HTTP 1.1协议的通信协议.
+> WebDAV （Web-based Distributed Authoring and Versioning） 一种基于 HTTP 1.1协议的通信协议. [Wikipedia: webdav](https://en.wikipedia.org/wiki/WebDAV)
 
 它扩展了HTTP 1.1，在GET、POST、HEAD等几个HTTP标准方法以外添加了一些新的方法，使应用程序可直接对Web Server直接读写，并支持写文件锁定(Locking)及解锁(Unlock)，还可以支持文件的版本控制。
 
 云盘类平台（例如坚果云）会提供 WebDAV 协议接口，从而让操作云盘上的文件达到与本地目录和文件的使用体验。
+
+> 相关工具
+
+客户端：
+- Windows： RaiDrive
+- Ios: ES文件浏览器
+
+服务端：
+- [go开发WebDAV服务端](https://pkg.go.dev/golang.org/x/net/webdav)
+- [go: simple webdav server](https://github.com/Kuangcp/GoBase/tree/master/toolbox/kwebdav)
 
 ************************
 
