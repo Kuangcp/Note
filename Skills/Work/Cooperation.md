@@ -19,6 +19,7 @@ categories:
 ## 代码规范
 > [Google Guide](https://google.github.io/styleguide/javaguide.html)| [FaceBook Guide](https://github.com/facebook/jcommon/wiki/Coding-Standards) | [阿里巴巴Java开发手册](https://github.com/alibaba/p3c) | [Twitter Java Style Guide](https://github.com/twitter/commons/blob/master/src/java/com/twitter/common/styleguide.md)
 
+************************
 
 ## Code Review
 > [知乎: 大家的公司的 Code Review 都是怎么做的？遇到过哪些问题？](https://www.zhihu.com/question/41089988/)
@@ -63,3 +64,33 @@ categories:
         3. 循环之前和之后一般有空行。另外，方法和类定义下方就不需要空行了吧。
 - 命名太随意
     - 英语不好的同学，要么用错英文单词，要么翻词典，整出一个专八的词汇，任何人都不认得这个单词，在 CR 时，还需要打开在线翻译时的命名，绝对不是好命名。 当然如果在线翻译都翻不出来的时候，那更头疼。如果表意错误，那更要命。
+
+
+************************
+
+## Presentation 技术分享
+从团队管理角度上运营此活动的目的，氛围，机制，以及个人角度上此活动的ROI，正反馈机制的循环。
+
+当下理解：
+- 团队： 营造技术精进氛围，集众家所长提前规避技术或管理风险。
+- 个人： 精确学习理解能力，抽象总结能力，表达能力的一次应试。情绪价值的实现，个人影响力的培养。
+
+此活动容易陷入的困境：
+1. KPI
+    - 优化措施：
+1. 分享人和参会人走过场，不尊重双方的时间成本。
+    - 优化措施：
+1. 分享质量无法满足团队不同层次成员的需求。
+    - 优化措施：
+
+************************
+
+## 技术划分 与 负责人制度
+技术划分： 单纯从技术角度对工作内某个项目各个环节按工种划分协同落地
+    - 要求：
+    - 优点：
+    - 缺点：
+负责人制度： 从项目推进和价值呈现角度选定负责人推送协同人落地
+    - 要求：
+    - 优点：
+    - 缺点：
