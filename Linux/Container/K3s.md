@@ -1,3 +1,18 @@
+---
+title: K3s
+date: 2023-10-26 00:19:02
+tags: 
+categories: 
+---
+
+💠
+
+- 1. [K3s](#k3s)
+    - 1.1. [安装&配置](#安装&配置)
+        - 1.1.1. [单机安装](#单机安装)
+
+💠 2023-10-26 00:19
+****************************************
 # K3s 
 
 ## 安装&配置
@@ -16,4 +31,4 @@
 
 > [k3s部署kuboard面板](https://www.cnblogs.com/sstu/p/16760138.html)
 
-添加Dockerhub作为ImagePullSecret: server配置为 https://docker.io 
+添加Dockerhub作为ImagePullSecret: server字段配置为 https://docker.io 

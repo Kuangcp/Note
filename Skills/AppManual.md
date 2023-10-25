@@ -67,7 +67,8 @@ categories:
 [a shell](https://holzschu.github.io/a-Shell_iOS/) `iOS13`
 
 ### Termux
-> 安卓上安装的Linux模拟器, 几乎完整的运行时，只有Docker等虚拟化不支持，其他命令和环境均支持
+> 安卓上安装的Linux模拟器, 几乎完整的运行时，只有Docker等虚拟化不支持，常见命令和开发环境均支持（前提是技术组件支持arm架构指令）  
+> 只建议 Google Play中安装，通过换机软件导入的运行时，文件及环境变量会有缺失和损坏
 
 > [wiki FAQ](https://wiki.termux.com/wiki/FAQ)
 
@@ -77,11 +78,12 @@ categories:
 - 开启ssh服务 pkg install openssh 对应端口默认 8022
 - 执行 termux-setup-storage 命令，建立常用目录软链接
 
-
 ### iSH
-> 耗电发热大，必须前台运行，
+> iOS体系内终端模拟器。耗电发热大，且必须前台运行才能保持软件内开启的各种服务线程(ssh,http,tcp等)，因为iOS会冻结后台
+
 - apk add openssh 
-- ssh root@ip ip只能通过wifi看局域网ip ifconfig无效
+- ssh root@ip 方式登录iOS设备
+    - 但是 ip只能通过设置中的wifi信息看机子的局域网ip `ifconfig命令在iSH内执行无效`
 
 ### kite
 > [Official Site](https://www.kite.com/)  
