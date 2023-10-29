@@ -1,5 +1,13 @@
 # Windows 
 
+## 安装激活
+> win10
+
+https://www.microsoft.com/en-gb/software-download/windows10ISO
+https://pureinfotech.com/create-windows-10-virtual-machine-virtualbox/
+
+https://blog.csdn.net/qq_37700257/article/details/126284196#commentBox
+
 > 常用路径 
 1. Windows 所有字体 C盘Windows/Fonts 目录下
 
