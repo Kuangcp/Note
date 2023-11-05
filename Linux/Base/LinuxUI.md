@@ -26,8 +26,6 @@ categories:
 
 > Linux UI: themes icons fonts
 
-
-
 ## 桌面管理器
 
 1. [Gnome](/Linux/Window/Gnome.md)
@@ -59,6 +57,12 @@ plank
 > [一条命令搞定Linux字体渲染](https://www.lulinux.com/archives/278)
 > [Font Configuration/Chinese (简体中文)](https://wiki.archlinux.org/index.php/Font_Configuration/Chinese_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 > [参考: Fcitx (简体中文)](https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+
+
+
+字体库
+
+[nerd fonts](https://www.nerdfonts.com/)
 
 ---
 
