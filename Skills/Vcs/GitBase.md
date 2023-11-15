@@ -407,7 +407,7 @@ git log --oneline -S "search keyword" --source --all
 > 将patch文件应用到 index区。  Apply a patch to files and/or to the index
 
 - `git apply --ignore-space-change --ignore-whitespace first.patch`
-- `patch -p1 < first.patch`
+- `patch -p1 < first.patch` git apply失败可以尝试这个方式
 
 ---
 
