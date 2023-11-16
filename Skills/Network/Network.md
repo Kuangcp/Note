@@ -463,7 +463,8 @@ Socks代理只是简单地传递数据包，而不必关心是何种应用协议
 
 > [MDN: PAC File](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_(PAC)_file)
 
-本质上是一个js文件，提供了FindProxyForURL函数的自定义实现（依据不同的URL选择不同的Proxy或者不使用Proxy）
+本质上是一个js文件，提供了FindProxyForURL函数的自定义实现（依据不同的URL选择不同的Proxy或者不使用Proxy）。  
+大多数操作系统的WIFI设置中都可以设置该地址，从而在操作系统层面让网络请求走这个代理规则`常见的软件可切换是否使用该代理设置 浏览器 IM工具等`。  
 
 > 示例1：全部走代理
 ```js
@@ -508,6 +509,15 @@ function FindProxyForURL(url, host) {
 透明代理的这层可以同时部署正向代理和反向代理
 
 应用方无感使用缓存技术提高访问速度，能提高网络安全性(内网中的硬件防火墙。企业中的行为管理软件)
+
+## 应用的代理设置
+### Java
+1. JVM Connection 方式 
+    - JVM参数 -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=1234 `注意不是应用参数，是JVM参数和内存设置等参数同等级`
+2. RestTemplate 
+    - [Proxies With RestTemplate](https://www.baeldung.com/java-resttemplate-proxy)
+3. HttpClient 
+    - HttpClientBuilder.setProxy(new HttpHost("127.0.0.1", 1234));
 
 ************************
 # 网络工具

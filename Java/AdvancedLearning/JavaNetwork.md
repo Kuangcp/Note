@@ -19,6 +19,7 @@ categories:
 # Java网络编程
 
 > [参考: Java网络教程](http://ifeve.com/java-network/)
+> [java proxy](https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html)
 
 ## 基础
 ### Socket
