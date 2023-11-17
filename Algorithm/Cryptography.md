@@ -326,6 +326,10 @@ SHA-1 是由 NIST（National Institute of Standards and Technology）设计，�
 
 ### RIPEMD-160
 
+
+### BCrypt
+- [Wikipedia](https://en.wikipedia.org/wiki/Bcrypt)
+
 ************************
 
 ## 消息认证码
