@@ -56,7 +56,7 @@ categories:
         - 1.7.7. [chroot](#chroot)
     - 1.8. [关机重启](#关机重启)
 
-💠 2023-10-13 18:44
+💠 2023-11-20 10:45
 ****************************************
 # Linux性能分析和管理
 
@@ -89,6 +89,8 @@ categories:
 
 - top
 - [htop](https://github.com/hishamhm/htop)`Htop更好用`
+- gotop 
+- ytop
 - ctop 
 - [Glances](https://github.com/nicolargo/glances) `信息全面 资源消耗大些`
 - nmon
