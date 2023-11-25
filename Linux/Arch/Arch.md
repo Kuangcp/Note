@@ -151,3 +151,6 @@ categories:
       options hid_apple fnmode=2
   ```
 - 或者将命令写入登录shell /etc/profile
+
+> keyring 错误
+yay -Sy archlinux-keyring
