@@ -85,18 +85,22 @@ categories:
         - p : 输出修改的行内容
         - w filename : 替换后的文件写入到新文件
 
+多指令执行 `sed 's/a//g;s/b//g'`
+
 >1. 截取指定行数到新文件 `sed -n ‘开始行数，结束行数p’ info.log > newFile.log`
+>1. 文件内容倒置 `sed -i '1!G;h;$!d' filename`
+>1. 新增内容到第一行 `sed -i '1 i\any text' file`
+
 >1. 修改配置文件中name的值为123 `sed -i "s/name=.*/name=123/g" config.conf`
 >1. 修改第3行 `sed -i '3 s/name/1/g'`
+
 >1. 匹配行的行尾追加 `sed -i 's/end.*/& ;/g' file`
 >1. 匹配行后第三行行尾追加`sed -i '/gradle/{n;n;n; s/.*/& 6.0/;}' file`
 >1. CRLF -> LF `sed -i 's/\r//g' file`  
     > 配合 git 使用: `git ls-files| xargs sed -i 's/\r//g'`
 >1. 注意特殊字符的转义 `git ls-files | xargs  sed -i 's/@a.*/\//g'`
 >1. 去除换行符 `sed -i ':label;N;s/\n/ /;b label'` [参考](http://www.cnblogs.com/lykm02/p/4479098.html)
->1. 文件内容倒置 `sed -i '1!G;h;$!d' filename`
 >1. 处理管道流 `echo syx is a good body | sed 's/syx/zsf/'`  
->1. 多个指令 `sed 's/a//g;s/b//g'`
 
 - [参考: linux sed 命令单行任务快速参考](http://www.techug.com/post/linux-sed1line.html)
 - [参考：sed 查找与替换](http://wiki.jikexueyuan.com/project/shell-learning/sed-search-and-replace.html)
