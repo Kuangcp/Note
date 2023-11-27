@@ -64,7 +64,7 @@ categories:
 > 2. Arch: `yay terminal`
 
 终端可参考功能点： 终端透明化，终端背景图，快捷键设置，终端内颜色自定义，下拉式，标签水平垂直拆分，鼠标键盘交互性，资源占用少
-终极工具 [Tmux](/Linux/Tool/Tmux.md)  远离终端模拟器的对比和选择
+终极工具 [Tmux](/Linux/Tool/Tmux.md) 可以摆脱终端模拟器的对比和选择，选择最简单的模拟器即可
 
 | 终端                | 优点                                            | 缺点                                                | 备注                                    |
 | :------------------ | :---------------------------------------------- | :-------------------------------------------------- | :-------------------------------------- |
@@ -77,7 +77,7 @@ categories:
 | `deepin-terminal` | 功能很多，主题很多，功能最为强大                | 字体仅可选择内置不可自定义                          |                                         |
 | `tilda`           | 内嵌于桌面上, 小命令方便                        | 需要查看文件时不方便                                |                                         |
 | `terminology`     | 样式高度自定义                                  |                                                     |                                         |
-|                     |                                                 |                                                     |                                         |
+| `tilix`           |                                               |                                                     |                                         |
 
 > 备注 sakura xfce4-terminal 快捷键配置
 
@@ -172,6 +172,23 @@ Fuzzy Finder in Rust!
 
 `alias cds='cd $(fd ".*" -t d | sk)'` 模糊进入目录
 
+### xdotool 
+command-line X11 automation tool `可以控制指定窗口激活关闭，最大最小化，输入快捷键等`
+
+> 将该脚本配置为快捷键后，实现效果：激活已有终端的窗口，或者启动终端
+```sh 
+  #!/bin/bash
+
+  PID=$(pgrep -x xfce4-terminal)
+  if [[ $PID -ne "" ]]
+  then
+      xdotool windowactivate `xdotool search --pid $PID | tail -1`
+  else
+      gnome-terminal
+  fi
+```
+
+************************
 
 ## 远程工具
 
