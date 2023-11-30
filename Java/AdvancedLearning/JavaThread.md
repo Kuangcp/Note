@@ -18,13 +18,14 @@ categories:
         - 1.3.3. [销毁](#销毁)
     - 1.4. [ThreadLocal](#threadlocal)
     - 1.5. [Signal](#signal)
-        - 1.5.1. [优雅关机](#优雅关机)
+        - 1.5.1. [Hook](#hook)
+        - 1.5.2. [优雅关机](#优雅关机)
     - 1.6. [线程池监控](#线程池监控)
 - 2. [协程](#协程)
     - 2.1. [Loom](#loom)
     - 2.2. [Quasar](#quasar)
 
-💠 2023-12-01 01:34:16
+💠 2023-12-01 01:45:30
 ****************************************
 # Java线程
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/thread/src/main/java/com/github/kuangcp)
@@ -92,8 +93,10 @@ _Thread类的target属性_
 - TERM 15信号：默认退出进程信号
 - INT 2信号：IDEA中停止JVM时发出的就是该信号
 
+相关JVM参数 -Xrs 忽略（1,2,3,4,5,6,7,8,11,15） [oracle java command](https://docs.oracle.com/en/java/javase/17/docs/specs/man/java.html)`注意Linux和Windows实现及信号量不一样`
+- 忽略的逻辑实现为：JVM接收信号量然后什么都不做。注意此时Java应用无法监听对应的信号量，注册监听时会报错
 
-> Hook  
+### Hook  
 - 注册Hook：`Runtime.getRuntime().addShutdownHook(Thread thread)`
 - 在JVM正常退出时会调用已注册的Hook逻辑
     1. 例如 System.exit(), 或者 Java 进程收到退出的信号 SIGTERM SIGINT SIGQUIT 等等
