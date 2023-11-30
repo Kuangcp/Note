@@ -9,7 +9,7 @@ categories:
 
 💠
 
-- 1. [线程的基础学习](#线程的基础学习)
+- 1. [Java线程](#java线程)
     - 1.1. [基础](#基础)
     - 1.2. [线程的意义](#线程的意义)
     - 1.3. [线程的生命周期](#线程的生命周期)
@@ -17,14 +17,16 @@ categories:
         - 1.3.2. [控制](#控制)
         - 1.3.3. [销毁](#销毁)
     - 1.4. [ThreadLocal](#threadlocal)
-    - 1.5. [线程池监控](#线程池监控)
+    - 1.5. [Signal](#signal)
+        - 1.5.1. [优雅关机](#优雅关机)
+    - 1.6. [线程池监控](#线程池监控)
 - 2. [协程](#协程)
     - 2.1. [Loom](#loom)
     - 2.2. [Quasar](#quasar)
 
-💠 2023-11-30 16:25:38
+💠 2023-12-01 01:34:16
 ****************************************
-# 线程的基础学习
+# Java线程
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/thread/src/main/java/com/github/kuangcp)
 
 ## 基础
@@ -80,6 +82,41 @@ _Thread类的target属性_
 ## ThreadLocal 
 > [alibaba TTL 使用场景](https://github.com/alibaba/transmittable-thread-local/issues/123)
 
+************************
+## Signal
+> 由于Java是跨平台语言，主要考虑Window和unix系平台，后者在生产中使用居多，因此重点关注
+
+[Linux的Signal](/Linux/Base/LinuxPerformance.md#kill)   
+快速理解：
+- Kill 9信号：无法监听和屏蔽 
+- TERM 15信号：默认退出进程信号
+- INT 2信号：IDEA中停止JVM时发出的就是该信号
+
+
+> Hook  
+- 注册Hook：`Runtime.getRuntime().addShutdownHook(Thread thread)`
+- 在JVM正常退出时会调用已注册的Hook逻辑
+    1. 例如 System.exit(), 或者 Java 进程收到退出的信号 SIGTERM SIGINT SIGQUIT 等等
+    1. 但是 SIGKILL、 Runtime.halt()、断电、系统Crash 等情况下， `没有时机执行Hook`。
+    1. 不能在Hook逻辑中调用`System.exit()`, 否则会阻塞JVM退出，但是可以调用`Runtime.halt()`
+    1. 不能在Hook逻辑中增删Hook
+    1. 在`System.exit()`执行后才注册的Hook逻辑不会被执行
+    1. `Hook逻辑执行时完整性不可控` 操作系统可控制当对JVM发出TERM(15)信号后一段时间未结束时可强制结束（9），此时Hook逻辑可能才执行了一半
+    1. 注册的Hook是按先后执行的，但是其中任意一个Hook抛出未处理的异常时会中断自身及后续Hook逻辑
+
+### 优雅关机
+> Java层面
+1. 线程池设置关闭时等待已有任务线程执行完成
+1. 手动接收信号量 追加资源关闭逻辑：MQ，缓存，数据库
+
+> 环境层面  
+
+当关闭服务器A时，先将该服务器的入口流量屏蔽，防止新的请求进入，然后等服务器完成原有请求的响应，以及一些资源清理行为后，完全关闭
+
+[参考: Kubernetes 中如何保证优雅地停止 Pod](https://cloud.tencent.com/developer/article/1409225)  
+[参考: JVM安全退出（如何优雅的关闭java服务）](https://www.cnblogs.com/yuandluck/p/9517700.html)  
+
+************************
 
 ## 线程池监控
 [美团 线程池动态监控](https://github.com/dromara/dynamic-tp)  
