@@ -7,27 +7,30 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [线程的基础学习](#线程的基础学习)
-    1. [基础](#基础)
-    1. [线程的意义](#线程的意义)
-    1. [线程的生命周期](#线程的生命周期)
-        1. [创建](#创建)
-        1. [控制](#控制)
-        1. [销毁](#销毁)
-    1. [线程的优先级](#线程的优先级)
-1. [协程](#协程)
-    1. [Loom](#loom)
-    1. [Quasar](#quasar)
+- 1. [线程的基础学习](#线程的基础学习)
+    - 1.1. [基础](#基础)
+    - 1.2. [线程的意义](#线程的意义)
+    - 1.3. [线程的生命周期](#线程的生命周期)
+        - 1.3.1. [创建](#创建)
+        - 1.3.2. [控制](#控制)
+        - 1.3.3. [销毁](#销毁)
+    - 1.4. [ThreadLocal](#threadlocal)
+    - 1.5. [线程池监控](#线程池监控)
+- 2. [协程](#协程)
+    - 2.1. [Loom](#loom)
+    - 2.2. [Quasar](#quasar)
 
-**目录 end**|_2021-04-28 15:31_|
+💠 2023-11-30 16:25:38
 ****************************************
 # 线程的基础学习
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/thread/src/main/java/com/github/kuangcp)
 
 ## 基础
 - [码农翻身:我是一个线程](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=416915373&idx=1&sn=f80a13b099237534a3ef777d511d831a&scene=21#wechat_redirect) | [码农翻身:编程世界的那把锁](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513653&idx=1&sn=e30c18c0c1780fb3ef0cdb858ee5201e&chksm=80d67af6b7a1f3e059466302c2c04c14d097c1a5de01cf986df84d4677299542f12b974dfde3&scene=21#wechat_redirect) | [码农翻身:加锁还是不加锁，这是一个问题 ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513692&idx=1&sn=ef2416a4bb96d64db77e32d5b4c7967e&chksm=80d67a9fb7a1f3898e513cc1d9e96841610bb84aed2dc24cab2d403e74e317e3c447e45e7611&scene=21#wechat_redirect)
+
+> 线程优先级： 多个线程同时运行时,由线程调度器来决定哪些线程运行,哪些等待以及线程切换的时间点. 由于各个操作系统的线程调度器的实现各不相同, 所以依赖JDK来设置线程优先级策略是错误和平台不可移植性的.
 
 ## 线程的意义
 ## 线程的生命周期
@@ -75,13 +78,13 @@ _Thread类的target属性_
 ************************
 
 ## ThreadLocal 
-> [TTL 使用场景](https://github.com/alibaba/transmittable-thread-local/issues/123)
+> [alibaba TTL 使用场景](https://github.com/alibaba/transmittable-thread-local/issues/123)
 
-************************
-## 线程的优先级
-> 多个线程同时运行时,由线程调度器来决定哪些线程运行,哪些等待以及线程切换的时间点. 由于各个操作系统的线程调度器的实现各不相同, 所以依赖JDK来设置线程优先级策略是错误和平台不可移植性的.
 
-http://www.threadlocal.cn/
+## 线程池监控
+[美团 线程池动态监控](https://github.com/dromara/dynamic-tp)  
+[线程池如何监控，才能帮助开发者快速定位线上错误？](https://heapdump.cn/article/4012121)`采集到数据库表里`  
+
 
 ************************
 
