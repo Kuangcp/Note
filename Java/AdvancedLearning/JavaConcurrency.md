@@ -7,38 +7,35 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [Java并发](#java并发)
-    1. [JMM Java内存模型](#jmm-java内存模型)
-    1. [理论知识](#理论知识)
-        1. [可能的问题](#可能的问题)
-        1. [好的习惯](#好的习惯)
-    1. [块结构并发 Java5之前](#块结构并发-java5之前)
-        1. [synchronized](#synchronized)
-            1. [正确使用锁](#正确使用锁)
-        1. [volatile](#volatile)
-            1. [正确使用](#正确使用)
-    1. [现代并发JUC包](#现代并发juc包)
-        1. [概念](#概念)
-            1. [CAS指令](#cas指令)
-            1. [原子类](#原子类)
-            1. [读写锁](#读写锁)
-        1. [具体实现](#具体实现)
-            1. [Lock](#lock)
-            1. [CountDownLatch 锁存器](#countdownlatch-锁存器)
-            1. [ConcurrentHashMap](#concurrenthashmap)
-            1. [CopyOnWriteArrayList](#copyonwritearraylist)
-    1. [Queue](#queue)
-        1. [BlockingQueue](#blockingqueue)
-        1. [TransferQueue](#transferqueue)
-    1. [控制执行](#控制执行)
-        1. [任务建模](#任务建模)
-    1. [线程池](#线程池)
-        1. [ScheduledThreadPoolExecutor](#scheduledthreadpoolexecutor)
-    1. [分支合并框架 Fork/Join](#分支合并框架-forkjoin)
+- 1. [Java并发](#java并发)
+    - 1.1. [JMM Java内存模型](#jmm-java内存模型)
+    - 1.2. [理论知识](#理论知识)
+        - 1.2.1. [可能的问题](#可能的问题)
+        - 1.2.2. [好的习惯](#好的习惯)
+    - 1.3. [块结构并发 Java5之前](#块结构并发-java5之前)
+        - 1.3.1. [synchronized](#synchronized)
+            - 1.3.1.1. [正确使用锁](#正确使用锁)
+        - 1.3.2. [volatile](#volatile)
+            - 1.3.2.1. [正确使用](#正确使用)
+    - 1.4. [现代并发JUC包](#现代并发juc包)
+        - 1.4.1. [概念](#概念)
+            - 1.4.1.1. [CAS指令](#cas指令)
+            - 1.4.1.2. [原子类](#原子类)
+            - 1.4.1.3. [读写锁](#读写锁)
+        - 1.4.2. [具体实现](#具体实现)
+            - 1.4.2.1. [Lock](#lock)
+            - 1.4.2.2. [CountDownLatch 锁存器](#countdownlatch-锁存器)
+            - 1.4.2.3. [ConcurrentHashMap](#concurrenthashmap)
+            - 1.4.2.4. [CopyOnWriteArrayList](#copyonwritearraylist)
+    - 1.5. [Queue](#queue)
+        - 1.5.1. [BlockingQueue](#blockingqueue)
+        - 1.5.2. [TransferQueue](#transferqueue)
+    - 1.6. [控制执行](#控制执行)
+        - 1.6.1. [任务建模](#任务建模)
 
-**目录 end**|_2023-09-25 13:21_|
+💠 2023-12-02 17:48:21
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -427,51 +424,3 @@ public int current(){
 - FutureTask是Future接口的常用实现类， 并且是实现了Runnable接口。所以提供的方法是俩接口的方法
     - 提供了两个构造器，一个是Callable为参数，另一个以Runnable为参数
 - 可以基于FutureTask的Runnable特性，把任务写成Callable然后封装进一个有执行者地调度并在必要时可以取消的FutureTask
-
-**************************
-
-## 线程池
-> [Java线程池实现原理及其在美团业务中的实践](https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html)
-
-
-> 依赖 common-lang3, 快速创建命名策略的线程池
-```java
-new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
-        new LinkedBlockingQueue<>(), new BasicThreadFactory.Builder().namingPattern("test-%d").build());
-```
-
-************************
-
-> [根据CPU核心数确定线程池并发线程数](https://www.cnblogs.com/dennyzhangdd/p/6909771.html)  
-> [如何设置线程池参数？](https://www.cnblogs.com/thisiswhy/p/12690630.html)
-
-[线程池实时管理与监控工具的实现与思考](https://www.jianshu.com/p/6f6e2bcb8128)
-
-公式1：Nthreads = Ncpu * Ucpu * W/C
-
-    Ncpu = cpu的核心数， 
-    Ucpu = cpu的利用率
-    W = 线程等待时间
-    C = 线程执行计算时间
-
-此方案偏理论化，cpu的实际利用率（即分配多少cpu给线程池使用）和线程的计算，等待时间非常难评估，并且最后计算出来的结果也很容易偏离实际应用场景。
-
-公式2：coreSize = 2 * Ncpu , maxSize = 25 * Ncpu
-
-实际使用过程中不同的业务对线程池的需求不一样，所以统一采用cpu核心数来配置显然不太合理
-
-公式3：coreSize = tps * time , maxSize = tps * time * (1.7~2)
-
-### ScheduledThreadPoolExecutor
-> ScheduledThreadPoolExecutor  简称 STPE 线程池类中很重要的类
-
-- 线程池的大小可以预定义， 也可自适应
-- 所安排的任务可以定期执行，也可只运行一次
-- STPE扩展了 ThreadPoolExecutor 类，很相似但不具备定期调度能力
-    - STPE和并发包里的类结合使用是常见的模式之一
-
-************************
-
-## 分支合并框架 Fork/Join
-> [Fork Join](/Java/AdvancedLearning/Concurrency/ForkAndJoin.md)
-
