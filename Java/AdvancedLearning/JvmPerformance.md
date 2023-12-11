@@ -7,36 +7,39 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [Java的性能调优](#java的性能调优)
-    1. [JVM参数调优](#jvm参数调优)
-        1. [GC调优](#gc调优)
-    1. [内存优化](#内存优化)
-        1. [堆外内存](#堆外内存)
-        1. [Metaspace](#metaspace)
-1. [JDK自带工具](#jdk自带工具)
-    1. [java](#java)
-        1. [环境变量的使用](#环境变量的使用)
-    1. [jps](#jps)
-    1. [jstat](#jstat)
-    1. [jinfo](#jinfo)
-    1. [jmap](#jmap)
-    1. [jhat](#jhat)
-    1. [jstack](#jstack)
-    1. [jcmd](#jcmd)
-1. [终端类工具](#终端类工具)
-    1. [Arthas](#arthas)
-    1. [async-profiler](#async-profiler)
-1. [图形化工具](#图形化工具)
-    1. [JProfiler](#jprofiler)
-    1. [GCViewer](#gcviewer)
-    1. [Visualvm](#visualvm)
-    1. [MAT](#mat)
-    1. [JMC](#jmc)
-    1. [IBM Heap Analyzer](#ibm-heap-analyzer)
+- 1. [Java的性能调优](#java的性能调优)
+    - 1.1. [JVM参数调优](#jvm参数调优)
+        - 1.1.1. [GC调优](#gc调优)
+    - 1.2. [内存优化](#内存优化)
+        - 1.2.1. [堆外内存](#堆外内存)
+        - 1.2.2. [Metaspace](#metaspace)
+- 2. [JDK自带工具](#jdk自带工具)
+    - 2.1. [java](#java)
+        - 2.1.1. [环境变量的使用](#环境变量的使用)
+    - 2.2. [jps](#jps)
+    - 2.3. [jstat](#jstat)
+    - 2.4. [jinfo](#jinfo)
+    - 2.5. [jmap](#jmap)
+    - 2.6. [jhat](#jhat)
+    - 2.7. [jstack](#jstack)
+        - 2.7.1. [实现原理](#实现原理)
+    - 2.8. [jcmd](#jcmd)
+    - 2.9. [常见问题](#常见问题)
+        - 2.9.1. [Unable to Open Socket File](#unable-to-open-socket-file)
+- 3. [终端类工具](#终端类工具)
+    - 3.1. [Arthas](#arthas)
+    - 3.2. [async-profiler](#async-profiler)
+- 4. [图形化工具](#图形化工具)
+    - 4.1. [JProfiler](#jprofiler)
+    - 4.2. [GCViewer](#gcviewer)
+    - 4.3. [Visualvm](#visualvm)
+    - 4.4. [MAT](#mat)
+    - 4.5. [JMC](#jmc)
+    - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-**目录 end**|_2023-09-27 20:37_|
+💠 2023-12-11 11:55:01
 ****************************************
 
 # Java的性能调优
@@ -188,9 +191,12 @@ categories:
 ## jstack 
 > jstack [option] pid  主要用来查看某个Java进程内的线程堆栈信息
 - Option:
-    - -F: 强制产生一个线程dump
+    - -F: 强制产生一个线程dump 
+        - `注意`此方式得到的dump**缺失很多信息**， 只有线程栈和操作系统线程id，没有线程名，线程cid，锁等信息
+        - 而且相对于没有-F的方式，实现原理完全不一样，见下文链接
     - -m: 打印java和native frames
     - -l: 打印关于锁的附加信息
+    - -J-d64: 64位模式
 
 > 找出占用CPU最高的线程:
 1. `jps 或者 ps aux | grep xxx` 得到对应Java进程id
@@ -198,7 +204,28 @@ categories:
 1. `printf %x 线程id` 得到 16进制线程id
 1. `jstack 进程id | grep -A 20 16进制线程id` 查看该线程的栈,进而分析到代码
 
+> [How to Analyze Java Thread Dumps](https://www.baeldung.com/java-analyze-thread-dumps)
+> [OpenJDK11 jstack output explanation](https://stackoverflow.com/questions/76476637/openjdk11-jstack-output-explanation)
+
+### 实现原理
+- [Jstack 源码分析](https://zhuanlan.zhihu.com/p/36224094)
+
+[jmap -F and jstack -F](https://stackoverflow.com/questions/26140182/running-jmap-getting-unable-to-open-socket-file)`jmap和jstack 默认及加-F选项背后实现机制及优缺点`
+- [Dynamic Attach Mechanism](http://openjdk.java.net/groups/hotspot/docs/Serviceability.html#battach)
+- [HotSpot Serviceability Agent](http://openjdk.java.net/groups/hotspot/docs/Serviceability.html#bsa)
+
 ## jcmd
+
+************************
+
+## 常见问题
+### Unable to Open Socket File
+> [jmap Error “Unable to Open Socket File”](https://www.baeldung.com/linux/jmap-unable-to-open-socket-file-heap-dump)
+- 不是同用户及用户组 uid和gid
+- 目标JVM不健康
+- 目标JVM使用了`-XX:+DisableAttachMechanism`JVM参数
+- 执行工具的JVM和目标JVM不是同一个版本（最好保持一致，如果版本相差过大，内存布局设计不一样，就会无法正常解析结果）
+- /tmp 目录下无法创建命令使用的临时文件，或是来不及使用就被`systemd-tmpfiles`清理了 `/tmp/.java_pidXXX`
 
 ********************
 

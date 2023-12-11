@@ -7,36 +7,36 @@ categories:
     - Linux
 ---
 
-**目录 start**
+💠
 
-1. [Linux 目录结构](#linux-目录结构)
-    1. [/boot](#boot)
-    1. [/bin 和 /sbin](#bin-和-sbin)
-    1. [/root](#root)
-    1. [/run](#run)
-    1. [/home](#home)
-    1. [/lost+found](#lost+found)
-    1. [/proc](#proc)
-        1. [网络](#网络)
-    1. [/usr](#usr)
-        1. [/usr/local](#usrlocal)
-    1. [/etc](#etc)
-        1. [/etc/passwd](#etcpasswd)
-        1. [/etc/shadow](#etcshadow)
-        1. [/etc/alternatives](#etcalternatives)
-        1. [/etc/apt](#etcapt)
-        1. [/etc/fstab](#etcfstab)
-        1. [/etc/systemd](#etcsystemd)
-    1. [/lib](#lib)
-    1. [/dev](#dev)
-    1. [/tmp](#tmp)
-    1. [/usr](#usr)
-    1. [/var](#var)
-1. [使用](#使用)
-    1. [查看发行版](#查看发行版)
-    1. [查看系统所有用户信息](#查看系统所有用户信息)
+- 1. [Linux 目录结构](#linux-目录结构)
+    - 1.1. [/boot](#boot)
+    - 1.2. [/bin 和 /sbin](#bin-和-sbin)
+    - 1.3. [/root](#root)
+    - 1.4. [/run](#run)
+    - 1.5. [/home](#home)
+    - 1.6. [/lost+found](#lost+found)
+    - 1.7. [/proc](#proc)
+        - 1.7.1. [网络](#网络)
+    - 1.8. [/usr](#usr)
+        - 1.8.1. [/usr/local](#usrlocal)
+    - 1.9. [/etc](#etc)
+        - 1.9.1. [/etc/passwd](#etcpasswd)
+        - 1.9.2. [/etc/shadow](#etcshadow)
+        - 1.9.3. [/etc/alternatives](#etcalternatives)
+        - 1.9.4. [/etc/apt](#etcapt)
+        - 1.9.5. [/etc/fstab](#etcfstab)
+        - 1.9.6. [/etc/systemd](#etcsystemd)
+    - 1.10. [/lib](#lib)
+    - 1.11. [/dev](#dev)
+    - 1.12. [/tmp](#tmp)
+    - 1.13. [/usr](#usr)
+    - 1.14. [/var](#var)
+- 2. [使用](#使用)
+    - 2.1. [查看发行版](#查看发行版)
+    - 2.2. [查看系统所有用户信息](#查看系统所有用户信息)
 
-**目录 end**|_2021-06-05 10:44_|
+💠 2023-12-11 11:55:01
 ****************************************
 # Linux 目录结构
 > Linux 系统目录结构的大致分布以及说明
@@ -186,13 +186,16 @@ systemd的配置文件目录，此目录是Linux启动的重要部分，用来�
 ***************************
 
 ## /tmp
-> 应用缓存目录, 存放缓存文件, 在系统重启后就会被清理 
+> 应用缓存目录, 存放缓存文件
+
+系统重启时会被清空，以及操作系统运行时不定期创建和清除文件
 
 - 在安装Linux时如果没有明确的分区, 就会属于 / 分区, 那么就要给 / 留有足够的大小, 不然 /tmp 分区不足会导致应用运行异常
     - 例如 Tomcat 在运行时就需要使用
 - 清理的机制
     - 如果新建文件在 /tmp 目录下， 文件的内容会随着系统重启而消失 但是文件依旧存在(空文件)
 
+- systemd内核下有 `systemd-tmpfiles` 管理临时目录的生命周期
 - tmpwatch `定时清理 tmp 目录,类似于 watchdog`
 
 ## /usr
