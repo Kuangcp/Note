@@ -8,58 +8,59 @@ categories:
     - Linux
 ---
 
-**目录 start**
+💠
 
-1. [Linux网络管理](#linux网络管理)
-    1. [内核配置](#内核配置)
-    1. [DNS](#dns)
-        1. [nslookup](#nslookup)
-        1. [dig](#dig)
-        1. [修改DNS](#修改dns)
-    1. [Route](#route)
-    1. [IPv4和IPv6](#ipv4和ipv6)
-    1. [Bridge](#bridge)
-    1. [基础命令工具](#基础命令工具)
-        1. [ping](#ping)
-        1. [traceroute](#traceroute)
-        1. [tc](#tc)
-        1. [iperf3](#iperf3)
-        1. [netstat](#netstat)
-        1. [iproute2](#iproute2)
-        1. [tcpdump](#tcpdump)
-        1. [netcat](#netcat)
-        1. [scp](#scp)
-        1. [rsync](#rsync)
-        1. [curl](#curl)
-        1. [wget](#wget)
-1. [证书](#证书)
-    1. [自签发证书](#自签发证书)
-1. [常用服务](#常用服务)
-    1. [邮件服务器postfix和devecot](#邮件服务器postfix和devecot)
-    1. [FTP](#ftp)
-        1. [使用](#使用)
-        1. [手机和电脑之间传输管理文件](#手机和电脑之间传输管理文件)
-            1. [手机](#手机)
-            1. [电脑](#电脑)
-        1. [配置FTP服务器](#配置ftp服务器)
-    1. [SSH](#ssh)
-    1. [Telnet](#telnet)
-    1. [VPN](#vpn)
-        1. [tun/tap](#tuntap)
-        1. [shadowsocks](#shadowsocks)
-        1. [OpenVPN](#openvpn)
-    1. [代理](#代理)
-        1. [proxychains](#proxychains)
-    1. [防火墙](#防火墙)
-        1. [iptables](#iptables)
-    1. [远程桌面](#远程桌面)
-        1. [VNC](#vnc)
-        1. [Xrdp](#xrdp)
-1. [Tips](#tips)
-    1. [查看进程占用的端口](#查看进程占用的端口)
-    1. [网络问题排查](#网络问题排查)
+- 1. [Linux网络管理](#linux网络管理)
+    - 1.1. [内核配置](#内核配置)
+    - 1.2. [DNS](#dns)
+        - 1.2.1. [nslookup](#nslookup)
+        - 1.2.2. [dig](#dig)
+        - 1.2.3. [修改DNS](#修改dns)
+    - 1.3. [Route](#route)
+    - 1.4. [IPv4和IPv6](#ipv4和ipv6)
+    - 1.5. [Bridge](#bridge)
+    - 1.6. [基础命令工具](#基础命令工具)
+        - 1.6.1. [ping](#ping)
+        - 1.6.2. [traceroute](#traceroute)
+        - 1.6.3. [tc 流量控制](#tc-流量控制)
+        - 1.6.4. [iperf3](#iperf3)
+        - 1.6.5. [netstat](#netstat)
+        - 1.6.6. [iproute2](#iproute2)
+        - 1.6.7. [tcpdump](#tcpdump)
+        - 1.6.8. [netcat](#netcat)
+        - 1.6.9. [scp](#scp)
+        - 1.6.10. [rsync](#rsync)
+        - 1.6.11. [curl](#curl)
+        - 1.6.12. [wget](#wget)
+- 2. [证书](#证书)
+    - 2.1. [自签发证书](#自签发证书)
+- 3. [常用服务](#常用服务)
+    - 3.1. [邮件服务器postfix和devecot](#邮件服务器postfix和devecot)
+    - 3.2. [FTP](#ftp)
+        - 3.2.1. [使用](#使用)
+        - 3.2.2. [手机和电脑之间传输管理文件](#手机和电脑之间传输管理文件)
+            - 3.2.2.1. [手机](#手机)
+            - 3.2.2.2. [电脑](#电脑)
+        - 3.2.3. [配置FTP服务器](#配置ftp服务器)
+    - 3.3. [SSH](#ssh)
+    - 3.4. [Telnet](#telnet)
+    - 3.5. [VPN](#vpn)
+        - 3.5.1. [tun/tap](#tuntap)
+        - 3.5.2. [shadowsocks](#shadowsocks)
+        - 3.5.3. [OpenVPN](#openvpn)
+    - 3.6. [代理](#代理)
+        - 3.6.1. [proxychains](#proxychains)
+    - 3.7. [防火墙](#防火墙)
+        - 3.7.1. [iptables](#iptables)
+            - 3.7.1.1. [四层协议端口转发](#四层协议端口转发)
+    - 3.8. [远程桌面](#远程桌面)
+        - 3.8.1. [VNC](#vnc)
+        - 3.8.2. [Xrdp](#xrdp)
+- 4. [Tips](#tips)
+    - 4.1. [查看进程占用的端口](#查看进程占用的端口)
+    - 4.2. [网络问题排查](#网络问题排查)
 
-**目录 end**|_2023-08-28 15:52_|
+💠 2023-12-12 00:10:45
 ****************************************
 # Linux网络管理
 ## 内核配置
@@ -147,7 +148,7 @@ categories:
 > 参考书籍 《Linux 大棚命令百篇》
 
 ### ping
-> inetutils-ping
+> inetutils-ping ICMP protocol
 
 - ping URL ： Linux是默认无休止的
     - -c 次数
@@ -163,6 +164,7 @@ categories:
 > [gping](https://github.com/orf/gping)  
 
 - ping -s 1472 -M do 192.168.15.205 测试网络环境下最大可用MTU
+- [Github: tcping](https://github.com/pouriyajamshidi/tcping) `测试tcp连接延迟`
 
 ### traceroute
 > 显示网络数据包传输到指定主机的路径信息，追踪数据传输路由状况

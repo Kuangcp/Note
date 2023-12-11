@@ -5,39 +5,34 @@ tags:
 categories: 
 ---
 
-**目录 start**
+💠
 
-1. [GC](#gc)
-    1. [GC类型](#gc类型)
-    1. [GC术语](#gc术语)
-        1. [STW](#stw)
-    1. [内存分代](#内存分代)
-    1. [判断存活算法](#判断存活算法)
-        1. [引用计数算法](#引用计数算法)
-        1. [可达性分析算法](#可达性分析算法)
-    1. [GC算法](#gc算法)
-        1. [标记清除算法](#标记清除算法)
-        1. [复制算法](#复制算法)
-        1. [标记整理算法](#标记整理算法)
-1. [垃圾收集器](#垃圾收集器)
-    1. [Serial](#serial)
-    1. [ParNew](#parnew)
-    1. [Parallel Scavenge](#parallel-scavenge)
-    1. [Serial Old](#serial-old)
-    1. [Parallel Old](#parallel-old)
-    1. [CMS](#cms)
-    1. [G1](#g1)
-    1. [ZGC](#zgc)
-    1. [ShenandoahGC](#shenandoahgc)
-1. [Tuning](#tuning)
-    1. [GC日志](#gc日志)
-    1. [工具](#工具)
-        1. [GCEasy](#gceasy)
-        1. [GCViewer](#gcviewer)
-    1. [基本JVM参数](#基本jvm参数)
-    1. [主要关注指标](#主要关注指标)
+- 1. [GC](#gc)
+    - 1.1. [GC类型](#gc类型)
+    - 1.2. [GC术语](#gc术语)
+        - 1.2.1. [STW](#stw)
+    - 1.3. [内存分代](#内存分代)
+    - 1.4. [判断存活算法](#判断存活算法)
+        - 1.4.1. [引用计数算法](#引用计数算法)
+        - 1.4.2. [可达性分析算法](#可达性分析算法)
+    - 1.5. [GC算法](#gc算法)
+        - 1.5.1. [标记清除算法](#标记清除算法)
+        - 1.5.2. [复制算法](#复制算法)
+        - 1.5.3. [标记整理算法](#标记整理算法)
+- 2. [GC日志](#gc日志)
+- 3. [垃圾收集器](#垃圾收集器)
+    - 3.1. [Serial](#serial)
+    - 3.2. [ParNew](#parnew)
+    - 3.3. [Parallel Scavenge](#parallel-scavenge)
+    - 3.4. [Serial Old](#serial-old)
+    - 3.5. [Parallel Old](#parallel-old)
+    - 3.6. [CMS](#cms)
+    - 3.7. [G1](#g1)
+    - 3.8. [ZGC](#zgc)
+    - 3.9. [ShenandoahGC](#shenandoahgc)
+- 4. [Practice](#practice)
 
-**目录 end**|_2023-08-28 23:31_|
+💠 2023-12-12 00:10:45
 ****************************************
 # GC
 > Garbage Collection
@@ -189,7 +184,11 @@ GC Roots 对象包含:
 - 方法区中类静态属性引用的对象
 - 方法去中常量引用的对象
 - 本地方法栈中 JNI (Native 方法) 引用的对象
-- 线程对象
+- 所有线程对象
+- 系统类加载器及自定义类加载器
+- 锁对象
+
+> [Guide to Garbage Collector Roots](https://www.baeldung.com/java-gc-roots)`重点：每个JVM实现及GC实现没有强制的规范，只能通过MAT等工具分析，以上仅为常见的Root类型对象`
 
 ************************
 
@@ -224,6 +223,13 @@ GC Roots 对象包含:
 这个算法的主要目的就是解决在非移动式回收器中都会存在的碎片化问题，也分为两个阶段，第一阶段与 Mark-Sweep 类似，第二阶段则会对存活对象按照整理顺序（Compaction Order）进行整理。主要实现有双指针（Two-Finger）回收算法、滑动回收（Lisp2）算法和引线整理（Threaded Compaction）算法等。
 
 适用于老年代
+
+
+************************
+
+# GC日志
+1. 默认日志下 第一列是JVM启动的秒数，为了可读性一般会加配置 `-XX:+PrintGCDateStamps`, 
+1. gc日志路径也可以追加进程id方便关联排查 `-Xloggc:/apps/logs/gc-%p.log`
 
 ************************
 
@@ -464,39 +470,7 @@ Young GC发生的时机大家都知道，那什么时候发生Mixed GC呢？其�
 -XX:+UnlockExperimentalVMOptions  -XX:+UseShenandoahGC
 
 ************************
-# Tuning
-> [参考: 译：谁是 JDK8 中最快的 GC](https://club.perfma.com/article/233480)  
-> [《沙盘模拟系列》JVM如何调优](https://my.oschina.net/u/4030990/blog/3149182)  
-> [深入浅出GC问题排查](https://blog.ysboke.cn/archives/242.html)
-> [参考: CMS Deprecated. Next Steps?](https://dzone.com/articles/cms-deprecated-next-steps)  
 
-- [Oracle JDK8 GC调优指南](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/toc.html)
-- [Oracle JDK11 GC调优指南](https://docs.oracle.com/en/java/javase/11/gctuning/introduction-garbage-collection-tuning.html)
+# Practice
+[Choosing a GC Algorithm in Java](https://www.baeldung.com/java-choosing-gc-algorithm)
 
-************************
-
-## GC日志
-1. 默认日志下 第一列是JVM启动的秒数，为了可读性一般会加配置 `-XX:+PrintGCDateStamps`, 
-1. gc日志路径也可以追加进程id方便关联排查 `-Xloggc:/apps/logs/gc-%p.log`
-
-************************
-
-## 工具
-### GCEasy
-> [https://gceasy.io](https://gceasy.io)
-
-### GCViewer
-> [GCViewer](https://github.com/chewiebug/GCViewer)
-
-## 基本JVM参数
-
-## 主要关注指标
-> [garbage-collection-kpi](https://blog.gceasy.io/2016/10/01/garbage-collection-kpi/)`其中FootPrint定义应有误，JVM应指代内存占用而不是CPU资源`
-
-- `延迟（Latency）`： 也可以理解为最大停顿时间，即垃圾收集过程中单次 STW 的最长时间，越短越好，一定程度上可以接受频次的增多，是 GC 技术的主要发展方向。
-- `吞吐量（Throughput）`： 应用系统的生命周期内，由于 GC 线程会占用 Mutator 当前可用的 CPU 时钟周期，吞吐量即为 Mutator 有效花费的时间占系统总运行时间的百分比
-    - 例如应用系统运行了 100 min，GC 累计耗时 1 min，则系统吞吐量为 99%。
-    - 吞吐量优先的垃圾收集器会倾向于接受`单次耗时较长`的停顿，`累计停顿耗时短`的GC策略。
-- `内存占用(Footprint)`：
-
-> 以上三者不可兼得，通常兼顾两者舍弃一方。

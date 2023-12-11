@@ -1,5 +1,5 @@
 ---
-title: Jvm 性能调优
+title: Java性能调优
 date: 2018-11-21 10:56:52
 tags: 
     - JVM
@@ -9,7 +9,7 @@ categories:
 
 💠
 
-- 1. [Java的性能调优](#java的性能调优)
+- 1. [Java性能调优](#java性能调优)
     - 1.1. [JVM参数调优](#jvm参数调优)
         - 1.1.1. [GC调优](#gc调优)
     - 1.2. [内存优化](#内存优化)
@@ -36,13 +36,19 @@ categories:
     - 4.2. [GCViewer](#gcviewer)
     - 4.3. [Visualvm](#visualvm)
     - 4.4. [MAT](#mat)
-    - 4.5. [JMC](#jmc)
-    - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
+    - 4.5. [IntelliJ IDEA](#intellij-idea)
+    - 4.6. [JMC](#jmc)
+    - 4.7. [IBM Heap Analyzer](#ibm-heap-analyzer)
+- 5. [Tuning](#tuning)
+    - 5.1. [基本JVM参数](#基本jvm参数)
+    - 5.2. [GC](#gc)
+        - 5.2.1. [工具](#工具)
+        - 5.2.2. [主要关注指标](#主要关注指标)
 
-💠 2023-12-11 11:55:01
+💠 2023-12-12 00:10:45
 ****************************************
 
-# Java的性能调优
+# Java性能调优
 
 ## JVM参数调优
 > [参考: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)
@@ -298,6 +304,9 @@ categories:
 类加载器： histogram -> basic -> merge classloader
 不可达对象：
 
+## IntelliJ IDEA
+[Analyze the memory snapshot](https://www.jetbrains.com/help/idea/read-the-memory-snapshot.html)
+
 ************************
 ## JMC
 > JDK Mission Control
@@ -308,4 +317,41 @@ categories:
 
 ## IBM Heap Analyzer
 > [Official Site](https://www.ibm.com/developerworks/community/alphaworks/tech/heapanalyzer)
+
+************************
+
+# Tuning
+排查思路：
+
+- `Delta` 正式环境可复现问题，测试或灰度无法出现，且不能轻易重启正式环境，通过对生产的JVM做各类指标的记录，对比某个业务操作前后或故障前后的指标差异分析出问题的触发点
+    - 限制：不能做太影响性能的指标记录和分析
+- `Debug` 在测试或灰度环境上可复现问题，可直接Debug接入调试代码，或本地采用高耗能的方式debug分析`抓包，strace，CPU火焰图，等方式`
+    - 限制：**可复现**，通常能有这个条件已经能直接通过debug代码就能解决问题了
+
+## 基本JVM参数
+
+## GC 
+> [参考: 译：谁是 JDK8 中最快的 GC](https://club.perfma.com/article/233480)  
+> [《沙盘模拟系列》JVM如何调优](https://my.oschina.net/u/4030990/blog/3149182)  
+> [深入浅出GC问题排查](https://blog.ysboke.cn/archives/242.html)
+> [参考: CMS Deprecated. Next Steps?](https://dzone.com/articles/cms-deprecated-next-steps)  
+
+- [Oracle JDK8 GC调优指南](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/toc.html)
+- [Oracle JDK11 GC调优指南](https://docs.oracle.com/en/java/javase/11/gctuning/introduction-garbage-collection-tuning.html)
+
+### 工具
+> [gceasy.io](https://gceasy.io)  
+> [GCViewer](https://github.com/chewiebug/GCViewer)  
+
+### 主要关注指标
+> [garbage-collection-kpi](https://blog.gceasy.io/2016/10/01/garbage-collection-kpi/)`其中FootPrint定义应有误，JVM应指代内存占用而不是CPU资源`
+
+- `延迟（Latency）`： 也可以理解为最大停顿时间，即垃圾收集过程中单次 STW 的最长时间，越短越好，一定程度上可以接受频次的增多，是 GC 技术的主要发展方向。
+- `吞吐量（Throughput）`： 应用系统的生命周期内，由于 GC 线程会占用 Mutator 当前可用的 CPU 时钟周期，吞吐量即为 Mutator 有效花费的时间占系统总运行时间的百分比
+    - 例如应用系统运行了 100 min，GC 累计耗时 1 min，则系统吞吐量为 99%。
+    - 吞吐量优先的垃圾收集器会倾向于接受`单次耗时较长`的停顿，`累计停顿耗时短`的GC策略。
+- `内存占用(Footprint)`：
+
+> 以上三者不可兼得，通常兼顾两者舍弃一方。
+
 
