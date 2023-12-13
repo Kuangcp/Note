@@ -233,6 +233,10 @@ categories:
 - 执行工具的JVM和目标JVM不是同一个版本（最好保持一致，如果版本相差过大，内存布局设计不一样，就会无法正常解析结果）
 - /tmp 目录下无法创建命令使用的临时文件，或是来不及使用就被`systemd-tmpfiles`清理了 `/tmp/.java_pidXXX`
 
+查找JVMSocket泄漏
+- [一次由于网络套接字文件描述符泄露导致线上服务事故原因的排查经历](https://www.wangbo.im/posts/a-production-bug-leaking-sockets-fd-reproducing-practice/)
+`strace -t -T -f -p pid -e trace=network,close -o strace.out`: 尝试找到创建socket并没有关闭socket的线程号， 然后进制转换后查看jstack找到线程持有栈关联到相关代码
+
 ********************
 
 # 终端类工具
