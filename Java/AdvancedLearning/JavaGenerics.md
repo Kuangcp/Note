@@ -74,8 +74,10 @@ categories:
 - 场景4: 泛型嵌套以及传递问题 [实际代码](https://github.com/Kuangcp/JavaBase/tree/generic/src/main/java/com/github/kuangcp/nesting)
     - 本来的设想是只要声明了具有泛型约束的类, 就应该不用再声明该类中的泛型类型, 但是由于Java的泛型只是在编译前存在, 编译后就被擦除了, 所以没法做到这样简洁的约束
 
-> 对于应用程序员, 可能很快的学会掩盖这些声明, 想当然地认为库程序员做的都是正确的, 如果是一名库程序员, 一定要习惯于通配符  
+> 对于应用程序员, 可能很快的学会掩盖这些声明, 想当然地认为库程序员做的都是正确的, 如果是一名库程序员, 一定要习惯于通配符   
 > 否则还要用户在代码中随意地添加强制类型转换直至可以通过编译.
+
+super 只能用于通配符
 
 *********************
 
@@ -229,16 +231,16 @@ categories:
 ## 通配符类型
 > [Guidelines for Wildcard Use](https://docs.oracle.com/javase/tutorial/java/generics/wildcardGuidelines.html)
 
-- `<T> 可以看作 <T extends Object>`  `<?> 可以看作 <? extends Object>`
-
 - Producer extends, Consumer super.
     - `? extends` : 数据的提供方 执行 get 操作
-    - `? super` : 数据的存储方 执行 set 操作
+    - `? super`   : 数据的存储方 执行 set 操作
 
 - Tips
     - 限定通配符总是包括自己
     - 如果你既想存，又想取，那就别用通配符
     - 不能同时声明泛型通配符上界和下界
+    - `<T>` 可以看作 `<T extends Object>`
+    - `<?>` 可以看作 `<? extends Object>`
 
 > `注意` 通配符的泛型约束一般是出现在基础库的API上(接口上, 方法上) 常见应用逻辑代码用的较少
 
@@ -261,6 +263,11 @@ categories:
     void setFirst(? extends Human)
     // 这样的话是不可能调用setFirst方法, 对于编译器来说,只是知道入参是Human的子类,但是类型并不明确,所以不能正常调用
     // 使用get方法就不会有问题, 泛型起作用了.将get返回值赋值给Human的引用也是完全合法的,这就是引入该统通配符的关键之处
+```
+
+> 注意此情况无法编译, 目前理解为编译期无法确认T的实际类型
+```java
+    public <T extends Human> Class<T> getService(int serviceCode){}
 ```
 
 ### 基类 类型限定的通配符 super
@@ -314,7 +321,7 @@ categories:
 ```
 - swapHelper是一个泛型方法, 而swap不是, 它具有固定的Pair<?>类型的参数, 那么现在就可以这样写:
     - `public static void swap(Pair<?> p){swapHelper(p);}`
-    - 这种情况下, swapHelper方法的参数T捕获通配符, 它不知道是哪种类型的通配符,但是这是一个明确的类型 并且<T>swapHelper 在T指出类型时,才有明确的含义
+    - 这种情况下, swapHelper方法的参数T捕获通配符, 它不知道是哪种类型的通配符,但是这是一个明确的类型 并且`<T>swapHelper` 在T指出类型时,才有明确的含义
     - 当然,这种情况下并不是一定要用通配符, 而且我们也实现了没有通配符的泛型方法
 
 > 但是下面这个通配符类型出现在计算结果中间的示例
