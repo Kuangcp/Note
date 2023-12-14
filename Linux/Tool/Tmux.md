@@ -9,18 +9,19 @@ categories:
 💠
 
 - 1. [Tmux](#tmux)
-    - 1.1. [配置](#配置)
-        - 1.1.1. [个人配置](#个人配置)
-        - 1.1.2. [键绑定](#键绑定)
-        - 1.1.3. [切换](#切换)
-    - 1.2. [编译安装](#编译安装)
-    - 1.3. [TPM插件管理](#tpm插件管理)
-        - 1.3.1. [tmux-resurrect](#tmux-resurrect)
-        - 1.3.2. [maglev](#maglev)
-        - 1.3.3. [copycat](#copycat)
-- 2. [Tips](#tips)
+- 2. [基本操作](#基本操作)
+- 3. [配置](#配置)
+    - 3.1. [个人配置](#个人配置)
+    - 3.2. [键绑定](#键绑定)
+    - 3.3. [切换](#切换)
+- 4. [编译安装](#编译安装)
+- 5. [TPM插件管理](#tpm插件管理)
+    - 5.1. [tmux-resurrect](#tmux-resurrect)
+    - 5.2. [maglev](#maglev)
+    - 5.3. [copycat](#copycat)
+- 6. [Tips](#tips)
 
-💠 2023-12-13 15:55:36
+💠 2023-12-14 15:57:40
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -29,7 +30,7 @@ categories:
 > [参考: 程序员高效技巧系列](http://cenalulu.github.io/linux/professional-tmux-skills/)  
 
 ************************
-> 基本操作
+# 基本操作
 
 - 新建会话 `tmux new -s myth`
 - 连接会话 `tmux a -t test`
@@ -46,13 +47,14 @@ categories:
     - ; 最近的 panel
     - $ 重命名 session
     - , 重命名 panel
+    - Alt+方向键 往指定方向扩展当前 panel 大小
 
 *************
 
-## 配置
+# 配置
 > [Oh My Tmux!](https://github.com/gpakosz/.tmux)
 
-### 个人配置
+## 个人配置
 > [Tmux配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf) `步骤：` 
 1. `ln -s $(pwd)/tmux.conf ~/.tmux.conf` 
 1. `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
@@ -68,16 +70,16 @@ categories:
 按住Shift即可照常使用鼠标选中文本
 
 *************
-### 键绑定
+## 键绑定
 > Prefix 默认是 C-b 也就是 Ctrl b
 
-### 切换
+## 切换
 - prefix w 切换 window 或者 Session
 - Prefix () 切换 Session
 
 ************************
 
-## 编译安装
+# 编译安装
 > 场景： 目标机器Linux内核版本较低，或者是Debian Centos等发行版，源中没有高版本的Tmux，甚至没有Tmux，这个时候通过静态编译安装，能在影响最小的情况下使用上新版本的Tmux
 
 因为低版本Tmux不支持鼠标，导致无法使用滚轮上翻命令输出记录。
@@ -86,7 +88,7 @@ categories:
 
 ************************
 
-## TPM插件管理
+# TPM插件管理
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) `查看Readme下载安装`
 > `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
@@ -98,7 +100,7 @@ https://github.com/whame/tmux-modal 快速操作切换和创建 window panel
 
 - `Prefix I` 安装新增的插件 
 
-### tmux-resurrect
+## tmux-resurrect
 
 > [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)  
 > [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum)  
@@ -106,10 +108,10 @@ https://github.com/whame/tmux-modal 快速操作切换和创建 window panel
 prefix c-s 保存会话
 prefix c-r 加载历史会话
 
-### maglev
+## maglev
 > [Github](https://github.com/caiogondim/maglev)
 
-### copycat
+## copycat
 > [Github](https://github.com/tmux-plugins/tmux-copycat)  
 
 使用: `Prefix /` 可用 less 一样的方式搜索
