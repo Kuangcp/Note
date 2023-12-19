@@ -10,19 +10,20 @@ categories:
 💠
 
 - 1. [HTTP](#http)
-    - 1.1. [请求方法](#请求方法)
-        - 1.1.1. [CONNECT](#connect)
-        - 1.1.2. [GET](#get)
-        - 1.1.3. [POST](#post)
-    - 1.2. [HTTP的状态码](#http的状态码)
-    - 1.3. [响应](#响应)
-        - 1.3.1. [Header](#header)
-    - 1.4. [HTTP 缓存](#http-缓存)
-    - 1.5. [Session 和 Cookie](#session-和-cookie)
-        - 1.5.1. [Cookie](#cookie)
-        - 1.5.2. [Session](#session)
-    - 1.6. [Auth](#auth)
-        - 1.6.1. [Basic-Auth](#basic-auth)
+    - 1.1. [URI URL](#uri-url)
+    - 1.2. [请求方法](#请求方法)
+        - 1.2.1. [CONNECT](#connect)
+        - 1.2.2. [GET](#get)
+        - 1.2.3. [POST](#post)
+    - 1.3. [HTTP的状态码](#http的状态码)
+    - 1.4. [响应](#响应)
+        - 1.4.1. [Header](#header)
+    - 1.5. [HTTP 缓存](#http-缓存)
+    - 1.6. [Session 和 Cookie](#session-和-cookie)
+        - 1.6.1. [Cookie](#cookie)
+        - 1.6.2. [Session](#session)
+    - 1.7. [Auth](#auth)
+        - 1.7.1. [Basic-Auth](#basic-auth)
 - 2. [HTTP各个实现版本](#http各个实现版本)
     - 2.1. [HTTP/0.9](#http09)
     - 2.2. [HTTP/1.0](#http10)
@@ -36,7 +37,7 @@ categories:
     - 4.1. [CORS 跨域](#cors-跨域)
     - 4.2. [相关工具](#相关工具)
 
-💠 2023-10-13 17:25
+💠 2023-12-19 14:59:50
 ****************************************
 # HTTP
 > HyperText Transfer Protocol (超文本传输协议) 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -47,6 +48,12 @@ categories:
 
 - 其实HTTP协议主要就是用来进行客户端和服务器之间进行通信的标准协议。
 - HTTP主要规定了客户端如何与服务器建立链接、客户端如何从服务器请求数据、服务器如何响应请求，以及最后连接如何关闭
+
+## URI URL
+> [维基百科](https://en.wikipedia.org/wiki/URL) | [百度百科](https://baike.baidu.com/item/URL)
+
+- 统一资源定位符 特别注意URL的组成和编解码  [url中的特殊字符问题](http://www.cnblogs.com/xmphoenix/archive/2011/04/20/2022945.html)
+    - 不能在URL的关键位置出现%号，作为参数的值是允许的。
 
 ## 请求方法
 - HTTP/1.1协议中共定义了八种方法（有时也叫“动作”）来表明Request-URI指定的资源的不同操作方式：
