@@ -519,7 +519,8 @@ sudo update-ca-trust
 
 ### 服务端
 
-> [sftp](https://hub.docker.com/r/atmoz/sftp/)
+> [sftp](https://hub.docker.com/r/atmoz/sftp/)  
+> [Filezilla](https://filezilla-project.org/)`服务端&客户端`  
 
 #### ftpserver
 > [ftpserver](https://github.com/fclairamb/ftpserver)`Golang`

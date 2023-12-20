@@ -283,8 +283,10 @@ Java: JDK9 才正式支持
 > [参考: HTTP3.0(QUIC的实现机制)](https://www.cnblogs.com/chenjinxinlove/p/10104854.html)  
 > [参考: 一文看完 HTTP3 的演化历程](https://www.infoq.cn/article/IgME_4ebP3d46m3tHbaT)  
 > [参考: HTTP3](https://http3-explained.haxx.se/zh/)  
+> [HTTP/1 to HTTP/2 to HTTP/3](https://medium.com/@sandeep4.verma/http-1-to-http-2-to-http-3-647e73df67a8)  
 
-HTTP/3 只是一种基于 IETF QUIC（一种基于 UDP 的多路复用和安全传输）的新 HTTP 语法。
+HTTP/3 是一种基于 IETF QUIC（一种基于 UDP 的多路复用和安全传输）的新 HTTP 语法。
+
 
 ************************
 
