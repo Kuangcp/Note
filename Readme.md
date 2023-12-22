@@ -4,7 +4,7 @@
 [![JavaSE](https://img.shields.io/badge/JavaSE-Java基础-blue.svg)](./Java/) 
 [![目录](https://img.shields.io/badge/wiki-Note-brightgreen.svg)](https://gitee.com/gin9/Memo/wikis/pages) 
 
-> 建议将该仓库克隆下来后，将该项目作为工作空间, 在 [Visual Studio Code](https://code.visualstudio.com/) 中搜索阅读 
+> 建议将该仓库克隆下来后，在 [Visual Studio Code](https://code.visualstudio.com/) 中搜索阅读 
 >- `*.drawio.svg 使用 draw.io 插件查看和编辑`
 >- `*.km.svg 使用 vscode-mindmap 插件查看和编辑`
 
@@ -95,10 +95,10 @@
 - [skill-map](https://github.com/TeamStuQ/skill-map)
 
 ## Linux 
-- [judasn](https://github.com/judasn/hexo-blog) `善于归纳的人 相关:[Javaer眼中的Linux](https://github.com/judasn/Linux-Tutorial)`
+- [judasn](https://github.com/judasn/hexo-blog) | [Javaer眼中的Linux](https://github.com/judasn/Linux-Tutorial)
 
 ## Python
-- [老齐的笔记](https://github.com/qiwsir/ITArticles)`跟老齐学Python的轻松入门 作者`
+- [老齐的笔记](https://github.com/qiwsir/ITArticles)`《跟老齐学Python的轻松入门》 作者`
 - [Python Tutorial vamei](https://github.com/Vamei/Python-Tutorial-Vamei)
 
 ## 前端
@@ -106,12 +106,6 @@
 - [cain-note](https://github.com/james-cain/cain-note)`像是培训机构的资料和他本人的学习笔记,偏向前端`
 - [梁少锋的博客笔记](https://github.com/youngwind/blog)`前端相关`
 - [HstarDoc](https://github.com/hstarorg/HstarDoc)`前端的大量文档`
-
-************************
-
-# 维护成员
-> [dragonhht](https://github.com/dragonhht/Note)  
-> [yi-yun](https://github.com/yi-yun/Memo)  
 
 ************************
 
