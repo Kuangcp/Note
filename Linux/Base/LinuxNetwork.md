@@ -61,7 +61,7 @@ categories:
     - 4.1. [查看进程占用的端口](#查看进程占用的端口)
     - 4.2. [网络问题排查](#网络问题排查)
 
-💠 2023-12-19 14:59:50
+💠 2023-12-25 09:39:14
 ****************************************
 # Linux网络管理
 ## 内核配置
@@ -402,6 +402,10 @@ _iproute-ss_
 > [参考: curl返回常见错误码](http://www.cnblogs.com/wainiwann/p/3492939.html)
 - [56错误码](https://stackoverflow.com/questions/10285700/curl-error-recv-failure-connection-reset-by-peer-php-curl)
 > [参考: 使用cURL和用户名和密码？](http://www.cnblogs.com/seasonzone/p/7527218.html)
+
+- httpie `python`
+- curlie
+- [xh](https://github.com/ducaale/xh)`rust`
 
 ************************
 
