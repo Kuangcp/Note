@@ -12,9 +12,11 @@ categories:
     - 1.2. [分支合并框架 Fork/Join](#分支合并框架-forkjoin)
     - 1.3. [ScheduledThreadPoolExecutor](#scheduledthreadpoolexecutor)
     - 1.4. [Executor框架](#executor框架)
-    - 1.5. [线程池监控](#线程池监控)
+    - 1.5. [Spring](#spring)
+        - 1.5.1. [ThreadPoolTaskExecutor](#threadpooltaskexecutor)
+    - 1.6. [线程池监控](#线程池监控)
 
-💠 2023-12-02 17:48:21
+💠 2024-01-03 10:44:05
 ****************************************
 # 线程池
 
@@ -106,6 +108,14 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
     - 它是线程池类`ForkJoinPool`的扩展
     - 该线程池能够合理的使用CPU进行对任务操作（并行操作），所以适合使用在很耗时的任务中
     - 创建方式：`ExecutorService executor = Executors.newWorkStealingPool();`
+
+************************
+## Spring 
+### ThreadPoolTaskExecutor
+> Spring的线程池封装实现
+
+- setTaskDecorator: 线程池装饰器，通常用来ThreadLocal值的传递，例如 TraceId，授权对象
+- setWaitForTasksToCompleteOnShutdown 等待线程正常执行完才退出全部线程
 
 ************************
 
