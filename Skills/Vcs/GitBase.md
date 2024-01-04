@@ -75,7 +75,6 @@ categories:
 
 💠 2024-01-04 10:48:48
 ****************************************
-************************
 
 # Git基础
 
@@ -83,7 +82,7 @@ categories:
 
 > [Github:git](https://github.com/git/git) | [Official Doc: git](https://git-scm.com/docs) | [Arch Wiki: Git](https://wiki.archlinux.org/index.php/Git) | [Gitee: about git](https://gitee.com/all-about-git) | [git-for-windows mirrors](https://npm.taobao.org/mirrors/git-for-windows/)
 
-- index stage work 三个概念上的区域
+- index stage work 三个逻辑分区
   - index: 已经 commit 的内容, 不可更改历史commit
   - stage: 执行 add 命令, 将文件缓存到该区
   - work: 工作目录, 日常做修改的就是该分区
