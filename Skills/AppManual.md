@@ -100,7 +100,7 @@ categories:
     - 由于Firefox不兼容，自己基于go开发的替代品 [dev-proxy](https://github.com/Kuangcp/GoBase/tree/master/toolbox/dev-proxy)
 
 - **Multi-Account-Container** `Firefox 插件`
-    - 同一网站同时登录多个帐号，帐号之间cookie等信息会隔离
+    - 同一网站同时登录多个账号，账号之间cookie等信息会隔离
 
 - **potatso** iOS体系内代理软件 iOS 15兼容有问题
 

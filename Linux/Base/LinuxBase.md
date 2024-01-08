@@ -111,12 +111,12 @@ categories:
 |  -G  | --groups GROUPS          | 新的附加组列表 GROUPS                                        |
 |  -a  | --append GROUP           | 将用户追加至上边 -G 中提到的附加组中，并不从其它组中删除此用 |
 |  -l  | --login LOGIN            | 新的登录名称                                                 |
-|  -L  | --lock                   | 锁定用户帐号                                                 |
+|  -L  | --lock                   | 锁定用户账号                                                 |
 |  -m  | --move-home              | 将家目录内容移至新位置 (仅于 -d 一起使用)                    |
 |  -p  | --password PASSWORD      | 将加密过的密码 (PASSWORD) 设为新密码                         |
 |  -R  | --root CHROOT_DIR        | chroot 到的目录                                              |
-|  -s  | --shell SHELL            | 该用户帐号的新登录 shell                                     |
-|  -U  | --unlock                 | 解锁用户帐号                                                 |
+|  -s  | --shell SHELL            | 该用户账号的新登录 shell                                     |
+|  -U  | --unlock                 | 解锁用户账号                                                 |
 
 > [所有参数说明](https://gitee.com/kcp1104/codes/gca14wtqvm67l9j5r0deb56#usermod.md)
 
@@ -318,6 +318,10 @@ alpine 里的sh和ash 默认是不登录shell 需要使用 sh -l 或者 ash -l �
 - 持有的文件(读/写)
 - 网络连接 socket
 - 管道 pipe
+
+> 问题
+- 线上的Centos7.9上运行的Java8进程，12月11日启动的进程，但是1月3日突然 /proc/pid/fd/下的fd都发生了更新`无法查看创建时间`，但是/proc/pid的目录时间是对的
+  - 问题： 为什么会发生修改，标准输入输出，以及依赖的jar的fd都发生了修改
 
 ### 线程
 

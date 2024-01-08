@@ -304,8 +304,8 @@ Shallow Clone： `git clone --depth n URL` 克隆的本地仓库
 - `git log --author='A' `输出所有A开头的作者日志
 - `git log 文件名 文件名` 输出更改指定文件的所有commit 要文件在当前路径才可
 - `git log --after='2016-03-23 9:20' --before='2017-05-10 12:00' ` 输出指定日期的日志
-- `git shortlog` 按字母顺序输出每个人的日志
 
+- `git shortlog` 按字母顺序输出每个人的日志
   - `--numbered` 按提交数排序
   - `-s` 只显示每个提交者以及提交数量
 
@@ -323,13 +323,13 @@ Shallow Clone： `git clone --depth n URL` 克隆的本地仓库
 
 > [参考博客 git 对比两个分支差异](http://blog.csdn.net/u011240877/article/details/52586664)
 
-> commit 差异
+> commit差异
 
-- 查看在dev分支，而不在master分支上的 commit.
-  - `git log master..dev`
-  - 或者 `git log dev ^master` (^表示非，等价于 --not)
-    - 但是 ^ 语法支持多个分支 例如 `git log dev ^master ^fea/feature1` 意为：在dev分支但是不在后两个分支中的commit
+- 查看**dev有，master没有**的那些提交
+  - `git log master..dev` 或 `git log dev ^master` (^表示非，等价于 --not)
+  - 且支持多个分支 `git log dev ^master ^fea/feature1` 表示：在dev有后两个分支没有的commit
   - 还可对比远程分支和本地分支的差别 `git log origin/master..master`
+
 - 对比分支的差别 `git log dev...master` 也就是那些非两个分支共有的commit
   - 显示出每个提交是在哪个分支上 `git log --left-right dev...master`
   - 注意 commit 后面的箭头，根据我们在 –left-right dev…master 的顺序，左箭头 < 表示是 dev 的，右箭头 > 表示是 master的。

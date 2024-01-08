@@ -20,7 +20,7 @@ categories:
 
 ************************
 
-## 帐号密码认证体系
+## 账号密码认证体系
 > [被脱裤也不怕 - 反馈总结](https://blog.coderzh.com/2016/01/13/password-security-additional/)
 
 ![](img/auth-and-store.drawio.svg)
