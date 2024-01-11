@@ -68,12 +68,13 @@ categories:
     - 7.3. [archive](#archive)
     - 7.4. [reflog](#reflog)
     - 7.5. [rev-parse](#rev-parse)
+    - 7.6. [scalar](#scalar)
 - 8. [配置文件](#配置文件)
     - 8.1. [gitignore](#gitignore)
     - 8.2. [gitattributes](#gitattributes)
 - 9. [自定义插件](#自定义插件)
 
-💠 2024-01-04 10:48:48
+💠 2024-01-10 17:28:37
 ****************************************
 
 # Git基础
@@ -936,6 +937,9 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 > 该工具是Git内部命令 往往被其他子命令使用
 
 1. 查看分支指向具体的commit id `git rev-parse fea/new`
+
+## scalar 
+> 自2.42.1起支持，原理为先稀疏检出，然后定时任务拉取变更
 
 ************************
 
