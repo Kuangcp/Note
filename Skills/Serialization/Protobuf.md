@@ -5,23 +5,26 @@ tags:
 categories: 
 ---
 
-**目录 start**
+💠
 
-1. [Protobuf](#protobuf)
-    1. [proto文件定义](#proto文件定义)
-    1. [Linux上安装Protobuf](#linux上安装protobuf)
-    1. [实现原理](#实现原理)
+- 1. [Protobuf](#protobuf)
+    - 1.1. [proto文件定义](#proto文件定义)
+    - 1.2. [数据类型](#数据类型)
+        - 1.2.1. [Protobuf3](#protobuf3)
+    - 1.3. [Linux上安装Protobuf](#linux上安装protobuf)
+    - 1.4. [Java中的使用](#java中的使用)
+    - 1.5. [实现原理](#实现原理)
 
-**目录 end**|_2020-12-14 19:57_|
+💠 2024-01-13 12:32:38
 ****************************************
 # Protobuf
-> Google开源的序列化框架 全称 `Google Protocol Buffers` | [Github : Protobuf](https://github.com/google/protobuf)  
+> Google开源的序列化框架 全称 `Google Protocol Buffers` | [Github : Protobuf](https://github.com/google/protobuf) | [wikipedia](https://en.wikipedia.org/wiki/Protocol_Buffers)  
 
-- 他将数据结构以 proto 后缀的文件进行描述, 通过代码生成工具, 可以生成对应数据结构的 POJO 对象和 Protobuf 相关的方法和属性
+- 将数据结构用*.proto文件进行描述, 通过代码生成工具, 生成对应数据结构的 POJO 对象和 Protobuf 用到的方法和属性
     - 特点:
         - 结构化数据存储格式,类似于 XML JSON等
         - 高效的编解码性能
-        - 语言无关, 平台无关, 扩展性好
+        - 独立的IDL，语言无关, 平台无关, 扩展性好
         - 官方支持 Java C++ Python Objective-C C# JavaScript Ruby
     - 数据描述文件和代码生成机制优点:
         - 文本化的数据结构描述语言, 可以实现语言和平台无关, 特别适合异构系统间的集成
@@ -58,7 +61,11 @@ categories:
     - 需要说明的是标签在1到15范围的采用一个字节进行编码。所以通常将标签1到15用于频繁发生的消息字段
     - 编号标签大小的范围是1 到 2的29次幂–1。此外不能使用protobuf系统预留的编号标签（19000 －19999）
 
+## 数据类型
+
 ![数据类型对应表](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Learn/java/protobuf/protobuf-type.jpeg)
+
+> [Issue: Protobuf 不支持Java的BigDecimal](https://github.com/protocolbuffers/protobuf/issues/4406)
 
 _复杂类型_  
 > 定义了enum枚举类型，嵌套的消息。甚至对原有的消息进行了扩展，也可以对字段设置默认值。添加注释等
