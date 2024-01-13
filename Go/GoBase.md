@@ -6,50 +6,48 @@ tags:
 categories: 
     - Go
 ---
+
 💠
 
 - 1. [Go](#go)
-
-  - 1.1. [Go Modules](#go-modules)
-    - 1.1.1. [配置](#配置)
-    - 1.1.2. [go get](#go-get)
-    - 1.1.3. [单个Git仓库发布多个包](#单个git仓库发布多个包)
-    - 1.1.4. [go.mod](#gomod)
-    - 1.1.5. [go.work](#gowork)
-    - 1.1.6. [现存问题](#现存问题)
-    - 1.1.7. [模板项目初始化](#模板项目初始化)
-  - 1.2. [数据类型](#数据类型)
-    - 1.2.1. [string](#string)
-    - 1.2.2. [int](#int)
-    - 1.2.3. [Array](#array)
-    - 1.2.4. [Slice](#slice)
-    - 1.2.5. [Map](#map)
-    - 1.2.6. [Set](#set)
-  - 1.3. [基本语法](#基本语法)
-    - 1.3.1. [标准输入输出](#标准输入输出)
-    - 1.3.2. [时间处理](#时间处理)
-  - 1.4. [泛型](#泛型)
-  - 1.5. [函数](#函数)
-    - 1.5.1. [参数](#参数)
-    - 1.5.2. [返回值](#返回值)
-    - 1.5.3. [defer](#defer)
-  - 1.6. [接口](#接口)
-  - 1.7. [Channel](#channel)
-  - 1.8. [协程](#协程)
-  - 1.9. [文件操作](#文件操作)
-  - 1.10. [Test](#test)
-  - 1.11. [JSON](#json)
-  - 1.12. [Debug](#debug)
-    - 1.12.1. [pprof](#pprof)
-  - 1.13. [部署](#部署)
+    - 1.1. [Go Modules](#go-modules)
+        - 1.1.1. [配置](#配置)
+        - 1.1.2. [go get](#go-get)
+        - 1.1.3. [单个Git仓库发布多个包](#单个git仓库发布多个包)
+        - 1.1.4. [go.mod](#gomod)
+        - 1.1.5. [go.work](#gowork)
+        - 1.1.6. [现存问题](#现存问题)
+        - 1.1.7. [模板项目初始化](#模板项目初始化)
+    - 1.2. [数据类型](#数据类型)
+        - 1.2.1. [string](#string)
+        - 1.2.2. [int](#int)
+        - 1.2.3. [Array](#array)
+        - 1.2.4. [Slice](#slice)
+        - 1.2.5. [Map](#map)
+        - 1.2.6. [Set](#set)
+    - 1.3. [基本语法](#基本语法)
+        - 1.3.1. [标准输入输出](#标准输入输出)
+        - 1.3.2. [时间处理](#时间处理)
+    - 1.4. [泛型](#泛型)
+    - 1.5. [丑陋设计](#丑陋设计)
+    - 1.6. [函数](#函数)
+        - 1.6.1. [参数](#参数)
+        - 1.6.2. [返回值](#返回值)
+        - 1.6.3. [defer](#defer)
+    - 1.7. [接口](#接口)
+    - 1.8. [Channel](#channel)
+    - 1.9. [协程](#协程)
+    - 1.10. [文件操作](#文件操作)
+    - 1.11. [Test](#test)
+    - 1.12. [JSON](#json)
+    - 1.13. [Debug](#debug)
+        - 1.13.1. [pprof](#pprof)
+    - 1.14. [部署](#部署)
 - 2. [Tips](#tips)
+    - 2.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-  - 2.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
-
-💠 2023-10-20 13:50
-
----
-
+💠 2024-01-13 12:53:48
+****************************************
 # Go
 
 > [官网](https://golang.org) | [镜像官网](https://golang.google.cn/) | [Github Repo](https://github.com/golang/go) | [Go Doc](https://godoc.org/)
@@ -80,7 +78,7 @@ export GOSUMDB=sum.golang.google.cn
 > [wiki Modules](https://github.com/golang/go/wiki/Modules)
 > [参考: Go模块简明教程](https://github.com/wuyumin/tutorial/blob/master/zh-cn/Modules/README.md)
 
----
+************************
 
 1. `go mod init moduleName` 按名字初始化模块
 
@@ -188,7 +186,7 @@ replaces替换依赖仓库地址，replaces命令与go.mod指令相同，用于�
 
 > [go-zero](https://github.com/zeromicro/go-zero)
 
----
+************************
 
 ## 数据类型
 
@@ -231,7 +229,7 @@ strings 包 提供了常用字符串API
 
 > 官方没有提供set类型 可使用社区提供的库 [golang-set](https://github.com/deckarep/golang-set)
 
----
+************************
 
 ## 基本语法
 
@@ -247,29 +245,42 @@ strings 包 提供了常用字符串API
 
 记住这个神奇的时间 `2006-01-02 03:04:05` Go 中不是寻常的 YYYY-mm-dd 这种格式
 
----
+************************
 
 ## 泛型
-
 > 自1.18 开始支持
 
-> [Github: Lightweight anonymous function syntax](https://github.com/golang/go/issues/21498) `讨论可简写的Lambda表达式,类似js`
-
-> 不支持成员方法泛型，只支持结构体附加泛型或函数泛型。[no-parameterized-methods](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#no-parameterized-methods)
-> go是编译型泛型，在编译器期确定所有的类型，跟go的反射冲突，想要解决只能像C#一样运行时支持泛型，或者像java用类型擦除，这个目前来看基本不可能
-
-导致 map reduce 库简洁的实现比较困难. [Github: go stream](https://github.com/Kuangcp/GoBase/tree/master/pkg/ctool/stream)
+> [Github: Lightweight anonymous function syntax](https://github.com/golang/go/issues/21498) `讨论可简写的Lambda表达式,类似Js`
 
 > 类型约束
-
 ```golang
 type Integer interface{
 	int | int64
 }
-
 ```
 
----
+## 丑陋设计
+> [Crimes with Go Generics](https://xeiaso.net/blog/gonads-2022-04-24/)
+
+> 不支持成员方法泛型，只支持结构体附加泛型或函数泛型。
+- [no-parameterized-methods](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#no-parameterized-methods)
+- go是编译型泛型，在编译器期确定所有的类型，跟go的反射冲突，想要解决只能像C#一样运行时支持泛型，或者像java用类型擦除，这个目前来看基本不可能
+- 导致了 map reduce 的库简洁的实现比较困难. [Github: go stream](https://github.com/Kuangcp/GoBase/tree/master/pkg/ctool/stream)`个人实现`
+
+> 泛型类型不能为nil
+- 导致了零值具有歧义
+  ```golang
+  func a[T any]() T{
+    // 编译报错
+    return nil 
+
+    // 编译器来设置零值， 同样的 new(T) 也是编译报错
+    var zero T
+    return zero 
+  }
+  ```
+
+************************
 
 ## 函数
 
@@ -296,20 +307,20 @@ func functionName (param int) int {
 
 常见需要回收的是http请求 `defer http.Response.Body.Close()` 如果不Close会同时影响客户端和服务端资源泄漏
 
----
+************************
 
 ## 接口
 
 > [参考:接口的定义和使用](http://www.cnblogs.com/yjf512/archive/2012/06/09/2543628.html)
 
----
+************************
 
 ## Channel
 
 > [参考 如何优雅地关闭Go channel](https://www.jianshu.com/p/d24dfbb33781)
 > [Go Channel 详解 ](https://colobu.com/2016/04/14/Golang-Channels/)
 
----
+************************
 
 ## 协程
 
@@ -349,13 +360,13 @@ func walkfunc(path string, info os.FileInfo, err error) error {
 }
 ```
 
----
+************************
 
 ## Test
 
 > [Github: assert](https://godoc.org/github.com/stretchr/testify/assert)
 
----
+************************
 
 ## JSON
 
@@ -425,7 +436,7 @@ Msg struct{
 }
 ```
 
----
+************************
 
 ## Debug
 
@@ -435,7 +446,7 @@ Msg struct{
 > [参考: 实战Go内存泄露](https://www.codercto.com/a/79118.html)
 > [参考: Go 程序内存泄露问题快速定位](https://zhuanlan.zhihu.com/p/368567370)
 
----
+************************
 
 ## 部署
 
@@ -449,7 +460,7 @@ Msg struct{
 报错： [cannot assign requested address](https://github.com/golang/go/issues/16012)
 方案： `ulimit -n 10000 && ./app`
 
----
+************************
 
 # Tips
 
