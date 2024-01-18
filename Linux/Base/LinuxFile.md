@@ -58,7 +58,6 @@ categories:
         - 2.4.6. [du](#du)
 - 3. [日志](#日志)
     - 3.1. [Systemd](#systemd)
-        - 3.1.1. [journalctl](#journalctl)
     - 3.2. [应用日志](#应用日志)
 - 4. [文件共享](#文件共享)
     - 4.1. [Samba](#samba)
@@ -71,7 +70,7 @@ categories:
         - 5.3.1. [善用alias](#善用alias)
     - 5.4. [desktop文件](#desktop文件)
 
-💠 2023-10-21 21:26
+💠 2024-01-18 10:31:26
 ****************************************
 # 文件管理
 > Linux中认为万物皆文件
@@ -435,15 +434,18 @@ mount -t tmpfs -o size=100m tmpfs /mnt/tmp
 ## Systemd
 > 通常使用 journalctl 查询 Systemd 的日志
 
-- message catalog: `journalctl -xe` 
+> 查看日志
+- 当次启动日志 `journalctl -xe` 
 - 内核模块的日志 `journalctl -u systemd-modules-load.service`
-- **/var/log/journal**
-    - `journalctl --vacuum-time=1w` 只保留1周日志
 
+1. `-r` 滚动到最后的日志
+1. `-b -1` 查看相对启动次日志 0标识当前 
+1. `--since "2015-01-10"` 
+1. `--until "2015-01-11 03:00"`
 
-### journalctl 
-1. `查看相对启动次日志 0标识当前` -b -1
-1. `时间段` --since"2015-01-10" --until "2015-01-11 03:00"
+> 清理日志
+- `journalctl --vacuum-time=1w` 只保留1周日志
+    -  路径：/var/log/journal
 
 ## 应用日志
 > [处理Apache日志的Bash脚本](http://www.ruanyifeng.com/blog/2012/01/a_bash_script_of_apache_log_analysis.html)

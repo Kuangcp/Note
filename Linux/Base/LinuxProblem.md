@@ -30,8 +30,9 @@ categories:
     - 1.5. [启动问题](#启动问题)
         - 1.5.1. [can't resume from suspend](#can't-resume-from-suspend)
         - 1.5.2. [i386-pc not found](#i386-pc-not-found)
+    - 1.6. [崩溃](#崩溃)
 
-💠 2023-12-12 00:10:45
+💠 2024-01-18 10:31:26
 ****************************************
 # Linux桌面发行版遇到的问题
 
@@ -165,3 +166,49 @@ fc -R .zsh_history
 `/boot/grub/i386-pc/normal.mod` not found.
 
 [gist](https://gist.github.com/AndersonIncorp/3acb1d657cb5eba285f4fb31f323d1c3?permalink_comment_id=3310958)
+
+
+************************
+
+## 崩溃
+
+> 高内存占用，桌面管理器失去响应  journalctl -b -2 --since "2024-01-18" `重启过两次`
+```log
+    Jan 18 09:23:21 lightdm[2507179]: gkr-pam: unable to locate daemon control file
+    Jan 18 09:23:21 lightdm[2507179]: gkr-pam: stashed password to try later in open session
+    Jan 18 09:23:21 systemd[1]: Stopping Session c147 of User lightdm...
+    Jan 18 09:23:21 lightdm[2507112]: pam_unix(lightdm-greeter:session): session closed for user lightdm
+    Jan 18 09:23:21 systemd[1]: session-c147.scope: Deactivated successfully.
+    Jan 18 09:23:21 systemd[1]: Stopped Session c147 of User lightdm.
+    Jan 18 09:23:21 systemd[1]: session-c147.scope: Consumed 7.307s CPU time.
+    Jan 18 09:23:21 systemd-logind[660]: Removed session c147.
+    Jan 18 09:23:31 systemd[1]: Stopping User Manager for UID 966...
+    Jan 18 09:23:31 systemd[2507120]: Activating special unit Exit the Session...
+    Jan 18 09:23:31 systemd[2507120]: Stopped target Main User Target.
+    Jan 18 09:23:31 systemd[2507120]: Stopping Accessibility services bus...
+    Jan 18 09:23:31 gvfsd[2507153]: A connection to the bus can't be made
+    Jan 18 09:23:31 systemd[2507120]: Stopping D-Bus User Message Bus...
+    Jan 18 09:23:31 systemd[2507120]: Stopping Virtual filesystem service...
+    Jan 18 09:23:31 systemd[2507120]: Stopped Accessibility services bus.
+    Jan 18 09:23:31 systemd[2507120]: Stopped Virtual filesystem service.
+    Jan 18 09:23:31 systemd[2507120]: Stopped target Basic System.
+    Jan 18 09:23:31 systemd[2507120]: Stopped target Paths.
+    Jan 18 09:23:31 systemd[2507120]: Stopped target Sockets.
+    Jan 18 09:23:31 systemd[2507120]: Stopped target Timers.
+    Jan 18 09:23:31 systemd[2507120]: Closed D-Bus User Message Bus Socket.
+    Jan 18 09:23:31 systemd[2507120]: Closed GnuPG network certificate management daemon.
+    Jan 18 09:23:31 systemd[2507120]: Closed GCR ssh-agent wrapper.
+    Jan 18 09:23:31 systemd[2507120]: Closed GNOME Keyring daemon.
+    Jan 18 09:23:31 systemd[2507120]: Closed GnuPG cryptographic agent and passphrase cache (access for web browsers).
+    Jan 18 09:23:31 systemd[2507120]: Closed GnuPG cryptographic agent and passphrase cache (restricted).
+    Jan 18 09:23:31 systemd[2507120]: Closed GnuPG cryptographic agent (ssh-agent emulation).
+    Jan 18 09:23:31 systemd[2507120]: Closed GnuPG cryptographic agent and passphrase cache.
+    Jan 18 09:23:31 systemd[2507120]: Closed p11-kit server.
+    Jan 18 09:23:31 systemd[2507120]: Closed PipeWire Multimedia System Sockets.
+    Jan 18 09:23:31 systemd[2507120]: Closed Sound System.
+    Jan 18 09:23:31 systemd[2507120]: Removed slice User Application Slice.
+    Jan 18 09:23:31 systemd[2507120]: Reached target Shutdown.
+    Jan 18 09:23:31 systemd[2507120]: Finished Exit the Session.
+    Jan 18 09:23:31 systemd[2507120]: Reached target Exit the Session.
+```
+- [System hangs on no input after "Reached system target shutdown"](https://www.reddit.com/r/archlinux/comments/16jimr2/system_hangs_on_no_input_after_reached_system/)`相近问题`
