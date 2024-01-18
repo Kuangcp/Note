@@ -267,18 +267,20 @@ type Integer interface{
 - go是编译型泛型，在编译器期确定所有的类型，跟go的反射冲突，想要解决只能像C#一样运行时支持泛型，或者像java用类型擦除，这个目前来看基本不可能
 - 导致了 map reduce 的库简洁的实现比较困难. [Github: go stream](https://github.com/Kuangcp/GoBase/tree/master/pkg/ctool/stream)`个人实现`
 
-> 泛型类型不能为nil
+> 泛型类型的值不能为nil
 - 导致了零值具有歧义
   ```golang
   func a[T any]() T{
     // 编译报错
     return nil 
+    // new(T) 也编译报错
 
-    // 编译器来设置零值， 同样的 new(T) 也是编译报错
+    // 只能通过编译器来设置零值。
     var zero T
     return zero 
   }
   ```
+  - [Golang 1.18 泛型：零值判断](https://blog.csdn.net/K346K346/article/details/130148416)
 
 ************************
 
