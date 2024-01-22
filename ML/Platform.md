@@ -53,9 +53,21 @@ categories:
     XGBoost
 ```
 
-- 下载压缩包解压运行jar之后，可打开一个默认无认证体系的 [H2O Flow](http://h2o-release.s3.amazonaws.com/h2o/rel-3.44.0/3/docs-website/h2o-docs/flow.html)
+### H2O Flow
+[H2O Flow Tutorial](http://h2o-release.s3.amazonaws.com/h2o/rel-3.44.0/3/docs-website/h2o-docs/flow.html)
+
+- 下载压缩包解压运行jar之后，可打开一个默认无认证体系的 H2O Flow. 
 - [MOJO](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/mojo-quickstart.html)`模型的抽象表示` 导出为GenModel即jar包可部署到应用中。
 
-
 - [GLM Tutorial](https://github.com/h2oai/h2o-3/blob/master/h2o-docs/src/product/tutorials/glm/glm.md)
+
+跑一个GLM的流程
+
 ![](./img/h2o-glm.excalidraw.svg)
+
+[数据处理](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-munging.html#data-manipulation)
+[模型评分](https://h2o-release.s3.amazonaws.com/h2o/rel-yates/1/docs-website/h2o-docs/performance-and-prediction.html)
+[模型部署](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/productionizing.html)
+
+
+## H2O-Python
