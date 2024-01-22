@@ -82,11 +82,11 @@ _Thread类的target属性_
 ## ThreadLocal 
 设计： ThreadLocalMap 线程对象做key的一个封装Map，一个线程可以有多个ThreadLocal
 
-> [alibaba TTL 使用场景](https://github.com/alibaba/transmittable-threalocal/issues/123)`可看作ThreadLocal的一种特殊实现`
+> [Alibaba TTL 使用场景](https://github.com/alibaba/transmittable-threalocal/issues/123)`可看作ThreadLocal的一种特殊实现`
 - 主要流程： com.alibaba.ttl.TtlRunnable#run
     - 提交任务时对run方法封装，先复制当前 TransmittableThreadLocal
     - 等待要调度执行时，重放复制的TransmittableThreadLocal值，从而实现父子线程间上下文的传递
-    - 注意：因为只是处理了TransmittableThreadLocal，所以其他ThreadLocal值需要做传递时，需要通过装饰器去手动复制，例如SpringSecurity的SecurityContextHolder，  slf4j的MDC
+    - **注意**：因为只是处理了TransmittableThreadLocal，所以其他ThreadLocal值需要做传递时，需要通过装饰器去手动复制，例如SpringSecurity的SecurityContextHolder， slf4j的MDC
 
 ************************
 ## Signal
