@@ -10,7 +10,7 @@ categories:
 - 1. [平台](#平台)
     - 1.1. [H2O](#h2o)
 
-💠 2024-01-22 09:40:06
+💠 2024-01-22 10:38:30
 ****************************************
 # 平台
 > 将机器学习工程化组织的平台
@@ -52,5 +52,5 @@ categories:
 ```
 
 - 下载压缩包解压运行jar之后，可打开一个默认无认证体系的 [H2O Flow](http://h2o-release.s3.amazonaws.com/h2o/rel-3.44.0/3/docs-website/h2o-docs/flow.html)
-- [试运行一个GLM模型](https://github.com/h2oai/h2o-3/blob/master/h2o-docs/src/product/tutorials/glm/glm.md)
+- [GLM Tutorial](https://github.com/h2oai/h2o-3/blob/master/h2o-docs/src/product/tutorials/glm/glm.md)
 
