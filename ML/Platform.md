@@ -10,7 +10,7 @@ categories:
 - 1. [平台](#平台)
     - 1.1. [H2O](#h2o)
 
-💠 2024-01-20 22:56:18
+💠 2024-01-22 09:40:06
 ****************************************
 # 平台
 > 将机器学习工程化组织的平台
@@ -24,8 +24,6 @@ categories:
 历史还有H2O-2版本， 14年开始做起 [两个项目Star History 对比](https://star-history.com/#h2oai/h2o-3&h2oai/h2o-2&Date)
 
 > [Github](https://github.com/h2oai/h2o-3) | [Youtube H2Oai](https://www.youtube.com/@H2Oai)
-
-下载压缩包解压运行jar之后，可打开一个默认无认证体系的本地地址，H2O Flow
 
 建模支持的算法
 ```
@@ -52,3 +50,7 @@ categories:
     Word2Vec
     XGBoost
 ```
+
+- 下载压缩包解压运行jar之后，可打开一个默认无认证体系的 [H2O Flow](http://h2o-release.s3.amazonaws.com/h2o/rel-3.44.0/3/docs-website/h2o-docs/flow.html)
+- [试运行一个GLM模型](https://github.com/h2oai/h2o-3/blob/master/h2o-docs/src/product/tutorials/glm/glm.md)
+
