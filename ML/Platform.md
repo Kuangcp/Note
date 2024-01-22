@@ -25,6 +25,8 @@ categories:
 
 > [Github](https://github.com/h2oai/h2o-3) | [Youtube H2Oai](https://www.youtube.com/@H2Oai)
 
+![](./img/h2o-structure.excalidraw.svg)
+
 建模支持的算法
 ```
     Aggregator
@@ -52,5 +54,8 @@ categories:
 ```
 
 - 下载压缩包解压运行jar之后，可打开一个默认无认证体系的 [H2O Flow](http://h2o-release.s3.amazonaws.com/h2o/rel-3.44.0/3/docs-website/h2o-docs/flow.html)
-- [GLM Tutorial](https://github.com/h2oai/h2o-3/blob/master/h2o-docs/src/product/tutorials/glm/glm.md)
+- [MOJO](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/mojo-quickstart.html)`模型的抽象表示` 导出为GenModel即jar包可部署到应用中。
 
+
+- [GLM Tutorial](https://github.com/h2oai/h2o-3/blob/master/h2o-docs/src/product/tutorials/glm/glm.md)
+![](./img/h2o-glm.excalidraw.svg)
