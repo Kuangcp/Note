@@ -15,8 +15,8 @@ categories:
         - 1.2.1. [CONNECT](#connect)
         - 1.2.2. [GET](#get)
         - 1.2.3. [POST](#post)
-    - 1.3. [HTTP的状态码](#http的状态码)
-    - 1.4. [响应](#响应)
+    - 1.3. [HTTP的响应状态码](#http的响应状态码)
+    - 1.4. [Response响应](#response响应)
         - 1.4.1. [Header](#header)
     - 1.5. [HTTP 缓存](#http-缓存)
     - 1.6. [Session 和 Cookie](#session-和-cookie)
@@ -37,7 +37,7 @@ categories:
     - 4.1. [CORS 跨域](#cors-跨域)
     - 4.2. [相关工具](#相关工具)
 
-💠 2023-12-19 14:59:50
+💠 2024-01-23 19:08:38
 ****************************************
 # HTTP
 > HyperText Transfer Protocol (超文本传输协议) 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -120,18 +120,24 @@ echo "sss" > b.docx
 ```
 可以看出 Body 组成部分： 开始标记，文件元信息，结束标记
 
-## HTTP的状态码
+************************
+
+## HTTP的响应状态码
 > [HTTP 状态码 完整列表](/FrontEnd/ResponseCode.md)
 
 ************************
 
-## 响应
+## Response响应
 ### Header 
 
-> Transfer-Encoding: chunked 
-- `异常` curl: (56) Illegal or missing hexadecimal sequence in chunked-encoding
-- [MDN: Transfer-Encoding](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Transfer-Encoding)
-- [wiki ](https://en.wikipedia.org/wiki/Chunked_transfer_encoding#Format)
+> 常用Key
+- Transfer-Encoding: chunked 
+    - `异常` curl: (56) Illegal or missing hexadecimal sequence in chunked-encoding
+    - [MDN: Transfer-Encoding](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Transfer-Encoding)
+    - [wiki ](https://en.wikipedia.org/wiki/Chunked_transfer_encoding#Format)
+
+> 注意：
+- Header的Key和Value统一用`: `分隔，value部分没有格式约束，可以由应用层沟通协定，多值时有用,或;分隔的
 
 ************************
 

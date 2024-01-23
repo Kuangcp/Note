@@ -30,7 +30,7 @@ categories:
         - 1.7.2. [CRLF与LF](#crlf与lf)
         - 1.7.3. [仓库统计](#仓库统计)
 
-💠 2023-10-09 17:53
+💠 2024-01-23 19:08:38
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -272,7 +272,7 @@ categories:
 
 > [参考: 寻找并删除Git记录中的大文件](https://www.tuicool.com/articles/vAVVZrA)
 1. 找出大文件 `git rev-list --objects --all | grep "$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -10 | awk '{print$1}')"`
-1. 删除文件, 重写提交 `git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch 文件的路径' --prune-empty --tag-name-filter cat -- --all`
+1. 删除文件, 重写提交 `git filter-branch --force --index-filter 'git rm -r --cached --ignore-unmatch 文件的路径' --prune-empty --tag-name-filter cat -- --all`
 1. 强制推送 `git push origin --force --all`
     - `git push origin --force --tags`
 1. 使用`git pull rebase`来更新分支，而不是 `git merge` 不然大文件又从别的分支回来了
