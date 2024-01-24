@@ -7,15 +7,16 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [JDK And JRE](#jdk-and-jre)
-1. [Oracle](#oracle)
-    1. [Oracle JDK](#oracle-jdk)
-    1. [Oracle JRE](#oracle-jre)
-1. [OpenJDK](#openjdk)
+- 1. [JDK And JRE](#jdk-and-jre)
+- 2. [Oracle](#oracle)
+    - 2.1. [Oracle JDK](#oracle-jdk)
+    - 2.2. [Oracle JRE](#oracle-jre)
+- 3. [OpenJDK](#openjdk)
+- 4. [Corretto](#corretto)
 
-**目录 end**|_2020-06-29 19:16_|
+💠 2024-01-24 11:21:13
 ****************************************
 # JDK And JRE
 
@@ -74,3 +75,6 @@ Java11 开始, JDK内去掉了JRE模块
 > [Official Site](http://openjdk.java.net/) |  [OpenJDK Source](http://hg.openjdk.java.net/jdk) | [Github:source](https://github.com/openjdk/jdk)
 
 > [Open JDK 11: Download](http://jdk.java.net/11/)
+
+# Corretto
+[aws corretto](https://aws.amazon.com/corretto/)

@@ -6,3 +6,4 @@
 - 树模型：XGBoost， LightGBM 
 - 深度学习模型：LSTM，Transformer
 
+[超参数调优](https://www.cvmart.net/community/detail/8044)
