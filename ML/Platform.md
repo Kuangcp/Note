@@ -15,10 +15,11 @@ categories:
     - 3.1. [Anaconda](#anaconda)
     - 3.2. [Posit](#posit)
     - 3.3. [H2O](#h2o)
-        - 3.3.1. [H2O Flow](#h2o-flow)
-        - 3.3.2. [H2O-Python](#h2o-python)
+        - 3.3.1. [部署](#部署)
+        - 3.3.2. [H2O Flow](#h2o-flow)
+        - 3.3.3. [H2O-Python](#h2o-python)
 
-💠 2024-01-24 11:21:13
+💠 2024-01-24 18:24:52
 ****************************************
 # 机器学习平台
 > 将机器学习工程化组织的平台
@@ -73,10 +74,21 @@ categories:
     XGBoost
 ```
 
+### 部署
+
+- 下载压缩包解压运行h2o.jar之后，可打开一个默认无认证体系的 H2O Flow. 
+- 加载数据库驱动 `java -cp h2o.jar:mysql-connector-java-8.0.25.jar -Dsys.ai.h2o.sql.jdbc.driver.mysql=com.mysql.cj.jdbc.Driver water.H2OApp`
+- 启动集群 `-flatfile flatfile -name testEnv`
+    -  如果是同主机搭建需要不同的进程指定端口，例如 `-port 54323` 内部paxos端口则是参数值+1 54324
+    ```
+    192.168.1.5:54321
+    192.168.1.6:54321
+    192.168.1.7:54321
+    ```
+
 ### H2O Flow
 [H2O Flow Tutorial](http://h2o-release.s3.amazonaws.com/h2o/rel-3.44.0/3/docs-website/h2o-docs/flow.html)
 
-- 下载压缩包解压运行jar之后，可打开一个默认无认证体系的 H2O Flow. 
 - [MOJO](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/mojo-quickstart.html)`模型的抽象表示` 导出为GenModel即jar包可部署到应用中。
 
 > 跑GLM的流程
