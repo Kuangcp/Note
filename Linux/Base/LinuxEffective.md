@@ -80,6 +80,7 @@ categories:
 | `tilda`           | 内嵌于桌面上, 小命令方便                        | 需要查看文件时不方便                                |                                         |
 | `terminology`     | 样式高度自定义                                  |                                                     |                                         |
 | `tilix`           |                                               |                                                     |                                         |
+| `wezterm` | [wezterm](https://wezfurlong.org/wezterm/index.html)| | | 
 
 > 备注 sakura xfce4-terminal 快捷键配置
 
@@ -90,8 +91,8 @@ categories:
 修改 `~/.config/xfce4/terminal/accels.scm`
 
 ```lua
-(gtk_accel_path "<Actions>/terminal-window/copy" "<Primary>c")
-(gtk_accel_path "<Actions>/terminal-window/paste" "<Primary>v")
+  (gtk_accel_path "<Actions>/terminal-window/copy" "<Primary>c")
+  (gtk_accel_path "<Actions>/terminal-window/paste" "<Primary>v")
 ```
 
 ************************
