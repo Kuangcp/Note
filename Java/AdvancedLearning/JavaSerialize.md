@@ -25,9 +25,10 @@ categories:
 
 > 反序列化生成对象时不会调用构造器
 
-## serialVersionUID
-> 简单的说就是类的版本控制, 标明类序列化时的版本, 版本一致表明这两个类定义一致  
+## Serializable
+> 简单的说serialVersionUID就是类的版本控制, 标明类序列化时的版本, 版本一致表明这两个类定义一致  
 > 在进行反序列化时, JVM会把传来的字节流中的serialVersionUID与本地相应实体（类）的serialVersionUID进行比较，如果相同就认为是一致的，可以进行反序列化，否则就会出现序列化版本不一致的异常。(InvalidCastException)  
+
 [参考博客](http://swiftlet.net/archives/1268)
 
 - serialVersionUID有两种显示的生成方式： 
@@ -36,20 +37,34 @@ categories:
 
 > 当你一个类实现了Serializable接口，如果没有定义serialVersionUID，可通过IDE进行提醒显示定义。
 
-`序列化以及反序列化一个对象`
+### 序列化和反序列化
 ```java
     TargetObject targetObject = new TargetObject("name");
-
     ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
     ObjectOutputStream output = new ObjectOutputStream(byteOutput);
     output.writeObject(targetObject);
 
     ByteArrayInputStream byteInput = new ByteArrayInputStream(byteOutput.toByteArray());
-
     ObjectInputStream input = new ObjectInputStream(byteInput);
     TargetObject result = (TargetObject) input.readObject();
     assertThat(result.getName(), equalTo("name"));
 ```
+
+- 在做有多态结构的`对象深拷贝`时，使用该方式能简单且快速实现。但如果使用JSON序列化方式来实现节点的类型信息会丢失，无法实现
+    - 例如一个多叉树上的节点是一个接口的多类型实例。
+    ```java
+    public interface Node {
+        List<Node> getChildes();
+    }
+    @Data
+    public class Dir implements Node {
+        private List<Node> childes;
+    }
+    @Data
+    public class File implements Node {
+        private List<Node> childes;
+    }
+    ```
 
 ******************************
 

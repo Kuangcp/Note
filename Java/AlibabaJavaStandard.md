@@ -287,6 +287,7 @@ categories:
 
 1. 慎用Object的clone方法来拷贝对象 `详见API`
     - 说明:  对象的 clone 方法默认是浅拷贝, 最好重写该方法, 实现属性对象的拷贝。
+    - 例如[使用JDK序列化实现深拷贝](/Java/AdvancedLearning/JavaSerialize.md#序列化和反序列化)，或者用JSON序列化的方式
 
 1. 类成员与方法访问控制从严: 
     1. 如果不允许外部直接通过 new 来创建对象, 那么构造方法显式声明并 private
