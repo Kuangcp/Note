@@ -32,7 +32,7 @@ categories:
         - 1.5.2. [i386-pc not found](#i386-pc-not-found)
     - 1.6. [崩溃](#崩溃)
 
-💠 2024-01-18 10:31:26
+💠 2024-01-29 11:43:36
 ****************************************
 # Linux桌面发行版遇到的问题
 
@@ -212,3 +212,28 @@ fc -R .zsh_history
     Jan 18 09:23:31 systemd[2507120]: Reached target Exit the Session.
 ```
 - [System hangs on no input after "Reached system target shutdown"](https://www.reddit.com/r/archlinux/comments/16jimr2/system_hangs_on_no_input_after_reached_system/)`相近问题`
+
+
+
+************************
+> 崩溃，切换TTY5登录后终端疯狂输出日志无响应
+
+Used+Cached高内存， `journalctl -b -1`查日志
+```log
+    Jan 29 11:28:49 zk-pc systemd[1]: Started Getty on tty5.
+    Jan 29 11:28:53 zk-pc dbus-daemon[668]: [system] Activating via systemd: service name='org.freedesktop.home1' unit='dbus-org.freedesktop.home1.service' requested by ':1.3512' (uid=0 pid=3819>
+    Jan 29 11:28:54 zk-pc dbus-daemon[668]: [system] Activation via systemd failed for unit 'dbus-org.freedesktop.home1.service': Unit dbus-org.freedesktop.home1.service not found.
+    Jan 29 11:28:57 zk-pc login[3819083]: pam_unix(login:session): session opened for user zk(uid=1000) by zk(uid=0)
+    Jan 29 11:29:01 zk-pc systemd-logind[671]: New session 279 of user zk.
+    Jan 29 11:29:01 zk-pc systemd[1]: Started Session 279 of User zk.
+    Jan 29 11:29:03 zk-pc login[3819083]: LOGIN ON tty5 BY zk
+    Jan 29 11:29:05 zk-pc kernel: general protection fault, probably for non-canonical address 0xff00000000000010: 0000 [#1] PREEMPT SMP NOPTI
+    Jan 29 11:29:06 zk-pc kernel: CPU: 8 PID: 3807890 Comm: Storage Diagnos Not tainted 5.15.139-1-MANJARO #1 096934fa2aab193b2a40cf54023e5b05e5276eb2
+    Jan 29 11:29:07 zk-pc systemd-journald[375]: Missed 364 kernel messages
+    Jan 29 11:29:07 zk-pc kernel: ---[ end trace 56f99a5ae8056f6e ]---
+    Jan 29 11:29:08 zk-pc systemd-journald[375]: Missed 910 kernel messages
+    Jan 29 11:29:08 zk-pc kernel: RSP: 002b:00007f6803a98590 EFLAGS: 00010217
+    Jan 29 11:29:10 zk-pc systemd-journald[375]: Missed 1440 kernel messages
+    Jan 29 11:29:10 zk-pc kernel: RSP: 0000:ffff9ee142597c30 EFLAGS: 00010246
+```
+
