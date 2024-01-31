@@ -47,7 +47,7 @@ categories:
     - 4.1. [鼠标](#鼠标)
 - 5. [Tips](#tips)
 
-💠 2024-01-29 11:43:36
+💠 2024-01-31 11:40:19
 ****************************************
 # 高效的Linux
 
@@ -60,13 +60,14 @@ categories:
 
 ## Terminal 对比
 
-> 列举出系统可安装终端
->
-> 1. Debian: `sudo apt search terminal | grep -E terminal.+amd64`
-> 2. Arch: `yay terminal`
+> 列举出系统可安装终端  
+>  
+> 1. Debian: `sudo apt search terminal | grep -E terminal.+amd64`  
+> 2. Arch: `yay terminal`  
+> 3. [Github Topic: terminal-emulator ](https://github.com/topics/terminal-emulator)  
 
 终端可参考功能点： 终端透明化，终端背景图，快捷键设置，终端内颜色自定义，下拉式，标签水平垂直拆分，鼠标键盘交互性，资源占用少
-终极工具 [Tmux](/Linux/Tool/Tmux.md) 可以摆脱终端模拟器的对比和选择，选择最简单的模拟器即可
+终极工具 [Tmux](/Linux/Tool/Tmux.md) 可以摆脱终端模拟器的对比和选择，选择最简单省资源的模拟器即可
 
 | 终端                | 优点                                            | 缺点                                                | 备注                                    |
 | :------------------ | :---------------------------------------------- | :-------------------------------------------------- | :-------------------------------------- |

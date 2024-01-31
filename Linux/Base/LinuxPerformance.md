@@ -56,7 +56,7 @@ categories:
     - 8.7. [chroot](#chroot)
 - 9. [关机/重启](#关机重启)
 
-💠 2023-12-14 15:57:40
+💠 2024-01-31 11:40:19
 ****************************************
 # Linux性能分析和管理
 
@@ -69,20 +69,18 @@ categories:
 1. [byte-unixbench](https://github.com/kdlucas/byte-unixbench)
 1. [geekbench](https://www.geekbench.com)
 
-************************
-
-侧重于重负载测试下硬件的情况
+> 高负载测试
 1. [stress](https://github.com/cirocosta/stress)
 1. [stress-ng](https://github.com/ColinIanKing/stress-ng)
-    - stress-ng --cpu 16 --timeout 180
-    - stress-ng --vm 4 --vm-bytes 10G --vm-hang 180 --timeout 180s
-    - stress-ng --hdd 5 --hdd-bytes 10G --timeout 180s
+- stress-ng --cpu 16 --timeout 180 `占满CPU`
+- stress-ng --vm 4 --vm-bytes 10G --vm-hang 180 --timeout 180s
+- stress-ng --hdd 5 --hdd-bytes 10G --timeout 180s
+
+> 简易评测
+- 单核CPU: `time echo "scale=9000; 4*a(1)" | bc -l -q` 
+- Mac Book Pro 2023 32G: 4s
 
 ************************
-
-1. 简易评测
-    - 单核CPU: `time echo "scale=9000; 4*a(1)" | bc -l -q` 
-    - Mac Book Pro 2023 32G: 4s
 
 # 运行状况信息
 > 系统实时状态信息
