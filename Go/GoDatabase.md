@@ -6,16 +6,16 @@ categories:
     - Go
 ---
 
-**目录 start**
+💠
 
-1. [Go的数据库操作](#go的数据库操作)
-    1. [Redis](#redis)
-    1. [MySQL](#mysql)
-        1. [gorm](#gorm)
-        1. [xorm](#xorm)
-    1. [LevelDB](#leveldb)
+- 1. [Go的数据库操作](#go的数据库操作)
+    - 1.1. [Redis](#redis)
+    - 1.2. [MySQL](#mysql)
+        - 1.2.1. [gorm](#gorm)
+        - 1.2.2. [xorm](#xorm)
+    - 1.3. [LevelDB](#leveldb)
 
-**目录 end**|_2020-06-30 19:47_|
+💠 2024-02-02 14:22:14
 ****************************************
 # Go的数据库操作
 
@@ -34,3 +34,11 @@ categories:
 
 ## LevelDB
 > [Github: goleveldb](https://github.com/syndtr/goleveldb)
+
+
+************************
+
+> 搜索
+
+gofound  
+zincsearch  

@@ -74,14 +74,13 @@ categories:
     - 8.2. [gitattributes](#gitattributes)
 - 9. [自定义插件](#自定义插件)
 
-💠 2024-01-23 19:08:38
+💠 2024-02-02 14:22:14
 ****************************************
 
 # Git基础
-
 > Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. -- [git-scm.com](https://git-scm.com/)
 
-> [Github:git](https://github.com/git/git) | [Official Doc: git](https://git-scm.com/docs) | [Arch Wiki: Git](https://wiki.archlinux.org/index.php/Git) | [Gitee: about git](https://gitee.com/all-about-git) | [git-for-windows mirrors](https://npm.taobao.org/mirrors/git-for-windows/)
+> [Official Doc: git](https://git-scm.com/docs) | [Github:git](https://github.com/git/git) | [Arch Wiki: Git](https://wiki.archlinux.org/index.php/Git) | [Gitee: about git](https://gitee.com/all-about-git) | [git-for-windows 安装包镜像源](https://npm.taobao.org/mirrors/git-for-windows/)
 
 - index stage work 三个逻辑分区
   - index: 已经 commit 的内容, 不可更改历史commit
@@ -662,7 +661,11 @@ git log --oneline -S "search keyword" --source --all
 > 实验性命令： git switch branch
 
 ## 分支合并
-> merge rebase 两种合并方式
+> merge rebase squash 三种合并策略
+
+- Merge会创建合并节点形成环
+- Rebase是通过调整两个分支链上的提交，合并成一个链没有环
+- Squash不是具体命令，做法是将需要合并过去的那些提交撤销得到文件修改，基于这些修改再创建一个新提交。好处是分支图上只有主要合并提交，没有中间提交信息的干扰
 
 [这才是真正的 Git——分支合并](https://zhuanlan.zhihu.com/p/192972614)
 

@@ -47,7 +47,7 @@ categories:
     - 4.1. [鼠标](#鼠标)
 - 5. [Tips](#tips)
 
-💠 2024-01-31 11:40:19
+💠 2024-02-02 14:22:14
 ****************************************
 # 高效的Linux
 
@@ -81,20 +81,21 @@ categories:
 | `tilda`           | 内嵌于桌面上, 小命令方便                        | 需要查看文件时不方便                                |                                         |
 | `terminology`     | 样式高度自定义                                  |                                                     |                                         |
 | `tilix`           |                                               |                                                     |                                         |
-| `wezterm` | [wezterm](https://wezfurlong.org/wezterm/index.html)| | | 
 
 > 备注 sakura xfce4-terminal 快捷键配置
-
 - `~/.config/xfce4/terminal/accels.scm`
 - 配置语法： [doc](http://troubleshooters.com/linux/sakura.htm) | [config shortcut](https://unix.stackexchange.com/questions/102474/configuring-shortcuts-for-sakura)
 - 例如 [修改 Ctrl C V 为复制快捷键](https://bbs.archlinux.org/viewtopic.php?id=260755) `Gtk3起 不支持所谓的鼠标悬浮改快捷键`
-
-修改 `~/.config/xfce4/terminal/accels.scm`
-
 ```lua
   (gtk_accel_path "<Actions>/terminal-window/copy" "<Primary>c")
   (gtk_accel_path "<Actions>/terminal-window/paste" "<Primary>v")
 ```
+
+> 现代终端
+- [wezterm](https://wezfurlong.org/wezterm/index.html)
+- Warp
+- Tabby
+- WindTerm
 
 ************************
 
