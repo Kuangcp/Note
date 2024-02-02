@@ -21,14 +21,12 @@ categories:
             - 2.1.5.1. [运行时常量池](#运行时常量池)
         - 2.1.6. [Direct Memory 直接内存](#direct-memory-直接内存)
     - 2.2. [Metaspace 元空间](#metaspace-元空间)
-- 3. [JVM基本参数配置](#jvm基本参数配置)
-    - 3.1. [内存类参数 Tips](#内存类参数-tips)
-- 4. [JVM不同实现](#jvm不同实现)
-    - 4.1. [Hotspot JVM](#hotspot-jvm)
-    - 4.2. [OpenJ9](#openj9)
-    - 4.3. [GraalVM](#graalvm)
+- 3. [JVM不同实现](#jvm不同实现)
+    - 3.1. [Hotspot JVM](#hotspot-jvm)
+    - 3.2. [OpenJ9](#openj9)
+    - 3.3. [GraalVM](#graalvm)
 
-💠 2023-12-12 00:10:45
+💠 2024-02-02 18:07:47
 ****************************************
 # JVM
 > JVM结构及设计
@@ -174,43 +172,6 @@ NIO 会经常使用, 提高性能
     - -XX:MetaspaceSize=N 和 -XX:MaxMetaspaceSize=N
     - 对于64位JVM来说，元空间的默认初始大小是20.75MB，默认的元空间的最大值是无限（16EB）。
 
-************************
-
-# JVM基本参数配置
-> [JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)  
-
-- `-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000` 开启远程调试端口 8000
-    - If you want to debug from start of application use `suspend=y` , this will keep remote application suspended until you connect from eclipse.
-- `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
-    - 开启无需认证 非SSL的JMX端口: 9999
-
-- `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 打印类装载
-- `-Xloggc:/home/logs/gc.log`
-- `-XX:+HeapDumpOnOutOfMemoryError` 注意路径的文件名不能重复
-
-## 内存类参数 Tips 
-> 堆(老年代 年轻代)，堆外，元空间，栈
-
-- `-XX:CompressedClassSpaceSize=500m` 压缩类元空间大小 默认是1g
-- `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1
-
-- `-XX:+PrintFlagsInitial` 输出初始默认值
-- `-XX:+PrintFlagsFinal` 输出JVM最终属性值 
-    - 例如 `java -XX:+PrintFlagsFinal -version`
-    - MaxHeapSize 最大堆内存
-    - MaxRAMFraction 默认最大内存占物理内存的比例 JDK678 都是4 也就是1/4
-    - `java -XX:+PrintFlagsFinal -version | grep "Use.*GC"` 查看默认GC
-    - `-Xmn` 默认值是Xmx的1/3 即最大堆内存的1/3
-    - NUMA 机制
-
-- [初始和最大堆内存设置为一样的好处](https://gceasy.ycrash.cn/gc-recommendations/benefits-of-setting-initial-and-maximum-memory-size.jsp)
-
-> 如何快速确认进程内存配置
-1. OpenJDK
-    - 
-1. OracleJDK
-    - jmap -heap pid
-
 **********************
 
 # JVM不同实现
@@ -220,9 +181,7 @@ NIO 会经常使用, 提高性能
 ## OpenJ9
 IBM主导开发, 捐赠给Eclipse基金会
 
-> [Officail Site](http://www.eclipse.org/openj9/) | [IBM原文](https://www.ibm.com/support/knowledgecenter/SSYKE2_8.0.0/com.ibm.java.vm.80.doc/docs/j9_intro.html)
-
-- [Github:](https://github.com/eclipse/openj9)
+> [Officail Site](http://www.eclipse.org/openj9/) | [IBM原文](https://www.ibm.com/support/knowledgecenter/SSYKE2_8.0.0/com.ibm.java.vm.80.doc/docs/j9_intro.html) | [技术文档](https://eclipse.dev/openj9/docs/)
 
 > [参考: IBM开源JVM实现OpenJ9，并提交Eclipse基金会托管)](http://www.infoq.com/cn/news/2017/09/IBM-JVM-OpenJ9-Eclipse)
 > [参考: Eclipse Open J9：Eclipse OMR项目提供的开源JVM](http://www.infoq.com/cn/news/2018/03/OMR-OpenJ9)

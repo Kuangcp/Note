@@ -10,8 +10,10 @@ categories:
 💠
 
 - 1. [Java性能调优](#java性能调优)
-    - 1.1. [JVM参数调优](#jvm参数调优)
-        - 1.1.1. [GC调优](#gc调优)
+    - 1.1. [JVM参数](#jvm参数)
+        - 1.1.1. [内存参数 Tips](#内存参数-tips)
+        - 1.1.2. [JVM参数调优](#jvm参数调优)
+        - 1.1.3. [GC调优](#gc调优)
     - 1.2. [内存优化](#内存优化)
         - 1.2.1. [堆外内存](#堆外内存)
         - 1.2.2. [Metaspace](#metaspace)
@@ -47,12 +49,49 @@ categories:
     - 5.3. [线程](#线程)
     - 5.4. [内存](#内存)
 
-💠 2024-01-31 11:40:19
+💠 2024-02-02 18:07:47
 ****************************************
 
 # Java性能调优
 
-## JVM参数调优
+## JVM参数
+> [JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)  
+> [Java HotSpot VM Options](https://www.oracle.com/java/technologies/javase/vmoptions-jsp.html)
+
+- `-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000` 开启远程调试端口 8000
+    - If you want to debug from start of application use `suspend=y` , this will keep remote application suspended until you connect from eclipse.
+- `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
+    - 开启无需认证 非SSL的JMX端口: 9999
+
+- `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 打印类装载
+- `-Xloggc:/home/logs/gc.log`
+- `-XX:+HeapDumpOnOutOfMemoryError` 注意路径的文件名不能重复
+
+### 内存参数 Tips 
+> 堆(老年代 年轻代)，堆外，元空间，栈
+
+- `-XX:CompressedClassSpaceSize=500m` 压缩类元空间大小 默认是1g
+- `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1
+
+- `-XX:+PrintFlagsInitial` 输出初始默认值
+
+> java -XX:+PrintFlagsFinal -version
+- `输出JVM最终属性值` -XX:+PrintFlagsFinal 
+    - MaxHeapSize 最大堆内存
+    - MaxRAMFraction 默认最大内存占物理机内存的比例 JDK6，7，8 都是4 即1/4
+    - `-Xmn` MaxNewSize 默认值是Xmx的1/3 即最大堆内存 MaxHeapSize 的1/3
+    - NUMA 机制
+    - `java -XX:+PrintFlagsFinal -version | grep "Use.*GC"` 查看默认GC实现
+
+- [初始和最大堆内存设置为一样的好处](https://gceasy.ycrash.cn/gc-recommendations/benefits-of-setting-initial-and-maximum-memory-size.jsp)
+
+> 如何快速确认进程内存配置
+1. OpenJDK
+    - 
+1. OracleJDK
+    - jmap -heap pid
+
+### JVM参数调优
 > [参考: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)
 
 - [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`
@@ -119,6 +158,12 @@ categories:
 
 > [参考: 聊聊JVM 堆外内存泄露的BUG是如何查找的](https://cloud.tencent.com/developer/article/1129904)  
 > [JAVA堆外内存排查小结](https://zhuanlan.zhihu.com/p/60976273)  
+
+- `-XX:MaxDirectMemorySize` 限制最大内存 未设置时参数值为0，实际上的值是： 
+
+- 启用NMT -XX:NativeMemoryTracking=detail 
+    - 查看NMT jcmd $pid VM.native_memory detail
+
 
 ### Metaspace
 > [参考: Metaspace 之一：Metaspace整体介绍](https://www.cnblogs.com/duanxz/p/3520829.html)  
@@ -365,3 +410,4 @@ categories:
 > [jstack.review Analyze java thread dumps](https://jstack.review)
 
 ## 内存
+

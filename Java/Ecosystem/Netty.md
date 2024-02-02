@@ -13,8 +13,9 @@ categories:
         - 1.1.2. [编解码相关](#编解码相关)
             - 1.1.2.1. [Protobuf](#protobuf)
     - 1.2. [原理](#原理)
+        - 1.2.1. [内存设计](#内存设计)
 
-💠 2024-02-02 14:22:14
+💠 2024-02-02 18:07:47
 ****************************************
 # Netty
 > [Trustlin](https://github.com/trustin) `Netty Mina 的作者`  
@@ -104,3 +105,14 @@ Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件�
 > [官方Demo](https://github.com/netty/netty/tree/4.1/example/src/main/java/io/netty/example)
 > [Netty实战配套源码](https://github.com/ReactivePlatform/netty-in-action-cn)
 > [Netty权威指南2 源码](https://github.com/Kuangcp/NettyBook2)
+
+
+### 内存设计
+
+> 直接内存
+
+-Dio.netty.noPreferDirect 是否运行通过底层api直接访问直接内存，默认：允许
+-Dio.netty.noUnsafe 是否允许使用sun.misc.Unsafe，默认：允许
+
+io.netty.maxDirectMemory 设置项
+
