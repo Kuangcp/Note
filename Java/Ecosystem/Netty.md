@@ -16,7 +16,7 @@ categories:
         - 1.2.1. [内存设计](#内存设计)
     - 1.3. [复合组件](#复合组件)
 
-💠 2024-02-03 10:48:34
+💠 2024-02-03 11:47:08
 ****************************************
 # Netty
 > [Trustlin](https://github.com/trustin) `Netty Mina 的作者`  
@@ -112,10 +112,9 @@ Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件�
 
 > 直接内存
 
--Dio.netty.noPreferDirect 是否运行通过底层api直接访问直接内存，默认：允许
--Dio.netty.noUnsafe 是否允许使用sun.misc.Unsafe，默认：允许
-
-io.netty.maxDirectMemory 设置项
+- -Dio.netty.noPreferDirect 是否运行通过底层api直接访问直接内存，默认：允许
+- -Dio.netty.noUnsafe 是否允许使用sun.misc.Unsafe，默认：允许
+- -Dio.netty.maxDirectMemory 设置最大值
 
 ## 复合组件
 > [netty-socketio](https://github.com/mrniko/netty-socketio)  

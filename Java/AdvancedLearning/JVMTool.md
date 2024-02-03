@@ -9,7 +9,7 @@ categories:
 
 💠
 
-- 1. [Jvm工具](#jvm工具)
+- 1. [JVM 工具](#jvm-工具)
     - 1.1. [JVM参数](#jvm参数)
     - 1.2. [JVM内存参数](#jvm内存参数)
 - 2. [JDK自带工具](#jdk自带工具)
@@ -35,10 +35,20 @@ categories:
     - 4.6. [JMC](#jmc)
     - 4.7. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-💠 2024-02-03 10:48:34
+💠 2024-02-03 11:47:08
 ****************************************
 
 # JVM 工具
+命令行终端
+- 标准终端类：jps、jinfo、jstat、jstack、jmap
+- 功能整合类：jcmd、vjtools、arthas、greys
+
+可视化界面
+- 简易：JConsole、JVisualvm、HA、GCHisto、GCViewer
+- 进阶：MAT、JProfiler
+
+命令行推荐 arthas ，可视化界面推荐 JProfiler  
+此外还有一些在线的平台 [gceasy](https://gceasy.io/)、heaphero、fastthread 。
 
 ## JVM参数
 > [JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)  
@@ -52,6 +62,15 @@ categories:
 - `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 打印类装载
 - `-Xloggc:/home/logs/gc.log`
 - `-XX:+HeapDumpOnOutOfMemoryError` 注意路径的文件名不能重复
+
+> 编译类参数
+- CICompilerCount是JIT进行热点编译的线程数，和并发标记线程数一样，热点编译也是CPU密集型任务，默认值为2。
+在CICompilerCountPerCPU开启的时候（JDK7默认关闭，JDK8默认开启），手动指定CICompilerCount是不会生效的，JVM会使用系统CPU核数进行计算。
+所以当使用JRE8并且版本小于1.8.0_131，采用默认参数时，CICompilerCount会在20左右，对业务性能影响较大，特别是启动阶段。建议升级Java版本，特殊情况要使用老版本Java 8，请加上`-XX:CICompilerCount=[n]`, 同时不能指定-XX:+CICompilerCountPerCPU ，下表给出了生产环境下常见规格的推荐值。
+
+| CPU核数 | 1 | 2 | 4 | 8 | 16 |
+|:---|:---|:---|:---|:---|:---|
+| 推荐值 | 2 | 2 | 3 | 3 | 8 | 
 
 ## JVM内存参数
 > 堆(老年代 年轻代)，堆外，元空间，栈
@@ -71,28 +90,11 @@ categories:
 
 - [初始和最大堆内存设置为一样的好处](https://gceasy.ycrash.cn/gc-recommendations/benefits-of-setting-initial-and-maximum-memory-size.jsp)
 
-> 如何快速确认进程内存配置
-1. OpenJDK
-    - 
-1. OracleJDK
-    - jmap -heap pid
+> 快速确认进程内存配置  OpenJDK： ` `  OracleJDK ： `jmap -heap pid`
 
 > [参考: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)  
 > [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`  
 > [参考: JVM动态反优化](https://blog.mythsman.com/post/5d2c12cc67f841464434a3ec/)   
-
-************************
-> 工具
-
-命令行终端
-- 标准终端类：jps、jinfo、jstat、jstack、jmap
-- 功能整合类：jcmd、vjtools、arthas、greys
-
-可视化界面
-- 简易：JConsole、JVisualvm、HA、GCHisto、GCViewer
-- 进阶：MAT、JProfiler
-
-命令行推荐 arthas ，可视化界面推荐 JProfiler，此外还有一些在线的平台 [gceasy](https://gceasy.io/)、heaphero、fastthread 。
 
 ************************
 
@@ -100,16 +102,19 @@ categories:
 > 都是jdk的bin目录下的工具
 
 ## java
-### 环境变量的使用
-> java [-options] -jar jarfile [args...]
+> 使用方式：
+- 执行类： `java [-options] class [args...]`
+- 执行包： `java [-options] -jar jarfile [args...]` 或 `java -jar [-options] jarfile [args...]`
 
+> 这些Java options都不会生效。
+`java -jar jarfile [-options] [args...]`  
+`java -jar jarfile [args...] [-options]`  
+
+### 环境变量的使用
 > [What is the java -D command-line option good for? ](https://coderanch.com/t/178539/certification/java-command-line-option-good)
 - 传入 `java -Dkey=true -jar xxx.jar`
     - *-D 参数* 要前于 -jar
 - 获取 `System.getProperty("key", "defaultvalue");`
-
-> 执行含main方法的类
-- `java -cp jarfile[:jarfile2] className`
 
 ## jps
 > 主要用来输出JVM中运行的进程状态信息

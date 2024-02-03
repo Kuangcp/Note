@@ -7,15 +7,17 @@ categories:
     - Java
 ---
 
-**目录 start**
- 
-1. [计算机基础](#计算机基础)
-1. [Java](#java)
-    1. [JDK](#jdk)
-1. [相关资源](#相关资源)
-1. [环境配置](#环境配置)
+💠
 
-**目录 end**|_2020-03-27 15:28_|
+- 1. [计算机基础](#计算机基础)
+- 2. [Java](#java)
+    - 2.1. [JDK](#jdk)
+    - 2.2. [JavaFX](#javafx)
+- 3. [相关资源](#相关资源)
+    - 3.1. [Java Programer Suggestion](#java-programer-suggestion)
+- 4. [环境配置](#环境配置)
+
+💠 2024-02-03 10:54:46
 ****************************************
 # 计算机基础
 
@@ -42,16 +44,16 @@ categories:
 
 | 基础 | 进阶 |
 |:----|:----|
-| [基础语法](/Java/AdvancedLearning/JavaBasicSyntax.md)  | [反射](/Java/AdvancedLearning/JavaReflection.md)
-| [继承和接口](/Java/AdvancedLearning/JavaInheritedAndInterface.md)  | [JVM](/Java/AdvancedLearning/JVM.md)
-| [异常](/Java/AdvancedLearning/JavaException.md)  | [字节码](/Java/AdvancedLearning/JavaClass.md)
-| [泛型](/Java/AdvancedLearning/JavaGenerics.md)  | [测试](/Java/Test/JavaTest.md)
-| [集合](/Java/AdvancedLearning/JavaCollection.md)  | [打包部署](/Java/AdvancedLearning/JavaDeploy.md)
-| [线程](/Java/AdvancedLearning/JavaThread.md)  | [持续集成 CI](/Skills/DevOps/ContinuousIntegration.md)
-| [并发](/Java/AdvancedLearning/JavaConcurrency.md)  | [持续交付 CD](/Skills/DevOps/ContinuousDelivery.md)
-| [IO](/Java/AdvancedLearning/JavaIO.md)  | [网络编程](/Java/AdvancedLearning/JavaNetwork.md)
-| [注解](/Java/AdvancedLearning/JavaAnnotation.md)  | 
-| [JDBC](/Java/AdvancedLearning/JDBC.md) |
+| [基础语法](/Java/AdvancedLearning/JavaBasicSyntax.md)  | [反射](/Java/AdvancedLearning/JavaReflection.md) |
+| [继承和接口](/Java/AdvancedLearning/JavaInheritedAndInterface.md)  | [JVM](/Java/AdvancedLearning/JVM.md) |
+| [异常](/Java/AdvancedLearning/JavaException.md)  | [字节码](/Java/AdvancedLearning/JavaClass.md) |
+| [泛型](/Java/AdvancedLearning/JavaGenerics.md)  | [测试](/Java/Test/JavaTest.md) | 
+| [集合](/Java/AdvancedLearning/JavaCollection.md)  | [打包部署](/Java/AdvancedLearning/JavaDeploy.md) |
+| [线程](/Java/AdvancedLearning/JavaThread.md)  | [持续集成 CI](/Skills/DevOps/ContinuousIntegration.md) |
+| [并发](/Java/AdvancedLearning/JavaConcurrency.md)  | [持续交付 CD](/Skills/DevOps/ContinuousDelivery.md) |
+| [IO](/Java/AdvancedLearning/JavaIO.md)  | [网络编程](/Java/AdvancedLearning/JavaNetwork.md) |
+| [注解](/Java/AdvancedLearning/JavaAnnotation.md)  |  |
+| [JDBC](/Java/AdvancedLearning/JDBC.md) | |
 
 ## JDK
 >- [JDK and JRE](/Java/AdvancedLearning/JDKAndJRE.md)

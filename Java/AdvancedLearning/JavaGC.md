@@ -32,7 +32,7 @@ categories:
     - 3.9. [ShenandoahGC](#shenandoahgc)
 - 4. [Practice](#practice)
 
-💠 2023-12-12 00:10:45
+💠 2024-02-03 11:47:08
 ****************************************
 # GC
 > Garbage Collection
@@ -405,7 +405,6 @@ CMS自己会进入full GC的情况就是它的并发收集模式跟不上应用�
     - 达到该年龄(经过GC次数)的String对象被认为是去重的候选对象 `-XX:StringDeDuplicationAgeThreshold`
 - 该策略不会清除重复字符串对象本身。其只会替换底层 char[ ] 达到复用内存的目的 [Gitee 测试代码](https://gitee.com/gin9/JavaBase/blob/master/class/src/main/java/jvm/gc/g1/StringDeduplication.java)
 
-
 > JDK1.8 FullGC是单线程的 JDK10 开始支持并行
 
 > [参考: Java Hotspot G1 GC的一些关键技术](https://tech.meituan.com/2016/09/23/g1.html)  
@@ -449,6 +448,9 @@ Young GC发生的时机大家都知道，那什么时候发生Mixed GC呢？其�
 | -XX:G1OldCSetRegionThresholdPercent=10  |  	设置混合垃圾回收周期中要收集的 Old 区域数量上限。默认为 Java 堆内存的 10%。|
 | -XX:G1ReservePercent=10  |  	设置需保留的内存百分比。默认为 10%。G1 垃圾回收器会始终尝试保留 10% 的堆内存空间空闲。|
 
+ParallelGCThreads参数使用默认值就可以了。但是在JRE版本1.8.0_131之前，JVM无法感知Docker的CPU限制，会使用宿主机的逻辑核数计算默认值。远超过了容器的核数, 过多的GC线程数抢占了业务线程的CPU时间，加上线程切换的开销，较大的降低了吞吐量。因此JRE 1.8.0_131之前的版本，未明确指定ParallelGCThreads会有较大的风险。
+
+ConcGCThreads 一般称为并发标记线程数，为了减少GC的STW的时间，CMS和G1都有并发标记的过程，此时业务线程仍在工作，只是并发标记是CPU密集型任务，业务的吞吐量会下降，RT会变长。ConcGCThreads的默认值不同GC策略略有不同，CMS下是(ParallelGCThreads + 3) / 4 向下取整，G1下是ParallelGCThreads / 4 四舍五入。一般来说采用默认值就可以了，但是还是由于在JRE版本1.8.0_131之前，JVM无法感知Docker的资源限制的问题，ConcGCThreads的默认值会比较大（20左右），对业务会有影响。
 
 ************************
 
