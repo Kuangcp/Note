@@ -14,8 +14,9 @@ categories:
             - 1.1.2.1. [Protobuf](#protobuf)
     - 1.2. [原理](#原理)
         - 1.2.1. [内存设计](#内存设计)
+    - 1.3. [复合组件](#复合组件)
 
-💠 2024-02-02 18:07:47
+💠 2024-02-03 10:48:34
 ****************************************
 # Netty
 > [Trustlin](https://github.com/trustin) `Netty Mina 的作者`  
@@ -115,4 +116,7 @@ Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件�
 -Dio.netty.noUnsafe 是否允许使用sun.misc.Unsafe，默认：允许
 
 io.netty.maxDirectMemory 设置项
+
+## 复合组件
+> [netty-socketio](https://github.com/mrniko/netty-socketio)  
 

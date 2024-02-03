@@ -1,26 +1,26 @@
 ---
-title: Linux 美化
-date: 2018-12-15 11:18:48
+title: LinuxUI
+date: 2024-02-03 10:39:52
 tags: 
-    - 工具使用经验
 categories: 
-    - Linux
 ---
-**目录 start**
 
-1. [UI](#ui)
-   1. [桌面管理器](#桌面管理器)
-   2. [Font](#font)
-      1. [字体渲染](#字体渲染)
-   3. [Theme](#theme)
-   4. [Icon](#icon)
-   5. [Terminal](#terminal)
-      1. [彩色输出](#彩色输出)
-         1. [ls配置彩色输出](#ls配置彩色输出)
+💠
 
-**目录 end**|_2023-09-17 23:21_|
+- 1. [UI](#ui)
+    - 1.1. [桌面管理器](#桌面管理器)
+        - 1.1.1. [Dock](#dock)
+    - 1.2. [Font](#font)
+        - 1.2.1. [字体渲染](#字体渲染)
+    - 1.3. [Theme](#theme)
+    - 1.4. [Icon](#icon)
+    - 1.5. [Terminal](#terminal)
+        - 1.5.1. [彩色输出](#彩色输出)
+            - 1.5.1.1. [ls配置彩色输出](#ls配置彩色输出)
 
----
+💠 2024-02-03 10:48:34
+****************************************
+************************
 
 # UI
 
@@ -64,14 +64,12 @@ plank
 
 [nerd fonts](https://www.nerdfonts.com/)
 
----
+************************
 
 ## Theme
 
-1. /usr/share/themes/
-2. ~/.themes/  ~/.local/share/themes
-
-`问题:` Deepin上 全放 ~/.local/share/themes 会有bug, 只能全放 ~/.themes
+1. /usr/share/themes/ 系统级
+2. ~/.themes/  ~/.local/share/themes 用户级
 
 > [McMojave](https://www.xfce-look.org/p/1275087/)
 
@@ -83,7 +81,9 @@ plank
 - [Sierra](https://www.gnome-look.org/p/1013714/)
 - [GTK3主题：OSX-Arc](https://www.linuxidc.com/Linux/2017-01/139053.htm)
 
----
+指定某个应用运行时使用的主题： `GTK_THEME=vimix-light-doder COMMAND`
+
+************************
 
 ## Icon
 

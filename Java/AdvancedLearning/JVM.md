@@ -21,12 +21,13 @@ categories:
             - 2.1.5.1. [运行时常量池](#运行时常量池)
         - 2.1.6. [Direct Memory 直接内存](#direct-memory-直接内存)
     - 2.2. [Metaspace 元空间](#metaspace-元空间)
+    - 2.3. [直接内存](#直接内存)
 - 3. [JVM不同实现](#jvm不同实现)
     - 3.1. [Hotspot JVM](#hotspot-jvm)
     - 3.2. [OpenJ9](#openj9)
     - 3.3. [GraalVM](#graalvm)
 
-💠 2024-02-02 18:07:47
+💠 2024-02-03 10:48:34
 ****************************************
 # JVM
 > JVM结构及设计
@@ -172,6 +173,20 @@ NIO 会经常使用, 提高性能
     - -XX:MetaspaceSize=N 和 -XX:MaxMetaspaceSize=N
     - 对于64位JVM来说，元空间的默认初始大小是20.75MB，默认的元空间的最大值是无限（16EB）。
 
+## 直接内存
+
+直接内存主要是JNI、Deflater/Inflater、DirectByteBuffer（nio中会用到）使用的。
+
+- [Github: 测试代码](https://github.com/Kuangcp/JavaBase/blob/master/class/src/test/java/jvm/oom/DirectMemoryOOMTest.java)
+- [how to see memory useage of nio buffers](https://stackoverflow.com/questions/2689914/how-to-see-the-memory-usage-of-nio-buffers)
+
+> [参考: 聊聊JVM 堆外内存泄露的BUG是如何查找的](https://cloud.tencent.com/developer/article/1129904)  
+> [JAVA堆外内存排查小结](https://zhuanlan.zhihu.com/p/60976273)  
+
+- `-XX:MaxDirectMemorySize` 限制最大内存 未设置时参数值为0，实际上的值是： 
+
+- 启用NMT -XX:NativeMemoryTracking=detail 
+    - 查看NMT jcmd $pid VM.native_memory detail
 **********************
 
 # JVM不同实现

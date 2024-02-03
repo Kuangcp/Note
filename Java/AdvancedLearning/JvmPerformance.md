@@ -9,14 +9,9 @@ categories:
 
 💠
 
-- 1. [Java性能调优](#java性能调优)
+- 1. [Jvm工具](#jvm工具)
     - 1.1. [JVM参数](#jvm参数)
-        - 1.1.1. [内存参数 Tips](#内存参数-tips)
-        - 1.1.2. [JVM参数调优](#jvm参数调优)
-        - 1.1.3. [GC调优](#gc调优)
-    - 1.2. [内存优化](#内存优化)
-        - 1.2.1. [堆外内存](#堆外内存)
-        - 1.2.2. [Metaspace](#metaspace)
+    - 1.2. [JVM内存参数](#jvm内存参数)
 - 2. [JDK自带工具](#jdk自带工具)
     - 2.1. [java](#java)
         - 2.1.1. [环境变量的使用](#环境变量的使用)
@@ -28,8 +23,6 @@ categories:
     - 2.7. [jstack](#jstack)
         - 2.7.1. [实现原理](#实现原理)
     - 2.8. [jcmd](#jcmd)
-    - 2.9. [常见问题](#常见问题)
-        - 2.9.1. [Unable to Open Socket File](#unable-to-open-socket-file)
 - 3. [终端类工具](#终端类工具)
     - 3.1. [Arthas](#arthas)
     - 3.2. [async-profiler](#async-profiler)
@@ -41,18 +34,11 @@ categories:
     - 4.5. [IntelliJ IDEA](#intellij-idea)
     - 4.6. [JMC](#jmc)
     - 4.7. [IBM Heap Analyzer](#ibm-heap-analyzer)
-- 5. [Tuning](#tuning)
-    - 5.1. [基本JVM参数](#基本jvm参数)
-    - 5.2. [GC](#gc)
-        - 5.2.1. [工具](#工具)
-        - 5.2.2. [主要关注指标](#主要关注指标)
-    - 5.3. [线程](#线程)
-    - 5.4. [内存](#内存)
 
-💠 2024-02-02 18:07:47
+💠 2024-02-03 10:48:34
 ****************************************
 
-# Java性能调优
+# Jvm工具
 
 ## JVM参数
 > [JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)  
@@ -67,7 +53,7 @@ categories:
 - `-Xloggc:/home/logs/gc.log`
 - `-XX:+HeapDumpOnOutOfMemoryError` 注意路径的文件名不能重复
 
-### 内存参数 Tips 
+## JVM内存参数
 > 堆(老年代 年轻代)，堆外，元空间，栈
 
 - `-XX:CompressedClassSpaceSize=500m` 压缩类元空间大小 默认是1g
@@ -91,14 +77,9 @@ categories:
 1. OracleJDK
     - jmap -heap pid
 
-### JVM参数调优
-> [参考: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)
-
-- [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`
-
+> [参考: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)  
+> [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`  
 > [参考: JVM动态反优化](https://blog.mythsman.com/post/5d2c12cc67f841464434a3ec/)   
-> [General Java Troubleshooting ](https://docs.oracle.com/en/java/javase/11/troubleshoot/general-java-troubleshooting.html)  
-> [目前最全的Java服务问题排查套路](https://juejin.cn/post/6844903816379236360)  
 
 ************************
 > 工具
@@ -112,61 +93,6 @@ categories:
 - 进阶：MAT、JProfiler
 
 命令行推荐 arthas ，可视化界面推荐 JProfiler，此外还有一些在线的平台 [gceasy](https://gceasy.io/)、heaphero、fastthread 。
-
-************************
-> IDEA调优
-```conf
-    -server
-    -Xms600m  # 最小堆
-    -Xmx600m  # 最大堆 配成一样是为了避免扩容
-    -Xmn256m  # 新生代
-    -XX:MetaspaceSize=350m # 只是一个阈值, 达到该阈值才进行 GC
-    -XX:MaxMetaspaceSize=350m # 最大值
-
-    -Xnoclassgc 
-    -Xverify:none # 不进行字节码校验
-    -XX:+AggressiveOpts # 激进式优化
-
-    -XX:ReservedCodeCacheSize=320m # 编译时代码缓存 IDEA 警告不能低于240M
-```
-
-> [参考: Java’s -XX:+AggressiveOpts: Can it slow you down?](https://www.opsian.com/blog/aggressive-opts/)  
-> [参考: JVM参数MetaspaceSize的误解 ](https://mp.weixin.qq.com/s/jqfppqqd98DfAJHZhFbmxA?)
-
-************************
-
-### GC调优
-> [Java GC](/Java/AdvancedLearning/JavaGC.md)
-
-*********************
-
-## 内存优化
-
-- [Blog:java优化占用内存的方法(一)](http://blog.csdn.net/zheng0518/article/details/48182437)
-
-- [GC 性能优化 专栏](https://blog.csdn.net/column/details/14851.html)
-- [Java调优经验谈](http://www.importnew.com/22336.html)
-
-- [Memory Footprint of A Java Process](https://zhuanlan.zhihu.com/p/158712025)
-
-### 堆外内存
-
-堆外内存堆外内存主要是JNI、Deflater/Inflater、DirectByteBuffer（nio中会用到）使用的。
-
-- [Github: 测试代码](https://github.com/Kuangcp/JavaBase/blob/master/class/src/test/java/jvm/oom/DirectMemoryOOMTest.java)
-- [how to see memory useage of nio buffers](https://stackoverflow.com/questions/2689914/how-to-see-the-memory-usage-of-nio-buffers)
-
-> [参考: 聊聊JVM 堆外内存泄露的BUG是如何查找的](https://cloud.tencent.com/developer/article/1129904)  
-> [JAVA堆外内存排查小结](https://zhuanlan.zhihu.com/p/60976273)  
-
-- `-XX:MaxDirectMemorySize` 限制最大内存 未设置时参数值为0，实际上的值是： 
-
-- 启用NMT -XX:NativeMemoryTracking=detail 
-    - 查看NMT jcmd $pid VM.native_memory detail
-
-
-### Metaspace
-> [参考: Metaspace 之一：Metaspace整体介绍](https://www.cnblogs.com/duanxz/p/3520829.html)  
 
 ************************
 
@@ -269,22 +195,6 @@ categories:
 
 ## jcmd
 
-************************
-
-## 常见问题
-### Unable to Open Socket File
-> [jmap Error “Unable to Open Socket File”](https://www.baeldung.com/linux/jmap-unable-to-open-socket-file-heap-dump)
-- 不是同用户及用户组 uid和gid
-- 目标JVM不健康
-- 目标JVM使用了`-XX:+DisableAttachMechanism`JVM参数
-- 执行工具的JVM和目标JVM不是同一个版本（最好保持一致，如果版本相差过大，内存布局设计不一样，就会无法正常解析结果）
-- /tmp 目录下无法创建命令使用的临时文件，或是来不及使用就被`systemd-tmpfiles`清理了 `/tmp/.java_pidXXX`
-
-查找JVMSocket泄漏
-- [一次由于网络套接字文件描述符泄露导致线上服务事故原因的排查经历](https://www.wangbo.im/posts/a-production-bug-leaking-sockets-fd-reproducing-practice/)
-- `strace -t -T -f -p pid -e trace=network,close -o strace.out`
-    - 尝试找到创建socket并没有关闭socket的线程号， 然后进制转换后查看jstack找到线程持有栈关联到相关代码
-
 ********************
 
 # 终端类工具
@@ -371,43 +281,3 @@ categories:
 > [Official Site](https://www.ibm.com/developerworks/community/alphaworks/tech/heapanalyzer)
 
 ************************
-
-# Tuning
-排查思路：
-
-- `Delta` 正式环境可复现问题，测试或灰度无法出现，且不能轻易重启正式环境，通过对生产的JVM做各类指标的记录，对比某个业务操作前后或故障前后的指标差异分析出问题的触发点
-    - 限制：不能做太影响性能的指标记录和分析
-- `Debug` 在测试或灰度环境上可复现问题，可直接Debug接入调试代码，或本地采用高耗能的方式debug分析`抓包，strace，CPU火焰图，等方式`
-    - 限制：**可复现**，通常能有这个条件已经能直接通过debug代码就能解决问题了
-
-## 基本JVM参数
-
-## GC 
-> [参考: 译：谁是 JDK8 中最快的 GC](https://club.perfma.com/article/233480)  
-> [《沙盘模拟系列》JVM如何调优](https://my.oschina.net/u/4030990/blog/3149182)  
-> [深入浅出GC问题排查](https://blog.ysboke.cn/archives/242.html)
-> [参考: CMS Deprecated. Next Steps?](https://dzone.com/articles/cms-deprecated-next-steps)  
-
-- [Oracle JDK8 GC调优指南](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/toc.html)
-- [Oracle JDK11 GC调优指南](https://docs.oracle.com/en/java/javase/11/gctuning/introduction-garbage-collection-tuning.html)
-
-### 工具
-> [gceasy.io](https://gceasy.io)  
-> [GCViewer](https://github.com/chewiebug/GCViewer)  
-
-### 主要关注指标
-> [garbage-collection-kpi](https://blog.gceasy.io/2016/10/01/garbage-collection-kpi/)`其中FootPrint定义应有误，JVM应指代内存占用而不是CPU资源`
-
-- `延迟（Latency）`： 也可以理解为最大停顿时间，即垃圾收集过程中单次 STW 的最长时间，越短越好，一定程度上可以接受频次的增多，是 GC 技术的主要发展方向。
-- `吞吐量（Throughput）`： 应用系统的生命周期内，由于 GC 线程会占用 Mutator 当前可用的 CPU 时钟周期，吞吐量即为 Mutator 有效花费的时间占系统总运行时间的百分比
-    - 例如应用系统运行了 100 min，GC 累计耗时 1 min，则系统吞吐量为 99%。
-    - 吞吐量优先的垃圾收集器会倾向于接受`单次耗时较长`的停顿，`累计停顿耗时短`的GC策略。
-- `内存占用(Footprint)`：
-
-> 以上三者不可兼得，通常兼顾两者舍弃一方。
-
-## 线程
-> [jstack.review Analyze java thread dumps](https://jstack.review)
-
-## 内存
-

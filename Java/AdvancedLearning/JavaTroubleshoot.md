@@ -5,36 +5,80 @@ tags:
 categories: 
 ---
 
-**目录 start**
+💠
 
-1. [Troubleshoot](#troubleshoot)
-    1. [Memory](#memory)
-        1. [GC](#gc)
-        1. [Metaspace OOM](#metaspace-oom)
-        1. [Compressed Class Space OOM](#compressed-class-space-oom)
-    1. [CPU](#cpu)
+- 1. [Troubleshoot](#troubleshoot)
+    - 1.1. [GC](#gc)
+        - 1.1.1. [主要关注指标](#主要关注指标)
+    - 1.2. [Memory](#memory)
+        - 1.2.1. [Metaspace OOM](#metaspace-oom)
+        - 1.2.2. [Compressed Class Space OOM](#compressed-class-space-oom)
+        - 1.2.3. [Direct Memory OOM](#direct-memory-oom)
+    - 1.3. [CPU](#cpu)
+        - 1.3.1. [线程](#线程)
+- 2. [常见问题](#常见问题)
+    - 2.1. [IDEA调优](#idea调优)
+    - 2.2. [Unable to Open Socket File](#unable-to-open-socket-file)
 
-**目录 end**|_2023-08-28 23:31_|
+💠 2024-02-03 10:48:34
 ****************************************
 # Troubleshoot
 
-> [troubleshoot memory leak](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/memleaks.html)
+> [Oracle: Troubleshoot memory leak](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/memleaks.html)
+> [Oracle: General Java Troubleshooting ](https://docs.oracle.com/en/java/javase/11/troubleshoot/general-java-troubleshooting.html)  
 
-## Memory
+> [目前最全的Java服务问题排查套路](https://juejin.cn/post/6844903816379236360)  
 
-### GC
+排查思路：
+
+- `Delta` 正式环境可复现问题，测试或灰度无法出现，且不能轻易重启正式环境，通过对生产的JVM做各类指标的记录，对比某个业务操作前后或故障前后的指标差异分析出问题的触发点
+    - 限制：不能做太影响性能的指标记录和分析
+- `Debug` 在测试或灰度环境上可复现问题，可直接Debug接入调试代码，或本地采用高耗能的方式debug分析`抓包，strace，CPU火焰图，等方式`
+    - 限制：**可复现**，通常能有这个条件已经能直接通过debug代码就能解决问题了
+
+## GC
+> [Java GC](/Java/AdvancedLearning/JavaGC.md)
+
+
 > [Java中9种常见的CMS GC问题分析与解决](https://tech.meituan.com/2020/11/12/java-9-cms-gc.html)
 
 > [大量类加载器创建导致诡异FullGC](https://heapdump.cn/article/1924890)
+> [参考: 译：谁是 JDK8 中最快的 GC](https://club.perfma.com/article/233480)  
+> [《沙盘模拟系列》JVM如何调优](https://my.oschina.net/u/4030990/blog/3149182)  
+> [深入浅出GC问题排查](https://blog.ysboke.cn/archives/242.html)
+> [参考: CMS Deprecated. Next Steps?](https://dzone.com/articles/cms-deprecated-next-steps)  
 
+- [Oracle JDK8 GC调优指南](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/toc.html)
+- [Oracle JDK11 GC调优指南](https://docs.oracle.com/en/java/javase/11/gctuning/introduction-garbage-collection-tuning.html)
+
+`工具`
+> [gceasy.io](https://gceasy.io)  
+> [GCViewer](https://github.com/chewiebug/GCViewer)  
+
+### 主要关注指标
+> [garbage-collection-kpi](https://blog.gceasy.io/2016/10/01/garbage-collection-kpi/)`其中FootPrint定义应有误，JVM应指代内存占用而不是CPU资源`
+
+- `延迟（Latency）`： 也可以理解为最大停顿时间，即垃圾收集过程中单次 STW 的最长时间，越短越好，一定程度上可以接受频次的增多，是 GC 技术的主要发展方向。
+- `吞吐量（Throughput）`： 应用系统的生命周期内，由于 GC 线程会占用 Mutator 当前可用的 CPU 时钟周期，吞吐量即为 Mutator 有效花费的时间占系统总运行时间的百分比
+    - 例如应用系统运行了 100 min，GC 累计耗时 1 min，则系统吞吐量为 99%。
+    - 吞吐量优先的垃圾收集器会倾向于接受`单次耗时较长`的停顿，`累计停顿耗时短`的GC策略。
+- `内存占用(Footprint)`：
+
+> 以上三者不可兼得，通常兼顾两者舍弃一方。
+
+## Memory
+- [Blog:java优化占用内存的方法(一)](http://blog.csdn.net/zheng0518/article/details/48182437)
+
+- [GC 性能优化 专栏](https://blog.csdn.net/column/details/14851.html)
+- [Java调优经验谈](http://www.importnew.com/22336.html)
+
+- [Memory Footprint of A Java Process](https://zhuanlan.zhihu.com/p/158712025)
 
 ### Metaspace OOM
 [一次Metaspace OutOfMemoryError问题排查记录](https://juejin.cn/post/7114516283290288158)`很多GeneratedMethodAccessor类`
 
 原理理解比较复杂，但定位和解决问题会比较简单，经常会出问题的几个点有 Orika 的 classMap、JSON 的 ASMSerializer、Groovy 动态加载类等，基本都集中在反射、Javasisit 字节码增强、CGLIB 动态代理、OSGi 自定义类加载器等的技术点上
-
-
-https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/memleaks.html
+> [参考: Metaspace 之一：Metaspace整体介绍](https://www.cnblogs.com/duanxz/p/3520829.html)  
 
 
 https://heapdump.cn/article/1924890
@@ -51,12 +95,51 @@ https://www.mastertheboss.com/java/solving-java-lang-outofmemoryerror-metaspace-
 https://javakk.com/805.html
 https://www.dongcb.com/818.html
 
-
 https://juejin.cn/post/7114516283290288158
 
 
 ### Compressed Class Space OOM
 
+### Direct Memory OOM 
+
+[Netty堆外内存泄露排查盛宴](https://tech.meituan.com/2018/10/18/netty-direct-memory-screening.html)
+
+************************
 
 ## CPU
 
+### 线程
+> [jstack.review Analyze java thread dumps](https://jstack.review)
+
+# 常见问题
+## IDEA调优
+```conf
+    -server
+    -Xms600m  # 最小堆
+    -Xmx600m  # 最大堆 配成一样是为了避免扩容
+    -Xmn256m  # 新生代
+    -XX:MetaspaceSize=350m # 只是一个阈值, 达到该阈值才进行 GC
+    -XX:MaxMetaspaceSize=350m # 最大值
+
+    -Xnoclassgc 
+    -Xverify:none # 不进行字节码校验
+    -XX:+AggressiveOpts # 激进式优化
+
+    -XX:ReservedCodeCacheSize=320m # 编译时代码缓存 IDEA 警告不能低于240M
+```
+
+> [参考: Java’s -XX:+AggressiveOpts: Can it slow you down?](https://www.opsian.com/blog/aggressive-opts/)  
+> [参考: JVM参数MetaspaceSize的误解 ](https://mp.weixin.qq.com/s/jqfppqqd98DfAJHZhFbmxA?)
+
+## Unable to Open Socket File
+> [jmap Error “Unable to Open Socket File”](https://www.baeldung.com/linux/jmap-unable-to-open-socket-file-heap-dump)
+- 不是同用户及用户组 uid和gid
+- 目标JVM不健康
+- 目标JVM使用了`-XX:+DisableAttachMechanism`JVM参数
+- 执行工具的JVM和目标JVM不是同一个版本（最好保持一致，如果版本相差过大，内存布局设计不一样，就会无法正常解析结果）
+- /tmp 目录下无法创建命令使用的临时文件，或是来不及使用就被`systemd-tmpfiles`清理了 `/tmp/.java_pidXXX`
+
+查找JVMSocket泄漏
+- [一次由于网络套接字文件描述符泄露导致线上服务事故原因的排查经历](https://www.wangbo.im/posts/a-production-bug-leaking-sockets-fd-reproducing-practice/)
+- `strace -t -T -f -p pid -e trace=network,close -o strace.out`
+    - 尝试找到创建socket并没有关闭socket的线程号， 然后进制转换后查看jstack找到线程持有栈关联到相关代码
