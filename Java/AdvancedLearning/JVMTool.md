@@ -1,5 +1,5 @@
 ---
-title: Java性能调优
+title: JVM 工具
 date: 2018-11-21 10:56:52
 tags: 
     - JVM
@@ -38,7 +38,7 @@ categories:
 💠 2024-02-03 10:48:34
 ****************************************
 
-# Jvm工具
+# JVM 工具
 
 ## JVM参数
 > [JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)  

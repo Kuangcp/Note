@@ -20,7 +20,6 @@ categories:
 
 💠 2024-02-03 10:48:34
 ****************************************
-************************
 
 # UI
 
@@ -81,7 +80,8 @@ plank
 - [Sierra](https://www.gnome-look.org/p/1013714/)
 - [GTK3主题：OSX-Arc](https://www.linuxidc.com/Linux/2017-01/139053.htm)
 
-指定某个应用运行时使用的主题： `GTK_THEME=vimix-light-doder COMMAND`
+- 某个应用运行时使用指定主题： `GTK_THEME=xxx COMMAND` 
+    - 例如 `GTK_THEME=vimix-light-doder /Apps/IDE/mat/MemoryAnalyzer`
 
 ************************
 
