@@ -5,10 +5,12 @@ tags:
 categories: 
 ---
 
-**目录 start**
+💠
 
-1. [GuavaCache](#guavacache)
+- 1. [GuavaCache](#guavacache)
 
-**目录 end**|_2020-04-27 23:42_|
+💠 2024-02-04 15:34:54
 ****************************************
 # GuavaCache
+> [Guava Cache](https://www.baeldung.com/guava-cache)
+
