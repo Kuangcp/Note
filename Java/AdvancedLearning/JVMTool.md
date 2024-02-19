@@ -35,7 +35,7 @@ categories:
     - 4.6. [JMC](#jmc)
     - 4.7. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-💠 2024-02-19 16:05:42
+💠 2024-02-19 16:31:34
 ****************************************
 
 # JVM 工具
@@ -54,8 +54,7 @@ categories:
 > [JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)  
 > [Java HotSpot VM Options](https://www.oracle.com/java/technologies/javase/vmoptions-jsp.html)
 
-- `-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000` 开启远程调试端口 8000
-    - If you want to debug from start of application use `suspend=y` , this will keep remote application suspended until you connect from eclipse.
+- [远程调试](/Java/AdvancedLearning/JavaDebug.md#远程调试)
 - `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
     - 开启无需认证 非SSL的JMX端口: 9999
 

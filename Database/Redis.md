@@ -7,49 +7,49 @@ categories:
     - 数据库
 ---
 
-**目录 start**
+💠
 
-1. [Redis](#redis)
-    1. [Book](#book)
-1. [安装和配置](#安装和配置)
-    1. [Windows](#windows)
-    1. [Linux](#linux)
-        1. [Docker方式安装](#docker方式安装)
-        1. [解压即用](#解压即用)
-    1. [Redis配置文件](#redis配置文件)
-1. [数据类型](#数据类型)
-    1. [String](#string)
-        1. [BitMap](#bitmap)
-        1. [HyperLogLog](#hyperloglog)
-    1. [List](#list)
-    1. [Set](#set)
-    1. [Zset](#zset)
-    1. [Hash](#hash)
-    1. [GEO地理位置](#geo地理位置)
-1. [Scan](#scan)
-    1. [O(n) 复杂度的命令](#on-复杂度的命令)
-1. [Pipelining](#pipelining)
-1. [Pub/Sub发布和订阅](#pubsub发布和订阅)
-1. [客户端](#客户端)
-    1. [Java](#java)
-    1. [Python](#python)
-    1. [GUI客户端](#gui客户端)
-    1. [Cli](#cli)
-1. [Project](#project)
-    1. [Codis](#codis)
-    1. [webdis](#webdis)
-1. [Redis的应用场景](#redis的应用场景)
-    1. [作为日志记录](#作为日志记录)
-    1. [作为网站统计数据](#作为网站统计数据)
-    1. [存储配置信息](#存储配置信息)
-    1. [搜索](#搜索)
-    1. [任务队列](#任务队列)
-1. [Redis 缓存相关问题](#redis-缓存相关问题)
-    1. [雪崩](#雪崩)
-    1. [击穿](#击穿)
-    1. [穿透](#穿透)
+- 1. [Redis](#redis)
+    - 1.1. [Book](#book)
+- 2. [安装和配置](#安装和配置)
+    - 2.1. [Windows](#windows)
+    - 2.2. [Linux](#linux)
+        - 2.2.1. [Docker方式安装](#docker方式安装)
+        - 2.2.2. [解压即用](#解压即用)
+    - 2.3. [Redis配置文件](#redis配置文件)
+- 3. [数据类型](#数据类型)
+    - 3.1. [String](#string)
+        - 3.1.1. [BitMap](#bitmap)
+        - 3.1.2. [HyperLogLog](#hyperloglog)
+    - 3.2. [List](#list)
+    - 3.3. [Set](#set)
+    - 3.4. [Zset](#zset)
+    - 3.5. [Hash](#hash)
+    - 3.6. [GEO地理位置](#geo地理位置)
+- 4. [Scan](#scan)
+    - 4.1. [O(n) 复杂度的命令](#on-复杂度的命令)
+- 5. [Pipelining](#pipelining)
+- 6. [Pub/Sub发布和订阅](#pubsub发布和订阅)
+- 7. [客户端](#客户端)
+    - 7.1. [Java](#java)
+    - 7.2. [Python](#python)
+    - 7.3. [GUI客户端](#gui客户端)
+    - 7.4. [Cli](#cli)
+- 8. [Project](#project)
+    - 8.1. [Codis](#codis)
+    - 8.2. [webdis](#webdis)
+- 9. [Redis的应用场景](#redis的应用场景)
+    - 9.1. [作为日志记录](#作为日志记录)
+    - 9.2. [作为网站统计数据](#作为网站统计数据)
+    - 9.3. [存储配置信息](#存储配置信息)
+    - 9.4. [搜索](#搜索)
+    - 9.5. [任务队列](#任务队列)
+- 10. [Redis 缓存相关问题](#redis-缓存相关问题)
+    - 10.1. [缓存雪崩](#缓存雪崩)
+    - 10.2. [缓存击穿](#缓存击穿)
+    - 10.3. [缓存穿透](#缓存穿透)
 
-**目录 end**|_2023-03-31 09:59_|
+💠 2024-02-19 16:31:34
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -391,7 +391,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 ************************
 
 # Redis 缓存相关问题
-## 雪崩
+## 缓存雪崩
 同一时间大量缓存失效，请求都打到DB，导致DB负载过大甚至宕机
 
 1. 大量 key 使用了相同的过期时间
@@ -401,7 +401,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 1. Redis发生重启(Redis 未做持久化)
     - 启动时预先加载 热点Key
 
-## 击穿
+## 缓存击穿
 针对缓存中没有但是DB中有的数据请求
 
 1. 当某个Key失效后，瞬间涌入大量的请求同一个Key，这些请求不会命中Redis，都会请求到DB，导致数据库压力过大
@@ -409,7 +409,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
     2. 在更新缓存时加互斥锁。当发现没有命中Redis，去查数据库的时候，在执行更新缓存的操作上加锁，当一个线程访问时，其它线程等待
         - 这个线程访问过后，缓存中的数据会被重建，这样其他线程就可以从缓存中取值。
 
-## 穿透
+## 缓存穿透
 针对缓存和 DB 都没有的数据 请求
 
 1. 对查询结果为空的情况也进行缓存，这样，再次访问时，缓存层会直接返回空值。缓存时间设置短一点，或者该key对应的数据insert了之后清理缓存。

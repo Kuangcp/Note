@@ -14,7 +14,7 @@ categories:
         - 1.2.1. [应用方法CPU耗时或线程异常](#应用方法cpu耗时或线程异常)
     - 1.3. [远程调试](#远程调试)
 
-💠 2023-12-14 14:36:07
+💠 2024-02-19 16:31:34
 ****************************************
 # Debug
 
@@ -47,4 +47,9 @@ categories:
     - 方案： hostname配置到 /etc/hosts
 
 ## 远程调试
-
+- 服务端开启远程调试端口 8000
+    - JDK9及以上 `-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000`
+    - JDK5-8 `-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000`
+    - If you want to debug from start of application use `suspend=y` , this will keep remote application suspended until you connect from eclipse.
+- IDE中新增Remote运行配置填入IP端口，选择启动类所在模块即可远程Debug 
+    - 注意尽量不要Debug所有线程从而导致K8S健康检查无响应下的pod重启
