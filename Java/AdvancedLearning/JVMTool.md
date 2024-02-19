@@ -35,7 +35,7 @@ categories:
     - 4.6. [JMC](#jmc)
     - 4.7. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-💠 2024-02-03 11:47:08
+💠 2024-02-19 16:05:42
 ****************************************
 
 # JVM 工具
@@ -188,7 +188,7 @@ categories:
 1. `printf %x 线程id` 得到 16进制线程id
 1. `jstack 进程id | grep -A 20 16进制线程id` 查看该线程的栈,进而分析到代码
 
-> [How to Analyze Java Thread Dumps](https://www.baeldung.com/java-analyze-thread-dumps)
+> [How to Analyze Java Thread Dumps](https://www.baeldung.com/java-analyze-thread-dumps)`分析工具和思路`
 > [OpenJDK11 jstack output explanation](https://stackoverflow.com/questions/76476637/openjdk11-jstack-output-explanation)
 
 ### 实现原理

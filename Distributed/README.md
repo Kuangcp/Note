@@ -1,7 +1,7 @@
 # 分布式
 > [系统设计入门](https://github.com/donnemartin/system-design-primer)  
 > [分布式系统核心技术](https://yeasy.gitbook.io/blockchain_guide/04_distributed_system)   
-
+> [分布式系统 - 知识体系详解](https://pdai.tech/md/arch/arch-z-overview.html)  
 
 要考虑采用该种方式后带来的技术复杂度的问题, 当前的问题需不需要上升到分布式的体量上
 
@@ -41,3 +41,4 @@ CAP： Consistency Availability Partition tolerance
 
 https://github.com/aliyun/alibabacloud-microservice-demo.git
 
+### BASE 

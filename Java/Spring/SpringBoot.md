@@ -44,7 +44,7 @@ categories:
             - 1.13.3.2. [Gradle结合Docker](#gradle结合docker)
         - 1.13.4. [热部署](#热部署)
 
-💠 2023-12-02 17:48:21
+💠 2024-02-19 16:05:42
 ****************************************
 # SpringBoot
 > [首页](https://spring.io/projects/spring-boot#learn)
@@ -61,8 +61,8 @@ categories:
 - [SpringBoot启动流程解析](https://www.cnblogs.com/trgl/p/7353782.html)`原理才是王道`
 - [spring boot应用启动原理分析 ](https://yq.aliyun.com/articles/6056)
 
-- Spring 是单例模式, 全部使用IOC容器进行管理, 那么怎么处理并发呢, 
-    - 答案是 ? 多线程 然后 ThreadLocal 分别存储了各自的数据, 所以才说, 不能在Controller层 放置属性, 使其具有状态, 从而导致并发问题
+- Spring 是单例模式, 全部使用IOC容器进行管理, 那么怎么处理并发下数据共享安全性问题
+    - 答案是 ThreadLocal 分别存储了各自的数据, 所以才说, 不能在Controller层 放置属性, 使其具有状态, 从而导致并发问题
     - 那么WebSocket服务器, 处理并发会不会有并发问题?
 
 - [为什么说 Java 程序员到了必须掌握 Spring Boot 的时候？](http://www.ityouknow.com/springboot/2018/06/12/spring-boo-java-simple.html)

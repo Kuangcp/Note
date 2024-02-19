@@ -25,7 +25,7 @@ categories:
     - 1.14. [Java18](#java18)
     - 1.15. [Java21 LTS](#java21-lts)
 
-💠 2023-10-10 00:42
+💠 2024-02-19 16:05:42
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)
@@ -90,6 +90,11 @@ JDBC4.0  JAX-WS 2.0
 1. Flight Recorder 开源
 1. Epsilon 空gc实现： 用于性能测试
 1. HttpClient 默认实现
+
+> [Jdk8到jdk11 Springboot 踩坑指南](https://blog.csdn.net/ab601026460/article/details/86062991)  
+
+> Illegal reflective access by org.springframework.cglib.core.ReflectUtils
+- 增加JVM参数 --add-opens java.base/java.lang=ALL-UNNAMED
 
 ## Java12 
 1. Shenandoah GC

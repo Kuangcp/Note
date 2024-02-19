@@ -24,7 +24,7 @@ categories:
     - 2.1. [Loom](#loom)
     - 2.2. [Quasar](#quasar)
 
-💠 2024-01-03 10:44:05
+💠 2024-02-19 16:05:42
 ****************************************
 # Java线程
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/thread/src/main/java/com/github/kuangcp)
@@ -79,8 +79,10 @@ _Thread类的target属性_
 
 ************************
 
-## ThreadLocal 
-设计： ThreadLocalMap 线程对象做key的一个封装Map，一个线程可以有多个ThreadLocal
+## ThreadLocal
+> [Oracle: ThreadLocal](https://docs.oracle.com/javase/8/docs/api/java/lang/ThreadLocal.html)  
+
+设计： ThreadLocalMap 线程对象做key的一个封装Map(但是未实现Map接口)，一个线程可以有多个ThreadLocal
 
 > [Alibaba TTL 使用场景](https://github.com/alibaba/transmittable-threalocal/issues/123)`可看作ThreadLocal的一种特殊实现`
 - 主要流程： com.alibaba.ttl.TtlRunnable#run
