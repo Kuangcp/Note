@@ -65,7 +65,7 @@ categories:
 5.  磁盘IO linux下可以用iostat监控磁盘状态。
 
 ### 性能监控平台
-- [cat](https://github.com/dianping/cat)
+- [CAT](https://github.com/dianping/cat)
 - Prometheus
 
 ************************

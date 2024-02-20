@@ -457,7 +457,9 @@ ConcGCThreads 一般称为并发标记线程数，为了减少GC的STW的时间�
 ## ZGC
 > JDK11引入 JDK15正式使用 [wiki: ZGC](https://wiki.openjdk.java.net/display/zgc/Main) | [ZGC Release note](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
 
-`-XX:+UnlockExperimentalVMOptions -XX:+UseZGC`
+- `-XX:+UseZGC`
+    - 11-16 需要 `-XX:+UnlockExperimentalVMOptions -XX:+UseZGC`
+
 
 > [参考: Oracle 即将发布的全新 Java 垃圾收集器 ZGC](https://www.infoq.cn/article/oracle-release-java-gc-zgc)
 > [参考: 美团：新一代垃圾回收器ZGC的探索与实践](https://tech.meituan.com/2020/08/06/new-zgc-practice-in-meituan.html)  

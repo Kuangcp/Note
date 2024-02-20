@@ -110,6 +110,10 @@ JDBC4.0  JAX-WS 2.0
 
 ## Java17 LTS
 
+> [从JDK 8升级到JDK 17踩坑全过程](https://cloud.tencent.com/developer/article/2240195)  
+
+`jdeps --jdk-internals --multi-release 17 --class-path . encloud-api.jar` 分析依赖的废弃api
+
 ## Java18
 
 ## Java21 LTS
