@@ -30,9 +30,9 @@ categories:
     - 3.7. [G1](#g1)
     - 3.8. [ZGC](#zgc)
     - 3.9. [ShenandoahGC](#shenandoahgc)
-- 4. [Practice](#practice)
+- 4. [最佳实践](#最佳实践)
 
-💠 2024-02-03 11:47:08
+💠 2024-02-21 17:10:15
 ****************************************
 # GC
 > Garbage Collection
@@ -396,6 +396,7 @@ CMS自己会进入full GC的情况就是它的并发收集模式跟不上应用�
 - 可预测的停顿
     - G1除了追求低停顿, 还能建立可预测的停顿时间模型, 能让使用者明确指定在一个长度为M毫秒的时间片段内, 消耗在垃圾收集上的时间不得超过N毫秒
     - 几乎是RTSJ的特征
+- [内存返还](https://openjdk.org/jeps/346)
 
 > [参考: JVM系列篇：深入剖析G1收集器](https://my.oschina.net/u/3959491/blog/3029276)
 
@@ -455,14 +456,15 @@ ConcGCThreads 一般称为并发标记线程数，为了减少GC的STW的时间�
 ************************
 
 ## ZGC
-> JDK11引入 JDK15正式使用 [wiki: ZGC](https://wiki.openjdk.java.net/display/zgc/Main) | [ZGC Release note](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
+> JDK11引入 JDK15正式使用 [wiki: ZGC](https://wiki.openjdk.java.net/display/zgc/Main) | [JEP 377 ZGC](https://openjdk.org/jeps/377) | [ZGC Release note](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
 
-- `-XX:+UseZGC`
-    - 11-16 需要 `-XX:+UnlockExperimentalVMOptions -XX:+UseZGC`
-
+- `-XX:+UseZGC` 11-14 需要加参数`-XX:+UnlockExperimentalVMOptions`
 
 > [参考: Oracle 即将发布的全新 Java 垃圾收集器 ZGC](https://www.infoq.cn/article/oracle-release-java-gc-zgc)
 > [参考: 美团：新一代垃圾回收器ZGC的探索与实践](https://tech.meituan.com/2020/08/06/new-zgc-practice-in-meituan.html)  
+
+- [JDK21 内存分代](https://openjdk.org/jeps/439)
+- [ZGC 内存返还](https://openjdk.org/jeps/351)
 
 ************************
 
@@ -475,6 +477,6 @@ ConcGCThreads 一般称为并发标记线程数，为了减少GC的STW的时间�
 
 ************************
 
-# Practice
+# 最佳实践
 [Choosing a GC Algorithm in Java](https://www.baeldung.com/java-choosing-gc-algorithm)
 

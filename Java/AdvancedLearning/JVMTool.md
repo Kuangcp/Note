@@ -23,6 +23,7 @@ categories:
     - 2.7. [jstack](#jstack)
         - 2.7.1. [实现原理](#实现原理)
     - 2.8. [jcmd](#jcmd)
+    - 2.9. [jhsdb](#jhsdb)
 - 3. [终端类工具](#终端类工具)
     - 3.1. [Arthas](#arthas)
     - 3.2. [async-profiler](#async-profiler)
@@ -35,7 +36,7 @@ categories:
     - 4.6. [JMC](#jmc)
     - 4.7. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-💠 2024-02-19 16:31:34
+💠 2024-02-21 17:10:15
 ****************************************
 
 # JVM 工具
@@ -198,6 +199,15 @@ categories:
 - [HotSpot Serviceability Agent](http://openjdk.java.net/groups/hotspot/docs/Serviceability.html#bsa)
 
 ## jcmd
+
+
+## jhsdb
+> [自JDK9发布](https://dzone.com/articles/jhsdb-a-new-tool-for-jdk-9) | [Oracle jhsdb](https://docs.oracle.com/javase/9/tools/jhsdb.htm)
+
+jstack jmap jinfo jsnap 等命令功能的迁移和加强
+
+> 例如
+- `jmap -heap pid` => `jhsdb jmap --heap --pid pid`
 
 ********************
 
