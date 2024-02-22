@@ -7,39 +7,31 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [Tomcat](#tomcat)
-    1. [原理](#原理)
-    1. [目录结构](#目录结构)
-    1. [配置运行](#配置运行)
-        1. [配置解压方式的Tomcat](#配置解压方式的tomcat)
-            1. [IDE中配置运行](#ide中配置运行)
-        1. [编码](#编码)
-        1. [虚拟目录](#虚拟目录)
-            1. [默认主页](#默认主页)
-            1. [虚拟主机](#虚拟主机)
-            1. [配置 GZip压缩](#配置-gzip压缩)
-            1. [配置IO方式](#配置io方式)
-    1. [Tomcat Native](#tomcat-native)
-    1. [Web容器和Web服务器的区别](#web容器和web服务器的区别)
-        1. [Web容器](#web容器)
-            1. [Web服务器](#web服务器)
-            1. [应用程序服务器](#应用程序服务器)
-            1. [Servlet](#servlet)
-            1. [Tomcat](#tomcat)
-    1. [Tomcat与应用服务器](#tomcat与应用服务器)
-    1. [Tomcat与Web服务器](#tomcat与web服务器)
-1. [优化](#优化)
-    1. [参数优化](#参数优化)
-    1. [Tomcat僵死问题](#tomcat僵死问题)
-1. [同类项目](#同类项目)
-    1. [Jetty](#jetty)
-        1. [配置](#配置)
-    1. [Undertow](#undertow)
-1. [Tips](#tips)
+- 1. [Tomcat](#tomcat)
+    - 1.1. [目录结构](#目录结构)
+    - 1.2. [配置运行](#配置运行)
+        - 1.2.1. [配置解压方式的Tomcat](#配置解压方式的tomcat)
+            - 1.2.1.1. [IDE中配置运行](#ide中配置运行)
+        - 1.2.2. [编码](#编码)
+        - 1.2.3. [虚拟目录](#虚拟目录)
+            - 1.2.3.1. [默认主页](#默认主页)
+            - 1.2.3.2. [虚拟主机](#虚拟主机)
+            - 1.2.3.3. [配置 GZip压缩](#配置-gzip压缩)
+            - 1.2.3.4. [配置IO方式](#配置io方式)
+    - 1.3. [Tomcat Native](#tomcat-native)
+    - 1.4. [Web容器和Web服务器的区别](#web容器和web服务器的区别)
+        - 1.4.1. [Web容器](#web容器)
+        - 1.4.2. [Web服务器](#web服务器)
+            - 1.4.2.1. [Servlet](#servlet)
+- 2. [同类项目](#同类项目)
+    - 2.1. [Jetty](#jetty)
+        - 2.1.1. [配置](#配置)
+    - 2.2. [Undertow](#undertow)
+- 3. [Tips](#tips)
 
-**目录 end**|_2020-04-27 23:42_|
+💠 2024-02-22 18:18:03
 ****************************************
 # Tomcat
 > [官方网站](http://tomcat.apache.org/)
@@ -54,15 +46,6 @@ categories:
 > [psi-probe](https://github.com/psi-probe/psi-probe)`Tomcat监控管理工具`
 
 ************************
-
-## 原理
-> 更多查看 `Tomcat那些事儿` 公众号  
-> [Tomcat目录部署与Context描述文件context.xml ](https://mp.weixin.qq.com/s?__biz=MzI3MTEwODc5Ng==&mid=2650859355&idx=1&sn=2122baf040ae337dba90201a48b4e11c&chksm=f1329888c645119eec4473e11beaf988c48ce02c52151502086595de59b65dd4bd7cf129530e&scene=21#wechat_redirect)
-> | [Tomcat配置文件解析与Digester](https://mp.weixin.qq.com/s?__biz=MzI3MTEwODc5Ng==&mid=2650859293&idx=1&sn=3c017b2675bb59fda8ae037b7a1e6cb4&chksm=f13298cec64511d8183a23f1b3110bc6b65e8742c6e76391a51c552d86c0bc81a34fab8d0a60&scene=21#wechat_redirect)  
-> | [Servlet到底是单例还是多例你了解吗？](https://mp.weixin.qq.com/s?__biz=MzI3MTEwODc5Ng==&mid=401278436&idx=1&sn=7d28750b7cff1f706efb82c7fcaa73c5&scene=21#wechat_redirect)
-> | [Tomcat类加载器以及应用间class隔离与共享 ](https://mp.weixin.qq.com/s?__biz=MzI3MTEwODc5Ng==&mid=2650859298&idx=1&sn=8856375f2268fc33a6bb3fbc6932eca7&chksm=f13298f1c64511e77ef1d77d28272840ca56f62da6e11928c78827e8ec53f937f812a4b49aa0&scene=21#wechat_redirect)  
-> | [啥，Tomcat里竟然还有特权应用? ](https://mp.weixin.qq.com/s?__biz=MzI3MTEwODc5Ng==&mid=2650859476&idx=1&sn=8be7a37b59a5d167998f6695a1606d39&chksm=f1329807c6451111d2a1c379221655dc87dd105b067f894bfb202d1f9f283bad310a5cdc2277&scene=21#wechat_redirect)
-> | [你了解JMX在Tomcat的应用吗?](https://mp.weixin.qq.com/s?__biz=MzI3MTEwODc5Ng==&mid=401135587&idx=1&sn=610950fda2eceb3683a9fe45078f1a83&scene=21#wechat_redirect)
 
 ## 目录结构
 ```
@@ -197,18 +180,12 @@ categories:
 - 容器的行为是 将其内部的应用程序组件与外界的通信协议交互进行了隔离，从而减轻内部应用程序组件的负担（实现方面的负担？）。
     - 例如：SERVLET 不用关心 HTTP 的细节，而是直接引用环境变量 session、request、response 就行、EJB 不用关心数据库连接速度、各种事务控制，直接由容器来完成。
 
-#### Web服务器
+### Web服务器
 - Web 服务器（Web Server）可以处理 HTTP 协议。当 Web 服务器接收到一个 HTTP 请求，会返回一个 HTTP 响应，例如送回一个 HTML 页面。
 - Web 服务器可以响应针对静态页面或图片的请求， 进行页面跳转（redirect），或者把动态响应（dynamic response）的产生委托（delegate）给一些其它的程序
     - 例如 CGI 脚本，JSP（JavaServer Pages）脚本，servlets，ASP（Active Server Pages）脚本，服务器端 JavaScript，或者一些其它的服务器端技术。
     - Web 服务器仅仅提供一个可以执行服务器端程序和返回(程序所产生的)响应的环境，而不会超出职能范围。
     - Web 服务器主要是处理需要向浏览器发送 HTML 的请求以供浏览。
-
-#### 应用程序服务器
-> The Application Server
-
-根据定义，作为应用程序服务器，要求可以通过各种协议（包括 HTTP 协议）把商业逻辑暴露给（expose）客户端应用程序。  
-应用程序使用此商业逻辑就像你调用对象的一个方法或过程（语言中的一个函数）一样。
 
 #### Servlet 
 
@@ -216,35 +193,6 @@ categories:
 - 狭义的 Servlet 是指 Java 语言实现的一个接口
 - 广义的 Servlet 是指任何实现了这个 Servlet 接口的类，一般情况下，人们将 Servlet 理解为后者。
 - Servlet 运行于支持 Java 的应用服务器中。从实现上讲，Servlet 可以响应任何类型的请求，但绝大多数情况下 Servlet 只用来扩展基于 HTTP 协议的 Web 服务器。
-
-#### Tomcat 
-
-- Tomcat 服务器是一个免费的开放源代码的 Web 应用服务器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试 JSP 程序的首选。
-- 对于一个初学者来说，可以这样认为，当在一台机器上配置好 Apache 服务器，可利用它响应对 HTML 页面的访问请求。
-- 实际上 Tomcat 部分是Apache 服务器的扩展，但它是独立运行的，所以当你运行 tomcat 时，它实际上作为一个与 Apache 独立的进程单独运行的。
-- Apache Tomcat is an open source software implementation of the Java Servlet and JavaServer Pages technologies.
-
-*******************
-## Tomcat与应用服务器
-
->到目前为止，Tomcat 一直被认为是 Servlet/JSP API 的执行器，也就所谓的 Servlet 容器。然而，Tomcat并不仅仅如此，它还提供了 JNDI 和 JMX API 的实现机制。尽管如此，Tomcat 仍然还不能算是应用服务器，因为它不提供大多数 J2EE API 的支持。
-
-很有意思的是，目前许多的应用服务器通常把 Tomcat 作为它们 Servlet 和 JSP API 的容器。由于 Tomcat允许开发者只需通过加入一行致谢，就可以把 Tomcat 嵌入到它们的应用中。遗憾的是，许多商业应用服务器并没有遵守此规则。
-
-对于开发者来说，如果是为了寻找利用 Servlet、JSP、JNDI 和 JMX 技术来生成 Java Web 应用的话，选择Tomcat 是一个优秀的解决方案；但是为了寻找支持其他的 J2EE API，那么寻找一个应用服务器或者把 Tomcat作为应用服务器的辅助，
-将是一个不错的解决方案；第三种方式是找到独立的 J2EE API 实现，然后把它们跟Tomcat 结合起来使用。虽然整合会带来相关的问题，但是这种方式是最为有效的。
-
-## Tomcat与Web服务器
-
-Tomcat 是提供一个支持 Servlet 和 JSP 运行的容器。Servlet 和 JSP 能根据实时需要，产生动态网页内容。而对于 Web 服务器来说， Apache 仅仅支持静态网页，对于支持动态网页就会显得无能为力；Tomcat 则既能为动态网页服务，同时也能为静态网页提供支持。
-尽管它没有通常的 Web 服务器快、功能也不如 Web 服务器丰富，但是 Tomcat 逐渐为支持静态内容不断扩充。大多数的 Web 服务器都是用底层语言编写如 C，利用了相应平台的特征，因此用纯 Java 编写的 Tomcat 执行速度不可能与它们相提并论。
-
-一般来说，大的站点都是将 Tomcat 与 Apache 的结合，Apache 负责接受所有来自客户端的 HTTP 请求，然后将 Servlets 和 JSP 的请求转发给 Tomcat 来处理。Tomcat 完成处理后，将响应传回给 Apache，最后 Apache 将响应返回给客户端。
-
-*************************
-# 优化
-
-## 参数优化
 
 *************************
 # 同类项目
