@@ -5,20 +5,18 @@ tags:
 categories: 
 ---
 
-**目录 start**
+💠
 
-1. [JMH](#jmh)
-    1. [简易Demo](#简易demo)
-    1. [最佳实践](#最佳实践)
+- 1. [JMH](#jmh)
+    - 1.1. [简易Demo](#简易demo)
+    - 1.2. [最佳实践](#最佳实践)
 
-**目录 end**|_2020-05-06 01:45_|
+💠 2024-02-22 14:23:17
 ****************************************
 # JMH
 > [Official Site](http://openjdk.java.net/projects/code-tools/jmh/)  
 
-- [jmh demos](http://hg.openjdk.java.net/code-tools/jmh/file/tip/jmh-samples/src/main/java/org/openjdk/jmh/samples/)
-
-> [参考: Java微基准测试框架JMH](https://www.xncoding.com/2018/01/07/java/jmh.html)  
+- [JMH 官方示例代码](http://hg.openjdk.java.net/code-tools/jmh/file/tip/jmh-samples/src/main/java/org/openjdk/jmh/samples/)
 
 > [Benchmark comparing serialization libraries on the JVM ](https://github.com/eishay/jvm-serializers)  
 
