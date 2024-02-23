@@ -24,7 +24,7 @@ categories:
         - 3.1.1. [统计报表](#统计报表)
 - 4. [SQL查询时不使用索引的场景](#sql查询时不使用索引的场景)
 
-💠 2024-01-12 14:25:12
+💠 2024-02-23 10:40:13
 ****************************************
 
 # 索引
@@ -92,7 +92,7 @@ categories:
     10. filtered： 表示存储引擎返回的数据在server层过滤后，剩下多少满足查询的记录数量的比例。
     11. extra： 该字段信息较多，这里就不一一叙述了。
 
-- 在实际的使用过程中, 需要重点去关注type、key、key_len、rows、extra这几个参数， type要努力优化到range级别，all要尽量少的出现，在查询的过程中要尽量使用索引
+- 在实际的使用过程中, 需要重点去关注type、key、key_len、rows、extra这几个参数， type要努力优化到**range级别**，all要尽量少的出现，在查询的过程中要尽量使用索引
 - 在extra里面出现 Using filesort, Using temporary 是不太好的，要去优化提高性能。
 
 - 通常情况下一个SQL语句只能在表上命中一个索引，但还有 索引合并 的情况 [参考: MySQL索引合并的使用与原理](https://blog.csdn.net/gentlezuo/article/details/107677543)  

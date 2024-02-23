@@ -7,41 +7,41 @@ categories:
     - 工具
 ---
 
-**目录 start**
+💠
 
-1. [文本编辑器](#文本编辑器)
-    1. [Kate](#kate)
-    1. [Geany](#geany)
-    1. [scite](#scite)
-    1. [textadept](#textadept)
-        1. [快捷键](#快捷键)
-    1. [Sublime](#sublime)
-        1. [快捷键](#快捷键)
-        1. [crack](#crack)
-    1. [VSCode](#vscode)
-        1. [快捷键](#快捷键)
-        1. [代码片段](#代码片段)
-        1. [插件](#插件)
-        1. [实践](#实践)
-        1. [vscode server](#vscode-server)
-    1. [Atom](#atom)
-    1. [Gedit](#gedit)
-    1. [notepadqq](#notepadqq)
-    1. [MousePad](#mousepad)
-    1. [Xed](#xed)
-    1. [小书匠](#小书匠)
-    1. [Moeditor/Typora/CuteMarkEd](#moeditortyporacutemarked)
-    1. [Cmd](#cmd)
-1. [终端中的文本编辑器](#终端中的文本编辑器)
-    1. [Vi/Vim](#vivim)
-    1. [Nano](#nano)
-    1. [Micro](#micro)
-    1. [BS在线编辑器](#bs在线编辑器)
-1. [十六进制](#十六进制)
-    1. [Ghex](#ghex)
-    1. [hexedit](#hexedit)
+- 1. [文本编辑器](#文本编辑器)
+    - 1.1. [Kate](#kate)
+    - 1.2. [Geany](#geany)
+    - 1.3. [scite](#scite)
+    - 1.4. [textadept](#textadept)
+        - 1.4.1. [快捷键](#快捷键)
+    - 1.5. [Sublime](#sublime)
+        - 1.5.1. [快捷键](#快捷键)
+        - 1.5.2. [crack](#crack)
+    - 1.6. [VSCode](#vscode)
+        - 1.6.1. [快捷键](#快捷键)
+        - 1.6.2. [代码片段](#代码片段)
+        - 1.6.3. [插件](#插件)
+        - 1.6.4. [实践](#实践)
+        - 1.6.5. [vscode server](#vscode-server)
+    - 1.7. [Atom](#atom)
+    - 1.8. [Gedit](#gedit)
+    - 1.9. [notepadqq](#notepadqq)
+    - 1.10. [MousePad](#mousepad)
+    - 1.11. [Xed](#xed)
+    - 1.12. [小书匠](#小书匠)
+    - 1.13. [Moeditor/Typora/CuteMarkEd](#moeditortyporacutemarked)
+    - 1.14. [Cmd](#cmd)
+- 2. [终端中的文本编辑器](#终端中的文本编辑器)
+    - 2.1. [Vi/Vim](#vivim)
+    - 2.2. [Nano](#nano)
+    - 2.3. [Micro](#micro)
+    - 2.4. [BS在线编辑器](#bs在线编辑器)
+- 3. [十六进制](#十六进制)
+    - 3.1. [Ghex](#ghex)
+    - 3.2. [hexedit](#hexedit)
 
-**目录 end**|_2023-01-30 17:52_|
+💠 2024-02-23 10:40:13
 ****************************************
 # 文本编辑器
 
@@ -171,6 +171,7 @@ _个人配置_
 1. Draw.io Integration
 1. vscode-mindmap
 1. rainbow csv 
+1. Office Viewer 类似 Typora
 
 ### 实践
 > [参考: 用Git在Visual Studio Code内进行版本控制[指导]](https://sdk.cn/news/4041)
