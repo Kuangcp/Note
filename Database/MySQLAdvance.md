@@ -30,7 +30,7 @@ categories:
 - 2. [Tips](#tips)
     - 2.1. [SQL 片段](#sql-片段)
 
-💠 2024-02-23 10:40:13
+💠 2024-02-27 11:32:45
 ****************************************
 # MySQL进阶
 > [MySQL sever 源码](https://github.com/mysql/mysql-server)  
@@ -134,7 +134,7 @@ InnoDB通过加间隙锁来防止幻读
 - 修改MYSQL架构的语句，CREATE USER、DROP USER、GRANT、RENAME USER、REVOKE、SET PASSWORD；
 - 管理语句，ANALYZE TABLE、CACHE INDEX、CHECK TABLE、LOAD INDEX INTO CACHE、OPTIMIZE TABLE、REPAIR TABLE等
 
-需要注意业务逻辑事务中不能包含这些语句，后果 TODO 
+需要注意业务逻辑事务中不能包含这些语句，否则无法保证数据一致性，比如在线编辑表单的功能。 但是PG可以实现在同一事务内。
 
 ************************
 

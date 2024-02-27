@@ -63,7 +63,7 @@ categories:
                 - 5.6.1.3.1. [多级分组](#多级分组)
                 - 5.6.1.3.2. [按子组收集数据](#按子组收集数据)
             - 5.6.1.4. [分区](#分区)
-        - 5.6.2. [自定义收集器 Collector](#自定义收集器-collector)
+        - 5.6.2. [自定义 Collector](#自定义-collector)
 - 6. [Optional](#optional)
     - 6.1. [Optional类和Stream接口的相似之处](#optional类和stream接口的相似之处)
     - 6.2. [实践:读取Properties某属性](#实践读取properties某属性)
@@ -80,7 +80,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2024-02-02 14:22:14
+💠 2024-02-27 11:32:45
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -801,6 +801,26 @@ Collectors所提供的工厂方法 它们主要提供了三大功能：将流元
 joining工厂方法返回的收集器会把对流中每一个对象应用toString方法得到的所有字符串连接成一个字符串。
 `String shortMenu = menu.stream().collect(joining()); `
 
+Stream.collect 实现
+```java
+    public final <R, A> R collect(Collector<? super P_OUT, A, R> collector) {
+        A container;
+        if (isParallel()
+                && (collector.characteristics().contains(Collector.Characteristics.CONCURRENT))
+                && (!isOrdered() || collector.characteristics().contains(Collector.Characteristics.UNORDERED))) {
+            container = collector.supplier().get();
+            BiConsumer<A, ? super P_OUT> accumulator = collector.accumulator();
+            forEach(u -> accumulator.accept(container, u));
+        }
+        else {
+            container = evaluate(ReduceOps.makeRef(collector));
+        }
+        return collector.characteristics().contains(Collector.Characteristics.IDENTITY_FINISH)
+               ? (R) container
+               : collector.finisher().apply(container);
+    }
+```
+
 #### 规约 reduce
 事实上，我们已经讨论的所有收集器，都是一个可以用reducing工厂方法定义的归约过程的特殊情况而已。Collectors.reducing工厂方法是所有这些特殊情况的一般化。
 
@@ -944,8 +964,65 @@ joining工厂方法返回的收集器会把对流中每一个对象应用toStrin
 
 #### 分区
 
-### 自定义收集器 Collector
+************************
+
+### 自定义 Collector
 > [参考: 自定义收集器深度剖析：](http://www.cnblogs.com/webor2006/p/8353314.html)
+
+java.util.stream.Collector
+
+- creation of a new result container (supplier())
+- incorporating a new data element into a result container (accumulator())
+- combining two result containers into one (combiner())
+- performing an optional final transform on the container (finisher())
+
+```java
+    // toList实现
+    public static <T> Collector<T, ?, List<T>> toList() {
+        return new CollectorImpl<>(ArrayList::new, // supplier
+                                   List::add, // accumulator
+                                   (left, right) -> { left.addAll(right); return left; }, // combiner
+                                   CH_ID);
+    }
+    // toMap 实现
+    public static <T, K, U, M extends Map<K, U>> Collector<T, ?, M> toMap(Function<? super T, ? extends K> keyMapper,
+                             Function<? super T, ? extends U> valueMapper,
+                             BinaryOperator<U> mergeFunction,
+                             Supplier<M> mapFactory) {
+        BiConsumer<M, T> accumulator = (map, element) -> map.merge(keyMapper.apply(element), valueMapper.apply(element), mergeFunction);
+        return new CollectorImpl<>(mapFactory, // supplier
+                                    accumulator, // accumulator
+                                    mapMerger(mergeFunction), // combiner
+                                    CH_ID);
+    }
+    // toUnmodifiableSet JDK10
+    public static <T> Collector<T, ?, Set<T>> toUnmodifiableSet() {
+        return new CollectorImpl<>(HashSet::new, // supplier
+                                    Set::add, // accumulator
+                                   (left, right) -> {
+                                       if (left.size() < right.size()) {
+                                           right.addAll(left); return right;
+                                       } else {
+                                           left.addAll(right); return left;
+                                       }
+                                   },// combiner 
+                                   // 其中还包含一个小优化，只往大集合中追加小集合，降低插入运算次数（hash 扩容的成本）
+                                   // 而toList不需要是因为直接操作的数组内存复制 大小集合没区别
+                                   set -> (Set<T>)Set.of(set.toArray()), // finisher
+                                   CH_UNORDERED_NOID);
+    }
+
+    CollectorImpl(Supplier<A> supplier,
+                BiConsumer<A, T> accumulator,
+                BinaryOperator<A> combiner,
+                Set<Characteristics> characteristics) {
+        this(supplier, accumulator, combiner, castingIdentity(), characteristics);
+    }
+    // finish 空实现 只做类型强转
+    private static <I, R> Function<I, R> castingIdentity() {
+        return i -> (R) i;
+    }
+```
 
 ************************
 

@@ -12,19 +12,19 @@ categories:
 - 1. [Java中的Websocket](#java中的websocket)
     - 1.1. [WebSocket服务端](#websocket服务端)
         - 1.1.1. [Tomcat 方式](#tomcat-方式)
-            - 1.1.1.1. [4个生命周期在注解式端点中的事件处理](#4个生命周期在注解式端点中的事件处理)
+            - 1.1.1.1. [事件处理](#事件处理)
             - 1.1.1.2. [服务端推送消息](#服务端推送消息)
         - 1.1.2. [Spring-WebSocket](#spring-websocket)
-        - 1.1.3. [Undertow](#undertow)
-        - 1.1.4. [Netty](#netty)
-        - 1.1.5. [Reactor Netty](#reactor-netty)
+        - 1.1.3. [Netty](#netty)
+        - 1.1.4. [Reactor Netty](#reactor-netty)
+        - 1.1.5. [Undertow](#undertow)
     - 1.2. [性能测试对比](#性能测试对比)
     - 1.3. [Websocket集群设计](#websocket集群设计)
     - 1.4. [客户端](#客户端)
         - 1.4.1. [Java](#java)
         - 1.4.2. [JS](#js)
 
-💠 2023-10-10 12:10
+💠 2024-02-27 11:32:45
 ****************************************
 # Java中的Websocket
 JSR-356
@@ -84,7 +84,7 @@ public class WebsocketServer {
 1. 使用类级别注解`@ServerEndpoint("uri路径")`，将类标注为一个WebSocket端点
 1. 使用方法级别注解`@OnMessage`，使方法在WebSocket事件发生，而不在WebSocket消息发生时被调用
 
-#### 4个生命周期在注解式端点中的事件处理
+#### 事件处理
 
 | 注解         | 方法中可使用的形参                   |
 | ---------- | ---------------------------------------- |
@@ -157,17 +157,17 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 ```
 1. 推送消息 session.sendMessage(new TextMessage("text"));
 
-### Undertow
-
-> [doc](http://undertow.io/undertow-docs/undertow-docs-2.0.0/index.html#websockets)
-
 ### Netty
 > [Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/netty/websocket)
 
-通过go开发的客户端在多个Docker容器中运行（解决65535个端口限制），16G电脑可以轻松发起和支撑百万级ws活跃连接。
+通过go开发的客户端压测`在多个Docker容器中运行（规避65535个数的端口限制）`, 16G电脑可以轻松发起和支撑百万级ws活跃连接。
 
 ### Reactor Netty
 > [Official Doc](https://projectreactor.io/docs/netty/release/reference/index.html#http-server)
+
+### Undertow
+
+> [doc](http://undertow.io/undertow-docs/undertow-docs-2.0.0/index.html#websockets)
 
 ************************
 
