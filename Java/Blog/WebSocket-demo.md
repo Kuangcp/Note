@@ -160,10 +160,14 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 ### Netty
 > [Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/netty/websocket)
 
+[SpringBoot整合Netty处理WebSocket（支持url参数）](https://blog.csdn.net/RisenMyth/article/details/104441155)
+
 通过go开发的客户端压测`在多个Docker容器中运行（规避65535个数的端口限制）`, 16G电脑可以轻松发起和支撑百万级ws活跃连接。
 
 ### Reactor Netty
 > [Official Doc](https://projectreactor.io/docs/netty/release/reference/index.html#http-server)
+
+> [Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/reactor/websocket)
 
 ### Undertow
 
