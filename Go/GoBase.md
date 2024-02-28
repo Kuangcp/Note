@@ -46,7 +46,7 @@ categories:
 - 2. [Tips](#tips)
     - 2.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2024-01-13 12:54:43
+💠 2024-02-28 15:00:28
 ****************************************
 # Go
 
@@ -263,7 +263,7 @@ type Integer interface{
 > [Crimes with Go Generics](https://xeiaso.net/blog/gonads-2022-04-24/)
 
 > 不支持成员方法泛型，只支持结构体附加泛型或函数泛型。
-- [no-parameterized-methods](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#no-parameterized-methods)
+- [no-parameterized-methods](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#no-parameterized-methods) | [proposal: spec: allow type parameters in methods](https://github.com/golang/go/issues/49085)
 - go是编译型泛型，在编译器期确定所有的类型，跟go的反射冲突，想要解决只能像C#一样运行时支持泛型，或者像java用类型擦除，这个目前来看基本不可能
 - 导致了 map reduce 的库简洁的实现比较困难. [Github: go stream](https://github.com/Kuangcp/GoBase/tree/master/pkg/ctool/stream)`个人实现`
 

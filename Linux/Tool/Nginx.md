@@ -7,41 +7,41 @@ categories:
     - 工具
 ---
 
-**目录 start**
+💠
 
-1. [Nginx](#nginx)
-    1. [Nginx的安装](#nginx的安装)
-        1. [命令安装](#命令安装)
-        1. [编译安装](#编译安装)
-        1. [Docker安装](#docker安装)
-    1. [命令参数](#命令参数)
-1. [可视化管理工具](#可视化管理工具)
-1. [内置变量](#内置变量)
-1. [配置使用](#配置使用)
-    1. [本地静态文件Web服务器](#本地静态文件web服务器)
-    1. [反向代理多个服务](#反向代理多个服务)
-    1. [配置https](#配置https)
-        1. [自签发证书](#自签发证书)
-        1. [通过 certbot 配置 HTTPS](#通过-certbot-配置-https)
-    1. [配置Websocket反向代理](#配置websocket反向代理)
-    1. [转发代理](#转发代理)
-    1. [防盗链](#防盗链)
-    1. [gzip](#gzip)
-    1. [负载均衡](#负载均衡)
-        1. [负载均衡策略](#负载均衡策略)
-    1. [前后端分离时避免跨域](#前后端分离时避免跨域)
-        1. [静态服务器反代理后台接口](#静态服务器反代理后台接口)
-1. [Nginx Plus](#nginx-plus)
-1. [Keepalived](#keepalived)
-1. [同类应用](#同类应用)
-    1. [Caddy](#caddy)
-    1. [Squid](#squid)
-    1. [Varnish](#varnish)
-    1. [HAProxy](#haproxy)
-    1. [nuster](#nuster)
-1. [Tips](#tips)
+- 1. [Nginx](#nginx)
+    - 1.1. [Nginx的安装](#nginx的安装)
+        - 1.1.1. [命令安装](#命令安装)
+        - 1.1.2. [编译安装](#编译安装)
+        - 1.1.3. [Docker安装](#docker安装)
+    - 1.2. [命令参数](#命令参数)
+- 2. [可视化管理工具](#可视化管理工具)
+- 3. [内置变量](#内置变量)
+- 4. [配置使用](#配置使用)
+    - 4.1. [本地静态文件Web服务器](#本地静态文件web服务器)
+    - 4.2. [反向代理多个服务](#反向代理多个服务)
+        - 4.2.1. [静态资源+反代理后端](#静态资源+反代理后端)
+    - 4.3. [配置https](#配置https)
+        - 4.3.1. [自签发证书](#自签发证书)
+        - 4.3.2. [通过 certbot 配置 HTTPS](#通过-certbot-配置-https)
+    - 4.4. [配置Websocket反向代理](#配置websocket反向代理)
+    - 4.5. [转发代理](#转发代理)
+    - 4.6. [防盗链](#防盗链)
+    - 4.7. [gzip](#gzip)
+    - 4.8. [负载均衡](#负载均衡)
+        - 4.8.1. [负载均衡策略](#负载均衡策略)
+    - 4.9. [前后端分离时避免跨域](#前后端分离时避免跨域)
+- 5. [Nginx Plus](#nginx-plus)
+- 6. [Keepalived](#keepalived)
+- 7. [同类应用](#同类应用)
+    - 7.1. [Caddy](#caddy)
+    - 7.2. [Squid](#squid)
+    - 7.3. [Varnish](#varnish)
+    - 7.4. [HAProxy](#haproxy)
+    - 7.5. [nuster](#nuster)
+- 8. [Tips](#tips)
 
-**目录 end**|_2023-05-26 11:28_|
+💠 2024-02-28 15:00:28
 ****************************************
 # Nginx
 
@@ -114,9 +114,13 @@ nginx 配置文件的语法是自己独有的语法, 比较像 shell, 里面有�
     - nginx.conf 中 http 块内添加 `include /etc/nginx/conf.d/*.conf;`
 - 错误页面重定向 `error_page   404  /404.html;` 也可以填完整URL
 
+> [Nginx反向代理，当后端为Https时的一些细节和原理](https://blog.dianduidian.com/post/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%BD%93%E5%90%8E%E7%AB%AF%E4%B8%BAhttps%E6%97%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82%E5%92%8C%E5%8E%9F%E7%90%86/)  
+
+nginx提供Http服务，但是反向代理了HTTPS地址时 需要注意证书的一致性问题
+
 ************************
 
-## 本地静态文件Web服务器
+## 静态资源Web服务器
 > [参考 nginx配置静态文件服务器 ](http://blog.yuansc.com/2015/04/29/nginx%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/)
 
 ```ini
@@ -178,6 +182,46 @@ nginx 配置文件的语法是自己独有的语法, 比较像 shell, 里面有�
     }
   }
 ```
+
+### 静态资源+反代理后端
+> [Nginx反向代理解决跨域问题](https://segmentfault.com/a/1190000012859206) | [nginx简易使用教程,使用nginx解决跨域问题](https://www.jianshu.com/p/05415981e5e5)
+
+_配置统一出口_
+```ini
+    server {
+        client_max_body_size 4G;
+        listen  80;  # listen for ipv4; this line is default and implied
+        server_name static.me;
+        
+        location / {
+            root /data/static;
+            # proxy_pass http://127.0.0.1:8889/; 如果静态资源在别的端口上，这样配置也可以
+        }
+
+        location /api/ {
+            # add_header 'Access-Control-Allow-Origin' '*';
+            proxy_pass http://127.0.0.1:8889/; # 去除请求的 api 路径，并访问后端
+            # proxy_pass http://127.0.0.1:8889; 这种方式不会去除 /api/
+        }
+
+        location /api/a-service {
+          proxy_pass http://127.0.0.1:8889/a-service; # 移除 /api/ 路径，保留a-service （api路径下多个服务时使用此类型配置）
+        }
+    }
+```
+1. 将静态文件交由Nginx进行处理， 后台的服务统一用一个前缀和前台进行区分， 然后将服务端的真实host和ip或者域名配置进来
+2. 这样在于前端看来就是访问 static.me/api 而已， 实际上访问的是 127.0.0.1:8889/api 
+> 注意，原先使用nginx反向代理tomcat，尝试配置后端为一个本地dns解析的域名。然后发现这是无法生效的，所以应该使用真实IP或公网域名
+
+### 前后端分离时避免跨域
+在需要被跨域访问的服务端，添加如下配置
+```ini
+    add_header Access-Control-Allow-Origin *;
+    add_header Access-Control-Allow-Headers X-Requested-With;
+    add_header Access-Control-Allow-Methods GET,POST,OPTIONS; 
+```
+
+************************
 
 ## 配置https
 > [nginx搭建https服务](http://www.cnblogs.com/tintin1926/archive/2012/07/12/2587311.html) | [nginx http/2](http://letus.club/2016/04/08/nginx-http2-letsencrypt/)
@@ -391,44 +435,6 @@ server {
     - 能正常执行，假如此时请求A失败，例如A节点宕机, 请求还会转移至B节点（failover）
 1. 如果负载均衡了A B两个节点, A节点宕机了，后续请求是否还会分发到A节点
     - 不会，原理： TODO
-
-## 前后端分离时避免跨域
-在需要被跨域访问的服务端，添加如下配置
-```ini
-    add_header Access-Control-Allow-Origin *;
-    add_header Access-Control-Allow-Headers X-Requested-With;
-    add_header Access-Control-Allow-Methods GET,POST,OPTIONS; 
-```
-
-### 静态服务器反代理后台接口
-> [Nginx反向代理解决跨域问题](https://segmentfault.com/a/1190000012859206) | [nginx简易使用教程,使用nginx解决跨域问题](https://www.jianshu.com/p/05415981e5e5)
-
-_配置统一出口_
-```ini
-    server {
-        client_max_body_size 4G;
-        listen  80;  # listen for ipv4; this line is default and implied
-        server_name static.me;
-        
-        location / {
-            root /data/static;
-            # proxy_pass http://127.0.0.1:8889/; 如果静态资源在别的端口上，这样配置也可以
-        }
-
-        location /api/ {
-            # add_header 'Access-Control-Allow-Origin' '*';
-            proxy_pass http://127.0.0.1:8889/; # 去除 api 路径，并访问后端
-            # proxy_pass http://127.0.0.1:8889; 这种方式不会去除 /api/
-        }
-
-        location /api/a-service {
-          proxy_pass http://127.0.0.1:8889/a-service; # 移除 /api/ 路径，保留a-service （api路径下多个服务时使用此类型配置）
-        }
-    }
-```
-1. 将静态文件交由Nginx进行处理， 后台的服务统一用一个前缀和前台进行区分， 然后将服务端的真实host和ip或者域名配置进来
-2. 这样在于前端看来就是访问 static.me/api 而已， 实际上访问的是 127.0.0.1:8889/api 
-> 注意，原先使用nginx反向代理tomcat，尝试配置后端为一个本地dns解析的域名。然后发现这是无法生效的，所以应该使用真实IP或公网域名
 
 ************************
 
