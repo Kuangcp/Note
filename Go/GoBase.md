@@ -47,7 +47,7 @@ categories:
 - 2. [Tips](#tips)
     - 2.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2024-03-04 14:39:31
+💠 2024-03-04 17:26:01
 ****************************************
 # Go
 
@@ -448,10 +448,39 @@ Msg struct{
 ## Debug
 
 ### pprof
+> [Google: pprof](https://github.com/google/pprof/blob/main/doc/README.md)
+
+```go
+    import _ "net/http/pprof"
+
+    go func() {
+        http.ListenAndServe("0.0.0.0:8899", nil)
+    }()
+```
+- 访问 http://ip:8899/debug/pprof/
+
 
 > [参考: 【实践】使用Go pprof做内存性能分析](https://cloud.tencent.com/developer/article/1489186)
 > [参考: 实战Go内存泄露](https://www.codercto.com/a/79118.html)
 > [参考: Go 程序内存泄露问题快速定位](https://zhuanlan.zhihu.com/p/368567370)
+
+> 分析内存
+- go tool pprof -alloc_space/-inuse_space http://ip:8899/debug/pprof/heap 后进入REPL 输入top查看内存占用
+- go tool pprof -inuse_space -cum -svg http://ip:8899/debug/pprof/heap > heap_inuse.svg 导出成svg图
+
+> 分析CPU  
+
+[Flame Graphs for Go With pprof](https://www.benburwell.com/posts/flame-graphs-for-go-with-pprof/) CPU火焰图
+
+> 手工方式1
+- 先 Clone https://github.com/brendangregg/FlameGraph 
+- `go tool pprof -raw -output=cpu.txt 'http://localhost:8080/debug/pprof/profile?seconds=20'`
+- `./stackcollapse-go.pl cpu.txt | flamegraph.pl > flame.svg`
+
+> 自动方式2
+- `go tool pprof -raw 'http://localhost:8080/debug/pprof/profile?seconds=20'` 得到采样文件 *.pb.gz
+- `go tool pprof -http=: 采样文件` http可指定端口 例如 :2345
+- 访问web地址View中的Flame Graph
 
 ************************
 

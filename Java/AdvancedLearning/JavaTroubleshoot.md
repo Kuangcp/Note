@@ -22,7 +22,7 @@ categories:
     - 2.1. [IDEA调优](#idea调优)
     - 2.2. [FD泄漏： Unable to Open Socket File](#fd泄漏-unable-to-open-socket-file)
 
-💠 2024-03-04 14:39:31
+💠 2024-03-04 17:26:01
 ****************************************
 # Troubleshoot
 
@@ -141,6 +141,8 @@ categories:
 ```
 
 ### Heap space OOM
+异常信息：
+
 java.lang.OutOfMemoryError: Java heap space
 java.lang.OutOfMemoryError: Requested array size exceeds VM limit
 
