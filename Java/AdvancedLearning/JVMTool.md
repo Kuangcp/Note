@@ -36,7 +36,7 @@ categories:
     - 4.6. [JMC](#jmc)
     - 4.7. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-💠 2024-02-22 14:23:17
+💠 2024-03-04 19:04:38
 ****************************************
 
 # JVM 监控&诊断
@@ -258,8 +258,14 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
         1. jstatd -J-Djava.security.policy=jstatd.all.policy  -p 12028 -J-Djava.rmi.server.logCalls=true
         1. open jvisualvm create a remote with jstatd by above port 12028
 
-> 应用开发时的使用
-1. 可以使用 Profiler 下的JDBC，操作业务流程，获取所有执行的SQL，用来优化索引，或者排查问题
+> 提高效率的使用场景
+1. 可以使用 Profiler 下的JDBC，操作业务流程，获取所有执行的SQL，用来做索引优化，或排查问题
+    - **注意可能不准确**，需要对监控到的SQL有质疑的想法 
+        - 真实案例： 监控到对MySQL执行的某条SQL为 `xxx in ('NULL', 2, 4)`. 应用写法不规范未过滤集合中的null值就拼接进了条件
+        - 实际上MySQL驱动执行的SQL是 `xxx in (NULL, 2, 4)` 这会导致此子句永远是false，详见 [MySQL 条件操作符](/Database/MySQLAdvance.md#条件操作符)
+        - Clone Visualvm的代码后 通过GUI找功能实现，发现可疑方法 org.graalvm.visualvm.lib.jfluid.results.jdbc.SQLStatement#getFullSql
+        - 通过arthas watch该方法的返回后，确认是这个方法的问题，
+        - 结论为：基于 PreparedStatement 得到执行SQL的实现方式和MySQL驱动的不一样。
 
 ************************
 

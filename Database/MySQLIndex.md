@@ -24,7 +24,7 @@ categories:
         - 3.1.1. [统计报表](#统计报表)
 - 4. [SQL查询时不使用索引的场景](#sql查询时不使用索引的场景)
 
-💠 2024-02-23 10:40:13
+💠 2024-03-04 19:04:38
 ****************************************
 
 # 索引
@@ -97,6 +97,9 @@ categories:
 
 - 通常情况下一个SQL语句只能在表上命中一个索引，但还有 索引合并 的情况 [参考: MySQL索引合并的使用与原理](https://blog.csdn.net/gentlezuo/article/details/107677543)  
     - intersect， union， sort-union
+
+> 注意Explain返回的是可能的查询器和优化器的执行策略。  
+> `explain analyze` 会将SQL真正执行并记录被拆分后的SQL执行环节的大致耗时
 
 ## 为何选择 B+ 树结构
 > [参考:【原创】为什么Mongodb索引用B树，而Mysql用B+树?](https://www.cnblogs.com/rjzheng/p/12316685.html)  `MongoDB PostgreSQL 都是使用B-Tree`
