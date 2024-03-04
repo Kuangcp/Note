@@ -38,15 +38,16 @@ categories:
     - 1.7. [Channel](#channel)
     - 1.8. [协程](#协程)
     - 1.9. [文件操作](#文件操作)
-    - 1.10. [Test](#test)
-    - 1.11. [JSON](#json)
-    - 1.12. [Debug](#debug)
-        - 1.12.1. [pprof](#pprof)
-    - 1.13. [部署](#部署)
+    - 1.10. [http](#http)
+    - 1.11. [Test](#test)
+    - 1.12. [JSON](#json)
+    - 1.13. [Debug](#debug)
+        - 1.13.1. [pprof](#pprof)
+    - 1.14. [部署](#部署)
 - 2. [Tips](#tips)
     - 2.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2024-02-28 15:00:28
+💠 2024-03-04 14:39:31
 ****************************************
 # Go
 
@@ -361,6 +362,10 @@ func walkfunc(path string, info os.FileInfo, err error) error {
     return nil
 }
 ```
+
+## http 
+> [优化 golang net/http client 客户端存在的性能瓶颈](https://xiaorui.cc/archives/5577)`http.Client 中 Transport对于连接池使用的锁太多`
+
 
 ************************
 

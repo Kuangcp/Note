@@ -11,16 +11,18 @@ categories:
     - 1.1. [GC](#gc)
         - 1.1.1. [主要关注指标](#主要关注指标)
     - 1.2. [Memory](#memory)
-        - 1.2.1. [Metaspace OOM](#metaspace-oom)
-        - 1.2.2. [Compressed Class Space OOM](#compressed-class-space-oom)
-        - 1.2.3. [Direct Memory OOM](#direct-memory-oom)
-    - 1.3. [CPU](#cpu)
-        - 1.3.1. [线程](#线程)
+    - 1.3. [OOM](#oom)
+        - 1.3.1. [Heap space OOM](#heap-space-oom)
+        - 1.3.2. [Metaspace OOM](#metaspace-oom)
+        - 1.3.3. [Compressed Class Space OOM](#compressed-class-space-oom)
+        - 1.3.4. [Direct Memory OOM](#direct-memory-oom)
+    - 1.4. [CPU](#cpu)
+        - 1.4.1. [线程](#线程)
 - 2. [常见问题](#常见问题)
     - 2.1. [IDEA调优](#idea调优)
     - 2.2. [FD泄漏： Unable to Open Socket File](#fd泄漏-unable-to-open-socket-file)
 
-💠 2024-02-19 16:05:42
+💠 2024-03-04 14:39:31
 ****************************************
 # Troubleshoot
 
@@ -66,13 +68,81 @@ categories:
 
 > 以上三者不可兼得，通常兼顾两者舍弃一方。
 
-## Memory
+## Memory 
 - [Blog:java优化占用内存的方法(一)](http://blog.csdn.net/zheng0518/article/details/48182437)
 
 - [GC 性能优化 专栏](https://blog.csdn.net/column/details/14851.html)
 - [Java调优经验谈](http://www.importnew.com/22336.html)
 
 - [Memory Footprint of A Java Process](https://zhuanlan.zhihu.com/p/158712025)
+
+## OOM 
+> 注意OOM并不代表Java进程一定会退出，如果导致OOM的地方能被catch，且泄漏点能随着这次任务的终止而可回收的话，JVM将继续正常运行。  
+> [Why JVM can recovery from OOM Java heap space by itself](https://stackoverflow.com/questions/72865015/why-jvm-can-recovery-from-oom-java-heap-space-by-itself)
+
+例如最简单的案例
+```java
+    public static void main(String[] args) {
+        try {
+            List<byte[]> data = new ArrayList<>();
+            while (true) {
+                try {
+                    TimeUnit.MILLISECONDS.sleep(100);
+                } catch (InterruptedException e) {
+                    log.error("", e);
+                }
+                log.info("size={}", data.size());
+                data.add(new byte[1024 * 1024]);
+            }
+        } catch (Throwable e) {
+            log.error("", e);
+        }
+
+        while (true) {
+            try {
+                TimeUnit.MILLISECONDS.sleep(500);
+            } catch (InterruptedException e) {
+                log.error("", e);
+            }
+            log.info("do something");
+        }
+    }
+```
+
+又或者常见的SpringMVC服务
+```java
+    @GetMapping("/oom")
+    public String oom() {
+        List<byte[]> data = new ArrayList<>();
+        while (true) {
+            try {
+                TimeUnit.MILLISECONDS.sleep(100);
+            } catch (InterruptedException e) {
+                log.error("", e);
+            }
+            log.info("size={}", data.size());
+            data.add(new byte[1024 * 1024]);
+        }
+    }
+```
+
+注意 `org.springframework.web.servlet.DispatcherServlet` 中的 `doDispatch` catch了Error也包装成了Exception，方便统一异常处理器。  
+这只会导致Tomcat的NIO线程终止了这次请求，局部变量 data 就可以回收掉了，整个服务仍正常进行，只是在快要OOM时高频的GC影响了系统的吞吐量而已。
+
+```java
+    catch (Exception ex) {
+        dispatchException = ex;
+    }
+    catch (Throwable err) {
+        // As of 4.3, we're processing Errors thrown from handler methods as well,
+        // making them available for @ExceptionHandler methods and other scenarios.
+        dispatchException = new NestedServletException("Handler dispatch failed", err);
+    }
+```
+
+### Heap space OOM
+java.lang.OutOfMemoryError: Java heap space
+java.lang.OutOfMemoryError: Requested array size exceeds VM limit
 
 ### Metaspace OOM
 [一次Metaspace OutOfMemoryError问题排查记录](https://juejin.cn/post/7114516283290288158)`很多GeneratedMethodAccessor类`

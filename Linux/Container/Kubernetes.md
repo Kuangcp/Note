@@ -7,18 +7,18 @@ categories:
   - Kubernetes
 ---
 
-**目录 start**
+💠
 
-1. [Kubernetes](#kubernetes)
-    1. [相关博客](#相关博客)
-    1. [安装](#安装)
-        1. [minikube](#minikube)
-    1. [简单使用](#简单使用)
-    1. [容器编排](#容器编排)
-1. [Kubeless](#kubeless)
+- 1. [Kubernetes](#kubernetes)
+    - 1.1. [相关博客](#相关博客)
+    - 1.2. [安装](#安装)
+        - 1.2.1. [minikube](#minikube)
+    - 1.3. [简单使用](#简单使用)
+    - 1.4. [容器编排](#容器编排)
+- 2. [Kubeless](#kubeless)
 
-**目录 end**|_2023-07-24 18:06_|
-
+💠 2024-03-04 14:39:31
+****************************************
 ---
 
 # Kubernetes
@@ -28,7 +28,9 @@ categories:
 ## 相关博客
 
 > [浅谈 k8s+docker 资源监控](https://segmentfault.com/a/1190000003898140) | [基于 Kubernetes 构建 Docker 集群管理详解](http://www.csdn.net/article/2014-12-24/2823292-Docker-Kubernetes)  
-> [Kubernetes 学习笔记 ](http://wdxtub.com/2017/06/05/k8s-note/) > [Kubernetes 中文社区](https://www.kubernetes.org.cn/doc-45)
+> [Kubernetes 学习笔记 ](http://wdxtub.com/2017/06/05/k8s-note/)   
+> [Kubernetes 中文社区](https://www.kubernetes.org.cn/doc-45)  
+> [Kubernetes 使用教程](https://github.com/chaseSpace/k8s-tutorial-cn)
 
 > [参考: Kubernetes 会不会被自身的复杂性压垮？](http://www.infoq.com/cn/articles/will-kubernetes-collapse-under-the-weight-of-its-complexity)  
 > [参考: 一文带你看透 kubernetes 容器编排系统](https://my.oschina.net/qcloudcommunity/blog/2998211)
