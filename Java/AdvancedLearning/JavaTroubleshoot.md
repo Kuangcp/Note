@@ -22,7 +22,7 @@ categories:
     - 2.1. [IDEA调优](#idea调优)
     - 2.2. [FD泄漏： Unable to Open Socket File](#fd泄漏-unable-to-open-socket-file)
 
-💠 2024-03-04 17:26:01
+💠 2024-03-05 19:05:16
 ****************************************
 # Troubleshoot
 
@@ -39,8 +39,7 @@ categories:
     - 限制：**可复现**，通常能有这个条件已经能直接通过debug代码就能解决问题了
 
 ## GC
-> [Java GC](/Java/AdvancedLearning/JavaGC.md)
-
+> [Java GC](/Java/AdvancedLearning/JvmGC.md)
 
 > [Java中9种常见的CMS GC问题分析与解决](https://tech.meituan.com/2020/11/12/java-9-cms-gc.html)
 
@@ -56,6 +55,10 @@ categories:
 `工具`
 > [gceasy.io](https://gceasy.io)  
 > [GCViewer](https://github.com/chewiebug/GCViewer)  
+
+`实践`
+> [从实际案例聊聊Java应用的GC优化](https://tech.meituan.com/2017/12/29/jvm-optimize.html)`观察监控指标调整JVM参数： 年轻代 晋升阈值等`
+
 
 ### 主要关注指标
 > [garbage-collection-kpi](https://blog.gceasy.io/2016/10/01/garbage-collection-kpi/)`其中FootPrint定义应有误，JVM应指代内存占用而不是CPU资源`

@@ -52,8 +52,8 @@ categories:
 此外还有一些在线的平台 [gceasy](https://gceasy.io/)、heaphero、fastthread 。
 
 ## JVM参数
-> [JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)  
-> [Java HotSpot VM Options](https://www.oracle.com/java/technologies/javase/vmoptions-jsp.html)
+> [Official: JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)  
+> [Official: Java HotSpot VM Options](https://www.oracle.com/java/technologies/javase/vmoptions-jsp.html)
 
 - [远程调试](/Java/AdvancedLearning/JavaDebug.md#远程调试)
 - `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
@@ -76,8 +76,8 @@ categories:
 > 堆(老年代 年轻代)，堆外，元空间，栈
 
 - `-XX:CompressedClassSpaceSize=500m` 压缩类元空间大小 默认是1g
-- `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1
-
+- `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1。 **默认是8**
+- `-XX:NewRatio`old/new 内存的比值 **默认是2**
 - `-XX:+PrintFlagsInitial` 输出初始默认值
 
 > java -XX:+PrintFlagsFinal -version
@@ -285,6 +285,17 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 线程: 
 类加载器： histogram -> basic -> merge classloader
 不可达对象：
+
+> [mat用小内存解析超大堆快照的可行方法](https://baofeidyz.com/feasible-method-for-mat-to-analyze-super-large-heap-snapshots-with-small-memory)
+
+利用安装目录下的 ParseHeapDump.sh 命令行解析 dump的 hprof文件 
+全部解析： ParseHeapDump.sh ~/Downloads/java_pidxxx.hprof org.eclipse.mat.api:suspects org.eclipse.mat.api:overview org.eclipse.mat.api:top_components
+
+- ParseHeapDump.sh ~/Downloads/java_pidxxx.hprof org.eclipse.mat.api:suspects
+- ParseHeapDump.sh ~/Downloads/java_pidxxx.hprof org.eclipse.mat.api:overview
+- ParseHeapDump.sh ~/Downloads/java_pidxxx.hprof org.eclipse.mat.api:top_components
+
+并且可以发现结果文件为html，可以挂载到nginx等web服务器共享结果
 
 ## IntelliJ IDEA
 [Analyze the memory snapshot](https://www.jetbrains.com/help/idea/read-the-memory-snapshot.html)

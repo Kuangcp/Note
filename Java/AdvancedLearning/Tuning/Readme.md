@@ -8,7 +8,7 @@
 > [Linux 性能分析](/Linux/Base/LinuxPerformance.md)  
 > [Linux 网络](/Linux/Base/LinuxNetwork.md)  
 > [Java 性能调优](/Java/AdvancedLearning/JvmPerformance.md)  
-> [Java GC](/Java/AdvancedLearning/JavaGC.md#Tuning)  
+> [Java GC](/Java/AdvancedLearning/JvmGC.md#Tuning)  
 
 `不可用故障处理` **重要且紧急**
 

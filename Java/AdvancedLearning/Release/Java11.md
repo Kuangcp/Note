@@ -47,7 +47,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
 > [JDK 11 Release Notes](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
 
 ### ZGC
-> [ZGC](/Java/AdvancedLearning/JavaGC.md#ZGC)  
+> [ZGC](/Java/AdvancedLearning/JvmGC.md#ZGC)  
 
 *******************************
 > [参考: Java 11 Tutorial](https://winterbe.com/posts/2018/09/24/java-11-tutorial/)

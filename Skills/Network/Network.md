@@ -69,7 +69,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2024-02-27 11:32:45
+💠 2024-03-05 19:05:16
 ****************************************
 # 网络
 
@@ -445,7 +445,8 @@ Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开�
 ************************
 
 # 代理 Proxy
-> [wikipedia](https://en.wikipedia.org/wiki/Proxy) 
+> [wikipedia](https://en.wikipedia.org/wiki/Proxy)  
+> [Proxy servers and tunneling](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling)  
 
 ## 代理协议
 ### HTTP代理
