@@ -36,7 +36,7 @@ categories:
     - 4.6. [JMC](#jmc)
     - 4.7. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-💠 2024-03-04 19:04:38
+💠 2024-03-06 11:47:04
 ****************************************
 
 # JVM 监控&诊断
@@ -126,20 +126,21 @@ categories:
     - -V 输出通过标记的文件传递给JVM的参数（.hotspotrc文件，或者是通过参数-XX:Flags=指定的文件）
 
 ## jstat
-> [Oracle Doc](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstat.html)
+> [Oracle Doc： jstat](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstat.html)
 
 - option:
     - -class 类加载情况
     - -compiler 编译统计
     - -printcompilation JVM编译方法统计
     - 查看内存相关指标
-        - -gcutil 总gc统计情况
-        - -gc gc统计情况
-        - -gccapacity 堆内存空间
-        - -gcnew 和 -gcnewcapacity 新生代gc和内存统计
-        - -gcold 和 -gcoldcapacity 老年代gc和内存统计
-        - -gcpermcapacity JDK7永久代 -gcmetacapacity JDK8+ 元空间
-    - -t 在第一列输出时间戳。该时间戳从jvm启动开始
+        - `-gcutil` 总gc统计情况
+        - `-gc` gc统计情况
+        - `-gccapacity` 堆内存空间
+        - `-gcnew` 和 `-gcnewcapacity` 新生代gc和内存统计
+        - `-gcold` 和 `-gcoldcapacity` 老年代gc和内存统计
+        - `-gcpermcapacity` JDK7 永久代 
+        - `-gcmetacapacity` JDK8 元空间
+    - -t 在第一列输出时间戳`(s)`。该时间戳从jvm启动后开始计时
     - -h3 每隔N行输出一次列表头
     - $PID 进程号
     - interval 输出间隔时间，单位毫秒
@@ -148,29 +149,48 @@ categories:
 > [CSDN: jstat](https://blog.csdn.net/achuo/article/details/107793361)
 
 > Demo:
-- `jstat -gcutil -t -h5 7919 1000 50` 查看gc情况
+- `jstat -gcutil -t -h5 7919 1000 50` 
 
 ## jinfo 
 > 观察运行中的 java 进程的运行环境参数：参数包括 Java System 属性和 JVM 命令行参数
-- Demo:
-    - jinfo 14352
-    - jinfo -sysprops 14352
-    - 查看JVM参数 `jinfo -flags 14352`
+
+> Demo:
+- jinfo 14352
+- jinfo -sysprops 14352
+- 查看JVM参数 `jinfo -flags 14352`
     - jinfo -flag MaxPermSize 14352
 
 ## jmap 
 > 用来查看堆内存使用状况
-- Demo:
-    - `jmap -histo $PID` 展示实例和占用内存情况
-    - `jmap -heap $PID` 展示Java堆详细信息
-    - `jmap -dump:live,format=b,file=heapLive.hprof $PID` dump堆
+
+> Demo:
+- `jmap -histo $PID` 展示实例和占用内存情况
+    - `jmap -histo:live $PID` 展示存活实例情况 **注意会触发FullGC**
+- `jmap -heap $PID` 展示Java堆的各内存区域大小及占用情况
+- `jmap -dump:live,format=b,file=heapLive.hprof $PID` dump下存活对象的堆  **注意会触发FullGC**
+
+
+************************
 
 ## jhat
->  Java Head Analyse Tool
+>  Java Head Analyse Tool [Oracle: jhat](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/tooldescr012.html)
 
-用于分析 jmap 转储出来的堆文件, 分析完后启动一个WebServer 通过浏览器查看
-- -J-mx16g 设置最大内存
+用于分析 jmap 转储出来的堆文件, 分析完后启动一个WebServer， 浏览器打开 127.0.0.1:7000 查看
+
+> 参数
+- -J-mx2g 设置最大内存2g
 - -J-d64 64位模式
+- -port 端口
+
+> 使用
+- 网页
+    - 首页 所有类，点击可查看类的实例列表
+    - 底部 Other Queries 包含： histo，OQL查询，类实例 查看功能
+- 比较多个dump `jhat -baseline snapshot_1.hprof snapshot_2.hprof` 1，2文件是先后dump产生的
+    - 在底部的类实例`Show instance counts` 中能看到多了一列 例如 `instances (111060 new) of class`
+
+
+************************
 
 ## jstack 
 > jstack [option] pid  主要用来查看某个Java进程内的线程堆栈信息
@@ -276,7 +296,7 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 > [参考:  利用MAT分析JVM内存问题，从入门到精通](https://www.cnblogs.com/javaadu/p/11161380.html)  
 > [ Official Doc: OQL Syntax](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Freference%2Foqlsyntax.html)  
 
-他的 OQL 比较方便, 像写 SQL 一样去查询对象
+OQL 比较方便, 像写 SQL 一样去查询对象
 
 注意: 有这样的一种场景, 从数据库获取大量的数据创建为对象, 导致瞬间的OOM 这时候即使使用 jmap 去 dump 了快照, 也看不到占用大量内存的对象, 因为MAT默认展示的是GC可达对象，需要在菜单选择看不可达对象
 
@@ -285,6 +305,8 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 线程: 
 类加载器： histogram -> basic -> merge classloader
 不可达对象：
+
+************************
 
 > [mat用小内存解析超大堆快照的可行方法](https://baofeidyz.com/feasible-method-for-mat-to-analyze-super-large-heap-snapshots-with-small-memory)
 
@@ -296,6 +318,12 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 - ParseHeapDump.sh ~/Downloads/java_pidxxx.hprof org.eclipse.mat.api:top_components
 
 并且可以发现结果文件为html，可以挂载到nginx等web服务器共享结果
+
+************************
+> 比较多个dump文件
+
+[MAT比较多个heap dump文件](https://blog.csdn.net/zhuxingchong/article/details/110449138)
+
 
 ## IntelliJ IDEA
 [Analyze the memory snapshot](https://www.jetbrains.com/help/idea/read-the-memory-snapshot.html)
