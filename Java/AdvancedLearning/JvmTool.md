@@ -21,6 +21,7 @@ categories:
     - 2.5. [jmap](#jmap)
     - 2.6. [jhat](#jhat)
         - 2.6.1. [OQL](#oql)
+        - 2.6.2. [HPROF](#hprof)
     - 2.7. [jstack](#jstack)
         - 2.7.1. [实现原理](#实现原理)
     - 2.8. [jcmd](#jcmd)
@@ -33,11 +34,11 @@ categories:
     - 4.2. [GCViewer](#gcviewer)
     - 4.3. [Visualvm](#visualvm)
     - 4.4. [MAT](#mat)
-    - 4.5. [IntelliJ IDEA](#intellij-idea)
-    - 4.6. [JMC](#jmc)
-    - 4.7. [IBM Heap Analyzer](#ibm-heap-analyzer)
+    - 4.5. [JMC](#jmc)
+    - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
+    - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-03-06 14:08:26
+💠 2024-03-06 15:19:38
 ****************************************
 
 # JVM 监控&诊断
@@ -198,6 +199,10 @@ categories:
          [ from [instanceof] <class name> <identifier>
          [ where <JavaScript boolean expression to filter> ] ]
 ```
+
+### HPROF
+> [HPROF: A Heap/CPU Profiling Tool](https://docs.oracle.com/javase/8/docs/technotes/samples/hprof.html)
+
 ************************
 
 ## jstack 
@@ -330,15 +335,37 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 
 [MAT比较多个heap dump文件](https://blog.csdn.net/zhuxingchong/article/details/110449138)
 
-
-## IntelliJ IDEA
-[Analyze the memory snapshot](https://www.jetbrains.com/help/idea/read-the-memory-snapshot.html)
-
 ************************
-## JMC
-> [Java Mission Control](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/tooldescr002.html#BABIBBDE)
 
-通过对运行中的JVM进行飞行记录 Flight Recorder, 分析指定时间内代码的可优化点，指标值变化情况（内存，CPU，GC，类加载等等）
+## JMC
+> [Java Mission Control](https://docs.oracle.com/en/java/java-components/jdk-mission-control/)
+
+1. 通过JMX连接目标JVM 实时监控应用指标
+1. 通过对运行中的JVM进行飞行记录 Flight Recorder, 分析指定时间内代码的可优化点，指标值变化情况（内存，CPU，GC，类加载等等）
+
+> 目标应用JVM配置
+```ini
+    -Dcom.sun.management.jmxremote.port=4433
+    -Djava.rmi.server.hostname=192.168.9.155
+    -Dcom.sun.management.jmxremote.ssl=false
+    # 不配置账户
+    -Dcom.sun.management.jmxremote.authenticate=false
+    # 配置账户
+    -Dcom.sun.management.jmxremote.authenticate=true
+    -Dcom.sun.management.jmxremote.password.file=jmc.pwd
+    -Dcom.sun.management.jmxremote.access.file=jmc.access
+```
+
+> jmc.pwd
+```
+username1 pwd1
+username2 pwd2
+```
+> jmc.access
+```
+username1 readonly
+username2 readwrite
+```
 
 ************************
 
@@ -346,3 +373,6 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 > [Official Site](https://www.ibm.com/developerworks/community/alphaworks/tech/heapanalyzer)
 
 ************************
+
+## IntelliJ IDEA
+[Analyze the memory snapshot](https://www.jetbrains.com/help/idea/read-the-memory-snapshot.html)
