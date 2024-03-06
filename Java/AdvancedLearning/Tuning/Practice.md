@@ -11,7 +11,7 @@ categories:
     - 1.1. [IDEA调优](#idea调优)
     - 1.2. [FD泄漏： Unable to Open Socket File](#fd泄漏-unable-to-open-socket-file)
 
-💠 2024-03-06 14:11:38
+💠 2024-03-06 19:03:54
 ****************************************
 # 问题实践
 ## IDEA调优
@@ -26,7 +26,7 @@ categories:
     -Xverify:none # 不进行字节码校验
     -XX:+AggressiveOpts # 激进式优化
 
-    -XX:ReservedCodeCacheSize=320m # 编译时代码缓存 IDEA 警告不能低于240M
+    -XX:ReservedCodeCacheSize=320m # IDEA JIT 缓存
 ```
 
 > [参考: Java’s -XX:+AggressiveOpts: Can it slow you down?](https://www.opsian.com/blog/aggressive-opts/)  

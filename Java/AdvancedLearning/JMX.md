@@ -6,14 +6,14 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [JMX](#jmx)
-    1. [概念](#概念)
-    1. [使用](#使用)
-        1. [JMX的JVM参数配置](#jmx的jvm参数配置)
+- 1. [JMX](#jmx)
+    - 1.1. [概念](#概念)
+    - 1.2. [使用](#使用)
+        - 1.2.1. [JVM参数配置](#jvm参数配置)
 
-**目录 end**|_2020-04-27 23:42_|
+💠 2024-03-06 19:03:54
 ****************************************
 
 # JMX
@@ -38,7 +38,7 @@ categories:
 
 ## 使用
 
-### JMX的JVM参数配置
+### JVM参数配置
 
 | 参数 | 类型 | 描述 |
 |:---|:---|:---|
@@ -47,4 +47,29 @@ categories:
 | -Dcom.sun.management.jmxremote.authenticate | 布尔 |  是否需要开启用户认证,默认开启
 | -Dcom.sun.management.jmxremote.ssl | 布尔 | 是否对连接开启SSL加密，默认开启
 | -Dcom.sun.management.jmxremote.access.file | 路径 | 对访问用户的权限授权的文件的路径，默认路径 `JRE_HOME/lib/management/jmxremote.access`
-| -Dcom.sun.management.jmxremote. password.file | 路径 | 设置访问用户的用户名和密码，默认路径 `JRE_HOME/lib/management/jmxremote.password`
+| -Dcom.sun.management.jmxremote.password.file | 路径 | 设置访问用户的用户名和密码，默认路径 `JRE_HOME/lib/management/jmxremote.password`
+
+```ini
+    -Dcom.sun.management.jmxremote.port=4433
+    -Djava.rmi.server.hostname=192.168.9.155
+    -Dcom.sun.management.jmxremote.ssl=false
+
+    # 1. 不配置账户
+    -Dcom.sun.management.jmxremote.authenticate=false
+
+    # 2. 配置账户
+    -Dcom.sun.management.jmxremote.authenticate=true
+    -Dcom.sun.management.jmxremote.password.file=jmxremote.password
+    -Dcom.sun.management.jmxremote.access.file=jmxremote.access
+```
+
+> jmxremote.password
+```
+username1 pwd1
+username2 pwd2
+```
+> jmxremote.access
+```
+username1 readonly
+username2 readwrite
+```

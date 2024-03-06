@@ -16,7 +16,7 @@ categories:
     - 2.1. [MySQL](#mysql)
 - 3. [Tips](#tips)
 
-💠 2024-03-04 19:04:38
+💠 2024-03-06 19:03:54
 ****************************************
 # JDBC
 Java DataBase Connectivity
@@ -46,8 +46,9 @@ Java DataBase Connectivity
 > 仅为JDBC接口，具体行为细节来自实际数据库厂商提供的驱动
 
 ## 长连接流式导出数据
+常见的分页导出的缺点有 分页越来越慢和不稳定排序导致页之间数据重复或丢失，用长连接流方式可以规避
+
 ```java
-// 注意此段代码仅Clickhouse有效
 private void fetchBatchWithDataResource(DataSource ds, String sql, String where, int fetchSize, Consumer<List<LinkedHashMap<String, Object>>> handle) {
     Connection connection = null;
     Statement stmt = null;
@@ -104,14 +105,13 @@ private void fetchBatchWithDataResource(DataSource ds, String sql, String where,
 }
 ```
 - Statement 设置了 fetchSize 或者 TYPE_FORWARD_ONLY 模式后，都会采用游标的方式获取全部的数据
-- handle 则是解析ResultSet后生成 CSV Excel 的业务逻辑
+- 参数 handle 是解析ResultSet 去生成 CSV Excel 等业务逻辑
 
 > 注意
-- Clickhouse可以直接使用以上代码，但是PostgreSQL和MySQL需要在此之上做一些调整才能正确分批查询，`否则单次fetch会拉回全部的数据`,内存压力很大
-- PostgreSQL
-    - [pg jdbc doc](https://jdbc.postgresql.org/documentation/head/connect.html#connection-parameters)
-    - 查询前关闭该连接的 autoCommit，查完后再开启，才会只fetch指定的数据量回JVM内存
-- MySQL 
+- Clickhouse可以直接使用
+- PostgreSQL 调整：
+    - **查询前关闭该连接的 autoCommit，查完后再开启**，才会fetch指定的数据量,否则会拉取全部的数据到JVM。[pg jdbc doc](https://jdbc.postgresql.org/documentation/head/connect.html#connection-parameters)
+- MySQL 调整：
     - url配置需要添加 useCursorFetch=true
 
 ************************

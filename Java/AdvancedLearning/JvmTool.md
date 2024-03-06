@@ -38,7 +38,7 @@ categories:
     - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-03-06 15:19:38
+💠 2024-03-06 19:03:54
 ****************************************
 
 # JVM 监控&诊断
@@ -343,29 +343,7 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 1. 通过JMX连接目标JVM 实时监控应用指标
 1. 通过对运行中的JVM进行飞行记录 Flight Recorder, 分析指定时间内代码的可优化点，指标值变化情况（内存，CPU，GC，类加载等等）
 
-> 目标应用JVM配置
-```ini
-    -Dcom.sun.management.jmxremote.port=4433
-    -Djava.rmi.server.hostname=192.168.9.155
-    -Dcom.sun.management.jmxremote.ssl=false
-    # 不配置账户
-    -Dcom.sun.management.jmxremote.authenticate=false
-    # 配置账户
-    -Dcom.sun.management.jmxremote.authenticate=true
-    -Dcom.sun.management.jmxremote.password.file=jmc.pwd
-    -Dcom.sun.management.jmxremote.access.file=jmc.access
-```
-
-> jmc.pwd
-```
-username1 pwd1
-username2 pwd2
-```
-> jmc.access
-```
-username1 readonly
-username2 readwrite
-```
+> [目标JVM开启远程访问JMX](/Java/AdvancedLearning/JMX.md#JVM参数配置) `JDK6后就默认开启了进程访问JMX`
 
 ************************
 
