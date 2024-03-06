@@ -20,6 +20,7 @@ categories:
     - 2.4. [jinfo](#jinfo)
     - 2.5. [jmap](#jmap)
     - 2.6. [jhat](#jhat)
+        - 2.6.1. [OQL](#oql)
     - 2.7. [jstack](#jstack)
         - 2.7.1. [实现原理](#实现原理)
     - 2.8. [jcmd](#jcmd)
@@ -36,7 +37,7 @@ categories:
     - 4.6. [JMC](#jmc)
     - 4.7. [IBM Heap Analyzer](#ibm-heap-analyzer)
 
-💠 2024-03-06 11:47:04
+💠 2024-03-06 14:08:26
 ****************************************
 
 # JVM 监控&诊断
@@ -188,8 +189,15 @@ categories:
     - 底部 Other Queries 包含： histo，OQL查询，类实例 查看功能
 - 比较多个dump `jhat -baseline snapshot_1.hprof snapshot_2.hprof` 1，2文件是先后dump产生的
     - 在底部的类实例`Show instance counts` 中能看到多了一列 例如 `instances (111060 new) of class`
+- [OQL查询](http://localhost:7000/oql/) 
+    - [OQL使用手册](http://localhost:7000/oqlhelp/)
 
-
+### OQL
+```sql
+ select <JavaScript expression to select>
+         [ from [instanceof] <class name> <identifier>
+         [ where <JavaScript boolean expression to filter> ] ]
+```
 ************************
 
 ## jstack 
@@ -296,8 +304,6 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 > [参考:  利用MAT分析JVM内存问题，从入门到精通](https://www.cnblogs.com/javaadu/p/11161380.html)  
 > [ Official Doc: OQL Syntax](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Freference%2Foqlsyntax.html)  
 
-OQL 比较方便, 像写 SQL 一样去查询对象
-
 注意: 有这样的一种场景, 从数据库获取大量的数据创建为对象, 导致瞬间的OOM 这时候即使使用 jmap 去 dump 了快照, 也看不到占用大量内存的对象, 因为MAT默认展示的是GC可达对象，需要在菜单选择看不可达对象
 
 分析思路：
@@ -330,7 +336,7 @@ OQL 比较方便, 像写 SQL 一样去查询对象
 
 ************************
 ## JMC
-> JDK Mission Control
+> [Java Mission Control](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/tooldescr002.html#BABIBBDE)
 
 通过对运行中的JVM进行飞行记录 Flight Recorder, 分析指定时间内代码的可优化点，指标值变化情况（内存，CPU，GC，类加载等等）
 
