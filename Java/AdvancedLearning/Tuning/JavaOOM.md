@@ -1,4 +1,21 @@
-## OOM 
+---
+title: JavaOOM
+date: 2024-03-06 14:09:01
+tags: 
+categories: 
+---
+
+💠
+
+- 1. [OOM](#oom)
+    - 1.1. [Heap space OOM](#heap-space-oom)
+    - 1.2. [Metaspace OOM](#metaspace-oom)
+    - 1.3. [Compressed Class Space OOM](#compressed-class-space-oom)
+    - 1.4. [Direct Memory OOM](#direct-memory-oom)
+
+💠 2024-03-06 14:11:38
+****************************************
+# OOM 
 > 注意OOM并不代表Java进程一定会退出，如果导致OOM的地方能被catch，且泄漏点能随着这次任务的终止而可回收的话，JVM将继续正常运行。  
 > [Why JVM can recovery from OOM Java heap space by itself](https://stackoverflow.com/questions/72865015/why-jvm-can-recovery-from-oom-java-heap-space-by-itself)
 
@@ -62,13 +79,13 @@
     }
 ```
 
-### Heap space OOM
+## Heap space OOM
 异常信息：
 
 java.lang.OutOfMemoryError: Java heap space
 java.lang.OutOfMemoryError: Requested array size exceeds VM limit
 
-### Metaspace OOM
+## Metaspace OOM
 [一次Metaspace OutOfMemoryError问题排查记录](https://juejin.cn/post/7114516283290288158)`很多GeneratedMethodAccessor类`
 
 原理理解比较复杂，但定位和解决问题会比较简单，经常会出问题的几个点有 Orika 的 classMap、JSON 的 ASMSerializer、Groovy动态加载类等，基本都集中在 反射、Javasisit字节码增强、CGLIB动态代理、OSGi自定义类加载器等技术点上
@@ -92,8 +109,8 @@ https://www.dongcb.com/818.html
 https://juejin.cn/post/7114516283290288158
 
 
-### Compressed Class Space OOM
+## Compressed Class Space OOM
 
-### Direct Memory OOM 
+## Direct Memory OOM 
 
 [Netty堆外内存泄露排查盛宴](https://tech.meituan.com/2018/10/18/netty-direct-memory-screening.html)

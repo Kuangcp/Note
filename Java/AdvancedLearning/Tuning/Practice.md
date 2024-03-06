@@ -1,3 +1,18 @@
+---
+title: Practice
+date: 2024-03-06 14:10:23
+tags: 
+categories: 
+---
+
+💠
+
+- 1. [问题实践](#问题实践)
+    - 1.1. [IDEA调优](#idea调优)
+    - 1.2. [FD泄漏： Unable to Open Socket File](#fd泄漏-unable-to-open-socket-file)
+
+💠 2024-03-06 14:11:38
+****************************************
 # 问题实践
 ## IDEA调优
 ```conf
@@ -16,6 +31,8 @@
 
 > [参考: Java’s -XX:+AggressiveOpts: Can it slow you down?](https://www.opsian.com/blog/aggressive-opts/)  
 > [参考: JVM参数MetaspaceSize的误解 ](https://mp.weixin.qq.com/s/jqfppqqd98DfAJHZhFbmxA?)
+
+************************
 
 ## FD泄漏： Unable to Open Socket File
 > [jmap Error “Unable to Open Socket File”](https://www.baeldung.com/linux/jmap-unable-to-open-socket-file-heap-dump)

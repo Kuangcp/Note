@@ -11,27 +11,32 @@ categories:
     - 1.1. [GC](#gc)
         - 1.1.1. [主要关注指标](#主要关注指标)
     - 1.2. [Memory](#memory)
-    - 1.3. [OOM](#oom)
-        - 1.3.1. [Heap space OOM](#heap-space-oom)
-        - 1.3.2. [Metaspace OOM](#metaspace-oom)
-        - 1.3.3. [Compressed Class Space OOM](#compressed-class-space-oom)
-        - 1.3.4. [Direct Memory OOM](#direct-memory-oom)
-    - 1.4. [CPU](#cpu)
-        - 1.4.1. [线程](#线程)
-- 2. [常见问题](#常见问题)
-    - 2.1. [IDEA调优](#idea调优)
-    - 2.2. [FD泄漏： Unable to Open Socket File](#fd泄漏-unable-to-open-socket-file)
+    - 1.3. [CPU](#cpu)
+        - 1.3.1. [线程](#线程)
 
-💠 2024-03-05 19:05:16
+💠 2024-03-06 14:11:38
 ****************************************
 # Troubleshoot
+当遇到需要对某个Java应用性能调优，故障处理时的技能或思路汇总
 
 > Troubleshooting: [Oracle: Java8](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/) | [Oracle: Java11](https://docs.oracle.com/en/java/javase/11/troubleshoot/general-java-troubleshooting.html)  
 
 > [目前最全的Java服务问题排查套路](https://juejin.cn/post/6844903816379236360)  
 
-排查思路：
+![](./img/mind.drawio.svg)
 
+`性能调优`
+> [Linux 性能分析](/Linux/Base/LinuxPerformance.md)  
+> [Linux 网络](/Linux/Base/LinuxNetwork.md)  
+> [Java 性能调优](/Java/AdvancedLearning/JvmPerformance.md)  
+> [Java GC](/Java/AdvancedLearning/JvmGC.md#Tuning)  
+
+`不可用故障处理` **重要且紧急**
+
+> 基础设施层：寻求方式快速搭建新的一层（例如K8S的命名空间下全部服务重建），立马切换解析或网关流量  
+> JVM层：记录好后续排查分析故障现场的必要信息后（dump，日志，linux系统日志），立马重启，释放本该释放的资源或中断已经异常的流程  
+
+排查思路：
 - `Delta` 正式环境可复现问题，测试或灰度无法出现，且不能轻易重启正式环境，通过对生产的JVM做各类指标的记录，对比某个业务操作前后或故障前后的指标差异分析出问题的触发点
     - 限制：不能做太影响性能的指标记录和分析
 - `Debug` 在测试或灰度环境上可复现问题，可直接Debug接入调试代码，或本地采用高耗能的方式debug分析`抓包，strace，CPU火焰图，等方式`
@@ -76,6 +81,8 @@ categories:
 - [Java调优经验谈](http://www.importnew.com/22336.html)
 
 - [Memory Footprint of A Java Process](https://zhuanlan.zhihu.com/p/158712025)
+
+> [Java OOM](./JavaOOM.md)
 
 ************************
 
