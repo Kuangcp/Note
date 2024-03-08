@@ -21,7 +21,7 @@ categories:
     - 5.3. [copycat](#copycat)
 - 6. [Tips](#tips)
 
-💠 2023-12-14 15:57:40
+💠 2024-03-08 18:19:25
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -37,6 +37,7 @@ categories:
 - 显示所有 `tmux ls`
 - 重新加载配置文件 `tmux source ~/.tmux.conf`
 
+> 快捷键
 - prefix
     - ? 帮助
     - s 选择 session
@@ -48,6 +49,7 @@ categories:
     - $ 重命名 session
     - , 重命名 panel
     - Alt+方向键 往指定方向扩展当前 panel 大小
+- Alt+方向键 跳转到对应方向的panel上
 
 *************
 
@@ -55,7 +57,9 @@ categories:
 > [Oh My Tmux!](https://github.com/gpakosz/.tmux)
 
 ## 个人配置
-> [Tmux配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf) `步骤：` 
+> [Tmux配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf)  
+
+步骤  
 1. `ln -s $(pwd)/tmux.conf ~/.tmux.conf` 
 1. `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 1. `tmux source ~/.tmux.conf`
@@ -67,7 +71,9 @@ categories:
 ```conf
     set -g mouse on
 ```
-按住Shift即可照常使用鼠标选中文本
+
+1. 按住Shift即可照常使用鼠标选中文本
+1. 在tab区域用滚轮可快速切换tab
 
 *************
 ## 键绑定
