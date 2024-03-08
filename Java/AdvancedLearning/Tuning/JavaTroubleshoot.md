@@ -13,8 +13,9 @@ categories:
     - 1.2. [Memory](#memory)
     - 1.3. [CPU](#cpu)
         - 1.3.1. [线程](#线程)
+    - 1.4. [ClassLoader](#classloader)
 
-💠 2024-03-06 14:11:38
+💠 2024-03-08 12:36:34
 ****************************************
 # Troubleshoot
 当遇到需要对某个Java应用性能调优，故障处理时的技能或思路汇总
@@ -82,7 +83,7 @@ categories:
 
 - [Memory Footprint of A Java Process](https://zhuanlan.zhihu.com/p/158712025)
 
-> [Java OOM](./JavaOOM.md)
+> [Java OOM](/Java/AdvancedLearning/Tuning/JavaOOM.md)
 
 ************************
 
@@ -90,4 +91,17 @@ categories:
 
 ### 线程
 > [jstack.review Analyze java thread dumps](https://jstack.review)
+
+************************
+
+## ClassLoader
+由于开源项目的 groupId  artifactId 可能发生变化`asm netty commons-io 等`，且类结构和设计也有调整，容易引发隐式的类加载错误
+
+> [【踩坑】 Maven中依赖的隐式冲突 可能导致的 NoClassDefFoundError NoSuchMethodException 等问题](https://blog.csdn.net/kcp606/article/details/92245936?spm=1001.2014.3001.5502)
+> [使用easyexcel时遇到Could not initialize class cglib.beans.BeanMap怎么解决 ](https://mp.weixin.qq.com/s?__biz=MzAwMjk5NTY3Mw==&mid=2247483950&idx=1&sn=47c6c1fed54b134f46f6dedafd34db0c&chksm=9ac0a698adb72f8e769bcfbff5a4fb0450f181bb754a2ad615dc17002f14d7ec039c0e24a1d7&token=395785991&lang=zh_CN#rd)
+
+> 思路
+- `Maven Helper` IDE 插件检查依赖冲突
+- `lsof -p PID | grep jar` 项目启动后查看加载到进程的jar
+- `-verbose:class` 输出运行期加载的class信息
 
