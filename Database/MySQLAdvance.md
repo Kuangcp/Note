@@ -179,13 +179,7 @@ InnoDB通过加间隙锁来防止幻读
 
 可通过EXPLANIN查看SQL语句的执行计划,EXPLANIN分析的第一行的表即是驱动表.
 
-> 例如 大表驱动小表的话，需要连接20w次
-```c
-    for(20万){
-        for(20条){
-        }
-    }
-```
+> 尽量**小表驱动大表** 如果反过来则需要连接20w次 `for(20万){    for(20条){}    }`
 
 > [MySQL Explain](/Database/MySQLIndex.md#explain) 中 Extra字段中会提到 MySQL内部使用到的Join类型
 - Using join buffer (Block Nested Loop)

@@ -50,6 +50,8 @@ categories:
 - 单张表的索引数量控制在5个以内，若单张表多个字段在查询需求上都要单独用到索引，需要经过DBA评估。查询性能问题无法解决的，应从产品设计上进行重构
 
 ## Explain
+> [Explain](https://dev.mysql.com/doc/refman/8.0/en/using-explain.html)
+
 - 使用 explain 判断SQL语句是否合理使用索引
     1. id：数字越大越先执行，一样大则从上往下执行，如果为NULL则表示是结果集，不需要用来查询。
     2. select_type：
@@ -102,7 +104,7 @@ categories:
 > `explain analyze` 会将SQL真正执行并记录被拆分后的SQL执行环节的大致耗时
 
 ## 为何选择 B+ 树结构
-> [参考:【原创】为什么Mongodb索引用B树，而Mysql用B+树?](https://www.cnblogs.com/rjzheng/p/12316685.html)  `MongoDB PostgreSQL 都是使用B-Tree`
+> [参考:【原创】为什么Mongodb索引用B树，而Mysql用B+树?](https://www.cnblogs.com/rjzheng/p/12316685.html)  `MongoDB PostgreSQL 都是使用B-Tree`  
 > [从 MongoDB 及 Mysql 谈B/B+树](https://blog.csdn.net/wwh578867817/article/details/50493940)  
 > [分布式数据库千亿级超大表性能优化实践](http://www.itpub.net/2020/02/28/5356/)  
 
