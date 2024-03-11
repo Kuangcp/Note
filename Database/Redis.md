@@ -25,7 +25,8 @@ categories:
     - 3.3. [Set](#set)
     - 3.4. [Zset](#zset)
     - 3.5. [Hash](#hash)
-    - 3.6. [GEO地理位置](#geo地理位置)
+    - 3.6. [Stream](#stream)
+    - 3.7. [GEO地理位置](#geo地理位置)
 - 4. [Scan](#scan)
     - 4.1. [O(n) 复杂度的命令](#on-复杂度的命令)
 - 5. [Pipelining](#pipelining)
@@ -49,7 +50,7 @@ categories:
     - 10.2. [缓存击穿](#缓存击穿)
     - 10.3. [缓存穿透](#缓存穿透)
 
-💠 2024-02-19 16:31:34
+💠 2024-03-11 18:34:32
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -245,6 +246,8 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 - HVALS
 - HSCAN
 - HSTRLEN
+
+## Stream 
 
 ************************
 
