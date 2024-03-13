@@ -77,7 +77,7 @@ categories:
     - 9.1. [try](#try)
     - 9.2. [transient](#transient)
 
-💠 2023-12-01 01:34:16
+💠 2024-03-13 13:59:00
 ****************************************
 # 基础语法
 
@@ -434,6 +434,8 @@ true 和 false 也是缓存了的
 > 同包是指 `package xxx;` 语句完全一样, 而 `package a;` 与 `package a.b;` 不是同包  
 
 ### final
+
+> [What Are Compile-Time Constants in Java](https://www.baeldung.com/java-compile-time-constants)
 
 ### static 
 

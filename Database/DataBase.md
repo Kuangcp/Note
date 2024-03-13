@@ -8,45 +8,47 @@ categories:
     - 数据库
 ---
 
-**目录 start**
+💠
 
-1. [数据库](#数据库)
-    1. [事务特性 ACID](#事务特性-acid)
-        1. [事务的并发问题](#事务的并发问题)
-    1. [数据库并发控制](#数据库并发控制)
-1. [关系型和非关系型](#关系型和非关系型)
-1. [关系型数据库](#关系型数据库)
-    1. [SQLite](#sqlite)
-    1. [SQL Server](#sql-server)
-    1. [Mysql](#mysql)
-    1. [PolorDB](#polordb)
-    1. [Oracle](#oracle)
-    1. [PostgreSQL](#postgresql)
-    1. [Greenplum](#greenplum)
-    1. [Clickhouse](#clickhouse)
-1. [非关系型数据库](#非关系型数据库)
-    1. [Redis](#redis)
-    1. [LevelDB](#leveldb)
-    1. [MangoDB](#mangodb)
-    1. [GemFire](#gemfire)
-1. [关系型数据库设计](#关系型数据库设计)
-    1. [范式](#范式)
-        1. [1NF](#1nf)
-        1. [2NF](#2nf)
-        1. [3NF](#3nf)
-        1. [BCNF](#bcnf)
-        1. [4NF](#4nf)
-    1. [基本表的设计](#基本表的设计)
-        1. [关于主键的设计](#关于主键的设计)
-    1. [视图的设计](#视图的设计)
-1. [非关系型数据库设计](#非关系型数据库设计)
-1. [大数据](#大数据)
-    1. [Greenplum](#greenplum)
-    1. [TiDB](#tidb)
-1. [数据库中间件](#数据库中间件)
-1. [图形化工具](#图形化工具)
+- 1. [数据库](#数据库)
+    - 1.1. [事务特性 ACID](#事务特性-acid)
+        - 1.1.1. [事务的并发问题](#事务的并发问题)
+    - 1.2. [数据库并发控制](#数据库并发控制)
+- 2. [关系型和非关系型](#关系型和非关系型)
+- 3. [关系型数据库](#关系型数据库)
+    - 3.1. [SQL Server](#sql-server)
+    - 3.2. [Mysql](#mysql)
+    - 3.3. [PolorDB](#polordb)
+    - 3.4. [Oracle](#oracle)
+    - 3.5. [PostgreSQL](#postgresql)
+    - 3.6. [Greenplum](#greenplum)
+    - 3.7. [Clickhouse](#clickhouse)
+- 4. [非关系型数据库](#非关系型数据库)
+    - 4.1. [Redis](#redis)
+    - 4.2. [LevelDB](#leveldb)
+    - 4.3. [MangoDB](#mangodb)
+    - 4.4. [GemFire](#gemfire)
+- 5. [内置型数据库](#内置型数据库)
+    - 5.1. [SQLite](#sqlite)
+    - 5.2. [duckdb](#duckdb)
+- 6. [关系型数据库设计](#关系型数据库设计)
+    - 6.1. [范式](#范式)
+        - 6.1.1. [1NF](#1nf)
+        - 6.1.2. [2NF](#2nf)
+        - 6.1.3. [3NF](#3nf)
+        - 6.1.4. [BCNF](#bcnf)
+        - 6.1.5. [4NF](#4nf)
+    - 6.2. [基本表的设计](#基本表的设计)
+        - 6.2.1. [关于主键的设计](#关于主键的设计)
+    - 6.3. [视图的设计](#视图的设计)
+- 7. [非关系型数据库设计](#非关系型数据库设计)
+- 8. [大数据](#大数据)
+    - 8.1. [Greenplum](#greenplum)
+    - 8.2. [TiDB](#tidb)
+- 9. [数据库中间件](#数据库中间件)
+- 10. [图形化工具](#图形化工具)
 
-**目录 end**|_2023-09-22 09:52_|
+💠 2024-03-13 13:59:00
 ****************************************
 # 数据库
 > [码农翻身:爱炫耀的数据库老头儿](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514001&idx=1&sn=17b72c3e69db6c4277e3045c699b7b6b&chksm=80d67c52b7a1f5446020826841869221873f4578524181384592839d19c4810dc68807117e13&scene=21#wechat_redirect) `事务,undo日志`
@@ -93,11 +95,6 @@ MVCC
 
 > [List of Relational Database Management Systems (RDBMSs)](https://database.guide/list-of-relational-database-management-systems-rdbms/)  
 
-## SQLite
-> [Official Site](https://sqlite.org/index.html)  
-
-1. 客户端 sqlitebrowser 
-
 ## SQL Server
 
 ## Mysql
@@ -141,6 +138,21 @@ MVCC
 > 分布式内存数据库 12306 采用的解决方案
 
 ************************
+# 内置型数据库
+> [Github: embedded-database](https://github.com/topics/embedded-database)
+
+## SQLite
+> [Official Site](https://sqlite.org/index.html)  
+
+1. 客户端 sqlitebrowser 
+
+## duckdb
+> [duckdb](https://duckdb.org/)  in-process SQL OLAP Database Management System
+
+可基于CSV，JSON直接建表做数据分析 [CSV Import](https://duckdb.org/docs/data/csv/overview)
+
+************************
+
 # 关系型数据库设计
 ## 范式
 > 范式越高意味着数据冗余更低，表的划分更细，但是在查询数据时需要做大量表连接操作，会严重降低性能
