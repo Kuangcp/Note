@@ -8,21 +8,32 @@ categories:
 💠
 
 - 1. [Clickhouse](#clickhouse)
-    - 1.1. [设计](#设计)
+    - 1.1. [数据类型](#数据类型)
+        - 1.1.1. [bitmap](#bitmap)
     - 1.2. [使用](#使用)
         - 1.2.1. [Explain](#explain)
-    - 1.3. [Tips](#tips)
-        - 1.3.1. [分布式表业务使用实践](#分布式表业务使用实践)
+- 2. [Tips](#tips)
+    - 2.1. [分布式表业务使用实践](#分布式表业务使用实践)
 
-💠 2024-02-22 14:38:36
+💠 2024-03-13 22:07:28
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
 
 > [What is ClickHouse? ](https://medium.com/doublecloud-insights/what-is-clickhouse-a-comprehensive-guide-for-getting-started-5aae9afd38b0)
 
-## 设计
+************************
 
+## 数据类型
+> [ClickHouse Data Types](https://clickhouse.com/docs/en/sql-reference/data-types)
+
+### bitmap
+> 并没有这个类型定义，只是在使用过程中有。
+
+位图对象有两种构造方法。一个是由聚合函数groupBitmapState构造的，另一个是由Array Object构造的。同时还可以将位图对象转化为数组对象`bitmapToArray()`。
+
+[Roaring bitmaps](https://github.com/RoaringBitmap/CRoaring)  
+[BitMap及其在ClickHouse中的应用](https://zhuanlan.zhihu.com/p/480345952)`CK针对数据的分布情况做了一些优化`  
 
 ************************
 
@@ -39,8 +50,8 @@ JSON格式查看 `EXPLAIN json = 1, indexes = 1 SQL`
 
 ************************
 
-## Tips
-### 分布式表业务使用实践
+# Tips
+## 分布式表业务使用实践
 - 合理使用排序键让数据均匀分布
 - 数据大量查询导入导出时
     - [ClickHouse SQL基本语法和导入导出实战](https://cloud.tencent.com/developer/article/1979184)

@@ -12,6 +12,7 @@ categories:
 - 1. [JVM 监控&诊断](#jvm-监控&诊断)
     - 1.1. [JVM参数](#jvm参数)
     - 1.2. [JVM内存参数](#jvm内存参数)
+    - 1.3. [GC参数](#gc参数)
 - 2. [JDK自带工具](#jdk自带工具)
     - 2.1. [java](#java)
         - 2.1.1. [环境变量的使用](#环境变量的使用)
@@ -38,7 +39,7 @@ categories:
     - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-03-06 19:03:54
+💠 2024-03-13 22:07:28
 ****************************************
 
 # JVM 监控&诊断
@@ -55,15 +56,27 @@ categories:
 
 ## JVM参数
 > [Official: JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)  
-> [Official: Java HotSpot VM Options](https://www.oracle.com/java/technologies/javase/vmoptions-jsp.html)
+> [Official: Java HotSpot VM Options](https://www.oracle.com/java/technologies/javase/vmoptions-jsp.html)  
+> [Guide to the Most Important JVM Parameters](https://www.baeldung.com/jvm-parameters)  
 
 - [远程调试](/Java/AdvancedLearning/JavaDebug.md#远程调试)
 - `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
     - 开启无需认证 非SSL的JMX端口: 9999
 
 - `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 打印类装载
-- `-Xloggc:/home/logs/gc.log`
-- `-XX:+HeapDumpOnOutOfMemoryError` 注意路径的文件名不能重复
+
+> OOM 
+- `-XX:+HeapDumpOnOutOfMemoryError `
+- `-XX:HeapDumpPath=./java_pid<pid>.hprof`
+- `-XX:OnOutOfMemoryError="< cmd args >;< cmd args >" `
+- `-XX:+UseGCOverheadLimit`
+
+> 字符串
+- -XX:+UseStringCache
+- -XX:+UseCompressedStrings
+- -XX:+OptimizeStringConcat
+- -XX:+UseStringDeduplication
+
 
 > 编译类参数
 - CICompilerCount是JIT进行热点编译的线程数，和并发标记线程数一样，热点编译也是CPU密集型任务，默认值为2。
@@ -97,6 +110,17 @@ categories:
 > [参考: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)  
 > [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`  
 > [参考: JVM动态反优化](https://blog.mythsman.com/post/5d2c12cc67f841464434a3ec/)   
+
+## GC参数
+- `-Xloggc:/app/logs/gc_%t_%p.log` 指定GC日志 并 设置文件格式
+    - %t 日期时间
+    - %p 进程号
+- `-verbose:gc`
+- `-XX:+PrintGCDetails`
+- `-XX:+PrintGCDateStamps`
+- `-XX:+UseGCLogFileRotation `
+- `-XX:NumberOfGCLogFiles=< number of log files > `
+- `-XX:GCLogFileSize=< file size >[ unit ]`
 
 ************************
 
