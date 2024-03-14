@@ -36,7 +36,7 @@ categories:
     - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-03-14 19:33:47
+💠 2024-03-14 21:28:14
 ****************************************
 
 # JVM 监控&诊断
@@ -50,6 +50,8 @@ categories:
 
 命令行推荐 arthas ，可视化界面推荐 JProfiler  
 此外还有一些在线的平台 [gceasy](https://gceasy.io/)、heaphero、fastthread 。
+
+- JVMTI `JVM Tool Interface`
 
 # JDK自带工具
 > 都是jdk的bin目录下的工具
@@ -212,6 +214,10 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 # 图形化工具
 ## JProfiler
 > [Official Site](https://www.ej-technologies.com/products/jprofiler/overview.html)  
+
+[OOM 踩坑日记](https://huminxi.netlify.app/2022/06/24/oom%20%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/#more)
+
+************************
 
 ## GCViewer
 > [Github: GCViewer](https://github.com/chewiebug/GCViewer)

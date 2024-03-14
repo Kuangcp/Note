@@ -7,36 +7,39 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [Spring](#spring)
-    1. [配置使用](#配置使用)
-        1. [通过构建工具](#通过构建工具)
-        1. [注解方式](#注解方式)
-            1. [xml文件配置](#xml文件配置)
-            1. [常用的注解](#常用的注解)
-        1. [xml方式](#xml方式)
-            1. [xml方式和注解方式的比较](#xml方式和注解方式的比较)
-    1. [Spring技巧](#spring技巧)
-        1. [获取Context上下文环境](#获取context上下文环境)
-            1. [在JSP或Servlet中获取](#在jsp或servlet中获取)
-        1. [Spring 和 ServletContextList](#spring-和-servletcontextlist)
-1. [基础](#基础)
-    1. [Bean概述](#bean概述)
-    1. [Bean生命周期](#bean生命周期)
-        1. [Spring容器的扩展点](#spring容器的扩展点)
-    1. [Bean的作用域](#bean的作用域)
-    1. [IOC/DI 控制反转](#iocdi-控制反转)
-        1. [循环依赖](#循环依赖)
-    1. [Scheduling](#scheduling)
-    1. [Events](#events)
-    1. [Utils](#utils)
-        1. [ReflectionUtils](#reflectionutils)
-1. [Web开发的最佳实践](#web开发的最佳实践)
-    1. [优雅部署](#优雅部署)
-1. [Tips](#tips)
+- 1. [Spring](#spring)
+    - 1.1. [配置使用](#配置使用)
+        - 1.1.1. [通过构建工具](#通过构建工具)
+        - 1.1.2. [注解方式](#注解方式)
+            - 1.1.2.1. [xml文件配置](#xml文件配置)
+            - 1.1.2.2. [常用的注解](#常用的注解)
+        - 1.1.3. [xml方式](#xml方式)
+            - 1.1.3.1. [xml方式和注解方式的比较](#xml方式和注解方式的比较)
+    - 1.2. [Spring技巧](#spring技巧)
+        - 1.2.1. [获取Context上下文环境](#获取context上下文环境)
+            - 1.2.1.1. [在JSP或Servlet中获取](#在jsp或servlet中获取)
+        - 1.2.2. [Spring 和 ServletContextList](#spring-和-servletcontextlist)
+- 2. [基础](#基础)
+    - 2.1. [Bean概述](#bean概述)
+    - 2.2. [Bean生命周期](#bean生命周期)
+    - 2.3. [Spring容器的扩展点](#spring容器的扩展点)
+        - 2.3.1. [Aware](#aware)
+        - 2.3.2. [BeanPostProcessor](#beanpostprocessor)
+        - 2.3.3. [BeanFactoryPostProcessor](#beanfactorypostprocessor)
+    - 2.4. [Bean的作用域](#bean的作用域)
+    - 2.5. [IOC/DI 控制反转](#iocdi-控制反转)
+        - 2.5.1. [循环依赖](#循环依赖)
+    - 2.6. [Scheduling](#scheduling)
+    - 2.7. [Events](#events)
+    - 2.8. [Utils](#utils)
+        - 2.8.1. [ReflectionUtils](#reflectionutils)
+- 3. [Web开发的最佳实践](#web开发的最佳实践)
+    - 3.1. [优雅部署](#优雅部署)
+- 4. [Tips](#tips)
 
-**目录 end**|_2023-09-20 14:05_|
+💠 2024-03-14 21:28:14
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -217,10 +220,147 @@ _其他,可选_
 -   让Bean获取自身在BeanFactory中的名称(id或name)
     -   实现`BeanNameAware`接口中,则咎可以获取名称(该方法在初始化之前)
 
+## Spring容器的扩展点
 
-### Spring容器的扩展点
+### Aware
+在Spring容器中，提供了许多Aware接口，使用这些接口可以更好的对bean进行扩展，获取许多与容器相关的组件；今天，我们大概来看看Spring中提供的一些Aware接口：  
+`BeanNameAware`: 该接口只有一个`setBeanName`方法，如果Spring容器检测到bean实现了该接口，则会将该bean实例的beanName属性注入到该实例中。  
+- `ApplicationContextAware`: 该接口只有个`setApplicationContext`方法；如果Spring容器检测到bean实现了该接口，则会将Spring的ApplicationContext注入到bean实例中。  
+    - 但一般不建议通过实现该接口获取容器ApplicationContext，因为通过实现接口的方式会增加代码的耦合度，如果希望获取ApplicationContext实例，可以使用一般的注入方式，如使用注解`@Autowired`,这样便就可以获取ApplicationContext，如：  
+    ```java
+        @Autowired
+        private ApplicationContext applicationContext;
+    ```
+- `BeanClassLoaderAware`: 该接口有个`setBeanClassLoader`方法，与前两个接口类似，实现了该接口后，可以向bean中注入加载该bean的ClassLoader
+- `BeanFactoryAware`: 该接口有个`setBeanFactory`方法，用来将当前的beanFactory注入到该bean实例中
+- `ApplicationEventPublisherAware`: ApplicationContext事件机制是观察者设计模式的实现，通过ApplicationEvent类和ApplicationListener接口，可以实现ApplicationContext的事件处理。
+    - 其中`ApplicationEvent`为容器事件。实现接口`ApplicationEventPublisherAware`的bean可获取`ApplicationEventPublisher`实例(因为ApplicationContext已实现接口`ApplicationEventPublisher`接口，所以其实此处默认还是注入了`ApplicationContext`实例)，用于发布事件
+-  `MessageSourceAware`: 实现该接口可，可获取`MessageSource`实例，该实例用于解析消息的策略接口,支持该类消息的参数化与国际化(因为ApplicationContext已实现接口`MessageSource`接口，所以其实此处默认还是注入了`ApplicationContext`实例)
+-   `NotificationPublisherAware`: 实现该接口的bean，可获取JMX通知发布者
+-   `ResourceLoaderAware`: 可获取Spring中配置的加载程序(ResourceLoader)，用于对资源进行访问；可用于访问类l类路径或文件资源
+-   `ServletConfigAware`: 该接口仅在wen应用中有效，用于获取ServletConfig
+-   `ServletContextAware`: 该接口仅在wen应用中有效，用于获取ServletContext
+-   `LoadTimeWeaverAware`: 可获取`LoadTimeWeaver`实例，用于在加载时处理类定义
 
--  [BeanPostProcessor](https://github.com/dragonhht/Notes/blob/master/Java/Spring%E5%AE%B9%E5%99%A8%E6%89%A9%E5%B1%95%E7%82%B9%E4%B9%8BBeanPostProcessor.md)
+### BeanPostProcessor
+
+在Spring中。我们可以定义bean的初始化方法，从而完成某些初始化动作。
+
+可查看源码中对该接口 BeanPostProcessor 的注释定义
+
+> 工厂钩子，允许自定义修改新的bean实例，例如 检查标记接口或用代理包装它们。  
+> ApplicationContexts可以在其bean定义中自动检测 BeanPostProcessor bean，并将它们应用于随后创建的任何bean。bean factories允许对后处理器进行编程注册，适用于通过该工厂创建的所有bean。
+
+简单来说，就是我们可以在Spring创建bean实例后，bean初始化之前和初始化之后完成一些自定义的操作。
+
+顾名思义，这两个方法，一个是在bean初始化之前执行，一个是在bean初始化之后执行。 
+-   `postProcessBeforeInitialization`
+-   `postProcessAfterInitialization`
+
+假如有个定义好的Student，现在希望在不改变原有代码的情况下将它的address字段赋上某个值。
+
+Student
+```java
+    @Component
+    @Data
+    public class Student {
+        private int id;
+        private String name;
+        private String address;
+    }
+```
+
+扩展
+```java
+    @Component
+    public class StudentExpansion implements BeanPostProcessor {
+        @Override
+        public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+            return bean;
+        }
+        @Override
+        public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+            if (bean instanceof Student) {
+                Student student = (Student) bean;
+                student.setAddress("中国");
+            }
+            return bean;
+        }
+    }
+```
+
+### BeanFactoryPostProcessor
+和 BeanPostProcessor 类似，都是Spring用于初始化Bean的扩展点，但是 `BeanFactoryPostProcessor`的执行时间是在Spring容器对bean进行实例化之前，而`BeanPostProcessor`则是在Spring容器对bean进行实例化之后的初始化环节。   
+
+`BeanFactoryPostProcessor`允许对bean的定义(配置的元数据)进行修改。例如我们常见的下列配置：
+
+```xml
+    <!--加载配置文件-->
+    <context:property-placeholder        location="classpath:jdbc.properties"/>
+
+    <!--配置c3p0连接池-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+```
+
+在以上对于数据库的配置中，我们引用了配置文件`jdbc.properties`中的值
+```ini
+    jdbc.driver = com.mysql.jdbc.Driver
+    jdbc.url = jdbc:mysql:///BookManager
+    jdbc.user = root
+    jdbc.password =123
+```
+
+那么问题来了，在Spring将bean实例化时是如何将配置元数据中的`${jdbc.driver}`替换成真实的`com.mysql.jdbc.Driver`的呢？
+这便就是`BeanFactoryPostProcessor`在Spring容器中的最典型的使用场景之一。该处理的实现类为`PropertyPlaceholderConfigurer`，它实现了接口`BeanFactoryPostProcessor`中的`postProcessBeanFactory`方法，负责在bean实例化之前将配置元数据中的如同`${jdbc.driver}`的配置替换为它真实的值，然后Spring便就可以正常的实例化了。  
+
+-   在`PropertyPlaceholderConfigurer`中`postProcessBeanFactory`方法的实现如下：
+
+```java
+    /**
+    * {@linkplain #mergeProperties Merge}, {@linkplain #convertProperties convert} and
+    * {@linkplain #processProperties process} properties against the given bean factory.
+    * @throws BeanInitializationException if any properties cannot be loaded
+    */
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+        try {
+            // 读取配置中配置的properties文件
+            Properties mergedProps = mergeProperties();
+
+            // Convert the merged properties, if necessary.
+            convertProperties(mergedProps);
+
+            // Let the subclass process the properties.
+            processProperties(beanFactory, mergedProps);
+        }
+        catch (IOException ex) {
+            throw new BeanInitializationException("Could not load properties", ex);
+        }
+    }
+```
+
+-   其中`processProperties`方法在`PropertyPlaceholderConfigurer`中的实现为
+
+```java
+    /**
+    * Visit each bean definition in the given bean factory and attempt to replace ${...} property
+    * placeholders with values from the given properties.
+    */
+    @Override
+    protected void processProperties(ConfigurableListableBeanFactory beanFactoryToProcess, Properties props)
+            throws BeansException {
+
+        StringValueResolver valueResolver = new PlaceholderResolvingStringValueResolver(props);
+        doProcessProperties(beanFactoryToProcess, valueResolver);
+    }
+```
+
+************************
 
 ## Bean的作用域
 
