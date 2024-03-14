@@ -32,7 +32,7 @@ categories:
     - 3.9. [ShenandoahGC](#shenandoahgc)
 - 4. [最佳实践](#最佳实践)
 
-💠 2024-02-21 17:10:15
+💠 2024-03-14 19:33:47
 ****************************************
 # GC
 > Garbage Collection
@@ -82,6 +82,12 @@ cms(JDK14中被移除)，epsilon，g1，parallel，serial，shenandoah，zgc
     - 因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC
 - 如果有 perm gen 的话，perm gen 内存空间不足时，也要触发一次 Full GC；
 - System.gc()、heap dump指定触发GC等，默认也是触发 Full GC。
+
+> 默认GC
+
+JDK 7，默认是 Parallel Scavenge + Serial Old。
+JDK 8 及 JDK 7u40 之后的版本，默认是 Parallel Scavenge + Parallel Old。
+JDK 9 到 JDK 17，默认是 G1。
 
 ************************
 
@@ -321,8 +327,7 @@ GC Roots 对象包含:
 ## Serial Old
 > Serial收集器的老年代版本, 单线程收集器 
 
-主要用于client模式下  
-server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作为CMS的备选方案
+主要用于 client 模式下 , server 模式下的话， 1.5之前的版本与Parallel Scavenge搭配使用, 或者作为CMS的备选方案
 
 ************************
 
@@ -338,7 +343,7 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
 
 `-XX:+UseConcMarkSweepGC`
 
-工作流程, 依次执行
+工作流程：
 1. `初始标记` CMS initial mark
 1. 并发标记 CMS concurrent mark
 1. `最终标记` CMS final remark
@@ -361,27 +366,28 @@ server模式下: 1.5之前的版本与Parallel Scavenge搭配使用, 或者作�
 4939.631: [CMS-concurrent-reset: 0.004/0.004 secs] [Times: user=0.00 sys=0.00, real=0.01 secs]
 ```
 
-- 优点: 并发低停顿  
-- 缺点: 
-    1. 因为会和用户进程抢占CPU资源, 会导致应用程序变慢, 造成总吞吐量的下降. 默认启动的线程数为 (CPU数量+3)/4
-    1. 无法处理浮动垃圾, 可能出现 Concurrent Mode Failure 从而引起新一次FullGC
-        - 并发清理阶段用户线程还在运行，这段时间就可能产生新的垃圾，新的垃圾在此次GC无法清除，只能等到下次清理
-    1. 由于使用的是标记清除算法, 容易导致大量空间碎片, 这样的后果是分配大内存对象会很麻烦, 往往出现老年代总空间还有大量剩余, 但是没有足够大的连续空间
-        - 为了解决该问题, 提供了参数 `-XX:+UseCMSCompactAtFullCollection` 默认开启, 用于在FullGC时进行内存碎片的合并, 该过程无法并发还是要 STW
-        - 还有一个参数 `-XX:CMSFullGCsBeforeCompaction` 默认为0, 设置多少次不压缩的FullGC后进行一次压缩的FullGC(内存合并的FullGC)
+优点: 并发低停顿  
+缺点:  
+1. 因为会和用户进程抢占CPU资源, 会导致应用程序变慢, 造成总吞吐量的下降. 默认启动的线程数为 (CPU数量+3)/4
+1. 无法处理浮动垃圾, 可能出现 Concurrent Mode Failure 从而引起新一次FullGC
+    - 并发清理阶段用户线程还在运行，这段时间就可能产生新的垃圾，新的垃圾在此次GC无法清除，只能等到下次清理
+1. 由于使用的是标记清除算法, 容易导致大量空间碎片, 这样的后果是分配大内存对象会很麻烦, 往往出现老年代总空间还有大量剩余, 但是没有足够大的连续空间
+    - 为了解决该问题, 提供了参数 `-XX:+UseCMSCompactAtFullCollection` 默认开启, 用于在FullGC时进行内存碎片的合并, 该过程无法并发还是要 STW
+    - 还有一个参数 `-XX:CMSFullGCsBeforeCompaction` 默认为0, 设置多少次不压缩的FullGC后进行一次压缩的FullGC(内存合并的FullGC)
 
-CMS 垃圾收集器的另一个挑战是如何处理老年代中的空间碎片，也就是当老年代中对象间的空间碎片太小，以至于无法容纳从年轻代晋升上来的对象，因为在CMS 的并发收集循环中并不执行压缩，哪怕是增量或局部压缩。一旦无法找到可用空间，就会使CMS 回过来使用串行GC，触发一次full 收集，导致一个漫长的暂停。伴随CMS 碎片的另一个很不幸的挑战就是上述问题完全无法预测。同样都是老年代碎片，某些应用可能没有经历过一次full GC，而有些可能时不时就要经历一次。
+CMS 垃圾收集器的另一个挑战是如何处理老年代中的空间碎片，也就是当老年代中对象间的空间碎片太小，以至于无法容纳从年轻代晋升上来的对象，因为在CMS 的并发收集循环中并不执行压缩，哪怕是增量或局部压缩。
+一旦无法找到可用空间，就会使CMS 回过来使用**Serial Old**，触发一次full收集，导致一个漫长的暂停。伴随CMS 碎片的另一个很不幸的挑战就是上述问题完全无法预测。同样都是老年代碎片，某些应用可能没有经历过一次 full GC，而有些可能时不时就要经历一次。  
 
 其中 初始标记 和 重新标记 仍然需要 STW, 两个并发的过程是和用户线程并发执行的对吞吐量有一定影响  
-且由于是并发执行的, 那么并发的两个阶段用户进程是需要执行的, 就需要给这些线程预留足够的内存空间, 默认触发GC的阈值是 老年代使用了68%后(1.5) 1.6是92%  
-可通过 `-XXCMSInitiatingOccupancyFraction` 进行设置. 如果CMS执行期间发现剩余内存不足以让程序正常运行, 就会临时启用 Serial Old  
-所以该参数不可设置过高, 否则容易导致频繁采用单线程版的垃圾回收器, 大大延长 STW 时间
+且由于是并发执行的, 那么并发的两个阶段用户进程是需要执行的, 就需要给这些线程预留足够的内存空间, 默认触发GC的阈值是 老年代使用了68%后(1.5) 1.6是92%   
+可通过 `-XXCMSInitiatingOccupancyFraction` 进行设置. 如果CMS执行期间发现剩余内存不足以让程序正常运行, 就会临时启用 **Serial Old**  
+所以该参数不可设置过高, 否则容易导致频繁采用 **Serial Old**, 大大延长 STW 时间  
 
 > [参考: JVM 源码解读之 CMS GC 触发条件 ](https://club.perfma.com/article/190389)  
 > [参考: JVM 源码解读之 CMS 何时会进行 Full GC](https://club.perfma.com/article/244846)  
 
-CMS自己会进入full GC的情况就是它的并发收集模式跟不上应用分配内存的速度了，或者是碎片化开始变严重了。  
-主要体现是GC日志里可以看到concurrent mode failure字样，然后就开始可以看到 [Full GC ... ] 的日志了  
+CMS自己会进入 full GC 的情况就是它的并发收集模式跟不上应用分配内存的速度了，或者是碎片化开始变严重了。  
+主要体现是GC日志里可以看到 concurrent mode failure 字样，然后就开始可以看到 `[Full GC ... ]` 的日志了  
 这样就带来一个问题，如果CMS并发GC发生了，此时是无法利用 `-XX:+HeapDumpBeforeFullGC` 参数保留现场，因为不是发生 FullGC  
 
 ## G1
@@ -396,7 +402,7 @@ CMS自己会进入full GC的情况就是它的并发收集模式跟不上应用�
 - 可预测的停顿
     - G1除了追求低停顿, 还能建立可预测的停顿时间模型, 能让使用者明确指定在一个长度为M毫秒的时间片段内, 消耗在垃圾收集上的时间不得超过N毫秒
     - 几乎是RTSJ的特征
-- [内存返还](https://openjdk.org/jeps/346)
+- [JEP: 内存返还](https://openjdk.org/jeps/346)
 
 > [参考: JVM系列篇：深入剖析G1收集器](https://my.oschina.net/u/3959491/blog/3029276)
 
@@ -406,20 +412,20 @@ CMS自己会进入full GC的情况就是它的并发收集模式跟不上应用�
     - 达到该年龄(经过GC次数)的String对象被认为是去重的候选对象 `-XX:StringDeDuplicationAgeThreshold`
 - 该策略不会清除重复字符串对象本身。其只会替换底层 char[ ] 达到复用内存的目的 [Gitee 测试代码](https://gitee.com/gin9/JavaBase/blob/master/class/src/main/java/jvm/gc/g1/StringDeduplication.java)
 
-> JDK1.8 FullGC是单线程的 JDK10 开始支持并行
+> JDK1.8时FullGC是单线程的， JDK10开始支持并行
 
-> [参考: Java Hotspot G1 GC的一些关键技术](https://tech.meituan.com/2016/09/23/g1.html)  
+> [参考: Java Hotspot G1 GC的一些关键技术](https://tech.meituan.com/2016/09/23/g1.html)
+> [Welcome 20% less memory usage for G1 remembered sets](https://tschatzl.github.io/2021/02/26/early-prune.html)  
 
 G1提供了两种GC模式，Young GC和Mixed GC，两种都是完全Stop The World的
-
 - Young GC：选定所有年轻代里的Region。通过控制年轻代的region个数，即年轻代内存大小，来控制young GC的时间开销。 
-- Mixed GC：选定所有年轻代里的Region，外加根据global concurrent marking统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
+- Mixed GC：选定所有年轻代里的Region，外加根据 global concurrent marking 统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
 
 由上面的描述可知，Mixed GC不是full GC，它只能回收部分老年代的Region，如果mixed GC实在无法跟上程序分配内存的速度，导致老年代填满无法继续进行Mixed GC，就会使用serial old GC（full GC）来收集整个GC heap。  
 所以我们可以知道，G1是不提供full GC的。  
 
 上文中，多次提到了global concurrent marking，它的执行过程类似CMS，但是不同的是，在G1 GC中，它主要是为Mixed GC提供标记服务的，并不是一次GC过程的一个必须环节。  
-global concurrent marking的执行过程分为四个步骤：  
+global concurrent marking 的执行过程分为四个步骤：  
 - 初始标记（initial mark，`STW`）。它标记了从GC Root开始直接可达的对象。
 - 并发标记（Concurrent Marking）。这个阶段从GC Root开始对heap中的对象标记，标记线程与应用程序线程并行执行，并且收集各个Region的存活对象信息。 
 - 最终标记（Remark，`STW`）。标记那些在并发标记阶段发生变化的对象，将被回收。
@@ -478,5 +484,6 @@ ConcGCThreads 一般称为并发标记线程数，为了减少GC的STW的时间�
 ************************
 
 # 最佳实践
-[Choosing a GC Algorithm in Java](https://www.baeldung.com/java-choosing-gc-algorithm)
+[Choosing a GC Algorithm in Java](https://www.baeldung.com/java-choosing-gc-algorithm)  
+[Tuning Garbage Collection with Oracle JDK](https://docs.oracle.com/cd/E55119_01/doc.71/e55122/cnf_jvmgc.htm#WSEAD414)  
 

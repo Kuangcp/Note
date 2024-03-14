@@ -1,5 +1,5 @@
 ---
-title: JVM 监控&诊断工具
+title: JVM 监控&诊断
 date: 2018-11-21 10:56:52
 tags: 
     - JVM
@@ -10,9 +10,6 @@ categories:
 💠
 
 - 1. [JVM 监控&诊断](#jvm-监控&诊断)
-    - 1.1. [JVM参数](#jvm参数)
-    - 1.2. [JVM内存参数](#jvm内存参数)
-    - 1.3. [GC参数](#gc参数)
 - 2. [JDK自带工具](#jdk自带工具)
     - 2.1. [java](#java)
         - 2.1.1. [环境变量的使用](#环境变量的使用)
@@ -39,7 +36,7 @@ categories:
     - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-03-13 22:07:28
+💠 2024-03-14 19:33:47
 ****************************************
 
 # JVM 监控&诊断
@@ -53,76 +50,6 @@ categories:
 
 命令行推荐 arthas ，可视化界面推荐 JProfiler  
 此外还有一些在线的平台 [gceasy](https://gceasy.io/)、heaphero、fastthread 。
-
-## JVM参数
-> [Official: JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)  
-> [Official: Java HotSpot VM Options](https://www.oracle.com/java/technologies/javase/vmoptions-jsp.html)  
-> [Guide to the Most Important JVM Parameters](https://www.baeldung.com/jvm-parameters)  
-
-- [远程调试](/Java/AdvancedLearning/JavaDebug.md#远程调试)
-- `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
-    - 开启无需认证 非SSL的JMX端口: 9999
-
-- `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 打印类装载
-
-> OOM 
-- `-XX:+HeapDumpOnOutOfMemoryError `
-- `-XX:HeapDumpPath=./java_pid<pid>.hprof`
-- `-XX:OnOutOfMemoryError="< cmd args >;< cmd args >" `
-- `-XX:+UseGCOverheadLimit`
-
-> 字符串
-- -XX:+UseStringCache
-- -XX:+UseCompressedStrings
-- -XX:+OptimizeStringConcat
-- -XX:+UseStringDeduplication
-
-
-> 编译类参数
-- CICompilerCount是JIT进行热点编译的线程数，和并发标记线程数一样，热点编译也是CPU密集型任务，默认值为2。
-在CICompilerCountPerCPU开启的时候（JDK7默认关闭，JDK8默认开启），手动指定CICompilerCount是不会生效的，JVM会使用系统CPU核数进行计算。
-所以当使用JRE8并且版本小于1.8.0_131，采用默认参数时，CICompilerCount会在20左右，对业务性能影响较大，特别是启动阶段。建议升级Java版本，特殊情况要使用老版本Java 8，请加上`-XX:CICompilerCount=[n]`, 同时不能指定-XX:+CICompilerCountPerCPU ，下表给出了生产环境下常见规格的推荐值。
-
-| CPU核数 | 1 | 2 | 4 | 8 | 16 |
-|:---|:---|:---|:---|:---|:---|
-| 推荐值 | 2 | 2 | 3 | 3 | 8 | 
-
-## JVM内存参数
-> 堆(老年代 年轻代)，堆外，元空间，栈
-
-- `-XX:CompressedClassSpaceSize=500m` 压缩类元空间大小 默认是1g
-- `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1。 **默认是8**
-- `-XX:NewRatio`old/new 内存的比值 **默认是2**
-- `-XX:+PrintFlagsInitial` 输出初始默认值
-
-> java -XX:+PrintFlagsFinal -version
-- `输出JVM最终属性值` -XX:+PrintFlagsFinal 
-    - MaxHeapSize 最大堆内存
-    - MaxRAMFraction 默认最大内存占物理机内存的比例 JDK6，7，8 都是4 即1/4
-    - `-Xmn` MaxNewSize 默认值是Xmx的1/3 即最大堆内存 MaxHeapSize 的1/3
-    - NUMA 机制
-    - `java -XX:+PrintFlagsFinal -version | grep "Use.*GC"` 查看默认GC实现
-
-- [初始和最大堆内存设置为一样的好处](https://gceasy.ycrash.cn/gc-recommendations/benefits-of-setting-initial-and-maximum-memory-size.jsp)
-
-> 快速确认进程内存配置  OpenJDK： ` `  OracleJDK ： `jmap -heap pid`
-
-> [参考: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)  
-> [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`  
-> [参考: JVM动态反优化](https://blog.mythsman.com/post/5d2c12cc67f841464434a3ec/)   
-
-## GC参数
-- `-Xloggc:/app/logs/gc_%t_%p.log` 指定GC日志 并 设置文件格式
-    - %t 日期时间
-    - %p 进程号
-- `-verbose:gc`
-- `-XX:+PrintGCDetails`
-- `-XX:+PrintGCDateStamps`
-- `-XX:+UseGCLogFileRotation `
-- `-XX:NumberOfGCLogFiles=< number of log files > `
-- `-XX:GCLogFileSize=< file size >[ unit ]`
-
-************************
 
 # JDK自带工具
 > 都是jdk的bin目录下的工具
@@ -139,7 +66,7 @@ categories:
 ### 环境变量的使用
 > [What is the java -D command-line option good for? ](https://coderanch.com/t/178539/certification/java-command-line-option-good)
 - 传入 `java -Dkey=true -jar xxx.jar`
-    - *-D 参数* 要前于 -jar
+    - -D 参数 要在 -jar **之前**
 - 获取 `System.getProperty("key", "defaultvalue");`
 
 ## jps
