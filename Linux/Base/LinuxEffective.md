@@ -48,7 +48,7 @@ categories:
     - 4.1. [鼠标](#鼠标)
 - 5. [Tips](#tips)
 
-💠 2024-03-18 00:57:21
+💠 2024-03-18 02:32:35
 ****************************************
 # 高效的Linux
 
@@ -60,8 +60,13 @@ categories:
 > [MAC平台 工具列表](https://github.com/hsdji/tools) `部分Linux可用`
 
 ## Terminal
-- [sixel](https://en.wikipedia.org/wiki/Sixel) `终端中渲染图片` | [libsixel](https://saitoha.github.io/libsixel/)
+- [sixel](https://en.wikipedia.org/wiki/Sixel) `终端中渲染图片` | [libsixel](https://saitoha.github.io/libsixel/) | [Are We Sixel Yet?](https://www.arewesixelyet.com/)
   - [Why Sixel? ](https://www.reddit.com/r/commandline/comments/zkg75e/why_sixel/)
+
+Manjaro Xfce 试用 sixel： mlterm 或者 konsole
+1. yay libsixel, yay mlterm， mlterm -b '#292B2E' 安装和启动mlterm
+  1. 查看图片 img2sixel xx.jpg `ImageMagick`
+  1. 压测并渲染结果图 [jagger](https://github.com/rs/jaggr) **konsole不支持**
 
 
 ### Terminal 对比
@@ -86,7 +91,10 @@ categories:
 | `deepin-terminal` | 功能很多，主题很多，功能最为强大                | 字体仅可选择内置不可自定义                          |                                         |
 | `tilda`           | 内嵌于桌面上, 小命令方便                        | 需要查看文件时不方便                                |                                         |
 | `terminology`     | 样式高度自定义                                  |                                                     |                                         |
-| `tilix`           |                                               |                                                     |                                         |
+
+- tilix
+- vte 
+  - 支持复制终端输出内容为HTML
 
 > 备注 sakura xfce4-terminal 快捷键配置
 - `~/.config/xfce4/terminal/accels.scm`
@@ -102,6 +110,9 @@ categories:
 - Warp
 - Tabby
 - WindTerm
+- [zellij](https://github.com/zellij-org/zellij)
+- [kitty](https://sw.kovidgoyal.net/kitty/) `GPU渲染`
+- [darktile](https://github.com/liamg/darktile)
 
 ************************
 
@@ -443,6 +454,7 @@ gpg --list-key
 - byzanz 录制屏幕为gif
 
 ### ImageMagick
+> ImageMagick® is a free, open-source software suite, used for editing and manipulating digital images
 
 1. display
 
