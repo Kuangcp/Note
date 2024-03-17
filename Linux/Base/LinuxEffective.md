@@ -10,7 +10,8 @@ categories:
 💠
 
 - 1. [高效的Linux](#高效的linux)
-    - 1.1. [Terminal 对比](#terminal-对比)
+    - 1.1. [Terminal](#terminal)
+        - 1.1.1. [Terminal 对比](#terminal-对比)
     - 1.2. [效率工具](#效率工具)
         - 1.2.1. [协作工具](#协作工具)
         - 1.2.2. [目录跳转](#目录跳转)
@@ -47,7 +48,7 @@ categories:
     - 4.1. [鼠标](#鼠标)
 - 5. [Tips](#tips)
 
-💠 2024-02-02 14:22:14
+💠 2024-03-18 00:57:21
 ****************************************
 # 高效的Linux
 
@@ -58,7 +59,12 @@ categories:
 
 > [MAC平台 工具列表](https://github.com/hsdji/tools) `部分Linux可用`
 
-## Terminal 对比
+## Terminal
+- [sixel](https://en.wikipedia.org/wiki/Sixel) `终端中渲染图片` | [libsixel](https://saitoha.github.io/libsixel/)
+  - [Why Sixel? ](https://www.reddit.com/r/commandline/comments/zkg75e/why_sixel/)
+
+
+### Terminal 对比
 
 > 列举出系统可安装终端  
 >  
