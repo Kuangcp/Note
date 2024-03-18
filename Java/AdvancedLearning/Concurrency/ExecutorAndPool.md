@@ -14,9 +14,11 @@ categories:
     - 1.4. [Executor框架](#executor框架)
     - 1.5. [Spring](#spring)
         - 1.5.1. [ThreadPoolTaskExecutor](#threadpooltaskexecutor)
-    - 1.6. [线程池监控](#线程池监控)
+- 2. [实践](#实践)
+    - 2.1. [线程池 参数优化&监控](#线程池-参数优化&监控)
+    - 2.2. [业务线程池](#业务线程池)
 
-💠 2024-01-03 10:44:05
+💠 2024-03-18 13:54:06
 ****************************************
 # 线程池
 
@@ -118,26 +120,27 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 - setWaitForTasksToCompleteOnShutdown 等待线程正常执行完才退出全部线程
 
 ************************
+# 实践
+## 线程池 参数优化&监控
+> 公式1：Nthreads = Ncpu * Ucpu * W/C
 
-## 线程池监控
-公式1：Nthreads = Ncpu * Ucpu * W/C
-
+```
     Ncpu = cpu的核心数， 
     Ucpu = cpu的利用率
     W = 线程等待时间
     C = 线程执行计算时间
+```
 
 此方案偏理论化，cpu的实际利用率（即分配多少cpu给线程池使用）和线程的计算，等待时间非常难评估，并且最后计算出来的结果也很容易偏离实际应用场景。
 
-公式2：coreSize = 2 * Ncpu , maxSize = 25 * Ncpu
+> 公式2：coreSize = 2 * Ncpu , maxSize = 25 * Ncpu
 
 实际使用过程中不同的业务对线程池的需求不一样，所以统一采用cpu核心数来配置显然不太合理
 
-公式3：coreSize = tps * time , maxSize = tps * time * (1.7~2)
+> 公式3：coreSize = tps * time , maxSize = tps * time * (1.7~2)
 
-> [根据CPU核心数确定线程池并发线程数](https://www.cnblogs.com/dennyzhangdd/p/6909771.html)  
-> [如何设置线程池参数？](https://www.cnblogs.com/thisiswhy/p/12690630.html)
-
+[根据CPU核心数确定线程池并发线程数](https://www.cnblogs.com/dennyzhangdd/p/6909771.html)  
+[如何设置线程池参数？](https://www.cnblogs.com/thisiswhy/p/12690630.html)
 [线程池实时管理与监控工具的实现与思考](https://www.jianshu.com/p/6f6e2bcb8128)
 
 - [美团 线程池动态监控](https://github.com/dromara/dynamic-tp)  
@@ -145,4 +148,17 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 [线程池如何监控，才能帮助开发者快速定位线上错误？](https://heapdump.cn/article/4012121)`将基准数据采集到数据库表里`  
 
 ************************
+
+## 业务线程池
+在实际业务系统中，出于不同业务的吞吐量能力，故障影响，保障优先级 等方面的考虑，通常会对不同的业务模块划分不同的线程池，并依据对应的需求设置不同的参数和策略。  
+例如： HTTP客户端线程池，WEB服务器NIO线程池，缓存同步线程池，Websocket消息推送线程池 等等。  
+
+基于以上的设计考量，会遇到一些问题
+1. 固定的线程参数无法应对动态的业务变化。 
+    - 方案： 上文的线程池监控告警以及动态参数调整，需要人为守护调整，或依据实际业务场景实现固定的动态扩缩容策略
+1. 不同线程池，上下文传递以及事务问题。 
+    - 方案：
+1. 随着业务需求的变化，线程池边界会模糊，导致吞吐量大的服务被低并发参数的线程池产生短板效应，吞吐量低的服务被高并发参数的线程池任务失败量突增甚至被打垮。 
+    - 例如HTTP请求任务被提交到了缓存同步线程池，大量的HTTP请求任务占用了很多资源导致系统缓存的实时性大大降低。
+    - 方案：
 
