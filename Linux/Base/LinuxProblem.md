@@ -32,7 +32,7 @@ categories:
         - 1.5.2. [i386-pc not found](#i386-pc-not-found)
     - 1.6. [崩溃](#崩溃)
 
-💠 2024-01-29 11:43:36
+💠 2024-03-19 17:02:09
 ****************************************
 # Linux桌面发行版遇到的问题
 
@@ -237,3 +237,25 @@ Used+Cached高内存， `journalctl -b -1`查日志
     Jan 29 11:29:10 zk-pc kernel: RSP: 0000:ffff9ee142597c30 EFLAGS: 00010246
 ```
 
+```log
+    Mar 19 14:46:19 zk-pc sudo[2511882]: pam_unix(sudo:session): session opened for user root(uid=0) by zk(uid=1000)
+    Mar 19 14:46:19 zk-pc sudo[2511882]: pam_unix(sudo:session): session closed for user root
+    Mar 19 14:46:25 zk-pc dbus-daemon[584]: [system] Activating via systemd: service name='org.freedesktop.home1' unit='dbus-org.freedesktop.home1.service' requested by ':1.2243' (uid=0 pid=2512>
+    Mar 19 14:46:25 zk-pc dbus-daemon[584]: [system] Activation via systemd failed for unit 'dbus-org.freedesktop.home1.service': Unit dbus-org.freedesktop.home1.service not found.
+    Mar 19 14:46:25 zk-pc sudo[2512066]:       zk : TTY=pts/47 ; PWD=/home/zk/Work/tg-assets-backend ; USER=root ; COMMAND=/bin/lsof -p 2453453
+    Mar 19 14:46:25 zk-pc sudo[2512066]: pam_unix(sudo:session): session opened for user root(uid=0) by zk(uid=1000)
+    Mar 19 14:46:25 zk-pc sudo[2512066]: pam_unix(sudo:session): session closed for user root
+    Mar 19 14:48:49 zk-pc rtkit-daemon[1023]: Supervising 7 threads of 6 processes of 1 users.
+    Mar 19 14:48:49 zk-pc rtkit-daemon[1023]: Supervising 7 threads of 6 processes of 1 users.
+    Mar 19 14:49:33 zk-pc rtkit-daemon[1023]: Supervising 7 threads of 6 processes of 1 users.
+    Mar 19 14:49:33 zk-pc rtkit-daemon[1023]: Supervising 7 threads of 6 processes of 1 users.
+    Mar 19 14:49:33 zk-pc rtkit-daemon[1023]: Supervising 7 threads of 6 processes of 1 users.
+    Mar 19 14:49:33 zk-pc rtkit-daemon[1023]: Supervising 7 threads of 6 processes of 1 users.
+    Mar 19 14:49:33 zk-pc rtkit-daemon[1023]: Supervising 7 threads of 6 processes of 1 users.
+    Mar 19 14:49:33 zk-pc rtkit-daemon[1023]: Supervising 7 threads of 6 processes of 1 users.
+    Mar 19 14:51:35 zk-pc systemd-journald[375]: Under memory pressure, flushing caches.
+    Mar 19 14:51:45 zk-pc systemd-journald[375]: Under memory pressure, flushing caches.
+    Mar 19 14:51:46 zk-pc sshd[2517295]: ssh_dispatch_run_fatal: Connection from 192.168.131.11 port 9778: Broken pipe [preauth]
+    Mar 19 14:53:45 zk-pc sshd[2517303]: fatal: Timeout before authentication for 192.168.131.11 port 9791
+    Mar 19 14:53:51 zk-pc rtkit-daemon[1023]: Supervising 7 threads of 6 processes of 1 users.
+```

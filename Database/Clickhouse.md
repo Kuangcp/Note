@@ -11,11 +11,12 @@ categories:
     - 1.1. [数据类型](#数据类型)
         - 1.1.1. [bitmap](#bitmap)
     - 1.2. [使用](#使用)
-        - 1.2.1. [Explain](#explain)
+        - 1.2.1. [Java JDBC](#java-jdbc)
+    - 1.3. [Explain](#explain)
 - 2. [Tips](#tips)
     - 2.1. [分布式表业务使用实践](#分布式表业务使用实践)
 
-💠 2024-03-13 22:07:28
+💠 2024-03-19 17:02:09
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -38,8 +39,25 @@ categories:
 ************************
 
 ## 使用
+### Java JDBC
+> 实际上是对Http客户端的封装
+```java
+        Properties properties = new Properties();
+        properties.setProperty("socket_keepalive", "true"); //socket_timeout时间由系统设置
+        properties.setProperty("auto_discovery", "true"); // 节点自动发现
+        properties.setProperty("load_balancing_policy", "roundRobin"); // 负载均衡
+        properties.setProperty("health_check_interval", "1000"); // 健康检查间隔(以毫秒为单位)
+        properties.setProperty("health_check_query", "select 1"); // 健康检查语句
+        properties.setProperty("node_check_interval", "1000"); // 节点检查间隔(以毫秒为单位)
+        properties.setProperty("failover", "2"); // 发生故障转移最大次数
+        properties.setProperty("retry", "2"); // 故障重试最大次数
 
-### Explain 
+        // 客户端负载均衡的方式
+        String url = "jdbc:clickhouse://h1:p1,h2:p2,h3:p3,h4:p4/default?socket_timeout=6000000";
+        ClickHouseDataSource dataSource = new ClickHouseDataSource(url, properties)
+```
+
+## Explain 
 > [Clickhouse: Explain](https://clickhouse.com/docs/en/sql-reference/statements/explain)  
 > [Using Explain to analyze and improve Clickhouse queries performance](https://medium.com/datadenys/using-explain-to-analyze-and-improve-clickhouse-queries-performance-23dbcdf55a97)  
 

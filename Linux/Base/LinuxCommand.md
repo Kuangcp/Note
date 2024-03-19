@@ -24,7 +24,7 @@ categories:
         - 1.8.1. [crontab](#crontab)
         - 1.8.2. [Systemd](#systemd)
 
-💠 2023-12-18 14:22:19
+💠 2024-03-19 17:02:09
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -83,6 +83,7 @@ categories:
 - 获取前一天日期 `date --date='1 day ago' -R`
 - 将秒时间戳转换为日期 `date --date='@1524738626'`
 - 设置日期或时间 `date -s '2020-12-01'` 或 `date -s '23:00:20'`
+- 日期计算 `date -d "+10 days"`
 
 ## grep
 > `g` (globally) search for a `re` (regular expression ) and `p` (print ) the results.
