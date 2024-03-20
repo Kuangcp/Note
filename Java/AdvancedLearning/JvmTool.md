@@ -186,9 +186,17 @@ categories:
 
 ## jcmd
 
-
 ## jhsdb
-> [自JDK9发布](https://dzone.com/articles/jhsdb-a-new-tool-for-jdk-9) | [Oracle jhsdb](https://docs.oracle.com/javase/9/tools/jhsdb.htm)
+> [jdk9 jhsdb](https://dzone.com/articles/jhsdb-a-new-tool-for-jdk-9) | [Oracle jhsdb](https://docs.oracle.com/javase/9/tools/jhsdb.htm)
+
+JDK9之前通过是Jar方式启动 HSDB CLHSDB。部分功能有被jmap等命令封装 例如 `jmap -heap`
+- `java -cp .:sa-jdi.jar sun.jvm.hotspot.CLHSDB` HSDB需要和目标JVM同一个版本
+    - help 查看帮助
+    - jseval 执行javascript
+    - attach：连接到目标进程戒core
+    - universe：查看Java heap的情况
+    - inspect：查看某个地址对应的数据结构的内容
+    - scanoops：扫描某个地址段的Java对象
 
 jstack jmap jinfo jsnap 等命令功能的迁移和加强
 

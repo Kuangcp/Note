@@ -4,20 +4,24 @@ date: 2020-03-22 12:40:12
 tags: 
 categories:
 ---
-**目录 start**
 
-1. [Golang](#golang)
-   1. [社区](#社区)
-   2. [教程](#教程)
-   3. [书籍](#书籍)
-   4. [安装](#安装)
-      1. [Docker](#docker)
-2. [环境变量解释](#环境变量解释)
-3. [开发环境搭建](#开发环境搭建)
+💠
 
-**目录 end**|_2020-05-04 17:40_|
+- 1. [Golang](#golang)
+    - 1.1. [社区](#社区)
+    - 1.2. [教程](#教程)
+    - 1.3. [书籍](#书籍)
+    - 1.4. [实践项目](#实践项目)
+- 2. [安装](#安装)
+    - 2.1. [Linux 下安装](#linux-下安装)
+        - 2.1.1. [Hello World](#hello-world)
+    - 2.2. [Docker](#docker)
+- 3. [环境变量解释](#环境变量解释)
+- 4. [开发环境搭建 基于 VSCode](#开发环境搭建-基于-vscode)
+- 5. [生态](#生态)
 
----
+💠 2024-03-20 17:27:12
+****************************************
 
 # Golang
 
@@ -31,7 +35,6 @@ categories:
 
 - [go-gtk alternatives](https://go.libhunt.com/go-gtk-alternatives) `gui框架对比`
 
----
 
 > 负面
 
@@ -58,8 +61,6 @@ categories:
 - [go101](https://github.com/go101/go101)
 - [build-web-application-with-golang](https://github.com/astaxie/build-web-application-with-golang)
 
----
-
 ## 书籍
 
 > [Go相关书籍的知乎话题](https://www.zhihu.com/question/30461290)
@@ -67,6 +68,11 @@ categories:
 
 - [The Go Programming Language](http://www.gopl.io/)
 - [Go 语言设计与实现](https://draveness.me/golang/docs)
+
+## 实践项目
+- [PolarDB-ClusterManager](https://github.com/ApsaraDB/PolarDB-ClusterManager)
+
+************************
 
 # 安装
 
@@ -105,7 +111,7 @@ categories:
 1. 部署运行的时候, 如果不需要调用外部Linux命令 就直接使用空镜像 `from scratch` 但是缺点是排查问题时无工具可用
 2. 需要外部命令则 `from alpine` 更精简一点 更好是使用 `frolvlad/alpine-glibc`
 
----
+
 
 # 环境变量解释
 
@@ -126,7 +132,7 @@ categories:
   - `$GOMAXPROCS` 用于设置应用程序可使用的处理器个数与核数，详见第 14.1.3 节。
   - `$GOPROXY` 设置 mod 的代理. 例如： **GOPROXY=https://mirrors.aliyun.com/goproxy/**
 
----
+
 
 # 开发环境搭建 基于 VSCode
 
@@ -182,6 +188,8 @@ categories:
     go get github.com/go-delve/delve/cmd/dlv
     go get github.com/mdempsky/gocode
 ```
+
+************************
 
 # 生态
 
