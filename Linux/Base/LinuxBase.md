@@ -36,8 +36,10 @@ categories:
     - 2.1. [ulimit](#ulimit)
     - 2.2. [CPU](#cpu)
     - 2.3. [内存](#内存)
-        - 2.3.1. [虚拟内存](#虚拟内存)
-        - 2.3.2. [交换内存](#交换内存)
+        - 2.3.1. [overcommit](#overcommit)
+        - 2.3.2. [oom](#oom)
+        - 2.3.3. [虚拟内存](#虚拟内存)
+        - 2.3.4. [交换内存](#交换内存)
 - 3. [终端快捷键](#终端快捷键)
     - 3.1. [Delete](#delete)
     - 3.2. [Convert](#convert)
@@ -57,7 +59,7 @@ categories:
     - 5.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 5.5. [熵池](#熵池)
 
-💠 2024-02-04 15:34:54
+💠 2024-03-20 16:13:46
 ****************************************
 
 # Linux系统
@@ -450,19 +452,60 @@ _系统运行级别_
 - 使用uptime、top或者 `cat /proc/loadavg`都可以看到CPU的load 1 5 15 分钟的负载。
 - LOAD AVERAGE：一段时间内处于可运行状态和不可中断状态的进程平均数量。（可运行分为正在运行进程和正在等待CPU的进程，状态为R；不可中断则是它正在做某些工作不能被中断比如等待磁盘IO等，其状态为D），它是从另外一个角度体现CPU的使用状态。
 
-> 注意: 一个核负载为1表示有线程一直在等待（满载），四个核负载为4表示四个核心都是一直有线程在等待（满载）
+> 注意: 一个核负载为1表示有线程一直在等待（满载），四个核负载为4表示四个核心都一直有线程在等待（满载）
+
+************************
 
 ## 内存
+对于Linux来说, 有内存就去分配使用, 只有内存不够申请的大小，才会去释放 buffer或cache, 对于服务器来说, 交换内存会带来性能的明显下降 一般是不会配置的  
+
+内存组成
+- 空闲内存, 已使用, buffers, cached
+  - 读 cache 写 buffer
+
+- Virtual Memory   虚拟内存
+- Resident Memory  持久内存
+- Shared Memory    共享内存(多进程间共享)
+
+> [linux ate my ram](https://www.linuxatemyram.com/)  
+> [Empty the Buffer and Cache in Linux](https://www.baeldung.com/linux/empty-buffer-cache)
+
+### overcommit 
+> [参考: Linux Overcommit Modes](https://www.baeldung.com/linux/overcommit-modes)  
+
+- 内核参数： vm.overcommit_memory 
+    - 0 允许overcommit但是算法判断是否合理，不合理会拒绝对应进程的内存申请
+    - 1 允许overcommit
+    - 2 禁止overcommit
+
+- `cat /proc/meminfo | grep commit`
+    - CommitLimit 就是overcommit的阈值，申请的内存总数超过CommitLimit的话就算是overcommit。
+        - CommitLimit = (Physical RAM * vm.overcommit_ratio / 100) + Swap
+    - Committed_AS 表示所有进程已经申请的内存总大小，（注意是已经申请的，不是已经分配的），如果 Committed_AS 超过 CommitLimit 就表示发生了 overcommit
+        - 超出越多表示 overcommit 越严重。Committed_AS 的含义换一种说法就是，如果要绝对保证不发生OOM (out of memory) 需要多少物理内存。
+
+### oom
+当操作系统认为内存不足时，会选择分数值较高的进程kill掉（用户进程，非内核进程）
+- /proc/pid/oom_score 操作系统所计算值
+- /proc/pid/oom_score_adj 可以修改的值，当前值加上oom_score后才是最终值
+    - 降低分值 echo -50 > /proc/pid/oom_score_adj
+- /proc/pid/oom_adj 对应进程的优先级 
 
 ### 虚拟内存
 
-> [参考: What does Virtual memory size in top mean?](https://serverfault.com/questions/138427/what-does-virtual-memory-size-in-top-mean)
-
-> [参考: The Right Way to Monitor Virtual Memory on Linux](https://www.logicmonitor.com/blog/the-right-way-to-monitor-virtual-memory-on-linux/)
+> [参考: What does Virtual memory size in top mean?](https://serverfault.com/questions/138427/what-does-virtual-memory-size-in-top-mean)  
+> [参考: The Right Way to Monitor Virtual Memory on Linux](https://www.logicmonitor.com/blog/the-right-way-to-monitor-virtual-memory-on-linux/)  
 
 ### 交换内存
-
 > swapon, swapoff - enable/disable devices and files for paging and swapping
+
+> 交换内存分析
+VIRT = SWAP + RES or equal
+SWAP = VIRT - RES
+
+- 查看进程使用交换内存 `grep -i VmSwap /proc/*/status` 
+- 进程按交换内存使用大小排序`for file in /proc/*/status ; do awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $file; done | sort -k 2 -n -r | less`
+- `smem`  Report memory usage with shared memory divided proportionally
 
 ************************
 

@@ -36,7 +36,7 @@ categories:
     - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-03-14 21:28:14
+💠 2024-03-20 16:13:46
 ****************************************
 
 # JVM 监控&诊断
@@ -203,7 +203,7 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 > [Github: Arthas](https://github.com/alibaba/arthas)`阿里巴巴`
 
 ## async-profiler
-> [async-profiler](https://github.com/jvm-profiling-tools/async-profiler)
+> [async-profiler](https://github.com/jvm-profiling-tools/async-profiler)`CPU和内存采样 渲染火焰图`
 
 **********************
 

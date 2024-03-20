@@ -7,30 +7,33 @@ categories:
     - 计算机基础
 ---
 
-**目录 start**
+💠
 
-1. [计算机中的IO](#计算机中的io)
-    1. [IO模型](#io模型)
-        1. [基础概念](#基础概念)
-        1. [Blocking IO](#blocking-io)
-        1. [Nonblocking IO](#nonblocking-io)
-        1. [IO multiplexing](#io-multiplexing)
-        1. [Signal driven IO](#signal-driven-io)
-        1. [Asynchronous IO](#asynchronous-io)
-        1. [经典比喻](#经典比喻)
-    1. [阻塞和非阻塞](#阻塞和非阻塞)
-    1. [同步和异步](#同步和异步)
-1. [多路复用](#多路复用)
-    1. [多路复用模型](#多路复用模型)
-        1. [忙轮询](#忙轮询)
-        1. [无差别轮询](#无差别轮询)
-        1. [最小轮询](#最小轮询)
-    1. [IO多路复用函数](#io多路复用函数)
-        1. [select](#select)
-        1. [poll](#poll)
-        1. [epoll](#epoll)
+- 1. [计算机中的IO](#计算机中的io)
+    - 1.1. [IO模型](#io模型)
+        - 1.1.1. [基础概念](#基础概念)
+        - 1.1.2. [Blocking IO](#blocking-io)
+        - 1.1.3. [Nonblocking IO](#nonblocking-io)
+        - 1.1.4. [IO multiplexing](#io-multiplexing)
+        - 1.1.5. [Signal driven IO](#signal-driven-io)
+        - 1.1.6. [Asynchronous IO](#asynchronous-io)
+        - 1.1.7. [经典比喻](#经典比喻)
+    - 1.2. [阻塞和非阻塞](#阻塞和非阻塞)
+    - 1.3. [同步和异步](#同步和异步)
+    - 1.4. [同异步和阻塞](#同异步和阻塞)
+- 2. [多路复用](#多路复用)
+    - 2.1. [多路复用模型](#多路复用模型)
+        - 2.1.1. [Reactor](#reactor)
+        - 2.1.2. [Proactor](#proactor)
+        - 2.1.3. [忙轮询](#忙轮询)
+        - 2.1.4. [无差别轮询](#无差别轮询)
+        - 2.1.5. [最小轮询](#最小轮询)
+    - 2.2. [IO多路复用函数](#io多路复用函数)
+        - 2.2.1. [select](#select)
+        - 2.2.2. [poll](#poll)
+        - 2.2.3. [epoll](#epoll)
 
-**目录 end**|_2021-03-17 18:06_|
+💠 2024-03-20 16:13:46
 ****************************************
 # 计算机中的IO
 > [参考: IO - 同步，异步，阻塞，非阻塞 ](https://blog.csdn.net/historyasamirror/article/details/5778378)  
@@ -244,4 +247,7 @@ epoll的优点：
 
 > 如果没有大量的 idle-connection 或者 dead-connection，epoll 的效率并不会比 select/poll 高很多  
 > 但是当遇到大量的 idle-connection，就会发现 epoll 的效率大大高于 select/poll。
+
+> [百万 Go TCP 连接的思考2: 百万连接的吞吐率和延迟 ](https://colobu.com/2019/02/27/1m-go-tcp-connection-2/)
+
 

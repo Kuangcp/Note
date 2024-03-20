@@ -50,7 +50,7 @@ categories:
     - 10.2. [缓存击穿](#缓存击穿)
     - 10.3. [缓存穿透](#缓存穿透)
 
-💠 2024-03-11 18:34:32
+💠 2024-03-20 16:13:46
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -58,6 +58,7 @@ categories:
 - [Redis Official doc zh](http://redisdoc.com/index.html)
 
 > [参考: nodejs + redis/mysql 连接池问题](https://www.cnblogs.com/laozhbook/p/nodejs_redis_connection_pool.html)`单线程问题`
+> [Redis 命令参考](http://doc.redisfans.com/index.html)`中文版，注意版本时效性` 
 
 ## Book 
 > [Redis设计与实现 第二版](http://www.shouce.ren/api/view/a/13483)  
@@ -261,7 +262,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 
 ************************
 # Scan
-> [Doc: Scan](http://doc.redisfans.com/key/scan.html) 
+> [Doc: Scan](https://redis.io/commands/scan/) 
 
 由于 Redis 是单线程多路复用机制(Redis6引入多线程)，使用 O(n) 复杂度的命令容易阻塞进程，因此需要 scan 命令来实现分批执行 (`注意 scan如果模式匹配的范围比较大，同样有 keys 一样的影响`)
 
@@ -278,7 +279,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
         - 注意这个游标不是 常见的 fori 循环里的i规律递增，第一次 sscan 会返回 cursor(第一个参数) 需要下一次拿这个 cursor 作为参数继续获取
         - 直到 `返回 0` 表示迭代完成 如果数据发生变化游标也会变化，且 count 是不保证准确数量的
     - count 数量
-        - redis 不保证返回的数据数量严格等于 count 只保证大于等于 **注意count不能小于1 否则报 syntax error**
+        - redis 只保证返回的数据数量大于等于 count. **注意count不能小于1 否则报 syntax error**
     - match pattern 匹配key的模式
     - 因为 这种不易理解的迭代方式, Spring 的 RedisTemplate 只提供了 count pattern 参数 cursor 默认为0
 
