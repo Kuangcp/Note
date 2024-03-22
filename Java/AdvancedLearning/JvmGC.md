@@ -32,7 +32,7 @@ categories:
     - 3.9. [ShenandoahGC](#shenandoahgc)
 - 4. [最佳实践](#最佳实践)
 
-💠 2024-03-14 19:33:47
+💠 2024-03-22 11:50:38
 ****************************************
 # GC
 > Garbage Collection
@@ -414,7 +414,7 @@ CMS自己会进入 full GC 的情况就是它的并发收集模式跟不上应�
 
 > JDK1.8时FullGC是单线程的， JDK10开始支持并行
 
-> [参考: Java Hotspot G1 GC的一些关键技术](https://tech.meituan.com/2016/09/23/g1.html)
+> [参考: Java Hotspot G1 GC的一些关键技术](https://tech.meituan.com/2016/09/23/g1.html)  
 > [Welcome 20% less memory usage for G1 remembered sets](https://tschatzl.github.io/2021/02/26/early-prune.html)  
 
 G1提供了两种GC模式，Young GC和Mixed GC，两种都是完全Stop The World的
@@ -426,19 +426,19 @@ G1提供了两种GC模式，Young GC和Mixed GC，两种都是完全Stop The Wor
 
 上文中，多次提到了global concurrent marking，它的执行过程类似CMS，但是不同的是，在G1 GC中，它主要是为Mixed GC提供标记服务的，并不是一次GC过程的一个必须环节。  
 global concurrent marking 的执行过程分为四个步骤：  
-- 初始标记（initial mark，`STW`）。它标记了从GC Root开始直接可达的对象。
-- 并发标记（Concurrent Marking）。这个阶段从GC Root开始对heap中的对象标记，标记线程与应用程序线程并行执行，并且收集各个Region的存活对象信息。 
-- 最终标记（Remark，`STW`）。标记那些在并发标记阶段发生变化的对象，将被回收。
-- 清除垃圾（Cleanup）。清除空Region（没有存活对象的），加入到free list。
+- **初始标记**（initial mark，`STW`）: 它标记了从GC Root开始直接可达的对象。
+- **并发标记**（Concurrent Marking）: 这个阶段从GC Root开始对heap中的对象标记，标记线程与应用程序线程并行执行，并且收集各个Region的存活对象信息。 
+- **最终标记**（Remark，`STW`）: 标记那些在并发标记阶段发生变化的对象，将被回收。
+- **清除垃圾**（Cleanup）: 清除空Region（没有存活对象的），加入到free list。
 
 第一阶段initial mark是共用了Young GC的暂停，这是因为他们可以复用root scan操作，所以可以说global concurrent marking是伴随Young GC而发生的。
 第四阶段Cleanup只是回收了没有存活对象的Region，所以它并不需要STW。
 
 Young GC发生的时机大家都知道，那什么时候发生Mixed GC呢？其实是由一些参数控制着的，另外也控制着哪些老年代Region会被选入CSet。 
-- G1HeapWastePercent：在global concurrent marking结束之后，我们可以知道old gen regions中有多少空间要被回收，在每次YGC之后和再次发生Mixed GC之前，会检查垃圾占比是否达到此参数，只有达到了，下次才会发生Mixed GC。 
-- G1MixedGCLiveThresholdPercent：old generation region中的存活对象的占比，只有在此参数之下，才会被选入CSet。 
-- G1MixedGCCountTarget：一次global concurrent marking之后，最多执行Mixed GC的次数。 
-- G1OldCSetRegionThresholdPercent：一次Mixed GC中能被选入CSet的最多old generation region数量。
+- `G1HeapWastePercent`： 在global concurrent marking结束之后，我们可以知道old gen regions中有多少空间要被回收，在每次YGC之后和再次发生Mixed GC之前，会检查垃圾占比是否达到此参数，只有达到了，下次才会发生Mixed GC。 
+- `G1MixedGCLiveThresholdPercent`： old generation region中的存活对象的占比，只有在此参数之下，才会被选入CSet。 
+- `G1MixedGCCountTarget`： 一次global concurrent marking之后，最多执行Mixed GC的次数。 
+- `G1OldCSetRegionThresholdPercent`： 一次Mixed GC中能被选入CSet的最多old generation region数量。
 
 > G1 相关的重要参数
 

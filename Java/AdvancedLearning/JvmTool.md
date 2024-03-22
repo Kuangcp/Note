@@ -36,7 +36,7 @@ categories:
     - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-03-20 16:13:46
+💠 2024-03-22 11:50:38
 ****************************************
 
 # JVM 监控&诊断
@@ -174,8 +174,10 @@ categories:
 1. `printf %x 线程id` 得到 16进制线程id
 1. `jstack 进程id | grep -A 20 16进制线程id` 查看该线程的栈,进而分析到代码
 
-> [How to Analyze Java Thread Dumps](https://www.baeldung.com/java-analyze-thread-dumps)`分析工具和思路`
-> [OpenJDK11 jstack output explanation](https://stackoverflow.com/questions/76476637/openjdk11-jstack-output-explanation)
+> [How to Analyze Java Thread Dumps](https://www.baeldung.com/java-analyze-thread-dumps)`分析工具和思路`  
+> [OpenJDK11 jstack output explanation](https://stackoverflow.com/questions/76476637/openjdk11-jstack-output-explanation)  
+> [How to Analyze Java Thread Dumps](https://dzone.com/articles/how-analyze-java-thread-dumps)  
+
 
 ### 实现原理
 - [Jstack 源码分析](https://zhuanlan.zhihu.com/p/36224094)
@@ -183,6 +185,9 @@ categories:
 [jmap -F and jstack -F](https://stackoverflow.com/questions/26140182/running-jmap-getting-unable-to-open-socket-file)`jmap和jstack 默认及加-F选项背后实现机制及优缺点`
 - [Dynamic Attach Mechanism](http://openjdk.java.net/groups/hotspot/docs/Serviceability.html#battach)
 - [HotSpot Serviceability Agent](http://openjdk.java.net/groups/hotspot/docs/Serviceability.html#bsa)
+
+
+************************
 
 ## jcmd
 
