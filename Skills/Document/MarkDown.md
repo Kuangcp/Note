@@ -22,7 +22,7 @@ categories:
     - 1.4. [SVG](#svg)
     - 1.5. [Github](#github)
 
-💠 2024-01-10 17:28:37
+💠 2024-03-23 17:52:21
 ****************************************
 # Markdown
 > [Github: markdown](https://guides.github.com/features/mastering-markdown/) 
@@ -133,7 +133,9 @@ categories:
 ************************
 
 ## Github 
-> [比较全面的Github格式 GFM](https://github.com/guodongxiaren/README)
+> [比较全面的Github格式 GFM](https://github.com/guodongxiaren/README)  
+> [Github readme stats](https://github.com/anuraghazra/github-readme-stats)  
+> [Awesome Badges](https://github.com/Envoy-VC/awesome-badges)  
 
 _目录规则（页内跳转）_
 

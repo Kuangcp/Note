@@ -16,7 +16,7 @@ categories:
 - 2. [Tips](#tips)
     - 2.1. [分布式表业务使用实践](#分布式表业务使用实践)
 
-💠 2024-03-19 17:02:09
+💠 2024-03-23 17:52:21
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -39,6 +39,8 @@ categories:
 ************************
 
 ## 使用
+> [snuba](https://github.com/getsentry/snuba)`Sentry开发， CK的一个查询层`
+
 ### Java JDBC
 > 实际上是对Http客户端的封装
 ```java
