@@ -10,28 +10,32 @@ categories:
 💠
 
 - 1. [Java中的Websocket](#java中的websocket)
-    - 1.1. [WebSocket服务端](#websocket服务端)
-        - 1.1.1. [Tomcat 方式](#tomcat-方式)
-            - 1.1.1.1. [事件处理](#事件处理)
-            - 1.1.1.2. [服务端推送消息](#服务端推送消息)
-        - 1.1.2. [Spring-WebSocket](#spring-websocket)
-        - 1.1.3. [Netty](#netty)
-        - 1.1.4. [Reactor Netty](#reactor-netty)
-        - 1.1.5. [Undertow](#undertow)
-    - 1.2. [性能测试对比](#性能测试对比)
-    - 1.3. [Websocket集群设计](#websocket集群设计)
-    - 1.4. [客户端](#客户端)
-        - 1.4.1. [Java](#java)
-        - 1.4.2. [JS](#js)
+- 2. [服务端](#服务端)
+    - 2.1. [Javax](#javax)
+        - 2.1.1. [事件处理](#事件处理)
+        - 2.1.2. [服务端推送消息](#服务端推送消息)
+    - 2.2. [SpringMVC](#springmvc)
+    - 2.3. [Netty](#netty)
+    - 2.4. [Reactor Netty](#reactor-netty)
+    - 2.5. [Undertow](#undertow)
+- 3. [性能测试对比](#性能测试对比)
+- 4. [集群设计](#集群设计)
+- 5. [客户端](#客户端)
+    - 5.1. [Java](#java)
+    - 5.2. [JS](#js)
 
-💠 2024-02-27 11:32:45
+💠 2024-03-25 17:00:35
 ****************************************
 # Java中的Websocket
 JSR-356
 
-## WebSocket服务端
+> [【Spring Boot】WebSocket 的 6 种集成方式 ](https://juejin.cn/post/7111132777394733064)
 
-### Tomcat 方式
+# 服务端
+先说结论： 生产尽量使用Netty实现，Javax 和 SpringMvc只适合少量连接时使用(`但开发是真简单`)，详情见下方[性能测试对比](#性能测试对比)。
+
+## Javax
+Javax规范，Tomcat Jetty等容器实现
 
 ```java
 @Configuration
@@ -84,7 +88,7 @@ public class WebsocketServer {
 1. 使用类级别注解`@ServerEndpoint("uri路径")`，将类标注为一个WebSocket端点
 1. 使用方法级别注解`@OnMessage`，使方法在WebSocket事件发生，而不在WebSocket消息发生时被调用
 
-#### 事件处理
+### 事件处理
 
 | 注解         | 方法中可使用的形参                   |
 | ---------- | ---------------------------------------- |
@@ -93,14 +97,15 @@ public class WebsocketServer {
 | @OnError   | Throwable对象，Session，URI中的参数(需使用@PathParam) |
 | @OnClose   | CloseReason，URI中的参数(需使用@PathParam)       |
 
-#### 服务端推送消息
+### 服务端推送消息
 
 WebSocket中 RemoteEndpoint 接口和它的子类( RemoteEndpoint.Basic 和 RemoteEndpoint.Async )提供了发送消息的所有方法，我们可以从Session中获取到RemoteEndpoint实例，从而发送消息  
 如：`session.getBasicRemote().sendText(text);`
 
 ************************
 
-### Spring-WebSocket
+## SpringMVC
+SpringMVC封装 Tomcat Jetty等容器实现
 
 ```java
 @Slf4j
@@ -108,21 +113,32 @@ WebSocket中 RemoteEndpoint 接口和它的子类( RemoteEndpoint.Basic 和 Remo
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
     @Autowired
-    private MyWebSocketHandler MyWebSocketHandler;
+    private MyWebSocketHandler socketHandler;
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(MyWebSocketHandler, "/ws/*/").setAllowedOrigins("*");
+        registry.addHandler(socketHandler, "/ws/*/").setAllowedOrigins("*");
     }
 
+
+    /**
+     * 该设置对 Javax 方式也生效
+     * @see org.apache.tomcat.websocket.WsFrameBase#WsFrameBase
+     * @see java.nio.HeapByteBuffer
+     * @see java.nio.HeapByteBuffer
+     */
     @Bean
     public ServletServerContainerFactoryBean createWebSocketContainer() {
         ServletServerContainerFactoryBean container = new ServletServerContainerFactoryBean();
-        // ws 传输数据的时候，数据过大有时候会接收不到，所以在此处设置bufferSize
+        // ws 传输数据的时候，单个消息过大会导致缓冲区溢出，接收不到该消息，所以按需设置bufferSize的大小
         // 注意： 这里设置的大小是每个连接初始化 HeapByteBuffer 的实际大小，也就是设置多大每个连接就会占用多大内存，要慎重考虑
         // https://my.oschina.net/xiaoshushu/blog/1586349
-        // org.apache.tomcat.websocket.WsFrameBase#WsFrameBase 
-        container.setMaxTextMessageBufferSize(512000);
-        container.setMaxBinaryMessageBufferSize(512000);
+
+        // 此时一个Ws连接会申请4Kib堆内存
+        int kib = 1024;
+        int quota = 2;
+        container.setMaxTextMessageBufferSize(quota * kib); // HeapCharBuffer
+        container.setMaxBinaryMessageBufferSize(quota * kib); // HeapByteBuffer
+
         container.setMaxSessionIdleTimeout(15 * 60000L);
         return container;
     }
@@ -155,57 +171,81 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
     }
 }
 ```
+> 使用
 1. 推送消息 session.sendMessage(new TextMessage("text"));
 
-### Netty
+## Netty
 > [Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/netty/websocket)
 
 [SpringBoot整合Netty处理WebSocket（支持url参数）](https://blog.csdn.net/RisenMyth/article/details/104441155)
 
 通过go开发的客户端压测`在多个Docker容器中运行（规避65535个数的端口限制）`, 16G电脑可以轻松发起和支撑百万级ws活跃连接。
 
-### Reactor Netty
+## Reactor Netty
 > [Official Doc](https://projectreactor.io/docs/netty/release/reference/index.html#http-server)
 
 > [Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/reactor/websocket)
 
-### Undertow
+## Undertow
 
 > [doc](http://undertow.io/undertow-docs/undertow-docs-2.0.0/index.html#websockets)
 
 ************************
 
-## 性能测试对比
-TODO 
-- 相同JVM参数，处理逻辑 
+# 性能测试对比
+- 相同的 JDK，JVM参数，处理逻辑 等。
 - 指标：最大连接数，请求应答模型 延迟分布情况、吞吐量
-- 多次测试：
 
-> 遇到的问题和调整
+> 压测过程中遇到的问题
 1. 客户端发起连接需要设置最大打开文件数 ulimit -n 80000 
 1. 服务端建立到 28232 个连接后 遇到 Cannot assign requested address 
     - `cat /proc/sys/net/ipv4/ip_local_port_range` 设置项代表Linux作为客户端(与服务端建立连接时会在区间内随机分配一个端口给客户端进程)可分配的端口范围（防止耗尽端口）
     - 临时修改 `echo 1024 65000 > /proc/sys/net/ipv4/ip_local_port_range`
     - 如果客户端在Docker容器中，需在 docker run 时加上 `--sysctl net.ipv4.ip_local_port_range="1024 65000"`
 
-> 结论 Netty 更有优势
+************************
 
-| 类型 | 内存 | 连接数 |
-|:---|:---|:---|
-| Tomcat |  |  |
-| Netty |  |  |
+> 结论 Netty性能更好，javax SpringMVC 实现成本更低
+- 得益于Netty的IO架构，Buffer设计机制，性能远胜于Tomcat实现。
+- 这两种 javax MVC 底层实现都是Tomcat等Web容器，性能没太大区别，优势是开发成本很低
 
-## Websocket集群设计
-TODO
+> 基础环境
+- 硬件 i5-10400F CPU @ 2.90GHz 
+- JVM参数： -Xmx1000m
+- 服务端：消息逻辑为收到文本ping返回文本pong， 设置最大读缓存大小为64K
+- 客户端：连续创建连接，定时每分钟发送ping文本消息
 
-核心矛盾在于长连接是有状态且无法共享，但是业务处理端都是无状态的集群
-
-简单实现就是用Redis或者Nacos等注册中心，发送接收消息都从注册中心拿到ws连接所在服务器，再转发过去
+> 结果
+- Javax 约2500个后OOM 
+- SpringMVC 约2600个后OOM 
+- Netty 正常建立3000个连接
 
 ************************
 
-## 客户端
-### Java
+> 资源对比
+
+CPU占用都不高 0.5%以下波动
+
+| 连接数 | Javax | Mvc | Netty | Jetty |
+|:---|:---|:---|:---|:---|
+| 1000 | 占用300M |  占用300M |  |  |
+| 3000 | 占用850M | 占用850M | 占用150M内存 |  |
+
+************************
+
+# 集群设计
+TODO
+
+核心矛盾在于长连接是有状态的且无法共享，但通常应用服务端都是无状态的集群，方便横向快速扩容
+
+> 简单实现 缺点：消息冗余推送
+1. 用Redis或者Nacos等注册中心维护一份用户id和服务器ip的映射
+1. 服务端主动推消息时从注册中心拿到用户id所在的服务器，再将消息转发过去做真正的推送
+
+************************
+
+# 客户端
+## Java
 Java WebSocket客户端端点
 
 ```java
@@ -250,7 +290,7 @@ public class WebSocketClient {
 }
 ```
 
-### JS
+## JS
 ```js
     var ws = new WebSocket("ws:localhost:8080/websocket");
     ws.onopen = function () {

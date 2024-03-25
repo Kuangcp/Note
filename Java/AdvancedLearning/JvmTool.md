@@ -36,7 +36,7 @@ categories:
     - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-03-22 11:50:38
+💠 2024-03-25 17:00:35
 ****************************************
 
 # JVM 监控&诊断
@@ -168,7 +168,7 @@ categories:
     - -l: 打印关于锁的附加信息
     - -J-d64: 64位模式
 
-> 找出占用CPU最高的线程:
+> 找出占用CPU最高的线程: [封装的Shell active_cpu_thread](https://github.com/Kuangcp/Script/blob/master/shell/assistant/java-tool.sh)
 1. `jps 或者 ps aux | grep xxx` 得到对应Java进程id
 1. `top -Hp 进程id` 查看 time 占用最长 或者 CPU占用最高 的线程id
 1. `printf %x 线程id` 得到 16进制线程id
