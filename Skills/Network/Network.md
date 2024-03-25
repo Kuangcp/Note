@@ -69,7 +69,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2024-03-05 19:05:16
+💠 2024-03-25 19:01:11
 ****************************************
 # 网络
 
@@ -309,7 +309,8 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 ************************
 
 ### Websocket
-> Websocket协议 本质就是TCP的简单封装, 不像HTTP那样应答模式, 而是一次连接后就保持全双工模式
+> Websocket协议 本质就是TCP的简单封装, 不像HTTP那样应答模式, 而是一次连接后就保持全双工模式  
+> [ietf websocket protocol](https://datatracker.ietf.org/doc/html/draft-ietf-hybi-thewebsocketprotocol-17)  
 
 > [参考: Netty WebSocket 拆包浅析](https://www.jianshu.com/p/30c26a755a87)  
 - io.netty.handler.codec.http.websocketx.WebSocket08FrameDecoder#decode
@@ -333,7 +334,11 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 1. [WebSocket断开原因分析](https://wdd.js.org/websocket-close-reasons.html)
 
 - [理解websocket的原理](https://zhuanlan.zhihu.com/p/149680021)
-    - 三次握手建立 TCP 连接(如果是 wss 还需要建立 tls 连接), 并从HTTP协议协商升级到WS协议
+    - 三次握手建立 TCP 连接(如果是 wss 还需要建立 tls 连接), 并从HTTP协议协商升级到WS具体的子协议
+        - 客户端在HTTP请求Header中的`sec-websocket-version`设置协议版本
+        - Netty中是 `io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory#newHandshaker` 中实现多版本
+        - Spring-Websocket 中定义了接口： `org.springframework.web.socket.server.RequestUpgradeStrategy#getSupportedVersions` 在不同的Web容器实现中做声明支持
+            - Spring5 有 Jetty Jetty10 Tomcat Undertow WebSphere
     - 正常关闭时 TCP 的四次挥手，异常关闭则是 TCP 协议 发送 rst 包
 
 > Tips
