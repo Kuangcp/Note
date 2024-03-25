@@ -24,7 +24,7 @@ categories:
     - 5.1. [Java](#java)
     - 5.2. [JS](#js)
 
-💠 2024-03-25 17:00:35
+💠 2024-03-26 00:20:51
 ****************************************
 # Java中的Websocket
 JSR-356
@@ -207,6 +207,8 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 
 > 结论 Netty性能更好，javax SpringMVC 实现成本更低
 - 得益于Netty的IO架构，Buffer设计机制，性能远胜于Tomcat实现。
+    - Netty中使用到的是 `io.netty.channel.AdaptiveRecvByteBufAllocator` 在分配时默认2048为了大于默认的MTU1500，并按设定序列做扩缩容
+    - 通过读取buffer时的记录 `io.netty.channel.AdaptiveRecvByteBufAllocator.HandleImpl#record` 做扩缩容的触发依据
 - 这两种 javax MVC 底层实现都是Tomcat等Web容器，性能没太大区别，优势是开发成本很低
 
 > 基础环境
