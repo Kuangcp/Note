@@ -24,7 +24,7 @@ categories:
     - 5.1. [Java](#java)
     - 5.2. [JS](#js)
 
-💠 2024-03-26 00:20:51
+💠 2024-03-26 12:21:15
 ****************************************
 # Java中的Websocket
 JSR-356
@@ -207,9 +207,10 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 
 > 结论 Netty性能更好，javax SpringMVC 实现成本更低
 - 得益于Netty的IO架构，Buffer设计机制，性能远胜于Tomcat实现。
-    - Netty中使用到的是 `io.netty.channel.AdaptiveRecvByteBufAllocator` 在分配时默认2048为了大于默认的MTU1500，并按设定序列做扩缩容
-    - 通过读取buffer时的记录 `io.netty.channel.AdaptiveRecvByteBufAllocator.HandleImpl#record` 做扩缩容的触发依据
-- 这两种 javax MVC 底层实现都是Tomcat等Web容器，性能没太大区别，优势是开发成本很低
+    - Tomcat 缓冲区实现为 `org.apache.tomcat.websocket.WsFrameBase#WsFrameBase` 使用的 ByteBuffer 直接按最大缓冲区分配容量**堆内存**，如果读取的数据超过了这个容量会报错
+        - 缺点：当某个ws业务偶尔会大数据收发，平时使用数据包很小（例如启动游戏时数据初始化和游戏过程）。比较难配置最大容量，配置太大则支撑连接数会下降，太小则无法支撑业务或降低业务体验（如果容量很小数据要多轮，游戏初始化的等待时间就会更长）
+    - Netty中使用到的是 池化内存`PooledByteBufAllocator` 和申请时扩缩容机制 `AdaptiveRecvByteBufAllocator` 大大降低了数据读取时占用的缓冲内存，平衡了缓存池利用率和数据读取效率 **堆外内存**
+- javax MVC 这两种底层实现都是Tomcat等Web容器，性能没太大区别，优势是开发成本很低
 
 > 基础环境
 - 硬件 i5-10400F CPU @ 2.90GHz 

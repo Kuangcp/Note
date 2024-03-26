@@ -14,9 +14,10 @@ categories:
             - 1.1.2.1. [Protobuf](#protobuf)
     - 1.2. [原理](#原理)
         - 1.2.1. [内存设计](#内存设计)
-    - 1.3. [复合组件](#复合组件)
+    - 1.3. [Websocket](#websocket)
+    - 1.4. [复合组件](#复合组件)
 
-💠 2024-02-03 11:47:08
+💠 2024-03-26 12:21:15
 ****************************************
 # Netty
 > [Trustlin](https://github.com/trustin) `Netty Mina 的作者`  
@@ -115,6 +116,18 @@ Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件�
 - -Dio.netty.noPreferDirect 是否运行通过底层api直接访问直接内存，默认：允许
 - -Dio.netty.noUnsafe 是否允许使用sun.misc.Unsafe，默认：允许
 - -Dio.netty.maxDirectMemory 设置最大值
+
+************************
+
+## Websocket
+
+> 接收数据buffer读取流程： 优势是新连接申请的内存低，实际使用中会对申请的buffer扩缩容，平衡缓存池利用率和读取效率
+1. 读取Socket中数据入口： `io.netty.channel.nio.AbstractNioByteChannel.NioByteUnsafe#read`
+    - 在 byteBuf = allocHandle.allocate(allocator); 调用中会依据以往读取值 `AdaptiveRecvByteBufAllocator.HandleImpl#guess()` 一个大小并使用
+        - 其中 allocHandle 是 `AdaptiveRecvByteBufAllocator` allocator 是 `PooledByteBufAllocator`
+    - 每次读取完成后都会 `AdaptiveRecvByteBufAllocator.HandleImpl#record()` 方法记录,按 AdaptiveRecvByteBufAllocator.SIZE_TABLE 做梯度扩缩容
+
+************************
 
 ## 复合组件
 > [netty-socketio](https://github.com/mrniko/netty-socketio)  
