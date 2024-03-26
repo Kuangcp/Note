@@ -69,7 +69,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2024-03-25 19:01:11
+💠 2024-03-26 21:42:30
 ****************************************
 # 网络
 
@@ -309,19 +309,15 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 ************************
 
 ### Websocket
-> Websocket协议 本质就是TCP的简单封装, 不像HTTP那样应答模式, 而是一次连接后就保持全双工模式  
+> Websocket协议 本质就是TCP的简单封装, 不像HTTP的单次应答模式, 而是建立连接后就保持全双工模式  
 > [ietf websocket protocol](https://datatracker.ietf.org/doc/html/draft-ietf-hybi-thewebsocketprotocol-17)  
 
-> [参考: Netty WebSocket 拆包浅析](https://www.jianshu.com/p/30c26a755a87)  
-- io.netty.handler.codec.http.websocketx.WebSocket08FrameDecoder#decode
-- [ ] 文本数据达到多大，会遇到拆包问题
-
-1. 单一的封装TCP连接, 采用全双工模式通信
-2. 对代理, 防火墙和路由器透明
-3. 无头部信息, Cookie, 身份验证
-4. 无安全开销
-5. 通过 ping/pong 二进制帧 保持链路激活
-6. 服务器可以主动传递消息给客户端, 不需要客户端轮询
+1. 单一封装TCP连接, 采用全双工模式通信
+1. 对代理, 防火墙和路由器透明
+1. 无头部信息, Cookie, 身份验证
+    - 生产使用时还是会做，通常在握手的HTTP请求中实现 将认证信息（Cookie/Token）放在Header或URL参数上
+1. 通过 ping/pong 二进制帧 保持链路激活 `可规避中间件关闭不活跃连接 例如Nginx`
+1. 服务器可以主动传递消息给客户端, 不需要客户端轮询
 
 > 4个生命周期事件
 1. 打开事件：此事件发生在端点建立新连接时并且在任意其他事件发生之前
@@ -329,20 +325,27 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 3. 错误事件：此事件在WebSocket连接或者端点发生错误时产生
 4. 关闭事件：此事件表示WebSocket端点的连接目前正在部分的关闭，他可以有参与连接的任意一个端点发出
 
-> 关闭状态码
-1. [WebSocket RFC](https://tools.ietf.org/html/rfc6455#section-7.4)
-1. [WebSocket断开原因分析](https://wdd.js.org/websocket-close-reasons.html)
+************************
 
-- [理解websocket的原理](https://zhuanlan.zhihu.com/p/149680021)
-    - 三次握手建立 TCP 连接(如果是 wss 还需要建立 tls 连接), 并从HTTP协议协商升级到WS具体的子协议
-        - 客户端在HTTP请求Header中的`sec-websocket-version`设置协议版本
-        - Netty中是 `io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory#newHandshaker` 中实现多版本
-        - Spring-Websocket 中定义了接口： `org.springframework.web.socket.server.RequestUpgradeStrategy#getSupportedVersions` 在不同的Web容器实现中做声明支持
-            - Spring5 有 Jetty Jetty10 Tomcat Undertow WebSphere
-    - 正常关闭时 TCP 的四次挥手，异常关闭则是 TCP 协议 发送 rst 包
+> 建立和断开流程
+- [理解websocket](https://zhuanlan.zhihu.com/p/149680021)
+- 三次握手建立 TCP 连接(如果是 wss 还需要建立 tls 连接), 并从HTTP协议协商升级到WS具体的子协议
+    - 客户端在HTTP请求Header中的`sec-websocket-version`设置协议版本
+    - Netty中是 `io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory#newHandshaker` 中实现多版本
+    - Spring-Websocket 中定义了接口： `org.springframework.web.socket.server.RequestUpgradeStrategy#getSupportedVersions` 在不同的Web容器实现中做声明支持
+        - Spring5 有 Jetty Jetty10 Tomcat Undertow WebSphere
+- 正常关闭时 TCP 的四次挥手，异常关闭则是 TCP 协议 发送 rst 包
 
-> Tips
+Tips
 - 客户端和服务端建立连接后 客户端网络发生变化(例如VPN关闭,服务端在VPN网络下才可访问)，此时客户端的定时ping会累积起来，等恢复后，一次发送多条数据，可以通过抓包观察到
+- 关闭状态码
+    1. [WebSocket RFC](https://tools.ietf.org/html/rfc6455#section-7.4)
+    1. [WebSocket断开原因分析](https://wdd.js.org/websocket-close-reasons.html)
+
+************************
+
+> 安全问题
+- [WebSocket 安全性：8 大漏洞及其解决方法](https://blog.p2hp.com/archives/11444)
 
 ************************
 ### FTP

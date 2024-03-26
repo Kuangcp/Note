@@ -17,7 +17,7 @@ categories:
     - 1.3. [Websocket](#websocket)
     - 1.4. [复合组件](#复合组件)
 
-💠 2024-03-26 12:21:15
+💠 2024-03-26 21:42:30
 ****************************************
 # Netty
 > [Trustlin](https://github.com/trustin) `Netty Mina 的作者`  
@@ -126,6 +126,10 @@ Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件�
     - 在 byteBuf = allocHandle.allocate(allocator); 调用中会依据以往读取值 `AdaptiveRecvByteBufAllocator.HandleImpl#guess()` 一个大小并使用
         - 其中 allocHandle 是 `AdaptiveRecvByteBufAllocator` allocator 是 `PooledByteBufAllocator`
     - 每次读取完成后都会 `AdaptiveRecvByteBufAllocator.HandleImpl#record()` 方法记录,按 AdaptiveRecvByteBufAllocator.SIZE_TABLE 做梯度扩缩容
+
+> [参考: Netty WebSocket 拆包浅析](https://www.jianshu.com/p/30c26a755a87)  
+- io.netty.handler.codec.http.websocketx.WebSocket08FrameDecoder#decode
+- [ ] 文本数据达到多大，会遇到拆包问题
 
 ************************
 
