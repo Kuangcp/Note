@@ -14,15 +14,14 @@ categories:
     - 1.1. [事务特性 ACID](#事务特性-acid)
         - 1.1.1. [事务的并发问题](#事务的并发问题)
     - 1.2. [数据库并发控制](#数据库并发控制)
+    - 1.3. [SQL 解析&审计](#sql-解析&审计)
+        - 1.3.1. [Slow SQL](#slow-sql)
 - 2. [关系型和非关系型](#关系型和非关系型)
 - 3. [关系型数据库](#关系型数据库)
-    - 3.1. [SQL Server](#sql-server)
-    - 3.2. [Mysql](#mysql)
-    - 3.3. [PolorDB](#polordb)
-    - 3.4. [Oracle](#oracle)
-    - 3.5. [PostgreSQL](#postgresql)
-    - 3.6. [Greenplum](#greenplum)
-    - 3.7. [Clickhouse](#clickhouse)
+    - 3.1. [Mysql](#mysql)
+    - 3.2. [PolorDB](#polordb)
+    - 3.3. [Oracle](#oracle)
+    - 3.4. [PostgreSQL](#postgresql)
 - 4. [非关系型数据库](#非关系型数据库)
     - 4.1. [Redis](#redis)
     - 4.2. [LevelDB](#leveldb)
@@ -44,11 +43,12 @@ categories:
 - 7. [非关系型数据库设计](#非关系型数据库设计)
 - 8. [大数据](#大数据)
     - 8.1. [Greenplum](#greenplum)
-    - 8.2. [TiDB](#tidb)
+    - 8.2. [Clickhouse](#clickhouse)
+    - 8.3. [TiDB](#tidb)
 - 9. [数据库中间件](#数据库中间件)
 - 10. [图形化工具](#图形化工具)
 
-💠 2024-03-13 13:59:00
+💠 2024-03-26 21:19:24
 ****************************************
 # 数据库
 > [码农翻身:爱炫耀的数据库老头儿](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514001&idx=1&sn=17b72c3e69db6c4277e3045c699b7b6b&chksm=80d67c52b7a1f5446020826841869221873f4578524181384592839d19c4810dc68807117e13&scene=21#wechat_redirect) `事务,undo日志`
@@ -81,7 +81,20 @@ categories:
 
 ## 数据库并发控制
 
-MVCC
+MySQL: MVCC
+
+## SQL 解析&审计
+- [SQL解析在美团的应用](https://tech.meituan.com/2018/05/20/sql-parser-used-in-mtdp.html)
+- [美团点评SQL优化工具SQLAdvisor](https://github.com/Meituan-Dianping/SQLAdvisor)
+    - [Docker 版本](https://github.com/maxiaolin3366/SQLAdvisor-web)
+    - [Blog](https://tech.meituan.com/2017/03/09/sqladvisor-pr.html)
+- [see](https://github.com/myide/see) `基于开源组件（Inception & SQLAdvisor & SOAR）的SQL审核&SQL优化的Web平台`
+
+
+### Slow SQL
+> [Getting Help With A Slow Query](https://www.brentozar.com/archive/2009/03/getting-help-with-a-slow-query/)
+
+> [基于代价的慢查询优化建议](https://tech.meituan.com/2022/04/21/slow-query-optimized-advice-driven-by-cost-model.html)
 
 ************************
 
@@ -95,8 +108,6 @@ MVCC
 
 > [List of Relational Database Management Systems (RDBMSs)](https://database.guide/list-of-relational-database-management-systems-rdbms/)  
 
-## SQL Server
-
 ## Mysql
 > [MySQL](/Database/MySQL.md)  
 
@@ -108,10 +119,6 @@ MVCC
 
 ## PostgreSQL
 > [Official Site](https://www.postgresql.org/)  
-
-## Greenplum
-
-## Clickhouse 
 
 ************************
 
@@ -189,11 +196,10 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 1. 字段应尽量紧凑，达到业务要求的最小设计，利于索引和IO
 
 ### 关于主键的设计
-> 我哥提出, 基本表中连主键的约束都不要了, 全部由后台的代码进行约束处理
+> 为了不让数据库成为瓶颈，基本表中连主键的约束都不要了, 全部由后台的代码进行约束处理
 
-- 如果使用的需要高并发，数据库经常迁移，拆分，分布式，使用UUID,GUID最佳
+- 如果使用的需要高并发，数据库经常迁移，拆分，分布式，使用UUID,GUID，雪花算法等。
 - 如果是小型项目，使用整型自增即可，排序方便节约内存
-
 
 ## 视图的设计
 
@@ -201,11 +207,14 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 
 # 非关系型数据库设计
 
+
 ************************
 
 # 大数据
 ## Greenplum
 > [Official Site](https://cn.greenplum.org)  
+
+## Clickhouse
 
 ## TiDB
 > [Official Doc](https://docs.pingcap.com/zh/)  

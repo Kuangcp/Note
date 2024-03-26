@@ -10,13 +10,14 @@ categories:
 
 - 1. [JDBC](#jdbc)
     - 1.1. [Statement](#statement)
+        - 1.1.1. [PrepareStatement](#preparestatement)
     - 1.2. [ResultSet](#resultset)
     - 1.3. [长连接流式导出数据](#长连接流式导出数据)
 - 2. [厂商驱动](#厂商驱动)
     - 2.1. [MySQL](#mysql)
 - 3. [Tips](#tips)
 
-💠 2024-03-18 11:40:21
+💠 2024-03-26 21:19:24
 ****************************************
 # JDBC
 Java DataBase Connectivity
@@ -34,13 +35,29 @@ Java DataBase Connectivity
 - 执行获取 ResultSet
 - 解析返回的 ResultSet
 
-> tips
+
+> Tips
 - 基础的批量操作SQL ` pstmt.executeBatch(); //批量执行`
 - [在Java11中被移除了的 Derby](http://db.apache.org/derby/derby_comm.html)
 
 ## Statement
-主要分为 Statement 和 PrepareStatement  
-在使用层面主要的区别为前者直接执行原始SQL,存在SQL注入风险，后者是模板方式 例如 where a=? 
+主要分为 Statement 和 PrepareStatement, 在使用层面主要的区别为前者直接执行原始SQL,存在SQL注入风险, 后者是编译模板。
+
+### PrepareStatement
+> [Oracle: Using Prepared Statements](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
+
+依赖于具体数据库，常见的 [MySQL](https://dev.mysql.com/doc/refman/8.3/en/sql-prepared-statements.html) [PostgreSQL](https://jdbc.postgresql.org/documentation/server-prepare/)都有SQL编译功能
+
+> 权衡
+- [PrepareStatement的功与过](https://www.cnblogs.com/wangzhen3798/p/12206811.html)`最多的问题是 因为SQL只编译解析一次，执行计划的重用导致会忽略实际传入的参数对执行计划的影响`
+- [MyBatis select query slow](https://groups.google.com/g/mybatis-user/c/Wubq26QCWYo?pli=1)`应该是一样的问题编译SQL在不同执行时，执行计划变更导致的慢`
+    - [Query is slow with JDBC parameters, fast with concatenated SQL](https://dba.stackexchange.com/questions/231109/query-is-slow-with-jdbc-parameters-fast-with-concatenated-sql) `MSSQL`
+
+
+> 客户端参数调整
+- [Druid](https://github.com/alibaba/druid/blob/master/druid-spring-boot-starter/README_EN.md)`pool-prepared-statements` 连接池层面的缓存
+
+************************
 
 ## ResultSet
 > 仅为JDBC接口，具体行为细节来自实际数据库厂商提供的驱动

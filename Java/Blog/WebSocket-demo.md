@@ -16,15 +16,15 @@ categories:
         - 2.1.2. [服务端推送消息](#服务端推送消息)
     - 2.2. [SpringMVC](#springmvc)
     - 2.3. [Netty](#netty)
-    - 2.4. [Reactor Netty](#reactor-netty)
-    - 2.5. [Undertow](#undertow)
+        - 2.3.1. [Reactor Netty](#reactor-netty)
+    - 2.4. [Undertow](#undertow)
 - 3. [性能测试对比](#性能测试对比)
 - 4. [集群设计](#集群设计)
 - 5. [客户端](#客户端)
     - 5.1. [Java](#java)
     - 5.2. [JS](#js)
 
-💠 2024-03-26 12:21:15
+💠 2024-03-26 21:19:24
 ****************************************
 # Java中的Websocket
 JSR-356
@@ -181,10 +181,10 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 
 通过go开发的客户端压测`在多个Docker容器中运行（规避65535个数的端口限制）`, 16G电脑可以轻松发起和支撑百万级ws活跃连接。
 
-## Reactor Netty
+### Reactor Netty
 > [Official Doc](https://projectreactor.io/docs/netty/release/reference/index.html#http-server)
 
-> [Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/reactor/websocket)
+[Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/reactor/websocket) `设计和开发方式和传统Netty不一样，底层用的Netty`
 
 ## Undertow
 

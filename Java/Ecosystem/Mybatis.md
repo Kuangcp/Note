@@ -7,24 +7,25 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [Mybatis](#mybatis)
-    1. [流程控制](#流程控制)
-        1. [foreach 循环语句](#foreach-循环语句)
-            1. [collection](#collection)
-        1. [if 判断语句](#if-判断语句)
-        1. [choose 相当于switch语句](#choose-相当于switch语句)
-    1. [延迟加载](#延迟加载)
-    1. [缓存](#缓存)
-        1. [分布式缓存](#分布式缓存)
-    1. [Spring整合](#spring整合)
-1. [Tips](#tips)
+- 1. [Mybatis](#mybatis)
+    - 1.1. [流程控制](#流程控制)
+        - 1.1.1. [foreach 循环语句](#foreach-循环语句)
+            - 1.1.1.1. [collection](#collection)
+        - 1.1.2. [if 判断语句](#if-判断语句)
+        - 1.1.3. [choose 相当于switch语句](#choose-相当于switch语句)
+    - 1.2. [延迟加载](#延迟加载)
+    - 1.3. [缓存](#缓存)
+        - 1.3.1. [分布式缓存](#分布式缓存)
+    - 1.4. [Spring整合](#spring整合)
+- 2. [Tips](#tips)
 
-**目录 end**|_2020-05-17 16:13_|
+💠 2024-03-26 21:19:24
 ****************************************
 # Mybatis
 > [Official](https://mybatis.org/mybatis-3/)  
+> [mybatis-issues](https://github.com/harawata/mybatis-issues)`SSCCE: Short, Self Contained, Correct (Compilable), Example.`  
 
 > 一个灵活的数据库中间件框架
 > [参考: 如何在MyBatis中优雅的使用枚举](https://segmentfault.com/a/1190000010755321)
