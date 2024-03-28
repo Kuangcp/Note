@@ -47,7 +47,7 @@ categories:
 - 2. [Tips](#tips)
     - 2.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2024-03-04 17:26:01
+💠 2024-03-28 17:46:29
 ****************************************
 # Go
 
@@ -452,13 +452,11 @@ Msg struct{
 
 ```go
     import _ "net/http/pprof"
-
     go func() {
+        // 访问 http://ip:8899/debug/pprof/
         http.ListenAndServe("0.0.0.0:8899", nil)
     }()
 ```
-- 访问 http://ip:8899/debug/pprof/
-
 
 > [参考: 【实践】使用Go pprof做内存性能分析](https://cloud.tencent.com/developer/article/1489186)
 > [参考: 实战Go内存泄露](https://www.codercto.com/a/79118.html)
@@ -472,15 +470,15 @@ Msg struct{
 
 [Flame Graphs for Go With pprof](https://www.benburwell.com/posts/flame-graphs-for-go-with-pprof/) CPU火焰图
 
-> 手工方式1
+自动方式 **推荐**
+- `go tool pprof -raw 'http://localhost:8080/debug/pprof/profile?seconds=20'` 得到采样文件 *.pb.gz
+- `go tool pprof -http=: 采样文件` http可指定端口 例如 :2345
+- 访问 web 地址 菜单 View 下的 Flame Graph
+
+手工方式
 - 先 Clone https://github.com/brendangregg/FlameGraph 
 - `go tool pprof -raw -output=cpu.txt 'http://localhost:8080/debug/pprof/profile?seconds=20'`
 - `./stackcollapse-go.pl cpu.txt | flamegraph.pl > flame.svg`
-
-> 自动方式2
-- `go tool pprof -raw 'http://localhost:8080/debug/pprof/profile?seconds=20'` 得到采样文件 *.pb.gz
-- `go tool pprof -http=: 采样文件` http可指定端口 例如 :2345
-- 访问web地址View中的Flame Graph
 
 ************************
 

@@ -75,7 +75,7 @@ categories:
     - 8.2. [gitattributes](#gitattributes)
 - 9. [自定义插件](#自定义插件)
 
-💠 2024-03-19 17:02:09
+💠 2024-03-28 17:46:29
 ****************************************
 
 # Git基础
@@ -106,16 +106,16 @@ categories:
 
 # 基本命令
 
-> [git-tips](https://github.com/521xueweihan/git-tips) `学习Git的仓库`
-> [git权威指南的组织](https://github.com/gotgit) `完整书籍,以及相关测试题`
+> [git-tips](https://github.com/521xueweihan/git-tips) `学习Git的仓库`  
+> [git权威指南的组织](https://github.com/gotgit) `完整书籍,以及相关测试题`  
 
-> [使用原理视角看 Git](https://coding.net/help/doc/practice/git-principle.html)
-> [如何高效地使用 Git](https://zhuanlan.zhihu.com/p/30561653)
+> [使用原理视角看 Git](https://coding.net/help/doc/practice/git-principle.html)  
+> [如何高效地使用 Git](https://zhuanlan.zhihu.com/p/30561653)  
 
-> [参考: 重看”Linus Torvalds on Git”视频](http://www.techug.com/post/review-of-linus-torvalds-on-git.html)
-> [GUI客户端](https://git-scm.com/downloads/guisQ)
+> [参考: 重看”Linus Torvalds on Git”视频](http://www.techug.com/post/review-of-linus-torvalds-on-git.html)  
+> [GitHub Cheat Sheet](https://github.com/tiimgreen/github-cheat-sheet)  
 
-> 使用 `git help 加上命令`, 就能看到命令对应的文档
+> 使用 `git help 子命令`, 就能看到子命令对应的文档
 
 ## config
 
@@ -292,6 +292,7 @@ Shallow Clone： `git clone --depth n URL` 克隆的本地仓库
     - 特别注意 `git show HEAD~2^2` 表示取第前两次提交的第二个父提交， 如果这是一个merge节点的话，否则会报错
     - `第一父提交`是合并时所在分支，`第二父提交`是所合并的分支
   - 可借助 git reflog 命令的输出找到对应的位置 例如 `HEAD{10}`
+- 模糊搜索 `git show :/query`
 
 ************************
 
@@ -622,7 +623,6 @@ git log --oneline -S "search keyword" --source --all
 ************************
 
 ## branch
-
 > 查看所有参数 `git branch --help`
 
 - 列出所有分支(包含本地和远程) `-a --all`
@@ -636,6 +636,7 @@ git log --oneline -S "search keyword" --source --all
 - 删除分支 `-d 分支`
   - 如果该分支没有被完全合并, 就会提醒使用 `-D` 强制删除. 等价于 `--delete --force`
 - 设置当前分支跟踪的远程分支 `--set-upstream-to=<remote>/<branch> <branch>`
+- 查看当前分支合并/未合并的其他分支 `--merged` `--no-merged`
 
 ************************
 

@@ -32,7 +32,7 @@ categories:
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-03-14 19:33:47
+💠 2024-03-28 17:46:29
 ****************************************
 # JVM
 > JVM结构及设计
@@ -101,7 +101,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 
 - [初始和最大堆内存设置为一样的好处](https://gceasy.ycrash.cn/gc-recommendations/benefits-of-setting-initial-and-maximum-memory-size.jsp)
 
-> 快速确认进程内存配置  OpenJDK： ` `  OracleJDK ： `jmap -heap pid`
+> 快速确认进程内存配置： Arthas jvm命令。 OpenJDK： ` `  OracleJDK ： `jmap -heap pid`
 
 > [参考: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)  
 > [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`  
