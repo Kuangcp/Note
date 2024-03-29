@@ -17,7 +17,7 @@ categories:
     - 1.3. [Websocket](#websocket)
     - 1.4. [复合组件](#复合组件)
 
-💠 2024-03-26 21:42:30
+💠 2024-03-29 16:27:25
 ****************************************
 # Netty
 > [Trustlin](https://github.com/trustin) `Netty Mina 的作者`  
@@ -46,6 +46,8 @@ Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件�
 > [对于Netty的十一个疑问  ](https://news.cnblogs.com/n/205413/)  
 > [NettyServer与SpringBoot集成](https://segmentfault.com/a/1190000004919133)  
 > [Netty NIO 框架性能压测-短链接-对比Tomcat ](http://www.oschina.net/question/12_8749)
+
+> [Github: Netty Example](https://github.com/netty/netty/tree/4.1/example)
 
 ### 基础构件
 
