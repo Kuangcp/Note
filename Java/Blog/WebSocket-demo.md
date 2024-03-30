@@ -24,7 +24,7 @@ categories:
     - 5.1. [Java](#java)
     - 5.2. [JS](#js)
 
-💠 2024-03-26 21:19:24
+💠 2024-03-30 11:43:28
 ****************************************
 # Java中的Websocket
 JSR-356
@@ -206,9 +206,10 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 ************************
 
 > 结论 Netty性能更好，javax SpringMVC 实现成本更低
-- 得益于Netty的IO架构，Buffer设计机制，性能远胜于Tomcat实现。
-    - Tomcat 缓冲区实现为 `org.apache.tomcat.websocket.WsFrameBase#WsFrameBase` 使用的 ByteBuffer 直接按最大缓冲区分配容量**堆内存**，如果读取的数据超过了这个容量会报错
-        - 缺点：当某个ws业务偶尔会大数据收发，平时使用数据包很小（例如启动游戏时数据初始化和游戏过程）。比较难配置最大容量，配置太大则支撑连接数会下降，太小则无法支撑业务或降低业务体验（如果容量很小数据要多轮，游戏初始化的等待时间就会更长）
+- 得益于Netty的IO架构，Buffer设计机制，资源占用和吞吐量远胜于Tomcat实现。
+    - Tomcat 缓冲区实现为 `org.apache.tomcat.websocket.WsFrameBase#WsFrameBase` 使用的 ByteBuffer 直接按最大缓冲区分配容量 **堆内存**
+        - 缺点：当某个ws业务偶尔会大数据收发，平时使用数据包很小（例如启动游戏时数据初始化和游戏过程），比较难配置最大容量。
+        - 配置太大则支撑连接数会下降，配置太小读不到数据无法支撑业务 或 降低业务体验（如果容量很小数据要多轮，游戏初始化的等待时间就会更长）
     - Netty中使用到的是 池化内存`PooledByteBufAllocator` 和申请时扩缩容机制 `AdaptiveRecvByteBufAllocator` 大大降低了数据读取时占用的缓冲内存，平衡了缓存池利用率和数据读取效率 **堆外内存**
 - javax MVC 这两种底层实现都是Tomcat等Web容器，性能没太大区别，优势是开发成本很低
 
@@ -216,7 +217,7 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 - 硬件 i5-10400F CPU @ 2.90GHz 
 - JVM参数： -Xmx1000m
 - 服务端：消息逻辑为收到文本ping返回文本pong， 设置最大读缓存大小为64K
-- 客户端：连续创建连接，定时每分钟发送ping文本消息
+- 客户端：连续创建连接，定时每分钟发送ping文本
 
 > 结果
 - Javax 约2500个后OOM 
@@ -231,7 +232,7 @@ CPU占用都不高 0.5%以下波动
 
 | 连接数 | Javax | Mvc | Netty | Jetty |
 |:---|:---|:---|:---|:---|
-| 1000 | 占用300M |  占用300M |  |  |
+| 1000 | 占用300M | 占用300M |  |  |
 | 3000 | 占用850M | 占用850M | 占用150M内存 |  |
 
 ************************

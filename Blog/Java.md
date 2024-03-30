@@ -7,22 +7,22 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [Java](#java)
-    1. [社区](#社区)
-    1. [SE](#se)
-    1. [JavaFx](#javafx)
-    1. [爬虫](#爬虫)
-    1. [Springboot](#springboot)
-    1. [BuildTool](#buildtool)
-    1. [Test](#test)
-    1. [精彩系列](#精彩系列)
-        1. [码农翻身](#码农翻身)
-        1. [架构师](#架构师)
-    1. [Java语言讨论](#java语言讨论)
+- 1. [Java](#java)
+    - 1.1. [社区](#社区)
+    - 1.2. [SE](#se)
+    - 1.3. [JavaFx](#javafx)
+    - 1.4. [爬虫](#爬虫)
+    - 1.5. [Springboot](#springboot)
+    - 1.6. [BuildTool](#buildtool)
+    - 1.7. [Test](#test)
+    - 1.8. [精彩系列](#精彩系列)
+        - 1.8.1. [码农翻身](#码农翻身)
+        - 1.8.2. [架构师](#架构师)
+    - 1.9. [Java语言讨论](#java语言讨论)
 
-**目录 end**|_2020-06-16 10:25_|
+💠 2024-03-30 11:43:28
 ****************************************
 # Java
 > 和Java有关的博客和网页  
@@ -41,6 +41,8 @@ categories:
 
 - [oracle magazine](https://blogs.oracle.com/java/java-magazine-design-pattern)
 - [参考: 一个牛人给Java初学者的建议(必看篇)](https://www.jb51.net/article/113819.htm)  
+
+- [Fasterj](http://www.fasterj.com/index.shtml)
 
 ***************
 - [Java动态代理机制详解](http://blog.csdn.net/luanlouis/article/details/24589193) `博客很细致，深入原理`

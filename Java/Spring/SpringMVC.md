@@ -7,31 +7,30 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [SpringMVC](#springmvc)
-    1. [MVC思想](#mvc思想)
-        1. [原理](#原理)
-    1. [API](#api)
-1. [传统项目配置完整流程](#传统项目配置完整流程)
-    1. [配置依赖](#配置依赖)
-        1. [Maven](#maven)
-        1. [Gradle](#gradle)
-    1. [web.xml](#webxml)
-    1. [ApplicationContext.xml](#applicationcontextxml)
-        1. [全局异常处理](#全局异常处理)
-        1. [自定义错误页面](#自定义错误页面)
-        1. [中文编码问题](#中文编码问题)
-    1. [创建Controller](#创建controller)
-1. [使用](#使用)
-    1. [配置类型转换](#配置类型转换)
-    1. [拦截器](#拦截器)
-        1. [拦截器机制](#拦截器机制)
-        1. [自定义拦截器](#自定义拦截器)
-        1. [WebSocket](#websocket)
-1. [Q&A](#q&a)
+- 1. [SpringMVC](#springmvc)
+    - 1.1. [MVC思想](#mvc思想)
+        - 1.1.1. [原理](#原理)
+    - 1.2. [API](#api)
+- 2. [传统项目配置完整流程](#传统项目配置完整流程)
+    - 2.1. [配置依赖](#配置依赖)
+        - 2.1.1. [Maven](#maven)
+        - 2.1.2. [Gradle](#gradle)
+    - 2.2. [web.xml](#webxml)
+    - 2.3. [ApplicationContext.xml](#applicationcontextxml)
+        - 2.3.1. [全局异常处理](#全局异常处理)
+        - 2.3.2. [自定义错误页面](#自定义错误页面)
+        - 2.3.3. [中文编码问题](#中文编码问题)
+    - 2.4. [创建Controller](#创建controller)
+- 3. [使用](#使用)
+    - 3.1. [配置类型转换](#配置类型转换)
+    - 3.2. [拦截器](#拦截器)
+        - 3.2.1. [拦截器机制](#拦截器机制)
+        - 3.2.2. [自定义拦截器](#自定义拦截器)
+- 4. [Tips](#tips)
 
-**目录 end**|_2022-08-09 15:46_|
+💠 2024-03-30 11:43:28
 ****************************************
 
 # SpringMVC
@@ -48,6 +47,8 @@ categories:
 > 统一使用一个Servlet 进行请求的收发, 通过配置的URL对应的方法, 进行调用, 然后返回视图解析器进行渲染
 
 - 核心类是DispatchServlet 由它来接收各种请求
+    - 实现路由转发
+    - 全局异常处理
 - 发出request请求，到controller解析器，得到Model和view等的名字
 - 发送到controller执行，返回view名字
 - 发送到视图解析器

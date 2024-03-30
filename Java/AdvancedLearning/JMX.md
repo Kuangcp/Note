@@ -11,9 +11,11 @@ categories:
 - 1. [JMX](#jmx)
     - 1.1. [概念](#概念)
     - 1.2. [使用](#使用)
-        - 1.2.1. [JVM参数配置](#jvm参数配置)
+        - 1.2.1. [远程JMX JVM参数配置](#远程jmx-jvm参数配置)
+- 2. [MXBean](#mxbean)
+    - 2.1. [GarbageCollectorMXBean](#garbagecollectormxbean)
 
-💠 2024-03-06 19:03:54
+💠 2024-03-30 11:43:28
 ****************************************
 
 # JMX
@@ -38,7 +40,7 @@ categories:
 
 ## 使用
 
-### JVM参数配置
+### 远程JMX JVM参数配置
 
 | 参数 | 类型 | 描述 |
 |:---|:---|:---|
@@ -73,3 +75,15 @@ username2 pwd2
 username1 readonly
 username2 readwrite
 ```
+
+************************
+
+# MXBean 
+通过查看 `java.lang.management.PlatformManagedObject` 的子类可以快速预览所有的MXBean
+
+
+## GarbageCollectorMXBean
+> [Garbage Collection JMX Notifications](http://www.fasterj.com/articles/gcnotifs.shtml)
+
+通过监听 GarbageCollectorMXBean，应用可感知JVM GC动作。
+

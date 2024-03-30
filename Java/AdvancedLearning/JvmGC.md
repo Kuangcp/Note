@@ -20,6 +20,7 @@ categories:
         - 1.5.1. [标记清除算法](#标记清除算法)
         - 1.5.2. [复制算法](#复制算法)
         - 1.5.3. [标记整理算法](#标记整理算法)
+    - 1.6. [GC Callback](#gc-callback)
 - 2. [GC日志](#gc日志)
 - 3. [垃圾收集器](#垃圾收集器)
     - 3.1. [Serial](#serial)
@@ -33,7 +34,7 @@ categories:
     - 3.9. [ShenandoahGC](#shenandoahgc)
 - 4. [最佳实践](#最佳实践)
 
-💠 2024-03-29 16:27:25
+💠 2024-03-30 11:43:28
 ****************************************
 # GC
 > Garbage Collection
@@ -81,8 +82,8 @@ cms(JDK14中被移除)，epsilon，g1，parallel，serial，shenandoah，zgc
 - *Young GC*：当young gen 中的 eden gen 分配满的时候触发。注意young GC中有部分存活对象会晋升到old gen，所以young GC后old gen的占用量通常会有所升高。
 - *Full GC*：当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC
     - 因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC
-- 如果有 perm gen 的话，perm gen 内存空间不足时，也要触发一次 Full GC；
-- System.gc()、heap dump指定触发GC等，默认也是触发 Full GC。
+- `perm gen` / `MetaSpace` 内存空间不足时，也会触发一次 Full GC；
+- System.gc()、heap dump、jcmd pid GC.run 等指定触发GC时，默认触发 Full GC。
 
 > 默认GC
 
@@ -229,6 +230,12 @@ GC Roots 对象包含:
 
 适用于老年代
 
+
+************************
+
+## GC Callback
+> [Letting the Garbage Collector Do Callbacks](https://dzone.com/articles/letting-garbage-collector-do-c)  
+> [Garbage Collection JMX Notifications](http://www.fasterj.com/articles/gcnotifs.shtml)
 
 ************************
 
