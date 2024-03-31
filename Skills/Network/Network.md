@@ -64,12 +64,13 @@ categories:
         - 6.1.6. [Mars](#mars)
         - 6.1.7. [camilla](#camilla)
         - 6.1.8. [dev-proxy](#dev-proxy)
+        - 6.1.9. [ProxyPin](#proxypin)
     - 6.2. [Wireshark](#wireshark)
 - 7. [Tips](#tips)
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2024-03-26 21:42:30
+💠 2024-04-01 00:48:46
 ****************************************
 # 网络
 
@@ -577,6 +578,9 @@ function FindProxyForURL(url, host) {
 > [Github: dev-proxy](https://github.com/Kuangcp/GoBase/tree/master/toolbox/dev-proxy)`个人开发, 功能有: 代理转发, 抓包, 重放, 统计QPS`
 
 其实 xswitch 会更简单易用，但是不兼容firefox，即便使用debug方式安装上插件也会有报错和API不兼容. 而且只是浏览器级别的代理转发,不支持系统级
+
+### ProxyPin
+[ProxyPin](https://github.com/wanghongenpin/network_proxy_flutter)
 
 ************************
 

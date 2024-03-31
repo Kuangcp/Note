@@ -36,7 +36,7 @@ categories:
     - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-03-31 15:22:47
+💠 2024-04-01 00:48:46
 ****************************************
 
 # JVM 监控&诊断
@@ -190,6 +190,16 @@ categories:
 ************************
 
 ## jcmd
+> jcmd $pid command 
+
+- Compiler
+- GC `GC信息，触发GC，堆信息`
+- JFR 
+- JVMTI
+- ManagementAgent
+- System
+- Thread
+- VM 
 
 ## jhsdb
 > [jdk9 jhsdb](https://dzone.com/articles/jhsdb-a-new-tool-for-jdk-9) | [Oracle jhsdb](https://docs.oracle.com/javase/9/tools/jhsdb.htm)
