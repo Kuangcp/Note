@@ -36,7 +36,7 @@ categories:
     - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-03-25 17:00:35
+💠 2024-03-31 15:22:47
 ****************************************
 
 # JVM 监控&诊断
@@ -61,7 +61,7 @@ categories:
 - 执行类： `java [-options] class [args...]`
 - 执行包： `java [-options] -jar jarfile [args...]` 或 `java -jar [-options] jarfile [args...]`
 
-> 这些Java options都不会生效。
+> **注意** 这些Java options都*不会*生效。
 `java -jar jarfile [-options] [args...]`  
 `java -jar jarfile [args...] [-options]`  
 

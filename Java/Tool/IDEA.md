@@ -8,37 +8,36 @@ categories:
     - IDE
 ---
 
-**目录 start**
+💠
 
-1. [IDEA 使用笔记](#idea-使用笔记)
-    1. [基础概念](#基础概念)
-    1. [常用技巧](#常用技巧)
-        1. [Tomcat的使用](#tomcat的使用)
-        1. [导出为可运行JAR](#导出为可运行jar)
-        1. [Springboot热加载](#springboot热加载)
-        1. [Debug](#debug)
-    1. [常用配置](#常用配置)
-        1. [个人IDEA配置](#个人idea配置)
-    1. [IDEA快捷键](#idea快捷键)
-        1. [默认快捷键](#默认快捷键)
-        1. [个人习惯](#个人习惯)
-            1. [File](#file)
-            1. [Coding](#coding)
-            1. [Extract](#extract)
-            1. [Jump](#jump)
-            1. [Search](#search)
-            1. [View](#view)
-            1. [Setting](#setting)
-    1. [常用插件](#常用插件)
-        1. [HTTP Client](#http-client)
-    1. [启动配置](#启动配置)
-        1. [调优](#调优)
-    1. [Tips](#tips)
-        1. [使用项目外配置文件](#使用项目外配置文件)
-        1. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
-        1. [无法输入中文](#无法输入中文)
+- 1. [IDEA 使用笔记](#idea-使用笔记)
+    - 1.1. [基础概念](#基础概念)
+    - 1.2. [常用技巧](#常用技巧)
+        - 1.2.1. [Tomcat的使用](#tomcat的使用)
+        - 1.2.2. [导出为可运行JAR](#导出为可运行jar)
+        - 1.2.3. [Springboot热加载](#springboot热加载)
+        - 1.2.4. [Debug](#debug)
+    - 1.3. [常用配置](#常用配置)
+    - 1.4. [IDEA快捷键](#idea快捷键)
+        - 1.4.1. [默认快捷键](#默认快捷键)
+        - 1.4.2. [个人习惯](#个人习惯)
+            - 1.4.2.1. [File](#file)
+            - 1.4.2.2. [Coding](#coding)
+            - 1.4.2.3. [Extract](#extract)
+            - 1.4.2.4. [Jump](#jump)
+            - 1.4.2.5. [Search](#search)
+            - 1.4.2.6. [View](#view)
+            - 1.4.2.7. [Setting](#setting)
+    - 1.5. [常用插件](#常用插件)
+        - 1.5.1. [HTTP Client](#http-client)
+- 2. [启动配置](#启动配置)
+    - 2.1. [调优](#调优)
+- 3. [Tips](#tips)
+    - 3.1. [使用项目外配置文件](#使用项目外配置文件)
+    - 3.2. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
+    - 3.3. [无法输入中文](#无法输入中文)
 
-**目录 end**|_2023-07-18 13:37_|
+💠 2024-03-31 15:22:47
 ****************************************
 
 # IDEA 使用笔记
@@ -88,31 +87,36 @@ categories:
 - [在Intellij IDEA中使用Debug](http://www.cnblogs.com/chiangchou/p/idea-debug.html)
 
 _横排的八个按钮_
->- `Show Execution Point (Alt + F10)`：如果你的光标在其它行或其它页面，点击这个按钮可跳转到当前代码执行的行。  
->- `Step Over (F8)`：步过，一行一行地往下走，如果这一行上有方法不会进入方法。  
->- `Step Into (F7)`：步入，如果当前行有方法，可以进入方法内部，一般用于进入自定义方法内，不会进入官方类库的方法，如第25行的put方法。  
->- `Force Step Into (Alt + Shift + F7)`：强制步入，能进入任何方法，查看底层源码的时候可以用这个进入官方类库的方法。  
->- `Step Out (Shift + F8)`：步出，从步入的方法内退出到方法调用处，此时方法已执行完毕，只是还没有完成赋值。  
->- `Drop Frame (默认无)`：回退断点，后面章节详细说明。  
->- `Run to Cursor (Alt + F9)`：运行到光标处，你可以将光标定位到你需要查看的那一行，点击按钮,代码会运行至光标行，而不需要打断点。  
->- `Evaluate Expression (Alt + F8)`：计算表达式，后面章节详细说明。  
+| 操作 | 备注 |
+|:----|:----|
+|`Show Execution Point (Alt + F10)`|       如果你的光标在其它行或其它页面，点击这个按钮可跳转到当前代码执行的行。
+|`Step Over (F8)`                  |       步过，一行一行地往下走，如果这一行上有方法不会进入方法。
+|`Step Into (F7)`                  |       步入，如果当前行有方法，可以进入方法内部，一般用于进入自定义方法内，不会进入官方类库的方法，如第25行的put方法。
+|`Force Step Into (Alt + Shift + F7)`|     强制步入，能进入任何方法，查看底层源码的时候可以用这个进入官方类库的方法。
+|`Step Out (Shift + F8)`           |       步出，从步入的方法内退出到方法调用处，此时方法已执行完毕，只是还没有完成赋值。
+|`Drop Frame (默认无)`              |       回退断点，后面章节详细说明。
+|`Run to Cursor (Alt + F9)`        |       运行到光标处，你可以将光标定位到你需要查看的那一行，点击按钮,代码会运行至光标行，而不需要打断点。
+|`Evaluate Expression (Alt + F8)`  |       计算表达式，后面章节详细说明。  
 
 _竖向的七个按钮_
->- Rerun 'xxxx'：重新运行程序，会关闭服务后重新启动程序。  
->- Update 'tech' application (Ctrl + F5)：更新程序，一般在你的代码有改动后可执行这个功能。而这个功能对应的操作则是在服务配置里，如图2.3。  
->- Resume Program (F9)：恢复程序，比如，你在第20行和25行有两个断点，当前运行至第20行，按F9，则运行到下一个断点(即第25行)，再按F9，则运行完整个流程，因为后面已经没有断点了。  
->- Pause Program：暂停程序，启用Debug。目前没发现具体用法。  
->- Stop 'xxx' (Ctrl + F2)：连续按两下，关闭程序。有时候你会发现关闭服务再启动时，报端口被占用，这是因为没完全关闭服务的原因，你就需要查杀所有JVM进程了。  
->- View Breakpoints (Ctrl + Shift + F8)：查看所有断点，后面章节会涉及到。  
->- Mute Breakpoints：哑的断点，选择这个后，所有断点变为灰色，断点失效，按F9则可以直接运行完程序。再次点击，断点变为红色，有效。如果只想使某一个断点失效，可以在断点上右键取消Enabled  
+
+| 操作 | 备注 |
+|:----|:----|
+|`Rerun 'xxxx'`                         |重新运行程序，会关闭服务后重新启动程序。  |
+|`Update 'tech' application (Ctrl + F5)`|更新程序，一般在你的代码有改动后可执行这个功能。而这个功能对应的操作则是在服务配置里，如图2.3。  |
+|`Resume Program (F9)`                  |恢复程序，比如，你在第20行和25行有两个断点，当前运行至第20行，按F9，则运行到下一个断点(即第25行)，再按F9，则运行完整个流程，因为后面已经没有断点了。  |
+|`Pause Program`                        |暂停程序，挂起所有线程 |
+|`Stop 'xxx' (Ctrl + F2)`               |连续按两下，关闭程序。有时候你会发现关闭服务再启动时，报端口被占用，这是因为没完全关闭服务的原因，你就需要查杀所有JVM进程了。  |
+|`View Breakpoints (Ctrl + Shift + F8)` |查看所有断点，后面章节会涉及到。  |
+|`Mute Breakpoints`                     |哑的断点，选择这个后，所有断点变为灰色，断点失效，按F9则可以直接运行完程序。再次点击，断点变为红色，有效。如果只想使某一个断点失效，可以在断点上右键取消Enabled  |
 
 **个人思考**
 1. 当断点 F8 步过 到一行代码后, 这个方法没有抛出异常什么的, idea的面板上的那些属性, 断点什么的都没了, 只有一个 app is running , 这个意思就是这行代码还在执行中, 很有可能就是死循环...
     - 没有断点的时候, 也就是说这个死循环一直挂在这边, 不会被回收, 后面的代码也被阻塞了, 所以代码才诡异的不符合自己构想的调用链执行
 
 *************************
-## 常用配置
 
+## 常用配置
 **自定义类文件头**
 - 依次找到配置项: `File->settings->Editor->File and Code Templates->`
     - 如果自己要每个文件都单独设置头部, 就依次点击Class Interface Enum ...进行设置
@@ -133,8 +137,9 @@ _例如修改为如下_
 1. `$SELECTION$` surrounding with 功能标记
 1. `$END$` 光标结束位置
 
+************************
 
-### 个人IDEA配置
+> 个人IDEA配置
 - 代码字体 
     1. Fira Code Retina 14 0.9
     1. IBM Plex Mono SemiBold 15 0.9 
@@ -142,7 +147,10 @@ _例如修改为如下_
     1. Robot Mono Medium for Powershell 14 
     1. Cascadia Code
 
-- [Google java style](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml)
+[IDEA 自定义配置](https://github.com/Kuangcp/Configs/tree/master/IDEA)
+- colors 代码配色方案
+- keymaps 快捷键映射
+- temlates 代码模板
 
 ************************
 ## IDEA快捷键
@@ -344,24 +352,13 @@ _例如修改为如下_
 1. Alibaba Java Code Guideline
     - 阿里巴巴的代码规范插件
     - [《阿里巴巴Java开发规约》IDEA插件与Eclipse插件使用指南](https://zhuanlan.zhihu.com/p/30191998)
-
-1. TestMe
-    - 快速创建测试类
-
+1. TestMe 快速创建测试类
 1. TestNG 测试框架的集成
-
 1. lombok
     - 插件商店中搜索 lombok 安装重启idea即可
     - 配置 Build,Execution > Compiler > Annotation Processors 勾选上即可使用lombok的注解
-
 1. Jrebel 热部署插件, 需要付费
-    
-1. GoogleTranslation
-    - **Ctrl Alt 1** 快速翻译选中的单词和语句
-
-1. http-client
-    - https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html
-
+1. GoogleTranslation **Ctrl Alt 1** 快速翻译选中的单词和语句
 1. emacsIdeas 快捷键 跳转
 1. FindBugs
 1. Docker
@@ -369,21 +366,9 @@ _例如修改为如下_
 1. Maven helper
 1. Grep console 控制台搜索工具
 1. Code with me 远程协作插件
-
-### HTTP Client
-
-1. 登录设置 cookie
-    ```
-    POST http://localhost/coolsoftware/rest/authentication?login=username&password=1234
-    > {% client.global.set("yourVariable", response.headers.valueOf('Set-Cookie')); %}
-    
-    按实际情况来设置，例如 提取接口返回(JSON类型)中的 data 字段：
-    > {% client.global.set("token", response.body.data); %}
-    ```
-
+1. jclasslib Bytecode Viewer 字节码查看插件
 
 **************************
-
 > 内置插件
 - 为了节省内存, 禁用无关插件, 把插件列表中所有插件全看一遍
 
@@ -392,28 +377,41 @@ _例如修改为如下_
     1. cucumber java
     1. cucumber groovy
 
+### HTTP Client
+[Jetbrain Help](https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html)
+
+1. 登录设置 cookie
+    ```sh
+    POST http://localhost/coolsoftware/rest/authentication?login=username&password=1234
+    > {% client.global.set("yourVariable", response.headers.valueOf('Set-Cookie')); %}
+    
+    按实际情况来设置，例如 提取接口返回(JSON类型)中的 data 字段：
+    > {% client.global.set("token", response.body.data); %}
+    ```
+
 **********************
-## 启动配置
+
+# 启动配置
 > [官网文档](https://www.jetbrains.com/help/idea/increasing-memory-heap.html)
 > [IntelliJ IDEA 内存优化最佳实践](http://blog.oneapm.com/apm-tech/426.html)
 
-### 调优
+## 调优
 > [参考: 记一次idea性能调优](http://www.cnblogs.com/nevermorewang/p/10061377.html)  
 
 - 如果有 node_modules 等大量文件的目录 可以配置文件类型中 忽略这个指定目录的索引
 
 ************************
 
-## Tips
+# Tips
 
-### 使用项目外配置文件
+## 使用项目外配置文件
 IDEA中Java项目启动时Console里灰色被折叠的第一行是完整的Java命令，可以复制出classpath参数，在头部追加自定义目录，然后把这一长串填回到VM Options中
 就能实现自定义目录下的文件对IDEA中classpath下的同名文件替换
 
-### Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"
+## Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"
 1. Project Structure -> 找到 XXX 项目 右击 -> Add -> 选择 Groovy
 
-### 无法输入中文
+## 无法输入中文
 1. 替换IDEA自带的JDK为OracleJDK idea.sh 首行加 export IDEA_JDK=/home/kcp/Application/SDK/jdk1.8.0_211 `时灵时不灵`
 1. 添加配置fcitx时的配置 ~/.xpfrofile 时的内容到 idea.sh 里面 `有效`
     ```sh

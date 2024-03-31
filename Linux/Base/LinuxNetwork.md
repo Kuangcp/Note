@@ -62,7 +62,7 @@ categories:
     - 4.1. [查看进程占用的端口](#查看进程占用的端口)
     - 4.2. [网络问题排查](#网络问题排查)
 
-💠 2024-01-31 11:40:19
+💠 2024-03-31 15:22:47
 ****************************************
 # Linux网络管理
 ## 内核配置
@@ -414,7 +414,9 @@ _iproute-ss_
 
 - httpie `python`
 - curlie
+- [bat](https://github.com/astaxie/bat) `go`
 - [xh](https://github.com/ducaale/xh)`rust`
+- [hurl](https://github.com/Orange-OpenSource/hurl)`rust` IDEA中Http插件一样，按HTTP协议写脚本 hurl运行
 
 ************************
 
