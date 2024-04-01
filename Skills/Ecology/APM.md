@@ -12,7 +12,7 @@ categories:
     - 1.2. [Sentry](#sentry)
     - 1.3. [CAT](#cat)
 
-💠 2024-04-01 00:48:46
+💠 2024-04-01 18:38:23
 ****************************************
 # APM
 > Application performance Management
@@ -55,4 +55,4 @@ docker run --name oap-ui -p 8080:8080 -d -e SW_OAP_ADDRESS=http://192.168.7.54:1
 1. 实现日志框架的Appender基类，捕获Error到 `Cat.logError`，并手动声明该Appender到配置文件中
 2. 手动设置**静态**的默认全局异常处理`Thread.setDefaultUncaughtExceptionHandler`，防止异常漏捕获。
     - SpringBoot项目里发生机率较小,因为基本都有Controller层的全局异常处理，且大部分请和逻辑从web端进入。
-    - 只有自定义线程池等地方，未捕获运行时异常，才会走默认逻辑异常栈被输出到标准错误 System.err 中。
+    - 只有自定义线程池,Scheduler线程池,Junit等地方，未捕获运行时异常，才会走默认逻辑异常栈被输出到标准错误 System.err 中。
