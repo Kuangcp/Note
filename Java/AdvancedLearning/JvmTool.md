@@ -36,7 +36,7 @@ categories:
     - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-04-01 00:48:46
+💠 2024-04-01 11:51:20
 ****************************************
 
 # JVM 监控&诊断
@@ -230,7 +230,8 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 
 **********************
 
-> [vjtools](https://github.com/vipshop/vjtools)`唯品会`
+> [vjtools](https://github.com/vipshop/vjtools)`唯品会`  
+> [github.com/dingjs/javaagent](https://github.com/dingjs/javaagent)  
 
 ************************
 

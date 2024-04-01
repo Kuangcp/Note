@@ -24,10 +24,9 @@ categories:
 - 5. [反编译](#反编译)
     - 5.1. [JD](#jd)
     - 5.2. [Jad](#jad)
-- 6. [热更新](#热更新)
-- 7. [分析工具](#分析工具)
+- 6. [热部署](#热部署)
 
-💠 2024-02-22 14:23:17
+💠 2024-04-01 11:51:20
 ****************************************
 # 字节码以及类加载
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
@@ -167,8 +166,8 @@ WebApp类加载器就为了类隔离而违背了双亲委派模型，仅自身�
 
 **************************************
 
-# 热更新
-> 通过替换 class 实现不停机热更新, 但是还有有局限性, 类结构, 方法签名不能有改变
+# 热部署
+> 通过替换 class 实现不停机热更新
 
 > [Spring hot swapping](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-hotswapping.html)
 
@@ -187,7 +186,7 @@ WebApp类加载器就为了类隔离而违背了双亲委派模型，仅自身�
 [game-hot-update](https://github.com/youxijishu/game-hot-update) | [游戏服务器之Java热更新](https://www.cnblogs.com/wgslucky/p/9127681.html)
 [groovy hotswap demo](https://github.com/chaopeng/groovy-hotswap-demo)
 
+> [Java系列 | 远程热部署在美团的落地实践](https://tech.meituan.com/2022/03/17/java-hotswap-sonic.html)`未开源`
+
 ************************
 
-# 分析工具
-> [github.com/dingjs/javaagent](https://github.com/dingjs/javaagent)  

@@ -14,9 +14,10 @@ categories:
     - 2.1. [Oracle JDK](#oracle-jdk)
     - 2.2. [Oracle JRE](#oracle-jre)
 - 3. [OpenJDK](#openjdk)
-- 4. [Corretto](#corretto)
+- 4. [商业组织JDK](#商业组织jdk)
+    - 4.1. [Corretto](#corretto)
 
-💠 2024-01-24 11:21:13
+💠 2024-04-01 11:51:20
 ****************************************
 # JDK And JRE
 
@@ -76,5 +77,15 @@ Java11 开始, JDK内去掉了JRE模块
 
 > [Open JDK 11: Download](http://jdk.java.net/11/)
 
-# Corretto
+# 商业组织JDK
+## Corretto
 [aws corretto](https://aws.amazon.com/corretto/)
+
+
+************************
+
+- 阿里 Dragonwell
+- 华为 毕昇 JDK
+- 腾讯 Kona
+- 美团 MJDK
+    - [MJDK 如何实现压缩速率的 5 倍提升？](https://tech.meituan.com/2023/08/31/meituan-mjdk-mzlib.html)

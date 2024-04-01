@@ -24,7 +24,7 @@ categories:
     - 2.1. [Loom](#loom)
     - 2.2. [Quasar](#quasar)
 
-💠 2024-02-19 16:05:42
+💠 2024-04-01 11:51:20
 ****************************************
 # Java线程
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/thread/src/main/java/com/github/kuangcp)
@@ -89,6 +89,8 @@ _Thread类的target属性_
     - 提交任务时对run方法封装，先复制当前 TransmittableThreadLocal
     - 等待要调度执行时，重放复制的TransmittableThreadLocal值，从而实现父子线程间上下文的传递
     - **注意**：因为只是处理了TransmittableThreadLocal，所以其他ThreadLocal值需要做传递时，需要通过装饰器去手动复制，例如SpringSecurity的SecurityContextHolder， slf4j的MDC
+
+> [一次「找回」TraceId的问题分析与过程思考](https://tech.meituan.com/2023/04/20/traceid-google-dapper-mtrace.html)
 
 ************************
 ## Signal

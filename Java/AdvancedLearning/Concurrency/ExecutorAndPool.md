@@ -18,7 +18,7 @@ categories:
     - 2.1. [线程池 参数优化&监控](#线程池-参数优化&监控)
     - 2.2. [业务线程池](#业务线程池)
 
-💠 2024-03-19 10:33:48
+💠 2024-04-01 11:51:20
 ****************************************
 # 线程池
 
@@ -37,10 +37,14 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 ```
 
 ## 常用API
+
 - `execute`：用于将任务提交给执行器执行
-    - (对于会吞异常) 参数为Runable
-- `submit`：功能同`execute`，但该方法有返回值 
+    - 参数为Runable
+    - 无返回，对于调用方来说无法感知异常，但是异常栈会被输出到 System.err ，依然有迹可查
+- `submit`：功能同`execute`，但该方法可以返回值或抛出异常 Future 对象
     - 参数为Callable
+    - 返回的Future对象如果不调用get方法，任务的异常栈在系统中**没有任何痕迹**
+
 - `shutdown()`：用于关闭执行器资源，执行器会拒绝后面的任务提交，并等待线程池中的任务结束后关闭资源
     - 应用关闭前尽量显式调用该方法关闭所有的线程池，避免资源泄漏
 - `shutdownNow()`：立即关闭执行器，不再执行线程池中等待执行的任务，正在执行的任务将会继续
@@ -48,6 +52,10 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 - `awaitTermination(long timeout, TimeUnit unit)`：该方法会阻塞调用执行器的线程，并等待执行器内任务完成会到达指定的时间
 - `invokeAny(Collection<? extends Callable<T>> tasks)`：该方法返回到值为第一个完成的任务返回的值
 - `invokeAll(Collection<? extends Callable<T>> tasks)`：该任务的返回值为所有任务完成的结果
+
+> 注意
+
+上述的 execute 和 submit 行为只针对 `ThreadPoolExecutor`. 对于 ScheduledThreadPoolExecutor 来说，execute行为不一样， execute提交的任务 抛出异常时也是**没有任何痕迹**  
 
 ## 分支合并框架 Fork/Join
 > [Fork Join](/Java/AdvancedLearning/Concurrency/ForkAndJoin.md)
