@@ -15,7 +15,7 @@ categories:
 - 2. [MXBean](#mxbean)
     - 2.1. [GarbageCollectorMXBean](#garbagecollectormxbean)
 
-💠 2024-03-31 15:22:47
+💠 2024-04-02 21:33:05
 ****************************************
 
 # JMX
@@ -42,6 +42,7 @@ categories:
 > [JMXTerm](https://www.baeldung.com/java-jmxterm-external-debugging)
 
 ### 远程JMX
+JVM启动时追加参数启用，也可以对已存在的JVM进程启用 `jcmd $pid ManagementAgent.start [options]` [jcmd help](https://docs.oracle.com/en/java/javase/17/docs/specs/man/jcmd.html) 
 
 | 参数 | 类型 | 描述 |
 |:---|:---|:---|

@@ -91,8 +91,8 @@
 - [coderzh-hugo-blog ](https://github.com/coderzh/coderzh-hugo-blog)
 - [Java-Summarize](https://github.com/zaiyunduan123/Java-Summarize)
 
-## 
 - [skill-map](https://github.com/TeamStuQ/skill-map)
+- [代码安全指南](https://github.com/Tencent/secguide)
 
 ## Linux 
 - [judasn](https://github.com/judasn/hexo-blog) | [Javaer眼中的Linux](https://github.com/judasn/Linux-Tutorial)

@@ -36,7 +36,7 @@ categories:
     - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-04-01 11:51:20
+💠 2024-04-02 21:33:05
 ****************************************
 
 # JVM 监控&诊断
@@ -186,20 +186,28 @@ categories:
 - [Dynamic Attach Mechanism](http://openjdk.java.net/groups/hotspot/docs/Serviceability.html#battach)
 - [HotSpot Serviceability Agent](http://openjdk.java.net/groups/hotspot/docs/Serviceability.html#bsa)
 
-
 ************************
 
 ## jcmd
-> jcmd $pid command 
+> jcmd $pid command  [Oracle jcmd doc](https://docs.oracle.com/en/java/javase/17/docs/specs/man/jcmd.html)
 
 - Compiler
 - GC `GC信息，触发GC，堆信息`
+    - GC.heap_info 
+    - GC.class_histogram -all 类实例统计 
+    - GC.heap_dump -all filename
+    - GC.run 触发一次Full GC
+    - 参数：
+        - `-all` 包含不可达对象 **不会触发 Full GC**
 - JFR 
+    - JFR.start 会输出提示信息
+    - JFR.stop name=1 filename=now.jfr `name`从start提示信息中获取
 - JVMTI
 - ManagementAgent
 - System
 - Thread
 - VM 
+    - VM.command_line
 
 ## jhsdb
 > [jdk9 jhsdb](https://dzone.com/articles/jhsdb-a-new-tool-for-jdk-9) | [Oracle jhsdb](https://docs.oracle.com/javase/9/tools/jhsdb.htm)

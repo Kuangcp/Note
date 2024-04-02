@@ -44,7 +44,7 @@ categories:
             - 1.13.3.2. [Gradle结合Docker](#gradle结合docker)
         - 1.13.4. [热部署](#热部署)
 
-💠 2024-02-19 16:05:42
+💠 2024-04-02 21:33:05
 ****************************************
 # SpringBoot
 > [首页](https://spring.io/projects/spring-boot#learn)
@@ -447,3 +447,8 @@ private Connector createHttpConnector() {
 
 ### 热部署
 > [参考: SpringBoot热部署](https://nilzzzz.github.io/2017/11/SpringBoot1/)
+
+> IDE调试时： getBean() 报错cannot be cast to class  is in unnamed module of loader 'app'
+[Spring Boot DevTools - RestartClassLoader problem](https://stackoverflow.com/questions/69990029/spring-boot-devtools-restartclassloader-problem)  
+spring boot dev tools 实现的 RestarterClassLoader类加载器 和 AppClassLoader 共存，会有一些Bean在Restart类加载器里  
+方法： `-Dspring.devtools.restart.enabled=false` 禁用或者移除依赖
