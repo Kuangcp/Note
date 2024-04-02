@@ -12,10 +12,11 @@ categories:
     - 1.1. [概念](#概念)
     - 1.2. [使用](#使用)
         - 1.2.1. [远程JMX](#远程jmx)
+        - 1.2.2. [工具](#工具)
 - 2. [MXBean](#mxbean)
     - 2.1. [GarbageCollectorMXBean](#garbagecollectormxbean)
 
-💠 2024-04-02 21:33:05
+💠 2024-04-02 22:16:08
 ****************************************
 
 # JMX
@@ -77,6 +78,9 @@ username2 pwd2
 username1 readonly
 username2 readwrite
 ```
+
+### 工具
+[Prometheus JMX Exporter](https://github.com/prometheus/jmx_exporter)
 
 ************************
 

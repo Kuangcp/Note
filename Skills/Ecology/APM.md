@@ -11,13 +11,13 @@ categories:
     - 1.1. [SkyWalking](#skywalking)
     - 1.2. [Sentry](#sentry)
     - 1.3. [CAT](#cat)
+- 2. [Monitoring](#monitoring)
+    - 2.1. [Prometheus](#prometheus)
 
-💠 2024-04-01 18:38:23
+💠 2024-04-02 22:16:08
 ****************************************
 # APM
-> Application performance Management
-
-SkyWalking、Zipkin、Pinpoint、CAT
+> Application performance Management `分布式链路追踪，技术或业务指标监控告警`
 
 > [Github: APM](https://github.com/topics/apm)
 
@@ -32,6 +32,8 @@ docker run --name oap-ui -p 8080:8080 -d -e SW_OAP_ADDRESS=http://192.168.7.54:1
 ```
 
 应用启动 java -javaagent:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=xxxtest -Dskywalking.collector.backend_service=127.0.0.1:11800 -jar application.jar
+
+************************
 
 ## Sentry 
 [Github](https://github.com/getsentry/sentry)
@@ -56,3 +58,13 @@ docker run --name oap-ui -p 8080:8080 -d -e SW_OAP_ADDRESS=http://192.168.7.54:1
 2. 手动设置**静态**的默认全局异常处理`Thread.setDefaultUncaughtExceptionHandler`，防止异常漏捕获。
     - SpringBoot项目里发生机率较小,因为基本都有Controller层的全局异常处理，且大部分请和逻辑从web端进入。
     - 只有自定义线程池,Scheduler线程池,Junit等地方，未捕获运行时异常，才会走默认逻辑异常栈被输出到标准错误 System.err 中。
+
+************************
+
+# Monitoring
+技术指标监控告警，离业务指标比较远，例如 主机，数据库，容器，网络
+
+## Prometheus
+[Github: Prometheus](https://github.com/prometheus/prometheus)
+
+通常和 Grafana 结合使用
