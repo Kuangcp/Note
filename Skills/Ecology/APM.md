@@ -14,7 +14,7 @@ categories:
 - 2. [Monitoring](#monitoring)
     - 2.1. [Prometheus](#prometheus)
 
-💠 2024-04-02 22:16:08
+💠 2024-04-03 17:34:29
 ****************************************
 # APM
 > Application performance Management `分布式链路追踪，技术或业务指标监控告警`
@@ -68,3 +68,9 @@ docker run --name oap-ui -p 8080:8080 -d -e SW_OAP_ADDRESS=http://192.168.7.54:1
 [Github: Prometheus](https://github.com/prometheus/prometheus)
 
 通常和 Grafana 结合使用
+
+> [Prometheus+Grafana监控SpringBoot项目JVM信息](https://developer.aliyun.com/article/890169) `JMX Exporter`
+> [JVM 接入 Prometheus](https://cloud.tencent.com/document/product/1416/56032)`手动声明HTTP`
+
+> [Prometheus running on Kubernetes ](https://github.com/prometheus-operator/kube-prometheus)
+
