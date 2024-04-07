@@ -7,24 +7,23 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [JDK中的集合](#jdk中的集合)
-    1. [集合继承和实现关系](#集合继承和实现关系)
-    1. [Iterator](#iterator)
-        1. [规避 ConcurrentModificationException](#规避-concurrentmodificationexception)
-    1. [Map](#map)
-        1. [HashMap](#hashmap)
-        1. [ConcurrentHashMap](#concurrenthashmap)
-        1. [TreeMap](#treemap)
-    1. [List](#list)
-    1. [Set](#set)
-1. [第三方开源集合框架](#第三方开源集合框架)
-    1. [fastutil](#fastutil)
-    1. [Koloboke](#koloboke)
-    1. [Trove](#trove)
+- 1. [JDK中的集合](#jdk中的集合)
+    - 1.1. [集合继承和实现关系](#集合继承和实现关系)
+    - 1.2. [Iterator](#iterator)
+        - 1.2.1. [规避 ConcurrentModificationException](#规避-concurrentmodificationexception)
+    - 1.3. [Map](#map)
+        - 1.3.1. [HashMap](#hashmap)
+        - 1.3.2. [TreeMap](#treemap)
+    - 1.4. [List](#list)
+    - 1.5. [Set](#set)
+- 2. [第三方开源集合框架](#第三方开源集合框架)
+    - 2.1. [fastutil](#fastutil)
+    - 2.2. [Koloboke](#koloboke)
+    - 2.3. [Trove](#trove)
 
-**目录 end**|_2023-07-28 15:22_|
+💠 2024-04-07 15:54:52
 ****************************************
 # JDK中的集合
 
@@ -66,9 +65,6 @@ categories:
 > [参考: Java Map 集合类简介 ](https://www.oracle.com/technetwork/cn/articles/maps1-100947-zhs.html)
 
 ### HashMap
-
-### ConcurrentHashMap
-> 避免 ConcurrentModificationException 
 
 ### TreeMap
 > [参考: TreeMap 红黑树算法实现](https://www.ibm.com/developerworks/cn/java/j-lo-tree/index.html)

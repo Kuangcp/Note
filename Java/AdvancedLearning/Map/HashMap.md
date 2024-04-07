@@ -6,23 +6,23 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [HashMap](#hashmap)
-    1. [结构](#结构)
-    1. [构造函数](#构造函数)
-    1. [put](#put)
-    1. [putAll](#putall)
-    1. [resize](#resize)
-    1. [get](#get)
-    1. [remove](#remove)
-    1. [HashMap 与 HashTable](#hashmap-与-hashtable)
-    1. [总结](#总结)
-1. [Tips](#tips)
-    1. [扩容死循环问题](#扩容死循环问题)
-    1. [栈溢出问题](#栈溢出问题)
+- 1. [HashMap](#hashmap)
+    - 1.1. [结构](#结构)
+    - 1.2. [构造函数](#构造函数)
+    - 1.3. [put](#put)
+    - 1.4. [putAll](#putall)
+    - 1.5. [resize](#resize)
+    - 1.6. [get](#get)
+    - 1.7. [remove](#remove)
+    - 1.8. [HashMap 与 HashTable](#hashmap-与-hashtable)
+    - 1.9. [总结](#总结)
+- 2. [Tips](#tips)
+    - 2.1. [扩容死循环问题](#扩容死循环问题)
+    - 2.2. [栈溢出问题](#栈溢出问题)
 
-**目录 end**|_2020-10-28 20:53_|
+💠 2024-04-07 15:54:52
 ****************************************
 # HashMap 
 > [API: HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)
@@ -98,7 +98,7 @@ HashMap的数据结构是 数组(称为bucket)加单链表 (数组是只放一�
 - HashMap 和 HashTable 的 hash 值是不一样的，所在的桶的计算方式也不一样。HashMap 的桶是通过 & 运算符来实现 (tab.length - 1) & hash，
     - 而 HashTable 是通过取余计算，速度更慢（hash & 0x7FFFFFFF) % tab.length （当 tab.length = 2^n 时，因为 HashMap 的数组长度正好都是 2^n，所以两者是等价的）
 - HashTable 的 synchronized 是方法级别的，也就是它是在 put() 方法上加的，这也就是说任何一个 put 操作都会使用同一个锁，而实际上不同索引上的元素之间彼此操作不会受到影响；
-    - ConcurrentHashMap 相当于是 HashTable 的升级，它也是线程安全的，而且只有在同一个桶上加锁，也就是说只有在多个线程操作同一个数组索引的时候才加锁，极大提高了效率。
+    - ConcurrentHashMap 相当于是 HashTable 的升级，它也是线程安全的，只有在多个线程操作同一个数组索引的时候才出现锁等待，降低了锁竞争情况
 
 ## 总结
 1. HashMap是一种散列表，采用（数组 + 链表 + 红黑树）的存储结构；
