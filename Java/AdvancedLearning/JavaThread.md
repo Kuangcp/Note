@@ -11,20 +11,19 @@ categories:
 
 - 1. [Java线程](#java线程)
     - 1.1. [基础](#基础)
-    - 1.2. [线程的意义](#线程的意义)
-    - 1.3. [线程的生命周期](#线程的生命周期)
-        - 1.3.1. [创建](#创建)
-        - 1.3.2. [控制](#控制)
-        - 1.3.3. [销毁](#销毁)
-    - 1.4. [ThreadLocal](#threadlocal)
-    - 1.5. [Signal](#signal)
-        - 1.5.1. [Hook](#hook)
-        - 1.5.2. [优雅关机](#优雅关机)
+    - 1.2. [线程的生命周期](#线程的生命周期)
+        - 1.2.1. [创建](#创建)
+        - 1.2.2. [控制](#控制)
+        - 1.2.3. [销毁](#销毁)
+    - 1.3. [ThreadLocal](#threadlocal)
+    - 1.4. [Signal](#signal)
+        - 1.4.1. [Hook](#hook)
+        - 1.4.2. [优雅关机](#优雅关机)
 - 2. [协程](#协程)
     - 2.1. [Loom](#loom)
     - 2.2. [Quasar](#quasar)
 
-💠 2024-04-01 11:51:20
+💠 2024-04-08 19:45:11
 ****************************************
 # Java线程
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/thread/src/main/java/com/github/kuangcp)
@@ -34,17 +33,15 @@ categories:
 
 > 线程优先级： 多个线程同时运行时,由线程调度器来决定哪些线程运行,哪些等待以及线程切换的时间点. 由于各个操作系统的线程调度器的实现各不相同, 所以依赖JDK来设置线程优先级策略是错误和平台不可移植性的.
 
-## 线程的意义
 ## 线程的生命周期
 > [参考博客](https://segmentfault.com/a/1190000005006079) | [Blog: 线程详解](http://www.cnblogs.com/riskyer/p/3263032.html) | [参考Java-learning仓库](https://github.com/brianway/java-learning)
 
-1. 初始
-1. 可运行
-1. 休眠
-    - 等锁的 block
-    - 等条件的 waiting
-    - 时间限制 timed_waitting
-1. 终止
+- NEW
+- RUNNABLE
+- BLOCKED
+- WAITING
+- TIMED_WAITING
+- TERMINATED
 
 ### 创建
 - 创建线程有三种创建方式： 继承，实现接口，实例化匿名内部方法。-> [示例代码](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/main/java/thread/HowToCreateThread.java)
@@ -75,7 +72,17 @@ _Thread类的target属性_
 ### 控制
 - 当调用 `join()` 时，`当前调用线程`将会阻塞，直到`目标线程`完成为止。 
 
+Object.wait 转为两种Waiting状态
+
+LockSupport.park
+
+[Can LockSupport.park() replace Object.wait()?](https://stackoverflow.com/questions/39415636/can-locksupport-park-replace-object-wait)
+
+[thread states](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/tooldescr034.html)
+
 ### 销毁
+
+
 
 ************************
 
