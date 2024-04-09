@@ -34,7 +34,7 @@ categories:
     - 3.9. [ShenandoahGC](#shenandoahgc)
 - 4. [最佳实践](#最佳实践)
 
-💠 2024-04-01 18:38:23
+💠 2024-04-09 20:45:45
 ****************************************
 # GC
 > Garbage Collection
@@ -452,16 +452,16 @@ Young GC发生的时机大家都知道，那什么时候发生Mixed GC呢？其�
 
 | 参数 | 描述 |
 |:----|:----|
-| -XX:MaxGCPauseMillis=200  |  	设置最大停顿时间值。默认值为 200 毫秒。|
-| -XX:G1HeapRegionSize=n  |  	设置 G1 区域大小。值必须为 2 的 N 次幂，如：256、512、1024...范围是 1MB 至 32MB。|
-| -XX:GCTimeRatio=12  |  	    设置应用于 GC 的总目标时间与处理客户事务的总时间。确定目标 GC 时间的实际公式为 [1 / (1 + GCTimeRatio)]。默认值 12 表示目标 GC 时间为 [1 / (1 + 12)]，即 7.69%。这意味着 JVM 可将 7.69％ 的时间用于 GC 活动，其余 92.3％ 用于处理客户活动。|
-| -XX:ParallelGCThreads=n  |  	设置 Stop-the-world 工作线程的数量。如果逻辑处理器的数量小于或等于 8 个，则将 n 值设置为逻辑处理器的数量。如果您的服务器有 5 个逻辑处理器，则将 n 设为 5.如果有 8 个以上的逻辑处理器，请将该值设置为逻辑处理器数量的大约 5/8。这种设置在大多数情况下都有效，除了较大规模的 SPARC 系统——其中 n 值可以大约是逻辑处理器数的 5/16。|
-| -XX:ConcGCThreads=n  |  	    设置并行标记线程的数量。将 n 值设为并行垃圾回收线程（ParallelGCThreads）数的大约 1/4。|
-| -XX:InitiatingHeapOccupancyPercent=45  |  	当堆内存使用率超过此百分比时会触发 GC 标记周期。默认值为 45%。|
-| -XX:G1NewSizePercent=5  |  	设置用作 Young 代空间大小的最低堆内存百分比。默认值为 Java 堆内存的 5%。|
-| -XX:G1MaxNewSizePercent=60  | 设置用作 Young 代空间大小的最高堆内存百分比。默认值为 Java 堆内存的 60%。|
-| -XX:G1OldCSetRegionThresholdPercent=10  |  	设置混合垃圾回收周期中要收集的 Old 区域数量上限。默认为 Java 堆内存的 10%。|
-| -XX:G1ReservePercent=10  |  	设置需保留的内存百分比。默认为 10%。G1 垃圾回收器会始终尝试保留 10% 的堆内存空间空闲。|
+| `-XX:MaxGCPauseMillis=200`  |  	设置最大停顿时间值。默认值为 200 毫秒。|
+| `-XX:G1HeapRegionSize=n`  |  	设置 G1 区域大小。值必须为 2 的 N 次幂，如：256、512、1024...范围是 1MB 至 32MB。|
+| `-XX:GCTimeRatio=12`  |  	    设置应用于 GC 的总目标时间与处理客户事务的总时间。确定目标 GC 时间的实际公式为 [1 / (1 + GCTimeRatio)]。默认值 12 表示目标 GC 时间为 [1 / (1 + 12)]，即 7.69%。这意味着 JVM 可将 7.69％ 的时间用于 GC 活动，其余 92.3％ 用于处理客户活动。|
+| `-XX:ParallelGCThreads=n`  |  	设置 Stop-the-world 工作线程的数量。如果逻辑处理器的数量M小于或等于 8 个，则将 n 值设置为M。如果M为5，则将 n 设为 5.如果M为 8 个以上，请将该值设置为大约 5/8 * M。这种设置在大多数情况下都有效，除了较大规模的 SPARC 系统——其中 n 值可以大约是 5/16 * M。|
+| `-XX:ConcGCThreads=n`  |  	    设置并行标记线程的数量。将 n 值设为并行垃圾回收线程（ParallelGCThreads）数的大约 1/4。|
+| `-XX:InitiatingHeapOccupancyPercent=45`  |  	当堆内存使用率超过此百分比时会触发 GC 标记周期。默认值为 45%。|
+| `-XX:G1NewSizePercent=5`  |  	设置用作 Young 代空间大小的最低堆内存百分比。默认值为 Java 堆内存的 5%。|
+| `-XX:G1MaxNewSizePercent=60`  | 设置用作 Young 代空间大小的最高堆内存百分比。默认值为 Java 堆内存的 60%。|
+| `-XX:G1OldCSetRegionThresholdPercent=10`  |  	设置混合垃圾回收周期中要收集的 Old 区域数量上限。默认为 Java 堆内存的 10%。|
+| `-XX:G1ReservePercent=10`  |  	设置需保留的内存百分比。默认为 10%。G1 垃圾回收器会始终尝试保留 10% 的堆内存空间空闲。|
 
 ParallelGCThreads参数使用默认值就可以了。但是在JRE版本1.8.0_131之前，JVM无法感知Docker的CPU限制，会使用宿主机的逻辑核数计算默认值。远超过了容器的核数, 过多的GC线程数抢占了业务线程的CPU时间，加上线程切换的开销，较大的降低了吞吐量。因此JRE 1.8.0_131之前的版本，未明确指定ParallelGCThreads会有较大的风险。
 

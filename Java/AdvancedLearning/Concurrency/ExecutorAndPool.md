@@ -10,7 +10,7 @@ categories:
 - 1. [线程池](#线程池)
     - 1.1. [常用API](#常用api)
     - 1.2. [分支合并框架 Fork/Join](#分支合并框架-forkjoin)
-    - 1.3. [ScheduledThreadPoolExecutor](#scheduledthreadpoolexecutor)
+    - 1.3. [ScheduledThreadPoolExecutor STPE](#scheduledthreadpoolexecutor-stpe)
     - 1.4. [Executor框架](#executor框架)
     - 1.5. [Spring](#spring)
         - 1.5.1. [ThreadPoolTaskExecutor](#threadpooltaskexecutor)
@@ -18,7 +18,7 @@ categories:
     - 2.1. [线程池 参数优化&监控](#线程池-参数优化&监控)
     - 2.2. [业务线程池](#业务线程池)
 
-💠 2024-04-01 11:51:20
+💠 2024-04-09 20:45:45
 ****************************************
 # 线程池
 
@@ -58,15 +58,26 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 上述的 execute 和 submit 行为只针对 `ThreadPoolExecutor`. 对于 ScheduledThreadPoolExecutor 来说，execute行为不一样， execute提交的任务 抛出异常时也是**没有任何痕迹**  
 
 ## 分支合并框架 Fork/Join
-> [Fork Join](/Java/AdvancedLearning/Concurrency/ForkAndJoin.md)
+> [Note： Fork Join](/Java/AdvancedLearning/Concurrency/ForkAndJoin.md)
 
-## ScheduledThreadPoolExecutor
-简称 STPE 线程池类中很重要的类
-
+## ScheduledThreadPoolExecutor STPE
 - 线程池的大小可以预定义， 也可自适应
 - 所安排的任务可以定期执行，也可只运行一次
-- STPE扩展了 ThreadPoolExecutor 类，很相似但不具备定期调度能力
-    - STPE和并发包里的类结合使用是常见的模式之一
+- STPE 扩展了 ThreadPoolExecutor 类，很相似但不具备定期调度能力
+    - STPE 和并发包里的类结合使用是常见的模式之一
+
+> 核心API： 提交任务
+- `schedule(Runnable command, long delay, TimeUnit unit)`
+- `schedule(Callable<V> callable, long delay, TimeUnit unit)`
+- `scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit)`
+    - 不管上一次Runnable执行结束的时间，总是以固定延迟时间执行 即 上一个Runnable执行开始时候 + 延时时间 = 下一个Runnable执行的时间点
+- `scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit)`
+    - 当上一个Runnable执行结束后+固定延迟 = 下一个Runnable执行的时间点
+
+> 如何实现调度: [ScheduledThreadPoolExecutor实现原理](https://juejin.cn/post/7035415187783942152) | [验证单元测试](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/thread/schdule/SchedulerPoolTest.java)
+- 核心依赖 DelayedWorkQueue 实现延迟调度
+    - 全部线程繁忙时，调度会发生什么问题？ 
+
 
 ************************
 
