@@ -20,11 +20,12 @@ categories:
     - 1.5. [访问图形化](#访问图形化)
     - 1.6. [SSH登录并执行一系列命令](#ssh登录并执行一系列命令)
         - 1.6.1. [通过SSH执行命令时的环境变量问题](#通过ssh执行命令时的环境变量问题)
+    - 1.7. [SSH Tunnel](#ssh-tunnel)
 - 2. [Tips](#tips)
     - 2.1. [保持SSH连接稳定](#保持ssh连接稳定)
 - 3. [Mosh](#mosh)
 
-💠 2024-04-04 13:59:01
+💠 2024-04-09 21:57:44
 ****************************************
 # SSH
 > Secure Shell 
@@ -175,6 +176,17 @@ _config_
 详细在于不同的shell中 Linux 环境变量加载的不同
 
 - 简单方式: 手动加载环境变量 `ssh name@host "source ~/.bashrc && java -version"`
+
+## SSH Tunnel 
+>  [Wiki: Tunneling protocol](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling)
+
+简单来说就是可以建立一个双工通道，实现内网穿透，正向代理
+
+> [Is it normal to use an SSH tunnel to access a production database? ](https://www.reddit.com/r/learnrust/comments/11poo5h/is_it_normal_to_use_an_ssh_tunnel_to_access_a/)  
+> [How does reverse SSH tunneling work?](https://unix.stackexchange.com/questions/46235/how-does-reverse-ssh-tunneling-work/118650#118650)  
+
+- 本地转发 ` ssh localUser@localHost -L  localHost:localPort:remoteHost:remotePort `
+    - 在localHost上启动localPort, 当其他客户端连到localPort时，tcp流量会转发到remotePort上去
 
 ************************
 
