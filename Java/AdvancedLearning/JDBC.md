@@ -17,7 +17,7 @@ categories:
     - 2.1. [MySQL](#mysql)
 - 3. [Tips](#tips)
 
-💠 2024-03-26 21:19:24
+💠 2024-04-10 20:47:19
 ****************************************
 # JDBC
 Java DataBase Connectivity
@@ -142,3 +142,6 @@ private void fetchBatchWithDataResource(DataSource ds, String sql, String where,
 # Tips
 > [mysql-connector-java 插入 utf8mb4 字符失败问题处理分析](https://blog.arstercz.com/mysql-connector-java-%e6%8f%92%e5%85%a5-utf8mb4-%e5%ad%97%e7%ac%a6%e5%a4%b1%e8%b4%a5%e9%97%ae%e9%a2%98%e5%a4%84%e7%90%86%e5%88%86%e6%9e%90/)
 
+> 批量插入性能优化
+- 关闭事务，或者手动管理事务 循环插入前开启，插入完一批再提交
+- 多条 `insert values()` 改为一条 `insert values (),()`
