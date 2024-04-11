@@ -10,13 +10,14 @@ categories:
 - 1. [Clickhouse](#clickhouse)
     - 1.1. [数据类型](#数据类型)
         - 1.1.1. [bitmap](#bitmap)
-    - 1.2. [使用](#使用)
-        - 1.2.1. [Java JDBC](#java-jdbc)
-    - 1.3. [Explain](#explain)
-- 2. [Tips](#tips)
-    - 2.1. [分布式表业务使用实践](#分布式表业务使用实践)
+    - 1.2. [数据库引擎](#数据库引擎)
+- 2. [使用](#使用)
+    - 2.1. [Java JDBC](#java-jdbc)
+- 3. [Explain](#explain)
+- 4. [Tips](#tips)
+    - 4.1. [分布式表业务使用实践](#分布式表业务使用实践)
 
-💠 2024-03-23 17:52:21
+💠 2024-04-11 15:54:40
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -36,12 +37,22 @@ categories:
 [Roaring bitmaps](https://github.com/RoaringBitmap/CRoaring)  
 [BitMap及其在ClickHouse中的应用](https://zhuanlan.zhihu.com/p/480345952)`CK针对数据的分布情况做了一些优化`  
 
+## 数据库引擎
+- Atomic
+- MySQL 关联远程库表
+- MaterializedMySQL 原生实现MySQL引擎 支持从MySQL全量及增量实时同步
+- Lazy
+- PostgreSQL
+- MaterializedPostgreSQL
+- Replicated
+- SQLite
+
 ************************
 
-## 使用
+# 使用
 > [snuba](https://github.com/getsentry/snuba)`Sentry开发， CK的一个查询层`
 
-### Java JDBC
+## Java JDBC
 > 实际上是对Http客户端的封装
 ```java
         Properties properties = new Properties();
@@ -59,7 +70,7 @@ categories:
         ClickHouseDataSource dataSource = new ClickHouseDataSource(url, properties)
 ```
 
-## Explain 
+# Explain 
 > [Clickhouse: Explain](https://clickhouse.com/docs/en/sql-reference/statements/explain)  
 > [Using Explain to analyze and improve Clickhouse queries performance](https://medium.com/datadenys/using-explain-to-analyze-and-improve-clickhouse-queries-performance-23dbcdf55a97)  
 
