@@ -68,9 +68,12 @@ categories:
 
 - [The Go Programming Language](http://www.gopl.io/)
 - [Go 语言设计与实现](https://draveness.me/golang/docs)
+- [Go 语言原本](https://golang.design/under-the-hood/)
 
 ## 实践项目
 - [PolarDB-ClusterManager](https://github.com/ApsaraDB/PolarDB-ClusterManager)
+- Docker
+- Kubernetes
 
 ************************
 
