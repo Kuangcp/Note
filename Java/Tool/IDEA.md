@@ -37,7 +37,7 @@ categories:
     - 3.2. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
     - 3.3. [无法输入中文](#无法输入中文)
 
-💠 2024-03-31 15:22:47
+💠 2024-04-12 17:19:59
 ****************************************
 
 # IDEA 使用笔记
@@ -136,6 +136,10 @@ _例如修改为如下_
 
 1. `$SELECTION$` surrounding with 功能标记
 1. `$END$` 光标结束位置
+
+************************
+
+- 关闭特定文件的自动格式化 Code Style -> Formatter 中设置 *.md *.sql
 
 ************************
 

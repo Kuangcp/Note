@@ -64,7 +64,7 @@ categories:
 ## 书籍
 
 > [Go相关书籍的知乎话题](https://www.zhihu.com/question/30461290)
-> [Go语言高级编程(Advanced Go Programming)](https://books.studygolang.com/advanced-go-programming-book/index.html)
+> [Go语言高级编程(Advanced Go Programming)](https://chai2010.cn/advanced-go-programming-book/index.html)
 
 - [The Go Programming Language](http://www.gopl.io/)
 - [Go 语言设计与实现](https://draveness.me/golang/docs)

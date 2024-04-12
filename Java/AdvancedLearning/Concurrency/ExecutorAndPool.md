@@ -18,7 +18,7 @@ categories:
     - 2.1. [线程池 参数优化&监控](#线程池-参数优化&监控)
     - 2.2. [业务线程池](#业务线程池)
 
-💠 2024-04-09 20:45:45
+💠 2024-04-12 17:19:59
 ****************************************
 # 线程池
 
@@ -140,6 +140,8 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 
 ************************
 # 实践
+> [About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing) | [About Pool Sizing in distributed environments / microservices](https://github.com/brettwooldridge/HikariCP/issues/1023)`如何设置数据库连接池线程数`  
+
 ## 线程池 参数优化&监控
 > 公式1：Nthreads = Ncpu * Ucpu * W/C
 

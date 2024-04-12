@@ -7,42 +7,42 @@ categories:
     - Docker
 ---
 
-**目录 start**
+💠
 
-1. [Docker容器化应用](#docker容器化应用)
-    1. [个人镜像](#个人镜像)
-    1. [Linux发行版](#linux发行版)
-        1. [Ubuntu-ssh](#ubuntu-ssh)
-        1. [Alpine-ssh](#alpine-ssh)
-        1. [Centos-ssh](#centos-ssh)
-    1. [编程语言开发环境](#编程语言开发环境)
-        1. [Java](#java)
-            1. [Jib](#jib)
-        1. [Node](#node)
-        1. [Go](#go)
-    1. [数据库](#数据库)
-        1. [PostgreSQL](#postgresql)
-        1. [Oracle](#oracle)
-        1. [MySQL](#mysql)
-        1. [MongoDB](#mongodb)
-        1. [Redis](#redis)
-    1. [持续集成](#持续集成)
-        1. [flow.ci](#flowci)
-        1. [Jenkins](#jenkins)
-    1. [Protobuf](#protobuf)
-    1. [git服务器](#git服务器)
-        1. [简易git-daemon](#简易git-daemon)
-        1. [Gogs](#gogs)
-        1. [Gitea](#gitea)
-            1. [配置](#配置)
-    1. [博客](#博客)
-    1. [在线IDE](#在线ide)
-    1. [图形化管理工具](#图形化管理工具)
-1. [运行图形化应用](#运行图形化应用)
+- 1. [Docker应用](#docker应用)
+    - 1.1. [个人镜像](#个人镜像)
+    - 1.2. [Linux发行版](#linux发行版)
+        - 1.2.1. [Ubuntu-ssh](#ubuntu-ssh)
+        - 1.2.2. [Alpine-ssh](#alpine-ssh)
+        - 1.2.3. [Centos-ssh](#centos-ssh)
+    - 1.3. [Java](#java)
+        - 1.3.1. [Local](#local)
+        - 1.3.2. [Jib](#jib)
+    - 1.4. [NodeJs](#nodejs)
+    - 1.5. [中间件](#中间件)
+    - 1.6. [数据库](#数据库)
+        - 1.6.1. [PostgreSQL](#postgresql)
+        - 1.6.2. [Oracle](#oracle)
+        - 1.6.3. [MySQL](#mysql)
+        - 1.6.4. [MongoDB](#mongodb)
+        - 1.6.5. [Redis](#redis)
+    - 1.7. [持续集成](#持续集成)
+        - 1.7.1. [flow.ci](#flowci)
+        - 1.7.2. [Jenkins](#jenkins)
+    - 1.8. [git服务器](#git服务器)
+        - 1.8.1. [简易git-daemon](#简易git-daemon)
+        - 1.8.2. [Gogs](#gogs)
+        - 1.8.3. [Gitea](#gitea)
+            - 1.8.3.1. [配置](#配置)
+    - 1.9. [在线IDE](#在线ide)
+- 2. [图形化应用](#图形化应用)
+- 3. [工具](#工具)
+    - 3.1. [nextcloud](#nextcloud)
+    - 3.2. [Protobuf](#protobuf)
 
-**目录 end**|_2021-02-03 17:25_|
+💠 2024-04-12 17:19:59
 ****************************************
-# Docker容器化应用
+# Docker应用
 > [https://docs.docker.com/samples/](https://docs.docker.com/samples/)  
 > [Docker Hub: explore](https://hub.docker.com/explore/)
 
@@ -109,10 +109,9 @@ EXPOSE 22
 ### Centos-ssh
 - [centos-ssh](https://github.com/jingniao/centos-ssh)
 
-****************************************************************
+************************
 
-## 编程语言开发环境
-### Java
+## Java
 - [Official: Java](https://hub.docker.com/_/java/) `Oracle` | [Official: OpenJDK](https://hub.docker.com/_/openjdk/)`从7开始` 
 
 - [frolvlad alpine-java](https://hub.docker.com/r/frolvlad/alpine-java)`非常精简`
@@ -122,16 +121,15 @@ EXPOSE 22
 - Java7 `docker pull java:7u121-jdk-alpine`
 - Java8 `docker pull frolvlad/alpine-java:jdk8.202.08-slim` 或者配置好时区的镜像 `mythkuang/jdk-alpine-cst:8.181`
 
-> [参考: Java和Docker限制的那些事儿](http://www.techug.com/post/java-and-docker-memory-limits.html)`描述了一个天坑`
-
 > `Tips`
-
 1. docker run 时加上 `--cap-add=SYS_PTRACE` 解决 jmap -heap 1 时报错： Can't attach to the process: ptrace
+1. [参考: Java和Docker限制的那些事儿](http://www.techug.com/post/java-and-docker-memory-limits.html)`天坑： Jvm无法感知到Docker的资源限制`
+    1. [Java (prior to JDK8 update 131) applications running in docker container CPU / Memory issues?](https://stackoverflow.com/questions/64262912/java-prior-to-jdk8-update-131-applications-running-in-docker-container-cpu-m)  
+1. [参考: 使用Docker 实现微服务并搭建博客，一文全掌握。 ](https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650121506&idx=1&sn=39e3ba8c5d9698bbfb8acfc6b7e772bf&chksm=f36bb803c41c3115371b69cbd1e626fcaf5a85c7034f96fe495cfbf6dc1630a42dfdd6e342da&mpshare=1&scene=1&srcid=06219wgtCPJNvZP66ccQXRCj#rd)
 
-#### Local
+### Local
 > env.sh
 ```sh
-
 JAVA_HOME=/path/to
 export JRE_HOME=${JAVA_HOME}/jre
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
@@ -151,16 +149,12 @@ EXPOSE 22
 ENTRYPOINT ["/usr/bin/tini", "--"]
 ```
 
-#### Jib
+### Jib
 > [参考: GOOGLE JIB](https://my.oschina.net/u/3666671/blog/1845065) | [Github:jib](https://github.com/GoogleContainerTools/jib)
 
-### Node
+## NodeJs
 - [Official](https://hub.docker.com/_/node/)
 - [Dockerizing a Node.js web app](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
-
-### Go
-- [Official](https://hub.docker.com/_/golang/)
-
 
 **********************************
 
@@ -172,7 +166,7 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
 
 ## 数据库
 ### PostgreSQL
-- [Docker 安装 PostgreSQL](/Database/Postgresql.md)
+- [Docker 安装 PostgreSQL](/Database/PostgreSQL.md)
 
 ### Oracle
 - [社区文档](https://hub.docker.com/r/wnameless/oracle-xe-11g/)`简单粗暴`
@@ -204,27 +198,19 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
 1. 或者 使用本地配置文件启动redis容器
     - `sudo docker run -v /myredis/conf/redis.conf:/usr/local/etc/redis/redis.conf --name myredis redis redis-server /usr/local/etc/redis/redis.conf`
 
-- `迁移` 复制rdb文件到容器内 /data/dump.rdb ， kill掉redis进程，启动 redis 加载数据。
+- `数据迁移(RDB方式)` 复制rdb文件到容器内 /data/dump.rdb ， kill -9 redis进程，启动 redis 
 
 *****************************************
 ## 持续集成
 
 > [参考: 如何Docker化端到端验收测试](https://www.tuicool.com/articles/YZJzAzF)
+
 ### flow.ci
 - [flow.ci](https://github.com/flowci/docker) 可以学习compose
 
 ******************
 ### Jenkins
 > [详情](/Skills/DevOps/Jenkins.md#docker)
-
-****************************
-## Protobuf
-1. 创建一个Ubuntu/alpine 容器运行起来
-1. 下载 https://github.com/google/protobuf/releases
-2. 安装 g++ make 
-4. 编译安装下载的源码 进入目录 `./configure --prefix=/usr && make && make check && make install` 
-
-> 直接下载二进制最简单...
 
 ************************
 
@@ -268,12 +254,6 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
 
 ************************
 
-## 博客
-
-> [参考: 使用Docker 实现微服务并搭建博客，一文全掌握。 ](https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650121506&idx=1&sn=39e3ba8c5d9698bbfb8acfc6b7e772bf&chksm=f36bb803c41c3115371b69cbd1e626fcaf5a85c7034f96fe495cfbf6dc1630a42dfdd6e342da&mpshare=1&scene=1&srcid=06219wgtCPJNvZP66ccQXRCj#rd)
-
-************************
-
 ## 在线IDE
 - Coding平台的WebIDE
 - eclipse che
@@ -282,11 +262,10 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
 
 ************************
 
-# 运行图形化应用
+# 图形化应用
 > [Github Topic](https://github.com/search?p=4&q=docker+desktop&type=Repositories&utf8=%E2%9C%93)  
 > [Running GUI apps with Docker](https://www.tuicool.com/articles/ayIzI3)  
 > [在Docker for Windows中运行GUI程序 ](https://www.cnblogs.com/larva-zhh/p/10531824.html)  
-
 
 ************************
 
@@ -296,3 +275,10 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
 
 `docker run -d --name nextcloud -p 8008:80 -v /data/nextcloud:/var/www/html nextcloud`
 
+## Protobuf
+1. 创建一个Ubuntu/alpine 容器运行起来
+1. 下载 https://github.com/google/protobuf/releases
+2. 安装 g++ make 
+4. 编译安装下载的源码 进入目录 `./configure --prefix=/usr && make && make check && make install` 
+
+> 直接下载二进制最简单...
