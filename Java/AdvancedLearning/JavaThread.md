@@ -15,6 +15,7 @@ categories:
         - 1.2.1. [创建](#创建)
         - 1.2.2. [控制](#控制)
         - 1.2.3. [销毁](#销毁)
+            - 1.2.3.1. [观测异常](#观测异常)
     - 1.3. [ThreadLocal](#threadlocal)
     - 1.4. [Signal](#signal)
         - 1.4.1. [Hook](#hook)
@@ -23,7 +24,7 @@ categories:
     - 2.1. [Loom](#loom)
     - 2.2. [Quasar](#quasar)
 
-💠 2024-04-08 19:45:11
+💠 2024-04-13 17:57:34
 ****************************************
 # Java线程
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/thread/src/main/java/com/github/kuangcp)
@@ -82,7 +83,10 @@ LockSupport.park
 
 ### 销毁
 
+#### 观测异常
+> java.lang.Thread.UncaughtExceptionHandler `Interface for handlers invoked when a Thread abruptly terminates due to an uncaught exception.`
 
+通过设置静态属性 `Thread.setDefaultUncaughtExceptionHandler()`，可以观测由于未捕获的异常导致Thread被销毁的情况，可加入监控和告警的逻辑
 
 ************************
 

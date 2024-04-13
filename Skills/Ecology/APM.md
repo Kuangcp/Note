@@ -11,10 +11,11 @@ categories:
     - 1.1. [SkyWalking](#skywalking)
     - 1.2. [Sentry](#sentry)
     - 1.3. [CAT](#cat)
-- 2. [Monitoring](#monitoring)
-    - 2.1. [Prometheus](#prometheus)
+- 2. [采集客户端](#采集客户端)
+- 3. [Monitoring](#monitoring)
+    - 3.1. [Prometheus](#prometheus)
 
-💠 2024-04-03 17:34:29
+💠 2024-04-13 17:57:34
 ****************************************
 # APM
 > Application performance Management `分布式链路追踪，技术或业务指标监控告警`
@@ -58,6 +59,12 @@ docker run --name oap-ui -p 8080:8080 -d -e SW_OAP_ADDRESS=http://192.168.7.54:1
 2. 手动设置**静态**的默认全局异常处理`Thread.setDefaultUncaughtExceptionHandler`，防止异常漏捕获。
     - SpringBoot项目里发生机率较小,因为基本都有Controller层的全局异常处理，且大部分请和逻辑从web端进入。
     - 只有自定义线程池,Scheduler线程池,Junit等地方，未捕获运行时异常，才会走默认逻辑异常栈被输出到标准错误 System.err 中。
+
+************************
+# 采集客户端
+- [Prometheus: JMX Exporter](https://github.com/prometheus/jmx_exporter)
+- [micrometer](https://github.com/micrometer-metrics/micrometer)`门面框架类似于SLF4J 支持多种采集`
+    - [Quick Guide to Micrometer](https://www.baeldung.com/micrometer)
 
 ************************
 
