@@ -12,6 +12,7 @@ categories:
 - 1. [JVM](#jvm)
     - 1.1. [JVM参数](#jvm参数)
     - 1.2. [JVM内存参数](#jvm内存参数)
+        - 1.2.1. [实践](#实践)
     - 1.3. [GC参数](#gc参数)
 - 2. [JVM 基本结构](#jvm-基本结构)
 - 3. [内存区域](#内存区域)
@@ -32,7 +33,7 @@ categories:
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-03-28 17:46:29
+💠 2024-04-15 11:04:31
 ****************************************
 # JVM
 > JVM结构及设计
@@ -86,22 +87,54 @@ Oracle JDK 默认采用的是 Hotspot JVM
 ## JVM内存参数
 > 堆(老年代 年轻代)，堆外，元空间，栈
 
-- `-XX:CompressedClassSpaceSize=500m` 压缩类元空间大小 默认是1g
+快速确认进程内存配置 
+| 工具 | 命令 |
+|:----|:----|
+| Arthas    | `jvm`                   |
+| OpenJDK   | `jcmd pid GC.heap_info` |
+| OracleJDK | `jmap -heap pid`        |
+
+- `-XX:CompressedClassSpaceSize=500m` 压缩的类元空间大小 默认是1g
 - `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1。 **默认是8**
 - `-XX:NewRatio`old/new 内存的比值 **默认是2**
-- `-XX:+PrintFlagsInitial` 输出初始默认值
+- `-Xmn` MaxNewSize 默认值是`Xmx`的1/3 即最大堆内存 MaxHeapSize 的1/3
 
 > java -XX:+PrintFlagsFinal -version
-- `输出JVM最终属性值` -XX:+PrintFlagsFinal 
+- `-XX:+PrintFlagsInitial` 输出初始默认值
+- `-XX:+PrintFlagsFinal` 输出JVM最终属性值
     - MaxHeapSize 最大堆内存
     - MaxRAMFraction 默认最大内存占物理机内存的比例 JDK6，7，8 都是4 即1/4
-    - `-Xmn` MaxNewSize 默认值是Xmx的1/3 即最大堆内存 MaxHeapSize 的1/3
     - NUMA 机制
     - `java -XX:+PrintFlagsFinal -version | grep "Use.*GC"` 查看默认GC实现
+- `-XshowSettings:VM` 展示VM和系统信息
 
-- [初始和最大堆内存设置为一样的好处](https://gceasy.ycrash.cn/gc-recommendations/benefits-of-setting-initial-and-maximum-memory-size.jsp)
+> [JVM Parameters InitialRAMPercentage, MinRAMPercentage, and MaxRAMPercentage](https://www.baeldung.com/java-jvm-parameters-rampercentage)  
+- MinRAMPercentage, MaxRAMPercentage 其实都是**设置堆默认最大值**的， Max 和 Min 换成 Big Small可能更好理解(大内存环境和小内存环境 `200M划分`)
+- `-XX:InitialRAMPercentage` 初始堆使用值 默认1.5625， 当配置了 `-Xms` 时，该配置将被忽略
 
-> 快速确认进程内存配置： Arthas jvm命令。 OpenJDK： ` `  OracleJDK ： `jmap -heap pid`
+- InitialRAMFraction MaxRAMFraction  MinRAMFraction DefaultMaxRAMFraction 4等分值
+
+************************
+
+> 容器
+
+容器资源限制无法感知问题
+- 快速实验某个Java版本的默认参数和限制 docker run -m 100MB openjdk:8 java -XX:MinRAMPercentage=80.0 -XshowSettings:VM -version
+- [参考: Java和Docker限制的那些事儿](http://www.techug.com/post/java-and-docker-memory-limits.html)`天坑： 低版本的Jvm无法感知到Docker的资源限制`
+- [ ] 但是有的Linux版本在后续的版本也无法感知，例如 1.8.0_342 10.0.2 仍取的主机内存, Linux 5.15内核 Manjaro23.1 
+
+1. [Java (prior to JDK8 update 131) applications running in docker container CPU / Memory issues?](https://stackoverflow.com/questions/64262912/java-prior-to-jdk8-update-131-applications-running-in-docker-container-cpu-m)  
+
+总结： **尽量使用 Xms Xmx**，而不是 RAMPercentage RAMFractionc参数（还要结合容器或宿主机计算实际值），降低维护和理解成本，控制更灵活精确，且支持所有版本JVM，不用考虑兼容性问题
+1. [Best Practices: Java Memory Arguments for Containers](https://dzone.com/articles/best-practices-java-memory-arguments-for-container)
+
+************************
+
+### 实践
+> [初始和最大堆内存设置为一样的好处](https://gceasy.ycrash.cn/gc-recommendations/benefits-of-setting-initial-and-maximum-memory-size.jsp) 
+> [Benefits of setting initial and maximum memory size to the same value](https://blog.ycrash.io/benefits-of-setting-initial-and-maximum-memory-size-to-the-same-value/)
+- 避免扩容的暂停事件，提前调度充足资源的容器防止运行期扩容而被Linux被OOMKiller杀掉
+
 
 > [参考: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)  
 > [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`  

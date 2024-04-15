@@ -40,7 +40,7 @@ categories:
     - 3.1. [nextcloud](#nextcloud)
     - 3.2. [Protobuf](#protobuf)
 
-💠 2024-04-12 17:19:59
+💠 2024-04-15 11:04:31
 ****************************************
 # Docker应用
 > [https://docs.docker.com/samples/](https://docs.docker.com/samples/)  
@@ -123,8 +123,7 @@ EXPOSE 22
 
 > `Tips`
 1. docker run 时加上 `--cap-add=SYS_PTRACE` 解决 jmap -heap 1 时报错： Can't attach to the process: ptrace
-1. [参考: Java和Docker限制的那些事儿](http://www.techug.com/post/java-and-docker-memory-limits.html)`天坑： Jvm无法感知到Docker的资源限制`
-    1. [Java (prior to JDK8 update 131) applications running in docker container CPU / Memory issues?](https://stackoverflow.com/questions/64262912/java-prior-to-jdk8-update-131-applications-running-in-docker-container-cpu-m)  
+
 1. [参考: 使用Docker 实现微服务并搭建博客，一文全掌握。 ](https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650121506&idx=1&sn=39e3ba8c5d9698bbfb8acfc6b7e772bf&chksm=f36bb803c41c3115371b69cbd1e626fcaf5a85c7034f96fe495cfbf6dc1630a42dfdd6e342da&mpshare=1&scene=1&srcid=06219wgtCPJNvZP66ccQXRCj#rd)
 
 ### Local
@@ -277,8 +276,6 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
 
 ## Protobuf
 1. 创建一个Ubuntu/alpine 容器运行起来
-1. 下载 https://github.com/google/protobuf/releases
+1. 下载 [Github Release](https://github.com/google/protobuf/releases)
 2. 安装 g++ make 
 4. 编译安装下载的源码 进入目录 `./configure --prefix=/usr && make && make check && make install` 
-
-> 直接下载二进制最简单...

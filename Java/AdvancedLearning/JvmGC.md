@@ -32,9 +32,10 @@ categories:
     - 3.7. [G1](#g1)
     - 3.8. [ZGC](#zgc)
     - 3.9. [ShenandoahGC](#shenandoahgc)
+    - 3.10. [Epsilon](#epsilon)
 - 4. [最佳实践](#最佳实践)
 
-💠 2024-04-09 20:45:45
+💠 2024-04-15 11:04:31
 ****************************************
 # GC
 > Garbage Collection
@@ -488,6 +489,13 @@ ConcGCThreads 一般称为并发标记线程数，为了减少GC的STW的时间�
 > [参考: JDK12 ShenandoahGC小试牛刀](https://juejin.im/post/5c934a5d5188252dad05d82a)  
 
 -XX:+UnlockExperimentalVMOptions  -XX:+UseShenandoahGC
+
+## Epsilon
+> JDK11 [A No-Op Garbage Collector](https://openjdk.org/jeps/318)
+
+- `-XX:+UseEpsilonGC -XX:+UnlockExperimentalVMOptions` 直至22尚未GA
+
+不做GC的GC，即不做垃圾回收，通常用于目标测试GC的对照组
 
 ************************
 
