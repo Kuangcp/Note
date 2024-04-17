@@ -36,7 +36,7 @@ categories:
     - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-04-02 21:33:05
+💠 2024-04-17 11:07:13
 ****************************************
 
 # JVM 监控&诊断
@@ -122,8 +122,8 @@ categories:
 - `jmap -histo $PID` 展示实例和占用内存情况
     - `jmap -histo:live $PID` 展示存活实例情况 **注意会触发FullGC**
 - `jmap -heap $PID` 展示Java堆的各内存区域大小及占用情况
-- `jmap -dump:live,format=b,file=heapLive.hprof $PID` dump下存活对象的堆  **注意会触发FullGC**
-
+- `jmap -dump:live,format=b,file=heapLive.hprof $PID` dump下存活对象  **注意会触发FullGC**
+    - `jmap -dump:format=b,file=heapLive.hprof $PID` dump所有对象
 
 ************************
 
@@ -192,13 +192,15 @@ categories:
 > jcmd $pid command  [Oracle jcmd doc](https://docs.oracle.com/en/java/javase/17/docs/specs/man/jcmd.html)
 
 - Compiler
-- GC `GC信息，触发GC，堆信息`
-    - GC.heap_info 
-    - GC.class_histogram -all 类实例统计 
-    - GC.heap_dump -all filename
-    - GC.run 触发一次Full GC
-    - 参数：
-        - `-all` 包含不可达对象 **不会触发 Full GC**
+- GC GC信息，触发GC，堆信息
+    | 命令 | 说明 |
+    |:----|:----|
+    | GC.run                      | 触发一次Full GC
+    | GC.heap_info                | 查看堆使用统计
+    | GC.class_histogram -all     | 类实例统计 
+    | GC.heap_dump -all filename  | 创建所有对象的dump
+    - 参数 `-all` 指全部对象，如果去除，将**触发Full GC**来找到所有存活对象
+
 - JFR 
     - JFR.start 会输出提示信息
     - JFR.stop name=1 filename=now.jfr `name`从start提示信息中获取

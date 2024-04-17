@@ -18,9 +18,8 @@ categories:
         - 1.2.3. [Yay](#yay)
 - 2. [Tips](#tips)
 
-💠 2024-04-10 20:47:19
+💠 2024-04-17 11:07:13
 ****************************************
-************************
 
 # Arch
 
@@ -115,8 +114,11 @@ categories:
 2. Linux内核滚动升级了 但是grub 没有更新, `update-grub`即可
 3. 滚动升级了，没有重启电脑
 
-- ifconfig,route在net-tools中，nslookup,dig在dnsutils中，ftp,telnet等在inetutils中,ip命令在iproute2中。
-    - sudo pacman -S net-tools dnsutils inetutils iproute2
+- sudo pacman -S net-tools dnsutils inetutils iproute2
+    - ifconfig,route 在net-tools
+    - nslookup,dig 在dnsutils
+    - ftp,telnet等 在inetutils
+    - ip 在 iproute2
 
 ************************
 
