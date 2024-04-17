@@ -10,9 +10,10 @@ categories:
 - 1. [Data Integration](#data-integration)
     - 1.1. [Datax](#datax)
     - 1.2. [SeaTunnel](#seatunnel)
-    - 1.3. [Flink CDC](#flink-cdc)
+    - 1.3. [FlinkX ChunJun](#flinkx-chunjun)
+    - 1.4. [Flink CDC](#flink-cdc)
 
-💠 2024-04-17 15:18:56
+💠 2024-04-17 16:14:38
 ****************************************
 # Data Integration
 数据集成
@@ -24,7 +25,8 @@ categories:
 - [Clickhouse reader writer](https://github.com/alibaba/DataX/pull/264)
 - [Kafka writer](https://github.com/alibaba/DataX/pull/1856)
 
-离线数据同步框架， 扩展读/写 Plugin 以支持多种数据源。核心框架负责处理流控，缓存，并发，数据转换等。
+离线数据同步框架， 扩展读/写 Plugin 以支持多种数据源。  
+核心框架负责处理流控，缓存，并发，自定义的[数据转换Transformer](https://github.com/alibaba/DataX/blob/master/transformer/doc/transformer.md)等。
 
 - 特性
     - 轻量： 一份JSON配置启动一个Java进程
@@ -42,6 +44,9 @@ categories:
 > [首个国人主导的开源数据集成工具：揭秘 Apache 顶级项目 SeaTunnel 背后的故事](https://36kr.com/p/2311155472330244)
 
 使用 Spark、Flink 作为底层数据同步引擎使其具备分布式执行能力，开放并完善的插件体系和API集成
+
+## FlinkX ChunJun
+> [Github](https://github.com/DTStack/chunjun)  
 
 ## Flink CDC
 > [Github](https://github.com/apache/flink-cdc)  

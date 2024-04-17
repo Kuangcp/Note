@@ -25,7 +25,7 @@ categories:
     - 2.1. [保持SSH连接稳定](#保持ssh连接稳定)
 - 3. [Mosh](#mosh)
 
-💠 2024-04-09 21:57:44
+💠 2024-04-17 16:14:38
 ****************************************
 # SSH
 > Secure Shell 
@@ -185,8 +185,10 @@ _config_
 > [Is it normal to use an SSH tunnel to access a production database? ](https://www.reddit.com/r/learnrust/comments/11poo5h/is_it_normal_to_use_an_ssh_tunnel_to_access_a/)  
 > [How does reverse SSH tunneling work?](https://unix.stackexchange.com/questions/46235/how-does-reverse-ssh-tunneling-work/118650#118650)  
 
-- 本地转发 ` ssh localUser@localHost -L  localHost:localPort:remoteHost:remotePort `
+- 创建独立的代理用户 localUser 并生成ssh公私钥，公钥注册到自身ssh的authorized_keys中去
+- 本地转发 `ssh localUser@localHost -L  localHost:localPort:remoteHost:remotePort`
     - 在localHost上启动localPort, 当其他客户端连到localPort时，tcp流量会转发到remotePort上去
+- 关闭隧道时 exit 退出交互式命令行 注意`不能Ctrl D` 无法正常关闭
 
 ************************
 
