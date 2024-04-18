@@ -10,9 +10,10 @@ categories:
 
 - 1. [Guava](#guava)
     - 1.1. [基础部分](#基础部分)
-        - 1.1.1. [EventBus](#eventbus)
+        - 1.1.1. [RateLimiter](#ratelimiter)
+        - 1.1.2. [EventBus](#eventbus)
 
-💠 2024-04-18 22:25:52
+💠 2024-04-18 23:53:51
 ****************************************
 # Guava
 > [Github地址](https://github.com/google/guava)
@@ -35,6 +36,12 @@ _包结构_
 ## 基础部分
 > Optional的设计和Java8的Optional是差不多的,Java8可能是参考的Guava。
 
+### RateLimiter
+> 令牌桶算法实现
+
+Beta 状态，官方TODO优化为nano级别，降低存储成本
+
+> [RateLimiter限流原理解析](https://zhuanlan.zhihu.com/p/60979444)
 
 ### EventBus
 > [官方文档](https://github.com/google/guava/wiki/EventBusExplained) | [Guava学习笔记：EventBus](http://www.cnblogs.com/peida/p/EventBus.html)
@@ -56,10 +63,12 @@ _包结构_
 > 注意 只使用 `@Subscribe`注解的话，如果有两个同类事件触发，也是要排队执行的，因为包装的是 `Subscriber.SynchronizedSubscriber` 实现，同类事件并发执行需要加上 `@AllowConcurrentEvents`
 
 基础组件
-- Executor： EventBus#executor 默认是当前线程，通常指定自定义线程池
-- SubscriberRegistry： Subscriber注册器，每个带有@Subscribe的方法会被注册到该类中
-- Dispatcher： 调度器，负责将事件，分发给事件对应的Subscriber，使用Executor执行这些Subscriber
+
+- Executor ： EventBus#executor 默认是当前线程，通常指定自定义线程池
+- SubscriberRegistry ： Subscriber注册器，每个带有@Subscribe的方法会被注册到该类中
+- Dispatcher ： 调度器，负责将事件，分发给事件对应的Subscriber，使用Executor执行这些Subscriber
     - PerThreadQueuedDispatcher 执行线程内将会按事件发布顺序进行消费， 执行线程间仍异步乱序。`ThreadLocal<Queue>` 实现线程间队列隔离
     - LegacyAsyncDispatcher 默认用于 AsyncEventBus，异步实现即可能出现不同的线程不同的事件消费顺序，同一线程对先后发布的事件消费顺序也可能不一致，注释都说这个有没有必要用队列 emmm
     - ImmediateDispatcher 无队列，立即投送事件给Subscriber，积压在Executor的队列中， 事件的消费可能有序可能无序取决于不同的Subscriber实现
-- SubscriberExceptionHandler： 异常处理器
+- SubscriberExceptionHandler ： 异常处理器
+
