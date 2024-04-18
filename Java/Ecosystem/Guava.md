@@ -6,13 +6,13 @@ categories:
     - 工具类库
 ---
 
-**目录 start**
+💠
 
-1. [Guava](#guava)
-    1. [基础部分](#基础部分)
-        1. [EventBus](#eventbus)
+- 1. [Guava](#guava)
+    - 1.1. [基础部分](#基础部分)
+        - 1.1.1. [EventBus](#eventbus)
 
-**目录 end**|_2020-06-24 02:06_|
+💠 2024-04-18 22:25:52
 ****************************************
 # Guava
 > [Github地址](https://github.com/google/guava)
@@ -32,44 +32,34 @@ _包结构_
     com.google.common.util.concurrent
 ```
 
-```
-    [Google Guava] 7-原生类型
-    [Google Guava] 12-数学运算
-    [Google Guava] 排序: Guava强大的”流畅风格比较器”
-    [Google Guava] 2.1-不可变集合
-    [Google Guava] 10-散列
-    [Google Guava] 9-I/O
-    [Google Guava] 1.2-前置条件
-    [Google Guava] 4-函数式编程
-    [Google Guava] 6-字符串处理：分割，连接，填充
-    [Google Guava] 1.1-使用和避免null
-    [Google Guava] 8-区间
-    [Google Guava] 2.4-集合扩展工具类
-    [Google Guava] 1.3-常见Object方法    @Bean
-    public RedisTemplate<Object,Object> redisTemplate(RedisConnectionFactory factory) {
-        RedisTemplate<Object,Object> template = new RedisTemplate<>();
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
-        template.setConnectionFactory(factory);
-        ObjectMapper om = new ObjectMapper();
-        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
-        jackson2JsonRedisSerializer.setObjectMapper(om);
-        // 值序列化采用 jackson2JsonRedisSerializer
-        template.setValueSerializer(jackson2JsonRedisSerializer);
-        // 键序列化采用 StringRedisSerializer
-        template.setKeySerializer(new StringRedisSerializer());
-        template.afterPropertiesSet();
-        return template;
-    }
-    google Guava包的ListenableFuture解析
-    [Google Guava] 11-事件总线
-```
-
 ## 基础部分
-> Optional的设计和Java8的Optional是差不多的, 只是方法的命名不一样而已
+> Optional的设计和Java8的Optional是差不多的,Java8可能是参考的Guava。
 
 
 ### EventBus
 > [官方文档](https://github.com/google/guava/wiki/EventBusExplained) | [Guava学习笔记：EventBus](http://www.cnblogs.com/peida/p/EventBus.html)
 > [并发编程网 event bus](http://ifeve.com/google-guava-eventbus/) | [走进Guava](https://www.yeetrack.com/?p=1177)
 
+```java
+    // 快速使用
+    EventBus eventBus = new EventBus();
+    eventBus.register(new Object() {
+        @Subscribe
+        public void hehe(Integer num) throws InterruptedException {
+            System.out.println(num + ":" + System.currentTimeMillis());
+            Thread.currentThread().sleep(100);
+        }
+    });
+
+    eventBus.post(1);
+```
+> 注意 只使用 `@Subscribe`注解的话，如果有两个同类事件触发，也是要排队执行的，因为包装的是 `Subscriber.SynchronizedSubscriber` 实现，同类事件并发执行需要加上 `@AllowConcurrentEvents`
+
+基础组件
+- Executor： EventBus#executor 默认是当前线程，通常指定自定义线程池
+- SubscriberRegistry： Subscriber注册器，每个带有@Subscribe的方法会被注册到该类中
+- Dispatcher： 调度器，负责将事件，分发给事件对应的Subscriber，使用Executor执行这些Subscriber
+    - PerThreadQueuedDispatcher 执行线程内将会按事件发布顺序进行消费， 执行线程间仍异步乱序。`ThreadLocal<Queue>` 实现线程间队列隔离
+    - LegacyAsyncDispatcher 默认用于 AsyncEventBus，异步实现即可能出现不同的线程不同的事件消费顺序，同一线程对先后发布的事件消费顺序也可能不一致，注释都说这个有没有必要用队列 emmm
+    - ImmediateDispatcher 无队列，立即投送事件给Subscriber，积压在Executor的队列中， 事件的消费可能有序可能无序取决于不同的Subscriber实现
+- SubscriberExceptionHandler： 异常处理器
