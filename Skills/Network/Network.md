@@ -70,7 +70,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2024-04-17 22:12:30
+💠 2024-04-19 18:16:21
 ****************************************
 # 网络
 
@@ -250,12 +250,22 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 > [Why do we need a 3-way handshake? Why not just 2-way?](https://networkengineering.stackexchange.com/questions/24068/why-do-we-need-a-3-way-handshake-why-not-just-2-way)
 
 ************************
+TCP状态
+> [详解TCP的11种状态](https://cloud.tencent.com/developer/article/1648432)
+
+> [大量的 TIME_WAIT 状态连接怎么处理？](https://cloud.tencent.com/developer/article/1675933)
+- TIME_WAIT 由于需要等待 2ML（Maximum Segment Life，报文段最大生存时间） 时间才能关闭TCP连接， 频繁请求会导致创建出大量TIME_WAIT的TCP连接
+    - 会占用一个IP层五元组：（协议，本地IP，本地端口，远程IP，远程端口）
+    - 对于 Web 服务器，协议是 TCP，本地 IP 通常也只有一个，本地端口默认的 80 或者 443。只剩下远程 IP 和远程端口可以变了。
+    - 如果远程 IP 是相同的话，就只有远程端口可以变了。这个只有几万个，所以当同一客户端向服务器建立了大量连接之后，会耗尽可用的五元组导致无法建立连接。
+
+************************
 
 > [漫画 | 一台Linux服务器最多能支撑多少个TCP连接？ ](https://mp.weixin.qq.com/s/RdsNsanjeyVIkY6UuaJS4w)
 - TCP连接四元组是源IP地址、源端口、目的IP地址和目的端口。只要任一元素发生了改变，那么就代表的是一条完全不同的连接。
     - 拿Nginx开启的80端口举例，目的IP地址、目的端口都是固定的。剩下源IP地址、源端口是可变的。  
     - 所以理论上Nginx上最多可以建立 2的32次方（ip数） × 2的16次方（port数） 个连接。
-- 这是`两百多万亿`的一个大数字，当接近这个连接数的量级，首先会被 操作系统可打开的文件句柄，可用内存，CPU等资源制约。  
+- 这是`两百多万亿`的一个大数字，想要建立这个量级的连接数，首先会被 可打开文件句柄，可用内存，CPU等资源制约。  
 
 ************************
 

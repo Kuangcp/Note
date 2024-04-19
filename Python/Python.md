@@ -64,7 +64,7 @@ categories:
         - 1.18.3. [三方库](#三方库)
     - 1.19. [QT](#qt)
 
-💠 2024-03-22 11:50:38
+💠 2024-04-19 18:16:21
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -100,6 +100,20 @@ categories:
 1. sudo add-apt-repository ppa:jonathonf/python-3.6
 1. sudo apt update 
 1. sudo apt install python3.6
+
+**Centos7安装3.11**
+
+[在 CentOS 7 / RHEL 7 上安装 Python 3.11](https://blog.csdn.net/zhezhebie/article/details/132499755)  
+[pip install报错"Can't connect to HTTPS URL because the SSL module is not available"](https://www.cnblogs.com/world-of-yuan/p/17855748.html)  
+
+编译安装 libssl
+1. ./config--prefix=/opt/openssl
+1. make -j && make install
+
+编译安装 python
+1. make  clean
+1. /configure --prefix=/opt/python3.11 --with-openssl=/opt/openssl --with-openssl-rpath=auto
+1. make -j && make altinstall
 
 ### Docker安装
 > [docker hub](https://hub.docker.com/_/python/)
@@ -416,18 +430,18 @@ python -m module_name
 > [pip](https://pip.readthedocs.io/en/stable/) | [doc](https://pip.pypa.io/en/stable/reference/pip_install/) | [guide](https://packaging.python.org/tutorials/installing-packages/) 
 
 > 3.10 后使用 pip 的方式 
-- 安装 python -m ensurepip --upgrade
-- 使用 python -m pip install pkgName 
-- 升级pip `python -m pip install --upgrade pip`
+- 安装 `python -m ensurepip --upgrade`
+- 使用 `python -m pip install pkgName` 
+- 升级 `python -m pip install --upgrade pip`
 
 1. 作为Python的包管理器, 包的可执行文件默认在 /usr/local/bin 目录下(全局)
     - 如果安装时加了该参数 --user 就是安装在 ~/.local/bin 目录下
 
-    - 升级pip `python -m pip install --upgrade pip`
-
-1. `python -m pip install xxx`
-    - 镜像源和代理 `-i https://pypi.doubanio.com/simple/  --proxy 192.168.9.155:1234`
-1. 安装指定版本的包 `install name==version` 
+1. `python -m pip install name` 安装最新版本
+    - `pip install name==version` 安装指定版本
+    - 镜像源 `-i https://pypi.doubanio.com/simple/ `
+    - 代理 `--proxy 192.168.1.24:1234`
+    - 强行使用HTTP `-i http://pypi.doubanio.com/simple/ --trusted-host pypi.doubanio.com` pip版本高于20.3后默认使用HTTPS
 
 > [修改Pip 管理工具默认下载源](https://blog.csdn.net/JQ_AK47/article/details/77944444)
 
