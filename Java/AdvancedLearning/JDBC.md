@@ -17,7 +17,7 @@ categories:
     - 2.1. [MySQL](#mysql)
 - 3. [Tips](#tips)
 
-💠 2024-04-10 20:47:19
+💠 2024-04-19 10:49:10
 ****************************************
 # JDBC
 Java DataBase Connectivity
@@ -124,7 +124,7 @@ private void fetchBatchWithDataResource(DataSource ds, String sql, String where,
 - Statement 设置了 fetchSize 或者 TYPE_FORWARD_ONLY 模式后，都会采用游标的方式获取全部的数据
 - 参数 handle 是解析ResultSet 去生成 CSV Excel 等业务逻辑
 
-> 注意
+> [!IMPORTANT]
 - Clickhouse可以直接使用, 不需要额外的配置
 - PostgreSQL 调整：
     - executeQuery前 **关闭 autoCommit**，finally 开启，才会fetch指定的数据量,否则会拉取全部的数据到JVM。[pg jdbc doc](https://jdbc.postgresql.org/documentation/head/connect.html#connection-parameters)

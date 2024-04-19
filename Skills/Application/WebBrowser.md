@@ -22,7 +22,7 @@ categories:
     - 1.4. [Vivaldi](#vivaldi)
     - 1.5. [Opera](#opera)
 
-💠 2024-04-17 11:07:13
+💠 2024-04-19 10:49:10
 ****************************************
 # 浏览器
 ## FireFox
@@ -68,7 +68,6 @@ categories:
 1. `Download all Images`下载图片
 1. `octotree` github 目录查看
 1. `Web Developer` 各种Web调试开发工具
-1. `One Tab` tab归组,十分好用
 1. `Remove Cookies Button`
 1. `滴答清单` 全平台可使用
 1. `Auto Reload Tab` 定时自动刷新标签页
@@ -76,6 +75,7 @@ categories:
 1. `轻灵划译` 即刻翻译, 多种平台
 1. `Tab Counter` Tab计数 开发者 WaldiPL
 1. `Elasticvue` Elasticsearch 插件
+1. `HeaderEditor` 修改请求响应的Header和Body
 
 ### 配置
 > 大多是通过 about:config 页面配置
