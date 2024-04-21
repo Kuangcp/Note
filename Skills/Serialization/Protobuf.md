@@ -15,12 +15,12 @@ categories:
     - 1.4. [Java中的使用](#java中的使用)
     - 1.5. [实现原理](#实现原理)
 
-💠 2024-01-13 12:32:38
+💠 2024-04-21 16:35:07
 ****************************************
 # Protobuf
 > Google开源的序列化框架 全称 `Google Protocol Buffers` | [Github : Protobuf](https://github.com/google/protobuf) | [wikipedia](https://en.wikipedia.org/wiki/Protocol_Buffers)  
 
-- 将数据结构用*.proto文件进行描述, 通过代码生成工具, 生成对应数据结构的 POJO 对象和 Protobuf 用到的方法和属性
+- 将数据结构用`*.proto`文件进行描述, 通过代码生成工具, 生成对应数据结构的 POJO 对象和 Protobuf 用到的方法和属性
     - 特点:
         - 结构化数据存储格式,类似于 XML JSON等
         - 高效的编解码性能
@@ -150,13 +150,8 @@ _复杂类型_
 >- 不然就会报错: `protoc: error while loading shared libraries: libprotobuf.so.8: cannot open shared object file: No such file or directory`
 
 ************************
-
 ## Java中的使用
-> [Protocol Buffer Basics: Java](https://protobuf.dev/getting-started/javatutorial/) 
-
-使用流程简述: Maven插件将所有proto文件编译到对应目录(该目录设置为source)下的Java类, 项目编译和运行时就可以试试引用这些类
-
-- maven-protoc-plugin 
+> [Java Protobuf](/Java/AdvancedLearning/JavaSerialize.md#protobuf)
 
 ************************
 

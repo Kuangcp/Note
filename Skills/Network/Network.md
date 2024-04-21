@@ -70,7 +70,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2024-04-19 18:16:21
+💠 2024-04-21 16:35:07
 ****************************************
 # 网络
 
@@ -439,18 +439,18 @@ DOT `DNS over TLS` 853端口
 ************************
 
 # Socket
-> [参考: TCP/IP、Http、Socket的区别](https://blog.csdn.net/Pk_zsq/article/details/6087367)  
 > [what is socket](https://unix.stackexchange.com/questions/16311/what-is-a-socket)
 
-Socket是应用层与TCP/IP协议族通信的中间软件抽象层，是对TCP/IP协议的封装，Socket本身并不是协议，而是一个调用接口（API），通过Socket，我们才能使用TCP/IP协议
+Socket是应用层与TCP/IP协议族通信的中间软件抽象层，是对TCP/IP协议的封装，Socket本身并不是协议，而是一套接口（API），通过Socket，我们才能使用TCP/IP协议。  
 
-在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。而我们所说的socket编程指的是利用soket接口来实现自己的业务和协议。
-
-Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开发
+在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。  
+而我们所说的socket编程指的是利用soket接口来实现自己的业务和协议， Socke接口属于软件抽象层，而sokcket编程却是标准的应用层开发。
 
 > [参考: Socket编程](http://www.cnblogs.com/skynet/archive/2010/12/12/1903949.html)  
 > [参考: Linux socket 编程](https://www.ibm.com/developerworks/cn/education/linux/l-sock/l-sock.html)
 
+Socket通常翻译为套接字，那么为什么不直译为插座呢？  
+可能借用了工程领域的套接管（连接两个管道的一个构件），再结合管道内传输的都是字节流，因而命令为套接字
 
 ************************
 

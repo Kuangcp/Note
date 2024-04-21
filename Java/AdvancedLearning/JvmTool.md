@@ -36,7 +36,7 @@ categories:
     - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-04-17 11:07:13
+💠 2024-04-21 16:35:07
 ****************************************
 
 # JVM 监控&诊断
@@ -154,7 +154,8 @@ categories:
 ```
 
 ### HPROF
-> [HPROF: A Heap/CPU Profiling Tool](https://docs.oracle.com/javase/8/docs/technotes/samples/hprof.html)
+> [HPROF: A Heap/CPU Profiling Tool](https://docs.oracle.com/javase/8/docs/technotes/samples/hprof.html)  
+> [heapdumpstamp](https://github.com/bostrt/heapdumpstamp)`获取hprof创建时间戳`  
 
 ************************
 

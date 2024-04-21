@@ -6,24 +6,26 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [序列化](#序列化)
-    1. [serialVersionUID](#serialversionuid)
-1. [主流编解码框架](#主流编解码框架)
-    1. [MessagePack](#messagepack)
-    1. [Protobuf](#protobuf)
-    1. [Thrift](#thrift)
-    1. [Marshalling](#marshalling)
-1. [Tips](#tips)
-    1. [动态对JSON字符串反序列化时泛型丢失问题](#动态对json字符串反序列化时泛型丢失问题)
+- 1. [Java中的序列化](#java中的序列化)
+    - 1.1. [Serializable](#serializable)
+        - 1.1.1. [JDK序列化和反序列化](#jdk序列化和反序列化)
+- 2. [编解码框架](#编解码框架)
+    - 2.1. [Kryo](#kryo)
+    - 2.2. [Protobuf](#protobuf)
+    - 2.3. [Marshalling](#marshalling)
+- 3. [Tips](#tips)
+    - 3.1. [JSON字符串反序列化时泛型丢失问题](#json字符串反序列化时泛型丢失问题)
 
-**目录 end**|_2023-06-07 11:00_|
+💠 2024-04-21 16:35:07
 ****************************************
-# 序列化
+# Java中的序列化
 > [码农翻身:序列化： 一个老家伙的咸鱼翻身](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513589&idx=1&sn=d402d623d9121453f1e570395c7f99d7&chksm=80d67a36b7a1f32054d4c779dd26e8f97a075cf4d9ed1281f16d09f1df50a29319cd37520377&scene=21#wechat_redirect) `对象转化为二进制流`
 
 > 反序列化生成对象时不会调用构造器
+
+> [Note：序列化](/Skills/Serialization/Serialization.md)`语言无关`
 
 ## Serializable
 > 简单的说serialVersionUID就是类的版本控制, 标明类序列化时的版本, 版本一致表明这两个类定义一致  
@@ -37,7 +39,7 @@ categories:
 
 > 当你一个类实现了Serializable接口，如果没有定义serialVersionUID，可通过IDE进行提醒显示定义。
 
-### 序列化和反序列化
+### JDK序列化和反序列化
 ```java
     TargetObject targetObject = new TargetObject("name");
     ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
@@ -50,34 +52,36 @@ categories:
     assertThat(result.getName(), equalTo("name"));
 ```
 
-- 在做有多态结构的`对象深拷贝`时，使用该方式能简单且快速实现。但如果使用JSON序列化方式来实现节点的类型信息会丢失，无法实现
+- 在做有多态结构的`对象深拷贝`时，使用JDK序列化方式能简单且快速实现。但如果使用JSON序列化方式来实现，需要解决节点**类型信息丢失**的问题
     - 例如一个多叉树上的节点是一个接口的多类型实例。
     ```java
-    public interface Node {
-        List<Node> getChildes();
-    }
-    @Data
-    public class Dir implements Node {
-        private List<Node> childes;
-    }
-    @Data
-    public class File implements Node {
-        private List<Node> childes;
-    }
+        public interface Node {
+            List<Node> getChildes();
+        }
+        @Data
+        public class Dir implements Node {
+            private List<Node> childes;
+        }
+        @Data
+        public class File implements Node {
+            private List<Node> childes;
+        }
     ```
-
 ******************************
 
-# 主流编解码框架
+# 编解码框架
 > 因为Java序列化的性能和存储开销都表现不好,而且不能跨语言, 所以一般不使用Java的序列化而是使用以下流行的库
 
-## MessagePack
-> [Github:msgpack](https://github.com/msgpack) | [参考: MessagePack：一种高效二进制序列化格式](http://hao.jobbole.com/messagepack/)
+## Kryo
+> [Github](https://github.com/EsotericSoftware/kryo)  
+
+基准测试中得分最高的框架
 
 ## Protobuf
-> [protobuf-gradle-plugin](https://github.com/google/protobuf-gradle-plugin)
+> [Note](/Skills/Serialization/Protobuf.md)  
+> [Protocol Buffer Basics: Java](https://protobuf.dev/getting-started/javatutorial/)  
 
-`hi.proto`
+`hi.proto` 快速试用
 ```protobuf
     package lm;
     message helloworld{
@@ -86,21 +90,22 @@ categories:
         optional int32 opt = 3;//optional field
     }
 ```
-- 由 proto 生成 Java 文件 `mkdir src && protoc --java_out=./src hi.proto`
+- 由 proto 编译生成 Java 类： `mkdir src && protoc --java_out=./src hi.proto`
+
+工程内使用流程简述: 通过插件将proto文件编译到指定目录(该目录设置为source并被git忽略)下的Java类, 项目编译和运行时就可以使用这些类，注意修改了协议文件就需要手动编译一次  
+插件： maven-protoc-plugin  或 protobuf-gradle-plugin
 
 *********************
-
-## Thrift
-> [官网](https://thrift.apache.org/)源于Facebook, 支持多种语言: C++ C# Cocoa Erlang Haskell Java Ocami Perl PHP Python Ruby Smalltalk
-
-- 它支持数据(对象)序列化和多种类型的RPC服务, Thrift适用于静态的数据交换, 需要预先确定好他的数据结构, 当数据结构发生变化时,需要重新编辑IDL文件
 
 ## Marshalling
 > JBOSS 内部使用的编解码框架
 
+************************
+
 # Tips
-## 动态对JSON字符串反序列化时泛型丢失问题
-1. 使用JDK Object序列化和反序列化
+## JSON字符串反序列化时泛型丢失问题
+
 1. Jackson 方式 需要先配置 `objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);`
-    1. 第一种 objectMapper.writeValueAsBytes 
-    1. 第二种 objectMapper.readValue(bytes, 0, bytes.length, Object.class)
+    1. 第一种 `objectMapper.writeValueAsBytes`
+    1. 第二种 `objectMapper.readValue(bytes, 0, bytes.length, Object.class)`
+

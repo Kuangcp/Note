@@ -14,11 +14,11 @@ categories:
     - 1.1. [社区](#社区)
     - 1.2. [包管理](#包管理)
         - 1.2.1. [Pacman](#pacman)
-        - 1.2.2. [snap](#snap)
+        - 1.2.2. [Snap](#snap)
         - 1.2.3. [Yay](#yay)
 - 2. [Tips](#tips)
 
-💠 2024-04-17 11:07:13
+💠 2024-04-21 16:35:07
 ****************************************
 
 # Arch
@@ -77,7 +77,10 @@ categories:
     - 搜索后添加参数 重新编译 `./configure --enable-versioned-symbols  --with-openssl` 重新复制lib过去 还是一样报错信息
     - 但是发现这个报错好像是警告级别不影响实际功能，然后用上述的 pacman -U 安装指定的版本，才恢复了正常使用
 
-### snap
+> 安装deb包 [How to Install a .deb Package on Arch Linux](https://www.baeldung.com/linux/arch-install-deb-package)
+
+
+### Snap
 
 > 使用 pacman 安装
 
