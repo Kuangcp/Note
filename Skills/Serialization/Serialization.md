@@ -5,7 +5,6 @@ tags:
 categories: 
 ---
 
-
 💠
 
 - 1. [序列化](#序列化)
@@ -17,23 +16,23 @@ categories:
 - 3. [解决方案](#解决方案)
     - 3.1. [XML](#xml)
     - 3.2. [JSON](#json)
-    - 3.3. [JSONB](#jsonb)
-    - 3.4. [MessagePack](#messagepack)
-    - 3.5. [Protobuf](#protobuf)
-    - 3.6. [Thrift](#thrift)
-    - 3.7. [Avro](#avro)
+    - 3.3. [MessagePack](#messagepack)
+    - 3.4. [Protobuf](#protobuf)
+    - 3.5. [Thrift](#thrift)
+    - 3.6. [Avro](#avro)
 
-💠 2024-04-21 16:35:34
+💠 2024-04-21 23:54:18
 ****************************************
 # 序列化
 > [参考: 序列化和反序列化](https://tech.meituan.com/2015/02/26/serialization-vs-deserialization.html)  
 
-- [Github : Protobuf](https://github.com/google/protobuf)  
 - [Hessian](http://hessian.caucho.com/)
+- [Redisson 数据序列化](https://github.com/redisson/redisson/wiki/4.-%E6%95%B0%E6%8D%AE%E5%BA%8F%E5%88%97%E5%8C%96)
 
 ## 序列化协议特性
 通用性
 强健性
+
 ************************
 
 ## 序列化/反序列化 编码/解码
@@ -86,15 +85,19 @@ SOAP是一种采用XML进行序列化和反序列化的协议，它的IDL是WSDL
 - 优点：具备可读性，自描述性（序列化时无需IDL），数据相较XML更简洁，解析成本低，原生支持JavaScript（已是Ajax事实标准）
 - 缺点：数据信息占比仍较低
 
-## JSONB
-二进制格式的JSON
 
-例如MongoDB有使用到
+************************
+二进制JSON
+- JSONB JSON字符串二进制化， 例如MongoDB，PostgreSQL有使用到  
+    - [ PostgreSQL JSON Types](https://www.postgresql.org/docs/current/datatype-json.html)
+- [CBOR](http://cbor.io/) JSON二进制协议，多语言实现  
+- [Amazon Ion](https://amazon-ion.github.io/ion-docs/index.html) 多语言实现  
+- [Smile](https://github.com/FasterXML/smile-format-specification)
 
 ## MessagePack
 > [Github](https://github.com/msgpack) | [参考: MessagePack：一种高效二进制序列化格式](http://hao.jobbole.com/messagepack/)
 
-多语言支持
+多语言支持，类似JSON，可以理解为规则压缩的JSON
 
 ## Protobuf
 [Note](/Skills/Serialization/Protobuf.md)

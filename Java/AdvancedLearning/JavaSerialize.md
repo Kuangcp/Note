@@ -12,13 +12,17 @@ categories:
     - 1.1. [Serializable](#serializable)
         - 1.1.1. [JDK序列化和反序列化](#jdk序列化和反序列化)
 - 2. [编解码框架](#编解码框架)
-    - 2.1. [Kryo](#kryo)
-    - 2.2. [Protobuf](#protobuf)
-    - 2.3. [Marshalling](#marshalling)
+    - 2.1. [LZ4](#lz4)
+    - 2.2. [fast-serialization](#fast-serialization)
+    - 2.3. [Snappy](#snappy)
+    - 2.4. [Kryo](#kryo)
+    - 2.5. [JSON](#json)
+    - 2.6. [Protobuf](#protobuf)
+    - 2.7. [Marshalling](#marshalling)
 - 3. [Tips](#tips)
     - 3.1. [JSON字符串反序列化时泛型丢失问题](#json字符串反序列化时泛型丢失问题)
 
-💠 2024-04-21 16:35:07
+💠 2024-04-21 23:54:18
 ****************************************
 # Java中的序列化
 > [码农翻身:序列化： 一个老家伙的咸鱼翻身](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513589&idx=1&sn=d402d623d9121453f1e570395c7f99d7&chksm=80d67a36b7a1f32054d4c779dd26e8f97a075cf4d9ed1281f16d09f1df50a29319cd37520377&scene=21#wechat_redirect) `对象转化为二进制流`
@@ -72,10 +76,27 @@ categories:
 # 编解码框架
 > 因为Java序列化的性能和存储开销都表现不好,而且不能跨语言, 所以一般不使用Java的序列化而是使用以下流行的库
 
+## LZ4
+> [Github](https://github.com/lz4/lz4-java)
+
+## fast-serialization
+> [Github](https://github.com/RuedigerMoeller/fast-serialization) 10倍于JDK序列化性能而且100%兼容的编码
+
+## Snappy
+> [Github](https://github.com/xerial/snappy-java)
+
 ## Kryo
 > [Github](https://github.com/EsotericSoftware/kryo)  
 
 基准测试中得分最高的框架
+
+## JSON
+- [JSR 367: JSON-B](https://jcp.org/en/jsr/detail?id=367)
+- [Jackson](https://github.com/FasterXML/jackson)
+- [Gson](https://github.com/google/gson)
+- [fastjson](https://github.com/alibaba/fastjson) [FASTJSON2](https://github.com/alibaba/fastjson2)
+
+> [Github Topic: java-json](https://github.com/topics/java-json)
 
 ## Protobuf
 > [Note](/Skills/Serialization/Protobuf.md)  

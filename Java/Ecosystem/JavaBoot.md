@@ -6,14 +6,15 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [关于Java的快速开发框架](#关于java的快速开发框架)
-    1. [Springboot](#springboot)
-    1. [Jboot](#jboot)
-    1. [NuzBoot](#nuzboot)
+- 1. [关于Java的快速开发框架](#关于java的快速开发框架)
+    - 1.1. [Springboot](#springboot)
+    - 1.2. [Jboot](#jboot)
+    - 1.3. [NuzBoot](#nuzboot)
+    - 1.4. [OpenLiberty](#openliberty)
 
-**目录 end**|_2020-04-27 23:42_|
+💠 2024-04-21 23:54:18
 ****************************************
 # 关于Java的快速开发框架
 
@@ -24,3 +25,6 @@ categories:
 > 基于JFinal
 
 ## NuzBoot
+
+## OpenLiberty
+[Github](https://github.com/OpenLiberty)
