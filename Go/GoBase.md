@@ -48,7 +48,7 @@ categories:
 - 3. [Tips](#tips)
     - 3.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2024-04-07 13:37:31
+💠 2024-04-22 00:47:57
 ****************************************
 # Go
 
@@ -56,13 +56,17 @@ categories:
 > [Rethinking Visual Programming with Go](https://divan.dev/posts/visual_programming_go/)
 > [Goplus](https://github.com/qiniu/goplus)
 
-`Go 项目结构规范`
 
+************************
+
+`Go 项目结构规范`
 > [project-layout](https://github.com/golang-standards/project-layout)
 > [go-dev: layout](https://go.dev/doc/modules/layout)
 
-## Go Modules
+************************
+> [Rethinking Visual Programming with Go](https://divan.dev/posts/visual_programming_go/)
 
+## Go Modules
 > 自 1.11 开始支持 [Wiki](https://github.com/golang/go/wiki/Modules)
 
 ### 配置

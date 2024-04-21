@@ -13,8 +13,9 @@ categories:
     - 1.2. [Jboot](#jboot)
     - 1.3. [NuzBoot](#nuzboot)
     - 1.4. [OpenLiberty](#openliberty)
+    - 1.5. [ActiveJ](#activej)
 
-💠 2024-04-21 23:54:18
+💠 2024-04-22 00:47:57
 ****************************************
 # 关于Java的快速开发框架
 
@@ -28,3 +29,6 @@ categories:
 
 ## OpenLiberty
 [Github](https://github.com/OpenLiberty)
+
+## ActiveJ
+[Github](https://github.com/activej/activej)
