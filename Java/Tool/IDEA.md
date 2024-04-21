@@ -11,57 +11,44 @@ categories:
 💠
 
 - 1. [IDEA 使用笔记](#idea-使用笔记)
-    - 1.1. [基础概念](#基础概念)
-    - 1.2. [常用技巧](#常用技巧)
-        - 1.2.1. [Tomcat的使用](#tomcat的使用)
-        - 1.2.2. [导出为可运行JAR](#导出为可运行jar)
-        - 1.2.3. [Springboot热加载](#springboot热加载)
-        - 1.2.4. [Debug](#debug)
-    - 1.3. [常用配置](#常用配置)
-    - 1.4. [IDEA快捷键](#idea快捷键)
-        - 1.4.1. [默认快捷键](#默认快捷键)
-        - 1.4.2. [个人习惯](#个人习惯)
-            - 1.4.2.1. [File](#file)
-            - 1.4.2.2. [Coding](#coding)
-            - 1.4.2.3. [Extract](#extract)
-            - 1.4.2.4. [Jump](#jump)
-            - 1.4.2.5. [Search](#search)
-            - 1.4.2.6. [View](#view)
-            - 1.4.2.7. [Setting](#setting)
-    - 1.5. [常用插件](#常用插件)
-        - 1.5.1. [HTTP Client](#http-client)
-- 2. [启动配置](#启动配置)
-    - 2.1. [调优](#调优)
+    - 1.1. [常用技巧](#常用技巧)
+        - 1.1.1. [Tomcat的使用](#tomcat的使用)
+        - 1.1.2. [导出为可运行JAR](#导出为可运行jar)
+        - 1.1.3. [Springboot热加载](#springboot热加载)
+        - 1.1.4. [Debug](#debug)
+    - 1.2. [常用配置](#常用配置)
+    - 1.3. [IDEA快捷键](#idea快捷键)
+        - 1.3.1. [默认快捷键](#默认快捷键)
+        - 1.3.2. [个人习惯](#个人习惯)
+            - 1.3.2.1. [File](#file)
+            - 1.3.2.2. [Coding](#coding)
+            - 1.3.2.3. [Extract](#extract)
+            - 1.3.2.4. [Jump](#jump)
+            - 1.3.2.5. [Search](#search)
+            - 1.3.2.6. [View](#view)
+            - 1.3.2.7. [Setting](#setting)
+    - 1.4. [常用插件](#常用插件)
+        - 1.4.1. [HTTP Client](#http-client)
+- 2. [运行优化](#运行优化)
 - 3. [Tips](#tips)
     - 3.1. [使用项目外配置文件](#使用项目外配置文件)
     - 3.2. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
-    - 3.3. [无法输入中文](#无法输入中文)
+    - 3.3. [无法启动fcitx输入中文](#无法启动fcitx输入中文)
 
-💠 2024-04-12 17:19:59
+💠 2024-04-21 16:51:43
 ****************************************
 
 # IDEA 使用笔记
 > [Doc](https://www.jetbrains.com/help/idea/getting-started.html)  
 
-> [学生授权申请方式](https://sales.jetbrains.com/hc/zh-cn/articles/207154369) | [click](http://idea.lanyus.com/)
-> [rover12421博客](http://ju.outofmemory.cn/feed/2608/?page=1) | [IDEA主题](http://www.riaway.com/index.php)
+> [学生授权申请方式](https://sales.jetbrains.com/hc/zh-cn/articles/207154369)
 
-> [Idea Doc: Gradle](https://www.jetbrains.com/help/idea/gradle.html)
 > [IDEA Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
-
-## 基础概念
-- Project 就是一个工作空间，一个Module就是一个项目
-- 新建一个empty项目可以作为一个工作空间，放很多module,新建的时候不要选中任何目录，*光标选中JRE库*，再菜单栏点击File然后new，
-    - 不然项目结构很乱, 会在光标停留的文件夹下新建module
-- 一个项目一个空间也是可以的，就是跨项目查看代码会有点麻烦，而且每个项目的IDEA的配置都是不一样的，同样的配置可能要配置很多遍
-
-- 在新版中提供的 load/unload module 功能,必须要重启idea, 才能让maven生效 emmm
+> [W3C idea 教程](https://www.w3cschool.cn/intellij_idea_doc/intellij_idea_doc-q3ke2coy.html)
 
 ## 常用技巧
 1. 鼠标方法上悬停显示javadoc  勾选 General -> show quick documentation on mouse move 
 1. 自定义 TODO 等标签 Editor -> TODO, 照已有的 TODO FIXME 新建一个即可 
-
-> [W3C idea 教程](https://www.w3cschool.cn/intellij_idea_doc/intellij_idea_doc-q3ke2coy.html)
 
 ### Tomcat的使用
 > 直接配置解压的即可, 然后Idea会在 用户目录下的Idea主目录中配置一个专门放Tomcat的配置和日志等文件, 和原Tomcat进行了隔离, 这样就不会影响到该Tomcat.
@@ -111,8 +98,8 @@ _竖向的七个按钮_
 |`Mute Breakpoints`                     |哑的断点，选择这个后，所有断点变为灰色，断点失效，按F9则可以直接运行完程序。再次点击，断点变为红色，有效。如果只想使某一个断点失效，可以在断点上右键取消Enabled  |
 
 **个人思考**
-1. 当断点 F8 步过 到一行代码后, 这个方法没有抛出异常什么的, idea的面板上的那些属性, 断点什么的都没了, 只有一个 app is running , 这个意思就是这行代码还在执行中, 很有可能就是死循环...
-    - 没有断点的时候, 也就是说这个死循环一直挂在这边, 不会被回收, 后面的代码也被阻塞了, 所以代码才诡异的不符合自己构想的调用链执行
+1. 当断点 F8 步过 到一行代码后, 这个方法没有抛出异常结束, idea的面板上的属性, 断点状态都没了, 只有一个 app is running 。
+    - 那很有可能是线程陷入死循环或者长久的锁/IO等待，后面的代码也不会执行了, 所以代码才会没按预期的调用链执行，可通过间隔一段时间的两次jstack 查看目标线程的栈，确认该问题
 
 *************************
 
@@ -395,14 +382,13 @@ _例如修改为如下_
 
 **********************
 
-# 启动配置
+# 运行优化
 > [官网文档](https://www.jetbrains.com/help/idea/increasing-memory-heap.html)
 > [IntelliJ IDEA 内存优化最佳实践](http://blog.oneapm.com/apm-tech/426.html)
 
-## 调优
 > [参考: 记一次idea性能调优](http://www.cnblogs.com/nevermorewang/p/10061377.html)  
 
-- 如果有 node_modules 等大量文件的目录 可以配置文件类型中 忽略这个指定目录的索引
+- 如果有 node_modules 等大量文件的目录， 可以右键该目录设置忽略这个目录的文件索引
 
 ************************
 
@@ -415,10 +401,11 @@ IDEA中Java项目启动时Console里灰色被折叠的第一行是完整的Java�
 ## Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"
 1. Project Structure -> 找到 XXX 项目 右击 -> Add -> 选择 Groovy
 
-## 无法输入中文
-1. 替换IDEA自带的JDK为OracleJDK idea.sh 首行加 export IDEA_JDK=/home/kcp/Application/SDK/jdk1.8.0_211 `时灵时不灵`
-1. 添加配置fcitx时的配置 ~/.xpfrofile 时的内容到 idea.sh 里面 `有效`
-    ```sh
-    export XMODIFIERS=@im=fcitx
-    export QT_IM_MODULE=fcitx
-    ```
+## 无法启动fcitx输入中文
+1. 启动脚本 idea.sh 头部追加 `source ~/.xpfrofile`
+
+`~/.xpfrofile`
+```sh
+export XMODIFIERS=@im=fcitx
+export QT_IM_MODULE=fcitx
+```
