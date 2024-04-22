@@ -17,7 +17,7 @@ categories:
         - 1.4.1. [开发一个简易RESTful风格的服务器](#开发一个简易restful风格的服务器)
         - 1.4.2. [跨域](#跨域)
 
-💠 2024-04-19 18:16:21
+💠 2024-04-22 10:51:32
 ****************************************
 
 # Web
@@ -25,11 +25,11 @@ categories:
 
 ## 简单Web服务器
 > python内置一个简易的Web服务器 只需在静态资源的根目录下执行  
-- python2 `python -m SimpleHTTPServer [8000]` 即可启动 缺省端口为8000
+- python2 `python -m SimpleHTTPServer [8000]`
 - python3 `python3 -m http.server [8000]`
 
 ## FastAPI
-[FastAPI](https://github.com/tiangolo/fastapi)
+[Github](https://github.com/tiangolo/fastapi)
 
 ## Django
 `python3.5 建立虚拟环境`

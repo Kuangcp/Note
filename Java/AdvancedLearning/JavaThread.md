@@ -26,7 +26,7 @@ categories:
     - 4.1. [Loom](#loom)
     - 4.2. [Quasar](#quasar)
 
-💠 2024-04-17 11:07:13
+💠 2024-04-22 10:51:32
 ****************************************
 # Java线程
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/thread/src/main/java/com/github/kuangcp)
@@ -159,17 +159,18 @@ LockSupport.park
     1. 不能在Hook逻辑中调用`System.exit()`, 否则会阻塞JVM退出，但是可以调用`Runtime.halt()`
     1. 不能在Hook逻辑中增删Hook
     1. 在`System.exit()`执行后才注册的Hook逻辑不会被执行
-    1. `Hook逻辑执行时完整性不可控` 操作系统可控制当对JVM发出TERM(15)信号后一段时间未结束时可强制结束（9），此时Hook逻辑可能才执行了一半
+    1. `Hook逻辑执行时完整性不可控` 操作系统可控制当对JVM发出`TERM(15)`信号后一段时间未结束时可强制结束`KILL（9）`，此时Hook逻辑可能才执行了一半
     1. 注册的Hook是按先后执行的，但是其中任意一个Hook抛出未处理的异常时会中断自身及后续Hook逻辑
 
 ## 优雅关机
 > Java层面
 1. 线程池设置关闭时等待已有任务线程执行完成
+    - 但是通常等待是会有限制（容器的健康检查等）的，所以还是会造成任务的中断，队列中任务的丢失
 1. 手动接收信号量 追加资源关闭逻辑：MQ，缓存，数据库
 
 > 环境层面  
 
-当关闭服务器A时，先将该服务器的入口流量屏蔽，防止新的请求进入，然后等服务器完成原有请求的响应，以及一些资源清理行为后，完全关闭
+当关闭服务器A时，先将该服务器的入口流量屏蔽，防止新的请求进入，然后等服务器完成原有请求的响应，以及一些资源清理行为后，完全关闭。
 
 [参考: Kubernetes 中如何保证优雅地停止 Pod](https://cloud.tencent.com/developer/article/1409225)  
 [参考: JVM安全退出（如何优雅的关闭java服务）](https://www.cnblogs.com/yuandluck/p/9517700.html)  

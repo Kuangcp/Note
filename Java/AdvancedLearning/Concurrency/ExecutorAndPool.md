@@ -8,22 +8,22 @@ categories:
 💠
 
 - 1. [线程池](#线程池)
-    - 1.1. [常用API](#常用api)
-    - 1.2. [分支合并框架 Fork/Join](#分支合并框架-forkjoin)
+    - 1.1. [ExecutorService 接口](#executorservice-接口)
+    - 1.2. [Executor框架](#executor框架)
     - 1.3. [ScheduledThreadPoolExecutor STPE](#scheduledthreadpoolexecutor-stpe)
-    - 1.4. [Executor框架](#executor框架)
-    - 1.5. [Spring](#spring)
-        - 1.5.1. [ThreadPoolTaskExecutor](#threadpooltaskexecutor)
-- 2. [实践](#实践)
-    - 2.1. [线程池 参数优化&监控](#线程池-参数优化&监控)
-    - 2.2. [业务线程池](#业务线程池)
+    - 1.4. [分支合并框架 Fork/Join](#分支合并框架-forkjoin)
+- 2. [Spring](#spring)
+    - 2.1. [ThreadPoolTaskExecutor](#threadpooltaskexecutor)
+- 3. [实践](#实践)
+    - 3.1. [线程池 参数优化&监控](#线程池-参数优化&监控)
+    - 3.2. [业务线程池](#业务线程池)
+    - 3.3. [停止线程池](#停止线程池)
 
-💠 2024-04-12 17:19:59
+💠 2024-04-22 10:51:32
 ****************************************
 # 线程池
 
 > [Java线程池实现原理及其在美团业务中的实践](https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html)
-> [使用默认的线程池策略](https://github.com/Kuangcp/JavaBase/blob/thread/src/main/java/com/github/kuangcp/UseThreadPool.java)
 > [线程池 BlockingQueue synchronized volatile](https://segmentfault.com/a/1190000012916473)
 > [参考: Java(Android)线程池](http://www.trinea.cn/android/java-android-thread-pool/)
 > [参考: Java ThreadPoolExecutor线程池使用的一个误区](http://codefine.site/2941.html)
@@ -36,8 +36,8 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
         new LinkedBlockingQueue<>(), new BasicThreadFactory.Builder().namingPattern("test-%d").build());
 ```
 
-## 常用API
-
+## ExecutorService 接口
+> [Github Demo](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/main/java/thread/pool/UseThreadPool.java)
 - `execute`：用于将任务提交给执行器执行
     - 参数为Runable
     - 无返回，对于调用方来说无法感知异常，但是异常栈会被输出到 System.err ，依然有迹可查
@@ -56,30 +56,6 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 > 注意
 
 上述的 execute 和 submit 行为只针对 `ThreadPoolExecutor`. 对于 ScheduledThreadPoolExecutor 来说，execute行为不一样， execute提交的任务 抛出异常时也是**没有任何痕迹**  
-
-## 分支合并框架 Fork/Join
-> [Note： Fork Join](/Java/AdvancedLearning/Concurrency/ForkAndJoin.md)
-
-## ScheduledThreadPoolExecutor STPE
-- 线程池的大小可以预定义， 也可自适应
-- 所安排的任务可以定期执行，也可只运行一次
-- STPE 扩展了 ThreadPoolExecutor 类，很相似但不具备定期调度能力
-    - STPE 和并发包里的类结合使用是常见的模式之一
-
-> 核心API： 提交任务
-- `schedule(Runnable command, long delay, TimeUnit unit)`
-- `schedule(Callable<V> callable, long delay, TimeUnit unit)`
-- `scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit)`
-    - 不管上一次Runnable执行结束的时间，总是以固定延迟时间执行 即 上一个Runnable执行开始时候 + 延时时间 = 下一个Runnable执行的时间点
-- `scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit)`
-    - 当上一个Runnable执行结束后+固定延迟 = 下一个Runnable执行的时间点
-
-> 如何实现调度: [ScheduledThreadPoolExecutor实现原理](https://juejin.cn/post/7035415187783942152) | [验证单元测试](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/thread/schdule/SchedulerPoolTest.java)
-- 核心依赖 DelayedWorkQueue 实现延迟调度
-    - 全部线程繁忙时，调度会发生什么问题？ 
-
-
-************************
 
 ## Executor框架
 > 该处讲述的方法都为`java.util.concurrent.Executors`的方法 (静态工厂模式)
@@ -130,9 +106,32 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
     - 该线程池能够合理的使用CPU进行对任务操作（并行操作），所以适合使用在很耗时的任务中
     - 创建方式：`ExecutorService executor = Executors.newWorkStealingPool();`
 
+## ScheduledThreadPoolExecutor STPE
+- 线程池的大小可以预定义， 也可自适应
+- 所安排的任务可以定期执行，也可只运行一次
+- STPE 扩展了 ThreadPoolExecutor 类，很相似但不具备定期调度能力
+    - STPE 和并发包里的类结合使用是常见的模式之一
+
+> 核心API： 提交任务
+- `schedule(Runnable command, long delay, TimeUnit unit)`
+- `schedule(Callable<V> callable, long delay, TimeUnit unit)`
+- `scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit)`
+    - 不管上一次Runnable执行结束的时间，总是以固定延迟时间执行 即 上一个Runnable执行开始时候 + 延时时间 = 下一个Runnable执行的时间点
+- `scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit)`
+    - 当上一个Runnable执行结束后+固定延迟 = 下一个Runnable执行的时间点
+
+> 如何实现调度: [ScheduledThreadPoolExecutor实现原理](https://juejin.cn/post/7035415187783942152) | [验证单元测试](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/thread/schdule/SchedulerPoolTest.java)
+- 核心依赖 DelayedWorkQueue 实现延迟调度
+    - 全部线程繁忙时，调度会发生什么问题？ 
+
 ************************
-## Spring 
-### ThreadPoolTaskExecutor
+## 分支合并框架 Fork/Join
+> [Note： Fork Join](/Java/AdvancedLearning/Concurrency/ForkAndJoin.md)
+
+************************
+
+# Spring 
+## ThreadPoolTaskExecutor
 > Spring的线程池封装实现
 
 - setTaskDecorator: 线程池装饰器，通常用来ThreadLocal值的传递，例如 TraceId，授权对象
@@ -143,6 +142,8 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 > [About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing) | [About Pool Sizing in distributed environments / microservices](https://github.com/brettwooldridge/HikariCP/issues/1023)`如何设置数据库连接池线程数`  
 
 ## 线程池 参数优化&监控
+目的：观测线程池运行情况，优化吞吐量和延迟，规避资源分配不合理导致瓶颈甚至宕机
+
 > 公式1：Nthreads = Ncpu * Ucpu * W/C
 
 ```
@@ -186,4 +187,10 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 1. 随着业务需求的变化，线程池边界会模糊，导致吞吐量大的服务被低并发参数的线程池产生短板效应，吞吐量低的服务被高并发参数的线程池任务失败量突增甚至被打垮。 
     - 例如HTTP请求任务被提交到了缓存同步线程池，大量的HTTP请求任务占用了很多资源导致系统缓存的实时性大大降低。
     - 方案： TODO
+
+************************
+
+## 停止线程池
+1. 如何实现JVM停止时等待线程池中任务执行完成
+1. 线程池停止时，如何感知到 被中断的 运行中和等待中的任务
 

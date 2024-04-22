@@ -33,7 +33,7 @@ categories:
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-04-15 11:04:31
+💠 2024-04-22 10:51:32
 ****************************************
 # JVM
 > JVM结构及设计
@@ -64,7 +64,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 
 > OOM 
 - `-XX:+HeapDumpOnOutOfMemoryError `
-- `-XX:HeapDumpPath=./java_pid<pid>.hprof`
+- `-XX:HeapDumpPath=./java_pid<pid>.hprof` 注意路径需要存在，JVM不会创建不存在的目录
 - `-XX:OnOutOfMemoryError="< cmd args >;< cmd args >" `
 - `-XX:+UseGCOverheadLimit`
 
@@ -108,25 +108,31 @@ Oracle JDK 默认采用的是 Hotspot JVM
     - `java -XX:+PrintFlagsFinal -version | grep "Use.*GC"` 查看默认GC实现
 - `-XshowSettings:VM` 展示VM和系统信息
 
+需要理解，但是不用，尽量使用明确的 Xmx Xms
 > [JVM Parameters InitialRAMPercentage, MinRAMPercentage, and MaxRAMPercentage](https://www.baeldung.com/java-jvm-parameters-rampercentage)  
 - MinRAMPercentage, MaxRAMPercentage 其实都是**设置堆默认最大值**的， Max 和 Min 换成 Big Small可能更好理解(大内存环境和小内存环境 `200M划分`)
 - `-XX:InitialRAMPercentage` 初始堆使用值 默认1.5625， 当配置了 `-Xms` 时，该配置将被忽略
-
 - InitialRAMFraction MaxRAMFraction  MinRAMFraction DefaultMaxRAMFraction 4等分值
 
 ************************
 
 > 容器
 
-容器资源限制无法感知问题
+容器无法感知资源限制， 8U191/10b34 及以上版本才支持
+
 - 快速实验某个Java版本的默认参数和限制 docker run -m 100MB openjdk:8 java -XX:MinRAMPercentage=80.0 -XshowSettings:VM -version
 - [参考: Java和Docker限制的那些事儿](http://www.techug.com/post/java-and-docker-memory-limits.html)`天坑： 低版本的Jvm无法感知到Docker的资源限制`
 - [ ] 但是有的Linux版本在后续的版本也无法感知，例如 1.8.0_342 10.0.2 仍取的主机内存, Linux 5.15内核 Manjaro23.1 
 
 1. [Java (prior to JDK8 update 131) applications running in docker container CPU / Memory issues?](https://stackoverflow.com/questions/64262912/java-prior-to-jdk8-update-131-applications-running-in-docker-container-cpu-m)  
+1. [Best Practices: Java Memory Arguments for Containers](https://dzone.com/articles/best-practices-java-memory-arguments-for-container)
 
 总结： **尽量使用 Xms Xmx**，而不是 RAMPercentage RAMFractionc参数（还要结合容器或宿主机计算实际值），降低维护和理解成本，控制更灵活精确，且支持所有版本JVM，不用考虑兼容性问题
-1. [Best Practices: Java Memory Arguments for Containers](https://dzone.com/articles/best-practices-java-memory-arguments-for-container)
+
+参数：
+- -XX:ActiveProcessorCount=$CONTAINER_CORE_LIMIT 强制设置CPU量 从downawrd_api获取
+- -Xlog:os+container=logLevel JVM报告容器信息
+- -XX:-UseContainerSupport 关闭容器支持，默认开启
 
 ************************
 
