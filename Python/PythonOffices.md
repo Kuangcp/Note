@@ -7,22 +7,25 @@ categories:
     - Python
 ---
 
-**目录 start**
+💠
 
-1. [Offices文档](#offices文档)
-    1. [Word](#word)
-    1. [Excel](#excel)
-        1. [xlrd](#xlrd)
-        1. [pandas](#pandas)
+- 1. [Offices文档](#offices文档)
+    - 1.1. [Word](#word)
+    - 1.2. [Excel](#excel)
+        - 1.2.1. [xlrd](#xlrd)
+        - 1.2.2. [pandas](#pandas)
 
-**目录 end**|_2020-04-27 23:42_|
+💠 2024-04-22 20:07:13
 ****************************************
 # Offices文档
 ## Word
 
 ## Excel 
-> [](http://www.python-excel.org/)
+> [Working with Excel Files in Python](http://www.python-excel.org/)
 > [参考: Python-Excel 模块哪家强？](https://zhuanlan.zhihu.com/p/23998083)
+
+> 大文件读取性能优化
+- 问题： pandas读取 200M+ Excel时会耗时很久，思路将Excel转换为CSV
 
 ### xlrd 
 > [Github addr](https://github.com/python-excel/xlrd)

@@ -13,9 +13,10 @@ categories:
     - 1.1. [FastAPI](#fastapi)
     - 1.2. [Django](#django)
     - 1.3. [Flask](#flask)
-        - 1.3.1. [跨域](#跨域)
+- 2. [Tool](#tool)
+- 3. [爬虫](#爬虫)
 
-💠 2024-04-22 16:41:19
+💠 2024-04-22 20:07:13
 ****************************************
 
 # Web
@@ -28,6 +29,11 @@ categories:
 ## FastAPI
 [Github](https://github.com/tiangolo/fastapi)
 
+> [FastAPI增加traceId](https://segmentfault.com/a/1190000041438570)
+> [FastApi结合loguru日志使用](https://blog.csdn.net/qq_51967017/article/details/134045236)
+
+************************
+
 ## Django
 - 安装Django `pip install Django`
 - 创建项目 `django-admin.py startproject first_pro . `
@@ -37,10 +43,10 @@ categories:
 
 ## Flask
 开发一个简易RESTful风格的服务器
-> [官方文档 ](http://www.pythondoc.com/flask-restful/first.html#python-flask-restful-api) `但是这个内置的web服务器性能很渣`
-> [教程文档](https://www.tutorialspoint.com/flask/index.htm)
+> [官方文档 ](http://www.pythondoc.com/flask-restful/first.html#python-flask-restful-api)  
+> [教程文档](https://www.tutorialspoint.com/flask/index.htm)  
 
-### 跨域
+> 跨域问题
 > [解决方式](https://blog.csdn.net/yannanxiu/article/details/53036508)
 `pip install flask-cors`
 
@@ -51,3 +57,13 @@ categories:
     CORS(app, supports_credentials=True)
 ```
 
+# Tool 
+- `pip install httpie` 
+    - `http --json URL` 格式化输出json
+
+- `curl URL|python -m json.tool ` 格式化输出JSON
+
+# 爬虫
+`解析HTML`
+- bs4 ：`sudo pip3 install bs4`
+- lxml :`sudo pip3 install lxml`
