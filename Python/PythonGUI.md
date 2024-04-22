@@ -7,16 +7,17 @@ categories:
     - Python
 ---
 
-**目录 start**
+💠
 
-1. [GUI](#gui)
-    1. [GTK3](#gtk3)
-    1. [Tkinter](#tkinter)
-    1. [PyQt](#pyqt)
-    1. [kivy](#kivy)
-    1. [wxPython](#wxpython)
+- 1. [GUI](#gui)
+    - 1.1. [GTK3](#gtk3)
+    - 1.2. [Tkinter](#tkinter)
+    - 1.3. [PyQt](#pyqt)
+    - 1.4. [kivy](#kivy)
+    - 1.5. [wxPython](#wxpython)
+    - 1.6. [NiceGUI](#nicegui)
 
-**目录 end**|_2020-09-18 19:39_|
+💠 2024-04-22 16:41:19
 ****************************************
 # GUI
 ## GTK3
@@ -48,3 +49,6 @@ categories:
 
 ## wxPython
 > 坑多
+
+## NiceGUI
+[Official](https://nicegui.io/)

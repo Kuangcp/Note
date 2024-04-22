@@ -62,7 +62,7 @@ categories:
     - 4.1. [查看进程占用的端口](#查看进程占用的端口)
     - 4.2. [网络问题排查](#网络问题排查)
 
-💠 2024-04-19 18:16:21
+💠 2024-04-22 16:41:19
 ****************************************
 # Linux网络管理
 ## 内核配置
@@ -195,8 +195,9 @@ categories:
 
 - 限速 `tc qdisc add dev eno1 root tbf rate 400kbit latency 1ms burst 1000`
 - 解除 `tc qdisc del dev eno1 root tbf rate 400kbit latency 1ms burst 1000`
+    - tbf : 令牌桶算法
 
-- 网卡100%丢包 `tc qdisc add dev enp3s0 root netem loss 100%` 移除： add 换成 del
+- 网卡100%丢包 `tc qdisc add dev enp3s0 root netem loss 100%` 移除限制： add 换成 del
 - 移除指定网卡添加的所有规则 `tc qdisc del dev enp3s0 root`
 - 指定IP网段 丢包 
 ```sh
@@ -213,8 +214,6 @@ categories:
     tc qdisc add dev $interface parent 1:1 handle 2: netem delay $delay loss $loss
 ```
 
-
-tbf 指令牌桶算法
 ### iperf3
 TCP UDP 测速， 在两个节点上使用iperf启动服务端和客户端进程，从而计算TCP和UDP指标信息
 

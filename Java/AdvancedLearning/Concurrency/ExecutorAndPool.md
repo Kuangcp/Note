@@ -19,7 +19,7 @@ categories:
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2024-04-22 10:51:32
+💠 2024-04-22 16:41:19
 ****************************************
 # 线程池
 
@@ -140,6 +140,8 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 ************************
 # 实践
 > [About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing) | [About Pool Sizing in distributed environments / microservices](https://github.com/brettwooldridge/HikariCP/issues/1023)`如何设置数据库连接池线程数`  
+
+> [ExecutorService - 10 tips and tricks](https://nurkiewicz.com/2014/11/executorservice-10-tips-and-tricks.html)
 
 ## 线程池 参数优化&监控
 目的：观测线程池运行情况，优化吞吐量和延迟，规避资源分配不合理导致瓶颈甚至宕机

@@ -15,9 +15,11 @@ categories:
         - 1.2.1. [CONNECT](#connect)
         - 1.2.2. [GET](#get)
         - 1.2.3. [POST](#post)
-    - 1.3. [HTTP的响应状态码](#http的响应状态码)
+    - 1.3. [请求 Content-Type](#请求-content-type)
+        - 1.3.1. [Form](#form)
     - 1.4. [Response响应](#response响应)
-        - 1.4.1. [Header](#header)
+        - 1.4.1. [HTTP的响应状态码](#http的响应状态码)
+        - 1.4.2. [Header](#header)
     - 1.5. [HTTP 缓存](#http-缓存)
     - 1.6. [Session 和 Cookie](#session-和-cookie)
         - 1.6.1. [Cookie](#cookie)
@@ -37,7 +39,7 @@ categories:
     - 4.1. [CORS 跨域](#cors-跨域)
     - 4.2. [相关工具](#相关工具)
 
-💠 2024-01-23 19:08:38
+💠 2024-04-22 16:41:19
 ****************************************
 # HTTP
 > HyperText Transfer Protocol (超文本传输协议) 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -54,6 +56,7 @@ categories:
 
 - 统一资源定位符 特别注意URL的组成和编解码  [url中的特殊字符问题](http://www.cnblogs.com/xmphoenix/archive/2011/04/20/2022945.html)
     - 不能在URL的关键位置出现%号，作为参数的值是允许的。
+> [What is the maximum length of a URL in different browsers?](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers) 不同浏览器实现不一样
 
 ## 请求方法
 - HTTP/1.1协议中共定义了八种方法（有时也叫“动作”）来表明Request-URI指定的资源的不同操作方式：
@@ -96,12 +99,22 @@ get 方式下的http请求会限制URL长度，会有多方面不同的限制 �
 - 标准的HTTP使用规范是参数全部使用body来传递，但是为了实现授权等功能的通用性，某些大厂会折腾出这样的接口
     - https://api.com/getUserInfo?token=xxx body传输JSON格式的userId等参数
 
+************************
+## 请求 Content-Type
+[MDN: Content-Type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type)
+
+### Form
+[form-data vs -urlencoded](https://gist.github.com/joyrexus/524c7e811e4abf9afe56)  
+[application/x-www-form-urlencoded or multipart/form-data?](https://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data)  
+
+- `application/x-www-form-urlencoded` 常用于表单提交
+- `multipart/form-data` 常用于文件上传
+
 `文件上传` 
-
-echo "sss" > b.docx
-
+1. 创建文件 echo "sss" > b.docx
+1. 上传文件
 ```sh
-    # firefox
+    # firefox 请求Body
     -----------------------------234019508041567584373971060997
     Content-Disposition: form-data; name="file"; filename="b.docx"
     Content-Type: application/wps-office.docx
@@ -110,7 +123,7 @@ echo "sss" > b.docx
 
     -----------------------------234019508041567584373971060997--
 
-    # chrome
+    # chrome 请求Body
     ------WebKitFormBoundarybgjKLu2gfBqPLex4
     Content-Disposition: form-data; name="file"; filename="b.docx"
     Content-Type: application/wps-office.docx
@@ -118,16 +131,15 @@ echo "sss" > b.docx
 
     ------WebKitFormBoundarybgjKLu2gfBqPLex4--
 ```
-可以看出 Body 组成部分： 开始标记，文件元信息，结束标记
-
-************************
-
-## HTTP的响应状态码
-> [HTTP 状态码 完整列表](/FrontEnd/ResponseCode.md)
+- 可以看出 Body 组成部分： 开始标记，文件元信息，结束标记
+- Header中会声明边界标记 `Content-Type： multipart/form-data; boundary=-----------------------------234019508041567584373971060997`
 
 ************************
 
 ## Response响应
+### HTTP的响应状态码
+> [HTTP 状态码 完整列表](/FrontEnd/ResponseCode.md)
+
 ### Header 
 
 > 常用Key
