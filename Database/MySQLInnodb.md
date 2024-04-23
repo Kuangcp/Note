@@ -19,10 +19,10 @@ categories:
     - 2.7. [自增锁(Auto-inc Locks)](#自增锁auto-inc-locks)
     - 2.8. [粗粒度 锁类型](#粗粒度-锁类型)
 - 3. [MVCC机制](#mvcc机制)
-- 4. [索引设计](#索引设计)
-- 5. [行设计](#行设计)
+- 4. [行设计](#行设计)
+- 5. [Buffer Pool](#buffer-pool)
 
-💠 2024-03-20 17:18:00
+💠 2024-04-23 21:07:09
 ****************************************
 # InnoDB
 > [Doc: InnoDB](https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html)
@@ -35,6 +35,7 @@ categories:
 
 # 锁设计细节
 > [InnoDB Locking and Transaction Model](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-transaction-model.html)
+> [InnoDB Locking](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)  
 
 ## 共享/排他锁(Shared and Exclusive Locks)
 > 共享锁(S)和排他锁(X)是InnoDB引擎实现的`行级别锁`。 
@@ -98,13 +99,16 @@ IS 	| ❌ |   |   |
 > [InnoDB Multi-Versioning](https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html)
 
 > [MySQL InnoDB MVCC机制](https://www.jianshu.com/p/d67f0329d3bf)
+> [参考: 轻松理解MYSQL MVCC 实现机制](https://blog.csdn.net/whoamiyang/article/details/51901888#commentBox)  
 
 锁开销较大，因此引入MVCC(快照读)： 读不加锁，读写不冲突。在读多写少的场景下极大的增加了系统的并发性能。`只在RC和RR下生效, 因为读未提交不需要(已经不在意一致性了)，序列化同样不需要(绝对不会出现一致性问题)`
 
 Innodb 内部在每行有隐藏列：
-1. DB_TRX_ID    6-byte 事务id，每处理一个事务，值自动加一。
-1. DB_ROLL_PTR  7-byte 回滚指针， 指向 undo 记录
-1. DB_ROW_ID    6-byte 行id， 2^48，如果没有手动设置主键，rowId溢出时会发生数据覆盖(rowId循环使用)
+| 名称 | 大小 | 说明 |
+|:---|:---|:---|
+| DB_TRX_ID    | 6-byte | 事务id，每处理一个事务，值自动加一。 |
+| DB_ROLL_PTR  | 7-byte | 回滚指针， 指向 undo 记录 |
+| DB_ROW_ID    | 6-byte | 行id， 2^48，如果没有手动设置主键，rowId溢出时会发生数据覆盖(rowId循环使用) |
 
 > 每条记录的头信息（record header）里都有一个bit（deleted_flag）来表示当前记录是否已经被删除
 
@@ -116,10 +120,12 @@ Innodb 内部在每行有隐藏列：
 在read committed级别下，readview会在事务中的每一个SELECT语句查询发送前生成（也可以在声明事务时显式声明START TRANSACTION WITH CONSISTENT SNAPSHOT），因此每次SELECT都可以获取到当前已提交事务和自己修改的最新版本。而在repeatable read级别下，每个事务只会在第一个SELECT语句查询发送前或显式声明处生成，其他查询操作都会基于这个ReadView，这样就保证了一个事务中的多次查询结果都是相同的，因为他们都是基于同一个ReadView下进行MVCC机制的查询操作。
 
 ************************
-# 索引设计
 
+# 行设计
+> [row size limits](https://dev.mysql.com/doc/refman/8.0/en/column-count-limit.html#row-size-limits)  
+> [MySQL 一行记录是怎么存储的？](https://xiaolincoding.com/mysql/base/row_format.html)  
 
 ************************
 
-# 行设计
-> [row size limits](https://dev.mysql.com/doc/refman/8.0/en/column-count-limit.html#row-size-limits)
+# Buffer Pool
+> [Buffer Pool](https://dev.mysql.com/doc/refman/8.0/en/innodb-buffer-pool.html)

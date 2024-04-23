@@ -14,35 +14,31 @@ categories:
         - 1.1.1. [SQL执行顺序](#sql执行顺序)
         - 1.1.2. [性能优化场景](#性能优化场景)
         - 1.1.3. [条件操作符](#条件操作符)
-    - 1.2. [锁](#锁)
-        - 1.2.1. [Innodb](#innodb)
-    - 1.3. [事务](#事务)
-        - 1.3.1. [幻读](#幻读)
-        - 1.3.2. [事务隔离级别](#事务隔离级别)
-        - 1.3.3. [事务死锁](#事务死锁)
-        - 1.3.4. [隐含事务](#隐含事务)
-    - 1.4. [性能调优](#性能调优)
-        - 1.4.1. [Join](#join)
-        - 1.4.2. [查看状态变量](#查看状态变量)
-        - 1.4.3. [统计表和索引的存储占用](#统计表和索引的存储占用)
-    - 1.5. [存储引擎](#存储引擎)
-        - 1.5.1. [InnoDB](#innodb)
-        - 1.5.2. [MyIsAM](#myisam)
+    - 1.2. [事务](#事务)
+        - 1.2.1. [幻读](#幻读)
+        - 1.2.2. [事务隔离级别](#事务隔离级别)
+        - 1.2.3. [事务死锁](#事务死锁)
+        - 1.2.4. [隐含事务](#隐含事务)
+    - 1.3. [性能调优](#性能调优)
+        - 1.3.1. [Join](#join)
+        - 1.3.2. [查看状态变量](#查看状态变量)
+    - 1.4. [存储引擎](#存储引擎)
+        - 1.4.1. [InnoDB](#innodb)
+        - 1.4.2. [MyIsAM](#myisam)
 - 2. [Tips](#tips)
     - 2.1. [SQL 片段](#sql-片段)
 
-💠 2024-03-04 17:26:01
+💠 2024-04-23 21:07:09
 ****************************************
 # MySQL进阶
-> [MySQL sever 源码](https://github.com/mysql/mysql-server)  
+> [Github: MySQL Sever](https://github.com/mysql/mysql-server)  
+
 > [Mysql 5.7.35 源码解释](https://github.com/shockerli/mysql-annotated-5.7.35)  
 > [参考: shell 下执行mysql 命令](http://www.cnblogs.com/wangkangluo1/archive/2012/04/27/2472898.html)  
-> [参考: 轻松理解MYSQL MVCC 实现机制](https://blog.csdn.net/whoamiyang/article/details/51901888#commentBox)  
 
 ## 查询
-> [SQL通用优化方案(where优化、索引优化、分页优化、事务优化、临时表优化)](https://www.cnblogs.com/sochishun/p/7003513.html)
-
-[MySQL 索引](/Database/MySQLIndex.md)
+> [SQL通用优化方案(where优化、索引优化、分页优化、事务优化、临时表优化)](https://www.cnblogs.com/sochishun/p/7003513.html)  
+> [MySQL 索引](/Database/MySQLIndex.md)  
 
 ### SQL执行顺序
 > [SQL执行顺序（以MySQL为准）](https://segmentfault.com/a/1190000024577490)  
@@ -88,10 +84,6 @@ FROM， ON， JOIN，WHERE，GROUP BY，SUM，COUNT，HAVING，SELECT，DISTINCT
 
 ************************
 
-## 锁
-### Innodb
-> [InnoDB Locking](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
-
 ## 事务
 - 当前会话隔离级别
     - 查看 select @@tx_isolation;
@@ -110,12 +102,12 @@ FROM， ON， JOIN，WHERE，GROUP BY，SUM，COUNT，HAVING，SELECT，DISTINCT
 
 InnoDB 默认隔离级别为 可重复读
 
-| 事务隔离级别 | 脏读 | 不可重复读 | 幻读
+| 事务隔离级别 | 脏读 | 不可重复读 | 幻读 |
 |:---|:---:|:---:|:---:|
-| 读未提交（read-uncommitted）    | 会 | 会 | 会
-| 提交读（read-committed）        |   | 会 | 会
-| 可重复读（repeatable-read）     |   |    | 会
-| 串行化（serializable） 	      |   |    | 
+| 读未提交（read-uncommitted）    | 会 | 会 | 会 |
+| 提交读（read-committed）        |   | 会 | 会 |
+| 可重复读（repeatable-read）     |   |    | 会 |
+| 串行化（serializable） 	      |   |    |   |
 
 需要结合InnoDB引擎具体的锁分析以上隔离级别产生和解决问题的方式
 
@@ -188,10 +180,17 @@ InnoDB通过加间隙锁来防止幻读
 
 [Nested Join Optimization](https://dev.mysql.com/doc/refman/8.0/en/nested-join-optimization.html)
 
+> Join or
+- `select apply a left join user b on a.name = b.name or a.addr = b.addr`
+    - 改写为 `select apply a left join user b on a.name = b.name left join user c on a.addr = c.addr`
+    - 使用到user表字段的地方需要改写判断 b 和 c。
+
 ************************
 
 > [我们公司不让开发使用 join 包括 left join,不让用子查询，合理吗？](https://www.v2ex.com/t/678312)
 > [业务多表 join，单条 SQL 梭哈一把好还是多次查询在代码整合好](https://www.v2ex.com/t/557498)
+
+************************
 
 ### 查看状态变量
 > [ SHOW VARIABLES](https://dev.mysql.com/doc/refman/5.7/en/show-variables.html)  
@@ -200,21 +199,12 @@ InnoDB通过加间隙锁来防止幻读
 - 查看最大连接数 `show variables like "max_conn%";`
     - 设置最大连接数 `set global max_connections=5000;`
 
-### 统计表和索引的存储占用
-```sql
-    select table_schema                         as 'DB',
-        table_name                              as 'TABLE',
-        table_rows                              as 'TOTAL',
-        truncate(data_length / 1024 / 1024, 2)  as 'Data MiB',
-        truncate(index_length / 1024 / 1024, 2) as 'Index MiB'
-    from information_schema.tables
-    where table_schema = 'test-db'
-    order by data_length desc, index_length desc;
-```
+
+************************
 
 ## 存储引擎
 ### InnoDB
-行溢出
+[InnoDB](/Database/MySQLInnodb.md)
 
 ### MyIsAM
 
@@ -229,3 +219,15 @@ InnoDB通过加间隙锁来防止幻读
 ## SQL 片段
 
 1. 删除库下所有表 `select concat('drop table ',table_name,';') from information_schema.TABLES where table_schema='DATABASE_NAME';`
+
+> 统计表和索引的存储占用
+```sql
+    select table_schema                         as 'DB',
+        table_name                              as 'TABLE',
+        table_rows                              as 'TOTAL',
+        truncate(data_length / 1024 / 1024, 2)  as 'Data MiB',
+        truncate(index_length / 1024 / 1024, 2) as 'Index MiB'
+    from information_schema.tables
+    where table_schema = 'test-db'
+    order by data_length desc, index_length desc;
+```
