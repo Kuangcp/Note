@@ -12,10 +12,8 @@ categories:
 - 1. [Offices文档](#offices文档)
     - 1.1. [Word](#word)
     - 1.2. [Excel](#excel)
-        - 1.2.1. [xlrd](#xlrd)
-        - 1.2.2. [pandas](#pandas)
 
-💠 2024-04-22 20:07:13
+💠 2024-04-23 13:56:29
 ****************************************
 # Offices文档
 ## Word
@@ -25,10 +23,20 @@ categories:
 > [参考: Python-Excel 模块哪家强？](https://zhuanlan.zhihu.com/p/23998083)
 
 > 大文件读取性能优化
-- 问题： pandas读取 200M+ Excel时会耗时很久，思路将Excel转换为CSV
+- 问题： pandas读取 200M+ Excel时会耗时很久（分钟级），思路将Excel转换为CSV再读取
+[Fast excel python](https://hakibenita.com/fast-excel-python)`calamine性能最快且保留类型`  
+[polars.read_excel](https://docs.pola.rs/py-polars/html/reference/api/polars.read_excel.html)`读取Excel为DataFrame,同样使用calamine`  
 
-### xlrd 
-> [Github addr](https://github.com/python-excel/xlrd)
+************************
+
+> Openpyxl  
+> DuckDB  
+> LibreOffice  
+> Tablib  
+
+************************
+
+> [xlrd](https://github.com/python-excel/xlrd)
 
 ```python
     import xlrd 
@@ -42,5 +50,6 @@ categories:
         print()
 ```
 
-### pandas 
-> [Official Site](http://pandas.pydata.org/)
+************************
+> [Pandas](http://pandas.pydata.org/)
+

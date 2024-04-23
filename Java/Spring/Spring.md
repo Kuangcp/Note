@@ -23,23 +23,25 @@ categories:
         - 1.2.2. [Spring 和 ServletContextList](#spring-和-servletcontextlist)
 - 2. [基础](#基础)
     - 2.1. [Bean概述](#bean概述)
-    - 2.2. [Bean生命周期](#bean生命周期)
-    - 2.3. [Spring容器的扩展点](#spring容器的扩展点)
-        - 2.3.1. [Aware](#aware)
-        - 2.3.2. [BeanPostProcessor](#beanpostprocessor)
-        - 2.3.3. [BeanFactoryPostProcessor](#beanfactorypostprocessor)
-    - 2.4. [Bean的作用域](#bean的作用域)
-    - 2.5. [IOC/DI 控制反转](#iocdi-控制反转)
-        - 2.5.1. [循环依赖](#循环依赖)
-    - 2.6. [Scheduling](#scheduling)
-    - 2.7. [Events](#events)
+        - 2.1.1. [Bean生命周期](#bean生命周期)
+        - 2.1.2. [Bean的作用域](#bean的作用域)
+    - 2.2. [容器的扩展点](#容器的扩展点)
+        - 2.2.1. [Aware](#aware)
+        - 2.2.2. [BeanPostProcessor](#beanpostprocessor)
+        - 2.2.3. [BeanFactoryPostProcessor](#beanfactorypostprocessor)
+    - 2.3. [IOC/DI 控制反转](#iocdi-控制反转)
+        - 2.3.1. [循环依赖](#循环依赖)
+    - 2.4. [Application Context](#application-context)
+    - 2.5. [Scheduling](#scheduling)
+    - 2.6. [Events](#events)
+    - 2.7. [异步](#异步)
     - 2.8. [Utils](#utils)
         - 2.8.1. [ReflectionUtils](#reflectionutils)
 - 3. [Web开发的最佳实践](#web开发的最佳实践)
     - 3.1. [优雅部署](#优雅部署)
 - 4. [Tips](#tips)
 
-💠 2024-03-14 21:28:14
+💠 2024-04-23 13:56:29
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -196,7 +198,7 @@ _其他,可选_
 -   `依赖项`：该bean所引用的依赖项
 -   `设置其他属性配置`：如配置连接池bean中使用的连接数等
 
-## Bean生命周期
+### Bean生命周期
 -   初始化(当一个bean配置和了多个生命周期时，执行顺序如下顺序)
     -   在方法上使用`@PostConstruct`注解(推荐使用，同xml中的`init-method`属性一致)
     -   实现接口`InitializingBean`，在方法`afterPropertiesSet()`中可进行bean的初始化操作(在容器设置完bean的必须属性后执行，不建议使用接口，推荐使用注解或xml配置)
@@ -220,7 +222,21 @@ _其他,可选_
 -   让Bean获取自身在BeanFactory中的名称(id或name)
     -   实现`BeanNameAware`接口中,则咎可以获取名称(该方法在初始化之前)
 
-## Spring容器的扩展点
+### Bean的作用域
+
+在Spring2.0之前spring中bean的作用域只有`singleton（单例）`及`prototype（原型）`两种。
+在Spring2.0后便又增加了`request`、`session`及`application`三种作用域，且这三种作用域都只用于基于web的Spring ApplicationContext。
+直到现在，Spring又增加了作用与`webSocket`的作用域，该作用域与2.0之后增加的三种作用域一样都只作用与基于web的Spring ApplicationContext。
+
+- `singleton`: 该作用域是Spring bean默认的作用域；使用该作用域时，在Spring IOC容器中只会存在一个共享的bean实例。所有的对该bean的请求（如通过注入或getBean方法获取实例）都只会获取同一个实例。针对于该作用域，Spring容器可进行比较全面的生命周期的管理
+- `prototype`: 使用该作用域时，所有对于该bean的请求都会返回一个新的实例，即每次请求，都会创建一个新的实例
+- `request`: 该作用域将bean的作用范围限定在单个HTTP请求中，即每次HTTP请求都会创建一个新的bean实例，是的每次HTTP请求都有一个自己的实例。该作用域只用于基于web的Spring ApplicationContext。
+- `session`: 该作用域将bean的作用范围限定在HTTP请求中的Session的生命周期内。即bean的生命周期与Session一致，当Session存活时，该bean的实例也存活，但当Session销毁时，该Session内的bean实例也将被销毁。适合于基于web的Spring ApplicationContext
+- `application`: 使用该作用域时，在整个web程序中，只会存在一个该bean的实例。如果只存在一个web应用，则该bean的作用域与`singleton`类似。适合于基于web的Spring ApplicationContext。
+- `websocket`： 该作用域是Spring新增的作用域，该作用域将该bean实例作用范围限定在一个生命周期的WebSocket中。适合于基于web的Spring ApplicationContext。
+
+
+## 容器的扩展点
 
 ### Aware
 在Spring容器中，提供了许多Aware接口，使用这些接口可以更好的对bean进行扩展，获取许多与容器相关的组件；今天，我们大概来看看Spring中提供的一些Aware接口：  
@@ -316,7 +332,9 @@ Student
 ```
 
 那么问题来了，在Spring将bean实例化时是如何将配置元数据中的`${jdbc.driver}`替换成真实的`com.mysql.jdbc.Driver`的呢？
-这便就是`BeanFactoryPostProcessor`在Spring容器中的最典型的使用场景之一。该处理的实现类为`PropertyPlaceholderConfigurer`，它实现了接口`BeanFactoryPostProcessor`中的`postProcessBeanFactory`方法，负责在bean实例化之前将配置元数据中的如同`${jdbc.driver}`的配置替换为它真实的值，然后Spring便就可以正常的实例化了。  
+- 这便就是`BeanFactoryPostProcessor`在Spring容器中的最典型的使用场景之一。
+- 该处理的实现类为`PropertyPlaceholderConfigurer`，它实现了接口`BeanFactoryPostProcessor`中的`postProcessBeanFactory`方法， 
+- 负责在bean实例化之前将配置元数据中的如同`${jdbc.driver}`的配置替换为它真实的值，然后Spring便就可以正常的实例化了。  
 
 -   在`PropertyPlaceholderConfigurer`中`postProcessBeanFactory`方法的实现如下：
 
@@ -362,25 +380,6 @@ Student
 
 ************************
 
-## Bean的作用域
-
-在Spring2.0之前spring中bean的作用域只有`singleton（単例）`及`prototype（原型）`两种。在Spring2.0后便又增加了`request`、`session`及`application`三种作用域，且这三种作用域都只用于基于web的Spring ApplicationContext。直到现在，Spring又增加了作用与`webSocket`的作用域，该作用域与2.0之后增加的三种作用域一样都只作用与基于web的Spring ApplicationContext。一下便依次介绍者六中作用域
-
--   `singleton`: 该作用域是Spring bean默认的作用域；使用该作用域时，在Spring IOC容器中只会存在一个共享的bean实例。所有的对该bean的请求（如通过注入或getBean方法获取实例）都只会获取同一个实例。针对于该作用域，Spring容器可进行比较全面的生命周期的管理
-
--   `prototype`: 使用该作用域时，所有对于该bean的请求都会返回一个新的实例，即每次请求，都会创建一个新的实例
-
--   `request`: 该作用域将bean的作用范围限定在单个HTTP请求中，即每次HTTP请求都会创建一个新的bean实例，是的每次HTTP请求都有一个自己的实例。该作用域只用于基于web的Spring ApplicationContext。
-
--   `session`: 该作用域将bean的作用范围限定在HTTP请求中的Session的生命周期内。即bean的生命周期与Session一致，当Session存活时，该bean的实例也存活，但当Session销毁时，该Session内的bean实例也将被销毁。适合于基于web的Spring ApplicationContext
-
--   `application`: 使用该作用域时，在整个web程序中，只会存在一个该bean的实例。如果只存在一个web应用，则该bean的作用域与`singleton`类似。适合于基于web的Spring ApplicationContext。
-
--   `websocket`： 该作用域是Spring新增的作用域，该作用域将该bean实例作用范围限定在一个生命周期的WebSocket中。适合于基于web的Spring ApplicationContext。
-
-
-************************
-
 ##  IOC/DI 控制反转
 - DI 译为依赖注入 所有的bean都在IOC容器中（单例的）多例的不在该容器中进行管理
 - 通过注入 可以注入基本属性 对象属性，集合属性，构造器，properties等
@@ -407,6 +406,11 @@ Student
 ### 循环依赖
 - [Spring循环依赖](https://cloud.tencent.com/developer/article/1769948) 
 
+************************
+
+## Application Context 
+> [Spring Application Context Events](https://www.baeldung.com/spring-context-events) `通过监听Context的事件感知Spring上下文的启动和关闭`
+
 *****************
 ## Scheduling
 > [Official Doc](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/integration.html#scheduling)
@@ -420,7 +424,7 @@ Student
 
 - [cron maker](http://www.cronmaker.com/)
 
-*******************
+************************
 
 ## Events
 > [Spring Events](https://www.baeldung.com/spring-events)
@@ -428,10 +432,18 @@ Student
 > [Synchronous and Asynchronous Spring Events in One Application](https://www.keyup.eu/en/blog/101-synchronous-and-asynchronous-spring-events-in-one-application)  
 > [@EventListener with @Async in Spring](https://stackoverflow.com/questions/37179426/eventlistener-with-async-in-spring)
 
-异步事件处理
-- 类上 @EnableAsync 方法上 @Async 并指定配置的线程池名字
-
 > [参考: spring线程池(同步、异步）](http://www.cnblogs.com/duanxz/p/9435343.html)
+
+## 异步
+> 需要启动类或配置类上标注 @EnableAsync
+
+应用层面在方法上加上@Async就可以快速将普通方法转为异步方法。
+
+但是便利就表示处理是通用的，实际业务场景多变的情况下就容易出问题了。
+- 线程池问题： 默认使用Spring声明的
+- 任务通信问题： 
+
+************************
 
 ## Utils
 ### ReflectionUtils
@@ -459,11 +471,11 @@ Student
 1. 宿主机部署，Nginx 代理到 多个Java进程，手动逐个进程 kill和启动
 2. 解决的问题： A 
 
-> 初级方案
+> 初步方案
 1. 采用K8S部署，svc下分发到多个pod，pod配置存活和就绪探针，滚动升级（启动新的就绪容器后才销毁已有旧容器）
 2. 解决的问题： A D E 
 
-> 进阶方案
+> 优化方案
 1. 除了K8S配置外，应用本身增加 shutdownHook 线程对资源进行回收和限制
 2. 或者使用Spring的生命周期管理，监听 ContextClosedEvent 事件，对线程池，缓存等等，业务系统上需要等待执行或者销毁的数据。
 3. 解决的问题： A C D E
