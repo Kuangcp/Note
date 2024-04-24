@@ -35,7 +35,7 @@ categories:
     - 3.10. [Epsilon](#epsilon)
 - 4. [最佳实践](#最佳实践)
 
-💠 2024-04-15 11:04:31
+💠 2024-04-24 22:46:48
 ****************************************
 # GC
 > Garbage Collection
@@ -50,7 +50,7 @@ GC 的目的是识别出不再使用的内存，并将其变为可用的。现�
 > 做了什么
 - 删除不使用的对象，回收内存空间；运行默认的finalize,当然程序员想立刻调用就用dipose调用以释放资源如文件句柄，JVM用from survivor、to survivor对它进行标记清理，对象序列化后也可以使它复活。
 
-cms(JDK14中被移除)，epsilon，g1，parallel，serial，shenandoah，zgc
+列表： CMS(JDK14中被移除)，Epsilon，G1，Parallel，Serial，Shenandoah，ZGC
 
 > [Github: OpenJDK 12 GC 算法源码](https://github.com/openjdk/jdk/tree/jdk-12+33/src/hotspot/share/gc)  
 
@@ -59,12 +59,13 @@ cms(JDK14中被移除)，epsilon，g1，parallel，serial，shenandoah，zgc
 ## GC类型
 > [RednaxelaFX](https://www.zhihu.com/question/41922036/answer/93079526) | [Major GC和Full GC的区别是什么？触发条件呢？](https://www.zhihu.com/question/41922036/answer/93079526)
 
-- `Partial GC`：并不收集整个GC堆的模式
+- `Partial GC`：收集部分堆
     - `Young GC`：只收集young gen的GC
     - `Old GC`：只收集old gen的GC。只有CMS的concurrent collection是这个模式
     - `Mixed GC`：收集整个young gen以及部分old gen的GC。只有G1有这个模式
+
 - `Full GC`：收集整个堆，包括young gen、old gen、perm gen（如果存在的话），metaspace等所有部分的模式。
-    - gc日志中有明确的 [Full GC ]
+    - gc日志中会有明确的 `[Full GC]` 字样
 
 `新生代GC Minor GC`  
 也称 Young GC，会引发STW。发生在新生代的垃圾收集动作, 因为大多数对象都是存活时间很短, 所以 Minor GC 非常频繁, 一般回收速度也比较快.   

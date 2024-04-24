@@ -6,21 +6,21 @@ tags:
 categories: 
 ---
 
-**目录 start**
+💠
 
-1. [MQ](#mq)
-    1. [为何需要使用](#为何需要使用)
-    1. [风险分析](#风险分析)
-    1. [JMS](#jms)
-1. [MQ中间件](#mq中间件)
-    1. [RocketMQ](#rocketmq)
-    1. [ActiveMQ](#activemq)
-    1. [Kafka](#kafka)
-    1. [RabbitMQ](#rabbitmq)
-    1. [Pulsar](#pulsar)
-    1. [nsq](#nsq)
+- 1. [MQ](#mq)
+    - 1.1. [为何需要使用](#为何需要使用)
+    - 1.2. [风险分析](#风险分析)
+    - 1.3. [JMS](#jms)
+- 2. [MQ中间件](#mq中间件)
+    - 2.1. [RocketMQ](#rocketmq)
+    - 2.2. [ActiveMQ](#activemq)
+    - 2.3. [Kafka](#kafka)
+    - 2.4. [RabbitMQ](#rabbitmq)
+    - 2.5. [Pulsar](#pulsar)
+    - 2.6. [nsq](#nsq)
 
-**目录 end**|_2022-01-25 01:55_|
+💠 2024-04-24 22:46:48
 ****************************************
 # MQ
 
@@ -51,7 +51,7 @@ categories:
 > [Official Site](http://activemq.apache.org/)
 
 ## Kafka
-> [Official Site](http://kafka.apache.org/)
+[Kafka](./Kafka.md)
 
 ## RabbitMQ
 采用 Erlang 开发
