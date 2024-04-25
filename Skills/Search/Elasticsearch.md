@@ -12,12 +12,19 @@ categories:
     - 1.1. [Install](#install)
         - 1.1.1. [GUI](#gui)
     - 1.2. [Index](#index)
+- 2. [最佳实践](#最佳实践)
+    - 2.1. [优化写入](#优化写入)
 
-💠 2023-10-12 11:48
+💠 2024-04-26 01:17:07
 ****************************************
 # Elasticsearch
 > [Official Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)  
 > [参考: Elasticsearch 快速开始](https://www.cnblogs.com/cjsblog/p/9439331.html)  
+
+
+> [Elasticsearch技术方案选型的10个注意点](https://time.geekbang.org/column/article/108196?utm_campaign=geektime_search&utm_content=geektime_search&utm_medium=geektime_search&utm_source=geektime_search&utm_term=geektime_search)
+
+> [一起学Elasticsearch系列](https://github.com/BookaiCode/JavaRecord?tab=readme-ov-file#lock-elasticsearch)
 
 ## Install
 > [install](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html) | [Docker](https://hub.docker.com/_/elasticsearch/)  
@@ -35,3 +42,16 @@ categories:
 
 
 ## Index 
+
+
+************************
+
+# 最佳实践
+
+> [滴滴基于 ElasticSearch 的一站式搜索中台实践](https://www.infoq.cn/article/ug*cbrk9303MiNZPrSEO)  
+
+## 优化写入
+> [提升 Elasticsearch 写入速度的案例分享](https://www.infoq.cn/article/t7b52mbzxqkwrrdpVqD2)  
+
+
+
