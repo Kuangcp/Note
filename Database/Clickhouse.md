@@ -10,6 +10,7 @@ categories:
 - 1. [Clickhouse](#clickhouse)
     - 1.1. [数据类型](#数据类型)
         - 1.1.1. [bitmap](#bitmap)
+        - 1.1.2. [Decimal](#decimal)
     - 1.2. [数据库引擎](#数据库引擎)
 - 2. [使用](#使用)
     - 2.1. [Java JDBC](#java-jdbc)
@@ -17,7 +18,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [分布式表业务使用实践](#分布式表业务使用实践)
 
-💠 2024-04-11 15:54:40
+💠 2024-04-25 22:16:44
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -36,6 +37,26 @@ categories:
 
 [Roaring bitmaps](https://github.com/RoaringBitmap/CRoaring)  
 [BitMap及其在ClickHouse中的应用](https://zhuanlan.zhihu.com/p/480345952)`CK针对数据的分布情况做了一些优化`  
+
+### Decimal
+> [Data TypesDecimal](https://clickhouse.com/docs/en/sql-reference/data-types/decimal)
+
+| min | max | type |
+|:---|:---|:---|
+|  1 | 9  | Decimal32  |
+| 10 | 18 | Decimal64  |
+| 19 | 38 | Decimal128 |
+| 39 | 76 | Decimal256 |
+
+> Tips
+- [cast as decimal is very slow](https://github.com/ClickHouse/ClickHouse/issues/30542) `Decimal128 256 相较于 64和32 有较大的性能差距，可以用其中SQL做测试`
+    - `SELECT sum(CAST(number + 1., 'Decimal(17, 1)'))　FROM numbers(100000000);` 自建的CK集群内看到128耗时是64的三倍 **实际情况实际分析，仅供参考**
+    - 因为从128开始CK都要模拟计算来提高精度，CPU成本更大
+
+> `SELECT sumWithOverflow(CAST(number + 1., 'Decimal(3, 1)')) as res , toTypeName(res)　FROM numbers(1000000);`
+- 在做sum计算时，表的源字段大小不够时会自动增长类型， 但是如果使用 sumWithOverflow 就不会扩大类型，因此计算结果也是错误的
+
+************************
 
 ## 数据库引擎
 - Atomic
