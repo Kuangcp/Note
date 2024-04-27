@@ -13,7 +13,7 @@ categories:
     - 1.3. [FlinkX ChunJun](#flinkx-chunjun)
     - 1.4. [Flink CDC](#flink-cdc)
 
-💠 2024-04-19 10:49:10
+💠 2024-05-27 22:18:00
 ****************************************
 # Data Integration
 数据集成
@@ -21,7 +21,7 @@ categories:
 ## Datax
 > [Github](https://github.com/alibaba/DataX)  阿里云DataWorks的开源版
 
-> **注意** 这是一次性的开源项目，bug基本需要自己处理，从代码行数提交情况和issue，PR活跃情况可以看出
+> **注意** 这是一次性的开源项目，bug基本需要自己处理，从代码行数提交情况和issue，PR的活跃情况可以看出
 - [Clickhouse reader writer](https://github.com/alibaba/DataX/pull/264)
 - [Kafka writer](https://github.com/alibaba/DataX/pull/1856)
 
