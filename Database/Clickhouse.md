@@ -17,7 +17,7 @@ categories:
 - 3. [Explain](#explain)
 - 4. [Tips](#tips)
 
-💠 2024-04-26 14:37:55
+💠 2024-04-28 17:12:08
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -74,9 +74,9 @@ categories:
 
 ## Java
 > [Connecting ClickHouse to external data sources with JDBC](https://clickhouse.com/docs/en/integrations/jdbc/jdbc-with-clickhouse)  
-> JDBC的驱动实现是通过HTTP协议和Clickhouse通信，注意Ck不推荐使用连接池，而是用HTTP短连接方式发送操作指令  
+> JDBC的驱动实现是通过HTTP协议和Clickhouse通信 [clickhouse-java](https://github.com/ClickHouse/clickhouse-java)`com.clickhouse.client.internal.apache.hc.client5.http.impl.io.DefaultManagedHttpClientConnection`  
 
-低版本驱动没有实现负载均衡，需要在数据节点前加一层 [chproxy](https://github.com/ContentSquare/chproxy), 但是实际上也可以自己实现负载均衡算法，依据时间窗口内所有节点的负载，连接情况来实现
+低版本驱动没有实现负载均衡，需要在数据节点前加一层 [chproxy](https://github.com/ContentSquare/chproxy), 但是实际上也可以自己实现负载均衡算法(例如：依据时间窗口内所有节点的负载，连接等情况来选择合适的节点)
 
 ```java
         Properties properties = new Properties();
