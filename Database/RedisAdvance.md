@@ -19,20 +19,17 @@ categories:
     - 1.7. [对象](#对象)
 - 2. [Redis常用命令](#redis常用命令)
     - 2.1. [Run Configuration](#run-configuration)
-    - 2.2. [过期策略](#过期策略)
+    - 2.2. [过期](#过期)
     - 2.3. [事务](#事务)
     - 2.4. [服务器](#服务器)
     - 2.5. [实现原理](#实现原理)
         - 2.5.1. [scan](#scan)
 - 3. [数据安全和性能](#数据安全和性能)
-    - 3.1. [持久化策略](#持久化策略)
-    - 3.2. [复制](#复制)
-    - 3.3. [数据迁移](#数据迁移)
-    - 3.4. [错误分析](#错误分析)
-        - 3.4.1. [big key](#big-key)
-        - 3.4.2. [hot key](#hot-key)
-- 4. [应用](#应用)
-    - 4.1. [分布式锁](#分布式锁)
+    - 3.1. [Latency](#latency)
+    - 3.2. [错误分析](#错误分析)
+    - 3.3. [big key](#big-key)
+    - 3.4. [hot key](#hot-key)
+- 4. [缓存淘汰](#缓存淘汰)
 - 5. [Tip](#tip)
     - 5.1. [禁用 O(N) 命令](#禁用-on-命令)
 - 6. [部署方式](#部署方式)
@@ -42,7 +39,7 @@ categories:
     - 6.4. [Cluster 集群](#cluster-集群)
 - 7. [Redis 持久化](#redis-持久化)
 
-💠 2024-04-25 22:16:44
+💠 2024-04-29 19:31:56
 ****************************************
 # Redis底层数据结构
 ## SDS
@@ -118,7 +115,7 @@ Redis 的跳跃表由 redis.h/zskiplistNode 和 redis.h/zskiplist 两个结构�
 - *loglevel*
     - `./redis-server /etc/redis/6379.conf --loglevel debug	`
 
-## 过期策略
+## 过期
 - `expire key seconds` 设置键的过期时间
 - `PTTL/TTL key ` 查看键剩余过期时间（生存时间） ms/s
     -  -1 表示永久 -2 表示没有该key
@@ -168,17 +165,23 @@ Redis 的跳跃表由 redis.h/zskiplistNode 和 redis.h/zskiplist 两个结构�
 
 ## 实现原理
 ### scan
-TODO 
+> [Doc: Scan](https://redis.io/commands/scan/) 
+
+由于 Redis 是单线程多路复用机制(Redis6引入多线程)，使用 O(n) 复杂度的命令容易阻塞进程，因此需要 scan 命令来实现分批执行 (`注意 scan如果模式匹配的范围比较大，同样有 keys 一样的影响`)
 
 ************************
 
 # 数据安全和性能
-## 持久化策略
-## 复制
+## Latency
+缓存最重要的性能指标就是延迟，但是延迟会受到多项业务或功能影响。[Redis为什么变慢了？一文讲透如何排查Redis性能问题 ](https://mp.weixin.qq.com/s?__biz=Mzg4Nzc3NjkzOA==&mid=2247486198&idx=1&sn=e4b34ef7889bb95260e3a636662a7192&chksm=cf847933f8f3f025a1b00fc965781a33024158a4275ebaf2da393c403500a86d9c04af16ce40#rd)
 
-## 数据迁移
-- 使用主从复制来进行数据, 或者自己写Py脚本?
+- 60 秒内的最大响应延迟 `redis-cli -h 127.0.0.1 -p 6379 --intrinsic-latency 60`
+- 间隔 1 秒，采样 Redis 的平均操作耗时 `redis-cli -h 127.0.0.1 -p 6379 --latency-history -i 1`
 
+> SLOWLOG
+- 命令执行耗时超过 5 毫秒，记录慢日志 `CONFIG SET slowlog-log-slower-than 5000`
+- 只保留最近 500 条慢日志 `CONFIG SET slowlog-max-len 500`
+- 查看最近5条慢日志 `SLOWLOG get 5`
 
 ## 错误分析
 
@@ -191,30 +194,26 @@ TODO
     - 由于Lua脚本执行在Cluster模式下需要保证操作的key在相同的slot中。
     - 解决方案 强制加入花括号 指定计算slot的部分，保证key会分配到相同的slot。例如：`{prefix}a` 和 `{prefix}b`
 
-### big key
+## big key
+bigkey 在很多场景下都会产生性能问题，因此业务应用尽量避免写入。
+
+例如，bigkey 在分片集群模式下，对于数据的迁移也会有性能影响，以及我后面即将讲到的数据过期、数据淘汰、透明大页，都会受到 bigkey 的影响。
+
 - `redis-cli --bigkeys`
+    - 对线上实例进行 bigkey 扫描时，Redis 的 OPS 会突增，为了降低扫描过程中对 Redis 的影响，最好控制一下扫描的频率，指定 -i 参数即可，它表示扫描过程中每次扫描后休息的时间间隔，单位是秒
+    - 扫描结果中，对于容器类型（List、Hash、Set、ZSet）的 key，只能扫描出元素最多的 key。但一个 key 的元素多，不一定表示占用内存也多，你还需要根据业务情况，进一步评估内存占用情况
 - `memory usage key` 返回字节数
 - `debug object key`
 - `redis-memory-for-key -s localhost -p 6667 key`
     - pip install rdbtools
 
-### hot key
+- 如果Redis 是 4.0 以上版本，用 UNLINK 命令替代 DEL，此命令可以把释放 key 内存的操作，放到后台线程中去执行，从而降低对 Redis 的影响
+- 如果Redis 是 6.0 以上版本，可以开启 lazy-free 机制（lazyfree-lazy-user-del = yes），在执行 DEL 命令时，释放内存也会放到后台线程中执行
 
-************************
+## hot key
 
-# 应用
-## 分布式锁
-> [Doc: setnx](http://cndoc.github.io/redis-doc-cn/cn/commands/setnx.html)`包含以此命令设计锁的一些缺陷`  
-> [redisson](https://github.com/redisson/redisson)
+# 缓存淘汰
 
-单机 使用 setnx， redis分布式部署的情况下使用RedLock
-
-> [基于Redis的分布式锁到底安全吗（上）？](https://mp.weixin.qq.com/s/JTsJCDuasgIJ0j95K8Ay8w)  
-> [基于Redis的分布式锁到底安全吗（下）？](https://mp.weixin.qq.com/s/4CUe7OpM6y1kQRK8TOC_qQ?)  
-> [参考: Redis 分布式锁进化史解读 + 缺陷分析](https://zhuanlan.zhihu.com/p/161078350)  
-
-> [参考: redis分布式锁在MySQL事务代码中使用](https://blog.csdn.net/seapeak007/article/details/99337781)  
-> [参考: Lua脚本在redis分布式锁场景的运用](https://www.cnblogs.com/demingblog/p/9542124.html)  
 ************************
 
 # Tip
@@ -338,6 +337,7 @@ Redis提供两种方式进行持久化
     - RDB是指在指定的时间间隔内将内存中的数据集快照写入磁盘，实际操作过程是fork一个子进程，先将数据集写入临时文件，写入成功后，再替换之前的文件，用二进制压缩存储。
 1. AOF（append only file）持久化（原理是将Reids的操作日志以追加的方式写入文件 类似于 MySQL binlog）
     - AOF持久化以日志的形式记录服务器所处理的每一个写、删除操作，查询操作不会记录，以文本的方式记录，可以打开文件看到详细的操作记录。
+    - 
 
 ![](img/redis-store-rule.drawio.svg)
 
@@ -365,3 +365,5 @@ Redis提供两种方式进行持久化
     1. 根据同步策略的不同，AOF在运行效率上往往会慢于RDB。总之，每秒同步策略的效率是比较高的，同步禁用策略的效率和RDB一样高效。
 
 二者选择的标准，就是看应用场景是愿意牺牲一些性能，换取更高的缓存一致性（aof），还是愿意写操作频繁的时候，不启用备份来换取更高的性能，待手动运行save的时候，再做备份（rdb）。rdb这个就更有些 eventually consistent 的意思了。
+
+

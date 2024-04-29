@@ -75,7 +75,7 @@ categories:
         - 7.3.1. [善用alias](#善用alias)
     - 7.4. [desktop文件](#desktop文件)
 
-💠 2024-04-19 10:49:10
+💠 2024-04-29 19:31:56
 ****************************************
 
 # 文件系统
@@ -285,7 +285,9 @@ le fin.log | grep -v VID | awk '{print $2}' | xargs rm -f
 > [阮一峰: 读懂diff](http://www.ruanyifeng.com/blog/2012/08/how_to_read_diff.html)
 
 ### diff
-> [参考博客 linux下比较两个文本文件的不同——diff命令](http://www.cnblogs.com/chenjianhong/archive/2012/09/26/4144940.html)
+> [参考博客 linux下比较两个文本文件的不同](http://www.cnblogs.com/chenjianhong/archive/2012/09/26/4144940.html)
+
+`diff a b` 输出的 < 表示a转为b文件时要删除的行 > 表示要增加的行
 
 ### meld
 > [Github: meld](https://github.com/GNOME/meld)

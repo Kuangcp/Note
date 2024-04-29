@@ -60,7 +60,7 @@ categories:
     - 5.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 5.5. [熵池](#熵池)
 
-💠 2024-04-26 01:17:07
+💠 2024-04-29 19:31:56
 ****************************************
 
 # Linux系统
@@ -479,6 +479,9 @@ _系统运行级别_
 
 > [linux ate my ram](https://www.linuxatemyram.com/)  
 > [Empty the Buffer and Cache in Linux](https://www.baeldung.com/linux/empty-buffer-cache)
+
+查看内存大页设置 `cat /sys/kernel/mm/transparent_hugepage/enabled`  
+关闭内存大页 `echo never > /sys/kernel/mm/transparent_hugepage/enabled`  
 
 ### overcommit 
 > [参考: Linux Overcommit Modes](https://www.baeldung.com/linux/overcommit-modes)  
