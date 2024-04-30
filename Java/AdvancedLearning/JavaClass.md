@@ -26,7 +26,7 @@ categories:
     - 5.2. [Jad](#jad)
 - 6. [热部署](#热部署)
 
-💠 2024-04-01 11:51:20
+💠 2024-04-30 23:06:06
 ****************************************
 # 字节码以及类加载
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
@@ -43,11 +43,13 @@ categories:
 | 类型 | JVM参数 | 特点 |
 |:---|:---|:---|
 | C1 | -client | 编译耗时短 |
-| C2 | -server | 编译耗时长执行效率好`需要收集运行期profile信息来辅助编译` |
-|  |  |  |
+| C2 | -server | 编译耗时长执行效率好`需要收集运行期profile信息来辅助编译也就是PGO` |
+| Graal |  |  |
 
-> 自JDK8起默认开启分层编译`C1 C2混用` -client -server参数无效
+> 注意 自JDK8起默认开启分层编译`C1 C2混用` -client -server参数**无效**
 
+> [Graal Compiler](https://www.graalvm.org/latest/reference-manual/java/compiler/)  
+> [Deep Dive Into the New Java JIT Compiler – Graal](https://www.baeldung.com/graal-java-jit-compiler)
 
 ************************
 

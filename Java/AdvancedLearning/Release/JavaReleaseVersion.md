@@ -25,7 +25,7 @@ categories:
     - 1.14. [Java18](#java18)
     - 1.15. [Java21 LTS](#java21-lts)
 
-💠 2024-02-19 16:05:42
+💠 2024-04-30 23:06:06
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)
@@ -71,6 +71,7 @@ JDBC4.0  JAX-WS 2.0
 1. Stream Optional 改进
 1. 内置 轻量级 JSON API
 1. HTTP2 客户端
+1. 云原生适配
 
 ## Java10 
 > [参考: Java10的新特性](https://segmentfault.com/a/1190000014076481)

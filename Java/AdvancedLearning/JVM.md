@@ -33,7 +33,7 @@ categories:
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-04-30 14:07:24
+💠 2024-04-30 23:06:06
 ****************************************
 # JVM
 > JVM结构及设计
@@ -335,13 +335,20 @@ IBM主导开发, 捐赠给Eclipse基金会
 > [参考: IBM开源JVM实现OpenJ9，并提交Eclipse基金会托管)](http://www.infoq.com/cn/news/2017/09/IBM-JVM-OpenJ9-Eclipse)
 > [参考: Eclipse Open J9：Eclipse OMR项目提供的开源JVM](http://www.infoq.com/cn/news/2018/03/OMR-OpenJ9)
 
+************************
+
 ## GraalVM
 > [Official Site](https://www.graalvm.org/)  
 
-> [native image](https://www.graalvm.org/docs/reference-manual/native-image/)  
+> [Doc](https://www.graalvm.org/latest/docs/getting-started/)
+- 安装 graalvm `sdk install java 17.0.11-graal`
+- 跟随样例中执行 native-image HelloWorld， 可以发现会占满16核CPU`AMD 3700x`和1G左右内存，20s才可以编译完成
 
-- 安装模块 `gu install native-image`
+> [Accelerating Java performance](https://www.graalvm.org/java/advantages/)`基准测试宣称快于openjdk8和11 1.55倍`
+> [GraalVM Native Image Support](https://docs.spring.io/spring-boot/docs/current/reference/html/native-image.html)
+
+************************
 
 > [参考: Oracle 发布多语种虚拟机平台 GraalVM 1.0](https://www.infoq.cn/article/2018%2F05%2Foracle-graalvm-v1)  
 > [参考: 全栈虚拟机GraalVM初体验](https://zhuanlan.zhihu.com/p/35849246)  
-> 目前来看仅够实验，一个简短的Hello world 需要消耗40s 1g 内存才能编译成原生可执行程序  
+
