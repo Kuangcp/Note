@@ -33,7 +33,7 @@ categories:
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-04-22 10:51:32
+💠 2024-04-30 14:07:24
 ****************************************
 # JVM
 > JVM结构及设计
@@ -147,7 +147,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 > [参考: JVM动态反优化](https://blog.mythsman.com/post/5d2c12cc67f841464434a3ec/)   
 
 ## GC参数
-- `-Xloggc:/app/logs/gc_%t_%p.log` 指定GC日志 并 设置文件格式
+- `-Xloggc:/app/logs/gc_%t_%p.log` 指定GC日志 并 设置文件格式 **注意目录要已存在**
     - %t 日期时间
     - %p 进程号
 - `-verbose:gc`

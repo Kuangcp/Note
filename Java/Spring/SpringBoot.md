@@ -13,46 +13,43 @@ categories:
     - 1.1. [思考](#思考)
     - 1.2. [参考教程](#参考教程)
         - 1.2.1. [系列](#系列)
-    - 1.3. [简易使用](#简易使用)
-    - 1.4. [使用SpringBootCLI](#使用springbootcli)
-    - 1.5. [测试模块](#测试模块)
-    - 1.6. [Profils](#profils)
-        - 1.6.1. [多种配置文件并切换](#多种配置文件并切换)
-            - 1.6.1.1. [yml方式](#yml方式)
-            - 1.6.1.2. [yml和properties结合](#yml和properties结合)
-        - 1.6.2. [应用配置文件](#应用配置文件)
-    - 1.7. [Events](#events)
-    - 1.8. [Logging](#logging)
-    - 1.9. [Web模块](#web模块)
-        - 1.9.1. [Lisener](#lisener)
-            - 1.9.1.1. [ServletContextListener](#servletcontextlistener)
-        - 1.9.2. [上传下载文件](#上传下载文件)
-        - 1.9.3. [错误页面跳转配置](#错误页面跳转配置)
-        - 1.9.4. [跨域](#跨域)
-    - 1.10. [全局异常处理](#全局异常处理)
-    - 1.11. [Web](#web)
-        - 1.11.1. [Validator](#validator)
-        - 1.11.2. [Response](#response)
-    - 1.12. [HTTPS的配置](#https的配置)
-    - 1.13. [运行和部署](#运行和部署)
-        - 1.13.1. [直接运行](#直接运行)
-        - 1.13.2. [编译打包jar/war](#编译打包jarwar)
-            - 1.13.2.1. [war](#war)
-            - 1.13.2.2. [jar](#jar)
-        - 1.13.3. [构建Docker镜像](#构建docker镜像)
-            - 1.13.3.1. [手动方式](#手动方式)
-            - 1.13.3.2. [Gradle结合Docker](#gradle结合docker)
-        - 1.13.4. [热部署](#热部署)
+    - 1.3. [使用SpringBootCLI](#使用springbootcli)
+    - 1.4. [测试模块](#测试模块)
+    - 1.5. [Profils](#profils)
+        - 1.5.1. [多种配置文件并切换](#多种配置文件并切换)
+            - 1.5.1.1. [yml方式](#yml方式)
+            - 1.5.1.2. [yml和properties结合](#yml和properties结合)
+        - 1.5.2. [应用配置文件](#应用配置文件)
+    - 1.6. [Events](#events)
+    - 1.7. [Logging](#logging)
+    - 1.8. [Web模块](#web模块)
+        - 1.8.1. [Lisener](#lisener)
+            - 1.8.1.1. [ServletContextListener](#servletcontextlistener)
+        - 1.8.2. [上传下载文件](#上传下载文件)
+        - 1.8.3. [错误页面跳转配置](#错误页面跳转配置)
+        - 1.8.4. [跨域](#跨域)
+    - 1.9. [全局异常处理](#全局异常处理)
+    - 1.10. [Web](#web)
+        - 1.10.1. [Validator](#validator)
+        - 1.10.2. [Response](#response)
+    - 1.11. [运行和部署](#运行和部署)
+        - 1.11.1. [直接运行](#直接运行)
+        - 1.11.2. [编译打包jar/war](#编译打包jarwar)
+            - 1.11.2.1. [war](#war)
+            - 1.11.2.2. [jar](#jar)
+        - 1.11.3. [构建Docker镜像](#构建docker镜像)
+            - 1.11.3.1. [手动方式](#手动方式)
+            - 1.11.3.2. [Gradle结合Docker](#gradle结合docker)
+        - 1.11.4. [热部署](#热部署)
+        - 1.11.5. [运行性能优化](#运行性能优化)
 
-💠 2024-04-02 21:33:05
+💠 2024-04-30 14:07:24
 ****************************************
 # SpringBoot
-> [首页](https://spring.io/projects/spring-boot#learn)
+> [Doc](https://spring.io/projects/spring-boot#learn)
 
-> 一个简化Spring开发的框架,微服务SpringCloud的基础 
-> [1.5.14 官方文档](https://docs.spring.io/spring-boot/docs/1.5.14.RELEASE/reference/htmlsingle/)
-
-- [Github:Springboot](https://github.com/spring-projects/spring-boot/releases)
+> [SpringBoot2](./SpringBoot2.md)  
+> [SpringBoot3](./SpringBoot3.md)  
 
 ## 思考
 - [SpringBoot优缺点](https://www.zhihu.com/question/39483566) 
@@ -81,24 +78,10 @@ categories:
 - [一系列专栏](https://github.com/guoxiaoxu/guo-projects/tree/master/guns-admin/note)
 - [个人博客专栏: SpringBoot干货系列](http://tengj.top/tags/Spring-Boot/)
 - [SpringBoot系列文章](http://www.ityouknow.com/spring-boot)
-- [恒宇少年](https://www.jianshu.com/u/092df3f77bca)`大量Boot博客`
+- [恒宇少年](https://www.jianshu.com/u/092df3f77bca)
 
 ******************
 
-## 简易使用
-> 使用Idea的话就可以直接创建项目 使用别的可以下载zip进行导入 | [官方初始项目构建 下载地址](http://start.spring.io/)
-
-_目录结构最好如下_ `*Application类要处于所有用了Springboot注解的类的顶级目录, 这样默认才能扫描到`
-```
-    ├── config/
-    ├── controller/
-    ├── dao/
-    ├── domain/
-    ├── GraduateApplication.java
-    ├── service/
-    ├── ServletInitializer.java
-    └── util/
-```
 ## 使用SpringBootCLI
 - 使用 SDKMAN 进行安装
     - 使用git bash运行  `curl -s get.sdkman.io | bash`
@@ -107,8 +90,6 @@ _目录结构最好如下_ `*Application类要处于所有用了Springboot注解
 - 官方下载地址 [所有版本](https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/)
 
 ## 测试模块
-- [ ] 了解这些测试注解 的作用和使用场景
-
 ```java
     // 依赖于Springboot环境的测试类的必备注解
     @RunWith(SpringRunner.class)
@@ -155,31 +136,31 @@ _目录结构最好如下_ `*Application类要处于所有用了Springboot注解
 
 ### 多种配置文件并切换
 #### yml方式
-- 单文件`配置文件 application.yml`
-```yml
-	spring:
-      profiles:
-        active: development # 选用开发模式
-    ---
-    spring:
-      profiles: development
-      //一系列配置
-    ---
-    spring:
-      profiles: production
-      // 一系列配置
-```
-- 或者 多文件放 `application-{profile}.yml`
+- 单文件多环境 `配置文件 application.yml`
+    ```yml
+        spring:
+        profiles:
+            active: development # 选用开发模式
+        ---
+        spring:
+        profiles: development
+        # 一系列配置
+        ---
+        spring:
+        profiles: production
+        #  一系列配置
+    ```
+- 多文件存放不同环境配置 `application-{profile}.yml`
 
 #### yml和properties结合
 - 格式：`application-{profile}.properties`
 - 将上面的开发部分，发行部分的配置创建两个配置文件 `application-dev.properties` 和 `application-prod.properties`
 - 在主配置文件`application.yml`中指明
-```yml
-    spring:
-      profiles:
-        active: dev或者是prod
-```
+    ```yml
+        spring:
+        profiles:
+            active: dev # dev或prod,也可以 common,dev 启用两份
+    ```
 
 ### 应用配置文件
 > 依赖于 `org.springframework.boot:spring-boot-configuration-processor`  
@@ -265,17 +246,18 @@ graduate:
 
 - [Springboot上传文件](http://www.cnblogs.com/studyCenter/p/6665171.html)
 - 上传文件有大小限制，使用如下方法进行配置 [参考博客](http://makaidong.com/studyDetail/11882_45833.html)
-```java
-@Bean
-public MultipartConfigElement multipartConfigElement() {
-    MultipartConfigFactory factory = new MultipartConfigFactory();
-    //单个文件最大
-    factory.setMaxFileSize("80MB"); //KB,MB
-    // 设置总上传数据总大小
-    factory.setMaxRequestSize("102400KB");
-    return factory.createMultipartConfig();
-}
-```
+    ```java
+    @Bean
+    public MultipartConfigElement multipartConfigElement() {
+        MultipartConfigFactory factory = new MultipartConfigFactory();
+        //单个文件最大
+        factory.setMaxFileSize("80MB"); //KB,MB
+        // 设置总上传数据总大小
+        factory.setMaxRequestSize("102400KB");
+        return factory.createMultipartConfig();
+    }
+    ```
+    
 ### 错误页面跳转配置
 ```java
 @Configuration
@@ -331,80 +313,6 @@ public class CorsConfig {
 1. 降低Mvc接口层 `Result<List<Item>>` 等结构，简化为 `List<Item>`， 异常返回可以用全局异常处理成Result结构
 
 ************************
-## HTTPS的配置
-> [参考博客](https://www.drissamri.be/blog/java/enable-https-in-spring-boot/)
-
-- 签发证书：
-```sh
-keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
-```
-```yml
-server:
-  context-path: /myth
-  ssl:
-    key-store: classpath:keystore.p12
-    key-store-password: demo1429336
-    key-store-type: PKCS12
-    key-alias: tomcat
-  port: 8888
-  session:
-    timeout: 3000
-```
-`任意的一个@Configuration注解类里添加`
-```java
-@Bean
-public TomcatEmbeddedServletContainerFactory servletContainerFactory() {
-    TomcatEmbeddedServletContainerFactory factory =
-        new TomcatEmbeddedServletContainerFactory() {
-            @Override
-            protected void postProcessContext(Context context) {
-                //SecurityConstraint必须存在，可以通过其为不同的URL设置不同的重定向策略。
-                SecurityConstraint securityConstraint = new SecurityConstraint();
-                securityConstraint.setUserConstraint("CONFIDENTIAL");
-                SecurityCollection collection = new SecurityCollection();
-                collection.addPattern("/*");
-                securityConstraint.addCollection(collection);
-                context.addConstraint(securityConstraint);
-            }
-        };
-    factory.addAdditionalTomcatConnectors(createHttpConnector());
-    return factory;
-}
-
-private Connector createHttpConnector() {
-    Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
-    connector.setScheme("http");
-    connector.setSecure(false);
-    connector.setPort(8887);//http端口（这是要新增加的一个端口）
-    connector.setRedirectPort(8888);// https 端口配置文件中tomcat启动的默认端口
-    return connector;
-}
-```
-
-- 另一种方式 [参考博客](http://www.cnblogs.com/xinzhao/p/4950689.html)
-`方式不一样，没有成功`
-```sh
-    ############ 证书颁发机构
-    # CA机构私钥
-    openssl genrsa -out ca.key 2048
-    # CA证书
-    openssl req -x509 -new -key ca.key -out ca.crt
-    ############ 服务端
-    # 生成服务端私钥
-    openssl genrsa -out server.key 2048
-    # 生成服务端证书请求文件
-    openssl req -new -key server.key -out server.csr
-    # 使用CA证书生成服务端证书  关于sha256，默认使用的是sha1，在新版本的chrome中会被认为是不安全的，因为使用了过时的加密算法。
-    openssl x509 -req -sha256 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -days 3650 -out server.crt    
-    # 打包服务端的资料为pkcs12格式(非必要，只是换一种格式存储上一步生成的证书) 生成过程中，需要创建访问密码，请记录下来。
-    openssl pkcs12 -export -in server.crt -inkey server.key -out server.pkcs12
-    # 生成服务端的keystore（.jks文件, 非必要，Java程序通常使用该格式的证书） 生成过程中，需要创建访问密码，请记录下来。
-    keytool -importkeystore -srckeystore server.pkcs12 -destkeystore server.jks -srcstoretype pkcs12
-    # 把ca证书放到keystore中（非必要）
-    keytool -importcert -keystore server.jks -file ca.crt
-```
-
-************************
 
 ## 运行和部署
 
@@ -452,3 +360,7 @@ private Connector createHttpConnector() {
 [Spring Boot DevTools - RestartClassLoader problem](https://stackoverflow.com/questions/69990029/spring-boot-devtools-restartclassloader-problem)  
 spring boot dev tools 实现的 RestarterClassLoader类加载器 和 AppClassLoader 共存，会有一些Bean在Restart类加载器里  
 方法： `-Dspring.devtools.restart.enabled=false` 禁用或者移除依赖
+
+### 运行性能优化
+> [Runtime efficiency with Spring (today and tomorrow)](https://spring.io/blog/2023/10/16/runtime-efficiency-with-spring)
+
