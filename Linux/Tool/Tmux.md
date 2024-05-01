@@ -21,13 +21,14 @@ categories:
     - 5.3. [copycat](#copycat)
 - 6. [Tips](#tips)
 
-💠 2024-03-08 18:19:25
+💠 2024-05-01 14:34:46
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
-> [tmux简洁教程及config关键配置](https://www.jianshu.com/p/fd3bbdba9dc9)
+> [tmux简洁教程及config关键配置](https://www.jianshu.com/p/fd3bbdba9dc9)  
 > [参考: 程序员高效技巧系列](http://cenalulu.github.io/linux/professional-tmux-skills/)  
+> [Tmux](https://github.com/skywind3000/awesome-cheatsheets/blob/master/tools/tmux.txt)  
 
 ************************
 # 基本操作

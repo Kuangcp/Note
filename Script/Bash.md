@@ -7,11 +7,11 @@ categories:
     - Linux
 ---
 
-**目录 start**
+💠
 
-1. [Bash](#bash)
+- 1. [Bash](#bash)
 
-**目录 end**|_2020-04-27 23:42_|
+💠 2024-05-01 14:34:46
 ****************************************
 
 # Bash
@@ -21,3 +21,6 @@ categories:
 > [参考: bash实现“多进程”](http://www.cnitblog.com/sysop/archive/2008/11/03/50974.aspx)
 
 [Bash字符串操作](https://www.cnblogs.com/chengmo/archive/2010/10/02/1841355.html)
+
+> [Bash](https://github.com/skywind3000/awesome-cheatsheets/blob/master/languages/bash.sh)  
+
