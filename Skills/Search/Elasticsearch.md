@@ -14,10 +14,8 @@ categories:
         - 1.1.2. [集群](#集群)
         - 1.1.3. [客户端](#客户端)
     - 1.2. [Index](#index)
-- 2. [最佳实践](#最佳实践)
-    - 2.1. [优化写入](#优化写入)
 
-💠 2024-05-01 22:02:10
+💠 2024-05-03 12:21:37
 ****************************************
 # Elasticsearch
 > [Official Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)  
@@ -28,8 +26,7 @@ categories:
 
 > [一起学Elasticsearch系列](https://github.com/BookaiCode/JavaRecord?tab=readme-ov-file#lock-elasticsearch)
 > [Guide to Elasticsearch in Java](https://www.baeldung.com/elasticsearch-java)`使用elasticsearch包访问ES`  
-> [Spring Boot整合Elasticsearch](https://github.com/cloudgyb/es-spring-boot)`使用 SpringData`
-
+> [Spring Boot整合Elasticsearch](https://github.com/cloudgyb/es-spring-boot)`使用 SpringData`  
 
 ## Install
 > [Installing Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html)  
@@ -66,16 +63,18 @@ categories:
 - Elasticvue 浏览器插件
 
 ## Index 
+- `PUT /{indexName}?pretty` 创建索引
+- `DELETE /{indexName}?pretty` 删除索引 `异步不可撤销`
 
+- `GET /{indexName}/_search` 搜索
+- `GET /{indexName}/_doc/doc_id` 查询指定文档id
+- `GET /{indexName}/_doc/doc_id` 新增或覆盖文档
+- `POST /{indexName}/_update/doc_id` 新增或更新文档
+
+- `GET _cat/indices?v` 获取所有索引信息
 
 ************************
 
-# 最佳实践
-
-> [滴滴基于 ElasticSearch 的一站式搜索中台实践](https://www.infoq.cn/article/ug*cbrk9303MiNZPrSEO)  
-
-## 优化写入
-> [提升 Elasticsearch 写入速度的案例分享](https://www.infoq.cn/article/t7b52mbzxqkwrrdpVqD2)  
 
 
 
