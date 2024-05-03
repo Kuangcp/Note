@@ -14,8 +14,12 @@ categories:
         - 1.1.2. [集群](#集群)
         - 1.1.3. [客户端](#客户端)
     - 1.2. [Index](#index)
+    - 1.3. [Mapping](#mapping)
+    - 1.4. [DSL](#dsl)
+    - 1.5. [分词器](#分词器)
+    - 1.6. [向量搜索](#向量搜索)
 
-💠 2024-05-03 12:21:37
+💠 2024-05-04 01:13:15
 ****************************************
 # Elasticsearch
 > [Official Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)  
@@ -73,8 +77,19 @@ categories:
 
 - `GET _cat/indices?v` 获取所有索引信息
 
+## Mapping
+> [Mapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html)
+
+## DSL
+> [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html)
+
+
+## 分词器
+
 ************************
 
+## 向量搜索
+版本 8.5+
 
 
 
