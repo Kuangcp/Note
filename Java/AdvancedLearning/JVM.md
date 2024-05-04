@@ -12,7 +12,8 @@ categories:
 - 1. [JVM](#jvm)
     - 1.1. [JVM参数](#jvm参数)
     - 1.2. [JVM内存参数](#jvm内存参数)
-        - 1.2.1. [实践](#实践)
+        - 1.2.1. [容器内的JVM](#容器内的jvm)
+        - 1.2.2. [实践](#实践)
     - 1.3. [GC参数](#gc参数)
 - 2. [JVM 基本结构](#jvm-基本结构)
 - 3. [内存区域](#内存区域)
@@ -33,7 +34,7 @@ categories:
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-04-30 23:06:06
+💠 2024-05-04 22:39:50
 ****************************************
 # JVM
 > JVM结构及设计
@@ -98,6 +99,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 - `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1。 **默认是8**
 - `-XX:NewRatio`old/new 内存的比值 **默认是2**
 - `-Xmn` MaxNewSize 默认值是`Xmx`的1/3 即最大堆内存 MaxHeapSize 的1/3
+- `-Xss` 设置 ThreadStackSize 线程的栈内存大小 默认值 1024k
 
 > java -XX:+PrintFlagsFinal -version
 - `-XX:+PrintFlagsInitial` 输出初始默认值
@@ -108,6 +110,8 @@ Oracle JDK 默认采用的是 Hotspot JVM
     - `java -XX:+PrintFlagsFinal -version | grep "Use.*GC"` 查看默认GC实现
 - `-XshowSettings:VM` 展示VM和系统信息
 
+************************
+
 需要理解，但是不用，尽量使用明确的 Xmx Xms
 > [JVM Parameters InitialRAMPercentage, MinRAMPercentage, and MaxRAMPercentage](https://www.baeldung.com/java-jvm-parameters-rampercentage)  
 - MinRAMPercentage, MaxRAMPercentage 其实都是**设置堆默认最大值**的， Max 和 Min 换成 Big Small可能更好理解(大内存环境和小内存环境 `200M划分`)
@@ -116,7 +120,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 
 ************************
 
-> 容器
+### 容器内的JVM
 
 容器无法感知资源限制， 8U191/10b34 及以上版本才支持
 

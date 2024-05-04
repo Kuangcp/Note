@@ -7,23 +7,23 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [SringBoot2](#sringboot2)
-    1. [从1迁移到2](#从1迁移到2)
-    1. [新特性](#新特性)
-    1. [Web模块](#web模块)
-        1. [Web容器](#web容器)
-            1. [Tomcat](#tomcat)
-            1. [Jetty](#jetty)
-        1. [跨域](#跨域)
-        1. [SpringBoot上下文事件监听](#springboot上下文事件监听)
-    1. [数据库模块](#数据库模块)
-        1. [Relation Database](#relation-database)
-            1. [多数据源](#多数据源)
-        1. [No Relation Database](#no-relation-database)
+- 1. [SringBoot2](#sringboot2)
+    - 1.1. [从1迁移到2](#从1迁移到2)
+    - 1.2. [新特性](#新特性)
+    - 1.3. [Web模块](#web模块)
+        - 1.3.1. [Web容器](#web容器)
+            - 1.3.1.1. [Tomcat](#tomcat)
+            - 1.3.1.2. [Jetty](#jetty)
+        - 1.3.2. [跨域](#跨域)
+        - 1.3.3. [SpringBoot上下文事件监听](#springboot上下文事件监听)
+    - 1.4. [数据库模块](#数据库模块)
+        - 1.4.1. [Relation Database](#relation-database)
+            - 1.4.1.1. [多数据源](#多数据源)
+        - 1.4.2. [No Relation Database](#no-relation-database)
 
-**目录 end**|_2020-04-27 23:42_|
+💠 2024-05-04 22:39:50
 ****************************************
 # SringBoot2
 [官方文档](https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/)
@@ -70,25 +70,25 @@ categories:
     }
  ```
  ```java
- @Configuration
-public class Listener implements ApplicationListener {
-  @Override
-  public void onApplicationEvent(ApplicationEvent event) {
-    // 在这里可以监听到Spring Boot的生命周期
-    if (event instanceof ContextRefreshedEvent) {
-      System.out.println("应用刷新");
-    }
-    if (event instanceof ContextStartedEvent) {
-      System.out.println("应用启动");
+  @Configuration
+  public class Listener implements ApplicationListener {
+    @Override
+    public void onApplicationEvent(ApplicationEvent event) {
+      // 在这里可以监听到Spring Boot的生命周期
+      if (event instanceof ContextRefreshedEvent) {
+        System.out.println("应用刷新");
+      }
+      if (event instanceof ContextStartedEvent) {
+        System.out.println("应用启动");
 
-    } else if (event instanceof ContextStoppedEvent) {
-      System.out.println("应用停止");
+      } else if (event instanceof ContextStoppedEvent) {
+        System.out.println("应用停止");
 
-    } else if (event instanceof ContextClosedEvent) {
-      System.out.println("应用关闭");
+      } else if (event instanceof ContextClosedEvent) {
+        System.out.println("应用关闭");
+      }
     }
   }
-}
  ```
 
 

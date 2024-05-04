@@ -14,36 +14,36 @@ categories:
     - 1.2. [参考教程](#参考教程)
         - 1.2.1. [系列](#系列)
     - 1.3. [使用SpringBootCLI](#使用springbootcli)
-    - 1.4. [测试模块](#测试模块)
-    - 1.5. [Profils](#profils)
-        - 1.5.1. [多种配置文件并切换](#多种配置文件并切换)
-            - 1.5.1.1. [yml方式](#yml方式)
-            - 1.5.1.2. [yml和properties结合](#yml和properties结合)
-        - 1.5.2. [应用配置文件](#应用配置文件)
-    - 1.6. [Events](#events)
-    - 1.7. [Logging](#logging)
+    - 1.4. [Profils](#profils)
+        - 1.4.1. [多种配置文件并切换](#多种配置文件并切换)
+            - 1.4.1.1. [yml方式](#yml方式)
+            - 1.4.1.2. [yml和properties结合](#yml和properties结合)
+        - 1.4.2. [应用配置文件](#应用配置文件)
+    - 1.5. [Events](#events)
+    - 1.6. [Logging](#logging)
+    - 1.7. [Cache](#cache)
     - 1.8. [Web模块](#web模块)
         - 1.8.1. [Lisener](#lisener)
             - 1.8.1.1. [ServletContextListener](#servletcontextlistener)
         - 1.8.2. [上传下载文件](#上传下载文件)
         - 1.8.3. [错误页面跳转配置](#错误页面跳转配置)
         - 1.8.4. [跨域](#跨域)
-    - 1.9. [全局异常处理](#全局异常处理)
-    - 1.10. [Web](#web)
-        - 1.10.1. [Validator](#validator)
-        - 1.10.2. [Response](#response)
-    - 1.11. [运行和部署](#运行和部署)
-        - 1.11.1. [直接运行](#直接运行)
-        - 1.11.2. [编译打包jar/war](#编译打包jarwar)
-            - 1.11.2.1. [war](#war)
-            - 1.11.2.2. [jar](#jar)
-        - 1.11.3. [构建Docker镜像](#构建docker镜像)
-            - 1.11.3.1. [手动方式](#手动方式)
-            - 1.11.3.2. [Gradle结合Docker](#gradle结合docker)
-        - 1.11.4. [热部署](#热部署)
-        - 1.11.5. [运行性能优化](#运行性能优化)
+        - 1.8.5. [全局异常处理](#全局异常处理)
+        - 1.8.6. [Validator](#validator)
+        - 1.8.7. [Response](#response)
+    - 1.9. [测试模块](#测试模块)
+    - 1.10. [运行和部署](#运行和部署)
+        - 1.10.1. [直接运行](#直接运行)
+        - 1.10.2. [编译打包jar/war](#编译打包jarwar)
+            - 1.10.2.1. [war](#war)
+            - 1.10.2.2. [jar](#jar)
+        - 1.10.3. [构建Docker镜像](#构建docker镜像)
+            - 1.10.3.1. [手动方式](#手动方式)
+            - 1.10.3.2. [Gradle结合Docker](#gradle结合docker)
+        - 1.10.4. [热部署](#热部署)
+        - 1.10.5. [运行性能优化](#运行性能优化)
 
-💠 2024-04-30 14:07:24
+💠 2024-05-04 22:39:50
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -88,27 +88,6 @@ categories:
     - `source "/Users/{yourname}/.sdkman/bin/sdkman-init.sh" `根据实际目录去运行
     - spring --version
 - 官方下载地址 [所有版本](https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/)
-
-## 测试模块
-```java
-    // 依赖于Springboot环境的测试类的必备注解
-    @RunWith(SpringRunner.class)
-    @SpringBootTest
-
-    // 使用内存数据库测试
-    @ComponentScan("com.github.kuagncp") // 如果有类没注入需要手动设置扫面
-    @RunWith(SpringJUnit4ClassRunner.class)
-    @DataJpaTest
-```
-
-- 可以使用MockMvc来测试Controller层的代码
-- 可以使用MockMvc的SpringSecurity支持来测试安全模块
-- 使用 WebIntegraionTest 测试运行中的Web容器
-	- 启动嵌入式的Servlet容器来进行测试，下断言
-- 使用随机端口启动服务器 配置local.server.port=0
-- 使用Selenium来测试HTML页面，模拟浏览器的动作，查看系统运行状态
-
-***********
 
 ## Profils
 > [Spring Profiles](https://www.baeldung.com/spring-profiles)
@@ -216,13 +195,35 @@ graduate:
 > [参考: springboot use logback](https://springframework.guru/using-logback-spring-boot/)`能根据Profile配置,还能写if`  
 > [spring boot logging](https://www.baeldung.com/spring-boot-logging)
 
-使用 logback 则需要配置 logback.xml 或者 logback-spring.xml 建议使用后者
+使用logback时需要配置 logback.xml 或者 logback-spring.xml 建议使用后者
 
 - [ ] 思考: 能否不同的包使用不同的pattern [pattern](https://stackoverflow.com/questions/30571319/spring-boot-logging-pattern)
 
 配置 pattern 并引用 MDC `logging.pattern.level=%X{mdcData}%5p`
 
-***********
+************************
+## Cache
+> [Caching Data with Spring](https://spring.io/guides/gs/caching)
+- *@Cacheable*：表示该方法支持缓存。当调用被注解的方法时，如果对应的键已经存在缓存，则不再执行方法体，而从缓存中直接返回。当方法返回null时，将不进行缓存操作。
+    - cacheNames/value：缓存组件的名字，即cacheManager中缓存的名称。
+    - key：缓存数据时使用的key。默认使用方法参数值，也可以使用SpEL表达式进行编写。
+    - keyGenerator：和key二选一使用。
+    - cacheManager：指定使用的缓存管理器。
+    - condition：在方法执行开始前检查，在符合condition的情况下，进行缓存。
+    - unless：在方法执行完成后检查，在符合unless的情况下，不进行缓存。
+    - sync：是否使用同步模式。若使用同步模式，在多个线程同时对一个key进行load时，其他线程将被阻塞。Spring 4.1引入，**规避缓存击穿**
+- *@CachePut*：表示执行该方法后，其值将作为最新结果更新到缓存中。每次都会执行该方法。
+- *@CacheEvict*：表示执行该方法后，将触发缓存清除操作。
+- *@Caching*：用于组合前三个注解，例如：
+```java
+    @Caching(cacheable = @Cacheable("users"), evict = {@CacheEvict("cache2"), @CacheEvict(value = "cache3", allEntries = true)})
+    public User find(Integer id) {
+        return null;
+    }
+```
+
+************************
+
 
 ## Web模块
 ### Lisener
@@ -295,13 +296,11 @@ public class CorsConfig {
 }
 ```
 
-## 全局异常处理
+### 全局异常处理
 1. 新建类 并加类注解 ControllerAdvice 或 RestControllerAdvice（省去方法ResponseBody）
 2. 新建方法上添加注解 `ExceptionHandler(Exception.class)` 处理对应异常类型
 3. 然后返回值的写法和普通Controller一样, 返回JSON就`ResponseBody`
 
-************************
-## Web
 ### Validator
 > [Validation with Spring Boot](https://reflectoring.io/bean-validation-with-spring-boot/)
 
@@ -311,6 +310,26 @@ public class CorsConfig {
 1. `implements ResponseBodyAdvice<Object>`
 1. 重写 supports 和 beforeBodyWrite 并依据 后者的 body和returnType参数自行封装成统一结构
 1. 降低Mvc接口层 `Result<List<Item>>` 等结构，简化为 `List<Item>`， 异常返回可以用全局异常处理成Result结构
+
+************************
+## 测试模块
+```java
+    // 依赖于Springboot环境的测试类的必备注解
+    @RunWith(SpringRunner.class)
+    @SpringBootTest
+
+    // 使用内存数据库测试
+    @ComponentScan("com.github.kuagncp") // 如果有类没注入需要手动设置扫面
+    @RunWith(SpringJUnit4ClassRunner.class)
+    @DataJpaTest
+```
+
+- 可以使用MockMvc来测试Controller层的代码
+- 可以使用MockMvc的SpringSecurity支持来测试安全模块
+- 使用 WebIntegraionTest 测试运行中的Web容器
+	- 启动嵌入式的Servlet容器来进行测试，下断言
+- 使用随机端口启动服务器 配置local.server.port=0
+- 使用Selenium来测试HTML页面，模拟浏览器的动作，查看系统运行状态
 
 ************************
 
