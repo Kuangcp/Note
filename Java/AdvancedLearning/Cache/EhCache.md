@@ -9,7 +9,7 @@ categories:
 
 - 1. [EhCache](#ehcache)
 
-💠 2024-05-04 22:39:50
+💠 2024-05-04 23:18:27
 ****************************************
 # EhCache
 [Ehcache](https://www.ehcache.org/)被Hibernate选中的默认缓存实现框架
@@ -20,6 +20,10 @@ categories:
 - 支持集群
 - 支持持久化
 - 支持分布式缓存
+    - RMI 组播
+    - JMS 消息
+    - JGroups
+    - Terracotta
 - 支持 `JSR107标准`以及使用非常广泛的`Spring Cache标准`
 
 > [JAVA中使用最广泛的本地缓存？Ehcache的自信从何而来](https://juejin.cn/post/7167259989826863112)  
