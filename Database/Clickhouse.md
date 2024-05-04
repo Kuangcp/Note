@@ -8,16 +8,17 @@ categories:
 💠
 
 - 1. [Clickhouse](#clickhouse)
-    - 1.1. [数据类型](#数据类型)
-        - 1.1.1. [bitmap](#bitmap)
-        - 1.1.2. [Decimal](#decimal)
-    - 1.2. [数据库引擎](#数据库引擎)
+    - 1.1. [安装](#安装)
+    - 1.2. [数据类型](#数据类型)
+        - 1.2.1. [bitmap](#bitmap)
+        - 1.2.2. [Decimal](#decimal)
+    - 1.3. [数据库引擎](#数据库引擎)
 - 2. [使用](#使用)
     - 2.1. [Java](#java)
 - 3. [Explain](#explain)
 - 4. [Tips](#tips)
 
-💠 2024-04-28 17:12:08
+💠 2024-05-04 18:13:33
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -25,12 +26,18 @@ categories:
 > [What is ClickHouse? ](https://medium.com/doublecloud-insights/what-is-clickhouse-a-comprehensive-guide-for-getting-started-5aae9afd38b0)
 
 ************************
+## 安装
+> [Docker compose 安装](https://github.com/ClickHouse/examples/blob/main/docker-compose-recipes/README.md)  
+> [Clickhouse cluster built with docker-compose.](https://github.com/tetafro/clickhouse-cluster)  
+
+
+************************
 
 ## 数据类型
 > [ClickHouse Data Types](https://clickhouse.com/docs/en/sql-reference/data-types)
 
 ### bitmap
-> 并没有这个类型定义，只是在使用过程中有。
+> 并没有这个类型定义，只是在使用时由数据存储方式存在，类似于Redis的bitmap。
 
 位图对象有两种构造方法。一个是由聚合函数groupBitmapState构造的，另一个是由Array Object构造的。同时还可以将位图对象转化为数组对象`bitmapToArray()`。
 
@@ -119,4 +126,5 @@ JSON格式查看 `EXPLAIN json = 1, indexes = 1 SQL`
 - Global 优化 join 和in 避免读放大
 - JDBC 优化 socketTimeout, 需要和CK服务器保持一致 `select * from system.settings where name like '%keep%';`
 - JDBC 驱动版本不能太低，可能出现 `failed to respond`
+
 

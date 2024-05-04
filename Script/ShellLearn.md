@@ -47,7 +47,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [常用代码片段](#常用代码片段)
 
-💠 2024-03-25 10:52:00
+💠 2024-05-04 18:13:33
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -405,6 +405,12 @@ watch demo.sh 达到的效果为：等到sh中的100个子进程执行结束后�
   - `-d` 创建目录
 
 1. 输出到终端并写入文件 `echo "test" | tee a.log`
+1. 基于模板快速创建多份配置文件 
+    ```sh
+        REPLICA=01 SHARD=01 envsubst < config.xml > clickhouse01/config.xml
+        REPLICA=02 SHARD=01 envsubst < config.xml > clickhouse02/config.xml
+    ```
+    - config.xml 中使用`${}`做占位符 例如： `<interserver_http_host>clickhouse${REPLICA}</interserver_http_host>`
 
 ### 配置文件
 

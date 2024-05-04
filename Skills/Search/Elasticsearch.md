@@ -19,7 +19,7 @@ categories:
     - 1.5. [分词器](#分词器)
     - 1.6. [向量搜索](#向量搜索)
 
-💠 2024-05-04 01:13:15
+💠 2024-05-04 18:13:33
 ****************************************
 # Elasticsearch
 > [Official Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)  
@@ -34,6 +34,7 @@ categories:
 
 ## Install
 > [Installing Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html)  
+> [Command line tools](https://www.elastic.co/guide/en/elasticsearch/reference/current/commands.html)  
 
 ************************
 ### 单节点
