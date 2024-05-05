@@ -15,7 +15,7 @@ categories:
         - 1.3.1. [线程](#线程)
     - 1.4. [ClassLoader](#classloader)
 
-💠 2024-05-05 23:53:12
+💠 2024-05-06 00:16:08
 ****************************************
 # Troubleshoot
 当遇到需要对某个Java应用性能调优，故障处理时的技能或思路汇总
@@ -23,14 +23,11 @@ categories:
 > Troubleshooting: [Oracle: Java8](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/) | [Oracle: Java11](https://docs.oracle.com/en/java/javase/11/troubleshoot/general-java-troubleshooting.html)  
 
 > [目前最全的Java服务问题排查套路](https://juejin.cn/post/6844903816379236360)  
+> [完蛋，我被故障包围了](https://www.bilibili.com/video/BV1vc411U78U/?buvid=XXF1096F78012CCE01D64B283450438CC6206)`采用各种工具分析和排查`  
+
+************************
 
 ![](./img/mind.drawio.svg)
-
-`性能调优`
-> [Linux 性能分析](/Linux/Base/LinuxPerformance.md)  
-> [Linux 网络](/Linux/Base/LinuxNetwork.md)  
-> [Java 性能调优](/Java/AdvancedLearning/JvmPerformance.md)  
-> [Java GC](/Java/AdvancedLearning/JvmGC.md#Tuning)  
 
 `不可用故障处理` **重要且紧急**
 
@@ -42,6 +39,13 @@ categories:
     - 限制：不能做太影响性能的指标记录和分析
 - `Debug` 在测试或灰度环境上可复现问题，可直接Debug接入调试代码，或本地采用高耗能的方式debug分析`抓包，strace，CPU火焰图，等方式`
     - 限制：**可复现**，通常能有这个条件已经能直接通过debug代码就能解决问题了
+
+************************
+
+`性能调优`
+> [Linux 性能分析](/Linux/Base/LinuxPerformance.md)  
+> [Linux 网络](/Linux/Base/LinuxNetwork.md)  
+> [JVM 分析工具](/Java/AdvancedLearning/JvmTool.md)  
 
 ## GC
 > [Java GC](/Java/AdvancedLearning/JvmGC.md)
@@ -113,12 +117,21 @@ categories:
 
 ## CPU
 
+> 问题：优化一个业务方法延迟，找出CPU成本高的点
+- Arthas trace 指定的方法 
+    - `偶现或者高并发时才出现怎么办` 考虑使用脚本将捕获的调用信息存入日志，在手动解析产生的大量日志统计分析
+- JMC，JProfiler，Visualvm 等工具捕获CPU火焰图
+- APM类监控系统。例如：CAT
+
 ### 线程
 > [jstack.review Analyze java thread dumps](https://jstack.review)
 
 ************************
 
 ## ClassLoader
+
+**加载错误的类**
+
 由于开源项目的 groupId  artifactId 可能发生变化`asm netty commons-io 等`，且类结构和设计也有调整，容易引发隐式的类加载错误
 
 > [【踩坑】 Maven中依赖的隐式冲突 可能导致的 NoClassDefFoundError NoSuchMethodException 等问题](https://blog.csdn.net/kcp606/article/details/92245936?spm=1001.2014.3001.5502)
@@ -128,4 +141,11 @@ categories:
 - `Maven Helper` IDE 插件检查依赖冲突
 - `lsof -p PID | grep jar` 项目启动后查看加载到进程的jar
 - `-verbose:class` 输出运行期加载的class信息
+
+************************
+
+**类加载阻塞业务线程**
+
+由于类加载是JVM层面同步执行，如果业务行为中会高频用到类加载器的话会大大降低吞吐量，例如 [druid连接池引起的线程blocked](https://segmentfault.com/a/1190000041500544)
+
 

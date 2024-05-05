@@ -13,7 +13,7 @@ categories:
     - 1.1. [JVM参数](#jvm参数)
     - 1.2. [JVM内存参数](#jvm内存参数)
         - 1.2.1. [容器内的JVM](#容器内的jvm)
-        - 1.2.2. [实践](#实践)
+        - 1.2.2. [内存参数实践](#内存参数实践)
     - 1.3. [GC参数](#gc参数)
 - 2. [JVM 基本结构](#jvm-基本结构)
 - 3. [内存区域](#内存区域)
@@ -34,7 +34,7 @@ categories:
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-05-04 22:39:50
+💠 2024-05-06 00:16:08
 ****************************************
 # JVM
 > JVM结构及设计
@@ -140,7 +140,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 
 ************************
 
-### 实践
+### 内存参数实践
 > [初始和最大堆内存设置为一样的好处](https://gceasy.ycrash.cn/gc-recommendations/benefits-of-setting-initial-and-maximum-memory-size.jsp) 
 > [Benefits of setting initial and maximum memory size to the same value](https://blog.ycrash.io/benefits-of-setting-initial-and-maximum-memory-size-to-the-same-value/)
 - 避免扩容的暂停事件，提前调度充足资源的容器防止运行期扩容而被Linux被OOMKiller杀掉
