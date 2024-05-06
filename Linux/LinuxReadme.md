@@ -20,3 +20,9 @@
 * [ Docker进阶 ](/Linux/Container/DockerAdvance.md)
 * [ DockerFile ](/Linux/Container/DockerFile.md)
 * [ Docker与应用 ](/Linux/Container/DockerSoft.md)
+
+## Blog
+
+- [Ubuntu放弃战斗, Linux桌面的悲哀](http://www.jianshu.com/p/86dd6e34ce91)`deepin王总`
+- [一些工具软件](https://bbs.deepin.org/forum.php?mod=viewthread&tid=134241&extra=)
+- [Ubuntu安装我的世界](https://www.linuxidc.com/Linux/2016-04/129764.htm)
