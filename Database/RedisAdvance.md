@@ -23,7 +23,7 @@ categories:
     - 2.3. [事务](#事务)
     - 2.4. [服务器](#服务器)
     - 2.5. [实现原理](#实现原理)
-        - 2.5.1. [scan](#scan)
+        - 2.5.1. [Scan](#scan)
 - 3. [数据安全和性能](#数据安全和性能)
     - 3.1. [Latency](#latency)
     - 3.2. [错误分析](#错误分析)
@@ -39,7 +39,7 @@ categories:
     - 6.4. [Cluster 集群](#cluster-集群)
 - 7. [Redis 持久化](#redis-持久化)
 
-💠 2024-04-29 19:31:56
+💠 2024-05-06 19:31:32
 ****************************************
 # Redis底层数据结构
 ## SDS
@@ -164,7 +164,7 @@ Redis 的跳跃表由 redis.h/zskiplistNode 和 redis.h/zskiplist 两个结构�
 - TIME
 
 ## 实现原理
-### scan
+### Scan
 > [Doc: Scan](https://redis.io/commands/scan/) 
 
 由于 Redis 是单线程多路复用机制(Redis6引入多线程)，使用 O(n) 复杂度的命令容易阻塞进程，因此需要 scan 命令来实现分批执行 (`注意 scan如果模式匹配的范围比较大，同样有 keys 一样的影响`)
