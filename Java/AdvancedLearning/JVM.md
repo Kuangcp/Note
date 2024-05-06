@@ -34,7 +34,7 @@ categories:
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-05-06 00:16:08
+💠 2024-05-06 18:52:24
 ****************************************
 # JVM
 > JVM结构及设计
@@ -53,7 +53,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 - [prefma](https://club.perfma.com/)
 
 ## JVM参数
-> [Official: JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)`不同分类的参数介绍`  
+> [Command Reference for JDK8](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html) | [Command Reference for JDK17](https://docs.oracle.com/en/java/javase/17/docs/specs/man/java.html)  
 > [Official: Java HotSpot VM Options](https://www.oracle.com/java/technologies/javase/vmoptions-jsp.html)  
 > [Guide to the Most Important JVM Parameters](https://www.baeldung.com/jvm-parameters)  
 

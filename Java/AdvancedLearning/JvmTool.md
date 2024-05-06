@@ -36,7 +36,7 @@ categories:
     - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-04-21 16:35:07
+💠 2024-05-06 18:52:24
 ****************************************
 
 # JVM 监控&诊断
@@ -268,10 +268,8 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 - `Local`
 - `Remote`
     -  通常使用两种方式连接远程JVM: JMX jstatd
-    
     - **`jmx`**
         - [JMX](/Java/AdvancedLearning/JMX.md)
-
     - **`jstatd`**
         1. vim jstatd.all.policy 
             ```
@@ -304,10 +302,10 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 注意: 有这样的一种场景, 从数据库获取大量的数据创建为对象, 导致瞬间的OOM 这时候即使使用 jmap 去 dump 了快照, 也看不到占用大量内存的对象, 因为MAT默认展示的是GC可达对象，需要在菜单选择看不可达对象
 
 分析思路：
-对象: histogram, Top ,
-线程: 
-类加载器： histogram -> basic -> merge classloader
-不可达对象：
+- 对象: histogram, Top ,
+- 线程: 
+- 类加载器： histogram -> basic -> merge classloader
+- 不可达对象：
 
 ************************
 
@@ -333,9 +331,16 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 > [Java Mission Control](https://docs.oracle.com/en/java/java-components/jdk-mission-control/)
 
 1. 通过JMX连接目标JVM 实时监控应用指标
-1. 通过对运行中的JVM进行飞行记录 Flight Recorder, 分析指定时间内代码的可优化点，指标值变化情况（内存，CPU，GC，类加载等等）
+1. 通过对运行中的JVM进行飞行记录`Flight Recorder`, 分析指定时间内代码的可优化点，指标值变化情况
 
-> [目标JVM开启远程访问JMX](/Java/AdvancedLearning/JMX.md#JVM参数配置) `JDK6后就默认开启了进程访问JMX`
+指标值包括：JVM的 内存，CPU，GC，线程，类加载，网络和文件IO； 宿主机的CPU、内存等指标，联合做参考
+
+> [目标JVM开启远程访问JMX](/Java/AdvancedLearning/JMX.md#JVM参数配置) `注意JDK6后就默认开启了进程访问JMX`  
+> [JMC 9](https://www.oracle.com/java/technologies/javase/jmc9-release-notes.html)`自身需要JDK17以上运行，可以监控JDK 7u40及往后的版本`  
+
+> 实践场景
+- JFR分析某个业务场景的性能问题
+    - 启动应用，启动JMC，JMC连接到业务JVM后，开启一段时间的JFR，然后直接操作业务逻辑，JFR结束后可以看到
 
 ************************
 
