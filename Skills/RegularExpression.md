@@ -22,7 +22,7 @@ categories:
     - 3.3. [Shell](#shell)
 - 4. [Tips](#tips)
 
-💠 2024-05-06 19:59:21
+💠 2024-05-06 20:06:12
 ****************************************
 # 正则表达式
 > [Regular Expression Language - Quick Reference](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference)  
@@ -123,7 +123,7 @@ NFA 自动机的优势是支持更多功能。例如：捕获 group、环视、�
 ```
 
 注意：
-- Pattern对象尽可能复用，compile很耗CPU资源
+- 因为compile很耗CPU资源，所以Pattern对象需要尽可能复用，最好成为静态属性（它是不可变实例，是并发安全的）
 
 ## Python
 - ![re.jpg](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/python/re.jpg)
