@@ -22,7 +22,7 @@ categories:
     - 3.3. [Shell](#shell)
 - 4. [Tips](#tips)
 
-💠 2024-05-06 23:58:47
+💠 2024-05-07 22:10:48
 ****************************************
 # 正则表达式
 > [Regular Expression Language - Quick Reference](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference)  
@@ -111,20 +111,26 @@ NFA 自动机的优势是支持更多功能。例如：捕获group、环视、�
 **贪婪模式（Greedy）**
 
 如果单独使用 +、？、*或{min,max}等量词，正则表达式会匹配尽可能多的内容。
+
 例如 文本 abbc 模式 `ab{1,3}c`， NFA会先读取最大匹配范围3，匹配失败后回溯到2匹配成功，如果文本是 abbbc 就不会回溯直接匹配成功了
+当有多个匹配组时，性能下降会更明显 例如 `^([A-Za-z0-9]+)([A-Z0-9][A-Z0-9])(.*)` 可以看到有三个匹配分组第一个可能将匹配失败的字符给到第二个第三个组匹配，分支数会大量膨胀
 
 **懒惰模式（Reluctant）**
 
 尽可能少地重复匹配字符，如果匹配成功，它会继续匹配剩余的字符串。
-例如 文本 abbc 模式 `ab{1,3}?c`, NFA自动机会先读取最小匹配范围1再继续匹配，*避免了回溯问题*。
 
+例如 文本 abbc 模式 `ab{1,3}?c`, NFA自动机会先读取最小匹配范围1再继续匹配，*避免了回溯问题*。
+当多匹配组时 改进前文中表达式 `^([A-Za-z0-9]+?)([A-Z0-9][A-Z0-9])(.*)` 降低了分支数。
 
 **独占模式（Possessive）**
 
-和贪婪模式一样，独占模式一样会最大限度地匹配更多内容；不同的是，在独占模式下，匹配失败就会结束匹配，不会发生回溯问题。
+和贪婪模式一样，独占模式一样会最大限度地匹配更多内容；不同的是，在独占模式下，匹配失败就会结束匹配，不会发生回溯问题。多组匹配时一个组的匹配失败的字符不会给到另一个组
 
-同样的文本，模式为`ab{1,3}+c`。 vscode中匹配会报错 Invalid regular expression Nothing to repeat
-Java中能匹配成功，也没有发生所谓的独占模式引发匹配失败
+例如 文本 abbc，模式为`ab{1,3}+c`。 
+- vscode中匹配会报错 **Invalid regular expression Nothing to repeat**。 
+- Java中能匹配成功，也没有发生所谓的独占模式引发匹配失败的场景, 奇怪？
+- Golang中会报错 **invalid nested repetition operator**
+当多匹配组时 例如 `^([A-Z]++)([H-Zw])(.*)` 
 
 
 注意：Python和Go 标准库 不支持独占模式
