@@ -83,7 +83,6 @@ categories:
 ### Snap
 
 > 使用 pacman 安装
-
 1. sudo pacman -S snapd
 2. sudo systemctl enable --now snapd.socket
 3. sudo ln -s /var/lib/snapd/snap /snap
