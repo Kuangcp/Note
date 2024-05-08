@@ -18,7 +18,7 @@ categories:
 - 3. [Explain](#explain)
 - 4. [Tips](#tips)
 
-💠 2024-05-04 18:13:33
+💠 2024-05-08 20:26:55
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -125,6 +125,7 @@ JSON格式查看 `EXPLAIN json = 1, indexes = 1 SQL`
 - 多表关联 如果能确认范围过滤的数据只会从一个表返回可以避免join来过滤, 转用in, 避免分布式的做数据复制，导致资源消耗放大
 - Global 优化 join 和in 避免读放大
 - JDBC 优化 socketTimeout, 需要和CK服务器保持一致 `select * from system.settings where name like '%keep%';`
+    - 这个时间只针对于DDL，查询没有限制
 - JDBC 驱动版本不能太低，可能出现 `failed to respond`
 
 
