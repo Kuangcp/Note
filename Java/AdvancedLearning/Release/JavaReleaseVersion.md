@@ -34,6 +34,8 @@ categories:
 
 > [参考: JDK的版本号解惑](https://blog.csdn.net/bisal/article/details/118947676)  
 
+![](/Java/AdvancedLearning/Release/img/001-jdk-release.km.svg)
+
 ## Java5
 泛型 枚举 装箱拆箱 静态导入 foreach
 
