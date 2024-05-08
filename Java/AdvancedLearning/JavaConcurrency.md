@@ -49,6 +49,8 @@ categories:
 > [参考: 不可变真的意味线程安全？](http://www.jdon.com/concurrent/immutable.html)
 > [Java Concurrency and Multithreading Tutorial](http://tutorials.jenkov.com/java-concurrency/index.html)  
 
+![](/Java/AdvancedLearning/Concurrency/img/001-concurrency.km.svg)
+
 ************************
 
 ## JMM Java内存模型
