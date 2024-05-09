@@ -17,10 +17,6 @@ categories:
 - 3. [文件管理](#文件管理)
     - 3.1. [查找文件](#查找文件)
         - 3.1.1. [find](#find)
-        - 3.1.2. [fzf](#fzf)
-        - 3.1.3. [locate](#locate)
-        - 3.1.4. [Anything](#anything)
-        - 3.1.5. [Synapse](#synapse)
     - 3.2. [查看文件](#查看文件)
         - 3.2.1. [stat](#stat)
         - 3.2.2. [file](#file)
@@ -35,8 +31,6 @@ categories:
     - 3.3. [比较文件内容](#比较文件内容)
         - 3.3.1. [diff](#diff)
         - 3.3.2. [meld](#meld)
-        - 3.3.3. [kdiff3](#kdiff3)
-        - 3.3.4. [vimdiff](#vimdiff)
     - 3.4. [文件变更命令](#文件变更命令)
         - 3.4.1. [rename](#rename)
         - 3.4.2. [chown](#chown)
@@ -75,7 +69,7 @@ categories:
         - 7.3.1. [善用alias](#善用alias)
     - 7.4. [desktop文件](#desktop文件)
 
-💠 2024-04-29 19:31:56
+💠 2024-05-09 20:09:31
 ****************************************
 
 # 文件系统
@@ -152,15 +146,15 @@ splice
     - 递归当前文件夹下所有 log 找到 ERROR日志 `find -name "*.log" | xargs grep ERROR`
 1. 查找文件内容 `find etc/  |xargs grep -i java`
 
-### fzf
+**fzf**
 
-### locate
+**locate**
 > 预先建立数据库，依此查询 速度较快，但是有时效问题
 
-### Anything
+**Anything**
 > 图形化 搜索文件 工具，也是预先建立数据库
 
-### Synapse
+**Synapse**
 > 搜索文件 启动应用等功能
 
 ************************
@@ -271,6 +265,7 @@ le fin.log | grep -v VID | awk '{print $2}' | xargs rm -f
     tail +20 file （显示文件file的内容，从第20行至文件末尾） 
     tail -c 10 file （显示文件file的最后10个字符）
 ```
+
 ### head  
 - 查看文件头部, 默认前十行 使用 -n 指定行数
 
@@ -280,8 +275,6 @@ le fin.log | grep -v VID | awk '{print $2}' | xargs rm -f
 ************************
 
 ## 比较文件内容
-- `grep -vwf 文件1 文件2`
-
 > [阮一峰: 读懂diff](http://www.ruanyifeng.com/blog/2012/08/how_to_read_diff.html)
 
 ### diff
@@ -292,11 +285,13 @@ le fin.log | grep -v VID | awk '{print $2}' | xargs rm -f
 ### meld
 > [Github: meld](https://github.com/GNOME/meld)
 
-> 可用于 git svn 查看差异, 或者简单的两个文件查看差异
+> 可用于 git svn 查看差异  
+> 选两个或三个文件去查看差异，完成patch补入  
 
-### kdiff3
+************************
 
-### vimdiff
+kdiff3
+vimdiff
 
 ## 文件变更命令
 ### rename
