@@ -22,7 +22,7 @@ categories:
     - 1.4. [Vivaldi](#vivaldi)
     - 1.5. [Opera](#opera)
 
-💠 2024-04-19 10:49:10
+💠 2024-05-09 14:32:49
 ****************************************
 # 浏览器
 ## FireFox
@@ -40,6 +40,8 @@ categories:
 
 > [火狐性能优化贴](https://www.xzcblog.com/post-47.html)  
 > [Firefox uses too much memory or CPU resources - How to fix](https://support.mozilla.org/en-US/kb/firefox-uses-too-much-memory-or-cpu-resources)
+
+> [Floorp](https://github.com/floorp-Projects/floorp/)`FF衍生品，支持工作区，多行tab，单窗口多tab` 但是没有循环tab切换  
 
 ### 开发版本
 > [开发者版本链接](https://www.mozilla.org/zh-CN/firefox/developer/) | [开发工具](https://firefox-dev.tools/)  
