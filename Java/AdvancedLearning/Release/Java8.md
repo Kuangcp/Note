@@ -80,7 +80,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2024-02-27 11:32:45
+💠 2024-05-11 16:41:58
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -939,7 +939,7 @@ Stream.collect 实现
     Map<Dish.Type, Integer> totalCaloriesByType = menu.stream().collect(groupingBy(Dish::getType, 
                 summingInt(Dish::getCalories))); 
 ```
-然而常常和groupingBy联合使用的另一个收集器是mapping方法生成的。这个方法接受两个参数：一个函数对流中的元素做变换，另一个则将变换的结果对象收集起来。
+然而常常和groupingBy联合使用的另一个收集器是mapping方法生成的。这个方法接受两个参数：一个函数对流中的元素做**变换**，另一个则将变换的结果对象**收集**起来。
 其目的是在累加之前对每个输入元素应用一个映射函数，这样就可以让接受特定类型元素的收集器适应不同类型的对象。我们来看一个使用这个收集器的实际例子。
 比方说你想要知道，对于每种类型的Dish，菜单中都有哪些CaloricLevel。我们可以把groupingBy和mapping收集器结合起来，如下所示：
 ```java
@@ -959,7 +959,20 @@ Stream.collect 实现
             if (dish.getCalories() <= 400) return CaloricLevel.DIET; 
             else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL; 
             else return CaloricLevel.FAT; 
-        },toCollection(HashSet::new) ))); 
+        }, toCollection(HashSet::new) )
+        ));
+
+    // 可抽象出工具方法
+    static <P, K, V> Map<K, Set<V>> groupToMapSet(Collection<P> params,
+                                                  Function<P, K> keyFunc,
+                                                  Function<P, V> valFunc) {
+        if (CollectionUtils.isEmpty(params)) {
+            return Collections.emptyMap();
+        }
+        return params.stream().collect(Collectors.groupingBy(keyFunc,
+                Collectors.mapping(valFunc, Collectors.toCollection(HashSet::new))
+        ));
+    }
 ```
 
 #### 分区
