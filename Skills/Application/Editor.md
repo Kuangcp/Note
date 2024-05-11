@@ -37,10 +37,8 @@ categories:
     - 2.3. [Micro](#micro)
     - 2.4. [BS在线编辑器](#bs在线编辑器)
 - 3. [十六进制](#十六进制)
-    - 3.1. [Ghex](#ghex)
-    - 3.2. [hexedit](#hexedit)
 
-💠 2024-05-01 22:02:10
+💠 2024-05-11 15:14:31
 ****************************************
 # 文本编辑器
 
@@ -261,12 +259,17 @@ strict-ssl=false
 ************************
 
 # 十六进制
+> 十六进制方式查看和修改二进制文件 
 
-> 十六进制查看 
+> [What's the best hex editor in 2023? ](https://www.reddit.com/r/hacking/comments/105mzw5/whats_the_best_hex_editor_in_2023/)  
 
-xxd hexdump od vim
+**终端**
+- 查看 hexdump xxd od
+- 编辑 hexedit vim
 
-## Ghex
-- 十六进制文件编辑器
+**GUI**
+Ghex
+[HexWalk](https://github.com/gcarmix/HexWalk)
+[010Editor](https://www.sweetscape.com/)
+[ImHex](https://github.com/WerWolv/ImHex)
 
-## hexedit
