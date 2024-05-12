@@ -32,9 +32,7 @@
 ### 工具
 
 * [ Gradle ](/Java/Tool/Gradle.md)
-* [ Gradle进阶 ](/Java/Tool/GradleAdvance.md)
 * [ IDEA ](/Java/Tool/IDEA.md)
-* [ Jetty ](/Java/Tool/Jetty.md)
 * [ Lombok ](/Java/Tool/Lombok.md)
 * [ Maven ](/Java/Tool/Maven.md)
 * [ Maven进阶 ](/Java/Tool/MavenAdvance.md)
@@ -65,7 +63,6 @@
 
 ## Python
 * [ Python ](/Python/Python.md)
-* [ PythonConcurrent ](/Python/PythonConcurrent.md)
 * [ PythonGUI ](/Python/PythonGUI.md)
 * [ PythonGame ](/Python/PythonGame.md)
 * [ PythonNet ](/Python/PythonNet.md)
@@ -81,12 +78,11 @@
 - [skill tree](https://github.com/linw7/Skill-Tree)
 - [巨人工作记录](https://ztgame.shenyu.me/)`笔记 基于 GitBook`
 - [某研究生在校阅读笔记](https://github.com/lanxuezaipiao/ReadingNotes)
-- [书写规范和建议](https://github.com/sparanoid/chinese-copywriting-guidelines)`比较全面,闲暇可以参考`
+- [书写规范和建议](https://github.com/sparanoid/chinese-copywriting-guidelines)
 - [阮一峰的博客](https://github.com/ruanyf/articles) [阮一峰的周报](https://github.com/ruanyf/weekly)
 - [notes](https://github.com/district10/notes)`杂谈`
 - [interview](https://github.cUIom/hadyang/interview)`Java / Android 笔试、面试 知识整理`
 - [ZXBlog](https://github.com/UIZXZxin/ZXBlog)
-- [天赋好书](https://www.cntofu.com/)`爬虫爬开源笔记项目然后转换成GitBook一样的网页?`
 - [coderzh-hugo-blog ](https://github.com/coderzh/coderzh-hugo-blog)
 - [Java-Summarize](https://github.com/zaiyunduan123/Java-Summarize)
 - [JAVA基础技能代码集](https://github.com/veezean/JavaBasicSkills)
@@ -106,7 +102,7 @@
 - [CSS 魔法](https://github.com/cssmagic/blog)
 - [cain-note](https://github.com/james-cain/cain-note)`像是培训机构的资料和他本人的学习笔记,偏向前端`
 - [梁少锋的博客笔记](https://github.com/youngwind/blog)`前端相关`
-- [HstarDoc](https://github.com/hstarorg/HstarDoc)`前端的大量文档`
+- [HstarDoc](https://github.com/hstarorg/HstarDoc)
 
 ************************
 
