@@ -33,17 +33,16 @@ categories:
         - 1.8.7. [Response](#response)
     - 1.9. [测试模块](#测试模块)
     - 1.10. [运行和部署](#运行和部署)
-        - 1.10.1. [直接运行](#直接运行)
+        - 1.10.1. [mvn 运行](#mvn-运行)
         - 1.10.2. [编译打包jar/war](#编译打包jarwar)
             - 1.10.2.1. [war](#war)
             - 1.10.2.2. [jar](#jar)
         - 1.10.3. [构建Docker镜像](#构建docker镜像)
             - 1.10.3.1. [手动方式](#手动方式)
-            - 1.10.3.2. [Gradle结合Docker](#gradle结合docker)
         - 1.10.4. [热部署](#热部署)
         - 1.10.5. [运行性能优化](#运行性能优化)
 
-💠 2024-05-04 22:39:50
+💠 2024-05-13 21:40:18
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -335,7 +334,7 @@ public class CorsConfig {
 
 ## 运行和部署
 
-### 直接运行
+### mvn 运行
 - [Spring Boot Maven Plugin](https://docs.spring.io/spring-boot/docs/2.1.9.RELEASE/maven-plugin/run-mojo.html)
 - 例如开启远程调试 `mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000"`
 
@@ -354,9 +353,15 @@ public class CorsConfig {
 - gradle: `gradle war` 然后 `gradle bootRepackage` 即可
 
 #### jar
-- 没有特殊的配置，打包即用
+- 没有特殊的配置，打包即用 `java -jar app.jar`
     - maven: `mvn package` 即可生成可执行的jar
     - gradle:`gradle jar` 然后 `gradle bootRepackage` 也生成可执行jar
+
+************************
+
+二进制执行的Jar
+> [Installing Spring Boot Applications](https://docs.spring.io/spring-boot/docs/current/reference/html/deployment.html#deployment.installing)  
+> [launch.script](https://github.com/spring-projects/spring-boot/blob/v3.0.6/spring-boot-project/spring-boot-tools/spring-boot-loader-tools/src/main/resources/org/springframework/boot/loader/tools/launch.script#start-of-content)`启动脚本`  
 
 ### 构建Docker镜像
 > [Official Doc: spring boot docker](https://spring.io/guides/gs/spring-boot-docker/)
@@ -368,9 +373,6 @@ public class CorsConfig {
     ADD weixin-1.0.0.war app.war
     ENTRYPOINT ["java","-jar","/app.war"]
 ```
-
-#### Gradle结合Docker
-
 
 ### 热部署
 > [参考: SpringBoot热部署](https://nilzzzz.github.io/2017/11/SpringBoot1/)
