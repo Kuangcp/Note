@@ -32,7 +32,7 @@ categories:
         - 2.2.2. [poll](#poll)
         - 2.2.3. [epoll](#epoll)
 
-💠 2024-04-19 10:49:10
+💠 2024-05-14 17:44:18
 ****************************************
 # 计算机中的IO
 > [参考: IO - 同步，异步，阻塞，非阻塞 ](https://blog.csdn.net/historyasamirror/article/details/5778378)  
@@ -214,6 +214,8 @@ poll还有一个特点是“水平触发”，如果报告了fd后，没有被�
 ************************
 
 ### epoll
+> [参考: 从 linux 源码看 epoll](https://my.oschina.net/alchemystar/blog/3008840)  
+
 epoll是在Linux内核2.6引进的，是select和poll函数的增强版。与select相比，epoll没有文件描述符数量的限制。  
 epoll使用一个文件描述符管理多个文件描述符，将用户关心的文件描述符事件存放到`内核的一个事件列表`中  
 这样在用户空间和内核空间`只需拷贝一次`, 因为用户空间和内核空间共用一块内存

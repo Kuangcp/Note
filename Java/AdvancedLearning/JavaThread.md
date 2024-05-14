@@ -27,14 +27,21 @@ categories:
     - 5.1. [Loom](#loom)
     - 5.2. [Quasar](#quasar)
 
-💠 2024-04-30 14:07:24
+💠 2024-05-14 17:44:18
 ****************************************
 # Java线程
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/thread/src/main/java/com/github/kuangcp)
 
 - [码农翻身:我是一个线程](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=416915373&idx=1&sn=f80a13b099237534a3ef777d511d831a&scene=21#wechat_redirect) | [码农翻身:编程世界的那把锁](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513653&idx=1&sn=e30c18c0c1780fb3ef0cdb858ee5201e&chksm=80d67af6b7a1f3e059466302c2c04c14d097c1a5de01cf986df84d4677299542f12b974dfde3&scene=21#wechat_redirect) | [码农翻身:加锁还是不加锁，这是一个问题 ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513692&idx=1&sn=ef2416a4bb96d64db77e32d5b4c7967e&chksm=80d67a9fb7a1f3898e513cc1d9e96841610bb84aed2dc24cab2d403e74e317e3c447e45e7611&scene=21#wechat_redirect)
 
-> 线程优先级： 多个线程同时运行时,由线程调度器来决定哪些线程运行,哪些等待以及线程切换的时间点. 由于各个操作系统的线程调度器的实现各不相同, 所以依赖JDK来设置线程优先级策略是错误和平台不可移植性的.
+************************
+
+> [参考: 面试官:Java如何绑定线程到指定CPU上执行? ](https://mp.weixin.qq.com/s?__biz=Mzg3NjU3NTkwMQ==&mid=2247515262&idx=1&sn=9f2314cffc3cca3744f63b418654a9c0&scene=21#wechat_redirect)  
+> [Thread Affinity](https://github.com/OpenHFT/Java-Thread-Affinity)`底层优化选项：更多复用缓存以及减少线程的上下文切换`  
+
+还可以将应用做强定制化，网卡绑定CPU，计算绑定CPU。能避免调度开销，同样的是双刃剑，资源没有经过操作系统统一调度无法做到资源的有效共享。类似于虚拟机和物理机的一种权衡，虚拟机可以让资源共享，但是降低了CPU执行效率。物理机可以独占CPU，没法共享达到CPU资源的充分利用。
+
+************************
 
 # 生命周期
 > [参考博客](https://segmentfault.com/a/1190000005006079) | [Blog: 线程详解](http://www.cnblogs.com/riskyer/p/3263032.html) | [参考Java-learning仓库](https://github.com/brianway/java-learning)
@@ -92,6 +99,8 @@ LockSupport.park
 [Can LockSupport.park() replace Object.wait()?](https://stackoverflow.com/questions/39415636/can-locksupport-park-replace-object-wait)
 
 [thread states](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/tooldescr034.html)
+
+> 线程优先级： 多个线程同时运行时,由线程调度器来决定哪些线程运行,哪些等待以及线程切换的时间点. 由于各个操作系统的线程调度器的实现各不相同, 所以依赖JDK来设置线程优先级策略是错误和平台不可移植性的.
 
 ### yield
 
@@ -184,6 +193,8 @@ LockSupport.park
 ************************
 
 # 协程
+R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1, N：1, M：N。 只是Hotspot实现为1:1
+
 ## Loom
 > [OpenJDK: Loom](https://openjdk.java.net/projects/loom/)
 

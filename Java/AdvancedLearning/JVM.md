@@ -34,7 +34,7 @@ categories:
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-05-06 18:52:24
+💠 2024-05-14 17:44:18
 ****************************************
 # JVM
 > JVM结构及设计
@@ -61,7 +61,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 - `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
     - 开启无需认证 非SSL的JMX端口: 9999
 
-- `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 打印类装载
+- `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 输出类装载日志，可用于排查类从哪个jar加载进入JVM的
 
 > OOM 
 - `-XX:+HeapDumpOnOutOfMemoryError `

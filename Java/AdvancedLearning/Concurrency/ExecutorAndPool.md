@@ -15,11 +15,11 @@ categories:
 - 2. [Spring](#spring)
     - 2.1. [ThreadPoolTaskExecutor](#threadpooltaskexecutor)
 - 3. [实践](#实践)
-    - 3.1. [线程池 参数优化&监控](#线程池-参数优化&监控)
+    - 3.1. [线程池 参数优化 监控](#线程池-参数优化-监控)
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2024-04-22 16:41:19
+💠 2024-05-14 17:44:18
 ****************************************
 # 线程池
 
@@ -141,9 +141,16 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 # 实践
 > [About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing) | [About Pool Sizing in distributed environments / microservices](https://github.com/brettwooldridge/HikariCP/issues/1023)`如何设置数据库连接池线程数`  
 
-> [ExecutorService - 10 tips and tricks](https://nurkiewicz.com/2014/11/executorservice-10-tips-and-tricks.html)
+> [ 合理使用线程池以及线程变量 ](https://mp.weixin.qq.com/s/BdVqvm2wLNv05vMTieevMg)  
+> [ExecutorService - 10 tips and tricks](https://nurkiewicz.com/2014/11/executorservice-10-tips-and-tricks.html)  
+> [Tomcat 线程池](/Java/Tool/TomcatDesign.md#线程池)  
 
-## 线程池 参数优化&监控
+- 增加全局异常处理 `Thread.setUncaughtExceptionHandler()`, 或手动catch任务块全部代码 避免异常被吞 [测试代码](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/thread/pool/PoolExceptionTest.java)
+- 避免局部线程池，容易遗忘线程资源回收，注意线程是GCRoot对象
+- 依据业务和监控合理设置参数，动态调整
+- 管理好上下文参数
+
+## 线程池 参数优化 监控
 目的：观测线程池运行情况，优化吞吐量和延迟，规避资源分配不合理导致瓶颈甚至宕机
 
 > 公式1：Nthreads = Ncpu * Ucpu * W/C
@@ -193,6 +200,14 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 ************************
 
 ## 停止线程池
-1. 如何实现JVM停止时等待线程池中任务执行完成
-1. 线程池停止时，如何感知到 被中断的 运行中和等待中的任务
+> 如何实现JVM停止时等待线程池中任务执行完成 即 优雅停机
 
+为了实现优雅停机的目标，应当先调用shutdown方法，调用这个方法也就意味着，这个线程池不会再接收任何新的任务，但是已经提交的任务还会继续执行。
+之后还应当调用awaitTermination方法，这个方法可以设定线程池在关闭之前的最大超时时间，如果在超时时间结束之前线程池能够正常关闭则会返回true，否则，超时会返回false。
+通常需要根据业务场景预估一个合理的超时时间。
+
+如果awaitTermination方法返回false，但又希望尽可能在线程池关闭之后再做其他资源回收工作，可以考虑再调用一次shutdownNow方法，此时队列中所有尚未被处理的任务都会被丢弃，同时会设置线程池中每个线程的中断标志位。
+shutdownNow **并不保证**一定会让正在运行的线程停止工作，除非提交给线程的任务能够正确响应中断。
+
+> 线程池停止时，如何感知到 被中断的 运行中和等待中的任务
+- 默认的shutdown接口返回的是Runnable实例，无法明确获取业务特征

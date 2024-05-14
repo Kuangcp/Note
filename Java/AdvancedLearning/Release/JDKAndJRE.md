@@ -17,7 +17,7 @@ categories:
 - 4. [商业组织JDK](#商业组织jdk)
     - 4.1. [Corretto](#corretto)
 
-💠 2024-04-01 11:51:20
+💠 2024-05-14 17:44:18
 ****************************************
 # JDK And JRE
 
@@ -76,6 +76,7 @@ Java11 开始, JDK内去掉了JRE模块
 > [Official Site](http://openjdk.java.net/) |  [OpenJDK Source](http://hg.openjdk.java.net/jdk) | [Github:source](https://github.com/openjdk/jdk)
 
 > [Open JDK 11: Download](http://jdk.java.net/11/)
+> [Issues](https://bugs.openjdk.org/projects/JDK/issues)  
 
 # 商业组织JDK
 ## Corretto
