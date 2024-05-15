@@ -68,7 +68,7 @@ categories:
         - 6.3.1. [善用alias](#善用alias)
     - 6.4. [desktop文件](#desktop文件)
 
-💠 2024-05-10 11:56:13
+💠 2024-05-15 19:48:04
 ****************************************
 
 # IO
@@ -387,6 +387,23 @@ export LANG="zh_CN.UTF-8"
 > 虚拟内存文件系统 [wiki](https://wiki.archlinux.org/index.php/Tmpfs)
 
 mount -t tmpfs -o size=100m tmpfs /mnt/tmp
+
+> [/tmp临时目录定期清理机制](https://cloud-atlas.readthedocs.io/zh-cn/latest/linux/redhat_linux/systemd/tmp_directory_cleanup_periodically.html)
+
+安装系统时，如果没有将/tmp指定独立的分区，将会在/分区下建立 tmp 目录，此时会有一个隐患 当系统段时间大量创建tmp文件时可能导致 / 分区满掉，从而导致整个系统hang住。  
+例如Java中使用EasyExcel大量导出Excel时需要临时文件落盘避免内存占用过大的问题, 当并发大量文件导出时容易引起tmp目录占满。  
+
+> systemd 方式来定期清理tmp [Configuration of Temporary Files with systemd-tmpfiles](https://www.baeldung.com/linux/systemd-tmpfiles-configure-temporary-files)
+
+例如：解决上述Excel临时文件的问题
+- Java应用中指定临时文件目录为 /tmp/excel-tmp
+- 新建配置文件 `/etc/tmpfiles.d/excel-tmp.conf`
+```ini
+    d /tmp/dir_clean 0755 baeldung baeldung 10s
+```
+- 执行 `sudo systemd-tmpfiles --clean` 将删除最后修改时间超过当前时间10s的文件 **可以加入cron**
+- 问题： 如果文件被打开，持续写入中，时间超过了10s这个时候会发生什么事
+    - 
 
 ### fsck
 > check and repair a Linux filesystem
