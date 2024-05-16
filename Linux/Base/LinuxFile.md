@@ -386,7 +386,9 @@ export LANG="zh_CN.UTF-8"
 ### Tmpfs 
 > 虚拟内存文件系统 [wiki](https://wiki.archlinux.org/index.php/Tmpfs)
 
-mount -t tmpfs -o size=100m tmpfs /mnt/tmp
+手动创建挂载tmp文件系统： `mount -t tmpfs -o size=100m tmpfs /mnt/tmp`
+
+************************
 
 > [/tmp临时目录定期清理机制](https://cloud-atlas.readthedocs.io/zh-cn/latest/linux/redhat_linux/systemd/tmp_directory_cleanup_periodically.html)
 
@@ -395,15 +397,15 @@ mount -t tmpfs -o size=100m tmpfs /mnt/tmp
 
 > systemd 方式来定期清理tmp [Configuration of Temporary Files with systemd-tmpfiles](https://www.baeldung.com/linux/systemd-tmpfiles-configure-temporary-files)
 
-例如：解决上述Excel临时文件的问题
+例如：解决上述Excel临时文件的问题，最好是随用随删，该机制可作为兜底策略
 - Java应用中指定临时文件目录为 /tmp/excel-tmp
 - 新建配置文件 `/etc/tmpfiles.d/excel-tmp.conf`
 ```ini
     d /tmp/dir_clean 0755 baeldung baeldung 10s
 ```
 - 执行 `sudo systemd-tmpfiles --clean` 将删除最后修改时间超过当前时间10s的文件 **可以加入cron**
-- 问题： 如果文件被打开，持续写入中，时间超过了10s这个时候会发生什么事
-    - 
+- 问题： 如果文件被打开，持续写入中，时间超过了10s这个时候是否会被删除？
+    - 如果进程占用在写入，不会被清除, 打开的句柄关掉后就不会修改文件的修改时间了，就会到期删除
 
 ### fsck
 > check and repair a Linux filesystem
