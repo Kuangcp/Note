@@ -80,7 +80,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2024-05-13 21:40:18
+💠 2024-05-17 19:49:18
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -111,6 +111,7 @@ categories:
 1. 调用方式: `接口.super.方法`
 
 ## static方法
+类似于Scala Ruby trait/mixin 这种默认接口实现
 
 1. 调用方式: static 方法 `接口.方法`
 
@@ -1043,7 +1044,7 @@ java.util.stream.Collector
 
 # Optional
 >1. null引用在历史上被引入到程序设计语言中，目的是为了表示变量值的缺失。
->1. Java 8中引入了一个新的类java.util.Optional<T>，对存在或缺失的变量值进行建模。
+>1. Java 8中引入了一个新的类`java.util.Optional<T>`，对存在或缺失的变量值进行建模。
 >1. 你可以使用静态工厂方法Optional.empty、 Optional.of以及Optional.ofNullable创建Optional对象。
 >1. Optional类支持多种方法，比如map、 flatMap、 filter，它们在概念上与Stream类中对应的方法十分相似。
 >1. 使用Optional会迫使你更积极地解引用Optional对象，以应对变量值缺失的问题，最终，你能更有效地防止代码中出现不期而至的空指针异常。
@@ -1080,7 +1081,7 @@ java.util.stream.Collector
 
 ************************
 
-1. **注意**: Optional 无法序列化, 也就是说不能作为 PO 的字段, 但是可以在get上下功夫: `public Optional<String> getName(){return this.name}`
+1. **注意**: *Optional 无法序列化*, 也就是说不能作为 PO 的字段, 但是可以在get上下功夫: `public Optional<String> getName(){return this.name}`
 
 1. 异常与Optional的对比
     - 当一个方法由于某些原因无法返回期望值, 常见的做法是抛出异常, 或者返回null(不建议). 但是这时候多了一个选择, 返回Optional
