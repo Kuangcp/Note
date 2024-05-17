@@ -18,7 +18,7 @@ categories:
 - 3. [Explain](#explain)
 - 4. [Tips](#tips)
 
-💠 2024-05-08 20:26:55
+💠 2024-05-17 11:50:37
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -57,7 +57,8 @@ categories:
 > Tips
 - [cast as decimal is very slow](https://github.com/ClickHouse/ClickHouse/issues/30542) `Decimal128 256 相较于 64和32 有较大的性能差距，可以用其中SQL做测试`
     - `SELECT sum(CAST(number + 1., 'Decimal(17, 1)'))　FROM numbers(100000000);` 自建的CK集群内看到128耗时是64的三倍 **实际情况实际分析，仅供参考**
-    - 因为从128开始CK都要模拟计算来提高精度，CPU成本更大
+    - 因为从Decimal128类型开始CK都要模拟计算来提高精度，CPU成本更大
+    - CK22.3.5.5版本上 `ROUND(cast(AVG(ifNull(sale_amount, 0)) AS Decimal(76,38)), 4)` Round会不起作用，计算结果仍是很长的小数位
 
 > `SELECT sumWithOverflow(CAST(number + 1., 'Decimal(3, 1)')) as res , toTypeName(res)　FROM numbers(1000000);`
 - 在做sum计算时，表的源字段大小不够时会自动增长类型， 但是如果使用 sumWithOverflow 就不会扩大类型，因此计算结果也是错误的
@@ -128,4 +129,5 @@ JSON格式查看 `EXPLAIN json = 1, indexes = 1 SQL`
     - 这个时间只针对于DDL，查询没有限制
 - JDBC 驱动版本不能太低，可能出现 `failed to respond`
 
+- CK22.3.5.5版本上 使用 UNION ALL 连接 A 和 B两段SQL时，CK偶现出现B段SQL没有正确的groupby聚合（有些数据没有聚合），导致整体执行结果条目数变多，非期望数据
 
