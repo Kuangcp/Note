@@ -71,7 +71,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2024-05-09 00:18:04
+💠 2024-05-19 17:54:59
 ****************************************
 # 网络
 
@@ -562,7 +562,9 @@ function FindProxyForURL(url, host) {
 - [whistle](https://github.com/avwo/whistle) `nodejs 平台的抓包工具`
 
 ### Clash
-[Github](https://github.com/Dreamacro/clash)
+[Github](https://github.com/Dreamacro/clash) | [Fork copy](https://github.com/Ieooo/clash)
+
+[clash-dashboard](https://github.com/Dreamacro/clash-dashboard)
 
 ### Fiddler 
 > [fiddler](https://www.telerik.com/fiddler)`由C#开发, 自定义脚本为C#`  
