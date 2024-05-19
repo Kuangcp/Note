@@ -18,7 +18,7 @@ categories:
         - 1.2.3. [Yay](#yay)
 - 2. [Tips](#tips)
 
-💠 2024-04-21 16:35:07
+💠 2024-05-19 23:35:07
 ****************************************
 
 # Arch
@@ -31,14 +31,10 @@ categories:
 - [什么Linux发行版软件最多？](https://www.lulinux.com/archives/2787)
 - [Arch Linux 安装、配置、美化和优化](http://www.cnblogs.com/bluestorm/p/5929172.html)
 
-> [参考: archlinux简明教程](https://arch.icekylin.online/prologue.html)
-
-
-
 ## 社区
 
-* [arch cn bbs](https://bbs.archlinuxcn.org/viewforum.php?id=19)
-
+- [arch cn bbs](https://bbs.archlinuxcn.org/viewforum.php?id=19)
+- [archlinux 简明指南](https://arch.icekylin.online/)
 
 ## 包管理
 
