@@ -28,7 +28,7 @@ categories:
 - 2. [Tips](#tips)
     - 2.1. [SQL 片段](#sql-片段)
 
-💠 2024-04-23 21:07:09
+💠 2024-05-20 20:04:31
 ****************************************
 # MySQL进阶
 > [Github: MySQL Sever](https://github.com/mysql/mysql-server)  
@@ -231,3 +231,4 @@ InnoDB通过加间隙锁来防止幻读
     where table_schema = 'test-db'
     order by data_length desc, index_length desc;
 ```
+注意：table_rows是预估值，和实际值相差40%-50%，实际值需要看count(*), analyze table table_name 可提高近似率，但仍偏差较大
