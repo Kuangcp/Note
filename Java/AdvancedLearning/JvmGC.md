@@ -23,19 +23,20 @@ categories:
     - 1.6. [GC Callback](#gc-callback)
 - 2. [GC日志](#gc日志)
 - 3. [垃圾收集器](#垃圾收集器)
-    - 3.1. [Serial](#serial)
-    - 3.2. [ParNew](#parnew)
-    - 3.3. [Parallel Scavenge](#parallel-scavenge)
-    - 3.4. [Serial Old](#serial-old)
-    - 3.5. [Parallel Old](#parallel-old)
-    - 3.6. [CMS](#cms)
-    - 3.7. [G1](#g1)
-    - 3.8. [ZGC](#zgc)
-    - 3.9. [ShenandoahGC](#shenandoahgc)
-    - 3.10. [Epsilon](#epsilon)
+    - 3.1. [默认垃圾收集器](#默认垃圾收集器)
+    - 3.2. [Serial](#serial)
+    - 3.3. [ParNew](#parnew)
+    - 3.4. [Parallel Scavenge](#parallel-scavenge)
+    - 3.5. [Serial Old](#serial-old)
+    - 3.6. [Parallel Old](#parallel-old)
+    - 3.7. [CMS](#cms)
+    - 3.8. [G1](#g1)
+    - 3.9. [ZGC](#zgc)
+    - 3.10. [ShenandoahGC](#shenandoahgc)
+    - 3.11. [Epsilon](#epsilon)
 - 4. [最佳实践](#最佳实践)
 
-💠 2024-04-24 22:46:48
+💠 2024-05-22 17:32:51
 ****************************************
 # GC
 > Garbage Collection
@@ -267,7 +268,7 @@ GC Roots 对象包含:
 
 > JVM垃圾收集器种类
 
-根据设计, 往往是新生代和老年代使用不同的垃圾收集器并组合使用, 因为各分代之间特性不同  
+根据设计, 往往是新生代和老年代使用不同的垃圾收集器并组合使用, 因为各分代的对象分配和释放特性不同  
 
 > 新生代  
 
@@ -276,7 +277,7 @@ GC Roots 对象包含:
 | Serial (第一代)            | 单线程STW 复制算法 |
 | PraNew (第二代)            | 多线程并行STW 复制算法|
 | Parallel Scavenge (第三代) | 多线程并行STW 吞吐量优化，复制算法|
-| G1收集器(第四代)            | 多线程并发，可以精确控制STW时间，整理算法 |
+| G1 (第四代)            | 多线程并发，可以精确控制STW时间，整理算法 |
 
 > 老年代
 
@@ -285,18 +286,19 @@ GC Roots 对象包含:
 | Serial Old (第一代) | |
 | Parallel Old (第二代) | |
 | CMS (第三代) | |
-| G1收集器 (第四代) | |
+| G1 (第四代) | |
+| ZGC/ShenandoahGC | | 
 
 > 收集器搭配时的限制条件: 
 - CMS 不能和 Parallel Scavenge 一起用
 - Parallel Old 只能和 Parallel Scavenge 一起用
-- G1 只能单独使用(独自处理新生代和老年代)
+- G1 ZGC ShenandoahGC 只能单独使用(独自处理新生代和老年代)
 
 ************************
 
-> 查看当前使用的垃圾收集器 
+## 默认垃圾收集器
 - `-XX:+PrintCommandLineFlags` 或者查看GC日志中代的名称 `-XX:+PrintGCDetails`
-- JDK1.7 1.8 默认垃圾收集器Parallel Scavenge（新生代）+Parallel Old（老年代）
+- JDK 1.7 1.8 默认垃圾收集器Parallel Scavenge（新生代）+Parallel Old（老年代）
 - JDK1.9+ 默认垃圾收集器G1
 
 ************************
@@ -322,15 +324,14 @@ GC Roots 对象包含:
 
 `-XX:+UseParallelGC`
 
-- 控制最大垃圾收集停顿时间 `-XX:MaxGCPauseMillis` (大于0的整数 millis)
+- 控制最大垃圾收集停顿时间 `-XX:MaxGCPauseMillis` (大于0的整数 单位millis)
     - 该值并不是越小越好, GC停顿时间缩短是牺牲吞吐量和新生代空间来换取的 
     - 新生代空间越小则垃圾收集器回收时间则更短, 但是也更频繁, 停顿时间降下来了,但是吞吐量就下降了
-- 直接设置吞吐量大小 `-XX:GCTimeRatio` (0,100)
+- 直接设置吞吐量大小 `-XX:GCTimeRatio` 值范围：(0,100)
     - 收集器将尽可能保证内存回收的时间不超过设置值, 值为垃圾收集时间占总时间的比率, 相当于吞吐量的倒数
     - 如果设置为 49 则允许的最大GC时间占总时间的 1/(1+49)
 - GC自适应策略 `-XX:+UseAdaptiveSizePolicy`
-    - 该参数启用后, 就无需手动设置新生代的大小(-Xmn)和Eden和Survivor的比例(-XX:SurvivorRatio) 晋升老年代对象大小(-XX:PretenureSizeThreshold) 等细节参数了
-    - 虚拟机将动态调整这些参数
+    - 该参数启用后, 就无需手动设置新生代的大小(-Xmn)和Eden和Survivor的比例(-XX:SurvivorRatio) 晋升老年代对象大小(-XX:PretenureSizeThreshold) , 虚拟机将动态调整这些参数
 
 ************************
 
@@ -472,15 +473,15 @@ ConcGCThreads 一般称为并发标记线程数，为了减少GC的STW的时间�
 ************************
 
 ## ZGC
-> JDK11引入 JDK15正式使用 [wiki: ZGC](https://wiki.openjdk.java.net/display/zgc/Main) | [JEP 377 ZGC](https://openjdk.org/jeps/377) | [ZGC Release note](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
+> [wiki: ZGC](https://wiki.openjdk.java.net/display/zgc/Main) | [JEP 377 ZGC](https://openjdk.org/jeps/377) | [ZGC Release note](https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#JDK-8197831)
 
-- `-XX:+UseZGC` 11-14 需要加参数`-XX:+UnlockExperimentalVMOptions`
+- `-XX:+UseZGC` JDK11引入，JDK15正式使用，因此JDK11-14需要追加参数`-XX:+UnlockExperimentalVMOptions`
 
 > [参考: Oracle 即将发布的全新 Java 垃圾收集器 ZGC](https://www.infoq.cn/article/oracle-release-java-gc-zgc)
 > [参考: 美团：新一代垃圾回收器ZGC的探索与实践](https://tech.meituan.com/2020/08/06/new-zgc-practice-in-meituan.html)  
 
-- [JDK21 内存分代](https://openjdk.org/jeps/439)
-- [ZGC 内存返还](https://openjdk.org/jeps/351)
+- [JDK21 ZGC 支持内存分代](https://openjdk.org/jeps/439)
+- [JDK13 ZGC 支持内存返还](https://openjdk.org/jeps/351)
 
 ************************
 

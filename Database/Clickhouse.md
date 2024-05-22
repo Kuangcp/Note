@@ -12,13 +12,14 @@ categories:
     - 1.2. [数据类型](#数据类型)
         - 1.2.1. [bitmap](#bitmap)
         - 1.2.2. [Decimal](#decimal)
-    - 1.3. [数据库引擎](#数据库引擎)
+    - 1.3. [聚合函数](#聚合函数)
+    - 1.4. [数据库引擎](#数据库引擎)
 - 2. [使用](#使用)
     - 2.1. [Java](#java)
 - 3. [Explain](#explain)
 - 4. [Tips](#tips)
 
-💠 2024-05-17 11:50:37
+💠 2024-05-22 17:32:51
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -65,13 +66,20 @@ categories:
 
 ************************
 
+## 聚合函数
+> [List of Aggregate Functions](https://clickhouse.com/docs/en/sql-reference/aggregate-functions/reference)
+
+- 注意avg函数固定返回Float64类型，需要按数据要求做类型转换处理规避后续计算的精度损失问题
+
+************************
+
 ## 数据库引擎
 - Atomic
 - MySQL 关联远程库表
 - MaterializedMySQL 原生实现MySQL引擎 支持从MySQL全量及增量实时同步
 - Lazy
-- PostgreSQL
-- MaterializedPostgreSQL
+- PostgreSQL 关联远程库表
+- MaterializedPostgreSQL 原生实现PG引擎
 - Replicated
 - SQLite
 
