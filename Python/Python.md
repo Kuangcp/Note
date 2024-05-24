@@ -50,7 +50,7 @@ categories:
         - 3.7.2. [时间处理](#时间处理)
         - 3.7.3. [三方库](#三方库)
 
-💠 2024-04-22 16:57:46
+💠 2024-05-24 18:47:06
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -704,6 +704,10 @@ _对应的conf_
 ## 日志
 loguru
 
+> [Effective Logging in Threaded or Multiprocessing Python Applications ](https://www.loggly.com/blog/effective-logging-in-threaded-or-multiprocessing-python-applications/)
+
+但是 FastApi 里的 BackgroundTasks 是跨线程的，但是同样支持log， 需要找找怎么实现的
+
 ************************
 
 ## 测试
@@ -733,7 +737,7 @@ _使用_
 ## 部署
 ### Docker部署
 > [参考官方文档](https://hub.docker.com/_/python/)
-Create a Dockerfile in your Python app project
+
 ```dockerfile
     FROM python:3
     WORKDIR /usr/src/app
@@ -742,7 +746,7 @@ Create a Dockerfile in your Python app project
     COPY . .
     CMD [ "python", "./your-daemon-or-script.py" ]
 ```
-_or (if you need to use Python 2)_
+
 ```dockerfile
     FROM python:2
     WORKDIR /usr/src/app
