@@ -51,7 +51,7 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2024-05-19 23:35:07
+💠 2024-05-26 15:51:13
 ****************************************
 # 高效的Linux
 
@@ -66,10 +66,10 @@ categories:
 - [sixel](https://en.wikipedia.org/wiki/Sixel) `终端中渲染图片` | [libsixel](https://saitoha.github.io/libsixel/) | [Are We Sixel Yet?](https://www.arewesixelyet.com/)
   - [Why Sixel? ](https://www.reddit.com/r/commandline/comments/zkg75e/why_sixel/)
 
-Manjaro Xfce 试用 sixel： mlterm 或者 konsole
+Manjaro Xfce 使用 sixel： mlterm 或者 konsole
 1. yay libsixel, yay mlterm， mlterm -b '#292B2E' 安装和启动mlterm
   1. 查看图片 img2sixel xx.jpg `ImageMagick`
-  1. 压测并渲染结果图 [jagger](https://github.com/rs/jaggr) **konsole不支持**
+  1. 渲染结果图 [jagger](https://github.com/rs/jaggr) **konsole不支持**
 
 
 ### Terminal 对比
