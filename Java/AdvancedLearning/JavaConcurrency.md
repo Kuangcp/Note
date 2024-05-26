@@ -14,7 +14,7 @@ categories:
     - 1.2. [理论知识](#理论知识)
         - 1.2.1. [可能的问题](#可能的问题)
         - 1.2.2. [好的习惯](#好的习惯)
-    - 1.3. [块结构并发 Java5之前](#块结构并发-java5之前)
+    - 1.3. [Java5之前](#java5之前)
         - 1.3.1. [synchronized](#synchronized)
             - 1.3.1.1. [正确使用锁](#正确使用锁)
         - 1.3.2. [volatile](#volatile)
@@ -30,13 +30,13 @@ categories:
             - 1.4.2.3. [ConcurrentHashMap](#concurrenthashmap)
             - 1.4.2.4. [ConcurrentSkipListMap](#concurrentskiplistmap)
             - 1.4.2.5. [CopyOnWriteArrayList](#copyonwritearraylist)
-    - 1.5. [Queue](#queue)
-        - 1.5.1. [BlockingQueue](#blockingqueue)
-        - 1.5.2. [TransferQueue](#transferqueue)
-    - 1.6. [控制执行](#控制执行)
-        - 1.6.1. [任务建模](#任务建模)
+    - 1.5. [结构化并发](#结构化并发)
+    - 1.6. [任务建模](#任务建模)
+    - 1.7. [Queue](#queue)
+        - 1.7.1. [BlockingQueue](#blockingqueue)
+        - 1.7.2. [TransferQueue](#transferqueue)
 
-💠 2024-04-07 15:54:52
+💠 2024-05-26 17:41:05
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -122,7 +122,7 @@ categories:
     - 内存的局部性
     - 算法设计
     
-## 块结构并发 Java5之前
+## Java5之前
 - 同步和锁 synchronized：
     - 只能锁定对象，不能锁定原始类型
     - 锁的范围要尽可能的小
@@ -374,6 +374,28 @@ ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentM
 - 在迭代器上进行的元素更改操作（remove、set 和 add）不受支持。这些方法将抛出 UnsupportedOperationException。
 
 ***********************
+## 结构化并发
+[Structured Concurrency](https://openjdk.org/jeps/453)  
+
+## 任务建模
+> 要把目标代码做成可调用（执行者调用）的结构，而不是单独开线程运行
+> [示例代码](https://github.com/Kuangcp/JavaBase/blob/concurrency/src/main/java/com/github/kuangcp/schedule/CreateModel.groovy)
+
+`Callable接口`
+- 通常是匿名内部实现类 
+
+`Future接口`
+- 用来表示异步任务，是还没有完成的任务的未来结果，主要方法：
+    - get() 用来获取结果，如果结果还没准备好就会阻塞直到它能去到结果，有一个可以设置超时的版本，这个版本永远不会阻塞
+    - cancel() 运算结束前取消
+    - isDone() 调用者用它来判断运算是否结束
+
+`FutureTask类`
+- FutureTask是Future接口的常用实现类， 并且是实现了Runnable接口。所以提供的方法是俩接口的方法
+    - 提供了两个构造器，一个是Callable为参数，另一个以Runnable为参数
+- 可以基于FutureTask的Runnable特性，把任务写成Callable然后封装进一个有执行者地调度并在必要时可以取消的FutureTask
+
+************************
 
 ## Queue
 > Queue接口全是泛型的，这样就更为方便， 自己再封装一个层
@@ -418,24 +440,3 @@ ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentM
 - 这样系统就可以调控上游线程获取新工作项的速度 用限定大小的阻塞队列也能达到同样的效果，TransferQueue 执行效率更高
     - 但是这个只有链表的实现版本
     - 相比于BlockingQueue 用法一致， offer() 等价于 tryTransfer() 参数也是一致的，代码基本不需要改动
-
-************************
-
-## 控制执行
-### 任务建模
-> 要把目标代码做成可调用（执行者调用）的结构，而不是单独开线程运行
-> [示例代码](https://github.com/Kuangcp/JavaBase/blob/concurrency/src/main/java/com/github/kuangcp/schedule/CreateModel.groovy)
-
-`Callable接口`
-- 通常是匿名内部实现类 
-
-`Future接口`
-- 用来表示异步任务，是还没有完成的任务的未来结果，主要方法：
-    - get() 用来获取结果，如果结果还没准备好就会阻塞直到它能去到结果，有一个可以设置超时的版本，这个版本永远不会阻塞
-    - cancel() 运算结束前取消
-    - isDone() 调用者用它来判断运算是否结束
-
-`FutureTask类`
-- FutureTask是Future接口的常用实现类， 并且是实现了Runnable接口。所以提供的方法是俩接口的方法
-    - 提供了两个构造器，一个是Callable为参数，另一个以Runnable为参数
-- 可以基于FutureTask的Runnable特性，把任务写成Callable然后封装进一个有执行者地调度并在必要时可以取消的FutureTask

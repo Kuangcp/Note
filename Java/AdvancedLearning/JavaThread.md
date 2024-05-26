@@ -26,11 +26,14 @@ categories:
 - 5. [协程](#协程)
     - 5.1. [Loom](#loom)
     - 5.2. [Quasar](#quasar)
+    - 5.3. [Virtual Threads](#virtual-threads)
 
-💠 2024-05-14 17:44:18
+💠 2024-05-26 17:41:05
 ****************************************
 # Java线程
-> [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/thread/src/main/java/com/github/kuangcp)
+> [个人学习代码](https://github.com/Kuangcp/JavaBase/tree/master/concurrency/src/main/java/thread)
+
+> [Java并发](/Java/AdvancedLearning/JavaConcurrency.md) 当开始使用多线程时，就要开始考虑并发安全了
 
 - [码农翻身:我是一个线程](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=416915373&idx=1&sn=f80a13b099237534a3ef777d511d831a&scene=21#wechat_redirect) | [码农翻身:编程世界的那把锁](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513653&idx=1&sn=e30c18c0c1780fb3ef0cdb858ee5201e&chksm=80d67af6b7a1f3e059466302c2c04c14d097c1a5de01cf986df84d4677299542f12b974dfde3&scene=21#wechat_redirect) | [码农翻身:加锁还是不加锁，这是一个问题 ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513692&idx=1&sn=ef2416a4bb96d64db77e32d5b4c7967e&chksm=80d67a9fb7a1f3898e513cc1d9e96841610bb84aed2dc24cab2d403e74e317e3c447e45e7611&scene=21#wechat_redirect)
 
@@ -203,3 +206,12 @@ R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1,
 ## Quasar
 > [Github: Quasar](https://github.com/puniverse/quasar)
 
+## Virtual Threads
+> [Virtual Threads](https://openjdk.org/jeps/444) 19预览 21Release  
+
+试用总结：如果要引入生产，需要关注整个JEP的文档，调试确认细节后才能使用，不然就会陷入到各种诡异的问题上。
+
+特性：
+- 依赖一个公用的ForkJoin线程池执行任务 即 不推荐执行CPU密集型任务，只建议用来执行io密集类任务（21对有可能阻塞的api都加上了特定处理代码）从而提高吞吐量
+- 正常线程内代码无法感知 协程内代码的异常，反之也是一样，线程和协程间的局部变量也是隔离的
+- 协程的线程栈存储在堆内存中，为了规避大量协程导致的栈溢出
