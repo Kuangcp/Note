@@ -165,6 +165,9 @@ WebApp类加载器就为了类隔离而违背了双亲委派模型，仅自身�
 ## Jad
 > [https://varaneckas.com/jad/](https://varaneckas.com/jad/)
 
+## Java-Class-Viewer
+> [Java-Class-Viewer](https://www.codeproject.com/Articles/35915/Java-Class-Viewer)  
+> [classpy](https://github.com/zxh0/classpy)  
 
 **************************************
 

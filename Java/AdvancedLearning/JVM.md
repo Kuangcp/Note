@@ -311,8 +311,7 @@ NIO 会经常使用, 提高性能
 因此为减少预热影响，可以将-XX:MetaspaceSize，-XX:MaxMetaspaceSize指定成相同的值。
 
 ## 直接内存
-
-直接内存主要是JNI、Deflater/Inflater、DirectByteBuffer（nio中会用到）使用的。
+直接内存主要是JNI、Deflater/Inflater、DirectByteBuffer（nio中会用到）使用的， 当发现Java进程堆使用率不高，但是进程占用内存RSS很高，就要怀疑这块区域了
 
 - [Github: 测试代码](https://github.com/Kuangcp/JavaBase/blob/master/class/src/test/java/jvm/oom/DirectMemoryOOMTest.java)
 - [how to see memory useage of nio buffers](https://stackoverflow.com/questions/2689914/how-to-see-the-memory-usage-of-nio-buffers)
@@ -320,10 +319,48 @@ NIO 会经常使用, 提高性能
 > [参考: 聊聊JVM 堆外内存泄露的BUG是如何查找的](https://cloud.tencent.com/developer/article/1129904)  
 > [JAVA堆外内存排查小结](https://zhuanlan.zhihu.com/p/60976273)  
 
-- `-XX:MaxDirectMemorySize` 限制最大内存 默认值为： MaxHeapSize - Survivor  `通过工具查看的话，值为0`
+- `-XX:MaxDirectMemorySize` 限制最大内存，默认值为： MaxHeapSize - Survivor。  `通过工具查看的话，值为0`
 
-- 启用NMT -XX:NativeMemoryTracking=detail 
-    - 查看NMT jcmd $pid VM.native_memory detail
+- 启用NMT: java -XX:NativeMemoryTracking=summary 或者 detail 开销更大一些
+- 查看NMT jcmd $pid VM.native_memory `[detail] 对应启用时设置，输出具体内存地址信息`
+
+> 示例
+```sh
+Native Memory Tracking:
+
+Total: reserved=10019737KB, committed=997089KB reversed保留内存 commited实际提交内存
+-                 Java Heap (reserved=8222720KB, committed=514048KB)
+                            (mmap: reserved=8222720KB, committed=514048KB) 
+-                     Class (reserved=1081845KB, committed=34165KB) 存储类元数据信息
+                            (classes #3085)
+                            (malloc=14837KB #3960) 
+                            (mmap: reserved=1067008KB, committed=19328KB) 
+-                    Thread (reserved=54501KB, committed=54501KB)  线程占用的空间 即54线程 54M：默认栈为1M需-Xss修改
+                            (thread #54)
+                            (stack: reserved=54272KB, committed=54272KB)
+                            (malloc=178KB #318) 
+                            (arena=52KB #95)
+-                      Code (reserved=250763KB, committed=9551KB) JIT代码缓存
+                            (malloc=1163KB #2588) 
+                            (mmap: reserved=249600KB, committed=8388KB) 
+-                        GC (reserved=316571KB, committed=291487KB) GC算法需要的内存空间
+                            (malloc=16151KB #155) 
+                            (mmap: reserved=300420KB, committed=275336KB) 
+-                  Compiler (reserved=183KB, committed=183KB)
+                            (malloc=40KB #208) 
+                            (arena=142KB #15)
+-                  Internal (reserved=84975KB, committed=84975KB)
+                            (malloc=84943KB #16310) 
+                            (mmap: reserved=32KB, committed=32KB) 
+-                    Symbol (reserved=4984KB, committed=4984KB)
+                            (malloc=3633KB #26295) 
+                            (arena=1351KB #1)
+-    Native Memory Tracking (reserved=982KB, committed=982KB) NMT自身占用内存
+                            (malloc=163KB #2304) 
+                            (tracking overhead=818KB)
+-               Arena Chunk (reserved=2214KB, committed=2214KB)
+                            (malloc=2214KB) 
+```
 
 **********************
 
