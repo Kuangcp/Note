@@ -28,7 +28,7 @@ categories:
     - 6.3. [Java-Class-Viewer](#java-class-viewer)
 - 7. [热部署](#热部署)
 
-💠 2024-06-01 23:56:42
+💠 2024-06-02 00:02:18
 ****************************************
 # 字节码以及类加载
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
@@ -163,7 +163,22 @@ WebApp类加载器就为了类隔离而违背了双亲委派模型，仅自身�
 # Agent
 > [JDK: Interface Instrumentation](https://docs.oracle.com/en/java/javase/21/docs/api/java.instrument/java/lang/instrument/Instrumentation.html)
 
-> [Guide to Java Instrumentation](https://www.baeldung.com/java-instrumentation)
+> [Guide to Java Instrumentation](https://www.baeldung.com/java-instrumentation)  
+> [ Java Agent 探针技术](https://juejin.cn/post/7086026013498408973)  
+
+Java Agent 主要有以下功能
+- Java Agent 在加载 Java 字节码之前拦截并对字节码进行修改;
+- Java Agent 在 Jvm 运行期间修改已经加载的字节码;
+
+Java Agent 的应用场景
+
+| 能力 | 案例 |
+|:----|:----|
+| IDE的调试功能     |  Eclipse、IntelliJ IDEA ；
+| 热部署功能        |  JRebel、XRebel、spring-loaded；
+| 各种线上诊断工具   |  Btrace、Greys， Arthas；
+| 各种性能分析工具   |  Visual VM、JConsole 等；
+| 全链路性能检测工具  |  Skywalking、Pinpoint等；
 
 ************************
 
