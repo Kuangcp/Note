@@ -36,25 +36,24 @@ categories:
     - 3.11. [Epsilon](#epsilon)
 - 4. [最佳实践](#最佳实践)
 
-💠 2024-05-22 17:32:51
+💠 2024-06-01 13:47:36
 ****************************************
 # GC
-> Garbage Collection
+> Java Garbage Collection
 
-GC 的目的是识别出不再使用的内存，并将其变为可用的。现代垃圾收集器通常分几个阶段以及根据不同的分代使用不同的垃圾收集器来完成回收过程
+GC 的目的是识别出不再使用的内存，并将其变为可用内存。现代垃圾收集器通常分为几个阶段，根据不同的分代使用不同的垃圾收集器来完成回收过程
 
 - [你能不能谈谈，java GC是在什么时候，对什么东西，做了什么事情？” ](http://itindex.net/detail/54188-java-gc-%E4%B8%9C%E8%A5%BF) `什么时候, 对什么东西, 做了什么`
 > 什么时候
-- 程序员不能具体控制时间，系统在不可预测的时间调用System.gc()函数的时候；当然可以通过调优，用NewRatio 控制newObject和oldObject的比例，用MaxTenuringThreshold  控制 进入oldObject的次数，使得oldObject 存储空间延迟达到full gc,从而使得计时器引发gc时间延迟OOM的时间延迟 ，以延长对象生存期。 
+- 程序员不能具体控制时间，系统在不可预测的时间调用System.gc()函数的时候；可以通过调参数，用NewRatio 控制newObject和oldObject的比例，用MaxTenuringThreshold  控制 进入oldObject的次数，使得oldObject 存储空间延迟达到full gc,延迟gc时间   
 > 对什么东西
 - 超出了作用域或引用计数为空的对象；从gc root开始搜索找不到的对象，而且经过一次标记、清理，仍然没有复活的对象。
 > 做了什么
 - 删除不使用的对象，回收内存空间；运行默认的finalize,当然程序员想立刻调用就用dipose调用以释放资源如文件句柄，JVM用from survivor、to survivor对它进行标记清理，对象序列化后也可以使它复活。
 
-列表： CMS(JDK14中被移除)，Epsilon，G1，Parallel，Serial，Shenandoah，ZGC
-
+************************
+列表： CMS(JDK14中被移除)，G1，Parallel，Serial，Epsilon，Shenandoah，ZGC
 > [Github: OpenJDK 12 GC 算法源码](https://github.com/openjdk/jdk/tree/jdk-12+33/src/hotspot/share/gc)  
-
 ************************
 
 ## GC类型
@@ -247,6 +246,8 @@ GC Roots 对象包含:
 1. 路径可追加进程id `-Xloggc:/apps/logs/gc-%p.log` 以及 `%t` JVM启动时间
 1. 日志滚动策略 `-XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=14 -XX:GCLogFileSize=100M` **但是实际上不实用**，并非按Logback等框架的思路滚动。重启后会重新从0计数覆盖掉最旧的gc日志 [Try to Avoid -XX:+UseGCLogFileRotation](https://dzone.com/articles/try-to-avoid-xxusegclogfilerotation)
 
+> [Github: GCViewer](https://github.com/chewiebug/GCViewer)  
+> [GCView线条图解](https://blog.csdn.net/chy2z/article/details/88651810)  
 
 ************************
 
@@ -397,9 +398,9 @@ CMS 垃圾收集器的另一个挑战是如何处理老年代中的空间碎片�
 > [参考: JVM 源码解读之 CMS GC 触发条件 ](https://club.perfma.com/article/190389)  
 > [参考: JVM 源码解读之 CMS 何时会进行 Full GC](https://club.perfma.com/article/244846)  
 
-CMS自己会进入 full GC 的情况就是它的并发收集模式跟不上应用分配内存的速度了，或者是碎片化开始变严重了。  
+CMS进入 full GC 的情况是并发收集模式跟不上应用分配内存的速度了，或者是碎片化开始变严重了。  
 主要体现是GC日志里可以看到 concurrent mode failure 字样，然后就开始可以看到 `[Full GC ... ]` 的日志了  
-这样就带来一个问题，如果CMS并发GC发生了，此时是无法利用 `-XX:+HeapDumpBeforeFullGC` 参数保留现场，因为不是发生 FullGC  
+这样就带来一个问题，如果CMS并发GC发生了，此时是无法利用 `-XX:+HeapDumpBeforeFullGC` 参数生成dump文件，因为不是发生 FullGC  
 
 ## G1
 > Garbage First 面向服务端应用的垃圾收集器, JDK7发布, JDK9作为默认GC [Oracle Doc](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc.html#garbage_first_garbage_collection)
@@ -457,8 +458,8 @@ Young GC发生的时机大家都知道，那什么时候发生Mixed GC呢？其�
 |:----|:----|
 | `-XX:MaxGCPauseMillis=200`  |  	设置最大停顿时间值。默认值为 200 毫秒。|
 | `-XX:G1HeapRegionSize=n`  |  	设置 G1 区域大小。值必须为 2 的 N 次幂，如：256、512、1024...范围是 1MB 至 32MB。|
-| `-XX:GCTimeRatio=12`  |  	    设置应用于 GC 的总目标时间与处理客户事务的总时间。确定目标 GC 时间的实际公式为 [1 / (1 + GCTimeRatio)]。默认值 12 表示目标 GC 时间为 [1 / (1 + 12)]，即 7.69%。这意味着 JVM 可将 7.69％ 的时间用于 GC 活动，其余 92.3％ 用于处理客户活动。|
-| `-XX:ParallelGCThreads=n`  |  	设置 Stop-the-world 工作线程的数量。如果逻辑处理器的数量M小于或等于 8 个，则将 n 值设置为M。如果M为5，则将 n 设为 5.如果M为 8 个以上，请将该值设置为大约 5/8 * M。这种设置在大多数情况下都有效，除了较大规模的 SPARC 系统——其中 n 值可以大约是 5/16 * M。|
+| `-XX:GCTimeRatio=12`  |  	    设置应用于 GC 的总目标时间与处理客户事务的总时间。|
+| `-XX:ParallelGCThreads=n`  |  	设置 Stop-the-world 工作线程的数量。|
 | `-XX:ConcGCThreads=n`  |  	    设置并行标记线程的数量。将 n 值设为并行垃圾回收线程（ParallelGCThreads）数的大约 1/4。|
 | `-XX:InitiatingHeapOccupancyPercent=45`  |  	当堆内存使用率超过此百分比时会触发 GC 标记周期。默认值为 45%。|
 | `-XX:G1NewSizePercent=5`  |  	设置用作 Young 代空间大小的最低堆内存百分比。默认值为 Java 堆内存的 5%。|
@@ -466,9 +467,20 @@ Young GC发生的时机大家都知道，那什么时候发生Mixed GC呢？其�
 | `-XX:G1OldCSetRegionThresholdPercent=10`  |  	设置混合垃圾回收周期中要收集的 Old 区域数量上限。默认为 Java 堆内存的 10%。|
 | `-XX:G1ReservePercent=10`  |  	设置需保留的内存百分比。默认为 10%。G1 垃圾回收器会始终尝试保留 10% 的堆内存空间空闲。|
 
-ParallelGCThreads参数使用默认值就可以了。但是在JRE版本1.8.0_131之前，JVM无法感知Docker的CPU限制，会使用宿主机的逻辑核数计算默认值。远超过了容器的核数, 过多的GC线程数抢占了业务线程的CPU时间，加上线程切换的开销，较大的降低了吞吐量。因此JRE 1.8.0_131之前的版本，未明确指定ParallelGCThreads会有较大的风险。
 
-ConcGCThreads 一般称为并发标记线程数，为了减少GC的STW的时间，CMS和G1都有并发标记的过程，此时业务线程仍在工作，只是并发标记是CPU密集型任务，业务的吞吐量会下降，RT会变长。ConcGCThreads的默认值不同GC策略略有不同，CMS下是(ParallelGCThreads + 3) / 4 向下取整，G1下是ParallelGCThreads / 4 四舍五入。一般来说采用默认值就可以了，但是还是由于在JRE版本1.8.0_131之前，JVM无法感知Docker的资源限制的问题，ConcGCThreads的默认值会比较大（20左右），对业务会有影响。
+GCTimeRatio： 确定目标 GC 时间的实际公式为 [1 / (1 + GCTimeRatio)]。默认值 12 表示目标 GC 时间为 [1 / (1 + 12)]，即 7.69%。
+这意味着 JVM 可将 7.69％ 的时间用于 GC 活动，其余 92.3％ 用于处理客户活动。
+
+ParallelGCThreads： 如果逻辑处理器的数量M小于或等于 8 个，则将 n 值设置为M。如果M为5，则将 n 设为 5.如果M为 8 个以上，请将该值设置为大约 5/8 * M。
+这种设置在大多数情况下都有效，除了较大规模的 SPARC 系统——其中 n 值可以大约是 `5/16 * M`。
+
+MaxGCPauseMillis：G1将根据先前收集的信息以及检测到的垃圾对象量预估可以执行回收的垃圾区域，尽量保证GC时间不超过设置的值。
+
+ParallelGCThreads: 使用默认值就可以了。但是在JRE版本1.8.0_131之前，JVM无法感知Docker的CPU限制，会使用宿主机的逻辑核数计算默认值。  
+这通常会远超过容器的核数, 过多的GC线程数抢占了业务线程的CPU时间，加上线程切换的开销，较大的降低了吞吐量。因此JRE 1.8.0_131之前的版本，未明确指定ParallelGCThreads会有较大的风险。
+
+ConcGCThreads 一般称为并发标记线程数，为了减少GC的STW的时间，CMS和G1都有并发标记的过程，此时业务线程仍在工作，只是并发标记是CPU密集型任务，业务的吞吐量会下降，RT会变长。
+ConcGCThreads的默认值不同GC策略略有不同，CMS下是(ParallelGCThreads + 3) / 4 向下取整，G1下是ParallelGCThreads / 4 四舍五入。一般来说采用默认值就可以了，但是还是由于在JRE版本1.8.0_131之前，JVM无法感知Docker的资源限制的问题，ConcGCThreads的默认值会比较大（20左右），对业务会有影响。
 
 ************************
 
