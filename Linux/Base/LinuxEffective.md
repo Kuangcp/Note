@@ -27,6 +27,7 @@ categories:
     - 1.8. [文件操作](#文件操作)
     - 1.9. [安全工具](#安全工具)
         - 1.9.1. [gpg](#gpg)
+        - 1.9.2. [JumpServer](#jumpserver)
 - 2. [图形化工具](#图形化工具)
     - 2.1. [剪贴板管理](#剪贴板管理)
     - 2.2. [系统资源监控](#系统资源监控)
@@ -51,7 +52,7 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2024-05-26 15:51:13
+💠 2024-06-01 15:50:01
 ****************************************
 # 高效的Linux
 
@@ -110,7 +111,7 @@ Manjaro Xfce 使用 sixel： mlterm 或者 konsole
 
 > 现代终端
 - [wezterm](https://wezfurlong.org/wezterm/index.html)
-- Warp
+- [Warp](https://github.com/warpdotdev/Warp) `Rust+AI`
 - Tabby
 - WindTerm
 - [zellij](https://github.com/zellij-org/zellij)
@@ -339,25 +340,17 @@ duf
 例如 将git仓库内所有Java文件 GBK 转 UTF8 `git ls-files | grep "\.java" | tee  | xargs -I {}  iconv -f GBK -t UTF-8 {} -o {}`
 
 `zssh`
-
-> 便捷的文件传输
-
 > [参考 zssh, rz, sz互相传输](http://blog.csdn.net/ygm_linux/article/details/32321729)
 
 ## 安全工具
 
 ### gpg
-
 > [参考博客](http://www.ruanyifeng.com/blog/2013/07/gpg.html)
 
-常用参数
-
-```
-gpg --list-key
-    --gen-key
-```
-
 - 生成的过程, 输入相关的提示信息, 最后输完密码后需要输入随机字符, 就也是按照提示, 但是1.4是正常的, 其他的直接假死,不是很理解这种操作
+
+### JumpServer
+> [Github](https://github.com/jumpserver/jumpserver)
 
 ************************
 
