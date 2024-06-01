@@ -21,12 +21,14 @@ categories:
             - 4.1.1.1. [Tomcat](#tomcat)
     - 4.2. [加载和连接](#加载和连接)
     - 4.3. [方法句柄](#方法句柄)
-- 5. [反编译](#反编译)
-    - 5.1. [JD](#jd)
-    - 5.2. [Jad](#jad)
-- 6. [热部署](#热部署)
+- 5. [Agent](#agent)
+- 6. [反编译](#反编译)
+    - 6.1. [JD](#jd)
+    - 6.2. [Jad](#jad)
+    - 6.3. [Java-Class-Viewer](#java-class-viewer)
+- 7. [热部署](#热部署)
 
-💠 2024-04-30 23:06:06
+💠 2024-06-01 23:56:42
 ****************************************
 # 字节码以及类加载
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
@@ -98,17 +100,18 @@ javassist
 ## 类加载器
 > [参考:  一文带你深扒ClassLoader内核，揭开它的神秘面纱！ ](https://www.cnblogs.com/wmyskxz/p/13575224.html#_label4)`深入源码，举例清晰`  
 
-> 双亲委派模型(`java.lang.ClassLoader#loadClass(java.lang.String, boolean)`) 其工作原理的是，如果一个类加载器收到了类加载请求(只讨论首次加载，已经加载过的会走缓存提前返回)  
-> 它并不会自己先去加载，而是委托给父类的加载器去执行，如果父类加载器还存在其父类加载器，则进一步向上委托，依次递归，请求最终将到达顶层的启动类加载器  
-> 如果父类加载器可以完成类加载任务，就成功返回，倘若父类加载器无法完成此加载任务，子加载器才会尝试自己去加载，这就是双亲委派模式
+> 双亲委派模型(`parents delegation model`） 实现代码：`java.lang.ClassLoader#loadClass(java.lang.String, boolean)`
+> 其工作原理是，如果一个类加载器收到了类加载请求(只讨论首次加载，已经加载过的会走缓存), 它并不会自己先去加载，而是委托给父类的加载器去执行  
+> 如果父类加载器还存在其父类加载器，则进一步向上委托，依次递归，请求最终将到达顶层的启动类加载器  
+> 如果父类加载器可以完成类加载任务，就成功返回，倘若父类加载器无法完成此加载任务，子加载器才会尝试自己去加载
 
-- Java平台经典类加载器：
-    - `BootStrap ClassLoader`  根（引导）加载器：通常在VM启动后不久就实例化，最顶层的加载类，主要加载 核心类库 并且不做验证工作 
+- Java平台经典类加载器层级：
+    1. `BootStrap ClassLoader`  根（引导）加载器：通常在VM启动后不久就实例化，最顶层的加载类，主要加载 核心类库 并且不做验证工作 
         - 加载目录 `%JRE_HOME%\lib` 下的rt.jar、resources.jar、charsets.jar 和 class 文件
-    - `Extendsion ClassLoader` 扩展类加载器：加载安装时自带的标准扩展，一般包括安全性扩展
+    2. `Extendsion ClassLoader` 扩展类加载器：加载安装时自带的标准扩展，一般包括安全性扩展
         - 加载目录 `%JRE_HOME%\lib\ext` 下的 jar 包和 class 文件。
-    - `Application ClassLoader`  应用或系统类加载器：应用最广泛的类加载器，负责加载应用类(当前应用的 classpath 的所有类)
-    - `自定义ClassLoader` 自定义类载器
+    3. `Application ClassLoader`  应用或系统类加载器：应用最广泛的类加载器，负责加载应用类(当前应用的 classpath 的所有类)
+    4. `自定义ClassLoader` 自定义类载器
 
 > 注意：  
 >1. 例如在读取类路径下文件时，可以通过 `classA.getClassLoader().getResourceAsStream("app.properties")` 但是如果类classA对象是由 BootStrap 类加载器加载的， getClassLoader() 将返回 null  
@@ -156,7 +159,13 @@ WebApp类加载器就为了类隔离而违背了双亲委派模型，仅自身�
 
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p118.jpg)
 
-****************
+************************
+# Agent
+> [JDK: Interface Instrumentation](https://docs.oracle.com/en/java/javase/21/docs/api/java.instrument/java/lang/instrument/Instrumentation.html)
+
+> [Guide to Java Instrumentation](https://www.baeldung.com/java-instrumentation)
+
+************************
 
 # 反编译
 ## JD
@@ -169,7 +178,7 @@ WebApp类加载器就为了类隔离而违背了双亲委派模型，仅自身�
 > [Java-Class-Viewer](https://www.codeproject.com/Articles/35915/Java-Class-Viewer)  
 > [classpy](https://github.com/zxh0/classpy)  
 
-**************************************
+************************
 
 # 热部署
 > 通过替换 class 实现不停机热更新
