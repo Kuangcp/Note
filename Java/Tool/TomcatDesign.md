@@ -12,23 +12,39 @@ categories:
     - 1.2. [连接器](#连接器)
         - 1.2.1. [NioEndpoint](#nioendpoint)
 
-💠 2024-06-02 15:58:25
+💠 2024-06-02 16:48:54
 ****************************************
 # Tomcat Design
+> [Github Tomcat](https://github.com/apache/tomcat)  
+> [Compiling Tomcat Source Code By Maven](https://programmer.group/tomcat-source-analysis-i-compiling-tomcat-source-code.html) | [9.0.48 Source Repo](https://gitee.com/gin9/tomcat9-source)
+
 
 ## 线程池
 > [Doc: Tomcat Executor](https://tomcat.apache.org/tomcat-9.0-doc/config/executor.html)
 
-Tomcat没有使用JDK的原生线程池，因为JUC原生线程池在提交任务时，当工作线程数达到核心线程数后，继续提交任务会尝试将任务放入阻塞队列中，只有当前运行线程数未达到最大设定值且在任务队列任务满后，才会继续创建新的工作线程来处理任务，因此JUC原生线程池无法满足Tomcat快速响应的诉求。
+> StandardThreadExecutor
 
-Tomcat为什么使用无界队列？
+Tomcat没有直接使用ThreadPoolExecutor而是扩展了 `threads.ThreadPoolExecutor`，一是可以隔离依赖，二是做定制化调整(核心改动为队列和提交任务，适配Tomcat生命周期管理)。
 
-Tomcat在EndPoint中通过acceptCount和maxConnections两个参数来避免过多请求积压。
-其中maxConnections为Tomcat在任意时刻接收和处理的最大连接数，当Tomcat接收的连接数达到maxConnections时，Acceptor不会读取accept队列中的连接；
-这时accept队列中的线程会一直阻塞着，直到Tomcat接收的连接数小于maxConnections（maxConnections默认为10000，如果设置为-1，则连接数不受限制）。
-acceptCount为accept队列的长度，当accept队列中连接的个数达到acceptCount时，即队列满，此时进来的请求一律被拒绝，默认值是100（基于Tomcat 8.5.43版本）。
-因此，通过acceptCount和maxConnections两个参数作用后，Tomcat默认的无界任务队列通常不会造成OOM。
+1. 执行逻辑调整 `StandardThreadExecutor#execute(java.lang.Runnable)` 当提交的任务触发拒绝策略时,尝试一次重新入队列。可能这段时间就有任务被消费了，可以提高一些服务可用性。
 
+2. 队列自定义为 TaskQueue `public class TaskQueue extends LinkedBlockingQueue<Runnable>` 默认无界
+
+Tomcat在EndPoint中通过acceptCount和maxConnections两个参数作用后，Tomcat默认的无界任务队列通常不会造成过多任务积压导致OOM。
+
+其中maxConnections为Tomcat在任意时刻接收和处理的最大连接数，当Tomcat接收的连接数达到maxConnections时，Acceptor不会读取accept队列中的连接；  
+这时accept队列中的线程会一直阻塞着，直到Tomcat接收的连接数小于maxConnections（maxConnections默认为10000，如果设置为-1，则连接数不受限制）。  
+acceptCount为accept队列的长度，当accept队列中连接的个数达到acceptCount时，即队列满，此时进来的请求一律被拒绝，默认值是100（基于Tomcat 8.5.43版本）。  
+
+3. 生命周期管理 LifecycleMBeanBase 
+
+任务结束时，上下文关闭时，停止所有线程，设置线程池参数，清理依赖资源。
+
+************************
+
+> StandardVirtualThreadExecutor 需Java 21，Tomcat9.0.76可用，最早可追溯到2022年随Loom项目开始筹备
+
+内部实现为 VirtualThreadExecutor，并依据JreCompat做不同JDK版本的实现适配，最终通过 VirtualThreadBuilder 创建虚拟线程。
 
 
 ## 连接器
