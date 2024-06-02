@@ -8,15 +8,21 @@ categories:
 💠
 
 - 1. [Tomcat Design](#tomcat-design)
-    - 1.1. [线程池](#线程池)
-    - 1.2. [连接器](#连接器)
-        - 1.2.1. [NioEndpoint](#nioendpoint)
+    - 1.1. [架构设计](#架构设计)
+    - 1.2. [线程池](#线程池)
+    - 1.3. [连接器](#连接器)
+        - 1.3.1. [NioEndpoint](#nioendpoint)
 
-💠 2024-06-02 16:48:54
+💠 2024-06-02 17:50:57
 ****************************************
 # Tomcat Design
 > [Github Tomcat](https://github.com/apache/tomcat)  
 > [Compiling Tomcat Source Code By Maven](https://programmer.group/tomcat-source-analysis-i-compiling-tomcat-source-code.html) | [9.0.48 Source Repo](https://gitee.com/gin9/tomcat9-source)
+
+> [♥Tomcat源码详解知识体系详解♥](https://pdai.tech/md/framework/tomcat/tomcat-overview.html)  
+> [深入拆解Tomcat](https://time.geekbang.org/column/intro/100027701?tab=catalog)  
+
+## 架构设计
 
 
 ## 线程池
