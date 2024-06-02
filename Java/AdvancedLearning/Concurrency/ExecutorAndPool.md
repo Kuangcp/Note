@@ -9,7 +9,7 @@ categories:
 
 - 1. [线程池](#线程池)
     - 1.1. [ExecutorService 接口](#executorservice-接口)
-    - 1.2. [Executor框架](#executor框架)
+    - 1.2. [Executors](#executors)
     - 1.3. [ScheduledThreadPoolExecutor STPE](#scheduledthreadpoolexecutor-stpe)
     - 1.4. [分支合并框架 Fork/Join](#分支合并框架-forkjoin)
 - 2. [Spring](#spring)
@@ -19,7 +19,7 @@ categories:
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2024-05-15 10:28:07
+💠 2024-06-02 15:58:25
 ****************************************
 # 线程池
 
@@ -37,7 +37,8 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 ```
 
 ## ExecutorService 接口
-> [Github Demo](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/main/java/thread/pool/UseThreadPool.java)
+> [Github Demo](https://github.com/Kuangcp/JavaBase/tree/master/concurrency/src/main/java/thread/pool)
+
 - `execute`：用于将任务提交给执行器执行
     - 参数为Runable
     - 无返回，对于调用方来说无法感知异常，但是异常栈会被输出到 System.err ，依然有迹可查
@@ -47,17 +48,18 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 
 - `shutdown()`：用于关闭执行器资源，执行器会拒绝后面的任务提交，并等待线程池中的任务结束后关闭资源
     - 应用关闭前尽量显式调用该方法关闭所有的线程池，避免资源泄漏
-- `shutdownNow()`：立即关闭执行器，不再执行线程池中等待执行的任务，正在执行的任务将会继续
+- `shutdownNow()`：立即关闭执行器，返回等待队列的任务，正在执行的线程将收到interupt但是不一定会停止
 - `isShutdown()`：是否调用过`shutdown()`
-- `awaitTermination(long timeout, TimeUnit unit)`：该方法会阻塞调用执行器的线程，并等待执行器内任务完成会到达指定的时间
-- `invokeAny(Collection<? extends Callable<T>> tasks)`：该方法返回到值为第一个完成的任务返回的值
-- `invokeAll(Collection<? extends Callable<T>> tasks)`：该任务的返回值为所有任务完成的结果
+- `awaitTermination(long timeout, TimeUnit unit)`：该方法会阻塞调用线程，等待执行器内任务完成直到超时
+
+- `invokeAny(Collection<? extends Callable<T>> tasks)`：返回 任意的第一个完成任务的返回值
+- `invokeAll(Collection<? extends Callable<T>> tasks)`：返回所有任务对应的Future对象
 
 > 注意
 
 上述的 execute 和 submit 行为只针对 `ThreadPoolExecutor`. 对于 ScheduledThreadPoolExecutor 来说，execute行为不一样， execute提交的任务 抛出异常时也是**没有任何痕迹**  
 
-## Executor框架
+## Executors
 > 该处讲述的方法都为`java.util.concurrent.Executors`的方法 (静态工厂模式)
 
 - `newFixedThreadPool(int nThreads)`：用于创建固定大小的线程池
@@ -139,6 +141,8 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 
 ************************
 # 实践
+目标： 合理利用资源，让线程池安全可控的消费任务
+
 > [About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing) | [About Pool Sizing in distributed environments / microservices](https://github.com/brettwooldridge/HikariCP/issues/1023)`如何设置数据库连接池线程数`  
 
 > [ 合理使用线程池以及线程变量 ](https://mp.weixin.qq.com/s/BdVqvm2wLNv05vMTieevMg)  

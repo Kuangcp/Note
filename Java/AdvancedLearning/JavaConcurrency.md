@@ -31,12 +31,13 @@ categories:
             - 1.4.2.4. [ConcurrentSkipListMap](#concurrentskiplistmap)
             - 1.4.2.5. [CopyOnWriteArrayList](#copyonwritearraylist)
     - 1.5. [结构化并发](#结构化并发)
-    - 1.6. [任务建模](#任务建模)
-    - 1.7. [Queue](#queue)
-        - 1.7.1. [BlockingQueue](#blockingqueue)
-        - 1.7.2. [TransferQueue](#transferqueue)
+- 2. [实践](#实践)
+    - 2.1. [任务建模](#任务建模)
+    - 2.2. [Queue](#queue)
+        - 2.2.1. [BlockingQueue](#blockingqueue)
+        - 2.2.2. [TransferQueue](#transferqueue)
 
-💠 2024-05-26 17:41:05
+💠 2024-06-02 15:58:25
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -376,6 +377,15 @@ ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentM
 ***********************
 ## 结构化并发
 [Structured Concurrency](https://openjdk.org/jeps/453)  
+
+************************
+
+# 实践
+目标：需要合理设计线程模型，尽量不要让线程阻塞，因为一阻塞，CPU 就闲下来了。
+
+> [Java线程](/Java/AdvancedLearning/JavaThread.md)  [Java线程池](/Java/AdvancedLearning/Concurrency/ExecutorAndPool.md)  
+
+在技术和业务角度，都应该考虑抽象和分层，将近似的事情放在一个线程池内，更有利于针对性设置参数达到整体的效率优化。例如Tomcat中的 [NioEndpoint](/Java/Tool/TomcatDesign.md#nioendpoint)将接受连接，接受连接数据，执行连接任务和响应拆分出三个线程池
 
 ## 任务建模
 > 要把目标代码做成可调用（执行者调用）的结构，而不是单独开线程运行
