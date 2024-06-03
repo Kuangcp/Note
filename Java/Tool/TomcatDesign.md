@@ -38,7 +38,7 @@ Tomcat没有直接使用ThreadPoolExecutor而是扩展了 `threads.ThreadPoolExe
 
 Tomcat在EndPoint中通过acceptCount和maxConnections两个参数作用后，Tomcat默认的无界任务队列通常不会造成过多任务积压导致OOM。
 
-其中maxConnections为Tomcat在任意时刻接收和处理的最大连接数，当Tomcat接收的连接数达到maxConnections时，Acceptor不会读取accept队列中的连接；  
+其中maxConnections为Tomcat在任意时刻接收和处理的最大连接数，当Tomcat接收的连接数达到maxConnections时，Acceptor不会读取accept队列`对应于TCP连接中的全连接accept队列`中的连接；  
 这时accept队列中的线程会一直阻塞着，直到Tomcat接收的连接数小于maxConnections（maxConnections默认为10000，如果设置为-1，则连接数不受限制）。  
 acceptCount为accept队列的长度，当accept队列中连接的个数达到acceptCount时，即队列满，此时进来的请求一律被拒绝，默认值是100（基于Tomcat 8.5.43版本）。  
 
