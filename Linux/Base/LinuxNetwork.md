@@ -17,27 +17,28 @@ categories:
         - 1.2.2. [dig](#dig)
         - 1.2.3. [修改DNS](#修改dns)
     - 1.3. [Route](#route)
+        - 1.3.1. [traceroute](#traceroute)
     - 1.4. [IPv4和IPv6](#ipv4和ipv6)
     - 1.5. [Bridge](#bridge)
     - 1.6. [Socket](#socket)
-    - 1.7. [基础命令工具](#基础命令工具)
-        - 1.7.1. [ping](#ping)
-        - 1.7.2. [traceroute](#traceroute)
-        - 1.7.3. [tc 流量控制](#tc-流量控制)
-        - 1.7.4. [iperf3](#iperf3)
-        - 1.7.5. [netstat](#netstat)
-        - 1.7.6. [iproute2](#iproute2)
-        - 1.7.7. [tcpdump](#tcpdump)
-        - 1.7.8. [nmap](#nmap)
-        - 1.7.9. [netcat](#netcat)
-        - 1.7.10. [scp](#scp)
-        - 1.7.11. [rsync](#rsync)
-        - 1.7.12. [curl](#curl)
-        - 1.7.13. [wget](#wget)
+    - 1.7. [TCP/UDP 工具](#tcpudp-工具)
+        - 1.7.1. [进程和端口互查](#进程和端口互查)
+        - 1.7.2. [tcpdump](#tcpdump)
+    - 1.8. [复合工具](#复合工具)
+        - 1.8.1. [ping](#ping)
+        - 1.8.2. [tc 流量控制](#tc-流量控制)
+        - 1.8.3. [netstat](#netstat)
+        - 1.8.4. [iproute2](#iproute2)
+        - 1.8.5. [nmap](#nmap)
+        - 1.8.6. [netcat](#netcat)
+        - 1.8.7. [scp](#scp)
+        - 1.8.8. [rsync](#rsync)
+        - 1.8.9. [curl](#curl)
+        - 1.8.10. [wget](#wget)
 - 2. [证书](#证书)
     - 2.1. [自签发证书](#自签发证书)
 - 3. [常用服务](#常用服务)
-    - 3.1. [邮件服务器postfix和devecot](#邮件服务器postfix和devecot)
+    - 3.1. [邮件服务器](#邮件服务器)
     - 3.2. [FTP](#ftp)
         - 3.2.1. [客户端](#客户端)
             - 3.2.1.1. [命令行](#命令行)
@@ -60,12 +61,13 @@ categories:
         - 3.8.1. [VNC](#vnc)
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
-    - 4.1. [查看进程占用的端口](#查看进程占用的端口)
-    - 4.2. [网络问题排查](#网络问题排查)
 
-💠 2024-05-19 23:35:07
+💠 2024-06-03 23:54:27
 ****************************************
 # Linux网络管理
+
+> [计算机网络基础](/Skills/Network/Network.md)
+
 ## 内核配置
 
 > ip_local_port_range [Linux increase ip_local_port_range TCP port range](https://ma.ttias.be/linux-increase-ip_local_port_range-tcp-port-range/)
@@ -134,6 +136,21 @@ iftop
 ## Route
 > [参考: 路由表的建立算法和有关的刷新协议](https://blog.csdn.net/qq_34328833/article/details/60583183)
 
+### traceroute
+> 显示网络数据包传输到指定主机的路径信息，追踪数据传输路由状况
+
+- `traceroute [选项] [远程主机名或IP地址] [数据包大小]`
+    - -i<网络接口>	:	使用指定的网络接口发送数据包
+    - -n	:	直接使用IP地址而不使用主机名
+    - -v	:	详细显示命令的执行过程
+    - -w<超时秒数>	:	设置等待远程主机回应的时间
+    - -x	:	开启或者关闭对数据包的正确性校验
+    - -s<来源IP>	:	设置本机主机发送数据包的IP地址
+    - -g<网关地址>	：	设置来源的路由网关，最多可设置8个
+
+1. `traceroute -I stackoverflow.com` icmp 查看路由表
+
+
 ************************
 
 ## IPv4和IPv6
@@ -161,8 +178,48 @@ iftop
 动态端口范围： net.ipv4.ip_local_port_range=32788 60000 `修改时不能超过[1024,65535]范围`
 
 ***************************
+## TCP/UDP 工具
 
-## 基础命令工具
+- [TCP 内网下载慢速分析](https://christmica.cc/archives/tcp-download-analysis)
+
+- 强制关闭tcp连接： killcx tcpkill
+- `iperf3`： TCP UDP 测速， 在两个节点上使用iperf启动服务端和客户端进程，从而计算TCP和UDP指标信息 [Ethr](https://github.com/microsoft/ethr) Golang 仿写
+- hping： Sync攻击 `hping -S -p 80 --flood 192.168.1.234` 
+
+### 进程和端口互查
+> netstat lsof fuser  
+
+> [参考: linux下常用命令查看端口占用](http://blog.csdn.net/ws379374000/article/details/74218530)
+
+- `lsof -i:端口号` 用于查看某一端口的占用情况，缺省端口号显示全部
+    - 或者 `cat /etc/services` 查看系统以及使用的端口
+- 查询占用端口 `fuser -v -n tcp 22` 或者 `fuser -v 22/tcp` fuser中含三种协议： file 默认, tcp, udp
+    - 得到一些进程信息 `fuser -v -n tcp 0`
+
+- whatportis 可以通过服务查询默认端口，或者是通过端口查询默认服务的工具
+
+************************
+
+### tcpdump
+- `tcpdump -i eth0 -nn -X 'port 53' -c 1` root用户才有运行权限
+    - -i 指定监听的网络接口（网卡）
+    - -nn 将协议号或端口号，显示数字，而不是名称例如：21 而不显示 FTP
+    - -X 将协议头和包内容完整的显示出来
+    - port 53 过滤，只显示53端口相关的包
+    - -c 抓包的数量
+    - -e 输出以太网帧头部信息输出 （能看到mac地址）
+    - -l 输出变为行缓冲
+    - -t 输出不打印时间戳
+    - -v 输出更详细信息
+    - -F 指定过滤表达式所在的文件
+    - -w 将流量保存到文件中
+    - -r 读取raw packets 文件
+
+- 列出可以选择的抓包对象 `tcpdump -D`（USB设备也能抓？）
+
+************************
+
+## 复合工具
 > 参考书籍 《Linux 大棚命令百篇》
 
 ### ping
@@ -183,20 +240,6 @@ iftop
 
 - ping -s 1472 -M do 192.168.15.205 测试网络环境下最大可用MTU
 - [Github: tcping](https://github.com/pouriyajamshidi/tcping) `测试tcp连接延迟`
-
-### traceroute
-> 显示网络数据包传输到指定主机的路径信息，追踪数据传输路由状况
-
-- `traceroute [选项] [远程主机名或IP地址] [数据包大小]`
-    - -i<网络接口>	:	使用指定的网络接口发送数据包
-    - -n	:	直接使用IP地址而不使用主机名
-    - -v	:	详细显示命令的执行过程
-    - -w<超时秒数>	:	设置等待远程主机回应的时间
-    - -x	:	开启或者关闭对数据包的正确性校验
-    - -s<来源IP>	:	设置本机主机发送数据包的IP地址
-    - -g<网关地址>	：	设置来源的路由网关，最多可设置8个
-
-1. `traceroute -I stackoverflow.com` icmp 查看路由表
 
 ### tc 流量控制
 > Traffic Control
@@ -221,11 +264,6 @@ iftop
     # 在 1:1 节点添加一个过滤规则 , 优先权 1: 凡是去往目的地址是 $ip( 精确匹配 ) 的 IP 数据包 , 发送到频道 2:1.
     tc qdisc add dev $interface parent 1:1 handle 2: netem delay $delay loss $loss
 ```
-
-### iperf3
-TCP UDP 测速， 在两个节点上使用iperf启动服务端和客户端进程，从而计算TCP和UDP指标信息
-
-- [Ethr](https://github.com/microsoft/ethr) Golang 仿写
 
 ### netstat 
 > 相关 [iproute2](#iproute2)
@@ -294,25 +332,6 @@ _iproute-ss_
 - 查看所有socket连接 `ss -a`
 - 隧道术： 网络协议的数据包被封装在另一种网络协议的数据包之中 `这是VPN的技术理论基础`
 - 按指定端口过滤 `ss -at '( dport = :3308 )'`
-
-************************
-
-### tcpdump
-- `tcpdump -i eth0 -nn -X 'port 53' -c 1` root用户才有运行权限
-    - -i 指定监听的网络接口（网卡）
-    - -nn 将协议号或端口号，显示数字，而不是名称例如：21 而不显示 FTP
-    - -X 将协议头和包内容完整的显示出来
-    - port 53 过滤，只显示53端口相关的包
-    - -c 抓包的数量
-    - -e 输出以太网帧头部信息输出 （能看到mac地址）
-    - -l 输出变为行缓冲
-    - -t 输出不打印时间戳
-    - -v 输出更详细信息
-    - -F 指定过滤表达式所在的文件
-    - -w 将流量保存到文件中
-    - -r 读取raw packets 文件
-
-- 列出可以选择的抓包对象 `tcpdump -D`（USB设备也能抓？）
 
 ************************
 
@@ -559,7 +578,9 @@ sudo update-ca-trust
 ****************************
 # 常用服务
 
-## 邮件服务器postfix和devecot
+## 邮件服务器
+
+postfix和devecot
 
 ************************
 
@@ -786,17 +807,4 @@ _问题场景_
 ************************
 
 # Tips
-## 查看进程占用的端口
-> netstat lsof fuser  
 
-> [参考: linux下常用命令查看端口占用](http://blog.csdn.net/ws379374000/article/details/74218530)
-
-- `lsof -i:端口号` 用于查看某一端口的占用情况，缺省端口号显示全部
-    - 或者 `cat /etc/services` 查看系统以及使用的端口
-- 查询占用端口 `fuser -v -n tcp 22` 或者 `fuser -v 22/tcp` fuser中含三种协议： file 默认, tcp, udp
-    - 得到一些进程信息 `fuser -v -n tcp 0`
-
-- whatportis 可以通过服务查询默认端口，或者是通过端口查询默认服务的工具
-
-## 网络问题排查
-- [TCP 内网下载慢速分析](https://christmica.cc/archives/tcp-download-analysis)

@@ -68,7 +68,7 @@ categories:
         - 6.3.1. [善用alias](#善用alias)
     - 6.4. [desktop文件](#desktop文件)
 
-💠 2024-06-02 15:58:25
+💠 2024-06-03 23:54:27
 ****************************************
 
 # IO
@@ -93,7 +93,8 @@ categories:
 ## 零拷贝
 > [Wiki](https://en.wikipedia.org/wiki/Zero-copy)  
 
-> [零拷贝(Zero-copy) 浅析及其应用](https://www.cnblogs.com/rickiyang/p/13265043.html)
+> [什么是零拷贝？](https://www.xiaolincoding.com/os/8_network_system/zero_copy.html)  
+> [零拷贝(Zero-copy) 浅析及其应用](https://www.cnblogs.com/rickiyang/p/13265043.html)  
 
 用户态IO
 mmap + write
