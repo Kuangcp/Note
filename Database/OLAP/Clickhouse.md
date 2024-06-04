@@ -19,7 +19,7 @@ categories:
 - 3. [Explain](#explain)
 - 4. [Tips](#tips)
 
-💠 2024-05-22 17:32:51
+💠 2024-06-04 22:54:32
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -92,7 +92,7 @@ categories:
 > [Connecting ClickHouse to external data sources with JDBC](https://clickhouse.com/docs/en/integrations/jdbc/jdbc-with-clickhouse)  
 > JDBC的驱动实现是通过HTTP协议和Clickhouse通信 [clickhouse-java](https://github.com/ClickHouse/clickhouse-java)`com.clickhouse.client.internal.apache.hc.client5.http.impl.io.DefaultManagedHttpClientConnection`  
 
-低版本驱动没有实现负载均衡，需要在数据节点前加一层 [chproxy](https://github.com/ContentSquare/chproxy), 但是实际上也可以自己实现负载均衡算法(例如：依据时间窗口内所有节点的负载，连接等情况来选择合适的节点)
+低版本驱动没有实现负载均衡，需要在数据节点前加一层 [chproxy](https://github.com/ContentSquare/chproxy), 但是实际上也可以自己实现负载均衡算法(例如：依据某个时间窗口内所有节点的负载，连接等情况来选择合适的节点)
 
 ```java
         Properties properties = new Properties();
@@ -109,6 +109,13 @@ categories:
         String url = "jdbc:clickhouse://h1:p1,h2:p2,h3:p3,h4:p4/default?socket_timeout=6000000";
         ClickHouseDataSource dataSource = new ClickHouseDataSource(url, properties)
 ```
+
+> 实践：
+- 出现 `The target server failed to respond code: 1002` 报错 
+    - [Validate stale connection to fix the bug: failed to respond](https://github.com/ClickHouse/clickhouse-java/pull/760)`增加活跃连接校验逻辑，降低客户端获取到关闭连接的概率`
+    - [BatchUpdateException during inserts with jdbc driver](https://github.com/ClickHouse/clickhouse-java/issues/1444) `驱动作者认为： 关键点在于边界值，如果客户端设置的和服务端一样或者更大，就会出现客户端认为连接未超时可复用，但是服务端认为超时于是就关闭了连接`
+    - JDBC URL优化 socketTimeout参数, **应明显小于服务端**的 tcp_keep_alive_timeout （ms）值， `select * from system.settings where name like '%keep%';`
+    - JDBC 驱动版本低， 从0.2.4 升级到0.6.0后问题出现概率小很多 因为 [host failed to respond](https://github.com/ClickHouse/clickhouse-java/issues/452) 0.2.5 主动获取了服务端设置值
 
 ************************
 
@@ -133,9 +140,7 @@ JSON格式查看 `EXPLAIN json = 1, indexes = 1 SQL`
 
 - 多表关联 如果能确认范围过滤的数据只会从一个表返回可以避免join来过滤, 转用in, 避免分布式的做数据复制，导致资源消耗放大
 - Global 优化 join 和in 避免读放大
-- JDBC 优化 socketTimeout, 需要和CK服务器保持一致 `select * from system.settings where name like '%keep%';`
-    - 这个时间只针对于DDL，查询没有限制
-- JDBC 驱动版本不能太低，可能出现 `failed to respond`
 
-- CK22.3.5.5版本上 使用 UNION ALL 连接 A 和 B两段SQL时，CK偶现出现B段SQL没有正确的groupby聚合（有些数据没有聚合），导致整体执行结果条目数变多，非期望数据
+> BUG
+- [22.3.5.5](https://github.com/ClickHouse/ClickHouse/releases/tag/v22.3.5.5-lts)版本上 使用 UNION ALL 连接 A 和 B两段SQL时，CK偶现出现B段SQL没有正确的groupby聚合（有些数据没有聚合），导致整体执行结果条目数变多，非期望数据
 
