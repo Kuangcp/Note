@@ -17,7 +17,7 @@ categories:
 - 4. [FlinkX ChunJun](#flinkx-chunjun)
 - 5. [Flink CDC](#flink-cdc)
 
-💠 2024-06-06 16:55:18
+💠 2024-06-06 17:49:05
 ****************************************
 # Data Integration
 数据集成
@@ -51,11 +51,11 @@ categories:
 ## 组件
 ### Reader
 
-通过splitPk和并发 拆分上游数据 并行同步逻辑
+通过splitPk 拆分字段`只支持整数，字符串` 和 speed.channel 并发数 拆分上游数据 并行同步逻辑
 - com.alibaba.datax.plugin.rdbms.reader.util.SingleTableSplitUtil#genPKSql
-- com.alibaba.datax.plugin.rdbms.reader.util.SingleTableSplitUtil#splitSingleTable  注意设置的splitPK字段的值最好是 数字字母常见的打印字符
+- com.alibaba.datax.plugin.rdbms.reader.util.SingleTableSplitUtil#splitSingleTable 注意设置的splitPK字段的值最好是 数字字母常见的打印字符
 	- 参数 expectSliceNumber 的来源于Datax.json的直接指定和 限速channel，限速速率等取较小值。
-	- 由于拆分是按ascii实现（先将字符串按ascii转为超大整数BigInteger，做完分段拆分后将若干段的边界值转回ascii），于是拆分的分段字符就会有乱码，导致拆分分段有交叉导致同步的数据量大于上游数据总量
+	- 由于拆分是按ascii实现（先将字符串按ascii转为超大整数BigInteger，做完分段拆分后将若干段的边界值转回ascii），但是出现过分段后数据范围有交叉导致同步的数据量大于上游数据总量
 		```java
 		List<String> result = RdbmsRangeSplitWrap.splitAndWrap("202301", "202412", 4, "period", "'", DataBaseType.PostgreSQL);
 		// 结果： [ ('202301' <= period AND period < '2023PR') ,  ('2023PR' <= period AND period < '2023pr') ,  ('2023pr' <= period AND period < '2024') ,  ('2024' <= period AND period <= '202412') ]
@@ -84,6 +84,12 @@ com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter.Task#startWriteWithConne
 > [首个国人主导的开源数据集成工具：揭秘 Apache 顶级项目 SeaTunnel 背后的故事](https://36kr.com/p/2311155472330244)
 
 使用 Spark、Flink 作为底层数据同步引擎使其具备分布式执行能力，开放并完善的插件体系和API集成
+
+> [并行读取](https://seatunnel.apache.org/zh-CN/docs/connector-v2/source/Jdbc#parallel-reader) 支持 数值，字符串，日期 类型字段
+- 生成拆分列逻辑 org.apache.seatunnel.connectors.seatunnel.jdbc.source.ChunkSplitter#generateSplits
+- 执行数据拆分 org.apache.seatunnel.connectors.seatunnel.jdbc.source.FixedChunkSplitter#createSplitStatement
+
+************************
 
 # FlinkX ChunJun
 > [Github](https://github.com/DTStack/chunjun)  
