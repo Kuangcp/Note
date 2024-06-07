@@ -16,8 +16,9 @@ categories:
 - 3. [SeaTunnel](#seatunnel)
 - 4. [FlinkX ChunJun](#flinkx-chunjun)
 - 5. [Flink CDC](#flink-cdc)
+- 6. [Kettle](#kettle)
 
-💠 2024-06-06 17:49:05
+💠 2024-06-07 14:39:29
 ****************************************
 # Data Integration
 数据集成
@@ -86,7 +87,7 @@ com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter.Task#startWriteWithConne
 使用 Spark、Flink 作为底层数据同步引擎使其具备分布式执行能力，开放并完善的插件体系和API集成
 
 > [并行读取](https://seatunnel.apache.org/zh-CN/docs/connector-v2/source/Jdbc#parallel-reader) 支持 数值，字符串，日期 类型字段
-- 生成拆分列逻辑 org.apache.seatunnel.connectors.seatunnel.jdbc.source.ChunkSplitter#generateSplits
+- 生成拆分列逻辑 org.apache.seatunnel.connectors.seatunnel.jdbc.source.ChunkSplitter#generateSplits 字符串类型字段采用的是hash后取模方式。
 - 执行数据拆分 org.apache.seatunnel.connectors.seatunnel.jdbc.source.FixedChunkSplitter#createSplitStatement
 
 ************************
@@ -97,3 +98,16 @@ com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter.Task#startWriteWithConne
 # Flink CDC
 > [Github](https://github.com/apache/flink-cdc)  
 
+
+************************
+
+# Kettle
+> [Github](https://github.com/pentaho/pentaho-kettle)  
+> [web kettle](https://github.com/JoeyBling/webkettle)  
+
+[kettle java源码 kettle源码分析](https://blog.51cto.com/u_16213668/8667940)
+
+************************
+
+> [Kettle大量数据快速导出的解决方案](https://www.cnblogs.com/47Gamer/p/13993373.html)`奇怪的是SpringBoot项目同样Fetch方式加流式Excel导出，整体导出效率低很多`
+- 关联源码在 org.pentaho.di.trans.steps 下的 tableinput 和 excelwriter 包
