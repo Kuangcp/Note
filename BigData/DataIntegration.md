@@ -48,6 +48,7 @@ categories:
 
 - Job 负责管理 JobContainer
 - Task 执行读写 TaskGroupContainer.TaskExecutor 
+    - readerThread writerThread 实现多线程的生产者消费者模型 通过 com.alibaba.datax.core.statistics.communication.Communication 通信
 
 ## 组件
 ### Reader
@@ -56,15 +57,18 @@ categories:
 - com.alibaba.datax.plugin.rdbms.reader.util.SingleTableSplitUtil#genPKSql
 - com.alibaba.datax.plugin.rdbms.reader.util.SingleTableSplitUtil#splitSingleTable 注意设置的splitPK字段的值最好是 数字字母常见的打印字符
 	- 参数 expectSliceNumber 的来源于Datax.json的直接指定和 限速channel，限速速率等取较小值。
-	- 由于拆分是按ascii实现（先将字符串按ascii转为超大整数BigInteger，做完分段拆分后将若干段的边界值转回ascii），但是出现过分段后数据范围有交叉导致同步的数据量大于上游数据总量
+	- 由于拆分是按ascii实现（先将字符串按ascii转为超大整数BigInteger，做完分段拆分后将若干段的边界值转回ascii）
 		```java
 		List<String> result = RdbmsRangeSplitWrap.splitAndWrap("202301", "202412", 4, "period", "'", DataBaseType.PostgreSQL);
 		// 结果： [ ('202301' <= period AND period < '2023PR') ,  ('2023PR' <= period AND period < '2023pr') ,  ('2023pr' <= period AND period < '2024') ,  ('2024' <= period AND period <= '202412') ]
 
 		List<String> result = RdbmsRangeSplitWrap.splitAndWrap("2016-02-06", "2024-05-06", 4, "period", "'", DataBaseType.PostgreSQL);
 		// 结果的数组中有元素的字面值包含了控制字符 \r. 将生成的SQL去查数据库没有问题，拆分的四段只有13段能查出数据 24段数据为空
-		// 应该是概率性出现问题，因为这个字符转int的做法导致了字符的边界互相影响了，范围SQL产生了交集
 		```
+    - TODO 但是出现过分段后数据范围有交叉导致同步的数据量大于上游数据总量， 可能是概率性出现问题，因为这个字符转int的做法导致了字符的边界互相影响了，范围SQL产生了交集？
+
+- 拆分后同样是游标查询 com.alibaba.datax.plugin.rdbms.reader.CommonRdbmsReader.Task#startRead
+    - `ResultSet query(Connection conn, String sql, int fetchSize)`
 
 ### Writer
 
