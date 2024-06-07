@@ -17,7 +17,7 @@ categories:
     - 2.1. [MySQL](#mysql)
 - 3. [Tips](#tips)
 
-💠 2024-04-19 10:49:10
+💠 2024-06-07 18:54:23
 ****************************************
 # JDBC
 Java DataBase Connectivity
@@ -66,63 +66,65 @@ Java DataBase Connectivity
 常见的分页导出的缺点有 分页越来越慢和不稳定排序导致页之间数据重复或丢失，用长连接流方式可以规避
 
 ```java
-private void fetchBatchWithDataResource(DataSource ds, String sql, String where, int fetchSize, Consumer<List<LinkedHashMap<String, Object>>> handle) {
-    Connection connection = null;
-    Statement stmt = null;
-    ResultSet rs = null;
-    try {
-        connection = ds.getConnection();
-        String query;
-        if (StringUtils.isNotBlank(where)) {
-            query = sql + " WHERE " + where;
-        } else {
-            query = sql;
-        }
-
-        log.info("stream export: query={}", query);
-
-        stmt = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
-        stmt.setQueryTimeout(3600);
-        stmt.setFetchSize(fetchSize);
-
-        rs = stmt.executeQuery(query);
-        boolean handled = false;
-        int counter = 0;
-
-        List<LinkedHashMap<String, Object>> data = new ArrayList<>();
-        while (rs.next()) {
-            ResultSetMetaData meta = rs.getMetaData();
-            int columnCount = meta.getColumnCount();
-            LinkedHashMap<String, Object> row = new LinkedHashMap<>();
-            for (int i = 1; i <= columnCount; i++) {
-                row.put(meta.getColumnName(i), rs.getObject(i));
+    // 阻塞模式 查数据和业务逻辑交替执行
+    private void fetchBatchWithDataResource(DataSource ds, String sql, String where, int fetchSize,
+                                            Consumer<List<LinkedHashMap<String, Object>>> handle) {
+        Connection connection = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            connection = ds.getConnection();
+            String query;
+            if (StringUtils.isNotBlank(where)) {
+                query = sql + " WHERE " + where;
+            } else {
+                query = sql;
             }
-            data.add(row);
 
-            if (data.size() > fetchSize) {
+            log.info("stream export: query={}", query);
+
+            stmt = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+            stmt.setQueryTimeout(3600);
+            stmt.setFetchSize(fetchSize);
+
+            rs = stmt.executeQuery(query);
+            int counter = 0;
+
+            List<LinkedHashMap<String, Object>> data = new ArrayList<>();
+            while (rs.next()) {
+                ResultSetMetaData meta = rs.getMetaData();
+                int columnCount = meta.getColumnCount();
+                LinkedHashMap<String, Object> row = new LinkedHashMap<>();
+                for (int i = 1; i <= columnCount; i++) {
+                    row.put(meta.getColumnName(i), rs.getObject(i));
+                }
+                data.add(row);
+
+                if (data.size() > fetchSize) {
+                    handle.accept(data);
+                    counter++;
+                    data.clear();
+                }
+            }
+            if (!data.isEmpty()) {
                 handle.accept(data);
                 counter++;
-                data = new ArrayList<>();
-                handled = true;
-            } else {
-                handled = false;
             }
-        }
-        if (!handled) {
-            handle.accept(data);
-            counter++;
-        }
 
-        log.info("stream export: size={} count={}", data.size(), counter);
-    } catch (Exception e) {
-        log.error("", e);
-    } finally {
-        close(connection, stmt, rs);
+            log.info("stream export: count={} dataSize={} ", counter, (counter - 1) * fetchSize + data.size());
+        } catch (Exception e) {
+            log.error("", e);
+            throw new RuntimeException(e);
+        } finally {
+            close(connection, stmt, rs);
+        }
     }
-}
 ```
 - Statement 设置了 fetchSize 或者 TYPE_FORWARD_ONLY 模式后，都会采用游标的方式获取全部的数据
-- 参数 handle 是解析ResultSet 去生成 CSV Excel 等业务逻辑
+- 参数 handle 是解析ResultSet 去生成 CSV Excel 等业务逻辑方法引用
+- 优化版本 生产者-消费者模式，降低阻塞时间，从而降低大量任务的整体耗时，但是CPU毛刺会增多且明显
+    - 生产者：查询，消费者：业务逻辑，队列：QueueChannel 
+    - [样例代码](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/com/github/kuangcp/queue/use/blocking/ReaderWriterTest.java)
 
 > [!IMPORTANT]
 - Clickhouse可以直接使用, 不需要额外的配置
