@@ -21,10 +21,10 @@ categories:
 ****************************************
 # 计算机基础
 
->- [算法](/Skills/CS/Algorithm.md)  
+>- [算法](/Algorithm/Algorithm.md)  
 >- [计算机基础](/Skills/CS/Computer.md)  
->- [并发相关](Skills/Councurrency/)  
->- [计算机网络](Skills/Network/)  
+>- [并发基础](/Skills/Councurrency/)  
+>- [计算机网络](/Skills/Network/)  
 >- [测试理论](/Skills/Test/TestTheory.md)  
 
 *************************************
@@ -50,8 +50,8 @@ categories:
 | [泛型](/Java/AdvancedLearning/JavaGenerics.md)  | [测试](/Java/Test/JavaTest.md) | 
 | [集合](/Java/AdvancedLearning/JavaCollection.md)  | [打包部署](/Java/AdvancedLearning/JavaDeploy.md) |
 | [线程](/Java/AdvancedLearning/JavaThread.md)  | [持续集成 CI](/Skills/DevOps/ContinuousIntegration.md) |
-| [并发](/Java/AdvancedLearning/JavaConcurrency.md)  | [持续交付 CD](/Skills/DevOps/ContinuousDelivery.md) |
-| [IO](/Java/AdvancedLearning/JavaIO.md)  | [网络编程](/Java/AdvancedLearning/JavaNetwork.md) |
+| [并发](/Java/AdvancedLearning/JavaConcurrency.md)  | [网络编程](/Java/AdvancedLearning/JavaNetwork.md) |
+| [IO](/Java/AdvancedLearning/JavaIO.md)  |  |
 | [注解](/Java/AdvancedLearning/JavaAnnotation.md)  |  |
 | [JDBC](/Java/AdvancedLearning/JDBC.md) | |
 
@@ -98,14 +98,9 @@ categories:
 >- [jvm-tools](https://github.com/aragozin/jvm-tools)
 >- [模式之禅](/Java/DesignPattern.md)
 
-## Java Programer Suggestion
-
-- 在 Java 中除了最为基础的东西之外，你只要看三样东西就可以了：
-    - Java 中有三大支柱，在 java.util.concurrent、java.security、javax.cropty、javax.security 四个包中就占了两个（多线程、安全）
-    - 还有一个网络在 java.net、javax.net 中，呵呵
-- 掌握了上面 6 个包及其子包中内容的话，那 Java 水平可以说达到了另一种境界。
-- PS：三大支柱是我之前给 Java 中多线程、网络和安全取的代号，嘿嘿
-- 这三样中的东西非常多，基本上就是 Java 的核心所在。
+## 前辈建议
+Java 中有三大支柱（多线程、网络和安全），在 java.util.concurrent、java.security、javax.cropty、javax.security 四个包中就占了两个（多线程、安全）  
+还有一个网络在 java.net、javax.net 中  掌握了上面 6 个包及其子包中内容的话，那 Java 水平可以说达到了另一种境界。
 
 **多线程（multi-threading and concurrent）**
 
