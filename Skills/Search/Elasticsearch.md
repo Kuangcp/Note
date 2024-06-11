@@ -9,35 +9,42 @@ categories:
 💠
 
 - 1. [Elasticsearch](#elasticsearch)
-    - 1.1. [Install](#install)
-        - 1.1.1. [单节点](#单节点)
-        - 1.1.2. [集群](#集群)
-        - 1.1.3. [客户端](#客户端)
-    - 1.2. [Index](#index)
-    - 1.3. [Mapping](#mapping)
-    - 1.4. [DSL](#dsl)
-    - 1.5. [分词器](#分词器)
-    - 1.6. [向量搜索](#向量搜索)
+- 2. [Install](#install)
+    - 2.1. [单节点](#单节点)
+    - 2.2. [集群](#集群)
+    - 2.3. [客户端](#客户端)
+        - 2.3.1. [Java](#java)
+- 3. [Index](#index)
+- 4. [Mapping](#mapping)
+- 5. [DSL](#dsl)
+- 6. [分词器](#分词器)
+- 7. [向量搜索](#向量搜索)
 
-💠 2024-05-04 18:13:33
+💠 2024-06-11 16:32:25
 ****************************************
 # Elasticsearch
 > [Official Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)  
 > [参考: Elasticsearch 快速开始](https://www.cnblogs.com/cjsblog/p/9439331.html)  
 
+使用场景：
 
+> [七个生产案例告诉你BATJ为何选择ElasticSearch！应用场景和优势！](https://segmentfault.com/a/1190000022799288)  
 > [Elasticsearch技术方案选型的10个注意点](https://time.geekbang.org/column/article/108196?utm_campaign=geektime_search&utm_content=geektime_search&utm_medium=geektime_search&utm_source=geektime_search&utm_term=geektime_search)
 
-> [一起学Elasticsearch系列](https://github.com/BookaiCode/JavaRecord?tab=readme-ov-file#lock-elasticsearch)
-> [Guide to Elasticsearch in Java](https://www.baeldung.com/elasticsearch-java)`使用elasticsearch包访问ES`  
-> [Spring Boot整合Elasticsearch](https://github.com/cloudgyb/es-spring-boot)`使用 SpringData`  
 
-## Install
+中文教程：
+
+> [一起学Elasticsearch系列](https://github.com/BookaiCode/JavaRecord?tab=readme-ov-file#lock-elasticsearch)  
+> [ElasticSearch知识体系详解](https://pdai.tech/md/db/nosql-es/elasticsearch.html)
+
+************************
+
+# Install
 > [Installing Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html)  
 > [Command line tools](https://www.elastic.co/guide/en/elasticsearch/reference/current/commands.html)  
 
 ************************
-### 单节点
+## 单节点
 > [Run Elasticsearch locally](https://www.elastic.co/guide/en/elasticsearch/reference/current/run-elasticsearch-locally.html)
 
 ```sh
@@ -60,16 +67,21 @@ categories:
 
 > [参考: 用容器快速上手Elasticsearch](http://qinghua.github.io/elastic-search/)
 
-### 集群
+## 集群
 > [docker compose install cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-compose-file)
 
-### 客户端
+## 客户端
 - Kibana 官方支持
 - Elasticvue 浏览器插件
 
-## Index 
+### Java
+> [Guide to Elasticsearch in Java](https://www.baeldung.com/elasticsearch-java)`使用elasticsearch包访问ES`  
+> [Spring Boot整合Elasticsearch](https://github.com/cloudgyb/es-spring-boot)`使用 SpringData`  
+
+
+# Index 
 - `PUT /{indexName}?pretty` 创建索引
-- `DELETE /{indexName}?pretty` 删除索引 `异步不可撤销`
+- `DELETE /{indexName}?pretty` 删除索引 `异步,不可撤销,不可逆`
 
 - `GET /{indexName}/_search` 搜索
 - `GET /{indexName}/_doc/doc_id` 查询指定文档id
@@ -78,18 +90,25 @@ categories:
 
 - `GET _cat/indices?v` 获取所有索引信息
 
-## Mapping
+************************
+
+# Mapping
 > [Mapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html)
-
-## DSL
-> [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html)
-
-
-## 分词器
 
 ************************
 
-## 向量搜索
+# DSL
+> [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html)
+
+> [EQL](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html)`Event Query Language`  
+
+************************
+
+# 分词器
+
+************************
+
+# 向量搜索
 版本 8.5+
 
 

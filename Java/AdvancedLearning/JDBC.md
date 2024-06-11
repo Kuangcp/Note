@@ -17,7 +17,7 @@ categories:
     - 2.1. [MySQL](#mysql)
 - 3. [Tips](#tips)
 
-💠 2024-06-07 18:54:23
+💠 2024-06-11 16:32:25
 ****************************************
 # JDBC
 Java DataBase Connectivity
@@ -126,7 +126,6 @@ Java DataBase Connectivity
     - 生产者：查询，消费者：业务逻辑，队列：QueueChannel 
     - [样例代码](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/com/github/kuangcp/queue/use/blocking/ReaderWriterTest.java)
 
-> [!IMPORTANT]
 - Clickhouse可以直接使用, 不需要额外的配置
 - PostgreSQL 调整：
     - executeQuery前 **关闭 autoCommit**，finally 开启，才会fetch指定的数据量,否则会拉取全部的数据到JVM。[pg jdbc doc](https://jdbc.postgresql.org/documentation/head/connect.html#connection-parameters)
