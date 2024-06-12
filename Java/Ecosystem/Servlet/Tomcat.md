@@ -20,18 +20,10 @@ categories:
             - 1.2.3.2. [虚拟主机](#虚拟主机)
             - 1.2.3.3. [配置 GZip压缩](#配置-gzip压缩)
             - 1.2.3.4. [配置IO方式](#配置io方式)
-    - 1.3. [Tomcat Native](#tomcat-native)
-    - 1.4. [Web容器和Web服务器的区别](#web容器和web服务器的区别)
-        - 1.4.1. [Web容器](#web容器)
-        - 1.4.2. [Web服务器](#web服务器)
-            - 1.4.2.1. [Servlet](#servlet)
-- 2. [同类项目](#同类项目)
-    - 2.1. [Jetty](#jetty)
-        - 2.1.1. [配置](#配置)
-    - 2.2. [Undertow](#undertow)
+- 2. [Tomcat Native](#tomcat-native)
 - 3. [Tips](#tips)
 
-💠 2024-02-22 18:18:03
+💠 2024-06-12 10:01:44
 ****************************************
 # Tomcat
 > [官方网站](http://tomcat.apache.org/)
@@ -162,7 +154,10 @@ categories:
 #### 配置IO方式
 > 默认http1.1是nio, 还有aio ajp bio
 
-## Tomcat Native
+
+************************
+
+# Tomcat Native
 > [官方文档](http://tomcat.apache.org/native-doc/) | [参考: tomcat安装与配置native,apr](https://blog.csdn.net/shangruo/article/details/52776212)
 
 
