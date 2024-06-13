@@ -29,13 +29,14 @@ categories:
     - 3.2. [async-profiler](#async-profiler)
 - 4. [图形化工具](#图形化工具)
     - 4.1. [JProfiler](#jprofiler)
-    - 4.2. [Visualvm](#visualvm)
-    - 4.3. [MAT](#mat)
-    - 4.4. [JMC](#jmc)
-    - 4.5. [IBM Heap Analyzer](#ibm-heap-analyzer)
-    - 4.6. [IntelliJ IDEA](#intellij-idea)
+    - 4.2. [YourKit](#yourkit)
+    - 4.3. [Visualvm](#visualvm)
+    - 4.4. [MAT](#mat)
+    - 4.5. [JMC](#jmc)
+    - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
+    - 4.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-06-01 13:47:36
+💠 2024-06-13 11:01:29
 ****************************************
 
 # JVM 监控&诊断
@@ -246,10 +247,17 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 ************************
 
 # 图形化工具
+
+> [Heap Dump Analysers](http://www.fasterj.com/tools/heapdumpanalysers.shtml)  
+> [Java Monitoring Tools](https://sematext.com/guides/java-monitoring/)`Profile APM log 等多个解决思路`  
+
 ## JProfiler
 > [Official Site](https://www.ej-technologies.com/products/jprofiler/overview.html)  
 
 [OOM 踩坑日记](https://huminxi.netlify.app/2022/06/24/oom%20%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/#more)
+
+## YourKit
+[YourKit Java Profiler](https://www.yourkit.com/java/profiler)
 
 ## Visualvm
 > [Github:visualvm](https://github.com/oracle/visualvm)  

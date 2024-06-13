@@ -23,12 +23,9 @@ categories:
     - 4.3. [方法句柄](#方法句柄)
 - 5. [Agent](#agent)
 - 6. [反编译](#反编译)
-    - 6.1. [JD](#jd)
-    - 6.2. [Jad](#jad)
-    - 6.3. [Java-Class-Viewer](#java-class-viewer)
 - 7. [热部署](#热部署)
 
-💠 2024-06-02 15:58:25
+💠 2024-06-13 11:01:29
 ****************************************
 # 字节码以及类加载
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
@@ -186,16 +183,14 @@ Java Agent 的应用场景
 | 各种性能分析工具   |  Visual VM、JConsole 等；
 | 全链路性能检测工具  |  Skywalking、Pinpoint等；
 
+
+> [agent](https://github.com/yxkong/agent)`线程池监控`  
+
 ************************
 
 # 反编译
-## JD
-> [JD](http://java-decompiler.github.io/)
-
-## Jad
-> [https://varaneckas.com/jad/](https://varaneckas.com/jad/)
-
-## Java-Class-Viewer
+> [JD](http://java-decompiler.github.io/)  
+> [https://varaneckas.com/jad/](https://varaneckas.com/jad/)  
 > [Java-Class-Viewer](https://www.codeproject.com/Articles/35915/Java-Class-Viewer)  
 > [classpy](https://github.com/zxh0/classpy)  
 
