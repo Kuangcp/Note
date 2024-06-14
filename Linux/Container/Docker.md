@@ -24,19 +24,20 @@ categories:
 - 3. [基础管理](#基础管理)
     - 3.1. [图形化管理工具](#图形化管理工具)
         - 3.1.1. [Portainer](#portainer)
-    - 3.2. [配置镜像源](#配置镜像源)
-        - 3.2.1. [搭建本地镜像仓库](#搭建本地镜像仓库)
-    - 3.3. [基础命令](#基础命令)
-    - 3.4. [镜像](#镜像)
-    - 3.5. [容器](#容器)
-        - 3.5.1. [ps](#ps)
-        - 3.5.2. [create](#create)
-        - 3.5.3. [run](#run)
-            - 3.5.3.1. [资源限制](#资源限制)
-        - 3.5.4. [exec](#exec)
-        - 3.5.5. [commit](#commit)
-        - 3.5.6. [port](#port)
-    - 3.6. [端口映射](#端口映射)
+    - 3.2. [配置代理](#配置代理)
+    - 3.3. [配置镜像源](#配置镜像源)
+        - 3.3.1. [搭建本地镜像仓库](#搭建本地镜像仓库)
+    - 3.4. [基础命令](#基础命令)
+    - 3.5. [镜像](#镜像)
+    - 3.6. [容器](#容器)
+        - 3.6.1. [ps](#ps)
+        - 3.6.2. [create](#create)
+        - 3.6.3. [run](#run)
+            - 3.6.3.1. [资源限制](#资源限制)
+        - 3.6.4. [exec](#exec)
+        - 3.6.5. [commit](#commit)
+        - 3.6.6. [port](#port)
+    - 3.7. [端口映射](#端口映射)
 - 4. [数据存储](#数据存储)
     - 4.1. [文件系统](#文件系统)
     - 4.2. [数据卷](#数据卷)
@@ -57,7 +58,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2023-10-18 13:43
+💠 2024-06-14 14:59:20
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -180,6 +181,24 @@ categories:
 1. `docker volume create portainer_data`
 1. `docker run --name portainer -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce`
 
+## 配置代理
+2024-06-06 开始封禁Dockerhub及国内源，所以最稳妥的还是用代理
+
+> 设置代理方式
+- mkdir -p /etc/systemd/system/docker.service.d
+- vim /etc/systemd/system/docker.service.d/http-proxy.conf
+    ```conf
+    [Service]
+    Environment="HTTP_PROXY=http://localhost:7890"
+    Environment="HTTPS_PROXY=http://localhost:7890"
+    # 可选项，配置不走代理的仓库
+    Environment="NO_PROXY=your-registry.com,10.10.10.10,*.example.com"
+    ```
+- systemctl daemon-reload
+- systemctl restart docker
+- 检查环境变量 systemctl show --property=Environment docker
+- 查看代理 docker info
+
 ## 配置镜像源
 > 默认的DockerHub因为在国外所以网络不太稳定，需要使用国内镜像源
 
@@ -219,9 +238,6 @@ categories:
 3. 下载镜像
     - 登录到镜像仓库，需输入密码  
     - sudo docker pull hub.baidubce.com/[namespace]/[ImageName]:[镜像版本号]  
-
-4. 使用加速器
-    - docker软件源地址：https://mirror.baidubce.com
 
 ********************************
 ### 搭建本地镜像仓库
