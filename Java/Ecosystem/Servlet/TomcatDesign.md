@@ -22,7 +22,7 @@ categories:
 > [♥Tomcat源码详解知识体系详解♥](https://pdai.tech/md/framework/tomcat/tomcat-overview.html)  
 > [深入拆解Tomcat](https://time.geekbang.org/column/intro/100027701?tab=catalog)  
 
-## 架构设计
+## 宏观架构
 
 
 ## 线程池
