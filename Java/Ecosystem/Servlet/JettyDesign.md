@@ -1,14 +1,30 @@
+---
+title: JettyDesign
+date: 2024-06-15 11:01:15
+tags: 
+categories: 
+---
+
+💠
+
+- 1. [Jetty Design](#jetty-design)
+    - 1.1. [宏观架构](#宏观架构)
+    - 1.2. [线程模型](#线程模型)
+
+💠 2024-06-15 11:05:37
+****************************************
 # Jetty Design
+> [Github: Jetty](https://github.com/jetty/jetty.project)
 
 ## 宏观架构
 
 ## 线程模型
 
-从架构角度三者关系如下
+从抽象来看三者关系如下
 
 ![](/Java/Ecosystem/Servlet/img/001-jetty-selector.drawio.svg)
 
-但是由 ExecutionStrategy 提供多种组合方式
+但是由 ExecutionStrategy接口的实现来提供三者在运行时的多种组合方式 [strategy源码](https://github.com/jetty/jetty.project/tree/jetty-12.0.x/jetty-core/jetty-util/src/main/java/org/eclipse/jetty/util/thread/strategy)
 
 > ProduceConsume
 
