@@ -9,22 +9,23 @@ categories:
 
 - 1. [Data Integration](#data-integration)
 - 2. [Datax](#datax)
-    - 2.1. [设计](#设计)
-    - 2.2. [组件](#组件)
-        - 2.2.1. [Reader](#reader)
-        - 2.2.2. [Writer](#writer)
+    - 2.1. [使用](#使用)
+    - 2.2. [设计](#设计)
+    - 2.3. [组件](#组件)
+        - 2.3.1. [Reader](#reader)
+        - 2.3.2. [Writer](#writer)
 - 3. [SeaTunnel](#seatunnel)
 - 4. [FlinkX ChunJun](#flinkx-chunjun)
 - 5. [Flink CDC](#flink-cdc)
 - 6. [Kettle](#kettle)
 
-💠 2024-06-07 14:39:29
+💠 2024-06-15 17:49:57
 ****************************************
 # Data Integration
 数据集成
 
 # Datax
-> [Github](https://github.com/alibaba/DataX)  阿里云DataWorks的开源版
+> [Github](https://github.com/alibaba/DataX)  阿里云DataWorks的开源版 | [HashData](https://github.com/Inc/DataX/) 增加了插件支持
 
 > **注意** 这是一次性的开源项目，bug基本需要自己处理，从代码行数提交情况和issue，PR的活跃情况可以看出
 - [Clickhouse reader writer](https://github.com/alibaba/DataX/pull/264)
@@ -43,8 +44,19 @@ categories:
     - 不支持实时增量，离线增量需要手动调整JSON配置实现
     - 单进程模式，无法集群式同步，资源利用不够高(单任务在做好读端和写端的优化话是可以打满网卡的)
 
+## 使用
+> [使用手册](https://github.com/alibaba/DataX/blob/master/userGuid.md)
+
+> 踩坑
+- 配置的json文件要`严格按照案例JSON来配置`，因为他不是按对象解析是按无结构json来顺序解析的，踩过一个坑就是writer在reader上面，然后驱动加载出问题了，查看对应源码和jvm的加载类发现是有的，很隐蔽的报错，完全想不到是json配置顺序问题。
+
+> [为什么不建议使用DataX读写GreenPlum](https://www.modb.pro/db/52542)
+- 如果要对GP做写入操作，不建议用 postgresqlwriter,可以用 [HashData DataX](https://github.com/HashDataInc/DataX) 的 gpdbwriter 插件
+
+************************
+
 ## 设计
-> [DataX 3.0 源码解析一](https://www.cnblogs.com/yaozhenfa/p/13840134.html)  
+> [DataX 3.0 源码解析一](https://www.cnblogs.com/yaozhenfa/p/13840134.html)  | [DataX核心源码流程](https://blog.csdn.net/ooeeerrtt/article/details/123779721)
 
 - Job 负责管理 JobContainer
 - Task 执行读写 TaskGroupContainer.TaskExecutor 
