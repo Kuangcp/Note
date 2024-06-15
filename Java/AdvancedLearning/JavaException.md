@@ -24,7 +24,7 @@ categories:
         - 2.3.1. [自定义异常的错误码](#自定义异常的错误码)
 - 3. [实现机制](#实现机制)
 
-💠 2024-06-15 11:46:23
+💠 2024-06-15 13:56:58
 ****************************************
 # 异常
 > 相关博客:[Java异常浅谈](http://www.cnblogs.com/focusj/archive/2011/12/26/2301524.html)  
@@ -95,10 +95,9 @@ JVM参数关闭该特性 `-XX:-OmitStackTraceInFastThrow`
 > JavaSE
 [Java Global Exception Handler](https://www.baeldung.com/java-global-exception-handler)
 
-TODO 
+[线程默认异常处理](/Java/AdvancedLearning/JavaThread.md#观测异常)
 
 ************************
-
 
 > SpringMVC
 ```java
