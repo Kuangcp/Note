@@ -32,7 +32,7 @@ categories:
         - 2.2.2. [poll](#poll)
         - 2.2.3. [epoll](#epoll)
 
-💠 2024-06-16 16:04:24
+💠 2024-06-16 16:40:46
 ****************************************
 # 计算机中的IO
 > [参考: IO - 同步，异步，阻塞，非阻塞 ](https://blog.csdn.net/historyasamirror/article/details/5778378)  
@@ -178,7 +178,7 @@ Reactor 可以理解为「来了事件操作系统通知应用进程，让应用
 
 ![](/Skills/CS/img/001-reactor-multiple.drawio.svg)
 
-> [TCP Server处理多Client请求的方法—非阻塞accept与select](http://velep.com/archives/1137.html)`可以看到系统调用层面也是先调用select发现新连接后调用accept和read write`
+> [TCP Server处理多Client请求的方法—非阻塞accept与select](http://velep.com/archives/1137.html)`可以看到系统调用层面也是先调用select发现新连接后调用accept和read write` [Github: Code](https://github.com/Kuangcp/LearnC/blob/master/network/tcp/nio-tcp.c)
 
 ### Proactor
 
