@@ -12,12 +12,11 @@ categories:
         - 1.1.1. [基础构件](#基础构件)
         - 1.1.2. [编解码相关](#编解码相关)
             - 1.1.2.1. [Protobuf](#protobuf)
-    - 1.2. [原理](#原理)
-        - 1.2.1. [内存设计](#内存设计)
-    - 1.3. [Websocket](#websocket)
-    - 1.4. [复合组件](#复合组件)
+    - 1.2. [Websocket](#websocket)
+    - 1.3. [复合组件](#复合组件)
+- 2. [Reactor Netty](#reactor-netty)
 
-💠 2024-05-01 14:34:46
+💠 2024-06-16 16:04:24
 ****************************************
 # Netty
 > [Trustlin](https://github.com/trustin) `Netty Mina 的作者`  
@@ -88,6 +87,8 @@ Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件�
     - 这个简单而强大的线程模型，使得 ChannelHandler 无需关注线程同步问题
 
 ### 编解码相关
+> [Netty 编解码技术 数据通信和心跳监控案例](https://segmentfault.com/a/1190000013122610)  
+> [Netty 拆包粘包和服务启动流程分析](https://segmentfault.com/a/1190000013039327)  
 > [参考: Netty(三) 什么是 TCP 拆、粘包？如何解决？](https://crossoverjie.top/2018/08/03/netty/Netty(3)TCP-Sticky/)  
 
 #### Protobuf
@@ -100,26 +101,6 @@ Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件�
 3. 继承自 ByteToMessageDecoder 自己处理
 
 *****************************
-## 原理
-> [Netty 编解码技术 数据通信和心跳监控案例](https://segmentfault.com/a/1190000013122610)  
-> [Netty 拆包粘包和服务启动流程分析](https://segmentfault.com/a/1190000013039327)  
-> [Netty序章之BIO NIO AIO演变](https://segmentfault.com/a/1190000012976683)
-
-> 源码解读
-> [官方Demo](https://github.com/netty/netty/tree/4.1/example/src/main/java/io/netty/example)
-> [Netty实战配套源码](https://github.com/ReactivePlatform/netty-in-action-cn)
-> [Netty权威指南2 源码](https://github.com/Kuangcp/NettyBook2)
-
-
-### 内存设计
-
-> 直接内存
-
-- -Dio.netty.noPreferDirect 是否运行通过底层api直接访问直接内存，默认：允许
-- -Dio.netty.noUnsafe 是否允许使用sun.misc.Unsafe，默认：允许
-- -Dio.netty.maxDirectMemory 设置最大值
-
-************************
 
 ## Websocket
 

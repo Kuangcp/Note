@@ -32,7 +32,7 @@ categories:
         - 2.2.2. [poll](#poll)
         - 2.2.3. [epoll](#epoll)
 
-💠 2024-06-02 15:58:25
+💠 2024-06-16 16:04:24
 ****************************************
 # 计算机中的IO
 > [参考: IO - 同步，异步，阻塞，非阻塞 ](https://blog.csdn.net/historyasamirror/article/details/5778378)  
@@ -171,8 +171,14 @@ Reactor 可以理解为「来了事件操作系统通知应用进程，让应用
 
 ### Reactor
 - Redis：单 Reactor 单进程 
-- Netty & Memcache: 多 Reactor 多线程
-- Nginx： 多 Reactor 多进程 *进程职责做了调整*
+- Netty & Memcache: 主从多Reactor 多线程
+- Nginx： 主从Reactor 多进程 *进程职责做了调整*
+
+> [【Netty】模型篇一：Netty 线程模型架构 & 工作原理 解读](https://blog.csdn.net/qq_36389060/article/details/124232377)`包含了Reactor多种模式的图`  
+
+![](/Skills/CS/img/001-reactor-multiple.drawio.svg)
+
+> [TCP Server处理多Client请求的方法—非阻塞accept与select](http://velep.com/archives/1137.html)`可以看到系统调用层面也是先调用select发现新连接后调用accept和read write`
 
 ### Proactor
 
