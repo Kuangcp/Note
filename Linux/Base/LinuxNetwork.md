@@ -62,7 +62,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2024-06-03 23:54:27
+💠 2024-06-17 19:57:32
 ****************************************
 # Linux网络管理
 
@@ -184,7 +184,7 @@ iftop
 
 - 强制关闭tcp连接： killcx tcpkill
 - `iperf3`： TCP UDP 测速， 在两个节点上使用iperf启动服务端和客户端进程，从而计算TCP和UDP指标信息 [Ethr](https://github.com/microsoft/ethr) Golang 仿写
-- hping： Sync攻击 `hping -S -p 80 --flood 192.168.1.234` 
+
 
 ### 进程和端口互查
 > netstat lsof fuser  

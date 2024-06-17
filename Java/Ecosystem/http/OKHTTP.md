@@ -5,12 +5,11 @@ tags:
 categories: 
 ---
 
-
 💠
 
 - 1. [OKHTTP](#okhttp)
 
-💠 2024-02-02 14:22:14
+💠 2024-06-17 19:57:32
 ****************************************
 # OKHTTP
 > [Official Site](https://square.github.io/okhttp/)  
@@ -30,4 +29,5 @@ https://www.jianshu.com/p/d7eced552553
 
 > 核心源码流程
 - okhttp3.Dispatcher 异步请求调度
-- okhttp3.internal.connection.RealConnectionPool TCP连接池
+- okhttp3.internal.connection.RealConnectionPool TCP连接池 
+    - okhttp3.ConnectionPool
