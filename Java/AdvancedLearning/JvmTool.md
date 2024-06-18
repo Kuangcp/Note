@@ -10,33 +10,35 @@ categories:
 💠
 
 - 1. [JVM 监控&诊断](#jvm-监控&诊断)
-- 2. [JDK自带工具](#jdk自带工具)
-    - 2.1. [java](#java)
-        - 2.1.1. [环境变量的使用](#环境变量的使用)
-    - 2.2. [jps](#jps)
-    - 2.3. [jstat](#jstat)
-    - 2.4. [jinfo](#jinfo)
-    - 2.5. [jmap](#jmap)
-    - 2.6. [jhat](#jhat)
-        - 2.6.1. [OQL](#oql)
-        - 2.6.2. [HPROF](#hprof)
-    - 2.7. [jstack](#jstack)
-        - 2.7.1. [实现原理](#实现原理)
-    - 2.8. [jcmd](#jcmd)
-    - 2.9. [jhsdb](#jhsdb)
-- 3. [终端类工具](#终端类工具)
-    - 3.1. [Arthas](#arthas)
-    - 3.2. [async-profiler](#async-profiler)
-- 4. [图形化工具](#图形化工具)
-    - 4.1. [JProfiler](#jprofiler)
-    - 4.2. [YourKit](#yourkit)
-    - 4.3. [Visualvm](#visualvm)
-    - 4.4. [MAT](#mat)
-    - 4.5. [JMC](#jmc)
-    - 4.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
-    - 4.7. [IntelliJ IDEA](#intellij-idea)
+- 2. [JVMTI](#jvmti)
+- 3. [JDK自带工具](#jdk自带工具)
+    - 3.1. [java](#java)
+        - 3.1.1. [环境变量的使用](#环境变量的使用)
+    - 3.2. [jps](#jps)
+    - 3.3. [jstat](#jstat)
+    - 3.4. [jinfo](#jinfo)
+    - 3.5. [jmap](#jmap)
+    - 3.6. [jhat](#jhat)
+        - 3.6.1. [OQL](#oql)
+        - 3.6.2. [HPROF](#hprof)
+    - 3.7. [jstack](#jstack)
+        - 3.7.1. [实现原理](#实现原理)
+    - 3.8. [jcmd](#jcmd)
+    - 3.9. [jhsdb](#jhsdb)
+- 4. [终端类工具](#终端类工具)
+    - 4.1. [Arthas](#arthas)
+    - 4.2. [async-profiler](#async-profiler)
+- 5. [jvm-sandbox](#jvm-sandbox)
+- 6. [图形化工具](#图形化工具)
+    - 6.1. [JProfiler](#jprofiler)
+    - 6.2. [YourKit](#yourkit)
+    - 6.3. [Visualvm](#visualvm)
+    - 6.4. [MAT](#mat)
+    - 6.5. [JMC](#jmc)
+    - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
+    - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-06-13 11:01:29
+💠 2024-06-18 15:17:36
 ****************************************
 
 # JVM 监控&诊断
@@ -51,7 +53,9 @@ categories:
 命令行推荐 arthas ，可视化界面推荐 JProfiler  
 此外还有一些在线的平台 [gceasy](https://gceasy.io/)、heaphero、fastthread 。
 
-- JVMTI `JVM Tool Interface`
+# JVMTI
+`JVM Tool Interface`
+
 
 # JDK自带工具
 > 都是jdk的bin目录下的工具
@@ -238,6 +242,11 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 
 ## async-profiler
 > [async-profiler](https://github.com/jvm-profiling-tools/async-profiler)`CPU和内存采样 渲染火焰图`
+
+# jvm-sandbox
+> [jvm-sandbox](https://github.com/alibaba/jvm-sandbox)
+
+> [JVM SandBox 的技术原理与应用分析](https://www.infoq.cn/article/TSY4lGjvSfwEuXEBW*Gp)
 
 **********************
 

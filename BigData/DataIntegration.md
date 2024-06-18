@@ -19,13 +19,13 @@ categories:
 - 5. [Flink CDC](#flink-cdc)
 - 6. [Kettle](#kettle)
 
-💠 2024-06-15 17:49:57
+💠 2024-06-18 15:17:36
 ****************************************
 # Data Integration
 数据集成
 
 # Datax
-> [Github](https://github.com/alibaba/DataX)  阿里云DataWorks的开源版 | [HashData](https://github.com/Inc/DataX/) 增加了插件支持
+> [Github](https://github.com/alibaba/DataX)  阿里云DataWorks的开源版 | [HashData](https://github.com/HashDataInc/DataX/) 增加了插件支持
 
 > **注意** 这是一次性的开源项目，bug基本需要自己处理，从代码行数提交情况和issue，PR的活跃情况可以看出
 - [Clickhouse reader writer](https://github.com/alibaba/DataX/pull/264)
@@ -50,13 +50,14 @@ categories:
 > 踩坑
 - 配置的json文件要`严格按照案例JSON来配置`，因为他不是按对象解析是按无结构json来顺序解析的，踩过一个坑就是writer在reader上面，然后驱动加载出问题了，查看对应源码和jvm的加载类发现是有的，很隐蔽的报错，完全想不到是json配置顺序问题。
 
-> [为什么不建议使用DataX读写GreenPlum](https://www.modb.pro/db/52542)
-- 如果要对GP做写入操作，不建议用 postgresqlwriter,可以用 [HashData DataX](https://github.com/HashDataInc/DataX) 的 gpdbwriter 插件
+> [为什么不建议使用DataX读写GreenPlum](https://www.modb.pro/db/52542) 不建议用 postgresqlwriter,可以用 [HashData DataX](https://github.com/HashDataInc/DataX) 的 gpdbwriter 插件替代
 
 ************************
 
 ## 设计
 > [DataX 3.0 源码解析一](https://www.cnblogs.com/yaozhenfa/p/13840134.html)  | [DataX核心源码流程](https://blog.csdn.net/ooeeerrtt/article/details/123779721)
+
+![](./img/datax-main-process.png)
 
 - Job 负责管理 JobContainer
 - Task 执行读写 TaskGroupContainer.TaskExecutor 
@@ -86,12 +87,11 @@ categories:
 
 com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter.Task#startWriteWithConnection **模板类** 消费Reader的数据 批量写入目标库
 
-两个参数，任一条件满足就执行一次insert
+> 两个参数，任一条件满足就执行一次insert
 - batchSize 默认2048
 - batchByteSize 默认32mib 
 	- 该参数值需要谨慎设置，此大小是每个Task都需要的缓存区大小，如果设置过大，会发生OOM
 	- 例如设置堆内存1G 5并发 该值200Mib时，刚开始同步就会触发OOM，因为堆内存不够，没有留空间给datax自身
-
 
 ************************
 

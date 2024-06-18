@@ -19,7 +19,7 @@ categories:
 - 3. [Explain](#explain)
 - 4. [Tips](#tips)
 
-💠 2024-06-06 16:55:18
+💠 2024-06-18 15:17:36
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -114,9 +114,9 @@ categories:
 - 出现 `The target server failed to respond code: 1002` 报错 
     - [Validate stale connection to fix the bug: failed to respond](https://github.com/ClickHouse/clickhouse-java/pull/760)`增加活跃连接校验逻辑，降低客户端获取到关闭连接的概率`
     - [BatchUpdateException during inserts with jdbc driver](https://github.com/ClickHouse/clickhouse-java/issues/1444) `驱动作者认为： 关键点在于边界值，如果客户端设置的和服务端一样或者更大，就会出现客户端认为连接未超时可复用，但是服务端认为超时于是就关闭了连接`
-    - JDBC URL优化 socketTimeout参数, **应明显小于服务端**的 tcp_keep_alive_timeout （ms）值， `select * from system.settings where name like '%keep%';`
+    - JDBC URL优化 socketTimeout参数 （ck0.6.0默认是30s）, **应明显小于服务端**的 tcp_keep_alive_timeout （ms）值， `select * from system.settings where name like '%keep%';`
     - JDBC 驱动版本低， 从0.2.4 升级到0.6.0后问题出现概率小很多 因为 [host failed to respond](https://github.com/ClickHouse/clickhouse-java/issues/452) 0.2.5 主动获取了服务端设置值
-    - 注意socketTimeout参数只作用于连接的活跃性，不限制实际SQL的执行时间，即使设置为5s SQL执行时间达到300s也是正常的。
+    - 注意socketTimeout参数同样作用于查询时间，如果SQL执行时间大于该值会报错 read timeout [http read timeout 30](https://github.com/ClickHouse/clickhouse-java/issues/159)
 
 ************************
 
