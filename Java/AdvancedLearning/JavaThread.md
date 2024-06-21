@@ -24,11 +24,11 @@ categories:
     - 3.2. [优雅关机](#优雅关机)
 - 4. [线程池](#线程池)
 - 5. [协程](#协程)
-    - 5.1. [Loom](#loom)
-    - 5.2. [Quasar](#quasar)
-    - 5.3. [Virtual Threads](#virtual-threads)
+    - 5.1. [Quasar](#quasar)
+    - 5.2. [Virtual Threads](#virtual-threads)
+- 6. [Loom](#loom)
 
-💠 2024-06-07 14:39:29
+💠 2024-06-21 16:17:04
 ****************************************
 # Java线程
 > [个人学习代码](https://github.com/Kuangcp/JavaBase/tree/master/concurrency/src/main/java/thread)
@@ -196,12 +196,7 @@ LockSupport.park
 ************************
 
 # 协程
-R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1, N：1, M：N。 只是Hotspot实现为1:1
-
-## Loom
-> [OpenJDK: Loom](https://openjdk.java.net/projects/loom/)
-
-> [OpenJDK Project Loom](https://www.baeldung.com/openjdk-project-loom)
+R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1, N：1, M：N。 只是Hotspot实现为1:1。并且很早期的JDK就是N：1的绿色线程实现，后面才改成1:1和系统线程绑定
 
 ## Quasar
 > [Github: Quasar](https://github.com/puniverse/quasar)
@@ -217,3 +212,13 @@ R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1,
 - 协程的线程栈存储在堆内存中，为了规避大量协程导致的栈溢出
 
 > [虚拟线程：Java的新利器？](https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247538915&idx=1&sn=b9b6a303a79cea5225e0d445e10eddc8&scene=58&subscene=0)
+> [Java19 正式 GA！看虚拟线程如何大幅提高系统吞吐量 ](https://mp.weixin.qq.com/s/yyApBXxpXxVwttr01Hld6Q)  
+> [虚拟线程 - VirtualThread源码透视 ](https://www.cnblogs.com/throwable/p/16758997.html)
+
+************************
+
+# Loom
+> [OpenJDK: Loom](https://wiki.openjdk.org/display/loom)`目标是高吞吐量，轻量级并发模型： 协程，结构化并发，调度`  
+> [OpenJDK Project Loom](https://www.baeldung.com/openjdk-project-loom)  
+
+

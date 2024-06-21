@@ -49,7 +49,7 @@ categories:
 - 3. [Tips](#tips)
     - 3.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2024-06-17 19:57:32
+💠 2024-06-21 16:17:04
 ****************************************
 # Go
 
@@ -354,7 +354,7 @@ func functionName (param int) int {
 
 - **复用线程**：避免频繁的创建、销毁线程，而是对线程的复用。
     1. work stealing 机制:​ 当本线程无可运行的 G 时，尝试从其他线程绑定的 P 偷取 G，而不是销毁线程, 类似于Java的Fork/Join的工作窃取。
-    1. hand off 机制: ​ 当本线程因为 G 进行系统调用阻塞时，线程释放绑定的 P，把 P 转移给其他空闲的线程执行。
+    1. hand off 机制: ​ 当本线程M因为 G 进行系统调用阻塞时，线程M释放绑定的 P，把 P 转移给其他空闲的线程M执行。
 - **并行**：GOMAXPROCS 设置 P 的数量，最多有 GOMAXPROCS 个线程分布在多个 CPU 上同时运行。GOMAXPROCS 也限制了并发的程度
     - 比如 GOMAXPROCS = 核数/2，则最多利用了一半的 CPU 核进行并行。
 - **抢占**：在 coroutine 中要等待一个协程主动让出 CPU 才执行下一个协程，在 Go 中，一个 goroutine 最多占用 CPU 10ms，防止其他 goroutine 被饿死，这就是 goroutine 不同于 coroutine 的一个地方。

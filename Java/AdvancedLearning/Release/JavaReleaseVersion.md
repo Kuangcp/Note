@@ -25,7 +25,7 @@ categories:
     - 1.14. [Java18](#java18)
     - 1.15. [Java21 LTS](#java21-lts)
 
-💠 2024-05-26 17:41:05
+💠 2024-06-21 16:17:04
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)
@@ -94,6 +94,7 @@ JDBC4.0  JAX-WS 2.0
 1. Epsilon 空gc实现： 用于性能测试
 1. HttpClient 默认实现
 
+> [Oracle JDK11 Migration Guide](https://docs.oracle.com/en/java/javase/11/migrate/index.html)  
 > [Jdk8到jdk11 Springboot 踩坑指南](https://blog.csdn.net/ab601026460/article/details/86062991)  
 
 > Illegal reflective access by org.springframework.cglib.core.ReflectUtils
