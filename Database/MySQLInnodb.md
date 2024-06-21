@@ -22,7 +22,7 @@ categories:
 - 4. [行设计](#行设计)
 - 5. [Buffer Pool](#buffer-pool)
 
-💠 2024-04-23 21:07:09
+💠 2024-06-21 10:47:46
 ****************************************
 # InnoDB
 > [Doc: InnoDB](https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html)
@@ -129,3 +129,6 @@ Innodb 内部在每行有隐藏列：
 
 # Buffer Pool
 > [Buffer Pool](https://dev.mysql.com/doc/refman/8.0/en/innodb-buffer-pool.html)
+
+Insert Buffer
+Double Write

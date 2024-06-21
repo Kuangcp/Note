@@ -28,7 +28,7 @@ categories:
 - 2. [Tips](#tips)
     - 2.1. [SQL 片段](#sql-片段)
 
-💠 2024-05-20 20:04:31
+💠 2024-06-21 10:47:46
 ****************************************
 # MySQL进阶
 > [Github: MySQL Sever](https://github.com/mysql/mysql-server)  
@@ -199,10 +199,11 @@ InnoDB通过加间隙锁来防止幻读
 - 查看最大连接数 `show variables like "max_conn%";`
     - 设置最大连接数 `set global max_connections=5000;`
 
-
 ************************
 
 ## 存储引擎
+> [Alternative Storage Engines](https://dev.mysql.com/doc/refman/8.0/en/storage-engines.html)  
+
 ### InnoDB
 [InnoDB](/Database/MySQLInnodb.md)
 
