@@ -28,13 +28,16 @@ categories:
 - 2. [Tips](#tips)
     - 2.1. [SQL 片段](#sql-片段)
 
-💠 2024-06-21 10:47:46
+💠 2024-06-21 15:42:49
 ****************************************
 # MySQL进阶
 > [Github: MySQL Sever](https://github.com/mysql/mysql-server)  
 
 > [Mysql 5.7.35 源码解释](https://github.com/shockerli/mysql-annotated-5.7.35)  
 > [参考: shell 下执行mysql 命令](http://www.cnblogs.com/wangkangluo1/archive/2012/04/27/2472898.html)  
+
+> [JavaGuide: mysql](https://github.com/Snailclimb/JavaGuide/tree/main/docs/database/mysql)  
+> [图解MySQL介绍](https://xiaolincoding.com/mysql/)  
 
 ## 查询
 > [SQL通用优化方案(where优化、索引优化、分页优化、事务优化、临时表优化)](https://www.cnblogs.com/sochishun/p/7003513.html)  
