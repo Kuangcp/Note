@@ -22,8 +22,9 @@ categories:
     - 6.2. [top](#top)
     - 6.3. [smem](#smem)
     - 6.4. [vmstat](#vmstat)
-    - 6.5. [mpstat](#mpstat)
-    - 6.6. [iostat](#iostat)
+    - 6.5. [pidstat](#pidstat)
+    - 6.6. [mpstat](#mpstat)
+    - 6.7. [iostat](#iostat)
 - 7. [进程管理](#进程管理)
     - 7.1. [pidof](#pidof)
     - 7.2. [pgrep](#pgrep)
@@ -54,7 +55,7 @@ categories:
     - 8.7. [chroot](#chroot)
 - 9. [关机/重启](#关机重启)
 
-💠 2024-06-21 15:42:49
+💠 2024-06-25 15:55:14
 ****************************************
 # Linux性能分析和管理
 
@@ -139,6 +140,7 @@ categories:
 
 1. 监测CPU利用率 top,sysstat,mpstat,iostat,sar
 
+sysstat软件包：sysstat，mpstat vmstat iostat
 
 ************************
 > 工程化管理多个Linux主机
@@ -180,7 +182,7 @@ categories:
         - bo 每秒向块设备写入的块数量
     - system 区域:
         - in 每秒中断数(含时钟中断)
-        - cs 每秒上下文切换次数
+        - cs 每秒上下文切换次数 context switch
     - cpu 区域:
         - us 用户进程 cpu消耗时间百分比
         - sy 内核进程 cpu消耗百分比
@@ -202,10 +204,15 @@ categories:
 - ![p136](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p136.jpg)
 
 > 但是数值大一点就会列错位，可以用column来格式化 `vmstat  1 5 | column -t` 但是等到执行完了才能看到结果，此时可以输出到文件里，看的时候格式化
-> `vmstat  4 > run.log &` 然后 `less run.log | column -t` 但是顶级列头会错位，需要结合原始文件查看
+> `vmstat  4 > run.log &` 然后 `less run.log | column -t` . 或者 `watch 'tail -n 20 run.log| column -t '`
+
+## pidstat
+> Report statistics for Linux tasks.
+
+- 当使用vmstat发现cs值很高时可以查看是哪些进程引起的 `pidstat -w 5`
 
 ## mpstat
-> 对多处理器的统计, 和iostat同属于systat软件下,可能需要手动安装
+> 对多处理器的统计
 
 - `mpstat -P ALL 1 1` 查询所有CPU信息,后两个参数是和vmstat一样的, `如果只看0号CPU 就ALL改成0即可`
     - 运行结果:

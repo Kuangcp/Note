@@ -7,17 +7,17 @@ categories:
     - Linux
 ---
 
-**目录 start**
+💠
 
-1. [流编辑器](#流编辑器)
-    1. [tr](#tr)
-    1. [colrm](#colrm)
-    1. [cut](#cut)
-    1. [paste](#paste)
-    1. [sed](#sed)
-    1. [awk](#awk)
+- 1. [流编辑器](#流编辑器)
+    - 1.1. [tr](#tr)
+    - 1.2. [colrm](#colrm)
+    - 1.3. [cut](#cut)
+    - 1.4. [paste](#paste)
+    - 1.5. [sed](#sed)
+    - 1.6. [awk](#awk)
 
-**目录 end**|_2021-02-03 17:25_|
+💠 2024-06-25 15:55:14
 ****************************************
 # 流编辑器
 > [参考: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
@@ -25,8 +25,11 @@ categories:
 ## tr
 > 转换字符
 - 替换：可以使用字符集的形式如tr `[a-z]` `[A-Z]` 或者 tr a-z A-Z
-- 压缩：-s 如 `echo “you are        a    man   ” | tr -s ' ' ' '` 结果 `you are a man`
-- 删除：-d 如 `echo "you     are    a man"|  tr -d ' ' ` 结果 `youareaman`
+- 压缩：-s 如 `echo “you are        a    man   ” | tr -s ' ' ' '`
+    - 结果 `you are a man`
+- 删除：-d 如 `echo "you     are    a man"|  tr -d ' ' `
+    - 结果 `youareaman`
+- 合并多行 `ps aux | grep firefox | grep -v PID | awk '{print $2}'  | tr '\n' ','`
 
 ## colrm
 

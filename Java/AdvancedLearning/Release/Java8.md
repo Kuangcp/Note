@@ -80,7 +80,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2024-05-17 19:49:18
+💠 2024-06-25 15:55:14
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -1129,7 +1129,7 @@ java.util.stream.Collector
 
 # 时间处理
 
-1. SimpleDateFormat `yyyy-MM-dd HH:MM:SS` 但是线程不安全, Java8 可使用 `DateTimeFormatter` 
+1. SimpleDateFormat `yyyy-MM-dd HH:MM:SS` 但是线程不安全, Java8 可使用 `DateTimeFormatter` 例如 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")
 
 ## ZoneId
 >  time-zone ID

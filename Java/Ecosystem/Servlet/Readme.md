@@ -13,6 +13,7 @@
 ************************
 
 > [参考: Jetty和Tomcat的选择：按场景而定](http://www.open-open.com/lib/view/open1322622094390.html)
+> [详解web容器 - Jetty与Tomcat孰强孰弱](https://developer.aliyun.com/article/441105)
 
 ```
     一个简单项目, 就是index.jsp 里面放了个 Hello 字符串
