@@ -47,7 +47,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [常用代码片段](#常用代码片段)
 
-💠 2024-05-04 18:13:33
+💠 2024-06-26 10:57:11
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -372,6 +372,10 @@ _判断文件_
 
 ## 定时执行
 ### watch
+> execute a program periodically, showing output fullscreen
+
+- -d 高亮差异数据
+
 watch 等待命令对应进程执行完成后才进入计时到下一个周期执行，可以利用这个特性来执行异步shell
 
 > demo.sh 

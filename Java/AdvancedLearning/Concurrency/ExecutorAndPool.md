@@ -19,7 +19,7 @@ categories:
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2024-06-07 14:39:29
+💠 2024-06-26 10:57:11
 ****************************************
 # 线程池
 
@@ -177,12 +177,14 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 
 ************************
 
+[Java线程池实现原理及其在美团业务中的实践](https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html)
+    - 场景设计具有一定的开拓性，将无法预估的业务负载通过监控和动态伸缩来及时发现异常应对异常。
+    - [线程池动态监控](https://github.com/dromara/dynamic-tp)`支持修改和监控告警`
+
 [根据CPU核心数确定线程池并发线程数](https://www.cnblogs.com/dennyzhangdd/p/6909771.html)  
 [如何设置线程池参数？](https://www.cnblogs.com/thisiswhy/p/12690630.html)
 [线程池实时管理与监控工具的实现与思考](https://www.jianshu.com/p/6f6e2bcb8128)
 
-- [美团 线程池动态监控](https://github.com/dromara/dynamic-tp)  
-    - 场景设计具有一定的开拓性，将无法预估的业务负载通过监控和动态伸缩来及时发现异常应对异常。
 [线程池如何监控，才能帮助开发者快速定位线上错误？](https://heapdump.cn/article/4012121)`将基准数据采集到数据库表里`  
 
 ************************
