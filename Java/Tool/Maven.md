@@ -53,7 +53,7 @@ categories:
             - 2.2.2.1. [Gradle](#gradle)
             - 2.2.2.2. [Maven](#maven)
 
-💠 2024-05-10 11:56:13
+💠 2024-06-26 15:40:27
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -279,6 +279,7 @@ mvn install:install-file
 - 执行指定测试类 `mvn test -Dtest=类名`
 
 ### 打包部署
+获取项目版本 `mvn help:evaluate -Dexpression=project.version -q -DforceStdout`
 
 > [deploy with source](https://stackoverflow.com/questions/4725668/how-to-deploy-snapshot-with-sources-and-javadoc)
 ```xml
