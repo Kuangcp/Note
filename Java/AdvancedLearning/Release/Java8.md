@@ -80,7 +80,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2024-06-25 15:55:14
+💠 2024-06-28 14:22:39
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -913,7 +913,7 @@ Stream.collect 实现
                 )
             )); 
 ```
-- 这个分组的结果显然是一个map，以Dish的类型作为键，以包装了该类型中热量最高的Dish的Optional<Dish>作为值
+- 这个分组的结果显然是一个map，以Dish的类型作为键，以包装了该类型中热量最高的Dish的`Optional<Dish>`作为值
     - 但是这里的 Optional 存在的意义不大, 因为先有的类型 进行分组, 才会进行 maxBy 所以值是一定存在的
 
 > 1. 把收集器的结果转换为另一种类型
