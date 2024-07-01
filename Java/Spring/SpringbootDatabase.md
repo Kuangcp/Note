@@ -10,52 +10,47 @@ categories:
 💠
 
 - 1. [数据库模块](#数据库模块)
-    - 1.1. [Relational Database](#relational-database)
-        - 1.1.1. [多数据源配置](#多数据源配置)
-        - 1.1.2. [连接池](#连接池)
-            - 1.1.2.1. [c3p0](#c3p0)
-            - 1.1.2.2. [druid](#druid)
-            - 1.1.2.3. [HikariCP](#hikaricp)
-        - 1.1.3. [JPA](#jpa)
-            - 1.1.3.1. [Configuration](#configuration)
-        - 1.1.4. [Mybatis](#mybatis)
-            - 1.1.4.1. [自定义查询](#自定义查询)
-                - 1.1.4.1.1. [HQL](#hql)
-                - 1.1.4.1.2. [原生SQL](#原生sql)
-            - 1.1.4.2. [Mysql](#mysql)
-            - 1.1.4.3. [映射关系](#映射关系)
-                - 1.1.4.3.1. [一对一](#一对一)
-                - 1.1.4.3.2. [一对多](#一对多)
-                - 1.1.4.3.3. [多对多](#多对多)
-        - 1.1.5. [Restful设计](#restful设计)
-            - 1.1.5.1. [【特别注意】](#特别注意)
-        - 1.1.6. [Jpa数据分页](#jpa数据分页)
-        - 1.1.7. [数据库上的事务支持](#数据库上的事务支持)
-    - 1.2. [Non Relational database](#non-relational-database)
-        - 1.2.1. [JPA](#jpa)
-            - 1.2.1.1. [Redis的简单使用](#redis的简单使用)
-            - 1.2.1.2. [关于StringRedisTemplate的方法使用](#关于stringredistemplate的方法使用)
-            - 1.2.1.3. [消息订阅和发布](#消息订阅和发布)
+    - 1.1. [多数据源配置](#多数据源配置)
+    - 1.2. [连接池](#连接池)
+        - 1.2.1. [c3p0](#c3p0)
+        - 1.2.2. [druid](#druid)
+        - 1.2.3. [HikariCP](#hikaricp)
+    - 1.3. [Relational Database](#relational-database)
+        - 1.3.1. [JPA](#jpa)
+            - 1.3.1.1. [Configuration](#configuration)
+            - 1.3.1.2. [Jpa数据分页](#jpa数据分页)
+            - 1.3.1.3. [原生SQL](#原生sql)
+            - 1.3.1.4. [Mysql](#mysql)
+            - 1.3.1.5. [映射关系](#映射关系)
+                - 1.3.1.5.1. [一对一](#一对一)
+                - 1.3.1.5.2. [一对多](#一对多)
+                - 1.3.1.5.3. [多对多](#多对多)
+        - 1.3.2. [Mybatis](#mybatis)
+    - 1.4. [Non Relational database](#non-relational-database)
+        - 1.4.1. [Redis](#redis)
+            - 1.4.1.1. [关于StringRedisTemplate的方法使用](#关于stringredistemplate的方法使用)
+            - 1.4.1.2. [消息订阅和发布](#消息订阅和发布)
 
-💠 2024-07-01 13:53:16
+💠 2024-07-01 14:41:15
 ****************************************
 # 数据库模块
-> 主要是采用的JPA，极大的缩减了代码量，但是要注意不要过度依赖框架，丧失了基本的能力
+> [Spring Data](https://spring.io/projects/spring-data)
 
-## Relational Database
-### 多数据源配置
-> 为什么要有多数据源? 思考
+## 多数据源配置
+> 为什么要有多数据源? 
+- 业务发展和划分拆解导致业务库被拆分（例如用户库，订单库），或者异构数据源支撑（订单库MySQL，订单快照库ES）
 
 > [Spring Boot多数据源配置与使用](https://www.jianshu.com/p/34730e595a8c)
 
-### 连接池
-#### c3p0
-- [参考博客](http://www.cnblogs.com/520playboy/p/7526252.html)
+## 连接池
+### c3p0
+> [Github](https://github.com/swaldman/c3p0)
+- [参考博客: springboot 使用c3p0数据库连接池](http://www.cnblogs.com/520playboy/p/7526252.html)
 
-#### druid
+### druid
 - [druid连接池的配置](http://makaidong.com/L_Sail/1/40930_11573921.html)
 
-> [druid连接池引起的线程blocked](https://segmentfault.com/a/1190000041500544)`驱动改名引起的扩散问题`  
+> [druid连接池引起的线程blocked](https://segmentfault.com/a/1190000041500544)`驱动改名引起的连锁反应`  
 
 常见配置项
 - com.alibaba.druid.pool.DruidDataSource#configFromPropety 环境变量 可配置项
@@ -109,10 +104,11 @@ categories:
     - `com.alibaba.druid.pool.ValidConnectionChecker` 检查连接可用，注意MySQL PG都有协议层的ping方式，更省资源（类似ws协议中的Ping报文），其他数据库一般是配置校验SQL为 `select 1`
 
 
-#### HikariCP
+### HikariCP
 > [HikariCP](https://github.com/brettwooldridge/HikariCP)
 
 *******************
+## Relational Database
 ### JPA
 > 连接池:1.x 默认是tomcat-jdbc连接池 2.x 是 HikariPool
 
@@ -133,19 +129,14 @@ categories:
 
 - [ ] 怎么映射视图到实体上?
 
-### Mybatis
+#### Jpa数据分页
+> [参考博客](https://www.tianmaying.com/tutorial/spring-jpa-page-sort)
 
-> [IDEA下创建Springboot，thymeleaf，Mybatis，Postgresql，Gradle项目](https://blog.csdn.net/juewang_love/article/details/53769906)
+- 分页 page 从0开始 size是个数 sort可以不需要（如果本来就是id排序就没必要了） 
+    - 原理就是 预编译SQL然后查询总数，然后再执行 必须有两条SQL执行
+- 查询的结果不包含实体的id属性
 
-#### 自定义查询
-##### HQL
-- 使用Hibernate语法模式,将对象和数据库的表看成一个实体,方便书写SQL,但是在Controller层和Service层
-    - 进行写代码的时候,参数的传递全是实体对象,要不停的new,这样真的没问题么(当有各种复杂的关联关系的时候,单个对象的CURD基本没有什么问题)
-    - `TODO` 所以还不如直接写原生SQL! 那么JPA就真的没有使用的必要性了,直接用Mybatis结合插件生成自动的CRUD的代码,这样更为轻量
-    - 待后续使用后再回来填坑
-
-##### 原生SQL
-
+#### 原生SQL
 - 涉及到数据的修改,就要加上前两个前缀,查询就直接写Query注解即可
 ```java
     @Modifying
@@ -220,70 +211,15 @@ public class TestMany {
 
 ##### 多对多
 
-*************
-### Restful设计
-- 1.添加依赖
 
-```xml
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-rest</artifactId>
-    </dependency>
-```
-- 2.引入自动配置类
-
-```java
-    @Configuration
-    public class RestConfiguration extends RepositoryRestMvcConfiguration {
-        @Override
-        public RepositoryRestConfiguration config() {
-            return super.config();
-        }
-        @Override
-        public ProfileResourceProcessor profileResourceProcessor(RepositoryRestConfiguration config) {
-            // 设置rest根目录是应用路径下的路径 : localhost:8080/rest
-            config.setBasePath("/rest");
-            // 允许输出id
-            config.exposeIdsFor(Goods.class);
-            return super.profileResourceProcessor(config);
-        }
-    }
-```
-- 3.配置repository的名字例如：（只要配置repository就能用REST了）
-
-```java
-    @RepositoryRestResource(path = "book")
-    public interface BookDao extends JpaRepository<Book,Long>{}
-```
-
-- 4.启动应用，控制台有如下输出
-![输出](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Java/Spring/output.png)
-
-- 所有路径的使用方法：
-    - `GET` 查询单个 `/repo/id` 成功：200 失败404
-    - `GET` 查询所有 `/repo` 成功200 失败404
-    - `POST` 新增 `/repo` json数据发送 成功 201 失败404
-    - `DELETE` 删除 `/repo/id` json数据 成功204 失败404
-    - `PUT` 更新 `/repo/id` json 更新成功200 没有该id就插入201 失败404（使用主键自动增长就不会遇到404）
-
-#### 【特别注意】
-- rest得到的数据没有id
-    - 添加配置 `config.exposeIdsFor(Goods.class);` 即可查看到id [参考博客](http://tommyziegler.com/how-to-expose-the-resourceid-with-spring-data-rest/)
-
-### Jpa数据分页
-> [参考博客](https://www.tianmaying.com/tutorial/spring-jpa-page-sort)
-
-- 分页 page 从0开始 size是个数 sort可以不需要（如果本来就是id排序就没必要了） 
-    - 原理就是 预编译SQL然后查询总数，然后再执行 必须有两条SQL执行
-- 查询的结果不包含实体的id属性
-
-### 数据库上的事务支持
-- JPA对所有默认方法都开启了事务支持，查询类事务默认启用readOnly=true
+### Mybatis
+> [Mybatis](/Java/Ecosystem/Mybatis.md)
 
 ****************
 ## Non Relational database
-### JPA
-#### Redis的简单使用
+### Redis
+> [Spring Data Redis](https://spring.io/projects/spring-data-redis)
+
 _配置连接信息_
 ```conf
     # REDIS (RedisProperties)
