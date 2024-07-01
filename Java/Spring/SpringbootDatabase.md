@@ -37,7 +37,7 @@ categories:
             - 1.2.1.2. [关于StringRedisTemplate的方法使用](#关于stringredistemplate的方法使用)
             - 1.2.1.3. [消息订阅和发布](#消息订阅和发布)
 
-💠 2024-06-18 15:17:36
+💠 2024-07-01 13:53:16
 ****************************************
 # 数据库模块
 > 主要是采用的JPA，极大的缩减了代码量，但是要注意不要过度依赖框架，丧失了基本的能力
@@ -57,12 +57,57 @@ categories:
 
 > [druid连接池引起的线程blocked](https://segmentfault.com/a/1190000041500544)`驱动改名引起的扩散问题`  
 
+常见配置项
+- com.alibaba.druid.pool.DruidDataSource#configFromPropety 环境变量 可配置项
+
+```yml
+      # 初始连接数
+      initialSize: 6
+      # 最小连接池数量
+      minIdle: 6
+      # 最大连接池数量
+      maxActive: 200
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 驱逐连接：配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 驱逐连接：配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 200000
+      # 驱逐连接：配置一个连接在池中最大生存的时间，单位是毫秒
+      maxEvictableIdleTimeMillis: 280000
+      # 心跳保活
+      keepAlive: true
+      # 心跳保活间隔，keepAlive开启才生效
+      keepAliveBetweenTimeMillis: 40000
+      # 配置检测连接是否有效 创建连接和心跳保活时执行
+      validationQuery: SELECT 1
+      # 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于 timeBetweenEvictionRunsMillis ，执行validationQuery检测连接是否有效
+      testWhileIdle: true
+      # 申请连接时执行validationQuery检测连接是否有效 性能影响明显
+      testOnBorrow: false
+      # 归还连接时执行validationQuery检测连接是否有效 性能影响明显
+      testOnReturn: false
+```
+
+> validationQuery执行场景
+
+周期检查 keepAlive  
+![](./img/001-druid.jpg) 
+
+获取连接时 闲置很久的连接触发检查  
+![](./img/002-druid.jpg)
+
+创建连接时的检查  
+![](./img/003-druid.jpg)
+
+
 ************************
 
 > [Druid连接检查机制](https://blog.csdn.net/qq_37993902/article/details/124777056)
-- com.alibaba.druid.pool.DruidDataSource#createAndStartDestroyThread 创建检查连接的调度或单线程
-    - com.alibaba.druid.pool.DruidDataSource#shrink(boolean, boolean) 决策是否执行连接检查和补充新连接逻辑 
-    - com.alibaba.druid.pool.ValidConnectionChecker 检查连接可用，注意MySQL PG都有协议层的ping方式，更省资源（类似ws协议中的Ping报文），其他数据库一般是配置校验SQL为 `select 1`
+- `com.alibaba.druid.pool.DruidDataSource#createAndStartDestroyThread` 定时调度或单线程方式 周期性 检查连接
+    - `com.alibaba.druid.pool.DruidDataSource#shrink(boolean, boolean)` keepAlive保活，补充新连接，关闭连接（异常，空闲超时）
+    - `com.alibaba.druid.pool.ValidConnectionChecker` 检查连接可用，注意MySQL PG都有协议层的ping方式，更省资源（类似ws协议中的Ping报文），其他数据库一般是配置校验SQL为 `select 1`
+
 
 #### HikariCP
 > [HikariCP](https://github.com/brettwooldridge/HikariCP)
