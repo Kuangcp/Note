@@ -80,7 +80,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2024-06-28 14:22:39
+💠 2024-07-03 17:43:26
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -766,6 +766,8 @@ List<int[]> pairs = numbers1.stream()
     Optional<Integer> min = numbers.stream().reduce(Integer::min);
     Optional<Integer> min = numbers.stream().reduce((x, y) -> x < y ? x : y);
 ```
+
+> `return Stream.of(1，2，5，6).summaryStatistics();` 包含： 最大值，最小值，平均值，总数
 
 #### 归约的优势与并行化
 相比于前面写的逐步迭代求和，使用 reduce 的好处在于，这里的迭代被内部迭代抽象掉了，这让内部实现得以选择并行执行reduce 操作。  
