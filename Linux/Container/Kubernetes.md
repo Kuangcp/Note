@@ -13,11 +13,11 @@ categories:
     - 1.1. [相关博客](#相关博客)
     - 1.2. [安装](#安装)
         - 1.2.1. [minikube](#minikube)
-    - 1.3. [简单使用](#简单使用)
-    - 1.4. [容器编排](#容器编排)
+    - 1.3. [使用](#使用)
+        - 1.3.1. [实践](#实践)
 - 2. [Kubeless](#kubeless)
 
-💠 2024-03-04 17:26:01
+💠 2024-07-03 11:36:44
 ****************************************
 
 # Kubernetes
@@ -64,13 +64,34 @@ categories:
 ### minikube
 > [minikube](https://minikube.sigs.k8s.io/docs/start/)
 
-## 简单使用
-
+## 使用
 > 大多数命令和 Docker 是类似的，只不过加上了 namespace 的概念
 
-- kubectl logs --namespace namespace pod
+- 查看日志： kubectl logs --namespace namespace pod
 
-## 容器编排
+### 实践
+> Pod调度资源倾斜
+- [你真的理解 K8s 中的 requests 和 limits 吗？](https://kubesphere.io/zh/blogs/deep-dive-into-the-k8s-request-and-limit)
+- [管理容器的计算资源](https://kuboard.cn/learning/k8s-intermediate/config/computing-resource.html)
+- [Kubernetes 节点标签和定向调度](http://zongming.net/read-1333/)
+
+结论：pod尽量按过往监控的情况设置合理的 requests 和 limits, 如果仍有明显的倾斜，可以进一步配置节点亲和 nodeAffinity 例如
+```yml
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - node03
+                      - node04
+```
+
+************************
+
 
 # Kubeless
 
