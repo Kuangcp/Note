@@ -249,6 +249,14 @@ sysstat软件包：sysstat，mpstat vmstat iostat
 - ![p163](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p163.jpg)
 - ![p164](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p164.jpg)
 
+************************
+
+## ifstat
+> handy utility to read network interface statistics
+
+- -a 全部统计信息
+- -t sec 过去时间内流量信息
+
 ****************************
 
 # 进程管理
