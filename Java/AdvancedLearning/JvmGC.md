@@ -21,22 +21,23 @@ categories:
         - 1.5.2. [复制算法](#复制算法)
         - 1.5.3. [标记整理算法](#标记整理算法)
     - 1.6. [GC Callback](#gc-callback)
-- 2. [GC日志](#gc日志)
-- 3. [垃圾收集器](#垃圾收集器)
-    - 3.1. [默认垃圾收集器](#默认垃圾收集器)
-    - 3.2. [Serial](#serial)
-    - 3.3. [ParNew](#parnew)
-    - 3.4. [Parallel Scavenge](#parallel-scavenge)
-    - 3.5. [Serial Old](#serial-old)
-    - 3.6. [Parallel Old](#parallel-old)
-    - 3.7. [CMS](#cms)
-    - 3.8. [G1](#g1)
-    - 3.9. [ZGC](#zgc)
-    - 3.10. [ShenandoahGC](#shenandoahgc)
-    - 3.11. [Epsilon](#epsilon)
-- 4. [最佳实践](#最佳实践)
+- 2. [GC参数](#gc参数)
+- 3. [GC日志](#gc日志)
+- 4. [垃圾收集器](#垃圾收集器)
+    - 4.1. [默认垃圾收集器](#默认垃圾收集器)
+    - 4.2. [Serial](#serial)
+    - 4.3. [ParNew](#parnew)
+    - 4.4. [Parallel Scavenge](#parallel-scavenge)
+    - 4.5. [Serial Old](#serial-old)
+    - 4.6. [Parallel Old](#parallel-old)
+    - 4.7. [CMS](#cms)
+    - 4.8. [G1](#g1)
+    - 4.9. [ZGC](#zgc)
+    - 4.10. [ShenandoahGC](#shenandoahgc)
+    - 4.11. [Epsilon](#epsilon)
+- 5. [最佳实践](#最佳实践)
 
-💠 2024-06-01 15:50:01
+💠 2024-07-12 11:40:30
 ****************************************
 # GC
 > Java Garbage Collection
@@ -237,6 +238,19 @@ GC Roots 对象包含:
 ## GC Callback
 > [Letting the Garbage Collector Do Callbacks](https://dzone.com/articles/letting-garbage-collector-do-c)  
 > [Garbage Collection JMX Notifications](http://www.fasterj.com/articles/gcnotifs.shtml)
+
+************************
+# GC参数
+- `-Xloggc:/app/logs/gc_%t_%p.log` 指定GC日志 并 设置文件格式 **注意目录要已存在**
+    - %t 日期时间
+    - %p 进程号
+- `-verbose:gc`
+- `-XX:+PrintGCDetails`
+- `-XX:+PrintGCDateStamps`
+- `-XX:+UseGCLogFileRotation `
+- `-XX:NumberOfGCLogFiles=< number of log files > `
+- `-XX:GCLogFileSize=< file size >[ unit ]`
+- `-XX:MaxTenuringThreshold=15` 年轻代对象晋升年龄阈值 默认值15
 
 ************************
 

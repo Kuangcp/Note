@@ -14,7 +14,6 @@ categories:
     - 1.2. [JVM内存参数](#jvm内存参数)
         - 1.2.1. [容器内的JVM](#容器内的jvm)
         - 1.2.2. [内存参数实践](#内存参数实践)
-    - 1.3. [GC参数](#gc参数)
 - 2. [JVM 基本结构](#jvm-基本结构)
 - 3. [内存区域](#内存区域)
     - 3.1. [运行时数据区](#运行时数据区)
@@ -34,7 +33,7 @@ categories:
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-05-14 17:44:18
+💠 2024-07-12 11:40:30
 ****************************************
 # JVM
 > JVM结构及设计
@@ -149,17 +148,6 @@ Oracle JDK 默认采用的是 Hotspot JVM
 > [参考: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)  
 > [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`  
 > [参考: JVM动态反优化](https://blog.mythsman.com/post/5d2c12cc67f841464434a3ec/)   
-
-## GC参数
-- `-Xloggc:/app/logs/gc_%t_%p.log` 指定GC日志 并 设置文件格式 **注意目录要已存在**
-    - %t 日期时间
-    - %p 进程号
-- `-verbose:gc`
-- `-XX:+PrintGCDetails`
-- `-XX:+PrintGCDateStamps`
-- `-XX:+UseGCLogFileRotation `
-- `-XX:NumberOfGCLogFiles=< number of log files > `
-- `-XX:GCLogFileSize=< file size >[ unit ]`
 
 ************************
 

@@ -24,7 +24,7 @@ categories:
     - 5.1. [Java](#java)
     - 5.2. [JS](#js)
 
-💠 2024-05-03 12:21:37
+💠 2024-07-12 11:40:30
 ****************************************
 # Java中的Websocket
 JSR-356
@@ -175,7 +175,8 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 1. 推送消息 session.sendMessage(new TextMessage("text"));
 
 ## Netty
-> [Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/netty/websocket)
+> [Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/netty/websocket)  
+> [Netty websocket springboot starter](https://gitee.com/gin9/netty-ws-starter)  
 
 [SpringBoot整合Netty处理WebSocket（支持url参数）](https://blog.csdn.net/RisenMyth/article/details/104441155)
 
