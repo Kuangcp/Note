@@ -23,7 +23,7 @@ categories:
     - 2.2. [Koloboke](#koloboke)
     - 2.3. [Trove](#trove)
 
-💠 2024-04-07 15:54:52
+💠 2024-07-13 00:44:21
 ****************************************
 # JDK中的集合
 
@@ -41,6 +41,7 @@ categories:
             - TreeSet
     - Queue 接口 _队列接口_
         - PiorityQueue
+        - Dueue 双端队列
 
 - Map接口
     - HashMap _无序, key不重复_

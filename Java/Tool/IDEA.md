@@ -35,7 +35,7 @@ categories:
     - 3.2. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
     - 3.3. [无法启动fcitx输入中文](#无法启动fcitx输入中文)
 
-💠 2024-04-21 16:51:43
+💠 2024-07-13 00:44:21
 ****************************************
 
 # IDEA 使用笔记
@@ -355,6 +355,7 @@ _例如修改为如下_
 1. Docker
 1. Kubernates
 1. Maven helper
+1. Maven Project Version 快速修改整个项目所有模块的版本号
 1. Grep console 控制台搜索工具
 1. Code with me 远程协作插件
 1. jclasslib Bytecode Viewer 字节码查看插件
