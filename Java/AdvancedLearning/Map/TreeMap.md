@@ -5,14 +5,15 @@ tags:
 categories: 
 ---
 
-**目录 start**
+💠
 
-1. [TreeMap](#treemap)
+- 1. [TreeMap](#treemap)
 
-**目录 end**|_2020-04-27 23:42_|
+💠 2024-05-06 19:59:21
 ****************************************
 # TreeMap
 > [参考: 通过分析 JDK 源代码研究 TreeMap 红黑树算法实现](https://www.ibm.com/developerworks/cn/java/j-lo-tree/index.html)  
 > [参考: TreeMap详细介绍(源码解析)和使用示例](http://www.cnblogs.com/skywang12345/p/3310928.html)  
 
+> [聊聊 HashMap 和 TreeMap 的内部结构](http://mp.weixin.qq.com/s?__biz=MzAxNjk4ODE4OQ==&mid=2247488637&idx=3&sn=ee2d6e2101368a424b6a485f0d644e1a&chksm=9bed350fac9abc1954d704d9b94edf805ef56ce82e3a99f6f316c899de1dc6f06722d7927eb5&mpshare=1&scene=1&srcid=&sharer_sharetime=1586600321631&sharer_shareid=246c4b52c1cb45eaa580c985c95107f3#rd)
 

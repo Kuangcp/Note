@@ -21,7 +21,7 @@ categories:
         - 1.5.4. [通配符捕获](#通配符捕获)
     - 1.6. [反射和泛型](#反射和泛型)
 
-💠 2023-11-24 18:05
+💠 2024-07-10 00:40:24
 ****************************************
 # 泛型
 > [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
@@ -130,63 +130,69 @@ super 只能用于通配符
 
 - _不能实例化类型变量(T)以及数组_
     - 非法 `new T(){}`
-```java
-    public Pair(){
-        first = new T();
-        second = new T();
-    }
-    
-    //非法 T.class是不合法的
-    first = T.class.newInstance() 
-
-    //要实例化一个Pair<T>的对象就要如下:
-    public static <T> Pair<T> initPair(Class<T> c){
-        try{
-            return new Pair<T>(c.newInstance(), c.newInstance());
-        }catch (Exception e){
-            return null;
+    ```java
+        public Pair(){
+            first = new T();
+            second = new T();
         }
-    }
-    // 如下调用
-    Pair<String> pair = Pair.initPair(String.class);
-    // 因为Class本身是泛型, String.class其实是Class<String>的实例
-    // 也不能实例化为一个数组 new T[5]
-```
+        
+        //非法 T.class是不合法的
+        first = T.class.newInstance() 
+
+        //要实例化一个Pair<T>的对象就要如下:
+        public static <T> Pair<T> initPair(Class<T> c){
+            try{
+                return new Pair<T>(c.newInstance(), c.newInstance());
+            }catch (Exception e){
+                return null;
+            }
+        }
+        // 如下调用
+        Pair<String> pair = Pair.initPair(String.class);
+        // 因为Class本身是泛型, String.class其实是Class<String>的实例
+        // 也不能实例化为一个数组 new T[5]
+    ```
 
 - _泛型类的静态上下文中类型变量无效_
     - 不能在静态域中使用类型变量 如下:
     - 如果这段代码能执行,那就可以声明一个 Singleton<Random> 共享随机数生成类,
     - 但是声明之后,类型擦除,就只剩下了Singleton类,并不能做对应的事情,所以禁止这样的写法
-```java
-    private static T first; // 错误
-    public static T getFirst(){ // 错误
-        return first;
-    }
-```
+    ```java
+        private static T first; // 错误
+        public static T getFirst(){ // 错误
+            return first;
+        }
+    ```
+
 - _注意泛型擦除后的冲突_
     - 当类型擦除时,不能创建引发冲突的相关条件
     - 例如 新实现一个类型变量约束的equals方法就会和Object原方法冲突 补救方法就是重命名该方法了
-    
-```java
-    public class Pair<T>{
-        public boolean equals (T value){
-            return ..
+    ```java
+        public class Pair<T>{
+            public boolean equals (T value){
+                return ..
+            }
         }
-    }
-```
+    ```
+
 `泛型规范说明`
 -  要想支持擦除的转换,就需要强行限制一个类或类型变量不能同时成为两个接口类型的子类,而这两个接口是同一接口的不同参数化
     - 以下代码就是非法的, GregorianCalendar 实现了两个接口,两个接口是Comparable接口的不同参数化,这是不允许的
-```java
-    class Calendar implements Comparable<Calendar>{}
-    class GregorianCalendar extends Calendar implements Comparable<GregorianCalendar>{} // 错误
-```
-- 但是如下又是合法的
-```java
-    class Calendar implements Comparable{}
-    class GregorianCalendar extends Calendar implements Comparable{}
-```
-- 很有可能是桥方法有关,不可能有两个一样的桥方法(因为两个接口其实是一个接口的不同参数化,桥方法的方法签名是一致的)
+    ```java
+        class Calendar implements Comparable<Calendar>{}
+        class GregorianCalendar extends Calendar implements Comparable<GregorianCalendar>{} // 错误
+    ```
+    - 但是如下又是合法的
+    ```java
+        class Calendar implements Comparable{}
+        class GregorianCalendar extends Calendar implements Comparable{}
+    ```
+    - 很有可能是桥方法有关,不可能有两个一样的桥方法(因为两个接口其实是一个接口的不同参数化,桥方法的方法签名是一致的)
+
+> Tips
+- Stream Optional结合泛型出现的极端问题 [JDK bugs：嵌套泛型](https://bugs.openjdk.org/browse/JDK-8313448)
+- [Stream bug](https://github.com/Kuangcp/JavaBase/blob/master/java8/src/test/java/com/github/kuangcp/stream/bug/StreamGenericTest.java)
+- [Lambda 多继承bug](https://github.com/Kuangcp/JavaBase/blob/master/java8/src/test/java/com/github/kuangcp/lambda/bug/MultipleExtendsTest.java)
 
 *******************************************
 

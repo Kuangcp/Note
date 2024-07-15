@@ -16,7 +16,7 @@ categories:
 - 2. [Tool](#tool)
 - 3. [爬虫](#爬虫)
 
-💠 2024-04-22 20:07:13
+💠 2024-05-22 22:00:47
 ****************************************
 
 # Web
@@ -31,6 +31,8 @@ categories:
 
 > [FastAPI增加traceId](https://segmentfault.com/a/1190000041438570)
 > [FastApi结合loguru日志使用](https://blog.csdn.net/qq_51967017/article/details/134045236)
+
+[异步任务](https://fastapi.tiangolo.com/zh/tutorial/background-tasks/)
 
 ************************
 

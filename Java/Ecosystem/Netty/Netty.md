@@ -7,49 +7,23 @@ categories:
 
 💠
 
-- 1. [Netty](#netty)
-    - 1.1. [使用](#使用)
-        - 1.1.1. [基础构件](#基础构件)
-        - 1.1.2. [编解码相关](#编解码相关)
-            - 1.1.2.1. [Protobuf](#protobuf)
-    - 1.2. [原理](#原理)
-        - 1.2.1. [内存设计](#内存设计)
-    - 1.3. [Websocket](#websocket)
-    - 1.4. [复合组件](#复合组件)
+- 1. [Netty 使用](#netty-使用)
+    - 1.1. [基础构件](#基础构件)
+    - 1.2. [编解码相关](#编解码相关)
+        - 1.2.1. [Protobuf](#protobuf)
+- 2. [Websocket](#websocket)
+- 3. [衍生框架](#衍生框架)
+- 4. [Reactor Netty](#reactor-netty)
 
-💠 2024-03-29 16:27:25
+💠 2024-06-16 16:48:43
 ****************************************
-# Netty
-> [Trustlin](https://github.com/trustin) `Netty Mina 的作者`  
-
-Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。
-
-> [知乎: 通俗地讲，Netty 能做什么？](https://www.zhihu.com/question/24322387)  
-> [为什么选择Netty作为基础通信组件？ ](https://my.oschina.net/zhaky/blog/760469)
-> [Netty 实战(精髓)](https://klose911.github.io/html/netty/netty.html)  
-
-************************
-
-> [Netty4.x官方文档](http://netty.io/wiki/user-guide-for-4.x.html)  
-> [Netty权威指南](https://javablog.net/book/3/netty-authoritative-guide.html)  
-> [Reactive Extension (Rx) Adaptor for Netty ](https://github.com/ReactiveX/RxNetty)
-
-> [《Netty 实战》 Netty In Action 中文版](https://github.com/ReactivePlatform/netty-in-action-cn)
-> [参考: 从线程模型的角度看 Netty 为什么是高性能的？ ](https://crossoverjie.top/2018/07/04/netty/Netty(2)Thread-model/)  
-
-************************
-
-## 使用
-> 部分内容参考自 Netty权威指南第二版
-
-> [手淘、微博一直钟情的 Netty框架是个什么鬼？](https://yq.aliyun.com/roundtable/53346)
-> [对于Netty的十一个疑问  ](https://news.cnblogs.com/n/205413/)  
+# Netty 使用
 > [NettyServer与SpringBoot集成](https://segmentfault.com/a/1190000004919133)  
 > [Netty NIO 框架性能压测-短链接-对比Tomcat ](http://www.oschina.net/question/12_8749)
 
 > [Github: Netty Example](https://github.com/netty/netty/tree/4.1/example)
 
-### 基础构件
+## 基础构件
 
 - Channel
     - Channel 是 NIO 基本的结构：一个 用于连接到实体(硬件设备 、文件 、网络套接字或程序组件)，能够执行一个或多个不同的 I/O 操作（读或写）的开放连接。
@@ -87,10 +61,12 @@ Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件�
     - EventLoop 本身是由**单线程**去处理 Channel 所有的 I/O 事件，并且在 EventLoop 的生命周期内不会改变
     - 这个简单而强大的线程模型，使得 ChannelHandler 无需关注线程同步问题
 
-### 编解码相关
+## 编解码相关
+> [Netty 编解码技术 数据通信和心跳监控案例](https://segmentfault.com/a/1190000013122610)  
+> [Netty 拆包粘包和服务启动流程分析](https://segmentfault.com/a/1190000013039327)  
 > [参考: Netty(三) 什么是 TCP 拆、粘包？如何解决？](https://crossoverjie.top/2018/08/03/netty/Netty(3)TCP-Sticky/)  
 
-#### Protobuf
+### Protobuf
 > [Protobuf基础](/Java/AdvancedLearning/ClassFile.md#protobuf) | 
 > [Netty中的使用案例](https://github.com/Kuangcp/NettyBook2/blob/master/src/main/java/com/phei/netty/codec/protobuf/README.md)
 >> 要搭配处理半包的解码器
@@ -100,28 +76,8 @@ Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件�
 3. 继承自 ByteToMessageDecoder 自己处理
 
 *****************************
-## 原理
-> [Netty 编解码技术 数据通信和心跳监控案例](https://segmentfault.com/a/1190000013122610)  
-> [Netty 拆包粘包和服务启动流程分析](https://segmentfault.com/a/1190000013039327)  
-> [Netty序章之BIO NIO AIO演变](https://segmentfault.com/a/1190000012976683)
 
-> 源码解读
-> [官方Demo](https://github.com/netty/netty/tree/4.1/example/src/main/java/io/netty/example)
-> [Netty实战配套源码](https://github.com/ReactivePlatform/netty-in-action-cn)
-> [Netty权威指南2 源码](https://github.com/Kuangcp/NettyBook2)
-
-
-### 内存设计
-
-> 直接内存
-
-- -Dio.netty.noPreferDirect 是否运行通过底层api直接访问直接内存，默认：允许
-- -Dio.netty.noUnsafe 是否允许使用sun.misc.Unsafe，默认：允许
-- -Dio.netty.maxDirectMemory 设置最大值
-
-************************
-
-## Websocket
+# Websocket
 
 > 接收数据buffer读取流程： 优势是新连接申请的内存低，实际使用中会对申请的buffer扩缩容，平衡缓存池利用率和读取效率
 1. 读取Socket中数据入口： `io.netty.channel.nio.AbstractNioByteChannel.NioByteUnsafe#read`
@@ -135,6 +91,15 @@ Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件�
 
 ************************
 
-## 复合组件
+# 衍生框架
 > [netty-socketio](https://github.com/mrniko/netty-socketio)  
+> [kcp-netty](https://github.com/szhnet/kcp-netty)  
+> [Reactive Extension (Rx) Adaptor for Netty ](https://github.com/ReactiveX/RxNetty) RxNetty
+
+************************
+
+# Reactor Netty
+> [Doc](https://projectreactor.io/docs/netty/release/reference/index.html#about-doc)
+
+> [个人 样例代码](https://github.com/Kuangcp/JavaBase/tree/master/netty/src/main/java/reactor)
 

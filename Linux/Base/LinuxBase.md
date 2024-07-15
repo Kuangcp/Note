@@ -60,7 +60,7 @@ categories:
     - 5.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 5.5. [熵池](#熵池)
 
-💠 2024-04-19 18:16:21
+💠 2024-05-19 23:35:07
 ****************************************
 
 # Linux系统
@@ -83,6 +83,8 @@ categories:
 > [在线Linux终端](https://itsfoss.com/online-linux-terminals/) `有浏览器虚拟化，以及远程主机多种类型的实现`
 
 > [闪客：品读 Linux 0.11 核心代码](https://github.com/dibingfa/flash-linux0.11-talk)
+
+![](/Linux/Base/img/001-linux-base-cmd.km.svg)
 
 ## Boot
 安装和启动Linux
@@ -330,13 +332,14 @@ alpine 里的sh和ash 默认是不登录shell 需要使用 sh -l 或者 ash -l �
 
 > 问题
 - 线上的Centos7.9上运行的Java8进程，12月11日启动的进程，但是1月3日突然 /proc/pid/fd/下的fd都发生了更新`无法查看创建时间`，但是/proc/pid的目录时间是对的
-  - 问题： 为什么会发生修改，标准输入输出，以及依赖的jar的fd都发生了修改
+   - 问题：为什么会发生修改，标准输入输出，以及依赖的jar的fd都发生了新创建和修改
+   - 原因：proc是虚拟文件系统，属性值取决了查询或操作系统管理需要时构建出来
 
 ### 线程
 
 1. 查看创建一个线程占用内存大小 `ulimit -s`
 2. 查看进程下的线程 `ps -T pid`
-3. 查看最大线程数 `cat /proc/sys/kernel/threads-max`
+3. 查看最大线程数 `cat /proc/sys/kernel/threads-max` 默认值 256287
 
 ************************
 
@@ -458,9 +461,13 @@ _系统运行级别_
 
 - Usage 和 Load 的区别， 使用率针对于Cpu 时间，负载针对于等待和进行中的线程
 - 使用uptime、top或者 `cat /proc/loadavg`都可以看到CPU的load 1 5 15 分钟的负载。
-- LOAD AVERAGE：一段时间内处于可运行状态和不可中断状态的进程平均数量。（可运行分为正在运行进程和正在等待CPU的进程，状态为R；不可中断则是它正在做某些工作不能被中断比如等待磁盘IO等，其状态为D），它是从另外一个角度体现CPU的使用状态。
+    - LOAD AVERAGE：一段时间内处于可运行状态和不可中断状态的进程平均数量,它是从另外一个角度体现CPU的使用状态。
+        - 可运行分为正在`运行进程`和`正在等待CPU`的进程，**状态为R**
+        - 不可中断则是它正在做某些工作不能被中断比如等待磁盘IO等，**其状态为D**
+    > 注意: 一个逻辑核且负载为1时表示有线程一直在等待或运行（满载），四个逻辑核且负载为4时表示四个核心都一直有线程在等待或运行（满载）
+- lscpu 展示CPU信息
 
-> 注意: 一个核负载为1表示有线程一直在等待（满载），四个核负载为4表示四个核心都一直有线程在等待（满载）
+- taskset 将任务绑定在指定cpu核心上
 
 ************************
 
@@ -477,6 +484,9 @@ _系统运行级别_
 
 > [linux ate my ram](https://www.linuxatemyram.com/)  
 > [Empty the Buffer and Cache in Linux](https://www.baeldung.com/linux/empty-buffer-cache)
+
+查看内存大页设置 `cat /sys/kernel/mm/transparent_hugepage/enabled`  
+关闭内存大页 `echo never > /sys/kernel/mm/transparent_hugepage/enabled`  
 
 ### overcommit 
 > [参考: Linux Overcommit Modes](https://www.baeldung.com/linux/overcommit-modes)  
@@ -603,7 +613,9 @@ SWAP = VIRT - RES
 
 > [参考: 如何选择文件系统：EXT4、Btrfs 和 XFS ](https://linux.cn/article-7083-1.html)
 
-目前 Linux 大多采用 ext3,往 ext4 过渡
+目前 Linux 大多采用 ext4, Btrfs
+
+Btrfs 的快照功能很适合 Arch 系统，滚动更新挂掉的话可以通过历史快照恢复回来
 
 ## 桌面环境对比
 

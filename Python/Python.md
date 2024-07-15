@@ -50,7 +50,7 @@ categories:
         - 3.7.2. [时间处理](#时间处理)
         - 3.7.3. [三方库](#三方库)
 
-💠 2024-04-22 16:57:46
+💠 2024-06-03 20:53:27
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -423,6 +423,7 @@ When importing the package, Python searches through the directories on `sys.path
     - 方法重载： 子类覆盖父类的方法
     - 运算符重载： 加`__add__(self, x)` 减`__sub__(self, x)`
 
+************************
 
 ## 异常
 ```python
@@ -437,17 +438,18 @@ When importing the package, Python searches through the directories on `sys.path
 ```
 
 - 基本语法 `try except else finally`
-    - else是无异常执行
-    - 有异常就执行 except， except 超类Exception，也可以多个except （和Java一致）
-    - 最终执行finally 和 Java的结构是一致的
+    - else 是无异常时执行
+    - 有异常就会执行 except， 可以多个except （和Java一致）
+        - `except Exception as e:` 捕获所有异常
+    - 最终执行 finally 和 Java的结构是一致的
 
     | except 分句使用形式 |  说明 |
     | :--- | :--- |
-    |except | 捕获所有类型|
-    |except name| 只捕获指定类型|
-    |except name, value|捕获指定类型，并获得抛出的异常对象|
-    |except (name1, name2)|捕获列出的异常|
-    |except (name1, name2), value |捕获列出的异常，获得抛出的异常对象|
+    | except                        | 捕获所有类型 |
+    | except name                   | 只捕获指定类型 |
+    | except name, value            | 捕获指定类型，并获得抛出的异常对象|
+    | except (name1, name2)         | 捕获列出的异常|
+    | except (name1, name2), value  | 捕获列出的异常，获得抛出的异常对象|
 
 - raise 语句 和Java的throw关键字 一致 ， 不过raise只是抛出一个通用异常类型 Exception
 - dir(exceptions) 查看所有异常类型
@@ -459,16 +461,18 @@ When importing the package, Python searches through the directories on `sys.path
 
 | 常见异常类 | 描述 |
 |:---|:---|
-|NameError/UnboundLocalError | 引用不存在的变量/或者引用在声明之前|
-|ZeroDivisionError|除数为0|
-|SyntaxError|语法错误|
-|IndexError|索引错误|
-|KeyError|使用不存在的字典关键字|
-|IOError|输入输出错误|
-|ValueError|搜索列表中不存在的值|
-|AtrributeError|调用不存在的方法|
-|TypeError|未强制转换就混用数据类型|
-|EOPError|文件结束标识错误|
+| NameError/UnboundLocalError | 引用不存在的变量/或者引用在声明之前 |
+| ZeroDivisionError           | 除数为0 |
+| SyntaxError                 | 语法错误 |
+| IndexError                  | 索引错误 |
+| KeyError                    | 使用不存在的字典关键字 |
+| IOError                     | 输入输出错误 |
+| ValueError                  | 搜索列表中不存在的值 |
+| AtrributeError              | 调用不存在的方法 |
+| TypeError                   | 未强制转换就混用数据类型 |
+| EOPError                    | 文件结束标识错误 |
+
+************************
 
 ## 读取命令行参数
 > [参考博客](http://www.sharejs.com/codes/python/6121)
@@ -552,11 +556,11 @@ python -m module_name
 
 1. `python -m pip install name` 安装最新版本
     - `pip install name==version` 安装指定版本
-    - 镜像源 `-i https://pypi.doubanio.com/simple/ `
+    - 镜像源 豆瓣 `-i https://pypi.doubanio.com/simple/` 清华 `-i https://pypi.tuna.tsinghua.edu.cn/simple`
+        - [修改Pip 管理工具默认下载源](https://blog.csdn.net/JQ_AK47/article/details/77944444)
     - 代理 `--proxy 192.168.1.24:1234`
     - 强行使用HTTP `-i http://pypi.doubanio.com/simple/ --trusted-host pypi.doubanio.com` pip版本高于20.3后默认使用HTTPS
 
-> [修改Pip 管理工具默认下载源](https://blog.csdn.net/JQ_AK47/article/details/77944444)
 
 #### Requirements files
 > [pip官方文档 Requirements files](https://pip.readthedocs.io/en/1.1/requirements.html)
@@ -704,6 +708,11 @@ _对应的conf_
 ## 日志
 loguru
 
+> [Effective Logging in Threaded or Multiprocessing Python Applications ](https://www.loggly.com/blog/effective-logging-in-threaded-or-multiprocessing-python-applications/)
+
+但是 FastApi 里的 BackgroundTasks 是跨线程的，但是同样支持log， 需要找找怎么实现的
+- 实际上是因为他是协程，不是线程
+
 ************************
 
 ## 测试
@@ -733,7 +742,7 @@ _使用_
 ## 部署
 ### Docker部署
 > [参考官方文档](https://hub.docker.com/_/python/)
-Create a Dockerfile in your Python app project
+
 ```dockerfile
     FROM python:3
     WORKDIR /usr/src/app
@@ -742,7 +751,7 @@ Create a Dockerfile in your Python app project
     COPY . .
     CMD [ "python", "./your-daemon-or-script.py" ]
 ```
-_or (if you need to use Python 2)_
+
 ```dockerfile
     FROM python:2
     WORKDIR /usr/src/app

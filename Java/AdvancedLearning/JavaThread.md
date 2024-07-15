@@ -22,18 +22,29 @@ categories:
 - 3. [ThreadLocal](#threadlocal)
     - 3.1. [Hook](#hook)
     - 3.2. [优雅关机](#优雅关机)
-- 4. [协程](#协程)
-    - 4.1. [Loom](#loom)
-    - 4.2. [Quasar](#quasar)
+- 4. [线程池](#线程池)
+- 5. [协程](#协程)
+    - 5.1. [Quasar](#quasar)
+    - 5.2. [Virtual Threads](#virtual-threads)
+- 6. [Loom](#loom)
 
-💠 2024-04-22 10:51:32
+💠 2024-06-21 16:17:04
 ****************************************
 # Java线程
-> [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/thread/src/main/java/com/github/kuangcp)
+> [个人学习代码](https://github.com/Kuangcp/JavaBase/tree/master/concurrency/src/main/java/thread)
+
+> [Java并发](/Java/AdvancedLearning/JavaConcurrency.md) 当开始使用多线程时，就要开始考虑并发安全了
 
 - [码农翻身:我是一个线程](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=416915373&idx=1&sn=f80a13b099237534a3ef777d511d831a&scene=21#wechat_redirect) | [码农翻身:编程世界的那把锁](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513653&idx=1&sn=e30c18c0c1780fb3ef0cdb858ee5201e&chksm=80d67af6b7a1f3e059466302c2c04c14d097c1a5de01cf986df84d4677299542f12b974dfde3&scene=21#wechat_redirect) | [码农翻身:加锁还是不加锁，这是一个问题 ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513692&idx=1&sn=ef2416a4bb96d64db77e32d5b4c7967e&chksm=80d67a9fb7a1f3898e513cc1d9e96841610bb84aed2dc24cab2d403e74e317e3c447e45e7611&scene=21#wechat_redirect)
 
-> 线程优先级： 多个线程同时运行时,由线程调度器来决定哪些线程运行,哪些等待以及线程切换的时间点. 由于各个操作系统的线程调度器的实现各不相同, 所以依赖JDK来设置线程优先级策略是错误和平台不可移植性的.
+************************
+
+> [参考: 面试官:Java如何绑定线程到指定CPU上执行? ](https://mp.weixin.qq.com/s?__biz=Mzg3NjU3NTkwMQ==&mid=2247515262&idx=1&sn=9f2314cffc3cca3744f63b418654a9c0&scene=21#wechat_redirect)  
+> [Thread Affinity](https://github.com/OpenHFT/Java-Thread-Affinity)`底层优化选项：更多复用缓存以及减少线程的上下文切换`  
+
+还可以将应用做强定制化，网卡绑定CPU，计算绑定CPU。能避免调度开销，但同时这是双刃剑，资源没有经过操作系统统一调度无法做到资源的有效共享。类似于虚拟化和物理机的一种权衡，虚拟化可以让资源共享，但是降低了CPU执行效率。物理机可以独占CPU，没法让CPU资源充分利用。
+
+************************
 
 # 生命周期
 > [参考博客](https://segmentfault.com/a/1190000005006079) | [Blog: 线程详解](http://www.cnblogs.com/riskyer/p/3263032.html) | [参考Java-learning仓库](https://github.com/brianway/java-learning)
@@ -91,6 +102,8 @@ LockSupport.park
 [Can LockSupport.park() replace Object.wait()?](https://stackoverflow.com/questions/39415636/can-locksupport-park-replace-object-wait)
 
 [thread states](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/tooldescr034.html)
+
+> 线程优先级： 多个线程同时运行时,由线程调度器来决定哪些线程运行,哪些等待以及线程切换的时间点. 由于各个操作系统的线程调度器的实现各不相同, 所以依赖JDK来设置线程优先级策略是错误和平台不可移植性的.
 
 ### yield
 
@@ -177,12 +190,35 @@ LockSupport.park
 
 ************************
 
-# 协程
-## Loom
-> [OpenJDK: Loom](https://openjdk.java.net/projects/loom/)
+# 线程池
+> [Note: 线程池](/Java/AdvancedLearning/Concurrency/ExecutorAndPool.md)  
 
-> [OpenJDK Project Loom](https://www.baeldung.com/openjdk-project-loom)
+************************
+
+# 协程
+R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1, N：1, M：N。 只是Hotspot实现为1:1。并且很早期的JDK就是N：1的绿色线程实现，后面才改成1:1和系统线程绑定
 
 ## Quasar
 > [Github: Quasar](https://github.com/puniverse/quasar)
+
+## Virtual Threads
+> [Virtual Threads](https://openjdk.org/jeps/444) 19预览 21Release  
+
+试用总结：如果要引入生产，需要关注整个JEP的文档，调试确认细节后才能使用，不然就会陷入到各种诡异的问题上。
+
+特性：
+- 依赖一个公用的ForkJoin线程池执行任务 即 不推荐执行CPU密集型任务，只建议用来执行io密集类任务（21对有可能阻塞的api都加上了特定处理代码）从而提高吞吐量
+- 正常线程内代码无法感知 协程内代码的异常，反之也是一样，线程和协程间的局部变量也是隔离的
+- 协程的线程栈存储在堆内存中，为了规避大量协程导致的栈溢出
+
+> [虚拟线程：Java的新利器？](https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247538915&idx=1&sn=b9b6a303a79cea5225e0d445e10eddc8&scene=58&subscene=0)
+> [Java19 正式 GA！看虚拟线程如何大幅提高系统吞吐量 ](https://mp.weixin.qq.com/s/yyApBXxpXxVwttr01Hld6Q)  
+> [虚拟线程 - VirtualThread源码透视 ](https://www.cnblogs.com/throwable/p/16758997.html)
+
+************************
+
+# Loom
+> [OpenJDK: Loom](https://wiki.openjdk.org/display/loom)`目标是高吞吐量，轻量级并发模型： 协程，结构化并发，调度`  
+> [OpenJDK Project Loom](https://www.baeldung.com/openjdk-project-loom)  
+
 

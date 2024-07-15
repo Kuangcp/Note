@@ -14,29 +14,34 @@ categories:
     - 1.2. [理论知识](#理论知识)
         - 1.2.1. [可能的问题](#可能的问题)
         - 1.2.2. [好的习惯](#好的习惯)
-    - 1.3. [块结构并发 Java5之前](#块结构并发-java5之前)
-        - 1.3.1. [synchronized](#synchronized)
-            - 1.3.1.1. [正确使用锁](#正确使用锁)
-        - 1.3.2. [volatile](#volatile)
-            - 1.3.2.1. [正确使用](#正确使用)
-    - 1.4. [现代并发JUC包](#现代并发juc包)
-        - 1.4.1. [概念](#概念)
-            - 1.4.1.1. [CAS指令](#cas指令)
-            - 1.4.1.2. [原子类](#原子类)
-            - 1.4.1.3. [读写锁](#读写锁)
-        - 1.4.2. [具体实现](#具体实现)
-            - 1.4.2.1. [Lock](#lock)
-            - 1.4.2.2. [CountDownLatch 锁存器](#countdownlatch-锁存器)
-            - 1.4.2.3. [ConcurrentHashMap](#concurrenthashmap)
-            - 1.4.2.4. [ConcurrentSkipListMap](#concurrentskiplistmap)
-            - 1.4.2.5. [CopyOnWriteArrayList](#copyonwritearraylist)
-    - 1.5. [Queue](#queue)
-        - 1.5.1. [BlockingQueue](#blockingqueue)
-        - 1.5.2. [TransferQueue](#transferqueue)
-    - 1.6. [控制执行](#控制执行)
-        - 1.6.1. [任务建模](#任务建模)
+- 2. [关键字](#关键字)
+    - 2.1. [synchronized](#synchronized)
+        - 2.1.1. [正确使用](#正确使用)
+    - 2.2. [volatile](#volatile)
+        - 2.2.1. [正确使用](#正确使用)
+- 3. [现代并发JUC包](#现代并发juc包)
+    - 3.1. [概念](#概念)
+        - 3.1.1. [CAS指令](#cas指令)
+        - 3.1.2. [原子类](#原子类)
+        - 3.1.3. [读写锁](#读写锁)
+    - 3.2. [实现类](#实现类)
+        - 3.2.1. [Lock](#lock)
+        - 3.2.2. [CountDownLatch](#countdownlatch)
+        - 3.2.3. [CyclicBarrier](#cyclicbarrier)
+        - 3.2.4. [Semaphore](#semaphore)
+        - 3.2.5. [Phaser](#phaser)
+        - 3.2.6. [Exchanger](#exchanger)
+        - 3.2.7. [ConcurrentHashMap](#concurrenthashmap)
+        - 3.2.8. [ConcurrentSkipListMap](#concurrentskiplistmap)
+        - 3.2.9. [CopyOnWriteArrayList](#copyonwritearraylist)
+- 4. [结构化并发](#结构化并发)
+- 5. [实践](#实践)
+    - 5.1. [任务建模](#任务建模)
+    - 5.2. [Queue](#queue)
+        - 5.2.1. [BlockingQueue](#blockingqueue)
+        - 5.2.2. [TransferQueue](#transferqueue)
 
-💠 2024-04-07 15:54:52
+💠 2024-06-02 17:50:57
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -48,6 +53,8 @@ categories:
 > [参考: 并发编程 ](http://www.jdon.com/concurrency.html)
 > [参考: 不可变真的意味线程安全？](http://www.jdon.com/concurrent/immutable.html)
 > [Java Concurrency and Multithreading Tutorial](http://tutorials.jenkov.com/java-concurrency/index.html)  
+
+![](/Java/AdvancedLearning/Concurrency/img/001-concurrency-base.km.svg)
 
 ************************
 
@@ -98,48 +105,6 @@ categories:
     - 测量系统用给定的资源能做多少工作
 - 可重用性
 
-### 可能的问题
-- 安全性与活跃度相对立，安全性求稳定安全，活跃度是求进展
-- 可重用的系统倾向于对外开放内核，这会引发安全问题
-- 一个安全但是编写幼稚的系统性能通常不会好，因为里面会用大量的锁来保证安全
-
-### 好的习惯
-1. 尽可能限制子系统之间的通信，隐藏数据对安全性非常有帮助
-2. 尽可能保证子系统内部结构的确定性，
-    - 比如：即便子系统会以并发的，非确定性的方式进行交互，子系统内部的设计也应该按照线程和对象的静态知识
-3. 采用客户端应用必须遵守的规则。
-    - 这个技巧虽然强大，但是依赖于用户应用程序的合作程度，如果某个糟糕的应用不遵守规则，排查问题很困难
-4. 在文档中记录所要求的行为，这是最逊的方法，但如果代码要部署在非常通用的环境下，就必须采用这个方法
-
-***********
-- 系统开销之源
-    - 锁与监测
-    - 环境切换的次数
-    - 线程的个数
-    - 调度
-    - 内存的局部性
-    - 算法设计
-    
-## 块结构并发 Java5之前
-- 同步和锁 synchronized：
-    - 只能锁定对象，不能锁定原始类型
-    - 锁的范围要尽可能的小
-    - 被锁定的兑现给数组中的单个对象不会被锁定
-    - 同步方法可以视为包含整个方法的同步 `(this){...}`代码块 但是两者的二进制码的表示是不同的
-    - 静态方法会锁定其Class对象，因为没有实例对象可以锁定
-    - 如果要锁定一个对象，请慎重考虑使用显式锁定，还是getClass()， 两种方式对子类影响不同
-    - 内部类的同步是独立于外部类的
-    - synchronized 并不是方法签名的组成部分，所以不能出现在接口的方法声明中
-    - 非同步的方法不查看或关心任何锁的状态，而且在同步方法运行时，他们仍能继续运行
-    - Java的线程锁是可重入的。也就是说持有线程锁的线程在遇到同一个锁的同步点 时是可以继续的
-        - 比如 一个同步方法调用另一个类的另一个同步方法
-
-- [JDK15 将移除 偏向锁](https://openjdk.java.net/jeps/374)
-
-![线程状态模型](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Java/concurrent/Model.jpg)  
-- 线程的状态模型：
-    - 线程创建时处于准备（Ready）状态，然后调度器会准备执行
-    
 - 完全同步对象 策略 一个满足下面所有条件的类就是完全同步类：
     - 所有域在任何公共构造方法中的初始化都能达到一致的状态
     - 没有公共域
@@ -157,8 +122,42 @@ categories:
         - final声明的对象的引用是不可变的， 但是如果引用的是对象，该对象自身的属性的引用是可变的
     - 不可变对象的使用十分广泛，但是开发效率不行，每修改对象的状态都要构建一个新对象
 
-### synchronized
+
+### 可能的问题
+- 安全性与活跃度相对立，安全性求稳定安全，活跃度是求进展
+- 可重用的系统倾向于对外开放内核，这会引发安全问题
+- 一个安全但是编写幼稚的系统性能通常不会好，因为里面会用大量的锁来保证安全
+
+### 好的习惯
+1. 尽可能限制子系统之间的通信，隐藏数据对安全性非常有帮助
+2. 尽可能保证子系统内部结构的确定性，
+    - 比如：即便子系统会以并发的，非确定性的方式进行交互，子系统内部的设计也应该按照线程和对象的静态知识
+3. 采用客户端应用必须遵守的规则。
+    - 这个技巧虽然强大，但是依赖于用户应用程序的合作程度，如果某个糟糕的应用不遵守规则，排查问题很困难
+4. 在文档中记录所要求的行为，这是最逊的方法，但如果代码要部署在非常通用的环境下，就必须采用这个方法
+
+***********
+
+- 系统开销之源: 锁与监测, 环境切换的次数, 线程的个数, 调度, 内存的局部性, 算法设计
+
+# 关键字
+## synchronized
 在synchronized代码块执行完成后，对锁定对象所做的所有修改全部会在线程释放锁之前同步到内存中, 具有可重入性
+
+- 同步和锁 synchronized：
+    - 只能锁定对象，不能锁定原始类型
+    - 锁的范围要尽可能的小
+    - 被锁定的兑现给数组中的单个对象不会被锁定
+    - 同步方法可以视为包含整个方法的同步 `(this){...}`代码块 但是两者的二进制码的表示是不同的
+    - 静态方法会锁定其Class对象，因为没有实例对象可以锁定
+    - 如果要锁定一个对象，请慎重考虑使用显式锁定，还是getClass()， 两种方式对子类影响不同
+    - 内部类的同步是独立于外部类的
+    - synchronized 并不是方法签名的组成部分，所以不能出现在接口的方法声明中
+    - 非同步的方法不查看或关心任何锁的状态，而且在同步方法运行时，他们仍能继续运行
+    - Java的线程锁是可重入的。也就是说持有线程锁的线程在遇到同一个锁的同步点 时是可以继续的
+        - 比如 一个同步方法调用另一个类的另一个同步方法
+
+- [JDK15 将移除 偏向锁](https://openjdk.java.net/jeps/374)
 
 - 保证了在同一时刻,只有一个线程可以执行某一个方法或者代码块. 保证了线程对变量访问的可见性和排他性
 - 所以这个关键字的作用就是同步 在不同线程中锁定（操作）的对象的内存块
@@ -171,7 +170,7 @@ categories:
 
 对应于字节码中的指令是 monitorenter 和 monitorexit 
 
-#### 正确使用锁
+### 正确使用
 > 查看JDK源码 ForkJoinTask 的 externalAwaitDone 方法
 
 1. wait方法用来使线程等待某个条件, 他必须在同步块内部被调用,这个同步块通常会锁定当前对象实例.
@@ -203,7 +202,7 @@ public int current(){
 > 这个案例保证了多线程下并发时,对size变量的正确修改,但是不能保证实时读取到的变量值是正确的  
 > 正确的做法是 current 方法也要加上synchronized关键字
 
-### volatile
+## volatile
 > [Java多线程i++线程安全问题，volatile和AtomicInteger解释？](https://segmentfault.com/q/1010000006733274)
 > [DCL的单例一定是线程安全的吗](https://www.cnblogs.com/amberJava/p/12546798.html)`如果new 还需要自定义初始化逻辑，需要使用本地变量初始化完成后赋值给对象属性`
 
@@ -221,7 +220,7 @@ public int current(){
             - volatile 读操作前 LoadLoad 后 LoadStore
 
 
-#### 正确使用
+### 正确使用
 > 打开Netty中NioEventLoop的源码 有一个属性 `private volatile int ioRatio = 50;` 该变量是用于控制IO操作和其他任务运行比例的
 
 ```java
@@ -263,7 +262,7 @@ public int current(){
 
 ****************************
 
-## 现代并发JUC包
+# 现代并发JUC包
 > 简称为J.U.C (java.util.concurrent) | [The j.u.c Synchronizer Framework中文翻译版](http://ifeve.com/aqs/)
 - 建议通过使用`线程池`,`Task(Runnable/Callable)`,`读写锁`,`原子类`和`线程安全容器`来代替传统的同步锁,wait和notify
     - 提升并发访问的性能, 降低多线程编程的难度, Netty就是这么做的
@@ -276,14 +275,14 @@ public int current(){
 
 > [The java.util.concurrent Synchronizer FrameworkDoug Le](http://gee.cs.oswego.edu/dl/papers/aqs.pdf) `AQS`
 
-### 概念
-#### CAS指令
+## 概念
+### CAS指令
 > 互斥同步最主要的问题就是进行线程阻塞和唤醒所带来的性能额外损耗, 因此这种同步也被称为阻塞同步,悲观锁
 >> 与之对应的乐观锁是, 先进行操作, 操作完成之后再判断操作是否成功, 是否有并发问题, 如果有则进行失败补偿, 如果没有就算操作成功. 
 
 > Java中的非阻塞同步就是CAS 1.5就有了
 
-#### 原子类 
+### 原子类 
 > `java.util.concurrent.atomic` 提供适当的原子方法 避免在共享数据上出现竞争危害的方法  
 > 使用Java自带的原子类, 可以避免同步锁带来的并发访问性能降低的问题, 减少犯错的机会. 对于 int, long, boolean 等成员变量大量使用原子类
 >> 但是使用者必须通过类似 compareAndSet或者set或者与这些操作等价的`原子操作`来保证更新的原子性.
@@ -292,16 +291,18 @@ public int current(){
     - 操作`getAndIncrement()`方法， 并且提供了nextId 方法得到唯一的完全增长的数值
 - 注意： 原子类不是相似的类继承而来，所以 AtomicBoolean不能当Boolean用
 
-#### 读写锁
+### 读写锁
 > 在读多写少的场景下, 使用读写锁比同步块性能要好
 
 - 获取的读锁是共享锁
-- 获取写锁时会阻塞所有读锁
+- 获取写锁时会阻塞所有读锁和写锁
 
 *****************
 
-### 具体实现
-#### Lock 
+## 实现类
+> [JUC - 类汇总和学习指南](https://pdai.tech/md/java/thread/java-thread-x-juc-overview.html)
+
+### Lock 
 > `java.util.concurrent.locks`
 - 块结构同步方式基于锁这样的的概念，具有缺点
     - 锁只有一种类型
@@ -323,22 +324,27 @@ public int current(){
         - `trylock()`: [官方API1.8 trylock](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/locks/ReentrantLock.html#tryLock--)
     - Lock接口的实现类：ReentrantWriteLock 在需要读取很多线程而写入很少线程时，用这个性能更好
     
-#### CountDownLatch 锁存器
-- 是一种简单的同步模式，这种模式允许线程在通过同步屏障之前做少量的准备工作
-    - 构建实例时，需要提供一个数值（计数器），通过两个方法来实现这个机制
-    - `countDown()` 作用：计数器减一
-        - 如果当前计数大于零，则将计数减少。然后什么都不做
-            - 如果减后的计数为零，出于线程调度目的，将重新启用所有的等待线程 
-        - 如果当前计数等于零，则不发生任何操作。
-        
-    - `await()` 作用：让线程在计数器到0之前一直等待，
-        - 如果大于 0 ， 休眠这语句所处的当前线程 
-            - 例如 `a.await()` 如果锁存器a的Count不为0 ，就把当前线程休眠掉
-        - 如果已经是小于等于0 就什么都不做
-        
-- 能做到： 当一堆线程之间的同步，为了确保有指定数量正常初始化的线程 创建成功，才能开始同步 
+### CountDownLatch
+是一种简单的同步模式，这种模式允许线程在通过同步屏障之前做少量的准备工作, 构建实例时，需要提供一个数值（计数器），通过两个方法来实现这个机制
 
-#### ConcurrentHashMap
+- `countDown()` 作用：计数器减一
+    - 如果当前计数大于零，则将计数减少。然后什么都不做
+        - 如果减后的计数为零，出于线程调度目的，将重新启用所有的等待线程 
+    - 如果当前计数等于零，则不发生任何操作。
+- `await()` 作用：让线程在计数器到0之前一直等待，
+    - 如果大于 0 ， 休眠这语句所处的当前线程 
+        - 例如 `a.await()` 如果锁存器a的Count不为0 ，就把当前线程休眠掉
+    - 如果已经是小于等于0 就什么都不做
+        
+支持场景：一堆线程间的状态同步，为了确保有指定数量正常初始化的线程 创建成功 后 继续执行逻辑 
+
+### CyclicBarrier
+### Semaphore
+### Phaser
+### Exchanger
+
+
+### ConcurrentHashMap
 - `ConcurrentHashMap` 是 HashMap的并发版本
 - 修改HashMap，并不需要将整个结构都锁住，只要锁住即将修改的桶（就是单个元素）
     - 好的HashMap 实现，在读取时不需要锁，写入时只要锁住要修改的单个桶 Java能达到这个标准，但是需要程序员去操作底层的细节才能实现
@@ -357,12 +363,12 @@ public int current(){
 
 ConcurrentHashMap的迭代器是弱一致性
 
-#### ConcurrentSkipListMap
+### ConcurrentSkipListMap
 基于跳表实现的并发有序Map
 
 ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentModificationException异常，但是无法保证迭代器遍历的元素是一个完整的快照。因此，在迭代器遍历ConcurrentSkipListMap时，可能会遗漏或重复遍历某些元素。
 
-#### CopyOnWriteArrayList
+### CopyOnWriteArrayList
 - 标准的ArrayList的替代，通过写时复制语义来实现线程安全性，也就是说修改列表的任何操作都会创建一个列表底层数组的新副本
     - 这就意味着所有成形的迭代器都不会遇到意料之外的修改 （脏读）
 - 这一般需要很大的开销，但是当遍历操作的数量大大超过可变操作的数量时，这种方法可能比其他替代方法更 有效。在不能或不想进行同步遍历
@@ -372,6 +378,37 @@ ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentM
 - 在迭代器上进行的元素更改操作（remove、set 和 add）不受支持。这些方法将抛出 UnsupportedOperationException。
 
 ***********************
+# 结构化并发
+[Structured Concurrency](https://openjdk.org/jeps/453)  
+
+************************
+
+# 实践
+目标：需要合理设计线程模型，尽量不要让线程阻塞，因为一阻塞，CPU 就闲下来了。
+
+> [Java线程](/Java/AdvancedLearning/JavaThread.md)  [Java线程池](/Java/AdvancedLearning/Concurrency/ExecutorAndPool.md)  
+
+在技术和业务角度，都应该考虑抽象和分层，将近似的事情放在一个线程池内，更有利于针对性设置参数达到整体的效率优化。例如Tomcat中的 [NioEndpoint](/Java/Tool/TomcatDesign.md#nioendpoint)将接受连接，接受连接数据，执行连接任务和响应拆分出三个线程池
+
+## 任务建模
+> 要把目标代码做成可调用（执行者调用）的结构，而不是单独开线程运行
+> [示例代码](https://github.com/Kuangcp/JavaBase/blob/concurrency/src/main/java/com/github/kuangcp/schedule/CreateModel.groovy)
+
+`Callable接口`
+- 通常是匿名内部实现类 
+
+`Future接口`
+- 用来表示异步任务，是还没有完成的任务的未来结果，主要方法：
+    - get() 用来获取结果，如果结果还没准备好就会阻塞直到它能去到结果，有一个可以设置超时的版本，这个版本永远不会阻塞
+    - cancel() 运算结束前取消
+    - isDone() 调用者用它来判断运算是否结束
+
+`FutureTask类`
+- FutureTask是Future接口的常用实现类， 并且是实现了Runnable接口。所以提供的方法是俩接口的方法
+    - 提供了两个构造器，一个是Callable为参数，另一个以Runnable为参数
+- 可以基于FutureTask的Runnable特性，把任务写成Callable然后封装进一个有执行者地调度并在必要时可以取消的FutureTask
+
+************************
 
 ## Queue
 > Queue接口全是泛型的，这样就更为方便， 自己再封装一个层
@@ -416,24 +453,3 @@ ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentM
 - 这样系统就可以调控上游线程获取新工作项的速度 用限定大小的阻塞队列也能达到同样的效果，TransferQueue 执行效率更高
     - 但是这个只有链表的实现版本
     - 相比于BlockingQueue 用法一致， offer() 等价于 tryTransfer() 参数也是一致的，代码基本不需要改动
-
-************************
-
-## 控制执行
-### 任务建模
-> 要把目标代码做成可调用（执行者调用）的结构，而不是单独开线程运行
-> [示例代码](https://github.com/Kuangcp/JavaBase/blob/concurrency/src/main/java/com/github/kuangcp/schedule/CreateModel.groovy)
-
-`Callable接口`
-- 通常是匿名内部实现类 
-
-`Future接口`
-- 用来表示异步任务，是还没有完成的任务的未来结果，主要方法：
-    - get() 用来获取结果，如果结果还没准备好就会阻塞直到它能去到结果，有一个可以设置超时的版本，这个版本永远不会阻塞
-    - cancel() 运算结束前取消
-    - isDone() 调用者用它来判断运算是否结束
-
-`FutureTask类`
-- FutureTask是Future接口的常用实现类， 并且是实现了Runnable接口。所以提供的方法是俩接口的方法
-    - 提供了两个构造器，一个是Callable为参数，另一个以Runnable为参数
-- 可以基于FutureTask的Runnable特性，把任务写成Callable然后封装进一个有执行者地调度并在必要时可以取消的FutureTask

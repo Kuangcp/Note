@@ -8,18 +8,21 @@ categories:
 💠
 
 - 1. [OOM](#oom)
-    - 1.1. [Heap space OOM](#heap-space-oom)
-    - 1.2. [Metaspace OOM](#metaspace-oom)
-    - 1.3. [Compressed Class Space OOM](#compressed-class-space-oom)
-    - 1.4. [Direct Memory OOM](#direct-memory-oom)
+    - 1.1. [简单案例](#简单案例)
+    - 1.2. [Heap space OOM](#heap-space-oom)
+    - 1.3. [Metaspace OOM](#metaspace-oom)
+    - 1.4. [Compressed Class Space OOM](#compressed-class-space-oom)
+    - 1.5. [Direct Memory OOM](#direct-memory-oom)
 
-💠 2024-03-06 14:11:38
+💠 2024-05-14 14:27:51
 ****************************************
 # OOM 
 > 注意OOM并不代表Java进程一定会退出，如果导致OOM的地方能被catch，且泄漏点能随着这次任务的终止而可回收的话，JVM将继续正常运行。  
 > [Why JVM can recovery from OOM Java heap space by itself](https://stackoverflow.com/questions/72865015/why-jvm-can-recovery-from-oom-java-heap-space-by-itself)
 
-例如最简单的案例
+## 简单案例
+
+例如 
 ```java
     public static void main(String[] args) {
         try {
@@ -78,12 +81,15 @@ categories:
         dispatchException = new NestedServletException("Handler dispatch failed", err);
     }
 ```
+************************
 
 ## Heap space OOM
 异常信息：
 
 java.lang.OutOfMemoryError: Java heap space
 java.lang.OutOfMemoryError: Requested array size exceeds VM limit
+
+[Error java.lang.OutOfMemoryError: GC overhead limit exceeded](https://stackoverflow.com/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded)`常见于内存缓慢泄漏，GC成本越来越高时`
 
 ## Metaspace OOM
 [一次Metaspace OutOfMemoryError问题排查记录](https://juejin.cn/post/7114516283290288158)`很多GeneratedMethodAccessor类`

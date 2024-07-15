@@ -16,13 +16,15 @@ categories:
 - 4. [内核参数](#内核参数)
 - 5. [内存情况](#内存情况)
     - 5.1. [free](#free)
+    - 5.2. [smem](#smem)
 - 6. [性能监测](#性能监测)
     - 6.1. [perf](#perf)
     - 6.2. [top](#top)
     - 6.3. [smem](#smem)
     - 6.4. [vmstat](#vmstat)
-    - 6.5. [mpstat](#mpstat)
-    - 6.6. [iostat](#iostat)
+    - 6.5. [pidstat](#pidstat)
+    - 6.6. [mpstat](#mpstat)
+    - 6.7. [iostat](#iostat)
 - 7. [进程管理](#进程管理)
     - 7.1. [pidof](#pidof)
     - 7.2. [pgrep](#pgrep)
@@ -53,7 +55,7 @@ categories:
     - 8.7. [chroot](#chroot)
 - 9. [关机/重启](#关机重启)
 
-💠 2024-03-20 16:13:46
+💠 2024-06-25 15:55:14
 ****************************************
 # Linux性能分析和管理
 
@@ -128,12 +130,23 @@ categories:
 
 >- 注意: 如果是新版的free, shared 那一栏总是为0, 因为shared本就是说明进程共享内存容量, free认为不能显示数有效信息, 就抛弃了这个指标,总是显示为0
 
+## smem
+较精准展示进程使用的内存和swap内存
+
 **************************
 
 # 性能监测
 > 通过各类软件的输出，快速定位问题点
 
 1. 监测CPU利用率 top,sysstat,mpstat,iostat,sar
+
+sysstat软件包：sysstat，mpstat vmstat iostat
+
+************************
+> 工程化管理多个Linux主机
+
+[wgcloud](https://github.com/tianshiyeben/wgcloud)  
+[netdata](https://github.com/netdata/netdata)  
 
 ## perf
 > [参考: Perf 使用说明](https://yoc.docs.t-head.cn/linuxbook/Chapter4/perf.html)  
@@ -153,7 +166,6 @@ categories:
 
 - 最初是设计为查看虚拟内存的,现在常用于性能监测
 - `vmstat 1 4` 输出信息,间隔1s 共4次 特别注意第一行数据是指开机以来的平均值,后面的才是当前值
-    - 输出内容:
     - procs 区域:
         - r 进程运行队列中的进程个数
         - b 处于不可中断的睡眠状态的进程个数
@@ -170,7 +182,7 @@ categories:
         - bo 每秒向块设备写入的块数量
     - system 区域:
         - in 每秒中断数(含时钟中断)
-        - cs 每秒上下文切换次数
+        - cs 每秒上下文切换次数 context switch
     - cpu 区域:
         - us 用户进程 cpu消耗时间百分比
         - sy 内核进程 cpu消耗百分比
@@ -191,8 +203,16 @@ categories:
 - ![p135](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p135.jpg)
 - ![p136](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p136.jpg)
 
+> 但是数值大一点就会列错位，可以用column来格式化 `vmstat  1 5 | column -t` 但是等到执行完了才能看到结果，此时可以输出到文件里，看的时候格式化
+> `vmstat  4 > run.log &` 然后 `less run.log | column -t` . 或者 `watch 'tail -n 20 run.log| column -t '`
+
+## pidstat
+> Report statistics for Linux tasks.
+
+- 当使用vmstat发现cs值很高时可以查看是哪些进程引起的 `pidstat -w 5`
+
 ## mpstat
-> 对多处理器的统计, 和iostat同属于systat软件下,可能需要手动安装
+> 对多处理器的统计
 
 - `mpstat -P ALL 1 1` 查询所有CPU信息,后两个参数是和vmstat一样的, `如果只看0号CPU 就ALL改成0即可`
     - 运行结果:
@@ -228,6 +248,14 @@ categories:
 - ![p162](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p162.jpg)   
 - ![p163](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p163.jpg)
 - ![p164](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p164.jpg)
+
+************************
+
+## ifstat
+> handy utility to read network interface statistics
+
+- -a 全部统计信息
+- -t sec 过去时间内流量信息
 
 ****************************
 
@@ -372,20 +400,32 @@ categories:
 > [参考: ps命令输出](http://www.cnblogs.com/lidabo/p/5505610.html) `输出的信息解释`
 
 - 直接运行 `ps` 就会显示当前会话中的进程
+
 - `ps aux` 显示系统中所有进程的状态信息 `可根据需要自由组合`
     - a 显示各终端(会话)上的所有进程, u 会展示进程所属用户, x 对于没有关联到终端运行的进程也展示出来
-
+    - 输出列
+        - VSZ
+        - RSS
+        - STAT
+            - `D` 无法中断的休眠状态（通常 IO 的进程）； 
+            - `R` 正在运行可中在队列中可过行的； 
+            - `S` 处于休眠状态； 
+            - `T` 停止或被追踪； 
+            - `W` 进入内存交换 （从内核2.6开始无效）； 
+            - `X` 死掉的进程 （基本很少见）； 
+            - `Z` 僵尸进程； 
+            - `<` 优先级高的进程 
+            - `N` 优先级较低的进程 
+            - `L` 有些页被锁进内存； 
+            - `s` 进程的领导者（在它之下有子进程）； 
+            - `l` 多线程，克隆线程（使用 CLONE_THREAD, 类似 NPTL pthreads）； 
+            - `+` 位于后台的进程组；
 - `ps aux`和`ps -aux`的区别:
     - 虽然执行结果看起来是一模一样的, 但是 `ps -aux ` 其实应该理解为 `ps -a -u x` 显示用户名为 x 的用户的所有进程
     - 当 x 用户不存在时ps就将其理解为 `ps aux`
-    - 原因,因为他的三种格式:
-        - BSD 选项前 不加短横线 `ps aux`
-        - UNIX 选项前 加短横线 `ps -aux `
-        - GNU 选项前 加双短横线  `ps --format`
-    - BSD格式的 `ps aux` 等价于 `ps -eF`
-        - e 显示全部进程, 包含了未在终端运行的进程
-        - F 显示详尽的进程信息
-        
+    - 原因,因为他的三种格式:  BSD 选项前 不加短横线 `ps aux`  UNIX 选项前 加短横线 `ps -aux `  GNU 选项前 加双短横线  `ps --format`
+    - BSD格式的 `ps aux` 等价于 `ps -eF`  e 显示全部进程, 包含了未在终端运行的进程 F 显示详尽的进程信息
+
 > Debian 上 `ps -ef` 和 `ps ef` 执行效果不一样
 
 - `-o` 输出指定列 `ps -eo pid,user,cmd,start ... ` 更多需要查看手册 `man ps`
@@ -399,25 +439,20 @@ categories:
         - u 按用户名和进程号的顺序来显示进程, 多列构成
     - 根据命令名称查找pid `ps -C sshd` 
 
-- 排序 :
-    - `ps aux --sort -pcpu/+pcpu/` 按CPU使用率,进行降序/升序排列
-    - 多个条件 `--sort=+pcpu, -pmem` CPU升序,内存降序排列
+> 排序 :  
+- `ps aux --sort -pcpu/+pcpu/` 按CPU使用率,进行降序/升序排列  
+- 多个条件 `--sort=+pcpu, -pmem` CPU升序,内存降序排列  
 
-- 查询线程信息:
-    - `ps -ef | grep mysql` 
-    - `ps -L pid` 显示某id的线程的具体信息 其中的LWP (轻量级进程, 可以理解为用户进程) Light Weight Process
-    - `ps -T pid` 显示 将-L的LWP替换为SPID (系统中的线程ID)
+>查询线程信息:
+- `ps -ef | grep mysql` 
+- `ps -L pid` 显示某id的线程的具体信息 其中的LWP (轻量级进程, 可以理解为用户进程) Light Weight Process
+    - `ps aux -L` 查看全部线程
+- `ps -T pid` 显示 将-L的LWP替换为SPID (系统中的线程ID)
+- 查看进程下的线程 `ps huH p pid`
 
-- 进程树:
-    - BSD格式 : `ps axjf` 
-        - a 所有进程
-        - x 显示没有控制终端的进程
-        - j 任务格式显示进程
-        - f ascaii字符显示树状结果
-    - UNIX : `ps -ejH`
-        - e 显示所有进程
-        - j 任务格式来显示进程
-        - H 显示数状结构 
+> 进程树:  
+- BSD格式 : `ps axjf` a 所有进程 x 显示没有控制终端的进程 j 任务格式显示进程  f ascaii字符显示树状结果  
+- UNIX : `ps -ejH` e 显示所有进程  j 任务格式来显示进程  H 显示数状结构  
 
 **实践**
 1. 列出Java进程 `ps aux | grep RSS | grep -v "grep" && ps aux | egrep -v "grep" | grep -i java` 
@@ -427,9 +462,7 @@ categories:
 1. 统计某个应用进程所有内存（自己和所有子进程） ` `
 
 1. 按内存排序 列出所有进程 `ps aux | grep -v RSS | awk "{print $6 "\t" $11 }" | sort --human-numeric-sort -r | less`
-
 1. 按实际执行的二进制命令展示 `ps -ely`
-1. 查看进程下的线程 `ps huH p pid`
 
 - [Difference Between Resident Set Size and Virtual Memory Size](https://www.baeldung.com/linux/resident-set-vs-virtual-memory-size)
     - RSS 驻留内存（共享库+堆+栈） 注意当前进程可能共用别的进程已加载的共享库，所以这部分内存是被重复计算了

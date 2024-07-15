@@ -13,16 +13,15 @@ categories:
     - 1.1. [相关博客](#相关博客)
     - 1.2. [安装](#安装)
         - 1.2.1. [minikube](#minikube)
-    - 1.3. [简单使用](#简单使用)
-    - 1.4. [容器编排](#容器编排)
-- 2. [Kubeless](#kubeless)
+- 2. [使用](#使用)
+    - 2.1. [实践](#实践)
 
-💠 2024-03-04 17:26:01
+💠 2024-07-03 17:43:26
 ****************************************
 
 # Kubernetes
+> [Official site](https://kubernetes.io/) | [Github](https://github.com/kubernetes/kubernetes) | [中文文档](https://kubernetes.io/zh-cn/docs/concepts/)
 
-> 又称 k8s [Official site](https://kubernetes.io/) | [Github:](https://github.com/kubernetes/kubernetes)
 
 ## 相关博客
 
@@ -49,14 +48,10 @@ categories:
 ```sh
     # 均以 root 运行
     apt update && apt install -y apt-transport-https
-
     curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add -
-
     echo "deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
-
     apt install kubelet kubeadm kubectl
 ```
-
 > `deb http://apt.kubernetes.io/ kubernetes-xenial main` 虽然这才是官方源,奈何是 Google 服务器
 
 ************************
@@ -64,14 +59,33 @@ categories:
 ### minikube
 > [minikube](https://minikube.sigs.k8s.io/docs/start/)
 
-## 简单使用
+************************
 
+# 使用
 > 大多数命令和 Docker 是类似的，只不过加上了 namespace 的概念
 
-- kubectl logs --namespace namespace pod
+- 查看日志： kubectl logs --namespace namespace pod
 
-## 容器编排
 
-# Kubeless
+## 实践
+> Pod调度资源倾斜
+- [你真的理解 K8s 中的 requests 和 limits 吗？](https://kubesphere.io/zh/blogs/deep-dive-into-the-k8s-request-and-limit) | [K8S: QoS](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/)
+- [管理容器的计算资源](https://kuboard.cn/learning/k8s-intermediate/config/computing-resource.html)
+- [Kubernetes 节点标签和定向调度](http://zongming.net/read-1333/)
 
-> [Official](https://kubeless.io/docs/quick-start/)
+结论：pod尽量按过往监控的情况设置合理的 requests 和 limits, 如果仍有明显的倾斜，可以配置节点亲和 nodeAffinity
+
+例如如下配置只会将pod调度到03和04两个Node上
+```yml
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - node03
+                      - node04
+```

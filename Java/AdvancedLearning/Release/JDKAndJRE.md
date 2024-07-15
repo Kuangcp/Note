@@ -17,13 +17,15 @@ categories:
 - 4. [商业组织JDK](#商业组织jdk)
     - 4.1. [Corretto](#corretto)
 
-💠 2024-04-01 11:51:20
+💠 2024-05-17 19:49:18
 ****************************************
 # JDK And JRE
 
 但是11发布后, Oracle修改了使用协议, JDK商用需付费, 仅个人开发演示免费 [License](https://www.oracle.com/technetwork/java/javase/terms/license/javase-license.html)
 
 - [www.injdk.cn](https://www.injdk.cn/)`镜像站`
+
+> [Java 有哪些不好的设计？](https://www.zhihu.com/question/25372706/answer/30589125)
 
 # Oracle
 > [roadmap](https://www.oracle.com/java/technologies/java-se-support-roadmap.html)
@@ -76,6 +78,7 @@ Java11 开始, JDK内去掉了JRE模块
 > [Official Site](http://openjdk.java.net/) |  [OpenJDK Source](http://hg.openjdk.java.net/jdk) | [Github:source](https://github.com/openjdk/jdk)
 
 > [Open JDK 11: Download](http://jdk.java.net/11/)
+> [Issues](https://bugs.openjdk.org/projects/JDK/issues)  
 
 # 商业组织JDK
 ## Corretto

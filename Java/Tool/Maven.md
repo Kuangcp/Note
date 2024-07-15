@@ -7,53 +7,53 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [Maven](#maven)
-    1. [安装](#安装)
-        1. [Maven常用命令](#maven常用命令)
-            1. [从jar安装到本地库](#从jar安装到本地库)
-        1. [settings.xml配置](#settingsxml配置)
-            1. [配置镜像源](#配置镜像源)
-                1. [阿里云](#阿里云)
-            1. [配置本地仓库](#配置本地仓库)
-    1. [maven配置](#maven配置)
-        1. [主配置文件详解](#主配置文件详解)
-        1. [配置代码编译版本](#配置代码编译版本)
-    1. [构建](#构建)
-        1. [使用maven构建多模块的项目](#使用maven构建多模块的项目)
-        1. [Profiles](#profiles)
-        1. [测试](#测试)
-        1. [打包部署](#打包部署)
-            1. [assembly](#assembly)
-            1. [shade](#shade)
-    1. [Maven 依赖](#maven-依赖)
-        1. [依赖类型](#依赖类型)
-        1. [依赖的范围](#依赖的范围)
-        1. [依赖的传递](#依赖的传递)
-        1. [处理项目间依赖方法](#处理项目间依赖方法)
-        1. [依赖冲突](#依赖冲突)
-            1. [排除依赖](#排除依赖)
-        1. [继承](#继承)
-    1. [常用插件](#常用插件)
-        1. [lombok](#lombok)
-        1. [protobuf](#protobuf)
-        1. [Versions Maven Plugin](#versions-maven-plugin)
-        1. [Maven Enforcer Plugin](#maven-enforcer-plugin)
-        1. [Maven Deploy plugin](#maven-deploy-plugin)
-    1. [构建工具对比](#构建工具对比)
-        1. [Maven和Ant的区别一](#maven和ant的区别一)
-        1. [Maven的优势](#maven的优势)
-    1. [发布构件到公共仓库](#发布构件到公共仓库)
-1. [配置私服](#配置私服)
-    1. [nexus](#nexus)
-    1. [码云](#码云)
-        1. [创建仓库](#创建仓库)
-        1. [引用仓库中的构件](#引用仓库中的构件)
-            1. [Gradle](#gradle)
-            1. [Maven](#maven)
+- 1. [Maven](#maven)
+    - 1.1. [安装](#安装)
+        - 1.1.1. [Maven常用命令](#maven常用命令)
+            - 1.1.1.1. [从jar安装到本地库](#从jar安装到本地库)
+        - 1.1.2. [settings.xml配置](#settingsxml配置)
+            - 1.1.2.1. [配置镜像源](#配置镜像源)
+                - 1.1.2.1.1. [阿里云](#阿里云)
+            - 1.1.2.2. [配置本地仓库](#配置本地仓库)
+    - 1.2. [maven配置](#maven配置)
+        - 1.2.1. [主配置文件详解](#主配置文件详解)
+        - 1.2.2. [配置代码编译版本](#配置代码编译版本)
+    - 1.3. [构建](#构建)
+        - 1.3.1. [使用maven构建多模块的项目](#使用maven构建多模块的项目)
+        - 1.3.2. [Profiles](#profiles)
+        - 1.3.3. [测试](#测试)
+        - 1.3.4. [打包部署](#打包部署)
+            - 1.3.4.1. [assembly](#assembly)
+            - 1.3.4.2. [shade](#shade)
+    - 1.4. [Maven 依赖](#maven-依赖)
+        - 1.4.1. [依赖类型](#依赖类型)
+        - 1.4.2. [依赖的范围](#依赖的范围)
+        - 1.4.3. [依赖的传递](#依赖的传递)
+        - 1.4.4. [处理项目间依赖方法](#处理项目间依赖方法)
+        - 1.4.5. [依赖冲突](#依赖冲突)
+            - 1.4.5.1. [排除依赖](#排除依赖)
+        - 1.4.6. [继承](#继承)
+    - 1.5. [常用插件](#常用插件)
+        - 1.5.1. [lombok](#lombok)
+        - 1.5.2. [protobuf](#protobuf)
+        - 1.5.3. [Maven Enforcer Plugin](#maven-enforcer-plugin)
+        - 1.5.4. [Maven Deploy plugin](#maven-deploy-plugin)
+    - 1.6. [构建工具对比](#构建工具对比)
+        - 1.6.1. [Maven和Ant的区别一](#maven和ant的区别一)
+        - 1.6.2. [Maven的优势](#maven的优势)
+    - 1.7. [发布构件到中央仓库](#发布构件到中央仓库)
+        - 1.7.1. [发布到 Github Package](#发布到-github-package)
+- 2. [配置私服](#配置私服)
+    - 2.1. [nexus](#nexus)
+    - 2.2. [码云](#码云)
+        - 2.2.1. [创建仓库](#创建仓库)
+        - 2.2.2. [引用仓库中的构件](#引用仓库中的构件)
+            - 2.2.2.1. [Gradle](#gradle)
+            - 2.2.2.2. [Maven](#maven)
 
-**目录 end**|_2023-08-28 23:31_|
+💠 2024-07-13 00:44:21
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -279,6 +279,7 @@ mvn install:install-file
 - 执行指定测试类 `mvn test -Dtest=类名`
 
 ### 打包部署
+获取项目版本 `mvn help:evaluate -Dexpression=project.version -q -DforceStdout`
 
 > [deploy with source](https://stackoverflow.com/questions/4725668/how-to-deploy-snapshot-with-sources-and-javadoc)
 ```xml
@@ -328,6 +329,8 @@ mvn install:install-file
         </executions>
     </plugin>
 ```
+
+> [Maven 引入 JDK 自带 tools.jar 注意事项](https://www.sunyongfei.cn/archives/305/)  
 
 #### shade
 
@@ -431,6 +434,7 @@ A 项目 compile
 *************************
 
 ## 常用插件
+
 ### lombok
 > [详细](/Java/Tool/Lombok.md)
 
@@ -438,9 +442,6 @@ A 项目 compile
 > [maven 插件 ](https://www.xolstice.org/protobuf-maven-plugin/) `本质还是要使用系统安装的protoc, 然后插件实现了自动编译文件`
 
 - [protoc-jar](https://github.com/os72/protoc-jar-maven-plugin)`自动识别平台, 使用对应的编译器编译得到java文件, 但是目前还有一些bug`
-
-### Versions Maven Plugin
-> [Official Site](http://www.mojohaus.org/versions-maven-plugin/)
 
 ### Maven Enforcer Plugin
 > [Official Site](http://maven.apache.org/enforcer/maven-enforcer-plugin/)  
@@ -490,14 +491,50 @@ A 项目 compile
 
 ********************
 
-## 发布构件到公共仓库
+## 发布构件到中央仓库
+`mvn clean javadoc:jar source:jar deploy -U -DskipTests=true` 带文档和源码跳过测试发布，注意javadoc:jar对javadoc有严格要求，文档不符合规范会发布失败，可按需使用该插件。
 
-- [ ] Jforg mvnrepository 
+跳过模块不deploy
+```xml
+<properties><maven.deploy.skip>true</maven.deploy.skip></properties>
+```
 
 > [将项目发布到 maven 中央仓库踩过的坑](http://blog.csdn.net/h3243212/article/details/72374363)
 
 > [发布Maven构件到中央仓库](https://www.xncoding.com/2018/01/27/tool/maven-central.html)  
 > [android-library-publish-to-jcenter](https://github.com/panpf/android-library-publish-to-jcenter)
+
+### 发布到 Github Package
+> 1. 申请token（clasic） 具有package的读写权限
+> 2. settings.xml 配置 Github 源
+```xml
+    <profile>
+      <id>github</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2</url>
+        </repository>
+        <repository>
+          <id>github</id>
+          <url>https://maven.pkg.github.com/</url>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+```
+```xml
+    <!-- 按仓库发布项目 -->
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/{username}/{repo}</url>
+        </repository>
+    </distributionManagement>
+```
 
 *********************
 

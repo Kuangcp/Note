@@ -80,7 +80,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2024-02-27 11:32:45
+💠 2024-07-03 17:43:26
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -111,6 +111,7 @@ categories:
 1. 调用方式: `接口.super.方法`
 
 ## static方法
+类似于Scala Ruby trait/mixin 这种默认接口实现
 
 1. 调用方式: static 方法 `接口.方法`
 
@@ -513,6 +514,8 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 - 使用 parallel() 开启并行流时要注意此时并行是依赖JVM内全局共用的Forkjoin线程池实现的，也就是说理论上会发生：
     - 使用了并行流的业务代码A耗时很久会卡住使用了并行流业务代码B，这种问题发生了就比较难排查了，所以并行流通常使用较少，有异步场景均按业务独立线程池统一管理会更好
 
+> [JDFrame](https://github.com/burukeYou/JDFrame)`封装出类似Spark Frame 的API`
+
 ************************
 
 ## Stream与集合
@@ -764,6 +767,8 @@ List<int[]> pairs = numbers1.stream()
     Optional<Integer> min = numbers.stream().reduce((x, y) -> x < y ? x : y);
 ```
 
+> `return Stream.of(1，2，5，6).summaryStatistics();` 包含： 最大值，最小值，平均值，总数
+
 #### 归约的优势与并行化
 相比于前面写的逐步迭代求和，使用 reduce 的好处在于，这里的迭代被内部迭代抽象掉了，这让内部实现得以选择并行执行reduce 操作。  
 而迭代式求和例子要更新共享变量 sum ，这不是那么容易并行化的。如果你加入了同步，很可能会发现线程竞争抵消了并行本应带来的性能提升！  
@@ -910,7 +915,7 @@ Stream.collect 实现
                 )
             )); 
 ```
-- 这个分组的结果显然是一个map，以Dish的类型作为键，以包装了该类型中热量最高的Dish的Optional<Dish>作为值
+- 这个分组的结果显然是一个map，以Dish的类型作为键，以包装了该类型中热量最高的Dish的`Optional<Dish>`作为值
     - 但是这里的 Optional 存在的意义不大, 因为先有的类型 进行分组, 才会进行 maxBy 所以值是一定存在的
 
 > 1. 把收集器的结果转换为另一种类型
@@ -939,7 +944,7 @@ Stream.collect 实现
     Map<Dish.Type, Integer> totalCaloriesByType = menu.stream().collect(groupingBy(Dish::getType, 
                 summingInt(Dish::getCalories))); 
 ```
-然而常常和groupingBy联合使用的另一个收集器是mapping方法生成的。这个方法接受两个参数：一个函数对流中的元素做变换，另一个则将变换的结果对象收集起来。
+然而常常和groupingBy联合使用的另一个收集器是mapping方法生成的。这个方法接受两个参数：一个函数对流中的元素做**变换**，另一个则将变换的结果对象**收集**起来。
 其目的是在累加之前对每个输入元素应用一个映射函数，这样就可以让接受特定类型元素的收集器适应不同类型的对象。我们来看一个使用这个收集器的实际例子。
 比方说你想要知道，对于每种类型的Dish，菜单中都有哪些CaloricLevel。我们可以把groupingBy和mapping收集器结合起来，如下所示：
 ```java
@@ -959,7 +964,20 @@ Stream.collect 实现
             if (dish.getCalories() <= 400) return CaloricLevel.DIET; 
             else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL; 
             else return CaloricLevel.FAT; 
-        },toCollection(HashSet::new) ))); 
+        }, toCollection(HashSet::new) )
+        ));
+
+    // 可抽象出工具方法
+    static <P, K, V> Map<K, Set<V>> groupToMapSet(Collection<P> params,
+                                                  Function<P, K> keyFunc,
+                                                  Function<P, V> valFunc) {
+        if (CollectionUtils.isEmpty(params)) {
+            return Collections.emptyMap();
+        }
+        return params.stream().collect(Collectors.groupingBy(keyFunc,
+                Collectors.mapping(valFunc, Collectors.toCollection(HashSet::new))
+        ));
+    }
 ```
 
 #### 分区
@@ -1028,7 +1046,7 @@ java.util.stream.Collector
 
 # Optional
 >1. null引用在历史上被引入到程序设计语言中，目的是为了表示变量值的缺失。
->1. Java 8中引入了一个新的类java.util.Optional<T>，对存在或缺失的变量值进行建模。
+>1. Java 8中引入了一个新的类`java.util.Optional<T>`，对存在或缺失的变量值进行建模。
 >1. 你可以使用静态工厂方法Optional.empty、 Optional.of以及Optional.ofNullable创建Optional对象。
 >1. Optional类支持多种方法，比如map、 flatMap、 filter，它们在概念上与Stream类中对应的方法十分相似。
 >1. 使用Optional会迫使你更积极地解引用Optional对象，以应对变量值缺失的问题，最终，你能更有效地防止代码中出现不期而至的空指针异常。
@@ -1065,7 +1083,7 @@ java.util.stream.Collector
 
 ************************
 
-1. **注意**: Optional 无法序列化, 也就是说不能作为 PO 的字段, 但是可以在get上下功夫: `public Optional<String> getName(){return this.name}`
+1. **注意**: *Optional 无法序列化*, 也就是说不能作为 PO 的字段, 但是可以在get上下功夫: `public Optional<String> getName(){return this.name}`
 
 1. 异常与Optional的对比
     - 当一个方法由于某些原因无法返回期望值, 常见的做法是抛出异常, 或者返回null(不建议). 但是这时候多了一个选择, 返回Optional
@@ -1113,7 +1131,7 @@ java.util.stream.Collector
 
 # 时间处理
 
-1. SimpleDateFormat `yyyy-MM-dd HH:MM:SS` 但是线程不安全, Java8 可使用 `DateTimeFormatter` 
+1. SimpleDateFormat `yyyy-MM-dd HH:MM:SS` 但是线程不安全, Java8 可使用 `DateTimeFormatter` 例如 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")
 
 ## ZoneId
 >  time-zone ID

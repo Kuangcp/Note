@@ -37,10 +37,8 @@ categories:
     - 2.3. [Micro](#micro)
     - 2.4. [BS在线编辑器](#bs在线编辑器)
 - 3. [十六进制](#十六进制)
-    - 3.1. [Ghex](#ghex)
-    - 3.2. [hexedit](#hexedit)
 
-💠 2024-04-22 20:07:13
+💠 2024-05-11 15:14:31
 ****************************************
 # 文本编辑器
 
@@ -171,6 +169,8 @@ _个人配置_
 1. vscode-mindmap
 1. rainbow csv 
 1. Office Viewer 类似 Typora
+1. Docker 微软推出
+    - 可直接修改容器内文件
 
 ### 实践
 > [参考: 用Git在Visual Studio Code内进行版本控制[指导]](https://sdk.cn/news/4041)
@@ -259,12 +259,17 @@ strict-ssl=false
 ************************
 
 # 十六进制
+> 十六进制方式查看和修改二进制文件 
 
-> 十六进制查看 
+> [What's the best hex editor in 2023? ](https://www.reddit.com/r/hacking/comments/105mzw5/whats_the_best_hex_editor_in_2023/)  
 
-xxd hexdump od vim
+**终端**
+- 查看 hexdump xxd od
+- 编辑 hexedit vim
 
-## Ghex
-- 十六进制文件编辑器
+**GUI**
+Ghex
+[HexWalk](https://github.com/gcarmix/HexWalk)
+[010Editor](https://www.sweetscape.com/)
+[ImHex](https://github.com/WerWolv/ImHex)
 
-## hexedit

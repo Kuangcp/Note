@@ -31,7 +31,7 @@ categories:
         - 3.4.1. [解决方案](#解决方案)
     - 3.5. [XSS](#xss)
 
-💠 2024-03-19 10:33:48
+💠 2024-06-17 19:57:32
 ****************************************
 
 # Web应用网络安全
@@ -144,7 +144,7 @@ categories:
 ## DOS
 
 - [Denial-of-service_attack](https://en.wikipedia.org/wiki/Denial-of-service_attack)
-
+> [DDoS attack using HOIC](https://github.com/Samsar4/Ethical-Hacking-Labs/blob/master/9-Denial-of-Service/2-DDoS-using-HOIC.md)
 
 ### CC challenge collapsar attack
 
@@ -152,17 +152,15 @@ CC攻击是攻击者借助代理服务器生成指向受害主机的合法请求
 
 例如对站点的部分接口或页面发起大量客户端线程访问。
 
-
 ### SYNFlood攻击
-
 > 洪水攻击 [参考博客](http://xfocus.net/articles/200106/208.html) SYN Flood是当前最流行的DoS（拒绝服务攻击）与DDoS（分布式拒绝服务攻击）的方式之一，这是一种利用TCP协议缺陷，发送大量伪造的TCP连接请求，从而使得被攻击方资源耗尽（CPU满负荷或内存不足）的攻击方式。
 
 > [参考博客 什么是SYN Flood攻击?](http://www.cnblogs.com/popduke/p/5823801.html)
+> [SYN Flooding](https://github.com/Samsar4/Ethical-Hacking-Labs/blob/master/9-Denial-of-Service/1-SYN-Flooding.md)
 
-- Linux:
-  - 修改文件 `sudo vim /etc/sysctl.conf `
-  - 将注释取消 修改值: `net.ipv4.tcp_syncookies = 0`
-  - 就能提高并发总量,但是并发量还是不能提高
+- hping： Sync攻击 `hping -S -p 80 --flood 192.168.1.234` 
+- 修改文件 `sudo vim /etc/sysctl.conf `
+    - 将注释取消 修改值: `net.ipv4.tcp_syncookies = 0` 就能提高并发总量,但是并发量还是不能提高
 
 ```conf
     net.ipv4.tcp_syncookies = 0  

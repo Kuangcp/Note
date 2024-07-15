@@ -11,7 +11,5 @@ categories:
 
 **目录 end**|_2020-04-27 23:42_|
 ****************************************
-# Memcache
+# Memcached
 > [memcached.org](https://memcached.org/) | [Github](https://github.com/memcached/memcached)
-
-Java 实现的分布式缓存系统

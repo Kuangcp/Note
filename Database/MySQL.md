@@ -67,7 +67,7 @@ categories:
     - 14.3. [修改](#修改)
         - 14.3.1. [授权](#授权)
 
-💠 2023-10-20 19:13
+💠 2024-05-03 12:21:37
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -160,13 +160,11 @@ datetime timestamp
 
 *****************************
 # 数据库
+
 ## 创建
 > create database name;
 
 ## 修改
-- [ ] TODO 修改数据库
-
-
 - 转换表所有字段编码 `alter table a convert to character set utf8mb4;`
 - 修改单个字段编码 `alter table a modify name  varchar(100) character set utf8mb4;`
 
@@ -182,7 +180,7 @@ datetime timestamp
 
 > [数据库迁移 Java工具的实现](https://blog.csdn.net/EASYgoing00/article/details/72885280)  主要的思路是Java调用系统命令行执行命令后得到导出文件， 然后读取导出的文件 进一步操作
 
-大数据量表的导出： 常规使用分页分批加载到Excel中，改进版则使用固定的连接流方式加载数据
+大数据量表的导出： 常规使用分页分批加载到Excel中，改进版则使用长连接，流查询方式加载数据
 
 ************************
 

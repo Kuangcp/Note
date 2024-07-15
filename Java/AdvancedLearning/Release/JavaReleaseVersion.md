@@ -25,7 +25,7 @@ categories:
     - 1.14. [Java18](#java18)
     - 1.15. [Java21 LTS](#java21-lts)
 
-💠 2024-02-19 16:05:42
+💠 2024-06-21 16:17:04
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)
@@ -33,6 +33,8 @@ categories:
 > [Java语言特性系列 5-最新](https://segmentfault.com/a/1190000004417288)
 
 > [参考: JDK的版本号解惑](https://blog.csdn.net/bisal/article/details/118947676)  
+
+![](/Java/AdvancedLearning/Release/img/001-jdk-release.km.svg)
 
 ## Java5
 泛型 枚举 装箱拆箱 静态导入 foreach
@@ -71,6 +73,7 @@ JDBC4.0  JAX-WS 2.0
 1. Stream Optional 改进
 1. 内置 轻量级 JSON API
 1. HTTP2 客户端
+1. 云原生适配
 
 ## Java10 
 > [参考: Java10的新特性](https://segmentfault.com/a/1190000014076481)
@@ -91,6 +94,7 @@ JDBC4.0  JAX-WS 2.0
 1. Epsilon 空gc实现： 用于性能测试
 1. HttpClient 默认实现
 
+> [Oracle JDK11 Migration Guide](https://docs.oracle.com/en/java/javase/11/migrate/index.html)  
 > [Jdk8到jdk11 Springboot 踩坑指南](https://blog.csdn.net/ab601026460/article/details/86062991)  
 
 > Illegal reflective access by org.springframework.cglib.core.ReflectUtils
@@ -119,11 +123,8 @@ JDBC4.0  JAX-WS 2.0
 ## Java21 LTS
 > [OpenJDK  21](https://openjdk.org/projects/jdk/21/)
 
+1. 字符串模板 `语法糖`
 1. 分代ZGC 
-1. 虚拟线程`协程 轻量级线程 用户级线程` 总结：如果要引入生产，需要关注整个JEP的文档，调试确认细节后才能使用，不然就会陷入到各种诡异的问题上。
-    - 同样是依赖一个共用的ForkJoin线程池执行代码 即 不推荐执行CPU耗时代码，只建议用来执行io等待类代码（21对有可能阻塞的api都加上了特定处理代码），提高吞吐量
-    - 正常代码无法感知 协程内代码的异常，反之也是一样，局部变量也是隔离的
-    - 协程的线程栈存储在堆内存中，为了规避大量协程导致的栈溢出
-
+1. 虚拟线程`协程 轻量级线程 用户级线程` 
 
 > [Java21新特性](https://segmentfault.com/a/1190000044238496)

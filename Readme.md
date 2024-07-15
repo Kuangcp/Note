@@ -4,9 +4,9 @@
 [![JavaSE](https://img.shields.io/badge/JavaSE-Java基础-blue.svg)](./Java/) 
 [![目录](https://img.shields.io/badge/wiki-Note-brightgreen.svg)](https://gitee.com/gin9/Memo/wikis/pages) 
 
-> 建议将该仓库克隆下来后，在 [Visual Studio Code](https://code.visualstudio.com/) 中搜索阅读 
->- `*.drawio.svg 使用 draw.io 插件查看和编辑`
->- `*.km.svg 使用 vscode-mindmap 插件查看和编辑`
+> 建议将该仓库克隆下来后，在 [Visual Studio Code](https://code.visualstudio.com/) 中搜索阅读  
+> *.drawio.svg 使用 [draw.io](https://github.com/hediet/vscode-drawio) 插件编辑  
+> *.km.svg 使用 [vscode-mindmap](https://github.com/eightHundreds/vscode-mindmap) 插件编辑  
 
 ## 基础
 * [ 算法 ](/Skills/CS/Algorithm.md)
@@ -32,9 +32,7 @@
 ### 工具
 
 * [ Gradle ](/Java/Tool/Gradle.md)
-* [ Gradle进阶 ](/Java/Tool/GradleAdvance.md)
 * [ IDEA ](/Java/Tool/IDEA.md)
-* [ Jetty ](/Java/Tool/Jetty.md)
 * [ Lombok ](/Java/Tool/Lombok.md)
 * [ Maven ](/Java/Tool/Maven.md)
 * [ Maven进阶 ](/Java/Tool/MavenAdvance.md)
@@ -65,7 +63,6 @@
 
 ## Python
 * [ Python ](/Python/Python.md)
-* [ PythonConcurrent ](/Python/PythonConcurrent.md)
 * [ PythonGUI ](/Python/PythonGUI.md)
 * [ PythonGame ](/Python/PythonGame.md)
 * [ PythonNet ](/Python/PythonNet.md)
@@ -81,15 +78,15 @@
 - [skill tree](https://github.com/linw7/Skill-Tree)
 - [巨人工作记录](https://ztgame.shenyu.me/)`笔记 基于 GitBook`
 - [某研究生在校阅读笔记](https://github.com/lanxuezaipiao/ReadingNotes)
-- [书写规范和建议](https://github.com/sparanoid/chinese-copywriting-guidelines)`比较全面,闲暇可以参考`
-- [阮一峰的博客](https://githuUIb.com/ruanyf/articles)
-- [阮一峰的周报](https://github.com/ruanyf/weekly)
+- [书写规范和建议](https://github.com/sparanoid/chinese-copywriting-guidelines)
+- [阮一峰的博客](https://github.com/ruanyf/articles) [阮一峰的周报](https://github.com/ruanyf/weekly)
 - [notes](https://github.com/district10/notes)`杂谈`
 - [interview](https://github.cUIom/hadyang/interview)`Java / Android 笔试、面试 知识整理`
 - [ZXBlog](https://github.com/UIZXZxin/ZXBlog)
-- [天赋好书](https://www.cntofu.com/)`爬虫爬开源笔记项目然后转换成GitBook一样的网页?`
 - [coderzh-hugo-blog ](https://github.com/coderzh/coderzh-hugo-blog)
 - [Java-Summarize](https://github.com/zaiyunduan123/Java-Summarize)
+- [JAVA基础技能代码集](https://github.com/veezean/JavaBasicSkills)
+- [Java学习+面试指南](https://github.com/BookaiCode/JavaRecord)
 
 - [skill-map](https://github.com/TeamStuQ/skill-map)
 - [代码安全指南](https://github.com/Tencent/secguide)
@@ -105,7 +102,7 @@
 - [CSS 魔法](https://github.com/cssmagic/blog)
 - [cain-note](https://github.com/james-cain/cain-note)`像是培训机构的资料和他本人的学习笔记,偏向前端`
 - [梁少锋的博客笔记](https://github.com/youngwind/blog)`前端相关`
-- [HstarDoc](https://github.com/hstarorg/HstarDoc)`前端的大量文档`
+- [HstarDoc](https://github.com/hstarorg/HstarDoc)
 
 ************************
 

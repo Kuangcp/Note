@@ -21,15 +21,20 @@ categories:
             - 4.1.1.1. [Tomcat](#tomcat)
     - 4.2. [加载和连接](#加载和连接)
     - 4.3. [方法句柄](#方法句柄)
-- 5. [反编译](#反编译)
-    - 5.1. [JD](#jd)
-    - 5.2. [Jad](#jad)
-- 6. [热部署](#热部署)
+- 5. [Agent](#agent)
+- 6. [反编译](#反编译)
+- 7. [热部署](#热部署)
 
-💠 2024-04-01 11:51:20
+💠 2024-06-13 11:01:29
 ****************************************
 # 字节码以及类加载
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
+
+
+************************
+> 书籍
+- 深入理解Java虚拟机 周志明
+- Java 虚拟机字节码 从入门到实战 吴就业
 
 # 编译优化
 > 由源文件 *.java 编译成 *.class 文件这个过程中做的调优
@@ -43,11 +48,13 @@ categories:
 | 类型 | JVM参数 | 特点 |
 |:---|:---|:---|
 | C1 | -client | 编译耗时短 |
-| C2 | -server | 编译耗时长执行效率好`需要收集运行期profile信息来辅助编译` |
-|  |  |  |
+| C2 | -server | 编译耗时长执行效率好`需要收集运行期profile信息来辅助编译也就是PGO` |
+| Graal |  |  |
 
-> 自JDK8起默认开启分层编译`C1 C2混用` -client -server参数无效
+> 注意 自JDK8起默认开启分层编译`C1 C2混用` -client -server参数**无效**
 
+> [Graal Compiler](https://www.graalvm.org/latest/reference-manual/java/compiler/)  
+> [Deep Dive Into the New Java JIT Compiler – Graal](https://www.baeldung.com/graal-java-jit-compiler)
 
 ************************
 
@@ -96,17 +103,18 @@ javassist
 ## 类加载器
 > [参考:  一文带你深扒ClassLoader内核，揭开它的神秘面纱！ ](https://www.cnblogs.com/wmyskxz/p/13575224.html#_label4)`深入源码，举例清晰`  
 
-> 双亲委派模型(`java.lang.ClassLoader#loadClass(java.lang.String, boolean)`) 其工作原理的是，如果一个类加载器收到了类加载请求(只讨论首次加载，已经加载过的会走缓存提前返回)  
-> 它并不会自己先去加载，而是委托给父类的加载器去执行，如果父类加载器还存在其父类加载器，则进一步向上委托，依次递归，请求最终将到达顶层的启动类加载器  
-> 如果父类加载器可以完成类加载任务，就成功返回，倘若父类加载器无法完成此加载任务，子加载器才会尝试自己去加载，这就是双亲委派模式
+> 双亲委派模型(`parents delegation model`） 实现代码：`java.lang.ClassLoader#loadClass(java.lang.String, boolean)`
+> 其工作原理是，如果一个类加载器收到了类加载请求(只讨论首次加载，已经加载过的会走缓存), 它并不会自己先去加载，而是委托给父类的加载器去执行  
+> 如果父类加载器还存在其父类加载器，则进一步向上委托，依次递归，请求最终将到达顶层的启动类加载器  
+> 如果父类加载器可以完成类加载任务，就成功返回，倘若父类加载器无法完成此加载任务，子加载器才会尝试自己去加载
 
-- Java平台经典类加载器：
-    - `BootStrap ClassLoader`  根（引导）加载器：通常在VM启动后不久就实例化，最顶层的加载类，主要加载 核心类库 并且不做验证工作 
+- Java平台经典类加载器层级：
+    1. `BootStrap ClassLoader`  根（引导）加载器：通常在VM启动后不久就实例化，最顶层的加载类，主要加载 核心类库 并且不做验证工作 
         - 加载目录 `%JRE_HOME%\lib` 下的rt.jar、resources.jar、charsets.jar 和 class 文件
-    - `Extendsion ClassLoader` 扩展类加载器：加载安装时自带的标准扩展，一般包括安全性扩展
+    2. `Extendsion ClassLoader` 扩展类加载器：加载安装时自带的标准扩展，一般包括安全性扩展
         - 加载目录 `%JRE_HOME%\lib\ext` 下的 jar 包和 class 文件。
-    - `Application ClassLoader`  应用或系统类加载器：应用最广泛的类加载器，负责加载应用类(当前应用的 classpath 的所有类)
-    - `自定义ClassLoader` 自定义类载器
+    3. `Application ClassLoader`  应用或系统类加载器：应用最广泛的类加载器，负责加载应用类(当前应用的 classpath 的所有类)
+    4. `自定义ClassLoader` 自定义类载器
 
 > 注意：  
 >1. 例如在读取类路径下文件时，可以通过 `classA.getClassLoader().getResourceAsStream("app.properties")` 但是如果类classA对象是由 BootStrap 类加载器加载的， getClassLoader() 将返回 null  
@@ -154,17 +162,39 @@ WebApp类加载器就为了类隔离而违背了双亲委派模型，仅自身�
 
 ![图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Java7Developer/p118.jpg)
 
-****************
+************************
+# Agent
+> [JDK: Interface Instrumentation](https://docs.oracle.com/en/java/javase/21/docs/api/java.instrument/java/lang/instrument/Instrumentation.html)
+
+> [Guide to Java Instrumentation](https://www.baeldung.com/java-instrumentation)  
+> [ Java Agent 探针技术](https://juejin.cn/post/7086026013498408973)  
+
+Java Agent 主要有以下功能
+- Java Agent 在加载 Java 字节码之前拦截并对字节码进行修改;
+- Java Agent 在 Jvm 运行期间修改已经加载的字节码;
+
+Java Agent 的应用场景
+
+| 能力 | 案例 |
+|:----|:----|
+| IDE的调试功能     |  Eclipse、IntelliJ IDEA ；
+| 热部署功能        |  JRebel、XRebel、spring-loaded；
+| 各种线上诊断工具   |  Btrace、Greys， Arthas；
+| 各种性能分析工具   |  Visual VM、JConsole 等；
+| 全链路性能检测工具  |  Skywalking、Pinpoint等；
+
+
+> [agent](https://github.com/yxkong/agent)`线程池监控`  
+
+************************
 
 # 反编译
-## JD
-> [JD](http://java-decompiler.github.io/)
+> [JD](http://java-decompiler.github.io/)  
+> [https://varaneckas.com/jad/](https://varaneckas.com/jad/)  
+> [Java-Class-Viewer](https://www.codeproject.com/Articles/35915/Java-Class-Viewer)  
+> [classpy](https://github.com/zxh0/classpy)  
 
-## Jad
-> [https://varaneckas.com/jad/](https://varaneckas.com/jad/)
-
-
-**************************************
+************************
 
 # 热部署
 > 通过替换 class 实现不停机热更新

@@ -19,6 +19,10 @@ categories:
     - 1.7. [/proc](#proc)
         - 1.7.1. [process](#process)
         - 1.7.2. [net](#net)
+        - 1.7.3. [swaps](#swaps)
+            - 1.7.3.1. [设置交换内存文件](#设置交换内存文件)
+            - 1.7.3.2. [清空交换内存](#清空交换内存)
+        - 1.7.4. [清空读写缓存](#清空读写缓存)
     - 1.8. [/usr](#usr)
         - 1.8.1. [/usr/local](#usrlocal)
     - 1.9. [/etc](#etc)
@@ -37,7 +41,7 @@ categories:
     - 2.1. [查看发行版](#查看发行版)
     - 2.2. [查看系统所有用户信息](#查看系统所有用户信息)
 
-💠 2024-03-31 13:10:46
+💠 2024-06-26 10:57:11
 ****************************************
 # Linux 目录结构
 > Linux 系统目录结构的大致分布以及说明
@@ -71,7 +75,10 @@ categories:
 ## /proc
 > 此目录是虚拟目录，目录中所有信息都是内存的映射，通过这个虚拟的内存映射目录，可以和内核内部数据结构进行交互，获取有关进程的有用信息，同时也可以在系统运行中修改内核参数。
 
-特别的是 /proc存在于内存中，而不是硬盘上。
+`man 5 proc`  
+[procstat](http://brokestream.com/procstat.html)  
+
+特别的是 /proc存在于内存中，而不是硬盘上，是一个虚拟的文件系统。
 
 | 文件或目录       | 说明                                |
 | ----------- | --------------------------------- |
@@ -100,10 +107,58 @@ categories:
 - oom_* ： oom-killer 关注的指标，动态计算得到，当需要有进程被kill时会找出指标值高的进程kill掉
 - exe cmdline 进程的启动命令
 
+************************
+
+> /proc/interrupts  
+> /proc/irq  
+
+[基础篇：经常说的 CPU 上下文切换是什么意思？（下）](https://freegeektime.com/100020901/70077/)
 
 ### net
 1. ARP: /proc/net/arp 若该文件内有重复的mac地址, 并且有机器伪装成了网关的mac 就说明遭受了ARP攻击 `或者 arp -a`
     - arping 10.91.255.254 能查看到真实的mac地址
+
+### swaps
+`cat /proc/swaps`
+
+#### 设置交换内存文件
+- 查看内存 `free -h` 
+- 创建一个4G交换文件 `dd if=/dev/zero of=/swapfile bs=1024k count=4096` 
+- 设置文件权限 `chmod 0600 /swapfile`
+- 格式化成交换文件的格式 `mkswap /swapfile` 
+- 启用该文件作为交换分区的文件 ` swapon /swapfile` 
+- `/etc/fstab` 中配置 `/swapfile swap swap defaults 0 0` 让交换分区在开机后自动被挂载
+
+- 修改交换内存开始使用的阈值
+    - `sudo sysctl vm.swappiness=15` 临时修改重启注销失效， 查看：`cat /proc/sys/vm/swappiness`
+    - 永久修改：`/etc/sysctl.conf ` 文件中设置开始使用交换分区的触发值： `vm.swappiness=10`
+    - 表示物理内存剩余`10%` 才会开始使用交换分区
+    - `建议，笔记本的硬盘低于 7200 转的不要设置太高的交换分区使用，会大大影响性能，因为交换分区就是在硬盘上，频繁的交换数据`
+
+```sh
+    # 完整命令: root身份运行
+    dd if=/dev/zero of=/swapfile bs=1024k count=4096 && mkswap /swapfile && swapon /swapfile && echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+```
+
+#### 清空交换内存
+- 1.关闭交换分区 `sudo swapoff 交换分区文件`
+    - 2.开启交换分区 `sudo swapon 交换分区文件`
+- `swapoff -a && swapon -a`
+    - 前提是交换分区已在 `/etc/fstab` 中配置
+
+### 清空读写缓存
+> [参考: 如何在 Linux 中清除缓存（Cache）？](https://linux.cn/article-5627-1.html) `注意要切换到root再运行命令`  
+> [参考: Linux 内存中的Cache，真的能被回收么？](https://www.cnblogs.com/276815076/p/5478966.html)  
+
+************************
+
+> 设置值 `sync; echo 1 > /proc/sys/vm/drop_caches`
+
+| 值 | 作用 |
+|:----|:----|
+| 1 | 仅清除 page cache |
+| 2 | 表示清除回收slab分配器中的对象（包括目录项缓存和inode缓存） |
+| 3 | 表示清除page cache和slab分配器中的缓存对象 |
 
 ***************
 

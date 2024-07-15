@@ -18,7 +18,7 @@ categories:
         - 1.2.3. [Yay](#yay)
 - 2. [Tips](#tips)
 
-💠 2024-04-21 16:35:07
+💠 2024-07-12 11:40:30
 ****************************************
 
 # Arch
@@ -31,14 +31,10 @@ categories:
 - [什么Linux发行版软件最多？](https://www.lulinux.com/archives/2787)
 - [Arch Linux 安装、配置、美化和优化](http://www.cnblogs.com/bluestorm/p/5929172.html)
 
-> [参考: archlinux简明教程](https://arch.icekylin.online/prologue.html)
-
-
-
 ## 社区
 
-* [arch cn bbs](https://bbs.archlinuxcn.org/viewforum.php?id=19)
-
+- [arch cn bbs](https://bbs.archlinuxcn.org/viewforum.php?id=19)
+- [archlinux 简明指南](https://arch.icekylin.online/)
 
 ## 包管理
 
@@ -66,7 +62,7 @@ categories:
    - -Rs 卸载以及没有被其他软件依赖的软件包
 - -Q 查询
    - -Qdt 查询未被依赖的软件包
-- -U 升级或添加软件包
+- -U 升级或添加软件包 [archive](https://archive.archlinux.org/packages/)
     - 例如 `pacman -U https://archive.archlinux.org/packages/c/curl/curl-8.4.0-1-x86_64.pkg.tar.zst` 安装curl历史版本
 
 > 注意
@@ -83,7 +79,6 @@ categories:
 ### Snap
 
 > 使用 pacman 安装
-
 1. sudo pacman -S snapd
 2. sudo systemctl enable --now snapd.socket
 3. sudo ln -s /var/lib/snapd/snap /snap

@@ -21,9 +21,10 @@ categories:
         - 2.1.5. [Centos](#centos)
         - 2.1.6. [Arch](#arch)
     - 2.2. [Windows](#windows)
+    - 2.3. [图形化管理工具](#图形化管理工具)
+        - 2.3.1. [Portainer](#portainer)
 - 3. [基础管理](#基础管理)
-    - 3.1. [图形化管理工具](#图形化管理工具)
-        - 3.1.1. [Portainer](#portainer)
+    - 3.1. [配置代理](#配置代理)
     - 3.2. [配置镜像源](#配置镜像源)
         - 3.2.1. [搭建本地镜像仓库](#搭建本地镜像仓库)
     - 3.3. [基础命令](#基础命令)
@@ -57,7 +58,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2023-10-18 13:43
+💠 2024-06-26 15:40:27
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -165,12 +166,6 @@ categories:
 - 安装完成后就会有三个图标在桌面上，然后进入Docker Quickstart Terminal后 `docker run hello-world` 有正常输出即可
 **************************************
 
-# 基础管理
-> docker 所有的数据默认存储在 `/var/lib/docker`
-
-> [ctop](https://github.com/bcicen/ctop)`Top-like interface for container metrics`  
-
-
 ## 图形化管理工具
 > [lazydocker](https://github.com/jesseduffield/lazydocker)  
 
@@ -179,6 +174,30 @@ categories:
 
 1. `docker volume create portainer_data`
 1. `docker run --name portainer -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce`
+
+
+# 基础管理
+> docker 所有的数据默认存储在 `/var/lib/docker`
+
+> [ctop](https://github.com/bcicen/ctop)`Top-like interface for container metrics`  
+
+## 配置代理
+2024-06-06 开始封禁Dockerhub及国内源，所以最稳妥的还是用代理
+
+> 设置代理方式
+- mkdir -p /etc/systemd/system/docker.service.d
+- vim /etc/systemd/system/docker.service.d/http-proxy.conf
+    ```conf
+    [Service]
+    Environment="HTTP_PROXY=http://localhost:7890"
+    Environment="HTTPS_PROXY=http://localhost:7890"
+    # 可选项，配置不走代理的仓库
+    Environment="NO_PROXY=your-registry.com,10.10.10.10,*.example.com"
+    ```
+- systemctl daemon-reload
+- systemctl restart docker
+- 检查环境变量 systemctl show --property=Environment docker
+- 查看代理 docker info
 
 ## 配置镜像源
 > 默认的DockerHub因为在国外所以网络不太稳定，需要使用国内镜像源
@@ -196,32 +215,6 @@ categories:
 > 时速云
 - `sudo docker pull index.tenxcloud.com/<namespace>/<repository>:<tag>`
 - 下载后可以用别名 `docker tag index.tenxcloud.com/docker_library/node:lastest node:lastest`
-- 然后为了控制台干净可以直接将原来的长命名tag直接删除
-
-> 阿里云
-- [开发者平台](https://dev.aliyun.com/search.html)
-- 配置命名空间，仓库，然后使用文档的配置即可
-
-> 百度云
-- 个人较为推荐使用  | [官方文档](https://cloud.baidu.com/doc/CCE/GettingStarted.html#.E9.95.9C.E5.83.8F.E4.BB.93.E5.BA.93)
-
-1. 登录百度云镜像仓库
-    - sudo docker login --username=[username] hub.baidubce.com
-    - username:镜像仓库名称，即是`开通镜像仓库时填写的用户名`。输入密码后完成登录。
-
-2. 上传镜像
-    - sudo docker tag [ImageId] hub.baidubce.com/[namespace]/[ImageName]:[镜像版本号]  
-    - sudo docker push hub.baidubce.com/[namespace]/[ImageName]:[镜像版本号]  
-        - ImageId和镜像版本号根据镜像信息补充  
-        - namespace是开通镜像仓库时填写的命名空间  
-        - ImageName是在控制台创建的镜像名称  
-
-3. 下载镜像
-    - 登录到镜像仓库，需输入密码  
-    - sudo docker pull hub.baidubce.com/[namespace]/[ImageName]:[镜像版本号]  
-
-4. 使用加速器
-    - docker软件源地址：https://mirror.baidubce.com
 
 ********************************
 ### 搭建本地镜像仓库
@@ -259,6 +252,8 @@ _登录镜像仓库_
 - 登录时速云：`sudo docker login index.tenxcloud.com`
 - 登录百度云： `docker login --username=[username] hub.baidubce.com`
 
+- 清理全部未使用的资源 docker system prune -a
+
 ## 镜像
 > Docker 的镜像是采用分层文件系统， Dockerfile中每个RUN命令造成的修改或新增都是新的一层layer，旧文件不变
 
@@ -275,7 +270,7 @@ _登录镜像仓库_
 - 导出镜像文件：`docker save -o ubuntu.tar  ubuntu:14.04`
     - 导入镜像文件： `docker load --input ubuntu.tar` 或 `docker load < ubuntu.tar`
 - 上传镜像： `docker push mythos/test:lastest`
-
+- 删除所有未使用的image `docker image prune --all`
 ************************
 
 ## 容器

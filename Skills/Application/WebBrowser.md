@@ -22,7 +22,7 @@ categories:
     - 1.4. [Vivaldi](#vivaldi)
     - 1.5. [Opera](#opera)
 
-💠 2024-04-19 10:49:10
+💠 2024-06-28 14:22:39
 ****************************************
 # 浏览器
 ## FireFox
@@ -40,6 +40,8 @@ categories:
 
 > [火狐性能优化贴](https://www.xzcblog.com/post-47.html)  
 > [Firefox uses too much memory or CPU resources - How to fix](https://support.mozilla.org/en-US/kb/firefox-uses-too-much-memory-or-cpu-resources)
+
+> [Floorp](https://github.com/floorp-Projects/floorp/)`FF衍生品，支持工作区，多行tab，单窗口多tab` 但是没有循环tab切换  
 
 ### 开发版本
 > [开发者版本链接](https://www.mozilla.org/zh-CN/firefox/developer/) | [开发工具](https://firefox-dev.tools/)  
@@ -90,8 +92,7 @@ categories:
     1. 前者是重度使用(往往很多标签20+), 常用的标签页全部固定, 一些TODO的tab也放在这里, 用于开发和娱乐(1000M-2000M)
     1. 后者是轻度使用(开10个以下标签), 仅在内存不够时, 只用于内存不足时开发必需 (一般400M左右)
 
-1. 当前标签页右边打开新标签页: 
-    - 打开 `about:config?filter=browser.tabs.insertAfterCurrent` 新建Bool类型, 设置为true
+1. 当前标签页右边打开新标签页: `about:config?filter=browser.tabs.insertAfterCurrent` 新建Bool类型, 设置为true
 
 1. 网页重定向次数限制 默认 20 `network.http.redirection-limit` 设置为0就禁止了网页的重定向
 
@@ -99,6 +100,9 @@ categories:
     1. `about:memory` 查看内存情况
     1. `dom.ipc.processCount` 降低进程数
     1. `browser.tabs.remote.autostart` 设置 false
+    1. `about:unloads` 手动触发tab卸载
+    1. `about:processes` 查看tab进程 **Shift + Esc**
+    1. [Auto Tab Discard 插件](https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/)
 
 ### 使用
 1. 地址栏 `@bing @baidu...` 即可使用指定的搜索引擎进行搜索

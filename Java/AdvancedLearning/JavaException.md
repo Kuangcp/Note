@@ -24,7 +24,7 @@ categories:
         - 2.3.1. [自定义异常的错误码](#自定义异常的错误码)
 - 3. [实现机制](#实现机制)
 
-💠 2024-04-10 14:16:24
+💠 2024-06-15 13:56:58
 ****************************************
 # 异常
 > 相关博客:[Java异常浅谈](http://www.cnblogs.com/focusj/archive/2011/12/26/2301524.html)  
@@ -95,10 +95,9 @@ JVM参数关闭该特性 `-XX:-OmitStackTraceInFastThrow`
 > JavaSE
 [Java Global Exception Handler](https://www.baeldung.com/java-global-exception-handler)
 
-TODO 
+[线程默认异常处理](/Java/AdvancedLearning/JavaThread.md#观测异常)
 
 ************************
-
 
 > SpringMVC
 ```java
@@ -174,40 +173,40 @@ _自定义异常的设计原则_
 查看字节码： javap -v class 或者通过IDEA中插件 `jclasslib Bytecode Viewer`
 
 ```java
-    Code:                                                                                                                                                                                                            
-      stack=3, locals=3, args_size=1                                                                                                                                                                                 
-         0: iconst_1                                                                                                                                                                                                 
-         1: istore_1                                                                                                                                                                                                 
-         2: iconst_1                                                                                                                                                                                                 
-         3: istore_2                                                                                                                                                                                                 
-         4: iload_1                                                                                                                                                                                                  
-         5: iload_2                                                                                                                                                                                                  
-         6: if_icmpne     17                                                                                                                                                                                         
-         9: new           #2                  // class java/lang/RuntimeException                                                                                                                                    
-        12: dup                                                                                                                                                                                                      
-        13: invokespecial #3                  // Method java/lang/RuntimeException."<init>":()V                                                                                                                      
-        16: athrow                                                                                                                                                                                                   
-        17: getstatic     #4                  // Field java/lang/System.out:Ljava/io/PrintStream;                                                                                                                    
-        20: iload_1                                                                                                                                                                                                  
-        21: iload_2                                                                                                                                                                                                  
-        22: iadd                                                                                                                                                                                                     
-        23: invokevirtual #5                  // Method java/io/PrintStream.println:(I)V                                                                                                                             
-        26: goto          46                                                                                                                                                                                         
-        29: astore_1                                                                                                                                                                                                 
-        30: aload_1                                                                                                                                                                                                  
-        31: athrow                                                                                                                                                                                                   
-        32: astore_1                                                                                                                                                                                                 
-        33: getstatic     #8                  // Field log:Lorg/slf4j/Logger;                                                                                                                                        
-        36: ldc           #9                  // String                                                                                                                                                              
-        38: aload_1                                                                                                                                                                                                  
-        39: invokeinterface #10,  3           // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V                                                                                   
-        44: aload_1                                                                                                                                                                                                  
-        45: athrow                                                                                                                                                                                                   
-        46: return                                                                                                                                                                                                   
-      Exception table:                                                                                                                                                                                               
-         from    to  target type                                                                                                                                                                                     
-             0    26    29   Class java/lang/IndexOutOfBoundsException                                                                                                                                               
-             0    26    32   Class java/lang/Exception
+    Code:         
+      stack=3, locals=3, args_size=1        
+         0: iconst_1
+         1: istore_1
+         2: iconst_1
+         3: istore_2
+         4: iload_1 
+         5: iload_2 
+         6: if_icmpne     17   
+         9: new           #2     // class java/lang/RuntimeException  
+        12: dup   
+        13: invokespecial #3     // Method java/lang/RuntimeException."<init>":()V 
+        16: athrow
+        17: getstatic     #4     // Field java/lang/System.out:Ljava/io/PrintStream; 
+        20: iload_1 
+        21: iload_2 
+        22: iadd  
+        23: invokevirtual #5     // Method java/io/PrintStream.println:(I)V        
+        26: goto          46   
+        29: astore_1
+        30: aload_1 
+        31: athrow
+        32: astore_1
+        33: getstatic     #8     // Field log:Lorg/slf4j/Logger;      
+        36: ldc#9     // String  
+        38: aload_1 
+        39: invokeinterface #10,  3           // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V     
+        44: aload_1 
+        45: athrow
+        46: return
+      Exception table:         
+         from    to  target type 
+0    26    29   Class java/lang/IndexOutOfBoundsException
+0    26    32   Class java/lang/Exception
 
 ```
 

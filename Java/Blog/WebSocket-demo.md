@@ -24,7 +24,7 @@ categories:
     - 5.1. [Java](#java)
     - 5.2. [JS](#js)
 
-💠 2024-03-30 11:43:28
+💠 2024-07-12 11:40:30
 ****************************************
 # Java中的Websocket
 JSR-356
@@ -175,7 +175,8 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 1. 推送消息 session.sendMessage(new TextMessage("text"));
 
 ## Netty
-> [Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/netty/websocket)
+> [Gitee： Demo](https://gitee.com/gin9/JavaBase/tree/master/netty/src/main/java/netty/websocket)  
+> [Netty websocket springboot starter](https://gitee.com/gin9/netty-ws-starter)  
 
 [SpringBoot整合Netty处理WebSocket（支持url参数）](https://blog.csdn.net/RisenMyth/article/details/104441155)
 
@@ -238,8 +239,6 @@ CPU占用都不高 0.5%以下波动
 ************************
 
 # 集群设计
-TODO
-
 核心矛盾在于长连接是有状态的且无法共享，但通常应用服务端都是无状态的集群，方便横向快速扩容
 
 > 简单实现 缺点：消息冗余推送

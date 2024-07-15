@@ -22,6 +22,14 @@
 ### Docker安装
 > [docker hub](https://hub.docker.com/_/python/)
 
+### Conda
+> [Conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html)`简单理解为 venv + pip`
+
+- 安装 conda create -n py39  python=3.9 
+    - conda create -n py311 python=3.11
+- 激活指定环境 conda activate py39
+- 退出环境 conda deactivate
+
 ### sys.path
 > [Doc: Python path](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH)
 

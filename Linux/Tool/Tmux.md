@@ -10,24 +10,28 @@ categories:
 
 - 1. [Tmux](#tmux)
 - 2. [基本操作](#基本操作)
+    - 2.1. [编译安装](#编译安装)
 - 3. [配置](#配置)
     - 3.1. [个人配置](#个人配置)
     - 3.2. [键绑定](#键绑定)
     - 3.3. [切换](#切换)
-- 4. [编译安装](#编译安装)
-- 5. [TPM插件管理](#tpm插件管理)
-    - 5.1. [tmux-resurrect](#tmux-resurrect)
-    - 5.2. [maglev](#maglev)
-    - 5.3. [copycat](#copycat)
+- 4. [TPM插件管理](#tpm插件管理)
+    - 4.1. [tmux-resurrect](#tmux-resurrect)
+    - 4.2. [maglev](#maglev)
+    - 4.3. [copycat](#copycat)
+- 5. [Advanced](#advanced)
 - 6. [Tips](#tips)
 
-💠 2024-03-08 18:19:25
+💠 2024-05-06 14:06:54
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
-> [tmux简洁教程及config关键配置](https://www.jianshu.com/p/fd3bbdba9dc9)
+> [tmux简洁教程及config关键配置](https://www.jianshu.com/p/fd3bbdba9dc9)  
 > [参考: 程序员高效技巧系列](http://cenalulu.github.io/linux/professional-tmux-skills/)  
+> [Tmux](https://github.com/skywind3000/awesome-cheatsheets/blob/master/tools/tmux.txt)  
+
+> [Byobu](https://github.com/dustinkirkland/byobu)  
 
 ************************
 # 基本操作
@@ -51,7 +55,16 @@ categories:
     - Alt+方向键 往指定方向扩展当前 panel 大小
 - Alt+方向键 跳转到对应方向的panel上
 
-*************
+************************
+
+## 编译安装
+> 场景： 目标机器Linux内核版本较低，或者是Debian Centos等发行版，源中没有高版本的Tmux，甚至没有Tmux，这个时候通过静态编译安装，能在影响最小的情况下使用上新版本的Tmux
+
+因为低版本Tmux不支持鼠标，导致无法使用滚轮上翻命令输出记录。
+
+> [CentOS 静态编译](https://zhengzexin.com/archives/Tmux_static_compilation/)`但是在Centos6上没成功 内核3.10 gcc 4.6.8`
+
+************************
 
 # 配置
 > [Oh My Tmux!](https://github.com/gpakosz/.tmux)
@@ -73,24 +86,29 @@ categories:
 ```
 
 1. 按住Shift即可照常使用鼠标选中文本
-1. 在tab区域用滚轮可快速切换tab
+1. 在顶部或底部的tab列表区域可用滚轮快速切换tab
 
-*************
+************************
+
 ## 键绑定
 > Prefix 默认是 C-b 也就是 Ctrl b
+
+[tmux: how to bind a key to launch shell command?](https://unix.stackexchange.com/questions/283759/tmux-how-to-bind-a-key-to-launch-shell-command)
+
+- `bind-key {key} {action}`
+    - `bind-key -T root {key} {action}` 无需prefix 即可触发key
+
+> action
+- send-keys
+    - 例如 `bind-key -T root F9 send-keys 'cola' Enter` F9即可在终端运行 git-cola
+- run-shell
+- source 和 source-file
+- select-pane
+- split-window
 
 ## 切换
 - prefix w 切换 window 或者 Session
 - Prefix () 切换 Session
-
-************************
-
-# 编译安装
-> 场景： 目标机器Linux内核版本较低，或者是Debian Centos等发行版，源中没有高版本的Tmux，甚至没有Tmux，这个时候通过静态编译安装，能在影响最小的情况下使用上新版本的Tmux
-
-因为低版本Tmux不支持鼠标，导致无法使用滚轮上翻命令输出记录。
-
-> [CentOS 静态编译](https://zhengzexin.com/archives/Tmux_static_compilation/)`但是在Centos6上没成功 内核3.10 gcc 4.6.8`
 
 ************************
 
@@ -102,9 +120,9 @@ categories:
 
 > [参考: 保存和恢复 Tmux 会话 ](https://liam.page/2016/09/10/tmux-plugin-resurrect/)
 
-https://github.com/whame/tmux-modal 快速操作切换和创建 window panel
+[tmux-modal](https://github.com/whame/tmux-modal) 快速操作切换和创建 window panel
 
-- `Prefix I` 安装新增的插件 
+- `prefix I` 安装新增的插件 
 
 ## tmux-resurrect
 
@@ -120,8 +138,14 @@ prefix c-r 加载历史会话
 ## copycat
 > [Github](https://github.com/tmux-plugins/tmux-copycat)  
 
-使用: `Prefix /` 可用 less 一样的方式搜索
+使用: `prefix /` 可用 less 一样的方式搜索
 
+************************
+
+# Advanced 
+[Github wiki: Advanced use](https://github.com/tmux/tmux/wiki/Advanced-Use)
+
+************************
 
 # Tips 
 > [bash: append_path: command not found when open tmux](https://superuser.com/questions/1590651/bash-append-path-command-not-found-when-open-tmux)

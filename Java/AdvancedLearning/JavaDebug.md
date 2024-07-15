@@ -14,7 +14,7 @@ categories:
         - 1.2.1. [应用方法CPU耗时或线程异常](#应用方法cpu耗时或线程异常)
     - 1.3. [远程调试](#远程调试)
 
-💠 2024-02-22 14:23:17
+💠 2024-06-01 23:56:42
 ****************************************
 # Debug
 
@@ -22,9 +22,7 @@ categories:
 
 1. [jdb](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/jdb.html)
 
-> IDEA 的 debug 如何实现  
-
-JVM进程追加 -javaagent: 参数，可查看JVM的完整启动命令找到  
+> IDEA 的 debug 实现方式： JVM应用的启动命令追加 -javaagent: . `可查看JVM的完整启动命令找到`
 
 ## 技巧
 1. 需要尝试不停机去修改代码去寻找问题踪迹

@@ -28,7 +28,6 @@ categories:
     - 3.6. [Stream](#stream)
     - 3.7. [GEO地理位置](#geo地理位置)
 - 4. [Scan](#scan)
-    - 4.1. [O(n) 复杂度的命令](#on-复杂度的命令)
 - 5. [Pipelining](#pipelining)
 - 6. [Pub/Sub发布和订阅](#pubsub发布和订阅)
 - 7. [客户端](#客户端)
@@ -39,18 +38,15 @@ categories:
 - 8. [Project](#project)
     - 8.1. [Codis](#codis)
     - 8.2. [webdis](#webdis)
+    - 8.3. [Redis Stack](#redis-stack)
 - 9. [Redis的应用场景](#redis的应用场景)
-    - 9.1. [作为日志记录](#作为日志记录)
-    - 9.2. [作为网站统计数据](#作为网站统计数据)
-    - 9.3. [存储配置信息](#存储配置信息)
-    - 9.4. [搜索](#搜索)
-    - 9.5. [任务队列](#任务队列)
+    - 9.1. [分布式锁](#分布式锁)
 - 10. [Redis 缓存相关问题](#redis-缓存相关问题)
     - 10.1. [缓存雪崩](#缓存雪崩)
     - 10.2. [缓存击穿](#缓存击穿)
     - 10.3. [缓存穿透](#缓存穿透)
 
-💠 2024-03-20 16:13:46
+💠 2024-05-06 19:31:32
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -147,6 +143,8 @@ SET操作成功后,返回的是OK,失败返回NIL
     - 返回指定bitset中在指定起始位置中第一个出现指定值的offset，不传start，end默认估计是0,-1
 - bitcount
     - 统计bitset中出现1的个数
+
+可以基于bitmap手动实现BloomFilter，也可以直接使用RedisStack的BloomFilter组件。
 
 ### HyperLogLog
 > 用于做基数统计的算法
@@ -261,19 +259,7 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 - GEOHASH
 
 ************************
-# Scan
-> [Doc: Scan](https://redis.io/commands/scan/) 
-
-由于 Redis 是单线程多路复用机制(Redis6引入多线程)，使用 O(n) 复杂度的命令容易阻塞进程，因此需要 scan 命令来实现分批执行 (`注意 scan如果模式匹配的范围比较大，同样有 keys 一样的影响`)
-
-## O(n) 复杂度的命令
-- List： lindex、lset、linsert
-- Hash： hgetall、hkeys、hvals
-- Set： smembers、sunion、sunionstore、sinter、sinterstore、sdiff、sdiffstore
-- Sorted Set： zrange、zrevrange、zrangebyscore、zrevrangebyscore、zremrangebyrank、zremrangebyscore
-
-************************
-
+# Scan 
 - **SCAN** 命令用于迭代当前数据库中的数据库键 相较于 keys 降低阻塞进程的概率。
     - cursor 游标 
         - 注意这个游标不是 常见的 fori 循环里的i规律递增，第一次 sscan 会返回 cursor(第一个参数) 需要下一次拿这个 cursor 作为参数继续获取
@@ -376,6 +362,19 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 
 > [官网](http://webd.is/) | [Github地址](https://github.com/nicolasff/webdis)
 
+## Redis Stack
+> [Github Redis Stack](https://github.com/redis-stack/redis-stack)
+
+Redis Stack 是一组软件套件，它主要由三部分组成。Redis Stack Server，RedisInsight，Redis Stack 客户端 SDK。 其中 Redis Stack Server 由 Redis，RedisSearch，RedisJSON，RedisGraph，RedisTimeSeries 和 RedisBloom 组成。
+
+可支撑如下业务
+- 索引和查询Redis数据，聚合运算，`全文检索`
+- 运行高级向量相似性搜索 `(KNN)`
+- 有效地存储和操作嵌套的 `JSON 文档`
+- 将关系构建和建模为`属性图`
+- 存储、查询和聚合`时间序列数据`
+- 利用快速、空间和计算高效的`概率数据结构`
+
 ************************
 
 # Redis的应用场景
@@ -383,20 +382,35 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 
 > [参考: 为什么我们做分布式使用Redis？](https://my.oschina.net/u/3971241/blog/2221560)`缓存的场景和应对措施`
 
-## 作为日志记录
-## 作为网站统计数据
-## 存储配置信息
-## 搜索
-## 任务队列
-> Pub/Sub 或者 Stream 可实现
+## 分布式锁
+> [Doc: setnx](http://cndoc.github.io/redis-doc-cn/cn/commands/setnx.html)`包含以此命令设计锁的一些缺陷`  
+> [redisson](https://github.com/redisson/redisson)
 
-- 发送邮件
+单机 使用 setnx， redis分布式部署的情况下使用RedLock
+
+> [基于Redis的分布式锁到底安全吗（上）？](https://mp.weixin.qq.com/s/JTsJCDuasgIJ0j95K8Ay8w)  
+> [基于Redis的分布式锁到底安全吗（下）？](https://mp.weixin.qq.com/s/4CUe7OpM6y1kQRK8TOC_qQ?)  
+> [参考: Redis 分布式锁进化史解读 + 缺陷分析](https://zhuanlan.zhihu.com/p/161078350)  
+
+> [参考: redis分布式锁在MySQL事务代码中使用](https://blog.csdn.net/seapeak007/article/details/99337781)  
+> [参考: Lua脚本在redis分布式锁场景的运用](https://www.cnblogs.com/demingblog/p/9542124.html)  
+
+************************
+
+`搜索`
+> [RediSearch](https://github.com/RediSearch/RediSearch)
+
+
+`任务队列`
+> List Pub/Sub 或者 Stream 可实现, 可靠性依次增加，但依然会有丢失问题
 
 ************************
 
 # Redis 缓存相关问题
 ## 缓存雪崩
-同一时间大量缓存失效，请求都打到DB，导致DB负载过大甚至宕机
+同一时间大量缓存失效，请求都打到DB，导致DB负载过大甚至宕机。
+
+与此同时，大量缓存集中失效会让Redis瞬时OPS很高，操作的延迟会突增。
 
 1. 大量 key 使用了相同的过期时间
     - 过期时间加随机值或者特定算法分散过期时间

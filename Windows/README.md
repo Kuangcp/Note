@@ -40,3 +40,8 @@ https://blog.csdn.net/qq_37700257/article/details/126284196#commentBox
 
 ## 影音
 [Potplayer](http://potplayer.tv/?lang=zh_CN)
+
+# Tips
+## 寻找占用文件的进程
+> 任务管理器 -> 性能tab 右上角打开 资源监视器 -> CPU的tab 关联的句柄窗口 搜索文件名
+

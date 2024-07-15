@@ -16,11 +16,12 @@ categories:
     - 2.1. [物理层](#物理层)
     - 2.2. [数据链路层](#数据链路层)
     - 2.3. [网络层](#网络层)
-        - 2.3.1. [IP协议](#ip协议)
-            - 2.3.1.1. [IP地址分类](#ip地址分类)
-            - 2.3.1.2. [无分类编址 CIDR](#无分类编址-cidr)
-        - 2.3.2. [ARP协议](#arp协议)
-        - 2.3.3. [ICMP协议](#icmp协议)
+        - 2.3.1. [SDN](#sdn)
+        - 2.3.2. [IP协议](#ip协议)
+            - 2.3.2.1. [IP地址分类](#ip地址分类)
+            - 2.3.2.2. [无分类编址 CIDR](#无分类编址-cidr)
+        - 2.3.3. [ARP协议](#arp协议)
+        - 2.3.4. [ICMP协议](#icmp协议)
     - 2.4. [传输层](#传输层)
         - 2.4.1. [TCP](#tcp)
         - 2.4.2. [UDP](#udp)
@@ -39,6 +40,7 @@ categories:
         - 2.5.9. [SSDP](#ssdp)
         - 2.5.10. [KCP](#kcp)
         - 2.5.11. [QUIC](#quic)
+        - 2.5.12. [P2P](#p2p)
 - 3. [Socket](#socket)
 - 4. [单播 组播 广播](#单播-组播-广播)
     - 4.1. [单播](#单播)
@@ -70,7 +72,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2024-04-22 16:41:19
+💠 2024-07-12 11:40:30
 ****************************************
 # 网络
 
@@ -98,14 +100,17 @@ categories:
 | 网络层                         | 网络层 |
 | 数据链路层 <br/> 物理层          | 链路层 |
 
-OSI制定的OSI七层参考模型的过于庞大、复杂。与此对照，由技术人员设计的 TCP/IP协议栈(`四层`: 网络接口 网络层 传输层 应用层) 获得了更为广泛的应用。
-谢希仁所著的 计算机网络 书中 为了教学, 融合成了 `五层模型`
-
-事实上, 现在的应用不是严格按照OSI分层的, 应用层可以使用 传输层(TCP UDP), 也可以直接使用网络层(IP),甚至直接使用网络接口层
+OSI制定的OSI七层参考模型的过于庞大、复杂。与此对照，由技术人员设计的 TCP/IP协议栈(`四层`: 网络接口 网络层 传输层 应用层) 获得了更为广泛的应用。  
+谢希仁所著的 **计算机网络** 书中 为了教学, 融合成了 `五层模型`， 事实上, 现在应用的实际使用并不严格按照OSI分层, 应用层可以使用 传输层协议(TCP UDP), 也可以直接使用网络层(IP)。
 
 > [参考: 以太网帧结构](https://blog.csdn.net/wdkirchhoff/article/details/43915825)
 
-app layer叫message，trans layer叫segment，net layer叫datagram，link layer叫frame
+应用层的单个内容 叫 message 消息  
+传输层的单个内容 叫 segment 段  
+网络层的单个内容 叫 datagram 报文  
+链路层的单个内容 叫 frame 数据帧  
+
+![](/Skills/Network/img/001-network-base.km.svg)
 
 ************************
 
@@ -130,7 +135,19 @@ app layer叫message，trans layer叫segment，net layer叫datagram，link layer�
 ************************
 
 ## 网络层
-> 常规路由器 工作在这一层
+> 网络接口卡（网卡）、交换机、路由器、网关、集线器、网桥等硬件工作在这一层
+
+
+### SDN
+> [wiki](https://en.wikipedia.org/wiki/Software-defined_networking)  
+> 相比于传统的路由器查路由表的工作方式，更灵活可控，成本更低。  
+
+传统网络设备紧密耦合了管理平面（命令行，图形界面），数据平面（报文处理和转发），控制平面（路由表，MAC交换表等等）。
+
+> [SDN概述](https://drobp.github.io/2019/08/02/SDN%E6%A6%82%E8%BF%B0/)  
+> [RedHat: 什么是软件定义网络？](https://www.redhat.com/zh/topics/hyperconverged-infrastructure/what-is-software-defined-networking)  
+
+************************
 
 ### IP协议
 
@@ -337,7 +354,7 @@ TCP状态
 1. 无头部信息, Cookie, 身份验证
     - 生产使用时还是会做，通常在握手的HTTP请求中实现 将认证信息（Cookie/Token）放在Header或URL参数上
 1. 通过 ping/pong 二进制帧 保持链路激活 `可规避中间件关闭不活跃连接 例如Nginx`
-1. 服务器可以主动传递消息给客户端, 不需要客户端轮询
+    - 但是客户端为js时不支持，可与服务端协商直接发ping文本
 
 > 4个生命周期事件
 1. 打开事件：此事件发生在端点建立新连接时并且在任意其他事件发生之前
@@ -438,6 +455,11 @@ DOT `DNS over TLS` 853端口
 > [kcp-go](https://github.com/xtaci/kcp-go)  
 
 ### QUIC
+
+### P2P
+- eMule
+- BitTorrent
+- HCDN 爱奇艺所设计：按地域粒度建立多个CDN服务器，区域内的C端用户优先在区域内的不同C端用户找所需的视频资源并由区域CDN做兜底。2021年直接降低网站的带宽成本20%，白用所有C端用户的上传带宽。
 
 ************************
 
@@ -553,7 +575,9 @@ function FindProxyForURL(url, host) {
 - [whistle](https://github.com/avwo/whistle) `nodejs 平台的抓包工具`
 
 ### Clash
-[Github](https://github.com/Dreamacro/clash)
+[Github](https://github.com/Dreamacro/clash) | [Fork copy](https://github.com/Ieooo/clash)
+
+[clash-dashboard](https://github.com/Dreamacro/clash-dashboard)
 
 ### Fiddler 
 > [fiddler](https://www.telerik.com/fiddler)`由C#开发, 自定义脚本为C#`  

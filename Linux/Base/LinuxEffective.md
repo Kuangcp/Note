@@ -18,18 +18,16 @@ categories:
         - 1.2.3. [xdotool](#xdotool)
         - 1.2.4. [rofi](#rofi)
     - 1.3. [远程工具](#远程工具)
-    - 1.4. [网络工具](#网络工具)
-        - 1.4.1. [nmap](#nmap)
-        - 1.4.2. [whatportis](#whatportis)
-    - 1.5. [进程管理](#进程管理)
-    - 1.6. [零散工具集合](#零散工具集合)
-    - 1.7. [检测工具](#检测工具)
-        - 1.7.1. [硬盘](#硬盘)
-            - 1.7.1.1. [smartmontools](#smartmontools)
-    - 1.8. [文本处理](#文本处理)
-    - 1.9. [文件操作](#文件操作)
-    - 1.10. [安全工具](#安全工具)
-        - 1.10.1. [gpg](#gpg)
+    - 1.4. [进程管理](#进程管理)
+    - 1.5. [零散工具集合](#零散工具集合)
+    - 1.6. [检测工具](#检测工具)
+        - 1.6.1. [硬盘](#硬盘)
+            - 1.6.1.1. [smartmontools](#smartmontools)
+    - 1.7. [文本处理](#文本处理)
+    - 1.8. [文件操作](#文件操作)
+    - 1.9. [安全工具](#安全工具)
+        - 1.9.1. [gpg](#gpg)
+        - 1.9.2. [JumpServer](#jumpserver)
 - 2. [图形化工具](#图形化工具)
     - 2.1. [剪贴板管理](#剪贴板管理)
     - 2.2. [系统资源监控](#系统资源监控)
@@ -54,7 +52,7 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2024-03-31 13:10:46
+💠 2024-06-01 15:50:01
 ****************************************
 # 高效的Linux
 
@@ -69,10 +67,10 @@ categories:
 - [sixel](https://en.wikipedia.org/wiki/Sixel) `终端中渲染图片` | [libsixel](https://saitoha.github.io/libsixel/) | [Are We Sixel Yet?](https://www.arewesixelyet.com/)
   - [Why Sixel? ](https://www.reddit.com/r/commandline/comments/zkg75e/why_sixel/)
 
-Manjaro Xfce 试用 sixel： mlterm 或者 konsole
+Manjaro Xfce 使用 sixel： mlterm 或者 konsole
 1. yay libsixel, yay mlterm， mlterm -b '#292B2E' 安装和启动mlterm
   1. 查看图片 img2sixel xx.jpg `ImageMagick`
-  1. 压测并渲染结果图 [jagger](https://github.com/rs/jaggr) **konsole不支持**
+  1. 渲染结果图 [jagger](https://github.com/rs/jaggr) **konsole不支持**
 
 
 ### Terminal 对比
@@ -113,7 +111,7 @@ Manjaro Xfce 试用 sixel： mlterm 或者 konsole
 
 > 现代终端
 - [wezterm](https://wezfurlong.org/wezterm/index.html)
-- Warp
+- [Warp](https://github.com/warpdotdev/Warp) `Rust+AI`
 - Tabby
 - WindTerm
 - [zellij](https://github.com/zellij-org/zellij)
@@ -231,57 +229,6 @@ command-line X11 automation tool `可以控制指定窗口激活关闭，最大�
 rdesktop xfreerdp
 
 ************************
-
-## 网络工具
-
-> [参考: Linux查看网络流量](https://tlanyan.me/linux-traffic-commands/)
-
-iftop
-
-- nethogs `流量监控`
-- slurm 网卡带宽监控
-
-### nmap
-
-> 按主机扫描端口
-
-> [参考博客](http://aaaxiang000.blog.163.com/blog/static/2063491220113284325531/)
-
-- 主机扫描
-  - nmap -sS 192.168.1.1   　//TCP、SYN扫描,使用最多，最快 `无参数扫描默认添加-sS参数`
-  - nmap -Pn 192.168.1.1  　 //当目标主机禁ping时使用，假设主机存活扫描端口（耗时长）
-  - nmap -p- 192.168.1.1  　 //扫描目标主机全部端口
-  - nmap -sP 192.168.1.1   　//只对目标进行ping检测，快速
-  - nmap 192.168.1.1/24   　 //对网段进行扫描
-
-- 进阶用法
-  - nmap -V 192.168.1.1    //显示扫描细节
-  - nmap -A 192.168.1.1    //综合扫描
-  - nmap -sT 192.168.1.1   //进行tcp扫描
-  - nmap -sU 192.168.1.1   //进行udp扫描
-  - nmap -sV 192.168.1.1   //对目标上的服务程序版本进行扫描
-  - nmap -T4 192.168.1.1   //设置扫描速度1~5
-  - nmap -sn 192.168.1.1   //相比sP检验存活使用更多方式
-  - nmap -O 192.168.1.1    //对目标主机的操作系统进行扫描（-A获得更多信息）
-  - nmap --data-length:55 192.168.1.1 //添加垃圾数据避免nmap被识别
-  - nmap -D IP1,IP2... IP   //发送参杂着假ip的数据包检测
-
-- 使用环境
-  - 扫描网段存活IP：nmap -sP 192.168.1.1/24
-  - 扫描所有端口开放情况：nmap -sS -p 1-65535 192.168.1.1
-  - 当目标主机禁ping时：nmap -Pn 192.168.1.1
-  - 当目标可能存在waf拦截时：nmap -sS --data-length:55 192.168.1.1
-  - 尽可能收集目标主机信息：nmap -p 1-65535 -sV -A -V 192.168.1.1
-
-> 按端口扫描 
-
-masscan  
-Zmap `在千兆网卡状态下，45 分钟内扫描全网络 IPv4 地址`
-
-### whatportis
-
-> whatportis 是一款可以通过服务查询默认端口，或者是通过端口查询默认服务的工具
-
 ## 进程管理
 
 Supervisor 进程监控管理
@@ -289,37 +236,30 @@ Supervisor 进程监控管理
 ************************
 
 ## 零散工具集合
-
-> 最终都会安装到 /usr/bin/*  目录下
+> 通常会安装到 /usr/bin/*  目录下
 
 - sudo 是需要安装的
-
   1. `alias sudo='sudo'` 能够在别名上使用 sudo *神奇*
-- md5sum 报文摘要算法 Message-Digest Algorithm 5 的实现
 
+- md5sum 报文摘要算法 Message-Digest Algorithm 5 的实现
   - `printf 'Who?123' | md5sum`
   - `md5sum file` 计算出md5值
   - `md5sum -c file.md5` file 和 file.md5 在同一目录下, 执行这个命令就是检查md5是否匹配, 确保文件的完整性和正确性
 - sha256sum
-
   - `printf 'Who?123' | sha256sum`
 - last _查看Linux登录信息_
-
   - last -n 5 最近五次登录
 - w | uptime _查看启动情况_
 - colrm
-
   - ps | clorm 20 30 `colrm` _删除输出的20 到30 列_
 - xsel
-
   - `cat a.md | xsel -b` _将文件所有内容复制到剪贴板_ 但是处理大文件时会失效 xclip 更有效
 - mcfly _方便 Ctrl R 命令历史_
-- strace -p PID _查看系统调用_
-- cmatrix _装13,字符雨_
+- figlet 字符转ascii图
+- cmatrix _装X,字符雨_
 - logkeys 记录键盘输入 [Github](https://github.com/kernc/logkeys)
 - expect [用于自动输入密码](http://www.cnblogs.com/iloveyoucc/archive/2012/05/11/2496433.html)
-- [WTF](https://wtfutil.com/posts/overview/) | [Github Repo](https://github.com/senorprogrammer/wtf)
-
+- [WTF](https://wtfutil.com) | [Github Repo](https://github.com/senorprogrammer/wtf)
   - 丰富的功能, 一个方便的终端控制面板
 - when-changed 监控文件变化 执行命令 pip install when-changed
 - dircolors [Linux dircolors命令](http://www.runoob.com/linux/linux-comm-dircolors.html) `用于设置 ls 命令输出时的色彩`
@@ -400,25 +340,17 @@ duf
 例如 将git仓库内所有Java文件 GBK 转 UTF8 `git ls-files | grep "\.java" | tee  | xargs -I {}  iconv -f GBK -t UTF-8 {} -o {}`
 
 `zssh`
-
-> 便捷的文件传输
-
 > [参考 zssh, rz, sz互相传输](http://blog.csdn.net/ygm_linux/article/details/32321729)
 
 ## 安全工具
 
 ### gpg
-
 > [参考博客](http://www.ruanyifeng.com/blog/2013/07/gpg.html)
 
-常用参数
-
-```
-gpg --list-key
-    --gen-key
-```
-
 - 生成的过程, 输入相关的提示信息, 最后输完密码后需要输入随机字符, 就也是按照提示, 但是1.4是正常的, 其他的直接假死,不是很理解这种操作
+
+### JumpServer
+> [Github](https://github.com/jumpserver/jumpserver)
 
 ************************
 

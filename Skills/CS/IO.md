@@ -32,7 +32,7 @@ categories:
         - 2.2.2. [poll](#poll)
         - 2.2.3. [epoll](#epoll)
 
-💠 2024-04-19 10:49:10
+💠 2024-06-16 16:40:46
 ****************************************
 # 计算机中的IO
 > [参考: IO - 同步，异步，阻塞，非阻塞 ](https://blog.csdn.net/historyasamirror/article/details/5778378)  
@@ -82,7 +82,7 @@ AIO适用于 IO操作量大，读写过程长的场景，但是缺点是应用�
 ### 经典比喻
 有 A，B，C，D 四个人在钓鱼 (BIO, NIO, IO multiplexing, AIO) : 
 - A 用的是最老式的鱼竿（只有线和竿），所以得一直守着，等到鱼上钩了再拉杆；
-- B 用的鱼竿有浮漂，B就能和旁边的MM聊天，隔会再看看有没有鱼上钩，有的话就迅速拉杆；
+- B 用的鱼竿有浮漂，B就能旁边泡茶，隔会再看看有没有鱼上钩，有的话就迅速拉杆；
 - C 用的鱼竿和B差不多，但他想了一个好办法，`就是同时放好几根鱼竿`，然后守在旁边，一旦提示鱼上钩了，它就将对应的鱼竿拉起来； 这样一个人就能处理好多个鱼竿
 - D 是个有钱人，干脆雇了一个人帮他钓鱼，一旦那个人把鱼钓上来了，就给D发个短信。
 
@@ -163,10 +163,25 @@ Reactor 和 Proactor: 前者 使用同步IO, 后者使用异步IO
 
 > [Comparing Two High-Performance I/O Design Patterns](https://www.artima.com/articles/io_design_patternsP.html)  
 
-### Reactor
+> [高性能网络模式：Reactor 和 Proactor](https://www.xiaolincoding.com/os/8_network_system/reactor.html)
 
+Reactor 可以理解为「来了事件操作系统通知应用进程，让应用进程来处理」，而 Proactor 可以理解为「来了事件操作系统来处理，处理完再通知应用进程」。
+因此，真正的大杀器还是 Proactor，它是采用异步 I/O 实现的异步网络模型，感知的是已完成的读写事件，而不需要像 Reactor 感知到事件后，还需要调用 read 来从内核中获取数据。
+不过，无论是 Reactor，还是 Proactor，都是一种基于「事件分发」的网络编程模式，区别在于 Reactor 模式是基于「待完成」的 I/O 事件，而 Proactor 模式则是基于「已完成」的 I/O 事件。
+
+### Reactor
+- Redis：单 Reactor 单进程 
+- Netty & Memcache: 主从多Reactor 多线程
+- Nginx： 主从Reactor 多进程 *进程职责做了调整*
+
+> [【Netty】模型篇一：Netty 线程模型架构 & 工作原理 解读](https://blog.csdn.net/qq_36389060/article/details/124232377)`包含了Reactor多种模式的图`  
+
+![](/Skills/CS/img/001-reactor-multiple.drawio.svg)
+
+> [TCP Server处理多Client请求的方法—非阻塞accept与select](http://velep.com/archives/1137.html)`可以看到系统调用层面也是先调用select发现新连接后调用accept和read write` [Github: Code](https://github.com/Kuangcp/LearnC/blob/master/network/tcp/nio-tcp.c)
 
 ### Proactor
+
 
 ### 忙轮询
 忙轮询方式是通过不停的把所有的流从头到尾轮询一遍，查询是否有流已经准备就绪，然后又从头开始。如果所有流都没有准备就绪，那么只会白白浪费CPU时间。
@@ -214,6 +229,8 @@ poll还有一个特点是“水平触发”，如果报告了fd后，没有被�
 ************************
 
 ### epoll
+> [参考: 从 linux 源码看 epoll](https://my.oschina.net/alchemystar/blog/3008840)  
+
 epoll是在Linux内核2.6引进的，是select和poll函数的增强版。与select相比，epoll没有文件描述符数量的限制。  
 epoll使用一个文件描述符管理多个文件描述符，将用户关心的文件描述符事件存放到`内核的一个事件列表`中  
 这样在用户空间和内核空间`只需拷贝一次`, 因为用户空间和内核空间共用一块内存

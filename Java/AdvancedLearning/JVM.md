@@ -12,8 +12,8 @@ categories:
 - 1. [JVM](#jvm)
     - 1.1. [JVM参数](#jvm参数)
     - 1.2. [JVM内存参数](#jvm内存参数)
-        - 1.2.1. [实践](#实践)
-    - 1.3. [GC参数](#gc参数)
+        - 1.2.1. [容器内的JVM](#容器内的jvm)
+        - 1.2.2. [内存参数实践](#内存参数实践)
 - 2. [JVM 基本结构](#jvm-基本结构)
 - 3. [内存区域](#内存区域)
     - 3.1. [运行时数据区](#运行时数据区)
@@ -33,7 +33,7 @@ categories:
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-04-22 10:51:32
+💠 2024-07-12 11:40:30
 ****************************************
 # JVM
 > JVM结构及设计
@@ -52,7 +52,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 - [prefma](https://club.perfma.com/)
 
 ## JVM参数
-> [Official: JDK8 Java 参数概览](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)`不同分类的参数介绍`  
+> [Command Reference for JDK8](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html) | [Command Reference for JDK17](https://docs.oracle.com/en/java/javase/17/docs/specs/man/java.html)  
 > [Official: Java HotSpot VM Options](https://www.oracle.com/java/technologies/javase/vmoptions-jsp.html)  
 > [Guide to the Most Important JVM Parameters](https://www.baeldung.com/jvm-parameters)  
 
@@ -60,7 +60,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 - `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
     - 开启无需认证 非SSL的JMX端口: 9999
 
-- `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 打印类装载
+- `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 输出类装载日志，可用于排查类从哪个jar加载进入JVM的
 
 > OOM 
 - `-XX:+HeapDumpOnOutOfMemoryError `
@@ -98,6 +98,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 - `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1。 **默认是8**
 - `-XX:NewRatio`old/new 内存的比值 **默认是2**
 - `-Xmn` MaxNewSize 默认值是`Xmx`的1/3 即最大堆内存 MaxHeapSize 的1/3
+- `-Xss` 设置 ThreadStackSize 线程的栈内存大小 默认值 1024k
 
 > java -XX:+PrintFlagsFinal -version
 - `-XX:+PrintFlagsInitial` 输出初始默认值
@@ -108,6 +109,8 @@ Oracle JDK 默认采用的是 Hotspot JVM
     - `java -XX:+PrintFlagsFinal -version | grep "Use.*GC"` 查看默认GC实现
 - `-XshowSettings:VM` 展示VM和系统信息
 
+************************
+
 需要理解，但是不用，尽量使用明确的 Xmx Xms
 > [JVM Parameters InitialRAMPercentage, MinRAMPercentage, and MaxRAMPercentage](https://www.baeldung.com/java-jvm-parameters-rampercentage)  
 - MinRAMPercentage, MaxRAMPercentage 其实都是**设置堆默认最大值**的， Max 和 Min 换成 Big Small可能更好理解(大内存环境和小内存环境 `200M划分`)
@@ -116,7 +119,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 
 ************************
 
-> 容器
+### 容器内的JVM
 
 容器无法感知资源限制， 8U191/10b34 及以上版本才支持
 
@@ -136,7 +139,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 
 ************************
 
-### 实践
+### 内存参数实践
 > [初始和最大堆内存设置为一样的好处](https://gceasy.ycrash.cn/gc-recommendations/benefits-of-setting-initial-and-maximum-memory-size.jsp) 
 > [Benefits of setting initial and maximum memory size to the same value](https://blog.ycrash.io/benefits-of-setting-initial-and-maximum-memory-size-to-the-same-value/)
 - 避免扩容的暂停事件，提前调度充足资源的容器防止运行期扩容而被Linux被OOMKiller杀掉
@@ -145,17 +148,6 @@ Oracle JDK 默认采用的是 Hotspot JVM
 > [参考: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)  
 > [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`  
 > [参考: JVM动态反优化](https://blog.mythsman.com/post/5d2c12cc67f841464434a3ec/)   
-
-## GC参数
-- `-Xloggc:/app/logs/gc_%t_%p.log` 指定GC日志 并 设置文件格式
-    - %t 日期时间
-    - %p 进程号
-- `-verbose:gc`
-- `-XX:+PrintGCDetails`
-- `-XX:+PrintGCDateStamps`
-- `-XX:+UseGCLogFileRotation `
-- `-XX:NumberOfGCLogFiles=< number of log files > `
-- `-XX:GCLogFileSize=< file size >[ unit ]`
 
 ************************
 
@@ -307,8 +299,7 @@ NIO 会经常使用, 提高性能
 因此为减少预热影响，可以将-XX:MetaspaceSize，-XX:MaxMetaspaceSize指定成相同的值。
 
 ## 直接内存
-
-直接内存主要是JNI、Deflater/Inflater、DirectByteBuffer（nio中会用到）使用的。
+直接内存主要是JNI、Deflater/Inflater、DirectByteBuffer（nio中会用到）使用的， 当发现Java进程堆使用率不高，但是进程占用内存RSS很高，就要怀疑这块区域了
 
 - [Github: 测试代码](https://github.com/Kuangcp/JavaBase/blob/master/class/src/test/java/jvm/oom/DirectMemoryOOMTest.java)
 - [how to see memory useage of nio buffers](https://stackoverflow.com/questions/2689914/how-to-see-the-memory-usage-of-nio-buffers)
@@ -316,10 +307,48 @@ NIO 会经常使用, 提高性能
 > [参考: 聊聊JVM 堆外内存泄露的BUG是如何查找的](https://cloud.tencent.com/developer/article/1129904)  
 > [JAVA堆外内存排查小结](https://zhuanlan.zhihu.com/p/60976273)  
 
-- `-XX:MaxDirectMemorySize` 限制最大内存 默认值为： MaxHeapSize - Survivor  `通过工具查看的话，值为0`
+- `-XX:MaxDirectMemorySize` 限制最大内存，默认值为： MaxHeapSize - Survivor。  `通过工具查看的话，值为0`
 
-- 启用NMT -XX:NativeMemoryTracking=detail 
-    - 查看NMT jcmd $pid VM.native_memory detail
+- 启用NMT: java -XX:NativeMemoryTracking=summary 或者 detail 开销更大一些
+- 查看NMT jcmd $pid VM.native_memory `[detail] 对应启用时设置，输出具体内存地址信息`
+
+> 示例
+```sh
+Native Memory Tracking:
+
+Total: reserved=10019737KB, committed=997089KB reversed保留内存 commited实际提交内存
+-                 Java Heap (reserved=8222720KB, committed=514048KB)
+                            (mmap: reserved=8222720KB, committed=514048KB) 
+-                     Class (reserved=1081845KB, committed=34165KB) 存储类元数据信息
+                            (classes #3085)
+                            (malloc=14837KB #3960) 
+                            (mmap: reserved=1067008KB, committed=19328KB) 
+-                    Thread (reserved=54501KB, committed=54501KB)  线程占用的空间 即54线程 54M：默认栈为1M需-Xss修改
+                            (thread #54)
+                            (stack: reserved=54272KB, committed=54272KB)
+                            (malloc=178KB #318) 
+                            (arena=52KB #95)
+-                      Code (reserved=250763KB, committed=9551KB) JIT代码缓存
+                            (malloc=1163KB #2588) 
+                            (mmap: reserved=249600KB, committed=8388KB) 
+-                        GC (reserved=316571KB, committed=291487KB) GC算法需要的内存空间
+                            (malloc=16151KB #155) 
+                            (mmap: reserved=300420KB, committed=275336KB) 
+-                  Compiler (reserved=183KB, committed=183KB)
+                            (malloc=40KB #208) 
+                            (arena=142KB #15)
+-                  Internal (reserved=84975KB, committed=84975KB)
+                            (malloc=84943KB #16310) 
+                            (mmap: reserved=32KB, committed=32KB) 
+-                    Symbol (reserved=4984KB, committed=4984KB)
+                            (malloc=3633KB #26295) 
+                            (arena=1351KB #1)
+-    Native Memory Tracking (reserved=982KB, committed=982KB) NMT自身占用内存
+                            (malloc=163KB #2304) 
+                            (tracking overhead=818KB)
+-               Arena Chunk (reserved=2214KB, committed=2214KB)
+                            (malloc=2214KB) 
+```
 
 **********************
 
@@ -335,13 +364,20 @@ IBM主导开发, 捐赠给Eclipse基金会
 > [参考: IBM开源JVM实现OpenJ9，并提交Eclipse基金会托管)](http://www.infoq.com/cn/news/2017/09/IBM-JVM-OpenJ9-Eclipse)
 > [参考: Eclipse Open J9：Eclipse OMR项目提供的开源JVM](http://www.infoq.com/cn/news/2018/03/OMR-OpenJ9)
 
+************************
+
 ## GraalVM
 > [Official Site](https://www.graalvm.org/)  
 
-> [native image](https://www.graalvm.org/docs/reference-manual/native-image/)  
+> [Doc](https://www.graalvm.org/latest/docs/getting-started/)
+- 安装 graalvm `sdk install java 17.0.11-graal`
+- 跟随样例中执行 native-image HelloWorld， 可以发现会占满16核CPU`AMD 3700x`和1G左右内存，20s才可以编译完成
 
-- 安装模块 `gu install native-image`
+> [Accelerating Java performance](https://www.graalvm.org/java/advantages/)`基准测试宣称快于openjdk8和11 1.55倍`
+> [GraalVM Native Image Support](https://docs.spring.io/spring-boot/docs/current/reference/html/native-image.html)
+
+************************
 
 > [参考: Oracle 发布多语种虚拟机平台 GraalVM 1.0](https://www.infoq.cn/article/2018%2F05%2Foracle-graalvm-v1)  
 > [参考: 全栈虚拟机GraalVM初体验](https://zhuanlan.zhihu.com/p/35849246)  
-> 目前来看仅够实验，一个简短的Hello world 需要消耗40s 1g 内存才能编译成原生可执行程序  
+

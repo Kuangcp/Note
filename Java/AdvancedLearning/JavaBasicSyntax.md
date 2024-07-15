@@ -81,6 +81,8 @@ categories:
 ****************************************
 # 基础语法
 
+![](/Java/AdvancedLearning/img/005-java-main.km.svg)
+
 ## 代码风格
 > [Google Style Guide](https://github.com/google/styleguide) | [阿里巴巴开发手册](/Java/AlibabaJavaStandard.md)
 
