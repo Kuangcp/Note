@@ -25,6 +25,7 @@ categories:
     - 6.5. [pidstat](#pidstat)
     - 6.6. [mpstat](#mpstat)
     - 6.7. [iostat](#iostat)
+    - 6.8. [ifstat](#ifstat)
 - 7. [进程管理](#进程管理)
     - 7.1. [pidof](#pidof)
     - 7.2. [pgrep](#pgrep)
@@ -55,7 +56,7 @@ categories:
     - 8.7. [chroot](#chroot)
 - 9. [关机/重启](#关机重启)
 
-💠 2024-06-25 15:55:14
+💠 2024-07-16 22:18:53
 ****************************************
 # Linux性能分析和管理
 
@@ -205,6 +206,8 @@ sysstat软件包：sysstat，mpstat vmstat iostat
 
 > 但是数值大一点就会列错位，可以用column来格式化 `vmstat  1 5 | column -t` 但是等到执行完了才能看到结果，此时可以输出到文件里，看的时候格式化
 > `vmstat  4 > run.log &` 然后 `less run.log | column -t` . 或者 `watch 'tail -n 20 run.log| column -t '`
+
+> 安装： apk add procps， pacman -S procps-ng
 
 ## pidstat
 > Report statistics for Linux tasks.
