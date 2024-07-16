@@ -23,6 +23,13 @@ categories:
 
 ***********************
 # 技术文档
+- 技术方案组成 5W2H
+    - 背景: why: 现状流程, 为什么要做, 是否有替代方式
+    - 目标: waht: 目的和做什么 量化指标
+    - 方案: how : 多个方案 优劣势分析 how much: 做到不同程度的成本和产出
+    - 结论: 选择的方案, 选择原因及注意事项
+    - 备忘/执行计划: who when where 
+
 ## Java
 ### SpringBoot
 > 可以使用 swagger2 和 spring data rest hal-browser 两者是接口文档  
