@@ -6,19 +6,19 @@ categories:
     - 工具
 ---
 
-**目录 start**
+💠
 
-1. [IME](#ime)
-1. [fcitx](#fcitx)
-1. [ibus](#ibus)
-1. [常用输入法](#常用输入法)
-    1. [Rime](#rime)
-    1. [搜狗](#搜狗)
-    1. [Google拼音](#google拼音)
-            1. [小小输入法](#小小输入法)
-1. [Tips](#tips)
+- 1. [IME](#ime)
+- 2. [fcitx](#fcitx)
+    - 2.1. [Tips](#tips)
+- 3. [ibus](#ibus)
+- 4. [常用输入法](#常用输入法)
+    - 4.1. [Rime](#rime)
+    - 4.2. [搜狗](#搜狗)
+    - 4.3. [Google拼音](#google拼音)
+            - 4.3.0.1. [小小输入法](#小小输入法)
 
-**目录 end**|_2021-02-03 17:25_|
+💠 2024-07-19 20:07:08
 ****************************************
 # IME
 > 输入法
@@ -38,6 +38,13 @@ export XMODIFIERS="@im=fcitx"
 ```
 
 - 设置里面 Global config -> Program -> Active 
+
+## Tips 
+> fcitx + sogou 输入法经常出现 `单CPU 100%满载`
+- 在搜狗输入法 中打开 fcitx 设置, 插件中 关闭 搜狗云 插件, 即可解决问题
+
+> 特定软件 无法输入中文，无法使用剪切板， 意味着fcitx未激活
+需要看软件是否支持进程内加脚本执行，例如 IDEA的 idea.sh WPS的 /usr/bin/et , 都可以通过在脚本首行添加 source ~/.xprofile 解决问题
 
 ************************
 
@@ -75,7 +82,3 @@ Ctrl ` 进入设置
 #### 小小输入法
 [小小输入法在Deepin上的使用](https://bbs.deepin.org/forum.php?mod=viewthread&tid=138500&highlight=%E5%B0%8F%E5%B0%8F%E8%BE%93%E5%85%A5%E6%B3%95)
 
-
-# Tips 
-> fcitx + sogou 输入法经常出现 `单CPU 100%满载`
-- 在搜狗输入法 中打开 fcitx 设置, 插件中 关闭 搜狗云 插件, 即可解决问题
