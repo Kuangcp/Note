@@ -1166,7 +1166,11 @@ It can be accessed using other duration-based units, such as minutes and hours.
     Date.from(datetime.atZone(ZoneId.systemDefault()).toInstant());
     // Date -> LocalDateTime 
     LocalDateTime.ofInstant(date.toInstant(), ZoneOffset.systemDefault());
+
+    // 格式化
+    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
 ```
+
 ### LocalDate
 - 获取自然周 `LocalDate.now().with(WeekFields.ISO.dayOfWeek(), 1L);`
 
