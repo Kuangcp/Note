@@ -35,13 +35,14 @@ categories:
     - 2.5. [Scheduling](#scheduling)
     - 2.6. [Events](#events)
     - 2.7. [异步](#异步)
-    - 2.8. [Utils](#utils)
-        - 2.8.1. [ReflectionUtils](#reflectionutils)
+    - 2.8. [RestTemplate](#resttemplate)
+    - 2.9. [Utils](#utils)
+        - 2.9.1. [ReflectionUtils](#reflectionutils)
 - 3. [Web开发的最佳实践](#web开发的最佳实践)
     - 3.1. [优雅部署](#优雅部署)
 - 4. [Tips](#tips)
 
-💠 2024-04-23 13:56:29
+💠 2024-07-24 17:28:31
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -444,6 +445,9 @@ Student
 - 任务通信问题： 
 
 ************************
+
+## RestTemplate
+> [大文件OOM问题](https://github.com/spring-projects/spring-framework/issues/12564) 发送文件时将文件的字节全部读取到内存中再发送，文件大且多时容易OOM
 
 ## Utils
 ### ReflectionUtils

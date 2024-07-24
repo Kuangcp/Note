@@ -15,7 +15,7 @@ categories:
 - 3. [衍生框架](#衍生框架)
 - 4. [Reactor Netty](#reactor-netty)
 
-💠 2024-06-16 16:48:43
+💠 2024-07-24 17:28:31
 ****************************************
 # Netty 使用
 > [NettyServer与SpringBoot集成](https://segmentfault.com/a/1190000004919133)  
@@ -95,6 +95,8 @@ categories:
 > [netty-socketio](https://github.com/mrniko/netty-socketio)  
 > [kcp-netty](https://github.com/szhnet/kcp-netty)  
 > [Reactive Extension (Rx) Adaptor for Netty ](https://github.com/ReactiveX/RxNetty) RxNetty
+> [Netty Servlet](https://github.com/wangzihaogithub/spring-boot-protocol)  
+
 
 ************************
 

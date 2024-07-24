@@ -15,8 +15,9 @@ categories:
         - 1.2.2. [工具](#工具)
 - 2. [MXBean](#mxbean)
     - 2.1. [GarbageCollectorMXBean](#garbagecollectormxbean)
+    - 2.2. [自定义MXBean](#自定义mxbean)
 
-💠 2024-04-02 22:16:08
+💠 2024-07-24 17:28:31
 ****************************************
 
 # JMX
@@ -92,4 +93,7 @@ username2 readwrite
 > [Garbage Collection JMX Notifications](http://www.fasterj.com/articles/gcnotifs.shtml)
 
 通过监听 GarbageCollectorMXBean，应用可感知JVM GC动作。
+
+## 自定义MXBean
+> [集成JMX](https://www.liaoxuefeng.com/wiki/1252599548343744/1282385687609378)
 
