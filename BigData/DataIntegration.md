@@ -20,7 +20,7 @@ categories:
 - 5. [Flink CDC](#flink-cdc)
 - 6. [Kettle](#kettle)
 
-💠 2024-06-25 10:24:14
+💠 2024-07-25 21:06:23
 ****************************************
 # Data Integration
 数据集成
@@ -52,7 +52,8 @@ categories:
 ### Tips
 - 配置的json文件要`严格按照案例JSON来配置`，因为他不是按对象解析是按无结构json来顺序解析的，踩过一个坑就是writer在reader上面，然后驱动加载出问题了，查看对应源码和jvm的加载类发现是有的，很隐蔽的报错，完全想不到是json配置顺序问题。
 
-- [为什么不建议使用DataX读写GreenPlum](https://www.modb.pro/db/52542) 不建议用 postgresqlwriter,可以用 [HashData DataX](https://github.com/HashDataInc/DataX) 的 gpdbwriter 插件替代
+> [为什么不建议使用DataX读写GreenPlum](https://www.modb.pro/db/52542) 不建议用 postgresqlwriter,可以用 [HashData DataX](https://github.com/HashDataInc/DataX) 的 gpdbwriter 插件替代  
+> 打包指定模块 mvn clean package -DskipTests assembly:assembly -pl plugin-rdbms-util -am
 
 ************************
 

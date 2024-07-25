@@ -75,7 +75,7 @@ categories:
     - 8.2. [gitattributes](#gitattributes)
 - 9. [自定义插件](#自定义插件)
 
-💠 2024-05-30 19:34:10
+💠 2024-07-25 21:06:23
 ****************************************
 
 # Git基础
@@ -386,6 +386,8 @@ git log --oneline -S "search keyword" --source --all
 
 > 查看当前分支和master的文件差异列表 `git diff master --stat=200 --compact-summary`， 在一个时间周期长，改动范围大的功能分支上可以在上线前快速确认下有没有漏SQL执行，漏配置项
 
+[--stat 参数防止路径被折叠](https://git-scm.com/docs/git-diff-files/zh_HANS-CN#git-diff-files---statltgtltgtltgt)
+
 ### diff 创建 patch
 
 - 创建分支之间的patch `git diff branch1 branch2 > first.patch`
@@ -595,7 +597,6 @@ git log --oneline -S "search keyword" --source --all
 2. `--include-untracked` 或 `-u` stash 将缓存未被track的文件
 3. `--patch` 交互式选择哪些内容需stash缓存哪些进入index区
 4. 如果需要恢复 `stash@{0}: On feature-test: test`
-
    - 就在 feature-test 分支上建立新分支, 然后 apply stash@{0}
    - 不推荐用 pop, 当stash多了以后 人不一定都记得每个stash都改了啥, 可能会有冲突以及修改覆盖的问题
    - 最好用新分支装起来, 然后合并分支, 或者是 cherry-pick, 修改也不会丢失

@@ -53,7 +53,7 @@ categories:
             - 2.2.2.1. [Gradle](#gradle)
             - 2.2.2.2. [Maven](#maven)
 
-💠 2024-07-13 00:44:21
+💠 2024-07-25 21:06:23
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -87,16 +87,21 @@ categories:
     - `-DskipTests=true` 不执行测试用例，但编译测试用例类生成相应的class文件至target/test-classes下
     - `-Dmaven.javadoc.skip=true` 跳过文档生成
 
+- 打包指定模块 `mvn package -pl a,b,c -am`
+    - -am 同时打包指定模块所依赖的上游模块
+    - -amd 同时打包 使用了 指定模块 的下游模块
+
 _配置文件中配置_
 ```xml
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-surefire-plugin</artifactId>
-    <configuration>
-        <skip>true</skip>
-    </configuration>
-</plugin>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+            <skip>true</skip>
+        </configuration>
+    </plugin>
 ```
+
 #### 从jar安装到本地库
 ```
 mvn install:install-file 
@@ -107,6 +112,7 @@ mvn install:install-file
     -Dpackaging=jar
 ```
 *****
+
 ### settings.xml配置
 > 要特别注意 `settings.xml` 后者覆盖前者 加载顺序是: 
 >> `maven目录/conf/setting.xml`  
@@ -127,6 +133,7 @@ mvn install:install-file
 ```
 #### 配置本地仓库
 `localRepository节点`
+
 *****************
 ## maven配置
 > [插件地址](http://maven.apache.org/plugins/index.html)
