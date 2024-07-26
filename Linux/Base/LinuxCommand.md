@@ -24,7 +24,7 @@ categories:
         - 1.8.1. [crontab](#crontab)
         - 1.8.2. [Systemd](#systemd)
 
-💠 2024-05-09 20:09:31
+💠 2024-07-26 19:05:14
 ****************************************
 # 系统常用基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -114,10 +114,11 @@ categories:
 
 ## 定时任务
 ### crontab
-> [参考博客 shell定时任务crontab](http://www.cnblogs.com/taosim/articles/2007056.html)
 `minute hour day-of-month month-of-year day-of-week commands  `
 
-> cron 脚本中的操作命令 最好都使用绝对路径, 必须注意环境变量问题
+> [为什么crontab不执行](https://segmentfault.com/a/1190000020850932)  
+- cron 脚本中的操作命令 都使用绝对路径, 必须注意环境变量问题
+- 以及每行配置都需要以换行符结尾
 
 ```sh
     SHELL=/bin/sh
@@ -133,11 +134,16 @@ categories:
     # *  *  *  *  * user-name command to be executed
 ```
 
-- * 表示所有值； 
-- ? 表示未说明的值，即不关心它为何值； 
-- - 表示一个指定的范围； 
-- , 表示附加一个可能值； 
-- / 符号前表示开始时间，符号后表示每次递增的值； 
+- 编辑配置文件 `crontab -e`
+- 时间配置格式
+    - * 表示所有值； 
+    - ? 表示未说明的值，即不关心它为何值； 
+    - - 表示一个指定的范围； 
+    - , 表示附加一个可能值； 
+    - / 符号前表示开始时间，符号后表示每次递增的值； 
+- 例如：
+    - 每分钟执行二进制命令
+    - 每分钟执行脚本 
 
 > 注意  
 >> 如果command是shell脚本，注意执行环境和权限问题
