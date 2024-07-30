@@ -14,9 +14,10 @@ categories:
     - 1.2. [安装](#安装)
         - 1.2.1. [minikube](#minikube)
 - 2. [使用](#使用)
-    - 2.1. [实践](#实践)
+    - 2.1. [网络](#网络)
+    - 2.2. [实践](#实践)
 
-💠 2024-07-03 17:43:26
+💠 2024-07-30 13:47:13
 ****************************************
 
 # Kubernetes
@@ -66,6 +67,8 @@ categories:
 
 - 查看日志： kubectl logs --namespace namespace pod
 
+## 网络
+> [Kubernetes 疑难杂症排查分享：神秘的溢出与丢包 ](https://tencentcloudcontainerteam.github.io/2020/01/13/kubernetes-overflow-and-drop/)
 
 ## 实践
 > Pod调度资源倾斜

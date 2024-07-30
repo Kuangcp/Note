@@ -11,12 +11,15 @@ categories:
 
 - 1. [Dockerfile](#dockerfile)
     - 1.1. [使用入门案例](#使用入门案例)
-    - 1.2. [Tips](#tips)
+    - 1.2. [docker build](#docker-build)
+        - 1.2.1. [docker buildx](#docker-buildx)
     - 1.3. [Dockerfile命令](#dockerfile命令)
         - 1.3.1. [FROM](#from)
         - 1.3.2. [MAINTAINER](#maintainer)
         - 1.3.3. [RUN](#run)
             - 1.3.3.1. [修改容器时区设置](#修改容器时区设置)
+            - 1.3.3.2. [修改 hosts](#修改-hosts)
+            - 1.3.3.3. [软件安装后缓存文件的清理](#软件安装后缓存文件的清理)
         - 1.3.4. [CMD](#cmd)
         - 1.3.5. [ENTRYPOINT](#entrypoint)
         - 1.3.6. [USER](#user)
@@ -38,7 +41,7 @@ categories:
         - 2.2.1. [打包最新版git](#打包最新版git)
         - 2.2.2. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-💠 2023-10-18 13:43
+💠 2024-07-30 13:47:13
 ****************************************
 # Dockerfile
 
@@ -55,9 +58,6 @@ categories:
 - `docker build .` 如果成功则会得到一个没有名字的镜像 `none:none`
     - `docker build -t image:tag .` 给镜像指定名字, 注意标签不设置就是默认的latest
 - 创建镜像成功后 `docker run --name ContainerName -d image:tag` 新建容器来运行镜像
-
-## Tips
-> [Reducing Your Docker Image Size](https://blog.codeship.com/reduce-docker-image-size/)
 
 ************************
 ## docker build 
@@ -144,6 +144,21 @@ CMD ["java", "-jar", "demo.jar"]
 ```
 > 对于 alpine 以及 Ubuntu ln -s 建立到时间文件的软链接就已经够了, 但是确保没问题就最好还是修改下 时区文件
 
+#### 修改 hosts
+由于Docker动态分配pod的虚拟ip，所以hosts会动态生成，单纯使用RUN命令在Dockerfile中修改hosts文件是不生效的。
+正确方式为:
+- Docker  `docker run –add-host host:ip`
+- K8S 
+    ```yml
+        hostAliases:
+        - hostnames:
+            - api.xxxxx.com
+            ip: 192.168.1.5
+        - hostnames:
+            - user.xxxx.cn
+            ip: 192.168.1.9
+    ```
+
 #### 软件安装后缓存文件的清理
 ```sh
     # Ubuntu 
@@ -152,6 +167,8 @@ CMD ["java", "-jar", "demo.jar"]
     # Alpine 
     apk update && apk add bash && 
 ```
+
+
 **************
 
 > 关于Java的时区问题
@@ -279,6 +296,8 @@ ARG 指令有生效范围，如果在 FROM 指令之前指定，那么只能用�
 
 - [官方文档 dockerfile](https://www.docker.io/learn/dockerfile/)
 - [官方文档 builder](http://docs.docker.io/reference/builder/)
+
+> [Reducing Your Docker Image Size](https://blog.codeship.com/reduce-docker-image-size/)
 
 ## dockerignore文件的使用
 - .dockerignore文件是依据 Go 的 PathMatch 规范来的，使用和.gitignore类似
