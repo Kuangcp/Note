@@ -6,35 +6,31 @@ tags:
 categories: 
     - 版本控制
 ---
+
 💠
 
 - 1. [使用Git进行团队协作](#使用git进行团队协作)
-
-  - 1.1. [基础思想](#基础思想)
-    - 1.1.1. [Git Flow](#git-flow)
-    - 1.1.2. [Github Flow](#github-flow)
-  - 1.2. [提交准则](#提交准则)
-    - 1.2.1. [commit template](#commit-template)
-  - 1.3. [Tips](#tips)
-    - 1.3.1. [master作为线上分支时，误提交功能并推送怎么处理](#master作为线上分支时误提交功能并推送怎么处理)
+    - 1.1. [基础思想](#基础思想)
+        - 1.1.1. [Git Flow](#git-flow)
+        - 1.1.2. [Github Flow](#github-flow)
+    - 1.2. [提交准则](#提交准则)
+        - 1.2.1. [commit template](#commit-template)
+    - 1.3. [Tips](#tips)
+        - 1.3.1. [master作为线上分支时，误提交功能并推送怎么处理](#master作为线上分支时误提交功能并推送怎么处理)
 - 2. [GUI](#gui)
-
-  - 2.1. [git-cola](#git-cola)
-  - 2.2. [Gitnuro](#gitnuro)
-  - 2.3. [GitBlade](#gitblade)
-  - 2.4. [gitg](#gitg)
-  - 2.5. [tig](#tig)
-  - 2.6. [Guitar](#guitar)
-  - 2.7. [Gittyup](#gittyup)
-  - 2.8. [SourceTree](#sourcetree)
+    - 2.1. [git-cola](#git-cola)
+    - 2.2. [Gitnuro](#gitnuro)
+    - 2.3. [GitBlade](#gitblade)
+    - 2.4. [gitg](#gitg)
+    - 2.5. [tig](#tig)
+    - 2.6. [Guitar](#guitar)
+    - 2.7. [Gittyup](#gittyup)
+    - 2.8. [SourceTree](#sourcetree)
 - 3. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
+    - 3.1. [最终方案](#最终方案)
 
-  - 3.1. [最终方案](#最终方案)
-
-💠 2023-10-09 17:53
-
----
-
+💠 2024-08-06 14:07:02
+****************************************
 # 使用Git进行团队协作
 
 > [在阿里，我们如何管理代码分支？](https://blog.csdn.net/maoreyou/article/details/79877829)
@@ -195,6 +191,8 @@ commit message 包含三个部分，header, body和footer，其中header必须�
 
 > [Git官方收纳的GUI列表](https://git-scm.com/downloads/guis)
 > [client on linux ](https://unix.stackexchange.com/questions/144100/is-there-a-usable-gui-front-end-to-git-on-linux)
+
+giggle
 
 ## git-cola
 

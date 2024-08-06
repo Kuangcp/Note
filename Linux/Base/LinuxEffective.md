@@ -52,14 +52,14 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2024-06-01 15:50:01
+💠 2024-08-06 14:07:02
 ****************************************
 # 高效的Linux
 
-> [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/) `一整套工具`
+> [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/) `一整套工具`  
+> [Awesome Linux Software](https://github.com/luong-komorebi/Awesome-Linux-Software)  
 
-> [命令行：增强版 ](https://linux.cn/article-10171-1.html)
-> [工具](https://www.lulinux.com/archives/2787)
+> [命令行：增强版 ](https://linux.cn/article-10171-1.html)  
 
 > [MAC平台 工具列表](https://github.com/hsdji/tools) `部分Linux可用`
 
@@ -99,6 +99,9 @@ Manjaro Xfce 使用 sixel： mlterm 或者 konsole
 - tilix
 - vte 
   - 支持复制终端输出内容为HTML
+- st
+- black box 
+- Alacritty
 
 > 备注 sakura xfce4-terminal 快捷键配置
 - `~/.config/xfce4/terminal/accels.scm`
@@ -327,7 +330,7 @@ duf
   - ubuntu:silversearcher-ag  alpine:the_silver_searcher
   - [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
 - rg _ripgrep_
-  ----------
+- glow markdown renderer
 
 ************************
 
