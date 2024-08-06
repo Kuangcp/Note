@@ -34,7 +34,7 @@ categories:
         - 1.4.4. [处理项目间依赖方法](#处理项目间依赖方法)
         - 1.4.5. [依赖冲突](#依赖冲突)
             - 1.4.5.1. [排除依赖](#排除依赖)
-        - 1.4.6. [继承](#继承)
+        - 1.4.6. [依赖本地jar](#依赖本地jar)
     - 1.5. [常用插件](#常用插件)
         - 1.5.1. [lombok](#lombok)
         - 1.5.2. [protobuf](#protobuf)
@@ -53,7 +53,7 @@ categories:
             - 2.2.2.1. [Gradle](#gradle)
             - 2.2.2.2. [Maven](#maven)
 
-💠 2024-07-25 21:06:23
+💠 2024-08-06 11:01:51
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -434,9 +434,16 @@ A 项目 compile
     </exclusions>
 ```
 
-### 继承
-> 新建一个项目作为父项目  
-> 然后在需要引用父项目的子项目pom文件中, 加上parent 标签里面写上 父项目的三要素
+### 依赖本地jar
+```xml
+    <dependency>
+        <groupId>xxx</groupId>
+        <artifactId>name</artifactId>
+        <version>1.0.0</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/xxx-name-1.0.0.jar</systemPath>
+    </dependency>
+```
 
 *************************
 

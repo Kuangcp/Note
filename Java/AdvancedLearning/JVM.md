@@ -11,9 +11,10 @@ categories:
 
 - 1. [JVM](#jvm)
     - 1.1. [JVM参数](#jvm参数)
-    - 1.2. [JVM内存参数](#jvm内存参数)
-        - 1.2.1. [容器内的JVM](#容器内的jvm)
-        - 1.2.2. [内存参数实践](#内存参数实践)
+    - 1.2. [Unified JVM Logging](#unified-jvm-logging)
+    - 1.3. [JVM内存参数](#jvm内存参数)
+        - 1.3.1. [容器内的JVM](#容器内的jvm)
+        - 1.3.2. [内存参数实践](#内存参数实践)
 - 2. [JVM 基本结构](#jvm-基本结构)
 - 3. [内存区域](#内存区域)
     - 3.1. [运行时数据区](#运行时数据区)
@@ -33,7 +34,7 @@ categories:
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-07-12 11:40:30
+💠 2024-08-06 11:01:51
 ****************************************
 # JVM
 > JVM结构及设计
@@ -60,7 +61,8 @@ Oracle JDK 默认采用的是 Hotspot JVM
 - `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
     - 开启无需认证 非SSL的JMX端口: 9999
 
-- `-XX:+TraceClassUnloading -XX:+TraceClassLoading` 输出类装载日志，可用于排查类从哪个jar加载进入JVM的
+- `-XX:+TraceClassLoading -XX:+TraceClassUnloading` 输出类装载/卸载日志，可用于排查类从哪个jar加载进入JVM的
+    - Java9及以后替代为： `-Xlog:class+load=info`
 
 > OOM 
 - `-XX:+HeapDumpOnOutOfMemoryError `
@@ -83,6 +85,11 @@ Oracle JDK 默认采用的是 Hotspot JVM
 | CPU核数 | 1 | 2 | 4 | 8 | 16 |
 |:---|:---|:---|:---|:---|:---|
 | 推荐值 | 2 | 2 | 3 | 3 | 8 | 
+
+## Unified JVM Logging
+> [JEP 158: Unified JVM Logging](https://openjdk.org/jeps/158)
+
+Java9开始，整合了GC，类加载等日志配置方式，日志级别，输出方式 正交式声明使用，更统一及灵活。
 
 ## JVM内存参数
 > 堆(老年代 年轻代)，堆外，元空间，栈
