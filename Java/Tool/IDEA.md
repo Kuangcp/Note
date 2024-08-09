@@ -34,8 +34,9 @@ categories:
     - 3.1. [使用项目外配置文件](#使用项目外配置文件)
     - 3.2. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
     - 3.3. [无法启动fcitx输入中文](#无法启动fcitx输入中文)
+    - 3.4. [Datagrip时区问题](#datagrip时区问题)
 
-💠 2024-07-13 00:44:21
+💠 2024-08-09 15:23:34
 ****************************************
 
 # IDEA 使用笔记
@@ -410,3 +411,8 @@ IDEA中Java项目启动时Console里灰色被折叠的第一行是完整的Java�
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 ```
+
+## Datagrip时区问题
+> [DataGrip设置时区](https://blog.csdn.net/qiaominghe/article/details/82757206)
+
+`-Duser.timezone=Asia/Shanghai`
