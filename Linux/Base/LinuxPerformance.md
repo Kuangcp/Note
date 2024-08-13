@@ -56,7 +56,7 @@ categories:
     - 8.7. [chroot](#chroot)
 - 9. [关机/重启](#关机重启)
 
-💠 2024-07-16 22:18:53
+💠 2024-08-13 10:47:34
 ****************************************
 # Linux性能分析和管理
 
@@ -428,11 +428,11 @@ sysstat软件包：sysstat，mpstat vmstat iostat
     - 当 x 用户不存在时ps就将其理解为 `ps aux`
     - 原因,因为他的三种格式:  BSD 选项前 不加短横线 `ps aux`  UNIX 选项前 加短横线 `ps -aux `  GNU 选项前 加双短横线  `ps --format`
     - BSD格式的 `ps aux` 等价于 `ps -eF`  e 显示全部进程, 包含了未在终端运行的进程 F 显示详尽的进程信息
-
-> Debian 上 `ps -ef` 和 `ps ef` 执行效果不一样
+    - Debian 上 `ps -ef` 和 `ps ef` 执行效果不一样
 
 - `-o` 输出指定列 `ps -eo pid,user,cmd,start ... ` 更多需要查看手册 `man ps`
-    - ![p200](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p200.jpg)
+    - [p200](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p200.jpg)
+    - 查看进程启动日期，时间，时间差 `ps -eo pid,start,lstart,%cpu,start_time,etime,cmd`
 
 - 对范围进行筛选 
     - 根据用户 `ps -u root`
