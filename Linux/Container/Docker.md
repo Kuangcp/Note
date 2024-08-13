@@ -59,7 +59,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2024-08-13 20:49:40
+💠 2024-08-13 20:52:16
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -241,9 +241,9 @@ categories:
 
 1. 直接将本地仓库的IP和端口 设置为本地Docker的白名单
     - 给dockerd 添加参数 `DOCKER_OPTS="--insecure-registry ip:port"`
-    - 或者配置 /etc/docker/daemon.json  `{ "insecure-registries":["IP:PORT"] }`
-    - 重启Docker服务
-1. 配置 registry 为 HTTPS， 那么就需要配置SSL证书， 使用本地证书或者公网证书
+    - 或者配置 `/etc/docker/daemon.json` 增加白名单  `{ "insecure-registries":["IP:PORT"] }`
+    - **重启**Docker服务
+1. 将 registry 配置为 HTTPS， 那么就需要配置SSL证书， 使用本地证书或者公网证书
 
 ********************************
 ## 基础命令
@@ -252,7 +252,6 @@ categories:
 _登录镜像仓库_
 - 登录hub.docker ：`docker login ` 或者 `docker login -u username -p password`
 - 登录时速云：`sudo docker login index.tenxcloud.com`
-- 登录百度云： `docker login --username=[username] hub.baidubce.com`
 
 - 清理全部未使用的资源 docker system prune -a
 
