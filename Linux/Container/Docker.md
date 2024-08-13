@@ -26,18 +26,19 @@ categories:
 - 3. [基础管理](#基础管理)
     - 3.1. [配置代理](#配置代理)
     - 3.2. [配置镜像源](#配置镜像源)
-        - 3.2.1. [搭建本地镜像仓库](#搭建本地镜像仓库)
-    - 3.3. [基础命令](#基础命令)
-    - 3.4. [镜像](#镜像)
-    - 3.5. [容器](#容器)
-        - 3.5.1. [ps](#ps)
-        - 3.5.2. [create](#create)
-        - 3.5.3. [run](#run)
-            - 3.5.3.1. [资源限制](#资源限制)
-        - 3.5.4. [exec](#exec)
-        - 3.5.5. [commit](#commit)
-        - 3.5.6. [port](#port)
-    - 3.6. [端口映射](#端口映射)
+    - 3.3. [搭建本地镜像仓库](#搭建本地镜像仓库)
+        - 3.3.1. [Push over HTTP](#push-over-http)
+    - 3.4. [基础命令](#基础命令)
+    - 3.5. [镜像](#镜像)
+    - 3.6. [容器](#容器)
+        - 3.6.1. [ps](#ps)
+        - 3.6.2. [create](#create)
+        - 3.6.3. [run](#run)
+            - 3.6.3.1. [资源限制](#资源限制)
+        - 3.6.4. [exec](#exec)
+        - 3.6.5. [commit](#commit)
+        - 3.6.6. [port](#port)
+    - 3.7. [端口映射](#端口映射)
 - 4. [数据存储](#数据存储)
     - 4.1. [文件系统](#文件系统)
     - 4.2. [数据卷](#数据卷)
@@ -58,7 +59,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2024-06-26 15:40:27
+💠 2024-08-13 20:49:40
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -217,7 +218,7 @@ categories:
 - 下载后可以用别名 `docker tag index.tenxcloud.com/docker_library/node:lastest node:lastest`
 
 ********************************
-### 搭建本地镜像仓库
+## 搭建本地镜像仓库
 > [Official doc](https://docs.docker.com/registry/#requirements)
 
 > [参考：Docker Registry V1 与 V2 的区别解析以及灵雀云的实时同步迁移实践](https://www.csdn.net/article/2015-09-09/2825651)
@@ -235,6 +236,7 @@ categories:
 - 一样的设置好别名， 然后push上去
 - 查看仓库中的镜像 `curl IP:5000/v2/_catalog`
 
+### Push over HTTP
 > **注意** 由于 docker client 默认是用的 HTTPS 方式通信， 但是这个本地的 registry 默认是 HTTP 的， 所以有几种解决方案
 
 1. 直接将本地仓库的IP和端口 设置为本地Docker的白名单
