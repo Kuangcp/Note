@@ -19,7 +19,7 @@ categories:
         - 3.3.2. [H2O Flow](#h2o-flow)
         - 3.3.3. [H2O-Python](#h2o-python)
 
-💠 2024-01-24 18:24:52
+💠 2024-08-13 11:47:10
 ****************************************
 # 机器学习平台
 > 将机器学习工程化组织的平台
@@ -87,7 +87,7 @@ categories:
     ```
 
 ### H2O Flow
-[H2O Flow Tutorial](http://h2o-release.s3.amazonaws.com/h2o/rel-3.44.0/3/docs-website/h2o-docs/flow.html)
+[H2O Flow Tutorial](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/flow.html) [mirror](http://h2o-release.s3.amazonaws.com/h2o/rel-3.44.0/3/docs-website/h2o-docs/flow.html)`H2O Flow GUI操作方式完成全流程`
 
 - [MOJO](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/mojo-quickstart.html)`模型的抽象表示` 导出为GenModel即jar包可部署到应用中。
 
