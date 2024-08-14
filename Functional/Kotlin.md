@@ -12,7 +12,7 @@ categories:
 
 - 1. [Kotlin](#kotlin)
 
-💠 2024-05-26 17:41:05
+💠 2024-08-14 15:45:26
 ****************************************
 # Kotlin
 > [Kotlin官网](https://kotlinlang.org/)  
@@ -26,5 +26,6 @@ categories:
 - [EasyKotlin组织](https://github.com/EasyKotlin)
     - [《Kotlin极简教程》书籍第一章](https://github.com/EasyKotlin/easy_kotlin_chapter_1)
 
+> [Why Kotlin isn't becoming mainstream on server side ](https://www.reddit.com/r/Kotlin/comments/12o03tu/why_kotlin_isnt_becoming_mainstream_on_server_side/)
 
 

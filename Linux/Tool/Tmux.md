@@ -22,7 +22,7 @@ categories:
 - 5. [Advanced](#advanced)
 - 6. [Tips](#tips)
 
-💠 2024-05-06 14:06:54
+💠 2024-08-14 15:45:26
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -77,6 +77,8 @@ categories:
 1. `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 1. `tmux source ~/.tmux.conf`
 1. `Ctrl A, I` 等待插件安装完成
+
+> [.tmux](https://github.com/gpakosz/.tmux) tmux配置（和前文的配置效果基本一致）
 
 *******************
 

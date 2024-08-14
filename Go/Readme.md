@@ -74,6 +74,7 @@ categories:
 - [PolarDB-ClusterManager](https://github.com/ApsaraDB/PolarDB-ClusterManager)
 - Docker
 - Kubernetes
+- [Vitess](https://github.com/vitessio/vitess)`horizontal scaling of MySQL`
 
 ************************
 

@@ -52,7 +52,7 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2024-08-06 14:07:02
+💠 2024-08-14 15:45:26
 ****************************************
 # 高效的Linux
 
@@ -72,6 +72,7 @@ Manjaro Xfce 使用 sixel： mlterm 或者 konsole
   1. 查看图片 img2sixel xx.jpg `ImageMagick`
   1. 渲染结果图 [jagger](https://github.com/rs/jaggr) **konsole不支持**
 
+[Terminals Are Sexy](https://github.com/k4m4/terminals-are-sexy)
 
 ### Terminal 对比
 
@@ -99,7 +100,7 @@ Manjaro Xfce 使用 sixel： mlterm 或者 konsole
 - tilix
 - vte 
   - 支持复制终端输出内容为HTML
-- st
+- st 不支持中文，unicode字符支持良好
 - black box 
 - Alacritty
 
