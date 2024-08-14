@@ -120,3 +120,8 @@ https://juejin.cn/post/7114516283290288158
 ## Direct Memory OOM 
 
 [Netty堆外内存泄露排查盛宴](https://tech.meituan.com/2018/10/18/netty-direct-memory-screening.html)
+
+
+## GC overhead limit exceeded
+> [Error java.lang.OutOfMemoryError: GC overhead limit exceeded](https://stackoverflow.com/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded)
+
