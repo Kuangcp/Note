@@ -56,7 +56,7 @@ categories:
     - 8.7. [chroot](#chroot)
 - 9. [关机/重启](#关机重启)
 
-💠 2024-08-13 10:47:34
+💠 2024-08-14 20:22:06
 ****************************************
 # Linux性能分析和管理
 
@@ -78,7 +78,9 @@ categories:
 
 > 简易评测
 - 单核CPU: `time echo "scale=9000; 4*a(1)" | bc -l -q` 
-- Mac Book Pro 2023 32G: 4s
+    - Mac Book Pro 2023 32G: **4s**
+    - i5-10400F CPU @ 2.90GHz: **60s**
+    - 笔记本 AMD Ryzen 7 6800H: 59s
 
 ************************
 
@@ -87,6 +89,8 @@ categories:
 
 - top
 - [htop](https://github.com/hishamhm/htop)`Htop更好用`
+    - [你一定用過 htop，但你有看懂每個欄位嗎？](https://medium.com/starbugs/do-you-understand-htop-ffb72b3d5629)
+    - CPU: Task 进程 thr 线程 kthr 内核线程 running 执行中的线程
 - gotop 
 - ytop
 - ctop 
