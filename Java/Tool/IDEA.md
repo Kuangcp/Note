@@ -32,11 +32,12 @@ categories:
 - 2. [运行优化](#运行优化)
 - 3. [Tips](#tips)
     - 3.1. [使用项目外配置文件](#使用项目外配置文件)
-    - 3.2. [Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"](#errorcannot-compile-groovy-files-no-groovy-library-is-defined-for-module-"xxx")
+    - 3.2. [Error:Cannot compile Groovy files](#errorcannot-compile-groovy-files)
     - 3.3. [无法启动fcitx输入中文](#无法启动fcitx输入中文)
-    - 3.4. [Datagrip时区问题](#datagrip时区问题)
+- 4. [Datagrip](#datagrip)
+    - 4.1. [Datagrip时区问题](#datagrip时区问题)
 
-💠 2024-08-09 15:23:34
+💠 2024-08-20 14:09:59
 ****************************************
 
 # IDEA 使用笔记
@@ -400,7 +401,9 @@ _例如修改为如下_
 IDEA中Java项目启动时Console里灰色被折叠的第一行是完整的Java命令，可以复制出classpath参数，在头部追加自定义目录，然后把这一长串填回到VM Options中
 就能实现自定义目录下的文件对IDEA中classpath下的同名文件替换
 
-## Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"
+## Error:Cannot compile Groovy files
+> Error:Cannot compile Groovy files: no Groovy library is defined for module "XXX"
+
 1. Project Structure -> 找到 XXX 项目 右击 -> Add -> 选择 Groovy
 
 ## 无法启动fcitx输入中文
@@ -411,6 +414,11 @@ IDEA中Java项目启动时Console里灰色被折叠的第一行是完整的Java�
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 ```
+
+# Datagrip
+> 执行SQL时底部的耗时拆分为 execution fetching。 
+- execution: JDBC提交Statement执行，到返回ResultSet的耗时
+- fetching： 读取ResultSet全部数据的耗时
 
 ## Datagrip时区问题
 > [DataGrip设置时区](https://blog.csdn.net/qiaominghe/article/details/82757206)
