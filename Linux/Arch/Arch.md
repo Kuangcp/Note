@@ -14,11 +14,11 @@ categories:
     - 1.1. [社区](#社区)
     - 1.2. [包管理](#包管理)
         - 1.2.1. [Pacman](#pacman)
-        - 1.2.2. [Snap](#snap)
-        - 1.2.3. [Yay](#yay)
+        - 1.2.2. [Yay](#yay)
+        - 1.2.3. [Snap](#snap)
 - 2. [Tips](#tips)
 
-💠 2024-07-12 11:40:30
+💠 2024-08-22 21:55:10
 ****************************************
 
 # Arch
@@ -75,6 +75,11 @@ categories:
 
 > 安装deb包 [How to Install a .deb Package on Arch Linux](https://www.baeldung.com/linux/arch-install-deb-package)
 
+### Yay
+缓存目录 ~/.cache/yay
+
+- `pacman -S yay` 下一代aur管理
+- `alias yay='/usr/bin/yay --color=always'` 默认开启颜色高亮
 
 ### Snap
 
@@ -89,12 +94,6 @@ categories:
 - 但是国内会很慢，此时可以手动下载安装 [参考: snapInstall](https://kuricat.com/gist/snap-install-too-slow-zmbjy)
     - curl -H 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/{{packageName}} 例如 `redis-desktop-manager`
     - sudo snap install xxx.snap --dangerous
-
-
-### Yay
-
-- `pacman -S yay` 下一代aur管理
-- `alias yay='/usr/bin/yay --color=always'` 默认开启颜色高亮
 
 ************************
 

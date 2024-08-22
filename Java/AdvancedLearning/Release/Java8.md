@@ -80,7 +80,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2024-07-03 17:43:26
+💠 2024-08-22 21:55:10
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -1168,7 +1168,10 @@ It can be accessed using other duration-based units, such as minutes and hours.
     LocalDateTime.ofInstant(date.toInstant(), ZoneOffset.systemDefault());
 
     // 格式化
-    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
+    DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    fmt.format(LocalDateTime.now());
+    // 解析
+    LocalDateTime parse = LocalDateTime.parse(timeStr, fmt);
 ```
 
 ### LocalDate
