@@ -38,7 +38,7 @@ categories:
     - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-06-18 15:17:36
+💠 2024-08-22 11:15:26
 ****************************************
 
 # JVM 监控&诊断
@@ -58,7 +58,7 @@ categories:
 
 
 # JDK自带工具
-> 都是jdk的bin目录下的工具
+> 都是jdk的bin目录下的工具，注意使用时要和目标JVM同一个JDK版本，以及同一个用户。
 
 ## java
 > 使用方式：
@@ -128,6 +128,8 @@ categories:
 - `jmap -heap $PID` 展示Java堆的各内存区域大小及占用情况
 - `jmap -dump:live,format=b,file=heapLive.hprof $PID` dump下存活对象  **注意会触发FullGC**
     - `jmap -dump:format=b,file=heapLive.hprof $PID` dump所有对象
+    - 失败时 可以尝试 -F 参数，强制dump，但此时的dump文件不一定是完整可打开的。
+    - 提示attach失败时 可修改 `echo 0 > /proc/sys/kernel/yama/ptrace_scope`  jmap依赖ptrace实现，此选项放开ptrace仅支持父进程执行的限制
 
 ************************
 
@@ -183,6 +185,7 @@ categories:
 > [OpenJDK11 jstack output explanation](https://stackoverflow.com/questions/76476637/openjdk11-jstack-output-explanation)  
 > [How to Analyze Java Thread Dumps](https://dzone.com/articles/how-analyze-java-thread-dumps)  
 
+扩展：通过短时间内多次获取stack分析出 活锁，死循环，死锁等问题点，但是通常这类问题只能通过修复并重启解决
 
 ### 实现原理
 - [Jstack 源码分析](https://zhuanlan.zhihu.com/p/36224094)

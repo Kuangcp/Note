@@ -13,8 +13,10 @@ categories:
     - 1.3. [Metaspace OOM](#metaspace-oom)
     - 1.4. [Compressed Class Space OOM](#compressed-class-space-oom)
     - 1.5. [Direct Memory OOM](#direct-memory-oom)
+    - 1.6. [GC overhead limit exceeded](#gc-overhead-limit-exceeded)
+- 2. [分析](#分析)
 
-💠 2024-05-14 14:27:51
+💠 2024-08-22 11:15:26
 ****************************************
 # OOM 
 > 注意OOM并不代表Java进程一定会退出，如果导致OOM的地方能被catch，且泄漏点能随着这次任务的终止而可回收的话，JVM将继续正常运行。  
@@ -125,3 +127,19 @@ https://juejin.cn/post/7114516283290288158
 ## GC overhead limit exceeded
 > [Error java.lang.OutOfMemoryError: GC overhead limit exceeded](https://stackoverflow.com/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded)
 
+
+# 分析
+重点是保存现场，获取到问题时间内多维度的信息辅助快速定位，首要是 dump文件 其次是 jstack历史 gc日志 应用日志 监控系统上问题时间段的指标变化情况 等等。
+
+> [由JDK bug引发的线上OOM](http://ifeve.com/%e7%94%b1jdk-bug%e5%bc%95%e5%8f%91%e7%9a%84%e7%ba%bf%e4%b8%8aoom/)
+> [Speeding up Java heap dumps with GNU Debugger](https://medium.com/platform-engineer/speeding-up-java-heap-dumps-with-gnu-debugger-c01562e2b8f0)`但是实测更慢，可能和环境有关吧 maybe`
+
+- [jmap](/Java/AdvancedLearning/JvmTool.md#jmap)
+- jcmd 1 GC.heap_dump /tmp/docker.hprof
+
+通常使用 jmap或jcmd dump到文件，但是如果JVM已经发生OOM且进程占用CPU很高的情况下jmap会很慢甚至失败（例如attach失败）。
+此时可以使用gdb先dump下core，再转为hprof文件。
+
+- ulimit -c unlimited
+- gcore pid `core文件可能会很大，800M堆dump出了7G的文件`
+- jmap -dump:format=b,file=heap.hprof /path/to/java core.${pid} `该过程是单线程的，会很慢`
