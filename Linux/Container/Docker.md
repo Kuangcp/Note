@@ -36,8 +36,7 @@ categories:
         - 3.6.3. [run](#run)
             - 3.6.3.1. [资源限制](#资源限制)
         - 3.6.4. [exec](#exec)
-        - 3.6.5. [commit](#commit)
-        - 3.6.6. [port](#port)
+        - 3.6.5. [port](#port)
     - 3.7. [端口映射](#端口映射)
 - 4. [数据存储](#数据存储)
     - 4.1. [文件系统](#文件系统)
@@ -59,7 +58,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2024-08-13 20:52:16
+💠 2024-08-26 17:21:40
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -266,12 +265,13 @@ _登录镜像仓库_
 - 安装 ： `docker pull 镜像名`
 - 删除 ： `docker rmi 镜像名`
 - 查看详细： `docker inspect [-f {{".Architesture"}}]`  -f 查看JSON格式的具体节点的数据值
-- 查看历史：`docker history imagename`
+- 查看Layer历史：`docker history imagename` 每一层的Layer id 和 执行的操作
 - 添加标签（别名）： `docker tag originname newname`
 - 导出镜像文件：`docker save -o ubuntu.tar  ubuntu:14.04`
     - 导入镜像文件： `docker load --input ubuntu.tar` 或 `docker load < ubuntu.tar`
 - 上传镜像： `docker push mythos/test:lastest`
 - 删除所有未使用的image `docker image prune --all`
+
 ************************
 
 ## 容器
@@ -293,10 +293,11 @@ _登录镜像仓库_
 - 容器日志(终端所有输入输出)：`docker logs 容器name或id`
 - 重命名 ： `docker rename origin new`
 
-- 导入导出 （容器快照）：
+- 导入导出 （容器快照）： **注意此方式不会保留layer历史，无法回滚**
     - 导出： `docker export -o test.tar 容器名` `docker export 容器name > test.tar`
     - 导入： `docker import [-c |--change=[]] [-m | --message=[]] file|URL - [repository]:[tag]`
     - -c | --change=[] 选项在导入的同时执行对容器就行修改的Dockerfile指令。
+- 将容器导出为镜像： `docker commit container_name image:tag`
 
 > [Attach a volume to a container while it is running](http://jpetazzo.github.io/2015/01/13/docker-mount-dynamic-volumes/)
 
@@ -392,13 +393,11 @@ _登录镜像仓库_
     - PID=${docker-pid 容器id}
     - nsenter --target $PID --mount --uts --ipc --net --pid
 
-### commit
-- `docker commit 容器id 镜像name` 将容器为id的当前容器 保存为name镜像
-
 ### port
 > 查看容器的端口映射情况， 输出是左容器右本机， 和使用相反
 
-*************
+************************
+
 ## 端口映射
 - 当不指定对应的参数容器默认不开放任何端口给外部，可以使用 `-P` 或 `-p` 参数来开放
     - -P 随机映射一个 49000-49900 的端口到容器开放的端口
