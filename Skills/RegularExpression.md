@@ -11,8 +11,9 @@ categories:
 - 1. [正则表达式](#正则表达式)
     - 1.1. [基本字符](#基本字符)
     - 1.2. [特殊字符](#特殊字符)
-    - 1.3. [变量](#变量)
-    - 1.4. [零宽断言](#零宽断言)
+    - 1.3. [分组捕获](#分组捕获)
+    - 1.4. [变量](#变量)
+    - 1.5. [零宽断言](#零宽断言)
 - 2. [正则表达式引擎](#正则表达式引擎)
     - 2.1. [NFA匹配模式](#nfa匹配模式)
     - 2.2. [性能陷阱](#性能陷阱)
@@ -22,7 +23,7 @@ categories:
     - 3.3. [Shell](#shell)
 - 4. [Tips](#tips)
 
-💠 2024-05-07 22:13:53
+💠 2024-08-26 16:31:06
 ****************************************
 # 正则表达式
 > [Regular Expression Language - Quick Reference](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference)  
@@ -66,6 +67,26 @@ categories:
 > 正则表达式的组件可以是单个的字符、字符集合、字符范围、字符间的选择或者所有这些组件的任意组合。 
 
 ************************
+## 分组捕获
+> [Grouping Constructs](https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference#grouping-constructs)
+
+正则中的()都是一个分组捕获，库通常使用下标来定位匹配到的分组
+
+同时可以使用命名分组  Named groups。
+
+```java
+    Pattern idxGroup = Pattern.compile("(\\d{4})-(\\d{2})");
+    Matcher matcher = idxGroup.matcher("2012-12");
+    System.out.println(matcher.matches());
+    assertThat(matcher.group(1), equalTo("2012"));
+    assertThat(matcher.group(2), equalTo("12"));
+
+    Pattern nameGroup = Pattern.compile("(?<year>\\d{4})-(?<month>\\d{2})");
+    matcher = nameGroup.matcher("2012-12");
+    System.out.println(matcher.matches());
+    assertThat(matcher.group("year"), equalTo("2012"));
+    assertThat(matcher.group("month"), equalTo("12"));
+```
 
 ## 变量
 

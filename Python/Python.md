@@ -50,7 +50,7 @@ categories:
         - 3.7.2. [时间处理](#时间处理)
         - 3.7.3. [三方库](#三方库)
 
-💠 2024-06-03 20:53:27
+💠 2024-08-26 16:31:06
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -561,6 +561,9 @@ python -m module_name
     - 代理 `--proxy 192.168.1.24:1234`
     - 强行使用HTTP `-i http://pypi.doubanio.com/simple/ --trusted-host pypi.doubanio.com` pip版本高于20.3后默认使用HTTPS
 
+- 注意：自PEP668开始限制默认安装为全局依赖，否则会报错 externally-managed-environment
+    - 可以设置默认全局 python3 -m pip config set global.break-system-packages true
+    - 或者单次安装到全局 --break-system-packages
 
 #### Requirements files
 > [pip官方文档 Requirements files](https://pip.readthedocs.io/en/1.1/requirements.html)
