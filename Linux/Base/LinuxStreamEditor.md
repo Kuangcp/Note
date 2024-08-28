@@ -17,7 +17,7 @@ categories:
     - 1.5. [sed](#sed)
     - 1.6. [awk](#awk)
 
-💠 2024-06-25 15:55:14
+💠 2024-08-28 10:59:31
 ****************************************
 # 流编辑器
 > [参考: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
@@ -128,3 +128,6 @@ categories:
 1. 读取标准输出 `awk '{print $0}' - `
 
 > [参考: awk 入门教程](http://www.ruanyifeng.com/blog/2018/11/awk.html)
+
+- 别名中双引号转义问题处理： `awk '\''{}'\'`
+    - `alias count.csv='sort | uniq -c | sort -hr | awk '\''{print $1","$2}'\'` 

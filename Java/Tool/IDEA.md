@@ -37,7 +37,7 @@ categories:
 - 4. [Datagrip](#datagrip)
     - 4.1. [Datagrip时区问题](#datagrip时区问题)
 
-💠 2024-08-20 14:09:59
+💠 2024-08-28 10:59:31
 ****************************************
 
 # IDEA 使用笔记
@@ -352,7 +352,6 @@ _例如修改为如下_
     - 配置 Build,Execution > Compiler > Annotation Processors 勾选上即可使用lombok的注解
 1. Jrebel 热部署插件, 需要付费
 1. GoogleTranslation **Ctrl Alt 1** 快速翻译选中的单词和语句
-1. emacsIdeas 快捷键 跳转
 1. FindBugs
 1. Docker
 1. Kubernates
@@ -361,6 +360,8 @@ _例如修改为如下_
 1. Grep console 控制台搜索工具
 1. Code with me 远程协作插件
 1. jclasslib Bytecode Viewer 字节码查看插件
+1. GsonFormatPlus ： json转Class定义
+1. POJO to JSON ： Class定义转JSON
 
 **************************
 > 内置插件
