@@ -21,8 +21,6 @@ categories:
         - 1.7.2. [net](#net)
         - 1.7.3. [swaps](#swaps)
             - 1.7.3.1. [设置交换内存文件](#设置交换内存文件)
-            - 1.7.3.2. [清空交换内存](#清空交换内存)
-        - 1.7.4. [清空读写缓存](#清空读写缓存)
     - 1.8. [/usr](#usr)
         - 1.8.1. [/usr/local](#usrlocal)
     - 1.9. [/etc](#etc)
@@ -41,7 +39,7 @@ categories:
     - 2.1. [查看发行版](#查看发行版)
     - 2.2. [查看系统所有用户信息](#查看系统所有用户信息)
 
-💠 2024-06-26 10:57:11
+💠 2024-08-29 14:10:08
 ****************************************
 # Linux 目录结构
 > Linux 系统目录结构的大致分布以及说明
@@ -139,26 +137,6 @@ categories:
     # 完整命令: root身份运行
     dd if=/dev/zero of=/swapfile bs=1024k count=4096 && mkswap /swapfile && swapon /swapfile && echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
 ```
-
-#### 清空交换内存
-- 1.关闭交换分区 `sudo swapoff 交换分区文件`
-    - 2.开启交换分区 `sudo swapon 交换分区文件`
-- `swapoff -a && swapon -a`
-    - 前提是交换分区已在 `/etc/fstab` 中配置
-
-### 清空读写缓存
-> [参考: 如何在 Linux 中清除缓存（Cache）？](https://linux.cn/article-5627-1.html) `注意要切换到root再运行命令`  
-> [参考: Linux 内存中的Cache，真的能被回收么？](https://www.cnblogs.com/276815076/p/5478966.html)  
-
-************************
-
-> 设置值 `sync; echo 1 > /proc/sys/vm/drop_caches`
-
-| 值 | 作用 |
-|:----|:----|
-| 1 | 仅清除 page cache |
-| 2 | 表示清除回收slab分配器中的对象（包括目录项缓存和inode缓存） |
-| 3 | 表示清除page cache和slab分配器中的缓存对象 |
 
 ***************
 

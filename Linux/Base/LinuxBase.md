@@ -41,6 +41,8 @@ categories:
         - 2.3.2. [oom](#oom)
         - 2.3.3. [虚拟内存](#虚拟内存)
         - 2.3.4. [交换内存](#交换内存)
+            - 2.3.4.1. [清空交换内存](#清空交换内存)
+        - 2.3.5. [清空读写缓存](#清空读写缓存)
 - 3. [终端快捷键](#终端快捷键)
     - 3.1. [Delete](#delete)
     - 3.2. [Convert](#convert)
@@ -60,7 +62,7 @@ categories:
     - 5.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 5.5. [熵池](#熵池)
 
-💠 2024-05-19 23:35:07
+💠 2024-08-29 14:10:08
 ****************************************
 
 # Linux系统
@@ -517,6 +519,8 @@ _系统运行级别_
 ### 交换内存
 > swapon, swapoff - enable/disable devices and files for paging and swapping
 
+> [交换内存文件](/Linux/Base/LinuxDirectoryStructure.md#设置交换内存文件)
+
 > 交换内存分析
 VIRT = SWAP + RES or equal
 SWAP = VIRT - RES
@@ -524,6 +528,28 @@ SWAP = VIRT - RES
 - 查看进程使用交换内存 `grep -i VmSwap /proc/*/status` 
 - 进程按交换内存使用大小排序`for file in /proc/*/status ; do awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $file; done | sort -k 2 -n -r | less`
 - `smem`  Report memory usage with shared memory divided proportionally
+
+#### 清空交换内存
+- 1.关闭交换分区 `sudo swapoff 交换分区文件`
+    - 2.开启交换分区 `sudo swapon 交换分区文件`
+- `swapoff -a && swapon -a`
+    - 前提是交换分区已在 `/etc/fstab` 中配置
+
+### 清空读写缓存
+注意： 读 cache 写 buffer， 设计是为了提高读写效率，如果内存不足时可以考虑释放这部分内存，但是也会带来读写缓存失效重新读磁盘的性能问题，需慎重考虑。
+
+> [参考: 如何在 Linux 中清除缓存（Cache）？](https://linux.cn/article-5627-1.html) `注意要切换到root再运行命令`  
+> [参考: Linux 内存中的Cache，真的能被回收么？](https://www.cnblogs.com/276815076/p/5478966.html)  
+
+************************
+
+> 设置值 `sync; echo 1 > /proc/sys/vm/drop_caches`
+
+| 值 | 作用 |
+|:----|:----|
+| 1 | 仅清除 page cache |
+| 2 | 表示清除回收 slab 分配器中的对象（包括目录项缓存和 inode 缓存） |
+| 3 | 表示清除 page cache 和 slab 分配器中的缓存对象 |
 
 ************************
 
