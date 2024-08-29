@@ -23,7 +23,7 @@ categories:
     - 3.3. [Shell](#shell)
 - 4. [Tips](#tips)
 
-💠 2024-08-26 16:31:06
+💠 2024-08-29 10:43:08
 ****************************************
 # 正则表达式
 > [Regular Expression Language - Quick Reference](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference)  
@@ -65,6 +65,19 @@ categories:
 
 > 构造正则表达式的方法和创建数学表达式的方法一样。也就是用多种元字符与操作符将小的表达式结合在一起来创建更大的表达式。
 > 正则表达式的组件可以是单个的字符、字符集合、字符范围、字符间的选择或者所有这些组件的任意组合。 
+
+************************
+
+> Pattern
+- (?i) 开启忽略大小写 (?-i) 关闭忽略大小写
+    - 但是i只处理 ASCII 字符，如果需要处理Unicode字符需要加上u或U 例如 `(?iu)`, `(?iU)`
+
+```
+i - Ignore case
+m - Treat a newline as a character matched by .
+x - Ignore whitespace and comments in the pattern
+o -> Perform #{} interpolation only once
+```
 
 ************************
 ## 分组捕获

@@ -41,7 +41,7 @@ categories:
         - 5.2.1. [BlockingQueue](#blockingqueue)
         - 5.2.2. [TransferQueue](#transferqueue)
 
-💠 2024-06-02 17:50:57
+💠 2024-08-29 10:43:08
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -339,7 +339,11 @@ public int current(){
 支持场景：一堆线程间的状态同步，为了确保有指定数量正常初始化的线程 创建成功 后 继续执行逻辑 
 
 ### CyclicBarrier
+
 ### Semaphore
+> 维护一个固定大小的池子，借用和归还资源，限制并发数。
+
+
 ### Phaser
 ### Exchanger
 

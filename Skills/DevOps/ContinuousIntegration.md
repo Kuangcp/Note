@@ -5,20 +5,21 @@ tags:
 categories: 
 ---
 
-**目录 start**
+💠
 
-1. [持续集成](#持续集成)
-    1. [Jenkins](#jenkins)
-    1. [GoCD](#gocd)
-    1. [Drone](#drone)
-    1. [flow.ci](#flowci)
-    1. [三方平台](#三方平台)
-1. [代码质量管理](#代码质量管理)
-    1. [Bug跟踪](#bug跟踪)
-    1. [sonarqube](#sonarqube)
-1. [测试平台](#测试平台)
+- 1. [持续集成](#持续集成)
+    - 1.1. [Jenkins](#jenkins)
+    - 1.2. [GoCD](#gocd)
+    - 1.3. [Drone](#drone)
+    - 1.4. [flow.ci](#flowci)
+    - 1.5. [三方平台](#三方平台)
+- 2. [代码质量管理](#代码质量管理)
+    - 2.1. [Bug跟踪](#bug跟踪)
+    - 2.2. [sonarqube](#sonarqube)
+        - 2.2.1. [项目端](#项目端)
+- 3. [测试平台](#测试平台)
 
-**目录 end**|_2023-05-26 11:28_|
+💠 2024-08-29 10:43:08
 ****************************************
 # 持续集成
 > 参考: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  
@@ -80,6 +81,11 @@ go语言实现，一个原生支持 docker 的 CI
 > 调整虚拟内存
 - sysctl -w vm.max_map_count=524288
 
+> [Sonarqube badge not working on github README](https://stackoverflow.com/questions/58908668/sonarqube-badge-not-working-on-github-readme)
+- Force user authentication" in Administration -> Configuration -> General settings -> Security, has to be set to false
+- The SonarQube project has to be public
+
+### 项目端
 1. [sonarscanner](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
     1. Maven构建的过程会输出当前分析项目的结果URL
 
