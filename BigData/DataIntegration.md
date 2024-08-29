@@ -20,7 +20,7 @@ categories:
 - 5. [Flink CDC](#flink-cdc)
 - 6. [Kettle](#kettle)
 
-💠 2024-07-25 21:06:23
+💠 2024-08-29 15:44:41
 ****************************************
 # Data Integration
 数据集成
@@ -84,6 +84,7 @@ categories:
 		// 结果的数组中有元素的字面值包含了控制字符 \r. 将生成的SQL去查数据库没有问题，拆分的四段只有13段能查出数据 24段数据为空
 		```
     - TODO 但是出现过分段后数据范围有交叉导致同步的数据量大于上游数据总量， 可能是概率性出现问题，因为这个字符转int的做法导致了字符的边界互相影响了，范围SQL产生了交集？
+    - 特定优化思路：将拆分列查出全部去重值后构造出分批in的SQL。 优点：将以该列的数据分布情况并发同步，贴合数据的业务特点。缺点：如果该列的去重值非常多，SQL会超长。
 - 拆分后同样是游标查询 com.alibaba.datax.plugin.rdbms.reader.CommonRdbmsReader.Task#startRead
     - `ResultSet query(Connection conn, String sql, int fetchSize)`
 
