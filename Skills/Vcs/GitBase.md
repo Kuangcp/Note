@@ -75,7 +75,7 @@ categories:
     - 8.2. [gitattributes](#gitattributes)
 - 9. [自定义插件](#自定义插件)
 
-💠 2024-07-25 21:06:23
+💠 2024-08-30 14:23:29
 ****************************************
 
 # Git基础
@@ -142,8 +142,13 @@ categories:
     helper = store
 ```
 
+************************
+
+`diff`配置
 > 可用： opendiff kdiff3 tkdiff xxdiff meld kompare gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare smerge vimdiff emerge
 > [工具 详细](/Linux/Base/LinuxFile.md#比较文件内容)
+
+> [delta](https://github.com/dandavison/delta) `diff和分页查看git差异`
 
 ************************
 
