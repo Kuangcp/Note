@@ -22,7 +22,7 @@ categories:
     - 3.1. [Redis 实现](#redis-实现)
     - 3.2. [Oracle Coherence](#oracle-coherence)
 
-💠 2024-08-30 14:23:29
+💠 2024-08-30 18:57:45
 ****************************************
 # 限流
 
@@ -77,8 +77,30 @@ zset 使用时间戳值来做滑动窗口,如果服务器间时间不同步，�
 作用类似于 [JDK中的Semaphore](/Java/AdvancedLearning/JavaConcurrency.md#semaphore)，但是资源限制是分布式的，而不是单机，实现可以依赖Redis或MySQL等中间存储。
 
 ## Redis 实现
-1. lua脚本实现判断，加一（获取资源），减一(释放资源) `自旋等待`
-1. lock + incr 使用Redis锁来限制incr， 增减 `自旋等待`
+1. lua脚本实现判断，加一（获取资源）,判断是否超阈值超过则撤销加一，减一(释放资源) `自旋等待`
+    - 命令： `EVAL "local cnt = redis.call('incr', KEYS[1]);  if (tonumber(cnt) > tonumber(ARGV[1]) ) then redis.call('decr', KEYS[1]); return 0; else return 1; end " 1 lockA 3`
+    ```java
+    public static final String Judge = "local cnt = redis.call('incr', KEYS[1]);" +
+            "  if (tonumber(cnt) > tonumber(ARGV[1]) ) then redis.call('decr', KEYS[1]); return 0;" +
+            " else return 1; end";
+
+    public boolean acquire() {
+        // 指定 lua 脚本，并且指定返回值类型
+        DefaultRedisScript<Integer> redisScript = new DefaultRedisScript<>(Judge, Integer.class);
+        // 参数一：redisScript，参数二：key列表，参数三：arg（可多个）
+        Object lockB = redisTemplate.execute(redisScript, Collections.singletonList("lockB"), 3);
+        if (Objects.isNull(lockB)) {
+            return false;
+        }
+        return Integer.parseInt(lockB.toString()) > 0;
+    }
+
+    public String release() {
+        Long val = redisTemplate.opsForValue().decrement("lockB");
+        return val + "";
+    }
+    ```
+
 
 ## Oracle Coherence
 [Coherence](https://docs.oracle.com/en/middleware/standalone/coherence/14.1.1.2206/develop-applications/implementing-concurreny-distributed-environment.html#GUID-8C7BBF82-EBF8-47A9-8EDC-E725221C1054)
