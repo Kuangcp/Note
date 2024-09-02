@@ -23,11 +23,12 @@ categories:
     - 3.3. [Shell](#shell)
 - 4. [Tips](#tips)
 
-💠 2024-08-29 10:43:08
+💠 2024-09-02 17:14:24
 ****************************************
 # 正则表达式
 > [Regular Expression Language - Quick Reference](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference)  
 
+> [Grex](https://github.com/pemistahl/grex)  
 
 ## 基本字符 
 

@@ -1177,6 +1177,19 @@ It can be accessed using other duration-based units, such as minutes and hours.
 ### LocalDate
 - 获取自然周 `LocalDate.now().with(WeekFields.ISO.dayOfWeek(), 1L);`
 
+```java
+    // 常见格式
+    DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMdd");
+    LocalDate parse = LocalDate.parse("20171018", format);
+
+    // 格式不全时（年月日）需特殊处理 补全对应默认值
+    DateTimeFormatter monthFMT = new DateTimeFormatterBuilder()
+                        .appendPattern("yyyy")
+                        .parseDefaulting(ChronoField.MONTH_OF_YEAR, 1)
+                        .parseDefaulting(ChronoField.DAY_OF_MONTH, 1)
+                        .toFormatter();
+    LocalDate parse = LocalDate.parse("2017", monthFMT);
+```
 ### LocalTime
 
 ## ZoneOffset

@@ -37,7 +37,7 @@ categories:
 - 4. [Datagrip](#datagrip)
     - 4.1. [Datagrip时区问题](#datagrip时区问题)
 
-💠 2024-08-28 10:59:31
+💠 2024-09-02 17:14:24
 ****************************************
 
 # IDEA 使用笔记
@@ -360,6 +360,7 @@ _例如修改为如下_
 1. Grep console 控制台搜索工具
 1. Code with me 远程协作插件
 1. jclasslib Bytecode Viewer 字节码查看插件
+1. JarEditor Jar包编辑，无需解压
 1. GsonFormatPlus ： json转Class定义
 1. POJO to JSON ： Class定义转JSON
 

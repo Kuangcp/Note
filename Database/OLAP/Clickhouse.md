@@ -19,12 +19,14 @@ categories:
 - 3. [Explain](#explain)
 - 4. [Tips](#tips)
 
-💠 2024-06-18 15:17:36
+💠 2024-09-02 17:14:24
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
 
 > [What is ClickHouse? ](https://medium.com/doublecloud-insights/what-is-clickhouse-a-comprehensive-guide-for-getting-started-5aae9afd38b0)
+
+- 关联开源项目： Sentry [clickvisual](https://github.com/clickvisual/clickvisual)
 
 ************************
 ## 安装

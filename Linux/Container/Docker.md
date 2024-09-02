@@ -58,7 +58,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2024-08-26 17:21:40
+💠 2024-09-02 17:14:24
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -66,6 +66,8 @@ categories:
 - [docker中文](http://www.docker.org.cn/)`社区`
 
 - [Gitbook: docker 从入门到实践](https://yeasy.gitbooks.io/docker_practice/content/)
+
+- [docker-android](https://github.com/budtmo/docker-android)
 
 ## 简介
 > `Docker 是一个开源的应用容器引擎` 理解为轻量版虚拟机(不模拟硬件层)
@@ -180,6 +182,8 @@ categories:
 > docker 所有的数据默认存储在 `/var/lib/docker`
 
 > [ctop](https://github.com/bcicen/ctop)`Top-like interface for container metrics`  
+
+- [bitnami](https://bitnami.com/)`非官方，但是维护了很多常用软件的镜像`  
 
 ## 配置代理
 2024-06-06 开始封禁Dockerhub及国内源，所以最稳妥的还是用代理

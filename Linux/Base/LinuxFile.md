@@ -66,7 +66,7 @@ categories:
         - 6.1.1. [善用alias](#善用alias)
     - 6.2. [desktop文件](#desktop文件)
 
-💠 2024-08-14 15:45:26
+💠 2024-09-02 17:14:24
 ****************************************
 
 # IO
@@ -472,7 +472,7 @@ export LANG="zh_CN.UTF-8"
 - -l 只显示本地文件系统
 
 > 改进版
-- duf 现代化 du
+- duf 现代化 df
 - pydf
 
 ### du
@@ -489,6 +489,7 @@ export LANG="zh_CN.UTF-8"
 > 改进版
 - [ncdu](https://dev.yorhel.nl/ncdu)
 - [dust](https://github.com/bootandy/dust)
+- [gdu](https://github.com/dundee/gdu)
 
 ************************
 

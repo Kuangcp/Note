@@ -49,7 +49,7 @@ categories:
 - 3. [Tips](#tips)
     - 3.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2024-06-21 16:17:04
+💠 2024-09-02 17:14:24
 ****************************************
 # Go
 
@@ -550,8 +550,10 @@ Msg struct{
 > [lorca](https://github.com/zserge/lorca.git) `H5 + chromium + Golang`桌面端
 
 > interface{} 类型判断nil
-
 - vo == nil || (reflect.ValueOf(vo).Kind() == reflect.Ptr && reflect.ValueOf(vo).IsNil())
+
+> 字符串计算差异
+> [diffmatchpatch](https://github.com/sergi/go-diff/diffmatchpatch)  
 
 ## 通过字符串调用指定函数
 
