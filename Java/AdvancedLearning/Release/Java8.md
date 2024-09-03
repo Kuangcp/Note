@@ -80,7 +80,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2024-08-22 21:55:10
+💠 2024-09-03 14:05:18
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -1175,7 +1175,7 @@ It can be accessed using other duration-based units, such as minutes and hours.
 ```
 
 ### LocalDate
-- 获取自然周 `LocalDate.now().with(WeekFields.ISO.dayOfWeek(), 1L);`
+- 获取自然周开始时间 `LocalDate.now().with(WeekFields.ISO.dayOfWeek(), 1L);`
 
 ```java
     // 常见格式
@@ -1190,6 +1190,7 @@ It can be accessed using other duration-based units, such as minutes and hours.
                         .toFormatter();
     LocalDate parse = LocalDate.parse("2017", monthFMT);
 ```
+
 ### LocalTime
 
 ## ZoneOffset
@@ -1199,4 +1200,5 @@ It can be accessed using other duration-based units, such as minutes and hours.
 带时区的时间
 
 ## Clock
-时钟，比如获取目前美国纽约的时间
+> [Guide to the Java Clock Class](https://www.baeldung.com/java-clock)  
+

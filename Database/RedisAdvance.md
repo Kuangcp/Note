@@ -40,7 +40,7 @@ categories:
     - 6.4. [Cluster 集群](#cluster-集群)
 - 7. [Redis 持久化](#redis-持久化)
 
-💠 2024-08-30 18:57:45
+💠 2024-09-03 14:05:18
 ****************************************
 # Redis底层数据结构
 ## SDS
@@ -155,7 +155,9 @@ Redis 的跳跃表由 redis.h/zskiplistNode 和 redis.h/zskiplist 两个结构�
     - [参考: redis info 命令查看redis使用情况](https://blog.csdn.net/kexiaoling/article/details/51810919)
     - info stats 中 total_commands_processed 是实际请求, 还是说redis自己执行的命令 TODO 
 - LASTSAVE
-- MONITOR
+- [MONITOR](https://redis.io/docs/latest/commands/monitor/)
+    - debug命令，可以将Redis执行的每一条指令都回传并输出，可以用来做Redis流量复制，注意对性能影响很大，生产慎用。
+    - [Redis 流量复制、流量回放、流量镜像](http://www.kailing.pub/article/index/arcid/342.html)
 - PSYNC
 - SAVE
 - SHUTDOWN

@@ -19,7 +19,7 @@ categories:
         - 2.2.1. [项目端](#项目端)
 - 3. [测试平台](#测试平台)
 
-💠 2024-08-29 10:43:08
+💠 2024-09-03 14:05:18
 ****************************************
 # 持续集成
 > 参考: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  
@@ -82,8 +82,8 @@ go语言实现，一个原生支持 docker 的 CI
 - sysctl -w vm.max_map_count=524288
 
 > [Sonarqube badge not working on github README](https://stackoverflow.com/questions/58908668/sonarqube-badge-not-working-on-github-readme)
-- Force user authentication" in Administration -> Configuration -> General settings -> Security, has to be set to false
-- The SonarQube project has to be public
+- 公开项目并且设置：Force user authentication" in Administration -> Configuration -> General settings -> Security, has to be set to false
+- 私有项目支持Badges [sonarqube-badges](https://github.com/taptap/sonarqube-badges)
 
 ### 项目端
 1. [sonarscanner](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)

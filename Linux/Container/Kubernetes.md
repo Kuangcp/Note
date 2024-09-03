@@ -17,7 +17,7 @@ categories:
     - 2.1. [网络](#网络)
     - 2.2. [实践](#实践)
 
-💠 2024-07-30 13:47:13
+💠 2024-09-03 14:05:18
 ****************************************
 
 # Kubernetes
@@ -66,6 +66,8 @@ categories:
 > 大多数命令和 Docker 是类似的，只不过加上了 namespace 的概念
 
 - 查看日志： kubectl logs --namespace namespace pod
+
+> [Java client for Kubernetes](https://github.com/fabric8io/kubernetes-client)
 
 ## 网络
 > [Kubernetes 疑难杂症排查分享：神秘的溢出与丢包 ](https://tencentcloudcontainerteam.github.io/2020/01/13/kubernetes-overflow-and-drop/)
