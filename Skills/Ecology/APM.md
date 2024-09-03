@@ -8,17 +8,20 @@ categories:
 💠
 
 - 1. [APM](#apm)
-    - 1.1. [SkyWalking](#skywalking)
-    - 1.2. [Sentry](#sentry)
-    - 1.3. [CAT](#cat)
+    - 1.1. [OpenTelemetry](#opentelemetry)
+    - 1.2. [SkyWalking](#skywalking)
+    - 1.3. [Sentry](#sentry)
+    - 1.4. [CAT](#cat)
 - 2. [采集客户端](#采集客户端)
 - 3. [Monitoring](#monitoring)
     - 3.1. [Prometheus](#prometheus)
 
-💠 2024-06-13 11:01:29
+💠 2024-09-03 21:27:16
 ****************************************
 # APM
 > Application performance Management `分布式链路追踪，技术或业务指标监控告警`
+
+核心为 可观测性(Observability) 监测(Monitoring)
 
 > [Github: APM](https://github.com/topics/apm)
 
@@ -29,6 +32,11 @@ Pinpoint
 [Scouter](https://github.com/scouter-project/scouter)
 [Stagemonitor](https://github.com/stagemonitor/stagemonitor)
 [MoSKito](https://github.com/anotheria/moskito)
+
+## OpenTelemetry 
+[Github: OpenTelemetry](https://github.com/open-telemetry)
+
+CNCF组织的项目，脱离语言和技术架构，更有发展前景的可观测性项目。
 
 ## SkyWalking
 > [Official Site](http://skywalking.apache.org/)  | [Downloads](https://skywalking.apache.org/downloads/)]
@@ -73,6 +81,8 @@ docker run --name oap-ui -p 8080:8080 -d -e SW_OAP_ADDRESS=http://192.168.7.54:1
 - [Prometheus: JMX Exporter](https://github.com/prometheus/jmx_exporter)
 - [micrometer](https://github.com/micrometer-metrics/micrometer)`门面框架类似于SLF4J 支持多种采集`
     - [Quick Guide to Micrometer](https://www.baeldung.com/micrometer)
+
+- [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/)
 
 ************************
 

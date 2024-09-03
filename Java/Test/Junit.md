@@ -25,7 +25,7 @@ categories:
 - 2. [Junit源码解析](#junit源码解析)
 - 3. [如何使用JUnit5](#如何使用junit5)
 
-💠 2024-08-30 14:23:29
+💠 2024-09-03 21:27:16
 ****************************************
 # 如何使用Junit
 > [Official doc: 4.12](https://github.com/junit-team/junit4/blob/master/doc/ReleaseNotes4.12.md)
@@ -230,7 +230,6 @@ public class AssertTest {
 注意最好不要在当前测试类中写测试方法, 因为运行不了, 但是如果写了, 直接运行该测试类却又不会受影响
 
 ## 分类测试
->　[参考博客](http://blog.csdn.net/wanghantong/article/details/28897103) |  [JUnit4--- @Annotation注解总结](http://blog.csdn.net/neven7/article/details/42836413)
 
 
 ************************
