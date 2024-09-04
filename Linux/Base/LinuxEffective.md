@@ -52,7 +52,7 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2024-09-04 13:54:11
+💠 2024-09-04 15:44:23
 ****************************************
 # 高效的Linux
 
@@ -243,38 +243,31 @@ Supervisor 进程监控管理
 > 通常会安装到 /usr/bin/*  目录下
 
 - sudo 是需要安装的
-  1. `alias sudo='sudo'` 能够在别名上使用 sudo *神奇*
-
+    1. `alias sudo='sudo'` 能够在别名上使用 sudo *神奇*
 - md5sum 报文摘要算法 Message-Digest Algorithm 5 的实现
-  - `printf 'Who?123' | md5sum`
-  - `md5sum file` 计算出md5值
-  - `md5sum -c file.md5` file 和 file.md5 在同一目录下, 执行这个命令就是检查md5是否匹配, 确保文件的完整性和正确性
-- sha256sum
-  - `printf 'Who?123' | sha256sum`
+    - `printf 'Who?123' | md5sum`
+    - `md5sum file` 计算出md5值
+    - `md5sum -c file.md5` file 和 file.md5 在同一目录下, 执行这个命令就是检查md5是否匹配, 确保文件的完整性和正确性
+- sha1sum sha256sum *用法和 md5sum 一致*
 - last _查看Linux登录信息_
-  - last -n 5 最近五次登录
+    - last -n 5 最近五次登录
 - w | uptime _查看启动情况_
 - colrm
-  - ps | clorm 20 30 `colrm` _删除输出的20 到30 列_
+    - ps | clorm 20 30 `colrm` _删除输出的20 到30 列_
+- xclip
+    - `cat README.md | xclip -sel clip` 将文件复制到剪贴板
 - xsel
   - `cat a.md | xsel -b` _将文件所有内容复制到剪贴板_ 但是处理大文件时会失效 xclip 更有效
-- mcfly _方便 Ctrl R 命令历史_
+
 - figlet 字符转ascii图
-- cmatrix _装X,字符雨_
 - logkeys 记录键盘输入 [Github](https://github.com/kernc/logkeys)
 - expect [用于自动输入密码](http://www.cnblogs.com/iloveyoucc/archive/2012/05/11/2496433.html)
 - [WTF](https://wtfutil.com) | [Github Repo](https://github.com/senorprogrammer/wtf)
-  - 丰富的功能, 一个方便的终端控制面板
+    - 丰富的功能, 一个方便的终端控制面板
 - when-changed 监控文件变化 执行命令 pip install when-changed
 - dircolors [Linux dircolors命令](http://www.runoob.com/linux/linux-comm-dircolors.html) `用于设置 ls 命令输出时的色彩`
 - gtypist 用于练习打字
 - watch 周期执行命令并输出
-
-`xclip`
-
-> 便捷的文本复制
-
-- `cat README.md | xclip -sel clip` 将文件复制到剪贴板
 
 `uniq`
 
