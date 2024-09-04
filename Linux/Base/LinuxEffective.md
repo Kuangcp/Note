@@ -52,7 +52,7 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2024-08-14 15:45:26
+💠 2024-09-04 13:54:11
 ****************************************
 # 高效的Linux
 
@@ -327,7 +327,6 @@ duf
 > `在当前目录下, 快速全文内容搜索`
 
 - ag _The Silver Searcher_
-
   - ubuntu:silversearcher-ag  alpine:the_silver_searcher
   - [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
 - rg _ripgrep_

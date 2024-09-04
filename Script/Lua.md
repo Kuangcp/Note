@@ -6,16 +6,15 @@ categories:
     - Lua
 ---
 
-**目录 start**
+💠
 
-1. [Lua](#lua)
-    1. [安装](#安装)
-    1. [luarocks](#luarocks)
+- 1. [Lua](#lua)
+    - 1.1. [安装](#安装)
+    - 1.2. [luarocks](#luarocks)
 
-**目录 end**|_2020-06-24 02:06_|
+💠 2024-09-04 13:54:11
 ****************************************
 # Lua
-
 > [Official ](https://www.lua.org/) | [wiki: lua](https://en.wikipedia.org/wiki/Lua)
 
 > [Lua 菜鸟教程](http://www.runoob.com/lua/lua-tutorial.html)  
@@ -23,10 +22,14 @@ categories:
 
 因为该项目 [z.lua](https://github.com/skywind3000/z.lua) 而安装了Lua, 他的执行速度确实非常快
 
+**使用场景**
+- 网络领域 Redis,Nginx 等扩展
+- 游戏开发 动态扩展
+- 脚本开发
+- 数据库 触发器和存储过程
+
 ## 安装
 > [Official: install](https://www.lua.org/start.html#installing)  
-
-> 使用包管理器 `apt install lua5.3` 然后 `sudo ln -s /usr/bin/lua5.3 /usr/bin/lua`
 
 `lua`
 

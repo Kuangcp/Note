@@ -40,7 +40,7 @@ categories:
     - 6.4. [Cluster 集群](#cluster-集群)
 - 7. [Redis 持久化](#redis-持久化)
 
-💠 2024-09-03 14:05:18
+💠 2024-09-04 13:54:11
 ****************************************
 # Redis底层数据结构
 ## SDS
@@ -222,9 +222,67 @@ bigkey 在很多场景下都会产生性能问题，因此业务应用尽量避�
 # Lua
 > [Scripting with Lua](https://redis.io/docs/latest/develop/interact/programmability/eval-intro/)
 
-特点是 Lua脚本整段在Redis执行时是具有原子性的，所以可以用来做分布式锁等强一致性场景 [Why locks in Lua?](https://redis.io/ebook/part-3-next-steps/chapter-11-scripting-redis-with-lua/11-2-rewriting-locks-and-semaphores-with-lua/11-2-1-why-locks-in-lua/)
+- EVAL 
+    - eval script keyNum key* arg* ： keyNum是指key的数量 key和 arg 都是多值， 可以把eval理解为lambda函数，函数操作传入的key和变量
+- SCRIPT LOAD
+    - 注意EVAL执行的脚本都会缓存在Redis的缓存中 通过INFO查看 used_memory_scripts_eval 和 number_of_cached_scripts， 所以动态拼接的脚本是不合理的，应该将变化都封装成参数
+    - 所以将脚本复用会更高效（复用缓存，降低命令长度），SCRIPT LOAD 会返回一个SHA1的信息摘要
+    - 注意该脚本缓存是不可靠的，Redis重启，主从切换，故障恢复，SCRIPT FLUSH命令的执行，都会导致脚本缓存丢失，所以需要在EVALSHA做容错，缓存丢失后重新LOAD
+- EVALSHA
+    - 与EVAL用法一致，但是脚本参数替换为了 LOAD 返回的 sha1
+- SCRIPT FLUSH
+- SCRIPT EXISTS
+- SCRIPT KILL
+- SCRIPT DEBUG
 
-从Redis7开始支持加载lua脚本到内存中，连接可以直接调用
+> 注意
+
+- Lua脚本在Redis执行时是原子性的，所以可用来做分布式锁等强一致性场景 [Why locks in Lua?](https://redis.io/ebook/part-3-next-steps/chapter-11-scripting-redis-with-lua/11-2-rewriting-locks-and-semaphores-with-lua/11-2-1-why-locks-in-lua/)
+- [Redis functions](https://redis.io/docs/latest/develop/interact/programmability/functions-intro/) 从Redis7开始支持通过Lua扩展出自定义函数 FCALL 方式调用自定义函数
+- 当Redis是Cluster模式部署时，lua脚本操作的所有key需要保证在同一个slot中。`CROSSSLOT Keys in request don’t hash to the same slot`
+    - [Redis Pipeline中调用Lua脚本报错JedisMoveDataException的问题](https://blog.csdn.net/minghao0508/article/details/130827658)
+
+************************
+
+> 限制数量的令牌桶限流机制 Java实现
+```java
+    public static final String JUDGE_SCRIPT = "local cnt = redis.call('incr', KEYS[1]);" +
+            "  if (tonumber(cnt) > tonumber(ARGV[1]) ) then redis.call('decr', KEYS[1]); return 0;" +
+            " else return 1; end";
+
+    public void acquireBlock(String key, int maxConcurrency) {
+        while (!this.acquire(key, maxConcurrency)) {
+            try {
+                TimeUnit.MILLISECONDS.sleep(500);
+            } catch (Exception e) {
+                log.error("", e);
+            }
+        }
+    }
+
+    public int runCount(String key) {
+        Object val = redisTemplate.opsForValue().get(key);
+        if (Objects.isNull(val)) {
+            return 0;
+        }
+        return Integer.parseInt(val.toString());
+    }
+
+    public boolean acquire(String key, int maxConcurrency) {
+        // 指定 lua 脚本，并且指定返回值类型
+        DefaultRedisScript<Integer> redisScript = new DefaultRedisScript<>(JUDGE_SCRIPT, Integer.class);
+        // 参数一：redisScript，参数二：key列表，参数三：arg（可多个）
+        Object lockB = redisTemplate.execute(redisScript, Collections.singletonList(key), maxConcurrency);
+        if (Objects.isNull(lockB)) {
+            return false;
+        }
+        return Integer.parseInt(lockB.toString()) > 0;
+    }
+
+    public Long release(String key) {
+        return redisTemplate.opsForValue().decrement(key);
+    }
+```
 
 ************************
 
