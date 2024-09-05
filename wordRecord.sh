@@ -20,7 +20,7 @@ if [ "$1"z = "z" ];then
     line=$(git ls-files | grep -v "ARTS" | xargs cat | wc -l)
     time=$(date "+%F %T")
     echo "$word $line lines on $time " >> $logFile
-	less $logFile
+	#less $logFile
 else 
 	less $logFile
 fi

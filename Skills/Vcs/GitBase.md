@@ -70,12 +70,13 @@ categories:
     - 7.4. [reflog](#reflog)
     - 7.5. [rev-parse](#rev-parse)
     - 7.6. [scalar](#scalar)
+    - 7.7. [githooks](#githooks)
 - 8. [配置文件](#配置文件)
     - 8.1. [gitignore](#gitignore)
     - 8.2. [gitattributes](#gitattributes)
 - 9. [自定义插件](#自定义插件)
 
-💠 2024-09-05 11:52:54
+💠 2024-09-05 15:59:26
 ****************************************
 
 # Git基础
@@ -552,6 +553,11 @@ git log --oneline -S "search keyword" --source --all
 
 > Git 的分支是轻量型的, 能够快速创建和销毁
 
+- `@{-1}` 表示checkout的上一个分支 [Release V1.6.2](https://github.com/git/git/blob/master/Documentation/RelNotes/1.6.2.txt)
+    - `git rev-parse --symbolic-full-name @{-1}` 展示上一个分支
+    - `git merge @{-1}` 将上一个分支合并进来
+    - `git branch --track mybranch @{-1}` 设置当前分支track上一个分支
+
 ************************
 
 - 获取当前分支名 `git symbolic-ref --short -q HEAD`
@@ -655,20 +661,22 @@ git log --oneline -S "search keyword" --source --all
 
 > [Official Doc: git checkout](https://git-scm.com/docs/git-checkout)
 
-1. 切换分支 `gh feature/a`
-2. 切换分支并设置该分支的远程分支 `gh feature/a origin/feature/a`
+1. 切换分支 `git checkout feature/a`
+1. 切换至上一个分支 `git checkout -` 等价于 `git checkout @{-1}`
+1. 切换分支并设置该分支的远程分支 `gh feature/a origin/feature/a`
 
 > 撤销文件修改
 
-- `gh .` 取出最近的一次提交, 覆盖掉 work 区下当前目录(递归)下所有已更改(包括删除操作), 且未进入 stage 的内容, 已经进入 stage 区的文件内容则不受影响
-  - `gh 文件1 文件2...` 同上, 但是只操作指定的文件
-- `gh [commit-hash] 文件1 文件2...` 根据指定的 commit 对应hash值, 作如上操作, 但是区别在于 从 index 直接覆盖掉 stage 区, 并丢弃 work 区
-  - `gh [commit-hash] .`
-  - **`如在项目根目录执行该命令, 会将当前项目的所有未提交修改全部丢失, 不可恢复!!!!`**
-  - 所以应尽量使用 stash 命令，即使pop也能恢复
+- `git checkout .` 取出最近的一次提交, 覆盖掉 work 区下当前目录(递归)下所有已更改(包括删除操作), 且未进入 stage 的内容, 已经进入 stage 区的文件内容则不受影响
+    - `git checkout 文件1 文件2...` 同上, 但是只操作指定的文件
+
+- `git checkout [commit-hash] 文件1 文件2...` 根据指定的 commit 对应hash值, 作如上操作, 但是区别在于 从 index 直接覆盖掉 stage 区, 并丢弃 work 区
+    - `git checkout [commit-hash] .`
+    - **`如在项目根目录执行该命令, 会将当前项目的所有未提交修改全部丢失, 不可恢复!!!!`**, 所以应尽量使用 stash 命令，即使pop也能恢复
+
 - `git checkout [commit-hash] 节点标识符或者标签 文件名 文件名 ...`
-  - 取出指定节点状态的某文件，而且执行完命令后，取出的那个状态会成为head状态，
-  - 需要执行  `git reset HEAD` 来清除这种状态
+    - 取出指定节点状态的某文件，而且执行完命令后，取出的那个状态会成为head状态，
+    - 需要执行  `git reset HEAD` 来清除这种状态
 
 > 实验性命令： git switch branch
 
@@ -958,9 +966,22 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 > 该工具是Git内部命令 往往被其他子命令使用
 
 1. 查看分支指向具体的commit id `git rev-parse fea/new`
+1. 查看上一个分支 `git rev-parse --symbolic-full-name @{-1}`
 
 ## scalar 
 > [Git scalar](https://git-scm.com/docs/scalar) 自2.42.1起支持，原理为先稀疏检出，然后定时任务拉取变更
+
+## githooks
+实现机制： 一组在`.git/hook/`目录下的shell，在git完成特定行为后会触发执行对应的脚本
+
+- pre-commit：在执行提交操作之前触发。这是一个非常有用的钩子，可以用来进行代码风格检查、静态代码分析、运行测试等操作，确保提交的代码质量。
+- pre-push：在执行推送操作之前触发。在这个钩子中，我们可以运行更严格的测试，如集成测试、端到端测试等，以确保准备推送的代码符合质量标准。
+- post-commit：在执行提交操作后触发。该钩子可以用于执行一些后续操作，如自动构建、生成文档等。
+- post-checkout：在执行检出操作后触发。这个钩子适用于更新依赖、重置配置等与项目状态相关的任务。
+- post-merge：在执行合并操作后触发。我们可以在该钩子中执行一些与合并后操作相关的任务。
+
+> 注意hook脚本不会被git纳入版本管理，所以需要手动维护  
+> 注意脚本执行的工作目录是仓库根目录  
 
 ************************
 
