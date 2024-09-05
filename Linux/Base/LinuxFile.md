@@ -164,6 +164,7 @@ splice
 ### file
 - file a.txt 查看文件类型
     - -i 输出文件的MIME类型
+        - `file -b --mime-type filename | sed 's|/.*||'` 获取MIME短名称
     - -F "#" 修改输出分隔符
 
 ### tree
