@@ -62,7 +62,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2024-06-17 19:57:32
+💠 2024-09-05 11:52:54
 ****************************************
 # Linux网络管理
 
@@ -135,6 +135,8 @@ iftop
 
 ## Route
 > [参考: 路由表的建立算法和有关的刷新协议](https://blog.csdn.net/qq_34328833/article/details/60583183)
+
+> [Linux-router](https://github.com/garywill/linux-router)`Linux作为路由器`
 
 ### traceroute
 > 显示网络数据包传输到指定主机的路径信息，追踪数据传输路由状况
@@ -264,6 +266,8 @@ iftop
     # 在 1:1 节点添加一个过滤规则 , 优先权 1: 凡是去往目的地址是 $ip( 精确匹配 ) 的 IP 数据包 , 发送到频道 2:1.
     tc qdisc add dev $interface parent 1:1 handle 2: netem delay $delay loss $loss
 ```
+
+> [wondershaper](https://github.com/magnific0/wondershaper)
 
 ### netstat 
 > 相关 [iproute2](#iproute2)

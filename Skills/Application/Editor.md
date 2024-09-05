@@ -33,12 +33,13 @@ categories:
     - 1.13. [Moeditor/Typora/CuteMarkEd](#moeditortyporacutemarked)
 - 2. [终端中的文本编辑器](#终端中的文本编辑器)
     - 2.1. [Vi/Vim](#vivim)
-    - 2.2. [Nano](#nano)
-    - 2.3. [Micro](#micro)
-    - 2.4. [BS在线编辑器](#bs在线编辑器)
+    - 2.2. [helix](#helix)
+    - 2.3. [Nano](#nano)
+    - 2.4. [Micro](#micro)
+    - 2.5. [BS在线编辑器](#bs在线编辑器)
 - 3. [十六进制](#十六进制)
 
-💠 2024-05-11 15:14:31
+💠 2024-09-05 11:52:54
 ****************************************
 # 文本编辑器
 
@@ -241,6 +242,9 @@ strict-ssl=false
 ## Vi/Vim
 > [Github: Vim](https://github.com/vim/vim)  
 > [Vim 学习笔记](/Linux/Tool/Vim.md)
+
+## helix
+[Github: helix](https://github.com/helix-editor/helix)
 
 ************
 ## Nano

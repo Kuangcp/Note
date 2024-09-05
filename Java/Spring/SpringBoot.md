@@ -42,7 +42,7 @@ categories:
         - 1.10.4. [热部署](#热部署)
         - 1.10.5. [运行性能优化](#运行性能优化)
 
-💠 2024-05-13 21:40:18
+💠 2024-09-05 11:52:54
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -306,9 +306,11 @@ public class CorsConfig {
 ### Response 
 > 全局切面增强
 
-1. `implements ResponseBodyAdvice<Object>`
-1. 重写 supports 和 beforeBodyWrite 并依据 后者的 body和returnType参数自行封装成统一结构
-1. 降低Mvc接口层 `Result<List<Item>>` 等结构，简化为 `List<Item>`， 异常返回可以用全局异常处理成Result结构
+1. 自定义一个切面 `implements ResponseBodyAdvice<Object>`
+    1. 重写 supports 和 beforeBodyWrite 并依据 后者的 body和returnType参数自行封装成统一结构
+    1. 降低Mvc接口层 `Result<List<Item>>` 等结构，简化为 `List<Item>`， 异常返回可以用全局异常处理成Result结构
+
+[Graceful Response](https://github.com/feiniaojin/graceful-response)
 
 ************************
 ## 测试模块

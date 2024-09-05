@@ -46,7 +46,7 @@ categories:
     - 10.2. [缓存击穿](#缓存击穿)
     - 10.3. [缓存穿透](#缓存穿透)
 
-💠 2024-05-06 19:31:32
+💠 2024-09-05 11:52:54
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -55,6 +55,8 @@ categories:
 
 > [参考: nodejs + redis/mysql 连接池问题](https://www.cnblogs.com/laozhbook/p/nodejs_redis_connection_pool.html)`单线程问题`
 > [Redis 命令参考](http://doc.redisfans.com/index.html)`中文版，注意版本时效性` 
+
+> [KeyDB](https://github.com/Snapchat/KeyDB)`多线程`
 
 ## Book 
 > [Redis设计与实现 第二版](http://www.shouce.ren/api/view/a/13483)  

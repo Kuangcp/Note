@@ -62,17 +62,17 @@ categories:
     - 5.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 5.5. [熵池](#熵池)
 
-💠 2024-09-02 17:14:24
+💠 2024-09-05 11:52:54
 ****************************************
 
 # Linux系统
 
 - [Arch wiki](https://wiki.archlinux.org/)
 - [Deepin wiki](https://wiki.deepin.org/)
-- [运维生存时间](http://www.ttlsa.com) `含大量运维干货`
-- [撸Linux](https://www.lulinux.com/) `非理性言论?`
-- [Linux命令大全](http://man.linuxde.net/) `Linux命令教程`
 - [RUNOOB.COM](http://www.runoob.com) `各种技术学习 文档资源`
+- [linux-tutorial](https://github.com/dunwu/linux-tutorial)
+- [How-To-Secure-A-Linux-Server](https://github.com/imthenachoman/How-To-Secure-A-Linux-Server)
+
 - [Linux中国开源社区](https://linux.cn/)
 - [LinuxTOY 是一个致力于提供 Linux 相关资讯的专题站点。](https://linuxtoy.org/)
   - [内容Github源](https://github.com/LinuxTOY/linuxtoy.org)

@@ -16,7 +16,7 @@ categories:
         - 1.3.1. [窗口函数](#窗口函数)
 - 2. [Tips](#tips)
 
-💠 2024-04-10 20:47:19
+💠 2024-09-05 11:52:54
 ****************************************
 # SQL
 > [Wiki: SQL](https://en.wikipedia.org/wiki/SQL)
@@ -28,6 +28,8 @@ categories:
     - 数据操纵语言DML: UPDATE、INSERT、DELETE
     - 数据定义语言DDL: CREATE、ALTER、DROP
     - 数据控制语言DCL: GRANT,DENY,REVOKE
+
+> [sqlglot](https://github.com/tobymao/sqlglot) `Python SQL Parser and Transpiler `
 
 ## 条件语句
 `case when then else end `

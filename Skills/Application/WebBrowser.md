@@ -22,7 +22,7 @@ categories:
     - 1.4. [Vivaldi](#vivaldi)
     - 1.5. [Opera](#opera)
 
-💠 2024-08-30 14:23:29
+💠 2024-09-05 11:52:54
 ****************************************
 # 浏览器
 [neko](https://github.com/m1k1o/neko)`runs in docker and uses WebRTC`
@@ -80,6 +80,7 @@ categories:
 1. `Tab Counter` Tab计数 开发者 WaldiPL
 1. `Elasticvue` Elasticsearch 插件
 1. `HeaderEditor` 修改请求响应的Header和Body
+1. [TechStack](https://github.com/Get-Tech-Stack/TechStack)
 
 ### 配置
 > 大多是通过 about:config 页面配置

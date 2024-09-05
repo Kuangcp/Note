@@ -41,12 +41,14 @@ categories:
     - 7.5. [nuster](#nuster)
 - 8. [Tips](#tips)
 
-💠 2024-04-22 16:41:19
+💠 2024-09-05 11:52:54
 ****************************************
 # Nginx
 
 > [Official Site](https://www.nginx.com/) | [Official Doc](https://docs.nginx.com)  
 > [Tengine](http://tengine.taobao.org/)  
+
+> [nginx-tutorial](https://github.com/dunwu/nginx-tutorial)
 
 ## Nginx的安装
 ### 命令安装

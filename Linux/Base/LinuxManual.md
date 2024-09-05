@@ -7,20 +7,17 @@ categories:
     - Linux
 ---
 
-**目录 start**
+💠
 
-1. [Linux Command Manual](#linux-command-manual)
+- 1. [Linux Command Manual](#linux-command-manual)
 
-**目录 end**|_2021-02-03 17:25_|
+💠 2024-09-05 11:52:54
 ****************************************
 # Linux Command Manual 
 
-
-troff
-
-man 
-
-> [pls](https://github.com/chenjiandongx/pls) `go 实现 终端man中文手册`
-
+- man
+- troff
+- [pls](https://github.com/chenjiandongx/pls) `go 实现 终端man中文手册`
 - tldr
     - `Too Long, Don't Read`
+- [cheat](https://github.com/cheat/cheat)

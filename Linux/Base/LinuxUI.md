@@ -19,7 +19,7 @@ categories:
         - 1.7.1. [彩色输出](#彩色输出)
             - 1.7.1.1. [ls配置彩色输出](#ls配置彩色输出)
 
-💠 2024-05-09 14:32:49
+💠 2024-09-05 11:52:54
 ****************************************
 
 # UI
@@ -87,6 +87,7 @@ categories:
 
 > [参考: 10 Great Linux GTK Themes For 2018 ](https://www.maketecheasier.com/gtk-themes-for-linux/)
 
+- [catppuccin](https://github.com/catppuccin/catppuccin)
 - [pingguo](https://www.gnome-look.org/p/1239453/)
 - [Sierra](https://www.gnome-look.org/p/1013714/)
 - [GTK3主题：OSX-Arc](https://www.linuxidc.com/Linux/2017-01/139053.htm)

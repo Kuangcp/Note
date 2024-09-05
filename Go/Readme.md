@@ -60,6 +60,7 @@ categories:
 - [在线编译执行 学习go](http://www.vaikan.com/go/a-tour-of-go/#1) `在线编辑运行`
 - [go101](https://github.com/go101/go101)
 - [build-web-application-with-golang](https://github.com/astaxie/build-web-application-with-golang)
+- [golang-design-pattern](https://github.com/senghoo/golang-design-pattern)
 
 ## 书籍
 

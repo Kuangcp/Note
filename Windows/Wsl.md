@@ -1,3 +1,20 @@
+---
+title: Wsl
+date: 2024-09-05 11:52:54
+tags: 
+categories: 
+---
+
+
+💠
+
+- 1. [WSL](#wsl)
+- 2. [WSL2](#wsl2)
+    - 2.1. [GUI](#gui)
+- 3. [WSA](#wsa)
+
+💠 2024-09-05 11:52:54
+****************************************
 # WSL 
 > [Official Doc](https://learn.microsoft.com/zh-cn/windows/wsl/install)
 
@@ -13,7 +30,7 @@
 - 删除旧发行版 `wsl --unregister Ubuntu`
 
 ## GUI
-
+> [wslg](https://github.com/microsoft/wslg)
 
 
 # WSA
