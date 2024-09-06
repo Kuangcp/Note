@@ -25,7 +25,7 @@ categories:
         - 4.0.1. [MySQL](#mysql)
             - 4.0.1.1. [主从复制以及读写分离](#主从复制以及读写分离)
 
-💠 2024-03-18 00:57:21
+💠 2024-09-06 11:36:43
 ****************************************
 # Web应用性能优化
 
@@ -38,9 +38,11 @@ categories:
 
 # 客户端
 
+渲染和计算分离
+
+************************
 
 # 服务端
-`超出应用性能上限的表现`
 1. 对于web后端来说就是请求过多, 数据库连接池不够用, 线程池大量等待的线程, 请求非常缓慢, 直接返回 5xx 错误码...
 
 ## 压力测试准备
@@ -73,6 +75,7 @@ categories:
 ## 测试工具
 > [Github: HTTP(S) Benchmark Tools](https://github.com/denji/awesome-http-benchmark)  
 > [load-testing](https://github.com/topics/load-testing)  
+> [dperf](https://github.com/baidu/dperf)  
 
 可以通过压力测试工具或者流量重放，复制 等方式模拟高并发业务场景
 

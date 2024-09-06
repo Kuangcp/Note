@@ -20,7 +20,7 @@ categories:
     - 2.5. [Pulsar](#pulsar)
     - 2.6. [nsq](#nsq)
 
-💠 2024-04-24 22:46:48
+💠 2024-09-06 11:36:43
 ****************************************
 # MQ
 
@@ -51,7 +51,8 @@ categories:
 > [Official Site](http://activemq.apache.org/)
 
 ## Kafka
-[Kafka](./Kafka.md)
+[Kafka](./Kafka.md)  
+[Redpanda](https://github.com/redpanda-data/redpanda)  
 
 ## RabbitMQ
 采用 Erlang 开发

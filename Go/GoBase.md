@@ -13,11 +13,11 @@ categories:
     - 1.1. [Go Modules](#go-modules)
         - 1.1.1. [配置](#配置)
         - 1.1.2. [go get](#go-get)
-        - 1.1.3. [单个Git仓库发布多个包](#单个git仓库发布多个包)
-        - 1.1.4. [go.mod](#gomod)
-        - 1.1.5. [go.work](#gowork)
-        - 1.1.6. [现存问题](#现存问题)
-        - 1.1.7. [模板项目初始化](#模板项目初始化)
+        - 1.1.3. [go.mod](#gomod)
+            - 1.1.3.1. [单个Git仓库发布多个包](#单个git仓库发布多个包)
+        - 1.1.4. [go.work](#gowork)
+        - 1.1.5. [现存问题](#现存问题)
+        - 1.1.6. [模板项目初始化](#模板项目初始化)
     - 1.2. [数据类型](#数据类型)
         - 1.2.1. [string](#string)
         - 1.2.2. [int](#int)
@@ -37,20 +37,21 @@ categories:
     - 1.6. [接口](#接口)
     - 1.7. [Channel](#channel)
     - 1.8. [协程](#协程)
+    - 1.9. [序列化](#序列化)
+        - 1.9.1. [JSON](#json)
 - 2. [应用](#应用)
     - 2.1. [文件操作](#文件操作)
     - 2.2. [http](#http)
     - 2.3. [Test](#test)
-    - 2.4. [JSON](#json)
-    - 2.5. [Debug](#debug)
-        - 2.5.1. [pprof](#pprof)
-    - 2.6. [部署](#部署)
-        - 2.6.1. [静态编译](#静态编译)
+    - 2.4. [Debug](#debug)
+        - 2.4.1. [pprof](#pprof)
+    - 2.5. [部署](#部署)
+        - 2.5.1. [静态编译](#静态编译)
 - 3. [常用库](#常用库)
 - 4. [Tips](#tips)
     - 4.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2024-09-05 11:52:54
+💠 2024-09-06 11:36:43
 ****************************************
 # Go
 
@@ -124,18 +125,6 @@ export GOSUMDB=sum.golang.google.cn
 | go list -m -versions golang.org/x/text | 列出可安装版本                      |
 | go get -insecure                       | 不对依赖进行verify 常用于内网的依赖 |
 
-### 单个Git仓库发布多个包
-
-- go mod init github.com/username/repo-name/{path}
-- git tag -a {path}/v1.0.0
-
-例如
-
-```sh
-    go mod init github.com/username/repo-name/pkg/app/util
-    git tag -a pkg/app/util/v1.0.0
-```
-
 ### go.mod
 
 > 关键字
@@ -148,6 +137,18 @@ export GOSUMDB=sum.golang.google.cn
 注意依赖项后 有 // indirect 标记的意味着是传递依赖项
 
 当有依赖包更换了路径后，可以此方式统一更换: `gofmt -w -r '"github.com/dgrijalva/jwt-go" -> "github.com/golang-jwt/jwt"' .`
+
+#### 单个Git仓库发布多个包
+
+- go mod init github.com/username/repo-name/{path}
+- git tag -a {path}/v1.0.0
+
+例如
+
+```sh
+    go mod init github.com/username/repo-name/pkg/app/util
+    git tag -a pkg/app/util/v1.0.0
+```
 
 ### go.work
 
@@ -382,42 +383,11 @@ func functionName (param int) int {
 > [Go语言的跨协程异常处理](https://taoshu.in/go/goroutine-panic.html)  
 
 ************************
-# 应用
-## 文件操作
 
-**递归读取当前目录的文件**
+## 序列化
+> [Go json反序列化“null“结果为nil踩坑](https://blog.csdn.net/qq_39618369/article/details/125761089)  
 
-```go
-package main
-import (
-    "fmt"
-    "os"
-    "path/filepath"
-)
-func main() {
-    filepath.Walk("./", walkfunc)
-}
-func walkfunc(path string, info os.FileInfo, err error) error {
-	if(!info.IsDir()){
-		fmt.Println(path)
-	}
-    return nil
-}
-```
-
-## http 
-> [优化 golang net/http client 客户端存在的性能瓶颈](https://xiaorui.cc/archives/5577)`http.Client 中 Transport对于连接池使用的锁太多`
-
-
-************************
-
-## Test
-
-> [Github: assert](https://godoc.org/github.com/stretchr/testify/assert)
-
-************************
-
-## JSON
+### JSON
 
 > `结构体必须是大写字母开头的成员才会被处理(大写字母开头才有对外权限)`
 
@@ -476,7 +446,6 @@ func (*GenerateGrid) ReadConfig() []GridConfig {
 ```
 
 > 忽略空字段
-
 1. 字段是指针类型 且注明 omitempty
 
 ```go
@@ -484,6 +453,41 @@ Msg struct{
  Text     *Content `json:"text,omitempty"`
 }
 ```
+************************
+
+# 应用
+## 文件操作
+
+**递归读取当前目录的文件**
+
+```go
+package main
+import (
+    "fmt"
+    "os"
+    "path/filepath"
+)
+func main() {
+    filepath.Walk("./", walkfunc)
+}
+func walkfunc(path string, info os.FileInfo, err error) error {
+	if(!info.IsDir()){
+		fmt.Println(path)
+	}
+    return nil
+}
+```
+
+## http 
+> [优化 golang net/http client 客户端存在的性能瓶颈](https://xiaorui.cc/archives/5577)`http.Client 中 Transport对于连接池使用的锁太多`
+
+> [req](https://github.com/imroc/req)  
+
+************************
+
+## Test
+
+> [Github: assert](https://godoc.org/github.com/stretchr/testify/assert)
 
 ************************
 

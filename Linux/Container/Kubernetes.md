@@ -16,13 +16,15 @@ categories:
 - 2. [使用](#使用)
     - 2.1. [网络](#网络)
     - 2.2. [实践](#实践)
+- 3. [安全](#安全)
 
-💠 2024-09-03 14:05:18
+💠 2024-09-06 11:36:43
 ****************************************
 
 # Kubernetes
 > [Official site](https://kubernetes.io/) | [Github](https://github.com/kubernetes/kubernetes) | [中文文档](https://kubernetes.io/zh-cn/docs/concepts/)
 
+> [kwok](https://github.com/kubernetes-sigs/kwok) `模拟 K8s 集群的工具。它可以在几秒钟内搭建一个由数千个节点组成的 Kubernetes 集群`
 
 ## 相关博客
 
@@ -94,3 +96,6 @@ categories:
                       - node03
                       - node04
 ```
+
+# 安全
+> [从零开始的Kubernetes攻防](https://github.com/neargle/my-re0-k8s-security)

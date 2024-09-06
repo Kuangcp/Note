@@ -7,47 +7,48 @@ categories:
     - Linux
 ---
 
-**目录 start**
+💠
 
-1. [Linux常见发行版](#linux常见发行版)
-    1. [基础知识](#基础知识)
-        1. [安装系统](#安装系统)
-    1. [服务器系统之争](#服务器系统之争)
-    1. [Debian](#debian)
-        1. [Debain](#debain)
-        1. [Ubuntu](#ubuntu)
-        1. [Ubuntu Mint](#ubuntu-mint)
-        1. [Deepin](#deepin)
-        1. [Raspberry-pi](#raspberry-pi)
-    1. [Arch](#arch)
-        1. [Arch](#arch)
-        1. [Manjaro](#manjaro)
-    1. [RedHat](#redhat)
-        1. [Fedora](#fedora)
-        1. [Centos](#centos)
-        1. [openSUSE](#opensuse)
-    1. [FreeBSD](#freebsd)
-    1. [Solaris](#solaris)
-    1. [Alpine](#alpine)
-    1. [Gentoo](#gentoo)
-    1. [Mageia](#mageia)
-    1. [CDLinux](#cdlinux)
-    1. [Chromium OS](#chromium-os)
-        1. [Chrome OS](#chrome-os)
-        1. [Fyde OS](#fyde-os)
+- 1. [Linux常见发行版](#linux常见发行版)
+    - 1.1. [基础知识](#基础知识)
+        - 1.1.1. [安装系统](#安装系统)
+    - 1.2. [服务器系统之争](#服务器系统之争)
+    - 1.3. [Debian](#debian)
+        - 1.3.1. [Debain](#debain)
+        - 1.3.2. [Ubuntu](#ubuntu)
+        - 1.3.3. [Ubuntu Mint](#ubuntu-mint)
+        - 1.3.4. [Deepin](#deepin)
+        - 1.3.5. [Raspberry-pi](#raspberry-pi)
+    - 1.4. [Arch](#arch)
+        - 1.4.1. [Arch](#arch)
+        - 1.4.2. [Manjaro](#manjaro)
+    - 1.5. [RedHat](#redhat)
+        - 1.5.1. [Fedora](#fedora)
+        - 1.5.2. [Centos](#centos)
+        - 1.5.3. [openSUSE](#opensuse)
+    - 1.6. [FreeBSD](#freebsd)
+    - 1.7. [Solaris](#solaris)
+    - 1.8. [Alpine](#alpine)
+    - 1.9. [Gentoo](#gentoo)
+    - 1.10. [Mageia](#mageia)
+    - 1.11. [CDLinux](#cdlinux)
+    - 1.12. [Chromium OS](#chromium-os)
+        - 1.12.1. [Chrome OS](#chrome-os)
+        - 1.12.2. [Fyde OS](#fyde-os)
 
-**目录 end**|_2021-02-03 17:25_|
+💠 2024-09-06 11:36:43
 ****************************************
 # Linux常见发行版
 > [Repology](https://repology.org/)
 
-> [论最适合开发用的几款Linux桌面系统](https://www.lulinux.com/archives/3614)
 > [发行版热度对比](https://distrowatch.com/dwres.php?resource=popularity)
 > [Linux的发行版本及不同版本的联系和区别。](https://www.jianshu.com/p/c88a62ac8ca3?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
 > [Linux十大顶级发行版本](https://www.jianshu.com/p/13d399608880?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
 > [linux 的不同的发行版区别和联系](https://www.jianshu.com/p/b796ead65995?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
 
 - [谈 Linux，Windows 和 Mac](http://www.yinwang.org/blog-cn/2013/03/07/linux-windows-mac)
+
+> [distrochooser](https://github.com/distrochooser/distrochooser)`通过问答给出推荐的发行版`
 
 ## 基础知识
 > 下载安装时要选平台 [相关博客](http://downtoearthlinux.com/posts/x86-i386-x86-64-x64-and-amd64-oh-my/)

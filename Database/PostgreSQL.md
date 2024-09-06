@@ -7,27 +7,27 @@ categories:
     - 数据库
 ---
 
-**目录 start**
+💠
 
-1. [Postgresql](#postgresql)
-1. [概述](#概述)
-1. [安装](#安装)
-    1. [Docker方式](#docker方式)
-        1. [pull完整版](#pull完整版)
-        1. [pull精简版](#pull精简版)
-1. [使用](#使用)
-    1. [终端命令行使用](#终端命令行使用)
-    1. [用户和角色权限](#用户和角色权限)
-        1. [创建用户](#创建用户)
-        1. [修改权限](#修改权限)
-    1. [Java使用](#java使用)
-1. [基础数据类型](#基础数据类型)
-1. [图数据库](#图数据库)
-1. [DDL](#ddl)
-1. [导入导出](#导入导出)
-    1. [导出](#导出)
+- 1. [Postgresql](#postgresql)
+- 2. [概述](#概述)
+- 3. [安装](#安装)
+    - 3.1. [Docker方式](#docker方式)
+        - 3.1.1. [pull完整版](#pull完整版)
+        - 3.1.2. [pull精简版](#pull精简版)
+- 4. [使用](#使用)
+    - 4.1. [终端命令行使用](#终端命令行使用)
+    - 4.2. [用户和角色权限](#用户和角色权限)
+        - 4.2.1. [创建用户](#创建用户)
+        - 4.2.2. [修改权限](#修改权限)
+    - 4.3. [Java使用](#java使用)
+- 5. [基础数据类型](#基础数据类型)
+- 6. [图数据库](#图数据库)
+- 7. [DDL](#ddl)
+- 8. [导入导出](#导入导出)
+    - 8.1. [导出](#导出)
 
-**目录 end**|_2023-09-22 09:52_|
+💠 2024-09-06 11:36:43
 ****************************************
 # Postgresql
 - [ ] [该公司对于PostgreSQL的缺点陈列是否属实](http://www.onexsoft.com/onesql.html)
@@ -130,11 +130,14 @@ categories:
 # 基础数据类型
 > [ PostgreSQL中的数据类型](https://blog.csdn.net/jpzhu16/article/details/52140048)
 
+************************
+
 # 图数据库
-[PostgreSQL 图式搜索(graph search)实践 ](https://developer.aliyun.com/article/328141)
+[PostgreSQL 图式搜索(graph search)实践 ](https://developer.aliyun.com/article/328141)  
+[edgedb](https://github.com/edgedb/edgedb)  
 
 # DDL
-
+> 注意PG的查看表，函数，视图的定义(DCL)时很复杂，没有直观的语句类似`show create`可以用
 
 ************************
 

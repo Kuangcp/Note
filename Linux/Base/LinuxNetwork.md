@@ -62,7 +62,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2024-09-05 11:52:54
+💠 2024-09-06 11:36:43
 ****************************************
 # Linux网络管理
 
@@ -83,6 +83,7 @@ iftop
 
 ## DNS
 > [Github: dns topic](https://github.com/topics/dns)
+> [DnsServer](https://github.com/TechnitiumSoftware/DnsServer)
 
 ### nslookup
 > 来自 dnsutils 包
@@ -152,6 +153,7 @@ iftop
 
 1. `traceroute -I stackoverflow.com` icmp 查看路由表
 
+> [NTrace-core ](https://github.com/nxtrace/NTrace-core)`可视化`
 
 ************************
 

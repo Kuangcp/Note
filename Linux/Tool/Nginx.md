@@ -41,7 +41,7 @@ categories:
     - 7.5. [nuster](#nuster)
 - 8. [Tips](#tips)
 
-💠 2024-09-05 11:52:54
+💠 2024-09-06 11:36:43
 ****************************************
 # Nginx
 
@@ -93,6 +93,7 @@ categories:
 ************************
 # 可视化管理工具
 > [nginxWebUI](https://github.com/cym1102/nginxWebUI)  
+> [nginx-proxy-manager ](https://github.com/NginxProxyManager/nginx-proxy-manager)  
 
 ************************
 # 内置变量

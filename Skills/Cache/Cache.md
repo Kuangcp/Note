@@ -24,7 +24,7 @@ categories:
     - 3.5. [缓存击穿/崩溃 Cache Breakdown](#缓存击穿崩溃-cache-breakdown)
     - 3.6. [缓存一致性](#缓存一致性)
 
-💠 2024-05-04 23:18:27
+💠 2024-09-06 11:36:43
 ****************************************
 # 缓存
 > 用时效和空间换时间
@@ -92,6 +92,8 @@ MySQL Buffer Pool
 
 ## 分布式缓存
 > 使用分布式共识算法构建出一个集群，将读写压力摊分到集群内节点上。
+
+- [tinykv](https://github.com/talent-plan/tinykv) 构建分布式 Key-Value 数据库的教程
 
 ### Ehcache
 

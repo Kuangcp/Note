@@ -20,39 +20,36 @@ categories:
     - 1.3. [远程工具](#远程工具)
     - 1.4. [进程管理](#进程管理)
     - 1.5. [零散工具集合](#零散工具集合)
+        - 1.5.1. [剪贴板管理](#剪贴板管理)
     - 1.6. [检测工具](#检测工具)
         - 1.6.1. [硬盘](#硬盘)
-            - 1.6.1.1. [smartmontools](#smartmontools)
     - 1.7. [文本处理](#文本处理)
     - 1.8. [文件操作](#文件操作)
     - 1.9. [安全工具](#安全工具)
         - 1.9.1. [gpg](#gpg)
         - 1.9.2. [JumpServer](#jumpserver)
-- 2. [图形化工具](#图形化工具)
-    - 2.1. [剪贴板管理](#剪贴板管理)
-    - 2.2. [系统资源监控](#系统资源监控)
-- 3. [多媒体](#多媒体)
-    - 3.1. [ffmpeg](#ffmpeg)
-    - 3.2. [图片处理](#图片处理)
-        - 3.2.1. [ImageMagick](#imagemagick)
-            - 3.2.1.1. [convert](#convert)
-        - 3.2.2. [asciinema](#asciinema)
-        - 3.2.3. [图片浏览器](#图片浏览器)
-        - 3.2.4. [截图](#截图)
-        - 3.2.5. [录屏](#录屏)
-    - 3.3. [视频](#视频)
-    - 3.4. [音频](#音频)
-    - 3.5. [PDF](#pdf)
-- 4. [日常应用](#日常应用)
-    - 4.1. [Office](#office)
-        - 4.1.1. [QQ](#qq)
-        - 4.1.2. [wechat](#wechat)
-        - 4.1.3. [wework](#wework)
-- 5. [外设](#外设)
-    - 5.1. [鼠标](#鼠标)
-- 6. [Tips](#tips)
+- 2. [多媒体](#多媒体)
+    - 2.1. [ffmpeg](#ffmpeg)
+    - 2.2. [图片处理](#图片处理)
+        - 2.2.1. [ImageMagick](#imagemagick)
+            - 2.2.1.1. [convert](#convert)
+        - 2.2.2. [asciinema](#asciinema)
+        - 2.2.3. [图片浏览器](#图片浏览器)
+        - 2.2.4. [截图](#截图)
+        - 2.2.5. [录屏](#录屏)
+    - 2.3. [视频](#视频)
+    - 2.4. [音频](#音频)
+    - 2.5. [PDF](#pdf)
+- 3. [日常应用](#日常应用)
+    - 3.1. [Office](#office)
+        - 3.1.1. [QQ](#qq)
+        - 3.1.2. [wechat](#wechat)
+        - 3.1.3. [wework](#wework)
+- 4. [外设](#外设)
+    - 4.1. [鼠标](#鼠标)
+- 5. [Tips](#tips)
 
-💠 2024-09-05 11:52:54
+💠 2024-09-06 11:36:43
 ****************************************
 # 高效的Linux
 
@@ -64,6 +61,11 @@ categories:
 > [MAC平台 工具列表](https://github.com/hsdji/tools) `部分Linux可用`
 
 ## Terminal
+
+> [ttyd](https://github.com/tsl0922/ttyd)  
+
+************************
+
 - [sixel](https://en.wikipedia.org/wiki/Sixel) `终端中渲染图片` | [libsixel](https://saitoha.github.io/libsixel/) | [Are We Sixel Yet?](https://www.arewesixelyet.com/)
   - [Why Sixel? ](https://www.reddit.com/r/commandline/comments/zkg75e/why_sixel/)
 
@@ -71,6 +73,8 @@ Manjaro Xfce 使用 sixel： mlterm 或者 konsole
 1. yay libsixel, yay mlterm， mlterm -b '#292B2E' 安装和启动mlterm
   1. 查看图片 img2sixel xx.jpg `ImageMagick`
   1. 渲染结果图 [jagger](https://github.com/rs/jaggr) **konsole不支持**
+
+************************
 
 [Terminals Are Sexy](https://github.com/k4m4/terminals-are-sexy)
 
@@ -234,8 +238,8 @@ rdesktop xfreerdp
 
 ************************
 ## 进程管理
-
-Supervisor 进程监控管理
+gnome-system-monitor  
+Supervisor 进程监控管理  
 
 ************************
 
@@ -254,10 +258,6 @@ Supervisor 进程监控管理
 - w | uptime _查看启动情况_
 - colrm
     - ps | clorm 20 30 `colrm` _删除输出的20 到30 列_
-- xclip
-    - `cat README.md | xclip -sel clip` 将文件复制到剪贴板
-- xsel
-  - `cat a.md | xsel -b` _将文件所有内容复制到剪贴板_ 但是处理大文件时会失效 xclip 更有效
 
 - figlet 字符转ascii图
 - logkeys 记录键盘输入 [Github](https://github.com/kernc/logkeys)
@@ -269,43 +269,36 @@ Supervisor 进程监控管理
 - gtypist 用于练习打字
 - watch 周期执行命令并输出
 
-`uniq`
-
-> report or omit repeated lines
-
-统计出现次数 `cat log.log | grep WARN | awk '{print $5}' | sort | uniq -c`
-
-`notes`
-
-> 管理笔记
-> [Github](https://github.com/pimterry/notes)
-
-`todo.txt-cli`
-
-> 终端内的 todo
-> [Github](https://github.com/todotxt/todo.txt-cli)
-
-`starDict`
-
-> 终端内字典
-
-`upx`
-
-> [upx](https://github.com/upx/upx)压缩构建的可执行文件
+- `uniq` 统计出现次数 `cat log.log | grep WARN | awk '{print $5}' | sort | uniq -c`
+- `starDict` 终端内字典
+- [upx](https://github.com/upx/upx) 压缩构建的可执行文件
 
 https://kbumsik.io/using-ipad-as-a-2nd-monitor-on-linux
 https://snapdensing.com/2020/04/07/ipad-as-an-extended-screen-in-linux/
 
+### 剪贴板管理
+> [参考: 面向 Linux 的 10 款最佳剪贴板管理器](https://linux.cn/article-7329-1.html)
+- CopyQ，Manjaro 的 clipman
+
+- xclip
+    - `cat README.md | xclip -sel clip` 将文件复制到剪贴板
+- xsel
+    - `cat a.md | xsel -b` _将文件所有内容复制到剪贴板_ 但是处理大文件时会失效 xclip 更有效
+- [Clipboard](https://github.com/Slackadays/Clipboard)`终端操作剪贴板复制粘贴`
+
 ************************
 
 ## 检测工具
-
 ### 硬盘
 
 duf
+dust
+gdu
 
-#### smartmontools
+CrystalDiskMark
+- [KDiskMark](https://github.com/JonMagon/KDiskMark)
 
+> smartmontools 
 - 检测健康状况 `smartctl -Hc /dev/sda9`
 
 ************************
@@ -350,24 +343,6 @@ duf
 
 ************************
 
-# 图形化工具
-
-## 剪贴板管理
-
-> [参考: 面向 Linux 的 10 款最佳剪贴板管理器](https://linux.cn/article-7329-1.html)
-
-- CopyQ，Manjaro 的 clipman
-
-> [参考: 这9个Linux命令非常危险 请大家慎用](https://www.jb51.net/LINUXjishu/498660.html)
-
-> [参考: 关于 Linux 你可能不是非常了解的七件事](https://linux.cn/article-8934-1.html)
-
-## 系统资源监控
-
-> gnome-system-monitor
-
-************************
-
 # 多媒体
 
 ## ffmpeg
@@ -393,7 +368,8 @@ duf
 - byzanz 录制屏幕为gif
 
 ### ImageMagick
-> ImageMagick® is a free, open-source software suite, used for editing and manipulating digital images
+> ImageMagick® is a free, open-source software suite, used for editing and manipulating digital images  
+> [Github: ImageMagick](https://github.com/ImageMagick/ImageMagick)  
 
 1. display
 
@@ -436,7 +412,6 @@ _批量修改_
 1. Nomacs 快
 2. gThumb
 3. Eye of GNOME Image Viewer 功能比上面多了一点
-4. ImageMagick
 
 ### 截图
 
@@ -514,8 +489,8 @@ _批量修改_
 ************************
 
 # 外设
-> [键鼠共享](https://github.com/debauchee/barrier)
-
+> [键鼠共享](https://github.com/debauchee/barrier)  
+> [xdotool](https://github.com/jordansissel/xdotool)`模拟键盘和鼠标操作的命令行工具`  
 
 ## 鼠标
 - solaar Logitech鼠标Options修改

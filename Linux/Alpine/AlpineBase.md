@@ -12,10 +12,8 @@ categories:
 
 - 1. [Alpine](#alpine)
     - 1.1. [BusyBox](#busybox)
-        - 1.1.1. [ls](#ls)
-        - 1.1.2. [ps](#ps)
 
-💠 2024-07-30 13:47:13
+💠 2024-09-06 11:36:43
 ****************************************
 # Alpine 
 > [Official Site](https://www.alpinelinux.org/)
@@ -32,8 +30,6 @@ categories:
 ## BusyBox
 > 里面各种工具命令能满足大部分需求, 但是命令参数，实现的功能都和原始的工具有差异，有裁剪
 
-### ls
-真正的 ls 属于`coreutils`包 
+- 真正的 ls 属于`coreutils`包 
+- 真正的 ps 属于 `procps` 包
 
-### ps
-真正的 ps 属于 `procps` 包

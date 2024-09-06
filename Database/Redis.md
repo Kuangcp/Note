@@ -46,7 +46,7 @@ categories:
     - 10.2. [缓存击穿](#缓存击穿)
     - 10.3. [缓存穿透](#缓存穿透)
 
-💠 2024-09-05 11:52:54
+💠 2024-09-06 11:36:43
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -403,8 +403,10 @@ Redis Stack 是一组软件套件，它主要由三部分组成。Redis Stack Se
 > [RediSearch](https://github.com/RediSearch/RediSearch)
 
 
-`任务队列`
-> List Pub/Sub 或者 Stream 可实现, 可靠性依次增加，但依然会有丢失问题
+`消息队列`
+> List, Pub/Sub, Stream 可实现, 可靠性依次增加，但依然会有消息丢失问题
+
+> [asynq](https://github.com/hibiken/asynq)  
 
 ************************
 
