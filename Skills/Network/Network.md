@@ -41,6 +41,7 @@ categories:
         - 2.5.10. [KCP](#kcp)
         - 2.5.11. [QUIC](#quic)
         - 2.5.12. [P2P](#p2p)
+        - 2.5.13. [网络隧道](#网络隧道)
 - 3. [Socket](#socket)
 - 4. [单播 组播 广播](#单播-组播-广播)
     - 4.1. [单播](#单播)
@@ -57,7 +58,7 @@ categories:
     - 5.6. [应用的代理设置](#应用的代理设置)
         - 5.6.1. [Java](#java)
 - 6. [网络工具](#网络工具)
-    - 6.1. [代理工具](#代理工具)
+    - 6.1. [抓包 代理工具](#抓包-代理工具)
         - 6.1.1. [Clash](#clash)
         - 6.1.2. [Fiddler](#fiddler)
         - 6.1.3. [Charles](#charles)
@@ -67,12 +68,13 @@ categories:
         - 6.1.7. [camilla](#camilla)
         - 6.1.8. [dev-proxy](#dev-proxy)
         - 6.1.9. [ProxyPin](#proxypin)
+        - 6.1.10. [eCapture](#ecapture)
     - 6.2. [Wireshark](#wireshark)
 - 7. [Tips](#tips)
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2024-07-25 21:06:23
+💠 2024-09-09 10:22:38
 ****************************************
 # 网络
 
@@ -461,6 +463,13 @@ DOT `DNS over TLS` 853端口
 - BitTorrent
 - HCDN 爱奇艺所设计：按地域粒度建立多个CDN服务器，区域内的C端用户优先在区域内的不同C端用户找所需的视频资源并由区域CDN做兜底。2021年直接降低网站的带宽成本20%，白用所有C端用户的上传带宽。
 
+### 网络隧道
+在特定的网络协议内传输新的协议内容，原网络协议就称为隧道
+
+例如基于 SSH,DNS,HTTP 等协议构建隧道，传输TCP，HTTP协议的内容。
+
+> [iodine](https://github.com/yarrick/iodine)`DNS隧穿`
+
 ************************
 
 # Socket
@@ -570,7 +579,7 @@ function FindProxyForURL(url, host) {
 
 ************************
 # 网络工具
-## 代理工具
+## 抓包 代理工具 
 > [Alternatives to Charles for Linux](https://alternativeto.net/software/charles/?platform=linux)
 - [whistle](https://github.com/avwo/whistle) `nodejs 平台的抓包工具`
 
@@ -624,6 +633,11 @@ function FindProxyForURL(url, host) {
 
 ### ProxyPin
 [ProxyPin](https://github.com/wanghongenpin/network_proxy_flutter)
+
+### eCapture
+> [ecapture](https://github.com/gojue/ecapture)
+
+一款无需 CA 证书即可抓取 HTTPS 明文的工具。该项目基于 eBPF 技术实现了 TLS 加密的明文捕获
 
 ************************
 

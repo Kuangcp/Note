@@ -5,19 +5,19 @@ tags:
 categories: 
 ---
 
-
 💠
 
 - 1. [Netty Design](#netty-design)
     - 1.1. [线程模型](#线程模型)
     - 1.2. [内存设计](#内存设计)
 
-💠 2024-06-16 16:48:43
+💠 2024-09-09 10:22:38
 ****************************************
 # Netty Design
 > [Netty序章之BIO NIO AIO演变](https://segmentfault.com/a/1190000012976683)
 
 > [ 大白话聊聊Netty ](https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247538543&idx=1&sn=bc9d1575e21b42f215cf61e0a9da264e&scene=58&subscene=0)
+> [Netty 实战(精髓)](https://github.com/waylau/essential-netty-in-action)
 
 > 源码解读
 > [官方Demo](https://github.com/netty/netty/tree/4.1/example/src/main/java/io/netty/example)

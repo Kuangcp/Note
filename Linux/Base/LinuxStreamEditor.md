@@ -17,7 +17,7 @@ categories:
     - 1.5. [sed](#sed)
     - 1.6. [awk](#awk)
 
-💠 2024-08-28 10:59:31
+💠 2024-09-09 10:22:38
 ****************************************
 # 流编辑器
 > [参考: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
@@ -80,8 +80,13 @@ categories:
 
 - c 替换 整行
 - s 替换 行内字符串的替换  命令结构: `'s/pattern/relacement/flags'`
-    - pattern 是正则的 pattern 写法 **注意会匹配到首尾的空字符** `echo abc | sed 's/a*/l/g'` 就很费解
+    - 当替换内容含 / 时需要转义，或者更换分隔符为@ 即 `s@ab@12/g`
+    - pattern 是正则的 pattern 写法 
+        - **注意会匹配到首尾的空字符** `echo abc | sed 's/a*/l/g'` 会输出lblcl
+        - 分组匹配 `sed 's/\([0-9]\)\s/\1,/g' `
+
     - replacement 是需要替换成的内容
+        - 此处可以使用&表示匹配到的内容，例如对a字符后追加b字符 `sed 's/a/&b/g'`
     - flags 是动作(可以为空)
         - 整数: 一行中的第几处符合 pattern 将被替换
         - g : 全部替换
@@ -105,8 +110,8 @@ categories:
 >1. 去除换行符 `sed -i ':label;N;s/\n/ /;b label'` [参考](http://www.cnblogs.com/lykm02/p/4479098.html)
 >1. 处理管道流 `echo syx is a good body | sed 's/syx/zsf/'`  
 
+- [Linux Sed 教程：有趣的 Sed 替换示例](https://bbs.huaweicloud.com/blogs/325484)
 - [参考: linux sed 命令单行任务快速参考](http://www.techug.com/post/linux-sed1line.html)
-- [参考：sed 查找与替换](http://wiki.jikexueyuan.com/project/shell-learning/sed-search-and-replace.html)
 - [sed 正则的精确控制](http://wiki.jikexueyuan.com/project/shell-learning/sed-accurate-control-of-regular.html)
     - `echo Tolstoy is worldly | sed 's/T.*y/Camus/'` 这里的 pattern 就有问题， 会把整行替换掉
     - `echo Tolstoy is worldly | sed 's/T[a-z]*y/Camus/'` 只把第一个单词替换
