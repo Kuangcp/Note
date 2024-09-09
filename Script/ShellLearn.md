@@ -45,7 +45,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [常用代码片段](#常用代码片段)
 
-💠 2024-08-26 16:31:06
+💠 2024-09-09 17:44:33
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -275,10 +275,15 @@ _字符串拆分成数组_
 #### if
 - [参考博客](http://www.cnblogs.com/276815076/archive/2011/10/30/2229286.html)
 
+注意方括号内要留一个空格，否则语法错误
+
 _判断文件_
-- 文件 `if [ -f path ]`
-- 链接 `if [ -L path ]`
-- 目录 `if [ -d path ]`
+- 文件存在 `if [ -e path ]`
+    - -r 可读
+    - -f 存在，而且是普通文件
+    - -s 存在且文件大小大于0字节
+- 链接存在 `if [ -L path ]`
+- 目录存在 `if [ -d path ]`
 
 - 整数比较
     - `-eq` 等于,如:if [ "$a" -eq "$b" ]
@@ -289,6 +294,15 @@ _判断文件_
     - `-le` 小于等于,如:if [ "$a" -le "$b" ]
     - `大于` (需要双括号),如:(("$a" > "$b"))
     - `>= `大于等于(需要双括号),如:(("$a" >= "$b"))
+
+- 字符串比较
+  - `if [ "$root"x = 'x' ]` 判断是否为空
+  - `if [ $(echo $str | grep -e '$str1') ]` 判断包含
+  - `if [[ $a == z* ]]` 模式匹配，但是不是严格正则表达式格式
+
+- 判断数组包含 `if [[ "${ary[@]}" =~ "$a" ]]`
+    - 其中 ary=(1 2 3); a=2; 
+
 #### case
 
 ```sh
