@@ -18,7 +18,7 @@ categories:
     - 3.2. [汉字-拼音 处理](#汉字-拼音-处理)
     - 3.3. [OCR](#ocr)
 
-💠 2024-09-09 10:22:38
+💠 2024-09-09 10:34:58
 ****************************************
 # 方向需求
 ## 系统重构
@@ -98,5 +98,7 @@ categories:
 > [汉字转拼音项目pinyin-plus开源](http://www.kailing.pub/article/index/arcid/326.html)
 
 ## OCR
+Optical Character Recognition
+
 - 云厂商 例如阿里云，腾讯云等。
 - [tesseract](https://github.com/tesseract-ocr/tesseract)

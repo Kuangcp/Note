@@ -8,15 +8,15 @@ categories:
    - Linux
 ---
 
-**目录 start**
+💠
 
-1. [Manjaro](#manjaro)
-    1. [Tips](#tips)
-1. [安装](#安装)
-    1. [显卡驱动](#显卡驱动)
-    1. [多系统安装](#多系统安装)
+- 1. [Manjaro](#manjaro)
+    - 1.1. [Tips](#tips)
+- 2. [安装](#安装)
+    - 2.1. [显卡驱动](#显卡驱动)
+    - 2.2. [多系统安装](#多系统安装)
 
-**目录 end**|_2021-02-03 17:25_|
+💠 2024-09-09 10:34:58
 ****************************************
 # Manjaro
 > [Gitlab source code](https://gitlab.manjaro.org/explore/groups)  
@@ -42,13 +42,7 @@ categories:
 - `VirtualBox 和内核是高度耦合的`，需要内核驱动版本匹配才能正常运行，`yay virtualbox-host-modules` 选择对应内核版本安装即可
 - 某应用开机自启动 `sudo ln -s /usr/share/applications/xxx.desktop /etc/xdg/autostart/`
 
-## 工作配置
-
-### 企业微信
-1. yay com.qq.weixin.work.deepin 
-1. 安装完成后 进入 /home/zk/.deepinwine/Deepin-WXWork/drive_c/Program Files/WXWork
-1. 运行 export XMODIFIERS=@im=fcitx && export QT_IM_MODULE=fcitx&& LC_ALL=zh_CN.UTF-8 wine WXWork.exe
-   - 解决中文输入问题，中文显示问题
+************************
 
 # 安装
 > [Installation Guides](https://wiki.manjaro.org/index.php?title=Installation_Guides)

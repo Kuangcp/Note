@@ -40,16 +40,17 @@ categories:
     - 2.3. [视频](#视频)
     - 2.4. [音频](#音频)
     - 2.5. [PDF](#pdf)
-- 3. [日常应用](#日常应用)
-    - 3.1. [Office](#office)
-        - 3.1.1. [QQ](#qq)
-        - 3.1.2. [wechat](#wechat)
-        - 3.1.3. [wework](#wework)
-- 4. [外设](#外设)
-    - 4.1. [鼠标](#鼠标)
-- 5. [Tips](#tips)
+- 3. [运行 Windows 应用](#运行-windows-应用)
+- 4. [日常应用](#日常应用)
+    - 4.1. [Office](#office)
+        - 4.1.1. [QQ](#qq)
+        - 4.1.2. [wechat](#wechat)
+        - 4.1.3. [wework](#wework)
+- 5. [外设](#外设)
+    - 5.1. [鼠标](#鼠标)
+- 6. [Tips](#tips)
 
-💠 2024-09-06 11:36:43
+💠 2024-09-09 10:34:58
 ****************************************
 # 高效的Linux
 
@@ -125,6 +126,9 @@ Manjaro Xfce 使用 sixel： mlterm 或者 konsole
 - [zellij](https://github.com/zellij-org/zellij)
 - [kitty](https://sw.kovidgoyal.net/kitty/) `GPU渲染`
 - [darktile](https://github.com/liamg/darktile)
+
+> 终端工具
+- [terminalizer](https://github.com/faressoft/terminalizer)`录制终端`
 
 ************************
 
@@ -474,6 +478,13 @@ _批量修改_
 
 
 ************************
+# 运行 Windows 应用
+
+- [Bottles](https://github.com/bottlesdevs/Bottles)
+- [wine](https://github.com/wine-mirror/wine)
+- [deepin-wine](https://github.com/zq1997/deepin-wine)
+
+************************
 
 # 日常应用
 ## Office
@@ -484,7 +495,7 @@ _批量修改_
 [wechat-universal-bwrap](https://aur.archlinux.org/packages/wechat-universal-bwrap)
 
 ### wework
-
+- [企业微信](https://aur.archlinux.org/packages/deepin-wxwork/)
 
 ************************
 

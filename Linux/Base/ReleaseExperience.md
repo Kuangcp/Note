@@ -36,7 +36,7 @@ categories:
         - 1.12.1. [Chrome OS](#chrome-os)
         - 1.12.2. [Fyde OS](#fyde-os)
 
-💠 2024-09-06 11:36:43
+💠 2024-09-09 10:34:58
 ****************************************
 # Linux常见发行版
 > [Repology](https://repology.org/)
@@ -56,8 +56,6 @@ categories:
 >> 32: x86  =  i386
 
 > [查看发行版](/Linux/Base/LinuxDirectoryStructure.md#查看发行版)
-
-- [2018年wine QQ最完美解决方案（多Linux发行版通过测试并稳定运行）](https://www.lulinux.com/archives/1319)
 
 ### 安装系统
 > 制作U盘启动盘

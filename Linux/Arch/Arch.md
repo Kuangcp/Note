@@ -18,7 +18,7 @@ categories:
         - 1.2.3. [Snap](#snap)
 - 2. [Tips](#tips)
 
-💠 2024-08-22 21:55:10
+💠 2024-09-09 10:34:58
 ****************************************
 
 # Arch
@@ -98,10 +98,6 @@ categories:
 ************************
 
 # Tips
-
-- deepin-wine
-- [企业微信](https://aur.archlinux.org/packages/deepin-wxwork/)
-- [go-for-it](https://aur.archlinux.org/packages/go-for-it/)
 
 > 无法识别 USB设备（键盘 鼠标 移动硬盘） 可能原因
 
