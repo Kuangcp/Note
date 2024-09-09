@@ -7,3 +7,5 @@
 - 深度学习模型：LSTM，Transformer
 
 [超参数调优](https://www.cvmart.net/community/detail/8044)
+
+> [doccano](https://github.com/doccano/doccano)`标注平台`  

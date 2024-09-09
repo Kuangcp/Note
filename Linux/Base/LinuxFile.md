@@ -44,8 +44,8 @@ categories:
     - 2.5. [默认字符编码](#默认字符编码)
 - 3. [磁盘](#磁盘)
     - 3.1. [文件系统](#文件系统)
-        - 3.1.1. [Tmpfs](#tmpfs)
-        - 3.1.2. [fsck](#fsck)
+        - 3.1.1. [ext3 ext4](#ext3-ext4)
+        - 3.1.2. [Tmpfs](#tmpfs)
     - 3.2. [安装系统时基本分区](#安装系统时基本分区)
     - 3.3. [设备列表](#设备列表)
     - 3.4. [常用命令](#常用命令)
@@ -53,8 +53,9 @@ categories:
         - 3.4.2. [truncate](#truncate)
         - 3.4.3. [mount](#mount)
         - 3.4.4. [fdisk](#fdisk)
-        - 3.4.5. [df](#df)
-        - 3.4.6. [du](#du)
+        - 3.4.5. [fsck](#fsck)
+        - 3.4.6. [df](#df)
+        - 3.4.7. [du](#du)
 - 4. [日志](#日志)
     - 4.1. [Systemd](#systemd)
     - 4.2. [应用日志](#应用日志)
@@ -66,7 +67,7 @@ categories:
         - 6.1.1. [善用alias](#善用alias)
     - 6.2. [desktop文件](#desktop文件)
 
-💠 2024-09-06 11:36:43
+💠 2024-09-09 17:25:40
 ****************************************
 
 # IO
@@ -386,6 +387,10 @@ export LANG="zh_CN.UTF-8"
 > [参考: 详解NTFS文件系统](http://www.blogfshare.com/detail-ntfs-filesys.html)
 > [参考: 使用 FUSE 开发自己的文件系统](https://www.ibm.com/developerworks/cn/linux/l-fuse/)
 
+> [spacedrive](https://github.com/spacedriveapp/spacedrive)  
+
+### ext3 ext4 
+
 ### Tmpfs 
 > 虚拟内存文件系统 [wiki](https://wiki.archlinux.org/index.php/Tmpfs)
 
@@ -410,10 +415,7 @@ export LANG="zh_CN.UTF-8"
 - 问题： 如果文件被打开，持续写入中，时间超过了10s这个时候是否会被删除？
     - 如果进程占用在写入，不会被清除, 打开的句柄关掉后就不会修改文件的修改时间了，就会到期删除
 
-### fsck
-> check and repair a Linux filesystem
-
-当系统突然断电而导致文件系统不一致时, 可使用该命令进行修复, 例如:`fsck.ext4 -vy /dev/sdaXX`
+************************
 
 ## 安装系统时基本分区
 - / 根目录, 操作系统安装的目录
@@ -466,6 +468,11 @@ export LANG="zh_CN.UTF-8"
 
 ### fdisk
 - 查看磁盘分区表信息 ：`sudo fdisk -l `
+
+### fsck
+> check and repair a Linux filesystem
+
+当系统突然断电而导致文件系统不一致时, 可使用该命令进行修复, 例如:`fsck.ext4 -vy /dev/sdaXX`
 
 ### df 
 > 报告文件系统磁盘空间使用情况 

@@ -6,23 +6,24 @@ categories:
     - 计算机基础
 ---
 
-**目录 start**
+💠
 
-1. [字符编码](#字符编码)
-    1. [ASCII](#ascii)
-    1. [ANSI](#ansi)
-    1. [Unicode](#unicode)
-        1. [UTF](#utf)
-            1. [UTF-8](#utf-8)
-            1. [UTF-16](#utf-16)
-            1. [UTF-32](#utf-32)
-1. [汉字编码发展史](#汉字编码发展史)
-1. [Java中的编码](#java中的编码)
+- 1. [字符编码](#字符编码)
+    - 1.1. [ASCII](#ascii)
+    - 1.2. [ANSI](#ansi)
+    - 1.3. [Unicode](#unicode)
+        - 1.3.1. [UTF](#utf)
+            - 1.3.1.1. [关于 BOM](#关于-bom)
+            - 1.3.1.2. [UTF-8](#utf-8)
+            - 1.3.1.3. [UTF-16](#utf-16)
+            - 1.3.1.4. [UTF-32](#utf-32)
+- 2. [汉字编码发展史](#汉字编码发展史)
+- 3. [Java中的编码](#java中的编码)
+- 4. [乱码](#乱码)
 
-**目录 end**|_2021-03-17 18:06_|
+💠 2024-09-09 17:25:40
 ****************************************
 # 字符编码
-
 > [字符编码笔记：ASCII，Unicode 和 UTF-8](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html) | [阮一峰的文章有哪些常见性错误](https://www.v2ex.com/t/343634)
 
 > [参考: Ansi,UTF8,Unicode,ASCII编码的区别](https://blog.csdn.net/xiongxiao/article/details/3741731)
@@ -32,12 +33,14 @@ categories:
     - 单字节内码 -- Single-Byte character sets (SBCS), 也就是第一个字节 0-127 
     - 双字节内码 -- Double-Byte character sets (DBCS), 也就是第二个字节 128-255
 
+字符集编码发展史：ASCII，IOS-8859家族， GB2312和GBK等双字节家族， Unicode字符， UTF 编码家族
+
 ************************
 
 ## ASCII
 > ASCII (American Standard Code for Information Interchange)  美国信息交换标准代码 属于单字节内码 并等同于国际标准ISO/IEC 646
 
-> [0-255 ascii 码表](https://www.cnblogs.com/xmxu/archive/2012/07/10/2584032.html)
+> [Wiki: ASCII](https://en.wikipedia.org/wiki/ASCII)  
 
 1. 0-31 以及 127 是控制字符或通信专用字符 （其余为可显示字符）
 1. 32～126(共95个)是字符(32是空格）
@@ -67,9 +70,9 @@ categories:
 > [wikipedia](https://en.wikipedia.org/wiki/Unicode) | [unicode.org](http://www.unicode.org/) | [unicode table](https://unicode-table.com/cn/)  
 
 Unicode 是一个囊括了世界上所有字符的字符集，其中每一个字符都对应有唯一的编码值, 但是并不是一个已实现的编码方案, 不能直接使用  
-其实现有 UTF-8 UTF-16 UTF-32 ...  目前最新版本 11 已经包括 137,439 个字符
+基于此套编码值的**编码实现方案**有 UTF-8 UTF-16 UTF-32 ...  目前最新版本 Unicode11 已经包括 137,439 个字符
 
-> 问题 直接看, 看不到的字符, 可能带来一些坑
+> 问题: 直接看, 看不到的字符, 可能带来一些坑
 
 |  |  |
 |:----|:----|
@@ -88,14 +91,18 @@ Unicode 是一个囊括了世界上所有字符的字符集，其中每一个字
 
 它是将Unicode编码规则和计算机的实际编码对应起来的一个规则。现在流行的UTF有2种：UTF-8和UTF-16.
 
-************************
-
-> 关于 BOM
+#### 关于 BOM 
 - [wiki: bom](https://en.wikipedia.org/wiki/Byte_order_mark)
-- [知乎: 「带 BOM 的 UTF-8」和「无 BOM 的 UTF-8」有什么区别？](https://www.zhihu.com/question/20167122)
+- [知乎: 「带 BOM 的 UTF-8」和「无 BOM 的 UTF-8」有什么区别？](https://www.zhihu.com/question/20167122)`微软的习惯`
 
 1. 找出含BOM的文件  `grep -r $'\xEF\xBB\xBF'`
 1. 通过 vim 进行转换, 去除 `:set nobomb` 加上 BOM `:set bomb`
+
+思考： 对于有格式的文件来说，无BOM会更省事，但是无格式的文本处理，有BOM会更省事。
+- 例如Java的class文件，已经有魔数 CAFEBABE， 不需要BOM来标记字符集编码，因为是二进制的。 以及Linux世界的代码和脚本默认是UTF-8，也不需要BOM
+- 但是无格式的文本文件要判断文件的字符编码就会很麻烦了,某文本如果是有中文和英文，直到读取到中文的字节串才能直到整体编码是什么，意味着读完整个文件才能判断出编码，这一点是有风险的。
+    - [CharsetDetector](https://tika.apache.org/0.8/api/org/apache/tika/parser/txt/CharsetDetector.html#detect())`如detect方法的注释所述`
+    Return the charset that best matches the supplied input data. Note though, that because the detection only looks at the start of the input data, there is a possibility that the returned charset will fail to handle the full set of input data. 
 
 
 #### UTF-8
@@ -160,5 +167,23 @@ GBK兼容GB2312，并增加了大量不常用汉字，还加入了几乎所有�
 | 注音扩展 	     | 22字   | 31A0-31BA
 | 〇 	        | 1字    |  3007
 
+************************
+
 # Java中的编码
-> [字符、编码和Java中的编码](https://www.jianshu.com/p/1b00ca07b003)
+> [字符、编码和Java中的编码](https://www.jianshu.com/p/1b00ca07b003)  
+> [Guide to Character Encoding](https://www.baeldung.com/java-char-encoding)  
+
+> [Java : How to determine the correct charset encoding of a stream](https://stackoverflow.com/questions/499010/java-how-to-determine-the-correct-charset-encoding-of-a-stream)
+- [juniversalchardet](https://github.com/albfernandez/juniversalchardet) 通过字节流识别文件的字符集编码
+    - UniversalDetector.detectCharset 原理是读取4K字节长度的二进制流，识别编码方案，还会尝试解析BOM头。
+- GuessEncoding
+- ICU4j
+- cn.hutool.core.io.CharsetDetector 字节流识别文件的字符集编码
+    - 原理为读取512字节长度后，穷举字符集来解码
+
+************************
+
+# 乱码
+> 顾名思义则是用了错误的编码方案去对二进制流解码
+
+![](./img/char-error-decode-situation.png)
