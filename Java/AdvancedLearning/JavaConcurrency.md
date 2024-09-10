@@ -41,7 +41,7 @@ categories:
         - 5.2.1. [BlockingQueue](#blockingqueue)
         - 5.2.2. [TransferQueue](#transferqueue)
 
-💠 2024-08-30 14:23:29
+💠 2024-09-10 13:59:48
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -341,11 +341,12 @@ public int current(){
 ### CyclicBarrier
 
 ### Semaphore
-> 维护一个固定大小的池子，借用和归还资源，限制并发数。
+> 最早用来解决进程同步与互斥问题的机制, 整体设计来自于操作系统。[Linux Semaphore](/Linux/Base/LinuxBase.md#信号量-semaphore)
 
 > [JUC工具类: Semaphore详解](https://pdai.tech/md/java/thread/java-thread-x-juc-tool-semaphore.html)
 
 ### Phaser
+
 ### Exchanger
 
 

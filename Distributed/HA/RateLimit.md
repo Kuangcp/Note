@@ -22,7 +22,7 @@ categories:
     - 3.1. [Redis 实现](#redis-实现)
     - 3.2. [Oracle Coherence](#oracle-coherence)
 
-💠 2024-09-02 17:14:24
+💠 2024-09-10 13:59:48
 ****************************************
 # 限流
 
@@ -66,7 +66,10 @@ RateLimiter 令牌桶实现
 - 支持平滑发放令牌（例如限制每秒5并发，每个令牌的获取间隔大概在200ms左右）
 
 ## Redis
-zset 使用时间戳值来做滑动窗口,如果服务器间时间不同步，会在边界情况下超出设定的最大阈值。
+简易：zset 使用时间戳值来做滑动窗口,如果服务器间时间不同步，会在边界情况下超出设定的最大阈值。
+
+> [详解Redisson分布式限流的实现原理 ](https://juejin.cn/post/7199882882138898489)  
+> [分布式限流：基于 Redis 实现](https://pandaychen.github.io/2020/09/21/A-DISTRIBUTE-GOREDIS-RATELIMITER-ANALYSIS/)  
 
 ## Hystrix
 
@@ -77,7 +80,10 @@ zset 使用时间戳值来做滑动窗口,如果服务器间时间不同步，�
 作用类似于 [JDK中的Semaphore](/Java/AdvancedLearning/JavaConcurrency.md#semaphore)，但是资源限制是分布式的，而不是单机，实现可以依赖Redis或MySQL等中间存储。
 
 ## Redis 实现
-1. lua脚本实现判断，加一（获取资源）,判断是否超阈值超过则撤销加一，减一(释放资源) `自旋等待`
+> [分布式Semaphore](https://cloud.tencent.com/developer/article/1805219)  
+
+1. 使用 Redission 中的 RSemaphore
+1. **Lua脚本实现**，加一（获取资源）,判断是否超阈值超过则撤销加一，减一(释放资源) `自旋等待`
     - 命令： `EVAL "local cnt = redis.call('incr', KEYS[1]);  if (tonumber(cnt) > tonumber(ARGV[1]) ) then redis.call('decr', KEYS[1]); return 0; else return 1; end " 1 lockA 3`
     ```java
     public static final String Judge = "local cnt = redis.call('incr', KEYS[1]);" +
@@ -101,6 +107,7 @@ zset 使用时间戳值来做滑动窗口,如果服务器间时间不同步，�
     }
     ```
 
+> [分布式限流——Redis版分布式信号量原理](https://www.skypyb.com/2020/06/jishu/1538/)`负面参考：实现复杂有缺陷`  
 
 ## Oracle Coherence
 [Coherence](https://docs.oracle.com/en/middleware/standalone/coherence/14.1.1.2206/develop-applications/implementing-concurreny-distributed-environment.html#GUID-8C7BBF82-EBF8-47A9-8EDC-E725221C1054)
