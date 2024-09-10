@@ -87,13 +87,13 @@ categories:
 > validationQuery执行场景
 
 周期检查 keepAlive  
-![](./img/001-druid.jpg) 
+![](./img/001-druid.webp) 
 
 获取连接时 闲置很久的连接触发检查  
-![](./img/002-druid.jpg)
+![](./img/002-druid.webp)
 
 创建连接时的检查  
-![](./img/003-druid.jpg)
+![](./img/003-druid.webp)
 
 
 ************************

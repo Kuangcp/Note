@@ -9,8 +9,8 @@ hasCommandByType(){
 result=$(hasCommandByType countzh)
 result=$(echo $result | grep is)
 if test -z "$result" ; then
-    echo "count not install, start install"
-    go get github.com/kuangcp/gobase/toolbox/countzh
+    echo "countzh not install, start install"
+    go install github.com/kuangcp/gobase/toolbox/countzh@latest
 fi
 
 logFile=submission.log

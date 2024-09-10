@@ -34,5 +34,5 @@ categories:
 
 # 元编程
 
-![Alt text](./img/generic_and_meta.png)
+![Alt text](./img/generic_and_meta.webp)
 

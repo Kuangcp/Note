@@ -82,7 +82,7 @@ categories:
 
 结论：pod尽量按过往监控的情况设置合理的 requests 和 limits, 如果仍有明显的倾斜，可以配置节点亲和 nodeAffinity
 
-例如如下配置只会将pod调度到03和04两个Node上
+例如如下配置只会将pod调度到03和04两个Node上, 对应于Kuboard的操作路径为 高级设置 -> 节点调度策略 -> 根据【节点亲和性】选择节点 -> 选择标签和值
 ```yml
     spec:
       affinity:
