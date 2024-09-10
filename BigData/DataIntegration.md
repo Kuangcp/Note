@@ -60,7 +60,7 @@ categories:
 ## 设计
 > [DataX 3.0 源码解析一](https://www.cnblogs.com/yaozhenfa/p/13840134.html)  | [DataX核心源码流程](https://blog.csdn.net/ooeeerrtt/article/details/123779721)
 
-![](./img/datax-main-process.png)
+![](./img/datax-main-process.webp)
 
 - Job 负责管理 JobContainer
 - Task 执行读写 TaskGroupContainer.TaskExecutor 
