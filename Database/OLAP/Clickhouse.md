@@ -13,13 +13,17 @@ categories:
         - 1.2.1. [bitmap](#bitmap)
         - 1.2.2. [Decimal](#decimal)
     - 1.3. [聚合函数](#聚合函数)
-    - 1.4. [数据库引擎](#数据库引擎)
-- 2. [使用](#使用)
-    - 2.1. [Java](#java)
-- 3. [Explain](#explain)
-- 4. [Tips](#tips)
+- 2. [数据库引擎](#数据库引擎)
+- 3. [表引擎](#表引擎)
+    - 3.1. [MergeTree 引擎家族](#mergetree-引擎家族)
+    - 3.2. [分布式表引擎 Distributed](#分布式表引擎-distributed)
+- 4. [表](#表)
+- 5. [客户端](#客户端)
+    - 5.1. [Java](#java)
+- 6. [Explain](#explain)
+- 7. [Tips](#tips)
 
-💠 2024-09-02 17:14:24
+💠 2024-09-10 10:12:41
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -33,11 +37,59 @@ categories:
 > [Docker compose 安装](https://github.com/ClickHouse/examples/blob/main/docker-compose-recipes/README.md)  
 > [Clickhouse cluster built with docker-compose.](https://github.com/tetafro/clickhouse-cluster)  
 
+> 例如以下配置为 两个分片，每个分片两个副本
+```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <yandex>
+        <clickhouse_remote_servers>
+            <default_cluster>
+                <shard>
+                    <internal_replication>false</internal_replication>
+                    <replica>
+                        <host>10.0.3.27</host>
+                        <port>9000</port>
+                    </replica>
+                    <replica>
+                        <host>10.0.3.41</host>
+                        <port>9000</port>
+                    </replica>
+                </shard>
+                <shard>
+                    <internal_replication>true</internal_replication>
+                    <replica>
+                        <host>10.0.3.46</host>
+                        <port>9000</port>
+                    </replica>
+                    <replica>
+                        <host>10.0.3.26</host>
+                        <port>9000</port>
+                    </replica>
+                </shard>
+            </default_cluster>
+        </clickhouse_remote_servers>
+        <zookeeper-servers>
+            <node>
+                <host>10.0.3.12</host>
+                <port>2181</port>
+            </node>
+            <node>
+                <host>10.0.3.3</host>
+                <port>2181</port>
+            </node>
+            <node>
+                <host>10.0.3.23</host>
+                <port>2181</port>
+            </node>
+        </zookeeper-servers>
+    </yandex>
+```
 
 ************************
 
 ## 数据类型
 > [ClickHouse Data Types](https://clickhouse.com/docs/en/sql-reference/data-types)
+
+注意Ck中建表时字段类型默认是非Null的，和常见的业务数据库MySQL等相反，支持Null数据需要显式指定，例如： Nullable(Int)
 
 ### bitmap
 > 并没有这个类型定义，只是在使用时由数据存储方式存在，类似于Redis的bitmap。
@@ -75,7 +127,7 @@ categories:
 
 ************************
 
-## 数据库引擎
+# 数据库引擎
 - Atomic
 - MySQL 关联远程库表
 - MaterializedMySQL 原生实现MySQL引擎 支持从MySQL全量及增量实时同步
@@ -85,9 +137,41 @@ categories:
 - Replicated
 - SQLite
 
+# 表引擎
+> [doc: Table Engines](https://clickhouse.com/docs/en/engines/table-engines)
+
+分为：MT家族，外部表（集成）引擎，日志引擎，特殊引擎（Distributed，File,URL,Memory等等）
+
+## MergeTree 引擎家族
+
+
+## 分布式表引擎 Distributed
+> [doc: distributed](https://clickhouse.com/docs/en/engines/table-engines/special/distributed)  
+
+这种表不存储数据，可以当作关联的表的一层代理，实现并行查询和数据写入分发.
+
+查询Distributed表引擎的过程是： 先查接收请求节点本地的表（和当前节点同分片下的Replication副本节点**不会接收到查询的请求**），对剩余全部分片发送请求（分片中的一个随机副本），然后再聚合各个分片返回的数据，最后返回最终结果。
+
+![](./img/001-dis-send-query.webp)
+![](./img/002-dis-merge-result.webp)
+
 ************************
 
-# 使用
+> [ClickHouse案例：查询结果不一致](https://cloud.tencent.com/developer/article/1748216)  
+
+> 注意，有副本的集群，分布式表都需要关联副本表 Replicated MergeTree 作为数据表，如果使用普通的MT表引擎，会导致查询和写入都会遇到奇怪的问题。
+- 写入： 会有部分节点上没有数据，但是全部节点的数据总量是对的
+- 查询： 一条SQL每次查询的结果都不一样（各个分片内随机选择副本再合并查询结果而导致的）
+
+************************
+
+# 表
+> [doc: create table](https://clickhouse.com/docs/en/sql-reference/statements/create/table)
+
+
+************************
+
+# 客户端
 > [snuba](https://github.com/getsentry/snuba)`Sentry开发， CK的一个查询层`
 
 ## Java

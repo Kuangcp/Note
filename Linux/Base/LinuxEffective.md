@@ -378,32 +378,31 @@ CrystalDiskMark
 1. display
 
 #### convert
-
 > convert between image formats as well as resize an image, blur, crop, despeckle, dither, draw on, flip, join, re-sample, and much more
+
+`convert 源文件 [参数] 目标文件`
+- 格式转换： convert a.png a.jpg 
 
 - 将图片转换成指定大小 这是保持比例的 `convert -resize 600X600 src.jpg dst.jpg` 中间是字母X
   - 如果不保持比例，就在宽高后加上感叹号
   - 可以只指定高度，那么宽度会等比例缩放 `convert -resize 400 src.jpg dst.jpg`
-  - 还可以按百分比缩放
+  - 还可以按百分比缩放 `convert page200.png -resize 50% page100.png`
 
-_批量修改_
-
-> 如果没有 -path 语句，新生成的 png 文件将会覆盖原始文件 [参考博客](http://www.cnblogs.com/jkmiao/p/6756929.html)
-
+> 批量修改 
+如果没有 -path 语句，新生成的 png 文件将会覆盖原始文件 [参考博客](http://www.cnblogs.com/jkmiao/p/6756929.html)
 - `mogrify -path newdir -resize 40X40 *.png` 把png图片全部转成40X40大小并放在新文件夹下
 - `mogrify -path newdir -format png  *.gif` 将所有gif转成png放在新目录下
 
 > 将原有大小图片转换成其他指定大小的图片(保持比例)
-
 1. 原图片 a * b -> x * y
 2. x/y 得到比例 在 原图中裁剪出同样比例的图片 (Viewnior就很好用)
 3. 将裁剪出来的图片转换指定大小 `convert -resize xXy src.jpg dst.jpg`
 
-- 若干图片合并转PDF `convert origin1.jpg origin2.jpg target.pdf`
+> 若干图片合并转PDF `convert origin1.jpg origin2.jpg target.pdf`
 
-> svg to ico
-> `magick convert -background none icon.svg -define icon:auto-resize icon.ico`
-> or `convert -background none icon.svg -define icon:auto-resize icon.ico`
+> svg to ico 两种方式
+- `magick convert -background none icon.svg -define icon:auto-resize icon.ico`
+- `convert -background none icon.svg -define icon:auto-resize icon.ico`
 
 ### asciinema
 
