@@ -18,9 +18,8 @@ logFile=submission.log
 if [ "$1"z = "z" ];then
     word=$(countzh -s) 
     line=$(git ls-files | grep -v "ARTS" | xargs cat | wc -l)
-    time=$(date "+%F %T")
-    echo "$word $line lines on $time " >> $logFile
-	#less $logFile
-else 
+    # echo "$word $line lines on $time " >> $logFile
+    echo "$word $line lines" >> $logFile
+else
 	less $logFile
 fi
