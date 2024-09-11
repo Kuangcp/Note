@@ -39,7 +39,7 @@ categories:
     - 4.1. [CORS 跨域](#cors-跨域)
     - 4.2. [相关工具](#相关工具)
 
-💠 2024-04-22 16:41:19
+💠 2024-09-11 14:55:54
 ****************************************
 # HTTP
 > HyperText Transfer Protocol (超文本传输协议) 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -142,14 +142,19 @@ get 方式下的http请求会限制URL长度，会有多方面不同的限制 �
 
 ### Header 
 
+> 注意：
+- Header的Key和Value统一用`: `分隔，value部分没有格式约束，可以由应用层沟通协定，多值时有用,或;分隔的
+
 > 常用Key
 - Transfer-Encoding: chunked 
     - `异常` curl: (56) Illegal or missing hexadecimal sequence in chunked-encoding
     - [MDN: Transfer-Encoding](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Transfer-Encoding)
     - [wiki ](https://en.wikipedia.org/wiki/Chunked_transfer_encoding#Format)
-
-> 注意：
-- Header的Key和Value统一用`: `分隔，value部分没有格式约束，可以由应用层沟通协定，多值时有用,或;分隔的
+- Range 请求指定的字节分段数据
+    - [MDN: Range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range)
+    - [Listing the contents of a remote ZIP archive, without downloading the entire file](https://rhardih.io/2021/04/listing-the-contents-of-a-remote-zip-archive-without-downloading-the-entire-file/) 无需获取完整压缩包就得到文件列表以及压缩包内部分文件下载
+        - 通过传输部分字节解析zip包元信息再多次依据偏移量读取文件，从而获得文件列表和对应字节偏移值实现特定文件的下载
+        - 大文件时会有效率的改善，小zip包以及文件数过多时都不适合。 并且要为每种压缩算法定制实现解析逻辑，而且可行的只有zip和7z
 
 ************************
 

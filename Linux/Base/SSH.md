@@ -25,7 +25,7 @@ categories:
     - 2.1. [保持SSH连接稳定](#保持ssh连接稳定)
 - 3. [Mosh](#mosh)
 
-💠 2024-04-17 16:14:38
+💠 2024-09-11 14:55:54
 ****************************************
 # SSH
 > Secure Shell 
@@ -208,20 +208,6 @@ _config_
     ServerAliveInterval 60
     ServerAliveCountMax 3
 ```
-************************
-
-> 连接时提示错误信息 前提：配置好了公钥，即使有这个信息，但是却已经连上了
-```sh
-$ ssh -p 8888 git@184.170.220.117
-    The authenticity of host '[184.170.220.117]:8888 ([184.170.220.117]:8888)' can't be established.
-    ECDSA key fingerprint is SHA256:Ha9k9dsMxtTaDgN4maUy1VoNzzsm+uMb84zcib6U5jU.
-    Are you sure you want to continue connecting (yes/no)? yes
-    Warning: Permanently added '[184.170.220.117]:8888' (ECDSA) to the list of known hosts.
-    PTY allocation request failed on channel 0
-    Welcome to GitLab, Carlsiry Chen!
-    Connection to 184.170.220.117 closed.
-```
-
 ************************
 
 > SSH: Could not load host key: /etc/ssh/ssh_host_rsa_key
