@@ -14,7 +14,7 @@ categories:
     - 1.3. [Lettuce](#lettuce)
     - 1.4. [vertx-redis-client](#vertx-redis-client)
 
-💠 2024-04-25 22:16:44
+💠 2024-09-12 16:01:31
 ****************************************
 # Java 使用 Redis
 > [Official List](https://redis.io/clients#java)
@@ -31,11 +31,15 @@ categories:
 - 版本对不上，要Spring和Spring-data-redis 和 redis和commons-lang3对应
 - 目前是4.1.7 + 1.6.0 + 2.9.0 + 3.3.2 编译通过了	
 
+> [Jedis连接池 资源泄露](https://mistray.github.io/2020/08/21/Jedis%E8%BF%9E%E6%8E%A5%E6%B1%A0%E7%AB%9F%E7%84%B6%E4%BC%9A%E8%B5%84%E6%BA%90%E6%B3%84%E9%9C%B2/)`2.9.1版本bug`
+
+************************
+
 ## Redisson
 > [Github: Redisson](https://github.com/redisson/redisson)
 
 优势
-- 附带业务封装的API，限流，分布式锁
+- 附带业务封装的API，限流(RSemaphore等)，分布式锁
 
 > WatchDog机制
 - org.redisson.RedissonBaseLock#renewExpiration 续约逻辑入口

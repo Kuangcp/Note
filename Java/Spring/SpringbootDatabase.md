@@ -28,10 +28,9 @@ categories:
         - 1.3.2. [Mybatis](#mybatis)
     - 1.4. [Non Relational database](#non-relational-database)
         - 1.4.1. [Redis](#redis)
-            - 1.4.1.1. [关于StringRedisTemplate的方法使用](#关于stringredistemplate的方法使用)
-            - 1.4.1.2. [消息订阅和发布](#消息订阅和发布)
+            - 1.4.1.1. [消息订阅和发布](#消息订阅和发布)
 
-💠 2024-07-01 14:41:15
+💠 2024-09-12 16:01:31
 ****************************************
 # 数据库模块
 > [Spring Data](https://spring.io/projects/spring-data)
@@ -278,20 +277,6 @@ _配置连接信息_
 ```
 - 以上配置的template都是只是建立在最简单的键值对上，String-String，所以对象使用的是json来存储
 - 但是使用的时候如同使用MySQL一样，是ORM框架自动处理数据的转换
-
-
-#### 关于StringRedisTemplate的方法使用
-- 常见数据类型的中间对象
-    - opsForValue() 操作简单键值对数据
-        - hasKey()
-    - opsForHash() 操作含有hash的数据
-    - opsForList() 操作含有list的数据
-    - opsForZSet() 操作含有zset（有序）的数据
-        - range()方法返回指定范围的数据 Java中Set类型的（诡异的是顺序保持了一致）
-    - opsForSet() 操作含有set的数据
-
-- 设置超时时间
-    - `redisTemplate.expire("max",tempTime,TimeUnit.SECONDS);`
 
 #### 消息订阅和发布
 [参考: Spring Boot使用Redis进行消息的发布订阅](https://www.tianmaying.com/tutorial/springboot-redis-message)

@@ -67,7 +67,7 @@ categories:
     - 14.3. [修改](#修改)
         - 14.3.1. [授权](#授权)
 
-💠 2024-05-03 12:21:37
+💠 2024-09-12 16:01:31
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -133,7 +133,9 @@ _重启_
 
 ## 数值类型
 ### short
+
 ### int
+
 ### decimal 
 -  The declaration syntax for a DECIMAL column is DECIMAL(M,D). The ranges of values for the arguments are as follows:
    - M is the maximum number of digits (the precision). It has a range of 1 to 65.
@@ -143,8 +145,23 @@ _重启_
 2. 当整数部分合法，小数部分多余的位数，直接截断。
 
 ## 时间类型
+- bigint 存入时间戳
+- date
+- time
+- datetime 
+- timestamp
 
-datetime timestamp
+> 注意 只有 timestamp 是含时区信息的，因为客户端写入值时取会话时区转换为UTC值（例如 1997-07-16T19:20+08:00 ），查询时MySQL会从UTC转为客户端会话的时区。
+> datetime类型更像是存储了格式化的字符串。
+
+> [MySQL日期类型选择建议](https://javaguide.cn/database/mysql/some-thoughts-on-database-storage-time.html)
+- 空间效率timestamp更好，但是最大值到2038年，bigint可读性差但是兼容性好时区处理留给了应用层。
+
+
+> 报错： Zero date value prohibited
+- MySQL数据库在面对0000-00-00 00:00:00日期的处理时，如果没有设置对应的对策，就会产生异常
+    - 可以配置处理 策略 exception 异常（默认值）， round 近似值， convertToNull(转为null)
+    - 例如 JDBC URL添加参数 zeroDateTimeBehavior=convertToNull
 
 ************************
 

@@ -14,7 +14,7 @@ categories:
 - 2. [安装和配置](#安装和配置)
     - 2.1. [Windows](#windows)
     - 2.2. [Linux](#linux)
-        - 2.2.1. [Docker方式安装](#docker方式安装)
+        - 2.2.1. [Docker 方式](#docker-方式)
         - 2.2.2. [解压即用](#解压即用)
     - 2.3. [Redis配置文件](#redis配置文件)
 - 3. [数据类型](#数据类型)
@@ -46,7 +46,7 @@ categories:
     - 10.2. [缓存击穿](#缓存击穿)
     - 10.3. [缓存穿透](#缓存穿透)
 
-💠 2024-09-06 11:36:43
+💠 2024-09-12 16:01:31
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -77,7 +77,7 @@ categories:
 ## Linux
 包管理器安装 redis 如 debian系`apt install redis` arch系`pacman -S redis`
 
-### Docker方式安装
+### Docker 方式
 > [docker-install-redis](/Linux/Container/DockerSoft.md#redis)
 
 ### 解压即用

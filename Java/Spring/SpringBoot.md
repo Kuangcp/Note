@@ -42,7 +42,7 @@ categories:
         - 1.10.4. [热部署](#热部署)
         - 1.10.5. [运行性能优化](#运行性能优化)
 
-💠 2024-09-05 11:52:54
+💠 2024-09-12 16:01:31
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -201,8 +201,12 @@ graduate:
 配置 pattern 并引用 MDC `logging.pattern.level=%X{mdcData}%5p`
 
 ************************
+
 ## Cache
-> [Caching Data with Spring](https://spring.io/guides/gs/caching)
+> [Caching Data with Spring](https://spring.io/guides/gs/caching) | [SpringBoot: Caching](https://docs.spring.io/spring-boot/reference/io/caching.html)  
+
+> [Spring Boot Cache使用与整合](https://www.cnblogs.com/morganlin/p/12000223.html)
+
 - *@Cacheable*：表示该方法支持缓存。当调用被注解的方法时，如果对应的键已经存在缓存，则不再执行方法体，而从缓存中直接返回。当方法返回null时，将不进行缓存操作。
     - cacheNames/value：缓存组件的名字，即cacheManager中缓存的名称。
     - key：缓存数据时使用的key。默认使用方法参数值，也可以使用SpEL表达式进行编写。
@@ -211,15 +215,11 @@ graduate:
     - condition：在方法执行开始前检查，在符合condition的情况下，进行缓存。
     - unless：在方法执行完成后检查，在符合unless的情况下，不进行缓存。
     - sync：是否使用同步模式。若使用同步模式，在多个线程同时对一个key进行load时，其他线程将被阻塞。Spring 4.1引入，**规避缓存击穿**
-- *@CachePut*：表示执行该方法后，其值将作为最新结果更新到缓存中。每次都会执行该方法。
-- *@CacheEvict*：表示执行该方法后，将触发缓存清除操作。
-- *@Caching*：用于组合前三个注解，例如：
-```java
-    @Caching(cacheable = @Cacheable("users"), evict = {@CacheEvict("cache2"), @CacheEvict(value = "cache3", allEntries = true)})
-    public User find(Integer id) {
-        return null;
-    }
-```
+- *@CachePut*：表示执行该方法后，其值将作为最新结果更新到缓存中。
+- *@CacheEvict*：表示执行该方法后，将触发清除同名value和key的缓存。
+- *@Caching*：可组合前三个注解
+
+注意缓存的本质是将内存对象序列化到三方缓存（JVM，Redis，文件），使用时再反序列化， 所以需要缓存的接口的参数和响应值都需要实现Serializable接口
 
 ************************
 
@@ -302,6 +302,15 @@ public class CorsConfig {
 
 ### Validator
 > [Validation with Spring Boot](https://reflectoring.io/bean-validation-with-spring-boot/)
+
+> [SpringBoot接口 - 如何对参数进行校验](https://pdai.tech/md/spring/springboot/springboot-x-interface-param.html)
+
+```xml
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+```
 
 ### Response 
 > 全局切面增强
