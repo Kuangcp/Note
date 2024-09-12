@@ -42,7 +42,7 @@ categories:
         - 1.10.4. [热部署](#热部署)
         - 1.10.5. [运行性能优化](#运行性能优化)
 
-💠 2024-09-12 16:01:31
+💠 2024-09-12 19:42:44
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -196,9 +196,9 @@ graduate:
 
 使用logback时需要配置 logback.xml 或者 logback-spring.xml 建议使用后者
 
-- [ ] 思考: 能否不同的包使用不同的pattern [pattern](https://stackoverflow.com/questions/30571319/spring-boot-logging-pattern)
-
-配置 pattern 并引用 MDC `logging.pattern.level=%X{mdcData}%5p`
+- 思考: 能否不同的包使用不同的pattern [pattern](https://stackoverflow.com/questions/30571319/spring-boot-logging-pattern)
+    - 但是不利于后续中间件做日志解析
+- 配置 pattern 并引用 MDC `logging.pattern.level=%X{mdcData}%5p`
 
 ************************
 

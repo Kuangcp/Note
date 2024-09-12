@@ -22,7 +22,7 @@ categories:
     - 3.1. [Redis 实现](#redis-实现)
     - 3.2. [Oracle Coherence](#oracle-coherence)
 
-💠 2024-09-10 13:59:48
+💠 2024-09-12 19:42:44
 ****************************************
 # 限流
 
@@ -78,6 +78,8 @@ RateLimiter 令牌桶实现
 # 分布式Semaphore
 
 作用类似于 [JDK中的Semaphore](/Java/AdvancedLearning/JavaConcurrency.md#semaphore)，但是资源限制是分布式的，而不是单机，实现可以依赖Redis或MySQL等中间存储。
+
+> [Ignite: Semaphore](https://ignite.apache.org/docs/latest/data-structures/semaphore)
 
 ## Redis 实现
 > [分布式Semaphore](https://cloud.tencent.com/developer/article/1805219)  

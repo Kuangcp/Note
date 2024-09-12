@@ -24,9 +24,10 @@ categories:
     - 3.4. [PostgreSQL](#postgresql)
 - 4. [非关系型数据库](#非关系型数据库)
     - 4.1. [Redis](#redis)
-    - 4.2. [LevelDB](#leveldb)
-    - 4.3. [MangoDB](#mangodb)
-    - 4.4. [GemFire](#gemfire)
+    - 4.2. [RocksDB](#rocksdb)
+    - 4.3. [LevelDB](#leveldb)
+    - 4.4. [MangoDB](#mangodb)
+    - 4.5. [GemFire](#gemfire)
 - 5. [内置型数据库](#内置型数据库)
     - 5.1. [SQLite](#sqlite)
     - 5.2. [duckdb](#duckdb)
@@ -45,11 +46,12 @@ categories:
     - 8.1. [Greenplum](#greenplum)
     - 8.2. [Clickhouse](#clickhouse)
     - 8.3. [TiDB](#tidb)
+    - 8.4. [Ignite](#ignite)
 - 9. [向量数据库](#向量数据库)
 - 10. [数据库中间件](#数据库中间件)
 - 11. [图形化工具](#图形化工具)
 
-💠 2024-09-06 11:36:43
+💠 2024-09-12 19:42:44
 ****************************************
 # 数据库
 > [码农翻身:爱炫耀的数据库老头儿](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514001&idx=1&sn=17b72c3e69db6c4277e3045c699b7b6b&chksm=80d67c52b7a1f5446020826841869221873f4578524181384592839d19c4810dc68807117e13&scene=21#wechat_redirect) `事务,undo日志`
@@ -138,7 +140,20 @@ MySQL: MVCC
 - [sssdb](https://github.com/ideawu/ssdb) `键值对数据库`
 
 ## Redis
-> 数据类型丰富,处理非关系型并且结构化的数据十分方便, 结合Python使用就行云流水一般了
+> [Redis](/Database/Redis.md)数据类型丰富，单线程纯内存高性能， 且久经考验很稳定
+
+- [Github Tendis](https://github.com/Tencent/Tendis)`兼容Redis访问协议，腾讯开源的存储版，已不维护，商业还有缓存版和混合版`
+    - [ Redis vs Tendis：冷热混合存储版架构揭秘 ](https://mp.weixin.qq.com/s/MeYkfOIdnU6LYlsGb24KjQ)  
+- [Dragonfly](https://github.com/dragonflydb/dragonfly) 兼容Redis和Memcached的 API,高吞吐量
+    - 无共享式架构和VLL的选择，不使用互斥锁或自旋锁的情况下组合原子的多键操作
+    - docker run --network=host --ulimit memlock=-1 docker.dragonflydb.io/dragonflydb/dragonfly
+    - 虽然宣称更高吞吐量，但是拿[实际应用场景](https://github.com/Kuangcp/GoBase/tree/master/toolbox/countzh)做测试对比发现Redis比Dragonfly消耗资源少且更快
+        - 场景为统计字符频率，只高频执行 ZIncrBy 命令（累计执行了337849次，Redis7.0.5 稳定耗时13s 单核30%  Dragonfly 6.2.11稳定耗时19s 等效于单核60%CPU）
+- [KeyDB](https://github.com/Snapchat/KeyDB) Redis 的一个高性能分支，专注于多线程、内存效率和高吞吐量
+
+
+## RocksDB
+> [RocksDB](https://github.com/facebook/rocksdb)`FaceBook开源`
 
 ## LevelDB
 > [Github](https://github.com/google/leveldb)  
@@ -146,7 +161,7 @@ MySQL: MVCC
 > [LedisDB](https://github.com/ledisdb/ledisdb) 基于LevelDB构建Redis协议的数据库实例
 
 ## MangoDB
-> 文档性数据库, 混合类型: 关系型非关系型
+> [MongoDB](/Database/MongoDB.md) 文档性数据库, 混合类型: 关系型非关系型
 
 ## GemFire
 > 分布式内存数据库 12306 采用的解决方案
@@ -226,6 +241,9 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 
 ## TiDB
 > [Official Doc](https://docs.pingcap.com/zh/)  
+
+## Ignite
+> [Github](https://github.com/apache/ignite)
 
 ************************
 # 向量数据库
