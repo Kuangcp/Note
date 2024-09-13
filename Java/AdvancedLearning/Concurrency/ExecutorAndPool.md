@@ -10,8 +10,9 @@ categories:
 - 1. [线程池](#线程池)
     - 1.1. [ExecutorService 接口](#executorservice-接口)
     - 1.2. [Executors](#executors)
-    - 1.3. [ScheduledThreadPoolExecutor STPE](#scheduledthreadpoolexecutor-stpe)
-    - 1.4. [分支合并框架 Fork/Join](#分支合并框架-forkjoin)
+    - 1.3. [CompletionService 接口](#completionservice-接口)
+    - 1.4. [ScheduledThreadPoolExecutor STPE](#scheduledthreadpoolexecutor-stpe)
+    - 1.5. [分支合并框架 Fork/Join](#分支合并框架-forkjoin)
 - 2. [Spring](#spring)
     - 2.1. [ThreadPoolTaskExecutor](#threadpooltaskexecutor)
 - 3. [实践](#实践)
@@ -19,7 +20,7 @@ categories:
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2024-06-26 10:57:11
+💠 2024-09-13 10:39:04
 ****************************************
 # 线程池
 
@@ -107,6 +108,15 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
     - 它是线程池类`ForkJoinPool`的扩展
     - 该线程池能够合理的使用CPU进行对任务操作（并行操作），所以适合使用在很耗时的任务中
     - 创建方式：`ExecutorService executor = Executors.newWorkStealingPool();`
+
+## CompletionService 接口
+> 实现类 ExecutorCompletionService 类JavaDoc上有使用示例
+
+- submit
+- take
+- poll
+
+> [TimeoutExecPoolTest](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/situation/timoutpool/TimeoutExecPoolTest.java)`限时并行消费任务获取结果，时间到期则丢弃所有未完成的任务`  
 
 ## ScheduledThreadPoolExecutor STPE
 - 线程池的大小可以预定义， 也可自适应

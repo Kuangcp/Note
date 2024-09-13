@@ -26,13 +26,13 @@ categories:
         - 2.5.1. [Scan](#scan)
 - 3. [数据安全和性能](#数据安全和性能)
     - 3.1. [Latency](#latency)
-    - 3.2. [错误分析](#错误分析)
-    - 3.3. [big key](#big-key)
-    - 3.4. [hot key](#hot-key)
-    - 3.5. [缓存淘汰](#缓存淘汰)
+    - 3.2. [big key](#big-key)
+    - 3.3. [hot key](#hot-key)
+    - 3.4. [Key eviction](#key-eviction)
 - 4. [Lua](#lua)
 - 5. [Tip](#tip)
     - 5.1. [禁用 O(N) 命令](#禁用-on-命令)
+    - 5.2. [错误分析](#错误分析)
 - 6. [部署方式](#部署方式)
     - 6.1. [单机](#单机)
     - 6.2. [主从](#主从)
@@ -40,11 +40,11 @@ categories:
     - 6.4. [Cluster 集群](#cluster-集群)
 - 7. [Redis 持久化](#redis-持久化)
 
-💠 2024-09-04 15:44:23
+💠 2024-09-13 10:39:04
 ****************************************
 # Redis底层数据结构
 ## SDS
-> 简单动态字符串
+> 简单动态字符串 [sds: Simple Dynamic Strings](https://github.com/antirez/sds)
 
 - [ ] Redis存储数值的方式，以下场景
 ```
@@ -186,17 +186,6 @@ Redis 的跳跃表由 redis.h/zskiplistNode 和 redis.h/zskiplist 两个结构�
 - 只保留最近 500 条慢日志 `CONFIG SET slowlog-max-len 500`
 - 查看最近5条慢日志 `SLOWLOG get 5`
 
-## 错误分析
-
-1. `JedisConnectionException:  Could not get a resource from the pool` cause by `java.util.NoSuchElementException: Unable to validate object`
-    - 多种原因, 由于设置了 testOnBorrow 为 true, 那么在每次获取数据时, 就会先测试性的获取一个数据, 然后校验能否正常拿到该数据 如果拿不到就抛出这个异常, 原因可能有:
-        1. 根本没有连接上Redis, 配置有问题 端口 bind 什么的
-        1. Redis 存放数据的 rdb 文件所在目录 没有存储空间了
-        1. 没有内存空间了, 由于执行save操作时, 会进行fork子进程 然后进行持久化 TODO 验证
-1. `ERR 'EVAL' command keys must in same slot`
-    - 由于Lua脚本执行在Cluster模式下需要保证操作的key在相同的slot中。
-    - 解决方案 强制加入花括号 指定计算slot的部分，保证key会分配到相同的slot。例如：`{prefix}a` 和 `{prefix}b`
-
 ## big key
 bigkey 在很多场景下都会产生性能问题，因此业务应用尽量避免写入。
 
@@ -215,7 +204,16 @@ bigkey 在很多场景下都会产生性能问题，因此业务应用尽量避�
 
 ## hot key
 
-## 缓存淘汰
+> [大Key/热Key分析/过期Key扫描](https://support.huaweicloud.com/dcs_faq/dcs-faq-0805001.html)
+
+************************
+
+## Key eviction
+> [Key eviction](https://redis.io/docs/latest/develop/reference/eviction/)  
+
+当Redis使用内存达到 maxmemory 时会依据**驱逐策略**(LRU，LFU等)删除key，回收内存。
+
+> 参考：[Redis实例的数据逐出策略是什么？](https://support.huaweicloud.com/dcs_faq/dcs-faq-0427031.html)
 
 ************************
 
@@ -299,6 +297,17 @@ keys flushdb flushall
 - Sorted Set： zrange、zrevrange、zrangebyscore、zrevrangebyscore、zremrangebyrank、zremrangebyscore
 
 在 redis.conf 中通过配置 rename-command 进行禁用
+
+## 错误分析
+
+1. `JedisConnectionException:  Could not get a resource from the pool` cause by `java.util.NoSuchElementException: Unable to validate object`
+    - 多种原因, 由于设置了 testOnBorrow 为 true, 那么在每次获取数据时, 就会先测试性的获取一个数据, 然后校验能否正常拿到该数据 如果拿不到就抛出这个异常, 原因可能有:
+        1. 根本没有连接上Redis, 配置有问题 端口 bind 什么的
+        1. Redis 存放数据的 rdb 文件所在目录 没有存储空间了
+        1. 没有内存空间了, 由于执行save操作时, 会进行fork子进程 然后进行持久化 TODO 验证
+1. `ERR 'EVAL' command keys must in same slot`
+    - 由于Lua脚本执行在Cluster模式下需要保证操作的key在相同的slot中。
+    - 解决方案 强制加入花括号 指定计算slot的部分，保证key会分配到相同的slot。例如：`{prefix}a` 和 `{prefix}b`
 
 ************************
 

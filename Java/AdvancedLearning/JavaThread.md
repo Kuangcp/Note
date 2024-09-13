@@ -22,13 +22,13 @@ categories:
 - 3. [ThreadLocal](#threadlocal)
     - 3.1. [Hook](#hook)
     - 3.2. [优雅关机](#优雅关机)
-- 4. [线程池](#线程池)
-- 5. [协程](#协程)
-    - 5.1. [Quasar](#quasar)
-    - 5.2. [Virtual Threads](#virtual-threads)
-- 6. [Loom](#loom)
+- 4. [CompletableFuture](#completablefuture)
+- 5. [线程池](#线程池)
+- 6. [协程](#协程)
+    - 6.1. [Quasar](#quasar)
+    - 6.2. [Virtual Threads](#virtual-threads)
 
-💠 2024-06-21 16:17:04
+💠 2024-09-13 10:39:04
 ****************************************
 # Java线程
 > [个人学习代码](https://github.com/Kuangcp/JavaBase/tree/master/concurrency/src/main/java/thread)
@@ -189,6 +189,10 @@ LockSupport.park
 [参考: JVM安全退出（如何优雅的关闭java服务）](https://www.cnblogs.com/yuandluck/p/9517700.html)  
 
 ************************
+# CompletableFuture
+> [CompletableFutureTest](https://github.com/Kuangcp/JavaBase/blob/master/java8/src/test/java/com/github/kuangcp/future/CompletableFutureTest.java)  
+
+************************
 
 # 线程池
 > [Note: 线程池](/Java/AdvancedLearning/Concurrency/ExecutorAndPool.md)  
@@ -202,7 +206,7 @@ R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1,
 > [Github: Quasar](https://github.com/puniverse/quasar)
 
 ## Virtual Threads
-> [Virtual Threads](https://openjdk.org/jeps/444) 19预览 21Release  
+> [Virtual Threads](https://openjdk.org/jeps/444) 19预览 21Release | 来源于 [OpenJDK: Loom](https://wiki.openjdk.org/display/loom)`项目目标高吞吐量，轻量级并发模型，结构化并发&调度`  
 
 试用总结：如果要引入生产，需要关注整个JEP的文档，调试确认细节后才能使用，不然就会陷入到各种诡异的问题上。
 
@@ -214,11 +218,5 @@ R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1,
 > [虚拟线程：Java的新利器？](https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247538915&idx=1&sn=b9b6a303a79cea5225e0d445e10eddc8&scene=58&subscene=0)
 > [Java19 正式 GA！看虚拟线程如何大幅提高系统吞吐量 ](https://mp.weixin.qq.com/s/yyApBXxpXxVwttr01Hld6Q)  
 > [虚拟线程 - VirtualThread源码透视 ](https://www.cnblogs.com/throwable/p/16758997.html)
-
-************************
-
-# Loom
-> [OpenJDK: Loom](https://wiki.openjdk.org/display/loom)`目标是高吞吐量，轻量级并发模型： 协程，结构化并发，调度`  
-> [OpenJDK Project Loom](https://www.baeldung.com/openjdk-project-loom)  
 
 
