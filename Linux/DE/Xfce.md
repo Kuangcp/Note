@@ -7,20 +7,27 @@ categories:
     - Linux
 ---
 
-**目录 start**
+💠
 
-1. [Xfce](#xfce)
-    1. [Panel](#panel)
-        1. [Plugin](#plugin)
-1. [Tips](#tips)
+- 1. [Xfce](#xfce)
+    - 1.1. [Panel](#panel)
+        - 1.1.1. [Plugin](#plugin)
+- 2. [Tips](#tips)
 
-**目录 end**|_2022-09-14 13:34_|
+💠 2024-09-14 15:32:50
 ****************************************
 # Xfce 
 > [www.xfce-look.org](https://www.xfce-look.org)  
 
 1. notify-send 发送新通知 [使用notify-send发送桌面通知](https://blog.csdn.net/lujun9972/article/details/53292620)
     - notify-send -i iconFilePath title detail -t 1500
+    - -A 
+        - `notify-send Tips -A 1=Active -A 0=Reject` 消息弹窗带按钮（Active和Reject） 命令的返回是按钮的值 1或0
+        - `notify-send Tips -A Active -A Reject` 不指定值默认返回下标，即返回0或1
+    - -t 指定通知过期时长 单位s
+    - -p 打印出通知的id
+    - `-r id` 当前通知替换掉指定id的通知
+
 1. xflock4 锁屏
 1. zenity GTK实现，各种输入组件，弹窗提示
 
