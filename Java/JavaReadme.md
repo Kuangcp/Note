@@ -79,7 +79,6 @@ categories:
 >- [awesome-java](https://github.com/akullpp/awesome-java)
 >- [awesome-java-cn](https://github.com/jobbole/awesome-java-cn)
 >- [architect-awesome](https://github.com/xingshaocheng/architect-awesome)
->- [Java资源大全](http://www.codeceo.com/article/java-resource-collection.html)
 >- [advanced-java](https://github.com/doocs/advanced-java)
 >- [java-learning](https://github.com/brianway/java-learning)
 >- [tutorials](https://github.com/eugenp/tutorials)`Java生态Demo集`
@@ -93,11 +92,9 @@ categories:
 >- [daydayup](https://github.com/ITDragonBlog/daydayup)`Java架构师成长之路`
 
 >- [99 Problems](https://github.com/shekhargulati/99-problems)
->- [Java之美 从菜鸟到高手演变 系列](https://blog.csdn.net/zhangerqing/article/details/8245560)
->- [Java Mission Control](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html)
 
->- [jvm-tools](https://github.com/aragozin/jvm-tools)
 >- [模式之禅](/Java/DesignPattern.md)
+>- [Google: GWT](https://www.gwtproject.org/doc/latest/tutorial/index.html)`Java写前端，邪教`  
 
 ## 前辈建议
 Java 中有三大支柱（多线程、网络和安全），在 java.util.concurrent、java.security、javax.cropty、javax.security 四个包中就占了两个（多线程、安全）  

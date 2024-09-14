@@ -21,13 +21,13 @@ categories:
     - 3.5. [Thrift](#thrift)
     - 3.6. [Avro](#avro)
 
-💠 2024-04-21 23:54:18
+💠 2024-09-14 11:51:16
 ****************************************
 # 序列化
 > [参考: 序列化和反序列化](https://tech.meituan.com/2015/02/26/serialization-vs-deserialization.html)  
 
 - [Hessian](http://hessian.caucho.com/)
-- [Redisson 数据序列化](https://github.com/redisson/redisson/wiki/4.-%E6%95%B0%E6%8D%AE%E5%BA%8F%E5%88%97%E5%8C%96)
+- [Redisson 数据序列化](https://github.com/redisson/redisson/wiki/4.-%E6%95%B0%E6%8D%AE%E5%BA%8F%E5%88%97%E5%8C%96)`对象编码 方案列表`
 
 ## 序列化协议特性
 1. 通用性： 跨语言，跨平台，普及流行程度

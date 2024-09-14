@@ -45,7 +45,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [常用代码片段](#常用代码片段)
 
-💠 2024-09-09 17:44:33
+💠 2024-09-14 11:51:16
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -55,10 +55,13 @@ categories:
 
 > [参考: 编写 Bash Shell 脚本的最佳实践](https://blog.mythsman.com/post/5d2ab67ff678ba2eb3bd346f/)  
 
-> [shellcheck](https://github.com/koalaman/shellcheck)`Shell语法检测`
+************************
+
+> [shellcheck](https://github.com/koalaman/shellcheck)`Shell语法检测`  
+> [cmd-wrapped](https://github.com/YiNNx/cmd-wrapped)`统计命令执行历史`  
 
 ## shell类别
-> 切换shell `chsh -s /bin/bash`
+> 切换默认shell `chsh -s /bin/zsh`
 
 - sh
     - 大多Linux都支持的shell类别
@@ -125,8 +128,12 @@ echo  printf
 ******************
 ## 变量
 
+- 获取命令输出作为变量
+    - `$(ls)`
+    - ``` `ls` ```
+
 ### 变量作用域
-> 比Python的作用域更加恶心
+> 比Python的作用域更加宽泛和不可控，引用一个变量时需要注意值的来源。
 
 ### 嵌套
 ```sh
@@ -138,8 +145,8 @@ echo  printf
 
 > [shell将变量当命令执行问题](http://www.bitscn.com/os/linux/201505/506409.html)
 
-1. `${command}`
-2. `echo ${command}|awk '{run=$0;system(run)}'` 最好
+1. `${command}` 执行 command变量 内容
+    - `echo ${command} |awk '{run=$0;system(run)}'` 推荐方式
 
 *****************
 ## 数据类型

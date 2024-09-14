@@ -12,12 +12,13 @@ categories:
 - 1. [Zsh](#zsh)
     - 1.1. [为什么要使用](#为什么要使用)
     - 1.2. [Tips](#tips)
-    - 1.3. [oh-my-zsh](#oh-my-zsh)
-        - 1.3.1. [插件](#插件)
-        - 1.3.2. [主题](#主题)
-            - 1.3.2.1. [自己定制](#自己定制)
+- 2. [基础结构](#基础结构)
+- 3. [oh-my-zsh](#oh-my-zsh)
+    - 3.1. [插件](#插件)
+    - 3.2. [主题](#主题)
+        - 3.2.1. [自己定制](#自己定制)
 
-💠 2024-04-30 23:06:06
+💠 2024-09-14 11:51:16
 ****************************************
 # Zsh
 > [arch zsh wiki](https://wiki.archlinux.org/index.php/Zsh)
@@ -38,9 +39,10 @@ categories:
 
 - 数组使用 `list=(a b c); for i in $list; do echo $i; done`
 
+# 基础结构
 ************************
 
-## oh-my-zsh
+# oh-my-zsh
 > [Github](https://github.com/robbyrussell/oh-my-zsh)  
 > [关于PS1环境变量的折腾](https://gitee.com/kcp1104/codes/gca14wtqvm67l9j5r0deb56#Zsh.md) `因为含特殊字符GitBook构建通不过,只能放出去了`
 
@@ -54,7 +56,7 @@ categories:
     )
 ```
 
-### 插件
+## 插件
 > [wiki: plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins)  
 > [zsh oh-my-zsh 插件推荐 ](https://hufangyun.com/2017/zsh-plugin/)
 
@@ -62,7 +64,7 @@ categories:
 
 **********************
 
-### 主题
+## 主题
 > [官网主题列表](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes) 
 
 - 自带主题: amuse clean wedisagree, muse也还好,就是没时间
@@ -103,7 +105,7 @@ categories:
 2. wget http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
 3. config .zshrc to `ZSH_THEME="bullet-train" `
 
-#### 自己定制
+### 自己定制
 > [Github doc](https://github.com/robbyrussell/oh-my-zsh/wiki/Customization)
 
 `基于muse的主题` 用在服务器上挺好

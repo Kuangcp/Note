@@ -20,9 +20,8 @@ categories:
         - 1.3.1. [主题](#主题)
         - 1.3.2. [插件](#插件)
     - 1.4. [Vivaldi](#vivaldi)
-    - 1.5. [Opera](#opera)
 
-💠 2024-09-05 11:52:54
+💠 2024-09-14 11:51:16
 ****************************************
 # 浏览器
 [neko](https://github.com/m1k1o/neko)`runs in docker and uses WebRTC`
@@ -56,10 +55,6 @@ categories:
     - 如果想在开发版以及Nightly上用上该插件, 只需要去 ~/.mozilla/ 下找到正式版的配置文件里的 extension 目录就能找到 cpmanager.xpi 了, 拖入浏览器就可以了
     - 但是这个组件只保证正式版是正常的, 其他版本则要看运气
 
-- `Vimium`
-    - Vim风格操作浏览器日常操作，命令简单，基本功能一致
-    - 可以按域名配置启用禁用规则
-    - FF113版本不能正常工作了
 - `Vimium C - All by Keyboard`
     - Vim风格操作浏览器日常操作
 1. `Dark Reader` 设置网页黑夜模式
@@ -134,6 +129,11 @@ categories:
 
 1. `Removing keychain login from Chormium` 启动命令添加如下参数 chromium --password-store=basic
 1. `设置代理` chrome追加启动参数 --proxy-server=192.168.7.77:8888 --ignore-certificate-errors 
+    - PAC设置 `--proxy-pac-url=http://localhost:1235/pac`
+
+- 切换最近标签 CTRL+PgUp 和 CTRL+PgDn
+
+使用Profiles实现多账户共存，但是保存的帐号密码都会跟随其他Profile，还是没有Firefox的Multiple Accounts丝滑。
 
 ### 主题
 1. Aero Trans Brushed Metal Theme
@@ -147,20 +147,20 @@ categories:
 - [chromefor](https://www.chromefor.com/)
 - [Chrome插件英雄榜](https://github.com/zhaoolee/ChromeAppHeroes)
 
-1. Saka key
-1. cVim [Github](https://github.com/1995eaton/chromium-vim)
+1. Vimium C - All by Keyboard 
 1. crxMouse 
 1. TabsFolder
 1. Cluster Window & Tab Manager
 1. Chrome Download Manager
 1. Fatkun 图片批量保存
+1. Stylized Scrollbar 滚动条美化
+1. Tab Position Options 当前tab右侧打开新tab
+1. Auto Tab Discard 冻结最少使用的tab
+1. Open Last Tab 按最近使用标签切换
 
 ************************
 
 ## Vivaldi
-- 采用的是chrome内核 内置了很多常用插件 相比于chrome更符合国内使用
+- 采用的是chrome内核 内置了很多常用插件(但是安装插件的入口关闭了) 相比于chrome更符合国内使用
 
-- vivaldi://settings
-
-## Opera
-- 定制化比较多，但是设置不开放
+vivaldi://settings

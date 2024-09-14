@@ -14,7 +14,7 @@ categories:
     - 1.3. [Lettuce](#lettuce)
     - 1.4. [vertx-redis-client](#vertx-redis-client)
 
-💠 2024-09-12 16:01:31
+💠 2024-09-14 11:51:16
 ****************************************
 # Java 使用 Redis
 > [Official List](https://redis.io/clients#java)
@@ -51,7 +51,7 @@ categories:
 
 
 > 问题： 如果此时JVM发生大于TTL的FullGC，后续又恢复了，锁没有续约，被别的JVM进程抢到了锁
-- 方案： 
+- 方案： 尽可能让锁TTL大于业务操作时间，释放锁时绑定线程或业务，避免误释放
 
 *********************
 ## Lettuce

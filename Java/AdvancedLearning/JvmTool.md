@@ -38,7 +38,7 @@ categories:
     - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-08-22 11:15:26
+💠 2024-09-14 11:51:16
 ****************************************
 
 # JVM 监控&诊断
@@ -52,6 +52,8 @@ categories:
 
 命令行推荐 arthas ，可视化界面推荐 JProfiler  
 此外还有一些在线的平台 [gceasy](https://gceasy.io/)、heaphero、fastthread 。
+
+> [jvm-tools](https://github.com/aragozin/jvm-tools)
 
 # JVMTI
 `JVM Tool Interface`

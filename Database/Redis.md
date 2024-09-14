@@ -41,12 +41,13 @@ categories:
     - 8.3. [Redis Stack](#redis-stack)
 - 9. [Redis的应用场景](#redis的应用场景)
     - 9.1. [分布式锁](#分布式锁)
+    - 9.2. [消息队列](#消息队列)
 - 10. [Redis 缓存相关问题](#redis-缓存相关问题)
     - 10.1. [缓存雪崩](#缓存雪崩)
     - 10.2. [缓存击穿](#缓存击穿)
     - 10.3. [缓存穿透](#缓存穿透)
 
-💠 2024-09-12 19:42:44
+💠 2024-09-14 11:51:16
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -384,7 +385,7 @@ Redis Stack 是一组软件套件，它主要由三部分组成。Redis Stack Se
 
 ## 分布式锁
 > [Doc: setnx](http://cndoc.github.io/redis-doc-cn/cn/commands/setnx.html)`包含以此命令设计锁的一些缺陷`  
-> [redisson](https://github.com/redisson/redisson)
+> [redisson](https://github.com/redisson/redisson)  
 
 单机 使用 setnx， redis分布式部署的情况下使用RedLock
 
@@ -395,16 +396,15 @@ Redis Stack 是一组软件套件，它主要由三部分组成。Redis Stack Se
 > [参考: redis分布式锁在MySQL事务代码中使用](https://blog.csdn.net/seapeak007/article/details/99337781)  
 > [参考: Lua脚本在redis分布式锁场景的运用](https://www.cnblogs.com/demingblog/p/9542124.html)  
 
+## 消息队列
+> List, Pub/Sub, Stream 可实现, 可靠性依次增加，但依然会有消息丢失问题
+
+> [asynq](https://github.com/hibiken/asynq)  
+
 ************************
 
 `搜索`
 > [RediSearch](https://github.com/RediSearch/RediSearch)
-
-
-`消息队列`
-> List, Pub/Sub, Stream 可实现, 可靠性依次增加，但依然会有消息丢失问题
-
-> [asynq](https://github.com/hibiken/asynq)  
 
 ************************
 
