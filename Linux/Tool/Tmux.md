@@ -22,7 +22,7 @@ categories:
 - 5. [Advanced](#advanced)
 - 6. [Tips](#tips)
 
-💠 2024-08-14 15:45:26
+💠 2024-09-20 11:52:03
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -31,8 +31,9 @@ categories:
 > [参考: 程序员高效技巧系列](http://cenalulu.github.io/linux/professional-tmux-skills/)  
 > [Tmux](https://github.com/skywind3000/awesome-cheatsheets/blob/master/tools/tmux.txt)  
 
-> [Byobu](https://github.com/dustinkirkland/byobu)  
+> [Byobu](https://github.com/dustinkirkland/byobu)`window manager and terminal multiplexer.`  
 
+> [libtmux](https://github.com/tmux-python/libtmux)`Python lib操作Tmux动作`
 ************************
 # 基本操作
 

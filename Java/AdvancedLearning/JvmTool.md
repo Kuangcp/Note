@@ -38,7 +38,7 @@ categories:
     - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-09-14 11:51:16
+💠 2024-09-20 11:52:03
 ****************************************
 
 # JVM 监控&诊断
@@ -266,12 +266,12 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 > [Java Monitoring Tools](https://sematext.com/guides/java-monitoring/)`Profile APM log 等多个解决思路`  
 
 ## JProfiler
-> [Official Site](https://www.ej-technologies.com/products/jprofiler/overview.html)  
+> [Official Site](https://www.ej-technologies.com/products/jprofiler/overview.html)`收费`  
 
 [OOM 踩坑日记](https://huminxi.netlify.app/2022/06/24/oom%20%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/#more)
 
 ## YourKit
-[YourKit Java Profiler](https://www.yourkit.com/java/profiler)
+[YourKit Java Profiler](https://www.yourkit.com/java/profiler)`收费`
 
 ## Visualvm
 > [Github:visualvm](https://github.com/oracle/visualvm)  
