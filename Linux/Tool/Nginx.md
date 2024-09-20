@@ -41,7 +41,7 @@ categories:
     - 7.5. [nuster](#nuster)
 - 8. [Tips](#tips)
 
-💠 2024-09-06 11:36:43
+💠 2024-09-20 17:30:23
 ****************************************
 # Nginx
 
@@ -395,9 +395,9 @@ server {
 
 ```conf
   gzip  on;
-  gzip_comp_level 4;
+  gzip_comp_level 4; # 缺省值
   gzip_buffers 4 16k;
-  gzip_http_version 1.1;
+  gzip_http_version 1.1; # 缺省值
   gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
 ```
 

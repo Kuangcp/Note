@@ -15,7 +15,7 @@ categories:
     - 1.3. [RPC vs MQ](#rpc-vs-mq)
 - 2. [实践](#实践)
 
-💠 2024-05-06 19:59:21
+💠 2024-09-20 17:30:23
 ****************************************
 # RPC
 > Remote Procedure Calls 
@@ -26,7 +26,11 @@ categories:
 
 - 通常使用 IDL(Interface Definition) 建立接口定义, 达成约束, 一般指一种开发方式和规范, 具体的实现可以多样
 
-> [Github rpc-framework ](https://github.com/topics/rpc-framework?l=java)
+> [Github rpc-framework ](https://github.com/topics/rpc-framework?l=java)`常用为Dubbo，SpringCloud，gRPC`
+
+> [motan](https://github.com/weibocom/motan)`微博Java`  
+
+gRPC 和 Thrift 虽然支持跨语言的 RPC 调用，但是它们只提供了最基本的 RPC 框架功能，缺乏一系列配套的服务化组件和服务治理功能的支撑。Dubbo 和 SpringCloud就有完善的服务治理（注册中心、熔断、限流、监控、分布式追踪等）。
 
 ## 架构设计
 > [如何手撸一个较为完整的RPC框架 ](https://juejin.cn/post/6992867064952127524)  

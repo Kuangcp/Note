@@ -22,20 +22,21 @@ categories:
 - 3. [Tips](#tips)
     - 3.1. [JSON字符串反序列化时泛型丢失问题](#json字符串反序列化时泛型丢失问题)
 
-💠 2024-04-21 23:54:18
+💠 2024-09-20 17:30:23
 ****************************************
 # Java中的序列化
 > [码农翻身:序列化： 一个老家伙的咸鱼翻身](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513589&idx=1&sn=d402d623d9121453f1e570395c7f99d7&chksm=80d67a36b7a1f32054d4c779dd26e8f97a075cf4d9ed1281f16d09f1df50a29319cd37520377&scene=21#wechat_redirect) `对象转化为二进制流`
 
-> 反序列化生成对象时不会调用构造器
+- 序列化： 将数据结构或对象转换成二进制串的过程
+- 反序列化：将在序列化过程中所生成的二进制串转换成数据结构或者对象的过程
+    - 反序列化生成对象时不会调用对应类的构造器
 
-> [Note：序列化](/Skills/Serialization/Serialization.md)`语言无关`
+> [Note：序列化](/Skills/Serialization/Serialization.md)`语言无关`  
+> [jvm-serializers](https://github.com/eishay/jvm-serializers)`多种框架的基准测试`  
 
 ## Serializable
 > 简单的说serialVersionUID就是类的版本控制, 标明类序列化时的版本, 版本一致表明这两个类定义一致  
 > 在进行反序列化时, JVM会把传来的字节流中的serialVersionUID与本地相应实体（类）的serialVersionUID进行比较，如果相同就认为是一致的，可以进行反序列化，否则就会出现序列化版本不一致的异常。(InvalidCastException)  
-
-[参考博客](http://swiftlet.net/archives/1268)
 
 - serialVersionUID有两种显示的生成方式： 
     - 一种是固定常量值，例如1L
