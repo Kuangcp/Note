@@ -13,6 +13,7 @@ categories:
     - 1.1. [基础思想](#基础思想)
         - 1.1.1. [Git Flow](#git-flow)
         - 1.1.2. [Github Flow](#github-flow)
+        - 1.1.3. [Trunk-Based](#trunk-based)
     - 1.2. [提交准则](#提交准则)
         - 1.2.1. [commit template](#commit-template)
     - 1.3. [Tips](#tips)
@@ -29,7 +30,7 @@ categories:
 - 3. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
     - 3.1. [最终方案](#最终方案)
 
-💠 2024-08-06 14:07:02
+💠 2024-09-20 18:39:25
 ****************************************
 # 使用Git进行团队协作
 
@@ -48,7 +49,8 @@ categories:
 
 ### Git Flow
 
-> [Vincent Driessen 提出了 A Successful Git Branching Model](http://nvie.com/posts/a-successful-git-branching-model/)
+> [Vincent Driessen 提出了 A Successful Git Branching Model](http://nvie.com/posts/a-successful-git-branching-model/)  
+> [Gitflow workflow ](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)  
 
 - [依据以上思想开发的 git flow工具](https://github.com/nvie/gitflow)
   - [介绍 Git Flow](https://datasift.github.io/gitflow/IntroducingGitFlow.html)
@@ -75,7 +77,8 @@ categories:
 
 - [分支图复杂的一个项目](https://github.com/Netflix/eureka/network) `只是演示分支的复杂度`
 
----
+### Trunk-Based
+> [Trunk-Based Development](https://trunkbaseddevelopment.com/)`基于主干的单分支模型，不使用多分支`  
 
 ## 提交准则
 
