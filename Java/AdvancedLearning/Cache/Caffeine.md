@@ -16,7 +16,7 @@ categories:
         - 1.2.3. [持久化](#持久化)
         - 1.2.4. [统计](#统计)
 
-💠 2024-05-04 23:18:27
+💠 2024-09-20 11:10:09
 ****************************************
 # Caffeine
 > [Github](https://github.com/ben-manes/caffeine)  
@@ -24,6 +24,8 @@ categories:
 > [本地缓存无冕之王Caffeine Cache ](https://mp.weixin.qq.com/s?__biz=Mzg4Nzc3NjkzOA==&mid=2247486885&idx=1&sn=37c7a9461402bd97822295cf51361777&chksm=cf847e60f8f3f776eb3b477decfbac55dc8b7ae1cf607ef68fbee89dbe02d40a800a92fabec7#rd)
 
 ## 使用
+
+> [Introduction to Caffeine](https://www.baeldung.com/java-caching-caffeine)  
 
 ### SpringBoot集成
 配置文件方式
@@ -36,6 +38,7 @@ spring:
     caffeine:
       spec: maximumSize=1024,refreshAfterWrite=60s
 ```
+
 Bean方式
 ```java
     @Bean
@@ -50,9 +53,16 @@ Bean方式
                 .initialCapacity(100)
                 .maximumSize(500)
                 .expireAfterAccess(10, TimeUnit.MINUTES)
-                .weakKeys()
                 .recordStats();
     }
+```
+
+```java
+    Cache<Integer, String> flowNameCache = Caffeine.newBuilder()
+            .initialCapacity(100)
+            .maximumSize(1000)
+            .expireAfterAccess(10, TimeUnit.MINUTES)
+            .recordStats().build();
 ```
 
 ************************

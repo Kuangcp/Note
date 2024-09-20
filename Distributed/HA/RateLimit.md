@@ -18,11 +18,12 @@ categories:
     - 2.2. [Guava](#guava)
     - 2.3. [Redis](#redis)
     - 2.4. [Hystrix](#hystrix)
+    - 2.5. [concurrency-limits](#concurrency-limits)
 - 3. [分布式Semaphore](#分布式semaphore)
     - 3.1. [Redis 实现](#redis-实现)
     - 3.2. [Oracle Coherence](#oracle-coherence)
 
-💠 2024-09-12 19:42:44
+💠 2024-09-20 11:10:09
 ****************************************
 # 限流
 
@@ -72,6 +73,9 @@ RateLimiter 令牌桶实现
 > [分布式限流：基于 Redis 实现](https://pandaychen.github.io/2020/09/21/A-DISTRIBUTE-GOREDIS-RATELIMITER-ANALYSIS/)  
 
 ## Hystrix
+
+## concurrency-limits 
+[concurrency-limits](https://github.com/Netflix/concurrency-limits) 类似于 TCP拥塞控制算法
 
 ************************
 

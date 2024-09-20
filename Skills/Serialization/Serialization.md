@@ -18,10 +18,13 @@ categories:
     - 3.2. [JSON](#json)
     - 3.3. [MessagePack](#messagepack)
     - 3.4. [Protobuf](#protobuf)
-    - 3.5. [Thrift](#thrift)
-    - 3.6. [Avro](#avro)
+    - 3.5. [FlatBuffers](#flatbuffers)
+    - 3.6. [SBE](#sbe)
+    - 3.7. [capnproto](#capnproto)
+    - 3.8. [Thrift](#thrift)
+    - 3.9. [Avro](#avro)
 
-💠 2024-09-14 11:51:16
+💠 2024-09-20 11:10:09
 ****************************************
 # 序列化
 > [参考: 序列化和反序列化](https://tech.meituan.com/2015/02/26/serialization-vs-deserialization.html)  
@@ -73,6 +76,8 @@ HTTP协议中有使用到类似的设计思想(在Header部分会声明Body的Le
 XML序列化（Xstream）无论在性能和简洁性上比较差，JSON和Protobuf使用更为广泛， Protobuf压缩率和性能更好。  
 常见的Web服务优先选择JSON有更大普适性，或者后端使用Protobuf，在网关层转为JSON。  
 
+> FlatBuffers 和 Cap'n Proto、simple-binary-encoding，支持“零拷贝”反序列化.
+
 ## XML
 XML历史悠久，其1.0版本早在1998年就形成标准，并被广泛使用至今。  
 XML的最初产生目标是对互联网文档（Document）进行标记，所以它的设计理念中就包含了对于人和机器都具备可读性。 但是，当这种标记文档的设计被用来序列化对象的时候，就显得冗长而复杂（Verbose and Complex）。  
@@ -88,9 +93,8 @@ SOAP是一种采用XML进行序列化和反序列化的协议，它的IDL是WSDL
 - 优点：具备可读性，自描述性（序列化时无需IDL），数据相较XML更简洁，解析成本低，原生支持JavaScript（已是Ajax事实标准）
 - 缺点：数据信息占比仍较低
 
-
 ************************
-二进制JSON
+> 二进制JSON
 - JSONB JSON字符串二进制化， 例如MongoDB，PostgreSQL有使用到  
     - [ PostgreSQL JSON Types](https://www.postgresql.org/docs/current/datatype-json.html)
 - [CBOR](http://cbor.io/) JSON二进制协议，多语言实现  
@@ -98,12 +102,29 @@ SOAP是一种采用XML进行序列化和反序列化的协议，它的IDL是WSDL
 - [Smile](https://github.com/FasterXML/smile-format-specification)
 
 ## MessagePack
-> [Github](https://github.com/msgpack) | [参考: MessagePack：一种高效二进制序列化格式](http://hao.jobbole.com/messagepack/)
+> [Github](https://github.com/msgpack) | [Site](https://msgpack.org/)  
 
-多语言支持，类似JSON，可以理解为规则压缩的JSON
+MessagePack 是一种高效的二进制序列化格式。它能让你在多种语言之间交换数据，就像 JSON 一样。但它的速度更快，体积更小。小整数被编码成一个字节，而典型的短字符串除了字符串本身外，只需要一个额外的字节。 可以理解为按特定规则压缩的JSON
 
 ## Protobuf
-[Note](/Skills/Serialization/Protobuf.md)
+[Note: Protobuf](/Skills/Serialization/Protobuf.md)
+
+## FlatBuffers
+[Github](https://github.com/google/flatbuffers) | [Doc](https://flatbuffers.dev/index.html)
+
+更轻量快速，适用于性能敏感的应用场景，例如移动端游戏。兼容protocolbuffer的proto文件
+
+> [深入浅出 FlatBuffers 之 Schema](https://halfrost.com/flatbuffers_schema/)
+
+FlatBuffer 是一个二进制 buffer，它使用 offset 组织嵌套对象（struct，table，vectors，等），可以使数据像任何基于指针的数据结构一样，就地访问数据。然而 FlatBuffer 与大多数内存中的数据结构不同，它使用严格的对齐规则和字节顺序来确保 buffer 是跨平台的。此外，对于 table 对象，FlatBuffers 提供前向/后向兼容性和 optional 字段，以支持大多数格式的演变。
+
+FlatBuffers 的主要目标是避免反序列化。这是通过定义二进制数据协议来实现的，一种将定义好的将数据转换为二进制数据的方法。由该协议创建的二进制结构可以 wire 发送，并且无需进一步处理即可读取，即无临时对象和额外内存分配。相比较而言，在传输 JSON 时，我们需要将数据转换为字符串，通过 wire 发送，解析字符串，并将其转换为本地对象。Flatbuffers 不需要这些操作。你用二进制装入数据，发送相同的二进制文件，并直接从二进制文件读取。
+
+## SBE
+> [Simple Binary Encoding](https://github.com/real-logic/simple-binary-encoding)
+
+## capnproto
+> [Cap’n Proto](https://github.com/capnproto/capnproto)  
 
 ## Thrift
 > [官网](https://thrift.apache.org/)源于Facebook, 支持多种语言: C++ C# Cocoa Erlang Haskell Java Ocami Perl PHP Python Ruby Smalltalk

@@ -14,9 +14,10 @@ categories:
     - 1.2. [聚合函数](#聚合函数)
     - 1.3. [分析函数](#分析函数)
         - 1.3.1. [窗口函数](#窗口函数)
-- 2. [Tips](#tips)
+- 2. [安全](#安全)
+- 3. [Tips](#tips)
 
-💠 2024-09-05 11:52:54
+💠 2024-09-20 11:10:09
 ****************************************
 # SQL
 > [Wiki: SQL](https://en.wikipedia.org/wiki/SQL)
@@ -54,6 +55,12 @@ categories:
 
 > [窗口函数](https://blog.csdn.net/huozhicheng/article/details/5843782/)
 
+************************
+
+# 安全
+> [SQL Injection Payload List](https://github.com/payloadbox/sql-injection-payload-list)  
+
+************************
 
 # Tips
 > [soar](https://github.com/XiaoMi/soar)`SQL Optimizer And Rewriter `

@@ -17,7 +17,7 @@ categories:
     - 1.5. [sed](#sed)
     - 1.6. [awk](#awk)
 
-💠 2024-09-09 17:25:40
+💠 2024-09-20 11:10:09
 ****************************************
 # 流编辑器
 > [参考: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
@@ -35,6 +35,8 @@ categories:
 
 ## cut
 > man cut
+
+md5sum | cut -c 1-8
 
 ## paste
 > 粘贴，合并文件用

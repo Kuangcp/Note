@@ -45,7 +45,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [常用代码片段](#常用代码片段)
 
-💠 2024-09-14 11:51:16
+💠 2024-09-20 11:10:09
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -84,6 +84,8 @@ categories:
 
 - 文件头部 `#!/bin/sh`表示要使用sh解释器来执行, 可以替换成bash dash
     -  只要该文件具有执行权限就可以直接运行了 `./a.sh` 或者绝对路径
+
+- [pueue](https://github.com/Nukesor/pueue)`shell后台执行队列`
 
 **********************
 # 基础结构
