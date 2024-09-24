@@ -74,7 +74,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2024-09-20 18:39:25
+💠 2024-09-24 15:38:50
 ****************************************
 # 网络
 
@@ -268,8 +268,11 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 
 > [Why do we need a 3-way handshake? Why not just 2-way?](https://networkengineering.stackexchange.com/questions/24068/why-do-we-need-a-3-way-handshake-why-not-just-2-way)
 
+> [TCP 重传、滑动窗口、流量控制、拥塞控制](https://www.xiaolincoding.com/network/3_tcp/tcp_feature.html) | [TCP congestion control](https://en.wikipedia.org/wiki/TCP_congestion_control)
+
 ************************
 TCP状态
+
 > [详解TCP的11种状态](https://cloud.tencent.com/developer/article/1648432)
 
 > [大量的 TIME_WAIT 状态连接怎么处理？](https://cloud.tencent.com/developer/article/1675933)

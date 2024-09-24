@@ -51,7 +51,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2024-09-20 11:10:09
+💠 2024-09-24 15:38:50
 ****************************************
 # Go
 
@@ -512,6 +512,7 @@ func walkfunc(path string, info os.FileInfo, err error) error {
 > 分析内存
 - go tool pprof -alloc_space/-inuse_space http://ip:8899/debug/pprof/heap 后进入REPL 输入top查看内存占用
 - go tool pprof -inuse_space -cum -svg http://ip:8899/debug/pprof/heap > heap_inuse.svg 导出成svg图
+- go tool pprof -http=:7778 http://localhost:8899/debug/pprof/heap
 
 > 分析CPU  
 

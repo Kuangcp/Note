@@ -37,7 +37,7 @@ categories:
 - 4. [Datagrip](#datagrip)
     - 4.1. [Datagrip时区问题](#datagrip时区问题)
 
-💠 2024-09-02 17:14:24
+💠 2024-09-24 15:38:50
 ****************************************
 
 # IDEA 使用笔记
@@ -347,6 +347,7 @@ _例如修改为如下_
     - [《阿里巴巴Java开发规约》IDEA插件与Eclipse插件使用指南](https://zhuanlan.zhihu.com/p/30191998)
 1. TestMe 快速创建测试类
 1. TestNG 测试框架的集成
+1. Junit4 Parallel Runner 并行执行单元测试
 1. lombok
     - 插件商店中搜索 lombok 安装重启idea即可
     - 配置 Build,Execution > Compiler > Annotation Processors 勾选上即可使用lombok的注解

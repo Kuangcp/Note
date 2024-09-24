@@ -42,7 +42,7 @@ categories:
     - 3.1. [优雅部署](#优雅部署)
 - 4. [Tips](#tips)
 
-💠 2024-07-24 17:28:31
+💠 2024-09-24 15:38:50
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -102,7 +102,8 @@ _其他,可选_
     - `@Resource([value=]"id")` 按名字注入
     - `@Autowried` 根据类型自动注入（只对单例起作用）和 `Resource(类名首字母小写)` 等价
         - 通过阅读源码还可以知道 可以将符合条件的Bean注入到 List 和 Map 中去, 甚至 Optional
-    - `@Qualifier("id") `自动注入后的进一步精确（多个Bean的情况：）
+    - `@Qualifier("id") `自动注入后的进一步精确（多个Bean的情况）
+        - 如果同类型的Bean有明显的主次关系（或者说缺省值），可以在Bean的声明时加上 `@Primary` 注解，那就可以省去`Qualifier`的使用
 
 - **注意 :** 关于自动注入, 在属性上打 @Autowried 注解是不建议的, 作者建议采用构造器方式:  [Why field injection is evil](http://olivergierke.de/2013/11/why-field-injection-is-evil/)
     - 如果使用了 lombok 那么可以在类上使用 
@@ -391,8 +392,7 @@ Student
    - **动态代理**
        - 针对一个方面编写一个InvocationHandler，然后借用JDK反射包中的Proxy类为各种接口动态生成相应的代理类 
 
-属性上 @Autowired 即可, 但是现在不建议直接在属性上使用注解, 而是建议用在构造器上  
-这是为了避免NPE: 当手动使用 new 实例化Bean, 里面本该注入的属性是会为null
+属性上 @Autowired 即可, 但是现在不建议直接在属性上使用注解, 而是建议用在构造器上, 这是为了避免NPE: 当使用new实例化时, 里面本该注入的属性会为null
 
 `使用Lombok简化该方式`
 ```java

@@ -13,26 +13,27 @@ categories:
 - 1. [如何使用Junit](#如何使用junit)
     - 1.1. [引入依赖](#引入依赖)
         - 1.1.1. [Maven项目](#maven项目)
-        - 1.1.2. [Gradle项目](#gradle项目)
     - 1.2. [编码规范](#编码规范)
     - 1.3. [常用注解](#常用注解)
         - 1.3.1. [Rule注解的使用](#rule注解的使用)
     - 1.4. [断言的使用](#断言的使用)
         - 1.4.1. [assertThat](#assertthat)
     - 1.5. [参数化测试](#参数化测试)
-    - 1.6. [测试套件](#测试套件)
-    - 1.7. [分类测试](#分类测试)
+    - 1.6. [分类测试](#分类测试)
+    - 1.7. [测试套件](#测试套件)
 - 2. [Junit源码解析](#junit源码解析)
 - 3. [如何使用JUnit5](#如何使用junit5)
 
-💠 2024-09-03 21:27:16
+💠 2024-09-24 15:38:50
 ****************************************
 # 如何使用Junit
-> [Official doc: 4.12](https://github.com/junit-team/junit4/blob/master/doc/ReleaseNotes4.12.md)
+> [Official doc: 4.12](https://github.com/junit-team/junit4/blob/master/doc/ReleaseNotes4.12.md)  
+
+> [单元测试 - JUnit4 详解](https://pdai.tech/md/develop/ut/dev-ut-x-junit.html)  
 
 - Junit4已经停止更新了, 取而代之的是 Junit5 Jupiter, 但是Spring等众多框架仍使用Junit4
 
-> 基本使用
+> 快速使用
 _JUnit_
 - 主要的三个特性： 
     - 用于测试预期结果和异常的断言， assertEquals()
@@ -46,40 +47,17 @@ _一个基本的JUnit测试_
 
 ## 引入依赖
 ### Maven项目
-> [参考项目](https://github.com/zhuifengshen/Junit4Demo)
+> [参考项目 Junit4Demo](https://github.com/zhuifengshen/Junit4Demo)
 
 > 添加依赖
 ```xml
-<dependency>
-    <groupId>junit</groupId>
-    <artifactId>junit</artifactId>
-    <version>4.12</version>
-    <scope>test</scope>
-</dependency>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+        <scope>test</scope>
+    </dependency>
 ```
-
-> 例如该项目结构
-```
-├── pom.xml
-└── src
-    ├── main
-    │   └── java
-    │       └── com
-    │           └── github
-    │               └── kuangcp
-    │                   └── Caculate.java
-    └── test
-        └── java
-            └── com
-                └── github
-                    └── kuangcp
-                        ├── AssertTest.java
-                        └── CaculateTest.java
-```
-
-> 如果是Idea然后使用快捷键Ctrl Shift T即可自动创建测试类  
-
-### Gradle项目
 
 *************************
 
@@ -111,6 +89,8 @@ _一个基本的JUnit测试_
 ### Rule注解的使用
 > 也可以使用 `@Rule` 来规定测试类中所有测试方法  
 ```java
+    import org.junit.rules.Timeout;
+
     @Rule 
     public Timeout timeout = new Timeout(1000);
 ```
@@ -179,42 +159,59 @@ public class AssertTest {
 ```java
     // 1
     @RunWith(Parameterized.class)
-    public class CaculateTest {
+    public class CalculateTest {
         // 2
         private double numA;
         private double numB;
+
         // 3
-        public CaculateTest(double numA, double numB) {
+        public CalculateTest(double numA, double numB) {
             this.numA = numA;
             this.numB = numB;
         }
+
         // 4
         @Parameterized.Parameters
-        public static Collection<Object[]> data(){
+        public static Collection<Object[]> data() {
             Object[][] data = new Object[][]{
                     {2, 4},
                     {3, 5}
             };
             return Arrays.asList(data);
         }
+
         // 5
         @Test
         public void testAdd() throws Exception {
-            Caculate caculate = new Caculate();
-            double result = caculate.add(numA, numB);
-            System.out.println("input "+numA+" + "+numB+" = "+result);
+            Calculate calc = new Calculate();
+            double result = calc.add(numA, numB);
+            System.out.println("input " + numA + " + " + numB + " = " + result);
             assert result != 0;
         }
-        // 别的方法也是可以一样的使用, 而且所有的测试方法都受到了影响 都会迭代多次
+
         @Test
-        public void testDevide(){
-            double result = caculate.devide(numA, 3);
-            System.out.println("input "+numA+" + "+3+" = "+result);
+        public void testDivide() {
+            Calculate calc = new Calculate();
+            double result = calc.divide(numA, 3);
+            System.out.println("input " + numA + " / " + 3 + " = " + result);
             assert result != 0;
         }
     }
+
 ```
-> 最后执行testAdd 测试方法的结果是: 将data方法返回的数据迭代执行testAdd, 
+> 执行效果: 将data方法返回的数据作为参数， 迭代执行单元测试方法
+
+## 分类测试
+
+```java
+    public interface FastTests {
+    }
+    public interface SlowTests {
+    }
+```
+- 在测试方法或测试类上加注解 @Category 对类或方法做标记和分类，便于测试套件使用。
+    - 例如 测试方法上添加 `@Category(SlowTests.class)`
+    - 测试套件类上添加 `@Categories.IncludeCategory(SlowTests.class)` 将会标记该测试套件只会运行 SlowTests 标记的方法
 
 ## 测试套件
 > Junit 4允许通过使用测试套件类批量运行测试类 | 批量执行测试类, 组装为一个套件,一起执行
@@ -229,8 +226,6 @@ public class AssertTest {
 
 注意最好不要在当前测试类中写测试方法, 因为运行不了, 但是如果写了, 直接运行该测试类却又不会受影响
 
-## 分类测试
-
 
 ************************
 
@@ -243,9 +238,7 @@ public class AssertTest {
 ************************
 
 # 如何使用JUnit5
-> [Official doc](http://junit.org/junit5/docs/current/user-guide/)
-
-> [参考博客](http://blog.csdn.net/bitgnu/article/details/78715836)
-> [参考: JUnit 5 新特性](https://www.ibm.com/developerworks/cn/java/j-junit5/index.html)
+> [Official doc](http://junit.org/junit5/docs/current/user-guide/)  
+> [单元测试 - Junit5 详解](https://pdai.tech/md/develop/ut/dev-ut-x-junit5.html)  
 
 > [参考: JUnit5用户指南](http://junit5.doczh.cn/overview/)
