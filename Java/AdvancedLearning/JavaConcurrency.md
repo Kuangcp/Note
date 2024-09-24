@@ -21,27 +21,26 @@ categories:
         - 2.2.1. [正确使用](#正确使用)
 - 3. [现代并发JUC包](#现代并发juc包)
     - 3.1. [概念](#概念)
-        - 3.1.1. [CAS指令](#cas指令)
-        - 3.1.2. [原子类](#原子类)
-        - 3.1.3. [读写锁](#读写锁)
+        - 3.1.1. [读写锁](#读写锁)
     - 3.2. [实现类](#实现类)
-        - 3.2.1. [Lock](#lock)
-        - 3.2.2. [CountDownLatch](#countdownlatch)
-        - 3.2.3. [CyclicBarrier](#cyclicbarrier)
-        - 3.2.4. [Semaphore](#semaphore)
-        - 3.2.5. [Phaser](#phaser)
-        - 3.2.6. [Exchanger](#exchanger)
-        - 3.2.7. [ConcurrentHashMap](#concurrenthashmap)
-        - 3.2.8. [ConcurrentSkipListMap](#concurrentskiplistmap)
-        - 3.2.9. [CopyOnWriteArrayList](#copyonwritearraylist)
+        - 3.2.1. [原子类](#原子类)
+        - 3.2.2. [Lock](#lock)
+        - 3.2.3. [CountDownLatch](#countdownlatch)
+        - 3.2.4. [CyclicBarrier](#cyclicbarrier)
+        - 3.2.5. [Semaphore](#semaphore)
+        - 3.2.6. [Phaser](#phaser)
+        - 3.2.7. [Exchanger](#exchanger)
+        - 3.2.8. [ConcurrentHashMap](#concurrenthashmap)
+        - 3.2.9. [ConcurrentSkipListMap](#concurrentskiplistmap)
+        - 3.2.10. [CopyOnWriteArrayList](#copyonwritearraylist)
 - 4. [结构化并发](#结构化并发)
 - 5. [实践](#实践)
     - 5.1. [任务建模](#任务建模)
     - 5.2. [Queue](#queue)
-        - 5.2.1. [BlockingQueue](#blockingqueue)
-        - 5.2.2. [TransferQueue](#transferqueue)
+        - 5.2.1. [BlockingQueue interface](#blockingqueue-interface)
+            - 5.2.1.1. [TransferQueue interface](#transferqueue-interface)
 
-💠 2024-09-10 13:59:48
+💠 2024-09-24 16:47:51
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -117,7 +116,7 @@ categories:
     - 这些对象或者没有状态（属性）或者只有final域。因为他们的状态不可变，所以是安全而又活泼，不会出现不一致的情况
     - 初始化就会遇上问题，如果是需要初始化很多属性，可以采用工厂模式，但是构建器模式更好。
         - 一个是实现了构建器泛型接口的内部静态类，另一个是构建不可变类实例的私有构造方法 
-        - [思想实现代码](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/main/java/com/github/kuangcp/old/BuildFactory.java)
+        - [实现代码](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/main/java/com/github/kuangcp/old/BuildFactory.java)
     - 不可变对象中的final域特别要注意：
         - final声明的对象的引用是不可变的， 但是如果引用的是对象，该对象自身的属性的引用是可变的
     - 不可变对象的使用十分广泛，但是开发效率不行，每修改对象的状态都要构建一个新对象
@@ -276,21 +275,6 @@ public int current(){
 > [The java.util.concurrent Synchronizer FrameworkDoug Le](http://gee.cs.oswego.edu/dl/papers/aqs.pdf) `AQS`
 
 ## 概念
-### CAS指令
-> 互斥同步最主要的问题就是进行线程阻塞和唤醒所带来的性能额外损耗, 因此这种同步也被称为阻塞同步,悲观锁
->> 与之对应的乐观锁是, 先进行操作, 操作完成之后再判断操作是否成功, 是否有并发问题, 如果有则进行失败补偿, 如果没有就算操作成功. 
-
-> Java中的非阻塞同步就是CAS 1.5就有了
-
-### 原子类 
-> `java.util.concurrent.atomic` 提供适当的原子方法 避免在共享数据上出现竞争危害的方法  
-> 使用Java自带的原子类, 可以避免同步锁带来的并发访问性能降低的问题, 减少犯错的机会. 对于 int, long, boolean 等成员变量大量使用原子类
->> 但是使用者必须通过类似 compareAndSet或者set或者与这些操作等价的`原子操作`来保证更新的原子性.
-
-- 常见的操作系统的支持， 他们是非阻塞的（无需线程锁）， 常见的方法是实现序列号机制（和数据库里的序列号机制类似），在`AtomicInteger`或`AtomicLong`上用原子
-    - 操作`getAndIncrement()`方法， 并且提供了nextId 方法得到唯一的完全增长的数值
-- 注意： 原子类不是相似的类继承而来，所以 AtomicBoolean不能当Boolean用
-
 ### 读写锁
 > 在读多写少的场景下, 使用读写锁比同步块性能要好
 
@@ -301,6 +285,9 @@ public int current(){
 
 ## 实现类
 > [JUC - 类汇总和学习指南](https://pdai.tech/md/java/thread/java-thread-x-juc-overview.html)
+
+### 原子类 
+> [原子类](/Java/AdvancedLearning/Concurrency/Atomic.md)  
 
 ### Lock 
 > `java.util.concurrent.locks`
@@ -419,6 +406,35 @@ ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentM
 ## Queue
 > Queue接口全是泛型的，这样就更为方便， 自己再封装一个层
 
+|队列| 	有界性| 	锁| 	数据结构|
+|:---|:---|:---|:---|
+| ArrayBlockingQueue     | 	bounded     | 加锁| 	arraylist|
+| LinkedBlockingQueue    | 	optionally-bounded | 加锁|	linkedlist|
+| ConcurrentLinkedQueue  | 	unbounded | 无锁| 	linkedlist|
+| LinkedTransferQueue    | 	unbounded | 无锁| 	linkedlist|
+| PriorityBlockingQueue  | 	unbounded | 加锁| 	heap|
+| DelayQueue             | 	unbounded | 加锁| 	heap|
+
+> [高性能队列——Disruptor](https://tech.meituan.com/2016/11/18/disruptor.html)
+- [Github](https://github.com/LMAX-Exchange/disruptor) [User Guide](https://lmax-exchange.github.io/disruptor/user-guide/index.html)  
+- 经过验证可以发现由于控制是使用无锁的CAS实现，当队列空置时，CPU空耗高占用很明显。也就是说这个队列适合对繁忙且延迟敏感的业务。
+
+### BlockingQueue interface
+
+- 基本方法
+    - put() 如果队列已满，会让放入的线程等待 队列腾出空间
+    - take() 如果队列为空，会导致取出的线程阻塞
+    - offer() 将指定元素插入此队列中（如果立即可行且不会违反容量限制），成功时返回 true，如果当前没有可用的空间，则返回 false。
+        - 当使用有容量限制的队列时，此方法通常要优于 add(E)，后者可能无法插入元素，而只是抛出一个异常。
+        - 另一个重载方法：将指定元素插入此队列中，在到达指定的等待时间前等待可用的空间（如果有必要）。
+    - poll() 获取并移除此队列的头部，在指定的等待时间前等待可用的元素（如果有必要）。
+- 基本实现
+    - LinkedBlockingQueue 看名字就知道实现方式以及优缺点了
+    - ArrayBlockingQueue
+- BlockingQueue 不接受 null 元素。试图 add、put 或 offer 一个 null 元素时，某些实现会抛出 NullPointerException。
+- BlockingQueue 的实现主要用于生产者-使用者队列
+
+
 `BlockingQueue<Pro<Author>>`
 ```java
     public class Pro<T>{
@@ -437,23 +453,8 @@ ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentM
     - 性能指标： 比如 到达时间，服务质量
     - 运行时系统信息： 比如 Author实例是如何排到队列的
 
-### BlockingQueue
-> 并发扩展类， 
 
-- 基本方法
-    - put() 如果队列已满，会让放入的线程等待 队列腾出空间
-    - take() 如果队列为空，会导致取出的线程阻塞
-    - offer() 将指定元素插入此队列中（如果立即可行且不会违反容量限制），成功时返回 true，如果当前没有可用的空间，则返回 false。
-        - 当使用有容量限制的队列时，此方法通常要优于 add(E)，后者可能无法插入元素，而只是抛出一个异常。
-        - 另一个重载方法：将指定元素插入此队列中，在到达指定的等待时间前等待可用的空间（如果有必要）。
-    - poll() 获取并移除此队列的头部，在指定的等待时间前等待可用的元素（如果有必要）。
-- 基本实现
-    - LinkedBlockingQueue 看名字就知道实现方式以及优缺点了
-    - ArrayBlockingQueue
-- BlockingQueue 不接受 null 元素。试图 add、put 或 offer 一个 null 元素时，某些实现会抛出 NullPointerException。
-- BlockingQueue 的实现主要用于生产者-使用者队列
-
-### TransferQueue 
+#### TransferQueue interface
 - 本质上是多了一项 transfer()操作的BlockingQueue， 如果接收线程处于等待状态， 该操作会马上把工作项传给他。
 - 否则就会阻塞直到取走工作项的线程出现 即 正在处理工作项的线程在交付当前工作项之前不会开始其他工作项的处理工作，
 - 这样系统就可以调控上游线程获取新工作项的速度 用限定大小的阻塞队列也能达到同样的效果，TransferQueue 执行效率更高
