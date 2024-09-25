@@ -40,7 +40,7 @@ categories:
         - 5.2.1. [BlockingQueue interface](#blockingqueue-interface)
             - 5.2.1.1. [TransferQueue interface](#transferqueue-interface)
 
-💠 2024-09-24 16:47:51
+💠 2024-09-25 13:38:51
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -381,11 +381,11 @@ ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentM
 
 > [Java线程](/Java/AdvancedLearning/JavaThread.md)  [Java线程池](/Java/AdvancedLearning/Concurrency/ExecutorAndPool.md)  
 
-在技术和业务角度，都应该考虑抽象和分层，将近似的事情放在一个线程池内，更有利于针对性设置参数达到整体的效率优化。例如Tomcat中的 [NioEndpoint](/Java/Tool/TomcatDesign.md#nioendpoint)将接受连接，接受连接数据，执行连接任务和响应拆分出三个线程池
+在技术和业务角度，都应该考虑抽象和分层，将近似的事情放在一个线程池内，更有利于针对性设置参数达到整体的效率优化。  
+例如Tomcat中的 [NioEndpoint](/Java/Ecosystem/Servlet/TomcatDesign.md#nioendpoint) 将 接受连接，收连接数据，执行连接任务和发送响应，拆分成三个线程池   
 
 ## 任务建模
-> 要把目标代码做成可调用（执行者调用）的结构，而不是单独开线程运行
-> [示例代码](https://github.com/Kuangcp/JavaBase/blob/concurrency/src/main/java/com/github/kuangcp/schedule/CreateModel.groovy)
+> 要把目标代码做成可调用（执行者调用）的结构，而不是单独开线程运行 [示例代码](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/main/java/com/github/kuangcp/schedule/CreateModel.groovy)  
 
 `Callable接口`
 - 通常是匿名内部实现类 
@@ -404,7 +404,6 @@ ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentM
 ************************
 
 ## Queue
-> Queue接口全是泛型的，这样就更为方便， 自己再封装一个层
 
 |队列| 	有界性| 	锁| 	数据结构|
 |:---|:---|:---|:---|
