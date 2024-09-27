@@ -23,7 +23,7 @@ categories:
 - 6. [Explain](#explain)
 - 7. [Tips](#tips)
 
-💠 2024-09-10 10:12:41
+💠 2024-09-27 11:12:37
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -155,6 +155,18 @@ categories:
 ![](./img/001-dis-send-query.webp)
 ![](./img/002-dis-merge-result.webp)
 
+```sql
+    -- 查看复制表数量
+    select database,count(*) cnt
+            ,sum(case when engine ='ReplicatedMergeTree' then 1 else 0 end) cnt_rmt
+    from clusterAllReplicas('default_cluster', 'system.tables')
+    group by database order by count(*) desc
+
+    -- 查看复制表明细
+    select name ,engine, hostname(), metadata_modification_time, total_rows, total_bytes
+    from clusterAllReplicas('default_cluster', 'system.tables')
+    where database = 'db' and engine = 'ReplicatedMergeTree';
+```
 ************************
 
 > [ClickHouse案例：查询结果不一致](https://cloud.tencent.com/developer/article/1748216)  
@@ -223,7 +235,7 @@ JSON格式查看 `EXPLAIN json = 1, indexes = 1 SQL`
 - 合理使用排序键让数据均匀分片，避免数据倾斜导致集群计算时出现短板效应
 - 数据大量查询导入导出时
     - [ClickHouse SQL基本语法和导入导出实战](https://cloud.tencent.com/developer/article/1979184)
-    - 导出时需要注意传统的 limit offset 会导致结果集 重复和丢失，需要追加 order by 子句
+    - 导出时需要注意传统的 limit offset 会导致结果集 重复和丢失，追加 order by 子句可以降低发生概率，但是排序字段不唯一的话还是会有可能出现重复或丢失的问题。
 
 - 多表关联 如果能确认范围过滤的数据只会从一个表返回可以避免join来过滤, 转用in, 避免分布式的做数据复制，导致资源消耗放大
 - Global 优化 join 和in 避免读放大

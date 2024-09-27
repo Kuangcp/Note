@@ -16,9 +16,10 @@ categories:
     - 2.3. [PREPARE](#prepare)
     - 2.4. [JOIN](#join)
 - 3. [索引](#索引)
-- 4. [Explain](#explain)
+- 4. [事务](#事务)
+- 5. [Explain](#explain)
 
-💠 2024-03-26 21:19:24
+💠 2024-09-27 11:12:37
 ****************************************
 # PostgreSQL Advance
 
@@ -76,6 +77,9 @@ TODO 大表和小表 join顺序是否和MySQL一样有要求
 
 # 索引
 > [Official Doc](https://www.postgresql.org/docs/11/indexes.html)
+
+# 事务
+MVCC WAL 
 
 ************************
 

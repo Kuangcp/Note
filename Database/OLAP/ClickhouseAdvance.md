@@ -13,7 +13,7 @@ categories:
         - 1.2.1. [写入](#写入)
         - 1.2.2. [查询](#查询)
 
-💠 2024-09-10 10:12:41
+💠 2024-09-27 11:12:37
 ****************************************
 # Clickhouse
 
@@ -61,6 +61,8 @@ categories:
 
 > 数据文件方式同步 [百亿级数据同步，如何基于 SeaTunnel 的 ClickHouse 实现？](https://seatunnel.apache.org/zh-CN/blog/2022/05/10/ClickHouse/)`在上游数据端就生成ck的数据文件，然后传输文件，ck服务端attach挂载该文件`  
 > [Clickhouse写入问题汇总](https://www.cnblogs.com/yisany/p/14275785.html)  
+
+[ClickHouse连接ZK频繁超时处理案例](https://www.modb.pro/db/159455)`数据小批次频繁写入导致part过多，大幅影响zk的性能`
 
 ### 查询
 不适合单行的点查询, 最小查询数据量是索引粒度的行数, 即使查询一条数据，CK也会按索引粒度加载整块数据进缓存

@@ -10,29 +10,24 @@ categories:
 💠
 
 - 1. [Postgresql](#postgresql)
-- 2. [概述](#概述)
-- 3. [安装](#安装)
-    - 3.1. [Docker方式](#docker方式)
-        - 3.1.1. [pull完整版](#pull完整版)
-        - 3.1.2. [pull精简版](#pull精简版)
-- 4. [使用](#使用)
-    - 4.1. [终端命令行使用](#终端命令行使用)
-    - 4.2. [用户和角色权限](#用户和角色权限)
-        - 4.2.1. [创建用户](#创建用户)
-        - 4.2.2. [修改权限](#修改权限)
-    - 4.3. [Java使用](#java使用)
-- 5. [基础数据类型](#基础数据类型)
+- 2. [安装](#安装)
+    - 2.1. [Docker方式](#docker方式)
+- 3. [管理](#管理)
+    - 3.1. [终端命令行使用](#终端命令行使用)
+    - 3.2. [用户和角色权限](#用户和角色权限)
+        - 3.2.1. [创建用户](#创建用户)
+        - 3.2.2. [修改权限](#修改权限)
+- 4. [基础数据类型](#基础数据类型)
+- 5. [DDL](#ddl)
 - 6. [图数据库](#图数据库)
-- 7. [DDL](#ddl)
-- 8. [导入导出](#导入导出)
-    - 8.1. [导出](#导出)
+- 7. [应用](#应用)
+    - 7.1. [Java使用](#java使用)
+    - 7.2. [导入导出](#导入导出)
 
-💠 2024-09-06 11:36:43
+💠 2024-09-27 11:12:37
 ****************************************
 # Postgresql
-- [ ] [该公司对于PostgreSQL的缺点陈列是否属实](http://www.onexsoft.com/onesql.html)
 
-# 概述
 > [PostgreSQL](http://www.cnblogs.com/fcode/articles/PostgreSQL.html) | [wiki](https://wiki.postgresql.org/wiki/Main_Page)
 
 - 严格实现SQL标准
@@ -50,27 +45,12 @@ categories:
 ## Docker方式
 > [Dockerhub 官方镜像](https://hub.docker.com/_/postgres/)
 
-### pull完整版
-- 或者： `docker pull postgres`
+- `docker pull postgres`
     - 运行容器 `docker run --name mypostgre -i -t -p 5432:5432 postgres`
     - 客户端连接 `psql -h localhost -p 5432 -U postgres`
 
-### pull精简版
-- 下拉镜像：`docker pull postgres:alpine`
-- 构建容器：
-```sh
-    docker run -d --name postgre \
-    -e POSTGRES_PASSWORD=jiushi \
-    -v gitea-db-data:/var/lib/postgresql/data \
-    -p 5432:5432 \
-    postgres:9.6-alpine
-```
-- 容器中连接 进入postgresql终端 `docker exec -it postgre psql -U postgres`
-    - 客户端连接 `psql -h localhost -U postgres`
-- 连接后 输入`\l` 列出所有数据库 即可查看连接成功与否
-
 ************************************
-# 使用
+# 管理
 > [PostgreSQL 9.6.0 手册](http://postgres.cn/docs/9.6/index.html)
 
 ## 终端命令行使用
@@ -121,14 +101,27 @@ categories:
 
 > 注意：如果一个库授权给了用户A，库里面新建了表C 需要再次单独授权给用户A 否则A没有C表的权限
 
-## Java使用
-> [Postgresql JDBC Driver](https://github.com/pgjdbc/pgjdbc)
-
-- [官方：springboot使用](https://springframework.guru/configuring-spring-boot-for-postgresql/)
-    - [参考博客](https://www.netkiller.cn/java/spring/boot/postgresql.html)
-
 # 基础数据类型
-> [ PostgreSQL中的数据类型](https://blog.csdn.net/jpzhu16/article/details/52140048)
+> [Chapter 8. Data Types](https://www.postgresql.org/docs/current/datatype.html)  
+> [PostgreSQL 数据类型](https://www.runoob.com/postgresql/postgresql-data-type.html)  
+
+> 自动增长 
+- 相比于MySQL的 AUTO_INCREMENT 关键字标记， pg将该特性设计为数据类型SERIAL
+- SMALLSERIAL 2字节  SERIAL	4字节 	BIGSERIAL 8字节 
+
+# DDL
+> 注意PG的查看表，函数，视图的定义(DCL)时很复杂，没有直观的语句类似`show create table`可以用，通常使用工具来查看表定义和函数定义视图定义等等。
+
+- 元数据存储： PostgreSQL将数据库对象（表、列、索引等）的元数据存储在系统目录（如pg_catalog）中。
+- 数据类型： PostgreSQL支持多种数据类型、约束、继承等特性，这些复杂性使得直接生成一个简单的CREATE TABLE语句变得困难。
+    - 为了准确地反映表的定义，需要考虑各种情况，比如默认值、约束、继承关系等。
+- 性能： 对于大型数据库生成 show create table 很耗费性能。
+
+```sql
+-- 简单查询出列
+SELECT attname AS column_name, format_type(atttypid, atttypmod) AS data_type, attnotnull AS is_nullable
+FROM pg_attribute  WHERE attrelid = (SELECT oid FROM pg_class WHERE relname = 'table_name') AND attnum > 0;
+```
 
 ************************
 
@@ -136,11 +129,19 @@ categories:
 [PostgreSQL 图式搜索(graph search)实践 ](https://developer.aliyun.com/article/328141)  
 [edgedb](https://github.com/edgedb/edgedb)  
 
-# DDL
-> 注意PG的查看表，函数，视图的定义(DCL)时很复杂，没有直观的语句类似`show create`可以用
 
 ************************
+# 应用
 
-# 导入导出
-## 导出
+## Java使用
+> [Postgresql JDBC Driver](https://github.com/pgjdbc/pgjdbc)
+
+- [官方：springboot使用](https://springframework.guru/configuring-spring-boot-for-postgresql/)
+    - [参考博客](https://www.netkiller.cn/java/spring/boot/postgresql.html)
+
+## 导入导出
+> 导出
+
 copy 方式，单连接复制出查询语句的结果
+
+[JDBC： 长连接流式导出数据](/Java/AdvancedLearning/JDBC.md#长连接流式导出数据)
