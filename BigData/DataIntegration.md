@@ -20,7 +20,7 @@ categories:
 - 5. [Flink CDC](#flink-cdc)
 - 6. [Kettle](#kettle)
 
-💠 2024-09-27 15:47:57
+💠 2024-09-27 18:16:21
 ****************************************
 # Data Integration
 数据集成
@@ -72,18 +72,20 @@ categories:
 - table模式： 只配置源表的 column，不灵活（需要源表对目标表字段名和类型一致）但支持并发。
 - querySQL模式：配置源表查询SQL，可以join，别名，函数计算。更灵活但是**不支持并发**，同步性能差
 
-> 并行同步： 通过splitPk:拆分字段`只支持整数，字符串` 和 speed.channel: 并发数 去拆分上游数据
-- com.alibaba.datax.plugin.rdbms.reader.util.SingleTableSplitUtil#genPKSql
-- com.alibaba.datax.plugin.rdbms.reader.util.SingleTableSplitUtil#splitSingleTable 注意设置的splitPK字段的值最好是 数字字母常见的打印字符
+> 并行同步： 通过splitPk:拆分字段`只支持Long，字符串` 和 speed.channel: 并发数 去拆分上游数据
+- com.alibaba.datax.plugin.rdbms.reader.util.SingleTableSplitUtil#genPKSql 
+    - 查询出 分片字段在上游表的最小和最大值，确认拆分的边界
+- com.alibaba.datax.plugin.rdbms.reader.util.SingleTableSplitUtil#splitSingleTable
 	- 参数 expectSliceNumber 的来源于Datax.json的直接指定和 限速channel，限速速率等取较小值。
 	- 由于拆分是按ascii实现（先将字符串按ascii转为超大整数BigInteger，做完分段拆分后将若干段的边界值（超大整数）转回ascii字符），这个方式是有风险的 问题如下。 
-- 拆分后同样是游标查询 com.alibaba.datax.plugin.rdbms.reader.CommonRdbmsReader.Task#startRead
+- 拆分后得到一批查询SQL，每条SQL均是游标查询方式 com.alibaba.datax.plugin.rdbms.reader.CommonRdbmsReader.Task#startRead
     - `ResultSet query(Connection conn, String sql, int fetchSize)`
 
 - 问题
     1. 超大整数转ascii字符时，转出了单引号但是未转义，然后直接拼到SQL里，导致SQL语法错误。
     1. 分段后数据范围有交叉导致同步的数据量大于上游数据总量，是概率性出现问题，因为这个字符转int的做法导致了字符的边界互相影响了，范围SQL产生了交集:
         - 从ascii码来计算的完整切分分段，在GP执行时会有问题，因为GP的字符串比较方式并不是严格按照字符ascii的值
+        - [Comparison Functions and Operators](https://www.postgresql.org/docs/current/functions-comparison.html)
         ```java
         int channel = 5;
         List<String> result = List<String> result = RdbmsRangeSplitWrap.splitAndWrap("P010", "P024", channel * 5, "prodcode", "'", DataBaseType.PostgreSQL);
