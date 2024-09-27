@@ -109,3 +109,7 @@
 # 辅助工具
 - [md-formatter](https://github.com/Kuangcp/GoBase/tree/master/toolbox/md-formatter) `生成markdown文件目录`
 - [mdBook](https://github.com/rust-lang/mdBook)
+
+- 配置hook： .git/hooks/post-commit 内容为 `sh wordRecord.sh`
+
+
