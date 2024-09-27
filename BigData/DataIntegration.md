@@ -20,7 +20,7 @@ categories:
 - 5. [Flink CDC](#flink-cdc)
 - 6. [Kettle](#kettle)
 
-💠 2024-09-27 18:16:21
+💠 2024-09-27 19:50:28
 ****************************************
 # Data Integration
 数据集成
@@ -73,11 +73,16 @@ categories:
 - querySQL模式：配置源表查询SQL，可以join，别名，函数计算。更灵活但是**不支持并发**，同步性能差
 
 > 并行同步： 通过splitPk:拆分字段`只支持Long，字符串` 和 speed.channel: 并发数 去拆分上游数据
-- com.alibaba.datax.plugin.rdbms.reader.util.SingleTableSplitUtil#genPKSql 
+- `SingleTableSplitUtil#genPKSql`
     - 查询出 分片字段在上游表的最小和最大值，确认拆分的边界
-- com.alibaba.datax.plugin.rdbms.reader.util.SingleTableSplitUtil#splitSingleTable
+- `SingleTableSplitUtil#splitSingleTable`
 	- 参数 expectSliceNumber 的来源于Datax.json的直接指定和 限速channel，限速速率等取较小值。
 	- 由于拆分是按ascii实现（先将字符串按ascii转为超大整数BigInteger，做完分段拆分后将若干段的边界值（超大整数）转回ascii字符），这个方式是有风险的 问题如下。 
+- `TaskGroupContainer#start` 拆分出的若干SQL，包装为 TaskExecutor 绑定读写线程后启动 
+    - 依据前文拆分的若干分片SQL，while true 顺序遍历依据限制的并发值启动线程执行, 并对失败任务重试
+    - 注意绑定的读写线程都通过设置线程对象的 setContextClassLoader 来实现对各种插件的加载，且和Datax主JVM进程的类加载器隔离
+    - 
+
 - 拆分后得到一批查询SQL，每条SQL均是游标查询方式 com.alibaba.datax.plugin.rdbms.reader.CommonRdbmsReader.Task#startRead
     - `ResultSet query(Connection conn, String sql, int fetchSize)`
 
