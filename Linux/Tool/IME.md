@@ -18,7 +18,7 @@ categories:
     - 4.3. [Google拼音](#google拼音)
             - 4.3.0.1. [小小输入法](#小小输入法)
 
-💠 2024-07-19 20:07:08
+💠 2024-09-28 11:21:46
 ****************************************
 # IME
 > 输入法
@@ -58,12 +58,19 @@ export XMODIFIERS="@im=fcitx"
 
 Ctrl ` 进入设置
 
+> [Rime 输入法安装和使用指北](https://blog.mikelyou.com/2020/07/31/rime-input/)  
+
 > 双拼方案
 - yay rime-double-pinyin 
-
 [rime 输入法小鹤双拼配置](https://blog.moe233.net/posts/3c46778c/)
-
 [自然码双拼](https://jingyan.baidu.com/article/64d05a027cac09de55f73b18.html)
+
+> 自定义词库
+- [导入词库](https://gist.github.com/lotem/5443073)  
+-[rime 词库](https://github.com/mutoe/rime)  
+-[Rime 擴充詞庫](https://github.com/rime-aca/dictionaries)  
+-[Dict.yml](https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Rime_description.md#dictyaml-%E8%A9%B3%E8%A7%A3)
+- [RimeConfig](https://github.com/SaboZhang/RimeConfig)  
 
 ## 搜狗
 > [Official Site](https://pinyin.sogou.com/linux/)  

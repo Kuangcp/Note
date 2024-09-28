@@ -1,11 +1,13 @@
 # 分布式事务
 TODO 实现方式 场景
 
- Seata，
+ Seata
  LCN做分布式事务
  柔性事务
 
 在业务、范式、性能、维护发生冲突时，各自如何解决,其中有很多折中的思想
+
+> [Seata AT 模式](https://seata.apache.org/zh-cn/docs/dev/mode/at-mode)
 
 > 2PC
 CanCommit、DoCommit
