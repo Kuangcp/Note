@@ -52,7 +52,7 @@ categories:
         - 3.5.1. [tun/tap](#tuntap)
         - 3.5.2. [shadowsocks](#shadowsocks)
         - 3.5.3. [OpenVPN](#openvpn)
-        - 3.5.4. [openfortivpn](#openfortivpn)
+        - 3.5.4. [Fortivpn](#fortivpn)
     - 3.6. [代理](#代理)
         - 3.6.1. [proxychains](#proxychains)
     - 3.7. [防火墙](#防火墙)
@@ -63,14 +63,13 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2024-09-29 23:33:54
+💠 2024-09-29 23:35:37
 ****************************************
 # Linux网络管理
 
 > [计算机网络基础](/Skills/Network/Network.md)
 
 ## 内核配置
-
 > ip_local_port_range [Linux increase ip_local_port_range TCP port range](https://ma.ttias.be/linux-increase-ip_local_port_range-tcp-port-range/)
 
 > [参考: Linux查看网络流量](https://tlanyan.me/linux-traffic-commands/)
@@ -738,7 +737,7 @@ _客户端_
 1. modinfo tun 查看内核模块是否存在
 1. 尝试 sudo pacman -S networkmanager-vpnc 并重启
 
-### openfortivpn 
+### Fortivpn 
 > [openfortivpn](https://github.com/adrienverge/openfortivpn)  对应于 [fortinet.com](https://fortinet.com/) 的开源版本
 
 `yay openfortivpn`
