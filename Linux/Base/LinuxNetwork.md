@@ -52,6 +52,7 @@ categories:
         - 3.5.1. [tun/tap](#tuntap)
         - 3.5.2. [shadowsocks](#shadowsocks)
         - 3.5.3. [OpenVPN](#openvpn)
+        - 3.5.4. [openfortivpn](#openfortivpn)
     - 3.6. [代理](#代理)
         - 3.6.1. [proxychains](#proxychains)
     - 3.7. [防火墙](#防火墙)
@@ -62,7 +63,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2024-09-06 11:36:43
+💠 2024-09-29 23:33:54
 ****************************************
 # Linux网络管理
 
@@ -736,6 +737,18 @@ _客户端_
 > ERROR: Cannot open TUN/TAP dev /dev/net/tun: No such device
 1. modinfo tun 查看内核模块是否存在
 1. 尝试 sudo pacman -S networkmanager-vpnc 并重启
+
+### openfortivpn 
+> [openfortivpn](https://github.com/adrienverge/openfortivpn)  对应于 [fortinet.com](https://fortinet.com/) 的开源版本
+
+`yay openfortivpn`
+
+1. 按官方文档新建配置文件 some_company.conf
+    - 填写正确的 host,port,username,password 
+    - 注意: trusted-cert 可以用仓库Readme文档的值，通过报错信息获得公司内的证书，然后反向填入配置文件。。。
+        - 相比于官方的包 `forticlient-vpn` GUI配置完，不像Windows平台会提示导入证书，只有无尽的连接中。。
+1. sudo openfortivpn -c some_company.conf
+1. 手动追加dns `sudo sed -i '1 i\nameserver x.x.x.x' /etc/resolv.conf` 注意 dns的ip会从运行中的输出 ns 部分
 
 ************************
 
