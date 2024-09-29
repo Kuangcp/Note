@@ -18,12 +18,13 @@ categories:
     - 3.1. [MergeTree 引擎家族](#mergetree-引擎家族)
     - 3.2. [分布式表引擎 Distributed](#分布式表引擎-distributed)
 - 4. [表](#表)
+    - 4.1. [分区表](#分区表)
 - 5. [客户端](#客户端)
     - 5.1. [Java](#java)
 - 6. [Explain](#explain)
 - 7. [Tips](#tips)
 
-💠 2024-09-27 11:12:37
+💠 2024-09-29 17:36:35
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -180,6 +181,8 @@ categories:
 # 表
 > [doc: create table](https://clickhouse.com/docs/en/sql-reference/statements/create/table)
 
+## 分区表
+> [What is the actual use of partitions in clickhouse?](https://stackoverflow.com/questions/75439190/what-is-the-actual-use-of-partitions-in-clickhouse)`数据有明显的分区特征（例如时间序列数据），按分区做TTL，查询时通常不会跨多个分区，分区数在100以内（分区很多时很影响读写性能）`  
 
 ************************
 

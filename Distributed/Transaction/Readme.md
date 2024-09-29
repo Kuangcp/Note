@@ -1,4 +1,6 @@
 # 分布式事务
+> [凤凰架构： 分布式事务](https://icyfenix.cn/architect-perspective/general-architecture/transaction/distributed.html)  
+
 TODO 实现方式 场景
 
  Seata
