@@ -18,18 +18,22 @@ categories:
         - 1.2.3. [Snap](#snap)
 - 2. [Tips](#tips)
 
-💠 2024-09-09 10:34:58
+💠 2024-10-02 22:33:00
 ****************************************
 
 # Arch
 
-> [参考: 为什么 Archlinux 不适合服务器使用](https://www.tuicool.com/articles/byAFZr)
 > [参考: Arch Linux的用户都有理想主义倾向吗？](https://www.zhihu.com/question/49439472)
 > [参考: ArchLinux你可能需要知道的操作与软件包推荐](https://www.viseator.com/2017/07/02/arch_more/)
 > [参考: 长期使用Arch，Gentoo等滚动更新的发行版是怎样的一种体验？](https://www.zhihu.com/question/37720991?sort=created)
+> [Arch Linux 安装、配置、美化和优化](http://www.cnblogs.com/bluestorm/p/5929172.html)
 
-- [什么Linux发行版软件最多？](https://www.lulinux.com/archives/2787)
-- [Arch Linux 安装、配置、美化和优化](http://www.cnblogs.com/bluestorm/p/5929172.html)
+************************
+
+衍生版： 
+- [EndeavourOS](https://endeavouros.com/)
+- Manjaro
+
 
 ## 社区
 

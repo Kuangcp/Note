@@ -10,6 +10,7 @@ TODO 实现方式 场景
 在业务、范式、性能、维护发生冲突时，各自如何解决,其中有很多折中的思想
 
 > [Seata AT 模式](https://seata.apache.org/zh-cn/docs/dev/mode/at-mode)
+> [DTM](https://dtm.pub/guide/start.html)
 
 > 2PC
 CanCommit、DoCommit

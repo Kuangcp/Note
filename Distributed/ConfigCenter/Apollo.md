@@ -7,14 +7,15 @@ categories:
     - 分布式
 ---
 
-**目录 start**
+💠
 
-1. [Apollo](#apollo)
+- 1. [Apollo](#apollo)
 
-**目录 end**|_2020-04-27 23:42_|
+💠 2024-10-02 22:33:00
 ****************************************
 # Apollo
 > [Github:Apollo](https://github.com/ctripcorp/apollo)
 
-- [ ] 研究 https://github.com/ctripcorp/apollo/blob/master/apollo-adminservice/pom.xml 怎么实现 ./*.jar 就能运行的
+[assembly实现 ./xx.jar 直接执行](https://github.com/ctripcorp/apollo/blob/master/apollo-adminservice/pom.xml)
+
 

@@ -37,7 +37,7 @@ categories:
 - 4. [Datagrip](#datagrip)
     - 4.1. [Datagrip时区问题](#datagrip时区问题)
 
-💠 2024-09-27 11:12:37
+💠 2024-10-02 22:33:00
 ****************************************
 
 # IDEA 使用笔记
@@ -364,6 +364,7 @@ _例如修改为如下_
 1. JarEditor Jar包编辑，无需解压
 1. GsonFormatPlus ： json转Class定义
 1. POJO to JSON ： Class定义转JSON
+1. Sequence Diagram 查看代码时序图
 
 **************************
 > 内置插件
