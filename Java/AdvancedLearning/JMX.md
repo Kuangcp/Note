@@ -17,7 +17,7 @@ categories:
     - 2.1. [GarbageCollectorMXBean](#garbagecollectormxbean)
     - 2.2. [自定义MXBean](#自定义mxbean)
 
-💠 2024-07-24 17:28:31
+💠 2024-10-08 15:07:46
 ****************************************
 
 # JMX
@@ -88,6 +88,7 @@ username2 readwrite
 # MXBean 
 通过查看 `java.lang.management.PlatformManagedObject` 的子类可以快速预览所有的MXBean
 
+- OperatingSystemMXBean 操作系统信息 获取最大和free内存，但是无法获取available内存，简单做法是直接读取 `/proc/meminfo`
 
 ## GarbageCollectorMXBean
 > [Garbage Collection JMX Notifications](http://www.fasterj.com/articles/gcnotifs.shtml)
