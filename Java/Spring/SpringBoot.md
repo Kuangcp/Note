@@ -12,7 +12,6 @@ categories:
 - 1. [SpringBoot](#springboot)
     - 1.1. [思考](#思考)
     - 1.2. [参考教程](#参考教程)
-        - 1.2.1. [系列](#系列)
     - 1.3. [使用SpringBootCLI](#使用springbootcli)
     - 1.4. [Profils](#profils)
         - 1.4.1. [多种配置文件并切换](#多种配置文件并切换)
@@ -42,7 +41,7 @@ categories:
         - 1.10.4. [热部署](#热部署)
         - 1.10.5. [运行性能优化](#运行性能优化)
 
-💠 2024-09-12 19:42:44
+💠 2024-10-08 16:06:24
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -72,7 +71,7 @@ categories:
 > [Guide](https://spring.io/guides/gs/actuator-service/)
 > [小马哥书籍《Spring Boot 编程思想》示例工程 ](https://github.com/mercyblitz/thinking-in-spring-boot-samples)
 
-### 系列
+`系列`
 
 - [一系列专栏](https://github.com/guoxiaoxu/guo-projects/tree/master/guns-admin/note)
 - [个人博客专栏: SpringBoot干货系列](http://tengj.top/tags/Spring-Boot/)
@@ -207,17 +206,19 @@ graduate:
 
 > [Spring Boot Cache使用与整合](https://www.cnblogs.com/morganlin/p/12000223.html)
 
-- *@Cacheable*：表示该方法支持缓存。当调用被注解的方法时，如果对应的键已经存在缓存，则不再执行方法体，而从缓存中直接返回。当方法返回null时，将不进行缓存操作。
+- `@Cacheable`：表示该方法支持缓存。当调用被注解的方法时，如果对应的键已经存在缓存，则不再执行方法体，而从缓存中直接返回。当方法返回null时，将不进行缓存操作。
     - cacheNames/value：缓存组件的名字，即cacheManager中缓存的名称。
     - key：缓存数据时使用的key。默认使用方法参数值，也可以使用SpEL表达式进行编写。
-    - keyGenerator：和key二选一使用。
+        - 调用静态方法`获取用户id`拼接进SpEL，从而实现用户缓存隔离
+    - keyGenerator： *和key二选一使用*
+        - 可以默认构造一个自定义的生成器，从线程上下文获取用户id拼接进去实现用户缓存隔离
     - cacheManager：指定使用的缓存管理器。
     - condition：在方法执行开始前检查，在符合condition的情况下，进行缓存。
     - unless：在方法执行完成后检查，在符合unless的情况下，不进行缓存。
     - sync：是否使用同步模式。若使用同步模式，在多个线程同时对一个key进行load时，其他线程将被阻塞。Spring 4.1引入，**规避缓存击穿**
-- *@CachePut*：表示执行该方法后，其值将作为最新结果更新到缓存中。
-- *@CacheEvict*：表示执行该方法后，将触发清除同名value和key的缓存。
-- *@Caching*：可组合前三个注解
+- `@CachePut`：表示执行该方法后，其值将作为最新结果更新到缓存中。
+- `@CacheEvict`：表示执行该方法后，将触发清除同名value和key的缓存。
+- `@Caching`：可组合前三个注解
 
 注意缓存的本质是将内存对象序列化到三方缓存（JVM，Redis，文件），使用时再反序列化， 所以需要缓存的接口的参数和响应值都需要实现Serializable接口
 

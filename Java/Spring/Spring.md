@@ -38,11 +38,12 @@ categories:
     - 2.8. [RestTemplate](#resttemplate)
     - 2.9. [Utils](#utils)
         - 2.9.1. [ReflectionUtils](#reflectionutils)
+    - 2.10. [SpEL](#spel)
 - 3. [Web开发的最佳实践](#web开发的最佳实践)
     - 3.1. [优雅部署](#优雅部署)
 - 4. [Tips](#tips)
 
-💠 2024-09-24 15:38:50
+💠 2024-10-08 16:06:24
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -451,6 +452,10 @@ Student
 
 ## Utils
 ### ReflectionUtils
+
+
+## SpEL
+> [Spring5.5 SpEL](https://docs.spring.io/spring-integration/docs/5.5.11/reference/html/spel.html)  
 
 ****************
 
