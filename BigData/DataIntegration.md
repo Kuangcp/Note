@@ -20,7 +20,7 @@ categories:
 - 5. [Flink CDC](#flink-cdc)
 - 6. [Kettle](#kettle)
 
-💠 2024-09-27 19:50:28
+💠 2024-10-08 09:42:31
 ****************************************
 # Data Integration
 数据集成
@@ -63,9 +63,10 @@ categories:
 
 ![](./img/datax-main-process.webp)
 
-- Job 负责管理 JobContainer
-- Task 执行读写 TaskGroupContainer.TaskExecutor 
-    - readerThread writerThread 实现多线程的生产者消费者模型 通过 com.alibaba.datax.core.statistics.communication.Communication 通信
+- Job 管理子任务： JobContainer 和 TaskGroupContainer
+    - Reader将全部数据拆分成若干任务，在TaskGroupContainer中死循环消费完
+- Task 执行读写： TaskGroupContainer.TaskExecutor 
+    - readerThread writerThread 实现多线程的生产者消费者模型 通过 Communication 通信
 
 ## 组件
 ### Reader
@@ -103,8 +104,10 @@ categories:
     - 特定优化思路：将拆分列查出全部的去重值 构造出分批in的SQL。 优点：将以该列的数据分布情况并发同步，贴合数据的业务特点。缺点：如果该列的去重值非常多，SQL会超长。
 
 ### Writer
-
-com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter.Task#startWriteWithConnection **模板类** 消费Reader的数据 批量写入目标库
+- CommonRdbmsWriter.Task#startWriteWithConnection **模板类** 消费Reader的数据 批量写入目标库
+    - 错误回滚机制
+        - 当一个批次遇到任意SQLException时，都会将这个批次的数据做事务回滚，逐条事务写入（估计是为了规避事务死锁）
+        - 但是这个机制没有考虑下游数据源不支持事务的情况，此时这个机制就引发下游出现重复数据了。
 
 > 两个参数，任一条件满足就执行一次insert
 - batchSize 默认2048
