@@ -15,7 +15,7 @@ categories:
     - 2.2. [查询](#查询)
     - 2.3. [监控](#监控)
 
-💠 2024-10-08 11:23:38
+💠 2024-10-08 11:39:18
 ****************************************
 # Clickhouse
 
@@ -54,6 +54,8 @@ categories:
 
 # 使用实践
 
+> [Getting started with ClickHouse? Here are 13 "Deadly Sins" and how to avoid them](https://clickhouse.com/blog/common-getting-started-issues-with-clickhouse)  
+
 ## 写入
 > [Bulk Inserts](https://clickhouse.com/docs/en/optimize/bulk-inserts)
 
@@ -74,6 +76,7 @@ categories:
 
 [ClickHouse连接ZK频繁超时处理案例](https://www.modb.pro/db/159455)`数据小批次频繁写入导致part过多，大幅影响zk的性能`  
 > [How to configure ClickHouse for INSERT performance? ](https://dev.to/shiviyer/how-to-configure-clickhouse-for-insert-performance-4cof)`大批量写入，异步写入，按需取消写入约束，表引擎调优，压缩算法替换，结合监控数据寻找出最合适业务数据的一套配置`  
+> [Essential Monitoring Queries - part 1 - INSERT Queries](https://clickhouse.com/blog/monitoring-troubleshooting-insert-queries-clickhouse)  
 
 ## 查询
 不适合查单行的点查询, 最小查询数据量是索引粒度(index_granularity)的行数, 即使查询一条数据，CK也会按索引粒度加载整块数据进缓存
