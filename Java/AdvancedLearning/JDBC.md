@@ -12,12 +12,14 @@ categories:
     - 1.1. [Statement](#statement)
         - 1.1.1. [PrepareStatement](#preparestatement)
     - 1.2. [ResultSet](#resultset)
-    - 1.3. [长连接流式导出数据](#长连接流式导出数据)
+        - 1.2.1. [长连接流式导出数据](#长连接流式导出数据)
+    - 1.3. [SQLException](#sqlexception)
 - 2. [厂商驱动](#厂商驱动)
     - 2.1. [MySQL](#mysql)
+    - 2.2. [Clickhouse](#clickhouse)
 - 3. [Tips](#tips)
 
-💠 2024-06-11 16:32:25
+💠 2024-10-08 11:23:38
 ****************************************
 # JDBC
 Java DataBase Connectivity
@@ -62,7 +64,7 @@ Java DataBase Connectivity
 ## ResultSet
 > 仅为JDBC接口，具体行为细节来自实际数据库厂商提供的驱动
 
-## 长连接流式导出数据
+### 长连接流式导出数据
 常见的分页导出的缺点有 分页越来越慢和不稳定排序导致页之间数据重复或丢失，用长连接流方式可以规避
 
 ```java
@@ -132,11 +134,17 @@ Java DataBase Connectivity
 - MySQL 调整：
     - url配置需要添加 useCursorFetch=true 或者 关闭 autoCommit 
 
+## SQLException
+大部分数据库厂商都会由此派生出自定义的异常，CK除外，因此支持JDBC通用数据库的平台需要做特殊处理。
+
 ************************
 # 厂商驱动
 ## MySQL
 
 - [Java数据类型和MySQL数据类型对应](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-type-conversions.html)`简单来说就是基本数据类型加上String是有对应的MySQL基本数据类型`
+
+## Clickhouse
+> [clickhouse-java](/Database/OLAP/Clickhouse.md#java)  
 
 ************************
 

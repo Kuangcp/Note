@@ -24,7 +24,7 @@ categories:
 - 6. [Explain](#explain)
 - 7. [Tips](#tips)
 
-💠 2024-09-29 17:36:35
+💠 2024-10-08 11:23:38
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -177,7 +177,6 @@ categories:
 - 查询： 一条SQL每次查询的结果都不一样（各个分片内随机选择副本再合并查询结果而导致的）
 
 ************************
-
 # 表
 > [doc: create table](https://clickhouse.com/docs/en/sql-reference/statements/create/table)
 
@@ -191,7 +190,7 @@ categories:
 
 ## Java
 > [Connecting ClickHouse to external data sources with JDBC](https://clickhouse.com/docs/en/integrations/jdbc/jdbc-with-clickhouse)  
-> JDBC的驱动实现是通过HTTP协议和Clickhouse通信 [clickhouse-java](https://github.com/ClickHouse/clickhouse-java)`com.clickhouse.client.internal.apache.hc.client5.http.impl.io.DefaultManagedHttpClientConnection`  
+> JDBC的驱动实现是通过HTTP协议和Clickhouse通信 [Github: clickhouse-java](https://github.com/ClickHouse/clickhouse-java)`com.clickhouse.client.internal.apache.hc.client5.http.impl.io.DefaultManagedHttpClientConnection`  
 
 低版本驱动没有实现负载均衡，需要在数据节点前加一层 [chproxy](https://github.com/ContentSquare/chproxy), 但是实际上也可以自己实现负载均衡算法(例如：依据某个时间窗口内所有节点的负载，连接等情况来选择合适的节点)
 
@@ -218,6 +217,9 @@ categories:
     - JDBC URL优化 socketTimeout参数 （ck0.6.0默认是30s）, **应明显小于服务端**的 tcp_keep_alive_timeout （ms）值， `select * from system.settings where name like '%keep%';`
     - JDBC 驱动版本低， 从0.2.4 升级到0.6.0后问题出现概率小很多 因为 [host failed to respond](https://github.com/ClickHouse/clickhouse-java/issues/452) 0.2.5 主动获取了服务端设置值
     - 注意socketTimeout参数同样作用于查询时间，如果SQL执行时间大于该值会报错 read timeout [http read timeout 30](https://github.com/ClickHouse/clickhouse-java/issues/159)
+
+- [驱动内错误码定义](https://github.com/ClickHouse/ClickHouse/blob/master/src/Common/ErrorCodes.cpp)
+    - 注意CK驱动从0.3左右开始，ClickHouseException不继承SQLException
 
 ************************
 
