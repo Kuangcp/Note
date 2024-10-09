@@ -26,6 +26,7 @@ categories:
     - 3.3. [字符类型](#字符类型)
         - 3.3.1. [varchar](#varchar)
         - 3.3.2. [text](#text)
+        - 3.3.3. [JSON](#json)
     - 3.4. [LongBlob](#longblob)
 - 4. [数据库](#数据库)
     - 4.1. [创建](#创建)
@@ -67,7 +68,7 @@ categories:
     - 14.3. [修改](#修改)
         - 14.3.1. [授权](#授权)
 
-💠 2024-09-12 16:01:31
+💠 2024-10-09 16:33:39
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -169,7 +170,9 @@ _重启_
 ### varchar
 ### text
 
-- [ ] 后期完善
+### JSON
+> [The JSON Data Type](https://dev.mysql.com/doc/refman/8.4/en/json.html)  
+
 
 ## LongBlob
 - 这种数据类型可以直接把图像文件存到数据库中！
