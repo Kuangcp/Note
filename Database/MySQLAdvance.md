@@ -28,7 +28,7 @@ categories:
 - 2. [Tips](#tips)
     - 2.1. [SQL 片段](#sql-片段)
 
-💠 2024-06-21 15:42:49
+💠 2024-10-10 10:41:00
 ****************************************
 # MySQL进阶
 > [Github: MySQL Sever](https://github.com/mysql/mysql-server)  
@@ -219,6 +219,8 @@ InnoDB通过加间隙锁来防止幻读
 
 - [参考: 自增主键不连续的几种情况](https://cloud.tencent.com/developer/article/1634218)  
     - 事务回滚，插入语句报错，MySQL自增锁优化
+
+- [Percona Doc](https://www.percona.com/) | [DockerHub](https://hub.docker.com/_/percona)
 
 ## SQL 片段
 
