@@ -21,7 +21,7 @@ categories:
         - 1.3.2. [插件](#插件)
     - 1.4. [Vivaldi](#vivaldi)
 
-💠 2024-09-14 11:51:16
+💠 2024-10-10 20:43:07
 ****************************************
 # 浏览器
 [neko](https://github.com/m1k1o/neko)`runs in docker and uses WebRTC`
@@ -58,7 +58,7 @@ categories:
 - `Vimium C - All by Keyboard`
     - Vim风格操作浏览器日常操作
 1. `Dark Reader` 设置网页黑夜模式
-1. `Greasemonkey` 传说中的油猴, 可以自己写脚本 [wiki](https://wiki.greasespot.net/User_Script_Hosting)
+1. `Greasemonkey` Tampermonkey 传说中的油猴, 可以自己写脚本 [wiki](https://wiki.greasespot.net/User_Script_Hosting)
 1. `New Tab Tools` 新建标签页的自定义工具 
 1. `cliget` 能将下载中的任务转化为 curl wget命令 牛
 1. `eolinker` 接口测试工具

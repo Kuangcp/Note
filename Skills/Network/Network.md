@@ -74,7 +74,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2024-09-24 15:38:50
+💠 2024-10-10 20:43:07
 ****************************************
 # 网络
 
@@ -271,15 +271,24 @@ IPv4 地址由 32 位标识符组成，目前由 ICANN 进行分配 且在 2011 
 > [TCP 重传、滑动窗口、流量控制、拥塞控制](https://www.xiaolincoding.com/network/3_tcp/tcp_feature.html) | [TCP congestion control](https://en.wikipedia.org/wiki/TCP_congestion_control)
 
 ************************
-TCP状态
+TCP状态 [详解TCP的11种状态](https://cloud.tencent.com/developer/article/1648432)
 
-> [详解TCP的11种状态](https://cloud.tencent.com/developer/article/1648432)
+握手阶段 CLOSED， LISTEN， SYN_RCVD， SYN_SENT， ESTABLISHED
+挥手阶段 FIN_WAIT_1, FIN_WAIT_2, CLOSE_WAIT, LAST_ACK, TIME_WAIT, CLOSING 
 
 > [大量的 TIME_WAIT 状态连接怎么处理？](https://cloud.tencent.com/developer/article/1675933)
 - TIME_WAIT 由于需要等待 2ML（Maximum Segment Life，报文段最大生存时间） 时间才能关闭TCP连接， 频繁请求会导致创建出大量TIME_WAIT的TCP连接
     - 会占用一个IP层五元组：（协议，本地IP，本地端口，远程IP，远程端口）
     - 对于 Web 服务器，协议是 TCP，本地 IP 通常也只有一个，本地端口默认的 80 或者 443。只剩下远程 IP 和远程端口可以变了。
     - 如果远程 IP 是相同的话，就只有远程端口可以变了。这个只有几万个，所以当同一客户端向服务器建立了大量连接之后，会耗尽可用的五元组导致无法建立连接。
+
+> 大量 CLOSE_WAIT 如何处理
+- 表示正在等待关闭，该状态只在被动端出现，即当主动断开的一端调用close()后发送FIN报文给被动端，被动段必然会回应一个ACK(这是由TCP协议层决定的)，这个时候，TCP连接状态就进入到CLOSE_WAIT
+- 出现大量close_wait的原因就是：server接收到了client的FIN信号后进入close_wait状态，但后续并未发送FIN信号给client而是长期滞留在close_wait状态当中，而client一般会设置超时时间，所以即便最终server发出了FIN信号，此时很大概率client已经判断超时导致TCP连接异常。更严重的是，如果client还设置了重试策略，就会在server内部产生更多close_wait。
+- 那么server在什么情况下FIN包会发送失败?
+- 程序问题：如果代码层面忘记了 close 相应的 socket 连接，那么自然不会发出 FIN 包，从而导致 CLOSE_WAIT 累积；或者代码不严谨，出现死循环之类的问题，导致即便后面写了 close 也永远执行不到。
+- 响应太慢或者超时设置过小：如果连接双方不和谐，一方不耐烦直接 timeout，另一方却还在忙于耗时逻辑，就会导致 close 被延后。响应太慢是首要问题，不过换个角度看，也可能是 timeout 设置过小。
+- BACKLOG 太大：此处的 backlog 不是 syn backlog，而是 accept 的 backlog，如果 backlog 太大的话，设想突然遭遇大访问量的话，即便响应速度不慢，也可能出现来不及消费的情况，导致多余的请求还在队列里就被对方关闭了。
 
 ************************
 
