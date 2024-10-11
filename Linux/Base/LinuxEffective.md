@@ -33,6 +33,7 @@ categories:
     - 2.2. [图片处理](#图片处理)
         - 2.2.1. [ImageMagick](#imagemagick)
             - 2.2.1.1. [convert](#convert)
+            - 2.2.1.2. [多图操作](#多图操作)
         - 2.2.2. [asciinema](#asciinema)
         - 2.2.3. [图片浏览器](#图片浏览器)
         - 2.2.4. [截图](#截图)
@@ -50,7 +51,7 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2024-09-09 10:34:58
+💠 2024-10-11 15:07:39
 ****************************************
 # 高效的Linux
 
@@ -384,25 +385,26 @@ CrystalDiskMark
 - 格式转换： convert a.png a.jpg 
 
 - 将图片转换成指定大小 这是保持比例的 `convert -resize 600X600 src.jpg dst.jpg` 中间是字母X
-  - 如果不保持比例，就在宽高后加上感叹号
-  - 可以只指定高度，那么宽度会等比例缩放 `convert -resize 400 src.jpg dst.jpg`
-  - 还可以按百分比缩放 `convert page200.png -resize 50% page100.png`
+    - 如果不保持比例，就在宽高后加上感叹号
+    - 可以只指定高度，那么宽度会等比例缩放 `convert -resize 400 src.jpg dst.jpg`
+    - 还可以按百分比缩放 `convert page200.png -resize 50% page100.png`
+
+> svg to ico 两种方式
+- `magick convert -background none icon.svg -define icon:auto-resize icon.ico`
+- `convert -background none icon.svg -define icon:auto-resize icon.ico`
+
+#### 多图操作
+- 若干图片合并并转PDF `convert origin1.jpg origin2.jpg target.pdf`
+- [imagemagick 图片合并_convert 多图拼接-CSDN博客](https://blog.csdn.net/qq_24127015/article/details/86525305)  
+  - 水平方向拼接,纵向则是 -append `magick convert +append  2024* aa.jpg`
+  - composite 方式
+    - 生成空白图片 `magick -size 1920x1200 xc:none dest0.jpg`
+    - 按坐标放入两张图片 `magick composite -geometry +0+0 u-0.jpg dest0.jpg dest0.jpg`  `magick composite -geometry +1000+0 u-1.jpg dest0.jpg dest0.jpg`
 
 > 批量修改 
 如果没有 -path 语句，新生成的 png 文件将会覆盖原始文件 [参考博客](http://www.cnblogs.com/jkmiao/p/6756929.html)
 - `mogrify -path newdir -resize 40X40 *.png` 把png图片全部转成40X40大小并放在新文件夹下
 - `mogrify -path newdir -format png  *.gif` 将所有gif转成png放在新目录下
-
-> 将原有大小图片转换成其他指定大小的图片(保持比例)
-1. 原图片 a * b -> x * y
-2. x/y 得到比例 在 原图中裁剪出同样比例的图片 (Viewnior就很好用)
-3. 将裁剪出来的图片转换指定大小 `convert -resize xXy src.jpg dst.jpg`
-
-> 若干图片合并转PDF `convert origin1.jpg origin2.jpg target.pdf`
-
-> svg to ico 两种方式
-- `magick convert -background none icon.svg -define icon:auto-resize icon.ico`
-- `convert -background none icon.svg -define icon:auto-resize icon.ico`
 
 ### asciinema
 
