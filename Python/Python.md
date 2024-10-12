@@ -50,7 +50,7 @@ categories:
         - 3.7.2. [时间处理](#时间处理)
         - 3.7.3. [三方库](#三方库)
 
-💠 2024-08-26 16:31:06
+💠 2024-10-12 11:35:37
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -546,24 +546,24 @@ python -m module_name
 ### pip
 > [pip](https://pip.readthedocs.io/en/stable/) | [doc](https://pip.pypa.io/en/stable/reference/pip_install/) | [guide](https://packaging.python.org/tutorials/installing-packages/) 
 
-> 3.10 后使用 pip 的方式 
-- 安装 `python -m ensurepip --upgrade`
-- 使用 `python -m pip install pkgName` 
-- 升级 `python -m pip install --upgrade pip`
-
 1. 作为Python的包管理器, 包的可执行文件默认在 /usr/local/bin 目录下(全局)
     - 如果安装时加了该参数 --user 就是安装在 ~/.local/bin 目录下
 
-1. `python -m pip install name` 安装最新版本
+1. `pip install name` 安装最新版本
     - `pip install name==version` 安装指定版本
     - 镜像源 豆瓣 `-i https://pypi.doubanio.com/simple/` 清华 `-i https://pypi.tuna.tsinghua.edu.cn/simple`
         - [修改Pip 管理工具默认下载源](https://blog.csdn.net/JQ_AK47/article/details/77944444)
     - 代理 `--proxy 192.168.1.24:1234`
     - 强行使用HTTP `-i http://pypi.doubanio.com/simple/ --trusted-host pypi.doubanio.com` pip版本高于20.3后默认使用HTTPS
 
-- 注意：自PEP668开始限制默认安装为全局依赖，否则会报错 externally-managed-environment
-    - 可以设置默认全局 python3 -m pip config set global.break-system-packages true
-    - 或者单次安装到全局 --break-system-packages
+> 注意：自PEP668开始限制默认安装为全局依赖，否则会报错 externally-managed-environment
+- 可以设置默认全局 python3 -m pip config set global.break-system-packages true
+- 或者单次安装到全局 --break-system-packages
+
+> 3.10 后 pip 作为子模块
+- 安装 `python -m ensurepip --upgrade`
+- 使用 `python -m pip install pkgName` 
+- 升级 `python -m pip install --upgrade pip`
 
 #### Requirements files
 > [pip官方文档 Requirements files](https://pip.readthedocs.io/en/1.1/requirements.html)
