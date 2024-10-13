@@ -23,7 +23,8 @@
 > [docker hub](https://hub.docker.com/_/python/)
 
 ### Conda
-> [Conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html)`简单理解为 venv + pip`
+> [Conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html)`简单理解为 venv + pip`  
+> [Miniconda 安装](https://docs.anaconda.com/miniconda/)  
 
 - 安装 conda create -n py39  python=3.9 
     - conda create -n py311 python=3.11

@@ -18,7 +18,7 @@ categories:
     - 4.3. [Google拼音](#google拼音)
             - 4.3.0.1. [小小输入法](#小小输入法)
 
-💠 2024-09-28 11:21:46
+💠 2024-10-13 17:59:27
 ****************************************
 # IME
 > 输入法
@@ -67,9 +67,9 @@ Ctrl ` 进入设置
 
 > 自定义词库
 - [导入词库](https://gist.github.com/lotem/5443073)  
--[rime 词库](https://github.com/mutoe/rime)  
--[Rime 擴充詞庫](https://github.com/rime-aca/dictionaries)  
--[Dict.yml](https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Rime_description.md#dictyaml-%E8%A9%B3%E8%A7%A3)
+- [rime 词库](https://github.com/mutoe/rime)`emoji,计算机等生活词库`  
+- [Rime 擴充詞庫](https://github.com/rime-aca/dictionaries)  
+- [Dict.yml](https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Rime_description.md#dictyaml-%E8%A9%B3%E8%A7%A3)
 - [RimeConfig](https://github.com/SaboZhang/RimeConfig)  
 
 ## 搜狗
