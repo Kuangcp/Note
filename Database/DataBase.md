@@ -51,7 +51,7 @@ categories:
 - 10. [数据库中间件](#数据库中间件)
 - 11. [图形化工具](#图形化工具)
 
-💠 2024-10-12 11:35:37
+💠 2024-10-13 18:30:08
 ****************************************
 # 数据库
 > [码农翻身:爱炫耀的数据库老头儿](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514001&idx=1&sn=17b72c3e69db6c4277e3045c699b7b6b&chksm=80d67c52b7a1f5446020826841869221873f4578524181384592839d19c4810dc68807117e13&scene=21#wechat_redirect) `事务,undo日志`
@@ -255,7 +255,7 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 > [向量数据库｜一文全面了解向量数据库的基本概念、原理、算法、选型](https://cloud.tencent.com/developer/article/2312534)
 
 # 图数据库
-> [Graph database plugin for the IntelliJ Platform](https://github.com/albertoventurini/graphdb-intellij-plugin)  
+> [Note: 图数据库](/Database/Graph.md)  
 
 ***********************
 
