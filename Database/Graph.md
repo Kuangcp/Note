@@ -5,14 +5,13 @@ tags:
 categories: 
 ---
 
-
 💠
 
 - 1. [图数据库](#图数据库)
 - 2. [QL 查询语言](#ql-查询语言)
     - 2.1. [Cypher](#cypher)
 
-💠 2024-10-13 18:28:55
+💠 2024-10-14 16:13:01
 ****************************************
 # 图数据库
 
@@ -29,4 +28,6 @@ Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph
 
 ```c
     MATCH (n) RETURN (n)
+    -- 查询 疾病 关联的 所有病征
+    MATCH (d:疾病)-[:疾病的症状]->(s:疾病症状) WHERE d.名称 = '血栓形成' RETURN s
 ```

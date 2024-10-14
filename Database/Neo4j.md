@@ -11,8 +11,9 @@ categories:
     - 1.1. [安装](#安装)
         - 1.1.1. [驱动](#驱动)
 - 2. [使用](#使用)
+- 3. [应用](#应用)
 
-💠 2024-10-13 18:30:08
+💠 2024-10-14 16:13:01
 ****************************************
 # Neo4j
 > [Neo4j Graph Database & Analytics | Graph Database Management System](https://neo4j.com/)  
@@ -25,6 +26,8 @@ categories:
     - 或者运行时添加环境变量 `--env NEO4J_AUTH=neo4j/neo4jpassword` 
 - http://localhost:7474/browser/  bolt协议，用户名 neo4j 
 
+> 社区版本不支持命令create database xxx
+
 ### 驱动
 
 Python
@@ -36,4 +39,13 @@ Python
 # 使用
 > [快速入门 Neo4J教程](https://juejin.cn/post/7146016720388358181)  
 > [Neo4j图数据库及Cypher语法基础 | Quantum Bit](https://www.eula.club/blogs/Neo4j%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ACypher%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80.html)  
+
+
+************************
+
+# 应用
+> [hokaso/hocassian-people-neo4j: NoSQL可视化人脉图谱项目](https://github.com/hokaso/hocassian-people-neo4j)  
+> [NTDXYG/Neo4j: 基于电影知识图谱和微信小程序的智能问答系统](https://github.com/NTDXYG/Neo4j)  
+> [lonngxiang/Knowledge-map-of-family-tree （姓氏家族家谱知识图谱）](https://github.com/lonngxiang/Knowledge-map-of-family-tree)  
+
 
