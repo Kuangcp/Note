@@ -5,7 +5,6 @@ tags:
 categories: 
 ---
 
-
 💠
 
 - 1. [WSL](#wsl)
@@ -13,7 +12,7 @@ categories:
     - 2.1. [GUI](#gui)
 - 3. [WSA](#wsa)
 
-💠 2024-09-05 11:52:54
+💠 2024-10-15 09:56:12
 ****************************************
 # WSL 
 > [Official Doc](https://learn.microsoft.com/zh-cn/windows/wsl/install)
@@ -30,7 +29,8 @@ categories:
 - 删除旧发行版 `wsl --unregister Ubuntu`
 
 ## GUI
-> [wslg](https://github.com/microsoft/wslg)
+> [wslg](https://github.com/microsoft/wslg)  
+> [Run Linux GUI apps with WSL | Microsoft Learn](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps)  
 
 
 # WSA

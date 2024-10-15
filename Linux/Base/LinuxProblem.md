@@ -32,7 +32,7 @@ categories:
         - 1.5.2. [i386-pc not found](#i386-pc-not-found)
     - 1.6. [崩溃](#崩溃)
 
-💠 2024-04-30 13:44:24
+💠 2024-10-15 09:56:12
 ****************************************
 # Linux桌面发行版遇到的问题
 
@@ -102,6 +102,7 @@ categories:
 大多数笔记本都是 Intel集显和 Nvidia/AMD 组成双显卡, 双显卡的管理就成了问题(指的是Linux下)
 > [参考: 使用 Bumblebee 控制 NVIDIA 双显卡](https://www.cnblogs.com/congbo/archive/2012/09/12/2682105.html)
 
+> [Serious Issue with NVIDIA Drivers: Compatibility Problems with Linux Kernel 6.10 | by Niemand | Aug, 2024 | Medium](https://medium.com/@TheNiemand/serious-issue-with-nvidia-drivers-compatibility-problems-with-linux-kernel-6-10-9cdb0791d204)`升级Manjaro到24.1后没注意到升级了内核和驱动，然后lightdm以及X都崩溃了`  
 ************************
 #### Manjaro 的NVIDIA驱动问题
 > [参考: Manjaro NVIDIA驱动问题的解决方案](https://blog.csdn.net/qq_39828850/article/details/87919188)  
