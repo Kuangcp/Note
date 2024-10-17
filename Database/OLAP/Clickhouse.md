@@ -24,7 +24,7 @@ categories:
 - 6. [Explain](#explain)
 - 7. [Tips](#tips)
 
-💠 2024-10-17 10:43:43
+💠 2024-10-17 19:26:13
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -144,7 +144,13 @@ categories:
 分为：MT家族，外部表（集成）引擎，日志引擎，特殊引擎（Distributed，File,URL,Memory等等）
 
 ## MergeTree 引擎家族
-
+- MergeTree
+- ReplacingMergeTree
+- SummingMergeTree
+- AggregatingMergeTree
+- CollapsingMergeTree
+- VersionedCollapsingMergeTree
+- GraphiteMergeTree
 
 ## 分布式表引擎 Distributed
 > [doc: distributed](https://clickhouse.com/docs/en/engines/table-engines/special/distributed)  
@@ -178,6 +184,12 @@ categories:
 ************************
 # 表
 > [doc: create table](https://clickhouse.com/docs/en/sql-reference/statements/create/table)
+
+```sql
+    -- 复制表结构，可以快速建立 相同表结构，但是不同引擎和存储方案 的表。 
+    -- 例如大量数据的导入场景，直接通过JDBC写入分布式分区复制表 对CK的压力（ZK同步的压力） 会比 JDBC先写入分布式分区表 再ck内部insert转移到分布式分区复制表 的方案小，且稳定
+    CREATE TABLE [IF NOT EXISTS] [db.]table_name CLONE AS [db2.]name2 [ENGINE = engine]
+```
 
 ## 分区表
 > [What is the actual use of partitions in clickhouse?](https://stackoverflow.com/questions/75439190/what-is-the-actual-use-of-partitions-in-clickhouse)`数据有明显的分区特征（例如时间序列数据），按分区做TTL，查询时通常不会跨多个分区，分区数在100以内（分区很多时很影响读写性能）`  
