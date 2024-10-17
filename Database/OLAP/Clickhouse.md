@@ -24,7 +24,7 @@ categories:
 - 6. [Explain](#explain)
 - 7. [Tips](#tips)
 
-💠 2024-10-08 11:23:38
+💠 2024-10-17 10:43:43
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -171,8 +171,7 @@ categories:
 ************************
 
 > [ClickHouse案例：查询结果不一致](https://cloud.tencent.com/developer/article/1748216)  
-
-> 注意，有副本的集群，分布式表都需要关联副本表 Replicated MergeTree 作为数据表，如果使用普通的MT表引擎，会导致查询和写入都会遇到奇怪的问题。
+> 注意 设置有副本的集群，分布式表都需要关联副本表 Replicated MergeTree 作为数据表，如果使用普通的MT表引擎，会导致查询和写入都会遇到奇怪的问题。
 - 写入： 会有部分节点上没有数据，但是全部节点的数据总量是对的
 - 查询： 一条SQL每次查询的结果都不一样（各个分片内随机选择副本再合并查询结果而导致的）
 
