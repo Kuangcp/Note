@@ -10,12 +10,13 @@ categories:
 - 1. [Clickhouse](#clickhouse)
     - 1.1. [设计](#设计)
     - 1.2. [事务](#事务)
+    - 1.3. [存算分离](#存算分离)
 - 2. [使用实践](#使用实践)
     - 2.1. [写入](#写入)
     - 2.2. [查询](#查询)
     - 2.3. [监控](#监控)
 
-💠 2024-10-17 20:37:22
+💠 2024-10-21 15:37:17
 ****************************************
 # Clickhouse
 
@@ -49,6 +50,11 @@ categories:
 
 ## 事务
 > [Transactional (ACID) support](https://clickhouse.com/docs/en/guides/developer/transactional)  
+
+
+## 存算分离
+
+> [ClickHouse 存算分离架构探索 - JuiceFS 博客](https://juicefs.com/zh-cn/blog/solutions/clickhouse-disaggregated-storage-and-compute-practice)  
 
 ************************
 

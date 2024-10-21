@@ -12,3 +12,5 @@
 [数据协作](/BigData/DataOrchestration.md)  
 [数据安全](/BigData/DataSecurity.md)  
 
+# Guide 
+> [Mrkuhuo/data-warehouse-learning: 【2024最新版】 大数据 数据分析 电商系统 实时数仓 离线数仓 数据湖 建设方案及实战代码](https://github.com/Mrkuhuo/data-warehouse-learning)  
