@@ -19,7 +19,7 @@ categories:
     - 2.3. [Pattern](#pattern)
 - 3. [应用](#应用)
 
-💠 2024-10-14 19:26:20
+💠 2024-10-21 22:05:55
 ****************************************
 # Neo4j
 > [Neo4j Graph Database & Analytics | Graph Database Management System](https://neo4j.com/)  
@@ -38,9 +38,21 @@ categories:
 
 ### 驱动
 
+注意协议区分为 bolt(6787) neo4j(6787) http(7474) 等, 使用的端口不一样
+
+************************
+
+
 Python
 
 > [Neo4j Python Driver 5.25 — Neo4j Python Driver 5.25](https://neo4j.com/docs/api/python-driver/current/)  
+
+Java 
+
+> [Using Neo4j from Java - Getting Started](https://neo4j.com/docs/getting-started/languages-guides/java/java-intro/)  
+
+Java8使用坑比较多，注意5.X需要Java17 4.x以及3.x才可以兼容Java8，但是官网基本是按5.x来推荐和写样例代码 [neo4j-examples/movies-java-bolt ](https://github.com/neo4j-examples/movies-java-bolt)  
+包括SpringData Neo4j 也是配置和使用方式改动较大，需要仔细翻阅旧文档。
 
 ************************
 
