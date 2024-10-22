@@ -43,7 +43,7 @@ Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph
 
 ```c
     MATCH (n) RETURN (n)
-    -- 查询 疾病 关联的 所有病征
+    // 查询 疾病 关联的 所有病征
     MATCH (d:疾病)-[:疾病的症状]->(s:疾病症状) WHERE d.名称 = '血栓形成' RETURN s
 ```
 

@@ -19,10 +19,12 @@ categories:
     - 2.3. [Pattern](#pattern)
 - 3. [应用](#应用)
 
-💠 2024-10-21 22:05:55
+💠 2024-10-22 21:57:17
 ****************************************
 # Neo4j
 > [Neo4j Graph Database & Analytics | Graph Database Management System](https://neo4j.com/)  
+
+> [Neo4j 图数据库中文社区，致力于 Neo4j 的技术研究。](http://neo4j.com.cn/)  
 
 ## 安装
 
