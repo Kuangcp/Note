@@ -12,10 +12,11 @@ categories:
     - 1.1. [基础部分](#基础部分)
     - 1.2. [集合](#集合)
 - 2. [独立组件](#独立组件)
-    - 2.1. [RateLimiter](#ratelimiter)
-    - 2.2. [EventBus](#eventbus)
+    - 2.1. [Cache](#cache)
+    - 2.2. [RateLimiter](#ratelimiter)
+    - 2.3. [EventBus](#eventbus)
 
-💠 2024-04-22 00:47:57
+💠 2024-10-25 18:09:58
 ****************************************
 # Guava
 > [Github地址](https://github.com/google/guava)  
@@ -44,6 +45,11 @@ _包结构_
 ************************
 
 # 独立组件
+## Cache
+> [Guava Cache | Baeldung](https://www.baeldung.com/guava-cache)  
+
+但是api设计上没有 [Caffeine](/Java/AdvancedLearning/Cache/Caffeine.md) 灵活
+
 ## RateLimiter
 > 令牌桶算法实现
 

@@ -16,7 +16,7 @@ categories:
     - 2.2. [查询](#查询)
     - 2.3. [监控](#监控)
 
-💠 2024-10-21 15:37:17
+💠 2024-10-25 18:09:58
 ****************************************
 # Clickhouse
 
@@ -79,6 +79,8 @@ categories:
 - Datax 数据同步写入复制表，ZK负载过大引发报错
     - 类似小数据量写入的做法 在写入复制表前，先从上游写入到CK的非复制表中去，然后再通过CK内部的insert select。实测效率提升100%，原因目前推断为CK内部insert有做优化
 -  数据文件方式同步 [百亿级数据同步，如何基于 SeaTunnel 的 ClickHouse 实现？](https://seatunnel.apache.org/zh-CN/blog/2022/05/10/ClickHouse/)`在上游数据端就生成ck的数据文件，然后传输文件，ck服务端attach挂载该文件`  
+
+Spark 解析HDFS数据生成CK file（单个分区做一个gz压缩包，解压入库）完成写入Clickhouse
 
 参考： 
 
