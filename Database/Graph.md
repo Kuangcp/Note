@@ -39,7 +39,7 @@ Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph
 
 ## Cypher
 > [Cypher Cheat Sheet](https://neo4j.com/docs/cypher-cheat-sheet/5/aura-dbe/)`使用手册`  
-> [albertoventurini/graphdb-intellij-plugin](https://github.com/albertoventurini/graphdb-intellij-plugin)  
+> [Graph Database](https://github.com/albertoventurini/graphdb-intellij-plugin)  
 
 ```c
     MATCH (n) RETURN (n)

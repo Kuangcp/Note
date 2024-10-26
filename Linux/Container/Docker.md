@@ -204,6 +204,11 @@ categories:
 - 检查环境变量 systemctl show --property=Environment docker
 - 查看代理 docker info
 
+> Windows WSL 配置
+- WSL无法注册为Service,直接dockerd 方式启动 的情况, 只能通过配置 --http-proxy --https-proxy
+    - 无法通过配置 /etc/default/docker 等方式
+    - 无法通过 docker run --env HTTP_PROXY="http://x.x.x.x" 
+
 ## 配置镜像源
 > 默认的DockerHub因为在国外所以网络不太稳定，需要使用国内镜像源
 
