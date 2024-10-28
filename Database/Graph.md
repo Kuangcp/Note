@@ -13,7 +13,7 @@ categories:
     - 3.1. [Cypher](#cypher)
     - 3.2. [Gremlin](#gremlin)
 
-💠 2024-10-14 19:26:20
+💠 2024-10-28 11:31:19
 ****************************************
 # 图数据库
 
@@ -42,7 +42,9 @@ Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph
 > [Graph Database](https://github.com/albertoventurini/graphdb-intellij-plugin)  
 
 ```c
-    MATCH (n) RETURN (n)
+    MATCH (n) RETURN n limit 10
+    //  删除所有关系
+    MATCH ()-[r]->() delete(r)
     // 查询 疾病 关联的 所有病征
     MATCH (d:疾病)-[:疾病的症状]->(s:疾病症状) WHERE d.名称 = '血栓形成' RETURN s
 ```

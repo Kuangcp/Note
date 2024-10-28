@@ -11,15 +11,17 @@ categories:
     - 1.1. [安装](#安装)
         - 1.1.1. [驱动](#驱动)
 - 2. [使用](#使用)
-    - 2.1. [结构](#结构)
-    - 2.2. [Schema](#schema)
-        - 2.2.1. [索引](#索引)
-        - 2.2.2. [约束](#约束)
-        - 2.2.3. [统计信息](#统计信息)
-    - 2.3. [Pattern](#pattern)
+    - 2.1. [数据导入](#数据导入)
+        - 2.1.1. [Load CSV](#load-csv)
+    - 2.2. [结构](#结构)
+    - 2.3. [Schema](#schema)
+        - 2.3.1. [索引](#索引)
+        - 2.3.2. [约束](#约束)
+        - 2.3.3. [统计信息](#统计信息)
+    - 2.4. [Pattern](#pattern)
 - 3. [应用](#应用)
 
-💠 2024-10-22 21:57:17
+💠 2024-10-28 11:31:19
 ****************************************
 # Neo4j
 > [Neo4j Graph Database & Analytics | Graph Database Management System](https://neo4j.com/)  
@@ -69,10 +71,20 @@ Java8使用坑比较多，注意5.X需要Java17 4.x以及3.x才可以兼容Java8
 ## 数据导入
 
 ### Load CSV
-注意默认导入路径在 neo4j.conf 中配置,默认为 根路径下 import 目录, 文件名最好为英文, 导入时
-```cypher
-LOAD CSV WITH HEADERS FROM 'file:///event.csv' AS row
-CREATE (:`事件` {id: row.id, name: row.name})
+注意默认导入路径在 neo4j.conf 中配置,默认为 根路径下 import 目录, 文件名最好为英文
+```c
+    // 导入节点 csv内为两列 id 和 name
+    LOAD CSV WITH HEADERS FROM 'file:///event.csv' AS row
+    CREATE (:`事件` {id: row.id, name: row.name})
+
+    // 导入关系 csv内为两列 id_from id_to
+    LOAD CSV WITH HEADERS FROM "file:///Relationships.csv" AS row
+    //look up the two nodes we want to connect up
+    MATCH (p1:Person {id:row.id_from}), (p2:Person {id:row.id_to})
+    //now create a relationship between them
+    CREATE (p1)-[:KNOWS]->(p2);
+    // TODO 考虑 节点类型和id以及关系类型都是可变的情况
+    
 ```
 
 ## 结构
