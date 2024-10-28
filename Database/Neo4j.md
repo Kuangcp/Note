@@ -28,10 +28,10 @@ categories:
 
 ## 安装
 
-- `docker run  --publish=7474:7474 --publish=7687:7687 neo4j:5.24`
-- [Neo4j: Can't log in: Neo.ClientError.Security.Unauthorized: The client is unauthorized due to authentication failure - Stack Overflow](https://stackoverflow.com/questions/53687901/neo4j-cant-log-in-neo-clienterror-security-unauthorized-the-client-is-unauth)  
-`neo4j-admin dbms set-initial-password pwdtest123` 然后重启
-    - 或者运行时添加环境变量 `--env NEO4J_AUTH=neo4j/neo4jpassword` 
+- `docker run  -p 7474:7474 -p 7687:7687 neo4j:5.24`
+    - docker run --name neo4 -d -p 7474:7474 -p 7687:7687 --env NEO4J_AUTH=neo4j/jiushineo neo4j:5.24
+- 进入容器修改密码 `neo4j-admin dbms set-initial-password pwdtest123` 然后重启
+
 - http://localhost:7474/browser/  bolt协议，用户名 neo4j 
 - 登录后 Favorites 菜单下的 Sample Scripts 可以快速了解常用查询语句
 
@@ -66,6 +66,14 @@ Java8使用坑比较多，注意5.X需要Java17 4.x以及3.x才可以兼容Java8
 > [Neo4j - 悦光阴 - 博客园](https://www.cnblogs.com/ljhdo/tag/Neo4j/)  
 > [Neo4j 第二篇：图形数据库 - 悦光阴 - 博客园](https://www.cnblogs.com/ljhdo/p/5178225.html)  
 
+## 数据导入
+
+### Load CSV
+注意默认导入路径在 neo4j.conf 中配置,默认为 根路径下 import 目录, 文件名最好为英文, 导入时
+```cypher
+LOAD CSV WITH HEADERS FROM 'file:///event.csv' AS row
+CREATE (:`事件` {id: row.id, name: row.name})
+```
 
 ## 结构
 使用Neo4j创建的图（Graph）基于属性图模型，在该模型中，每个实体都有ID（Identity）唯一标识，每个节点由标签（Lable）分组，每个关系都有一个唯一的关系类型。
