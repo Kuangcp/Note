@@ -58,7 +58,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2024-09-06 11:36:43
+💠 2024-10-28 16:30:33
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -302,7 +302,7 @@ _登录镜像仓库_
     - 删除所有容器和挂载的目录：`docker system prune --volumes -f`
 - 容器日志(终端所有输入输出)：`docker logs 容器name或id`
 - 重命名 ： `docker rename origin new`
-- 复制文件或目录
+- 复制文件或目录 **容器启动或停止都可操作**
     - 容器复制到宿主机 `docker cp my_container:/path/in/container /path/on/host`
     - 宿主机复制到容器 `docker cp /path/on/host my_container:/path/in/container`
     - 但是不支持通配 `docker cp *.sh redis:/tmp`

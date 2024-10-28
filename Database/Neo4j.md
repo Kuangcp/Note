@@ -21,12 +21,14 @@ categories:
     - 2.4. [Pattern](#pattern)
 - 3. [应用](#应用)
 
-💠 2024-10-28 11:31:19
+💠 2024-10-28 16:30:33
 ****************************************
 # Neo4j
 > [Neo4j Graph Database & Analytics | Graph Database Management System](https://neo4j.com/)  
 
 > [Neo4j 图数据库中文社区，致力于 Neo4j 的技术研究。](http://neo4j.com.cn/)  
+
+> [DozerDB](https://github.com/dozerdb)`衍生`  
 
 ## 安装
 
@@ -34,11 +36,14 @@ categories:
     - docker run --name neo4 -d -p 7474:7474 -p 7687:7687 --env NEO4J_AUTH=neo4j/jiushineo neo4j:5.24
 - 进入容器修改密码 `neo4j-admin dbms set-initial-password pwdtest123` 然后重启
 
+> [Neo4j Deployment Center - Graph Database & Analytics](https://neo4j.com/deployment-center/)  
+
 - http://localhost:7474/browser/  bolt协议，用户名 neo4j 
 - 登录后 Favorites 菜单下的 Sample Scripts 可以快速了解常用查询语句
 
 > 注意
-- 社区版本不支持命令 create database xxx 只能使用默认的 neo4j
+- 社区版本不支持命令 create database xxx 只能使用默认的 neo4j [Multiple database in community edition · Issue #12920 · neo4j/neo4j](https://github.com/neo4j/neo4j/issues/12920)  
+- Docker方式启动适合调试，正式使用不推荐，数据备份迁移不方便(也可以停止容器后docker cp复制出 data 目录，替换到新的空实例再启动，也可以正常使用)
 
 ### 驱动
 
@@ -68,6 +73,8 @@ Java8使用坑比较多，注意5.X需要Java17 4.x以及3.x才可以兼容Java8
 > [Neo4j - 悦光阴 - 博客园](https://www.cnblogs.com/ljhdo/tag/Neo4j/)  
 > [Neo4j 第二篇：图形数据库 - 悦光阴 - 博客园](https://www.cnblogs.com/ljhdo/p/5178225.html)  
 
+
+
 ## 数据导入
 
 ### Load CSV
@@ -84,7 +91,7 @@ Java8使用坑比较多，注意5.X需要Java17 4.x以及3.x才可以兼容Java8
     //now create a relationship between them
     CREATE (p1)-[:KNOWS]->(p2);
     // TODO 考虑 节点类型和id以及关系类型都是可变的情况
-    
+
 ```
 
 ## 结构
