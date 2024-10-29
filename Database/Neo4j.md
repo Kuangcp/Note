@@ -21,7 +21,7 @@ categories:
     - 2.4. [Pattern](#pattern)
 - 3. [应用](#应用)
 
-💠 2024-10-28 16:30:33
+💠 2024-10-29 11:15:32
 ****************************************
 # Neo4j
 > [Neo4j Graph Database & Analytics | Graph Database Management System](https://neo4j.com/)  
@@ -34,7 +34,7 @@ categories:
 
 - `docker run  -p 7474:7474 -p 7687:7687 neo4j:5.24`
     - docker run --name neo4 -d -p 7474:7474 -p 7687:7687 --env NEO4J_AUTH=neo4j/jiushineo neo4j:5.24
-- 进入容器修改密码 `neo4j-admin dbms set-initial-password pwdtest123` 然后重启
+- 或者 进入容器修改密码 `neo4j-admin dbms set-initial-password pwdtest123` 然后重启 注意只在第一次启动时有效，后续修改密码是 ALTER USER neo4j SET PASSWORD ;
 
 > [Neo4j Deployment Center - Graph Database & Analytics](https://neo4j.com/deployment-center/)  
 
