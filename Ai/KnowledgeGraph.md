@@ -23,4 +23,5 @@ categories:
 # 案例实践项目
 
 > [liuhuanyong/QASystemOnMedicalKG: 以疾病为中心的一定规模医药领域知识图谱](https://github.com/liuhuanyong/QASystemOnMedicalKG)`项目过于久远，依赖和环境有问题`
+> [honeyandme/RAGQnASystem](https://github.com/honeyandme/RAGQnASystem)`改良版`  
 
