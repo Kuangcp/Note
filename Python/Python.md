@@ -39,6 +39,8 @@ categories:
         - 3.2.1. [JSON](#json)
         - 3.2.2. [conf或者ini](#conf或者ini)
     - 3.3. [日志](#日志)
+        - 3.3.1. [logging](#logging)
+        - 3.3.2. [loguru](#loguru)
     - 3.4. [测试](#测试)
     - 3.5. [数据库](#数据库)
         - 3.5.1. [MySQL](#mysql)
@@ -50,7 +52,7 @@ categories:
         - 3.7.2. [时间处理](#时间处理)
         - 3.7.3. [三方库](#三方库)
 
-💠 2024-10-13 17:59:27
+💠 2024-10-31 19:15:14
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -711,7 +713,36 @@ _对应的conf_
 
 ************************
 ## 日志
-loguru
+
+### logging 
+```python
+    # 标准输出
+    LOG_FORMAT = "%(asctime)s.%(msecs)03d %(levelname)s %(message)s"
+    DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
+    logging.basicConfig(level=logging.DEBUG, format=LOG_FORMAT, datefmt=DATE_FORMAT)
+    log = logging.getLogger()
+
+    # 文件和标准输出
+    LOG_FORMAT = "%(asctime)s.%(msecs)03d %(levelname)s %(message)s"
+    DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
+    logging.basicConfig(filename='run.log', level=logging.DEBUG, format=LOG_FORMAT, datefmt=DATE_FORMAT)
+
+    log = logging.getLogger()
+    stdout_handler = logging.StreamHandler(sys.stdout)
+    rowFmt = logging.Formatter(fmt=LOG_FORMAT, datefmt=DATE_FORMAT)
+    stdout_handler.setFormatter(rowFmt)
+    log.addHandler(stdout_handler)
+
+    # Pycharm 跳转 类似Java IDEA的 (xxx.java:100) 特定格式 logback配置 \\(%F:%line\\)
+    LOG_FORMAT = "%(asctime)s.%(msecs)03d %(levelname)s File \"%(filename)s\", line %(lineno)s %(funcName)s  %(message)s"
+
+    LOG_FORMAT = "%(asctime)s.%(msecs)03d %(levelname)s %(filename)s:%(lineno)s %(funcName)s  %(message)s"
+```
+
+
+> [Python之日志处理（logging模块） - 云游道士 - 博客园](https://www.cnblogs.com/yyds/p/6901864.html)  
+
+### loguru
 
 > [Effective Logging in Threaded or Multiprocessing Python Applications ](https://www.loggly.com/blog/effective-logging-in-threaded-or-multiprocessing-python-applications/)
 
