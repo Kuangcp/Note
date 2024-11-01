@@ -32,6 +32,8 @@ categories:
 ************************
 
 # 业务需求
+> [Admol/SystemDesign: 系统设计面试：内幕指南](https://github.com/Admol/SystemDesign)  
+
 ## 千万级数据导入
 场景: 将数据库外的千万或亿级Excel CSV txt等文件导入到数据库
 
