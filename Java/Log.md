@@ -9,32 +9,32 @@ categories:
 
 💠
 
-1. [日志系统](#日志系统)
-    1. [概念](#概念)
-        1. [slf4j 接口](#slf4j-接口)
-        1. [MDC](#mdc)
-1. [Log4j](#log4j)
-    1. [问题](#问题)
-1. [Log4j2](#log4j2)
-1. [Logback](#logback)
-    1. [配置理解](#配置理解)
-        1. [根节点 <configuration> 属性](#根节点-<configuration>-属性)
-        1. [子节点](#子节点)
-        1. [设置上下文名称：<contextName>](#设置上下文名称<contextname>)
-        1. [设置变量： <property>](#设置变量-<property>)
-        1. [获取时间戳字符串：<timestamp>](#获取时间戳字符串<timestamp>)
-        1. [设置loger](#设置loger)
-        1. [详解<appender>](#详解<appender>)
-    1. [Logback MDC](#logback-mdc)
-1. [实践经验](#实践经验)
-1. [分析日志](#分析日志)
-    1. [Linux上查看日志](#linux上查看日志)
-    1. [lnav](#lnav)
-1. [日志采集](#日志采集)
-    1. [Filebeat](#filebeat)
-    1. [K8s](#k8s)
+- 1. [日志系统](#日志系统)
+    - 1.1. [概念](#概念)
+        - 1.1.1. [slf4j 接口](#slf4j-接口)
+        - 1.1.2. [MDC](#mdc)
+- 2. [Log4j](#log4j)
+    - 2.1. [问题](#问题)
+- 3. [Log4j2](#log4j2)
+- 4. [Logback](#logback)
+    - 4.1. [配置理解](#配置理解)
+        - 4.1.1. [根节点 <configuration> 属性](#根节点-<configuration>-属性)
+        - 4.1.2. [子节点](#子节点)
+        - 4.1.3. [设置上下文名称：<contextName>](#设置上下文名称<contextname>)
+        - 4.1.4. [设置变量： <property>](#设置变量-<property>)
+        - 4.1.5. [获取时间戳字符串：<timestamp>](#获取时间戳字符串<timestamp>)
+        - 4.1.6. [设置loger](#设置loger)
+        - 4.1.7. [详解 appender](#详解-appender)
+    - 4.2. [Logback MDC](#logback-mdc)
+- 5. [实践经验](#实践经验)
+- 6. [分析日志](#分析日志)
+    - 6.1. [Linux上查看日志](#linux上查看日志)
+    - 6.2. [lnav](#lnav)
+- 7. [日志采集](#日志采集)
+    - 7.1. [Filebeat](#filebeat)
+    - 7.2. [K8s](#k8s)
 
-💠 2023-10-04 11:47
+💠 2024-11-01 21:28:51
 ****************************************
 # 日志系统
 > [码农翻身: 一个著名的日志系统是怎么设计出来的？ ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45&chksm=80d67bacb7a1f2ba38aa37620d273dfd7d7227667df556d36c84d125cafd73fef16464288cf9&scene=21#wechat_redirect)`深刻的理解了日志系统的来源以及相关关系`  
@@ -252,9 +252,9 @@ additivity属性为false，表示此loger的打印信息不再向上级传递，
 如果将`<logger name="logback.LogbackDemo" level="INFO" additivity="false">` 修改为 `<logger name="logback.LogbackDemo" level="INFO" additivity="true">`那打印结果将是什么呢？
 没错，日志打印了两次，想必大家都知道原因了，因为打印信息向上级传递，logger本身打印一次，root接到后又打印一次
 
-### 详解<appender>
-> <appender>是<configuration>的子节点，是负责写日志的组件。
-> <appender>有两个必要属性name和class。name指定appender名称，class指定appender的全限定名。
+### 详解 appender
+> `<appender>`是`<configuration>`的子节点，是负责写日志的组件。
+> `<appender>`有两个必要属性name和class。name指定appender名称，class指定appender的全限定名。
 
 _1.ConsoleAppender:_
 把日志添加到控制台，有以下子节点：
@@ -403,6 +403,10 @@ _4.另外还有SocketAppender、SMTPAppender、DBAppender、SyslogAppender、Sif
     - 解决方案就是利用 Maven Helper, 分析所有的Dependency, 找到上述两组并存的情况, exclude一方就解决了
     - 或者 通过 `mvn dependency:tree` 手动分析和手动exclude 
 
+1. 自定义Appender
+```java
+  public class ExceptionAlertAppender extends AppenderBase<ILoggingEvent>{}
+```
 ********************
 
 # 分析日志

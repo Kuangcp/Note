@@ -9,7 +9,7 @@ categories:
 
 - 1. [Neo4j](#neo4j)
     - 1.1. [安装](#安装)
-        - 1.1.1. [驱动](#驱动)
+    - 1.2. [驱动](#驱动)
 - 2. [使用](#使用)
     - 2.1. [数据导入](#数据导入)
         - 2.1.1. [Load CSV](#load-csv)
@@ -21,14 +21,14 @@ categories:
     - 2.4. [Pattern](#pattern)
 - 3. [应用](#应用)
 
-💠 2024-10-29 11:15:32
+💠 2024-11-01 21:28:51
 ****************************************
 # Neo4j
 > [Neo4j Graph Database & Analytics | Graph Database Management System](https://neo4j.com/)  
 
 > [Neo4j 图数据库中文社区，致力于 Neo4j 的技术研究。](http://neo4j.com.cn/)  
 
-> [DozerDB](https://github.com/dozerdb)`衍生`  
+> [DozerDB](https://github.com/dozerdb)`衍生 支持多库`  
 
 ## 安装
 
@@ -45,12 +45,11 @@ categories:
 - 社区版本不支持命令 create database xxx 只能使用默认的 neo4j [Multiple database in community edition · Issue #12920 · neo4j/neo4j](https://github.com/neo4j/neo4j/issues/12920)  
 - Docker方式启动适合调试，正式使用不推荐，数据备份迁移不方便(也可以停止容器后docker cp复制出 data 目录，替换到新的空实例再启动，也可以正常使用)
 
-### 驱动
+## 驱动
 
 注意协议区分为 bolt(6787) neo4j(6787) http(7474) 等, 使用的端口不一样
 
 ************************
-
 
 Python
 
@@ -59,6 +58,7 @@ Python
 Java 
 
 > [Using Neo4j from Java - Getting Started](https://neo4j.com/docs/getting-started/languages-guides/java/java-intro/)  
+> [Neo4j Java Drive Compatibility : r/Neo4j](https://www.reddit.com/r/Neo4j/comments/15ggn1l/neo4j_java_drive_compatibility/)  
 
 Java8使用坑比较多，注意5.X需要Java17 4.x以及3.x才可以兼容Java8，但是官网基本是按5.x来推荐和写样例代码 [neo4j-examples/movies-java-bolt ](https://github.com/neo4j-examples/movies-java-bolt)  
 包括SpringData Neo4j 也是配置和使用方式改动较大，需要仔细翻阅旧文档。
@@ -73,12 +73,12 @@ Java8使用坑比较多，注意5.X需要Java17 4.x以及3.x才可以兼容Java8
 > [Neo4j - 悦光阴 - 博客园](https://www.cnblogs.com/ljhdo/tag/Neo4j/)  
 > [Neo4j 第二篇：图形数据库 - 悦光阴 - 博客园](https://www.cnblogs.com/ljhdo/p/5178225.html)  
 
-
+通过访问7474端口打开网页端后，注意节点类型和边可以修改默认展示的字段和颜色，通过点击详情中的色块弹出设置页
 
 ## 数据导入
 
 ### Load CSV
-注意默认导入路径在 neo4j.conf 中配置,默认为 根路径下 import 目录, 文件名最好为英文
+可以注意到文件的写法是协议，所以支持HTTP协议的文件，如果是本地文件则是file://。 默认导入路径在 neo4j.conf 中配置,默认为 根路径下 import 目录, 文件名最好为英文
 ```c
     // 导入节点 csv内为两列 id 和 name
     LOAD CSV WITH HEADERS FROM 'file:///event.csv' AS row
@@ -93,6 +93,7 @@ Java8使用坑比较多，注意5.X需要Java17 4.x以及3.x才可以兼容Java8
     // TODO 考虑 节点类型和id以及关系类型都是可变的情况
 
 ```
+
 
 ## 结构
 使用Neo4j创建的图（Graph）基于属性图模型，在该模型中，每个实体都有ID（Identity）唯一标识，每个节点由标签（Lable）分组，每个关系都有一个唯一的关系类型。
