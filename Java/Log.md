@@ -10,37 +10,37 @@ categories:
 💠
 
 - 1. [日志系统](#日志系统)
-    - 1.1. [概念](#概念)
-        - 1.1.1. [slf4j 接口](#slf4j-接口)
-        - 1.1.2. [MDC](#mdc)
-- 2. [Log4j](#log4j)
-    - 2.1. [问题](#问题)
-- 3. [Log4j2](#log4j2)
-- 4. [Logback](#logback)
-    - 4.1. [配置理解](#配置理解)
-        - 4.1.1. [根节点 <configuration> 属性](#根节点-<configuration>-属性)
-        - 4.1.2. [子节点](#子节点)
-        - 4.1.3. [设置上下文名称：<contextName>](#设置上下文名称<contextname>)
-        - 4.1.4. [设置变量： <property>](#设置变量-<property>)
-        - 4.1.5. [获取时间戳字符串：<timestamp>](#获取时间戳字符串<timestamp>)
-        - 4.1.6. [设置loger](#设置loger)
-        - 4.1.7. [详解 appender](#详解-appender)
-    - 4.2. [Logback MDC](#logback-mdc)
-- 5. [实践经验](#实践经验)
-- 6. [分析日志](#分析日志)
-    - 6.1. [Linux上查看日志](#linux上查看日志)
-    - 6.2. [lnav](#lnav)
-- 7. [日志采集](#日志采集)
-    - 7.1. [Filebeat](#filebeat)
-    - 7.2. [K8s](#k8s)
+- 2. [概念](#概念)
+    - 2.1. [slf4j 接口](#slf4j-接口)
+    - 2.2. [MDC](#mdc)
+- 3. [Log4j](#log4j)
+- 4. [Log4j2](#log4j2)
+- 5. [Logback](#logback)
+    - 5.1. [配置理解](#配置理解)
+        - 5.1.1. [根节点 <configuration> 属性](#根节点-<configuration>-属性)
+        - 5.1.2. [子节点](#子节点)
+        - 5.1.3. [设置上下文名称：<contextName>](#设置上下文名称<contextname>)
+        - 5.1.4. [设置变量： <property>](#设置变量-<property>)
+        - 5.1.5. [获取时间戳字符串：<timestamp>](#获取时间戳字符串<timestamp>)
+        - 5.1.6. [设置loger](#设置loger)
+        - 5.1.7. [详解 Appender](#详解-appender)
+            - 5.1.7.1. [自定义 Appender](#自定义-appender)
+    - 5.2. [Logback MDC](#logback-mdc)
+- 6. [实践经验](#实践经验)
+- 7. [分析日志](#分析日志)
+    - 7.1. [Linux上查看日志](#linux上查看日志)
+    - 7.2. [lnav](#lnav)
+- 8. [日志采集](#日志采集)
+    - 8.1. [Filebeat](#filebeat)
+    - 8.2. [K8s](#k8s)
 
-💠 2024-11-01 21:28:51
+💠 2024-11-04 17:03:12
 ****************************************
 # 日志系统
 > [码农翻身: 一个著名的日志系统是怎么设计出来的？ ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45&chksm=80d67bacb7a1f2ba38aa37620d273dfd7d7227667df556d36c84d125cafd73fef16464288cf9&scene=21#wechat_redirect)`深刻的理解了日志系统的来源以及相关关系`  
 
-## 概念
-### slf4j 接口
+# 概念
+## slf4j 接口
 > SLF4J是一套简单的日志`外观模式`的Java API，帮助在项目部署时对接各种日志实现。 
 
 只是接口设计, 具体实现库:  Log4j Log4j2 Logback
@@ -56,7 +56,7 @@ categories:
         - Log4j不能在Groovy中获取到正确的 类,方法,方法所在行 直接输出?
         - LogBack可以拿到正确的值, 但是在闭包中, 方法是混乱的
 
-### MDC 
+## MDC 
 > 使用 ThreadLocal 存储一些信息, 然后能在xml的pattern中直接引用, 省去了重复手动写 log
 
 > [Improved Java Logging with Mapped Diagnostic Context (MDC)](https://www.baeldung.com/mdc-in-log4j-2-logback)
@@ -66,15 +66,13 @@ categories:
 > [Log4J使用笔记](http://www.cnblogs.com/eflylab/archive/2007/01/11/618001.html)
 > [log4j.properties配置详解](http://www.cnblogs.com/ITEagle/archive/2010/04/23/1718365.html)
 
-## 问题
-> `log4j:WARN No appenders could be found for logger` 这是路径下没有对应的配置文件, 那么这时就有了神奇的事情, maven项目按道理是resources下就行了, 
-> 但如果你项目配置文件自己新建目录然后再复制过去什么的, 这么瞎搞的话,虽然在ide是能运行的, 但是一大包就没用了, 那么直接把log的配置单独放在 src/main/java 下就行了
-
 ************************
 
 # Log4j2
 > [官方文档, 配置详解](https://logging.apache.org/log4j/2.x/manual/configuration.html)
 > 听说是为了解决Log4j无法在多环境使用的问题 , 也就是类似于 SpringBoot 多profile的功能
+
+> [java - 基于log4j2简易实现日志告警](https://segmentfault.com/a/1190000022741931)  
 
 **************************
 # Logback
@@ -252,7 +250,7 @@ additivity属性为false，表示此loger的打印信息不再向上级传递，
 如果将`<logger name="logback.LogbackDemo" level="INFO" additivity="false">` 修改为 `<logger name="logback.LogbackDemo" level="INFO" additivity="true">`那打印结果将是什么呢？
 没错，日志打印了两次，想必大家都知道原因了，因为打印信息向上级传递，logger本身打印一次，root接到后又打印一次
 
-### 详解 appender
+### 详解 Appender
 > `<appender>`是`<configuration>`的子节点，是负责写日志的组件。
 > `<appender>`有两个必要属性name和class。name指定appender名称，class指定appender的全限定名。
 
@@ -376,16 +374,28 @@ _4.另外还有SocketAppender、SMTPAppender、DBAppender、SyslogAppender、Sif
 
 ![模式图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/pattern_type.jpg)
 
+#### 自定义 Appender
+```java
+    /**
+     * 可以用来做异常告警等附加逻辑
+    */
+    public class ExceptionAlertAppender extends AppenderBase<ILoggingEvent>{}
+```
+
+************************
+
+
 ## Logback MDC
 > [MDC](https://logback.qos.ch/manual/mdc.html)
 
 `简单使用`
-1. 在合适的地方 MDC.put("appName", "myth");
-1. 在合适的地方清除 MGC.clear();
-1. logback.xml中的  pattern 里通过 %X{appName} 引用到
+1. 在合适的地方（通常是请求的入口处，线程任务开始处） MDC.put("appName", "myth");
+1. 在合适的地方（请求响应时，线程结束时） 清除 MGC.clear();
+1. logback.xml中的  pattern 里通过 `%X{appName}` 引用到
 
 > 对于一个请求来讲, 请求的入口处 设置 MDC, 请求结束后清除 MDC  
 > 由于这个是利用 TreadLocal 实现的, 所以需要做清理, 而且没有并发问题
+
 *********************
 
 # 实践经验
@@ -403,10 +413,6 @@ _4.另外还有SocketAppender、SMTPAppender、DBAppender、SyslogAppender、Sif
     - 解决方案就是利用 Maven Helper, 分析所有的Dependency, 找到上述两组并存的情况, exclude一方就解决了
     - 或者 通过 `mvn dependency:tree` 手动分析和手动exclude 
 
-1. 自定义Appender
-```java
-  public class ExceptionAlertAppender extends AppenderBase<ILoggingEvent>{}
-```
 ********************
 
 # 分析日志
