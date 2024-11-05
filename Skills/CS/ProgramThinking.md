@@ -48,7 +48,7 @@ categories:
         - 4.1.2. [强类型和弱类型](#强类型和弱类型)
         - 4.1.3. [动态和静态类型](#动态和静态类型)
 
-💠 2024-11-04 17:03:12
+💠 2024-11-05 18:17:48
 ****************************************
 # 开发思想
 > 有关开发的理论性思想,编写,测试,部署等
@@ -140,6 +140,7 @@ categories:
 > [CQRS](https://github.com/liangzeng/cqrs)  
 > [alibaba/COLA](https://github.com/alibaba/COLA)  
 > [gaotingwang/ddd-demo: DDD落地实践](https://github.com/gaotingwang/ddd-demo)  
+> [AmosWang0626/think-cola: 本项目结合COLA（整洁面向对象分层架构）4.0 实现](https://github.com/AmosWang0626/think-cola)  
 
 *****************************
 ## 数据的操作

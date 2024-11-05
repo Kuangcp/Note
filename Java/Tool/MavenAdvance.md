@@ -14,7 +14,7 @@ categories:
     - 1.1. [Custom Maven plugin](#custom-maven-plugin)
 - 2. [Error](#error)
 
-💠 2024-11-01 21:28:51
+💠 2024-11-05 18:17:48
 ****************************************
 # Maven Advance
 
