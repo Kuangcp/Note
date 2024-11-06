@@ -25,7 +25,7 @@ categories:
     - 7.1. [Java使用](#java使用)
     - 7.2. [导入导出](#导入导出)
 
-💠 2024-11-06 17:25:29
+💠 2024-11-06 17:38:41
 ****************************************
 # Postgresql
 
@@ -155,13 +155,13 @@ FROM pg_attribute  WHERE attrelid = (SELECT oid FROM pg_class WHERE relname = 't
 > 图数据库插件
 
 [edgedb](https://github.com/edgedb/edgedb)  
-[apache/age](https://github.com/apache/age) [apache/age-viewer](https://github.com/apache/age-viewer)  
+[apache/age](https://github.com/apache/age) 基于AgensGraph衍生（PG插件） [apache/age-viewer](https://github.com/apache/age-viewer)  
 
 ## AgensGraph
 [bitnine-oss/agensgraph](https://github.com/bitnine-oss/agensgraph)  
 [AgensGraph - PostgreSQL wiki](https://wiki.postgresql.org/wiki/AgensGraph)  
 
-从架构图上来看，比插件集成度更深，属于衍生数据库，也基于这个项目衍生出了Apache AGE项目（PG插件）
+从架构图上来看，比插件集成度更深，属于衍生数据库，因此可以复用PG的特性，例如分布式能力。
 
 启动服务 本质是pg进程 `docker run --name agensgraph -p 5654:5432 -e POSTGRES_PASSWORD=agensgraph -d bitnine/agensgraph:v2.13.0-debian`
 - 默认用户名和pg镜像的默认值一样是 postgres
