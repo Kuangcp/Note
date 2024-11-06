@@ -13,15 +13,18 @@ categories:
     - 3.1. [Cypher](#cypher)
     - 3.2. [Gremlin](#gremlin)
 
-💠 2024-11-05 18:17:48
+💠 2024-11-06 10:49:09
 ****************************************
 # 图数据库
 
-Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph、Memgraph、NebulaGraph
+Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph、Memgraph、NebulaGraph、SurrealDB
 
 > [DB-Engines Ranking - popularity ranking of graph DBMS](https://db-engines.com/en/ranking/graph+dbms)  
-> [memgraph](https://github.com/memgraph/memgraph)内存，兼容Neo4j  
-> [vesoft-inc/nebula](https://github.com/vesoft-inc/nebula)分布式，nGQL查询语言，兼容部分Cypher语法  
+
+[memgraph](https://github.com/memgraph/memgraph)C++ 内存，Cypher查询，兼容Neo4j  
+[vesoft-inc/nebula](https://github.com/vesoft-inc/nebula)C++ 分布式，nGQL查询语言，兼容部分Cypher语法  
+[surrealdb/surrealdb](https://github.com/surrealdb/surrealdb)Rust 分布式， 类SQL/GraphQL查询 `偏业务应用`  
+[dgraph-io/dgraph](https://github.com/dgraph-io/dgraph)Go 分布式，GraphQL查询 `偏业务应用`  
 
 # 概念
 
