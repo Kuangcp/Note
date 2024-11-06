@@ -43,7 +43,7 @@ categories:
 - 10. [数据库中间件](#数据库中间件)
 - 11. [图形化工具](#图形化工具)
 
-💠 2024-11-06 14:45:28
+💠 2024-11-06 17:03:43
 ****************************************
 # 数据库
 > [码农翻身:爱炫耀的数据库老头儿](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514001&idx=1&sn=17b72c3e69db6c4277e3045c699b7b6b&chksm=80d67c52b7a1f5446020826841869221873f4578524181384592839d19c4810dc68807117e13&scene=21#wechat_redirect) `事务,undo日志`
@@ -183,6 +183,7 @@ Boyce-Codd Normal Form（巴斯-科德范式）
         - 场景为统计字符频率，只高频执行 ZIncrBy 命令（累计执行了337849次，Redis7.0.5 稳定耗时13s 单核30%  Dragonfly 6.2.11稳定耗时19s 等效于单核60%CPU）
 - [KeyDB](https://github.com/Snapchat/KeyDB) Redis 的一个高性能分支，专注于多线程、内存效率和高吞吐量
 
+> [RedisGraph/RedisGraph](https://github.com/RedisGraph/RedisGraph)EOL  
 
 ## RocksDB
 > [RocksDB](https://github.com/facebook/rocksdb)`FaceBook开源`

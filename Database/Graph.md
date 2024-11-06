@@ -12,8 +12,9 @@ categories:
 - 3. [QL 查询语言](#ql-查询语言)
     - 3.1. [Cypher](#cypher)
     - 3.2. [Gremlin](#gremlin)
+    - 3.3. [SPARQL](#sparql)
 
-💠 2024-11-06 10:49:09
+💠 2024-11-06 17:03:43
 ****************************************
 # 图数据库
 
@@ -42,9 +43,15 @@ Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph、Mem
 > [Neo4j - Cypher vs Gremlin query language - Stack Overflow](https://stackoverflow.com/questions/13824962/neo4j-cypher-vs-gremlin-query-language)  
 > [opencypher/cypher-for-gremlin](https://github.com/opencypher/cypher-for-gremlin)  
 
+> [一文了解各大图数据库查询语言（Gremlin vs Cypher vs nGQL）| 操作入门篇-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/1594313)  
+
 ## Cypher
+> [openCypher · openCypher](http://opencypher.org/) | [Cypher (query language) - Wikipedia](https://en.wikipedia.org/wiki/Cypher_(query_language))  
+
 > [Cypher Cheat Sheet](https://neo4j.com/docs/cypher-cheat-sheet/5/aura-dbe/)`使用手册`  
 > [Graph Database](https://github.com/albertoventurini/graphdb-intellij-plugin)  
+
+Neo4j、RedisGraph、AgensGraph(PG+插件)
 
 ```c
     MATCH (n) RETURN n limit 10
@@ -56,3 +63,9 @@ Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph、Mem
 
 ## Gremlin
 > [Gremlin中文文档](https://tinkerpop-gremlin.cn/#traversal)  
+
+Janus Graph、InfiniteGraph、Cosmos DB、Amazon Neptune
+
+## SPARQL
+
+> [SPARQL Query Language for RDF](https://www.w3.org/TR/rdf-sparql-query/)  

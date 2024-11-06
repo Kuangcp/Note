@@ -24,7 +24,7 @@ categories:
     - 7.1. [Java使用](#java使用)
     - 7.2. [导入导出](#导入导出)
 
-💠 2024-09-27 19:50:28
+💠 2024-11-06 17:03:43
 ****************************************
 # Postgresql
 
@@ -149,9 +149,30 @@ FROM pg_attribute  WHERE attrelid = (SELECT oid FROM pg_class WHERE relname = 't
 ************************
 
 # 图数据库
-[PostgreSQL 图式搜索(graph search)实践 ](https://developer.aliyun.com/article/328141)  
-[edgedb](https://github.com/edgedb/edgedb)  
+[PostgreSQL 图式搜索(graph search)实践 ](https://developer.aliyun.com/article/328141)`自定义函数和特定SQL模拟图有关的查询算法`  
 
+> 图数据库插件
+
+[edgedb](https://github.com/edgedb/edgedb)  
+[apache/age](https://github.com/apache/age)  
+
+[bitnine-oss/agensgraph](https://github.com/bitnine-oss/agensgraph)  
+[AgensGraph - PostgreSQL wiki](https://wiki.postgresql.org/wiki/AgensGraph)  
+
+启动服务 本质是pg进程 `docker run --name agensgraph -p 5654:5432 -e POSTGRES_PASSWORD=agensgraph -d bitnine/agensgraph:v2.13.0-debian`
+默认用户名和pg镜像的默认值一样是 postgres
+
+```sql
+-- 创建数据库
+create graph test_g1;
+-- 切换图数据库
+SET graph_path = test_g1;
+-- 设置用户默认使用的图数据库
+ALTER USER postgres SET graph_path = 'test_g1';
+
+-- 查询
+match(n) return n;
+```
 
 ************************
 # 应用
