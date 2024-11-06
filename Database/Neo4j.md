@@ -21,7 +21,7 @@ categories:
     - 2.4. [Pattern](#pattern)
 - 3. [应用](#应用)
 
-💠 2024-11-01 21:28:51
+💠 2024-11-06 17:25:29
 ****************************************
 # Neo4j
 > [Neo4j Graph Database & Analytics | Graph Database Management System](https://neo4j.com/)  
@@ -73,7 +73,9 @@ Java8使用坑比较多，注意5.X需要Java17 4.x以及3.x才可以兼容Java8
 > [Neo4j - 悦光阴 - 博客园](https://www.cnblogs.com/ljhdo/tag/Neo4j/)  
 > [Neo4j 第二篇：图形数据库 - 悦光阴 - 博客园](https://www.cnblogs.com/ljhdo/p/5178225.html)  
 
-通过访问7474端口打开网页端后，注意节点类型和边可以修改默认展示的字段和颜色，通过点击详情中的色块弹出设置页
+访问7474端口打开网页客户端
+- 节点类型和边可以修改默认展示的字段和颜色，通过点击详情中的色块弹出设置页
+- 执行窗口可通过 Ctrl + 上下方向键 切换历史执行的语句
 
 ## 数据导入
 
