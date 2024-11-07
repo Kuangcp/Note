@@ -7,30 +7,30 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [反射](#反射)
-1. [概念](#概念)
-1. [实现原理](#实现原理)
-    1. [Inflation](#inflation)
-1. [基础类](#基础类)
-    1. [AccessibleObject](#accessibleobject)
-    1. [Annotation](#annotation)
-    1. [Class](#class)
-    1. [Field](#field)
-    1. [Method](#method)
-    1. [Constructor](#constructor)
-    1. [Modifier](#modifier)
-1. [使用](#使用)
-    1. [获取Class对象的方式](#获取class对象的方式)
-    1. [反射的基本使用](#反射的基本使用)
-        1. [操作构造方法](#操作构造方法)
-        1. [操作类中方法](#操作类中方法)
-        1. [操作类的成员属性](#操作类的成员属性)
-        1. [操作注解](#操作注解)
-1. [反射的性能问题](#反射的性能问题)
+- 1. [反射](#反射)
+- 2. [概念](#概念)
+- 3. [实现原理](#实现原理)
+    - 3.1. [Inflation](#inflation)
+- 4. [基础类](#基础类)
+    - 4.1. [AccessibleObject](#accessibleobject)
+    - 4.2. [Annotation](#annotation)
+    - 4.3. [Class](#class)
+    - 4.4. [Field](#field)
+    - 4.5. [Method](#method)
+    - 4.6. [Constructor](#constructor)
+    - 4.7. [Modifier](#modifier)
+- 5. [使用](#使用)
+    - 5.1. [获取Class对象的方式](#获取class对象的方式)
+    - 5.2. [反射的基本使用](#反射的基本使用)
+        - 5.2.1. [操作构造方法](#操作构造方法)
+        - 5.2.2. [操作类中方法](#操作类中方法)
+        - 5.2.3. [操作类的成员属性](#操作类的成员属性)
+        - 5.2.4. [操作注解](#操作注解)
+- 6. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2023-08-25 15:50_|
+💠 2024-11-07 10:24:40
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
@@ -44,6 +44,10 @@ categories:
 > [参考: Java8替代传统反射动态获取成员变量值的一个示例](https://segmentfault.com/a/1190000007492958)
 
 > [参考: java反射的性能问题](http://www.cnblogs.com/zhishan/p/3195771.html)  
+
+************************
+
+> [Java 和 C# 中的反射机制 | Wokron's Blog](https://wokron.github.io/posts/reflection-in-java-and-csharp)  
 
 # 概念
 
@@ -81,7 +85,7 @@ https://cloud.tencent.com/developer/news/663586
 实际上setAccessible是启用和禁用访问安全检查的开关,并不是为true就能访问，为false就不能访问，一般情况下，我们并不能对类的私有字段进行操作，利用反射也不例外，  
 但有的时候，例如要序列化的时候，我们又必须有能力去处理这些字段，这时候，我们就需要调用`AccessibleObject`上的`setAccessible(true)`方法来允许这种访问，  
 而由于反射类中的Field，Method和Constructor继承自AccessibleObject，因此，通过在这些类上调用setAccessible()方法，我们可以实现对这些字段的操作。  
-但有的时候这将会成为一个安全隐患，为此，我们可以启用java.security.manager来判断程序是否具有调用setAccessible()的权限。  
+但有的时候这将会成为一个安全隐患，为此，我们可以启用`java.security.manager`来判断程序是否具有调用setAccessible()的权限。  
 
 > 默认情况下，`内核API`和`扩展目录`的代码具有该权限，而`类路径`或`通过URLClassLoader加载`的应用程序不拥有此权限。
 

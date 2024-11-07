@@ -21,7 +21,7 @@ categories:
     - 2.4. [Pattern](#pattern)
 - 3. [应用](#应用)
 
-💠 2024-11-06 17:25:29
+💠 2024-11-07 10:24:40
 ****************************************
 # Neo4j
 > [Neo4j Graph Database & Analytics | Graph Database Management System](https://neo4j.com/)  
@@ -92,7 +92,7 @@ Java8使用坑比较多，注意5.X需要Java17 4.x以及3.x才可以兼容Java8
     MATCH (p1:Person {id:row.id_from}), (p2:Person {id:row.id_to})
     //now create a relationship between them
     CREATE (p1)-[:KNOWS]->(p2);
-    // TODO 考虑 节点类型和id以及关系类型都是可变的情况
+    // TODO 考虑 节点类型和id以及关系类型都是可变的情况 是否引用csv的列来动态化，否则需要切分csv
 
 ```
 
