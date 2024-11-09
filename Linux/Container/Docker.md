@@ -58,7 +58,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2024-09-06 11:36:43
+💠 2024-10-28 16:30:33
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -204,6 +204,11 @@ categories:
 - 检查环境变量 systemctl show --property=Environment docker
 - 查看代理 docker info
 
+> Windows WSL 配置
+- WSL无法注册为Service,直接dockerd 方式启动 的情况, 只能通过配置 --http-proxy --https-proxy
+    - 无法通过配置 /etc/default/docker 等方式
+    - 无法通过 docker run --env HTTP_PROXY="http://x.x.x.x" 
+
 ## 配置镜像源
 > 默认的DockerHub因为在国外所以网络不太稳定，需要使用国内镜像源
 
@@ -297,7 +302,12 @@ _登录镜像仓库_
     - 删除所有容器和挂载的目录：`docker system prune --volumes -f`
 - 容器日志(终端所有输入输出)：`docker logs 容器name或id`
 - 重命名 ： `docker rename origin new`
+- 复制文件或目录 **容器启动或停止都可操作**
+    - 容器复制到宿主机 `docker cp my_container:/path/in/container /path/on/host`
+    - 宿主机复制到容器 `docker cp /path/on/host my_container:/path/in/container`
+    - 但是不支持通配 `docker cp *.sh redis:/tmp`
 
+> 导入导出
 - 导入导出 （容器快照）： **注意此方式不会保留layer历史，无法回滚**
     - 导出： `docker export -o test.tar 容器名` `docker export 容器name > test.tar`
     - 导入： `docker import [-c |--change=[]] [-m | --message=[]] file|URL - [repository]:[tag]`

@@ -20,11 +20,12 @@ categories:
 - 4. [基础数据类型](#基础数据类型)
 - 5. [DDL](#ddl)
 - 6. [图数据库](#图数据库)
+    - 6.1. [AgensGraph](#agensgraph)
 - 7. [应用](#应用)
     - 7.1. [Java使用](#java使用)
     - 7.2. [导入导出](#导入导出)
 
-💠 2024-09-27 19:50:28
+💠 2024-11-06 17:38:41
 ****************************************
 # Postgresql
 
@@ -149,9 +150,36 @@ FROM pg_attribute  WHERE attrelid = (SELECT oid FROM pg_class WHERE relname = 't
 ************************
 
 # 图数据库
-[PostgreSQL 图式搜索(graph search)实践 ](https://developer.aliyun.com/article/328141)  
-[edgedb](https://github.com/edgedb/edgedb)  
+[PostgreSQL 图式搜索(graph search)实践 ](https://developer.aliyun.com/article/328141)`自定义函数和特定SQL模拟图有关的查询算法`  
 
+> 图数据库插件
+
+[edgedb](https://github.com/edgedb/edgedb)  
+[apache/age](https://github.com/apache/age) 基于AgensGraph衍生（PG插件） [apache/age-viewer](https://github.com/apache/age-viewer)  
+
+## AgensGraph
+[bitnine-oss/agensgraph](https://github.com/bitnine-oss/agensgraph)  
+[AgensGraph - PostgreSQL wiki](https://wiki.postgresql.org/wiki/AgensGraph)  
+
+从架构图上来看，比插件集成度更深，属于衍生数据库，因此可以复用PG的特性，例如分布式能力。
+
+启动服务 本质是pg进程 `docker run --name agensgraph -p 5654:5432 -e POSTGRES_PASSWORD=agensgraph -d bitnine/agensgraph:v2.13.0-debian`
+- 默认用户名和pg镜像的默认值一样是 postgres
+
+```sql
+-- 创建数据库
+create graph test_g1;
+-- 切换图数据库
+SET graph_path = test_g1;
+-- 设置用户默认使用的图数据库
+ALTER USER postgres SET graph_path = 'test_g1';
+
+-- 查询
+match(n) return n;
+```
+
+图形客户端: bitnine/agviewer 操作习惯基本和Neo4j自带的网页客户端一致
+- `docker run -d --publish=5655:3001 --name=agviewer bitnine/agviewer:latest` 注意该客户端支持Age和Agensgraph
 
 ************************
 # 应用

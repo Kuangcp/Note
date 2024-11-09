@@ -7,30 +7,30 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [反射](#反射)
-1. [概念](#概念)
-1. [实现原理](#实现原理)
-    1. [Inflation](#inflation)
-1. [基础类](#基础类)
-    1. [AccessibleObject](#accessibleobject)
-    1. [Annotation](#annotation)
-    1. [Class](#class)
-    1. [Field](#field)
-    1. [Method](#method)
-    1. [Constructor](#constructor)
-    1. [Modifier](#modifier)
-1. [使用](#使用)
-    1. [获取Class对象的方式](#获取class对象的方式)
-    1. [反射的基本使用](#反射的基本使用)
-        1. [操作构造方法](#操作构造方法)
-        1. [操作类中方法](#操作类中方法)
-        1. [操作类的成员属性](#操作类的成员属性)
-        1. [操作注解](#操作注解)
-1. [反射的性能问题](#反射的性能问题)
+- 1. [反射](#反射)
+- 2. [概念](#概念)
+- 3. [实现原理](#实现原理)
+    - 3.1. [Inflation](#inflation)
+- 4. [基础类](#基础类)
+    - 4.1. [AccessibleObject](#accessibleobject)
+    - 4.2. [Annotation](#annotation)
+    - 4.3. [Class](#class)
+    - 4.4. [Field](#field)
+    - 4.5. [Method](#method)
+    - 4.6. [Constructor](#constructor)
+    - 4.7. [Modifier](#modifier)
+- 5. [使用](#使用)
+    - 5.1. [获取Class对象的方式](#获取class对象的方式)
+    - 5.2. [反射的基本使用](#反射的基本使用)
+        - 5.2.1. [操作构造方法](#操作构造方法)
+        - 5.2.2. [操作类中方法](#操作类中方法)
+        - 5.2.3. [操作类的成员属性](#操作类的成员属性)
+        - 5.2.4. [操作注解](#操作注解)
+- 6. [反射的性能问题](#反射的性能问题)
 
-**目录 end**|_2023-08-25 15:50_|
+💠 2024-11-07 19:58:31
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
@@ -45,6 +45,10 @@ categories:
 
 > [参考: java反射的性能问题](http://www.cnblogs.com/zhishan/p/3195771.html)  
 
+************************
+
+> [Java 和 C# 中的反射机制 | Wokron's Blog](https://wokron.github.io/posts/reflection-in-java-and-csharp)  
+
 # 概念
 
 在运行时 反射使程序能够在运行时探知类的结构信息:构造器,方法,字段... 并且依赖这些结构信息完成相应的操作,比如创建对象,方法调用,字段赋值...  
@@ -55,11 +59,11 @@ categories:
 > [Java 虚拟机：JVM是如何实现反射的？](https://cloud.tencent.com/developer/article/1786456)  
 
 ## Inflation
-考虑到许多反射调用仅会执行一次，Java 虚拟机设置了一个阈值 15（可以通过 -Dsun.reflect.inflationThreshold= 来调整），当某个反射调用的调用次数在 15 之下时，采用本地实现；当达到 15 时，便开始动态生成字节码，并将委派实现的委派对象切换至动态实现，这个过程我们称之为 Inflation。
+考虑到许多反射调用仅会执行一次，Java 虚拟机设置了一个阈值 15（可以通过 -Dsun.reflect.inflationThreshold= 来调整），当某个反射调用的调用次数在 15 之下时，采用本地实现；  
+当达到 15 时，便开始动态生成字节码，并将委派实现的委派对象切换至动态实现，这个过程称之为 Inflation。
 
-
-https://www.jianshu.com/p/20b7ab284c0a
-https://cloud.tencent.com/developer/news/663586
+> [反射代理类加载器的潜在内存使用问题 - 简书](https://www.jianshu.com/p/20b7ab284c0a)  
+> [Inflation 引起的 MetaSpace Full GC 问题排查 - 腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/news/663586)  
 
 ************************
 
@@ -71,7 +75,7 @@ https://cloud.tencent.com/developer/news/663586
 
 > AccessibleObject 类是 Field、Method 和 Constructor 对象的基类。它提供了将反射的对象标记为 具有在使用时禁止Java语言的`默认访问控制检查`的能力。
 
-对于公共成员、默认（打包）访问成员、受保护成员和私有成员，在分别使用 Field、Method 或 Constructor 对象来设置或获得字段、调用方法，或者创建和初始化类的新实例的时候，会执行访问检查。  
+对于公共成员、默认（包级别）访问成员、受保护成员和私有成员，在分别使用 Field、Method 或 Constructor 对象来设置或获得字段、调用方法，或者创建和初始化类的新实例的时候，会执行访问检查。  
 在反射对象中设置 accessible 标志允许具有足够特权的复杂应用程序（比如 Java Object Serialization 或其他持久性机制）以某种通常禁止使用的方式来操作对象。  
 
 > 将此对象的 accessible 标志设置为指示的布尔值。  
@@ -81,7 +85,7 @@ https://cloud.tencent.com/developer/news/663586
 实际上setAccessible是启用和禁用访问安全检查的开关,并不是为true就能访问，为false就不能访问，一般情况下，我们并不能对类的私有字段进行操作，利用反射也不例外，  
 但有的时候，例如要序列化的时候，我们又必须有能力去处理这些字段，这时候，我们就需要调用`AccessibleObject`上的`setAccessible(true)`方法来允许这种访问，  
 而由于反射类中的Field，Method和Constructor继承自AccessibleObject，因此，通过在这些类上调用setAccessible()方法，我们可以实现对这些字段的操作。  
-但有的时候这将会成为一个安全隐患，为此，我们可以启用java.security.manager来判断程序是否具有调用setAccessible()的权限。  
+但有的时候这将会成为一个安全隐患，为此，我们可以启用`java.security.manager`来判断程序是否具有调用setAccessible()的权限。  
 
 > 默认情况下，`内核API`和`扩展目录`的代码具有该权限，而`类路径`或`通过URLClassLoader加载`的应用程序不拥有此权限。
 

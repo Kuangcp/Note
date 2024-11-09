@@ -94,7 +94,8 @@ categories:
 # 可视化管理工具
 > [nginxWebUI](https://github.com/cym1102/nginxWebUI)  
 > [nginx-proxy-manager ](https://github.com/NginxProxyManager/nginx-proxy-manager)  
-
+> [0xJacky/nginx-ui: Yet another WebUI for Nginx](https://github.com/0xJacky/nginx-ui)`go+js`
+  
 ************************
 # 内置变量
 > [Official Doc](https://nginx.org/en/docs/varindex.html) | [Nginx 内置变量](https://www.jianshu.com/p/deccac3a4fd0)

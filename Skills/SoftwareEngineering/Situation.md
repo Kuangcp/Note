@@ -19,9 +19,11 @@ categories:
     - 3.3. [敏感词匹配](#敏感词匹配)
     - 3.4. [OCR](#ocr)
 
-💠 2024-10-02 22:33:00
+💠 2024-11-04 17:03:12
 ****************************************
 # 方向需求
+[Global Burden of Disease](https://ghdx.healthdata.org)
+
 ## 系统重构
 > [知乎社区核心业务 Golang 化实践](https://zhuanlan.zhihu.com/p/48039838)`Python所开发的模块使用Go重写`
 
@@ -32,6 +34,8 @@ categories:
 ************************
 
 # 业务需求
+> [Admol/SystemDesign: 系统设计面试：内幕指南](https://github.com/Admol/SystemDesign)  
+
 ## 千万级数据导入
 场景: 将数据库外的千万或亿级Excel CSV txt等文件导入到数据库
 

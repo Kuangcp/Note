@@ -7,24 +7,24 @@ categories:
 
 💠
 
-- 1. [UI](#ui)
+- 1. [GUI](#gui)
     - 1.1. [Display Manager](#display-manager)
     - 1.2. [Window Manager](#window-manager)
     - 1.3. [Desktop environment](#desktop-environment)
-    - 1.4. [Font](#font)
-        - 1.4.1. [字体渲染](#字体渲染)
-    - 1.5. [Theme](#theme)
-    - 1.6. [Icon](#icon)
-    - 1.7. [Terminal](#terminal)
-        - 1.7.1. [彩色输出](#彩色输出)
-            - 1.7.1.1. [ls配置彩色输出](#ls配置彩色输出)
+- 2. [UI](#ui)
+    - 2.1. [Font](#font)
+        - 2.1.1. [字体渲染](#字体渲染)
+    - 2.2. [Theme](#theme)
+    - 2.3. [Icon](#icon)
+    - 2.4. [Terminal](#terminal)
+        - 2.4.1. [彩色输出](#彩色输出)
+            - 2.4.1.1. [ls配置彩色输出](#ls配置彩色输出)
 
-💠 2024-09-05 11:52:54
+💠 2024-10-15 09:56:12
 ****************************************
 
-# UI
-
-> Linux UI: themes icons fonts
+# GUI
+> [GUI Under Linux | Baeldung on Linux](https://www.baeldung.com/linux/gui)  
 
 ## Display Manager 
 - [LightDM](https://wiki.archlinux.org/title/LightDM)
@@ -48,6 +48,13 @@ categories:
 
 - [Top 10 Best Linux Docks 2022](https://www.digitalocean.com/community/tutorials/top-best-linux-docks-2020)
     - plank
+
+
+************************
+
+# UI
+
+> Linux UI: themes icons fonts
 
 ## Font
 

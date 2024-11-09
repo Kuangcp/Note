@@ -15,7 +15,7 @@ categories:
     - 2.1. [Azkaban](#azkaban)
     - 2.2. [nifi](#nifi)
 
-💠 2024-09-03 14:05:18
+💠 2024-10-21 15:37:17
 ****************************************
 # 数据协作
 > [What is Data Orchestration & Why It’s Essential for Analysis](https://segment.com/resources/data-strategy/what-is-data-orchestration/)
@@ -27,6 +27,9 @@ categories:
 DolphinScheduler 是国内易观数据公司在2018年开源，2019年进入Apache项目的分布式调度工具,
 
 思考：Job实例的执行交由K8S，避免Worker出现资源瓶颈，甚至去掉Worker只保留master，实例执行全部用K8S
+
+> [DolphinScheduler | 任务类型](https://dolphinscheduler.apache.org/zh-cn/docs/3.2.2/%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D_menu/%E4%BB%BB%E5%8A%A1%E7%B1%BB%E5%9E%8B_menu)  
+- conditions 可以 conditions 通过对上游节点执行成功/失败， 走向下游不同流程，例如全局参数来控制全量或增量执行不同的SQL
 
 ## Argo
 > [Github](https://github.com/argoproj/argo-workflows)

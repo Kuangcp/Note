@@ -25,7 +25,7 @@ categories:
 ### Linux
 
 #### Docker安装
-> [详情>>](/Linux/Container/DockerSoft.md#安装oracle)
+> [Docker: Oracle](/Linux/Container/DockerSoft.md#安装oracle)
 
 ### Windows
 

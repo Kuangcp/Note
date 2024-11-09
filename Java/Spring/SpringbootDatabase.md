@@ -29,8 +29,9 @@ categories:
     - 1.4. [Non Relational database](#non-relational-database)
         - 1.4.1. [Redis](#redis)
             - 1.4.1.1. [消息订阅和发布](#消息订阅和发布)
+        - 1.4.2. [Neo4j](#neo4j)
 
-💠 2024-09-12 16:01:31
+💠 2024-10-21 22:05:55
 ****************************************
 # 数据库模块
 > [Spring Data](https://spring.io/projects/spring-data)
@@ -282,3 +283,6 @@ _配置连接信息_
 [参考: Spring Boot使用Redis进行消息的发布订阅](https://www.tianmaying.com/tutorial/springboot-redis-message)
 
 
+
+### Neo4j
+注意版本不同配置方式不同，可通过自动装配类找到配置类进行分辨

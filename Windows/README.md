@@ -1,5 +1,7 @@
 # Windows 
 
+> [Atlas-OS/Atlas](https://github.com/Atlas-OS/Atlas)`裁剪优化版本`  
+
 ## 安装激活
 > win10
 

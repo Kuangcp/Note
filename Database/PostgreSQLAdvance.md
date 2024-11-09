@@ -17,9 +17,10 @@ categories:
     - 2.4. [JOIN](#join)
 - 3. [索引](#索引)
 - 4. [事务](#事务)
-- 5. [Explain](#explain)
+- 5. [集群](#集群)
+- 6. [Explain](#explain)
 
-💠 2024-09-27 11:12:37
+💠 2024-11-06 17:38:41
 ****************************************
 # PostgreSQL Advance
 
@@ -80,6 +81,13 @@ TODO 大表和小表 join顺序是否和MySQL一样有要求
 
 # 事务
 MVCC WAL 
+
+************************
+
+# 集群
+> [创建数据库集群](http://www.postgres.cn/docs/9.3/creating-cluster.html)  
+
+> [PostgreSQL—集群方案 – Enmalvi](http://www.enmalvi.com/2022/10/28/postgresql-patroni/#shu_ju_ku_ji_qun_fang_an)  
 
 ************************
 
