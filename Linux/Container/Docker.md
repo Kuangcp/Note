@@ -15,7 +15,7 @@ categories:
 - 2. [安装与卸载](#安装与卸载)
     - 2.1. [Linux](#linux)
         - 2.1.1. [安装包安装](#安装包安装)
-        - 2.1.2. [不加sudo执行docker命令](#不加sudo执行docker命令)
+        - 2.1.2. [无需sudo去执行docker命令](#无需sudo去执行docker命令)
         - 2.1.3. [Ubuntu](#ubuntu)
         - 2.1.4. [Debian](#debian)
         - 2.1.5. [Centos](#centos)
@@ -58,7 +58,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2024-10-28 16:30:33
+💠 2024-11-10 13:14:39
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -93,7 +93,6 @@ categories:
 > [docker资源汇总 ](http://www.open-open.com/lib/view/open1443075440623.html)
 > [简述 Docker](http://www.importnew.com/24658.html)
 
-
 ***************************************
 # 安装与卸载
 > [daocloud安装帮助](http://get.daocloud.io/#install-docker) | [Docker 加速器](http://guide.daocloud.io/dcs/daocloud-9153151.html)
@@ -109,15 +108,14 @@ categories:
 ### 安装包安装
 > [官方文件地址](https://download.docker.com/linux/)
 
-- _Debian系_
-    - [deb包选择](https://download.docker.com/linux/debian/dists/)
-    - 进去后选择debain的版本，deepin15.4 的版本是stretch 然后pool/stable/amd64/选版本即可 
-    - 例如：[Deepin 15.4直接点这里](https://download.docker.com/linux/debian/dists/stretch/pool/stable/amd64/)
-    - `这两种方式装的是同一个版本号` 
-    - 双击或者`sudo dpkg -i deb文件`
-    - 测试安装成功 `sudo docker run hello-world`
+_Debian系_
+- [deb包选择](https://download.docker.com/linux/debian/dists/)
+- 进去后选择debain的版本，deepin15.4 的版本是stretch 然后pool/stable/amd64/选版本即可 
+- 例如：[Deepin 15.4直接点这里](https://download.docker.com/linux/debian/dists/stretch/pool/stable/amd64/) `这两种方式装的是同一个版本号` 
+- 双击或者`sudo dpkg -i deb文件`
+- 测试安装成功 `sudo docker run hello-world`
 
-### 不加sudo执行docker命令
+### 无需sudo去执行docker命令
 > [官方文档](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user)
 
 - 如果没有docker组，添加组 `sudo groupadd docker `
@@ -636,6 +634,7 @@ Error with pre-create check: "This computer doesn't have VT-X/AMD-v enabled. Ena
     - Linux: `ip route add 172.13.0.0/24 via 192.168.7.110`
 
 ## 跨主机容器通信
+`--ipc=host` IPC
 
 ### overlay
 > [参考: DOCKER的内置OVERLAY网络](http://dockone.io/article/2717)

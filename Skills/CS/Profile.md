@@ -7,22 +7,22 @@ categories:
     - 计算机基础
 ---
 
-**目录 start**
+💠
 
-1. [配置文件格式](#配置文件格式)
-    1. [conf或者ini](#conf或者ini)
-    1. [Toml](#toml)
-    1. [HOCON](#hocon)
-    1. [Properties](#properties)
-        1. [Java中的使用](#java中的使用)
-    1. [XML](#xml)
-    1. [YAML](#yaml)
-        1. [Java中的使用](#java中的使用)
-    1. [JSON](#json)
-        1. [BSON](#bson)
-        1. [Smile](#smile)
+- 1. [配置文件格式](#配置文件格式)
+    - 1.1. [conf或者ini](#conf或者ini)
+    - 1.2. [Toml](#toml)
+    - 1.3. [HOCON](#hocon)
+    - 1.4. [Properties](#properties)
+        - 1.4.1. [Java中的使用](#java中的使用)
+    - 1.5. [XML](#xml)
+    - 1.6. [YAML](#yaml)
+        - 1.6.1. [Java中的使用](#java中的使用)
+    - 1.7. [JSON](#json)
+        - 1.7.1. [BSON](#bson)
+        - 1.7.2. [Smile](#smile)
 
-**目录 end**|_2020-07-05 14:58_|
+💠 2024-11-10 13:14:39
 ****************************************
 # 配置文件格式
 
@@ -42,6 +42,7 @@ categories:
 ## HOCON
 Human-Optimized Config Object Notation
 
+> [lightbend/config: configuration library for JVM languages using HOCON files](https://github.com/lightbend/config)  
 > [Official Doc](https://docs.spongepowered.org/stable/zh-CN/server/getting-started/configuration/hocon.html)
 
 > Nginx 的配置文件就是使用该格式

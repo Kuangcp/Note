@@ -59,7 +59,7 @@ categories:
 - 4. [日志](#日志)
     - 4.1. [Systemd](#systemd)
     - 4.2. [应用日志](#应用日志)
-- 5. [文件共享](#文件共享)
+- 5. [DFS](#dfs)
     - 5.1. [Samba](#samba)
         - 5.1.1. [搭建匿名Samba服务器](#搭建匿名samba服务器)
 - 6. [Tips](#tips)
@@ -67,7 +67,7 @@ categories:
         - 6.1.1. [善用alias](#善用alias)
     - 6.2. [desktop文件](#desktop文件)
 
-💠 2024-09-14 11:51:16
+💠 2024-11-10 13:14:39
 ****************************************
 
 # IO
@@ -531,10 +531,16 @@ export LANG="zh_CN.UTF-8"
 > [处理Apache日志的Bash脚本](http://www.ruanyifeng.com/blog/2012/01/a_bash_script_of_apache_log_analysis.html)
 
 ************************
-# 文件共享
-## Samba 
-> [参考: ](https://www.jianshu.com/p/b0fcf29a857a)  
 
+# DFS
+分布式文件系统（Distributed File System），类似的还有NAS（Network Attached Storage）。
+
+> [happyfish100/fastdfs](https://github.com/happyfish100/fastdfs)  
+
+## Samba 
+服务器消息块（Server Message Block）是一种通用的文件共享协议，通常用于Windows系统。
+
+> [Manjaro使用Samba实现局域网内跨系统文件共享 - 简书](https://www.jianshu.com/p/b0fcf29a857a)  
 
 ### 搭建匿名Samba服务器
 

@@ -14,7 +14,7 @@ categories:
     - 3.2. [Gremlin](#gremlin)
     - 3.3. [SPARQL](#sparql)
 
-💠 2024-11-06 17:03:43
+💠 2024-11-10 13:14:39
 ****************************************
 # 图数据库
 
@@ -26,6 +26,8 @@ Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph、Mem
 [vesoft-inc/nebula](https://github.com/vesoft-inc/nebula)C++ 分布式，nGQL查询语言，兼容部分Cypher语法  
 [surrealdb/surrealdb](https://github.com/surrealdb/surrealdb)Rust 分布式， 类SQL/GraphQL查询 `偏业务应用`  
 [dgraph-io/dgraph](https://github.com/dgraph-io/dgraph)Go 分布式，GraphQL查询 `偏业务应用`  
+[orientechnologies/orientdb](https://github.com/orientechnologies/orientdb)`多模数据库（图，文档，全文索引）`  
+
 
 # 概念
 
