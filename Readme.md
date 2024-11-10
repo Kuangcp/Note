@@ -103,6 +103,7 @@
 - [Java-Summarize](https://github.com/zaiyunduan123/Java-Summarize)
 - [JAVA基础技能代码集](https://github.com/veezean/JavaBasicSkills)
 - [Java学习+面试指南](https://github.com/BookaiCode/JavaRecord)
+> [leosanqing/Java-Notes: java学习笔记，包括JVM，看过的技术以及非技术书籍，SpringCloud 商城项目以及工具介绍，leetcode剑指offer算法，spring，JDK一些工具的源码，](https://github.com/leosanqing/Java-Notes/tree/master)  
 
 - [skill-map](https://github.com/TeamStuQ/skill-map)
 - [代码安全指南](https://github.com/Tencent/secguide)

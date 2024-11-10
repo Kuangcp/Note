@@ -68,7 +68,7 @@ categories:
     - 14.3. [修改](#修改)
         - 14.3.1. [授权](#授权)
 
-💠 2024-10-09 16:33:39
+💠 2024-11-10 13:59:35
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -84,12 +84,14 @@ categories:
 
 ## 规约
 - 优先选择utf8字符集，需要存储emoji字符的，则选择utf8mb4字符集。不要单独定义字符集、校验集、存储引擎、行格式。
-    - CREATE TABLE ... ENGINE = INNODB DEFAULT CHARSET = utf8 ROW_FORMAT = COMPACT，尽量不要单独指定这些选项。不同的字符集/校验集关联查询会导致索引失效，5.6、5.7默认的ROW_FORMAT不同，最好让其自行匹配当前版本。
-- 小数类型为 decimal，禁止使用 float 和 double。
+    - `CREATE TABLE ... ENGINE = INNODB DEFAULT CHARSET = utf8 ROW_FORMAT = COMPACT`，尽量不要单独指定这些选项。
+    - 不同的字符集/校验集关联查询会导致索引失效，5.6、5.7默认的ROW_FORMAT不同，最好让其自行匹配当前版本。
+- 小数数值使用decimal类型，禁止使用 float 和 double。
 - varchar 是可变长字符串，不预先分配存储空间，长度不要超过 5000，如果存储长度大于此值，定义字段类型为 text，独立出来一张表，用主键来对应，避免影响其它字段索引效率
 - 字段允许适当冗余，以提高查询性能，但必须考虑数据一致。冗余字段应遵循:
-    - 不是频繁修改的字段。
+    - 不会频繁修改的字段。
     - 不是 varchar 超长字段，更不能是 text 字段。
+- 执行DDL时尽量避开业务高峰，避免因锁表引发写入事务大量超时回滚。
 
 # 安装
 ## Ubuntu安装配置MySQL
