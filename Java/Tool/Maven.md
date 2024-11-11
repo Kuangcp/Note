@@ -11,49 +11,44 @@ categories:
 
 - 1. [Maven](#maven)
     - 1.1. [安装](#安装)
-        - 1.1.1. [Maven常用命令](#maven常用命令)
-            - 1.1.1.1. [从jar安装到本地库](#从jar安装到本地库)
-        - 1.1.2. [settings.xml配置](#settingsxml配置)
-            - 1.1.2.1. [配置镜像源](#配置镜像源)
-                - 1.1.2.1.1. [阿里云](#阿里云)
-            - 1.1.2.2. [配置本地仓库](#配置本地仓库)
-    - 1.2. [maven配置](#maven配置)
-        - 1.2.1. [主配置文件详解](#主配置文件详解)
-        - 1.2.2. [配置代码编译版本](#配置代码编译版本)
-    - 1.3. [构建](#构建)
-        - 1.3.1. [使用maven构建多模块的项目](#使用maven构建多模块的项目)
-        - 1.3.2. [Profiles](#profiles)
-        - 1.3.3. [测试](#测试)
-        - 1.3.4. [打包部署](#打包部署)
-            - 1.3.4.1. [assembly](#assembly)
-            - 1.3.4.2. [shade](#shade)
-    - 1.4. [Maven 依赖](#maven-依赖)
-        - 1.4.1. [依赖类型](#依赖类型)
-        - 1.4.2. [依赖的范围](#依赖的范围)
-        - 1.4.3. [依赖的传递](#依赖的传递)
-        - 1.4.4. [处理项目间依赖方法](#处理项目间依赖方法)
-        - 1.4.5. [依赖冲突](#依赖冲突)
-            - 1.4.5.1. [排除依赖](#排除依赖)
-        - 1.4.6. [依赖本地jar](#依赖本地jar)
-    - 1.5. [常用插件](#常用插件)
-        - 1.5.1. [lombok](#lombok)
-        - 1.5.2. [protobuf](#protobuf)
-        - 1.5.3. [Maven Enforcer Plugin](#maven-enforcer-plugin)
-        - 1.5.4. [Maven Deploy plugin](#maven-deploy-plugin)
-    - 1.6. [构建工具对比](#构建工具对比)
-        - 1.6.1. [Maven和Ant的区别一](#maven和ant的区别一)
-        - 1.6.2. [Maven的优势](#maven的优势)
-    - 1.7. [发布构件到中央仓库](#发布构件到中央仓库)
-        - 1.7.1. [发布到 Github Package](#发布到-github-package)
-- 2. [配置私服](#配置私服)
-    - 2.1. [nexus](#nexus)
-    - 2.2. [码云](#码云)
-        - 2.2.1. [创建仓库](#创建仓库)
-        - 2.2.2. [引用仓库中的构件](#引用仓库中的构件)
-            - 2.2.2.1. [Gradle](#gradle)
-            - 2.2.2.2. [Maven](#maven)
+    - 1.2. [Maven常用命令](#maven常用命令)
+    - 1.3. [配置](#配置)
+        - 1.3.1. [settings.xml](#settingsxml)
+        - 1.3.2. [pom.xml](#pomxml)
+- 2. [构建](#构建)
+    - 2.1. [使用maven构建多模块的项目](#使用maven构建多模块的项目)
+    - 2.2. [Profiles](#profiles)
+    - 2.3. [测试](#测试)
+    - 2.4. [打包部署](#打包部署)
+        - 2.4.1. [assembly](#assembly)
+        - 2.4.2. [shade](#shade)
+- 3. [依赖管理](#依赖管理)
+    - 3.1. [依赖类型](#依赖类型)
+    - 3.2. [依赖的范围](#依赖的范围)
+    - 3.3. [依赖的传递](#依赖的传递)
+    - 3.4. [处理项目间依赖方法](#处理项目间依赖方法)
+    - 3.5. [依赖冲突](#依赖冲突)
+        - 3.5.1. [排除依赖](#排除依赖)
+    - 3.6. [依赖本地jar](#依赖本地jar)
+- 4. [常用插件](#常用插件)
+    - 4.1. [Lombok](#lombok)
+    - 4.2. [Protobuf](#protobuf)
+    - 4.3. [Maven Enforcer Plugin](#maven-enforcer-plugin)
+    - 4.4. [Maven Deploy plugin](#maven-deploy-plugin)
+- 5. [构建工具对比](#构建工具对比)
+    - 5.1. [Maven和Ant的区别一](#maven和ant的区别一)
+    - 5.2. [Maven的优势](#maven的优势)
+- 6. [发布构件到中央仓库](#发布构件到中央仓库)
+    - 6.1. [发布到 Github Package](#发布到-github-package)
+- 7. [配置私服](#配置私服)
+    - 7.1. [nexus](#nexus)
+    - 7.2. [公开Git仓库](#公开git仓库)
+        - 7.2.1. [创建仓库](#创建仓库)
+        - 7.2.2. [引用仓库中的构件](#引用仓库中的构件)
+            - 7.2.2.1. [Gradle](#gradle)
+            - 7.2.2.2. [Maven](#maven)
 
-💠 2024-08-06 11:01:51
+💠 2024-11-11 11:02:40
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -61,8 +56,9 @@ categories:
 
 ## 安装
 - 下载zip包解压，将bin目录配置至PATH（最好是配置MAVEN_HOME然后引用）
+- sdkman 安装
 
-### Maven常用命令
+## Maven常用命令
 > `mvn [插件]:[目标] [参数]`  
 > `mvn [阶段]`
 
@@ -102,7 +98,8 @@ _配置文件中配置_
     </plugin>
 ```
 
-#### 从jar安装到本地库
+> 将jar安装到本地仓库
+
 ```
 mvn install:install-file 
     -Dfile=D:\mvn\spring-context-support-3.1.0.RELEASE.jar \
@@ -111,17 +108,19 @@ mvn install:install-file
     -Dversion=3.1.0.RELEASE \
     -Dpackaging=jar
 ```
-*****
 
-### settings.xml配置
-> 要特别注意 `settings.xml` 后者覆盖前者 加载顺序是: 
+*****************
+## 配置
+> [插件地址](http://maven.apache.org/plugins/index.html)
+
+### settings.xml 
+> 注意 `settings.xml` 后者覆盖前者 加载顺序是: 
 >> `maven目录/conf/setting.xml`  
 >> `用户目录下/.m2/setting.xml` 
 
-#### 配置镜像源
-> 在 用户目录下 .m2/setttings.xml 中 找到 mirrors 标签 进行添加`mirror节点`即可
+*配置镜像源*
 
-##### 阿里云
+> 在 用户目录下 .m2/setttings.xml 中 找到 mirrors 标签 进行添加`mirror节点`即可
 
 ```xml
 <mirror> 
@@ -131,17 +130,14 @@ mvn install:install-file
     <mirrorOf>central</mirrorOf> 
 </mirror> 
 ```
-#### 配置本地仓库
-`localRepository节点`
+ 
+*配置本地仓库目录*
 
-*****************
-## maven配置
-> [插件地址](http://maven.apache.org/plugins/index.html)
+`localRepository节点` 
 
-### 主配置文件详解
+### pom.xml
 > [版本说明](http://www.blogjava.net/RomulusW/archive/2008/05/04/197985.html)
 
-`pom.xml`
 ```xml
       <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -210,7 +206,8 @@ mvn install:install-file
      </modules>
 ```
 
-### 配置代码编译版本
+*配置代码编译版本*
+
 ```xml
     <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -223,8 +220,10 @@ mvn install:install-file
     </plugin>
 ```
 
-## 构建
-### 使用maven构建多模块的项目
+************************
+
+# 构建
+## 使用maven构建多模块的项目
 `父项目pom文件`
 ``` xml
     <groupId>com.github.kuangcp</groupId>
@@ -254,7 +253,7 @@ mvn install:install-file
     </parent>
 ```
 
-### Profiles
+## Profiles
 > [Official Doc](http://maven.apache.org/guides/introduction/introduction-to-profiles.html)
 > [参考: Guide to Maven Profiles](https://www.baeldung.com/maven-profiles)  
 
@@ -279,13 +278,13 @@ mvn install:install-file
 
 - 使用 test profile 执行命令 `mvn clean package -P test`
 
-### 测试
+## 测试
 > mvn test 
 
 - 跳过测试 `mvn test -DskipTests`
 - 执行指定测试类 `mvn test -Dtest=类名`
 
-### 打包部署
+## 打包部署
 获取项目版本 `mvn help:evaluate -Dexpression=project.version -q -DforceStdout`
 
 > [deploy with source](https://stackoverflow.com/questions/4725668/how-to-deploy-snapshot-with-sources-and-javadoc)
@@ -308,7 +307,7 @@ mvn install:install-file
 > [Demo项目](https://gitee.com/gin9/codes/ri4x8cut3awgh0e271lfb54) 
 
 **依赖Jar的项目**
-#### assembly
+### assembly
 > [Maven Doc](http://maven.apache.org/plugins/maven-assembly-plugin/index.html)
 
 ```xml
@@ -339,7 +338,7 @@ mvn install:install-file
 
 > [Maven 引入 JDK 自带 tools.jar 注意事项](https://www.sunyongfei.cn/archives/305/)  
 
-#### shade
+### shade
 
 ```xml
     <plugin>
@@ -377,11 +376,11 @@ mvn install:install-file
 > [一个项目生成若干不同内容的Jar](https://stackoverflow.com/questions/2424015/maven-best-practice-for-generating-multiple-jars-with-different-filtered-classes)
 
 ******************
-## Maven 依赖
-### 依赖类型
+# 依赖管理
+## 依赖类型
 默认是jar类型。扩展了 pom（引入复合项目时使用 例如 groovy-all） war maven-plugin test-jar 等。
 
-### 依赖的范围
+## 依赖的范围
 > 依赖范围就是用来控制依赖和三种classpath(编译classpath，测试classpath、运行classpath)的关系
 
 - `compile`:编译依赖范围。如果没有指定，就会默认使用该依赖范围。使用此依赖范围的Maven依赖，对于编译、测试、运行三种classpath都有效。
@@ -401,13 +400,15 @@ mvn install:install-file
 | runtime |  | Y | Y | JDBC的实现Jar |
 | system | Y | Y |  | Maven仓库之外的类库文件 |
 
-### 依赖的传递
+特殊标签 optional 意味着该依赖可不存在
+
+## 依赖的传递
 - 比如一个account-email项目为例
     - account-email有一个compile范围的spring-code依赖，
     - spring-core有一个compile范围的commons-logging依赖，
 - 那么commons-logging就会成为account-email的compile的范围依赖，commons-logging是account-email的一个传递性依赖
 
-### 处理项目间依赖方法
+## 处理项目间依赖方法
 ```
 项目A依赖B
 A项目 pom.xml中配置依赖 （构件三要素）
@@ -416,14 +417,14 @@ B项目 先clean package
 A 项目 compile
 ```
 
-### 依赖冲突
+## 依赖冲突
 - 依赖路径短优先
    - 1 A->B->C->X(jar文件)
    - 2 A->C->X(jar文件)
    - 会选择 2 中的X的jar版本
 - 先声明的优先
 
-#### 排除依赖
+### 排除依赖
 `对应的<dependency>标签中添加`
 ```xml
     <exclusions>
@@ -434,7 +435,7 @@ A 项目 compile
     </exclusions>
 ```
 
-### 依赖本地jar
+## 依赖本地jar
 ```xml
     <dependency>
         <groupId>xxx</groupId>
@@ -447,42 +448,30 @@ A 项目 compile
 
 *************************
 
-## 常用插件
+# 常用插件
 
-### lombok
+## Lombok
 > [详细](/Java/Tool/Lombok.md)
 
-### protobuf
+## Protobuf
 > [maven 插件 ](https://www.xolstice.org/protobuf-maven-plugin/) `本质还是要使用系统安装的protoc, 然后插件实现了自动编译文件`
 
 - [protoc-jar](https://github.com/os72/protoc-jar-maven-plugin)`自动识别平台, 使用对应的编译器编译得到java文件, 但是目前还有一些bug`
 
-### Maven Enforcer Plugin
+## Maven Enforcer Plugin
 > [Official Site](http://maven.apache.org/enforcer/maven-enforcer-plugin/)  
 
 [Maven Enforcer Plugin - Baeldung](https://www.baeldung.com/maven-enforcer-plugin)
 
-### Maven Deploy plugin
+## Maven Deploy plugin
 > [maven-deploy-plugin](https://maven.apache.org/plugins/maven-deploy-plugin/deploy-mojo.html)
-
-**跳过 deploy**
-```xml
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-deploy-plugin</artifactId>
-        <version>3.0.0-M1</version>
-        <configuration>
-            <skip>true</skip>
-        </configuration>
-    </plugin>
-```
 
 ****************************
 
-## 构建工具对比
+# 构建工具对比
 > [码农翻身:小李的Build之路(上)](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513207&idx=1&sn=cbfad70e656fc50c4fff18678a282b95&scene=21#wechat_redirect) | [码农翻身:小李的Build之路(下)](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513212&idx=1&sn=280647b0c6cd265f85590f64d3216bee&scene=21#wechat_redirect) `这个小故事讲述了ant到maven的演化`
 
-### Maven和Ant的区别一
+## Maven和Ant的区别一
 
 1. ant脚本是可以直接运行在maven中的。maven和ant最大的差别就是在于maven的编译以及所有的脚本都有一个基础，就是POM（project object model）。这个模型定义了项目的方方面面，然后各式各样的脚本在这个模型上工作，而ant完全是自己定义，显然maven更胜一筹。
 
@@ -494,7 +483,7 @@ A 项目 compile
 
 5. maven目前不足的地方就是没有象ant那样成熟的GUI界面，不过mavengui正在努力中。目前使用maven最好的方法还是命令行，又快又方便
 
-### Maven的优势
+## Maven的优势
 
 - 协同开发的基本规范，为大家提供方便的协作的模式，能增加代码的复用，提高生产率。
 - 提供方便，规范化的打包方法，是公司完成自动构建系统的核心部分，能帮助提高敏捷开发的效率(敏捷开发提倡尽早集成)。
@@ -505,7 +494,7 @@ A 项目 compile
 
 ********************
 
-## 发布构件到中央仓库
+# 发布构件到中央仓库
 `mvn clean javadoc:jar source:jar deploy -U -DskipTests=true` 带文档和源码跳过测试发布，注意javadoc:jar对javadoc有严格要求，文档不符合规范会发布失败，可按需使用该插件。
 
 跳过模块不deploy
@@ -518,7 +507,7 @@ A 项目 compile
 > [发布Maven构件到中央仓库](https://www.xncoding.com/2018/01/27/tool/maven-central.html)  
 > [android-library-publish-to-jcenter](https://github.com/panpf/android-library-publish-to-jcenter)
 
-### 发布到 Github Package
+## 发布到 Github Package
 > 1. 申请token（clasic） 具有package的读写权限
 > 2. settings.xml 配置 Github 源
 ```xml
@@ -575,7 +564,7 @@ A 项目 compile
 
 ************************
 
-## 码云
+## 公开Git仓库
 > 利用公开仓库来搭建私服 | [参考:  使用git仓库搭建maven私服 ](https://my.oschina.net/polly/blog/1649362)
 
 ### 创建仓库

@@ -16,7 +16,7 @@ categories:
 - 3. [Monitoring](#monitoring)
     - 3.1. [Prometheus](#prometheus)
 
-💠 2024-09-03 21:27:16
+💠 2024-11-11 11:02:40
 ****************************************
 # APM
 > Application performance Management `分布式链路追踪，技术或业务指标监控告警`
@@ -99,3 +99,4 @@ docker run --name oap-ui -p 8080:8080 -d -e SW_OAP_ADDRESS=http://192.168.7.54:1
 
 > [Prometheus running on Kubernetes ](https://github.com/prometheus-operator/kube-prometheus)
 
+默认是拉模式，如果想通过推模式采集应用端信息需要借助 PushGateway 组件

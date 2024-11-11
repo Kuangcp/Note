@@ -14,7 +14,7 @@ categories:
     - 3.2. [Gremlin](#gremlin)
     - 3.3. [SPARQL](#sparql)
 
-💠 2024-11-10 13:14:39
+💠 2024-11-11 11:02:40
 ****************************************
 # 图数据库
 
@@ -28,6 +28,9 @@ Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph、Mem
 [dgraph-io/dgraph](https://github.com/dgraph-io/dgraph)Go 分布式，GraphQL查询 `偏业务应用`  
 [orientechnologies/orientdb](https://github.com/orientechnologies/orientdb)`多模数据库（图，文档，全文索引）`  
 
+
+
+> 支撑 [知识图谱](/Ai/KnowledgeGraph.md) 存储
 
 # 概念
 
