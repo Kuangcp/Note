@@ -18,7 +18,7 @@ categories:
     - 3.2. [主题](#主题)
         - 3.2.1. [自己定制](#自己定制)
 
-💠 2024-09-14 11:51:16
+💠 2024-11-11 17:02:19
 ****************************************
 # Zsh
 > [arch zsh wiki](https://wiki.archlinux.org/index.php/Zsh)
@@ -60,14 +60,12 @@ categories:
 > [wiki: plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins)  
 > [zsh oh-my-zsh 插件推荐 ](https://hufangyun.com/2017/zsh-plugin/)
 
-- 个人常用 git gitfast mvn gradle golang docker kubectl sudo colored-man-pages 
+- 个人常用 git gitfast docker kubectl sudo colored-man-pages systemd emoji dotenv
 
 **********************
 
 ## 主题
 > [官网主题列表](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes) 
-
-- 自带主题: amuse clean wedisagree, muse也还好,就是没时间
 
 > [额外主题列表](https://github.com/robbyrussell/oh-my-zsh/wiki/External-themes)
 
@@ -97,8 +95,7 @@ categories:
 - Maglev `Tmux 主题 和上面的Zsh主题搭配使用`
     - [Github地址](https://github.com/caiogondim/maglev)
 
-- spaceship
-    - [地址](https://www.ctolib.com/denysdovhan-spaceship-zsh-theme.html)
+- spaceship [地址](https://www.ctolib.com/denysdovhan-spaceship-zsh-theme.html)
 
 > [安装步骤](https://github.com/caiogondim/bullet-train.zsh#for-oh-my-zsh-users)
 1. mkdir $ZSH_CUSTOM/themes/
