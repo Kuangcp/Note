@@ -11,17 +11,18 @@ categories:
     - 1.1. [安装](#安装)
     - 1.2. [驱动](#驱动)
 - 2. [使用](#使用)
-    - 2.1. [数据导入](#数据导入)
-        - 2.1.1. [Load CSV](#load-csv)
-    - 2.2. [结构](#结构)
-    - 2.3. [Schema](#schema)
-        - 2.3.1. [索引](#索引)
-        - 2.3.2. [约束](#约束)
-        - 2.3.3. [统计信息](#统计信息)
-    - 2.4. [Pattern](#pattern)
+    - 2.1. [查询 修改](#查询-修改)
+    - 2.2. [数据导入](#数据导入)
+        - 2.2.1. [Load CSV](#load-csv)
+    - 2.3. [结构](#结构)
+    - 2.4. [Schema](#schema)
+        - 2.4.1. [索引](#索引)
+        - 2.4.2. [约束](#约束)
+        - 2.4.3. [统计信息](#统计信息)
+    - 2.5. [Pattern](#pattern)
 - 3. [应用](#应用)
 
-💠 2024-11-11 11:02:40
+💠 2024-11-13 17:32:20
 ****************************************
 # Neo4j
 > [Neo4j Graph Database & Analytics | Graph Database Management System](https://neo4j.com/)  
@@ -51,17 +52,82 @@ categories:
 
 ************************
 
-Python
+*Python*
 
 > [Neo4j Python Driver 5.25 — Neo4j Python Driver 5.25](https://neo4j.com/docs/api/python-driver/current/)  
 
-Java 
+************************
+
+*Java*
 
 > [Using Neo4j from Java - Getting Started](https://neo4j.com/docs/getting-started/languages-guides/java/java-intro/)  
 > [Neo4j Java Drive Compatibility : r/Neo4j](https://www.reddit.com/r/Neo4j/comments/15ggn1l/neo4j_java_drive_compatibility/)  
 
-Java8使用坑比较多，注意5.X需要Java17 4.x以及3.x才可以兼容Java8，但是官网基本是按5.x来推荐和写样例代码 [neo4j-examples/movies-java-bolt ](https://github.com/neo4j-examples/movies-java-bolt)  
-包括SpringData Neo4j 也是配置和使用方式改动较大，需要仔细翻阅旧文档。
+Java8使用的话，坑会比较多，注意5.x需要Java17（4.x以及3.x才兼容Java8）。官网推荐 5.x 及 样例 [neo4j-examples/movies-java-bolt ](https://github.com/neo4j-examples/movies-java-bolt)  
+
+[Spring Data Neo4j](https://spring.io/projects/spring-data-neo4j) 不同boot版本的配置和使用方式差别较大(yml配置名变更)，需要仔细翻阅相应版本的文档。
+
+> Java8 简单使用
+```xml
+    <dependency>
+        <groupId>org.neo4j.driver</groupId>
+        <artifactId>neo4j-java-driver</artifactId>
+        <version>4.2.9</version>
+    </dependency>
+```
+
+```java
+// 驱动配置类
+@Component
+public class Neo4jDriver {
+
+    Driver driver;
+
+    @Autowired
+    private Neo4jConfig neo4jConfig;
+
+    @PostConstruct
+    public void init() {
+        Config config = Config.builder()
+                .withConnectionTimeout(10, TimeUnit.SECONDS)
+                .withMaxConnectionLifetime(30, TimeUnit.MINUTES)
+                .withMaxConnectionPoolSize(10).withConnectionAcquisitionTimeout(10, TimeUnit.SECONDS)
+                .build();
+
+        this.driver = GraphDatabase.driver(neo4jConfig.getUrl(),
+                AuthTokens.basic(neo4jConfig.getUsername(), neo4jConfig.getPassword()), config);
+        log.info("Init Neo4j {}", neo4jConfig.getUrl());
+    }
+}
+```
+
+```java
+    // 手动查询和解析
+    public List<DiseaseNode> queryDisease(String query) {
+        try (Session session = neo4jDriver.getDriver().session()) {
+            long start = System.currentTimeMillis();
+            List<DiseaseNode> nodes = new ArrayList<>();
+            Result result = session.run(new Query(query));
+            List<Record> collect = result.stream().distinct().collect(Collectors.toList());
+            log.info("result={}", result);
+            collect.stream().map(v -> {
+                InternalRecord ir = (InternalRecord) v;
+                Value tmpNode = ir.get("a");
+                Value id = tmpNode.get("id");
+                Value name = tmpNode.get("name");
+                DiseaseNode node = new DiseaseNode();
+                node.setId(id.asString());
+                node.setName(name.asString());
+                return node;
+            }).forEach(nodes::add);
+            log.info("Neo4j: {}ms Size: {}", (System.currentTimeMillis() - start), nodes.size());
+            return nodes;
+        } catch (Exception e) {
+            log.error("", e);
+        }
+        return Collections.emptyList();
+    }
+```
 
 ************************
 
@@ -71,10 +137,15 @@ Java8使用坑比较多，注意5.X需要Java17 4.x以及3.x才可以兼容Java8
 
 > [Neo4j - 悦光阴 - 博客园](https://www.cnblogs.com/ljhdo/tag/Neo4j/)  
 > [Neo4j 第二篇：图形数据库 - 悦光阴 - 博客园](https://www.cnblogs.com/ljhdo/p/5178225.html)  
+> [neo4j基础使用案例笔记 - 易水风萧](http://www.yishuifengxiao.com/2022/11/27/neo4j%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B%E7%AC%94%E8%AE%B0/)  
+
 
 访问7474端口打开网页客户端
 - 节点类型和边可以修改默认展示的字段和颜色，通过点击详情中的色块弹出设置页
 - 执行窗口可通过 Ctrl + 上下方向键 切换历史执行的语句
+
+## 查询 修改
+> [Cypher](/Database/Graph.md#cypher)`专有语言，类似于SQL，用于执行查询和修改，删除等`  
 
 ## 数据导入
 
@@ -94,14 +165,16 @@ Java8使用坑比较多，注意5.X需要Java17 4.x以及3.x才可以兼容Java8
     //now create a relationship between them
     CREATE (p1)-[:KNOWS]->(p2);
     // TODO 考虑 节点类型和id以及关系类型都是可变的情况 是否引用csv的列来动态化，否则需要切分csv
-
 ```
 
 ## 结构
-使用Neo4j创建的图（Graph）基于属性图模型，在该模型中，每个实体都有ID（Identity）唯一标识，每个节点由标签（Lable）分组，每个关系都有一个唯一的关系类型。
+使用Neo4j创建的图（Graph）基于属性图模型，在该模型中
 
-标签用于对节点进行分组，相当于节点的类型，拥有相同标签的节点属于同一个分组。一个节点可以拥有零个，一个或多个标签，因此，一个节点可以属于多个分组。对分组进行查询，能够缩小查询的节点范围，提高查询的性能。
-属性是一个键值对（Key/Value），用于为节点或关系提供扩展的信息。一般情况下，每个节点都有name属性，用于命名节点，通常情况下，name属性的值是唯一的。
+- 每个实体都有ID（Identity）唯一标识，每个节点由标签（Lable）分组，每个关系都有一个唯一的关系类型。  
+- 标签用于对节点进行分组，相当于节点的类型。一个节点可以拥有零或多个标签，因此，一个节点可以属于多个分组。
+- 关系也有类型（type），用于对关系做分类，**一个关系只能有一个分类**，两个节点间要多个分类时则建多个关系。
+- 属性是一个键值对（Key/Value），用于为节点或关系提供扩展的信息。一般情况下，每个节点都会加name属性，存储节点的业务名称。  
+    - 节点和关系的默认属性有 identity，elementId 均唯一。关系存储方式为 Start节点 End节点 和类型type
 
 ## Schema
 Neo4j的模式（Schema）通常是指索引、约束和统计，通过创建模式，Neo4j能够获得查询性能的提升和建模的便利；Neo4j数据库的模式可选的，也可以是无模式的。
@@ -142,3 +215,8 @@ Neo4j的模式（Schema）通常是指索引、约束和统计，通过创建模
 > [hokaso/hocassian-people-neo4j: NoSQL可视化人脉图谱项目](https://github.com/hokaso/hocassian-people-neo4j)  
 > [NTDXYG/Neo4j: 基于电影知识图谱和微信小程序的智能问答系统](https://github.com/NTDXYG/Neo4j)  
 > [lonngxiang/Knowledge-map-of-family-tree （姓氏家族家谱知识图谱）](https://github.com/lonngxiang/Knowledge-map-of-family-tree)  
+
+> [python_de_learners_data/code_script_notebooks/projects/exploringNeo4j](https://github.com/insightbuilder/python_de_learners_data/tree/main/code_script_notebooks/projects/exploringNeo4j)  
+
+> [rahulnyk/graph_maker](https://github.com/rahulnyk/graph_maker)  
+> [felahong/neo4j-kenan-relationship-map: 图数据库 - 我用Neo4j 实现了柯南和怪盗基德周边动态关系图谱](https://github.com/felahong/neo4j-kenan-relationship-map/tree/master)  

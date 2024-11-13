@@ -12,7 +12,7 @@ categories:
 - 2. [案例实践项目](#案例实践项目)
     - 2.1. [医疗领域](#医疗领域)
 
-💠 2024-11-13 10:24:06
+💠 2024-11-13 17:32:20
 ****************************************
 # 知识图谱
 KnowledgeGraph 简称 KG
@@ -23,6 +23,7 @@ KnowledgeGraph 简称 KG
 > [大模型RAG问答：关于知识增强的一些策略与范式](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzAxMjc3MjkyMg==&action=getalbum&album_id=3276284267911856128&scene=173&subscene=227)  
 
 > [WhyHow’s KG Studio Platform Beta for RAG Native Graphs | by Chia Jeng Yang | WhyHow.AI | Medium](https://medium.com/enterprise-rag/whyhow-ai-kg-studio-platform-beta-rag-native-graphs-1105e5a84ff2)  
+> [The RAG Stack: Featuring Knowledge Graphs | by Chia Jeng Yang | WhyHow.AI | Medium](https://medium.com/enterprise-rag/understanding-the-knowledge-graph-rag-opportunity-694b61261a9c)  
 
 ## 存储实现
 > [Note: 图数据库](/Database/Graph.md)  
@@ -38,6 +39,7 @@ KnowledgeGraph 简称 KG
 
 ## 医疗领域
 > [Case Study: Turning Doctor Transcripts into Temporal Medical Record Knowledge Graphs](https://medium.com/enterprise-rag/case-study-turning-doctor-transcripts-into-temporal-medical-record-knowledge-graphs-cf624d4927eb)`解析病历数据入图数据库，自然语言提问，LLM+RAG回答`  
+> [Medical Records Graph - WhyHow.AI](https://main--whyhowai.netlify.app/public/graph/673032011997e08c8849316c)`样例数据`  
 
 [liuhuanyong/QASystemOnMedicalKG: 以疾病为中心的一定规模医药领域知识图谱](https://github.com/liuhuanyong/QASystemOnMedicalKG)`项目过于久远，依赖和环境有问题`  
 [honeyandme/RAGQnASystem](https://github.com/honeyandme/RAGQnASystem)`改良版`  
