@@ -48,7 +48,7 @@ categories:
             - 7.2.2.1. [Gradle](#gradle)
             - 7.2.2.2. [Maven](#maven)
 
-💠 2024-11-11 11:02:40
+💠 2024-11-13 10:24:06
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -400,13 +400,20 @@ mvn install:install-file
 | runtime |  | Y | Y | JDBC的实现Jar |
 | system | Y | Y |  | Maven仓库之外的类库文件 |
 
-特殊标签 optional 意味着该依赖可不存在
-
 ## 依赖的传递
 - 比如一个account-email项目为例
     - account-email有一个compile范围的spring-code依赖，
     - spring-core有一个compile范围的commons-logging依赖，
 - 那么commons-logging就会成为account-email的compile的范围依赖，commons-logging是account-email的一个传递性依赖
+
+特殊标签 optional 不会发生依赖传递
+```xml
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <optional>true</optional>
+    </dependency>
+```
 
 ## 处理项目间依赖方法
 ```

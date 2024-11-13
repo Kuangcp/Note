@@ -25,7 +25,7 @@ categories:
     - 7.1. [Java使用](#java使用)
     - 7.2. [导入导出](#导入导出)
 
-💠 2024-11-06 17:38:41
+💠 2024-11-13 10:24:06
 ****************************************
 # Postgresql
 
@@ -161,7 +161,7 @@ FROM pg_attribute  WHERE attrelid = (SELECT oid FROM pg_class WHERE relname = 't
 [bitnine-oss/agensgraph](https://github.com/bitnine-oss/agensgraph)  
 [AgensGraph - PostgreSQL wiki](https://wiki.postgresql.org/wiki/AgensGraph)  
 
-从架构图上来看，比插件集成度更深，属于衍生数据库，因此可以复用PG的特性，例如分布式能力。
+从架构图上来看，比插件形式绑定更深，属于衍生数据库，因此可以复用PG的特性，例如分布式能力。
 
 启动服务 本质是pg进程 `docker run --name agensgraph -p 5654:5432 -e POSTGRES_PASSWORD=agensgraph -d bitnine/agensgraph:v2.13.0-debian`
 - 默认用户名和pg镜像的默认值一样是 postgres
@@ -178,7 +178,7 @@ ALTER USER postgres SET graph_path = 'test_g1';
 match(n) return n;
 ```
 
-图形客户端: bitnine/agviewer 操作习惯基本和Neo4j自带的网页客户端一致
+图形客户端: bitnine/agviewer 操作习惯基本和Neo4j自带的网页客户端一致，但是稳定性可用性差很多
 - `docker run -d --publish=5655:3001 --name=agviewer bitnine/agviewer:latest` 注意该客户端支持Age和Agensgraph
 
 ************************
