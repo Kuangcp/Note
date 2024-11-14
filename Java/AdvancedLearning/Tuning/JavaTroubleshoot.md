@@ -15,13 +15,14 @@ categories:
         - 1.3.1. [线程](#线程)
     - 1.4. [ClassLoader](#classloader)
 
-💠 2024-06-01 13:47:36
+💠 2024-11-14 16:40:22
 ****************************************
 # Troubleshoot
 当遇到需要对某个Java应用性能调优，故障处理时的技能或思路汇总
 
 > Troubleshooting: [Oracle: Java8](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/) | [Oracle: Java11](https://docs.oracle.com/en/java/javase/11/troubleshoot/general-java-troubleshooting.html)  
 
+> [【JVM进阶之路】十：JVM调优总结 - 三分恶 - 博客园](https://www.cnblogs.com/three-fighter/p/14644152.html)  
 > [目前最全的Java服务问题排查套路](https://juejin.cn/post/6844903816379236360)  
 > [完蛋，我被故障包围了](https://www.bilibili.com/video/BV1vc411U78U/?buvid=XXF1096F78012CCE01D64B283450438CC6206)`采用各种工具分析和排查`  
 

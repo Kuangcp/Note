@@ -9,6 +9,7 @@ categories:
 
 - 1. [Neo4j](#neo4j)
     - 1.1. [安装](#安装)
+        - 1.1.1. [K8s](#k8s)
     - 1.2. [驱动](#驱动)
 - 2. [使用](#使用)
     - 2.1. [查询 修改](#查询-修改)
@@ -22,7 +23,7 @@ categories:
     - 2.5. [Pattern](#pattern)
 - 3. [应用](#应用)
 
-💠 2024-11-13 17:32:20
+💠 2024-11-14 16:40:22
 ****************************************
 # Neo4j
 > [Neo4j Graph Database & Analytics | Graph Database Management System](https://neo4j.com/)  
@@ -45,6 +46,10 @@ categories:
 > 注意
 - 社区版本不支持命令 create database xxx 只能使用默认的 neo4j [Multiple database in community edition · Issue #12920 · neo4j/neo4j](https://github.com/neo4j/neo4j/issues/12920)  
 - Docker方式启动适合调试，正式使用不推荐，数据备份迁移不方便(也可以停止容器后docker cp复制出 data 目录，替换到新的空实例再启动，也可以正常使用)
+
+### K8s
+> [Kubernetes - Operations Manual](https://neo4j.com/docs/operations-manual/current/kubernetes/)  
+> [bchhabra2490/kubernetes](https://github.com/bchhabra2490/kubernetes)  
 
 ## 驱动
 

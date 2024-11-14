@@ -80,7 +80,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2024-09-03 14:05:18
+💠 2024-11-14 16:40:22
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -485,6 +485,7 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
         return (f.apply(a) + f.apply(b)) * (b-a) / 2.0;
     }
 ```
+
 ## 利用Lambda开发DSL框架
 
 **********************************

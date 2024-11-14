@@ -232,7 +232,7 @@ true 和 false 也是缓存了的
         - 方法区实现的存储位置也不一致，在JDK 7以前的版本中，字符串常量池是放在永久代中的。在JDK 7中，放于堆内存中。 在JDK 8中，彻底移除了永久代，放在元空间中
     - [String：字符串常量池](https://segmentfault.com/a/1190000009888357)
 
-> [字符串拼接](/Java/AdvancedLearning/Basic/StringConcat.md)
+> [字符串拼接](/Java/Basic/StringConcat.md)
 
 ### Float
 ### Double

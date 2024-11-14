@@ -38,7 +38,7 @@ categories:
     - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-09-20 11:52:03
+💠 2024-11-14 16:40:22
 ****************************************
 
 # JVM 监控&诊断
@@ -199,9 +199,16 @@ categories:
 ************************
 
 ## jcmd
-> jcmd $pid command  [Oracle jcmd doc](https://docs.oracle.com/en/java/javase/17/docs/specs/man/jcmd.html)
+> jcmd [pid | main-class] command... | PerfCounter.print | -f filename  [Oracle jcmd doc](https://docs.oracle.com/en/java/javase/17/docs/specs/man/jcmd.html)
+
+- jcmd 列出所有可操作的JVM进程
+- -f filename 执行文件内的命令
+
+_command_
 
 - Compiler
+    - Compiler.codecache
+    - Compiler.queue
 - GC GC信息，触发GC，堆信息
     | 命令 | 说明 |
     |:----|:----|
@@ -209,17 +216,23 @@ categories:
     | GC.heap_info                | 查看堆使用统计
     | GC.class_histogram -all     | 类实例统计 
     | GC.heap_dump -all filename  | 创建所有对象的dump
-    - 参数 `-all` 指全部对象，如果去除，将**触发Full GC**来找到所有存活对象
+    | GC.finalizer_info           | finalization 队列信息
+    - 参数 `-all` 全部对象，如果去除该参数，将**触发Full GC**来找到所有存活对象
 
 - JFR 
     - JFR.start 会输出提示信息
-    - JFR.stop name=1 filename=now.jfr `name`从start提示信息中获取
+    - JFR.stop name=1 filename=now.jfr （`name`参数从start执行后的提示信息中获取）
 - JVMTI
 - ManagementAgent
 - System
 - Thread
 - VM 
     - VM.command_line
+    - VM.version
+    - VM.uptime [-date]
+    - VM.system_properties
+- Memory
+    - VM.native_memory
 
 ## jhsdb
 > [jdk9 jhsdb](https://dzone.com/articles/jhsdb-a-new-tool-for-jdk-9) | [Oracle jhsdb](https://docs.oracle.com/javase/9/tools/jhsdb.htm)

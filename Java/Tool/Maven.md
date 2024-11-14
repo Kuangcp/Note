@@ -48,7 +48,7 @@ categories:
             - 7.2.2.1. [Gradle](#gradle)
             - 7.2.2.2. [Maven](#maven)
 
-💠 2024-11-13 10:24:06
+💠 2024-11-14 16:40:22
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -78,16 +78,14 @@ categories:
 - `deploy`：将jar包发布到远程仓库
 - 使用id为ChatServer的Profile `-PChatServer` 
 
-- 跳过测试
-    - `-Dmaven.test.skip=true` 不执行测试用例，也不编译测试用例类。
-    - `-DskipTests=true` 不执行测试用例，但编译测试用例类生成相应的class文件至target/test-classes下
-    - `-Dmaven.javadoc.skip=true` 跳过文档生成
+************************
 
-- 打包指定模块 `mvn package -pl a,b,c -am`
-    - -am 同时打包指定模块所依赖的上游模块
-    - -amd 同时打包 使用了 指定模块 的下游模块
+**跳过测试**
 
-_配置文件中配置_
+- `-Dmaven.test.skip=true` 不执行测试用例，也不编译测试用例类。
+- `-DskipTests=true` 不执行测试用例，但编译测试用例类生成相应的class文件至target/test-classes下
+- `-Dmaven.javadoc.skip=true` 跳过文档生成
+- 指定模块跳过测试
 ```xml
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -97,6 +95,12 @@ _配置文件中配置_
         </configuration>
     </plugin>
 ```
+
+************************
+
+- 打包指定模块 `mvn package -pl a,b,c -am`
+    - -am 同时打包指定模块所依赖的上游模块
+    - -amd 同时打包 使用了 指定模块 的下游模块
 
 > 将jar安装到本地仓库
 
@@ -504,7 +508,8 @@ A 项目 compile
 # 发布构件到中央仓库
 `mvn clean javadoc:jar source:jar deploy -U -DskipTests=true` 带文档和源码跳过测试发布，注意javadoc:jar对javadoc有严格要求，文档不符合规范会发布失败，可按需使用该插件。
 
-跳过模块不deploy
+配置对应模块不执行deploy
+
 ```xml
 <properties><maven.deploy.skip>true</maven.deploy.skip></properties>
 ```

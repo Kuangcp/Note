@@ -12,17 +12,16 @@ categories:
 - 1. [Java](#java)
     - 1.1. [社区](#社区)
     - 1.2. [SE](#se)
-    - 1.3. [JavaFx](#javafx)
-    - 1.4. [爬虫](#爬虫)
-    - 1.5. [Springboot](#springboot)
-    - 1.6. [BuildTool](#buildtool)
-    - 1.7. [Test](#test)
-    - 1.8. [精彩系列](#精彩系列)
-        - 1.8.1. [码农翻身](#码农翻身)
-        - 1.8.2. [架构师](#架构师)
-    - 1.9. [Java语言讨论](#java语言讨论)
+    - 1.3. [爬虫](#爬虫)
+    - 1.4. [Springboot](#springboot)
+    - 1.5. [BuildTool](#buildtool)
+    - 1.6. [Test](#test)
+    - 1.7. [精彩系列](#精彩系列)
+        - 1.7.1. [码农翻身](#码农翻身)
+        - 1.7.2. [架构师](#架构师)
+    - 1.8. [Java语言讨论](#java语言讨论)
 
-💠 2024-03-30 11:43:28
+💠 2024-11-14 16:40:22
 ****************************************
 # Java
 > 和Java有关的博客和网页  
@@ -49,10 +48,6 @@ categories:
 - [使用JMockit编写java单元测试](http://blog.csdn.net/chjttony/article/details/17838693)
 - [Java(Android)线程池](http://www.trinea.cn/android/java-android-thread-pool/)
 - [Docker图形化管理](http://blog.liuker.cn/index.php/docker/31.html)
-
-## JavaFx
-- [xJavaFxTool](https://gitee.com/xwintop/xJavaFxTool)`基于JavaFX的工具集`
-- [Adding HTML Content to JavaFX Applications](https://docs.oracle.com/javafx/2/webview/jfxpub-webview.htm)
 
 ## 爬虫
 - [Java网络爬虫实操](https://juejin.im/post/5a804b2cf265da4e9c63265b) `比较全面的讲述了如何使用Java写爬虫`
