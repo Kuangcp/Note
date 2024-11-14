@@ -91,7 +91,7 @@ categories:
 
 >- [99 Problems](https://github.com/shekhargulati/99-problems)
 
->- [模式之禅](/Java/DesignPattern.md)
+>- [模式之禅](/Skills/SoftwareEngineering/DesignPattern.md)
 >- [Google: GWT](https://www.gwtproject.org/doc/latest/tutorial/index.html)`Java写前端，邪教`  
 
 ## 前辈建议
