@@ -17,13 +17,14 @@ categories:
     - 1.5. [wxPython](#wxpython)
     - 1.6. [NiceGUI](#nicegui)
 
-💠 2024-04-22 16:57:46
+💠 2024-11-14 14:23:28
 ****************************************
 # GUI
 ## GTK3
 > [Official Doc](https://python-gtk-3-tutorial.readthedocs.io/en/latest/) | [pygtk](http://www.pygtk.org/)  
 > [pygtk wiki ](https://wiki.python.org/moin/PyGtk)
 
+> [stuartlangridge/ColourPicker](https://github.com/stuartlangridge/ColourPicker)`拾色器`  
 
 ## Tkinter
 > [Offcial Site](https://wiki.python.org/moin/TkInter/) | [Official Doc](https://docs.python.org/3.5/library/tkinter.html)

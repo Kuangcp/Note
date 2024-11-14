@@ -14,11 +14,11 @@ categories:
     - 3.2. [Gremlin](#gremlin)
     - 3.3. [SPARQL](#sparql)
 
-💠 2024-11-11 11:02:40
+💠 2024-11-14 14:23:28
 ****************************************
 # 图数据库
 
-Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph、Memgraph、NebulaGraph、SurrealDB
+Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph、Memgraph、NebulaGraph、SurrealDB、Cayley
 
 > [DB-Engines Ranking - popularity ranking of graph DBMS](https://db-engines.com/en/ranking/graph+dbms)  
 
@@ -28,9 +28,9 @@ Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph、Mem
 [dgraph-io/dgraph](https://github.com/dgraph-io/dgraph)Go 分布式，GraphQL查询 `偏业务应用`  
 [orientechnologies/orientdb](https://github.com/orientechnologies/orientdb)`多模数据库（图，文档，全文索引）`  
 
+[cayleygraph/cayley](https://github.com/cayleygraph/cayley)`Google开源`  
 
-
-> 支撑 [知识图谱](/Ai/KnowledgeGraph.md) 存储
+> 作为存储，支撑[知识图谱](/Ai/KnowledgeGraph.md)
 
 # 概念
 
@@ -41,6 +41,9 @@ Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph、Mem
 节点可以有0个、1个或多个标签，但是关系必须设置关系类型，并且只能设置一个关系类型。
 
 关系是有向的，关系的两端是起始节点和结束节点，通过有向的箭头来标识方向，节点之间的双向关系通过两个方向相反的关系来标识。
+
+图算法操作库
+> [jgrapht/jgrapht: Master repository for the JGraphT project](https://github.com/jgrapht/jgrapht)  
 
 ************************
 

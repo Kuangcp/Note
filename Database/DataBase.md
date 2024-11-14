@@ -44,7 +44,7 @@ categories:
 - 11. [数据库中间件](#数据库中间件)
 - 12. [图形化工具](#图形化工具)
 
-💠 2024-11-11 11:02:40
+💠 2024-11-14 14:23:28
 ****************************************
 # 数据库
 > [码农翻身:爱炫耀的数据库老头儿](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514001&idx=1&sn=17b72c3e69db6c4277e3045c699b7b6b&chksm=80d67c52b7a1f5446020826841869221873f4578524181384592839d19c4810dc68807117e13&scene=21#wechat_redirect) `事务,undo日志`
@@ -217,7 +217,8 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 ## duckdb
 > [duckdb](https://duckdb.org/)  in-process SQL OLAP Database Management System
 
-可基于CSV，JSON直接建表做数据分析 [CSV Import](https://duckdb.org/docs/data/csv/overview)
+可基于CSV，JSON,HDFS文件直接建表做数据分析 [CSV Import](https://duckdb.org/docs/data/csv/overview)
+支持 webassembly 可在浏览器直接运行
 
 ************************
 
