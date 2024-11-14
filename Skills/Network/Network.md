@@ -74,7 +74,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2024-10-11 15:07:39
+💠 2024-11-14 21:48:05
 ****************************************
 # 网络
 
@@ -478,6 +478,7 @@ DOT `DNS over TLS` 853端口
 ### P2P
 - eMule
 - [BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
+    - [qbittorrent/qBittorrent: qBittorrent BitTorrent client](https://github.com/qbittorrent/qBittorrent)  
     - [Search Plugins](https://github.com/qbittorrent/search-plugins)
 - HCDN 爱奇艺所设计：按地域粒度建立多个CDN服务器，区域内的C端用户优先在区域内的不同C端用户找所需的视频资源并由区域CDN做兜底。2021年直接降低网站的带宽成本20%，白用所有C端用户的上传带宽。
 
