@@ -12,16 +12,16 @@ categories:
 - 1. [Maven](#maven)
     - 1.1. [安装](#安装)
     - 1.2. [Maven常用命令](#maven常用命令)
-    - 1.3. [配置](#配置)
-        - 1.3.1. [settings.xml](#settingsxml)
-        - 1.3.2. [pom.xml](#pomxml)
+        - 1.2.1. [跳过测试阶段](#跳过测试阶段)
+    - 1.3. [Profiles](#profiles)
+    - 1.4. [配置](#配置)
+        - 1.4.1. [settings.xml](#settingsxml)
+        - 1.4.2. [pom.xml](#pomxml)
 - 2. [构建](#构建)
-    - 2.1. [使用maven构建多模块的项目](#使用maven构建多模块的项目)
-    - 2.2. [Profiles](#profiles)
-    - 2.3. [测试](#测试)
-    - 2.4. [打包部署](#打包部署)
-        - 2.4.1. [assembly](#assembly)
-        - 2.4.2. [shade](#shade)
+    - 2.1. [构建多模块的项目](#构建多模块的项目)
+    - 2.2. [打包部署](#打包部署)
+        - 2.2.1. [assembly](#assembly)
+        - 2.2.2. [shade](#shade)
 - 3. [依赖管理](#依赖管理)
     - 3.1. [依赖类型](#依赖类型)
     - 3.2. [依赖的范围](#依赖的范围)
@@ -35,6 +35,7 @@ categories:
     - 4.2. [Protobuf](#protobuf)
     - 4.3. [Maven Enforcer Plugin](#maven-enforcer-plugin)
     - 4.4. [Maven Deploy plugin](#maven-deploy-plugin)
+    - 4.5. [Exec Maven Plugin](#exec-maven-plugin)
 - 5. [构建工具对比](#构建工具对比)
     - 5.1. [Maven和Ant的区别一](#maven和ant的区别一)
     - 5.2. [Maven的优势](#maven的优势)
@@ -48,7 +49,7 @@ categories:
             - 7.2.2.1. [Gradle](#gradle)
             - 7.2.2.2. [Maven](#maven)
 
-💠 2024-11-14 16:40:22
+💠 2024-11-14 17:13:35
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -80,24 +81,6 @@ categories:
 
 ************************
 
-**跳过测试**
-
-- `-Dmaven.test.skip=true` 不执行测试用例，也不编译测试用例类。
-- `-DskipTests=true` 不执行测试用例，但编译测试用例类生成相应的class文件至target/test-classes下
-- `-Dmaven.javadoc.skip=true` 跳过文档生成
-- 指定模块跳过测试
-```xml
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-            <skip>true</skip>
-        </configuration>
-    </plugin>
-```
-
-************************
-
 - 打包指定模块 `mvn package -pl a,b,c -am`
     - -am 同时打包指定模块所依赖的上游模块
     - -amd 同时打包 使用了 指定模块 的下游模块
@@ -112,6 +95,51 @@ mvn install:install-file
     -Dversion=3.1.0.RELEASE \
     -Dpackaging=jar
 ```
+
+### 跳过测试阶段
+
+- `-Dmaven.test.skip=true` 不执行测试用例，也不编译测试用例类。
+- `-DskipTests=true` 不执行测试用例，但编译测试用例类生成相应的class文件至target/test-classes下
+- `-Dmaven.javadoc.skip=true` 跳过文档生成
+- 指定模块配置跳过测试
+```xml
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+            <skip>true</skip>
+        </configuration>
+    </plugin>
+```
+
+## Profiles
+> [Official Doc](http://maven.apache.org/guides/introduction/introduction-to-profiles.html)
+> [参考: Guide to Maven Profiles](https://www.baeldung.com/maven-profiles)  
+
+`简单配置`
+```xml
+    <profiles>
+        <profile>
+            <id>development</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties></properties>
+        </profile>
+        <profile>
+            <id>production</id>
+            <properties></properties>
+        </profile>
+    </profiles>
+```
+
+指定 profile 执行 `mvn clean package -P development`
+
+注意 profile 可配置的标签有 依赖，插件，配置项 等内容，因此可以分环境做区分设置：  
+
+![alt text](./img/image.png)
+
+> [Maven 如何为不同的环境打包](https://www.zybuluo.com/haokuixi/note/25985) `开发、测试和生产`
 
 *****************
 ## 配置
@@ -227,7 +255,7 @@ mvn install:install-file
 ************************
 
 # 构建
-## 使用maven构建多模块的项目
+## 构建多模块的项目
 `父项目pom文件`
 ``` xml
     <groupId>com.github.kuangcp</groupId>
@@ -256,37 +284,6 @@ mvn install:install-file
         <version>1.0-SNAPSHOT</version>
     </parent>
 ```
-
-## Profiles
-> [Official Doc](http://maven.apache.org/guides/introduction/introduction-to-profiles.html)
-> [参考: Guide to Maven Profiles](https://www.baeldung.com/maven-profiles)  
-
-`简单配置`
-```xml
-    <profiles>
-        <profile>
-            <id>development</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties></properties>
-        </profile>
-        <profile>
-            <id>production</id>
-            <properties></properties>
-        </profile>
-    </profiles>
-```
-
-> [Maven 如何为不同的环境打包](https://www.zybuluo.com/haokuixi/note/25985) `开发、测试和产品环境`
-
-- 使用 test profile 执行命令 `mvn clean package -P test`
-
-## 测试
-> mvn test 
-
-- 跳过测试 `mvn test -DskipTests`
-- 执行指定测试类 `mvn test -Dtest=类名`
 
 ## 打包部署
 获取项目版本 `mvn help:evaluate -Dexpression=project.version -q -DforceStdout`
@@ -476,6 +473,9 @@ A 项目 compile
 
 ## Maven Deploy plugin
 > [maven-deploy-plugin](https://maven.apache.org/plugins/maven-deploy-plugin/deploy-mojo.html)
+
+## Exec Maven Plugin
+> [Introduction – Exec Maven Plugin](https://www.mojohaus.org/exec-maven-plugin/)  
 
 ****************************
 
