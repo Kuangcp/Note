@@ -45,7 +45,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [常用代码片段](#常用代码片段)
 
-💠 2024-09-20 11:10:09
+💠 2024-11-14 23:06:22
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -72,7 +72,7 @@ categories:
     - 它主要是为了执行脚本而出现，而不是交互，它速度更快，但功能相比bash要少很多，语法严格遵守POSIX标准
     - 速度确实要快,输入上的交互确实交互不了
 - fish
-    - 交互式的, 补全功能比较好 
+    - 交互式的, 补全功能比较好 Garuda发行版的默认Shell 
 
 > [参考: 常见shell类型](http://www.cnblogs.com/happycxz/p/7840077.html)  
 > [Github: zsh guide](https://github.com/goreliu/zshguide)  

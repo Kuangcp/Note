@@ -64,10 +64,10 @@ categories:
         - 5.1.1. [搭建匿名Samba服务器](#搭建匿名samba服务器)
 - 6. [Tips](#tips)
     - 6.1. [善用*shrc文件](#善用shrc文件)
-        - 6.1.1. [善用alias](#善用alias)
-    - 6.2. [desktop文件](#desktop文件)
+    - 6.2. [善用alias](#善用alias)
+    - 6.3. [desktop文件](#desktop文件)
 
-💠 2024-11-10 13:14:39
+💠 2024-11-14 23:06:22
 ****************************************
 
 # IO
@@ -590,7 +590,7 @@ export LANG="zh_CN.UTF-8"
 ## 善用*shrc文件
 > 注意加载顺序 /etc/profile -> ~/.*shrc `各种sh的rc文件` bash zsh ash
 
-### 善用alias
+## 善用alias
 
 ```sh
     if [ -f ~/.bash_aliases ]; then
@@ -633,6 +633,5 @@ export LANG="zh_CN.UTF-8"
 	Type = Application #desktop的类型（必选），常见值有“Application”和“Link”
 	Categories = GNOME;Application;Network; #注明在菜单栏中显示的类别（可选）
 ```
-- [示例文件](https://github.com/Kuangcp/Configs/blob/master/Linux/desktop/VSCode.desktop)
-- 如要将快捷方式放在启动菜单内 将 desktop 文件复制到 `/usr/share/applications/` 目录下即可
+- 如要将快捷方式放在启动菜单内 只需将 desktop 文件复制到 `/usr/share/applications/` 目录下
     - 注意：目录不能有空格 等特殊字符

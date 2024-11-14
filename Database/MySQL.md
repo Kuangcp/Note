@@ -68,14 +68,12 @@ categories:
     - 14.3. [修改](#修改)
         - 14.3.1. [授权](#授权)
 
-💠 2024-11-10 13:59:35
+💠 2024-11-14 23:06:22
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
 
-> [key words](https://dev.mysql.com/doc/mysqld-version-reference/en/keywords-5-7.html)
-
-> 注意: utf8 最大字节为3, 非标准意义上的 utf8 实现, utf8mb4 才是真正意义上的 utf8 `5.5.3才开始支持` utf8 一般情况不会出问题, 除非有 emoji 等等
+> [Upgrading GitHub.com to MySQL 8.0 - The GitHub Blog](https://github.blog/engineering/infrastructure/upgrading-github-com-to-mysql-8-0/)  
 
 > 书籍
 - MySQL技术内幕： InnoDB存储引擎
@@ -92,6 +90,8 @@ categories:
     - 不会频繁修改的字段。
     - 不是 varchar 超长字段，更不能是 text 字段。
 - 执行DDL时尽量避开业务高峰，避免因锁表引发写入事务大量超时回滚。
+
+> 注意: utf8 最大字节为3, 非标准意义上的 utf8 实现, utf8mb4 才是真正意义上的 utf8 `5.5.3才开始支持` utf8 一般情况不会出问题, 除非有 emoji 等等
 
 # 安装
 ## Ubuntu安装配置MySQL

@@ -18,7 +18,7 @@ categories:
         - 1.2.3. [Snap](#snap)
 - 2. [Tips](#tips)
 
-💠 2024-11-14 22:22:23
+💠 2024-11-14 23:06:22
 ****************************************
 
 # Arch
@@ -33,8 +33,8 @@ categories:
 衍生版： 
 - [EndeavourOS](https://endeavouros.com/)
 - [Manjaro](/Linux/Arch/Manjaro.md)  
-- [Garuda Linux](https://garudalinux.org/)  
-
+- [Garuda Linux](https://garudalinux.org/)`激进的优化，目标为了游戏`  
+    - [Wayfire black screen during install on VirtualBox - 4xx Client Error / 417 Expectation Failed - Garuda Linux Forum](https://forum.garudalinux.org/t/wayfire-black-screen-during-install-on-virtualbox/12818)`官方不支持虚拟机`  
 
 ## 社区
 
