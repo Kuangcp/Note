@@ -18,7 +18,7 @@ categories:
         - 1.2.3. [Snap](#snap)
 - 2. [Tips](#tips)
 
-💠 2024-10-02 22:33:00
+💠 2024-11-14 22:22:23
 ****************************************
 
 # Arch
@@ -32,7 +32,8 @@ categories:
 
 衍生版： 
 - [EndeavourOS](https://endeavouros.com/)
-- Manjaro
+- [Manjaro](/Linux/Arch/Manjaro.md)  
+- [Garuda Linux](https://garudalinux.org/)  
 
 
 ## 社区
