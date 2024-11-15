@@ -23,7 +23,7 @@ categories:
     - 2.5. [Pattern](#pattern)
 - 3. [应用](#应用)
 
-💠 2024-11-15 10:46:44
+💠 2024-11-15 11:14:25
 ****************************************
 # Neo4j
 > [Neo4j Graph Database & Analytics | Graph Database Management System](https://neo4j.com/)  
@@ -155,10 +155,11 @@ public class Neo4jDriver {
 > [Neo4j 第二篇：图形数据库 - 悦光阴 - 博客园](https://www.cnblogs.com/ljhdo/p/5178225.html)  
 > [neo4j基础使用案例笔记 - 易水风萧](http://www.yishuifengxiao.com/2022/11/27/neo4j%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B%E7%AC%94%E8%AE%B0/)  
 
-
 访问7474端口打开网页客户端
 - 节点类型和边可以修改默认展示的字段和颜色，通过点击详情中的色块弹出设置页
 - 执行窗口可通过 Ctrl + 上下方向键 切换历史执行的语句
+
+> [neo4j-examples/movies-java-bolt](https://github.com/neo4j-examples/movies-java-bolt)  
 
 ## 查询 修改
 > [Cypher](/Database/Graph.md#cypher)`专有语言，类似于SQL，用于执行查询和修改，删除等`  
