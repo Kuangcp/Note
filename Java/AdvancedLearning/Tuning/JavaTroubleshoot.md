@@ -113,7 +113,7 @@ categories:
 
 - [Memory Footprint of A Java Process](https://zhuanlan.zhihu.com/p/158712025)
 
-> [Java OOM](/Java/AdvancedLearning/Tuning/JavaOOM.md)
+> [Java OOM 排查手册](/Java/AdvancedLearning/Tuning/JavaOOM.md)
 
 ************************
 

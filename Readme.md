@@ -35,13 +35,13 @@
 |:----|:----|
 | [基础语法](/Java/Basic/JavaBasicSyntax.md)  | [反射](/Java/AdvancedLearning/JavaReflection.md) |
 | [继承和接口](/Java/Basic/JavaInheritedAndInterface.md)  | [JVM](/Java/AdvancedLearning/JVM.md) |
-| [异常](/Java/Basic/JavaException.md)  | [字节码](/Java/AdvancedLearning/JavaClass.md) |
-| [泛型](/Java/AdvancedLearning/JavaGenerics.md)  | [测试](/Java/Test/JavaTest.md) | 
+| [异常](/Java/Basic/JavaException.md)  | [GC](/Java/AdvancedLearning/JvmGC.md) |
+| [泛型](/Java/AdvancedLearning/JavaGenerics.md)  | [字节码](/Java/AdvancedLearning/JavaClass.md) | 
 | [集合](/Java/Collection/JavaCollection.md)  | [打包部署](/Java/Basic/JavaDeploy.md) |
 | [线程](/Java/AdvancedLearning/JavaThread.md)  | [持续集成 CI](/Skills/DevOps/ContinuousIntegration.md) |
 | [并发](/Java/AdvancedLearning/JavaConcurrency.md)  | [网络编程](/Java/AdvancedLearning/JavaNetwork.md) |
-| [IO](/Java/AdvancedLearning/JavaIO.md)  |  |
-| [注解](/Java/Basic/JavaAnnotation.md)  |  |
+| [IO](/Java/AdvancedLearning/JavaIO.md)  | [测试](/Java/Test/JavaTest.md) |
+| [注解](/Java/Basic/JavaAnnotation.md)  | [性能问题排查手册](/Java/AdvancedLearning/Tuning/Readme.md) |
 | [JDBC](/Java/AdvancedLearning/JDBC.md) | |
 
 
