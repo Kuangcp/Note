@@ -52,7 +52,7 @@ categories:
 | [线程](/Java/AdvancedLearning/JavaThread.md)  | [持续集成 CI](/Skills/DevOps/ContinuousIntegration.md) |
 | [并发](/Java/AdvancedLearning/JavaConcurrency.md)  | [网络编程](/Java/AdvancedLearning/JavaNetwork.md) |
 | [IO](/Java/AdvancedLearning/JavaIO.md)  | [测试](/Java/Test/JavaTest.md) |
-| [注解](/Java/Basic/JavaAnnotation.md)  | [性能问题排查手册](/Java/AdvancedLearning/Tuning/Readme.md) |
+| [注解](/Java/Basic/JavaAnnotation.md)  | [性能问题排查手册](/Java/AdvancedLearning/Tuning) |
 | [JDBC](/Java/AdvancedLearning/JDBC.md) | |
 
 ## JDK
