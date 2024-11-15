@@ -23,29 +23,40 @@ categories:
     - 2.5. [Pattern](#pattern)
 - 3. [应用](#应用)
 
-💠 2024-11-14 16:40:22
+💠 2024-11-15 10:46:44
 ****************************************
 # Neo4j
 > [Neo4j Graph Database & Analytics | Graph Database Management System](https://neo4j.com/)  
 
 > [Neo4j 图数据库中文社区，致力于 Neo4j 的技术研究。](http://neo4j.com.cn/)  
 
-> [DozerDB](https://github.com/dozerdb)`衍生 支持多库`  
-
 ## 安装
 
 - `docker run  -p 7474:7474 -p 7687:7687 neo4j:5.24`
     - docker run --name neo4 -d -p 7474:7474 -p 7687:7687 --env NEO4J_AUTH=neo4j/jiushineo neo4j:5.24
 - 或者 进入容器修改密码 `neo4j-admin dbms set-initial-password pwdtest123` 然后重启 注意只在第一次启动时有效，后续修改密码是 ALTER USER neo4j SET PASSWORD ;
+- 打开Web客户端 [localhost:7474](http://localhost:7474/browser/) 选择 bolt协议，填入连接地址端口为7687， 用户名 neo4j
+- 登录后 Favorites 菜单下的 Sample Scripts 可以快速了解常用查询语句
 
 > [Neo4j Deployment Center - Graph Database & Analytics](https://neo4j.com/deployment-center/)  
 
-- http://localhost:7474/browser/  bolt协议，用户名 neo4j 
-- 登录后 Favorites 菜单下的 Sample Scripts 可以快速了解常用查询语句
+************************
 
 > 注意
-- 社区版本不支持命令 create database xxx 只能使用默认的 neo4j [Multiple database in community edition · Issue #12920 · neo4j/neo4j](https://github.com/neo4j/neo4j/issues/12920)  
-- Docker方式启动适合调试，正式使用不推荐，数据备份迁移不方便(也可以停止容器后docker cp复制出 data 目录，替换到新的空实例再启动，也可以正常使用)
+
+- 社区版本不支持命令 create database 只能使用默认的 neo4j [Multiple database in community edition · Issue #12920 · neo4j/neo4j](https://github.com/neo4j/neo4j/issues/12920)  
+    - [DozerDB](https://github.com/dozerdb)`衍生插件 支持多库` 
+    ```sh
+     docker run -p 7479:7474 -p 7692:7687 \
+            --env NEO4J_AUTH=neo4j/jiushineo \
+            --env NEO4J_PLUGINS='["apoc"]' \
+            --env NEO4J_apoc_export_file_enabled=true \
+            --env NEO4J_apoc_import_file_enabled=true \
+            --env NEO4J_dbms_security_procedures_unrestricted='*' \
+            graphstack/dozerdb:5.24.2.1-alpha.1
+    ```
+
+- Docker方式启动适合调试，正式使用不推荐，数据备份迁移不方便 (也可以停止容器后docker cp复制出 data 目录，替换到新的空实例再启动)
 
 ### K8s
 > [Kubernetes - Operations Manual](https://neo4j.com/docs/operations-manual/current/kubernetes/)  
