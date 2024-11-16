@@ -51,7 +51,7 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2024-10-11 15:07:39
+💠 2024-11-16 17:40:15
 ****************************************
 # 高效的Linux
 
@@ -63,6 +63,7 @@ categories:
 > [MAC平台 工具列表](https://github.com/hsdji/tools) `部分Linux可用`
 
 ## Terminal
+终端是用户与Linux的沟通窗口，因此可以完成任意事项。
 
 > [ttyd](https://github.com/tsl0922/ttyd)  
 
@@ -93,19 +94,18 @@ Manjaro Xfce 使用 sixel： mlterm 或者 konsole
 
 | 终端                | 优点                                            | 缺点                                                | 备注                                    |
 | :------------------ | :---------------------------------------------- | :-------------------------------------------------- | :-------------------------------------- |
-| `xiki`            | 鼠标和键盘高度交互`<br>` 交互性和复杂度比较高 |                                                     |                                         |
-| `qterminal`       | 设置设计清晰，功能完备                          | 终端内容显示兼容性略有问题 资源消耗中等             |                                         |
-| `xfce4-terminal`  | 配合Xfce启动快                                  | 配置繁琐                                            |                                         |
-| `gnome-terminal`  | 简洁 资源消耗少                                 | 缺 多标签时，标签栏太大,标签页底部有白边 无法透明化 | 鼠标中键无法复制时需安装 `parcellite` |
-| `mate-terminal`   | 标签栏更简洁，其余和 `gnome-terminal` 一致    |                                                     |                                         |
-| `sakura`          | 外观上和前两个几乎一样，标签页可以更简洁        | 配置复杂 繁琐                                       |                                         |
-| `deepin-terminal` | 功能很多，主题很多，功能最为强大                | 字体仅可选择内置不可自定义                          |                                         |
-| `tilda`           | 内嵌于桌面上, 小命令方便                        | 需要查看文件时不方便                                |                                         |
-| `terminology`     | 样式高度自定义                                  |                                                     |                                         |
+| `xiki`            | 鼠标和键盘高度交互 <br> 交互性和复杂度比较高 |                                                     |                                         |
+| `qterminal`       | 设置设计清晰，功能完备                   | 终端内容显示兼容性略有问题 资源消耗中等             |                                         |
+| `xfce4-terminal`  | 配合Xfce启动快，资源消耗少               | 配置繁琐                                            |                                         |
+| `gnome-terminal`  | 简洁 资源消耗少                         | 多标签时，标签栏太大,标签页底部有白边；无法透明化 | 鼠标中键无法复制时需安装 `parcellite` |
+| `mate-terminal`   | 标签栏更简洁，和 `gnome-terminal` 一致   |                                                     |                                         |
+| `sakura`          | 外观上和前两个几乎一样，标签页可以更简洁    | 配置复杂 繁琐                                       |                                         |
+| `deepin-terminal` | 功能很多，主题很多，功能最为强大           | 字体仅可选择内置不可自定义                          |                                         |
+| `tilda`           | 内嵌于桌面上, 小命令方便                 | 需要查看文件时不方便                                |                                         |
+| `terminology`     | 样式高度自定义                          |                                                     |                                         |
 
 - tilix
-- vte 
-  - 支持复制终端输出内容为HTML
+- vte 支持复制终端输出内容为HTML
 - st 不支持中文，unicode字符支持良好
 - black box 
 - Alacritty
@@ -421,9 +421,8 @@ CrystalDiskMark
 ### 截图
 
 - Flameshot 截图工具  类似于 snipaste
-  - Ctrl 鼠标滚动 调整线条粗细
-  - 习惯：
-    - Ctrl Alt S 截图
+    - Ctrl 鼠标滚动 调整线条粗细
+    - Ctrl Alt S 截图 (注意某些交互性场景，截图会导致失去焦点从而无法截到，例如网页的下拉选项，此时可以不使用快捷键而是鼠标点托盘的图标触发截图，可绕过这个问题)
     - Alt Q pin
 - deepin-screenshot
 
@@ -493,7 +492,8 @@ CrystalDiskMark
 > [QQ Linux](https://im.qq.com/linuxqq/index.shtml)
 
 ### wechat
-[wechat-universal-bwrap](https://aur.archlinux.org/packages/wechat-universal-bwrap)
+[wechat-universal-bwrap](https://aur.archlinux.org/packages/wechat-universal-bwrap)  
+> [微信 Linux 测试版](https://linux.weixin.qq.com/)  
 
 ### wework
 - [企业微信](https://aur.archlinux.org/packages/deepin-wxwork/)
