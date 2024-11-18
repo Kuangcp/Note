@@ -12,7 +12,7 @@ categories:
 - 2. [案例实践项目](#案例实践项目)
     - 2.1. [医疗领域](#医疗领域)
 
-💠 2024-11-13 17:32:20
+💠 2024-11-18 17:55:16
 ****************************************
 # 知识图谱
 KnowledgeGraph 简称 KG
@@ -24,6 +24,8 @@ KnowledgeGraph 简称 KG
 
 > [WhyHow’s KG Studio Platform Beta for RAG Native Graphs | by Chia Jeng Yang | WhyHow.AI | Medium](https://medium.com/enterprise-rag/whyhow-ai-kg-studio-platform-beta-rag-native-graphs-1105e5a84ff2)  
 > [The RAG Stack: Featuring Knowledge Graphs | by Chia Jeng Yang | WhyHow.AI | Medium](https://medium.com/enterprise-rag/understanding-the-knowledge-graph-rag-opportunity-694b61261a9c)  
+
+![alt text](./img/001-kg-arch.webp)
 
 ## 存储实现
 > [Note: 图数据库](/Database/Graph.md)  

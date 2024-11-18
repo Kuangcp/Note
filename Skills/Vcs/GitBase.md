@@ -24,8 +24,7 @@ categories:
     - 3.10. [log](#log)
         - 3.10.1. [对比两个分支的差异](#对比两个分支的差异)
         - 3.10.2. [查看文件的修改记录](#查看文件的修改记录)
-        - 3.10.3. [全分支搜索字符串](#全分支搜索字符串)
-        - 3.10.4. [查看目录或文件修改频次](#查看目录或文件修改频次)
+        - 3.10.3. [查看目录或文件修改频次](#查看目录或文件修改频次)
     - 3.11. [blame](#blame)
     - 3.12. [diff](#diff)
         - 3.12.1. [diff 创建 patch](#diff-创建-patch)
@@ -76,7 +75,7 @@ categories:
     - 8.2. [gitattributes](#gitattributes)
 - 9. [自定义插件](#自定义插件)
 
-💠 2024-11-11 17:02:19
+💠 2024-11-18 17:55:16
 ****************************************
 
 # Git基础
@@ -323,6 +322,8 @@ Shallow Clone： `git clone --depth n URL` 克隆的本地仓库
 - `git log --author='A' `输出所有A开头的作者日志
 - `git log 文件名 文件名` 输出更改指定文件的所有commit 要文件在当前路径才可
 - `git log --after='2016-03-23 9:20' --before='2017-05-10 12:00' ` 输出指定日期的日志
+- `git log --format=format:'%h' --reverse | head -n 1` 获取第一个commit
+- `git log --oneline -S "search keyword" --source --all` 全部提交范围内 搜索字符串
 
 - `git shortlog` 按字母顺序输出每个人的日志
     - `--numbered` 按提交数排序
@@ -341,34 +342,35 @@ Shallow Clone： `git clone --depth n URL` 克隆的本地仓库
 ### 对比两个分支的差异
 > [参考博客 git 对比两个分支差异](http://blog.csdn.net/u011240877/article/details/52586664)
 
-> commit差异
+> 分支间 commit 差异
 
-- 查看**dev有，master没有**的那些提交
-    - `git log master..dev` 或 `git log dev ^master` (^表示非，等价于 --not)
-    - 且支持多个分支 `git log dev ^master ^fea/feature1` 表示：在dev有后两个分支没有的commit
-    - 还可对比远程分支和本地分支的差别 `git log origin/master..master`
+查看**dev有，master没有**的那些提交
+- `git log master..dev` 或 `git log dev ^master` (^表示非，等价于 --not)
+- 且支持多个分支 `git log dev ^master ^fea/feature1` 表示：在dev有后两个分支没有的commit
+- 还可对比远程分支和本地分支的差别 `git log origin/master..master`
+- `hash..HEAD` 同分支内查看特定commit之间的提交记录
 
-- 对比分支的差异： `git log dev...master` 即 非两个分支共有的commit
-    - 显示出每个提交是在哪个分支上 `git log --left-right dev...master`
-    - 注意输出： commit 后面的箭头，根据我们在 `–left-right dev…master` 的顺序，左箭头 < 表示是dev的提交，右箭头 > 表示是 master的。
+对比分支的差异： `git log dev...master` 即 非两个分支共有的commit
+- 显示出每个提交是在哪个分支上 `git log --left-right dev...master`
+- 注意输出： commit 后面的箭头，根据我们在 `–left-right dev…master` 的顺序，左箭头 < 表示是dev的提交，右箭头 > 表示是 master的。
 
-- 对比两个tag差异 `git log -s "v1.1.0" "^v1.0.6"`
+对比两个tag差异 `git log -s "v1.1.0" "^v1.0.6"`
 
-> 内容差异
+> 分支间 内容差异
 
-- `git diff dev master` 查看 从dev分支切换到master分支将会发生的所有修改内容
-    - 第一个分支可省略，缺省为当前分支
+`git diff dev master` 查看 从dev分支切换到master分支将会发生的所有修改内容
+- 第一个分支可省略，缺省为当前分支
 
 ### 查看文件的修改记录
 
 1. `git log fileName` 或者 `git log --pretty=oneline fileName` 更容易看到 sha-1 值
 2. git show sha-1的值 就能看到该次提交的所有修改
 
-### 全分支搜索字符串
-git log --oneline -S "search keyword" --source --all
-
 ### 查看目录或文件修改频次
-> 查看所有提交修改的模块分布 `git --no-pager log --format=format:'%h' --no-merges | awk '{system(" git --no-pager diff  --stat-name-width=300 --name-only "$1" "$1"~") }' | sed 's/\/.*//g' | sort | uniq -c | sort -hr`
+> 查看所有提交修改过的文件
+
+`git --no-pager log --format=format:'%h' --no-merges | awk '{system(" git --no-pager diff  --stat-name-width=300 --name-only "$1" "$1"~") }'`
+-  追加 `| sed 's/\/.*//g' | sort | uniq -c | sort -hr` 得到模块分布
 - `--stat-name-width=300` 规避路径过长被折叠成...
 -  awk 中的 system() 调用命令
 - `sed 's/\/.*//g'` 只保留第一级目录
@@ -688,17 +690,22 @@ git log --oneline -S "search keyword" --source --all
 ## 分支合并
 > merge rebase squash 三种合并策略
 
-- Merge会创建合并节点形成环
-- Rebase是通过调整两个分支链上的提交，合并成一个链没有环
-- Squash不是具体命令，做法是将需要合并过去的那些提交撤销得到文件修改，基于这些修改再创建一个新提交。好处是分支图上只有主要合并提交，没有中间提交信息的干扰
+- Merge 会创建合并节点形成环
+- Rebase 是通过调整两个分支链上的提交，合并成一个链没有环
+- Squash 不是具体命令，做法是将需要合并过去的那些提交撤销得到文件修改，基于这些修改再创建一个新提交。好处是分支图上只有主要合并提交，没有中间提交信息的干扰
 
 [这才是真正的 Git——分支合并](https://zhuanlan.zhihu.com/p/192972614)
+
+![](./img/git-merge-situation.drawio.svg)
 
 Git 在合并分支的时候使用的是 三向合并策略，即当前分支和目标分支的共同祖先commit节点， 和两个分支的当前commmit节点进行比较确定哪一方发生修改需要纳入，如果两方都修改就要提示冲突
 
 根据 Git 的合并策略，在合并两个有分叉的分支（上图中的 D、E‘）时，Git 默认会选择 Recursive 策略。找到 D 和 E’的最短路径共同祖先节点 B，以 B 为 base，对 D，E‘做三向合并。
 
-B 中有 http.js，D 中有 http.js 和 main.js，E’中什么都没有。根据三向合并，B、D 中都有 http.js 且没有变更，E‘删除了 http.js，所以合并结果就是没有 http.js，没有冲突，所以 http.js 最终会被删除。
+B 中有 http.js； D 中有 http.js 和 main.js； E’中什么都没有。  
+根据三向合并，B、D 中都有 http.js 且没有变更，E‘删除了 http.js(revert会将所有内容操作取反)，所以合并结果就是没有 http.js，没有冲突，然后 http.js 最终被删除了。  
+**问题出现了，怎么处理呢？** 其实也很简单，revert掉之前的revert，即 revert E' 节点得到 E''，再将 D 和 E''合并 完成dev合并到master。
+
 
 ### 分支问题排查
 
