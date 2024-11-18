@@ -3,6 +3,7 @@ title: PostgreSQL进阶
 date: 2018-12-16 17:28:33
 tags: 
     - PostgreSQL
+    - Advanced
 categories: 
     - 数据库
 ---
