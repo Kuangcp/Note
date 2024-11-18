@@ -1,8 +1,9 @@
 ---
-title: Serialization
+title: 序列化
 date: 2024-04-21 16:35:34
 tags: 
 categories: 
+    - 序列化
 ---
 
 💠
@@ -25,7 +26,7 @@ categories:
     - 3.9. [Avro](#avro)
     - 3.10. [Kyro](#kyro)
 
-💠 2024-09-20 17:30:23
+💠 2024-11-18 14:31:55
 ****************************************
 # 序列化
 > [参考: 序列化和反序列化](https://tech.meituan.com/2015/02/26/serialization-vs-deserialization.html)  

@@ -2,15 +2,15 @@
 title: JavaFX
 date: 2024-11-14 16:30:00
 tags: 
+    - GUI
 categories: 
 ---
-
 
 💠
 
 - 1. [JavaFX](#javafx)
 
-💠 2024-11-14 16:30:00
+💠 2024-11-18 14:31:55
 ****************************************
 # JavaFX
 > [OpenJFX](https://wiki.openjdk.java.net/display/OpenJFX) | [official site](https://openjfx.io)

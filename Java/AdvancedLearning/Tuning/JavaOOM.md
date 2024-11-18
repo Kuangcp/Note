@@ -3,6 +3,7 @@ title: JavaOOM
 date: 2024-03-06 14:09:01
 tags: 
 categories: 
+    - Troubleshoot
 ---
 
 💠
@@ -16,7 +17,7 @@ categories:
     - 1.6. [GC overhead limit exceeded](#gc-overhead-limit-exceeded)
 - 2. [分析](#分析)
 
-💠 2024-08-22 11:15:26
+💠 2024-11-18 14:31:55
 ****************************************
 # OOM 
 > 注意OOM并不代表Java进程一定会退出，如果导致OOM的地方能被catch，且泄漏点能随着这次任务的终止而可回收的话，JVM将继续正常运行。  

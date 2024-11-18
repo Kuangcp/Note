@@ -5,6 +5,7 @@ tags:
     - JVM
 categories: 
     - Java
+    - Troubleshoot
 ---
 
 💠
@@ -38,7 +39,7 @@ categories:
     - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-11-14 16:40:22
+💠 2024-11-18 14:31:55
 ****************************************
 
 # JVM 监控&诊断

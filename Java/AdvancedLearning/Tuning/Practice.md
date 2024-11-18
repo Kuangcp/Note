@@ -3,6 +3,8 @@ title: Practice
 date: 2024-03-06 14:10:23
 tags: 
 categories: 
+    - Troubleshoot
+    - WIKI
 ---
 
 💠
@@ -12,7 +14,7 @@ categories:
     - 1.2. [FD泄漏： Unable to Open Socket File](#fd泄漏-unable-to-open-socket-file)
         - 1.2.1. [查找JVMSocket泄漏](#查找jvmsocket泄漏)
 
-💠 2024-04-12 17:19:59
+💠 2024-11-18 14:31:55
 ****************************************
 # 问题实践
 ## IDEA调优
