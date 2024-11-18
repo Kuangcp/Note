@@ -2,7 +2,9 @@
 title: MySQL索引
 date: 2021-05-27 21:36:58
 tags: 
+    - MySQL
 categories: 
+    - 数据库
 ---
 
 💠

@@ -2,7 +2,10 @@
 title: ClickhouseAdvance
 date: 2024-04-26 01:17:19
 tags: 
+    - Clickhouse
+    - OLAP
 categories: 
+    - 数据库
 ---
 
 💠
