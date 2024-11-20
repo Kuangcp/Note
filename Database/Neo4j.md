@@ -25,7 +25,7 @@ categories:
     - 2.5. [Pattern](#pattern)
 - 3. [应用](#应用)
 
-💠 2024-11-15 11:14:25
+💠 2024-11-20 10:28:22
 ****************************************
 # Neo4j
 > [Neo4j Graph Database & Analytics | Graph Database Management System](https://neo4j.com/)  
@@ -81,7 +81,7 @@ categories:
 > [Using Neo4j from Java - Getting Started](https://neo4j.com/docs/getting-started/languages-guides/java/java-intro/)  
 > [Neo4j Java Drive Compatibility : r/Neo4j](https://www.reddit.com/r/Neo4j/comments/15ggn1l/neo4j_java_drive_compatibility/)  
 
-Java8使用的话，坑会比较多，注意5.x需要Java17（4.x以及3.x才兼容Java8）。官网推荐 5.x 及 样例 [neo4j-examples/movies-java-bolt ](https://github.com/neo4j-examples/movies-java-bolt)  
+Java8使用的话，坑会比较多，注意5.x需要Java17（4.x以及3.x才兼容Java8）。官网推荐 5.x 及 样例 [neo4j-examples/movies-java-bolt](https://github.com/neo4j-examples/movies-java-bolt)  
 
 [Spring Data Neo4j](https://spring.io/projects/spring-data-neo4j) 不同boot版本的配置和使用方式差别较大(yml配置名变更)，需要仔细翻阅相应版本的文档。
 
@@ -99,7 +99,7 @@ Java8使用的话，坑会比较多，注意5.x需要Java17（4.x以及3.x才兼
 @Component
 public class Neo4jDriver {
 
-    Driver driver;
+    private Driver driver;
 
     @Autowired
     private Neo4jConfig neo4jConfig;
@@ -146,6 +146,8 @@ public class Neo4jDriver {
         return Collections.emptyList();
     }
 ```
+
+坑点： 不支持多数据库，API简陋
 
 ************************
 

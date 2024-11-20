@@ -15,7 +15,7 @@ categories:
     - 3.2. [Gremlin](#gremlin)
     - 3.3. [SPARQL](#sparql)
 
-💠 2024-11-14 14:23:28
+💠 2024-11-20 10:28:22
 ****************************************
 # 图数据库
 
@@ -57,7 +57,7 @@ Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph、Mem
 ## Cypher
 > [openCypher · openCypher](http://opencypher.org/) | [Cypher (query language) - Wikipedia](https://en.wikipedia.org/wiki/Cypher_(query_language))  
 
-> [Cypher Cheat Sheet](https://neo4j.com/docs/cypher-cheat-sheet/5/aura-dbe/)`使用手册`  
+> [Cypher Cheat Sheet](https://neo4j.com/docs/cypher-cheat-sheet/5/aura-dbe/)`Cypher 使用手册`  
 > [Graph Database](https://github.com/albertoventurini/graphdb-intellij-plugin)  
 
 Neo4j、RedisGraph、AgensGraph(PG+插件)
@@ -66,9 +66,13 @@ Neo4j、RedisGraph、AgensGraph(PG+插件)
     MATCH (n) RETURN n limit 10
     //  删除所有关系
     MATCH ()-[r]->() delete(r)
+    // 删除所有节点
+    MATCH (n) delete(n)
     // 查询 疾病 关联的 所有病征
     MATCH (d:疾病)-[:疾病的症状]->(s:疾病症状) WHERE d.名称 = '血栓形成' RETURN s
 ```
+
+************************
 
 ## Gremlin
 > [Gremlin中文文档](https://tinkerpop-gremlin.cn/#traversal)  
