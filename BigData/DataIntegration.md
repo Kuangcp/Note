@@ -21,10 +21,12 @@ categories:
 - 6. [Tapdata](#tapdata)
 - 7. [Kettle](#kettle)
 
-💠 2024-11-20 15:16:11
+💠 2024-11-20 19:35:19
 ****************************************
 # Data Integration
 数据集成
+
+> [大数据ETL工具对比——SeaTunnel、DataX、Sqoop、Flume、Flink CDC、Dlinky、TIS、Chunjun等对比_seatunnel和datax-CSDN博客](https://blog.csdn.net/u011047968/article/details/138909975)  
 
 # Datax
 > [Github](https://github.com/alibaba/DataX)  阿里云DataWorks的开源版 | [HashData](https://github.com/HashDataInc/DataX/) 增加了插件支持
