@@ -18,9 +18,10 @@ categories:
 - 3. [SeaTunnel](#seatunnel)
 - 4. [FlinkX ChunJun](#flinkx-chunjun)
 - 5. [Flink CDC](#flink-cdc)
-- 6. [Kettle](#kettle)
+- 6. [Tapdata](#tapdata)
+- 7. [Kettle](#kettle)
 
-💠 2024-10-08 11:23:38
+💠 2024-11-20 15:16:11
 ****************************************
 # Data Integration
 数据集成
@@ -142,6 +143,10 @@ categories:
 # Flink CDC
 > [Github](https://github.com/apache/flink-cdc)  
 
+# Tapdata
+> [tapdata/tapdata: Tapdata Live Data Platform Project](https://github.com/tapdata/tapdata)开源+商业版本  
+
+支持集群架构，但是不支持单个任务的分布式（单个任务的效率无法通过扩充节点来横向提升）
 
 ************************
 
