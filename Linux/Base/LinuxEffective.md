@@ -51,7 +51,7 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2024-11-21 11:02:19
+💠 2024-11-21 14:14:59
 ****************************************
 # 高效的Linux
 
@@ -408,11 +408,15 @@ Supervisor 进程监控管理
 
 ### 截图
 
-- Flameshot 截图工具  类似于 snipaste
-    - Ctrl 鼠标滚动 调整线条粗细
-    - Ctrl Alt S 截图 (注意某些交互性场景，截图会导致失去焦点从而无法截到，例如网页的下拉选项，此时可以不使用快捷键而是鼠标点托盘的图标触发截图，可绕过这个问题)
-    - Alt Q pin
-- deepin-screenshot
+Flameshot 截图工具  类似于 snipaste
+- Ctrl 鼠标滚动 调整线条粗细
+- Ctrl Alt S： 截图 (注意某些交互性场景，截图会导致失去焦点从而无法截到，例如网页的下拉选项，此时可以不使用快捷键而是鼠标点托盘的图标触发截图，可绕过这个问题)
+- Alt Q ：pin
+- 截图并OCR识别中文 `flameshot gui --raw | tesseract -l chi_sim stdin stdout | xclip -in -selection clipboard`
+    - 可以绑定快捷键到这个命令上，如果不生效可以将命令创建为sh文件，快捷键绑定到这个sh文件上。
+    - [OCR to clipboard hook for selections · Issue #702 · flameshot-org/flameshot](https://github.com/flameshot-org/flameshot/issues/702)  
+
+deepin-screenshot
 
 ### 录屏
 
