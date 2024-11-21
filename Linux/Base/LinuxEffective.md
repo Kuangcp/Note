@@ -12,7 +12,8 @@ categories:
 
 - 1. [高效的Linux](#高效的linux)
     - 1.1. [Terminal](#terminal)
-        - 1.1.1. [Terminal 对比](#terminal-对比)
+        - 1.1.1. [终端中渲染图片](#终端中渲染图片)
+        - 1.1.2. [Terminal 对比](#terminal-对比)
     - 1.2. [效率工具](#效率工具)
         - 1.2.1. [协作工具](#协作工具)
         - 1.2.2. [目录跳转](#目录跳转)
@@ -52,35 +53,33 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2024-11-18 14:31:55
+💠 2024-11-21 10:49:19
 ****************************************
 # 高效的Linux
 
-> [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/) `一整套工具`  
 > [Awesome Linux Software](https://github.com/luong-komorebi/Awesome-Linux-Software)  
-
-> [命令行：增强版 ](https://linux.cn/article-10171-1.html)  
-
-> [MAC平台 工具列表](https://github.com/hsdji/tools) `部分Linux可用`
 
 ## Terminal
 终端是用户与Linux的沟通窗口，因此可以完成任意事项。
 
 > [ttyd](https://github.com/tsl0922/ttyd)  
+> [ibraheemdev/modern-unix](https://github.com/ibraheemdev/modern-unix)`现代工具合集`  
+> [cli · GitHub Topics](https://github.com/topics/cli)`Github 终端工具合集`  
+> [Terminals Are Sexy](https://github.com/k4m4/terminals-are-sexy)  
 
-************************
 
-- [sixel](https://en.wikipedia.org/wiki/Sixel) `终端中渲染图片` | [libsixel](https://saitoha.github.io/libsixel/) | [Are We Sixel Yet?](https://www.arewesixelyet.com/)
+终端工具
+- [terminalizer](https://github.com/faressoft/terminalizer)`录制终端`
+
+### 终端中渲染图片
+
+- [sixel](https://en.wikipedia.org/wiki/Sixel)  | [libsixel](https://saitoha.github.io/libsixel/) | [Are We Sixel Yet?](https://www.arewesixelyet.com/)
   - [Why Sixel? ](https://www.reddit.com/r/commandline/comments/zkg75e/why_sixel/)
 
 Manjaro Xfce 使用 sixel： mlterm 或者 konsole
 1. yay libsixel, yay mlterm， mlterm -b '#292B2E' 安装和启动mlterm
   1. 查看图片 img2sixel xx.jpg `ImageMagick`
   1. 渲染结果图 [jagger](https://github.com/rs/jaggr) **konsole不支持**
-
-************************
-
-[Terminals Are Sexy](https://github.com/k4m4/terminals-are-sexy)
 
 ### Terminal 对比
 
@@ -129,16 +128,13 @@ Manjaro Xfce 使用 sixel： mlterm 或者 konsole
 - [kitty](https://sw.kovidgoyal.net/kitty/) `GPU渲染`
 - [darktile](https://github.com/liamg/darktile)
 
-> 终端工具
-- [terminalizer](https://github.com/faressoft/terminalizer)`录制终端`
-
 ************************
 
 ## 效率工具
 
 > 提高工作和开发效率
 
-> `通知提醒`
+`通知提醒`
 > [Desktop notifications](https://wiki.archlinux.org/index.php/Desktop_notifications) | [xfce notify-send ](https://docs.xfce.org/apps/notifyd/preferences)
 > [Desktop Notifications Specification](https://developer.gnome.org/notification-spec/#protocol)
 > [Notification Development Guidelines](https://wiki.ubuntu.com/NotificationDevelopmentGuidelines)
@@ -156,11 +152,11 @@ Manjaro Xfce 使用 sixel： mlterm 或者 konsole
 > PC远程操作安卓
 
 [scrcpy](https://github.com/Genymobile/scrcpy)
-
 - [操作流程](http://blog.lujun9972.win/blog/2019/03/20/%E4%BD%BF%E7%94%A8scrcpy%E6%8E%A7%E5%88%B6%E4%BD%A0%E7%9A%84%E6%89%8B%E6%9C%BA/)
 
-> USB 连接方式
-> 推荐使用USB连接，这样操作起来比较流畅。手机通过USB连接到PC上,在弹出的USB用途中选择 传输文件(MTP)
+> USB 连接方式  
+
+推荐使用USB连接，这样操作起来比较流畅。手机通过USB连接到PC上,在弹出的USB用途中选择 传输文件(MTP)
 
 > WIFI 方式连接
 
@@ -363,10 +359,8 @@ CrystalDiskMark
 - 获取视频中的音频 `ffmpeg -i input.mp4 -vn -y -acodec copy output.m4a`
 - 去掉视频中的音频 `ffmpeg -i input.mp4 -an output.mp4`
 - 合并视频 `ffmpeg -f concat -safe 0 -i file.cfg  -c copy result.mp4`
-
   - file.cfg 内容为多行文件 : `file '/path/to/file'`
 - 截取视频 `ffmpeg -ss 00:00:00 -t 00:00:30 -i input.mp4 -vcodec copy -acodec copy output.mp4`
-
   - `-ss` 开始时间 `-t` 截取时长  `-q 0` 无损 `-c copy`表示不必重新编码
 
 ## 图片处理
