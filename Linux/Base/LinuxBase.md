@@ -42,7 +42,6 @@ categories:
         - 2.3.2. [oom](#oom)
         - 2.3.3. [虚拟内存](#虚拟内存)
         - 2.3.4. [交换内存](#交换内存)
-            - 2.3.4.1. [清空交换内存](#清空交换内存)
         - 2.3.5. [清空读写缓存](#清空读写缓存)
 - 3. [终端快捷键](#终端快捷键)
     - 3.1. [Delete](#delete)
@@ -66,7 +65,7 @@ categories:
     - 5.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 5.5. [熵池](#熵池)
 
-💠 2024-11-16 17:40:15
+💠 2024-11-21 13:37:28
 ****************************************
 
 # Linux系统
@@ -554,7 +553,7 @@ SWAP = VIRT - RES
 - 进程按交换内存使用大小排序`for file in /proc/*/status ; do awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $file; done | sort -k 2 -n -r | less`
 - `smem`  Report memory usage with shared memory divided proportionally
 
-#### 清空交换内存
+> 清空交换内存
 - 1.关闭交换分区 `sudo swapoff 交换分区文件`
     - 2.开启交换分区 `sudo swapon 交换分区文件`
 - `swapoff -a && swapon -a`
