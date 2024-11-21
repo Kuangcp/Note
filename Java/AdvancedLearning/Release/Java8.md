@@ -36,37 +36,34 @@ categories:
     - 4.6. [利用Lambda开发DSL框架](#利用lambda开发dsl框架)
 - 5. [Stream](#stream)
     - 5.1. [Stream与集合](#stream与集合)
-        - 5.1.1. [只能遍历一次](#只能遍历一次)
-        - 5.1.2. [外部迭代和内部迭代](#外部迭代和内部迭代)
     - 5.2. [构建流](#构建流)
         - 5.2.1. [有限流](#有限流)
         - 5.2.2. [无限流](#无限流)
     - 5.3. [数值流](#数值流)
         - 5.3.1. [原始类型特化](#原始类型特化)
         - 5.3.2. [数值范围](#数值范围)
-    - 5.4. [Stream操作](#stream操作)
+    - 5.4. [操作分类](#操作分类)
         - 5.4.1. [中间操作](#中间操作)
         - 5.4.2. [终端操作](#终端操作)
     - 5.5. [Stream的使用](#stream的使用)
         - 5.5.1. [筛选](#筛选)
         - 5.5.2. [映射](#映射)
         - 5.5.3. [查找和匹配](#查找和匹配)
-        - 5.5.4. [归约](#归约)
+        - 5.5.4. [归约 reduce](#归约-reduce)
             - 5.5.4.1. [求和](#求和)
             - 5.5.4.2. [极值](#极值)
             - 5.5.4.3. [归约的优势与并行化](#归约的优势与并行化)
     - 5.6. [收集器的使用](#收集器的使用)
-        - 5.6.1. [预定义收集器](#预定义收集器)
-            - 5.6.1.1. [汇总 collector](#汇总-collector)
-            - 5.6.1.2. [规约 reduce](#规约-reduce)
-            - 5.6.1.3. [分组](#分组)
-                - 5.6.1.3.1. [多级分组](#多级分组)
-                - 5.6.1.3.2. [按子组收集数据](#按子组收集数据)
-            - 5.6.1.4. [分区](#分区)
-        - 5.6.2. [自定义 Collector](#自定义-collector)
+        - 5.6.1. [汇总 collector](#汇总-collector)
+        - 5.6.2. [规约 reduce](#规约-reduce)
+        - 5.6.3. [分组 groupingBy](#分组-groupingby)
+            - 5.6.3.1. [多级分组](#多级分组)
+            - 5.6.3.2. [按子组收集数据](#按子组收集数据)
+        - 5.6.4. [分区](#分区)
+        - 5.6.5. [自定义 Collector](#自定义-collector)
 - 6. [Optional](#optional)
     - 6.1. [Optional类和Stream接口的相似之处](#optional类和stream接口的相似之处)
-    - 6.2. [实践:读取Properties某属性](#实践读取properties某属性)
+    - 6.2. [实践-读取Properties属性](#实践-读取properties属性)
 - 7. [时间处理](#时间处理)
     - 7.1. [ZoneId](#zoneid)
     - 7.2. [Clock](#clock)
@@ -80,7 +77,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2024-11-14 16:40:22
+💠 2024-11-21 11:40:34
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -168,8 +165,9 @@ An informative annotation type used to indicate that an interface type declarati
     - 例如 `Supplier<Apple> c1 = Apple::new;`
     - 之后 `Apple a1 = c1.get();` 调用接口的get方法实例化Apple对象
 
-不将构造函数实例化却能够引用它，这个功能有一些有趣的应用。例如，你可以使用Map来将构造函数映射到字符串值。
-你可以创建一个giveMeFruit方法，给它一个String和一个Integer，它就可以创建出不同重量的各种水果：
+不将构造函数实例化却能够引用它，这个功能有一些有趣的应用。
+
+例如，你可以使用Map来将构造函数映射到字符串值。你可以创建一个giveMeFruit方法，给它一个String和一个Integer，它就可以创建出不同重量的各种水果：
 ```java
     static Map<String, Function<Integer, Fruit>> map = new HashMap<>();
     static {
@@ -307,7 +305,9 @@ An informative annotation type used to indicate that an interface type declarati
 > [参考: Java Lambda表达式 实现原理分析](https://blog.csdn.net/jiankunking/article/details/79825928)
 
 > 为什么Lambda范围内的代码引用外部变量时得是final修饰的。
-因为匿名内部类的引用不允许此操作
+
+因为匿名内部类的引用不允许此操作,规避并发问题。 详见 [局部变量的限制](#使用局部变量)
+
 ```
     int b = 0;
     new Runnable(){
@@ -370,7 +370,7 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 ```
 
 **`特殊的void兼容规则`**
-如果一个Lambda的主体是一个语句表达式， 它就和一个返回void的函数描述符兼容（当然需要参数列表也兼容）。
+如果一个Lambda的主体是一个语句表达式， 它就和一个返回void的函数描述符兼容（当然需要参数列表也兼容）。  
 例如，以下两行都是合法的，尽管List的add方法返回了一个 boolean，而不是Consumer上下文（T -> void） 所要求的void：
 ```java
     // Predicate返回了一个boolean
@@ -398,15 +398,19 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 ```
 
 ### 使用局部变量
-我们迄今为止所介绍的所有Lambda表达式都只用到了其主体里面的参数。但Lambda表达式也允许使用自由变量（不是参数，而是在外层作用域中定义的变量），
-就像匿名类一样。 它们被称作捕获Lambda。例如，下面的Lambda捕获了portNumber变量：
+
+前文所述的 Lambda表达式都只用到了其结构所定义的参数。但Lambda表达式也允许使用自由变量（在外层作用域中定义的变量），就像匿名类一样。 它们被称作捕获Lambda。
+
+例如，下面的Lambda捕获了portNumber变量：
 ```java
     int portNumber = 1337;
     Runnable r = () -> System.out.println(portNumber);
 ```
-尽管如此，还有一点点小麻烦：关于能对这些变量做什么有一些限制。 Lambda可以没有限制地捕获（也就是在其主体中引用）实例变量和静态变量。
-但局部变量必须显式声明为final，或事实上是final。
-换句话说， Lambda表达式只能捕获指派给它们的局部变量一次。（注：捕获实例变量可以被看作捕获最终局部变量this。）
+
+尽管如此，还有一点点小麻烦：关于能对这些变量做什么有一些限制。 
+Lambda可以没有限制地捕获 对象的实例变量和静态变量， 但局部变量必须显式声明为final，或事实上是final（生命周期内只有一次赋值）。  
+
+注：捕获实例变量可以被看作捕获final修饰的局部变量 *this*
 
 例如，下面的代码无法编译，因为portNumber 变量被赋值两次：
 ```java
@@ -414,27 +418,28 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
     Runnable r = () -> System.out.println(portNumber);
     portNumber = 31337;
 ```
+
 **`对局部变量的限制`**
 - 你可能会问自己，为什么局部变量有这些限制。
-    1. 第一，实例变量和局部变量背后的实现有一个关键不同。实例变量都存储在堆中，而局部变量则保存在栈上。
+    1. 第一，实例变量和局部变量背后的实现有一个关键的不同点。实例变量都存储在堆中，而局部变量则保存在栈上。
         - 如果Lambda可以直接访问局部变量，而且Lambda是在一个线程中使用的，则使用Lambda的线程，可能会在分配该变量的线程将这个变量收回之后，去访问该变量。
-        - 因此， Java在访问自由局部变量时，实际上是在访问它的副本，而不是访问原始变量。如果局部变量仅仅赋值一次那就没有什么区别了——因此就有了这个限制。
-    1. 第二，这一限制不鼓励你使用改变外部变量的典型命令式编程模式（这种模式会阻碍很容易做到的并行处理）。
+        - 因此 Java在访问自由局部变量时，实际上是在访问它的副本，而不是访问原始变量。如果局部变量仅仅赋值一次那就没有什么区别了。
+        - 如前所述，这种限制存在的原因在于局部变量保存在栈上，并且隐式表示它们仅限于其所在线程访问。
+        - 如果允许捕获可改变的局部变量，就会引发造成线程不安全的可能性，而这是我们不想看到的（实例变量可以，因为它们保存在堆中，而堆是在线程之间共享的）
+    1. 第二，这一限制不鼓励你使用改变外部变量的典型命令式编程模式（这种模式会阻碍原本很容易做到的并行处理）。
 
 **`闭包`**
 
-你可能已经听说过闭包（closure，不要和Clojure编程语言混淆）这个词，你可能会想Lambda是否满足闭包的定义。
-用科学的说法来说，闭包就是一个函数的实例，且它可以无限制地访问那个函数的非本地变量。例如，闭包可以作为参数传递给另一个函数。
-它也可以访问和修改其作用域之外的变量。现在， Java 8的Lambda和匿名类可以做类似于闭包的事情：
-它们可以作为参数传递给方法，并且可以访问其作用域之外的变量。但有一个限制：它们不能修改定义Lambda的方法的局部变量的内容。
-这些变量必须是隐式最终的。可以认为Lambda是对值封闭，而不是对变量封闭。如前所述，这种限制存在的原因在于局部变量保存在栈上，
-并且隐式表示它们仅限于其所在线程。如果允许捕获可改变的局部变量，就会引发造成线程不安全的新的可能性，
-而这是我们不想看到的（实例变量可以，因为它们保存在堆中，而堆是在线程之间共享的） 。
+你可能已经听说过闭包（closure，不要和Clojure编程语言混淆）这个词，你可能会想Lambda是否满足闭包的定义。  
+用科学的说法来说，闭包就是一个函数的实例，且它可以无限制地访问那个函数的非本地变量。  
+
+例如，闭包可以作为参数传递给另一个函数，那这个闭包也可以访问和修改其作用域之外的变量。  
+现在，Java 8的Lambda和匿名类可以做类似于闭包的事情， 它们可以作为参数传递给方法，并且可以访问其作用域之外的变量。  
 
 ## 复合 Lambda 表达式
-在实践中，这意味着你可以把多个简单的Lambda复合成复杂的表达式。比如，你可以让两个谓词之间做一个or操作，组合成一个更大的谓词。
-而且，你还可以让一个函数的结果成为另一个函数的输入。
-窍门在于，我们即将介绍的方法都是**默认方法**，也就是说它们不是抽象方法。
+在实践中，这意味着你可以把多个简单的Lambda复合成复杂的表达式。  
+比如，你可以让两个谓词之间做一个or操作，组合成一个更大的谓词。而且，你还可以让一个函数的结果成为另一个函数的输入。  
+在字节码层面，这些方法都是匿名接口的**默认方法**
 
 ### 比较器复合
 > [Java Comparator 珍藏版 ](https://mp.weixin.qq.com/s?__biz=MzAxODcyNjEzNQ==&mid=2247487247&idx=1&sn=55dc46cdde683b79864997a183c258df&chksm=9bd0a297aca72b8106cb40bedade4a69d539dbdbb579bed6238a54cf30bb270b8b4a8e45ec04&mpshare=1&scene=1&srcid=#rd)
@@ -528,11 +533,12 @@ Function接口还有针对输出参数类型的变种： ToIntFunction<T>、 Int
 例如构建一个质数流, 对所有的质数处理, 如果使用集合就要把所有的质数构建出来, 然后做下一步操作, 但是流只会按需生成。  
 这是一种生产者－消费者的关系. 从另一个角度来说，流就像是一个延迟创建的集合：只有在消费者要求的时候才会计算值
 
-### 只能遍历一次
+**只能遍历一次**
+
 > 和迭代器类似，流只能遍历一次, 遍历完之后，我们就说这个流已经被消费掉了  
 > 从哲学的角度看, 集合是空间中分布的一组值, 而流是时间中分布的一组值
 
-### 外部迭代和内部迭代
+**外部迭代和内部迭代**
 - 使用Collection接口需要用户去做迭代（比如用for-each），这称为外部迭代。  
 - 相反，Streams库使用内部迭代——它帮你把迭代做了，还把得到的流值存在了某个地方，你只要给出一个函数声明迭代中执行的操作即可。
 
@@ -641,7 +647,7 @@ IntStream和LongStream 的 range() 或者 rangeClose() 方法能产生一个数�
 
 ************************
 
-## Stream操作
+## 操作分类
 因为filter、sorted、map 和collect 等操作是与具体线程模型无关的高层次构件, 所以它们的内部实现可以是单线程的，也可能透明地充分利用你的多核架构
 
 ### 中间操作
@@ -734,7 +740,7 @@ List<int[]> pairs = numbers1.stream()
     - findFirst findAny 是查找 返回 ``Optional<T>`` findFirst 针对有序的流
         - 如果你不关心返回的元素是哪个，请使用 findAny ，因为它在使用并行流时限制较少。
 
-### 归约
+### 归约 reduce
 - 如何把一个流中的元素组合起来，使用 reduce 操作来表达更复杂的查询 此类查询需要将流中所有元素反复结合起来，得到一个值
 - 这样的查询可以被归类为归约操作（将流归约成一个值）。用函数式编程语言的术语来说，这称为折叠（fold）
 
@@ -784,8 +790,6 @@ List<int[]> pairs = numbers1.stream()
 ## 收集器的使用
 > 函数式编程相对于指令式编程的一个主要优势：你只需指出希望的结果——“做什么”，而不用操心执行的步骤——“如何做”
 
-
-### 预定义收集器
 Collectors所提供的工厂方法 它们主要提供了三大功能：将流元素归约和汇总为一个值 元素分组 元素分区
 
 - toList toMap toSet 等方法
@@ -793,7 +797,7 @@ Collectors所提供的工厂方法 它们主要提供了三大功能：将流元
 > 注意： toMap 方法的使用， 当 key 重复时会抛出异常 
 > `toMap(k->k, v->v, (a,b)->b);` 使用该方式能避免， 设置了遇到重复的策略， 后者覆盖前者
 
-#### 汇总 collector
+### 汇总 collector
 > Collectors类专门为汇总提供了一个工厂方法：Collectors.summingInt 它可接受一个把对象映射为求和所需int的函数，并返回一个收集器；该收集器在传递给普通的collect方法后即执行我们需要的汇总操作  
 > 求平均数 Collectors.averagingInt
 
@@ -827,7 +831,7 @@ Stream.collect 实现
     }
 ```
 
-#### 规约 reduce
+### 规约 reduce
 事实上，我们已经讨论的所有收集器，都是一个可以用reducing工厂方法定义的归约过程的特殊情况而已。Collectors.reducing工厂方法是所有这些特殊情况的一般化。
 
 - 例如 计算总热量 `int totalCalories = menu.stream().collect(reducing(0, Dish::getCalories, (i, j) -> i + j));`
@@ -861,7 +865,7 @@ Stream.collect 实现
 > 场景: 一个对象(含时间和整数两个属性)集合, 完成的操作是获取到最大时间以及数值平均值...等等多个值
 - [ ] 设计和实现
 
-#### 分组
+### 分组 groupingBy
 一个常见的数据库操作是根据一个或多个属性对集合中的项目进行分组。
 
 - 使用 groupingBy `Map<Dish.Type, List<Dish>> dishesByType = menu.stream().collect(groupingBy(Dish::getType));`
@@ -883,7 +887,7 @@ Stream.collect 实现
             })); 
 ```
 
-##### 多级分组
+#### 多级分组
 > 要实现多级分组，我们可以使用一个由双参数版本的 Collectors.groupingBy 工厂方法创建的收集器，它除了普通的分类函数之外，还可以接受collector类型的第二个参数。
 
 ```java
@@ -903,7 +907,7 @@ Stream.collect 实现
     ); 
 ```
 
-##### 按子组收集数据
+#### 按子组收集数据
 > 可以把第二个groupingBy收集器传递给外层收集器来实现多级分组。但进一步说，传递给第一个groupingBy的第二个收集器可以是任何类型 
 >> 例如: `Map<Dish.Type, Long> typesCount = menu.stream().collect(groupingBy(Dish::getType, counting())); `
 
@@ -981,7 +985,7 @@ Stream.collect 实现
     }
 ```
 
-#### 分区
+### 分区
 
 ************************
 
@@ -1094,7 +1098,7 @@ java.util.stream.Collector
     - OptionalInt OptionalLong OptionalDouble, 因为他们不支持 Stream 操作
     - 即使 OptionalInt 能简化 Optional<Integer>
 
-## 实践:读取Properties某属性
+## 实践-读取Properties属性
 > 从properties文件中读取某个属性, 正整数就返回该值, 否则返回0  
 
 ```java
@@ -1122,7 +1126,7 @@ java.util.stream.Collector
 
     public int readDuration(Properties props, String name) {
         return Optional.ofNullable(props.getProperty(name))
-            .flatMap(OptionalUtility::stringToInt)
+            .flatMap(this::stringToInt)
             .filter(i -> i > 0)
             .orElse(0);
     }
