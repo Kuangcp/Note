@@ -19,17 +19,15 @@ categories:
         - 1.2.2. [目录跳转](#目录跳转)
         - 1.2.3. [xdotool](#xdotool)
         - 1.2.4. [rofi](#rofi)
-    - 1.3. [远程工具](#远程工具)
-    - 1.4. [进程管理](#进程管理)
-    - 1.5. [零散工具集合](#零散工具集合)
-        - 1.5.1. [剪贴板管理](#剪贴板管理)
-    - 1.6. [检测工具](#检测工具)
-        - 1.6.1. [硬盘](#硬盘)
-    - 1.7. [文本处理](#文本处理)
-    - 1.8. [文件操作](#文件操作)
-    - 1.9. [安全工具](#安全工具)
-        - 1.9.1. [gpg](#gpg)
-        - 1.9.2. [JumpServer](#jumpserver)
+        - 1.2.5. [远程工具](#远程工具)
+    - 1.3. [零散工具集合](#零散工具集合)
+        - 1.3.1. [剪贴板管理](#剪贴板管理)
+    - 1.4. [硬件检测工具](#硬件检测工具)
+    - 1.5. [文本处理](#文本处理)
+    - 1.6. [文件操作](#文件操作)
+    - 1.7. [安全工具](#安全工具)
+        - 1.7.1. [gpg](#gpg)
+        - 1.7.2. [JumpServer](#jumpserver)
 - 2. [多媒体](#多媒体)
     - 2.1. [ffmpeg](#ffmpeg)
     - 2.2. [图片处理](#图片处理)
@@ -53,7 +51,7 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2024-11-21 10:49:19
+💠 2024-11-21 11:02:19
 ****************************************
 # 高效的Linux
 
@@ -226,22 +224,14 @@ command-line X11 automation tool `可以控制指定窗口激活关闭，最大�
 ```
 
 ### rofi
-[Github rofi](https://github.com/davatorium/rofi)
+[Github rofi](https://github.com/davatorium/rofi) 窗口切换
 
 设置 `rofi -show window` 快捷键为 右Alt
 
-************************
-
-## 远程工具
-
+### 远程工具
 [rdesktop and xfreerdp](https://www.joxrays.com/linux-rdp-windows/)
 
 rdesktop xfreerdp
-
-************************
-## 进程管理
-gnome-system-monitor  
-Supervisor 进程监控管理  
 
 ************************
 
@@ -273,10 +263,15 @@ Supervisor 进程监控管理
 
 - `uniq` 统计出现次数 `cat log.log | grep WARN | awk '{print $5}' | sort | uniq -c`
 - `starDict` 终端内字典
-- [upx](https://github.com/upx/upx) 压缩构建的可执行文件
+- [upx](https://github.com/upx/upx) 压缩可执行文件
 
 https://kbumsik.io/using-ipad-as-a-2nd-monitor-on-linux
 https://snapdensing.com/2020/04/07/ipad-as-an-extended-screen-in-linux/
+
+**进程管理**
+
+gnome-system-monitor  
+Supervisor 进程监控管理  
 
 ### 剪贴板管理
 > [参考: 面向 Linux 的 10 款最佳剪贴板管理器](https://linux.cn/article-7329-1.html)
@@ -290,14 +285,12 @@ https://snapdensing.com/2020/04/07/ipad-as-an-extended-screen-in-linux/
 
 ************************
 
-## 检测工具
-### 硬盘
+## 硬件检测工具
+> [Linux系统硬件信息检测工具hwinfo — Cloud Atlas beta 文档](https://cloud-atlas.readthedocs.io/zh-cn/latest/linux/server/hardware/hwinfo.html)  
 
-duf
-dust
-gdu
+> 硬盘
 
-CrystalDiskMark
+- CrystalDiskMark
 - [KDiskMark](https://github.com/JonMagon/KDiskMark)
 
 > smartmontools 
