@@ -11,23 +11,20 @@ categories:
 💠
 
 - 1. [高效的Linux](#高效的linux)
-    - 1.1. [Terminal](#terminal)
-        - 1.1.1. [终端中渲染图片](#终端中渲染图片)
-        - 1.1.2. [Terminal 对比](#terminal-对比)
-    - 1.2. [效率工具](#效率工具)
-        - 1.2.1. [协作工具](#协作工具)
-        - 1.2.2. [目录跳转](#目录跳转)
-        - 1.2.3. [xdotool](#xdotool)
-        - 1.2.4. [rofi](#rofi)
-        - 1.2.5. [远程工具](#远程工具)
-    - 1.3. [零散工具集合](#零散工具集合)
-        - 1.3.1. [剪贴板管理](#剪贴板管理)
-    - 1.4. [硬件检测工具](#硬件检测工具)
-    - 1.5. [文本处理](#文本处理)
-    - 1.6. [文件操作](#文件操作)
-    - 1.7. [安全工具](#安全工具)
-        - 1.7.1. [gpg](#gpg)
-        - 1.7.2. [JumpServer](#jumpserver)
+    - 1.1. [效率工具](#效率工具)
+        - 1.1.1. [协作工具](#协作工具)
+        - 1.1.2. [目录跳转](#目录跳转)
+        - 1.1.3. [xdotool](#xdotool)
+        - 1.1.4. [rofi](#rofi)
+        - 1.1.5. [远程工具](#远程工具)
+    - 1.2. [零散工具集合](#零散工具集合)
+        - 1.2.1. [剪贴板管理](#剪贴板管理)
+    - 1.3. [硬件检测工具](#硬件检测工具)
+    - 1.4. [文本处理](#文本处理)
+    - 1.5. [文件操作](#文件操作)
+    - 1.6. [安全工具](#安全工具)
+        - 1.6.1. [gpg](#gpg)
+        - 1.6.2. [JumpServer](#jumpserver)
 - 2. [多媒体](#多媒体)
     - 2.1. [ffmpeg](#ffmpeg)
     - 2.2. [图片处理](#图片处理)
@@ -51,82 +48,11 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2024-11-21 14:14:59
+💠 2024-11-23 16:13:43
 ****************************************
 # 高效的Linux
 
 > [Awesome Linux Software](https://github.com/luong-komorebi/Awesome-Linux-Software)  
-
-## Terminal
-终端是用户与Linux的沟通窗口，因此可以完成任意事项。
-
-> [ttyd](https://github.com/tsl0922/ttyd)  
-> [ibraheemdev/modern-unix](https://github.com/ibraheemdev/modern-unix)`现代工具合集`  
-> [cli · GitHub Topics](https://github.com/topics/cli)`Github 终端工具合集`  
-> [Terminals Are Sexy](https://github.com/k4m4/terminals-are-sexy)  
-
-
-终端工具
-- [terminalizer](https://github.com/faressoft/terminalizer)`录制终端`
-
-### 终端中渲染图片
-
-- [sixel](https://en.wikipedia.org/wiki/Sixel)  | [libsixel](https://saitoha.github.io/libsixel/) | [Are We Sixel Yet?](https://www.arewesixelyet.com/)
-  - [Why Sixel? ](https://www.reddit.com/r/commandline/comments/zkg75e/why_sixel/)
-
-Manjaro Xfce 使用 sixel： mlterm 或者 konsole
-1. yay libsixel, yay mlterm， mlterm -b '#292B2E' 安装和启动mlterm
-  1. 查看图片 img2sixel xx.jpg `ImageMagick`
-  1. 渲染结果图 [jagger](https://github.com/rs/jaggr) **konsole不支持**
-
-### Terminal 对比
-
-> 列举出系统可安装终端  
->  
-> 1. Debian: `sudo apt search terminal | grep -E terminal.+amd64`  
-> 2. Arch: `yay terminal`  
-> 3. [Github Topic: terminal-emulator ](https://github.com/topics/terminal-emulator)  
-
-终端可参考功能点： 终端透明化，终端背景图，快捷键设置，终端内颜色自定义，下拉式，标签水平垂直拆分，鼠标键盘交互性，资源占用少
-终极工具 [Tmux](/Linux/Tool/Tmux.md) 可以摆脱终端模拟器的对比和选择，选择最简单省资源的模拟器即可
-
-| 终端                | 优点                                            | 缺点                                                | 备注                                    |
-| :------------------ | :---------------------------------------------- | :-------------------------------------------------- | :-------------------------------------- |
-| `xiki`            | 鼠标和键盘高度交互 <br> 交互性和复杂度比较高 |                                                     |                                         |
-| `qterminal`       | 设置设计清晰，功能完备                   | 终端内容显示兼容性略有问题 资源消耗中等             |                                         |
-| `xfce4-terminal`  | 配合Xfce启动快，资源消耗少               | 配置繁琐                                            |                                         |
-| `gnome-terminal`  | 简洁 资源消耗少                         | 多标签时，标签栏太大,标签页底部有白边；无法透明化 | 鼠标中键无法复制时需安装 `parcellite` |
-| `mate-terminal`   | 标签栏更简洁，和 `gnome-terminal` 一致   |                                                     |                                         |
-| `sakura`          | 外观上和前两个几乎一样，标签页可以更简洁    | 配置复杂 繁琐                                       |                                         |
-| `deepin-terminal` | 功能很多，主题很多，功能最为强大           | 字体仅可选择内置不可自定义                          |                                         |
-| `tilda`           | 内嵌于桌面上, 小命令方便                 | 需要查看文件时不方便                                |                                         |
-| `terminology`     | 样式高度自定义                          |                                                     |                                         |
-
-- tilix
-- vte 支持复制终端输出内容为HTML
-- st 不支持中文，unicode字符支持良好
-- black box 
-- Alacritty
-
-> 备注 sakura xfce4-terminal 快捷键配置
-- `~/.config/xfce4/terminal/accels.scm`
-- 配置语法： [doc](http://troubleshooters.com/linux/sakura.htm) | [config shortcut](https://unix.stackexchange.com/questions/102474/configuring-shortcuts-for-sakura)
-- 例如 [修改 Ctrl C V 为复制快捷键](https://bbs.archlinux.org/viewtopic.php?id=260755) `Gtk3起 不支持所谓的鼠标悬浮改快捷键`
-```lua
-  (gtk_accel_path "<Actions>/terminal-window/copy" "<Primary>c")
-  (gtk_accel_path "<Actions>/terminal-window/paste" "<Primary>v")
-```
-
-> 现代终端
-- [wezterm](https://wezfurlong.org/wezterm/index.html)
-- [Warp](https://github.com/warpdotdev/Warp) `Rust+AI`
-- Tabby
-- WindTerm
-- [zellij](https://github.com/zellij-org/zellij)
-- [kitty](https://sw.kovidgoyal.net/kitty/) `GPU渲染`
-- [darktile](https://github.com/liamg/darktile)
-
-************************
 
 ## 效率工具
 
