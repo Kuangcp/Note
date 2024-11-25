@@ -18,7 +18,7 @@ categories:
         - 1.2.3. [Snap](#snap)
 - 2. [Tips](#tips)
 
-💠 2024-11-25 19:15:29
+💠 2024-11-25 19:33:05
 ****************************************
 
 # Arch
@@ -44,14 +44,14 @@ categories:
 ## 包管理
 
 > [Creating Arch Linux Packages](https://www.theurbanpenguin.com/creating-arch-linux-packages/)  
-> [Arch archive packages](https://archive.archlinux.org/packages/)`软件包镜像站`
+> [Arch archive packages](https://archive.archlinux.org/packages/)`软件包镜像站`  
 
 ### Pacman
 
-> [Arch wiki: pacman ](https://wiki.archlinux.org/index.php/Pacman_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E5%88%A0%E9%99%A4%E8%BD%AF%E4%BB%B6%E5%8C%85)
-> Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的社区驱动软件仓库。Debian/Ubuntu 用户的对应类比是 PPA。
+[pacman - ArchWiki](https://wiki.archlinux.org/title/Pacman)  
+Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的社区驱动软件仓库。Debian/Ubuntu 用户的对应类比是 PPA。
 
-/etc/pacman.conf 追加
+> /etc/pacman.conf 配置
 
 ```conf
     [archlinuxcn]
@@ -59,15 +59,25 @@ categories:
     SigLevel = Optional TrustAll
     #Server   = http://repo.archlinuxcn.org/$arch
     Server   = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+    # 下载时的并发数
+    ParallelDownloads = 5
 ```
+
+************************
 
 - `pacman-mirrors` generate pacman mirrorlist for Manjaro Linux
 - -S 安装
+    - -Si package 查看包的详细信息
+    - -S package --needed 重新安装解决 `Dependency is not satisfiable`
 - -R 卸载
    - -Rs 卸载以及没有被其他软件依赖的软件包
+   - -Rsc 卸载包，但是不删除配置文件
+   - -Sc 清除 pacman 的下载 cache
 - -Q 查询
-   - -Qdt 查询未被依赖的软件包
-- -U 升级或添加软件包 [Archive Mirror Site](https://archive.archlinux.org/packages/)
+   - -Qdt package 查询未被依赖的软件包
+   - -Qi package  查询包的依赖关系
+   - -Ql package  查询包的文件列表
+- -U 升级或添加软件包
     - 降级安装curl历史版本 例如 `pacman -U https://archive.archlinux.org/packages/c/curl/curl-8.4.0-1-x86_64.pkg.tar.zst`
     - 当出现包的传递依赖时，只指定单个包时安装会失败，这时需要指定完整依赖的地址，例如： `pacman -U ruby ruby-irb ruby-reline rubygems`
 
