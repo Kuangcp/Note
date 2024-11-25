@@ -18,7 +18,7 @@ categories:
         - 1.2.3. [Snap](#snap)
 - 2. [Tips](#tips)
 
-💠 2024-11-14 23:06:22
+💠 2024-11-25 19:15:29
 ****************************************
 
 # Arch
@@ -67,16 +67,19 @@ categories:
    - -Rs 卸载以及没有被其他软件依赖的软件包
 - -Q 查询
    - -Qdt 查询未被依赖的软件包
-- -U 升级或添加软件包 [archive](https://archive.archlinux.org/packages/)
-    - 例如 `pacman -U https://archive.archlinux.org/packages/c/curl/curl-8.4.0-1-x86_64.pkg.tar.zst` 安装curl历史版本
+- -U 升级或添加软件包 [Archive Mirror Site](https://archive.archlinux.org/packages/)
+    - 降级安装curl历史版本 例如 `pacman -U https://archive.archlinux.org/packages/c/curl/curl-8.4.0-1-x86_64.pkg.tar.zst`
+    - 当出现包的传递依赖时，只指定单个包时安装会失败，这时需要指定完整依赖的地址，例如： `pacman -U ruby ruby-irb ruby-reline rubygems`
 
 > 注意
-- pacman yay 升级某些包时需要留意是否需要全系统升级，单独升级某个包容易造成**依赖库版本不匹配**
-    - 比如 当前手动curl 8.4.0-2 升级到 8.6.0-3，发现安装失败, 报错 `pacman: /usr/lib/libssl.so.3: version 'OPENSSL_3.2.0' not found (required by /usr/lib/libcurl.so.4)`
-    - 由于yay pacman也是依赖的curl，这里就有点死锁了，没法降级了
-    - 从curl官网下载源码编译安装，安装路径默认 `/usr/local/bin/curl` 不是pacman默认的`/bin/curl`，只好手动复制lib过去 `sudo cp /usr/local/lib/libcurl.so.4.8.0 /usr/lib/libcurl.so.4.8.0` 新的报错 `curl: /usr/lib/libcurl.so.4: no version information available (required by curl)`
-    - 搜索后添加参数 重新编译 `./configure --enable-versioned-symbols  --with-openssl` 重新复制lib过去 还是一样报错信息
-    - 但是发现这个报错好像是警告级别不影响实际功能，然后用上述的 pacman -U 安装指定的版本，才恢复了正常使用
+
+pacman yay 升级某些包时需要留意是否需要全系统升级，单独升级某个包容易造成**依赖库版本不匹配**
+- 比如 当前手动curl 8.4.0-2 升级到 8.6.0-3，发现安装失败, 报错 `pacman: /usr/lib/libssl.so.3: version 'OPENSSL_3.2.0' not found (required by /usr/lib/libcurl.so.4)`
+- 由于yay pacman也是依赖的curl，这里就有点死锁了，没法降级了
+- 从curl官网下载源码编译安装，安装路径默认 `/usr/local/bin/curl` 不是pacman默认的`/bin/curl`
+    - 只好手动复制lib过去 `sudo cp /usr/local/lib/libcurl.so.4.8.0 /usr/lib/libcurl.so.4.8.0` 新的报错 `curl: /usr/lib/libcurl.so.4: no version information available (required by curl)`
+- 搜索后添加参数 重新编译 `./configure --enable-versioned-symbols  --with-openssl` 重新复制lib过去 还是一样报错信息
+- 但是发现这个报错好像是警告级别不影响实际功能，然后用上述的 pacman -U 安装指定的版本，才恢复了正常使用
 
 > 安装deb包 [How to Install a .deb Package on Arch Linux](https://www.baeldung.com/linux/arch-install-deb-package)
 
