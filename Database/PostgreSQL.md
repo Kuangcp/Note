@@ -25,7 +25,7 @@ categories:
     - 7.1. [Java使用](#java使用)
     - 7.2. [导入导出](#导入导出)
 
-💠 2024-11-13 10:24:06
+💠 2024-11-26 20:13:28
 ****************************************
 # Postgresql
 
@@ -106,6 +106,8 @@ categories:
 > [Chapter 8. Data Types](https://www.postgresql.org/docs/current/datatype.html)  
 > [PostgreSQL 数据类型](https://www.runoob.com/postgresql/postgresql-data-type.html)  
 
+************************
+
 > 自动增长 
 - 相比于MySQL的 AUTO_INCREMENT 关键字标记， pg将该特性设计为数据类型SERIAL， 但是在使用上没有MySQL方便
 - SMALLSERIAL 2字节  SERIAL	4字节 	BIGSERIAL 8字节 
@@ -129,7 +131,7 @@ categories:
     SELECT setval(pg_get_serial_sequence('t_phone', 'id'), 1000); -- set 
 ```
 
-
+************************
 
 - 日期类型转bigint `select   to_char(period,'yyyymmdd')::bigint  as period_int` 
 
@@ -154,8 +156,9 @@ FROM pg_attribute  WHERE attrelid = (SELECT oid FROM pg_class WHERE relname = 't
 
 > 图数据库插件
 
-[edgedb](https://github.com/edgedb/edgedb)  
-[apache/age](https://github.com/apache/age) 基于AgensGraph衍生（PG插件） [apache/age-viewer](https://github.com/apache/age-viewer)  
+- [edgedb](https://github.com/edgedb/edgedb)  
+- [apache/age](https://github.com/apache/age) 基于AgensGraph衍生（PG插件） [apache/age-viewer](https://github.com/apache/age-viewer)  
+    - [Java JDBC驱动](https://github.com/apache/age/tree/master/drivers/jdbc)`也就是使用了PG驱动再附加定义了相应的数据类（节点，边）`  
 
 ## AgensGraph
 [bitnine-oss/agensgraph](https://github.com/bitnine-oss/agensgraph)  

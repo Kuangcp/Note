@@ -15,11 +15,13 @@ categories:
     - 3.2. [Gremlin](#gremlin)
     - 3.3. [SPARQL](#sparql)
 
-💠 2024-11-20 10:28:22
+💠 2024-11-26 20:13:28
 ****************************************
 # 图数据库
 
 Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph、Memgraph、NebulaGraph、SurrealDB、Cayley
+
+PG系列：Agentsgraph Age
 
 > [DB-Engines Ranking - popularity ranking of graph DBMS](https://db-engines.com/en/ranking/graph+dbms)  
 
@@ -31,7 +33,7 @@ Neo4j、OrientDB、ArangoDB、JanusGraph、HugeGraph、Dgraph、TigerGraph、Mem
 
 [cayleygraph/cayley](https://github.com/cayleygraph/cayley)`Google开源`  
 
-> 作为存储，支撑[知识图谱](/Ai/KnowledgeGraph.md)
+> [知识图谱](/Ai/KnowledgeGraph.md) 通常使用图数据库作为存储
 
 # 概念
 

@@ -8,12 +8,12 @@ categories:
 💠
 
 - 1. [Tomcat Design](#tomcat-design)
-    - 1.1. [架构设计](#架构设计)
+    - 1.1. [宏观架构](#宏观架构)
     - 1.2. [线程池](#线程池)
     - 1.3. [连接器](#连接器)
         - 1.3.1. [NioEndpoint](#nioendpoint)
 
-💠 2024-06-02 17:50:57
+💠 2024-11-26 20:13:28
 ****************************************
 # Tomcat Design
 > [Github Tomcat](https://github.com/apache/tomcat)  
@@ -40,7 +40,7 @@ Tomcat在EndPoint中通过acceptCount和maxConnections两个参数作用后，To
 
 其中maxConnections为Tomcat在任意时刻接收和处理的最大连接数，当Tomcat接收的连接数达到maxConnections时，Acceptor不会读取accept队列`对应于TCP连接中的全连接accept队列`中的连接；  
 这时accept队列中的线程会一直阻塞着，直到Tomcat接收的连接数小于maxConnections（maxConnections默认为10000，如果设置为-1，则连接数不受限制）。  
-acceptCount为accept队列的长度，当accept队列中连接的个数达到acceptCount时，即队列满，此时进来的请求一律被拒绝，默认值是100（基于Tomcat 8.5.43版本）。  
+acceptCount为accept队列的长度，当accept队列中连接的个数达到acceptCount时，即队列满，此时进来的请求一律被拒绝，默认值是200 （低版本默认100）  
 
 3. 生命周期管理 LifecycleMBeanBase 
 

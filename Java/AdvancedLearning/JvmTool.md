@@ -39,7 +39,7 @@ categories:
     - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-11-18 14:31:55
+💠 2024-11-26 20:13:28
 ****************************************
 
 # JVM 监控&诊断
@@ -188,7 +188,12 @@ categories:
 > [OpenJDK11 jstack output explanation](https://stackoverflow.com/questions/76476637/openjdk11-jstack-output-explanation)  
 > [How to Analyze Java Thread Dumps](https://dzone.com/articles/how-analyze-java-thread-dumps)  
 
-扩展：通过短时间内多次获取stack分析出 活锁，死循环，死锁等问题点，但是通常这类问题只能通过修复并重启解决
+扩展：通过在短时间内多次获取stack分析出 活锁，死循环，死锁等问题点，但是通常这类问题只能通过修复代码并重启解决，无法热修复
+
+快速分析
+
+> [jstack.review - Java Thread Dump Analyzer](https://jstack.review)`支持多份jstack对比`  
+> [threaddump-analyzer](https://github.com/spotify/threaddump-analyzer)
 
 ### 实现原理
 - [Jstack 源码分析](https://zhuanlan.zhihu.com/p/36224094)
@@ -328,6 +333,8 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 > [参考: JAVA Shallow heap & Retained heap](http://www.cnblogs.com/lipeineng/p/5824799.html)  
 > [参考:  利用MAT分析JVM内存问题，从入门到精通](https://www.cnblogs.com/javaadu/p/11161380.html)  
 > [ Official Doc: OQL Syntax](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Freference%2Foqlsyntax.html)  
+
+> [Analyzing Threads](https://help.eclipse.org/latest/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Ftasks%2Fanalyzingthreads.html)
 
 注意: 有这样的一种场景, 从数据库获取大量的数据创建为对象, 导致瞬间的OOM 这时候即使使用 jmap 去 dump 了快照, 也看不到占用大量内存的对象, 因为MAT默认展示的是GC可达对象，需要在菜单选择看不可达对象
 

@@ -20,7 +20,7 @@ categories:
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2024-09-13 10:39:04
+💠 2024-11-26 20:13:28
 ****************************************
 # 线程池
 
@@ -157,7 +157,8 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 
 > [ 合理使用线程池以及线程变量 ](https://mp.weixin.qq.com/s/BdVqvm2wLNv05vMTieevMg)  
 > [ExecutorService - 10 tips and tricks](https://nurkiewicz.com/2014/11/executorservice-10-tips-and-tricks.html)  
-> [Tomcat 线程池](/Java/Tool/TomcatDesign.md#线程池)  
+
+[Tomcat 线程池](/Java/Ecosystem/Servlet/TomcatDesign.md#线程池)  
 
 - 增加全局异常处理 `Thread.setUncaughtExceptionHandler()`, 或手动catch任务块全部代码 避免异常被吞 [测试代码](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/thread/pool/PoolExceptionTest.java)
 - 避免局部线程池，容易遗忘线程资源回收，注意线程是GCRoot对象
