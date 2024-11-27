@@ -24,25 +24,24 @@ categories:
     - 2.2. [基本表的设计](#基本表的设计)
         - 2.2.1. [关于主键的设计](#关于主键的设计)
     - 2.3. [视图的设计](#视图的设计)
-- 3. [关系型和非关系型](#关系型和非关系型)
-- 4. [关系型数据库](#关系型数据库)
-- 5. [非关系型数据库](#非关系型数据库)
-    - 5.1. [Redis](#redis)
-    - 5.2. [RocksDB](#rocksdb)
-    - 5.3. [LevelDB](#leveldb)
-    - 5.4. [MangoDB](#mangodb)
-    - 5.5. [GemFire](#gemfire)
-- 6. [嵌入型数据库](#嵌入型数据库)
-    - 6.1. [SQLite](#sqlite)
-    - 6.2. [duckdb](#duckdb)
-- 7. [大数据](#大数据)
-- 8. [向量数据库](#向量数据库)
-- 9. [图数据库](#图数据库)
-- 10. [时序数据库](#时序数据库)
-- 11. [数据库中间件](#数据库中间件)
-- 12. [图形化工具](#图形化工具)
+- 3. [数据库分类](#数据库分类)
+    - 3.1. [关系型数据库](#关系型数据库)
+    - 3.2. [非关系型数据库](#非关系型数据库)
+    - 3.3. [键值对数据库](#键值对数据库)
+        - 3.3.1. [Redis](#redis)
+        - 3.3.2. [RocksDB](#rocksdb)
+        - 3.3.3. [LevelDB](#leveldb)
+    - 3.4. [向量数据库](#向量数据库)
+    - 3.5. [图数据库](#图数据库)
+    - 3.6. [时序数据库](#时序数据库)
+- 4. [嵌入型数据库](#嵌入型数据库)
+    - 4.1. [SQLite](#sqlite)
+    - 4.2. [duckdb](#duckdb)
+- 5. [大数据](#大数据)
+- 6. [数据库中间件](#数据库中间件)
+- 7. [图形化工具](#图形化工具)
 
-💠 2024-11-20 10:28:22
+💠 2024-11-27 18:01:03
 ****************************************
 # 数据库
 > [码农翻身:爱炫耀的数据库老头儿](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514001&idx=1&sn=17b72c3e69db6c4277e3045c699b7b6b&chksm=80d67c52b7a1f5446020826841869221873f4578524181384592839d19c4810dc68807117e13&scene=21#wechat_redirect) `事务,undo日志`
@@ -141,14 +140,16 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 
 ************************
 
-# 关系型和非关系型
-> [为什么说SQL正在击败NoSQL，这对数据的未来意味着什么？](http://www.infoq.com/cn/news/2017/10/SQL-NoSQL-mean-what?utm_source=news_about_rdbms&utm_medium=link&utm_campaign=rdbms)
-
+# 数据库分类
 关系型，KV型，文档型，图数据库，多模数据库（混合各数据格式）
+
+关系型 vs 非关系型
+
+> [为什么说SQL正在击败NoSQL，这对数据的未来意味着什么？](http://www.infoq.com/cn/news/2017/10/SQL-NoSQL-mean-what?utm_source=news_about_rdbms&utm_medium=link&utm_campaign=rdbms)
 
 ************************
 
-# 关系型数据库
+## 关系型数据库
 > 代表性: Oracle, MySQL, PostgreSQL, SQL Server
 
 > [List of Relational Database Management Systems (RDBMSs)](https://database.guide/list-of-relational-database-management-systems-rdbms/)  
@@ -162,16 +163,29 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 
 ************************
 
-# 非关系型数据库
-> key-value 数据库: redis memcached   
+## 非关系型数据库
+> key-value 数据库: redis   
 > 文档数据库: MongoDB  
-> 图数据库: Neo4j tugraph-db JanusGraph PG扩展  
-> 时序数据库: InfluxDB TSDB  
+> 图数据库: Neo4j  
+> 时序数据库: InfluxDB  
 
-- [sssdb](https://github.com/ideawu/ssdb) `键值对数据库`
+GemFire 分布式内存数据库 12306 采用的解决方案
 
-## Redis
-> [Redis](/Database/Redis.md)数据类型丰富，单线程纯内存高性能， 且久经考验很稳定
+[MongoDB](/Database/MongoDB.md) 文档性数据库, 混合类型: 关系型非关系型
+
+************************
+
+## 键值对数据库
+- [sssdb](https://github.com/ideawu/ssdb) 
+- [valkey-io/valkey](https://github.com/valkey-io/valkey)Linux基金会开源分布式kv数据库  
+
+### Redis
+> [Redis](/Database/Redis.md) 数据类型丰富，单线程纯内存高性能，且广泛使用，久经考验很稳定，但是商业化逐步开始恶心企业  
+> [RedisGraph/RedisGraph](https://github.com/RedisGraph/RedisGraph)EOL  
+
+************************
+
+衍生项目
 
 - [Github Tendis](https://github.com/Tencent/Tendis)`兼容Redis访问协议，腾讯开源的存储版，已不维护，商业还有缓存版和混合版`
     - [ Redis vs Tendis：冷热混合存储版架构揭秘 ](https://mp.weixin.qq.com/s/MeYkfOIdnU6LYlsGb24KjQ)  
@@ -182,21 +196,26 @@ Boyce-Codd Normal Form（巴斯-科德范式）
         - 场景为统计字符频率，只高频执行 ZIncrBy 命令（累计执行了337849次，Redis7.0.5 稳定耗时13s 单核30%  Dragonfly 6.2.11稳定耗时19s 等效于单核60%CPU）
 - [KeyDB](https://github.com/Snapchat/KeyDB) Redis 的一个高性能分支，专注于多线程、内存效率和高吞吐量
 
-> [RedisGraph/RedisGraph](https://github.com/RedisGraph/RedisGraph)EOL  
-
-## RocksDB
+### RocksDB
 > [RocksDB](https://github.com/facebook/rocksdb)`FaceBook开源`
 
-## LevelDB
+### LevelDB
 > [Github](https://github.com/google/leveldb)  
 
 > [LedisDB](https://github.com/ledisdb/ledisdb) 基于LevelDB构建Redis协议的数据库实例
 
-## MangoDB
-> [MongoDB](/Database/MongoDB.md) 文档性数据库, 混合类型: 关系型非关系型
+## 向量数据库
+- PostgreSQL： 支持向量插件
+- [milvus](https://milvus.io/)
+- [chroma](https://github.com/chroma-core/chroma)
 
-## GemFire
-> 分布式内存数据库 12306 采用的解决方案
+> [向量数据库｜一文全面了解向量数据库的基本概念、原理、算法、选型](https://cloud.tencent.com/developer/article/2312534)
+
+## 图数据库
+> [Note: 图数据库](/Database/Graph.md)  
+
+## 时序数据库
+> [DB-Engines Ranking - popularity ranking of time Series DBMS](https://db-engines.com/en/ranking/time+series+dbms)  
 
 ************************
 # 嵌入型数据库
@@ -228,20 +247,6 @@ Hive Hbase Impala Presto Doris Kylin
 [Greenplum](https://cn.greenplum.org)  
 [TiDB](https://docs.pingcap.com/zh/)  
 [Ignite](https://github.com/apache/ignite)  
-
-************************
-# 向量数据库
-- PostgreSQL： 支持向量插件
-- [milvus](https://milvus.io/)
-- [chroma](https://github.com/chroma-core/chroma)
-
-> [向量数据库｜一文全面了解向量数据库的基本概念、原理、算法、选型](https://cloud.tencent.com/developer/article/2312534)
-
-# 图数据库
-> [Note: 图数据库](/Database/Graph.md)  
-
-# 时序数据库
-> [DB-Engines Ranking - popularity ranking of time Series DBMS](https://db-engines.com/en/ranking/time+series+dbms)  
 
 ***********************
 
