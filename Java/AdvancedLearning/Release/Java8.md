@@ -78,7 +78,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2024-11-27 09:55:42
+💠 2024-11-27 10:56:30
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/)  
@@ -554,6 +554,11 @@ Lambda可以没有限制地捕获 对象的实例变量和静态变量， 但局
 ### 并行流
 使用 parallel() 开启并行流时要注意此时并行是依赖JVM内全局共用的Forkjoin线程池实现的（[Fork/Join 详解](/Java/AdvancedLearning/Concurrency/ForkAndJoin.md)）
 另外理论上会发生：使用了并行流的业务代码A耗时很久会卡住使用了并行流业务代码B，这种问题发生了就比较难排查了，所以并行流通常使用较少，有异步场景均按业务独立线程池统一管理会更好  
+
+> ps: 
+
+已遇到两次别人的生产问题和故障，都是不知并行流实现，而想当然用来做提速， 但流里的中间或终端操作内又含有SQL查询，外部接口调用等操作。
+- [线程问题案例详解](/Java/AdvancedLearning/Tuning/JavaTroubleshoot.md#cpu)
 
 ### 有限流
 > 由值创建流
