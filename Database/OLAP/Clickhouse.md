@@ -16,18 +16,19 @@ categories:
         - 1.2.1. [bitmap](#bitmap)
         - 1.2.2. [Decimal](#decimal)
     - 1.3. [聚合函数](#聚合函数)
-- 2. [数据库引擎](#数据库引擎)
-- 3. [表引擎](#表引擎)
-    - 3.1. [MergeTree 引擎家族](#mergetree-引擎家族)
-    - 3.2. [分布式表引擎 Distributed](#分布式表引擎-distributed)
-- 4. [表](#表)
-    - 4.1. [分区表](#分区表)
-- 5. [客户端](#客户端)
-    - 5.1. [Java](#java)
-- 6. [Explain](#explain)
-- 7. [Tips](#tips)
+- 2. [用户](#用户)
+- 3. [数据库引擎](#数据库引擎)
+- 4. [表引擎](#表引擎)
+    - 4.1. [MergeTree 引擎家族](#mergetree-引擎家族)
+    - 4.2. [分布式表引擎 Distributed](#分布式表引擎-distributed)
+- 5. [表](#表)
+    - 5.1. [分区表](#分区表)
+- 6. [客户端](#客户端)
+    - 6.1. [Java](#java)
+- 7. [Explain](#explain)
+- 8. [Tips](#tips)
 
-💠 2024-10-17 20:31:57
+💠 2024-11-27 13:50:46
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -128,6 +129,12 @@ categories:
 > [List of Aggregate Functions](https://clickhouse.com/docs/en/sql-reference/aggregate-functions/reference)
 
 - 注意avg函数固定返回Float64类型，需要按数据要求做类型转换处理规避后续计算的精度损失问题
+
+************************
+# 用户
+
+> [CREATE USER | ClickHouse Docs](https://clickhouse.com/docs/en/sql-reference/statements/create/user) 用户，角色  
+> [CREATE QUOTA | ClickHouse Docs](https://clickhouse.com/docs/en/sql-reference/statements/create/quota)对用户和角色做配额限制，支持滑动窗口资源限制  
 
 ************************
 
