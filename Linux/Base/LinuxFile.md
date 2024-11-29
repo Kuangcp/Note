@@ -67,7 +67,7 @@ categories:
     - 6.2. [善用alias](#善用alias)
     - 6.3. [desktop文件](#desktop文件)
 
-💠 2024-11-15 14:49:06
+💠 2024-11-29 15:27:42
 ****************************************
 
 # IO
@@ -241,6 +241,10 @@ splice
     export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
     export LESS=' -R'
     ```
+
+**环境变量**
+
+存储了less搜索操作的历史 LESSHISTFILE=~/.lesshst
 
 ### tail
 - tail命令用于输入文件中的尾部内容。tail命令默认在屏幕上显示指定文件的末尾10行。 来自: http://man.linuxde.net/tail

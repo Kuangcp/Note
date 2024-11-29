@@ -50,7 +50,8 @@ categories:
     - 4.3. [branch](#branch)
     - 4.4. [checkout](#checkout)
     - 4.5. [分支合并](#分支合并)
-        - 4.5.1. [分支问题排查](#分支问题排查)
+        - 4.5.1. [合并冲突](#合并冲突)
+        - 4.5.2. [分支问题排查](#分支问题排查)
     - 4.6. [merge](#merge)
     - 4.7. [rebase](#rebase)
     - 4.8. [cherry-pick](#cherry-pick)
@@ -75,7 +76,7 @@ categories:
     - 8.2. [gitattributes](#gitattributes)
 - 9. [自定义插件](#自定义插件)
 
-💠 2024-11-18 17:55:16
+💠 2024-11-29 15:27:42
 ****************************************
 
 # Git基础
@@ -150,7 +151,7 @@ categories:
 > 可用： opendiff kdiff3 tkdiff xxdiff meld kompare gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare smerge vimdiff emerge
 > [工具 详细](/Linux/Base/LinuxFile.md#比较文件内容)
 
-> [delta](https://github.com/dandavison/delta) `diff和分页查看git差异`
+> [delta](https://github.com/dandavison/delta) `diff和分页查看git差异` 但是搜索的历史有bug丢数据，配置后忘了这回事还找了半天的less配置问题。
 
 ************************
 
@@ -706,6 +707,12 @@ B 中有 http.js； D 中有 http.js 和 main.js； E’中什么都没有。
 根据三向合并，B、D 中都有 http.js 且没有变更，E‘删除了 http.js(revert会将所有内容操作取反)，所以合并结果就是没有 http.js，没有冲突，然后 http.js 最终被删除了。  
 **问题出现了，怎么处理呢？** 其实也很简单，revert掉之前的revert，即 revert E' 节点得到 E''，再将 D 和 E''合并 完成dev合并到master。
 
+### 合并冲突
+> 最容易出丢代码问题的情况
+
+Git目前的设计是当两个功能分支合并时，对代码的取舍（），或者编辑和删除，都不会记录在历史中  
+不管是 git show commitId ， 还是 git log --stat 都是看不到这次合并的修改情况，只能通过 git log 查看 这个合并是从哪两个commitId 合并而来的  
+然后拿合并id去分别diff两个原始合并id，查看差异，或者是基于两个原始合并id重新走一次合并操作得到正确的分支，废弃这次合并的分支。  
 
 ### 分支问题排查
 
