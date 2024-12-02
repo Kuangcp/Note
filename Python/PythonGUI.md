@@ -60,3 +60,9 @@ categories:
 
 ## NiceGUI
 [Official](https://nicegui.io/)
+
+
+## CLI
+Command-line interface 
+
+> [Textualize/rich: Rich is a Python library for rich text and beautiful formatting in the terminal.](https://github.com/Textualize/rich)  

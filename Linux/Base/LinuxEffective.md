@@ -64,7 +64,6 @@ categories:
 
 ## Terminal
 
-> [ttyd](https://github.com/tsl0922/ttyd)  
 
 ************************
 
@@ -130,6 +129,15 @@ Manjaro Xfce 使用 sixel： mlterm 或者 konsole
 
 > 终端工具
 - [terminalizer](https://github.com/faressoft/terminalizer)`录制终端`
+- [Goph](https://github.com/Gogh-Co/Gogh)`切换配色方案`  
+- [Sampler](https://github.com/sqshq/sampler)`终端可视化监控面板`  
+- [charmbracelet/vhs: Your CLI home video recorder 📼](https://github.com/charmbracelet/vhs)  
+> [wtfutil/wtf: The personal information dashboard for your terminal](https://github.com/wtfutil/wtf)  
+
+> Web页面提供远程服务器的终端能力
+
+> [ttyd](https://github.com/tsl0922/ttyd)  
+> [sshx](https://github.com/ekzhang/sshx)  
 
 ************************
 

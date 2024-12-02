@@ -600,6 +600,7 @@ function FindProxyForURL(url, host) {
 ## 抓包 代理工具 
 > [Alternatives to Charles for Linux](https://alternativeto.net/software/charles/?platform=linux)
 - [whistle](https://github.com/avwo/whistle) `nodejs 平台的抓包工具`
+> [hengyoush/kyanos: Visualize the time packets spend in the kernel, watch & analyze in command line.](https://github.com/hengyoush/kyanos)  
 
 ### Clash
 [Github](https://github.com/Dreamacro/clash) | [Fork copy](https://github.com/Ieooo/clash)

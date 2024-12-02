@@ -34,6 +34,8 @@ categories:
 > [Byobu](https://github.com/dustinkirkland/byobu)`window manager and terminal multiplexer.`  
 
 > [libtmux](https://github.com/tmux-python/libtmux)`Python lib操作Tmux动作`
+> [tmuxp](https://github.com/tmux-python/tmuxp)`声明式会话管理`  
+
 ************************
 # 基本操作
 
