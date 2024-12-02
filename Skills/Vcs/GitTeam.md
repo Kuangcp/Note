@@ -22,15 +22,14 @@ categories:
 - 2. [GUI](#gui)
     - 2.1. [git-cola](#git-cola)
     - 2.2. [Gitnuro](#gitnuro)
-    - 2.3. [GitBlade](#gitblade)
-    - 2.4. [gitg](#gitg)
-    - 2.5. [tig](#tig)
-    - 2.6. [Guitar](#guitar)
-    - 2.7. [Gittyup](#gittyup)
-    - 2.8. [SourceTree](#sourcetree)
+    - 2.3. [gitg](#gitg)
+    - 2.4. [tig](#tig)
+    - 2.5. [Guitar](#guitar)
+    - 2.6. [Gittyup](#gittyup)
+    - 2.7. [SourceTree](#sourcetree)
 - 3. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
 
-💠 2024-11-29 15:27:42
+💠 2024-12-02 15:31:53
 ****************************************
 # 使用Git进行团队协作
 
@@ -210,9 +209,13 @@ commit message 包含三个部分，header, body和footer，其中header必须�
 > [client on linux ](https://unix.stackexchange.com/questions/144100/is-there-a-usable-gui-front-end-to-git-on-linux)
 
 giggle
+qgit
+
+`付费`  
+> [GitKraken](https://github.com/gitkraken)  
+> GitBlade 
 
 ## git-cola
-
 > [Github: repo](https://github.com/git-cola/git-cola) `轻量, 简洁, 跨平台`
 
 从源码安装是最快最简单的, 而且能安装到最新的
@@ -221,37 +224,25 @@ giggle
 2. sudo make prefix=/usr install
 
 > Tips
-
 - [X] 无法输入中文问题： 需要安装 fcitx-qt5 模块
 
 ## Gitnuro
-
 > [Github: Gitnuro](https://github.com/JetpackDuba/Gitnuro) `Java17 + Compose`
 
-## GitBlade
-
-- 功能强大 付费软件 Sublime作者所开发
-
 ## gitg
-
 > [Official](https://wiki.gnome.org/Apps/Gitg)
 
 ## tig
-
 > [Github](https://github.com/jonas/tig)
 
 ## Guitar
-
 > [Github](https://github.com/soramimi/Guitar)
 
 ## Gittyup
-
-> [Gittyup](https://github.com/Murmele/Gittyup)
-
-> [Github](https://github.com/gitahead/gitahead) | [Official Site](https://gitahead.com)
+> [Gittyup](https://github.com/Murmele/Gittyup)  
+> [gitahead/gitahead: Understand your Git history!](https://github.com/gitahead/gitahead)  
 
 ## SourceTree
-
 > [Official site](https://sourcetreeapp.com) 仅支持 Windows 和 Mac
 
 ************************
