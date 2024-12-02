@@ -218,12 +218,20 @@ categories:
 
 > 通常Linux平台的终端模拟器新建tab时都是新建 pty， 但是Mac平台上则是新建tty
 
-> [ttyd](https://github.com/tsl0922/ttyd)  
 > [ibraheemdev/modern-unix](https://github.com/ibraheemdev/modern-unix)`现代工具合集`  
 > [cli · GitHub Topics](https://github.com/topics/cli)`Github 终端工具合集`  
 > [Terminals Are Sexy](https://github.com/k4m4/terminals-are-sexy)  
 
 - [terminalizer](https://github.com/faressoft/terminalizer)`录制终端`
+- [Goph](https://github.com/Gogh-Co/Gogh)`切换配色方案`  
+- [Sampler](https://github.com/sqshq/sampler)`终端可视化监控面板`  
+- [charmbracelet/vhs: Your CLI home video recorder 📼](https://github.com/charmbracelet/vhs)  
+- [wtfutil/wtf: The personal information dashboard for your terminal](https://github.com/wtfutil/wtf)  
+
+> Web页面提供远程服务器的终端能力
+
+- [ttyd](https://github.com/tsl0922/ttyd)  
+- [sshx](https://github.com/ekzhang/sshx)  
 
 ### Terminal 对比
 
