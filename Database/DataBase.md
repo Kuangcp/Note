@@ -2,8 +2,6 @@
 title: 数据库基础
 date: 2018-12-16 17:25:06
 tags: 
-    - 数据库
-    - 工具使用经验
 categories: 
     - 数据库
 ---
@@ -14,44 +12,36 @@ categories:
     - 1.1. [事务](#事务)
         - 1.1.1. [事务的并发问题](#事务的并发问题)
     - 1.2. [数据库并发控制](#数据库并发控制)
-    - 1.3. [SQL 解析&审计](#sql-解析&审计)
+    - 1.3. [SQL 解析和审计](#sql-解析和审计)
         - 1.3.1. [Slow SQL](#slow-sql)
-- 2. [关系型和非关系型](#关系型和非关系型)
-- 3. [关系型数据库](#关系型数据库)
-    - 3.1. [Mysql](#mysql)
-    - 3.2. [PolorDB](#polordb)
-    - 3.3. [Oracle](#oracle)
-    - 3.4. [PostgreSQL](#postgresql)
-- 4. [非关系型数据库](#非关系型数据库)
-    - 4.1. [Redis](#redis)
-    - 4.2. [RocksDB](#rocksdb)
-    - 4.3. [LevelDB](#leveldb)
-    - 4.4. [MangoDB](#mangodb)
-    - 4.5. [GemFire](#gemfire)
-- 5. [内置型数据库](#内置型数据库)
-    - 5.1. [SQLite](#sqlite)
-    - 5.2. [duckdb](#duckdb)
-- 6. [关系型数据库设计](#关系型数据库设计)
-    - 6.1. [范式](#范式)
-        - 6.1.1. [1NF](#1nf)
-        - 6.1.2. [2NF](#2nf)
-        - 6.1.3. [3NF](#3nf)
-        - 6.1.4. [BCNF](#bcnf)
-        - 6.1.5. [4NF](#4nf)
-    - 6.2. [基本表的设计](#基本表的设计)
-        - 6.2.1. [关于主键的设计](#关于主键的设计)
-    - 6.3. [视图的设计](#视图的设计)
-- 7. [大数据](#大数据)
-    - 7.1. [Greenplum](#greenplum)
-    - 7.2. [Clickhouse](#clickhouse)
-    - 7.3. [TiDB](#tidb)
-    - 7.4. [Ignite](#ignite)
-- 8. [向量数据库](#向量数据库)
-- 9. [图数据库](#图数据库)
-- 10. [数据库中间件](#数据库中间件)
-- 11. [图形化工具](#图形化工具)
+- 2. [关系型数据库设计](#关系型数据库设计)
+    - 2.1. [范式](#范式)
+        - 2.1.1. [1NF](#1nf)
+        - 2.1.2. [2NF](#2nf)
+        - 2.1.3. [3NF](#3nf)
+        - 2.1.4. [BCNF](#bcnf)
+        - 2.1.5. [4NF](#4nf)
+    - 2.2. [基本表的设计](#基本表的设计)
+        - 2.2.1. [关于主键的设计](#关于主键的设计)
+    - 2.3. [视图的设计](#视图的设计)
+- 3. [数据库分类](#数据库分类)
+    - 3.1. [关系型数据库](#关系型数据库)
+    - 3.2. [非关系型数据库](#非关系型数据库)
+    - 3.3. [键值对数据库](#键值对数据库)
+        - 3.3.1. [Redis](#redis)
+        - 3.3.2. [RocksDB](#rocksdb)
+        - 3.3.3. [LevelDB](#leveldb)
+    - 3.4. [向量数据库](#向量数据库)
+    - 3.5. [图数据库](#图数据库)
+    - 3.6. [时序数据库](#时序数据库)
+- 4. [嵌入型数据库](#嵌入型数据库)
+    - 4.1. [SQLite](#sqlite)
+    - 4.2. [duckdb](#duckdb)
+- 5. [大数据](#大数据)
+- 6. [数据库中间件](#数据库中间件)
+- 7. [图形化工具](#图形化工具)
 
-💠 2024-10-13 18:30:08
+💠 2024-11-27 18:01:03
 ****************************************
 # 数据库
 > [码农翻身:爱炫耀的数据库老头儿](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514001&idx=1&sn=17b72c3e69db6c4277e3045c699b7b6b&chksm=80d67c52b7a1f5446020826841869221873f4578524181384592839d19c4810dc68807117e13&scene=21#wechat_redirect) `事务,undo日志`
@@ -91,7 +81,7 @@ categories:
 
 MySQL: MVCC
 
-## SQL 解析&审计
+## SQL 解析和审计
 - [SQL解析在美团的应用](https://tech.meituan.com/2018/05/20/sql-parser-used-in-mtdp.html)
 - [美团点评SQL优化工具SQLAdvisor](https://github.com/Meituan-Dianping/SQLAdvisor)
     - [Docker 版本](https://github.com/maxiaolin3366/SQLAdvisor-web)
@@ -102,88 +92,6 @@ MySQL: MVCC
 > [Getting Help With A Slow Query](https://www.brentozar.com/archive/2009/03/getting-help-with-a-slow-query/)
 
 > [基于代价的慢查询优化建议](https://tech.meituan.com/2022/04/21/slow-query-optimized-advice-driven-by-cost-model.html)
-
-************************
-
-# 关系型和非关系型
-> [为什么说SQL正在击败NoSQL，这对数据的未来意味着什么？](http://www.infoq.com/cn/news/2017/10/SQL-NoSQL-mean-what?utm_source=news_about_rdbms&utm_medium=link&utm_campaign=rdbms)
-
-************************
-
-# 关系型数据库
-> 代表性: Oracle, MySQL, PostgreSQL, SQL Server
-
-> [List of Relational Database Management Systems (RDBMSs)](https://database.guide/list-of-relational-database-management-systems-rdbms/)  
-
-> [learndb-py](https://github.com/spandanb/learndb-py)
-
-## Mysql
-> [MySQL](/Database/MySQL.md)  
-
-## PolorDB
-> [Doc](https://help.aliyun.com/product/58609.html)
-
-## Oracle
-> [Official Site](https://www.oracle.com/database/)  
-
-## PostgreSQL
-> [Official Site](https://www.postgresql.org/)  
-
-************************
-
-# 非关系型数据库
-> key-value 数据库: redis memcached   
-> 文档数据库: MongoDB  
-> 图数据库: Neo4j tugraph-db JanusGraph PG扩展  
-> 时序数据库: InfluxDB TSDB  
-
-- [sssdb](https://github.com/ideawu/ssdb) `键值对数据库`
-
-## Redis
-> [Redis](/Database/Redis.md)数据类型丰富，单线程纯内存高性能， 且久经考验很稳定
-
-- [Github Tendis](https://github.com/Tencent/Tendis)`兼容Redis访问协议，腾讯开源的存储版，已不维护，商业还有缓存版和混合版`
-    - [ Redis vs Tendis：冷热混合存储版架构揭秘 ](https://mp.weixin.qq.com/s/MeYkfOIdnU6LYlsGb24KjQ)  
-- [Dragonfly](https://github.com/dragonflydb/dragonfly) 兼容Redis和Memcached的 API,高吞吐量
-    - 无共享式架构和VLL的选择，不使用互斥锁或自旋锁的情况下组合原子的多键操作
-    - docker run --network=host --ulimit memlock=-1 docker.dragonflydb.io/dragonflydb/dragonfly
-    - 虽然宣称更高吞吐量，但是拿[实际应用场景](https://github.com/Kuangcp/GoBase/tree/master/toolbox/countzh)做测试对比发现Redis比Dragonfly消耗资源少且更快
-        - 场景为统计字符频率，只高频执行 ZIncrBy 命令（累计执行了337849次，Redis7.0.5 稳定耗时13s 单核30%  Dragonfly 6.2.11稳定耗时19s 等效于单核60%CPU）
-- [KeyDB](https://github.com/Snapchat/KeyDB) Redis 的一个高性能分支，专注于多线程、内存效率和高吞吐量
-
-
-## RocksDB
-> [RocksDB](https://github.com/facebook/rocksdb)`FaceBook开源`
-
-## LevelDB
-> [Github](https://github.com/google/leveldb)  
-
-> [LedisDB](https://github.com/ledisdb/ledisdb) 基于LevelDB构建Redis协议的数据库实例
-
-## MangoDB
-> [MongoDB](/Database/MongoDB.md) 文档性数据库, 混合类型: 关系型非关系型
-
-## GemFire
-> 分布式内存数据库 12306 采用的解决方案
-
-************************
-# 内置型数据库
-> [Github: embedded-database](https://github.com/topics/embedded-database)
-
-## SQLite
-> [Official Site](https://sqlite.org/index.html)  
-
-1. 客户端 sqlitebrowser 
-
-常见后缀 
-- .db 数据文件 
-- .db-wal 是写时日志[WAL](https://www.sqlite.org/wal.html)
-- .db-shm 共享内存文件，只包含临时数据。
-
-## duckdb
-> [duckdb](https://duckdb.org/)  in-process SQL OLAP Database Management System
-
-可基于CSV，JSON直接建表做数据分析 [CSV Import](https://duckdb.org/docs/data/csv/overview)
 
 ************************
 
@@ -230,32 +138,115 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 
 ## 视图的设计
 
+************************
+
+# 数据库分类
+关系型，KV型，文档型，图数据库，多模数据库（混合各数据格式）
+
+关系型 vs 非关系型
+
+> [为什么说SQL正在击败NoSQL，这对数据的未来意味着什么？](http://www.infoq.com/cn/news/2017/10/SQL-NoSQL-mean-what?utm_source=news_about_rdbms&utm_medium=link&utm_campaign=rdbms)
 
 ************************
 
-# 大数据
-## Greenplum
-> [Official Site](https://cn.greenplum.org)  
+## 关系型数据库
+> 代表性: Oracle, MySQL, PostgreSQL, SQL Server
 
-## Clickhouse
-> [Clickhouse](/Database/OLAP/Clickhouse.md)
+> [List of Relational Database Management Systems (RDBMSs)](https://database.guide/list-of-relational-database-management-systems-rdbms/)  
 
-## TiDB
-> [Official Doc](https://docs.pingcap.com/zh/)  
+> [learndb-py](https://github.com/spandanb/learndb-py)  
 
-## Ignite
-> [Github](https://github.com/apache/ignite)
+> [MySQL](/Database/MySQL.md)  
+> [PolorDB](https://help.aliyun.com/product/58609.html)  
+> [Oracle](https://www.oracle.com/database/)  
+> [PostgreSQL](https://www.postgresql.org/)  
 
 ************************
-# 向量数据库
+
+## 非关系型数据库
+> key-value 数据库: redis   
+> 文档数据库: MongoDB  
+> 图数据库: Neo4j  
+> 时序数据库: InfluxDB  
+
+GemFire 分布式内存数据库 12306 采用的解决方案
+
+[MongoDB](/Database/MongoDB.md) 文档性数据库, 混合类型: 关系型非关系型
+
+************************
+
+## 键值对数据库
+- [sssdb](https://github.com/ideawu/ssdb) 
+- [valkey-io/valkey](https://github.com/valkey-io/valkey)Linux基金会开源分布式kv数据库  
+
+### Redis
+> [Redis](/Database/Redis.md) 数据类型丰富，单线程纯内存高性能，且广泛使用，久经考验很稳定，但是商业化逐步开始恶心企业  
+> [RedisGraph/RedisGraph](https://github.com/RedisGraph/RedisGraph)EOL  
+
+************************
+
+衍生项目
+
+- [Github Tendis](https://github.com/Tencent/Tendis)`兼容Redis访问协议，腾讯开源的存储版，已不维护，商业还有缓存版和混合版`
+    - [ Redis vs Tendis：冷热混合存储版架构揭秘 ](https://mp.weixin.qq.com/s/MeYkfOIdnU6LYlsGb24KjQ)  
+- [Dragonfly](https://github.com/dragonflydb/dragonfly) 兼容Redis和Memcached的 API,高吞吐量
+    - 无共享式架构和VLL的选择，不使用互斥锁或自旋锁的情况下组合原子的多键操作
+    - docker run --network=host --ulimit memlock=-1 docker.dragonflydb.io/dragonflydb/dragonfly
+    - 虽然宣称更高吞吐量，但是拿[实际应用场景](https://github.com/Kuangcp/GoBase/tree/master/toolbox/countzh)做测试对比发现Redis比Dragonfly消耗资源少且更快
+        - 场景为统计字符频率，只高频执行 ZIncrBy 命令（累计执行了337849次，Redis7.0.5 稳定耗时13s 单核30%  Dragonfly 6.2.11稳定耗时19s 等效于单核60%CPU）
+- [KeyDB](https://github.com/Snapchat/KeyDB) Redis 的一个高性能分支，专注于多线程、内存效率和高吞吐量
+
+### RocksDB
+> [RocksDB](https://github.com/facebook/rocksdb)`FaceBook开源`
+
+### LevelDB
+> [Github](https://github.com/google/leveldb)  
+
+> [LedisDB](https://github.com/ledisdb/ledisdb) 基于LevelDB构建Redis协议的数据库实例
+
+## 向量数据库
 - PostgreSQL： 支持向量插件
 - [milvus](https://milvus.io/)
 - [chroma](https://github.com/chroma-core/chroma)
 
 > [向量数据库｜一文全面了解向量数据库的基本概念、原理、算法、选型](https://cloud.tencent.com/developer/article/2312534)
 
-# 图数据库
+## 图数据库
 > [Note: 图数据库](/Database/Graph.md)  
+
+## 时序数据库
+> [DB-Engines Ranking - popularity ranking of time Series DBMS](https://db-engines.com/en/ranking/time+series+dbms)  
+
+************************
+# 嵌入型数据库
+> [Github: embedded-database](https://github.com/topics/embedded-database)
+
+## SQLite
+> [Official Site](https://sqlite.org/index.html)  
+
+1. 客户端 [sqlitebrowser](https://sqlitebrowser.org/)  
+
+常见后缀 
+- .db 数据文件 
+- .db-wal 是写时日志[WAL](https://www.sqlite.org/wal.html)
+- .db-shm 共享内存文件，只包含临时数据。
+
+## duckdb
+> [duckdb](https://duckdb.org/)  in-process SQL OLAP Database Management System
+
+可基于CSV，JSON,HDFS文件直接建表做数据分析 [CSV Import](https://duckdb.org/docs/data/csv/overview)
+支持 webassembly 可在浏览器直接运行
+
+************************
+
+# 大数据
+Hive Hbase Impala Presto Doris Kylin 
+
+[Clickhouse](/Database/OLAP/Clickhouse.md)  
+
+[Greenplum](https://cn.greenplum.org)  
+[TiDB](https://docs.pingcap.com/zh/)  
+[Ignite](https://github.com/apache/ignite)  
 
 ***********************
 

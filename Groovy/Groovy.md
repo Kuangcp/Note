@@ -7,44 +7,39 @@ categories:
     - Groovy
 ---
 
-**目录 start**
+💠
 
-1. [Groovy](#groovy)
-    1. [书籍](#书籍)
-    1. [语言特性](#语言特性)
-    1. [安装配置](#安装配置)
-        1. [在IDEA中](#在idea中)
-        1. [Maven引入Groovy](#maven引入groovy)
-        1. [Docker](#docker)
-    1. [Groovy基础](#groovy基础)
-        1. [Groovy特性](#groovy特性)
-            1. [默认导入](#默认导入)
-            1. [隐式return](#隐式return)
-            1. [默认生成setter getter](#默认生成setter-getter)
-            1. [数字处理](#数字处理)
-            1. [变量，动态和静态类型，作用域](#变量动态和静态类型作用域)
-            1. [列表和映射语法](#列表和映射语法)
-            1. [动态调用函数](#动态调用函数)
-        1. [函数](#函数)
-        1. [闭包](#闭包)
-        1. [测试](#测试)
-        1. [调用系统命令行](#调用系统命令行)
-    1. [强大的注解](#强大的注解)
-    1. [与Java的差异](#与java的差异)
-        1. [Java不具备的Groovy特性](#java不具备的groovy特性)
-    1. [Groovy和Java的交互](#groovy和java的交互)
-        1. [Maven中引入Groovy](#maven中引入groovy)
-        1. [Groovy调用Java](#groovy调用java)
-        1. [Java调用Groovy](#java调用groovy)
-        1. [Groovy和Spring](#groovy和spring)
-    1. [坑](#坑)
-        1. [默认return](#默认return)
-    1. [Grails](#grails)
+- 1. [Groovy](#groovy)
+    - 1.1. [书籍](#书籍)
+    - 1.2. [语言特性](#语言特性)
+    - 1.3. [安装配置](#安装配置)
+- 2. [Groovy基础](#groovy基础)
+    - 2.1. [Groovy特性](#groovy特性)
+        - 2.1.1. [默认导入](#默认导入)
+        - 2.1.2. [隐式return](#隐式return)
+        - 2.1.3. [默认生成setter getter](#默认生成setter-getter)
+        - 2.1.4. [数字处理](#数字处理)
+        - 2.1.5. [变量](#变量)
+        - 2.1.6. [列表和映射语法](#列表和映射语法)
+        - 2.1.7. [动态调用函数](#动态调用函数)
+    - 2.2. [函数](#函数)
+    - 2.3. [闭包](#闭包)
+    - 2.4. [测试](#测试)
+    - 2.5. [调用系统命令行](#调用系统命令行)
+    - 2.6. [强大的注解](#强大的注解)
+- 3. [与Java的差异](#与java的差异)
+    - 3.1. [Java不具备的Groovy特性](#java不具备的groovy特性)
+- 4. [Groovy和Java的交互](#groovy和java的交互)
+    - 4.1. [Maven中引入Groovy](#maven中引入groovy)
+    - 4.2. [Groovy调用Java](#groovy调用java)
+    - 4.3. [Java调用Groovy](#java调用groovy)
+    - 4.4. [Groovy和Spring](#groovy和spring)
+- 5. [Grails](#grails)
 
-**目录 end**|_2020-12-08 19:23_|
+💠 2024-11-22 14:50:45
 ****************************************
 # Groovy
-> [Groovy 官网](http://www.groovy-lang.org/) | 
+> [Groovy 官网](http://www.groovy-lang.org/) |  [apache/groovy](https://github.com/apache/groovy)  
 
 > [实战Groovy系列](https://www.ibm.com/developerworks/cn/java/j-pg/)`有体系的知识`
 > [精通Groovy](https://www.ibm.com/developerworks/cn/education/java/j-groovy/j-groovy.html)
@@ -54,7 +49,7 @@ categories:
 > [infoQ 上Groovy相关](http://www.infoq.com/cn/groovy)
 
 ## 书籍
-> [Groovy in Action](http://ishare.iask.sina.com.cn/f/12475871.html) `在线阅读英文原版`
+> [Groovy in Action, Second Edition](https://www.manning.com/books/groovy-in-action-second-edition)  
 
 ## 语言特性
 - Groovy 具有的Java所没有的语言特性 ：
@@ -67,29 +62,26 @@ categories:
     - 一些重活还是调用Java类库好些，毕竟是互通互用的，调用groovyserv类库能提高性能
 
 ## 安装配置
-- [安装sdkman](./Skills/AppManual.md#使用sdkman)
-    - 然后 `sdk install groovy`
-    - 新建文件 `println "Hello World!"` 然后 `groovy 文件`
-        - 或者`groovy -e "println 'Hello World!'"`
+[安装sdkman](/Skills/Application/AppManual.md#sdkman)  
 
-### 在IDEA中
-> 因为构建工具Gradle中就已经包含了Groovy的库,所以最好就是只配置好一个Gradle, 然后配置Groovy时选择Gradle的目录即可
+`sdk install groovy`
+- 新建文件 `println "Hello World!"` 然后 `groovy 文件`
+- 或者`groovy -e "println 'Hello World!'"`
 
-### Maven引入Groovy
-- [参考博客](http://www.cnblogs.com/xiziyin/archive/2010/03/29/1699860.html)
-
-### Docker
-> [Docker官方文档](https://docs.docker.com/samples/library/groovy/)
+[groovy - Official Image | Docker Hub](https://hub.docker.com/_/groovy/)  
 
 *************************
-## Groovy基础
+# Groovy基础
 > 作为一个脚本语言，和Python Ruby Smalltalk语法相似
 
 - groovyc groovy 类似于 javac java
 
-### Groovy特性
+## Groovy特性
 
-#### 默认导入
+因为是动态语言, 所以当Java或Groovy类更改了一些接口, 属性名, 调用方那里不会报错, 直到运行才报错。  
+而且 eclipse idea 都不报错, 只是会把错误的属性和调用变成带有下划线的灰色...  
+
+### 默认导入
 `这一些导入是默认隐含在Groovy代码中`
 ```groovy
     import groovy.lang.*
@@ -103,18 +95,18 @@ categories:
 ```
 - 添加额外的JAR可以使用`@Grab`注解或者和Java一样加入到ClassPath中去
 
-#### 隐式return
-- 如果方法是具有返回值的, Groovy会在`代码块`的行末缺省return null, 
-    - 如果末行有一个表达式, 并有返回值, 就会return该值, 略坑
+### 隐式return
+如果方法是具有返回值的, Groovy会在`代码块`的行末缺省 return null IDE也不会做检查和提示  
+如果末行有一个表达式, 并有返回值, 函数就会return该值
 
-#### 默认生成setter getter
+### 默认生成setter getter
 > 类当中的属性, 只要不是使用private修饰, 就能自动生成getter setter, 并且直接`.引用`属性, 相当于调用了对应的get set
 
-#### 数字处理
+### 数字处理
 - Groovy默认浮点数使用BigDecimal，Java中BigDecimal构造器入参是字符串，Groovy是数值，底层转换了一下，看起来更自然
 - 因为是脚本语言，可以在控制台直接运行。Groovy对BEDMAS是支持的 （括号，次方，除，乘，加，减）
 
-#### 变量，动态和静态类型，作用域
+### 变量
 `变量`
 - 如果要让Groovy和Java互操作，Groovy也能使用静态类型 `def static `，因为他简化了类型重载和调度机制
 - 注意 普通类状态：在类中不能出现没有类型的变量 至少要有def这个无类型，其他的和Java一致 `def private static name = "90"`
@@ -127,13 +119,13 @@ categories:
 - 本地域：变量的作用域局限于声明他们的代码块。就是在顶层声明了类型或者在代码块里
     - [变量作用域学习代码](https://github.com/kuangcp/JavaBase/blob/master/src/main/groovy/com/learn/base/VariableScope.groovy)
 
-#### 列表和映射语法
+### 列表和映射语法
 - Groovy将列表和映射结构当做语言中的一等类型，列表和映射在底层是`ArrayList` 和 `LinkedHashMap`实现的
     - 列表：`lists = ['2', 2, new Date()]` 其实这个和Python的语法差不多，同样的支持负索引
     - 映射：`maps = [Java:"2", A:2]` 声明Maps
     - [列表和映射的学习代码](https://github.com/kuangcp/JavaBase/blob/master/src/main/groovy/com/learn/base/LearnListAndMap.groovy)
 
-#### 动态调用函数
+### 动态调用函数
 
 ```groovy
     // 当前类, 可以这么用
@@ -170,10 +162,10 @@ categories:
     }
 ```
 
-### 函数
+## 函数
 > [参考: Groovy进阶之函数、闭包和类](https://www.tuicool.com/articles/iEBJnqF)
 
-### 闭包
+## 闭包
 ```groovy
 // 简单示例
     def plus = { x, y ->
@@ -182,11 +174,11 @@ categories:
     plus(2, 3)
 ```
 
-### 测试
+## 测试
 [参考: 用 Groovy 更迅速地对 Java 代码进行单元测试](https://www.ibm.com/developerworks/cn/java/j-pg11094/)
 
 *************************
-### 调用系统命令行
+## 调用系统命令行
 > [Groovy 执行"cp *"shell 命令 ](http://www.guanggua.com/question/183352-groovy-execute-cp-shell-command.html)
 
 1. 字符串.execute()
@@ -207,7 +199,7 @@ _日志相关_ 只需要引入对应的依赖, 就和lombok一样的使用
     @Slf4j
 ```
 ************
-## 与Java的差异
+# 与Java的差异
 
 - 简化输出语句：`println()` `print()` `printf()`
 - Groovy的省略语法:
@@ -227,15 +219,13 @@ _日志相关_ 只需要引入对应的依赖, 就和lombok一样的使用
 - Groovy不区分已检查异常和未检查异常。Groovy会忽略方法签名中的所有throws
 
 `Groovy中的相等`
-- Groovy把 == 当做equals方法，检查真实对象是否相等需要使用Groovy的内置函数 is。但是仍然可以使用 == 来判断 null
-    - 两种方式对于基本类型是一样的， == 用于对象时就是比较内存了，equals是比较值
+- Groovy把 == 当做equals方法，检查对象是否内存相等需要使用Groovy的内置函数 is。但是仍然可以使用 == 来判断 null
+    - 两种方式对于基本类型是一样的
 
 `内部类`
 - Groovy支持内部类，但大多数情况下我们应该使用函数字面值（下面有更为详细的学习）替代它。
 
-> [示例代码](https://github.com/kuangcp/JavaBase/blob/master/src/main/groovy/com/learn/base/DiverseFromJava.groovy)
-
-### Java不具备的Groovy特性
+## Java不具备的Groovy特性
 - GroovyBean，更简单的bean
 - 用操作符`?.`实现null对象的安全访问
 - 猫王操作符(Elvis operator)，更短的if/else结构
@@ -296,11 +286,12 @@ class Person{
 > [示例代码](https://github.com/kuangcp/JavaBase/blob/master/src/main/groovy/com/learn/base/ModernGroovy.groovy)
 
 ***********************
-## Groovy和Java的交互
-### Maven中引入Groovy
-> [参考文档 ](https://groovy.github.io/gmaven/groovy-maven-plugin/execute.html)
+# Groovy和Java的交互
+## Maven中引入Groovy
+> [参考文档 ](https://groovy.github.io/gmaven/groovy-maven-plugin/execute.html)  
+> [参考博客](http://www.cnblogs.com/xiziyin/archive/2010/03/29/1699860.html)  
 
-- 此方法不能打包, 只是在idea中能成功运行
+此方法不能打包, 只是在idea中能成功运行
 ```xml
 <!-- 添加插件-->
 <plugin>
@@ -354,11 +345,11 @@ class Person{
 ```
 > 这样的配置就能 `mvn clean package`
 
-### Groovy调用Java
+## Groovy调用Java
 - 只要将JAR放入classpath中，只要java能调用到，groovy也能调用到，也就是说直接用，无需特别配置
 - 也可以使用@Grab注解，来加载JAR
 
-### Java调用Groovy
+## Java调用Groovy
 > [参考博客](http://www.tuicool.com/articles/i6raAv)
 > [参考 在 Java 应用程序中加一些 Groovy 进来](https://www.ibm.com/developerworks/cn/java/j-pg05245/)
 
@@ -372,18 +363,11 @@ class Person{
 
 > [示例代码](https://github.com/kuangcp/JavaBase/blob/master/src/main/java/com/classfile/JavaUseGroovy.java)
 
-### Groovy和Spring
+## Groovy和Spring
 > [参考: Groovy 使 Spring 更出色，第 1 部分](https://www.ibm.com/developerworks/cn/java/j-groovierspring1.html)
 
-**************************************
-## 坑
-> 因为是动态的, 所以, 当Java或Groovy类更改了一些接口, 属性名, 调用方那里不会报错, 直到运行才报错, 而且 eclipse idea 都不报错, 只是会把错误的属性和调用变成带有下划线的灰色...
-
-### 默认return
-> 只要在方法最后一行放入表达式, 就会自动return, 这就导致了Groovy不会对方法返回值进行检查, 逻辑复杂时如果少了一个return, 不会报编译错误, 方法直接返回null.  
-
 ***********************
-## Grails
+# Grails
 - [入门博客](http://www.jianshu.com/p/32c9b45a788f)
 > [入门视频](http://www.icoolxue.com/album/show/341)
 

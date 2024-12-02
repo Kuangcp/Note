@@ -45,7 +45,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [常用代码片段](#常用代码片段)
 
-💠 2024-09-20 11:10:09
+💠 2024-11-14 23:33:08
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -63,19 +63,19 @@ categories:
 ## shell类别
 > 切换默认shell `chsh -s /bin/zsh`
 
+> [参考: 常见shell类型](http://www.cnblogs.com/happycxz/p/7840077.html)  
+
 - sh
-    - 大多Linux都支持的shell类别
+    - 几乎所有Linux都支持的shell类别
 - bash
-- zsh
-  - 高扩展性 [配置oh my zsh](https://segmentfault.com/a/1190000004695131)
+    - 主流发行版都支持的shell
+- [Zsh](/Script/Zsh.md)
 - dash
     - 它主要是为了执行脚本而出现，而不是交互，它速度更快，但功能相比bash要少很多，语法严格遵守POSIX标准
     - 速度确实要快,输入上的交互确实交互不了
 - fish
-    - 交互式的, 补全功能比较好 
-
-> [参考: 常见shell类型](http://www.cnblogs.com/happycxz/p/7840077.html)  
-> [Github: zsh guide](https://github.com/goreliu/zshguide)  
+    - 交互式的,补全功能比较好,适合不懂太多的新手会提示大部分命令接下来的参数以及历史，不适合已经做了大量默认配置的用户（这个时候的交互式提示反而影响操作）。
+    - Garuda发行版的默认Shell 
 
 *******************
 

@@ -21,7 +21,7 @@ categories:
         - 1.3.2. [插件](#插件)
     - 1.4. [Vivaldi](#vivaldi)
 
-💠 2024-10-10 20:43:07
+💠 2024-11-14 21:48:05
 ****************************************
 # 浏览器
 [neko](https://github.com/m1k1o/neko)`runs in docker and uses WebRTC`
@@ -42,7 +42,7 @@ categories:
 > [火狐性能优化贴](https://www.xzcblog.com/post-47.html)  
 > [Firefox uses too much memory or CPU resources - How to fix](https://support.mozilla.org/en-US/kb/firefox-uses-too-much-memory-or-cpu-resources)
 
-> [Floorp](https://github.com/floorp-Projects/floorp/)`FF衍生品，支持工作区，多行tab，单窗口多tab` 但是没有循环tab切换  
+[Floorp](https://github.com/floorp-Projects/floorp/)`FF衍生品，支持工作区，多行tab，单窗口多tab` 但是没有循环tab切换  
 
 ### 开发版本
 > [开发者版本链接](https://www.mozilla.org/zh-CN/firefox/developer/) | [开发工具](https://firefox-dev.tools/)  
@@ -55,27 +55,26 @@ categories:
     - 如果想在开发版以及Nightly上用上该插件, 只需要去 ~/.mozilla/ 下找到正式版的配置文件里的 extension 目录就能找到 cpmanager.xpi 了, 拖入浏览器就可以了
     - 但是这个组件只保证正式版是正常的, 其他版本则要看运气
 
-- `Vimium C - All by Keyboard`
-    - Vim风格操作浏览器日常操作
+- `Vimium C - All by Keyboard` Vim风格操作浏览器日常操作 
+    ```
+    map b Vomnibar.activateTabs
+    unmap T
+    ```
 1. `Dark Reader` 设置网页黑夜模式
 1. `Greasemonkey` Tampermonkey 传说中的油猴, 可以自己写脚本 [wiki](https://wiki.greasespot.net/User_Script_Hosting)
-1. `New Tab Tools` 新建标签页的自定义工具 
 1. `cliget` 能将下载中的任务转化为 curl wget命令 牛
-1. `eolinker` 接口测试工具
 1. `Simple Tab Groups` 懒加载式隔离标签组
 1. `RESTer` rest客户端工具
 1. `Download all Images`下载图片
-1. `octotree` github 目录查看
 1. `Web Developer` 各种Web调试开发工具
 1. `Remove Cookies Button`
 1. `滴答清单` 全平台可使用
-1. `Auto Reload Tab` 定时自动刷新标签页
 1. `ReloadMatic` 定时自动刷新
-1. `轻灵划译` 即刻翻译, 多种平台
+1. `划词翻译` 即刻翻译, 多种平台
 1. `Tab Counter` Tab计数 开发者 WaldiPL
 1. `Elasticvue` Elasticsearch 插件
 1. `HeaderEditor` 修改请求响应的Header和Body
-1. [TechStack](https://github.com/Get-Tech-Stack/TechStack)
+1. [TechStack](https://github.com/Get-Tech-Stack/TechStack) 分析Github仓库所使用的技术栈
 
 ### 配置
 > 大多是通过 about:config 页面配置

@@ -18,7 +18,7 @@ categories:
     - 2.3. [配置Redis](#配置redis)
     - 2.4. [问题以及解决方案](#问题以及解决方案)
 
-💠 2024-01-22 09:40:06
+💠 2024-11-22 15:00:35
 ****************************************
 # 配置Deepin的Java开发环境
 
@@ -33,6 +33,8 @@ categories:
 > [SDK Man 方式安装](/Skills/AppManual.md#sdkman)
 
 ## 配置JDK
+> [jEnv - Manage your Java environment](https://www.jenv.be/)  
+
 ### 解压配置
 - [下载地址](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 - 在文件 `/etc/profile` 中添加

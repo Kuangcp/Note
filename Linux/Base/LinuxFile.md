@@ -59,15 +59,15 @@ categories:
 - 4. [日志](#日志)
     - 4.1. [Systemd](#systemd)
     - 4.2. [应用日志](#应用日志)
-- 5. [文件共享](#文件共享)
+- 5. [DFS](#dfs)
     - 5.1. [Samba](#samba)
         - 5.1.1. [搭建匿名Samba服务器](#搭建匿名samba服务器)
 - 6. [Tips](#tips)
     - 6.1. [善用*shrc文件](#善用shrc文件)
-        - 6.1.1. [善用alias](#善用alias)
-    - 6.2. [desktop文件](#desktop文件)
+    - 6.2. [善用alias](#善用alias)
+    - 6.3. [desktop文件](#desktop文件)
 
-💠 2024-09-14 11:51:16
+💠 2024-11-29 15:27:42
 ****************************************
 
 # IO
@@ -241,6 +241,10 @@ splice
     export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
     export LESS=' -R'
     ```
+
+**环境变量**
+
+存储了less搜索操作的历史 LESSHISTFILE=~/.lesshst
 
 ### tail
 - tail命令用于输入文件中的尾部内容。tail命令默认在屏幕上显示指定文件的末尾10行。 来自: http://man.linuxde.net/tail
@@ -483,7 +487,16 @@ export LANG="zh_CN.UTF-8"
 - -a 所有文件系统
 - -l 只显示本地文件系统
 
-> 改进版
+如果留意到 `/分区` Avail空间明显小于Size减去Used  
+是因为 ext2/3/4 文件系统默认预留了5%的空间给root用户，为了防止普通用户写满磁盘后影响到root用户系统级应用数据落盘，从而引发系统故障  
+所以如果home目录单独分了区，就可以取消改设定，如果只有一个分区 / 就不建议删除保留设置。  
+```sh
+    # 查看块情况
+    sudo tune2fs -l /dev/sda8
+    # 设置保留块比例为0%
+    sudo tune2fs -m 0 /dev/sda8
+```
+
 - duf 现代化 df
 - pydf
 
@@ -531,10 +544,16 @@ export LANG="zh_CN.UTF-8"
 > [处理Apache日志的Bash脚本](http://www.ruanyifeng.com/blog/2012/01/a_bash_script_of_apache_log_analysis.html)
 
 ************************
-# 文件共享
-## Samba 
-> [参考: ](https://www.jianshu.com/p/b0fcf29a857a)  
 
+# DFS
+分布式文件系统（Distributed File System），类似的还有NAS（Network Attached Storage）。
+
+> [happyfish100/fastdfs](https://github.com/happyfish100/fastdfs)  
+
+## Samba 
+服务器消息块（Server Message Block）是一种通用的文件共享协议，通常用于Windows系统。
+
+> [Manjaro使用Samba实现局域网内跨系统文件共享 - 简书](https://www.jianshu.com/p/b0fcf29a857a)  
 
 ### 搭建匿名Samba服务器
 
@@ -584,7 +603,7 @@ export LANG="zh_CN.UTF-8"
 ## 善用*shrc文件
 > 注意加载顺序 /etc/profile -> ~/.*shrc `各种sh的rc文件` bash zsh ash
 
-### 善用alias
+## 善用alias
 
 ```sh
     if [ -f ~/.bash_aliases ]; then
@@ -627,6 +646,5 @@ export LANG="zh_CN.UTF-8"
 	Type = Application #desktop的类型（必选），常见值有“Application”和“Link”
 	Categories = GNOME;Application;Network; #注明在菜单栏中显示的类别（可选）
 ```
-- [示例文件](https://github.com/Kuangcp/Configs/blob/master/Linux/desktop/VSCode.desktop)
-- 如要将快捷方式放在启动菜单内 将 desktop 文件复制到 `/usr/share/applications/` 目录下即可
+- 如要将快捷方式放在启动菜单内 只需将 desktop 文件复制到 `/usr/share/applications/` 目录下
     - 注意：目录不能有空格 等特殊字符

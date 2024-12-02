@@ -5,29 +5,26 @@ tags:
     - Effective
 categories: 
     - Linux
+    - WIKI
 ---
 
 💠
 
 - 1. [高效的Linux](#高效的linux)
-    - 1.1. [Terminal](#terminal)
-        - 1.1.1. [Terminal 对比](#terminal-对比)
-    - 1.2. [效率工具](#效率工具)
-        - 1.2.1. [协作工具](#协作工具)
-        - 1.2.2. [目录跳转](#目录跳转)
-        - 1.2.3. [xdotool](#xdotool)
-        - 1.2.4. [rofi](#rofi)
-    - 1.3. [远程工具](#远程工具)
-    - 1.4. [进程管理](#进程管理)
-    - 1.5. [零散工具集合](#零散工具集合)
-        - 1.5.1. [剪贴板管理](#剪贴板管理)
-    - 1.6. [检测工具](#检测工具)
-        - 1.6.1. [硬盘](#硬盘)
-    - 1.7. [文本处理](#文本处理)
-    - 1.8. [文件操作](#文件操作)
-    - 1.9. [安全工具](#安全工具)
-        - 1.9.1. [gpg](#gpg)
-        - 1.9.2. [JumpServer](#jumpserver)
+    - 1.1. [效率工具](#效率工具)
+        - 1.1.1. [协作工具](#协作工具)
+        - 1.1.2. [目录跳转](#目录跳转)
+        - 1.1.3. [xdotool](#xdotool)
+        - 1.1.4. [rofi](#rofi)
+        - 1.1.5. [远程工具](#远程工具)
+    - 1.2. [零散工具集合](#零散工具集合)
+        - 1.2.1. [剪贴板管理](#剪贴板管理)
+    - 1.3. [硬件检测工具](#硬件检测工具)
+    - 1.4. [文本处理](#文本处理)
+    - 1.5. [文件操作](#文件操作)
+    - 1.6. [安全工具](#安全工具)
+        - 1.6.1. [gpg](#gpg)
+        - 1.6.2. [JumpServer](#jumpserver)
 - 2. [多媒体](#多媒体)
     - 2.1. [ffmpeg](#ffmpeg)
     - 2.2. [图片处理](#图片处理)
@@ -51,101 +48,17 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2024-10-11 15:07:39
+💠 2024-11-23 16:13:43
 ****************************************
 # 高效的Linux
 
-> [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/) `一整套工具`  
 > [Awesome Linux Software](https://github.com/luong-komorebi/Awesome-Linux-Software)  
-
-> [命令行：增强版 ](https://linux.cn/article-10171-1.html)  
-
-> [MAC平台 工具列表](https://github.com/hsdji/tools) `部分Linux可用`
-
-## Terminal
-
-
-************************
-
-- [sixel](https://en.wikipedia.org/wiki/Sixel) `终端中渲染图片` | [libsixel](https://saitoha.github.io/libsixel/) | [Are We Sixel Yet?](https://www.arewesixelyet.com/)
-  - [Why Sixel? ](https://www.reddit.com/r/commandline/comments/zkg75e/why_sixel/)
-
-Manjaro Xfce 使用 sixel： mlterm 或者 konsole
-1. yay libsixel, yay mlterm， mlterm -b '#292B2E' 安装和启动mlterm
-  1. 查看图片 img2sixel xx.jpg `ImageMagick`
-  1. 渲染结果图 [jagger](https://github.com/rs/jaggr) **konsole不支持**
-
-************************
-
-[Terminals Are Sexy](https://github.com/k4m4/terminals-are-sexy)
-
-### Terminal 对比
-
-> 列举出系统可安装终端  
->  
-> 1. Debian: `sudo apt search terminal | grep -E terminal.+amd64`  
-> 2. Arch: `yay terminal`  
-> 3. [Github Topic: terminal-emulator ](https://github.com/topics/terminal-emulator)  
-
-终端可参考功能点： 终端透明化，终端背景图，快捷键设置，终端内颜色自定义，下拉式，标签水平垂直拆分，鼠标键盘交互性，资源占用少
-终极工具 [Tmux](/Linux/Tool/Tmux.md) 可以摆脱终端模拟器的对比和选择，选择最简单省资源的模拟器即可
-
-| 终端                | 优点                                            | 缺点                                                | 备注                                    |
-| :------------------ | :---------------------------------------------- | :-------------------------------------------------- | :-------------------------------------- |
-| `xiki`            | 鼠标和键盘高度交互`<br>` 交互性和复杂度比较高 |                                                     |                                         |
-| `qterminal`       | 设置设计清晰，功能完备                          | 终端内容显示兼容性略有问题 资源消耗中等             |                                         |
-| `xfce4-terminal`  | 配合Xfce启动快                                  | 配置繁琐                                            |                                         |
-| `gnome-terminal`  | 简洁 资源消耗少                                 | 缺 多标签时，标签栏太大,标签页底部有白边 无法透明化 | 鼠标中键无法复制时需安装 `parcellite` |
-| `mate-terminal`   | 标签栏更简洁，其余和 `gnome-terminal` 一致    |                                                     |                                         |
-| `sakura`          | 外观上和前两个几乎一样，标签页可以更简洁        | 配置复杂 繁琐                                       |                                         |
-| `deepin-terminal` | 功能很多，主题很多，功能最为强大                | 字体仅可选择内置不可自定义                          |                                         |
-| `tilda`           | 内嵌于桌面上, 小命令方便                        | 需要查看文件时不方便                                |                                         |
-| `terminology`     | 样式高度自定义                                  |                                                     |                                         |
-
-- tilix
-- vte 
-  - 支持复制终端输出内容为HTML
-- st 不支持中文，unicode字符支持良好
-- black box 
-- Alacritty
-
-> 备注 sakura xfce4-terminal 快捷键配置
-- `~/.config/xfce4/terminal/accels.scm`
-- 配置语法： [doc](http://troubleshooters.com/linux/sakura.htm) | [config shortcut](https://unix.stackexchange.com/questions/102474/configuring-shortcuts-for-sakura)
-- 例如 [修改 Ctrl C V 为复制快捷键](https://bbs.archlinux.org/viewtopic.php?id=260755) `Gtk3起 不支持所谓的鼠标悬浮改快捷键`
-```lua
-  (gtk_accel_path "<Actions>/terminal-window/copy" "<Primary>c")
-  (gtk_accel_path "<Actions>/terminal-window/paste" "<Primary>v")
-```
-
-> 现代终端
-- [wezterm](https://wezfurlong.org/wezterm/index.html)
-- [Warp](https://github.com/warpdotdev/Warp) `Rust+AI`
-- Tabby
-- WindTerm
-- [zellij](https://github.com/zellij-org/zellij)
-- [kitty](https://sw.kovidgoyal.net/kitty/) `GPU渲染`
-- [darktile](https://github.com/liamg/darktile)
-
-> 终端工具
-- [terminalizer](https://github.com/faressoft/terminalizer)`录制终端`
-- [Goph](https://github.com/Gogh-Co/Gogh)`切换配色方案`  
-- [Sampler](https://github.com/sqshq/sampler)`终端可视化监控面板`  
-- [charmbracelet/vhs: Your CLI home video recorder 📼](https://github.com/charmbracelet/vhs)  
-> [wtfutil/wtf: The personal information dashboard for your terminal](https://github.com/wtfutil/wtf)  
-
-> Web页面提供远程服务器的终端能力
-
-> [ttyd](https://github.com/tsl0922/ttyd)  
-> [sshx](https://github.com/ekzhang/sshx)  
-
-************************
 
 ## 效率工具
 
 > 提高工作和开发效率
 
-> `通知提醒`
+`通知提醒`
 > [Desktop notifications](https://wiki.archlinux.org/index.php/Desktop_notifications) | [xfce notify-send ](https://docs.xfce.org/apps/notifyd/preferences)
 > [Desktop Notifications Specification](https://developer.gnome.org/notification-spec/#protocol)
 > [Notification Development Guidelines](https://wiki.ubuntu.com/NotificationDevelopmentGuidelines)
@@ -163,11 +76,11 @@ Manjaro Xfce 使用 sixel： mlterm 或者 konsole
 > PC远程操作安卓
 
 [scrcpy](https://github.com/Genymobile/scrcpy)
-
 - [操作流程](http://blog.lujun9972.win/blog/2019/03/20/%E4%BD%BF%E7%94%A8scrcpy%E6%8E%A7%E5%88%B6%E4%BD%A0%E7%9A%84%E6%89%8B%E6%9C%BA/)
 
-> USB 连接方式
-> 推荐使用USB连接，这样操作起来比较流畅。手机通过USB连接到PC上,在弹出的USB用途中选择 传输文件(MTP)
+> USB 连接方式  
+
+推荐使用USB连接，这样操作起来比较流畅。手机通过USB连接到PC上,在弹出的USB用途中选择 传输文件(MTP)
 
 > WIFI 方式连接
 
@@ -237,22 +150,14 @@ command-line X11 automation tool `可以控制指定窗口激活关闭，最大�
 ```
 
 ### rofi
-[Github rofi](https://github.com/davatorium/rofi)
+[Github rofi](https://github.com/davatorium/rofi) 窗口切换
 
 设置 `rofi -show window` 快捷键为 右Alt
 
-************************
-
-## 远程工具
-
+### 远程工具
 [rdesktop and xfreerdp](https://www.joxrays.com/linux-rdp-windows/)
 
 rdesktop xfreerdp
-
-************************
-## 进程管理
-gnome-system-monitor  
-Supervisor 进程监控管理  
 
 ************************
 
@@ -284,10 +189,15 @@ Supervisor 进程监控管理
 
 - `uniq` 统计出现次数 `cat log.log | grep WARN | awk '{print $5}' | sort | uniq -c`
 - `starDict` 终端内字典
-- [upx](https://github.com/upx/upx) 压缩构建的可执行文件
+- [upx](https://github.com/upx/upx) 压缩可执行文件
 
 https://kbumsik.io/using-ipad-as-a-2nd-monitor-on-linux
 https://snapdensing.com/2020/04/07/ipad-as-an-extended-screen-in-linux/
+
+**进程管理**
+
+gnome-system-monitor  
+Supervisor 进程监控管理  
 
 ### 剪贴板管理
 > [参考: 面向 Linux 的 10 款最佳剪贴板管理器](https://linux.cn/article-7329-1.html)
@@ -301,14 +211,12 @@ https://snapdensing.com/2020/04/07/ipad-as-an-extended-screen-in-linux/
 
 ************************
 
-## 检测工具
-### 硬盘
+## 硬件检测工具
+> [Linux系统硬件信息检测工具hwinfo — Cloud Atlas beta 文档](https://cloud-atlas.readthedocs.io/zh-cn/latest/linux/server/hardware/hwinfo.html)  
 
-duf
-dust
-gdu
+> 硬盘
 
-CrystalDiskMark
+- CrystalDiskMark
 - [KDiskMark](https://github.com/JonMagon/KDiskMark)
 
 > smartmontools 
@@ -370,10 +278,8 @@ CrystalDiskMark
 - 获取视频中的音频 `ffmpeg -i input.mp4 -vn -y -acodec copy output.m4a`
 - 去掉视频中的音频 `ffmpeg -i input.mp4 -an output.mp4`
 - 合并视频 `ffmpeg -f concat -safe 0 -i file.cfg  -c copy result.mp4`
-
   - file.cfg 内容为多行文件 : `file '/path/to/file'`
 - 截取视频 `ffmpeg -ss 00:00:00 -t 00:00:30 -i input.mp4 -vcodec copy -acodec copy output.mp4`
-
   - `-ss` 开始时间 `-t` 截取时长  `-q 0` 无损 `-c copy`表示不必重新编码
 
 ## 图片处理
@@ -428,12 +334,15 @@ CrystalDiskMark
 
 ### 截图
 
-- Flameshot 截图工具  类似于 snipaste
-  - Ctrl 鼠标滚动 调整线条粗细
-  - 习惯：
-    - Ctrl Alt S 截图
-    - Alt Q pin
-- deepin-screenshot
+Flameshot 截图工具  类似于 snipaste
+- Ctrl 鼠标滚动 调整线条粗细
+- Ctrl Alt S： 截图 (注意某些交互性场景，截图会导致失去焦点从而无法截到，例如网页的下拉选项，此时可以不使用快捷键而是鼠标点托盘的图标触发截图，可绕过这个问题)
+- Alt Q ：pin
+- 截图并OCR识别中文 `flameshot gui --raw | tesseract -l chi_sim stdin stdout | xclip -in -selection clipboard`
+    - 可以绑定快捷键到这个命令上，如果不生效可以将命令创建为sh文件，快捷键绑定到这个sh文件上。
+    - [OCR to clipboard hook for selections · Issue #702 · flameshot-org/flameshot](https://github.com/flameshot-org/flameshot/issues/702)  
+
+deepin-screenshot
 
 ### 录屏
 
@@ -501,7 +410,8 @@ CrystalDiskMark
 > [QQ Linux](https://im.qq.com/linuxqq/index.shtml)
 
 ### wechat
-[wechat-universal-bwrap](https://aur.archlinux.org/packages/wechat-universal-bwrap)
+[wechat-universal-bwrap](https://aur.archlinux.org/packages/wechat-universal-bwrap)  
+> [微信 Linux 测试版](https://linux.weixin.qq.com/)  
 
 ### wework
 - [企业微信](https://aur.archlinux.org/packages/deepin-wxwork/)

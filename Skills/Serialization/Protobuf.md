@@ -3,6 +3,7 @@ title: Protobuf
 date: 2019-04-20 13:27:20
 tags: 
 categories: 
+    - 序列化
 ---
 
 💠
@@ -15,7 +16,7 @@ categories:
     - 1.4. [Java中的使用](#java中的使用)
     - 1.5. [实现原理](#实现原理)
 
-💠 2024-04-21 16:35:07
+💠 2024-11-18 14:31:55
 ****************************************
 # Protobuf
 > Google开源的序列化框架 全称 `Google Protocol Buffers` | [Github : Protobuf](https://github.com/google/protobuf) | [wikipedia](https://en.wikipedia.org/wiki/Protocol_Buffers)  

@@ -11,12 +11,12 @@ categories:
 💠
 
 - 1. [Manjaro](#manjaro)
-    - 1.1. [Tips](#tips)
 - 2. [安装](#安装)
     - 2.1. [显卡驱动](#显卡驱动)
     - 2.2. [多系统安装](#多系统安装)
+- 3. [Tips](#tips)
 
-💠 2024-09-09 10:34:58
+💠 2024-11-14 22:22:23
 ****************************************
 # Manjaro
 > [Gitlab source code](https://gitlab.manjaro.org/explore/groups)  
@@ -30,19 +30,6 @@ categories:
 > [参考: Manjaro Deepin 配置备忘](https://yifeitao.com/2019/06/xiaomi-pro-manjaro-deepin)  
 
 > [参考: Manjaro 配置](https://blog.triplez.cn/manjaro-quick-start)  
-
-## Tips
-> U盘启动盘运行Live系统时, 默认用户名和密码都为 manjaro
-
-- 这次下载解压运行 VSCode 就是这样, 报错为 
-   - `error while loading shared libraries: libgconf-2.so.4: cannot open shared object file: No such file or directory`
-   - 尝试安装 libgconf libgconf2 ...
-   - 其实真正的包是 gconf , 而这个也是尝试过的,  但是还是说找不到package, 更新了下系统,才找到了这个包
-
-- `VirtualBox 和内核是高度耦合的`，需要内核驱动版本匹配才能正常运行，`yay virtualbox-host-modules` 选择对应内核版本安装即可
-- 某应用开机自启动 `sudo ln -s /usr/share/applications/xxx.desktop /etc/xdg/autostart/`
-
-************************
 
 # 安装
 > [Installation Guides](https://wiki.manjaro.org/index.php?title=Installation_Guides)
@@ -83,3 +70,14 @@ categories:
 1. `sudo pacman-mirrors -i -c China -m rank` | [ustc.edu.cn](http://mirrors.ustc.edu.cn/help/manjaro.html)
 
 foxit GitKraken deepin-screenshot
+
+# Tips
+> U盘启动盘运行Live系统时, 默认用户名和密码都为 manjaro
+
+- 这次下载解压运行 VSCode 就是这样, 报错为 
+   - `error while loading shared libraries: libgconf-2.so.4: cannot open shared object file: No such file or directory`
+   - 尝试安装 libgconf libgconf2 ...
+   - 其实真正的包是 gconf , 而这个也是尝试过的,  但是还是说找不到package, 更新了下系统,才找到了这个包
+
+- `VirtualBox 和内核是高度耦合的`，需要内核驱动版本匹配才能正常运行，`yay virtualbox-host-modules` 选择对应内核版本安装即可
+- 配置应用开机自启动 `sudo ln -s /usr/share/applications/xxx.desktop /etc/xdg/autostart/`

@@ -3,6 +3,7 @@ title: MySQL进阶
 date: 2018-12-16 17:26:16
 tags: 
     - MySQL
+    - Advanced
 categories: 
     - 数据库
 ---
@@ -28,7 +29,7 @@ categories:
 - 2. [Tips](#tips)
     - 2.1. [SQL 片段](#sql-片段)
 
-💠 2024-10-10 10:41:00
+💠 2024-11-10 13:59:35
 ****************************************
 # MySQL进阶
 > [Github: MySQL Sever](https://github.com/mysql/mysql-server)  
@@ -147,7 +148,7 @@ InnoDB通过加间隙锁来防止幻读
 ************************
 
 ## 性能调优
-> [Doc: Optimizing Queries with EXPLAIN](https://dev.mysql.com/doc/refman/5.7/en/using-explain.html)`依据 explain 输出结果调优`
+> [MySQL 索引 Explain等](/Database/MySQLIndex.md)  
 
 > [MySQL下INNODB引擎的SELECT COUNT(*)性能优化及思考](http://www.piaoyi.org/database/MySQL-INNODB-SELECT-COUNT.html)
 

@@ -11,31 +11,32 @@ categories:
 
 - 1. [Zsh](#zsh)
     - 1.1. [为什么要使用](#为什么要使用)
-    - 1.2. [Tips](#tips)
-- 2. [基础结构](#基础结构)
-- 3. [oh-my-zsh](#oh-my-zsh)
-    - 3.1. [插件](#插件)
-    - 3.2. [主题](#主题)
-        - 3.2.1. [自己定制](#自己定制)
+- 2. [Tips](#tips)
+- 3. [基础结构](#基础结构)
+- 4. [oh-my-zsh](#oh-my-zsh)
+    - 4.1. [插件](#插件)
+    - 4.2. [主题](#主题)
+        - 4.2.1. [自己定制](#自己定制)
 
-💠 2024-09-14 11:51:16
+💠 2024-11-14 23:33:08
 ****************************************
 # Zsh
 > [arch zsh wiki](https://wiki.archlinux.org/index.php/Zsh)
 
 ## 为什么要使用
-> [mac 装了 oh my zsh 后比用 bash 具体好在哪儿？](https://www.zhihu.com/question/29977255)  
 > [终极 Shell——ZSH](https://zhuanlan.zhihu.com/mactalk/19556676)
-
 > [某人的配置](https://github.com/lilydjwg/dotzsh)
 
 - [Zsh 开发指南](https://www.zhihu.com/column/zshguide)
+> [Github: Zsh 开发指南](https://github.com/goreliu/zshguide)  
 
 - 提供较为强大的历史命令match功能
 - 较为丰富的扩展实现
 - 更现代化的支持 更多语言，unicode字符
 
-## Tips 
+************************
+
+# Tips 
 
 - 数组使用 `list=(a b c); for i in $list; do echo $i; done`
 
@@ -56,18 +57,18 @@ categories:
     )
 ```
 
+> [mac 装了 oh my zsh 后比用 bash 具体好在哪儿？](https://www.zhihu.com/question/29977255)  
+
 ## 插件
 > [wiki: plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins)  
 > [zsh oh-my-zsh 插件推荐 ](https://hufangyun.com/2017/zsh-plugin/)
 
-- 个人常用 git gitfast mvn gradle golang docker kubectl sudo colored-man-pages 
+- 个人常用 git gitfast docker kubectl sudo colored-man-pages systemd emoji dotenv
 
 **********************
 
 ## 主题
 > [官网主题列表](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes) 
-
-- 自带主题: amuse clean wedisagree, muse也还好,就是没时间
 
 > [额外主题列表](https://github.com/robbyrussell/oh-my-zsh/wiki/External-themes)
 
@@ -97,8 +98,7 @@ categories:
 - Maglev `Tmux 主题 和上面的Zsh主题搭配使用`
     - [Github地址](https://github.com/caiogondim/maglev)
 
-- spaceship
-    - [地址](https://www.ctolib.com/denysdovhan-spaceship-zsh-theme.html)
+- spaceship [地址](https://www.ctolib.com/denysdovhan-spaceship-zsh-theme.html)
 
 > [安装步骤](https://github.com/caiogondim/bullet-train.zsh#for-oh-my-zsh-users)
 1. mkdir $ZSH_CUSTOM/themes/

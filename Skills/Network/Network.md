@@ -58,7 +58,7 @@ categories:
     - 5.6. [应用的代理设置](#应用的代理设置)
         - 5.6.1. [Java](#java)
 - 6. [网络工具](#网络工具)
-    - 6.1. [抓包 代理工具](#抓包-代理工具)
+    - 6.1. [代理工具](#代理工具)
         - 6.1.1. [Clash](#clash)
         - 6.1.2. [Fiddler](#fiddler)
         - 6.1.3. [Charles](#charles)
@@ -69,12 +69,12 @@ categories:
         - 6.1.8. [dev-proxy](#dev-proxy)
         - 6.1.9. [ProxyPin](#proxypin)
         - 6.1.10. [eCapture](#ecapture)
-    - 6.2. [Wireshark](#wireshark)
+        - 6.1.11. [Wireshark](#wireshark)
 - 7. [Tips](#tips)
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2024-10-11 15:07:39
+💠 2024-11-18 10:21:24
 ****************************************
 # 网络
 
@@ -478,6 +478,7 @@ DOT `DNS over TLS` 853端口
 ### P2P
 - eMule
 - [BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
+    - [qbittorrent/qBittorrent: qBittorrent BitTorrent client](https://github.com/qbittorrent/qBittorrent)  
     - [Search Plugins](https://github.com/qbittorrent/search-plugins)
 - HCDN 爱奇艺所设计：按地域粒度建立多个CDN服务器，区域内的C端用户优先在区域内的不同C端用户找所需的视频资源并由区域CDN做兜底。2021年直接降低网站的带宽成本20%，白用所有C端用户的上传带宽。
 
@@ -597,15 +598,16 @@ function FindProxyForURL(url, host) {
 
 ************************
 # 网络工具
-## 抓包 代理工具 
+## 代理工具 
 > [Alternatives to Charles for Linux](https://alternativeto.net/software/charles/?platform=linux)
 - [whistle](https://github.com/avwo/whistle) `nodejs 平台的抓包工具`
 > [hengyoush/kyanos: Visualize the time packets spend in the kernel, watch & analyze in command line.](https://github.com/hengyoush/kyanos)  
 
 ### Clash
-[Github](https://github.com/Dreamacro/clash) | [Fork copy](https://github.com/Ieooo/clash)
+[Clash Fork](https://github.com/Ieooo/clash) [DryPeng/clashT](https://github.com/DryPeng/clashT)  
+[Clash Meta](https://wiki.metacubex.one/)  
 
-[clash-dashboard](https://github.com/Dreamacro/clash-dashboard)
+> [haishanh/yacd: Yet Another Clash Dashboard](https://github.com/haishanh/yacd)  
 
 ### Fiddler 
 > [fiddler](https://www.telerik.com/fiddler)`由C#开发, 自定义脚本为C#`  
@@ -660,7 +662,7 @@ function FindProxyForURL(url, host) {
 
 ************************
 
-## Wireshark
+### Wireshark
 > [Official Site](https://www.wireshark.org/)  
 
 > 问题  `Error during loading:[string "/usr/wireshark/init.lua"]:44:`  

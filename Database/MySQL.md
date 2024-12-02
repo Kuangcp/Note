@@ -17,7 +17,7 @@ categories:
     - 2.2. [Docker安装](#docker安装)
     - 2.3. [图形化客户端](#图形化客户端)
     - 2.4. [命令行辅助工具](#命令行辅助工具)
-- 3. [基本数据类型](#基本数据类型)
+- 3. [数据类型](#数据类型)
     - 3.1. [数值类型](#数值类型)
         - 3.1.1. [short](#short)
         - 3.1.2. [int](#int)
@@ -35,47 +35,38 @@ categories:
 - 5. [表](#表)
     - 5.1. [创建](#创建)
     - 5.2. [ALTER](#alter)
-        - 5.2.1. [增删字段](#增删字段)
     - 5.3. [索引](#索引)
     - 5.4. [临时表](#临时表)
 - 6. [视图](#视图)
 - 7. [触发器](#触发器)
-    - 7.1. [创建单语句的触发器](#创建单语句的触发器)
-    - 7.2. [创建多语句的触发器](#创建多语句的触发器)
-    - 7.3. [NEW 和 OLD关键字](#new-和-old关键字)
-- 8. [存储过程](#存储过程)
-    - 8.1. [基本结构示例](#基本结构示例)
-- 9. [函数](#函数)
-    - 9.1. [简单示例](#简单示例)
-- 10. [常用命令集合](#常用命令集合)
-    - 10.1. [查看数据库参数](#查看数据库参数)
-        - 10.1.1. [查看连接状况](#查看连接状况)
-    - 10.2. [自增长](#自增长)
-    - 10.3. [主键约束的修改](#主键约束的修改)
-    - 10.4. [修改表名](#修改表名)
-    - 10.5. [定界符](#定界符)
-    - 10.6. [关于时间](#关于时间)
-        - 10.6.1. [常用函数](#常用函数)
-        - 10.6.2. [获取当前时间与n个月之间的天数](#获取当前时间与n个月之间的天数)
-        - 10.6.3. [datetime和timestamp区别](#datetime和timestamp区别)
-    - 10.7. [插入外码](#插入外码)
-- 11. [变量](#变量)
-- 12. [基本流程语法](#基本流程语法)
-- 13. [异常](#异常)
-- 14. [用户管理](#用户管理)
-    - 14.1. [查看](#查看)
-    - 14.2. [创建](#创建)
-    - 14.3. [修改](#修改)
-        - 14.3.1. [授权](#授权)
+    - 7.1. [NEW 和 OLD关键字](#new-和-old关键字)
+- 8. [变量](#变量)
+- 9. [基本流程语法](#基本流程语法)
+- 10. [存储过程](#存储过程)
+- 11. [函数](#函数)
+- 12. [常用命令集合](#常用命令集合)
+    - 12.1. [查看数据库参数](#查看数据库参数)
+        - 12.1.1. [查看连接状况](#查看连接状况)
+    - 12.2. [自增长](#自增长)
+    - 12.3. [主键约束的修改](#主键约束的修改)
+    - 12.4. [修改表名](#修改表名)
+    - 12.5. [定界符](#定界符)
+    - 12.6. [关于时间](#关于时间)
+        - 12.6.1. [常用函数](#常用函数)
+        - 12.6.2. [获取当前时间与n个月之间的天数](#获取当前时间与n个月之间的天数)
+        - 12.6.3. [datetime和timestamp区别](#datetime和timestamp区别)
+- 13. [用户管理](#用户管理)
+    - 13.1. [查看](#查看)
+    - 13.2. [创建](#创建)
+    - 13.3. [修改](#修改)
+        - 13.3.1. [授权](#授权)
 
-💠 2024-10-09 16:33:39
+💠 2024-11-21 11:51:03
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
 
-> [key words](https://dev.mysql.com/doc/mysqld-version-reference/en/keywords-5-7.html)
-
-> 注意: utf8 最大字节为3, 非标准意义上的 utf8 实现, utf8mb4 才是真正意义上的 utf8 `5.5.3才开始支持` utf8 一般情况不会出问题, 除非有 emoji 等等
+> [Upgrading GitHub.com to MySQL 8.0 - The GitHub Blog](https://github.blog/engineering/infrastructure/upgrading-github-com-to-mysql-8-0/)  
 
 > 书籍
 - MySQL技术内幕： InnoDB存储引擎
@@ -84,12 +75,16 @@ categories:
 
 ## 规约
 - 优先选择utf8字符集，需要存储emoji字符的，则选择utf8mb4字符集。不要单独定义字符集、校验集、存储引擎、行格式。
-    - CREATE TABLE ... ENGINE = INNODB DEFAULT CHARSET = utf8 ROW_FORMAT = COMPACT，尽量不要单独指定这些选项。不同的字符集/校验集关联查询会导致索引失效，5.6、5.7默认的ROW_FORMAT不同，最好让其自行匹配当前版本。
-- 小数类型为 decimal，禁止使用 float 和 double。
+    - `CREATE TABLE ... ENGINE = INNODB DEFAULT CHARSET = utf8 ROW_FORMAT = COMPACT`，尽量不要单独指定这些选项。
+    - 不同的字符集/校验集关联查询会导致索引失效，5.6、5.7默认的ROW_FORMAT不同，最好让其自行匹配当前版本。
+- 小数数值使用decimal类型，禁止使用 float 和 double。
 - varchar 是可变长字符串，不预先分配存储空间，长度不要超过 5000，如果存储长度大于此值，定义字段类型为 text，独立出来一张表，用主键来对应，避免影响其它字段索引效率
 - 字段允许适当冗余，以提高查询性能，但必须考虑数据一致。冗余字段应遵循:
-    - 不是频繁修改的字段。
+    - 不会频繁修改的字段。
     - 不是 varchar 超长字段，更不能是 text 字段。
+- 执行DDL时尽量避开业务高峰，避免因锁表引发写入事务大量超时回滚。
+
+> 注意: utf8 最大字节为3, 非标准意义上的 utf8 实现, utf8mb4 才是真正意义上的 utf8 `5.5.3才开始支持` utf8 一般情况不会出问题, 除非有 emoji 等等
 
 # 安装
 ## Ubuntu安装配置MySQL
@@ -129,7 +124,7 @@ _重启_
 > [mycli](https://github.com/dbcli/mycli) `自动补全功能`
 
 ********************************
-# 基本数据类型
+# 数据类型
 > [MySQL 数据类型](http://www.cnblogs.com/bukudekong/archive/2011/06/27/2091590.html)
 
 ## 数值类型
@@ -175,7 +170,8 @@ _重启_
 
 
 ## LongBlob
-- 这种数据类型可以直接把图像文件存到数据库中！
+长的二进制类型，因此这种数据类型可以直接把图像文件存入MySQL，但是在工程实践上一般不推荐，会导致行很大，不利用缓存。
+
 创建UTF8编码数据库 `CREATE DATABASE `test2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci`
 
 *****************************
@@ -214,10 +210,16 @@ _重启_
 
 _重命名表格_ `RENAME TABLE old TO new `
 
-### 增删字段
+增删字段
 - 增加字段 `alter table name add field1 int, field2 varchar(20);`
 - 删除字段 `alter table name drop column field1, drop column field2;`
 - 重命名字段 `alter table name change old_name new_name bigint;`
+
+新增外键
+
+```sql
+alter table `Bookinfo` add constraint `F_N` foreign key `F_N`(`classno`) references `Bookclass`(`classno`) on delete cascade on update cascade;
+```
 
 ************************
 ## 索引
@@ -253,11 +255,14 @@ _重命名表格_ `RENAME TABLE old TO new `
 > tips：创建试图时最好加上WITH CASCADED CHECK OPTION参数，这种方式比较严格,可以保证数据的安全性
 
 # 触发器
-## 创建单语句的触发器
+
+创建单语句的触发器
+
 - `CREATE TRIGGER ins_sum BEFORE INSERT ON account FOR EACH ROW SET @sum = @sum + NEW.amount;`
 - `CREATE TRIGGER trigger_name trigger_time trigger_event ON tbl_name FOR EACH ROW trigger_stmt`
 
-## 创建多语句的触发器
+创建多语句的触发器
+
 ```sql
       CREATE TRIGGER trigger_name trigger_time trigger_event
           ON tbl_name FOR EACH ROW
@@ -265,6 +270,7 @@ _重命名表格_ `RENAME TABLE old TO new `
           .......
       END
 ```
+
 ## NEW 和 OLD关键字
 - 使用OLD和NEW关键字，能够访问受触发程序影响的行中的列（OLD和NEW不区分大小写）。在INSERT触发程序中，仅能使用NEW.col_name，没有旧行。
 - 在DELETE触发程序中，仅能使用OLD.col_name，没有新行。在UPDATE触发程序中，可以使用OLD.col_name来引用更新前的某一行的列，也能使用NEW.col_name来引用更新后的行中的列。
@@ -275,8 +281,25 @@ _重命名表格_ `RENAME TABLE old TO new `
 
 ************************
 
+# 变量
+- 加了@ 的是用户变量， 限定当前用户，当前客户端， 在declare中声明的参数可以不加 @，那就是是局部变量
+- 例如：declare a int ;  也可以直接就用不用声明，作为临时变量 例如这两种写法：
+   - set @name =   expr;
+	- select @name:= expr;
+- 注意：MySQL中只有基本数据类型，没有Oracle中那个绑定类型：表类型或行类型，所以处理起来有点。。不如Oracle方便，不管是触发器还是存储过程
+- set @a= select * from User；执行这句话就会报出 operand should contain 1 column(s)错误，就是说多值赋值的错误
+
+# 基本流程语法
+```sql
+	if ... then 
+	elseif ... then (注意elseif中间没有空格)
+	end if;
+```
+
 # 存储过程
-## 基本结构示例
+
+基本结构示例
+
 ```sql
        -- loop 要有iterate 和leave才是完整的
     CREATE PROCEDURE doiterate(p1 INT)
@@ -295,7 +318,8 @@ _重命名表格_ `RENAME TABLE old TO new `
 ************************
 
 #  函数
-## 简单示例
+
+简单示例
 
 ```sql
     ---函数部分,修改定界符 
@@ -417,32 +441,6 @@ TIMESTAMP(5) -> TIMESTAMP(6)
 - 当该记录行被建立时，让 MySQL 设置该列值。这将初始化该列为当前日期和时间。
 - 以后当你对该记录行的其它列执行更新时，为 TIMESTAMP 列值明确地指定为它原来的值。
 - 另一方面，你可能发现更容易的方法，使用 DATETIME 列，当新建记录行时以 NOW() 初始化该列，以后在对该记录行进行更新时不再处理它。
-
-## 插入外码
-```sql
-alter table `Bookinfo` add constraint `F_N` foreign key `F_N`(`classno`) references `Bookclass`(`classno`) on delete cascade on update cascade;
-```
-
-************************
-
-# 变量
-- 加了@ 的是用户变量， 限定当前用户，当前客户端， 在declare中声明的参数可以不加 @，那就是是局部变量
-- 例如：declare a int ;  也可以直接就用不用声明，作为临时变量 例如这两种写法：
-   - set @name =   expr;
-	- select @name:= expr;
-- 注意：MySQL中只有基本数据类型，没有Oracle中那个绑定类型：表类型或行类型，所以处理起来有点。。不如Oracle方便，不管是触发器还是存储过程
-- set @a= select * from User；执行这句话就会报出 operand should contain 1 column(s)错误，就是说多值赋值的错误
-
-# 基本流程语法
-```sql
-	if ... then 
-	elseif ... then (注意elseif中间没有空格)
-	end if;
-```
-
-************************
-
-# 异常
 
 ************************
 

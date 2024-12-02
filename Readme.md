@@ -1,15 +1,17 @@
-# 学习笔记
+<p align="center"><img width=120 src="https://www.svgrepo.com/show/181744/open-book-book.svg"></p>
+<h3 align="center">学习笔记</h3>
 
-[![目录](https://img.shields.io/badge/catalog-详细目录-brightgreen.svg)](./SUMMARY.md) 
-[![JavaSE](https://img.shields.io/badge/JavaSE-Java基础-blue.svg)](./Java/) 
-[![目录](https://img.shields.io/badge/wiki-Note-brightgreen.svg)](https://gitee.com/gin9/Memo/wikis/pages) 
+<p align="center">
+<a href="./SUMMARY.md"><img src="https://img.shields.io/badge/catalog-详细目录-brightgreen.svg"></a>
+<a href="./Java/"><img src="https://img.shields.io/badge/JavaSE-Java基础-blue.svg"></a>
+</p>
 
 > 建议将该仓库克隆下来后，在 [Visual Studio Code](https://code.visualstudio.com/) 中搜索阅读  
 > *.drawio.svg 使用 [draw.io](https://github.com/hediet/vscode-drawio) 插件编辑  
 > *.km.svg 使用 [vscode-mindmap](https://github.com/eightHundreds/vscode-mindmap) 插件编辑  
 
 ## 基础
-* [ 算法 ](/Skills/CS/Algorithm.md)
+* [ 算法 ](/Algorithm/Algorithm.md)
 * [ 字符编码 ](/Skills/CS/CharacterEncoding.md)
 * [ 计算机基础 ](/Skills/CS/Computer.md)
 * [ 网络 ](/Skills/Network/)
@@ -28,6 +30,20 @@
 
 ## Java 
 > [目录索引](./Java/)
+
+| 基础 | 进阶 |
+|:----|:----|
+| [基础语法](/Java/Basic/JavaBasicSyntax.md)  | [反射](/Java/AdvancedLearning/JavaReflection.md) |
+| [继承和接口](/Java/Basic/JavaInheritedAndInterface.md)  | [JVM](/Java/AdvancedLearning/JVM.md) |
+| [异常](/Java/Basic/JavaException.md)  | [GC](/Java/AdvancedLearning/JvmGC.md) |
+| [泛型](/Java/AdvancedLearning/JavaGenerics.md)  | [字节码](/Java/AdvancedLearning/JavaClass.md) | 
+| [集合](/Java/Collection/JavaCollection.md)  | [打包部署](/Java/Basic/JavaDeploy.md) |
+| [线程](/Java/AdvancedLearning/JavaThread.md)  | [持续集成 CI](/Skills/DevOps/ContinuousIntegration.md) |
+| [并发](/Java/AdvancedLearning/JavaConcurrency.md)  | [网络编程](/Java/AdvancedLearning/JavaNetwork.md) |
+| [IO](/Java/AdvancedLearning/JavaIO.md)  | [测试](/Java/Test/JavaTest.md) |
+| [注解](/Java/Basic/JavaAnnotation.md)  | [性能问题排查手册](/Java/AdvancedLearning/Tuning) |
+| [JDBC](/Java/AdvancedLearning/JDBC.md) | |
+
 
 ### 工具
 
@@ -52,7 +68,7 @@
 * [ 流编辑器 ](/Linux/Base/LinuxStreamEditor.md)
 * [ Linux美化 ](/Linux/Base/LinuxUI.md)
 * [ Linux各种发行版 ](/Linux/Base/ReleaseExperience.md)
-* [ SSH ](/Linux/Base/Ssh.md)
+* [ SSH ](/Linux/Base/SSH.md)
 * [ Nginx ](/Linux/Tool/Nginx.md)
 
 ## 容器
@@ -87,6 +103,7 @@
 - [Java-Summarize](https://github.com/zaiyunduan123/Java-Summarize)
 - [JAVA基础技能代码集](https://github.com/veezean/JavaBasicSkills)
 - [Java学习+面试指南](https://github.com/BookaiCode/JavaRecord)
+> [leosanqing/Java-Notes: java学习笔记，包括JVM，看过的技术以及非技术书籍，SpringCloud 商城项目以及工具介绍，leetcode剑指offer算法，spring，JDK一些工具的源码，](https://github.com/leosanqing/Java-Notes/tree/master)  
 
 - [skill-map](https://github.com/TeamStuQ/skill-map)
 - [代码安全指南](https://github.com/Tencent/secguide)

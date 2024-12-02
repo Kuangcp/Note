@@ -14,7 +14,7 @@ categories:
     - 1.2. [参考教程](#参考教程)
     - 1.3. [使用SpringBootCLI](#使用springbootcli)
     - 1.4. [Profils](#profils)
-        - 1.4.1. [多种配置文件并切换](#多种配置文件并切换)
+        - 1.4.1. [多种配置文件](#多种配置文件)
             - 1.4.1.1. [yml方式](#yml方式)
             - 1.4.1.2. [yml和properties结合](#yml和properties结合)
         - 1.4.2. [应用配置文件](#应用配置文件)
@@ -41,7 +41,7 @@ categories:
         - 1.10.4. [热部署](#热部署)
         - 1.10.5. [运行性能优化](#运行性能优化)
 
-💠 2024-10-08 16:06:24
+💠 2024-11-23 10:48:32
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -70,6 +70,14 @@ categories:
 
 > [Guide](https://spring.io/guides/gs/actuator-service/)
 > [小马哥书籍《Spring Boot 编程思想》示例工程 ](https://github.com/mercyblitz/thinking-in-spring-boot-samples)
+
+- [Springboot入门系列博客](http://www.cnblogs.com/page12/p/7899380.html)
+- [Springboot配置详解](https://segmentfault.com/a/1190000004315890)
+- [Springboot启动dubbo](https://coderknock.com/blog/2017/03/01/spring%20boot%E5%90%AF%E5%8A%A8dubbo.html)`等一系列文章`
+- [spring boot完美集成dwr3.0.2](http://blog.csdn.net/melody_susan/article/details/78659696)
+- [Spring Boot——开发新一代Spring Java应用](https://www.tianmaying.com/tutorial/spring-boot-overview)
+
+> [xiaour/SpringBootDemo: 🍃SpringBoot系列Demo；SpringBoot、MyBatis、Redis、MySql、Kafka、RocketMQ](https://github.com/xiaour/SpringBootDemo)  
 
 `系列`
 
@@ -111,7 +119,10 @@ categories:
 
 > [参考: Spring Boot(五) - 外化配置](https://www.hifreud.com/2017/06/23/spring-boot-05-Externalized-Configuration/)
 
-### 多种配置文件并切换
+### 多种配置文件
+JVM参数 -D 临时设置配置  
+例如： -Dlogging.level.com.xxx.service.impl=DEBUG
+
 #### yml方式
 - 单文件多环境 `配置文件 application.yml`
     ```yml

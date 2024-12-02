@@ -9,10 +9,11 @@ categories:
 
 - 1. [Fork Join](#fork-join)
     - 1.1. [最佳实践](#最佳实践)
+        - 1.1.1. [Tuning](#tuning)
     - 1.2. [设计](#设计)
     - 1.3. [使用](#使用)
 
-💠 2024-04-08 19:45:11
+💠 2024-11-27 10:56:30
 ****************************************
 # Fork Join
 > 自 Java7 引入，业务开发时存在感不怎么高，但实际上很多地方用到的一个库(`Stream`，`VirtualThread`)
@@ -23,7 +24,21 @@ categories:
 - 目的是为了`CPU密集型任务` 利用CPU全部资源全速执行，应`避免IO阻塞任务`提交执行
     - 如果启用了虚拟线程，可以不用考虑这点，IO阻塞任务会出让CPU
 - 如无必要无需创建新Pool，应使用JVM内公共Pool 即 `ForkJoinPool.commonPool()`
-- 任务拆分时需要考虑合理阈值，避免子任务拆分的过大`无法合理均匀分布`或过小`调度和竞争成本过大`
+- 任务拆分时需要考虑合理阈值，避免子任务拆分的 过大(`无法合理均匀分布`) 或 过小(`调度和竞争的成本过大`)
+
+### Tuning
+
+> 存在 *.hprof 文件时的分析思路
+
+```sql
+    // OQL 查询
+    // 快速查看到堆积的任务情况
+    select * from java.util.concurrent.ForkJoinTask[] 
+    // 查看FJ池实例 可以看到 commonParallelism 属性，但是需要做位运算才能得到这个线程池的实际并发数
+    select * from java.util.concurrent.ForkJoinPool
+```
+
+************************
 
 ## 设计
 
@@ -34,9 +49,13 @@ ForkJoinPool 服务处理一种比线程更小的并发单元 ForkJoinTask. 它�
     - 大型 需要在直接执行前进行分解（可能多次）的任务
 - 提供了支持大型任务分解的基本方法，还有自动调度和重新调度的能力
 
+- 公共实例的创建： java.util.concurrent.ForkJoinPool#makeCommonPool
+    - 默认使用的策略是 LIFO_QUEUE 也就是栈
+
 - 由 RecursiveAction 或者 RecursiveTask 派生出来的才能作为任务单元 这俩也是派生ForkJoinTask而来
     - RecursiveAction 要重写的方法：`protected void compute()`  
     - RecursiveTask 要重写的的方法：`protected Object compute()`
+
 - ForkJoinTask里的 invoke 和 invokeAll 
     - invoke  执行此任务的开始，如果有必要，等待它的完成，并返回其结果，或者在底层计算完成时抛出一个(未检查的)RuntimeException或错误。
     - invokeAll 提交多个任务执行，但是只有其中有一个出现了异常，就会取消所有的task

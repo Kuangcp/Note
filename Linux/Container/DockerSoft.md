@@ -29,18 +29,17 @@ categories:
     - 1.7. [持续集成](#持续集成)
         - 1.7.1. [flow.ci](#flowci)
         - 1.7.2. [Jenkins](#jenkins)
-    - 1.8. [git服务器](#git服务器)
+    - 1.8. [Git服务器](#git服务器)
         - 1.8.1. [简易git-daemon](#简易git-daemon)
-        - 1.8.2. [Gogs](#gogs)
-        - 1.8.3. [Gitea](#gitea)
-            - 1.8.3.1. [配置](#配置)
+        - 1.8.2. [Gitea](#gitea)
+            - 1.8.2.1. [配置](#配置)
     - 1.9. [在线IDE](#在线ide)
 - 2. [图形化应用](#图形化应用)
 - 3. [工具](#工具)
     - 3.1. [nextcloud](#nextcloud)
     - 3.2. [Protobuf](#protobuf)
 
-💠 2024-04-15 11:04:31
+💠 2024-11-23 16:13:43
 ****************************************
 # Docker应用
 > [https://docs.docker.com/samples/](https://docs.docker.com/samples/)  
@@ -213,7 +212,7 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
 
 ************************
 
-## git服务器
+## Git服务器
 ### 简易git-daemon
 > 基于git-daemon构建一个Docker镜像, 跑起来直接做git服务器 | [学习使用git-daemon命令](/Skills/Vcs/GitAction.md#使用-git-daemon-搭建简易-server)
 
@@ -229,8 +228,6 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
     git daemon --export-all --base-path="/root/Repository" --port=55443
 ```
 > 通过 daemon 能下拉提交代码, nginx 能在线浏览文件
-
-### Gogs
 
 ### Gitea
 - [docker 安装 gitea](https://docs.gitea.io/en-us/install-with-docker/) `gitea是一个自助git服务，基于git`

@@ -5,13 +5,12 @@ tags:
 categories: 
 ---
 
-
 💠
 
 - 1. [Excel](#excel)
 - 2. [CSV](#csv)
 
-💠 2024-09-23 11:44:36
+💠 2024-11-07 10:05:13
 ****************************************
 
 # Excel 
@@ -35,12 +34,12 @@ categories:
 ************************
 
 # CSV
-注意Windows平台会对文件带上BOM头，用于区分字符集编码 [BOM](/Skills/CS/CharacterEncoding.md#关于-bom)
-对csv文件追加 EF BB BF 三个字节 以实现对Office的兼容，WPS会自动检测和切换解析的字符集编码
+注意Windows平台会对文件带上BOM头，用于区分字符集编码 [BOM](/Skills/CS/CharacterEncoding.md#关于-bom)  
+对csv文件追加 EF BB BF 三个字节 以实现对Office的兼容，而WPS会自动检测和切换解析的字符集编码
 ```java
-FileOutputStream fos = new FileOutputStream(new File(this.csvFileAbsolutePath));
-    	byte [] bs = { (byte)0xEF, (byte)0xBB, (byte)0xBF};   //new added
-    	fos.write(bs);
-    	fos.close();
+	FileOutputStream fos = new FileOutputStream(new File(this.csvFileAbsolutePath));
+			byte [] bs = { (byte)0xEF, (byte)0xBB, (byte)0xBF};   //new added
+			fos.write(bs);
+			fos.close();
 ```
 

@@ -28,13 +28,13 @@ categories:
         - 3.1.6. [Direct Memory 直接内存](#direct-memory-直接内存)
         - 3.1.7. [Code Cache](#code-cache)
     - 3.2. [Metaspace 元空间](#metaspace-元空间)
-    - 3.3. [直接内存](#直接内存)
+    - 3.3. [Native Memory](#native-memory)
 - 4. [JVM不同实现](#jvm不同实现)
     - 4.1. [Hotspot JVM](#hotspot-jvm)
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-08-06 11:01:51
+💠 2024-11-14 16:40:22
 ****************************************
 # JVM
 > JVM结构及设计
@@ -305,8 +305,8 @@ NIO 会经常使用, 提高性能
 
 因此为减少预热影响，可以将-XX:MetaspaceSize，-XX:MaxMetaspaceSize指定成相同的值。
 
-## 直接内存
-直接内存主要是JNI、Deflater/Inflater、DirectByteBuffer（nio中会用到）使用的， 当发现Java进程堆使用率不高，但是进程占用内存RSS很高，就要怀疑这块区域了
+## Native Memory
+Native Memory 主要是JNI、Deflater/Inflater、DirectByteBuffer（nio中会用到）使用的， 当发现Java进程的堆使用率不高，但是进程占用内存RSS很高，就要怀疑这块区域了
 
 - [Github: 测试代码](https://github.com/Kuangcp/JavaBase/blob/master/class/src/test/java/jvm/oom/DirectMemoryOOMTest.java)
 - [how to see memory useage of nio buffers](https://stackoverflow.com/questions/2689914/how-to-see-the-memory-usage-of-nio-buffers)
@@ -314,10 +314,10 @@ NIO 会经常使用, 提高性能
 > [参考: 聊聊JVM 堆外内存泄露的BUG是如何查找的](https://cloud.tencent.com/developer/article/1129904)  
 > [JAVA堆外内存排查小结](https://zhuanlan.zhihu.com/p/60976273)  
 
-- `-XX:MaxDirectMemorySize` 限制最大内存，默认值为： MaxHeapSize - Survivor。  `通过工具查看的话，值为0`
+- `-XX:MaxDirectMemorySize` 限制最大内存，默认值为： MaxHeapSize - Survivor 。 `通过工具查看的话，值为0`
 
 - 启用NMT: java -XX:NativeMemoryTracking=summary 或者 detail 开销更大一些
-- 查看NMT jcmd $pid VM.native_memory `[detail] 对应启用时设置，输出具体内存地址信息`
+- 查看NMT: jcmd $pid VM.native_memory `[detail] 对应启用时设置，输出具体内存地址信息`
 
 > 示例
 ```sh

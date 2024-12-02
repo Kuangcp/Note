@@ -9,29 +9,30 @@ categories:
 
 - 1. [持续集成](#持续集成)
     - 1.1. [Jenkins](#jenkins)
-    - 1.2. [GoCD](#gocd)
-    - 1.3. [Drone](#drone)
-    - 1.4. [flow.ci](#flowci)
-    - 1.5. [三方平台](#三方平台)
+    - 1.2. [Argo](#argo)
+    - 1.3. [GoCD](#gocd)
+    - 1.4. [Drone](#drone)
+    - 1.5. [flow.ci](#flowci)
+    - 1.6. [三方平台](#三方平台)
 - 2. [代码质量管理](#代码质量管理)
     - 2.1. [Bug跟踪](#bug跟踪)
     - 2.2. [sonarqube](#sonarqube)
         - 2.2.1. [项目端](#项目端)
 - 3. [测试平台](#测试平台)
 
-💠 2024-09-03 14:05:18
+💠 2024-11-23 18:19:10
 ****************************************
 # 持续集成
 > 参考: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  
 > [廖雪峰 使用Travis进行持续集成](https://www.liaoxuefeng.com/article/0014631488240837e3633d3d180476cb684ba7c10fda6f6000)  
 > 目前个人理解: 使用jenkins 结合gradle docker ，一键上传代码之后自动构建得到镜像
 
-> [利用Travis CI更新github page](https://github.com/steveklabnik/automatically_update_github_pages_with_travis_example)
-- 使用bitbucket配置私有仓库，在hub上配置docker文件的目录，进行构建，这样就会得到一个可用的镜像
-
 **************************
 ## Jenkins
 > [详细](Jenkins.md)
+
+## Argo
+> [Argo CD | Argo](https://argoproj.github.io/cd/)`依托K8S做分布式计算，顺带实现了CICD`  
 
 ## GoCD
 > [Github:GoCD](https://github.com/GoCD) 
@@ -39,6 +40,7 @@ categories:
 > [参考: GoCD的正确打开方式](https://insights.thoughtworks.cn/the-right-interpretation-of-gocd/)
 
 > [参考: GoCD概念篇](http://www.cnblogs.com/elisun/p/7071536.html)
+
 ************************
 ## Drone 
 > [官网](https://drone.io/)
@@ -58,8 +60,12 @@ go语言实现，一个原生支持 docker 的 CI
 
 ## 三方平台
 - [appveyor](https://ci.appveyor.com/projects)
-
-> [Gradle + Travis CI 学习笔记](https://upupming.site/2018/04/03/gradle-travis/#travis-ci)  
+- Gitlab Runner
+- 云效
+- Tapd
+- [Travis CI 学习笔记](https://upupming.site/2018/04/03/gradle-travis/#travis-ci)  
+    - [利用Travis CI更新github page](https://github.com/steveklabnik/automatically_update_github_pages_with_travis_example)
+    - 使用bitbucket配置私有仓库，在hub上配置docker文件的目录，进行构建，这样就会得到一个可用的镜像
 
 ****************************
 # 代码质量管理

@@ -7,13 +7,13 @@ categories:
     - 版本控制
 ---
 
-**目录 start**
+💠
 
-1. [Git Advance](#git-advance)
-    1. [版本控制系统(VCS)](#版本控制系统vcs)
-1. [Git实现原理](#git实现原理)
+- 1. [Git Advance](#git-advance)
+    - 1.1. [版本控制系统(VCS)](#版本控制系统vcs)
+- 2. [Git实现原理](#git实现原理)
 
-**目录 end**|_2020-07-05 14:58_|
+💠 2024-11-23 16:13:43
 ****************************************
 # Git Advance
 
@@ -23,11 +23,6 @@ categories:
 - [SVN](https://subversion.apache.org/)
     - [submin](https://supermind.nl/submin/)`SVN管理的Web界面`
 - [git](https://git-scm.com/) `最好用的vcs`
-
-_自建Git服务_
-- [gogs](https://github.com/gogits/gogs) `自建git服务器`
-- [gitea](https://github.com/go-gitea/gitea) `gogs加强`
-    - [docker安装](https://docs.gitea.io/zh-cn/install-with-docker/)
 
 *********************
 

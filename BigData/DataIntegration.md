@@ -18,12 +18,15 @@ categories:
 - 3. [SeaTunnel](#seatunnel)
 - 4. [FlinkX ChunJun](#flinkx-chunjun)
 - 5. [Flink CDC](#flink-cdc)
-- 6. [Kettle](#kettle)
+- 6. [Tapdata](#tapdata)
+- 7. [Kettle](#kettle)
 
-💠 2024-10-08 11:23:38
+💠 2024-11-20 19:35:19
 ****************************************
 # Data Integration
 数据集成
+
+> [大数据ETL工具对比——SeaTunnel、DataX、Sqoop、Flume、Flink CDC、Dlinky、TIS、Chunjun等对比_seatunnel和datax-CSDN博客](https://blog.csdn.net/u011047968/article/details/138909975)  
 
 # Datax
 > [Github](https://github.com/alibaba/DataX)  阿里云DataWorks的开源版 | [HashData](https://github.com/HashDataInc/DataX/) 增加了插件支持
@@ -142,6 +145,10 @@ categories:
 # Flink CDC
 > [Github](https://github.com/apache/flink-cdc)  
 
+# Tapdata
+> [tapdata/tapdata: Tapdata Live Data Platform Project](https://github.com/tapdata/tapdata)开源+商业版本  
+
+支持集群架构，但是不支持单个任务的分布式（单个任务的效率无法通过扩充节点来横向提升）
 
 ************************
 

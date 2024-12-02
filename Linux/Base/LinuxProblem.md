@@ -5,6 +5,7 @@ tags:
     - 工具使用经验
 categories: 
     - Linux
+    - WIKI
 ---
 
 💠
@@ -32,7 +33,7 @@ categories:
         - 1.5.2. [i386-pc not found](#i386-pc-not-found)
     - 1.6. [崩溃](#崩溃)
 
-💠 2024-10-15 09:56:12
+💠 2024-11-18 14:31:55
 ****************************************
 # Linux桌面发行版遇到的问题
 
@@ -103,7 +104,10 @@ categories:
 > [参考: 使用 Bumblebee 控制 NVIDIA 双显卡](https://www.cnblogs.com/congbo/archive/2012/09/12/2682105.html)
 
 > [Serious Issue with NVIDIA Drivers: Compatibility Problems with Linux Kernel 6.10 | by Niemand | Aug, 2024 | Medium](https://medium.com/@TheNiemand/serious-issue-with-nvidia-drivers-compatibility-problems-with-linux-kernel-6-10-9cdb0791d204)`升级Manjaro到24.1后没注意到升级了内核和驱动，然后lightdm以及X都崩溃了`  
+- 依据启动的内核，将驱动从 linux510 升级到 linux610-nvidia 550.120-6 问题就解决了，没有那么多奇奇怪怪的问题了（/boot分区加载失败，X启动失败找不到屏幕（nvidia内核模块加载失败），某个分区加载失败无法识别 ext4 文件系统）
+
 ************************
+
 #### Manjaro 的NVIDIA驱动问题
 > [参考: Manjaro NVIDIA驱动问题的解决方案](https://blog.csdn.net/qq_39828850/article/details/87919188)  
 

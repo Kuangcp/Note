@@ -2,7 +2,10 @@
 title: MySQL InnoDB
 date: 2022-06-27 14:23:03
 tags: 
+    - MySQL
+    - Advanced
 categories: 
+    - 数据库
 ---
 
 💠

@@ -20,7 +20,7 @@ categories:
 - 6. [分词器](#分词器)
 - 7. [向量搜索](#向量搜索)
 
-💠 2024-06-11 16:32:25
+💠 2024-11-11 11:02:40
 ****************************************
 # Elasticsearch
 > [Official Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)  
@@ -29,8 +29,8 @@ categories:
 使用场景：
 
 > [七个生产案例告诉你BATJ为何选择ElasticSearch！应用场景和优势！](https://segmentfault.com/a/1190000022799288)  
-> [Elasticsearch技术方案选型的10个注意点](https://time.geekbang.org/column/article/108196?utm_campaign=geektime_search&utm_content=geektime_search&utm_medium=geektime_search&utm_source=geektime_search&utm_term=geektime_search)
-
+> [Elasticsearch技术方案选型的10个注意点](https://time.geekbang.org/column/article/108196)  
+> [liuhuanyong/MusicLyricChatbot](https://github.com/liuhuanyong/MusicLyricChatbot)  
 
 中文教程：
 

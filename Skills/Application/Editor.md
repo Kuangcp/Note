@@ -31,7 +31,7 @@ categories:
     - 1.11. [Xed](#xed)
     - 1.12. [小书匠](#小书匠)
     - 1.13. [Moeditor/Typora/CuteMarkEd](#moeditortyporacutemarked)
-- 2. [终端中的文本编辑器](#终端中的文本编辑器)
+- 2. [终端文本编辑器](#终端文本编辑器)
     - 2.1. [Vi/Vim](#vivim)
     - 2.2. [helix](#helix)
     - 2.3. [Nano](#nano)
@@ -39,7 +39,7 @@ categories:
     - 2.5. [BS在线编辑器](#bs在线编辑器)
 - 3. [十六进制 Hex](#十六进制-hex)
 
-💠 2024-09-06 11:36:43
+💠 2024-11-11 11:02:40
 ****************************************
 # 文本编辑器
 
@@ -151,6 +151,7 @@ _个人配置_
 **美化**
 >1. Material Icon Theme
 >1. Snazzy Operator
+>1. Bearded Theme -> Monokai Stone
 
 1. vscode-icons
 1. One Dark Pro
@@ -235,10 +236,9 @@ strict-ssl=false
 
 - 书写单个md文件方便，美观，没有目录树侧栏是硬伤, 但是typora 导出很强大
 
-
 **************************
 
-# 终端中的文本编辑器
+# 终端文本编辑器
 ## Vi/Vim
 > [Github: Vim](https://github.com/vim/vim)  
 > [Vim 学习笔记](/Linux/Tool/Vim.md)
@@ -272,8 +272,9 @@ strict-ssl=false
 - 编辑 hexedit vim
 
 **GUI**
-Ghex
-[HexWalk](https://github.com/gcarmix/HexWalk)
-[010Editor](https://www.sweetscape.com/)
-[ImHex](https://github.com/WerWolv/ImHex)
+
+Ghex  
+[HexWalk](https://github.com/gcarmix/HexWalk)  
+[010Editor](https://www.sweetscape.com/)  
+[ImHex](https://github.com/WerWolv/ImHex)`推荐`  
 

@@ -16,10 +16,9 @@ categories:
     - 2.4. [Nginx](#nginx)
     - 2.5. [Traefik](#traefik)
 
-💠 2024-04-19 10:49:10
+💠 2024-11-20 19:35:19
 ****************************************
 # 网关
-> 概览
 
 ## 功能
 动态路由
@@ -37,13 +36,13 @@ categories:
 
 # 对比
 
+> [apache/shenyu: Apache ShenYu is a Java native API Gateway for service proxy, protocol conversion and API governance.](https://github.com/apache/shenyu)  
+
 ## Spring Gateway 
 
 ## Zuul 
 
-
 ## Kong 
-
 
 ## Nginx
 

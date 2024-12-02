@@ -5,6 +5,7 @@ tags:
     - JVM
 categories: 
     - Java
+    - Troubleshoot
 ---
 
 💠
@@ -38,7 +39,7 @@ categories:
     - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-09-20 11:52:03
+💠 2024-11-26 20:13:28
 ****************************************
 
 # JVM 监控&诊断
@@ -187,7 +188,12 @@ categories:
 > [OpenJDK11 jstack output explanation](https://stackoverflow.com/questions/76476637/openjdk11-jstack-output-explanation)  
 > [How to Analyze Java Thread Dumps](https://dzone.com/articles/how-analyze-java-thread-dumps)  
 
-扩展：通过短时间内多次获取stack分析出 活锁，死循环，死锁等问题点，但是通常这类问题只能通过修复并重启解决
+扩展：通过在短时间内多次获取stack分析出 活锁，死循环，死锁等问题点，但是通常这类问题只能通过修复代码并重启解决，无法热修复
+
+快速分析
+
+> [jstack.review - Java Thread Dump Analyzer](https://jstack.review)`支持多份jstack对比`  
+> [threaddump-analyzer](https://github.com/spotify/threaddump-analyzer)
 
 ### 实现原理
 - [Jstack 源码分析](https://zhuanlan.zhihu.com/p/36224094)
@@ -199,9 +205,16 @@ categories:
 ************************
 
 ## jcmd
-> jcmd $pid command  [Oracle jcmd doc](https://docs.oracle.com/en/java/javase/17/docs/specs/man/jcmd.html)
+> jcmd [pid | main-class] command... | PerfCounter.print | -f filename  [Oracle jcmd doc](https://docs.oracle.com/en/java/javase/17/docs/specs/man/jcmd.html)
+
+- jcmd 列出所有可操作的JVM进程
+- -f filename 执行文件内的命令
+
+_command_
 
 - Compiler
+    - Compiler.codecache
+    - Compiler.queue
 - GC GC信息，触发GC，堆信息
     | 命令 | 说明 |
     |:----|:----|
@@ -209,17 +222,23 @@ categories:
     | GC.heap_info                | 查看堆使用统计
     | GC.class_histogram -all     | 类实例统计 
     | GC.heap_dump -all filename  | 创建所有对象的dump
-    - 参数 `-all` 指全部对象，如果去除，将**触发Full GC**来找到所有存活对象
+    | GC.finalizer_info           | finalization 队列信息
+    - 参数 `-all` 全部对象，如果去除该参数，将**触发Full GC**来找到所有存活对象
 
 - JFR 
     - JFR.start 会输出提示信息
-    - JFR.stop name=1 filename=now.jfr `name`从start提示信息中获取
+    - JFR.stop name=1 filename=now.jfr （`name`参数从start执行后的提示信息中获取）
 - JVMTI
 - ManagementAgent
 - System
 - Thread
 - VM 
     - VM.command_line
+    - VM.version
+    - VM.uptime [-date]
+    - VM.system_properties
+- Memory
+    - VM.native_memory
 
 ## jhsdb
 > [jdk9 jhsdb](https://dzone.com/articles/jhsdb-a-new-tool-for-jdk-9) | [Oracle jhsdb](https://docs.oracle.com/javase/9/tools/jhsdb.htm)
@@ -314,6 +333,8 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 > [参考: JAVA Shallow heap & Retained heap](http://www.cnblogs.com/lipeineng/p/5824799.html)  
 > [参考:  利用MAT分析JVM内存问题，从入门到精通](https://www.cnblogs.com/javaadu/p/11161380.html)  
 > [ Official Doc: OQL Syntax](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Freference%2Foqlsyntax.html)  
+
+> [Analyzing Threads](https://help.eclipse.org/latest/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Ftasks%2Fanalyzingthreads.html)
 
 注意: 有这样的一种场景, 从数据库获取大量的数据创建为对象, 导致瞬间的OOM 这时候即使使用 jmap 去 dump 了快照, 也看不到占用大量内存的对象, 因为MAT默认展示的是GC可达对象，需要在菜单选择看不可达对象
 
