@@ -16,10 +16,12 @@ categories:
         - 1.2.1. [用户](#用户)
         - 1.2.2. [用户组](#用户组)
         - 1.2.3. [sudo](#sudo)
-    - 1.3. [终端](#终端)
-        - 1.3.1. [Terminal 对比](#terminal-对比)
+    - 1.3. [Terminal 终端](#terminal-终端)
+        - 1.3.1. [终端对比](#终端对比)
         - 1.3.2. [终端中渲染图片](#终端中渲染图片)
-        - 1.3.3. [终端快捷键](#终端快捷键)
+        - 1.3.3. [终端的彩色输出](#终端的彩色输出)
+            - 1.3.3.1. [ls配置彩色输出](#ls配置彩色输出)
+        - 1.3.4. [终端快捷键](#终端快捷键)
     - 1.4. [环境变量](#环境变量)
     - 1.5. [进程](#进程)
         - 1.5.1. [信号 Signal](#信号-signal)
@@ -62,7 +64,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2024-11-23 16:13:43
+💠 2024-12-02 11:47:22
 ****************************************
 
 # Linux系统
@@ -205,10 +207,12 @@ categories:
 
 - 设置用户为NOPASSWD
 
-## 终端
+## Terminal 终端
 
 > [参考: linux终端相关概念解释及描述](https://www.cnblogs.com/xiangtingshen/p/10889195.html)
 > [参考: 终端基本概念&amp;终端登录过程详解](https://blog.csdn.net/summy_j/article/details/73870353)
+
+通常Linux平台的终端模拟器新建tab时都是新建 pty， 但是Mac平台上则是新建tty
 
 1. tty 终端设备的统称
     - 通常使用tty来简称各种类型的终端设备
@@ -216,10 +220,9 @@ categories:
     - 远程登录，图形化终端模拟器等操作使用
     - pts(pseudo-terminal slave)是pty的实现方法，与ptmx(pseudo-terminal master)配合使用实现pty。
 
-> 通常Linux平台的终端模拟器新建tab时都是新建 pty， 但是Mac平台上则是新建tty
-
 > [ibraheemdev/modern-unix](https://github.com/ibraheemdev/modern-unix)`现代工具合集`  
 > [cli · GitHub Topics](https://github.com/topics/cli)`Github 终端工具合集`  
+> [Making Terminal Applications in Rust with Termion](http://ticki.github.io/blog/making-terminal-applications-in-rust-with-termion/)  
 > [Terminals Are Sexy](https://github.com/k4m4/terminals-are-sexy)  
 
 - [terminalizer](https://github.com/faressoft/terminalizer)`录制终端`
@@ -233,7 +236,7 @@ categories:
 - [ttyd](https://github.com/tsl0922/ttyd)  
 - [sshx](https://github.com/ekzhang/sshx)  
 
-### Terminal 对比
+### 终端对比
 
 > 列举出系统可安装终端  
 >  
@@ -288,6 +291,48 @@ Manjaro Xfce 使用 sixel： mlterm 或者 konsole
 1. yay libsixel, yay mlterm， mlterm -b '#292B2E' 安装和启动mlterm
   1. 查看图片 img2sixel xx.jpg `ImageMagick`
   1. 渲染结果图 [jagger](https://github.com/rs/jaggr) **konsole不支持**
+
+### 终端的彩色输出
+
+> [参考博客,比较详细](http://blog.csdn.net/magiclyj/article/details/72637666)
+> [Linux Terminal Color](https://blog.csdn.net/y2701310012/article/details/40142809)
+
+```sh
+  red='\033[0;31m'
+  green='\033[0;32m'
+  yellow='\033[0;33m'
+  blue='\033[0;34m'
+  purple='\033[0;35m'
+  cyan='\033[0;36m'
+  white='\033[0;37m'
+  default='\033[0m'
+```
+
+> 256 color
+
+```sh
+    # 测试 terminal 是否支持 256
+    for i in {0..255} ; do
+        printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
+        if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
+            printf "\n";
+        fi
+    done
+```
+
+#### ls配置彩色输出
+
+[Gihub: LS_COLORS](https://github.com/trapd00r/LS_COLORS)[customize bash prompt](https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/)
+
+1. `curl https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS -o /etc/lscolor-256color`
+2. 追加到 `*sh.rc`
+   ```sh
+   if [[ ("$TERM" = *256color || "$TERM" = screen* || "$TERM" = xterm* ) && -f /etc/lscolor-256color ]]; then
+           eval $(dircolors -b /etc/lscolor-256color)
+       else
+               eval $(dircolors)
+   fi
+   ```
 
 ### 终端快捷键
 

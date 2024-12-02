@@ -16,11 +16,8 @@ categories:
         - 2.1.1. [字体渲染](#字体渲染)
     - 2.2. [Theme](#theme)
     - 2.3. [Icon](#icon)
-    - 2.4. [Terminal](#terminal)
-        - 2.4.1. [彩色输出](#彩色输出)
-            - 2.4.1.1. [ls配置彩色输出](#ls配置彩色输出)
 
-💠 2024-10-15 09:56:12
+💠 2024-12-02 11:47:22
 ****************************************
 
 # GUI
@@ -48,7 +45,6 @@ categories:
 
 - [Top 10 Best Linux Docks 2022](https://www.digitalocean.com/community/tutorials/top-best-linux-docks-2020)
     - plank
-
 
 ************************
 
@@ -113,46 +109,3 @@ categories:
 
 1. Halo-icon-theme
 
-## Terminal
-
-### 彩色输出
-
-> [参考博客,比较详细](http://blog.csdn.net/magiclyj/article/details/72637666)
-> [Linux Terminal Color](https://blog.csdn.net/y2701310012/article/details/40142809)
-
-```sh
-  red='\033[0;31m'
-  green='\033[0;32m'
-  yellow='\033[0;33m'
-  blue='\033[0;34m'
-  purple='\033[0;35m'
-  cyan='\033[0;36m'
-  white='\033[0;37m'
-  default='\033[0m'
-```
-
-> 256 color
-
-```sh
-    # 测试 terminal 是否支持 256
-    for i in {0..255} ; do
-        printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
-        if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
-            printf "\n";
-        fi
-    done
-```
-
-#### ls配置彩色输出
-
-[Gihub: LS_COLORS](https://github.com/trapd00r/LS_COLORS)[customize bash prompt](https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/)
-
-1. `curl https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS -o /etc/lscolor-256color`
-2. 追加到 `*sh.rc`
-   ```sh
-   if [[ ("$TERM" = *256color || "$TERM" = screen* || "$TERM" = xterm* ) && -f /etc/lscolor-256color ]]; then
-           eval $(dircolors -b /etc/lscolor-256color)
-       else
-               eval $(dircolors)
-   fi
-   ```
