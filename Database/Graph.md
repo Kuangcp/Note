@@ -15,7 +15,7 @@ categories:
     - 3.2. [Gremlin](#gremlin)
     - 3.3. [SPARQL](#sparql)
 
-💠 2024-11-26 20:13:28
+💠 2024-12-03 19:35:05
 ****************************************
 # 图数据库
 
@@ -65,13 +65,23 @@ PG系列：Agentsgraph Age
 Neo4j、RedisGraph、AgensGraph(PG+插件)
 
 ```c
+    // 查询任意节点
     MATCH (n) RETURN n limit 10
+    // 查询 疾病 关联的 所有病征
+    MATCH (d:疾病)-[:疾病的症状]->(s:疾病症状) WHERE d.名称 = '血栓形成' RETURN s
+    // 查询任意层级具有检查关系的节点 例如 疾病A-疾病B-疾病C-检查D 可以查出D
+    MATCH (n:Disease)-[r:`检查`*]-(e:Examination)   WHERE n.name = '上呼吸道感染' RETURN DISTINCT e.name
+    // 统计函数查询
+    MATCH (d:Disease)-[r1]-(s:Symptom|Duration) WHERE d.name IN ['慢性支气管炎'] AND s.name IN ['咳嗽', '气促'] RETURN sum(r1.weight)
+
+    // 修改属性
+    MATCH (n :Disease) Where n.name = '支气管扩张' SET n.popularity = 2 RETURN n
+
     //  删除所有关系
     MATCH ()-[r]->() delete(r)
     // 删除所有节点
     MATCH (n) delete(n)
-    // 查询 疾病 关联的 所有病征
-    MATCH (d:疾病)-[:疾病的症状]->(s:疾病症状) WHERE d.名称 = '血栓形成' RETURN s
+    
 ```
 
 ************************

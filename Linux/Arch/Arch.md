@@ -18,7 +18,7 @@ categories:
         - 1.2.3. [Snap](#snap)
 - 2. [Tips](#tips)
 
-💠 2024-11-25 19:33:05
+💠 2024-12-03 19:35:05
 ****************************************
 
 # Arch
@@ -47,8 +47,8 @@ categories:
 > [Arch archive packages](https://archive.archlinux.org/packages/)`软件包镜像站`  
 
 ### Pacman
+> [pacman - ArchWiki](https://wiki.archlinux.org/title/Pacman)  [pacman - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/Pacman)  
 
-[pacman - ArchWiki](https://wiki.archlinux.org/title/Pacman)  
 Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的社区驱动软件仓库。Debian/Ubuntu 用户的对应类比是 PPA。
 
 > /etc/pacman.conf 配置
@@ -67,7 +67,8 @@ Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的�
 
 - `pacman-mirrors` generate pacman mirrorlist for Manjaro Linux
 - -S 安装
-    - -Si package 查看包的详细信息
+    - -Si package 查看包的详细信息（注意查的是服务端信息）
+        - 因为包可能会变动 出现Qi有结果Si没结果的情况，所以Qi优先使用于Si 可以对比查看。
     - -S package --needed 重新安装解决 `Dependency is not satisfiable`
 - -R 卸载
    - -Rs 卸载以及没有被其他软件依赖的软件包
@@ -75,8 +76,9 @@ Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的�
    - -Sc 清除 pacman 的下载 cache
 - -Q 查询
    - -Qdt package 查询未被依赖的软件包
-   - -Qi package  查询包的依赖关系
+   - -Qi package  查询包的依赖关系（已安装） `可以通过shell得到按大小排列出已安装的包`
    - -Ql package  查询包的文件列表
+   - pactree package 树查看依赖关系
 - -U 升级或添加软件包
     - 降级安装curl历史版本 例如 `pacman -U https://archive.archlinux.org/packages/c/curl/curl-8.4.0-1-x86_64.pkg.tar.zst`
     - 当出现包的传递依赖时，只指定单个包时安装会失败，这时需要指定完整依赖的地址，例如： `pacman -U ruby ruby-irb ruby-reline rubygems`
