@@ -14,3 +14,6 @@
 
 # Guide 
 > [Mrkuhuo/data-warehouse-learning: 【2024最新版】 大数据 数据分析 电商系统 实时数仓 离线数仓 数据湖 建设方案及实战代码](https://github.com/Mrkuhuo/data-warehouse-learning)  
+
+# Tips
+> [如何做好长尾关键词SEO优化 - 广告流程自动化](https://geek.digiasset.org/pages/affiliate/long-tail-keywords-in-article/)  

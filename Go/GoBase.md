@@ -51,7 +51,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2024-11-21 10:49:19
+💠 2024-12-04 16:30:24
 ****************************************
 # Go
 
@@ -193,8 +193,8 @@ replaces替换依赖仓库地址，replaces命令与go.mod指令相同，用于�
 ### 模板项目初始化
 
 > [gonew](https://pkg.go.dev/golang.org/x/tools/cmd/gonew)
-
 > [go-zero](https://github.com/zeromicro/go-zero)
+> [go-eagle/eagle: 🦅 A Go framework for the API or Microservice](https://github.com/go-eagle/eagle?tab=readme-ov-file)  
 
 ************************
 
