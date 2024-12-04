@@ -37,7 +37,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2024-12-04 11:50:54
+💠 2024-12-04 13:58:29
 ****************************************
 # GC
 > Java Garbage Collection
@@ -276,7 +276,7 @@ GC Roots 对象包含:
 - 第四阶段，G1（并发）收集器
     - G1收集器（或者垃圾优先收集器）的设计初衷是为了尽量缩短处理超大堆（大于4GB）时产生的停顿。相对于CMS的优势而言是内存碎片的产生率大大降低。
 
-现代化的GC实现，都分为增量和全量处理，
+现代化的GC实现，都分为增量和全量处理，通过各自的设计来实现增量式处理（随着应用运行，低或无STW的情况，做一部分一部分的回收），实在来不及处理的兜底策略才是全量，全量时的成本会很大阻塞很久。  
 
 *******************
 
@@ -291,7 +291,7 @@ GC Roots 对象包含:
 | Serial (第一代)            | 单线程STW 复制算法 |
 | PraNew (第二代)            | 多线程并行STW 复制算法|
 | Parallel Scavenge (第三代) | 多线程并行STW 吞吐量优化，复制算法|
-| G1 (第四代)            | 多线程并发，可以精确控制STW时间，整理算法 |
+| G1 (第四代)                | 多线程并发，可以精确控制STW时间，整理算法 |
 
 > 老年代
 
@@ -311,10 +311,11 @@ GC Roots 对象包含:
 ************************
 
 ## 默认垃圾收集器
-- `-XX:+PrintCommandLineFlags` 查看默认参数 或者查看GC日志中代的名称 `-XX:+PrintGCDetails`
-    - 例如： `java -XX:+PrintCommandLineFlags -version`
-- JDK 1.7 1.8 默认垃圾收集器Parallel Scavenge（新生代）+Parallel Old（老年代）
-- JDK1.9+ 默认垃圾收集器G1
+JDK 1.7 1.8 默认垃圾收集器Parallel Scavenge（新生代）+Parallel Old（老年代）  
+JDK1.9+ 默认垃圾收集器G1  
+
+`-XX:+PrintCommandLineFlags` 查看默认参数 或者查看GC日志中代的名称 `-XX:+PrintGCDetails`
+- 例如： `java -XX:+PrintCommandLineFlags -version`
 
 ************************
 
@@ -527,16 +528,20 @@ ConcGCThreads的默认值不同GC策略略有不同，CMS下是(ParallelGCThread
 ## ShenandoahGC
 > JDK12  [wiki: ShenandoahGC](https://wiki.openjdk.java.net/display/shenandoah/Main)
 
-> [参考: JDK12 ShenandoahGC小试牛刀](https://juejin.im/post/5c934a5d5188252dad05d82a)  
+`-XX:+UnlockExperimentalVMOptions  -XX:+UseShenandoahGC`
 
--XX:+UnlockExperimentalVMOptions  -XX:+UseShenandoahGC
+> [参考: JDK12 ShenandoahGC小试牛刀](https://juejin.im/post/5c934a5d5188252dad05d82a)  
+> [Has anyone given Shenandoah GC a try yet? How was your experience? : r/feedthebeast](https://www.reddit.com/r/feedthebeast/comments/euw3k2/has_anyone_given_shenandoah_gc_a_try_yet_how_was/)  
+
+
+************************
 
 ## Epsilon
 > JDK11 [A No-Op Garbage Collector](https://openjdk.org/jeps/318)
 
-- `-XX:+UseEpsilonGC -XX:+UnlockExperimentalVMOptions` 直至22尚未GA
+`-XX:+UseEpsilonGC -XX:+UnlockExperimentalVMOptions` 直至22尚未GA
 
-不做GC的GC，即不做垃圾回收，通常用于目标测试GC的对照组
+空实现，不做垃圾回收的GC，一旦内存不够分配了JVM就直接停掉，通常用于测试调优GC方案的对照组
 
 ************************
 
