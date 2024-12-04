@@ -37,7 +37,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2024-07-12 11:40:30
+💠 2024-12-04 11:50:54
 ****************************************
 # GC
 > Java Garbage Collection
@@ -276,7 +276,7 @@ GC Roots 对象包含:
 - 第四阶段，G1（并发）收集器
     - G1收集器（或者垃圾优先收集器）的设计初衷是为了尽量缩短处理超大堆（大于4GB）时产生的停顿。相对于CMS的优势而言是内存碎片的产生率大大降低。
 
-> `java -XX:+PrintCommandLineFlags -version` 可以通过该命令快速知道当前版本JDK默认垃圾收集器
+现代化的GC实现，都分为增量和全量处理，
 
 *******************
 
@@ -303,7 +303,7 @@ GC Roots 对象包含:
 | G1 (第四代) | |
 | ZGC/ShenandoahGC | | 
 
-> 收集器搭配时的限制条件: 
+> 收集器搭配时的限制
 - CMS 不能和 Parallel Scavenge 一起用
 - Parallel Old 只能和 Parallel Scavenge 一起用
 - G1 ZGC ShenandoahGC 只能单独使用(独自处理新生代和老年代)
@@ -311,7 +311,8 @@ GC Roots 对象包含:
 ************************
 
 ## 默认垃圾收集器
-- `-XX:+PrintCommandLineFlags` 或者查看GC日志中代的名称 `-XX:+PrintGCDetails`
+- `-XX:+PrintCommandLineFlags` 查看默认参数 或者查看GC日志中代的名称 `-XX:+PrintGCDetails`
+    - 例如： `java -XX:+PrintCommandLineFlags -version`
 - JDK 1.7 1.8 默认垃圾收集器Parallel Scavenge（新生代）+Parallel Old（老年代）
 - JDK1.9+ 默认垃圾收集器G1
 
@@ -415,10 +416,14 @@ CMS进入 full GC 的情况是并发收集模式跟不上应用分配内存的�
 主要体现是GC日志里可以看到 concurrent mode failure 字样，然后就开始可以看到 `[Full GC ... ]` 的日志了  
 这样就带来一个问题，如果CMS并发GC发生了，此时是无法利用 `-XX:+HeapDumpBeforeFullGC` 参数生成dump文件，因为不是发生 FullGC  
 
+************************
+
 ## G1
 > Garbage First 面向服务端应用的垃圾收集器, JDK7发布, JDK9作为默认GC [Oracle Doc](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc.html#garbage_first_garbage_collection)
 
 `-XX:+UseG1GC`
+
+设计目的： 避免FullGC
 
 - 分代收集
     - 虽然G1可以独立管理整个堆, 但同样具有分代的概念
@@ -427,23 +432,22 @@ CMS进入 full GC 的情况是并发收集模式跟不上应用分配内存的�
 - 可预测的停顿
     - G1除了追求低停顿, 还能建立可预测的停顿时间模型, 能让使用者明确指定在一个长度为M毫秒的时间片段内, 消耗在垃圾收集上的时间不得超过N毫秒
     - 几乎是RTSJ的特征
-- [JEP: 内存返还](https://openjdk.org/jeps/346)`JDK12发布`
-
-> [参考: JVM系列篇：深入剖析G1收集器](https://my.oschina.net/u/3959491/blog/3029276)
+- [JEP 346: 内存自动返还](https://openjdk.org/jeps/346)`JDK12发布`
+    - G1在12之前只有在full GC或者concurrent cycle（并发处理周期）的时候才会归还内存，由于这两个场景都是G1极力避免的，因此在大多数场景下可能不会及时归还committed Java heap memory给操作系统。除非有外部强制触发Full GC。
+    - 在使用云平台的容器环境中，这种不利之处特别明显。例如一个JVM最大堆3G，当前使用到了2G，实际FullGC回收后只有500M 但是一直没达到FullGC条件，所以一直占用着1G多的内存
+- [JEP 307: Parallel Full GC for G1](https://openjdk.org/jeps/307) JDK1.8时FullGC是单线程的， JDK10开始支持并行
 
 > 字符串常量池去重 特性(8u20引入)  [UseStringDeduplication - 优缺点](https://gceasy.ycrash.cn/gc-recommendations/stringdeduplication-solution.jsp)
 - `-XX:+UseStringDeduplication` 适用于大量相似字符串的场景降低内存占用，但会增加GC负担，默认不开启
     - 查看字符串去重统计信息（调试用） `-XX:+PrintStringDeduplicationStatistics` `-XX:+PrintStringTableStatistics`
     - 达到该年龄(经过GC次数)的String对象被认为是去重的候选对象 `-XX:StringDeDuplicationAgeThreshold`
-- 该策略不会清除重复字符串对象本身。其只会替换底层 char[ ] 达到复用内存的目的 [Gitee 测试代码](https://gitee.com/gin9/JavaBase/blob/master/class/src/main/java/jvm/gc/g1/StringDeduplication.java)
-
-> JDK1.8时FullGC是单线程的， JDK10开始支持并行
+- 该策略不会清除重复字符串对象本身。其只会替换底层 `char[]` 达到复用内存的目的 [Gitee 测试代码](https://gitee.com/gin9/JavaBase/blob/master/class/src/main/java/jvm/gc/g1/StringDeduplication.java)
 
 > [参考: Java Hotspot G1 GC的一些关键技术](https://tech.meituan.com/2016/09/23/g1.html)  
 > [Welcome 20% less memory usage for G1 remembered sets](https://tschatzl.github.io/2021/02/26/early-prune.html)  
 
 G1提供了两种GC模式，Young GC和Mixed GC，两种都是完全Stop The World的
-- Young GC：选定所有年轻代里的Region。通过控制年轻代的region个数，即年轻代内存大小，来控制young GC的时间开销。 
+- Young GC：选定所有年轻代里的Region。通过控制年轻代的 Region 个数，即年轻代内存大小，来控制young GC的时间开销。 
 - Mixed GC：选定所有年轻代里的Region，外加根据 global concurrent marking 统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
 
 由上面的描述可知，Mixed GC不是full GC，它只能回收部分老年代的Region，如果mixed GC实在无法跟上程序分配内存的速度，导致老年代填满无法继续进行Mixed GC，就会使用serial old GC（full GC）来收集整个GC heap。  
@@ -456,8 +460,8 @@ global concurrent marking 的执行过程分为四个步骤：
 - **最终标记**（Remark，`STW`）: 标记那些在并发标记阶段发生变化的对象，将被回收。
 - **清除垃圾**（Cleanup）: 清除空Region（没有存活对象的），加入到free list。
 
-第一阶段initial mark是共用了Young GC的暂停，这是因为他们可以复用root scan操作，所以可以说global concurrent marking是伴随Young GC而发生的。
-第四阶段Cleanup只是回收了没有存活对象的Region，所以它并不需要STW。
+第一阶段initial mark是共用了Young GC的暂停，这是因为他们可以复用root scan操作，所以可以说global concurrent marking是伴随Young GC而发生的。  
+第四阶段Cleanup只是回收了没有存活对象的Region，所以它并不需要STW。  
 
 Young GC发生的时机大家都知道，那什么时候发生Mixed GC呢？其实是由一些参数控制着的，另外也控制着哪些老年代Region会被选入CSet。 
 - `G1HeapWastePercent`： 在global concurrent marking结束之后，我们可以知道old gen regions中有多少空间要被回收，在每次YGC之后和再次发生Mixed GC之前，会检查垃圾占比是否达到此参数，只有达到了，下次才会发生Mixed GC。 
@@ -479,21 +483,31 @@ Young GC发生的时机大家都知道，那什么时候发生Mixed GC呢？其�
 | `-XX:G1MaxNewSizePercent=60`  | 设置用作 Young 代空间大小的最高堆内存百分比。默认值为 Java 堆内存的 60%。|
 | `-XX:G1OldCSetRegionThresholdPercent=10`  |  	设置混合垃圾回收周期中要收集的 Old 区域数量上限。默认为 Java 堆内存的 10%。|
 | `-XX:G1ReservePercent=10`  |  	设置需保留的内存百分比。默认为 10%。G1 垃圾回收器会始终尝试保留 10% 的堆内存空间空闲。|
+| `-XX:G1PeriodicGCInterval` | *JDK12+* 设置周期GC的周期（ms） 默认值为0， 0表示禁用该功能 |
+| `-XX:G1PeriodicGCSystemLoadThreshold` | *JDK12+* 设置阈值 当系统负载高于该阈值就触发FullGC或并行GC 0表示禁用该触发策略|
 
 
-GCTimeRatio： 确定目标 GC 时间的实际公式为 [1 / (1 + GCTimeRatio)]。默认值 12 表示目标 GC 时间为 [1 / (1 + 12)]，即 7.69%。
+**GCTimeRatio**： 确定目标 GC 时间的实际公式为 [1 / (1 + GCTimeRatio)]。默认值 12 表示目标 GC 时间为 [1 / (1 + 12)]，即 7.69%。
 这意味着 JVM 可将 7.69％ 的时间用于 GC 活动，其余 92.3％ 用于处理客户活动。
 
-ParallelGCThreads： 如果逻辑处理器的数量M小于或等于 8 个，则将 n 值设置为M。如果M为5，则将 n 设为 5.如果M为 8 个以上，请将该值设置为大约 5/8 * M。
+**ParallelGCThreads**： 如果逻辑处理器的数量M小于或等于 8 个，则将 n 值设置为M。如果M为5，则将 n 设为 5.如果M为 8 个以上，请将该值设置为大约 5/8 * M。
 这种设置在大多数情况下都有效，除了较大规模的 SPARC 系统——其中 n 值可以大约是 `5/16 * M`。
 
 MaxGCPauseMillis：G1将根据先前收集的信息以及检测到的垃圾对象量预估可以执行回收的垃圾区域，尽量保证GC时间不超过设置的值。
 
-ParallelGCThreads: 使用默认值就可以了。但是在JRE版本1.8.0_131之前，JVM无法感知Docker的CPU限制，会使用宿主机的逻辑核数计算默认值。  
+**ParallelGCThreads**： 使用默认值就可以了。但是在JRE版本1.8.0_131之前，JVM无法感知Docker的CPU限制，会使用宿主机的逻辑核数计算默认值。  
 这通常会远超过容器的核数, 过多的GC线程数抢占了业务线程的CPU时间，加上线程切换的开销，较大的降低了吞吐量。因此JRE 1.8.0_131之前的版本，未明确指定ParallelGCThreads会有较大的风险。
 
-ConcGCThreads 一般称为并发标记线程数，为了减少GC的STW的时间，CMS和G1都有并发标记的过程，此时业务线程仍在工作，只是并发标记是CPU密集型任务，业务的吞吐量会下降，RT会变长。
+**ConcGCThreads**： 一般称为并发标记线程数，为了减少GC的STW的时间，CMS和G1都有并发标记的过程，此时业务线程仍在工作，只是并发标记是CPU密集型任务，业务的吞吐量会下降，RT会变长。
 ConcGCThreads的默认值不同GC策略略有不同，CMS下是(ParallelGCThreads + 3) / 4 向下取整，G1下是ParallelGCThreads / 4 四舍五入。一般来说采用默认值就可以了，但是还是由于在JRE版本1.8.0_131之前，JVM无法感知Docker的资源限制的问题，ConcGCThreads的默认值会比较大（20左右），对业务会有影响。
+
+**G1PeriodicGCSystemLoadThreshold**： 系统会调用 getloadavg()，默认一分钟内系统返回的平均负载值低于 G1PeriodicGCSystemLoadThreshold指定的阈值，则触发full GC或者concurrent GC( 如果开启 G1PeriodicGCInvokesConcurrent )
+
+> 周期GC内存返还
+- 自上次垃圾回收完成以来已超过 G1PeriodicGCInterval ( milliseconds )， 并且此时没有正在进行的垃圾回收任务。如果 G1PeriodicGCInterval 值为零表示禁用快速回收内存的定期垃圾收集。
+- 或者达到 G1PeriodicGCSystemLoadThreshold 阈值
+如果不满足上述条件中的任何一个，则取消当期的定期垃圾回收。等一个 G1PeriodicGCInterval 时间周期后，将重新考虑是否执行定期垃圾回收。
+[Java12新特性 -- 增强G1，自动返回未用堆内存给操作系统 - 西北野狼 - 博客园](https://www.cnblogs.com/androidsuperman/p/11743103.html)  
 
 ************************
 
