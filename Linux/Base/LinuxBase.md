@@ -64,7 +64,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2024-12-02 11:47:22
+💠 2024-12-05 18:21:22
 ****************************************
 
 # Linux系统
@@ -652,10 +652,6 @@ _系统运行级别_
 # 系统资源管理
 
 - 查看系统PCI设备：`lspci`
-- 查看CPU信息：`more /proc/cpuinfo`
-  - 查看物理CPU数：`cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l`
-  - 查看每个物理CPU中的内核的个数：`cat /proc/cpuinfo | grep "cpu cores"`
-  - 查看系统所有逻辑CPU个数：`cat /proc/cpuinfo | grep "processor" | wc -l`
 - 查看系统内存信息：`more /proc/meminfo`
 - 查看磁盘分区信息：`df -l`
 
@@ -673,10 +669,15 @@ _系统运行级别_
    ```
 
 ## CPU
-
 > [linux cpu load](https://www.scalyr.com/blog/linux-cpu-load/)
 
-- Usage 和 Load 的区别， 使用率针对于Cpu 时间，负载针对于等待和进行中的线程
+查看CPU信息：`more /proc/cpuinfo`
+- 查看物理CPU数：`cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l`
+- 查看每个物理CPU中的内核的个数：`cat /proc/cpuinfo | grep "cpu cores"`
+- 查看系统所有逻辑CPU个数：`cat /proc/cpuinfo | grep "processor" | wc -l`
+
+
+Usage 和 Load 的区别， 使用率针对于Cpu 时间，负载针对于等待和进行中的线程
 - 使用uptime、top或者 `cat /proc/loadavg`都可以看到CPU的load 1 5 15 分钟的负载。
     - LOAD AVERAGE：一段时间内处于可运行状态和不可中断状态的进程平均数量,它是从另外一个角度体现CPU的使用状态。
         - 可运行分为正在`运行进程`和`正在等待CPU`的进程，**状态为R**
@@ -685,6 +686,7 @@ _系统运行级别_
 - lscpu 展示CPU信息
 
 - taskset 将任务绑定在指定cpu核心上
+  - `taskset -c 0,1,2,3,4 command`
 
 ************************
 
