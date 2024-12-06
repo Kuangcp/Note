@@ -11,25 +11,16 @@
 > *.km.svg 使用 [vscode-mindmap](https://github.com/eightHundreds/vscode-mindmap) 插件编辑  
 
 ## 基础
-* [ 算法 ](/Algorithm/Algorithm.md)
-* [ 字符编码 ](/Skills/CS/CharacterEncoding.md)
-* [ 计算机基础 ](/Skills/CS/Computer.md)
-* [ 网络 ](/Skills/Network/)
-* [ 正则表达式 ](/Skills/RegularExpression.md)
-* [ 软考相关 ](/Skills/SoftwareDesignEngineer.md)
-* [ 日期与时间 ](/Skills/CS/Time.md)
-************************
-* [ Git实践细节 ](/Skills/Vcs/GitAction.md)
-* [ Git进阶 ](/Skills/Vcs/GitAdvance.md)
-* [ Git基础 ](/Skills/Vcs/GitBase.md)
-* [ Git协作 ](/Skills/Vcs/GitTeam.md)
-* [ Svn ](/Skills/Vcs/Svn.md)
-************************
-* [ 编辑器对比 ](/Skills/Application/Editor.md)
-* [ Web浏览器对比 ](/Skills/Application/WebBrowser.md)
+
+|  |  |  |  |  |  |
+|:----|:----|:----|:----|:----|:----|
+| 基石 | [ 算法 ](/Algorithm/Algorithm.md) | [ 字符编码 ](/Skills/CS/CharacterEncoding.md) | [ 计算机基础 ](/Skills/CS/Computer.md) | [ 网络 ](/Skills/Network/) | 
+| 应用 | [ 正则表达式 ](/Skills/RegularExpression.md) | [ 日期与时间 ](/Skills/CS/Time.md) | [ 软考相关 ](/Skills/SoftwareDesignEngineer.md) | 
+| 版本控制 | [ Git实践细节 ](/Skills/Vcs/GitAction.md) | [ Git进阶 ](/Skills/Vcs/GitAdvance.md) | [ Git基础 ](/Skills/Vcs/GitBase.md) | [ Git协作 ](/Skills/Vcs/GitTeam.md) | [ Svn ](/Skills/Vcs/Svn.md) |
+| 对比 | [ 编辑器对比 ](/Skills/Application/Editor.md) | [ Web浏览器对比 ](/Skills/Application/WebBrowser.md) | 
 
 ## Java 
-> [目录索引](./Java/)
+> [>>完整目录索引<<](./Java/)
 
 | 基础 | 进阶 |
 |:----|:----|
@@ -47,43 +38,24 @@
 
 ### 工具
 
-* [ Gradle ](/Java/Tool/Gradle.md)
-* [ IDEA ](/Java/Tool/IDEA.md)
-* [ Lombok ](/Java/Tool/Lombok.md)
-* [ Maven ](/Java/Tool/Maven.md)
-* [ Maven进阶 ](/Java/Tool/MavenAdvance.md)
-* [ Tomcat ](/Java/Tool/Tomcat.md)
-* [ Jenkins ](/Skills/DevOps/Jenkins.md)
+[ Gradle ](/Java/Tool/Gradle.md) | [ IDEA ](/Java/Tool/IDEA.md) | [ Lombok ](/Java/Tool/Lombok.md) | [ Maven ](/Java/Tool/Maven.md) | [ Maven进阶 ](/Java/Tool/MavenAdvance.md) | [ Tomcat ](/Java/Tool/Tomcat.md) | [ Jenkins ](/Skills/DevOps/Jenkins.md) 
 
 ## Linux
-* [ Java开发环境搭建 ](/Linux/JavaDevInit.md)
-* [ Linux基础 ](/Linux/Base/LinuxBase.md)
-* [ Linux文件管理 ](/Linux/Base/LinuxFile.md)
-* [ Linux处理压缩文件 ](/Linux/Base/LinuxCompressFile.md)
-* [ Shell学习 ](/Script/ShellLearn.md)
-* [ Linux工具命令 ](/Linux/Base/LinuxCommand.md)
-* [ Linux目录结构 ](/Linux/Base/LinuxDirectoryStructure.md)
-* [ Linux网络 ](/Linux/Base/LinuxNetwork.md)
-* [ Linux性能 ](/Linux/Base/LinuxPerformance.md)
-* [ 流编辑器 ](/Linux/Base/LinuxStreamEditor.md)
-* [ Linux美化 ](/Linux/Base/LinuxUI.md)
-* [ Linux各种发行版 ](/Linux/Base/ReleaseExperience.md)
-* [ SSH ](/Linux/Base/SSH.md)
-* [ Nginx ](/Linux/Tool/Nginx.md)
 
-## 容器
-* [ Docker基础 ](/Linux/Container/Docker.md)
-* [ Docker进阶 ](/Linux/Container/DockerAdvance.md)
-* [ DockerFile ](/Linux/Container/DockerFile.md)
-* [ Docker与应用 ](/Linux/Container/DockerSoft.md)
+
+|  |  |  |  |  |  |
+|:----|:----|:----|:----|:----|:----|
+| [ 基础 ](/Linux/Base/LinuxBase.md) | [ Linux文件管理 ](/Linux/Base/LinuxFile.md)  | [ Shell学习 ](/Script/ShellLearn.md) | [ Linux工具命令 ](/Linux/Base/LinuxCommand.md) | [ Linux目录结构 ](/Linux/Base/LinuxDirectoryStructure.md) | [ Linux网络 ](/Linux/Base/LinuxNetwork.md) |
+| 应用 | [ SSH ](/Linux/Base/SSH.md) | [ 流编辑器 ](/Linux/Base/LinuxStreamEditor.md) | [ 压缩文件 ](/Linux/Base/LinuxCompressFile.md) | [ Nginx ](/Linux/Tool/Nginx.md) | [ Java开发环境搭建 ](/Linux/JavaDevInit.md) | 
+| 容器 | [ Docker基础 ](/Linux/Container/Docker.md) | [ Docker进阶 ](/Linux/Container/DockerAdvance.md) | [ DockerFile ](/Linux/Container/DockerFile.md) | [ Docker与应用 ](/Linux/Container/DockerSoft.md) | 
+
+
+[ Linux性能 ](/Linux/Base/LinuxPerformance.md) | [ Linux美化 ](/Linux/Base/LinuxUI.md) | [ Linux发行版 ](/Linux/Base/ReleaseExperience.md)  
 
 ## Python
-* [ Python ](/Python/Python.md)
-* [ PythonGUI ](/Python/PythonGUI.md)
-* [ PythonGame ](/Python/PythonGame.md)
-* [ PythonNet ](/Python/PythonNet.md)
-* [ PythonOffices ](/Python/PythonOffices.md)
-* [ PythonWeb ](/Python/PythonWeb.md)
+|  |  |  |  |  |  |
+|:----|:----|:----|:----|:----|:----|
+[ Python ](/Python/Python.md) | [ PythonGUI ](/Python/PythonGUI.md) | [ PythonGame ](/Python/PythonGame.md) | [ PythonNet ](/Python/PythonNet.md) | [ PythonOffices ](/Python/PythonOffices.md) | [ PythonWeb ](/Python/PythonWeb.md) | 
 
 ************************
 
