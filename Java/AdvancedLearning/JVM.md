@@ -25,16 +25,15 @@ categories:
             - 3.1.4.1. [堆内存分配策略](#堆内存分配策略)
         - 3.1.5. [方法区](#方法区)
             - 3.1.5.1. [运行时常量池](#运行时常量池)
-        - 3.1.6. [Direct Memory 直接内存](#direct-memory-直接内存)
-        - 3.1.7. [Code Cache](#code-cache)
+        - 3.1.6. [Code Cache](#code-cache)
     - 3.2. [Metaspace 元空间](#metaspace-元空间)
-    - 3.3. [Native Memory](#native-memory)
+    - 3.3. [Native Memory 堆外内存](#native-memory-堆外内存)
 - 4. [JVM不同实现](#jvm不同实现)
     - 4.1. [Hotspot JVM](#hotspot-jvm)
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-12-04 13:58:29
+💠 2024-12-06 19:28:00
 ****************************************
 # JVM
 > JVM结构及设计
@@ -56,6 +55,9 @@ Oracle JDK 默认采用的是 Hotspot JVM
 > [Command Reference for JDK8](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html) | [Command Reference for JDK17](https://docs.oracle.com/en/java/javase/17/docs/specs/man/java.html)  
 > [Official: Java HotSpot VM Options](https://www.oracle.com/java/technologies/javase/vmoptions-jsp.html)  
 > [Guide to the Most Important JVM Parameters](https://www.baeldung.com/jvm-parameters)  
+
+> [Jvm启动参数配置建议 | 郭工gyf的记录](https://journal.kazmodan.com/docs/%E7%BC%96%E7%A8%8B%E7%94%9F%E6%80%81/Java/JVM/JVM%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE%E5%BB%BA%E8%AE%AE/)  
+
 
 - [远程调试](/Java/AdvancedLearning/JavaDebug.md#远程调试)
 - `-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false`
@@ -106,7 +108,8 @@ Java9开始，整合了GC，类加载等日志配置方式，日志级别，输�
 - `-XX:NewRatio`old/new 内存的比值 **默认是2**
 - `-Xmn` MaxNewSize 默认值是`Xmx`的1/3 即最大堆内存 MaxHeapSize 的1/3
 - `-Xss` 设置 ThreadStackSize 线程的栈内存大小 默认值 1024k
-- `-XX:+AlwaysPreTouch` 直接分配物理内存而不是虚拟内存，模拟长时间运行的服务
+- `-XX:+AlwaysPreTouch` 堆内存分配时，直接分配物理内存而不是虚拟内存，分配的物理内存会做0值初始化（单线程执行），好处是后续申请内存时无须分配和初始化，缺点是启动更耗时。
+    - 申请内存的场景（年轻代晋升，新对象分配）
 
 > java -XX:+PrintFlagsFinal -version
 - `-XX:+PrintFlagsInitial` 输出初始默认值
@@ -264,11 +267,6 @@ JDK7中符号表被移动到 Native Heap中，字符串常量池和类引用被�
 #### 运行时常量池
 运行时常量池是方法区的一部分, 用于存放编译期生成的各种字面量和符号引用,这部分内容将在类加载后进入方法区的运行时常量池存放.
 
-### Direct Memory 直接内存
-直接内存并不是虚拟机运行时数据区的一部分, 也不是Java虚拟机规范中定义的内存区域. 但是这部分内存也被频繁地使用, 而且也可能导致 OutOfMemoryError 
-
-NIO 会经常使用, 提高性能
-
 ### Code Cache
 > [Introduction to JVM Code Cache](https://www.baeldung.com/jvm-code-cache)  
 
@@ -306,7 +304,7 @@ NIO 会经常使用, 提高性能
 
 因此为减少预热影响，可以将-XX:MetaspaceSize，-XX:MaxMetaspaceSize指定成相同的值。
 
-## Native Memory
+## Native Memory 堆外内存
 Native Memory 主要是JNI、Deflater/Inflater、DirectByteBuffer（nio中会用到）使用的， 当发现Java进程的堆使用率不高，但是进程占用内存RSS很高，就要怀疑这块区域了
 
 - [Github: 测试代码](https://github.com/Kuangcp/JavaBase/blob/master/class/src/test/java/jvm/oom/DirectMemoryOOMTest.java)

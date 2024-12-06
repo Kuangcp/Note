@@ -36,10 +36,11 @@ categories:
     - 6.3. [Visualvm](#visualvm)
     - 6.4. [MAT](#mat)
     - 6.5. [JMC](#jmc)
+        - 6.5.1. [JFR](#jfr)
     - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-11-26 20:13:28
+💠 2024-12-06 19:28:00
 ****************************************
 
 # JVM 监控&诊断
@@ -227,7 +228,9 @@ _command_
 
 - JFR 
     - JFR.start 会输出提示信息
+    - JFR.configure
     - JFR.stop name=1 filename=now.jfr （`name`参数从start执行后的提示信息中获取）
+    - JFR.dump
 - JVMTI
 - ManagementAgent
 - System
@@ -318,7 +321,7 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 
 > 提高效率的使用场景
 1. 可以使用 Profiler 下的JDBC，操作业务流程，获取所有执行的SQL，用来做索引优化，或排查问题
-    - **注意可能不准确**，需要对监控到的SQL有质疑的想法 
+    - **注意可能不准确**，需要对监控到的SQL辩证对待 
         - 真实案例： 监控到对MySQL执行的某条SQL为 `xxx in ('NULL', 2, 4)`. 应用写法不规范未过滤集合中的null值就拼接进了条件
         - 实际上MySQL驱动执行的SQL是 `xxx in (NULL, 2, 4)` 这会导致此子句永远是false，详见 [MySQL 条件操作符](/Database/MySQLAdvance.md#条件操作符)
         - Clone Visualvm的代码后 通过GUI找功能实现，发现可疑方法 org.graalvm.visualvm.lib.jfluid.results.jdbc.SQLStatement#getFullSql
@@ -375,9 +378,22 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 > [目标JVM开启远程访问JMX](/Java/AdvancedLearning/JMX.md#JVM参数配置) `注意JDK6后就默认开启了进程访问JMX`  
 > [JMC 9](https://www.oracle.com/java/technologies/javase/jmc9-release-notes.html)`自身需要JDK17以上运行，可以监控JDK 7u40及往后的版本`  
 
-> 实践场景
-- JFR分析某个业务场景的性能问题
-    - 启动应用，启动JMC，JMC连接到业务JVM后，开启一段时间的JFR，然后直接操作业务逻辑，JFR结束后可以看到
+### JFR
+> [JEP 328: Flight Recorder](https://openjdk.org/jeps/328)  
+> [Monitoring Java Applications with Flight Recorder | Baeldung](https://www.baeldung.com/java-flight-recorder-monitoring)  
+
+JFR 0.9 版本对应 JDK7 和 JDK8 （均为商用版本）， JFR 1.0 版本对应 JDK 9 和 JDK 10， JFR 2.0 版本对应 JDK11
+
+对于一个JVM进程开启JFR时，实际上是开启了一个线程收集信息，开始这个线程的时候默认内存为250Mib，满了后会循环使用 溢出的部分丢弃或者写入配置的文件路径上。
+默认采集全部支持的事件，可以按需过滤出关心的事件，降低性能影响。  
+dump指令是将内存的数据dump到磁盘，线程继续在收集 stop 则是停止该收集线程  
+
+开启JFR方式
+- JMC: 启动应用，启动JMC，JMC连接到业务JVM后，开启一段时间的JFR，然后直接操作业务逻辑，JFR结束后可以直接进行分析
+- jcmd: 使用 [jcmd](#jcmd) 对已经运行中的应用开启 JFR 
+
+> [troubleshoot之:使用JFR解决内存泄露 - flydean - 博客园](https://www.cnblogs.com/flydean/p/jvm-diagnostic-memory-leak.html)  
+> [深度探索JFR - JFR详细介绍与生产问题定位落地 - 1. JFR说明与启动配置-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/1811738)  
 
 ************************
 
