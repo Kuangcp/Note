@@ -34,7 +34,7 @@ categories:
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-12-10 22:15:30
+💠 2024-12-10 22:28:33
 ****************************************
 # JVM
 > JVM结构及设计
@@ -192,6 +192,15 @@ Java9开始，整合了GC，类加载等日志配置方式，日志级别，输�
 # 内存区域
 ![alt text](./img/007-jvm-memory.webp)
 
+`glibc`
+
+注意所有内存的申请和返还都是通过 glibc 实现的，因此不建议使用Alpine作为基础镜像，因为会有行为上的不一致，Alpine使用的是 musl libc(核心源码只有不到 400 行)。  
+不过标准的glibc库也有一些设计需要关心，例如 MALLOC_ARENA_MAX 。  
+> [从一次 CTF 出题谈 musl libc 堆漏洞利用本文通过一道 CTF 题目展示 musl libc 堆溢出漏洞的利 - 掘金](https://juejin.cn/post/6844903574154002445)  
+
+************************
+
+
 > [Java 进程内存占用及可观测性调研&内存异常排查最佳实践](https://www.pengzna.top/article/Java-Memory/)`深入探究内存分布细节`  
 > [谈JVM xmx, xms等内存相关参数合理性设置](https://developer.jdcloud.com/article/2740)  
 
@@ -295,6 +304,8 @@ Native Memory 主要是JNI、线程栈、编译器、符号表、Deflater/Inflat
 ### NMT Native Memory Tracking
 > [Native Memory Tracking](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/tooldescr007.html)  
 
+> [NMT Memory Categories](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/tooldescr022.html#BABHIFJC)`内存各分类说明`  
+
 - 启用NMT: java -XX:NativeMemoryTracking=summary 或者 detail 开销更大一些
 - 查看NMT: jcmd $pid VM.native_memory `[detail] 对应启用时设置，输出具体内存地址信息`
     - summary 缺省参数，查看概览
@@ -368,18 +379,18 @@ Total: reserved=10019737KB, committed=997089KB () reversed保留内存 （ps中�
 
 [Metaspace 解密 - 你假笨](https://heapdump.cn/article/210111)
 
--XX:MaxMetaspaceSize 指定元空间的最大空间，默认值是无限（16EB）。
+-XX:MaxMetaspaceSize 指定元空间的最大空间，默认值是无限（16EB）
 -XX:MetaspaceSize 指定元空间首次扩充的大小，默认为20.75M
 
-由于MaxMetaspaceSize未指定时，默认无上限，所以需要特别关注内存泄露的问题，如果程序动态的创建了很多类，或出现过java.lang.OutOfMemoryError:Metaspace，建议明确指定-XX:MaxMetaspaceSize。  
-另外Metaspace实际分配的大小是随着需要逐步扩大的，**每次扩大需要一次FGC**，-XX:MetaspaceSize默认的值比较小，需要频繁GC扩充到需要的大小。类似日志可以看到Metaspace引起的FGC：`[Full GC (Metadata GC Threshold) ...]`
+由于MaxMetaspaceSize未指定时，默认无上限，所以需要特别关注内存泄露的问题  
+如果程序动态的创建了很多类（反射，Lambda等等）或出现过java.lang.OutOfMemoryError:Metaspace， 建议明确指定-XX:MaxMetaspaceSize
 
-因此为减少预热影响，可以将-XX:MetaspaceSize，-XX:MaxMetaspaceSize指定成相同的值。
-
+Metaspace实际分配的大小是随着需要逐步扩大的，**每次扩大需要执行一次FGC**，-XX:MetaspaceSize默认的值是比较小的，需要频繁GC扩充到实际需要的大小。  
+类似日志可以看到Metaspace引起的FGC：`[Full GC (Metadata GC Threshold) ...]`， 因此为减少预热影响，可以将-XX:MetaspaceSize，-XX:MaxMetaspaceSize指定成相同的值。
 
 ### DirectMemory 堆外内存
 常说的堆外内存都是指这块，即NIO使用到的缓冲区内存（直接操作系统申请，不受GC控制）。  
-通常在NMT监控中的 Internal 部分，如果发现这部分增长明显，需要排查NIO相关的模块和配置了。  
+通常出现在NMT监控中的 Internal 部分，如果发现这部分增长明显，需要排查NIO相关的代码使用和配置了。  
 
 - [how to see memory useage of nio buffers](https://stackoverflow.com/questions/2689914/how-to-see-the-memory-usage-of-nio-buffers)
 
@@ -391,7 +402,6 @@ Total: reserved=10019737KB, committed=997089KB () reversed保留内存 （ps中�
 
 ### Code Cache
 > [Introduction to JVM Code Cache](https://www.baeldung.com/jvm-code-cache)  
-
 
 **********************
 
