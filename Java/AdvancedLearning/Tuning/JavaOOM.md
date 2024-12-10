@@ -13,15 +13,18 @@ categories:
     - 1.2. [Heap space OOM](#heap-space-oom)
     - 1.3. [Metaspace OOM](#metaspace-oom)
     - 1.4. [Compressed Class Space OOM](#compressed-class-space-oom)
-    - 1.5. [Direct Memory OOM](#direct-memory-oom)
-    - 1.6. [GC overhead limit exceeded](#gc-overhead-limit-exceeded)
+    - 1.5. [No Heap Memory Leak](#no-heap-memory-leak)
+    - 1.6. [Direct Memory OOM](#direct-memory-oom)
+    - 1.7. [GC overhead limit exceeded](#gc-overhead-limit-exceeded)
 - 2. [分析](#分析)
 
-💠 2024-11-18 14:31:55
+💠 2024-12-10 22:06:23
 ****************************************
 # OOM 
 > 注意OOM并不代表Java进程一定会退出，如果导致OOM的地方能被catch，且泄漏点能随着这次任务的终止而可回收的话，JVM将继续正常运行。  
 > [Why JVM can recovery from OOM Java heap space by itself](https://stackoverflow.com/questions/72865015/why-jvm-can-recovery-from-oom-java-heap-space-by-itself)
+
+[OOM异常类在JVM启动就加载了各种类型](https://github.com/openjdk/jdk8/blob/6a383433a9f4661a96a90b2a4c7b5b9a85720031/hotspot/src/share/vm/memory/universe.cpp#L1049)
 
 ## 简单案例
 
@@ -120,10 +123,18 @@ https://juejin.cn/post/7114516283290288158
 
 ## Compressed Class Space OOM
 
+## No Heap Memory Leak
+> 非堆内存泄漏
+
+
+> [Java in K8s: how we’ve reduced memory usage without changing any code | by Mickael Jeanroy | malt-engineering](https://blog.malt.engineering/java-in-k8s-how-weve-reduced-memory-usage-without-changing-any-code-cbef5d740ad)
+
 ## Direct Memory OOM 
 
 [Netty堆外内存泄露排查盛宴](https://tech.meituan.com/2018/10/18/netty-direct-memory-screening.html)
 
+
+************************
 
 ## GC overhead limit exceeded
 > [Error java.lang.OutOfMemoryError: GC overhead limit exceeded](https://stackoverflow.com/questions/1393486/error-java-lang-outofmemoryerror-gc-overhead-limit-exceeded)

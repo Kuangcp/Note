@@ -27,13 +27,15 @@ categories:
             - 3.1.5.1. [运行时常量池](#运行时常量池)
         - 3.1.6. [Code Cache](#code-cache)
     - 3.2. [Metaspace 元空间](#metaspace-元空间)
-    - 3.3. [Native Memory 堆外内存](#native-memory-堆外内存)
+    - 3.3. [Native Memory 非堆内存](#native-memory-非堆内存)
+        - 3.3.1. [NMT Native Memory Tracking](#nmt-native-memory-tracking)
+        - 3.3.2. [DirectMemory 堆外内存](#directmemory-堆外内存)
 - 4. [JVM不同实现](#jvm不同实现)
     - 4.1. [Hotspot JVM](#hotspot-jvm)
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-12-06 19:28:00
+💠 2024-12-10 22:06:23
 ****************************************
 # JVM
 > JVM结构及设计
@@ -95,6 +97,11 @@ Java9开始，整合了GC，类加载等日志配置方式，日志级别，输�
 
 ## JVM内存参数
 > 堆(老年代 年轻代)，堆外，元空间，栈
+
+> 内存参数设置的考量： Xmx * 110% + MaxDirectMemorySize + 系统预留内存 <= 容器内存
+- Xmx * 110% 中额外的10%是留给其他堆外内存的，是个保守估计，个别业务运行时线程较多时，还需加上 Xss * 线程数
+- 系统预留内存512M到1G，视容器规格而定
+- I/O较多的业务适当提高MaxDirectMemorySize比例（Netty和NIO使用到）
 
 快速确认进程内存配置 
 | 工具 | 命令 |
@@ -184,13 +191,12 @@ Java9开始，整合了GC，类加载等日志配置方式，日志级别，输�
 ************************
 
 # 内存区域
+![alt text](./img/007-jvm-memory.webp)
+
+> [Java 进程内存占用及可观测性调研&内存异常排查最佳实践](https://www.pengzna.top/article/Java-Memory/)`深入探究内存分布细节`  
 > [谈JVM xmx, xms等内存相关参数合理性设置](https://developer.jdcloud.com/article/2740)  
 
-内存参数设置的考量：
-- Xmx * 110% + MaxDirectMemorySize + 系统预留内存 <= 容器内存
-- Xmx * 110% 中额外的10%是留给其他堆外内存的，是个保守估计，个别业务运行时线程较多，需自行判断，上式中左侧还需加上Xss * 线程数
-- 系统预留内存512M到1G，视容器规格而定
-- I/O较多的业务适当提高MaxDirectMemorySize比例
+> [java - Why does the Sun JVM continue to consume ever more RSS memory even when the heap, etc sizes are stable? - Stack Overflow](https://stackoverflow.com/questions/1612939/why-does-the-sun-jvm-continue-to-consume-ever-more-rss-memory-even-when-the-heap)  
 
 ## 运行时数据区
 ![](img/001-jvm-runtime-memory.drawio.svg)
@@ -294,7 +300,7 @@ JDK7中符号表被移动到 Native Heap中，字符串常量池和类引用被�
 > [参考: What is Compressed Class Space?](https://stuefe.de/posts/metaspace/what-is-compressed-class-space/)  
 > [深入理解堆外内存 Metaspace](https://www.javadoop.com/post/metaspace)
 
-[Metaspace 解密](https://heapdump.cn/article/210111)
+[Metaspace 解密 - 你假笨](https://heapdump.cn/article/210111)
 
 -XX:MaxMetaspaceSize 指定元空间的最大空间，默认值是无限（16EB）。
 -XX:MetaspaceSize 指定元空间首次扩充的大小，默认为20.75M
@@ -304,25 +310,41 @@ JDK7中符号表被移动到 Native Heap中，字符串常量池和类引用被�
 
 因此为减少预热影响，可以将-XX:MetaspaceSize，-XX:MaxMetaspaceSize指定成相同的值。
 
-## Native Memory 堆外内存
-Native Memory 主要是JNI、Deflater/Inflater、DirectByteBuffer（nio中会用到）使用的， 当发现Java进程的堆使用率不高，但是进程占用内存RSS很高，就要怀疑这块区域了
+## Native Memory 非堆内存
+Native Memory 主要是JNI、Deflater/Inflater、DirectByteBuffer（nio中会用到）使用的，当发现Java进程的堆使用率不高，但是进程占用内存RSS很高，就要怀疑这块区域了
 
 - [Github: 测试代码](https://github.com/Kuangcp/JavaBase/blob/master/class/src/test/java/jvm/oom/DirectMemoryOOMTest.java)
-- [how to see memory useage of nio buffers](https://stackoverflow.com/questions/2689914/how-to-see-the-memory-usage-of-nio-buffers)
 
 > [参考: 聊聊JVM 堆外内存泄露的BUG是如何查找的](https://cloud.tencent.com/developer/article/1129904)  
 > [JAVA堆外内存排查小结](https://zhuanlan.zhihu.com/p/60976273)  
+> [Java in K8s: how we’ve reduced memory usage without changing any code](https://blog.malt.engineering/java-in-k8s-how-weve-reduced-memory-usage-without-changing-any-code-cbef5d740ad)  
 
-- `-XX:MaxDirectMemorySize` 限制最大内存，默认值为： MaxHeapSize - Survivor 。 `通过工具查看的话，值为0`
+> [Java 进程内存占用及可观测性调研&内存异常排查最佳实践](https://www.pengzna.top/article/Java-Memory/)  
+
+还有两种内存 Native Memory Tracking 没有记录，那就是：
+- MMap Buffer：文件映射内存
+- JNI 方法里的内存分配
+
+> [Java – Debugging Native Memory Leaks](https://www.bro-code.in/blog/java-debugging-native-memory-leak)  
+
+### NMT Native Memory Tracking
+> [Native Memory Tracking](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/tooldescr007.html)  
 
 - 启用NMT: java -XX:NativeMemoryTracking=summary 或者 detail 开销更大一些
 - 查看NMT: jcmd $pid VM.native_memory `[detail] 对应启用时设置，输出具体内存地址信息`
+    - summary 缺省参数，查看概览
+    - detail detail模式才支持，查看内存地址明细
+    - baseline 设置当前时刻为基线
+    - summary.diff 对比前文设置的基线的变化值
+    - detail.diff detail模式对比前文设置的基线的变化值
+    - shutdown 停止 Tracking
+    - scale 设置展示的单位值默认KB (MB or GB)
+    - statistics detail模式输出统计信息
 
 > 示例
 ```sh
 Native Memory Tracking:
-
-Total: reserved=10019737KB, committed=997089KB reversed保留内存 commited实际提交内存
+Total: reserved=10019737KB, committed=997089KB () reversed保留内存 （ps中的VSZ）  commited实际提交内存 （ps中的RSS）
 -                 Java Heap (reserved=8222720KB, committed=514048KB)
                             (mmap: reserved=8222720KB, committed=514048KB) 
 -                     Class (reserved=1081845KB, committed=34165KB) 存储类元数据信息
@@ -343,7 +365,7 @@ Total: reserved=10019737KB, committed=997089KB reversed保留内存 commited实�
 -                  Compiler (reserved=183KB, committed=183KB)
                             (malloc=40KB #208) 
                             (arena=142KB #15)
--                  Internal (reserved=84975KB, committed=84975KB)
+-                  Internal (reserved=84975KB, committed=84975KB)  DirectMemory区域
                             (malloc=84943KB #16310) 
                             (mmap: reserved=32KB, committed=32KB) 
 -                    Symbol (reserved=4984KB, committed=4984KB)
@@ -355,6 +377,18 @@ Total: reserved=10019737KB, committed=997089KB reversed保留内存 commited实�
 -               Arena Chunk (reserved=2214KB, committed=2214KB)
                             (malloc=2214KB) 
 ```
+
+### DirectMemory 堆外内存
+常说的堆外内存都是指这块，即NIO使用到的缓冲区内存（直接操作系统申请，不受GC控制）。  
+通常在NMT监控中的 Internal 部分，如果发现这部分增长明显，需要排查NIO相关的模块和配置了。  
+
+- [how to see memory useage of nio buffers](https://stackoverflow.com/questions/2689914/how-to-see-the-memory-usage-of-nio-buffers)
+
+- `-XX:MaxDirectMemorySize` 限制最大内存 
+    - 该参数只能限制 DirectByteBuffer（Bits）申请内存的最大值，无法限制Unsafe申请内存
+    - `如果未手动指定值，通过jcmd工具查看的值为0,实际取值参考：`
+        - 使用CMS,Parallel GC时默认值为： MaxHeapSize - Survivor
+        - 使用G1时最大默认是 MaxHeapSize
 
 **********************
 

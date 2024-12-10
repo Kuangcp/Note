@@ -20,7 +20,7 @@ categories:
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2024-11-26 20:13:28
+💠 2024-12-10 22:06:23
 ****************************************
 # 线程池
 
@@ -74,7 +74,7 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
     - 创建方式: `ExecutorService executor = Executors.newSingleThreadExecutor();`
 
 - `newCachedThreadPool()`：用于创建一个可缓存的线程池
-    - 该线程池的`工作线程的创建数量几乎没有限制`
+    - 该线程池的`工作线程的创建数量没有限制`
     - 当线程池中没有可用的线程时，新添加的任务将会再创建一个线程运行
     - 运行完的任务，在任务运行完的`60s`内不会被回收，当有新任务时将会重用这些没被回收的线程
     - 创建方式: `ExecutorService executor = Executors.newCachedThreadPool();`
@@ -110,7 +110,7 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
     - 创建方式：`ExecutorService executor = Executors.newWorkStealingPool();`
 
 ## CompletionService 接口
-> 实现类 ExecutorCompletionService 类JavaDoc上有使用示例
+> 实现类 ExecutorCompletionService JavaDoc上有使用示例
 
 - submit
 - take
