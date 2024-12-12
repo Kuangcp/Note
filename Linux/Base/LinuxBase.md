@@ -50,7 +50,7 @@ categories:
         - 2.3.4. [交换内存](#交换内存)
         - 2.3.5. [清空读写缓存](#清空读写缓存)
     - 2.4. [内存管理](#内存管理)
-        - 2.4.1. [glibc malloc](#glibc-malloc)
+        - 2.4.1. [glibc ptmalloc2](#glibc-ptmalloc2)
         - 2.4.2. [jemalloc](#jemalloc)
         - 2.4.3. [musl malloc](#musl-malloc)
 - 3. [常见对比](#常见对比)
@@ -69,7 +69,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2024-12-12 15:04:18
+💠 2024-12-12 15:30:08
 ****************************************
 
 # Linux系统
@@ -807,13 +807,16 @@ glibc, musl, jemalloc, System Alloc 等等实现
 
 > [Optimizing Rust Binaries: Observation of Musl versus Glibc and Jemalloc versus System Alloc](https://users.rust-lang.org/t/optimizing-rust-binaries-observation-of-musl-versus-glibc-and-jemalloc-versus-system-alloc/8499)  
 
-### glibc malloc
+### glibc ptmalloc2
 > [glibc - Wikipedia](https://en.wikipedia.org/wiki/Glibc)  
 
 glibc本身是C的实现，封装了系统调用，大部分Linux发行版的默认内存管理都是glibc中的malloc
 
+**thread arena**
 > [Malloc per-thread arenas in glibc](https://gotplt.org/posts/malloc-per-thread-arenas-in-glibc.html)  
 > [Arena "leak" in glibc](https://codearcana.com/posts/2016/07/11/arena-leak-in-glibc.html)  
+> [Understanding glibc malloc – sploitF-U-N](https://sploitfun.wordpress.com/2015/02/10/understanding-glibc-malloc/)  
+> [深入理解glibc malloc | BruceFan's Blog](http://pwn4.fun/2016/04/11/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3glibc-malloc/)  
 
 ### jemalloc
 
