@@ -52,7 +52,7 @@ categories:
         - 3.7.2. [时间处理](#时间处理)
         - 3.7.3. [三方库](#三方库)
 
-💠 2024-10-31 19:15:14
+💠 2024-12-12 17:45:49
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -548,7 +548,7 @@ python -m module_name
 ### pip
 > [pip](https://pip.readthedocs.io/en/stable/) | [doc](https://pip.pypa.io/en/stable/reference/pip_install/) | [guide](https://packaging.python.org/tutorials/installing-packages/) 
 
-> [uv](https://docs.astral.sh/uv/)Rust实现的包管理  
+> [uv](https://docs.astral.sh/uv/) Rust实现的包管理  
 
 1. 作为Python的包管理器, 包的可执行文件默认在 /usr/local/bin 目录下(全局)
     - 如果安装时加了该参数 --user 就是安装在 ~/.local/bin 目录下
@@ -561,6 +561,7 @@ python -m module_name
 - 代理 `--proxy 192.168.1.24:1234`
 - 强行使用HTTP `-i http://pypi.doubanio.com/simple/ --trusted-host pypi.doubanio.com` pip版本高于20.3后默认使用HTTPS
 - 安装tar.gz:  pip install xxxx.tar.gz
+- 从git地址安装： `pip install git+https://github.com/eggplants/gitstats`
 
 > 注意：自PEP668开始限制默认安装为全局依赖，否则会报错 externally-managed-environment
 - 可以设置默认全局 python3 -m pip config set global.break-system-packages true
