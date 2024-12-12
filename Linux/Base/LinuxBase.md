@@ -65,7 +65,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2024-12-06 19:28:00
+💠 2024-12-12 14:29:26
 ****************************************
 
 # Linux系统
@@ -749,9 +749,17 @@ oom-killer
 
 
 ### 虚拟内存
+很重要的设计，隔离了物理内存，降低应用端负担。
+
+- cat /proc/pid/maps 或者 pmap -x pid 命令来查看进程的 用户态虚拟内存空间的实际分布。
+- cat /proc/iomem 命令来查看进程的 内核态虚拟内存空间的的实际分布。
 
 > [参考: What does Virtual memory size in top mean?](https://serverfault.com/questions/138427/what-does-virtual-memory-size-in-top-mean)  
 > [参考: The Right Way to Monitor Virtual Memory on Linux](https://www.logicmonitor.com/blog/the-right-way-to-monitor-virtual-memory-on-linux/)  
+
+> [4.6 深入理解 Linux 虚拟内存管理 | 小林coding](https://www.xiaolincoding.com/os/3_memory/linux_mem.html)  
+
+************************
 
 ### 交换内存
 > swapon, swapoff - enable/disable devices and files for paging and swapping
