@@ -24,7 +24,7 @@ categories:
         - 1.8.1. [crontab](#crontab)
         - 1.8.2. [Systemd](#systemd)
 
-💠 2024-12-05 18:21:22
+💠 2024-12-12 15:04:18
 ****************************************
 # Linux 基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -36,9 +36,11 @@ categories:
 
 - false 以失败码退出程序
 - `stty -a` 查看快捷键映射
-
-- 终端内执行循环
-    - `for i in $(seq 1 10); do echo $i; done` 语法和Shell差不多, 但是需要在循环体的每一句加上`;`
+- for `for i in $(seq 1 10); do echo $i; done` 语法和Shell差不多, 但是需要在循环体内的每一句命令都加上`;`
+- sort 
+    - -k2 按指定的第二列进行排序
+    - -n 字符串数值排序，例如 Mib大于Kib
+    - -r 逆序
 
 ### Shell内建命令
 - whence 查看命令的真实面貌 (zsh中的内建命令)

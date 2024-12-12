@@ -16,8 +16,8 @@ categories:
         - 1.2.2. [内存参数实践](#内存参数实践)
     - 1.3. [Unified JVM Logging](#unified-jvm-logging)
 - 2. [JVM 基本结构](#jvm-基本结构)
-    - 2.1. [内存管理 GC](#内存管理-gc)
-    - 2.2. [内存管理 glibc](#内存管理-glibc)
+    - 2.1. [堆内存管理](#堆内存管理)
+    - 2.2. [非堆内存管理 glibc](#非堆内存管理-glibc)
 - 3. [内存区域](#内存区域)
     - 3.1. [运行时数据区](#运行时数据区)
         - 3.1.1. [程序计数器](#程序计数器)
@@ -36,7 +36,7 @@ categories:
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
 
-💠 2024-12-12 14:29:26
+💠 2024-12-12 15:04:18
 ****************************************
 # JVM
 > JVM结构及设计
@@ -189,10 +189,12 @@ Java9开始，整合了GC，类加载等日志配置方式，日志级别，输�
 - 执行引擎
     - 是Java虚拟机的最核心组件之一，它负责执行虚拟机的字节码。
 
-## 内存管理 GC
+## 堆内存管理
 > [JVM GC](/Java/AdvancedLearning/JvmGC.md)  
 
-## 内存管理 glibc
+## 非堆内存管理 glibc
+> [Linux Glibc](/Linux/Base/LinuxBase.md#glibc-malloc)  
+
 注意JVM所有内存的申请和返还都是通过 glibc 实现的，因此不建议使用Alpine作为基础镜像，因为会有行为上的不一致，Alpine使用的是 musl libc(核心源码只有不到 400 行)。  
 [从一次 CTF 出题谈 musl libc 堆漏洞利用本文通过一道 CTF 题目展示 musl libc 堆溢出漏洞的利 - 掘金](https://juejin.cn/post/6844903574154002445)  
 
@@ -201,6 +203,9 @@ Java9开始，整合了GC，类加载等日志配置方式，日志级别，输�
 优化方案：
 - 将 glibc 替换为 jemalloc `java -Djava.library.path=/path/to/jemalloc -jar YourApplication.jar`
 - 限制 glibc 的内存池 `export MALLOC_ARENA_MAX=2` 环境变量
+    - [MALLOC_ARENA_MAX=1 与 MALLOC_ARENA_MAX=4有什么区别？ | easyice](https://www.easyice.cn/archives/341)  
+    - 该设计是为了在高并发的场景申请内存时直接从Arena内存申请，而不需要再通过 mmap sbrk等系统调用，并且为了降低多线程申请时的竞争，会最多创建cpucore*8个Arena，此类可以称为 thread arena ，进程只有一个 main arena 作为兜底空间
+    - thread arena 的内存需要等待 才会释放，本质上是系统内有长生命周期的对象存在导致
 - 优化系统代码，减少非堆内存使用场景。
 
 ************************

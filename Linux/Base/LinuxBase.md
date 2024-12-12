@@ -49,6 +49,10 @@ categories:
         - 2.3.3. [虚拟内存](#虚拟内存)
         - 2.3.4. [交换内存](#交换内存)
         - 2.3.5. [清空读写缓存](#清空读写缓存)
+    - 2.4. [内存管理](#内存管理)
+        - 2.4.1. [glibc malloc](#glibc-malloc)
+        - 2.4.2. [jemalloc](#jemalloc)
+        - 2.4.3. [musl malloc](#musl-malloc)
 - 3. [常见对比](#常见对比)
     - 3.1. [文件系统对比](#文件系统对比)
     - 3.2. [桌面环境对比](#桌面环境对比)
@@ -65,7 +69,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2024-12-12 14:29:26
+💠 2024-12-12 15:04:18
 ****************************************
 
 # Linux系统
@@ -797,6 +801,24 @@ SWAP = VIRT - RES
 | 3 | 表示清除 page cache 和 slab 分配器中的缓存对象 |
 
 > 注意sync命令是为了将内存中buffer写入磁盘，避免这部分内存被直接释放导致数据不一致
+
+## 内存管理
+glibc, musl, jemalloc, System Alloc 等等实现
+
+> [Optimizing Rust Binaries: Observation of Musl versus Glibc and Jemalloc versus System Alloc](https://users.rust-lang.org/t/optimizing-rust-binaries-observation-of-musl-versus-glibc-and-jemalloc-versus-system-alloc/8499)  
+
+### glibc malloc
+> [glibc - Wikipedia](https://en.wikipedia.org/wiki/Glibc)  
+
+glibc本身是C的实现，封装了系统调用，大部分Linux发行版的默认内存管理都是glibc中的malloc
+
+> [Malloc per-thread arenas in glibc](https://gotplt.org/posts/malloc-per-thread-arenas-in-glibc.html)  
+> [Arena "leak" in glibc](https://codearcana.com/posts/2016/07/11/arena-leak-in-glibc.html)  
+
+### jemalloc
+
+### musl malloc
+Alpine发行版所使用
 
 ************************
 
