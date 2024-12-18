@@ -946,7 +946,15 @@ Stream.collect 实现
                     collectingAndThen(
                         maxBy(comparingInt(Dish::getCalories)),
                         Optional::get)
-                    ));  
+                    )
+                );
+    // 等价于
+    Map<Dish.Type, Dish> mostCaloricByType = menu.stream()
+            .collect(toMap(
+                Dish::getType,
+                Function.identity(),
+                BinaryOperator.minBy(Comparator.comparingInt(Dish::getCalories)))
+            );
 ```
 - 这个工厂方法接受两个参数——要转换的收集器以及转换函数，并返回另一个收集器。
 - 这个收集器相当于旧收集器的一个包装，collect操作的最后一步就是将返回值用转换函数做一个映射。
