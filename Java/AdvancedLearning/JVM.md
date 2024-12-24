@@ -35,8 +35,10 @@ categories:
     - 4.1. [Hotspot JVM](#hotspot-jvm)
     - 4.2. [OpenJ9](#openj9)
     - 4.3. [GraalVM](#graalvm)
+- 5. [Extend](#extend)
+    - 5.1. [CRaC](#crac)
 
-💠 2024-12-12 15:04:18
+💠 2024-12-24 10:16:38
 ****************************************
 # JVM
 > JVM结构及设计
@@ -442,8 +444,21 @@ IBM主导开发, 捐赠给Eclipse基金会
 > [Accelerating Java performance](https://www.graalvm.org/java/advantages/)`基准测试宣称快于openjdk8和11 1.55倍`
 > [GraalVM Native Image Support](https://docs.spring.io/spring-boot/docs/current/reference/html/native-image.html)
 
+GraalVM是一种AOT编译器，需要单独对特定平台（Windows，Linux，macOS）编译出产物
+
+在 GraalVM 中，我们无法使用一些 Java 功能，如在运行时加载任意类。此外，许多可观察性和测试框架都不支持 GraalVM，因为它不允许在运行时生成动态代码，也无法运行 Java 代理。
+
 ************************
 
 > [参考: Oracle 发布多语种虚拟机平台 GraalVM 1.0](https://www.infoq.cn/article/2018%2F05%2Foracle-graalvm-v1)  
 > [参考: 全栈虚拟机GraalVM初体验](https://zhuanlan.zhihu.com/p/35849246)  
+
+
+# Extend
+## CRaC
+> [OpenJDK Wiki](https://wiki.openjdk.org/display/crac)  
+> [Checkpoint and Restore With the JVM :: Spring Boot](https://docs.spring.io/spring-boot/reference/packaging/checkpoint-restore.html)  
+
+> [JVM Checkpoint Restore :: Spring Framework](https://docs.spring.io/spring-framework/reference/integration/checkpoint-restore.html)  
+因为其实现的原理，可预见的要处理很多和时间有关的业务问题，例如调度。并且无法实现GraalVM那样的AOT实现对字节码的完全预热，只能快进到Bean准备就绪的状态，也就是省去了进程创建到Bean容器可用的时间。目前来看投入产出比很低，没有实践意义。
 
