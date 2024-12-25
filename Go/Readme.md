@@ -96,6 +96,16 @@ categories:
    ```
 3. **查看版本** `go version`正常输出go的版本则是配置成功
 
+### 多版本
+> [Managing Go installations - The Go Programming Language](https://go.dev/doc/manage-install)  
+
+go install golang.org/dl/go1.10.7@latest
+go1.10.7 download
+go1.10.7 version
+go1.10.7 env GOROOT
+
+安装后，可以发现二进制目录不一样，其他环境变量都是一致的
+
 ### Hello World
 
 1. 在 `$HOME/Code/go` 下 新建 test.go

@@ -12,13 +12,15 @@ categories:
 
 - 1. [Kotlin](#kotlin)
 
-💠 2024-08-14 15:45:26
+💠 2024-12-25 22:33:48
 ****************************************
 # Kotlin
 > [Kotlin官网](https://kotlinlang.org/)  
 > 一个能够跨越多个平台和领域的语言 
 
-> [mirai](https://github.com/mamoe/mirai)`Kotlin写的QQ客户端`
+**实践项目**
+> [mirai](https://github.com/mamoe/mirai)`Kotlin写的QQ客户端`  
+> [square/okhttp](https://github.com/square/okhttp)  
 
 **教程资源**
 - [Learn Kotlin by Example](https://play.kotlinlang.org/byExample/overview)
