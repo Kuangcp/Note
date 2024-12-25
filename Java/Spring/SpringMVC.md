@@ -19,18 +19,19 @@ categories:
         - 2.1.2. [Gradle](#gradle)
     - 2.2. [web.xml](#webxml)
     - 2.3. [ApplicationContext.xml](#applicationcontextxml)
-        - 2.3.1. [全局异常处理](#全局异常处理)
-        - 2.3.2. [自定义错误页面](#自定义错误页面)
-        - 2.3.3. [中文编码问题](#中文编码问题)
     - 2.4. [创建Controller](#创建controller)
 - 3. [使用](#使用)
-    - 3.1. [配置类型转换](#配置类型转换)
-    - 3.2. [拦截器](#拦截器)
-        - 3.2.1. [拦截器机制](#拦截器机制)
-        - 3.2.2. [自定义拦截器](#自定义拦截器)
+    - 3.1. [全局异常处理](#全局异常处理)
+    - 3.2. [自定义错误页面](#自定义错误页面)
+    - 3.3. [中文编码问题](#中文编码问题)
+    - 3.4. [配置类型转换](#配置类型转换)
+    - 3.5. [拦截器](#拦截器)
+        - 3.5.1. [拦截器机制](#拦截器机制)
+        - 3.5.2. [自定义拦截器](#自定义拦截器)
+    - 3.6. [SSE](#sse)
 - 4. [Tips](#tips)
 
-💠 2024-03-30 11:43:28
+💠 2024-12-25 22:37:44
 ****************************************
 
 # SpringMVC
@@ -172,7 +173,38 @@ categories:
     </bean>
     </beans>
 ```
-### 全局异常处理
+
+## 创建Controller
+
+包 com.test.controller 下创建一个类
+```java
+@RestController
+@RequestMapping("/hi")
+public class Hi {
+    @RequestMapping("/hi")
+    public String hi(){
+        return "Hi";
+    }
+}
+```
+> 使用上 ResponseEntity 让响应结果规范
+```java
+ @RequestMapping("/handle")
+ public ResponseEntity<String> handle() {
+   URI location = ...;
+   HttpHeaders responseHeaders = new HttpHeaders();
+   responseHeaders.setLocation(location);
+   responseHeaders.set("MyResponseHeader", "MyValue");
+   return new ResponseEntity<String>("Hello World", responseHeaders, HttpStatus.CREATED);
+ }
+```
+
+************************
+# 使用
+> 在Springboot框架中，static templates 文件夹下分别代表了tomcat管理的静态文件和MVC负责跳转的HTML文件或JSP文件
+> 在static中对于路径的使用一定要带上应用路径，而在templates中就只要写相对路径即可
+
+## 全局异常处理
 ```java
 public class ExceptionHandler implements HandlerExceptionResolver {
     @Override
@@ -210,7 +242,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
 > [参考博客](http://www.cnblogs.com/exmyth/p/5601288.html)
 > [ResponseBody方案](https://blog.csdn.net/xin917480852/article/details/78023911)
 
-### 自定义错误页面
+## 自定义错误页面
 ```java
     // 自定义错误页面 需要放在静态资源下面
     @Bean
@@ -223,7 +255,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
         });
     }
 ```
-### 中文编码问题
+## 中文编码问题
 > [参考博客](http://www.cnblogs.com/dyllove98/p/3180158.html) `但是奇怪的是某些方法用第二种正常，有些还是要用第一种`
 1. 单个方法：`@GetMapping(value = "/target/all",  produces = "application/json; charset=utf-8")`
 2. 或者整个应用 注意：`</mvc:annotation-driven>` 只能有一个，要将上面的覆盖掉
@@ -243,36 +275,6 @@ public class ExceptionHandler implements HandlerExceptionResolver {
         </mvc:message-converters>
     </mvc:annotation-driven>
 ```
-
-## 创建Controller
-
-包 com.test.controller 下创建一个类
-```java
-@RestController
-@RequestMapping("/hi")
-public class Hi {
-    @RequestMapping("/hi")
-    public String hi(){
-        return "Hi";
-    }
-}
-```
-> 使用上 ResponseEntity 让响应结果规范
-```java
- @RequestMapping("/handle")
- public ResponseEntity<String> handle() {
-   URI location = ...;
-   HttpHeaders responseHeaders = new HttpHeaders();
-   responseHeaders.setLocation(location);
-   responseHeaders.set("MyResponseHeader", "MyValue");
-   return new ResponseEntity<String>("Hello World", responseHeaders, HttpStatus.CREATED);
- }
-```
-
-************************
-# 使用
-> 在Springboot框架中，static templates 文件夹下分别代表了tomcat管理的静态文件和MVC负责跳转的HTML文件或JSP文件
-> 在static中对于路径的使用一定要带上应用路径，而在templates中就只要写相对路径即可
 
 ## 配置类型转换
 
@@ -325,7 +327,9 @@ public class MythInterceptor extends HandlerInterceptorAdapter{
     }
 }
 ```
+
 `配置MVC的配置类`
+
 ```java
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter{
@@ -343,6 +347,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter{
     }
 }
 ```
+
+## SSE
+TODO
+
+************************
 
 # Tips
 > URL 中带了 jsessionid 参数，导致页面各种问题
