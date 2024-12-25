@@ -31,7 +31,7 @@ categories:
     - 3.6. [SSE](#sse)
 - 4. [Tips](#tips)
 
-💠 2024-12-25 22:37:44
+💠 2024-12-25 22:39:49
 ****************************************
 
 # SpringMVC
@@ -351,6 +351,13 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter{
 ## SSE
 TODO
 
+> send 逻辑
+```
+org.springframework.web.servlet.mvc.method.annotation.SseEmitter#send
+org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler#handleReturnValue
+org.springframework.http.converter.StringHttpMessageConverter#writeInternal
+sun.nio.cs.StreamEncoder#implWrite
+```
 ************************
 
 # Tips
