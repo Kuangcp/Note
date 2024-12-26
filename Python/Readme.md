@@ -34,6 +34,11 @@
 > 问题
 - [Undefined symbol libgssapi_krb5.so.2 / Newbie Corner / Arch Linux Forums](https://bbs.archlinux.org/viewtopic.php?id=292834) 不想浪费时间找原因，直接放弃 停用conda 要用多版本python时再临时去 zshrc 里启用  
 
+### 
+[uv](https://docs.astral.sh/uv/) Rust实现的环境管理（Python版本，包管理等等）  
+
+uv venv --python 3.12.0
+
 ### sys.path
 > [Doc: Python path](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH)
 

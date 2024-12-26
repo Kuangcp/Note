@@ -32,9 +32,9 @@ categories:
         - 3.1.1. [http](#http)
         - 3.1.2. [virtualenv](#virtualenv)
         - 3.1.3. [pip](#pip)
-            - 3.1.3.1. [Requirements files](#requirements-files)
-            - 3.1.3.2. [发布包到 pypi](#发布包到-pypi)
-        - 3.1.4. [matplotlib](#matplotlib)
+            - 3.1.3.1. [依赖管理](#依赖管理)
+            - 3.1.3.2. [Requirements files](#requirements-files)
+            - 3.1.3.3. [发布到pypi](#发布到pypi)
     - 3.2. [文件操作](#文件操作)
         - 3.2.1. [JSON](#json)
         - 3.2.2. [conf或者ini](#conf或者ini)
@@ -52,7 +52,7 @@ categories:
         - 3.7.2. [时间处理](#时间处理)
         - 3.7.3. [三方库](#三方库)
 
-💠 2024-12-19 21:03:00
+💠 2024-12-26 11:42:45
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -534,22 +534,17 @@ When importing the package, Python searches through the directories on `sys.path
 python -m module_name
 
 ### http
-- 快速启动一个 HTTP Web 服务器 `http.server [port]`
+- 快速启动一个 HTTP Web 服务器 `python -mhttp.server [port]`
 
 ### virtualenv
-> [廖雪峰 virtualenv](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000)
 
-**虽然也可以用apt安装 python-venv, 但是最好不要这样,避免后续模块升级后不必要的冲突**
-
-- 创建环境 `python3 -m venv web` 或者 `virtualenv --no-site-packages web` 不将系统中安装的包带入该环境
+- 创建环境 `python3 -m venv web`
 - 启动环境 `source web/bin/activate`
-    - 在环境中使用的pip python 都是环境中的, 其实就是修改了系统的环境变量指向
+    - 在环境中使用的pip python命令都是web目录下的, 其实就是修改了系统的环境变量指向
 - 停用环境 `deactivate`
 
 ### pip
 > [pip](https://pip.readthedocs.io/en/stable/) | [doc](https://pip.pypa.io/en/stable/reference/pip_install/) | [guide](https://packaging.python.org/tutorials/installing-packages/) 
-
-> [uv](https://docs.astral.sh/uv/) Rust实现的包管理  
 
 1. 作为Python的包管理器, 包的可执行文件默认在 /usr/local/bin 目录下(全局)
     - 如果安装时加了该参数 --user 就是安装在 ~/.local/bin 目录下
@@ -568,10 +563,13 @@ python -m module_name
 - 可以设置默认全局 python3 -m pip config set global.break-system-packages true
 - 或者单次安装到全局 --break-system-packages
 
-> 3.10 后 pip 作为子模块
+> 3.10 后 pip 作为子模块使用
 - 安装 `python -m ensurepip --upgrade`
 - 使用 `python -m pip install pkgName` 
 - 升级 `python -m pip install --upgrade pip`
+
+#### 依赖管理
+当发现环境内一个包有多个版本时，可以通过直接打开python解释器，import包,执行 包名._version 查看， 例如 `pandas._version` 或 `pandas.__version__`
 
 #### Requirements files
 > [pip官方文档 Requirements files](https://pip.readthedocs.io/en/1.1/requirements.html)
@@ -582,7 +580,7 @@ python -m module_name
 
 1. 使用 `pip install -r requirements.txt`
 
-#### 发布包到 pypi
+#### 发布到pypi
 > [Official : about package](https://packaging.python.org/guides/distributing-packages-using-setuptools/?highlight=pypirc#id78)
 
 1. edit `$HOME/.pypirc` to save authorization  info
@@ -602,10 +600,7 @@ python -m module_name
 > 1. pip install collective.checkdocs Pygments
 > 1. python3 setup.py checkdocs
 
-### matplotlib
-
 ************************
-
 
 ## 文件操作
 
