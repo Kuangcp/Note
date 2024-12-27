@@ -40,7 +40,7 @@ categories:
     - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-12-06 19:28:00
+💠 2024-12-27 15:59:09
 ****************************************
 
 # JVM 监控&诊断
@@ -60,9 +60,8 @@ categories:
 # JVMTI
 `JVM Tool Interface`
 
-
 # JDK自带工具
-> 都是jdk的bin目录下的工具，注意使用时要和目标JVM同一个JDK版本，以及同一个用户。
+> 都是jdk的bin目录下的工具，注意使用时要和目标JVM同一个JDK版本，以及同一个用户，衍生的工具如Arthas等等同理。
 
 ## java
 > 使用方式：
@@ -199,6 +198,7 @@ categories:
 ### 实现原理
 - [Jstack 源码分析](https://zhuanlan.zhihu.com/p/36224094)
 
+通常来说 jstack pid 报错无法attach时，意味着是高负载情况了，可以加-F参数尝试  
 [jmap -F and jstack -F](https://stackoverflow.com/questions/26140182/running-jmap-getting-unable-to-open-socket-file)`jmap和jstack 默认及加-F选项背后实现机制及优缺点`
 - [Dynamic Attach Mechanism](http://openjdk.java.net/groups/hotspot/docs/Serviceability.html#battach)
 - [HotSpot Serviceability Agent](http://openjdk.java.net/groups/hotspot/docs/Serviceability.html#bsa)
