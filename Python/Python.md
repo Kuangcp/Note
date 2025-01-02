@@ -52,7 +52,7 @@ categories:
         - 3.7.2. [时间处理](#时间处理)
         - 3.7.3. [三方库](#三方库)
 
-💠 2024-12-26 11:42:45
+💠 2025-01-02 11:23:43
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -731,6 +731,10 @@ _对应的conf_
     rowFmt = logging.Formatter(fmt=LOG_FORMAT, datefmt=DATE_FORMAT)
     stdout_handler.setFormatter(rowFmt)
     log.addHandler(stdout_handler)
+
+    # 按天滚动日志
+    log_file_handler = TimedRotatingFileHandler(filename="run.log", when="D", interval=1, backupCount=10)
+    log.addHandler(log_file_handler)
 
     # Pycharm 跳转 类似Java IDEA的 (xxx.java:100) 特定格式 logback配置 \\(%F:%line\\)
     LOG_FORMAT = "%(asctime)s.%(msecs)03d %(levelname)s File \"%(filename)s\", line %(lineno)s %(funcName)s  %(message)s"
