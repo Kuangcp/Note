@@ -2,9 +2,9 @@
 title: PythonGame
 date: 2018-12-13 16:01:52
 tags: 
-    - Game
 categories: 
     - Python
+    - Game
 ---
 
 **目录 start**
