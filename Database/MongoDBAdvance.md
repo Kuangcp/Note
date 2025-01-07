@@ -1,3 +1,18 @@
+---
+title: MongoDBAdvance
+date: 2025-01-07 09:56:23
+tags: 
+categories: 
+---
+
+
+💠
+
+- 1. [MongoDB](#mongodb)
+    - 1.1. [Storage](#storage)
+
+💠 2025-01-07 09:56:23
+****************************************
 # MongoDB 
 
 ## Storage
