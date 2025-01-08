@@ -37,7 +37,7 @@ categories:
     - 4.4. [Maven Deploy plugin](#maven-deploy-plugin)
     - 4.5. [Exec Maven Plugin](#exec-maven-plugin)
 - 5. [构建工具对比](#构建工具对比)
-    - 5.1. [Maven和Ant的区别一](#maven和ant的区别一)
+    - 5.1. [Maven和Ant的区别](#maven和ant的区别)
     - 5.2. [Maven的优势](#maven的优势)
 - 6. [发布构件到中央仓库](#发布构件到中央仓库)
     - 6.1. [发布到 Github Package](#发布到-github-package)
@@ -49,7 +49,7 @@ categories:
             - 7.2.2.1. [Gradle](#gradle)
             - 7.2.2.2. [Maven](#maven)
 
-💠 2024-11-14 17:13:35
+💠 2025-01-08 21:33:17
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -482,7 +482,7 @@ A 项目 compile
 # 构建工具对比
 > [码农翻身:小李的Build之路(上)](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513207&idx=1&sn=cbfad70e656fc50c4fff18678a282b95&scene=21#wechat_redirect) | [码农翻身:小李的Build之路(下)](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513212&idx=1&sn=280647b0c6cd265f85590f64d3216bee&scene=21#wechat_redirect) `这个小故事讲述了ant到maven的演化`
 
-## Maven和Ant的区别一
+## Maven和Ant的区别
 
 1. ant脚本是可以直接运行在maven中的。maven和ant最大的差别就是在于maven的编译以及所有的脚本都有一个基础，就是POM（project object model）。这个模型定义了项目的方方面面，然后各式各样的脚本在这个模型上工作，而ant完全是自己定义，显然maven更胜一筹。
 

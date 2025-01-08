@@ -16,11 +16,14 @@ categories:
     - 1.4. [打包Docker镜像](#打包docker镜像)
 - 2. [配置文件](#配置文件)
     - 2.1. [命令行参数](#命令行参数)
-- 3. [Tips](#tips)
-    - 3.1. [Java在Linux上的时区问题](#java在linux上的时区问题)
-    - 3.2. [容器中Jvm信号及参数接收问题](#容器中jvm信号及参数接收问题)
+- 3. [安全加固](#安全加固)
+    - 3.1. [代码混淆](#代码混淆)
+    - 3.2. [加密Class](#加密class)
+- 4. [Tips](#tips)
+    - 4.1. [Java在Linux上的时区问题](#java在linux上的时区问题)
+    - 4.2. [容器中Jvm信号及参数接收问题](#容器中jvm信号及参数接收问题)
 
-💠 2024-10-08 15:07:46
+💠 2025-01-08 21:33:17
 ****************************************
 # 部署运行
 > 传统的可执行jar, war 以及Docker镜像
@@ -117,6 +120,25 @@ _MANIFEST.MF示例_
 
 ## 命令行参数
 > [jcommander](https://jcommander.org/)  
+
+************************
+# 安全加固
+class混淆，加密class，使用花指令，使得class文件不能反编译（利用反编译工具漏洞）；安全性一般，还是有花指令破解器
+
+## 代码混淆
+简单且效果好
+
+> [Allatori Java Obfuscator - Professional Java Obfuscation](https://allatori.com/)  
+> [ProGuard Manual: Usage | Guardsquare](https://www.guardsquare.com/manual/configuration/usage)  
+
+## 加密Class
+难点在于即使自定义了类加载器，加载进JVM运行的时候内存上仍是明文字节，还是有手段dump到真实的class
+
+> [encryption - How can you protect/encrypt your Java classes? - Stack Overflow](https://stackoverflow.com/questions/4257027/how-can-you-protect-encrypt-your-java-classes)  
+
+> [Cracking Java byte-code encryption | InfoWorld](https://www.infoworld.com/article/2171002/cracking-java-byte-code-encryption.html)  
+
+> [serengil/encrypted-class-loader: Enabling to run encrypted java classes](https://github.com/serengil/encrypted-class-loader)  
 
 ************************
 
