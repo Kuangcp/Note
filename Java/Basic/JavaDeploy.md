@@ -23,7 +23,7 @@ categories:
     - 4.1. [Java在Linux上的时区问题](#java在linux上的时区问题)
     - 4.2. [容器中Jvm信号及参数接收问题](#容器中jvm信号及参数接收问题)
 
-💠 2025-01-08 21:33:17
+💠 2025-01-08 21:39:42
 ****************************************
 # 部署运行
 > 传统的可执行jar, war 以及Docker镜像
@@ -126,7 +126,11 @@ _MANIFEST.MF示例_
 class混淆，加密class，使用花指令，使得class文件不能反编译（利用反编译工具漏洞）；安全性一般，还是有花指令破解器
 
 ## 代码混淆
-简单且效果好
+低成本且影响小效果好，并引申出别的用途（压缩apk大小😅）
+
+> [obfuscation - Best Java obfuscator? - Stack Overflow](https://stackoverflow.com/questions/2537568/best-java-obfuscator)  
+> [Open Source Obfuscators in Java](https://java-source.net/open-source/obfuscators)  
+
 
 > [Allatori Java Obfuscator - Professional Java Obfuscation](https://allatori.com/)  
 > [ProGuard Manual: Usage | Guardsquare](https://www.guardsquare.com/manual/configuration/usage)  
