@@ -5,13 +5,14 @@
 
 要考虑采用该种方式后带来的技术复杂度的问题, 当前的问题需不需要上升到分布式的体量上
 
-- [ ] CAP Paxos Zab Raft Gossip Billy
 
+## 共识算法
+> [learn_blockchain/consensus.md](https://github.com/chaseSpace/learn_blockchain/blob/main/consensus.md)  
+
+- [ ] CAP Paxos Zab Raft Gossip Billy
 
 [Paxos](https://en.wikipedia.org/wiki/Paxos_%28computer_science%29)  
 [Paxos H2O实现](https://github.com/h2oai/h2o-3/blob/master/h2o-core/src/main/java/water/Paxos.java)  
-
-
 
 ************************
 

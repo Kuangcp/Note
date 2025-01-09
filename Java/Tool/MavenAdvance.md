@@ -14,7 +14,7 @@ categories:
     - 1.1. [Custom Maven plugin](#custom-maven-plugin)
 - 2. [Error](#error)
 
-💠 2024-11-05 18:17:48
+💠 2025-01-09 15:40:40
 ****************************************
 # Maven Advance
 
@@ -28,4 +28,4 @@ categories:
 
 
 # Error
-> [macos - java.lang.IllegalArgumentException: Malformed \uxxxx encoding while mvn install - Stack Overflow](https://stackoverflow.com/questions/68003423/java-lang-illegalargumentexception-malformed-uxxxx-encoding-while-mvn-install)  
+> [macos - java.lang.IllegalArgumentException: Malformed \uxxxx encoding while mvn install - Stack Overflow](https://stackoverflow.com/questions/68003423/java-lang-illegalargumentexception-malformed-uxxxx-encoding-while-mvn-install)`本地依赖含特殊字符或损坏，导致mvn编译打包都受影响`  

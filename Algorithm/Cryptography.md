@@ -34,6 +34,7 @@ categories:
         - 3.6.1. [MD4 MD5](#md4-md5)
         - 3.6.2. [SHA-1](#sha-1)
         - 3.6.3. [RIPEMD-160](#ripemd-160)
+        - 3.6.4. [BCrypt](#bcrypt)
     - 3.7. [消息认证码](#消息认证码)
     - 3.8. [数字签名](#数字签名)
         - 3.8.1. [签名与验签](#签名与验签)
@@ -45,11 +46,12 @@ categories:
     - 4.2. [SSL TLS](#ssl-tls)
 - 5. [扩展](#扩展)
 
-💠 2023-10-10 00:42
+💠 2025-01-09 15:40:40
 ****************************************
 # 密码学
 > [wikipedia](https://zh.wikipedia.org/wiki/%E5%AF%86%E7%A0%81%E5%AD%A6)
 
+> [learn_blockchain/cryptograph.md](https://github.com/chaseSpace/learn_blockchain/blob/main/cryptograph.md)  
 
 > 基础概念：
 - 此处的密码不等同于常见的信息系统中的用户 **"登录密码"**，严格意义上讲`password`只能称为口令，作为信息系统认证的一部分，密码是指信息的加解密等完整生态。
