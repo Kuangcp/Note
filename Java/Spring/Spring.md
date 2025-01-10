@@ -43,7 +43,7 @@ categories:
     - 3.1. [优雅部署](#优雅部署)
 - 4. [Tips](#tips)
 
-💠 2024-10-08 16:06:24
+💠 2025-01-10 16:30:07
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -425,6 +425,19 @@ Student
 其主体是 TaskExecutor 和 TaskScheduler 组成的, 也就是调度和执行
 
 - [cron maker](http://www.cronmaker.com/)
+
+**Tips**
+
+> [Make it possible to disable Scheduling Tasks by application property · Issue #12682 · spring-projects/spring-boot](https://github.com/spring-projects/spring-boot/issues/12682)  
+
+```java
+    @Configuration
+    @EnableScheduling
+    @ConditionalOnProperty(prefix = "com.example.scheduling", name="enabled", havingValue="true", matchIfMissing = true)
+    public class SchedulingConfiguration {
+
+    }
+```
 
 ************************
 

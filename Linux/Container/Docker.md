@@ -58,7 +58,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2024-11-10 13:14:39
+💠 2025-01-10 16:30:07
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -470,11 +470,12 @@ _登录镜像仓库_
 
 声明式环境，管理多容器， 并处理好相关资源的关系
 
+[安装](https://docs.docker.com/compose/install/)
+
+> Docker Compose V2 命令更新为 docker compose, V1时是 docker-compose
+
 > [Demo: 开源电商平台](https://github.com/fecshop/yii2_fecshop_docker/blob/master/docker-compose.yml)
 > [Demo: 安装 Kafka](http://www.cnblogs.com/xuxinkun/p/5473952.html)
-
-- [安装](https://docs.docker.com/compose/install/)
-    - 最简单: `sudo pip install docker-compose`
 
 ### 配置文件
 > 一个配置文件就表示了一组容器, 以及相关的网络,文件等配置, docker-compose 都是基于该配置文件进行基本命令操作  
@@ -515,11 +516,14 @@ services:
 ### 使用命令
 > 必须要在 docker-compose.yml 文件目录下执行
 
+> [docker compose | Docker Docs](https://docs.docker.com/reference/cli/docker/compose/)  
+
 - help
 - up          # 自动完成构建镜像，`创建`服务，启动服务，并关联服务等操作, `-d` 后台执行
 - down        # 停止并`删除`该服务的所有容器, 移除网络, `-v` 移除挂载的volume
 - start       # 启动存在的服务 
 - stop        # 停止
+- pull        # 更新
 - restart     # 重启项目中服务
 - exec        # 进入指定容器
 - image       # 列出 Compose 文件中包含的镜像

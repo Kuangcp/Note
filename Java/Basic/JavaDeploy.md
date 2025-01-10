@@ -24,7 +24,7 @@ categories:
     - 4.1. [Java在Linux上的时区问题](#java在linux上的时区问题)
     - 4.2. [容器中Jvm信号及参数接收问题](#容器中jvm信号及参数接收问题)
 
-💠 2025-01-08 21:49:16
+💠 2025-01-10 16:30:07
 ****************************************
 # 部署运行
 > 传统的可执行jar, war 以及Docker镜像
@@ -133,9 +133,11 @@ _MANIFEST.MF示例_
 > [obfuscation - Best Java obfuscator? - Stack Overflow](https://stackoverflow.com/questions/2537568/best-java-obfuscator)  
 > [Open Source Obfuscators in Java](https://java-source.net/open-source/obfuscators)  
 
+工具列表
 
 > [Allatori Java Obfuscator - Professional Java Obfuscation](https://allatori.com/)  
 > [ProGuard Manual: Usage | Guardsquare](https://www.guardsquare.com/manual/configuration/usage)  
+> [jar-analyzer/class-obf](https://github.com/jar-analyzer/class-obf)  
 
 ## 加密Class
 难点在于即使自定义了类加载器，加载进JVM运行的时候内存上仍是明文字节，还是有手段dump到真实的class
