@@ -12,15 +12,16 @@ categories:
     - 1.2. [GC术语](#gc术语)
         - 1.2.1. [STW](#stw)
         - 1.2.2. [安全点](#安全点)
-    - 1.3. [内存分代](#内存分代)
-    - 1.4. [判断存活算法](#判断存活算法)
-        - 1.4.1. [引用计数算法](#引用计数算法)
-        - 1.4.2. [可达性分析算法](#可达性分析算法)
-    - 1.5. [GC算法](#gc算法)
-        - 1.5.1. [标记清除算法](#标记清除算法)
-        - 1.5.2. [复制算法](#复制算法)
-        - 1.5.3. [标记整理算法](#标记整理算法)
-    - 1.6. [GC Callback](#gc-callback)
+        - 1.2.3. [内存分代](#内存分代)
+        - 1.2.4. [引用类型](#引用类型)
+    - 1.3. [判断存活算法](#判断存活算法)
+        - 1.3.1. [引用计数算法](#引用计数算法)
+        - 1.3.2. [可达性分析算法](#可达性分析算法)
+    - 1.4. [GC算法](#gc算法)
+        - 1.4.1. [标记清除算法](#标记清除算法)
+        - 1.4.2. [复制算法](#复制算法)
+        - 1.4.3. [标记整理算法](#标记整理算法)
+    - 1.5. [GC Callback](#gc-callback)
 - 2. [GC参数](#gc参数)
 - 3. [GC日志](#gc日志)
 - 4. [垃圾收集器](#垃圾收集器)
@@ -37,7 +38,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2024-12-04 13:58:29
+💠 2025-01-14 20:31:50
 ****************************************
 # GC
 > Java Garbage Collection
@@ -87,12 +88,6 @@ GC 的目的是识别出不再使用的内存，并将其变为可用内存。�
     - 因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC
 - `perm gen` / `MetaSpace` 内存空间不足时，也会触发一次 Full GC；
 - System.gc()、heap dump、jcmd pid GC.run 等指定触发GC时，默认触发 Full GC。
-
-> 默认GC
-
-JDK 7，默认是 Parallel Scavenge + Serial Old。
-JDK 8 及 JDK 7u40 之后的版本，默认是 Parallel Scavenge + Parallel Old。
-JDK 9 到 JDK 17，默认是 G1。
 
 ************************
 
@@ -159,7 +154,7 @@ JVM里有一种特殊的线程`VM Threads`，专门用来执行一些特殊的VM
 
 ************************
 
-## 内存分代
+### 内存分代
 
 > [Oracle Java8 Doc: Generation](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/generations.html#sthref16)
 
@@ -174,6 +169,11 @@ JVM里有一种特殊的线程`VM Threads`，专门用来执行一些特殊的VM
 有时候在Survivor的“From”区，有时候在Survivor的“To”区，居无定所。  
 直到我18岁的时候，爸爸说我成人了，该去社会上闯闯了。于是我就去了年老代那边，年老代里，人很多，并且年龄都挺大的，我在这里也认识了很多人。  
 在年老代里，我生活了20年(每次GC加一岁)，然后被回收。  
+
+### 引用类型
+Java 引用是 Java 虚拟机为了实现更加灵活的对象生命周期管理而设计的对象包装类，一共有四种引用类型，分别是强引用、软引用、弱引用和虚引用
+
+************************
 
 ## 判断存活算法
 ### 引用计数算法
@@ -311,8 +311,9 @@ GC Roots 对象包含:
 ************************
 
 ## 默认垃圾收集器
-JDK 1.7 1.8 默认垃圾收集器Parallel Scavenge（新生代）+Parallel Old（老年代）  
-JDK1.9+ 默认垃圾收集器G1  
+JDK 7，默认是 Parallel Scavenge + Serial Old。
+JDK 8 及 JDK 7u40 之后的版本，默认是 Parallel Scavenge + Parallel Old。
+JDK 9 到 JDK 17，默认是 G1。
 
 `-XX:+PrintCommandLineFlags` 查看默认参数 或者查看GC日志中代的名称 `-XX:+PrintGCDetails`
 - 例如： `java -XX:+PrintCommandLineFlags -version`
