@@ -38,7 +38,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2025-01-14 20:31:50
+💠 2025-01-16 16:26:11
 ****************************************
 # GC
 > Java Garbage Collection
@@ -172,6 +172,8 @@ JVM里有一种特殊的线程`VM Threads`，专门用来执行一些特殊的VM
 
 ### 引用类型
 Java 引用是 Java 虚拟机为了实现更加灵活的对象生命周期管理而设计的对象包装类，一共有四种引用类型，分别是强引用、软引用、弱引用和虚引用
+
+> [How to Use Java SoftReferences to Build an Efficient Cache](https://blog.shiftleft.io/understanding-jvm-soft-references-for-great-good-and-building-a-cache-244a4f7bb85d)  
 
 ************************
 

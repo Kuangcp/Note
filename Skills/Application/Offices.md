@@ -10,10 +10,12 @@ categories:
 - 1. [Excel](#excel)
 - 2. [CSV](#csv)
 
-💠 2024-11-07 10:05:13
+💠 2025-01-16 16:26:11
 ****************************************
 
 # Excel 
+> [Microsoft Excel - Wikipedia](https://en.wikipedia.org/wiki/Microsoft_Excel)  
+
 主要分为 xls 和 xlsx
 
 - xls 专有二进制

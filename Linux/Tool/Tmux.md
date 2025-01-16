@@ -22,7 +22,7 @@ categories:
 - 5. [Advanced](#advanced)
 - 6. [Tips](#tips)
 
-💠 2024-09-20 11:52:03
+💠 2025-01-16 16:26:11
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -74,6 +74,7 @@ categories:
 
 ## 个人配置
 > [Tmux配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf)  
+> [服务器简洁版配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/sim-tmux.conf)  
 
 步骤  
 1. `ln -s $(pwd)/tmux.conf ~/.tmux.conf` 

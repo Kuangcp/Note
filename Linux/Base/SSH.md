@@ -25,7 +25,7 @@ categories:
     - 2.1. [保持SSH连接稳定](#保持ssh连接稳定)
 - 3. [Mosh](#mosh)
 
-💠 2024-09-11 14:55:54
+💠 2025-01-16 16:26:11
 ****************************************
 # SSH
 > Secure Shell 
@@ -39,13 +39,13 @@ categories:
 - 测试能否登录上 `ssh -T user@host`     
 
 > `ssh -i 私钥绝对路径 user@host` 采用指定私钥登录(一般默认是`.ssh/id_rsa`)  
->> 私钥文件必须是 600 权限  
->> 去除私钥的口令 `openssl rsa -in ~/.ssh/id_rsa -out ~/.ssh/id_rsa_new` _在GitForWindows里面虽然有openssl,但是这个命令却执行不了_  
->> `ssh-add 私钥` 添加私钥到OpenSSH的认证代理  
+- 私钥文件必须是 600 权限  
+- 去除私钥的口令 `openssl rsa -in ~/.ssh/id_rsa -out ~/.ssh/id_rsa_new` _在GitForWindows里面虽然有openssl,但是这个命令却执行不了_  
+- `ssh-add 私钥` 添加私钥到OpenSSH的认证代理  
 
-使用密码方式免去密码登录
->1. 安装sshpass [完整教程](https://linux.cn/article-8086-1.html)
->2. sshpass -p '密码' 后接正常的ssh命令 ssh user@host
+> 使用密码方式，一次性登录
+1. 安装sshpass [完整教程](https://linux.cn/article-8086-1.html)
+2. sshpass -p '密码' 后接正常的ssh命令 ssh user@host
 
 > ssh登录然后执行一系列命令, sudo会执行不了 需要加 -t 参数才行 
 
