@@ -25,7 +25,7 @@ categories:
     - 7.1. [Java使用](#java使用)
     - 7.2. [导入导出](#导入导出)
 
-💠 2024-11-26 20:13:28
+💠 2025-01-17 19:59:46
 ****************************************
 # Postgresql
 
@@ -70,8 +70,6 @@ categories:
 - `\prompt [文本]名称` 提示用户设定内部变数
 - `\password [username]` 改密码
 - `\q` exit
-- 可以使用pg_dump和pg_dumpall来完成。比如备份sales数据库： 
-    - pg_dump drupal>/opt/Postgresql/backup/1.bak 
 
 ## 用户和角色权限
 
@@ -82,6 +80,13 @@ categories:
 - `psql -U playboy -d playboy` 登录用户，一般默认是有用户同名数据库才能登录
 
 - [修改默认登录不需要密码的配置](http://www.linuxidc.com/Linux/2013-04/83564p2.htm)
+
+```sql
+    -- 创建用户 创建库 授权
+    CREATE USER u_xxx WITH PASSWORD 'xxxxxxx';
+    CREATE DATABASE test OWNER u_xxx;
+    GRANT ALL PRIVILEGES ON DATABASE test TO u_xxx;
+```
 
 ### 修改权限
 > [参考博客](http://blog.csdn.net/beiigang/article/details/8604578)
@@ -197,5 +202,9 @@ match(n) return n;
 > 导出
 
 copy 方式，单连接复制出查询语句的结果
+
+- 可以使用pg_dump和pg_dumpall来完成。比如备份sales数据库： 
+    - pg_dump drupal > /opt/Postgresql/backup/1.bak 
+
 
 [JDBC： 长连接流式导出数据](/Java/AdvancedLearning/JDBC.md#长连接流式导出数据)

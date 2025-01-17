@@ -74,7 +74,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2025-01-16 16:26:11
+💠 2025-01-17 19:59:46
 ****************************************
 # 网络
 
@@ -530,7 +530,7 @@ Socket通常翻译为套接字，那么为什么不直译为插座呢？
 
 TCP转发:  用于少数端口的穿透
 
-> [gruf/tcpee: simple multi-threaded TCP proxy in Go - Codeberg.org](https://codeberg.org/gruf/tcpee)  
+> [gruf/tcpee: simple multi-threaded TCP proxy in Go - Codeberg.org](https://codeberg.org/gruf/tcpee)`注意proxy-proto设置为false可正常使用`  
 > [eirture/tcp-proxy: A TCP proxy command line tool, written in Golang](https://github.com/eirture/tcp-proxy)  
 
 ## 代理协议

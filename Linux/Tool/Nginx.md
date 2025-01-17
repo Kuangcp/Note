@@ -41,7 +41,7 @@ categories:
     - 7.5. [nuster](#nuster)
 - 8. [Tips](#tips)
 
-💠 2024-09-20 17:30:23
+💠 2025-01-17 19:59:46
 ****************************************
 # Nginx
 
@@ -256,7 +256,7 @@ _配置统一出口_
             proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
             proxy_set_header Host $http_host;
             proxy_set_header X-Nginx-Proxt true;
-            proxy_pass https://one;
+            proxy_pass http://one; # 注意Nginx已经配置了SSL，后端只需支持http协议即可
             proxy_redirect off;
         }
     }

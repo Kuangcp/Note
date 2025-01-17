@@ -22,7 +22,7 @@ categories:
 - 5. [Advanced](#advanced)
 - 6. [Tips](#tips)
 
-💠 2025-01-16 16:26:11
+💠 2025-01-17 19:59:46
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -39,8 +39,9 @@ categories:
 ************************
 # 基本操作
 
-- 新建会话 `tmux new -s myth`
+- 新建会话 `tmux new -s test`
 - 连接会话 `tmux a -t test`
+- 关闭会话 `tmux kill-session -t test`
 - 显示所有 `tmux ls`
 - 重新加载配置文件 `tmux source ~/.tmux.conf`
 

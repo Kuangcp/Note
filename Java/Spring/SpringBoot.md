@@ -13,7 +13,7 @@ categories:
     - 1.1. [思考](#思考)
     - 1.2. [参考教程](#参考教程)
     - 1.3. [使用SpringBootCLI](#使用springbootcli)
-    - 1.4. [Profils](#profils)
+    - 1.4. [Profiles](#profiles)
         - 1.4.1. [多种配置文件](#多种配置文件)
             - 1.4.1.1. [yml方式](#yml方式)
             - 1.4.1.2. [yml和properties结合](#yml和properties结合)
@@ -41,7 +41,7 @@ categories:
         - 1.10.4. [热部署](#热部署)
         - 1.10.5. [运行性能优化](#运行性能优化)
 
-💠 2024-11-23 10:48:32
+💠 2025-01-17 19:59:46
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -95,7 +95,7 @@ categories:
     - spring --version
 - 官方下载地址 [所有版本](https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/)
 
-## Profils
+## Profiles
 > [Spring Profiles](https://www.baeldung.com/spring-profiles)
 
 > 配置文件(`application.properties或者yml`) 加载顺序 | [官方文档说明](https://docs.spring.io/spring-boot/docs/1.5.9.RELEASE/reference/htmlsingle/#boot-features-external-config-application-property-files)  

@@ -58,7 +58,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2025-01-10 16:30:07
+💠 2025-01-17 19:59:46
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -151,6 +151,24 @@ _Debian系_
 - `sudo yum install docker`
     - Ubuntu的话,Docker没有启动, 只要一执行Docker相关命令就会自动启动, 但是Centos要手动启动
     - `service docker start`  设置开机启动: `chkconfig docker on`
+
+> 安装新版本Docker
+
+因为Centos7自带的docker是很久的docker1.13(组织都还是docker.io)
+
+```sh
+    # 卸载原版本
+    sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+    # 添加阿里云镜像源
+    sudo yum install -y yum-utils
+    sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+    # 安装
+    sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    # 启动
+    sudo systemctl start docker
+    # 自启动
+    sudo systemctl enable docker
+```
 
 ### Arch
 - `pacman -S docker`
