@@ -40,7 +40,7 @@ categories:
     - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2024-12-27 15:59:09
+💠 2025-01-20 19:25:00
 ****************************************
 
 # JVM 监控&诊断
@@ -267,6 +267,8 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 ## Arthas
 > [Github: Arthas](https://github.com/alibaba/arthas)`阿里巴巴`
 
+> [Arthas Tunnel | arthas](https://arthas.aliyun.com/doc/tunnel.html)  
+
 ## async-profiler
 > [async-profiler](https://github.com/jvm-profiling-tools/async-profiler)`CPU和内存采样 渲染火焰图`
 
@@ -377,7 +379,7 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 
 > [目标JVM开启远程访问JMX](/Java/AdvancedLearning/JMX.md#JVM参数配置) `注意JDK6后就默认开启了进程访问JMX`  
 > [JMC 9](https://www.oracle.com/java/technologies/javase/jmc9-release-notes.html)`自身需要JDK17以上运行，可以监控JDK 7u40及往后的版本`  
-
+> [thegreystone/jmc-tutorial: A hands-on-lab/tutorial for learning JDK Mission Control 7+.](https://github.com/thegreystone/jmc-tutorial)  
 ### JFR
 > [JEP 328: Flight Recorder](https://openjdk.org/jeps/328)  
 > [Monitoring Java Applications with Flight Recorder | Baeldung](https://www.baeldung.com/java-flight-recorder-monitoring)  

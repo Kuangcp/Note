@@ -4,4 +4,4 @@
 
 > [typesense](https://github.com/typesense/typesense)
 > [zincsearch](https://zincsearch-docs.zinc.dev/)  
-
+> [opensearch-project/OpenSearch: 🔎 Open source distributed and RESTful search engine.](https://github.com/opensearch-project/OpenSearch)  

@@ -20,7 +20,7 @@ categories:
 - 6. [分词器](#分词器)
 - 7. [向量搜索](#向量搜索)
 
-💠 2024-11-11 11:02:40
+💠 2025-01-20 19:25:00
 ****************************************
 # Elasticsearch
 > [Official Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)  
@@ -105,6 +105,8 @@ categories:
 ************************
 
 # 分词器
+
+> [infinilabs/analysis-ik](https://github.com/infinilabs/analysis-ik)  
 
 ************************
 
