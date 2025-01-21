@@ -10,7 +10,8 @@ categories:
 
 - 1. [Tmux](#tmux)
 - 2. [基本操作](#基本操作)
-    - 2.1. [编译安装](#编译安装)
+    - 2.1. [快捷键](#快捷键)
+    - 2.2. [编译安装](#编译安装)
 - 3. [配置](#配置)
     - 3.1. [个人配置](#个人配置)
     - 3.2. [键绑定](#键绑定)
@@ -22,7 +23,7 @@ categories:
 - 5. [Advanced](#advanced)
 - 6. [Tips](#tips)
 
-💠 2025-01-17 19:59:46
+💠 2025-01-21 14:41:56
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -45,19 +46,25 @@ categories:
 - 显示所有 `tmux ls`
 - 重新加载配置文件 `tmux source ~/.tmux.conf`
 
-> 快捷键
-- prefix
-    - ? 帮助
-    - s 选择 session
-    - w 选择 window
-    - d deattach 脱离
-    - j 下 panel
-    - k 上 panel
-    - ; 最近的 panel
-    - $ 重命名 session
-    - , 重命名 panel
-    - Alt+方向键 往指定方向扩展当前 panel 大小
+## 快捷键
 - Alt+方向键 跳转到对应方向的panel上
+
+> Prefix + 以下键 组合实现的功能
+
+| 键 | 功能 |
+|:----|:----|
+| ? | 帮助 |
+| s | 选择 session |
+| w | 选择 window |
+| d | deattach 脱离 |
+| k | 上 panel |
+| j | 下 panel |
+| h | 左 panel |
+| l | 右 panel |
+| ; | 最近的 panel |
+| $ | 重命名 session |
+| , | 重命名 panel |
+| Alt+方向键 | 往指定方向扩展当前 panel 大小 |
 
 ************************
 
@@ -107,7 +114,7 @@ categories:
 
 > action
 - send-keys
-    - 例如 `bind-key -T root F9 send-keys 'cola' Enter` F9即可在终端运行 git-cola
+    - 例如 `bind-key -T root F9 send-keys 'cola' Enter` F9即可在Tmux内的终端运行 git-cola
 - run-shell
 - source 和 source-file
 - select-pane
