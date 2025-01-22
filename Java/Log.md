@@ -15,6 +15,8 @@ categories:
     - 2.2. [MDC](#mdc)
 - 3. [Log4j](#log4j)
 - 4. [Log4j2](#log4j2)
+    - 4.1. [配置](#配置)
+        - 4.1.1. [自定义Appender](#自定义appender)
 - 5. [Logback](#logback)
     - 5.1. [配置理解](#配置理解)
         - 5.1.1. [根节点 <configuration> 属性](#根节点-<configuration>-属性)
@@ -34,7 +36,7 @@ categories:
     - 8.1. [Filebeat](#filebeat)
     - 8.2. [K8s](#k8s)
 
-💠 2024-11-04 17:03:12
+💠 2025-01-22 20:31:42
 ****************************************
 # 日志系统
 > [码农翻身: 一个著名的日志系统是怎么设计出来的？ ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45&chksm=80d67bacb7a1f2ba38aa37620d273dfd7d7227667df556d36c84d125cafd73fef16464288cf9&scene=21#wechat_redirect)`深刻的理解了日志系统的来源以及相关关系`  
@@ -73,6 +75,39 @@ categories:
 > 听说是为了解决Log4j无法在多环境使用的问题 , 也就是类似于 SpringBoot 多profile的功能
 
 > [java - 基于log4j2简易实现日志告警](https://segmentfault.com/a/1190000022741931)  
+
+## 配置
+### 自定义Appender
+> [java - How to Create a Custom Appender in log4j2? - Stack Overflow](https://stackoverflow.com/questions/24205093/how-to-create-a-custom-appender-in-log4j2)  
+
+1. log4j2.xml
+```xml
+  <Configuration packages="com.yourcompany.yourcustomappenderpackage">
+    <Appenders>
+      <MyCustomAppender name="ABC" otherAttribute="...">
+      ...
+    </Appenders>
+    <Loggers><Root><AppenderRef ref="ABC" /></Root></Loggers>
+  </Configuration>
+```
+packages 需配置 自定义 Appender 的目录
+
+```java
+@Plugin(name = "LogAlertAppender", category = Core.CATEGORY_NAME, elementType = Appender.ELEMENT_TYPE)
+public class LogAlertAppender extends AbstractAppender {
+    public LogAlertAppender(String name, Filter filter) {
+        super(name, filter, null);
+    }
+    @Override
+    public void append(LogEvent event) {
+    }
+    @PluginFactory
+    public static LogAlertAppender createAppender(@PluginAttribute("name") String name,
+                                                  @PluginElement("Filter") final Filter filter) {
+        return new LogAlertAppender(name, filter);
+    }
+}
+```
 
 **************************
 # Logback
