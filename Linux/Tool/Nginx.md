@@ -26,7 +26,7 @@ categories:
         - 4.3.1. [自签发证书](#自签发证书)
         - 4.3.2. [通过 certbot 配置 HTTPS](#通过-certbot-配置-https)
     - 4.4. [配置Websocket反向代理](#配置websocket反向代理)
-    - 4.5. [转发代理](#转发代理)
+    - 4.5. [代理-HTTP转发](#代理-http转发)
     - 4.6. [防盗链](#防盗链)
     - 4.7. [gzip](#gzip)
     - 4.8. [负载均衡](#负载均衡)
@@ -41,7 +41,7 @@ categories:
     - 7.5. [nuster](#nuster)
 - 8. [Tips](#tips)
 
-💠 2025-01-17 19:59:46
+💠 2025-01-22 11:45:30
 ****************************************
 # Nginx
 
@@ -230,6 +230,8 @@ _配置统一出口_
 ## 配置https
 > [nginx搭建https服务](http://www.cnblogs.com/tintin1926/archive/2012/07/12/2587311.html) | [nginx http/2](http://letus.club/2016/04/08/nginx-http2-letsencrypt/)
 
+如果使用caddy就会很简单，它会自动续签 lets crypt
+
 ### 自签发证书
 - [Linux: 自签发证书](/Linux/Base/LinuxNetwork.md#自签发证书)
 
@@ -372,7 +374,7 @@ server {
 }
 ```
 
-## 转发代理
+## 代理-HTTP转发
 > 例如 aaa.com 需要VPN等方式才能访问，Nginx所在的主机能访问，就可以这么配置，然后配置DNS将 aaa.com 解析到Nginx的主机上，就可以实现其他客户机不安装VPN 直接访问 aaa.com
 
 ```ini
@@ -402,12 +404,25 @@ server {
   gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
 ```
 
+当前Nginx代理上游开启了gzip的服务，并解压其gzip响应
+
+```conf
+server {
+	server_name xxxx.cn;
+	location / {
+    proxy_set_header Accept-Encoding ""; # 禁用代理请求开启gzip
+    gzip off; # 禁用gzip
+		proxy_pass http://x.x.x.x:8080/;
+	}
+}
+```
+
 ## 负载均衡
 > [Nginx 反向代理 负载均衡 虚拟主机配置](https://segmentfault.com/a/1190000012479902)
 
 分为四层和七层： 
 - 在四层只依据ip的报文转发（修改进入时目的ip`从nginx改成upstream的IP`，修改返回时发送ip）
-- 在七层依据数据内容做转发，例如按http请求后缀做转发 *.jpg 到A服务器 *.jsp到B服务器
+- 在七层依据数据内容做转发，例如按http请求后缀做转发 *.jpg 到A服务器 *.jsp 到B服务器
 
 ### 负载均衡策略
 > [Doc: Http Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
