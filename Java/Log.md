@@ -13,30 +13,29 @@ categories:
 - 2. [概念](#概念)
     - 2.1. [slf4j 接口](#slf4j-接口)
     - 2.2. [MDC](#mdc)
-- 3. [Log4j](#log4j)
-- 4. [Log4j2](#log4j2)
-    - 4.1. [配置](#配置)
-        - 4.1.1. [自定义Appender](#自定义appender)
-- 5. [Logback](#logback)
-    - 5.1. [配置理解](#配置理解)
-        - 5.1.1. [根节点 <configuration> 属性](#根节点-<configuration>-属性)
-        - 5.1.2. [子节点](#子节点)
-        - 5.1.3. [设置上下文名称：<contextName>](#设置上下文名称<contextname>)
-        - 5.1.4. [设置变量： <property>](#设置变量-<property>)
-        - 5.1.5. [获取时间戳字符串：<timestamp>](#获取时间戳字符串<timestamp>)
-        - 5.1.6. [设置loger](#设置loger)
-        - 5.1.7. [详解 Appender](#详解-appender)
-            - 5.1.7.1. [自定义 Appender](#自定义-appender)
-    - 5.2. [Logback MDC](#logback-mdc)
-- 6. [实践经验](#实践经验)
-- 7. [分析日志](#分析日志)
-    - 7.1. [Linux上查看日志](#linux上查看日志)
-    - 7.2. [lnav](#lnav)
-- 8. [日志采集](#日志采集)
-    - 8.1. [Filebeat](#filebeat)
-    - 8.2. [K8s](#k8s)
+- 3. [Log4j2](#log4j2)
+    - 3.1. [配置](#配置)
+        - 3.1.1. [自定义Appender](#自定义appender)
+- 4. [Logback](#logback)
+    - 4.1. [配置理解](#配置理解)
+        - 4.1.1. [根节点 <configuration> 属性](#根节点-<configuration>-属性)
+        - 4.1.2. [子节点](#子节点)
+        - 4.1.3. [设置上下文名称：<contextName>](#设置上下文名称<contextname>)
+        - 4.1.4. [设置变量： <property>](#设置变量-<property>)
+        - 4.1.5. [获取时间戳字符串：<timestamp>](#获取时间戳字符串<timestamp>)
+        - 4.1.6. [设置loger](#设置loger)
+        - 4.1.7. [详解 Appender](#详解-appender)
+            - 4.1.7.1. [自定义 Appender](#自定义-appender)
+    - 4.2. [Logback MDC](#logback-mdc)
+- 5. [实践经验](#实践经验)
+- 6. [分析日志](#分析日志)
+    - 6.1. [Linux上查看日志](#linux上查看日志)
+    - 6.2. [lnav](#lnav)
+- 7. [日志采集](#日志采集)
+    - 7.1. [Filebeat](#filebeat)
+    - 7.2. [K8s](#k8s)
 
-💠 2025-01-22 20:31:42
+💠 2025-01-23 15:34:13
 ****************************************
 # 日志系统
 > [码农翻身: 一个著名的日志系统是怎么设计出来的？ ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45&chksm=80d67bacb7a1f2ba38aa37620d273dfd7d7227667df556d36c84d125cafd73fef16464288cf9&scene=21#wechat_redirect)`深刻的理解了日志系统的来源以及相关关系`  
@@ -64,12 +63,6 @@ categories:
 > [Improved Java Logging with Mapped Diagnostic Context (MDC)](https://www.baeldung.com/mdc-in-log4j-2-logback)
 
 ****************************
-# Log4j
-> [Log4J使用笔记](http://www.cnblogs.com/eflylab/archive/2007/01/11/618001.html)
-> [log4j.properties配置详解](http://www.cnblogs.com/ITEagle/archive/2010/04/23/1718365.html)
-
-************************
-
 # Log4j2
 > [官方文档, 配置详解](https://logging.apache.org/log4j/2.x/manual/configuration.html)
 > 听说是为了解决Log4j无法在多环境使用的问题 , 也就是类似于 SpringBoot 多profile的功能
@@ -90,7 +83,7 @@ categories:
     <Loggers><Root><AppenderRef ref="ABC" /></Root></Loggers>
   </Configuration>
 ```
-packages 需配置 自定义 Appender 的目录
+packages 需配置为 自定义Appender 所在的目录
 
 ```java
 @Plugin(name = "LogAlertAppender", category = Core.CATEGORY_NAME, elementType = Appender.ELEMENT_TYPE)
