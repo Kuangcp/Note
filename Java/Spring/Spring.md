@@ -36,14 +36,15 @@ categories:
     - 2.6. [Events](#events)
     - 2.7. [异步](#异步)
     - 2.8. [RestTemplate](#resttemplate)
-    - 2.9. [Utils](#utils)
-        - 2.9.1. [ReflectionUtils](#reflectionutils)
-    - 2.10. [SpEL](#spel)
+    - 2.9. [WebClient](#webclient)
+    - 2.10. [Utils](#utils)
+        - 2.10.1. [ReflectionUtils](#reflectionutils)
+    - 2.11. [SpEL](#spel)
 - 3. [Web开发的最佳实践](#web开发的最佳实践)
     - 3.1. [优雅部署](#优雅部署)
 - 4. [Tips](#tips)
 
-💠 2025-01-10 16:30:07
+💠 2025-01-23 16:38:24
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -462,6 +463,15 @@ Student
 
 ## RestTemplate
 > [大文件OOM问题](https://github.com/spring-projects/spring-framework/issues/12564) 发送文件时将文件的字节全部读取到内存中再发送，文件大且多时容易OOM
+
+> [RestTemplate throwing generic 400 Bad Request, but custom server sent message is not is lost - Stack Overflow](https://stackoverflow.com/questions/56336439/resttemplate-throwing-generic-400-bad-request-but-custom-server-sent-message-is)异常响应码时，信息被吞   
+
+## WebClient
+> [WebClient :: Spring Framework](https://docs.spring.io/spring-framework/reference/web/webflux-webclient.html)  
+
+RestTemplate替代者
+
+************************
 
 ## Utils
 ### ReflectionUtils
