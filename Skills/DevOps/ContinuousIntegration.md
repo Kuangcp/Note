@@ -9,18 +9,19 @@ categories:
 
 - 1. [持续集成](#持续集成)
     - 1.1. [Jenkins](#jenkins)
-    - 1.2. [Argo](#argo)
-    - 1.3. [GoCD](#gocd)
-    - 1.4. [Drone](#drone)
-    - 1.5. [flow.ci](#flowci)
-    - 1.6. [三方平台](#三方平台)
+    - 1.2. [Github Actions](#github-actions)
+    - 1.3. [Argo](#argo)
+    - 1.4. [GoCD](#gocd)
+    - 1.5. [Drone](#drone)
+    - 1.6. [flow.ci](#flowci)
+    - 1.7. [三方平台](#三方平台)
 - 2. [代码质量管理](#代码质量管理)
     - 2.1. [Bug跟踪](#bug跟踪)
     - 2.2. [sonarqube](#sonarqube)
         - 2.2.1. [项目端](#项目端)
 - 3. [测试平台](#测试平台)
 
-💠 2024-11-23 18:19:10
+💠 2025-01-24 11:22:49
 ****************************************
 # 持续集成
 > 参考: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  
@@ -30,6 +31,11 @@ categories:
 **************************
 ## Jenkins
 > [详细](Jenkins.md)
+
+## Github Actions
+> [GitHub Actions 快速入门 - GitHub 文档](https://docs.github.com/zh/actions/writing-workflows/quickstart)  
+> [metrics setup action](https://github.com/lowlighter/metrics/blob/master/.github/readme/partials/documentation/setup/action.md)  
+> [GitHub Actions 入门教程 - 阮一峰的网络日志](https://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)  
 
 ## Argo
 > [Argo CD | Argo](https://argoproj.github.io/cd/)`依托K8S做分布式计算，顺带实现了CICD`  
