@@ -22,6 +22,9 @@ categories:
 # 流编辑器
 > [参考: 比较linux下各种流编辑器的用法](https://blog.csdn.net/havedream_one/article/details/45007449)
 
+> [jqlang/jq: Command-line JSON processor](https://github.com/jqlang/jq)
+> [itchyny/gojq: Pure Go implementation of jq](https://github.com/itchyny/gojq)    
+
 ## tr
 > 转换字符
 - 替换：可以使用字符集的形式如tr `[a-z]` `[A-Z]` 或者 tr a-z A-Z
@@ -126,7 +129,7 @@ md5sum | cut -c 1-8
 ************************
 > [sokoban sed](https://github.com/aureliojargas/sokoban.sed) `sed 写的推箱子游戏`
 
-> [chmln/sd](https://github.com/chmln/sd)`更简洁和现代化 正则不需要转义等等，所见即所得`  
+> [Github: sd](https://github.com/chmln/sd)`更简洁和现代化 正则不需要转义等等，所见即所得`  
 - 目录数按顺序排序 `ag '💠 2024' |less | sd '(.*):(\d+):💠.*' ' $2 $1' | kp.sort`
 
 ************************

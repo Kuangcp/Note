@@ -148,10 +148,11 @@ categories:
 > [DDoS attack using HOIC](https://github.com/Samsar4/Ethical-Hacking-Labs/blob/master/9-Denial-of-Service/2-DDoS-using-HOIC.md)
 
 ### CC 攻击
-challenge collapsar attack
+Challenge Collapsar Attack
 
-CC攻击是攻击者借助代理服务器生成指向受害主机的合法请求，实现DDoS和伪装攻击。攻击者通过控制某些主机不停地发送大量数据包给对方服务器，造成服务器资源耗尽，直至宕机崩溃。
+> [What Are the Differences Between DDoS Attacks and Challenge Collapsar Attacks?_Anti-DDoS Service](https://support.huaweicloud.com/intl/en-us/aad_faq/aad_01_0202.html)  
 
+CC攻击是攻击者借助代理服务器生成指向受害主机的合法请求，实现DDoS和伪装攻击。攻击者通过控制某些主机不停地发送大量数据包给对方服务器，造成服务器资源耗尽，直至宕机崩溃。  
 例如对站点的部分接口或页面发起大量客户端线程访问。
 
 ### SYN Flood 攻击

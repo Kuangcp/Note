@@ -20,7 +20,7 @@ categories:
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2024-12-10 22:06:23
+💠 2025-02-06 18:51:23
 ****************************************
 # 线程池
 
@@ -125,12 +125,15 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
     - STPE 和并发包里的类结合使用是常见的模式之一
 
 > 核心API： 提交任务
-- `schedule(Runnable command, long delay, TimeUnit unit)`
-- `schedule(Callable<V> callable, long delay, TimeUnit unit)`
-- `scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit)`
+- 单次 `schedule(Runnable command, long delay, TimeUnit unit)`
+- 单次 `schedule(Callable<V> callable, long delay, TimeUnit unit)`
+
+- 定时 `scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit)`
     - 不管上一次Runnable执行结束的时间，总是以固定延迟时间执行 即 上一个Runnable执行开始时候 + 延时时间 = 下一个Runnable执行的时间点
-- `scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit)`
+- 定时 `scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit)`
     - 当上一个Runnable执行结束后+固定延迟 = 下一个Runnable执行的时间点
+
+**注意**: 定时类API有声明：当某次任务抛出异常时，后续的调度会挂起，所以异步任务需要大范围的 try catch，业务自己处理异常
 
 > 如何实现调度: [ScheduledThreadPoolExecutor实现原理](https://juejin.cn/post/7035415187783942152) | [验证单元测试](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/thread/schdule/SchedulerPoolTest.java)
 - 核心依赖 DelayedWorkQueue 实现延迟调度
