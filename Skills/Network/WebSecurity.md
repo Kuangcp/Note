@@ -24,14 +24,14 @@ categories:
 - 3. [攻击手段](#攻击手段)
     - 3.1. [ARP断网攻击](#arp断网攻击)
     - 3.2. [DOS](#dos)
-        - 3.2.1. [CC challenge collapsar attack](#cc-challenge-collapsar-attack)
-        - 3.2.2. [SYNFlood攻击](#synflood攻击)
+        - 3.2.1. [CC 攻击](#cc-攻击)
+        - 3.2.2. [SYN Flood 攻击](#syn-flood-攻击)
     - 3.3. [ClickJacking](#clickjacking)
     - 3.4. [CSRF](#csrf)
         - 3.4.1. [解决方案](#解决方案)
     - 3.5. [XSS](#xss)
 
-💠 2024-06-17 19:57:32
+💠 2025-02-06 17:03:57
 ****************************************
 
 # Web应用网络安全
@@ -142,17 +142,19 @@ categories:
 ************************
 
 ## DOS
+[Wiki: Denial-of-service_attack](https://en.wikipedia.org/wiki/Denial-of-service_attack)
 
-- [Denial-of-service_attack](https://en.wikipedia.org/wiki/Denial-of-service_attack)
+> [dos-attack-tool · GitHub Topics](https://github.com/topics/dos-attack-tool)  
 > [DDoS attack using HOIC](https://github.com/Samsar4/Ethical-Hacking-Labs/blob/master/9-Denial-of-Service/2-DDoS-using-HOIC.md)
 
-### CC challenge collapsar attack
+### CC 攻击
+challenge collapsar attack
 
 CC攻击是攻击者借助代理服务器生成指向受害主机的合法请求，实现DDoS和伪装攻击。攻击者通过控制某些主机不停地发送大量数据包给对方服务器，造成服务器资源耗尽，直至宕机崩溃。
 
 例如对站点的部分接口或页面发起大量客户端线程访问。
 
-### SYNFlood攻击
+### SYN Flood 攻击
 > 洪水攻击 [参考博客](http://xfocus.net/articles/200106/208.html) SYN Flood是当前最流行的DoS（拒绝服务攻击）与DDoS（分布式拒绝服务攻击）的方式之一，这是一种利用TCP协议缺陷，发送大量伪造的TCP连接请求，从而使得被攻击方资源耗尽（CPU满负荷或内存不足）的攻击方式。
 
 > [参考博客 什么是SYN Flood攻击?](http://www.cnblogs.com/popduke/p/5823801.html)
