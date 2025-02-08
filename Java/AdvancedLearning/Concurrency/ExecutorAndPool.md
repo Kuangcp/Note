@@ -20,7 +20,7 @@ categories:
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2025-02-06 18:51:23
+💠 2025-02-08 11:04:04
 ****************************************
 # 线程池
 
@@ -133,7 +133,7 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 - 定时 `scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit)`
     - 当上一个Runnable执行结束后+固定延迟 = 下一个Runnable执行的时间点
 
-**注意**: 定时类API有声明：当某次任务抛出异常时，后续的调度会挂起，所以异步任务需要大范围的 try catch，业务自己处理异常
+**注意**: 定时的这些API上有注释说明：当某次任务抛出异常时，后续的调度会挂起，所以异步任务需要大范围的 try catch，业务自己处理异常
 
 > 如何实现调度: [ScheduledThreadPoolExecutor实现原理](https://juejin.cn/post/7035415187783942152) | [验证单元测试](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/thread/schdule/SchedulerPoolTest.java)
 - 核心依赖 DelayedWorkQueue 实现延迟调度

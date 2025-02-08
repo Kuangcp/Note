@@ -67,7 +67,7 @@ categories:
     - 6.2. [善用alias](#善用alias)
     - 6.3. [desktop文件](#desktop文件)
 
-💠 2024-12-05 15:02:22
+💠 2025-02-08 11:04:04
 ****************************************
 
 # IO
@@ -395,6 +395,13 @@ export LANG="zh_CN.UTF-8"
 > [spacedrive](https://github.com/spacedriveapp/spacedrive)  
 
 ### ext3 ext4 
+> [第 4 章 Linux ext 文件系统](https://brinnatt.com/primary/%E7%AC%AC-4-%E7%AB%A0-linux-ext-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/)  
+
+- 简单来说是依据分区大小得到最大inode数，通常 16k空间一个inode（可通过 mkfs.ext4 -i 参数指定, 默认值在 `/etc/mke2fs.conf` 有定义），例如 10G空间 640K个inode
+- inode数量 = 分区大小字节 / inode_ratio 
+    - inode_ratio 默认16K 含义为 bytes/inode 比例
+    - inode_size ext3 默认128 ext4 默认256 这个值越大，inode占用的空间就越大
+- 大量小文件时，可以考虑降低inode_ratio值，但是会导致实际存放文件的空间减小，反之亦然
 
 ### Tmpfs 
 > 虚拟内存文件系统 [wiki](https://wiki.archlinux.org/index.php/Tmpfs)
@@ -483,19 +490,20 @@ export LANG="zh_CN.UTF-8"
 > 报告文件系统磁盘空间使用情况 
 
 - -h 可读性 human readable
+- -i 查看inodes索引情况，大量小文件创建时也会导致inode空间耗尽，可按需使用 xfs jfs 等无限inode文件系统
 - -T 查看挂载文件系统的类型信息
 - -a 所有文件系统
 - -l 只显示本地文件系统
 
-如果留意到 `/分区` Avail空间明显小于Size减去Used  
-是因为 ext2/3/4 文件系统默认预留了5%的空间给root用户，为了防止普通用户写满磁盘后影响到root用户系统级应用数据落盘，从而引发系统故障  
-所以如果home目录单独分了区，就可以取消改设定，如果只有一个分区 / 就不建议删除保留设置。  
-```sh
-    # 查看块情况
-    sudo tune2fs -l /dev/sda8
-    # 设置保留块比例为0%
-    sudo tune2fs -m 0 /dev/sda8
-```
+> 如果留意到 `/分区` Avail空间明显小于Size减去Used  
+- 是因为 ext2/3/4 文件系统默认预留了5%的空间给root用户，为了防止普通用户写满磁盘后影响到root用户系统级应用数据落盘，从而引发系统故障  
+- 所以如果home目录单独分了区，就可以取消改设定，如果只有一个分区 / 就不建议删除保留设置。  
+    ```sh
+        # 查看分区的块情况
+        sudo tune2fs -l /dev/sda8
+        # 设置保留块比例为0%
+        sudo tune2fs -m 0 /dev/sda8
+    ```
 
 - duf 现代化 df
 - pydf
