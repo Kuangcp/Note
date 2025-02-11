@@ -14,8 +14,9 @@ categories:
     - 2.1. [slf4j 接口](#slf4j-接口)
     - 2.2. [MDC](#mdc)
 - 3. [Log4j2](#log4j2)
-    - 3.1. [配置](#配置)
-        - 3.1.1. [自定义Appender](#自定义appender)
+    - 3.1. [安全](#安全)
+    - 3.2. [配置](#配置)
+        - 3.2.1. [自定义Plugin](#自定义plugin)
 - 4. [Logback](#logback)
     - 4.1. [配置理解](#配置理解)
         - 4.1.1. [根节点 <configuration> 属性](#根节点-<configuration>-属性)
@@ -35,7 +36,7 @@ categories:
     - 7.1. [Filebeat](#filebeat)
     - 7.2. [K8s](#k8s)
 
-💠 2025-01-23 16:38:24
+💠 2025-02-11 11:26:37
 ****************************************
 # 日志系统
 > [码农翻身: 一个著名的日志系统是怎么设计出来的？ ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45&chksm=80d67bacb7a1f2ba38aa37620d273dfd7d7227667df556d36c84d125cafd73fef16464288cf9&scene=21#wechat_redirect)`深刻的理解了日志系统的来源以及相关关系`  
@@ -67,11 +68,13 @@ categories:
 > [官方文档, 配置详解](https://logging.apache.org/log4j/2.x/manual/configuration.html)
 > 听说是为了解决Log4j无法在多环境使用的问题 , 也就是类似于 SpringBoot 多profile的功能
 
-> [java - 基于log4j2简易实现日志告警](https://segmentfault.com/a/1190000022741931)  
+## 安全
+> [apache-Log4j2 远程命令执行漏洞复现及反弹shell - FreeBuf网络安全行业门户](https://www.freebuf.com/articles/web/320390.html)  
 
 ## 配置
-### 自定义Appender
+### 自定义Plugin
 > [java - How to Create a Custom Appender in log4j2? - Stack Overflow](https://stackoverflow.com/questions/24205093/how-to-create-a-custom-appender-in-log4j2)  
+> [java - 基于log4j2简易实现日志告警](https://segmentfault.com/a/1190000022741931)  
 
 1. log4j2.xml
 ```xml
@@ -100,6 +103,10 @@ packages 需配置为 自定义Appender 所在的目录
         }
     }
 ```
+
+************************
+
+> [Plugins :: Apache Log4j](https://logging.apache.org/log4j/2.x/manual/plugins.html)  2.0等高版本，额外需要配置注解处理
 
 **************************
 # Logback
