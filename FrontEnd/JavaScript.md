@@ -27,7 +27,7 @@ categories:
     - 1.8. [资源文件](#资源文件)
         - 1.8.1. [图片](#图片)
 
-💠 2024-07-07 18:00:42
+💠 2025-02-19 16:52:01
 ****************************************
 # JavaScript
 
@@ -133,7 +133,23 @@ function post(url, data, handle) {
 
 ## 事件
 ### 键盘
+```js
+    function bindKeyDown() {
+        document.onkeydown = function (event) {
+            // Ctrl S
+            if (event.ctrlKey === true && event.key === 's') {
+                event.preventDefault();
+                save()
+            }
 
+            // Ctrl D
+            if (event.ctrlKey === true && event.key === 'r') {
+                event.preventDefault();
+                loadExistConf()
+            }
+        }
+    }
+```
 ### 鼠标
 > [JavaScript 鼠标滚轮事件](https://www.web-tinker.com/article/20037.html)
 

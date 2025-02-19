@@ -31,7 +31,7 @@ categories:
     - 3.6. [SSE](#sse)
 - 4. [Tips](#tips)
 
-💠 2024-12-25 22:39:49
+💠 2025-02-19 16:52:01
 ****************************************
 
 # SpringMVC
@@ -358,6 +358,9 @@ org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnV
 org.springframework.http.converter.StringHttpMessageConverter#writeInternal
 sun.nio.cs.StreamEncoder#implWrite
 ```
+
+> [javascript - Is an EventSource (SSE) supposed to try to reconnect indefinitely? - Stack Overflow](https://stackoverflow.com/questions/24564030/is-an-eventsource-sse-supposed-to-try-to-reconnect-indefinitely)  
+
 ************************
 
 # Tips
