@@ -78,7 +78,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2024-12-10 22:06:23
+💠 2025-03-07 10:54:31
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/) | [Source Code](https://download.java.net/openjdk/jdk8/)  
@@ -807,7 +807,9 @@ Collectors所提供的工厂方法 它们主要提供了三大功能：将流元
 - toList toMap toSet 等方法
 
 > 注意： toMap 方法的使用， 当 key 重复时会抛出异常 
-> `toMap(k->k, v->v, (a,b)->b);` 使用该方式能避免， 设置了遇到重复的策略， 后者覆盖前者
+- `toMap(k->k, v->v, (a,b)->b);` 使用该方式能避免， 设置了遇到重复的策略， 后者覆盖前者
+> toMap方式 当value出现null时 会抛出NPE
+- Collectors.toMap 在底层使用的是 Map::merge 方法，而 merge 方法不允许 null value
 
 ### 汇总 collector
 > Collectors类专门为汇总提供了一个工厂方法：Collectors.summingInt 它可接受一个把对象映射为求和所需int的函数，并返回一个收集器；该收集器在传递给普通的collect方法后即执行我们需要的汇总操作  

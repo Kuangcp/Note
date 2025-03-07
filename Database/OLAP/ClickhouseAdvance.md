@@ -20,7 +20,7 @@ categories:
     - 2.2. [查询](#查询)
     - 2.3. [监控](#监控)
 
-💠 2024-10-25 18:09:58
+💠 2025-03-07 10:54:31
 ****************************************
 # Clickhouse
 
@@ -100,3 +100,26 @@ Spark 解析HDFS数据生成CK file（单个分区做一个gz压缩包，解压�
 ## 监控
 > [查询日志 system.query_log](https://clickhouse.com/docs/zh/operations/system-tables/query_log)  
 
+```sql
+-- 查询SQL执行记录
+select hostname() hostname
+      ,type
+      ,query_kind
+      ,event_time
+      ,databases
+      ,user
+      ,address 
+      ,query_duration_ms
+      ,query
+      ,exception_code
+      ,exception
+from clusterAllReplicas('default_cluster', system.query_log) 
+where event_date = toDate(now()) and event_time > (now() - toIntervalMinute(300))
+    --and query_duration_ms > 40000
+    --and user not in('default','industrial_cloud')
+    --and has(databases,'linkedsee_new')
+      and query like '%user_info_local%'
+      and query_kind not in('Select')
+order by event_date ,event_time desc
+limit 1009
+```
