@@ -169,8 +169,6 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 > 图数据库: Neo4j  
 > 时序数据库: InfluxDB  
 
-GemFire 分布式内存数据库 12306 采用的解决方案
-
 [MongoDB](/Database/MongoDB.md) 文档性数据库, 混合类型: 关系型非关系型
 
 ************************

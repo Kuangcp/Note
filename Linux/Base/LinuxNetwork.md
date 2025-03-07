@@ -54,7 +54,8 @@ categories:
         - 3.5.3. [OpenVPN](#openvpn)
         - 3.5.4. [Fortivpn](#fortivpn)
     - 3.6. [代理](#代理)
-        - 3.6.1. [proxychains](#proxychains)
+        - 3.6.1. [端口转发](#端口转发)
+        - 3.6.2. [proxychains](#proxychains)
     - 3.7. [防火墙](#防火墙)
         - 3.7.1. [iptables](#iptables)
             - 3.7.1.1. [四层协议端口转发](#四层协议端口转发)
@@ -63,7 +64,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2024-09-29 23:35:37
+💠 2025-03-02 19:53:11
 ****************************************
 # Linux网络管理
 
@@ -596,6 +597,12 @@ postfix和devecot
 #### 命令行
 > [FTP Commands](https://www.javatpoint.com/ftp-commands)
 
+Manjaro 中 ftp 命令来自 inetutils 包
+
+- ftp ip port 完成登录. 
+- 进入交互式终端后 执行 ? 查看可执行的命令
+- 注意下载二进制文件时，需要执行 binary 切换模式，否则会字符流下载二进制文件导致编码问题。
+
 #### Java
 > [Apache Commons Net](https://commons.apache.org/proper/commons-net/)
 
@@ -752,6 +759,12 @@ _客户端_
 ************************
 
 ## 代理
+> [网络基础 ](/Skills/Network/Network.md#代理-proxy)  
+
+### 端口转发
+
+> [gruf/tcpee: simple multi-threaded TCP proxy in Go - Codeberg.org](https://codeberg.org/gruf/tcpee)`注意proxy-proto设置为false可正常使用`  
+> [eirture/tcp-proxy: A TCP proxy command line tool, written in Golang](https://github.com/eirture/tcp-proxy)  
 
 ### proxychains
 - 安装

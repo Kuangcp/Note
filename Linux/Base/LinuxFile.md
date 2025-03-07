@@ -67,7 +67,7 @@ categories:
     - 6.2. [善用alias](#善用alias)
     - 6.3. [desktop文件](#desktop文件)
 
-💠 2025-02-08 11:04:04
+💠 2025-03-02 19:53:11
 ****************************************
 
 # IO
@@ -656,3 +656,4 @@ export LANG="zh_CN.UTF-8"
 ```
 - 如要将快捷方式放在启动菜单内 只需将 desktop 文件复制到 `/usr/share/applications/`(全局) 或者 `~/.local/share/applications`(单个用户) 目录下
     - 注意：目录不能有空格 等特殊字符
+- 重点在于 Exec 和 Icon 的值，Exec 仅相当于当前用户执行 Exec的命令，如果发现应用启动异常只能去脚本或二进制文件调试，通常是环境变量差别
