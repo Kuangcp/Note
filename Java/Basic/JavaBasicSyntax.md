@@ -78,7 +78,7 @@ categories:
     - 9.1. [try](#try)
     - 9.2. [transient](#transient)
 
-💠 2024-11-21 11:51:03
+💠 2025-03-12 10:29:34
 ****************************************
 # 基础语法
 
@@ -303,12 +303,14 @@ true 和 false 也是缓存了的
 - 构造方式
     - double入参构造器容易出现问题，例如 new BigDecimal(0.1) 最终不是期望的0.1 因为浮点数表示0.1是不精确的，应该改成 new BigDecimal("0.1")
 - 计算
-    - 参与计算的项不能出现null
+    - 参与计算的项不能出现 null
     - BigDecimal 计算过程需要使用BigDecimal的方法，而不是直接进行加减乘除。例如 `new BigDecimal(a/b);`
-    - divide方法注意无限循环小数（设置精度规模规避）以及除数为0的情况
+    - divide方法 需规避 无限循环小数（设置精度规模规避）以及除数为0的情况，否则会抛出异常。
 - 值比较
     - 不能直接用 == 或者 equals，而是走 Comparable接口方式 compareTo()
-    
+- 设置精度
+    - setScale(5, BigDecimal.ROUND_HALF_UP).doubleValue();
+
 - 常见值优先使用BigDecimal的枚举，例如BigDecimal.ZERO
 ************************
 

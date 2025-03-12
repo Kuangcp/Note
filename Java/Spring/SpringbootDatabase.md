@@ -14,6 +14,7 @@ categories:
     - 1.2. [连接池](#连接池)
         - 1.2.1. [c3p0](#c3p0)
         - 1.2.2. [druid](#druid)
+            - 1.2.2.1. [问题](#问题)
         - 1.2.3. [HikariCP](#hikaricp)
     - 1.3. [Relational Database](#relational-database)
         - 1.3.1. [JPA](#jpa)
@@ -31,7 +32,7 @@ categories:
             - 1.4.1.1. [消息订阅和发布](#消息订阅和发布)
         - 1.4.2. [Neo4j](#neo4j)
 
-💠 2024-10-21 22:05:55
+💠 2025-03-12 10:29:34
 ****************************************
 # 数据库模块
 > [Spring Data](https://spring.io/projects/spring-data)
@@ -103,6 +104,8 @@ categories:
     - `com.alibaba.druid.pool.DruidDataSource#shrink(boolean, boolean)` keepAlive保活，补充新连接，关闭连接（异常，空闲超时）
     - `com.alibaba.druid.pool.ValidConnectionChecker` 检查连接可用，注意MySQL PG都有协议层的ping方式，更省资源（类似ws协议中的Ping报文），其他数据库一般是配置校验SQL为 `select 1`
 
+#### 问题
+> [线程卡死在druiddatasource上 · Issue #1160 · alibaba/druid](https://github.com/alibaba/druid/issues/1160)  
 
 ### HikariCP
 > [HikariCP](https://github.com/brettwooldridge/HikariCP)

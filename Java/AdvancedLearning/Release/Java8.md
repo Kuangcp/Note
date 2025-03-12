@@ -78,7 +78,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2025-03-07 10:54:31
+💠 2025-03-12 10:29:34
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/) | [Source Code](https://download.java.net/openjdk/jdk8/)  
@@ -1205,9 +1205,11 @@ It can be accessed using other duration-based units, such as minutes and hours.
 - 获取自然周开始时间 `LocalDate.now().with(WeekFields.ISO.dayOfWeek(), 1L);`
 
 ```java
+    // 解析
     // 常见格式
     DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMdd");
     LocalDate parse = LocalDate.parse("20171018", format);
+    format.format(LocalDate.now());
 
     // 格式不全时（年月日）需特殊处理 补全对应默认值
     DateTimeFormatter monthFMT = new DateTimeFormatterBuilder()
@@ -1216,6 +1218,8 @@ It can be accessed using other duration-based units, such as minutes and hours.
                         .parseDefaulting(ChronoField.DAY_OF_MONTH, 1)
                         .toFormatter();
     LocalDate parse = LocalDate.parse("2017", monthFMT);
+
+    // 格式化
 ```
 
 ### LocalTime
