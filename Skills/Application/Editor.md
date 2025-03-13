@@ -17,7 +17,6 @@ categories:
         - 1.4.1. [快捷键](#快捷键)
     - 1.5. [Sublime](#sublime)
         - 1.5.1. [快捷键](#快捷键)
-        - 1.5.2. [crack](#crack)
     - 1.6. [VSCode](#vscode)
         - 1.6.1. [快捷键](#快捷键)
         - 1.6.2. [代码片段](#代码片段)
@@ -38,8 +37,9 @@ categories:
     - 2.4. [Micro](#micro)
     - 2.5. [BS在线编辑器](#bs在线编辑器)
 - 3. [十六进制 Hex](#十六进制-hex)
+- 4. [EditorConfig](#editorconfig)
 
-💠 2024-11-11 11:02:40
+💠 2025-03-13 10:17:24
 ****************************************
 # 文本编辑器
 
@@ -100,13 +100,17 @@ _个人配置_
 > [参考: Sublime Text 3 快捷键](http://www.cnblogs.com/roadone/p/7745641.html)
 > [sublime的常用快捷键](http://www.cnblogs.com/kristen-zou/p/7641158.html)
 
-### crack
+
+************************
+
+`crack`
+
 > [3143码](https://gitee.com/gin9/codes/89xfugn5dwoyr23vchikb54)
 
 - [参考博客](http://www.cnblogs.com/hollow/p/6496469.html)
 - [3143 1](https://fatesinger.com/100121) | [3143 2](https://fatesinger.com/100227) | [3176](https://fatesinger.com/100237) 
 
-************************************
+************************
 
 ## VSCode
 
@@ -195,7 +199,7 @@ strict-ssl=false
 ```
 1. 或者直接clone 进行安装 在`~/.atom/packages`下clone仓库, 然后 apm install 
 
-************************************
+************************
 ## Gedit
 > [Github地址](https://github.com/GNOME/gedit)
 
@@ -278,3 +282,8 @@ Ghex
 [010Editor](https://www.sweetscape.com/)  
 [ImHex](https://github.com/WerWolv/ImHex)`推荐`  
 
+# EditorConfig
+> [EditorConfig](https://editorconfig.org/)  
+> [EditorConfig Properties](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties)  
+
+> [Configs/IDEA/.editorconfig](https://github.com/Kuangcp/Configs/blob/master/IDEA/.editorconfig)`Java代码基础风格 配置模板`  
