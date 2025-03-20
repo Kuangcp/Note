@@ -35,11 +35,12 @@ categories:
 - 3. [HTTPS](#https)
     - 3.1. [HTTPS 证书认证流程](#https-证书认证流程)
     - 3.2. [HSTS](#hsts)
-- 4. [Tips](#tips)
-    - 4.1. [CORS 跨域](#cors-跨域)
-    - 4.2. [相关工具](#相关工具)
+- 4. [SSE](#sse)
+- 5. [Tips](#tips)
+    - 5.1. [CORS 跨域](#cors-跨域)
+    - 5.2. [相关工具](#相关工具)
 
-💠 2024-10-10 10:41:00
+💠 2025-03-20 15:51:01
 ****************************************
 # HTTP
 > HyperText Transfer Protocol (超文本传输协议) 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -332,6 +333,20 @@ HTTP/3 是一种基于 IETF QUIC（一种基于 UDP 的多路复用和安全传�
 通常能在请求的 Response 的 Header 中看到 `Strict-Transport-Security: max-age=`	
 
 > [MDN HSTS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security)
+
+
+************************
+
+# SSE
+> 本质是使用HTTP流式长连接(和下载文件类似)
+
+> [Server-Sent Events 教程 - 阮一峰的网络日志](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)  
+- [Server-Sent Events（服务器推送） 教程](https://blog.p2hp.com/archives/7660)
+- [sse demo](https://github.com/jokerwangJL/ssedemo)
+
+
+待确认：
+- SSE的客户端自动重连机制 实现原理和对上层业务的影响， 目前看js端基本不支持重连
 
 ************************
 # Tips

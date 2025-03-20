@@ -19,7 +19,7 @@ categories:
     - 1.4. [DWR](#dwr)
     - 1.5. [HTTP2协议](#http2协议)
 
-💠 2024-11-10 13:14:39
+💠 2025-03-20 15:51:01
 ****************************************
 # Server push
 服务端推送消息给客户端或服务端的技术方案
@@ -42,6 +42,7 @@ categories:
 ### SSE
 > 本质是使用HTTP流式长连接(和下载文件类似)
 
+> [Server-Sent Events 教程 - 阮一峰的网络日志](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)  
 - [Server-Sent Events（服务器推送） 教程](https://blog.p2hp.com/archives/7660)
 - [sse demo](https://github.com/jokerwangJL/ssedemo)
 
@@ -70,6 +71,7 @@ Mercure 是一种向网络浏览器和其他 HTTP 客户端推送数据更新的
 - 优点
     - 标准协议，兼容性好，使用广泛
 - 缺点
+    - 实现复杂
 
 ## DWR
 > [官网](http://directwebremoting.org/dwr/index.html)
