@@ -78,7 +78,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2025-03-25 13:48:54
+💠 2025-03-25 16:29:55
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/) | [Source Code](https://download.java.net/openjdk/jdk8/)  
@@ -681,6 +681,7 @@ IntStream和LongStream 的 range() 或者 rangeClose() 方法能产生一个数�
 | distinct              |有状态 无界|`Stream<T>`|||
 
 > limit的数量如果超过了上游流数量，会陷入阻塞等待，以及limit当出现在并行流中成本会明显增加，因为是获取特定数量且有序的元素
+- [ ] 阅读源码确认原理
 
 ### 终端操作
 TerminalOp 接口

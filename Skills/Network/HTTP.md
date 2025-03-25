@@ -40,7 +40,7 @@ categories:
     - 5.1. [CORS 跨域](#cors-跨域)
     - 5.2. [相关工具](#相关工具)
 
-💠 2025-03-20 15:51:01
+💠 2025-03-25 16:29:55
 ****************************************
 # HTTP
 > HyperText Transfer Protocol (超文本传输协议) 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -334,19 +334,19 @@ HTTP/3 是一种基于 IETF QUIC（一种基于 UDP 的多路复用和安全传�
 
 > [MDN HSTS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security)
 
-
 ************************
 
 # SSE
-> 本质是使用HTTP流式长连接(和下载文件类似)
+> 本质是使用HTTP流式长连接(和下载文件类似). 并制定了一些简单的数据交互格式
+> [Server-sent events - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events)  
 
 > [Server-Sent Events 教程 - 阮一峰的网络日志](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)  
 - [Server-Sent Events（服务器推送） 教程](https://blog.p2hp.com/archives/7660)
 - [sse demo](https://github.com/jokerwangJL/ssedemo)
 
+> [Blog/articles/浏览器/浏览器通信/五、Server Sent Events.md at master · yuyuyuzhang/Blog](https://github.com/yuyuyuzhang/Blog/blob/master/articles/%E6%B5%8F%E8%A7%88%E5%99%A8/%E6%B5%8F%E8%A7%88%E5%99%A8%E9%80%9A%E4%BF%A1/%E4%BA%94%E3%80%81Server%20Sent%20Events.md)  
 
-待确认：
-- SSE的客户端自动重连机制 实现原理和对上层业务的影响， 目前看js端基本不支持重连
+SSE的客户端自动重连机制 实现原理 为建立新sse连接时，前端发送事件携带前一次sse的id 服务端需要缓存id实现状态的继续，但是无法准确得知前端收到事件的断点处的游标，还需自定义事件增加一个游标参数
 
 ************************
 # Tips
