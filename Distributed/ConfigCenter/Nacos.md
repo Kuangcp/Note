@@ -11,12 +11,14 @@ categories:
     - 1.1. [Design](#design)
 - 2. [Tips](#tips)
 
-💠 2024-04-07 13:37:31
+💠 2025-04-02 20:18:21
 ****************************************
 # Nacos
 > [Nacos](https://nacos.io/en-us/)
 
 ## Design
+
+spring.cloud.config.override-none 默认false 开启后本地配置覆盖远程配置
 
 # Tips
 > 集群模式出现节点数据不一致的情况
