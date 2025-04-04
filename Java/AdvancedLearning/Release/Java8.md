@@ -78,7 +78,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2025-03-25 16:29:55
+💠 2025-04-04 12:05:41
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/) | [Source Code](https://download.java.net/openjdk/jdk8/)  
@@ -104,19 +104,30 @@ categories:
 # 接口的变化
 
 ## default方法
-> 接口中也能写具有方法体的方法了
+> 类似于Scala Ruby trait/mixin 这种默认接口实现
 
-1. 调用方式: `接口.super.方法`
+```java
+    default void implForExtend() {
+
+    }
+```
+
+为了给Collection接口增加 Stream 有关的Api且保持兼容性而做的设计，不然加完StreamApi后历史SDK全部编译失败，因为未实现新api。
 
 ## static方法
-类似于Scala Ruby trait/mixin 这种默认接口实现
 
-1. 调用方式: static 方法 `接口.方法`
+```java
+    static void utilMethod() {
+        
+    }
+```
+
+类似于函数式，一个纯函数
 
 *************************
 
 # 函数式
-> [参考  Java8函数接口实现回调及Groovy闭包的代码示例](http://www.cnblogs.com/lovesqcc/p/6083759.html)
+> [参考 Java8函数接口实现回调及Groovy闭包的代码示例](http://www.cnblogs.com/lovesqcc/p/6083759.html)
 > [Function接口 – Java8中java.util.function包下的函数式接口](http://ifeve.com/jjava-util-function-java8/)
 
 An informative annotation type used to indicate that an interface type declaration is intended to be a functional interface as defined by the Java Language Specification.
@@ -680,8 +691,10 @@ IntStream和LongStream 的 range() 或者 rangeClose() 方法能产生一个数�
 | limit                 |有状态 有界|`Stream<T>`|long||
 | distinct              |有状态 无界|`Stream<T>`|||
 
-> limit的数量如果超过了上游流数量，会陷入阻塞等待，以及limit当出现在并行流中成本会明显增加，因为是获取特定数量且有序的元素
-- [ ] 阅读源码确认原理
+> limit出现在并行流中成本会明显增加，因为是获取特定数量且有序的元素
+- 注意无限流但是某些原因导致元素数量为有限个时, 会陷入产生无限流的实现方循环很久甚至死循环
+    - 例如 `new Random().ints(0, 6).distinct().distinct().limit(10)`
+    - 此处的Random.ints会陷入RandomIntsSpliterator.tryAdvance循环中直到long最大值 jstack就可以看到线程一直在循环
 
 ### 终端操作
 TerminalOp 接口
