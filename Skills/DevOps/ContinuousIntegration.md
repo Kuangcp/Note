@@ -21,7 +21,7 @@ categories:
         - 2.2.1. [项目端](#项目端)
 - 3. [测试平台](#测试平台)
 
-💠 2025-01-24 11:22:49
+💠 2025-04-10 11:38:05
 ****************************************
 # 持续集成
 > 参考: [持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) | [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)  
@@ -98,8 +98,8 @@ go语言实现，一个原生支持 docker 的 CI
 - 私有项目支持Badges [sonarqube-badges](https://github.com/taptap/sonarqube-badges)
 
 ### 项目端
-1. [sonarscanner](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
-    1. Maven构建的过程会输出当前分析项目的结果URL
+- [sonarscanner](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
+    - Maven构建的过程会输出当前分析项目的结果URL
 
 > 第一种 sonar-scanner 命令工具 方式
 1. 配置 基础配置 `/etc/sonar-scanner/sonar-scanner.properties`
@@ -121,6 +121,7 @@ sonar.projectName=GoBase
 sonar.sources=.
 sonar.java.binaries=.
 ```
+4. 项目根路径下 执行 sonar-scanner
 
 > 第二种 [Maven插件方式](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
 
