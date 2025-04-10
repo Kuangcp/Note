@@ -18,6 +18,8 @@ categories:
         - 3.2.1. [创建用户](#创建用户)
         - 3.2.2. [修改权限](#修改权限)
 - 4. [基础数据类型](#基础数据类型)
+    - 4.1. [字符串](#字符串)
+    - 4.2. [自动增长](#自动增长)
 - 5. [DDL](#ddl)
 - 6. [图数据库](#图数据库)
     - 6.1. [AgensGraph](#agensgraph)
@@ -25,7 +27,7 @@ categories:
     - 7.1. [Java使用](#java使用)
     - 7.2. [导入导出](#导入导出)
 
-💠 2025-01-17 19:59:46
+💠 2025-04-10 21:20:56
 ****************************************
 # Postgresql
 
@@ -111,9 +113,17 @@ categories:
 > [Chapter 8. Data Types](https://www.postgresql.org/docs/current/datatype.html)  
 > [PostgreSQL 数据类型](https://www.runoob.com/postgresql/postgresql-data-type.html)  
 
+
 ************************
 
-> 自动增长 
+- 日期类型转bigint `select   to_char(period,'yyyymmdd')::bigint  as period_int` 
+
+************************
+
+## 字符串
+text varchar 最大1Gb
+
+## 自动增长 
 - 相比于MySQL的 AUTO_INCREMENT 关键字标记， pg将该特性设计为数据类型SERIAL， 但是在使用上没有MySQL方便
 - SMALLSERIAL 2字节  SERIAL	4字节 	BIGSERIAL 8字节 
     - 注意这个自增序列值实际上是在系统表维护的 `SELECT nextval(pg_get_serial_sequence('the_table', 'the_primary_key'));` 
@@ -135,10 +145,6 @@ categories:
     SELECT currval(pg_get_serial_sequence('t_phone', 'id')); -- get 
     SELECT setval(pg_get_serial_sequence('t_phone', 'id'), 1000); -- set 
 ```
-
-************************
-
-- 日期类型转bigint `select   to_char(period,'yyyymmdd')::bigint  as period_int` 
 
 # DDL
 > 注意PG的查看表，函数，视图的定义(DCL)时很复杂，没有直观的语句类似`show create table`可以用，通常使用工具来查看表定义和函数定义视图定义等等。

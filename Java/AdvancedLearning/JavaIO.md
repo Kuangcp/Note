@@ -7,25 +7,26 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [Java中的IO](#java中的io)
-    1. [IO 简史](#io-简史)
-        1. [BIO](#bio)
-        1. [NIO](#nio)
-        1. [AIO](#aio)
-    1. [字节流](#字节流)
-    1. [字符流](#字符流)
-    1. [应用](#应用)
-        1. [文件IO](#文件io)
-            1. [读取配置文件](#读取配置文件)
-                1. [可执行jar读取外部配置文件](#可执行jar读取外部配置文件)
-                1. [Maven项目](#maven项目)
-        1. [网络IO](#网络io)
-1. [NIO](#nio)
-    1. [Buffer](#buffer)
+- 1. [Java中的IO](#java中的io)
+    - 1.1. [IO 简史](#io-简史)
+        - 1.1.1. [BIO](#bio)
+        - 1.1.2. [NIO](#nio)
+        - 1.1.3. [AIO](#aio)
+    - 1.2. [字节流](#字节流)
+    - 1.3. [字符流](#字符流)
+    - 1.4. [应用](#应用)
+        - 1.4.1. [文件IO](#文件io)
+            - 1.4.1.1. [计算文件MD5](#计算文件md5)
+            - 1.4.1.2. [读取配置文件](#读取配置文件)
+                - 1.4.1.2.1. [可执行jar读取外部配置文件](#可执行jar读取外部配置文件)
+                - 1.4.1.2.2. [Maven项目](#maven项目)
+        - 1.4.2. [网络IO](#网络io)
+- 2. [NIO](#nio)
+    - 2.1. [Buffer](#buffer)
 
-**目录 end**|_2023-07-24 18:06_|
+💠 2025-04-10 21:20:56
 ****************************************
 # Java中的IO
 > [Note：操作系统中的IO模型](/Skills/CS/IO.md)  
@@ -123,6 +124,15 @@ Reader类的核心就是read()这个方法，由于这里直接操作InputStream
 ### 文件IO
 > [参考: Read a text file from Java classpath](https://www.java-success.com/read-a-text-file-from-java-classpath/)  
 > [Java：利用I/O流读取文件内容](https://blog.csdn.net/xuehyunyu/article/details/77873420)
+
+#### 计算文件MD5
+> [Generate the MD5 Checksum for a File in Java | Baeldung](https://www.baeldung.com/java-md5-checksum-file)  
+
+```java
+    byte[] data = Files.readAllBytes(Paths.get(filePath));
+    byte[] hash = MessageDigest.getInstance("MD5").digest(data);
+    String checksum = new BigInteger(1, hash).toString(16);
+```
 
 #### 读取配置文件
 - maven项目，从resources下获取文件 例如 /a.xml `InputStream is = this.getClass().getResourceAsStream("/a.xml");`
