@@ -21,7 +21,7 @@ categories:
 - 5. [集群](#集群)
 - 6. [Explain](#explain)
 
-💠 2024-11-06 17:38:41
+💠 2025-04-16 10:16:34
 ****************************************
 # PostgreSQL Advance
 
@@ -79,6 +79,8 @@ TODO 大表和小表 join顺序是否和MySQL一样有要求
 
 # 索引
 > [Official Doc](https://www.postgresql.org/docs/11/indexes.html)
+
+CREATE INDEX test1_id_index ON test1 (id);
 
 # 事务
 MVCC WAL 

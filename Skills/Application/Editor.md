@@ -39,7 +39,7 @@ categories:
 - 3. [十六进制 Hex](#十六进制-hex)
 - 4. [EditorConfig](#editorconfig)
 
-💠 2025-03-13 10:17:24
+💠 2025-04-16 10:16:34
 ****************************************
 # 文本编辑器
 
@@ -133,6 +133,7 @@ _个人配置_
 - `Ctrl T ` 搜索打开所有Markdown文件的所有标题 1.25+
 - `Ctrl Shift P ` 执行命令
 - `Ctrl+K Ctrl+S` 设置用户快捷键  Keyboard Shortcuts
+- `Ctrl+K M` 修改语言模式 change language mode
 - `Ctrl Shift C `在当前打开的文件夹下打开系统默认终端
 - `Ctrl Space` 智能提示 变量,代码片段... **需要注意这个快捷键和Windows以及Linux上切换输入法快捷键有冲突,修改即可**
 - `Alt Shift` 列编辑
