@@ -41,7 +41,7 @@ categories:
         - 2.2.1. [打包最新版git](#打包最新版git)
         - 2.2.2. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-💠 2024-08-26 16:31:06
+💠 2025-04-18 09:37:55
 ****************************************
 # Dockerfile
 
@@ -147,7 +147,7 @@ CMD ["java", "-jar", "demo.jar"]
 > 对于 alpine 以及 Ubuntu ln -s 建立到时间文件的软链接就已经够了, 但是确保没问题就最好还是修改下 时区文件
 
 #### 修改 hosts
-由于Docker动态分配pod的虚拟ip，所以hosts会动态生成，单纯使用RUN命令在Dockerfile中修改hosts文件是不生效的。
+由于Docker动态分配pod的虚拟ip，所以hosts会动态生成，单纯使用RUN命令在Dockerfile中修改hosts文件是**不生效的**。  
 正确方式为:
 - Docker  `docker run –add-host host:ip`
 - K8S 

@@ -21,13 +21,14 @@ categories:
     - 4.1. [字符串](#字符串)
     - 4.2. [自动增长](#自动增长)
 - 5. [DDL](#ddl)
-- 6. [图数据库](#图数据库)
-    - 6.1. [AgensGraph](#agensgraph)
-- 7. [应用](#应用)
-    - 7.1. [Java使用](#java使用)
-    - 7.2. [导入导出](#导入导出)
+- 6. [DML](#dml)
+- 7. [图数据库](#图数据库)
+    - 7.1. [AgensGraph](#agensgraph)
+- 8. [应用](#应用)
+    - 8.1. [Java使用](#java使用)
+    - 8.2. [导入导出](#导入导出)
 
-💠 2025-04-10 21:20:56
+💠 2025-04-18 09:37:55
 ****************************************
 # Postgresql
 
@@ -159,6 +160,21 @@ text varchar 最大1Gb
 SELECT attname AS column_name, format_type(atttypid, atttypmod) AS data_type, attnotnull AS is_nullable
 FROM pg_attribute  WHERE attrelid = (SELECT oid FROM pg_class WHERE relname = 'table_name') AND attnum > 0;
 ```
+
+# DML
+注意PG的DML语句是支持事务的，也有MVCC机制
+
+> [修改表](http://www.postgres.cn/docs/9.4/ddl-alter.html)   
+
+```sql
+ALTER TABLE products ADD COLUMN description text;
+ALTER TABLE products DROP COLUMN description;
+ALTER TABLE products ALTER COLUMN price TYPE numeric(10,2);
+ALTER TABLE products RENAME COLUMN product_no TO product_number;
+ALTER TABLE products RENAME TO items;
+```
+
+修改一个列的时候需要关注列的 约束（主键，外键，唯一，非空，自定义）和索引，需要同步修改或删除。
 
 ************************
 
