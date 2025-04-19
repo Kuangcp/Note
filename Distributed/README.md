@@ -2,9 +2,13 @@
 > [系统设计入门](https://github.com/donnemartin/system-design-primer)  
 > [分布式系统核心技术](https://yeasy.gitbook.io/blockchain_guide/04_distributed_system)   
 > [分布式系统 - 知识体系详解](https://pdai.tech/md/arch/arch-z-overview.html)  
+> [分布式系统学习资料汇总 - Golang编程语言知识介绍](http://shanks.link/blog/2024/01/24/%e5%88%86%e5%b8%83%e5%bc%8f%e7%b3%bb%e7%bb%9f%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%96%99%e6%b1%87%e6%80%bb/)  
 
 要考虑采用该种方式后带来的技术复杂度的问题, 当前的问题需不需要上升到分布式的体量上
 
+书籍
+《构建数据密集型应用》
+《分布式系统》
 
 ## 共识算法
 > [learn_blockchain/consensus.md](https://github.com/chaseSpace/learn_blockchain/blob/main/consensus.md)  

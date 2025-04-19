@@ -40,7 +40,7 @@ categories:
     - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2025-01-20 19:25:00
+💠 2025-04-19 19:25:00
 ****************************************
 
 # JVM 监控&诊断
@@ -133,6 +133,9 @@ categories:
     - `jmap -dump:format=b,file=heapLive.hprof $PID` dump所有对象
     - 失败时 可以尝试 -F 参数，强制dump，但此时的dump文件不一定是完整可打开的。
     - 提示attach失败时 可修改 `echo 0 > /proc/sys/kernel/yama/ptrace_scope`  jmap依赖ptrace实现，此选项放开ptrace仅支持父进程执行的限制
+
+注意 centos7.9里，如果当前用户在没有权限的目录下执行dump命令 **低级失误**
+- 将默认创建在 /tmp/hsperfdata_username/ 目录下，由于tmp的清理特性，随时会丢失。
 
 ************************
 

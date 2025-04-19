@@ -28,7 +28,7 @@ categories:
     - 8.1. [Java使用](#java使用)
     - 8.2. [导入导出](#导入导出)
 
-💠 2025-04-18 09:37:55
+💠 2025-04-19 19:25:00
 ****************************************
 # Postgresql
 
@@ -146,6 +146,9 @@ text varchar 最大1Gb
     SELECT currval(pg_get_serial_sequence('t_phone', 'id')); -- get 
     SELECT setval(pg_get_serial_sequence('t_phone', 'id'), 1000); -- set 
 ```
+
+- 创建 create sequence table_name_id_seq as integer;
+- 使用 select nextval('prompt_version_config_id_seq'::regclass);
 
 # DDL
 > 注意PG的查看表，函数，视图的定义(DCL)时很复杂，没有直观的语句类似`show create table`可以用，通常使用工具来查看表定义和函数定义视图定义等等。
