@@ -64,7 +64,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2025-03-02 19:53:11
+💠 2025-04-25 13:53:45
 ****************************************
 # Linux网络管理
 
@@ -763,8 +763,23 @@ _客户端_
 
 ### 端口转发
 
-> [gruf/tcpee: simple multi-threaded TCP proxy in Go - Codeberg.org](https://codeberg.org/gruf/tcpee)`注意proxy-proto设置为false可正常使用`  
 > [eirture/tcp-proxy: A TCP proxy command line tool, written in Golang](https://github.com/eirture/tcp-proxy)  
+
+> [gruf/tcpee: simple multi-threaded TCP proxy in Go - Codeberg.org](https://codeberg.org/gruf/tcpee)`注意proxy-proto设置为false可正常使用`  
+
+```toml
+[example-name]
+    server-timeout = "300s"
+    client-timeout = "300s"
+    server-keepalive = "150s"
+    client-keepalive = "150s"
+    proxy = [
+        "0.0.0.0:9868 -> 192.168.56.10:3306"
+    ]
+    # Enable writing of v1 compatible
+    # proxy protocol headers
+    proxy-proto = false
+```
 
 ### proxychains
 - 安装
