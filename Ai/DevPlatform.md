@@ -27,6 +27,9 @@ categories:
 
 > [如何在不微调的情况下提高 RAG 的准确性？ - 知乎](https://www.zhihu.com/question/638730143)  
 
+
+> [如何提升RAG知识库文档的召回准确率？ - 53AI-AI知识库|大模型知识库|大模型训练|智能体开发](https://www.53ai.com/news/RAG/2025031330416.html)  
+
 ## QAnything
 > [netease-youdao/QAnything: Question and Answer based on Anything.](https://github.com/netease-youdao/QAnything)  
 > [来自工业界的 RAG 服务，有道 QAnything 源码全流程深度解析 - 知乎](https://zhuanlan.zhihu.com/p/697031773)  
@@ -46,6 +49,9 @@ categories:
 
 ## Dify
 > [Dify | Dify](https://docs.dify.ai/zh-hans)  
+
+## RagFlow
+> [infiniflow/ragflow: RAGFlow is an open-source RAG (Retrieval-Augmented Generation) engine based on deep document understanding.](https://github.com/infiniflow/ragflow?tab=readme-ov-file)  
 
 ### Tips
 > [IF ELSE can cause the Stream output of LLM nodes to fail](https://github.com/langgenius/dify/issues/12068) if else连接的流式LLM输出变非流了  
