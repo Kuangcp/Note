@@ -13,9 +13,10 @@ categories:
 - 3. [综合平台](#综合平台)
     - 3.1. [FastGPT](#fastgpt)
     - 3.2. [Dify](#dify)
-        - 3.2.1. [Tips](#tips)
+    - 3.3. [RagFlow](#ragflow)
+        - 3.3.1. [Tips](#tips)
 
-💠 2025-04-25 13:53:45
+💠 2025-04-27 16:17:50
 ****************************************
 # 开发平台
 
@@ -28,11 +29,19 @@ categories:
 > [如何在不微调的情况下提高 RAG 的准确性？ - 知乎](https://www.zhihu.com/question/638730143)  
 
 
+> [InternLM/HuixiangDou: HuixiangDou: Overcoming Group Chat Scenarios with LLM-based Technical Assistance](https://github.com/InternLM/HuixiangDou?tab=readme-ov-file)  
+
 > [如何提升RAG知识库文档的召回准确率？ - 53AI-AI知识库|大模型知识库|大模型训练|智能体开发](https://www.53ai.com/news/RAG/2025031330416.html)  
+
+1. 自然语言 -> embedding 入库
+2. 召回内容 -> 搜索 -> rerank
+
 
 ## QAnything
 > [netease-youdao/QAnything: Question and Answer based on Anything.](https://github.com/netease-youdao/QAnything)  
 > [来自工业界的 RAG 服务，有道 QAnything 源码全流程深度解析 - 知乎](https://zhuanlan.zhihu.com/p/697031773)  
+
+> [为RAG而生-BCE embedding技术报告 - 知乎](https://zhuanlan.zhihu.com/p/681370855)  
 
 更新频率低，可作为学习参考
 

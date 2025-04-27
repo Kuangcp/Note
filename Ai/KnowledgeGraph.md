@@ -12,7 +12,7 @@ categories:
 - 2. [案例实践项目](#案例实践项目)
     - 2.1. [医疗领域](#医疗领域)
 
-💠 2024-11-18 17:55:16
+💠 2025-04-27 16:17:50
 ****************************************
 # 知识图谱
 KnowledgeGraph 简称 KG
@@ -46,5 +46,6 @@ KnowledgeGraph 简称 KG
 [liuhuanyong/QASystemOnMedicalKG: 以疾病为中心的一定规模医药领域知识图谱](https://github.com/liuhuanyong/QASystemOnMedicalKG)`项目过于久远，依赖和环境有问题`  
 [honeyandme/RAGQnASystem](https://github.com/honeyandme/RAGQnASystem)`改良版`  
 
+> [GanjinZero/awesome_Chinese_medical_NLP: 中文医学NLP公开资源整理：术语集/语料库/词向量/预训练模型/知识图谱/命名实体识别/QA/信息抽取/模型/论文/etc](https://github.com/GanjinZero/awesome_Chinese_medical_NLP)  
 
 
