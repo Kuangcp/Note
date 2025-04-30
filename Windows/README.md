@@ -47,3 +47,7 @@ https://blog.csdn.net/qq_37700257/article/details/126284196#commentBox
 ## 寻找占用文件的进程
 > 任务管理器 -> 性能tab 右上角打开 资源监视器 -> CPU的tab 关联的句柄窗口 搜索文件名
 
+
+
+> [Win11 的效率模式和 EcoQoS 是糊弄人的东西 - V2EX](https://v2ex.com/t/928682)  
+> [Quality of Service - Win32 apps | Microsoft Learn](https://learn.microsoft.com/en-us/windows/win32/procthread/quality-of-service)效能模式  

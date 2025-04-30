@@ -78,7 +78,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2025-04-04 12:05:41
+💠 2025-04-30 11:30:56
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/) | [Source Code](https://download.java.net/openjdk/jdk8/)  
@@ -1225,9 +1225,8 @@ It can be accessed using other duration-based units, such as minutes and hours.
     // 常见格式
     DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMdd");
     LocalDate parse = LocalDate.parse("20171018", format);
-    format.format(LocalDate.now());
 
-    // 格式不全时（年月日）需特殊处理 补全对应默认值
+    // 格式不全时（年月日）需特殊处理 补全对应默认值 否则会抛异常
     DateTimeFormatter monthFMT = new DateTimeFormatterBuilder()
                         .appendPattern("yyyy")
                         .parseDefaulting(ChronoField.MONTH_OF_YEAR, 1)
@@ -1236,6 +1235,10 @@ It can be accessed using other duration-based units, such as minutes and hours.
     LocalDate parse = LocalDate.parse("2017", monthFMT);
 
     // 格式化
+    format.format(LocalDate.now());
+
+    // 计算日期差值
+    Period between = Period.between(birth.toLocalDate(), checkDt.toLocalDate());
 ```
 
 ### LocalTime

@@ -45,7 +45,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [常用代码片段](#常用代码片段)
 
-💠 2024-12-03 19:35:05
+💠 2025-04-30 11:30:56
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -349,7 +349,7 @@ _判断文件_
     done
 ```
 
-> 逐行遍历命令的输出 while read 方式
+> 逐行遍历某个命令的标准输出 while read 方式
 ```sh
     ps -ewo pid,cmd,etime | grep python | while read line; do
         echo "line: "$line;

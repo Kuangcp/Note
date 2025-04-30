@@ -16,26 +16,11 @@ categories:
     - 3.3. [RagFlow](#ragflow)
         - 3.3.1. [Tips](#tips)
 
-💠 2025-04-27 16:17:50
+💠 2025-04-30 11:30:56
 ****************************************
 # 开发平台
 
 # RAG
-> [RAG预处理增强：让Fastgpt/Dify召回更多东西 - 53AI-AI知识库|大模型知识库|大模型训练|智能体开发](https://www.53ai.com/news/RAG/2024091558913.html)  
-> [FlagOpen/FlagEmbedding: Retrieval and Retrieval-augmented LLMs](https://github.com/FlagOpen/FlagEmbedding)  
-> [来自工业界的开源知识库 RAG 项目最全细节对比_开源rag知识库-CSDN博客](https://blog.csdn.net/hustyichi/article/details/140293940)  
-> [大模型主流应用RAG的介绍——从架构到技术细节 | 我的学习笔记 | 土猛的员外](https://luxiangdong.com/2023/09/25/ragone/)  
-
-> [如何在不微调的情况下提高 RAG 的准确性？ - 知乎](https://www.zhihu.com/question/638730143)  
-
-
-> [InternLM/HuixiangDou: HuixiangDou: Overcoming Group Chat Scenarios with LLM-based Technical Assistance](https://github.com/InternLM/HuixiangDou?tab=readme-ov-file)  
-
-> [如何提升RAG知识库文档的召回准确率？ - 53AI-AI知识库|大模型知识库|大模型训练|智能体开发](https://www.53ai.com/news/RAG/2025031330416.html)  
-
-1. 自然语言 -> embedding 入库
-2. 召回内容 -> 搜索 -> rerank
-
 
 ## QAnything
 > [netease-youdao/QAnything: Question and Answer based on Anything.](https://github.com/netease-youdao/QAnything)  

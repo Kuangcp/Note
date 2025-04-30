@@ -20,7 +20,7 @@ categories:
 - 6. [分词器](#分词器)
 - 7. [向量搜索](#向量搜索)
 
-💠 2025-01-20 19:25:00
+💠 2025-04-30 11:30:56
 ****************************************
 # Elasticsearch
 > [Official Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)  
@@ -108,6 +108,12 @@ categories:
 
 > [infinilabs/analysis-ik](https://github.com/infinilabs/analysis-ik)  
 
+> [goto456/stopwords: 中文常用停用词表（哈工大停用词表、百度停用词表等）](https://github.com/goto456/stopwords)  
+> [Elasticsearch：如何在 Elasticsearch 中正确使用同义词功能 - 搜索客，搜索人自己的社区](https://elasticsearch.cn/article/14808)  
+> [借助同义词让 Elasticsearch 更加强大 | Elastic Blog](https://www.elastic.co/cn/blog/boosting-the-power-of-elasticsearch-with-synonyms)  
+
+
+> [CLUEbenchmark/SimCLUE: 3000000+语义理解与匹配数据集。可用于无监督对比学习、半监督学习等构建中文领域效果最好的预训练模型](https://github.com/CLUEbenchmark/SimCLUE)  
 ************************
 
 # 向量搜索
