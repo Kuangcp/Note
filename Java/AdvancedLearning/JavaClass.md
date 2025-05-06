@@ -18,18 +18,19 @@ categories:
 - 4. [类加载机制](#类加载机制)
     - 4.1. [类加载器](#类加载器)
         - 4.1.1. [特殊场景](#特殊场景)
-            - 4.1.1.1. [Tomcat](#tomcat)
+            - 4.1.1.1. [JDBC](#jdbc)
+            - 4.1.1.2. [Tomcat](#tomcat)
+        - 4.1.2. [JDK9 jigsaw](#jdk9-jigsaw)
     - 4.2. [加载和连接](#加载和连接)
     - 4.3. [方法句柄](#方法句柄)
 - 5. [Agent](#agent)
 - 6. [反编译](#反编译)
 - 7. [热部署](#热部署)
 
-💠 2024-06-13 11:01:29
+💠 2025-05-06 19:23:42
 ****************************************
 # 字节码以及类加载
-> [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
-
+> [相关示例代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
 
 ************************
 > 书籍
@@ -61,6 +62,7 @@ categories:
 # 字节码
 > [参考: 学会阅读Java字节码](https://www.cnblogs.com/beautiful-code/p/6425376.html)
 > [参考: 字节码增强技术探索](https://tech.meituan.com/2019/09/05/java-bytecode-enhancement.html)  
+
 
 字节码是程序的中间表达形式，源码和机器码之间的产物 字节码是由源文件执行javac产生的
 
@@ -103,6 +105,8 @@ javassist
 ## 类加载器
 > [参考:  一文带你深扒ClassLoader内核，揭开它的神秘面纱！ ](https://www.cnblogs.com/wmyskxz/p/13575224.html#_label4)`深入源码，举例清晰`  
 
+> [深入分析Java类加载器原理本文分析了双亲委派模型的实现原理，并通过代码示例说明了什么时候需要实现自己的类加载器以及如何 - 掘金](https://juejin.cn/post/6844903794627608589)  
+
 > 双亲委派模型(`parents delegation model`） 实现代码：`java.lang.ClassLoader#loadClass(java.lang.String, boolean)`
 > 其工作原理是，如果一个类加载器收到了类加载请求(只讨论首次加载，已经加载过的会走缓存), 它并不会自己先去加载，而是委托给父类的加载器去执行  
 > 如果父类加载器还存在其父类加载器，则进一步向上委托，依次递归，请求最终将到达顶层的启动类加载器  
@@ -121,6 +125,21 @@ javassist
 >1. 当出现jar包多版本时，先加载了其中一个版本就不会加载另一个版本，而这个加载顺序往往是由操作系统的文件排序决定的 [相关案例](/Java/Blog/Java-ClassLoad-Confuse.md) 
 
 ### 特殊场景
+JDBC,JNBI,Tomcat 等
+
+#### JDBC
+
+例如 DriverManager.getConnection(); 创建JDBC连接， java.sql.DriverManager#loadInitialDrivers 静态代码块中实现了驱动类的加载，同时 DriverManager位于 rt.jar， 会被BootStrap 加载，但是驱动实现类通常在外部目录，第三方的类不能被根加载器加载。
+
+JDBC中通过引入ThreadContextClassLoader（线程上下文加载器，默认情况下是AppClassLoader）的方式破坏了双亲委派原则
+
+```java
+    public static <S> ServiceLoader<S> load(Class<S> service) {
+        ClassLoader cl = Thread.currentThread().getContextClassLoader();
+        return ServiceLoader.load(service, cl);
+    }
+```
+
 #### Tomcat
 > [参考: 图解Tomcat类加载机制](https://www.cnblogs.com/aspirant/p/8991830.html)  
 
@@ -129,9 +148,34 @@ javassist
 - *SharedClassLoader* 各个Webapp共享的类加载器，加载路径`/shared/*`中的class对于所有Webapp可见，但是对于Tomcat容器不可见；
 - *WebappClassLoader* 各个Webapp私有的类加载器，加载路径`/WebApp/WEB-INF/*`中的class只对当前Webapp可见；
 
-其中WebApp类加载器和Jsp类加载器通常会存在多个实例，每一个Web应用程序对应一个WebApp类加载器，每一个JSP文件对应一个Jsp类加载器。
+为了实现不同Tomcat容器间的隔离， WebApp类加载器和Jsp类加载器通常会存在多个实例，每一个Web应用对应一个WebApp类加载器`WebAppClassLoader`，每一个JSP文件对应一个Jsp类加载器。
 
 WebApp类加载器就为了类隔离而违背了双亲委派模型，仅自身负责加载类，不向上传递
+
+### JDK9 jigsaw
+
+> [模块化（jboss modules、osgi、jigsaw）](https://hollischuang.github.io/toBeTopJavaer/#/basement/jvm/moduler)  
+
+在JDK9中，整个JDK都基于模块化进行构建，以前的rt.jar, tool.jar被拆分成数十个模块，编译的时候只编译实际用到的模块，同时各个类加载器各司其职，只加载自己负责的模块。
+
+```java
+    Class<?> c = findLoadedClass(cn);
+    if (c == null) {
+        // 找到当前类属于哪个模块
+        LoadedModule loadedModule = findLoadedModule(cn);
+        if (loadedModule != null) {
+            //获取当前模块的类加载器
+            BuiltinClassLoader loader = loadedModule.loader();
+            //进行类加载
+            c = findClassInModuleOrNull(loadedModule, cn);
+        } else {
+            // 找不到模块信息才会进行双亲委派
+                if (parent != null) {
+                c = parent.loadClassOrNull(cn);
+                }
+        }
+    }
+```
 
 ************************
 
@@ -210,6 +254,8 @@ Java Agent 的应用场景
 [Java 5 特性 Instrumentation 实践](https://www.ibm.com/developerworks/cn/java/j-lo-instrumentation/)
 [java组件中的热插拔（osgi)](https://blog.csdn.net/javierhui111/article/details/3830833)
 [agentmain 方式 ](https://www.cnblogs.com/cm4j/p/hot_deploy.html)
+
+> [Java 类的热替换 —— 概念、设计与实现 - 时空穿越者 - 博客园](https://www.cnblogs.com/studyLog-share/p/4720603.html)  
 
 相关项目: 
 

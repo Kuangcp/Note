@@ -78,7 +78,7 @@ categories:
     - 9.1. [try](#try)
     - 9.2. [transient](#transient)
 
-💠 2025-03-12 10:29:34
+💠 2025-05-06 19:23:42
 ****************************************
 # 基础语法
 
@@ -317,7 +317,8 @@ true 和 false 也是缓存了的
 ## 枚举类型
 > [official doc: enum](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html)
 
-枚举类的构造器必须是 private 或者 package private (也就是缺省)
+- 枚举类的构造器必须是 private 或者 package private (也就是缺省) 
+- 枚举的实例是线程安全的 [枚举的线程安全性问题](https://hollischuang.github.io/toBeTopJavaer/#/basics/java-basic/enum-thread-safe)  
 
 > [参考: Java 语言中 Enum 类型的使用介绍](https://www.ibm.com/developerworks/cn/java/j-lo-enum/index.html)
 
@@ -344,6 +345,8 @@ true 和 false 也是缓存了的
 
 > [参考: 关于java枚举类型的疑问 ](https://segmentfault.com/q/1010000000306839)  
 > [compilation-error-switch-with-enum](https://stackoverflow.com/questions/5551568/compilation-error-switch-with-enum)  
+
+注意： 在强类型的RPC中，例如Dubbo 接口返回值不推荐定义枚举字段，作为接口参数可以，后续枚举扩充时容易出现序列化问题
 
 ***************************
 ## 内部类

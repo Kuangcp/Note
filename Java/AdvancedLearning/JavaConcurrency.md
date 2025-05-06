@@ -22,18 +22,17 @@ categories:
 - 3. [现代并发JUC包](#现代并发juc包)
     - 3.1. [概念](#概念)
         - 3.1.1. [读写锁](#读写锁)
-    - 3.2. [AQS](#aqs)
-    - 3.3. [功能类](#功能类)
-        - 3.3.1. [原子类](#原子类)
-        - 3.3.2. [Lock](#lock)
-        - 3.3.3. [CountDownLatch](#countdownlatch)
-        - 3.3.4. [CyclicBarrier](#cyclicbarrier)
-        - 3.3.5. [Semaphore](#semaphore)
-        - 3.3.6. [Phaser](#phaser)
-        - 3.3.7. [Exchanger](#exchanger)
-        - 3.3.8. [ConcurrentHashMap](#concurrenthashmap)
-        - 3.3.9. [ConcurrentSkipListMap](#concurrentskiplistmap)
-        - 3.3.10. [CopyOnWriteArrayList](#copyonwritearraylist)
+    - 3.2. [功能类](#功能类)
+        - 3.2.1. [原子类](#原子类)
+        - 3.2.2. [Lock](#lock)
+        - 3.2.3. [CountDownLatch](#countdownlatch)
+        - 3.2.4. [CyclicBarrier](#cyclicbarrier)
+        - 3.2.5. [Semaphore](#semaphore)
+        - 3.2.6. [Phaser](#phaser)
+        - 3.2.7. [Exchanger](#exchanger)
+        - 3.2.8. [ConcurrentHashMap](#concurrenthashmap)
+        - 3.2.9. [ConcurrentSkipListMap](#concurrentskiplistmap)
+        - 3.2.10. [CopyOnWriteArrayList](#copyonwritearraylist)
 - 4. [结构化并发](#结构化并发)
 - 5. [实践](#实践)
     - 5.1. [任务建模](#任务建模)
@@ -41,7 +40,7 @@ categories:
         - 5.2.1. [BlockingQueue interface](#blockingqueue-interface)
             - 5.2.1.1. [TransferQueue interface](#transferqueue-interface)
 
-💠 2024-11-10 13:59:35
+💠 2025-05-06 19:23:42
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -79,6 +78,8 @@ categories:
 - 代码块之间的 `之前发生（Happens-Before）` 和 `同步约束（Synchronizes-With）`关系
     - 之前发生 这种关系表明一段代码在其他代码开始之前就已经全部完成了
     - 同步约束 这意味着动作继续执行之前必须把他的对象视图与主内存同步
+
+> [JVM重新认识（一）oop-klass模型--HSDB使用验证 - 蒙恬括 - 博客园](https://www.cnblogs.com/krock/p/14151080.html)  
 
 ************************
 
