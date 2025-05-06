@@ -11,14 +11,22 @@ categories:
     - 1.1. [Design](#design)
 - 2. [Tips](#tips)
 
-💠 2025-04-02 20:18:21
+💠 2025-05-06 11:19:53
 ****************************************
 # Nacos
 > [Nacos](https://nacos.io/en-us/)
 
 ## Design
 
-spring.cloud.config.override-none 默认false 开启后本地配置覆盖远程配置
+> 配置加载
+
+spring.cloud.config.override-none 默认false 设置true后,会优先使用本地配置（本地环境变量，本地properties文件等）覆盖远程配置（此配置需要配置在远程Nacos上）
+- org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration#insertPropertySources 处理逻辑
+
+org.springframework.util.PropertyPlaceholderHelper#parseStringValue  
+org.springframework.core.env.PropertySourcesPropertyResolver#logKeyFound 按顺序从 source 列表加载到第一个配置值就return  
+- logging.level.org.springframework.core.env=DEBUG 开启日志查看加载情况
+
 
 # Tips
 > 集群模式出现节点数据不一致的情况

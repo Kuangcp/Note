@@ -46,7 +46,7 @@ categories:
     - 3.1. [优雅部署](#优雅部署)
 - 4. [Tips](#tips)
 
-💠 2025-04-02 20:18:21
+💠 2025-05-06 11:19:53
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -466,6 +466,28 @@ Student
 ### Feign
 
 注解定义的FeignApi 在启动阶段 FeignClientsRegistrar 完成Bean初始化
+
+重试逻辑：feign.SynchronousMethodHandler#invoke
+> [Feign Client don't reauthentificate on expired refresh token Oauth2 · Issue #1100 · OpenFeign/feign](https://github.com/OpenFeign/feign/issues/1100)  
+
+注册自定义解释器逻辑
+
+```java
+    @Configuration
+    @EnableFeignClients(basePackages = {
+            "com.abc.msg.api.service",
+    })
+    public class FeignClientManager {
+        @Bean
+        public RequestInterceptor globalRequestInterceptor() {
+            return requestTemplate -> {
+                // 传递traceId
+                requestTemplate.header(TraceUtil.traceId, TraceUtil.getTraceId());
+            };
+        }
+    }
+```
+
 
 ### RestTemplate
 > [大文件OOM问题](https://github.com/spring-projects/spring-framework/issues/12564) 发送文件时将文件的字节全部读取到内存中再发送，文件大且多时容易OOM
