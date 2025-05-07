@@ -22,13 +22,14 @@ categories:
     - 4.2. [自动增长](#自动增长)
 - 5. [DDL](#ddl)
 - 6. [DML](#dml)
-- 7. [图数据库](#图数据库)
-    - 7.1. [AgensGraph](#agensgraph)
-- 8. [应用](#应用)
-    - 8.1. [Java使用](#java使用)
-    - 8.2. [导入导出](#导入导出)
+- 7. [DCL](#dcl)
+- 8. [图数据库](#图数据库)
+    - 8.1. [AgensGraph](#agensgraph)
+- 9. [应用](#应用)
+    - 9.1. [Java使用](#java使用)
+    - 9.2. [导入导出](#导入导出)
 
-💠 2025-04-19 19:25:00
+💠 2025-05-07 17:32:24
 ****************************************
 # Postgresql
 
@@ -150,8 +151,19 @@ text varchar 最大1Gb
 - 创建 create sequence table_name_id_seq as integer;
 - 使用 select nextval('prompt_version_config_id_seq'::regclass);
 
+
+
+
 # DDL
 > 注意PG的查看表，函数，视图的定义(DCL)时很复杂，没有直观的语句类似`show create table`可以用，通常使用工具来查看表定义和函数定义视图定义等等。
+
+> [SQL Commands | DDL, DQL, DML, DCL and TCL Commands | GeeksforGeeks](https://www.geeksforgeeks.org/sql-ddl-dql-dml-dcl-tcl-commands/)  
+
+DDL – Data Definition Language
+DQL – Data Query Language
+DML – Data Manipulation Language
+DCL – Data Control Language
+TCL – Transaction Control Language
 
 - 元数据存储： PostgreSQL将数据库对象（表、列、索引等）的元数据存储在系统目录（如pg_catalog）中。
 - 数据类型： PostgreSQL支持多种数据类型、约束、继承等特性，这些复杂性使得直接生成一个简单的CREATE TABLE语句变得困难。
@@ -179,6 +191,14 @@ ALTER TABLE products RENAME TO items;
 
 修改一个列的时候需要关注列的 约束（主键，外键，唯一，非空，自定义）和索引，需要同步修改或删除。
 
+# DCL
+> [5.7. 权限](http://www.postgres.cn/docs/13/ddl-priv.html)  
+
+```sql
+ALTER TABLE table_name OWNER TO new_owner;
+GRANT SELECT,UPDATE ON table_name TO joe; -- 授权
+REVOKE ALL ON table_name FROM joe; -- 撤销授权
+```
 ************************
 
 # 图数据库
