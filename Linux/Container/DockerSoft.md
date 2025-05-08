@@ -39,7 +39,7 @@ categories:
     - 3.1. [nextcloud](#nextcloud)
     - 3.2. [Protobuf](#protobuf)
 
-💠 2024-11-23 16:13:43
+💠 2025-05-08 18:58:49
 ****************************************
 # Docker应用
 > [https://docs.docker.com/samples/](https://docs.docker.com/samples/)  
@@ -192,7 +192,7 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
 > [Official](https://hub.docker.com/_/redis/)
 
 1. 获取镜像：`docker pull redis ` 使用 `docker pull redis:alpine` 镜像可以更小
-1. 运行默认配置的容器：`docker run --name test-redis -d redis`
+1. 运行默认配置的容器：`docker run --name test-redis -p 6667:6379 -d redis`
 1. 或者 使用本地配置文件启动redis容器
     - `sudo docker run -v /myredis/conf/redis.conf:/usr/local/etc/redis/redis.conf --name myredis redis redis-server /usr/local/etc/redis/redis.conf`
 

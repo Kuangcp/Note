@@ -33,9 +33,10 @@ categories:
         - 3.1.1. [http](#http)
         - 3.1.2. [virtualenv](#virtualenv)
         - 3.1.3. [pip](#pip)
-            - 3.1.3.1. [依赖管理](#依赖管理)
-            - 3.1.3.2. [Requirements files](#requirements-files)
-            - 3.1.3.3. [发布到pypi](#发布到pypi)
+            - 3.1.3.1. [pipx](#pipx)
+            - 3.1.3.2. [依赖管理](#依赖管理)
+            - 3.1.3.3. [Requirements files](#requirements-files)
+            - 3.1.3.4. [发布到pypi](#发布到pypi)
     - 3.2. [文件操作](#文件操作)
         - 3.2.1. [JSON](#json)
         - 3.2.2. [conf或者ini](#conf或者ini)
@@ -53,7 +54,7 @@ categories:
         - 3.7.2. [时间处理](#时间处理)
         - 3.7.3. [三方库](#三方库)
 
-💠 2025-04-10 11:38:05
+💠 2025-05-08 18:58:49
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -573,6 +574,13 @@ python -m module_name
 - 安装 `python -m ensurepip --upgrade`
 - 使用 `python -m pip install pkgName` 
 - 升级 `python -m pip install --upgrade pip`
+
+#### pipx
+> [pypa/pipx: Install and Run Python Applications in Isolated Environments](https://github.com/pypa/pipx)  
+
+py -m pip install --user pipx --break-system-packages
+
+pipx 安装到系统上，类似于 go install 替代 go get
 
 #### 依赖管理
 当发现环境内一个包有多个版本时，可以通过直接打开python解释器，import包,执行 包名._version 查看， 例如 `pandas._version` 或 `pandas.__version__`

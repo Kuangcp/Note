@@ -13,12 +13,13 @@ categories:
 - 1. [Arch](#arch)
     - 1.1. [社区](#社区)
     - 1.2. [包管理](#包管理)
-        - 1.2.1. [Pacman](#pacman)
-        - 1.2.2. [Yay](#yay)
-        - 1.2.3. [Snap](#snap)
+        - 1.2.1. [打包](#打包)
+        - 1.2.2. [Pacman](#pacman)
+        - 1.2.3. [Yay](#yay)
+        - 1.2.4. [Snap](#snap)
 - 2. [Tips](#tips)
 
-💠 2024-12-03 19:35:05
+💠 2025-05-08 18:58:49
 ****************************************
 
 # Arch
@@ -45,6 +46,11 @@ categories:
 
 > [Creating Arch Linux Packages](https://www.theurbanpenguin.com/creating-arch-linux-packages/)  
 > [Arch archive packages](https://archive.archlinux.org/packages/)`软件包镜像站`  
+
+### 打包
+> [PKGBUILD - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/PKGBUILD)  
+
+编写好PKGBUILD文件后，执行 makepkg构建出包，然后 pacman -U xxx.tar.zst
 
 ### Pacman
 > [pacman - ArchWiki](https://wiki.archlinux.org/title/Pacman)  [pacman - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/Pacman)  
