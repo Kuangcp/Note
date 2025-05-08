@@ -35,23 +35,25 @@ categories:
         - 1.5.2. [返回值](#返回值)
         - 1.5.3. [defer](#defer)
     - 1.6. [接口](#接口)
-    - 1.7. [Channel](#channel)
-    - 1.8. [协程](#协程)
-    - 1.9. [序列化](#序列化)
-        - 1.9.1. [JSON](#json)
+    - 1.7. [Context](#context)
+    - 1.8. [Channel](#channel)
+    - 1.9. [协程](#协程)
+    - 1.10. [序列化](#序列化)
+        - 1.10.1. [JSON](#json)
 - 2. [应用](#应用)
     - 2.1. [文件操作](#文件操作)
     - 2.2. [http](#http)
     - 2.3. [Test](#test)
     - 2.4. [Debug](#debug)
         - 2.4.1. [pprof](#pprof)
+            - 2.4.1.1. [实践](#实践)
     - 2.5. [部署](#部署)
         - 2.5.1. [静态编译](#静态编译)
 - 3. [常用库](#常用库)
 - 4. [Tips](#tips)
     - 4.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2024-12-19 21:03:00
+💠 2025-05-08 14:27:54
 ****************************************
 # Go
 
@@ -326,6 +328,10 @@ func functionName (param int) int {
 
 > [参考:接口的定义和使用](http://www.cnblogs.com/yjf512/archive/2012/06/09/2543628.html)
 
+## Context
+> [context package - context - Go Packages](https://pkg.go.dev/context)  
+
+
 ************************
 
 ## Channel
@@ -531,6 +537,26 @@ func walkfunc(path string, info os.FileInfo, err error) error {
 - `go tool pprof -raw -output=cpu.txt 'http://localhost:8080/debug/pprof/profile?seconds=20'`
 - `./stackcollapse-go.pl cpu.txt | flamegraph.pl > flame.svg`
 
+
+#### 实践
+> [dify-plugin-daemon/internal/utils/routine/pool.go at 0.0.9 · langgenius/dify-plugin-daemon](https://github.com/langgenius/dify-plugin-daemon/blob/0.0.9/internal/utils/routine/pool.go)  
+
+```go
+    p.Submit(func() {
+		label := []string{
+			"LaunchedAt", time.Now().Format(time.RFC3339),
+		}
+		if len(labels) > 0 {
+			for k, v := range labels {
+				label = append(label, k, v)
+			}
+		}
+		pprof.Do(context.Background(), pprof.Labels(label...), func(ctx context.Context) {
+			defer sentry.Recover()
+			f()
+		})
+	})
+```
 ************************
 
 ## 部署
