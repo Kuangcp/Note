@@ -19,29 +19,32 @@ categories:
     - 1.6. [压缩列表](#压缩列表)
     - 1.7. [对象](#对象)
 - 2. [Redis常用命令](#redis常用命令)
-    - 2.1. [Run Configuration](#run-configuration)
-    - 2.2. [过期](#过期)
-    - 2.3. [事务](#事务)
+    - 2.1. [过期](#过期)
+    - 2.2. [事务](#事务)
+    - 2.3. [ACL](#acl)
     - 2.4. [服务器](#服务器)
-    - 2.5. [实现原理](#实现原理)
-        - 2.5.1. [Scan](#scan)
 - 3. [数据安全和性能](#数据安全和性能)
     - 3.1. [Latency](#latency)
     - 3.2. [big key](#big-key)
     - 3.3. [hot key](#hot-key)
     - 3.4. [Key eviction](#key-eviction)
 - 4. [Lua](#lua)
+    - 4.1. [FUNCTION](#function)
+    - 4.2. [应用](#应用)
 - 5. [Tip](#tip)
     - 5.1. [禁用 O(N) 命令](#禁用-on-命令)
     - 5.2. [错误分析](#错误分析)
 - 6. [部署方式](#部署方式)
-    - 6.1. [单机](#单机)
-    - 6.2. [主从](#主从)
-    - 6.3. [哨兵](#哨兵)
-    - 6.4. [Cluster 集群](#cluster-集群)
+    - 6.1. [Run Configuration](#run-configuration)
+    - 6.2. [单机](#单机)
+    - 6.3. [主从](#主从)
+    - 6.4. [哨兵](#哨兵)
+    - 6.5. [Cluster 集群](#cluster-集群)
 - 7. [Redis 持久化](#redis-持久化)
+- 8. [命令实现原理](#命令实现原理)
+    - 8.1. [Scan](#scan)
 
-💠 2024-09-13 10:39:04
+💠 2025-05-09 14:24:14
 ****************************************
 # Redis底层数据结构
 ## SDS
@@ -95,6 +98,8 @@ Redis 的跳跃表由 redis.h/zskiplistNode 和 redis.h/zskiplist 两个结构�
 ************************
 
 # Redis常用命令
+> [Commands | Docs](https://redis.io/docs/latest/commands/)  
+
 
 - 关闭数据库 `shutdown` 该命令会在关闭数据库前保存数据
 - 保存内存中数据到文件 `save`
@@ -102,20 +107,9 @@ Redis 的跳跃表由 redis.h/zskiplistNode 和 redis.h/zskiplist 两个结构�
 - 测试联通性 `ping` 连接成功会返回pong
 
 - 模糊删除 
-    - 删除 6666端口 的 2数据库中`detail-2018-07-0*`模式的数据: `./redis-cli -p 6666 -n 2 keys "detail-2018-07-0*" | xargs  ./redis-cli -p 6666 -n 2 del`
-
-- 查看所有连接 client list 
+    - 删除 2 数据库中`detail-2018-07-0*`模式的数据: `./redis-cli -p 6666 -n 2 keys "detail-2018-07-0*" | xargs  ./redis-cli -p 6666 -n 2 del`
 
 > [redis-stat](https://github.com/junegunn/redis-stat)
-
-## Run Configuration	
-- *slaveof*
-    - `redis-server --port 9999 --slaveof 127.0.0.1 6379` 启动一个9999端口作为6379的从服务器进行同步
-    - 或者服务启动后执行 `slaveof host port`（如果已经是从服务器，就丢去旧服务器的数据集，转而对新的主服务器进行同步）
-    - 从服务变成主服务 `slaveof no one` (同步的数据集不会丢失，迅速替换主服务器)
-
-- *loglevel*
-    - `./redis-server /etc/redis/6379.conf --loglevel debug	`
 
 ## 过期
 - `expire key seconds` 设置键的过期时间
@@ -135,21 +129,16 @@ Redis 的跳跃表由 redis.h/zskiplistNode 和 redis.h/zskiplist 两个结构�
 - `WATCH key [key ...]`
     - 监视一个(或多个) key ，如果在事务执行之前这个(或这些) key 被其他命令所改动，那么事务将被打断。
 
+## ACL
+> [ACL | Docs](https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/)`Redis6开始支持用户权限控制`  
+
 ## 服务器
 
+- CLIENT  
+- CONFIG 
 - BGREWRITEAOF
+- SAVE
 - BGSAVE
-- CLIENT GETNAME
-- CLIENT KILL
-- CLIENT LIST
-- CLIENT SETNAME
-- CONFIG GET
-- CONFIG RESETSTAT
-- CONFIG REWRITE
-- CONFIG SET
-- DBSIZE
-- DEBUG OBJECT
-- DEBUG SEGFAULT
 - FLUSHALL
 - FLUSHDB
 - INFO
@@ -160,18 +149,11 @@ Redis 的跳跃表由 redis.h/zskiplistNode 和 redis.h/zskiplist 两个结构�
     - debug命令，可以将Redis执行的每一条指令都回传并输出，可以用来做Redis流量复制，注意对性能影响很大，生产慎用。
     - [Redis 流量复制、流量回放、流量镜像](http://www.kailing.pub/article/index/arcid/342.html)
 - PSYNC
-- SAVE
 - SHUTDOWN
 - SLAVEOF
 - SLOWLOG
 - SYNC
 - TIME
-
-## 实现原理
-### Scan
-> [Doc: Scan](https://redis.io/commands/scan/) 
-
-由于 Redis 是单线程多路复用机制(Redis6引入多线程)，使用 O(n) 复杂度的命令容易阻塞进程，因此需要 scan 命令来实现分批执行 (`注意 scan如果模式匹配的范围比较大，同样有 keys 一样的影响`)
 
 ************************
 
@@ -244,7 +226,11 @@ bigkey 在很多场景下都会产生性能问题，因此业务应用尽量避�
 - 当Redis是Cluster模式部署时，lua脚本操作的所有key需要保证在同一个slot中。`CROSSSLOT Keys in request don’t hash to the same slot`
     - [Redis Pipeline中调用Lua脚本报错JedisMoveDataException的问题](https://blog.csdn.net/minghao0508/article/details/130827658)
 
-************************
+## FUNCTION
+> [Redis functions | Docs](https://redis.io/docs/latest/develop/interact/programmability/functions-intro/)`Redis7开始使用FUNCTION系列命令`  
+
+
+## 应用
 
 > 限制数量的令牌桶限流机制 Java实现
 ```java
@@ -314,6 +300,16 @@ keys flushdb flushall
 
 # 部署方式
 > [参考: redis哨兵、集群](https://blog.csdn.net/u012129558/article/details/77146287)  
+
+## Run Configuration	
+- *slaveof*
+    - `redis-server --port 9999 --slaveof 127.0.0.1 6379` 启动一个9999端口作为6379的从服务器进行同步
+    - 或者服务启动后执行 `slaveof host port`（如果已经是从服务器，就丢去旧服务器的数据集，转而对新的主服务器进行同步）
+    - 从服务变成主服务 `slaveof no one` (同步的数据集不会丢失，迅速替换主服务器)
+
+- *loglevel*
+    - `./redis-server /etc/redis/6379.conf --loglevel debug	`
+
 
 ## 单机
 - 优点：
@@ -450,3 +446,8 @@ Redis提供两种方式进行持久化
 二者选择的标准，就是看应用场景是愿意牺牲一些性能，换取更高的缓存一致性（aof），还是愿意写操作频繁的时候，不启用备份来换取更高的性能，待手动运行save的时候，再做备份（rdb）。rdb这个就更有些 eventually consistent 的意思了。
 
 
+# 命令实现原理
+## Scan
+> [Doc: Scan](https://redis.io/commands/scan/) 
+
+由于 Redis 是单线程多路复用机制(Redis6引入多线程)，使用 O(n) 复杂度的命令容易阻塞进程，因此需要 scan 命令来实现分批执行 (`注意 scan如果模式匹配的范围比较大，同样有 keys 一样的影响`)

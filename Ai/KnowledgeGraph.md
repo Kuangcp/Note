@@ -12,7 +12,7 @@ categories:
 - 2. [案例实践项目](#案例实践项目)
     - 2.1. [医疗领域](#医疗领域)
 
-💠 2025-04-27 16:17:50
+💠 2025-05-09 14:24:14
 ****************************************
 # 知识图谱
 KnowledgeGraph 简称 KG
@@ -26,6 +26,8 @@ KnowledgeGraph 简称 KG
 > [The RAG Stack: Featuring Knowledge Graphs | by Chia Jeng Yang | WhyHow.AI | Medium](https://medium.com/enterprise-rag/understanding-the-knowledge-graph-rag-opportunity-694b61261a9c)  
 
 ![alt text](./img/001-kg-arch.webp)
+
+> [知识图谱入门](https://klose911.github.io/html/ml/knowledge-graph/knowledge-graph.html)  
 
 ## 存储实现
 > [Note: 图数据库](/Database/Graph.md)  

@@ -21,14 +21,14 @@ categories:
     - 1.3. [流程图](#流程图)
     - 1.4. [SVG](#svg)
     - 1.5. [Github](#github)
+- 2. [转换](#转换)
 
-💠 2024-03-23 17:52:21
+💠 2025-05-09 14:24:14
 ****************************************
 # Markdown
 > [Github: markdown](https://guides.github.com/features/mastering-markdown/) 
 > [ Markdown 编辑器语法指南](https://segmentfault.com/markdown)
 > [Markdown教程](http://www.markdown.cn/)  
-> [CSDN的Markdown案例](https://github.com/kuangcp/Notes/blob/master/Article/CSDN的Markdown案例.md)
 
 > [Github: markup](https://github.com/github/markup)`丰富的标记性文本格式` |
 
@@ -170,3 +170,9 @@ _md文件的头属性_
 + python
 - java
 ```
+
+************************
+
+# 转换
+- [bowenliang123/md_exporter: A Dify tool plugin to export Markdown to DOCX, PPTX, XLSX, PDF, HTML, md files](https://github.com/bowenliang123/md_exporter)  
+- VsCode 插件 Markdown PDF 

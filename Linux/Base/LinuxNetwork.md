@@ -64,7 +64,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2025-04-25 13:53:45
+💠 2025-05-09 14:24:14
 ****************************************
 # Linux网络管理
 
@@ -383,6 +383,8 @@ Zmap `在千兆网卡状态下，45 分钟内扫描全网络 IPv4 地址`
 ### netcat
 > sudo apt install netcat  
 
+> [Nc 命令](https://klose911.github.io/html/material/nc.html)  
+
 - 监听端口 `nc -l 11044`
     - 建立连接 `nc 127.0.0.1 11044` 任一方退出 netcat 就终止了该连接
 
@@ -403,6 +405,8 @@ Zmap `在千兆网卡状态下，45 分钟内扫描全网络 IPv4 地址`
     - 服务端 `tar -cvPf - /root/book/ | nc -l 12345`
     - 客户端 `nc -n host port | tar -xvPf -`
     - 这是未压缩的， 压缩再加上参数即可 例如 `gzip -czvPf -xzvPf`
+
+> [多种姿势反弹shell | Brucetg's Blog](https://brucetg.github.io/2018/05/03/%E5%A4%9A%E7%A7%8D%E5%A7%BF%E5%8A%BF%E5%8F%8D%E5%BC%B9shell/)  
 
 ### scp
 > scp命令用于在Linux下进行远程拷贝文件的命令，和它类似的命令有cp，认证用的是ssh 所以也能使用sshpass

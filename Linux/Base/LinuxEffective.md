@@ -48,11 +48,13 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2025-05-08 18:58:49
+💠 2025-05-09 14:24:14
 ****************************************
 # 高效的Linux
 
 > [Awesome Linux Software](https://github.com/luong-komorebi/Awesome-Linux-Software)  
+
+> [trimstray/the-book-of-secret-knowledge: A collection of inspiring lists, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools and more.](https://github.com/trimstray/the-book-of-secret-knowledge)`很完备的软件列表`  
 
 ## 效率工具
 
