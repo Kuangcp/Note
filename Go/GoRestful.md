@@ -12,11 +12,12 @@ categories:
 
 - 1. [Go-microservices](#go-microservices)
     - 1.1. [Gin](#gin)
-    - 1.2. [Iris](#iris)
-    - 1.3. [go-kit](#go-kit)
-    - 1.4. [go-zero](#go-zero)
+    - 1.2. [Hertz](#hertz)
+    - 1.3. [Iris](#iris)
+    - 1.4. [go-kit](#go-kit)
+    - 1.5. [go-zero](#go-zero)
 
-💠 2025-05-07 17:32:24
+💠 2025-05-09 18:34:05
 ****************************************
 # Go-microservices
 > Go 的 web框架 `microservices`
@@ -36,6 +37,9 @@ categories:
 
 > [gin-example](https://github.com/EDDYCJY/go-gin-example)  
 > [demo: mybook](https://github.com/Kuangcp/GoBase/tree/master/mybook)
+
+## Hertz
+> [cloudwego/hertz: Go HTTP framework with high-performance and strong-extensibility for building micro-services.](https://github.com/cloudwego/hertz)  
 
 ## Iris
 > [iris](https://github.com/kataras/iris)
