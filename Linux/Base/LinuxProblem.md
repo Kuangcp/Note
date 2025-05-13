@@ -33,7 +33,7 @@ categories:
         - 1.5.2. [i386-pc not found](#i386-pc-not-found)
     - 1.6. [崩溃](#崩溃)
 
-💠 2024-11-18 14:31:55
+💠 2025-05-13 14:25:46
 ****************************************
 # Linux桌面发行版遇到的问题
 
@@ -264,3 +264,11 @@ Used+Cached高内存， `journalctl -b -1`查日志
     Mar 19 14:53:45 zk-pc sshd[2517303]: fatal: Timeout before authentication for 192.168.131.11 port 9791
     Mar 19 14:53:51 zk-pc rtkit-daemon[1023]: Supervising 7 threads of 6 processes of 1 users.
 ```
+
+
+************************
+> ls 命令执行无结果，tmux内所有终端都卡住，无法执行命令，窗口假死，切换tty无法登录, 过一阵后，图形软件切换一个崩溃一个
+
+重启后 找日志 `journalctl -r` 都无这次故障时间段的日志
+
+怀疑磁盘满, 因为新开终端有报错  mkdir: cannot create directory ~/.cache/oh-my-zsh Read-only file system

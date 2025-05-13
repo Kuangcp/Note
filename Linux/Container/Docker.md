@@ -58,7 +58,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2025-01-17 19:59:46
+💠 2025-05-13 14:25:46
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -322,6 +322,8 @@ _登录镜像仓库_
     - 容器复制到宿主机 `docker cp my_container:/path/in/container /path/on/host`
     - 宿主机复制到容器 `docker cp /path/on/host my_container:/path/in/container`
     - 但是不支持通配 `docker cp *.sh redis:/tmp`
+
+- docker container update --restart= e985628cf3ab 清除设置
 
 > 导入导出
 - 导入导出 （容器快照）： **注意此方式不会保留layer历史，无法回滚**

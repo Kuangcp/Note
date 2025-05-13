@@ -26,7 +26,7 @@ categories:
     - 3.3. [敏感词匹配](#敏感词匹配)
     - 3.4. [OCR](#ocr)
 
-💠 2025-04-25 13:53:45
+💠 2025-05-13 14:25:46
 ****************************************
 # 方向需求
 > 关于问题的解决方案
@@ -148,3 +148,5 @@ Optical Character Recognition
 - 云厂商 例如阿里云，腾讯云等。
 - [tesseract](https://github.com/tesseract-ocr/tesseract)
 > [opendatalab/MinerU: A high-quality tool for convert PDF to Markdown and JSON.一站式开源高质量数据提取工具，将PDF转换成Markdown和JSON格式。](https://github.com/opendatalab/MinerU)  
+
+> [AI大模型实现图片OCR识别 - 掘金](https://juejin.cn/post/7436165603590701091)  

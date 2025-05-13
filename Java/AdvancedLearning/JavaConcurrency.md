@@ -30,17 +30,17 @@ categories:
         - 3.2.5. [Semaphore](#semaphore)
         - 3.2.6. [Phaser](#phaser)
         - 3.2.7. [Exchanger](#exchanger)
-        - 3.2.8. [ConcurrentHashMap](#concurrenthashmap)
-        - 3.2.9. [ConcurrentSkipListMap](#concurrentskiplistmap)
-        - 3.2.10. [CopyOnWriteArrayList](#copyonwritearraylist)
 - 4. [结构化并发](#结构化并发)
 - 5. [实践](#实践)
     - 5.1. [任务建模](#任务建模)
-    - 5.2. [Queue](#queue)
-        - 5.2.1. [BlockingQueue interface](#blockingqueue-interface)
-            - 5.2.1.1. [TransferQueue interface](#transferqueue-interface)
+    - 5.2. [ConcurrentHashMap](#concurrenthashmap)
+    - 5.3. [ConcurrentSkipListMap](#concurrentskiplistmap)
+    - 5.4. [CopyOnWriteArrayList](#copyonwritearraylist)
+    - 5.5. [Queue](#queue)
+        - 5.5.1. [BlockingQueue](#blockingqueue)
+            - 5.5.1.1. [TransferQueue](#transferqueue)
 
-💠 2025-05-06 19:23:42
+💠 2025-05-13 14:25:46
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -338,39 +338,6 @@ public int current(){
 ### Exchanger
 
 
-### ConcurrentHashMap
-- `ConcurrentHashMap` 是 HashMap的并发版本
-- 修改HashMap，并不需要将整个结构都锁住，只要锁住即将修改的桶（就是单个元素）
-    - 好的HashMap 实现，在读取时不需要锁，写入时只要锁住要修改的单个桶 Java能达到这个标准，但是需要程序员去操作底层的细节才能实现
-- `ConcurrentHashMap`类 还实现了ConcurrentMap接口，有些提供了还提供了原子操作的新方法
-    - `putIfAbsent()` 如果还没有对应键，就把键/值添加进去
-    - `remove()` 如果键存在而且值与当前状态相等，则用原子方式移除键值对
-    - `replace()` API 为HashMap中原子替换的操作方法提供了两种不同的形式
-- key value 均不允许为null
-
-> 1.7 到 1.8 改动
-- 数据结构：取消了 Segment 分段锁的数据结构，取而代之的是数组+链表+红黑树的结构。
-- 保证线程安全机制：JDK1.7 采用Segment 的分段锁机制实现线程安全，其中 Segment 继承自 ReentrantLock 。JDK1.8采用CAS+synchronized保证线程安全。
-- 锁的粒度：JDK1.7 是对需要进行数据操作的 Segment 加锁，JDK1.8调整为对每个数组元素加锁（Node）。
-- 链表转化为红黑树：定位节点的 hash 算法简化会带来弊端，hash冲突加剧，因此在链表节点数量大于 8（且数据总量大于等于 64）时，会将链表转化为红黑树进行存储。
-- 查询时间复杂度：从JDK1.7的遍历链表O(n)， JDK1.8 变成遍历红黑树O(logN)。
-
-ConcurrentHashMap的迭代器是弱一致性
-
-### ConcurrentSkipListMap
-基于跳表实现的并发有序Map
-
-ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentModificationException异常，但是无法保证迭代器遍历的元素是一个完整的快照。因此，在迭代器遍历ConcurrentSkipListMap时，可能会遗漏或重复遍历某些元素。
-
-### CopyOnWriteArrayList
-- 标准的ArrayList的替代，通过写时复制语义来实现线程安全性，也就是说修改列表的任何操作都会创建一个列表底层数组的新副本
-    - 这就意味着所有成形的迭代器都不会遇到意料之外的修改 （脏读）
-- 这一般需要很大的开销，但是当遍历操作的数量大大超过可变操作的数量时，这种方法可能比其他替代方法更 有效。在不能或不想进行同步遍历
-    - 适用于读操作多于写操作时，比如事件监听器、缓存等
-- 但又需要从并发线程中排除冲突时，它也很有用。“快照”风格的迭代器方法在创建迭代器时使用了对数组状态的引用。此数组在迭代器的生存期内不会更改，
-- 因此不可能发生冲突，并且迭代器保证不会抛出 ConcurrentModificationException。创建迭代器以后，迭代器就不会反映列表的添加、移除或者更改。
-- 在迭代器上进行的元素更改操作（remove、set 和 add）不受支持。这些方法将抛出 UnsupportedOperationException。
-
 ***********************
 # 结构化并发
 [Structured Concurrency](https://openjdk.org/jeps/453)  
@@ -384,6 +351,14 @@ ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentM
 
 在技术和业务角度，都应该考虑抽象和分层，将近似的事情放在一个线程池内，更有利于针对性设置参数达到整体的效率优化。  
 例如Tomcat中的 [NioEndpoint](/Java/Ecosystem/Servlet/TomcatDesign.md#nioendpoint) 将 接受连接，收连接数据，执行连接任务和发送响应，拆分成三个线程池   
+
+> [Java 常见并发容器总结 | JavaGuide](https://javaguide.cn/java/concurrent/java-concurrent-collections.html)  
+
+ConcurrentHashMap
+CopyOnWriteArrayList
+ConcurrentLinkedQueue
+BlockingQueue
+ConcurrentSkipListMap
 
 ## 任务建模
 > 要把目标代码做成可调用（执行者调用）的结构，而不是单独开线程运行 [示例代码](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/main/java/com/github/kuangcp/schedule/CreateModel.groovy)  
@@ -404,6 +379,39 @@ ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentM
 
 ************************
 
+## ConcurrentHashMap
+- `ConcurrentHashMap` 是 HashMap的并发版本
+- 修改HashMap，并不需要将整个结构都锁住，只要锁住即将修改的桶（就是单个元素）
+    - 好的HashMap 实现，在读取时不需要锁，写入时只要锁住要修改的单个桶 Java能达到这个标准，但是需要程序员去操作底层的细节才能实现
+- `ConcurrentHashMap`类 还实现了ConcurrentMap接口，有些提供了还提供了原子操作的新方法
+    - `putIfAbsent()` 如果还没有对应键，就把键/值添加进去
+    - `remove()` 如果键存在而且值与当前状态相等，则用原子方式移除键值对
+    - `replace()` API 为HashMap中原子替换的操作方法提供了两种不同的形式
+- key value 均不允许为null
+
+> 1.7 到 1.8 改动
+- 数据结构：取消了 Segment 分段锁的数据结构，取而代之的是数组+链表+红黑树的结构。
+- 保证线程安全机制：JDK1.7 采用Segment 的分段锁机制实现线程安全，其中 Segment 继承自 ReentrantLock 。JDK1.8采用CAS+synchronized保证线程安全。
+- 锁的粒度：JDK1.7 是对需要进行数据操作的 Segment 加锁，JDK1.8调整为对每个数组元素加锁（Node）。
+- 链表转化为红黑树：定位节点的 hash 算法简化会带来弊端，hash冲突加剧，因此在链表节点数量大于 8（且数据总量大于等于 64）时，会将链表转化为红黑树进行存储。
+- 查询时间复杂度：从JDK1.7的遍历链表O(n)， JDK1.8 变成遍历红黑树O(logN)。
+
+ConcurrentHashMap的迭代器是弱一致性
+
+## ConcurrentSkipListMap
+基于跳表实现的并发有序Map
+
+ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentModificationException异常，但是无法保证迭代器遍历的元素是一个完整的快照。因此，在迭代器遍历ConcurrentSkipListMap时，可能会遗漏或重复遍历某些元素。
+
+## CopyOnWriteArrayList
+- 标准的ArrayList的替代，通过写时复制语义来实现线程安全性，也就是说修改列表的任何操作都会创建一个列表底层数组的新副本
+    - 这就意味着所有成形的迭代器都不会遇到意料之外的修改 （脏读）
+- 这一般需要很大的开销，但是当遍历操作的数量大大超过可变操作的数量时，这种方法可能比其他替代方法更 有效。在不能或不想进行同步遍历
+    - 适用于读操作多于写操作时，比如事件监听器、缓存等
+- 但又需要从并发线程中排除冲突时，它也很有用。“快照”风格的迭代器方法在创建迭代器时使用了对数组状态的引用。此数组在迭代器的生存期内不会更改，
+- 因此不可能发生冲突，并且迭代器保证不会抛出 ConcurrentModificationException。创建迭代器以后，迭代器就不会反映列表的添加、移除或者更改。
+- 在迭代器上进行的元素更改操作（remove、set 和 add）不受支持。这些方法将抛出 UnsupportedOperationException。
+
 ## Queue
 
 |队列| 	有界性| 	锁| 	数据结构|
@@ -419,7 +427,7 @@ ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentM
 - [Github](https://github.com/LMAX-Exchange/disruptor) [User Guide](https://lmax-exchange.github.io/disruptor/user-guide/index.html)  
 - 经过验证可以发现由于控制是使用无锁的CAS实现，当队列空置时，CPU空耗高占用很明显。也就是说这个队列适合对繁忙且延迟敏感的业务。
 
-### BlockingQueue interface
+### BlockingQueue
 
 - 基本方法
     - put() 如果队列已满，会让放入的线程等待 队列腾出空间
@@ -454,7 +462,7 @@ ConcurrentSkipListMap的迭代器是弱一致性的，它不会抛出ConcurrentM
     - 运行时系统信息： 比如 Author实例是如何排到队列的
 
 
-#### TransferQueue interface
+#### TransferQueue
 - 本质上是多了一项 transfer()操作的BlockingQueue， 如果接收线程处于等待状态， 该操作会马上把工作项传给他。
 - 否则就会阻塞直到取走工作项的线程出现 即 正在处理工作项的线程在交付当前工作项之前不会开始其他工作项的处理工作，
 - 这样系统就可以调控上游线程获取新工作项的速度 用限定大小的阻塞队列也能达到同样的效果，TransferQueue 执行效率更高
