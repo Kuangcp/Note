@@ -58,7 +58,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2025-05-13 14:25:46
+💠 2025-05-13 22:01:53
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -208,13 +208,13 @@ _Debian系_
 > 设置代理方式
 - mkdir -p /etc/systemd/system/docker.service.d
 - vim /etc/systemd/system/docker.service.d/http-proxy.conf
-    ```conf
-    [Service]
-    Environment="HTTP_PROXY=http://localhost:7890"
-    Environment="HTTPS_PROXY=http://localhost:7890"
-    # 可选项，配置不走代理的仓库
-    Environment="NO_PROXY=your-registry.com,10.10.10.10,*.example.com"
-    ```
+```conf
+[Service]
+Environment="HTTP_PROXY=http://localhost:7890"
+Environment="HTTPS_PROXY=http://localhost:7890"
+# 可选项，配置不走代理的仓库
+Environment="NO_PROXY=your-registry.com,10.10.10.10,*.example.com"
+```
 - systemctl daemon-reload
 - systemctl restart docker
 - 检查环境变量 systemctl show --property=Environment docker
