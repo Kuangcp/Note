@@ -33,7 +33,7 @@ categories:
         - 1.5.2. [i386-pc not found](#i386-pc-not-found)
     - 1.6. [崩溃](#崩溃)
 
-💠 2025-05-13 14:25:46
+💠 2025-05-14 11:55:13
 ****************************************
 # Linux桌面发行版遇到的问题
 
@@ -272,3 +272,7 @@ Used+Cached高内存， `journalctl -b -1`查日志
 重启后 找日志 `journalctl -r` 都无这次故障时间段的日志
 
 怀疑磁盘满, 因为新开终端有报错  mkdir: cannot create directory ~/.cache/oh-my-zsh Read-only file system
+
+> [修复super_block损坏 - 暴走的馒头 - 博客园](https://www.cnblogs.com/ggykx/p/10880563.html)  
+
+- fsck -v /dev/sdb1 发现确实有十几个错误，修复后可以mount，但是存在部分配置数据丢失，大部分还在

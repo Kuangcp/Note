@@ -14,7 +14,7 @@ categories:
         - 1.1.1. [Plugin](#plugin)
 - 2. [Tips](#tips)
 
-💠 2024-09-14 15:32:50
+💠 2025-05-14 11:55:13
 ****************************************
 # Xfce 
 > [www.xfce-look.org](https://www.xfce-look.org)  
@@ -45,3 +45,4 @@ categories:
 
 # Tips 
 1. Dock相关软件 出现阴影 `Window Manager Tweaks -> Compositor -> 关闭 Show shadow under dock windows`
+1. 键盘持续按键，延迟速度 Keyboard -> Behavior -> Repeat delay 调低延迟时间

@@ -48,7 +48,7 @@ categories:
     - 5.1. [鼠标](#鼠标)
 - 6. [Tips](#tips)
 
-💠 2025-05-13 14:25:46
+💠 2025-05-14 11:55:13
 ****************************************
 # 高效的Linux
 
@@ -137,18 +137,18 @@ Fuzzy Finder in Rust!
 command-line X11 automation tool `可以控制指定窗口激活关闭，最大最小化，输入快捷键等`
 
 > 将该脚本配置为快捷键后，实现效果：激活已有终端的窗口，或者启动终端
-```sh 
-  #!/bin/bash
+```sh
+#!/bin/bash
 
-  tmd=xfce4-terminal
+tmd=xfce4-terminal
 
-  PID=$(pgrep -x $tmd)
-  if [[ $PID -ne "" ]]
-  then
-      xdotool windowactivate `xdotool search --pid $PID | tail -1`
-  else
-      $tmd
-  fi
+PID=$(pgrep -x $tmd)
+if [[ $PID -ne "" ]]
+then
+    xdotool windowactivate `xdotool search --pid $PID | tail -1`
+else
+    $tmd
+fi
 ```
 
 ### rofi

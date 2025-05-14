@@ -18,7 +18,7 @@ categories:
     - 4.3. [Google拼音](#google拼音)
             - 4.3.0.1. [小小输入法](#小小输入法)
 
-💠 2025-05-13 22:01:53
+💠 2025-05-14 11:55:13
 ****************************************
 # IME
 > 输入法
@@ -58,7 +58,7 @@ export XMODIFIERS="@im=fcitx"
 
 Ctrl ` 进入设置
 
-> anzhuang 
+> 安装 
 
 https://fcitx-im.org/wiki/Install_Fcitx_5/zh-cn
 
@@ -76,6 +76,13 @@ https://fcitx-im.org/wiki/Install_Fcitx_5/zh-cn
 - [Rime 擴充詞庫](https://github.com/rime-aca/dictionaries)  
 - [Dict.yml](https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Rime_description.md#dictyaml-%E8%A9%B3%E8%A7%A3)
 - [RimeConfig](https://github.com/SaboZhang/RimeConfig)  
+
+> [GitHub - Mintimate/oh-my-rime: The Simple Config Template Of Rime By Mintimate. QQ Chat-Group: 703260572](https://github.com/Mintimate/oh-my-rime)  
+
+按实际情况放在 ~/.config/fcitx ~/.config/ibus 下的 rime 目录下
+
+~/.local/share/fcitx5/rime
+
 
 ## 搜狗
 > [Official Site](https://pinyin.sogou.com/linux/)  
