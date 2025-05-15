@@ -38,7 +38,7 @@ categories:
 - 5. [Extend](#extend)
     - 5.1. [CRaC](#crac)
 
-💠 2024-12-24 10:16:38
+💠 2025-05-15 19:54:03
 ****************************************
 # JVM
 > JVM结构及设计
@@ -195,20 +195,9 @@ Java9开始，整合了GC，类加载等日志配置方式，日志级别，输�
 > [JVM GC](/Java/AdvancedLearning/JvmGC.md)  
 
 ## 非堆内存管理 glibc
-> [Linux Glibc](/Linux/Base/LinuxBase.md#glibc-malloc)  
+> [Linux Glibc](/Linux/Base/LinuxBase.md#glibc-ptmalloc2)  
 
-注意JVM所有内存的申请和返还都是通过 glibc 实现的，因此不建议使用Alpine作为基础镜像，因为会有行为上的不一致，Alpine使用的是 musl libc(核心源码只有不到 400 行)。  
-[从一次 CTF 出题谈 musl libc 堆漏洞利用本文通过一道 CTF 题目展示 musl libc 堆溢出漏洞的利 - 掘金](https://juejin.cn/post/6844903574154002445)  
-
-但是glibc在高并发场景下也有缺点： [How glibc Memory Handling Affects Java Applications: The Hidden Cost of Fragmentation](https://medium.com/@daniyal.hass/how-glibc-memory-handling-affects-java-applications-the-hidden-cost-of-fragmentation-8e666ee6e000)  
-在高并发请求的应用系统上，会有大量对象创建和销毁，堆内的内存管理有GC，但是非堆的内存，例如 DirectMemory 等等会因为glibc的设计出现内存碎片，内存延迟返还操作系统的情况
-优化方案：
-- 将 glibc 替换为 jemalloc `java -Djava.library.path=/path/to/jemalloc -jar YourApplication.jar`
-- 限制 glibc 的内存池 `export MALLOC_ARENA_MAX=2` 环境变量
-    - [MALLOC_ARENA_MAX=1 与 MALLOC_ARENA_MAX=4有什么区别？ | easyice](https://www.easyice.cn/archives/341)  
-    - 该设计是为了在高并发的场景申请内存时直接从Arena内存申请，而不需要再通过 mmap sbrk等系统调用，并且为了降低多线程申请时的竞争，会最多创建cpucore*8个Arena，此类可以称为 thread arena ，进程只有一个 main arena 作为兜底空间
-    - thread arena 的内存需要等待 才会释放，本质上是系统内有长生命周期的对象存在导致
-- 优化系统代码，减少非堆内存使用场景。
+注意JVM所有内存的申请和返还都是通过 glibc 实现的，因此不建议使用Alpine作为基础镜像，因为会有行为上的不一致，Alpine使用的是 musl libc(核心源码只有不到 400 行)。 
 
 ************************
 

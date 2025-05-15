@@ -69,7 +69,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2025-05-14 11:55:13
+💠 2025-05-15 19:54:03
 ****************************************
 
 # Linux系统
@@ -819,10 +819,29 @@ glibc本身是C的实现，封装了系统调用，大部分Linux发行版的默
 > [Understanding glibc malloc – sploitF-U-N](https://sploitfun.wordpress.com/2015/02/10/understanding-glibc-malloc/)  
 > [深入理解glibc malloc | BruceFan's Blog](http://pwn4.fun/2016/04/11/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3glibc-malloc/)  
 
+> [Tuning glibc Memory Behavior | Heroku Dev Center](https://devcenter.heroku.com/articles/tuning-glibc-memory-behavior)  
+
+
+pmap -x $pid |sort -nrk3
+
+但是glibc在高并发场景下也有缺点： [How glibc Memory Handling Affects Java Applications: The Hidden Cost of Fragmentation](https://medium.com/@daniyal.hass/how-glibc-memory-handling-affects-java-applications-the-hidden-cost-of-fragmentation-8e666ee6e000)  
+
+在高并发请求的应用系统上，会有大量对象创建和销毁，堆内的内存管理有GC，但是非堆的内存，例如 DirectMemory 等等会因为glibc的设计出现内存碎片，内存延迟返还操作系统的情况
+
+三种优化方案：
+- 将 glibc 替换为 jemalloc `java -Djava.library.path=/path/to/jemalloc -jar YourApplication.jar`
+- 限制 glibc 的内存池 `export MALLOC_ARENA_MAX=2` 环境变量
+    - [MALLOC_ARENA_MAX=1 与 MALLOC_ARENA_MAX=4有什么区别？ | easyice](https://www.easyice.cn/archives/341)  
+    - 该设计是为了在高并发的场景申请内存时直接从Arena内存申请，而不需要再通过 mmap sbrk等系统调用，并且为了降低多线程申请时的竞争，会最多创建cpucore*8个Arena，此类可以称为 thread arena ，进程只有一个 main arena 作为兜底空间
+    - thread arena 的内存需要等待 才会释放，本质上是系统内有长生命周期的对象存在导致
+- 优化系统代码，减少非堆内存使用场景。
+
 ### jemalloc
 
 ### musl malloc
 Alpine发行版所使用
+
+[从一次 CTF 出题谈 musl libc 堆漏洞利用本文通过一道 CTF 题目展示 musl libc 堆溢出漏洞的利 - 掘金](https://juejin.cn/post/6844903574154002445)  
 
 ************************
 
