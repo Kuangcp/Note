@@ -70,7 +70,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2025-05-15 21:25:20
+💠 2025-05-15 22:04:13
 ****************************************
 
 # Linux系统
@@ -814,6 +814,7 @@ SWAP = VIRT - RES
 glibc, musl, jemalloc, System Alloc 等等实现
 
 > [Optimizing Rust Binaries: Observation of Musl versus Glibc and Jemalloc versus System Alloc](https://users.rust-lang.org/t/optimizing-rust-binaries-observation-of-musl-versus-glibc-and-jemalloc-versus-system-alloc/8499)  
+> [Java in K8s: how we’ve reduced memory usage without changing any code | by Mickael Jeanroy | malt-engineering](https://blog.malt.engineering/java-in-k8s-how-weve-reduced-memory-usage-without-changing-any-code-cbef5d740ad)  
 
 ### glibc ptmalloc2
 > [glibc - Wikipedia](https://en.wikipedia.org/wiki/Glibc)  
@@ -842,7 +843,7 @@ pmap -x $pid |sort -nrk3
 三种优化方案：
 1. 将 glibc 替换为对碎片整理更友好的 jemalloc 或者tcmalloc `java -Djava.library.path=/path/to/jemalloc -jar YourApplication.jar`
 2. 限制 glibc 的内存池 `export MALLOC_ARENA_MAX=2` 环境变量 glib2.12以下可能该变量无效
-    - grep MALLOC_ARENA_MAX /proc/$pid/environ 确认进程添加生效
+    - grep MALLOC_ARENA_MAX /proc/$pid/environ 确认进程生效了这个环境变量
     - [MALLOC_ARENA_MAX=1 与 MALLOC_ARENA_MAX=4有什么区别？ | easyice](https://www.easyice.cn/archives/341)  
     - 该设计是为了在高并发的场景申请内存时直接从Arena内存申请，而不需要再通过 mmap sbrk等系统调用，并且为了降低多线程申请时的竞争，会最多创建cpucore*8个Arena，此类可以称为 thread arena ，进程只有一个 main arena 作为兜底空间
     - thread arena 的内存需要等待 才会释放，本质上是系统内有长生命周期的对象存在导致
@@ -852,6 +853,9 @@ pmap -x $pid |sort -nrk3
 
 ### jemalloc
 Facebook
+
+> [为什么说jemalloc比系统带的malloc快，怎么写个简单的测试程序来证明？ - 知乎](https://www.zhihu.com/question/54823155)  
+> [Change skip list P value to 1/e, which improves search times by sean-public · Pull Request #3889 · redis/redis](https://github.com/redis/redis/pull/3889)  
 
 ### tcmalloc
 Google
