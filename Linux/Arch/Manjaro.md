@@ -16,7 +16,7 @@ categories:
     - 2.2. [多系统安装](#多系统安装)
 - 3. [Tips](#tips)
 
-💠 2024-11-14 22:22:23
+💠 2025-05-15 15:33:14
 ****************************************
 # Manjaro
 > [Gitlab source code](https://gitlab.manjaro.org/explore/groups)  
@@ -38,6 +38,14 @@ categories:
 
 ## 显卡驱动
 
+> [参考: Manjaro NVIDIA驱动问题的解决方案](https://blog.csdn.net/qq_39828850/article/details/87919188)  
+
+1. `inxi -G` 检查已安装的驱动程序   
+1. `sudo mhwd -a pci nonfree 0300` 安装NVIDIA闭源驱动
+   - 或者 sudo manjaro-settings-manager 使用硬件设置，安装专有显卡驱动。
+1. 重启
+1. `mhwd -li` 执行确认驱动程序(Bumbee)已安装并且正在运行,此时不要着急使用 nvidia-settings
+
 > [config NVIDIA](https://wiki.manjaro.org/index.php?title=Configure_NVIDIA_(non-free)_settings_and_load_them_on_Startup) `一键安装配置Nvidia显卡驱动`
 
 > 升级驱动 
@@ -47,6 +55,9 @@ categories:
 - install video-nvidia-450xx drivers. 
 - sudo mhwd -i pci video-nvidia-450xx 
 
+nvidia-settings 修改抗锯齿，性能等，保存为配置文件
+- sudo mhwd-gpu --setmod nvidia --setxorg test.nvidia-settings-rc
+
 ## 多系统安装
 例如 Win10(先)和Majaro安装
 
@@ -54,22 +65,6 @@ categories:
 1. `parted -l` 查看当前硬盘系统分区模式， 来判断安装Manjaro时BIOS配置和安装模式
    1. msdos => legacy 
    1. gpt   => uefi 
-
-************************
-
-> Manjaro 安装 deb 包 
-
-1. 安装工具 yaourt -S debtap  或者  yay debtap
-1. 升级 sudo debtap -u
-1. 转换deb包 sudo debtap  xxxx.deb
-1. 安装转换后的安装包 sudo pacman -U x.tar.xz
-
-************************
-
-> 使用国内镜像源 
-1. `sudo pacman-mirrors -i -c China -m rank` | [ustc.edu.cn](http://mirrors.ustc.edu.cn/help/manjaro.html)
-
-foxit GitKraken deepin-screenshot
 
 # Tips
 > U盘启动盘运行Live系统时, 默认用户名和密码都为 manjaro

@@ -46,9 +46,10 @@ categories:
         - 4.1.3. [wework](#wework)
 - 5. [外设](#外设)
     - 5.1. [鼠标](#鼠标)
+    - 5.2. [显卡](#显卡)
 - 6. [Tips](#tips)
 
-💠 2025-05-14 11:55:13
+💠 2025-05-15 15:33:14
 ****************************************
 # 高效的Linux
 
@@ -152,9 +153,12 @@ fi
 ```
 
 ### rofi
-[Github rofi](https://github.com/davatorium/rofi) 窗口切换
+[Github rofi](https://github.com/davatorium/rofi) 窗口切换，命令执行
+
+> [Rofi - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/Rofi)  
 
 设置 `rofi -show window` 快捷键为 右Alt
+- rofi-theme-selector 预览主题 Alt-A 保存选择
 
 ### 远程工具
 [rdesktop and xfreerdp](https://www.joxrays.com/linux-rdp-windows/)
@@ -428,6 +432,9 @@ deepin-screenshot
 
 ## 鼠标
 - solaar Logitech鼠标Options修改
+
+## 显卡
+> [Manjaro 显卡](/Linux/Arch/Manjaro.md#显卡驱动)  
 
 ************************
 

@@ -19,7 +19,7 @@ categories:
         - 1.2.4. [Snap](#snap)
 - 2. [Tips](#tips)
 
-💠 2025-05-13 22:01:53
+💠 2025-05-15 15:33:14
 ****************************************
 
 # Arch
@@ -77,6 +77,7 @@ Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的�
 ************************
 
 - `pacman-mirrors` generate pacman mirrorlist for Manjaro Linux
+    - `sudo pacman-mirrors -i -c China -m rank` | [ustc.edu.cn](http://mirrors.ustc.edu.cn/help/manjaro.html)
 - -S 安装
     - -Si package 查看包的详细信息（注意查的是服务端信息）
         - 因为包可能会变动 出现Qi有结果Si没结果的情况，所以Qi优先使用于Si 可以对比查看。
@@ -105,6 +106,11 @@ pacman yay 升级某些包时需要留意是否需要全系统升级，单独升
 - 但是发现这个报错好像是警告级别不影响实际功能，然后用上述的 pacman -U 安装指定的版本，才恢复了正常使用
 
 > 安装deb包 [How to Install a .deb Package on Arch Linux](https://www.baeldung.com/linux/arch-install-deb-package)
+1. 安装工具 yaourt -S debtap  或者  yay debtap
+1. 升级 sudo debtap -u
+1. 转换deb包 sudo debtap  xxxx.deb
+1. 安装转换后的安装包 sudo pacman -U x.tar.xz
+
 
 ### Yay
 缓存目录 ~/.cache/yay

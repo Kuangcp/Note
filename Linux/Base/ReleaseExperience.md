@@ -36,7 +36,7 @@ categories:
         - 1.12.1. [Chrome OS](#chrome-os)
         - 1.12.2. [Fyde OS](#fyde-os)
 
-💠 2024-09-09 10:34:58
+💠 2025-05-15 15:33:14
 ****************************************
 # Linux常见发行版
 > [Repology](https://repology.org/)
@@ -60,13 +60,9 @@ categories:
 ### 安装系统
 > 制作U盘启动盘
 
-- Manjaro
-    - rufus: 在windows上制作, 选用dd模式
-- Deepin
-    1. 系统内置的 启动盘制作工具, 或者官网下Windows版
-    2. 或者用软碟通
-- Ubuntu
-    1. 软碟通
+实用方案 [ventoy/Ventoy: A new bootable USB solution.](https://github.com/ventoy/Ventoy)  下载运行后，格式化U盘，拖ISO到Ventoy设备上等完成即可。注意支持多ISO  
+
+传统方案： rufus: 在windows上制作, 选用dd模式， 软碟通。
 
 > 系统安装
 - 现在大多电脑都是预装win10, 所以为了方便, 双系统更好用

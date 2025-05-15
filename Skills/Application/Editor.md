@@ -39,7 +39,7 @@ categories:
 - 3. [十六进制 Hex](#十六进制-hex)
 - 4. [EditorConfig](#editorconfig)
 
-💠 2025-04-16 10:16:34
+💠 2025-05-15 15:33:14
 ****************************************
 # 文本编辑器
 
@@ -157,10 +157,6 @@ _个人配置_
 >1. Material Icon Theme
 >1. Snazzy Operator
 >1. Bearded Theme -> Monokai Stone
-
-1. vscode-icons
-1. One Dark Pro
-1. Gruvbox Theme
 
 **工具**
 1. Beautify

@@ -21,7 +21,7 @@ categories:
         - 1.3.2. [插件](#插件)
     - 1.4. [Vivaldi](#vivaldi)
 
-💠 2025-03-15 11:27:41
+💠 2025-05-15 15:33:14
 ****************************************
 # 浏览器
 [neko](https://github.com/m1k1o/neko)`runs in docker and uses WebRTC`
@@ -82,6 +82,7 @@ categories:
     1. 输入值 81,88,98, 也可以是 6000-6005, 省事就 0-65535(不建议)
 
 1. 当前标签页右边打开新标签页: `browser.tabs.insertAfterCurrent` 新建Bool类型, 设置为true
+    - insertAfterCurrentExceptPinned
 1. 移除插件签名验证限制 `xpinstall.signatures.required` 设置为false
 1. 网页重定向次数限制 默认 20 `network.http.redirection-limit` 设置为0就禁止了网页的重定向
 
