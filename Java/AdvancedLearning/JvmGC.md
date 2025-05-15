@@ -38,7 +38,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2025-01-16 16:26:11
+💠 2025-05-15 21:25:20
 ****************************************
 # GC
 > Java Garbage Collection
@@ -254,12 +254,17 @@ GC Roots 对象包含:
 - `-XX:GCLogFileSize=< file size >[ unit ]`
 - `-XX:MaxTenuringThreshold=15` 年轻代对象晋升年龄阈值 默认值15
 
+JDK11及以上
+
+`-Xlog:gc*,classhisto*=trace:file=/opt/dremio/data/log/gc.log:uptime,time,tags,level:filecount=1,filesize=4M`
+
 ************************
 
 # GC日志
 1. 默认第一列是**JVM启动的秒数**，为了可读性一般会加配置 `-XX:+PrintGCDateStamps`, 
 1. 路径可追加进程id `-Xloggc:/apps/logs/gc-%p.log` 以及 `%t` JVM启动时间
-1. 日志滚动策略 `-XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=14 -XX:GCLogFileSize=100M` **但是实际上不实用**，并非按Logback等框架的思路滚动。重启后会重新从0计数覆盖掉最旧的gc日志 [Try to Avoid -XX:+UseGCLogFileRotation](https://dzone.com/articles/try-to-avoid-xxusegclogfilerotation)
+1. 日志滚动策略 `-XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=14 -XX:GCLogFileSize=100M` **但是实际上不实用**
+    - 并非按Logback等框架的思路滚动。重启后会重新从0计数覆盖掉最旧的gc日志 [Try to Avoid -XX:+UseGCLogFileRotation](https://dzone.com/articles/try-to-avoid-xxusegclogfilerotation)
 
 > [Github: GCViewer](https://github.com/chewiebug/GCViewer)  
 > [GCView线条图解](https://blog.csdn.net/chy2z/article/details/88651810)  

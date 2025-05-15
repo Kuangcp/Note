@@ -38,7 +38,7 @@ categories:
 - 5. [Extend](#extend)
     - 5.1. [CRaC](#crac)
 
-💠 2025-05-15 19:54:03
+💠 2025-05-15 21:25:20
 ****************************************
 # JVM
 > JVM结构及设计
@@ -295,9 +295,9 @@ Native Memory 主要是JNI、线程栈、编译器、符号表、Deflater/Inflat
 
 > [参考: 聊聊JVM 堆外内存泄露的BUG是如何查找的](https://cloud.tencent.com/developer/article/1129904)  
 > [JAVA堆外内存排查小结](https://zhuanlan.zhihu.com/p/60976273)  
-> [Java in K8s: how we’ve reduced memory usage without changing any code](https://blog.malt.engineering/java-in-k8s-how-weve-reduced-memory-usage-without-changing-any-code-cbef5d740ad)  
+> [Java in K8s: how we’ve reduced memory usage without changing any code](https://blog.malt.engineering/java-in-k8s-how-weve-reduced-memory-usage-without-changing-any-code-cbef5d740ad)`thread arean`  
 
-> [Java 进程内存占用及可观测性调研&内存异常排查最佳实践](https://www.pengzna.top/article/Java-Memory/)  
+> [Java 进程内存占用及可观测性调研&内存异常排查最佳实践](https://www.pengzna.top/article/Java-Memory/)`内容全面`  
 
 还有两种内存 Native Memory Tracking 没有记录，那就是：
 - MMap Buffer：文件映射内存
@@ -403,6 +403,24 @@ Metaspace实际分配的大小是随着需要逐步扩大的，**每次扩大需
     - `如果未手动指定值，通过jcmd工具查看的值为0,实际取值参考：`
         - 使用CMS,Parallel GC时默认值为： MaxHeapSize - Survivor
         - 使用G1时最大默认是 MaxHeapSize
+
+> [JVM 堆外内存排查流程 - 知乎](https://zhuanlan.zhihu.com/p/669473851)  
+
+```
+less /proc/<pid>/smaps 如果能直接发现异常的块，直接dump看内容
+gdb attach <pid>
+dump memory /tmp/0x7fb9b0000000-0x7fb9b3ffe000.dump 0x7fb9b0000000 0x7fb9b3ffe000
+strings -10 /tmp/0x7fb9b0000000-0x7fb9b3ffe000.dump
+
+变化值对比法： 不同时间执行 pmap -x pid ，对比差异，找到内存块
+pmap -x 1 > pmap-`date +%F-%H-%M-%S`.log
+icdiff pmap-2023-07-27-09-46-36.log pmap-2023-07-28-09-29-55.log | less -SR
+tail -c +$((0x00007face0000000+1)) /proc/1/mem|head -c $((11616*1024))|strings|less -S
+
+```
+
+JVM指定 tcmalloc内存分配器 调试分析
+
 
 ### Code Cache
 > [Introduction to JVM Code Cache](https://www.baeldung.com/jvm-code-cache)  
