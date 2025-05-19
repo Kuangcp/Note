@@ -29,7 +29,7 @@ categories:
     - 3.2. [Native Memory 非堆内存](#native-memory-非堆内存)
         - 3.2.1. [NMT Native Memory Tracking](#nmt-native-memory-tracking)
         - 3.2.2. [Metaspace 元空间](#metaspace-元空间)
-        - 3.2.3. [DirectMemory 堆外内存](#directmemory-堆外内存)
+        - 3.2.3. [DirectMemory 直接内存](#directmemory-直接内存)
         - 3.2.4. [Code Cache](#code-cache)
 - 4. [JVM不同实现](#jvm不同实现)
     - 4.1. [Hotspot JVM](#hotspot-jvm)
@@ -38,7 +38,7 @@ categories:
 - 5. [Extend](#extend)
     - 5.1. [CRaC](#crac)
 
-💠 2025-05-15 21:25:20
+💠 2025-05-19 17:31:44
 ****************************************
 # JVM
 > JVM结构及设计
@@ -392,7 +392,7 @@ Total: reserved=10019737KB, committed=997089KB () reversed保留内存 （ps中�
 Metaspace实际分配的大小是随着需要逐步扩大的，**每次扩大需要执行一次FGC**，-XX:MetaspaceSize默认的值是比较小的，需要频繁GC扩充到实际需要的大小。  
 类似日志可以看到Metaspace引起的FGC：`[Full GC (Metadata GC Threshold) ...]`， 因此为减少预热影响，可以将-XX:MetaspaceSize，-XX:MaxMetaspaceSize指定成相同的值。
 
-### DirectMemory 堆外内存
+### DirectMemory 直接内存
 常说的堆外内存都是指这块，即NIO使用到的缓冲区内存（直接操作系统申请，不受GC控制）。  
 通常出现在NMT监控中的 Internal 部分，如果发现这部分增长明显，需要排查NIO相关的代码使用和配置了。  
 

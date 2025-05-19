@@ -13,14 +13,15 @@ categories:
     - 1.1. [相关博客](#相关博客)
     - 1.2. [安装](#安装)
         - 1.2.1. [minikube](#minikube)
-- 2. [使用](#使用)
-    - 2.1. [网络](#网络)
-    - 2.2. [Pod](#pod)
-        - 2.2.1. [Pod调度](#pod调度)
-        - 2.2.2. [Pod资源控制](#pod资源控制)
-- 3. [安全](#安全)
+- 2. [网络](#网络)
+- 3. [Pod](#pod)
+    - 3.1. [Pod调度](#pod调度)
+    - 3.2. [Pod资源控制](#pod资源控制)
+        - 3.2.1. [内存资源](#内存资源)
+- 4. [使用](#使用)
+- 5. [安全](#安全)
 
-💠 2024-12-06 19:28:00
+💠 2025-05-19 17:31:44
 ****************************************
 
 # Kubernetes
@@ -66,18 +67,12 @@ categories:
 
 ************************
 
-# 使用
-> 大多数命令和 Docker 是类似的，只不过加上了 namespace 的概念
 
-- 查看日志： kubectl logs --namespace namespace pod
-
-> [Java client for Kubernetes](https://github.com/fabric8io/kubernetes-client)
-
-## 网络
+# 网络
 > [Kubernetes 疑难杂症排查分享：神秘的溢出与丢包 ](https://tencentcloudcontainerteam.github.io/2020/01/13/kubernetes-overflow-and-drop/)
 
-## Pod
-### Pod调度
+# Pod
+## Pod调度
 - [你真的理解 K8s 中的 requests 和 limits 吗？](https://kubesphere.io/zh/blogs/deep-dive-into-the-k8s-request-and-limit) | [K8S: QoS](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/)
 - [管理容器的计算资源](https://kuboard.cn/learning/k8s-intermediate/config/computing-resource.html)
 - [Kubernetes 节点标签和定向调度](http://zongming.net/read-1333/)
@@ -86,23 +81,39 @@ categories:
 
 例如如下配置只会将pod调度到03和04两个Node上, 对应于Kuboard的操作路径为 高级设置 -> 节点调度策略 -> 根据【节点亲和性】选择节点 -> 选择标签和值
 ```yml
-    spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - node03
-                      - node04
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                  - node03
+                  - node04
 ```
 
-### Pod资源控制
+## Pod资源控制
 > [为容器和 Pods 分配 CPU 资源](https://kubernetes.io/zh-cn/docs/tasks/configure-pod-container/assign-cpu-resource/)  
 > [为容器和 Pod 分配内存资源](https://kubernetes.io/zh-cn/docs/tasks/configure-pod-container/assign-memory-resource/)  
 
+
+### 内存资源
+
+> `Pod内应用使用的 buff/cache 也算到了容器使用量，而不是常见的RSS用量，导致应用超申请被kill`[1. 排查 K8S Pod 被 OOM 的思路及建议 — 图解K8S documentation](https://k8s.iswbm.com/extra/p01_k8s-pod-oom-analysis.html)  
+
+
+************************
+
+# 使用
+> 大多数命令和 Docker 是类似的，只不过加上了 namespace 的概念
+
+- 查看日志： kubectl logs --namespace namespace pod
+
+> [Java client for Kubernetes](https://github.com/fabric8io/kubernetes-client)
+
+************************
 
 # 安全
 > [从零开始的Kubernetes攻防](https://github.com/neargle/my-re0-k8s-security)

@@ -51,6 +51,8 @@ categories:
         - 2.3.5. [清空读写缓存](#清空读写缓存)
     - 2.4. [内存管理](#内存管理)
         - 2.4.1. [glibc ptmalloc2](#glibc-ptmalloc2)
+            - 2.4.1.1. [thread arena](#thread-arena)
+            - 2.4.1.2. [thread arena 数量较多](#thread-arena-数量较多)
         - 2.4.2. [jemalloc](#jemalloc)
         - 2.4.3. [tcmalloc](#tcmalloc)
         - 2.4.4. [musl malloc](#musl-malloc)
@@ -70,7 +72,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2025-05-15 22:04:13
+💠 2025-05-19 17:31:44
 ****************************************
 
 # Linux系统
@@ -778,6 +780,12 @@ oom-killer
 
 > [交换内存文件](/Linux/Base/LinuxDirectoryStructure.md#设置交换内存文件)
 
+- 修改交换内存开始使用的阈值
+    - `sudo sysctl vm.swappiness=15` 临时修改重启注销失效， 查看：`cat /proc/sys/vm/swappiness`
+    - 永久修改：`/etc/sysctl.conf ` 文件中设置开始使用交换分区的触发值： `vm.swappiness=10`
+    - 表示物理内存剩余`10%` 才会开始使用交换分区
+    - `建议，笔记本的硬盘低于 7200 转的不要设置太高的交换分区使用，会大大影响性能，因为交换分区就是在硬盘上，频繁的交换数据`
+
 > 交换内存分析
 VIRT = SWAP + RES or equal
 SWAP = VIRT - RES
@@ -816,49 +824,58 @@ glibc, musl, jemalloc, System Alloc 等等实现
 > [Optimizing Rust Binaries: Observation of Musl versus Glibc and Jemalloc versus System Alloc](https://users.rust-lang.org/t/optimizing-rust-binaries-observation-of-musl-versus-glibc-and-jemalloc-versus-system-alloc/8499)  
 > [Java in K8s: how we’ve reduced memory usage without changing any code | by Mickael Jeanroy | malt-engineering](https://blog.malt.engineering/java-in-k8s-how-weve-reduced-memory-usage-without-changing-any-code-cbef5d740ad)  
 
+
 ### glibc ptmalloc2
 > [glibc - Wikipedia](https://en.wikipedia.org/wiki/Glibc)  
+
 glibc本身是C的实现，封装了系统调用，大部分Linux发行版的默认内存管理都是glibc中的malloc
+[一篇文章彻底讲懂malloc的实现（ptmalloc） - yooooooo - 博客园](https://www.cnblogs.com/linhaostudy/p/18028054)  
 
-glibc 对具有大量并发线程的程序进行了优化，通过避免竞争调高了程序运行速度。而提速是通过为每一个核来维护一个内存池达到的。  
-这种优化方式的本质是：操作系统会为给定的进程捕获（抢占）内存，每个内存块的大小为 64MB，这样的内存块被叫做 thread arena，glibc 再根据应用需要将 arena 切割为小块进行实际分配
+查看glibc 版本 ldd --version
 
-thread arena 的最大数量：32位系统是 2倍CPU，64位是8倍CPU。 
-即 10核CPU的系统，理论上最大会占用 10 X 8 X 64 Mib
+#### thread arena
+注意 ptmalloc 来源 dlmalloc，不支持多线程，使用全局锁来对一个arena分配， ptmalloc2 改进支持多线程，引入 thread arena。`glibc2.11开始支持` 
 
-**thread arena**
 > [Malloc per-thread arenas in glibc](https://gotplt.org/posts/malloc-per-thread-arenas-in-glibc.html)  
-> [Arena "leak" in glibc](https://codearcana.com/posts/2016/07/11/arena-leak-in-glibc.html)  
 > [Understanding glibc malloc – sploitF-U-N](https://sploitfun.wordpress.com/2015/02/10/understanding-glibc-malloc/)  
 > [深入理解glibc malloc | BruceFan's Blog](http://pwn4.fun/2016/04/11/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3glibc-malloc/)  
 
 > [Tuning glibc Memory Behavior | Heroku Dev Center](https://devcenter.heroku.com/articles/tuning-glibc-memory-behavior)  
 
-pmap -x $pid |sort -nrk3
+glibc 对具有大量并发线程的程序进行了优化，通过避免竞争来提升吞吐量。而竞争规避是通过为每一个核来维护一个内存池实现的。  
+这种优化方式的本质是：操作系统会为给定的进程捕获（抢占）内存，每个内存块的大小为 64MB，这样的内存块被叫做 thread arena  
+当一个线程需要分配内存时，先找当前核最近使用的内存池分配，如果锁定失败或者不够连续内存用于分配申请的大小，则找池内其他arena，否则新建一个（看起来像JVM垃圾回收领域的碎片问题）。
 
-但是glibc在高并发场景下也有缺点： [How glibc Memory Handling Affects Java Applications: The Hidden Cost of Fragmentation](https://medium.com/@daniyal.hass/how-glibc-memory-handling-affects-java-applications-the-hidden-cost-of-fragmentation-8e666ee6e000)  
+#### thread arena 数量较多
+thread arena 的最大数量：32位系统是 2倍CPU，64位是8倍CPU。  即 10核CPU的系统，理论上最大会占用 10 X 8 X 64 Mib
 
-在高并发请求的应用系统上，会有大量对象创建和销毁，堆内的内存管理有GC，但是非堆的内存，例如 DirectMemory 等等会因为glibc的设计出现内存碎片，内存延迟返还操作系统的情况
+- 列出内存块 pmap -x $pid | sort -nrk3
+  - pmap -x $pid 注意不排序时，看到相邻地址大小之合是65536，Mapping是anon时，怀疑
+- 求和 thread arena 的RSS总量 `pmap -x $pid | sort -nrk 3 |  grep -E '[0-9]+' | grep 'anon' | awk '{print $3}' | awk '{sum+=$1}; END {print sum}'`
+
+[MALLOC_ARENA_MAX=1 与 MALLOC_ARENA_MAX=4有什么区别？ | easyice](https://www.easyice.cn/archives/341)
+高并发场景下，存在很多生命周期比较长的对象，如果这些对象能够及时释放，虽然进程可能会在短时间创建许多 thread arena，但实际上并不占据 RES，所以根本问题还是那些具有长生命周期的对象
+当只使用 main arena 的情况下，虽然具有长生命周期的对象不变，但是内存池中的空间被重用的几率比多个 thread arena 更高，进程占据的的 RES 要相对少一些
 
 三种优化方案：
 1. 将 glibc 替换为对碎片整理更友好的 jemalloc 或者tcmalloc `java -Djava.library.path=/path/to/jemalloc -jar YourApplication.jar`
 2. 限制 glibc 的内存池 `export MALLOC_ARENA_MAX=2` 环境变量 glib2.12以下可能该变量无效
     - grep MALLOC_ARENA_MAX /proc/$pid/environ 确认进程生效了这个环境变量
-    - [MALLOC_ARENA_MAX=1 与 MALLOC_ARENA_MAX=4有什么区别？ | easyice](https://www.easyice.cn/archives/341)  
     - 该设计是为了在高并发的场景申请内存时直接从Arena内存申请，而不需要再通过 mmap sbrk等系统调用，并且为了降低多线程申请时的竞争，会最多创建cpucore*8个Arena，此类可以称为 thread arena ，进程只有一个 main arena 作为兜底空间
     - thread arena 的内存需要等待 才会释放，本质上是系统内有长生命周期的对象存在导致
 3. 优化系统代码，减少非堆内存使用场景。
 
-查看glibc 版本 ldd --version
+> [当Java虚拟机遇上Linux Arena内存池_禁用per thread arenas-CSDN博客](https://blog.csdn.net/zsd_31/article/details/82183953)  
+> [Arena "leak" in glibc](https://codearcana.com/posts/2016/07/11/arena-leak-in-glibc.html)  
 
 ### jemalloc
-Facebook
+> [jemalloc/jemalloc](https://github.com/jemalloc/jemalloc)`Facebook`   
 
 > [为什么说jemalloc比系统带的malloc快，怎么写个简单的测试程序来证明？ - 知乎](https://www.zhihu.com/question/54823155)  
 > [Change skip list P value to 1/e, which improves search times by sean-public · Pull Request #3889 · redis/redis](https://github.com/redis/redis/pull/3889)  
 
 ### tcmalloc
-Google
+> [google/tcmalloc](https://github.com/google/tcmalloc)`Google`  
 
 ### musl malloc
 Alpine发行版所使用

@@ -45,7 +45,8 @@ categories:
 - 3. [磁盘](#磁盘)
     - 3.1. [文件系统](#文件系统)
         - 3.1.1. [ext3 ext4](#ext3-ext4)
-        - 3.1.2. [Tmpfs](#tmpfs)
+        - 3.1.2. [Btrfs](#btrfs)
+        - 3.1.3. [Tmpfs](#tmpfs)
     - 3.2. [安装系统时基本分区](#安装系统时基本分区)
     - 3.3. [设备列表](#设备列表)
     - 3.4. [常用命令](#常用命令)
@@ -67,7 +68,7 @@ categories:
     - 6.2. [善用alias](#善用alias)
     - 6.3. [desktop文件](#desktop文件)
 
-💠 2025-03-02 19:53:11
+💠 2025-05-19 17:31:44
 ****************************************
 
 # IO
@@ -403,6 +404,14 @@ export LANG="zh_CN.UTF-8"
     - inode_size ext3 默认128 ext4 默认256 这个值越大，inode占用的空间就越大
 - 大量小文件时，可以考虑降低inode_ratio值，但是会导致实际存放文件的空间减小，反之亦然
 
+### Btrfs
+> [Btrfs - ArchWiki](https://wiki.archlinux.org/title/Btrfs)  
+
+> [Btrfs - Manjaro](https://wiki.manjaro.org/index.php/Btrfs)`Manjaro25开始使用Btrfs替换ext4作为默认选项。`  
+
+TODO 补全使用
+
+
 ### Tmpfs 
 > 虚拟内存文件系统 [wiki](https://wiki.archlinux.org/index.php/Tmpfs)
 
@@ -655,5 +664,6 @@ export LANG="zh_CN.UTF-8"
 	Categories = GNOME;Application;Network; #注明在菜单栏中显示的类别（可选）
 ```
 - 如要将快捷方式放在启动菜单内 只需将 desktop 文件复制到 `/usr/share/applications/`(全局) 或者 `~/.local/share/applications`(单个用户) 目录下
-    - 注意：目录不能有空格 等特殊字符
+    - 注意：Exec和Icon的值，目录不能有空格 等特殊字符
+    - Exec 如果路径错误，Start菜单不会出现这个desktop
 - 重点在于 Exec 和 Icon 的值，Exec 仅相当于当前用户执行 Exec的命令，如果发现应用启动异常只能去脚本或二进制文件调试，通常是环境变量差别
