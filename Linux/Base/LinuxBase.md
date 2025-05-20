@@ -72,7 +72,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2025-05-20 12:23:49
+💠 2025-05-20 12:51:30
 ****************************************
 
 # Linux系统
@@ -854,22 +854,24 @@ thread arena 的最大数量：32位系统是 2倍CPU，64位是8倍CPU。  即 
   - pmap -x $pid 注意不排序时，看到相邻地址大小之合是65536，Mapping是anon时，怀疑
 - 求和 thread arena 的RSS总量 `pmap -x $pid | sort -nrk 3 |  grep -E '[0-9]+' | grep 'anon' | awk '{print $3}' | awk '{sum+=$1}; END {print sum}'`
 
-[MALLOC_ARENA_MAX=1 与 MALLOC_ARENA_MAX=4有什么区别？ | easyice](https://www.easyice.cn/archives/341)
+[MALLOC_ARENA_MAX=1 与 MALLOC_ARENA_MAX=4有什么区别？ | easyice](https://www.easyice.cn/archives/341)`极端情况下设置了MAX也不生效，需设置为1直接关闭thread arena`
 高并发场景下，存在很多生命周期比较长的对象，如果这些对象能够及时释放，虽然进程可能会在短时间创建许多 thread arena，但实际上并不占据 RES，所以根本问题还是那些具有长生命周期的对象
 当只使用 main arena 的情况下，虽然具有长生命周期的对象不变，但是内存池中的空间被重用的几率比多个 thread arena 更高，进程占据的的 RES 要相对少一些
 
-三种优化方案：
+注意： 这里只是为了降低虚拟内存申请的块，实际物理内存高导致pod被kill， 不是glibc的问题，根本问题不在glibc
+[Java in K8s: how we’ve reduced memory usage without changing any code | by Mickael Jeanroy | malt-engineering](https://blog.malt.engineering/java-in-k8s-how-weve-reduced-memory-usage-without-changing-any-code-cbef5d740ad)`如何理解` 
+
+优化方案：
 1. 将 glibc 替换为对碎片整理更友好的 jemalloc 或者tcmalloc `java -Djava.library.path=/path/to/jemalloc -jar YourApplication.jar`
 2. 限制 glibc 的内存池 `export MALLOC_ARENA_MAX=4` 一般建议不要超过 CPU 核心数的 4 倍， **glib2.12以下可能该变量无效**
     - 注意这个参数是限制的总量，假如设定为4，那最终arena数量是4个thread arena+1个main arena
     - grep MALLOC_ARENA_MAX /proc/$pid/environ 确认进程生效了这个环境变量
     - thread arena 的内存需要等待 arena内的所有内存释放才会返还系统，本质上是系统内有长生命周期的对象存在而导致
       - 奇怪点： Java对象的内存都在堆里，为何会放在thread arena
-3. 优化系统代码，减少非堆内存使用场景。
 
 > [当Java虚拟机遇上Linux Arena内存池_禁用per thread arenas-CSDN博客](https://blog.csdn.net/zsd_31/article/details/82183953)  
 > [Arena "leak" in glibc](https://codearcana.com/posts/2016/07/11/arena-leak-in-glibc.html)  
-> [Java in K8s: how we’ve reduced memory usage without changing any code | by Mickael Jeanroy | malt-engineering](https://blog.malt.engineering/java-in-k8s-how-weve-reduced-memory-usage-without-changing-any-code-cbef5d740ad)  
+ 
 
 ### jemalloc
 > [jemalloc/jemalloc](https://github.com/jemalloc/jemalloc)`Facebook`   

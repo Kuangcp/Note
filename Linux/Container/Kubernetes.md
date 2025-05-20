@@ -17,11 +17,12 @@ categories:
 - 3. [Pod](#pod)
     - 3.1. [Pod调度](#pod调度)
     - 3.2. [Pod资源控制](#pod资源控制)
-        - 3.2.1. [内存资源](#内存资源)
+        - 3.2.1. [CPU资源](#cpu资源)
+        - 3.2.2. [内存资源](#内存资源)
 - 4. [使用](#使用)
 - 5. [安全](#安全)
 
-💠 2025-05-19 17:31:44
+💠 2025-05-20 12:51:30
 ****************************************
 
 # Kubernetes
@@ -98,6 +99,10 @@ spec:
 > [为容器和 Pods 分配 CPU 资源](https://kubernetes.io/zh-cn/docs/tasks/configure-pod-container/assign-cpu-resource/)  
 > [为容器和 Pod 分配内存资源](https://kubernetes.io/zh-cn/docs/tasks/configure-pod-container/assign-memory-resource/)  
 
+通过合理地设置 pod 的 QoS 可以进一步提高集群稳定性：不同 QoS 的 Pod 具有不同的 OOM 分数，当出现资源不足时，集群会优先 Kill 掉 Best-Effort 类型的 Pod ，其次是 Burstable 类型的 Pod ，最后是Guaranteed 类型的 Pod
+
+### CPU资源
+CPU 属于可压缩资源，其中 CPU 资源的分配和管理是 Linux 内核借助于完全公平调度算法（ CFS ）和 Cgroup 机制共同完成的。
 
 ### 内存资源
 

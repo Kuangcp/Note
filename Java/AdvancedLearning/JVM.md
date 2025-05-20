@@ -38,7 +38,7 @@ categories:
 - 5. [Extend](#extend)
     - 5.1. [CRaC](#crac)
 
-💠 2025-05-19 17:31:44
+💠 2025-05-20 12:51:30
 ****************************************
 # JVM
 > JVM结构及设计
@@ -198,6 +198,10 @@ Java9开始，整合了GC，类加载等日志配置方式，日志级别，输�
 > [Linux Glibc](/Linux/Base/LinuxBase.md#glibc-ptmalloc2)  
 
 注意JVM所有内存的申请和返还都是通过 glibc 实现的，因此不建议使用Alpine作为基础镜像，因为会有行为上的不一致，Alpine使用的是 musl libc(核心源码只有不到 400 行)。 
+
+> [[JDK-8193521] glibc wastes memory with default configuration - Java Bug System](https://bugs.openjdk.org/browse/JDK-8193521)  
+
+6核CPU情况，大对象多，线程并发高， thread arena 基本分配满到了 `6*8*64M`堆外占用了6G内存 （然后应用叠加使用了 -XX:+AlwaysPreTouch 导致物理内存直接分配满，错误猜想该参数不会影响glibc的内存分配）
 
 ************************
 
