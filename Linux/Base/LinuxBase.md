@@ -72,7 +72,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2025-05-19 17:31:44
+💠 2025-05-20 12:23:49
 ****************************************
 
 # Linux系统
@@ -822,8 +822,6 @@ SWAP = VIRT - RES
 glibc, musl, jemalloc, System Alloc 等等实现
 
 > [Optimizing Rust Binaries: Observation of Musl versus Glibc and Jemalloc versus System Alloc](https://users.rust-lang.org/t/optimizing-rust-binaries-observation-of-musl-versus-glibc-and-jemalloc-versus-system-alloc/8499)  
-> [Java in K8s: how we’ve reduced memory usage without changing any code | by Mickael Jeanroy | malt-engineering](https://blog.malt.engineering/java-in-k8s-how-weve-reduced-memory-usage-without-changing-any-code-cbef5d740ad)  
-
 
 ### glibc ptmalloc2
 > [glibc - Wikipedia](https://en.wikipedia.org/wiki/Glibc)  
@@ -846,8 +844,11 @@ glibc 对具有大量并发线程的程序进行了优化，通过避免竞争�
 这种优化方式的本质是：操作系统会为给定的进程捕获（抢占）内存，每个内存块的大小为 64MB，这样的内存块被叫做 thread arena  
 当一个线程需要分配内存时，先找当前核最近使用的内存池分配，如果锁定失败或者不够连续内存用于分配申请的大小，则找池内其他arena，否则新建一个（看起来像JVM垃圾回收领域的碎片问题）。
 
+
 #### thread arena 数量较多
-thread arena 的最大数量：32位系统是 2倍CPU，64位是8倍CPU。  即 10核CPU的系统，理论上最大会占用 10 X 8 X 64 Mib
+该设计是为了在高并发的场景申请内存时直接从Arena内存申请，而不需要再通过 mmap sbrk等系统调用，并且为了降低多线程申请时的竞争，会最多创建cpucore*8个Arena，此类可以称为 thread arena ，进程只有一个 main arena 作为兜底空间  
+
+thread arena 的最大数量：32位系统是 2倍CPU，64位是8倍CPU。  即 10核CPU的系统，理论上最大会占用 10 X 8 X 64 Mib  
 
 - 列出内存块 pmap -x $pid | sort -nrk3
   - pmap -x $pid 注意不排序时，看到相邻地址大小之合是65536，Mapping是anon时，怀疑
@@ -859,20 +860,30 @@ thread arena 的最大数量：32位系统是 2倍CPU，64位是8倍CPU。  即 
 
 三种优化方案：
 1. 将 glibc 替换为对碎片整理更友好的 jemalloc 或者tcmalloc `java -Djava.library.path=/path/to/jemalloc -jar YourApplication.jar`
-2. 限制 glibc 的内存池 `export MALLOC_ARENA_MAX=2` 环境变量 glib2.12以下可能该变量无效
+2. 限制 glibc 的内存池 `export MALLOC_ARENA_MAX=4` 一般建议不要超过 CPU 核心数的 4 倍， **glib2.12以下可能该变量无效**
+    - 注意这个参数是限制的总量，假如设定为4，那最终arena数量是4个thread arena+1个main arena
     - grep MALLOC_ARENA_MAX /proc/$pid/environ 确认进程生效了这个环境变量
-    - 该设计是为了在高并发的场景申请内存时直接从Arena内存申请，而不需要再通过 mmap sbrk等系统调用，并且为了降低多线程申请时的竞争，会最多创建cpucore*8个Arena，此类可以称为 thread arena ，进程只有一个 main arena 作为兜底空间
-    - thread arena 的内存需要等待 才会释放，本质上是系统内有长生命周期的对象存在导致
+    - thread arena 的内存需要等待 arena内的所有内存释放才会返还系统，本质上是系统内有长生命周期的对象存在而导致
+      - 奇怪点： Java对象的内存都在堆里，为何会放在thread arena
 3. 优化系统代码，减少非堆内存使用场景。
 
 > [当Java虚拟机遇上Linux Arena内存池_禁用per thread arenas-CSDN博客](https://blog.csdn.net/zsd_31/article/details/82183953)  
 > [Arena "leak" in glibc](https://codearcana.com/posts/2016/07/11/arena-leak-in-glibc.html)  
+> [Java in K8s: how we’ve reduced memory usage without changing any code | by Mickael Jeanroy | malt-engineering](https://blog.malt.engineering/java-in-k8s-how-weve-reduced-memory-usage-without-changing-any-code-cbef5d740ad)  
 
 ### jemalloc
 > [jemalloc/jemalloc](https://github.com/jemalloc/jemalloc)`Facebook`   
 
 > [为什么说jemalloc比系统带的malloc快，怎么写个简单的测试程序来证明？ - 知乎](https://www.zhihu.com/question/54823155)  
 > [Change skip list P value to 1/e, which improves search times by sean-public · Pull Request #3889 · redis/redis](https://github.com/redis/redis/pull/3889)  
+
+
+```sh
+# Java 应用替换 jemalloc
+export LD_PRELOAD=/usr/lib/libjemalloc.so
+export MALLOC_CONF="background_thread:true,metadata_thp:auto,dirty_decay_ms:30000,muzzy_decay_ms:30000"
+java -jar xxx.jar
+```
 
 ### tcmalloc
 > [google/tcmalloc](https://github.com/google/tcmalloc)`Google`  
