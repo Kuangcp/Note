@@ -20,6 +20,7 @@ categories:
         - 2.2.4. [字典 dict](#字典-dict)
         - 2.2.5. [JSON](#json)
     - 2.3. [运算符](#运算符)
+        - 2.3.1. [Lambda](#lambda)
     - 2.4. [函数](#函数)
     - 2.5. [包](#包)
     - 2.6. [类](#类)
@@ -38,7 +39,7 @@ categories:
             - 3.1.3.3. [Requirements files](#requirements-files)
             - 3.1.3.4. [发布到pypi](#发布到pypi)
     - 3.2. [文件操作](#文件操作)
-        - 3.2.1. [JSON](#json)
+        - 3.2.1. [JSON文件](#json文件)
         - 3.2.2. [conf或者ini](#conf或者ini)
     - 3.3. [日志](#日志)
         - 3.3.1. [logging](#logging)
@@ -54,7 +55,7 @@ categories:
         - 3.7.2. [时间处理](#时间处理)
         - 3.7.3. [三方库](#三方库)
 
-💠 2025-05-08 18:58:49
+💠 2025-05-26 20:49:09
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -238,12 +239,15 @@ categories:
     - `a in b` 相当于Java的 b.contains(a)
     - `*` 重复序列  例如 `print "-"*20` 就会输出20个 - 
     - `b = "www.github.com" `  `c = b.split(".")` `"#".join(c)` 实现了将字符串的 . 换成了#
-    - `"i am %s %d" % ("python",67)  `%s %d %f 和C语言一样占位符
-        - 新的方式 `"i am {0} {1} ..".format(23,"ret")`  
-        - 或者`"i am {name} {age} ..".format(age=23,name="ret")`
-        - 字典方式 
     - `title()` 首字母大写 
     - `strip()` 
+
+> 格式化
+- `f'name: {name}'` 格式化拼接
+- `"i am %s %d" % ("python",67)  `%s %d %f 和C语言一样占位符
+    - 新的方式 `"i am {0} {1} ..".format(23,"ret")`  
+    - 或者`"i am {name} {age} ..".format(age=23,name="ret")`
+    - 字典方式 
 
 ************************
 
@@ -328,6 +332,11 @@ categories:
     - \000  空
     - \f   换页
     - \  续行符（行尾）
+
+### Lambda
+> [6. Expressions — Python 3.13.3 documentation](https://docs.python.org/3/reference/expressions.html#lambda)  
+
+- `list(filter(lambda x: x != '', items))`
 
 ## 函数
 - 形参赋值传递方式
@@ -680,7 +689,7 @@ pipx 安装到系统上，类似于 go install 替代 go get
 
 ************************
 
-### JSON
+### JSON文件
 ```python
     import json
     file_name='result.json'

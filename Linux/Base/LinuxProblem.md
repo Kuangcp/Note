@@ -32,7 +32,7 @@ categories:
         - 1.5.2. [i386-pc not found](#i386-pc-not-found)
     - 1.6. [崩溃](#崩溃)
 
-💠 2025-05-15 15:33:14
+💠 2025-05-26 20:49:09
 ****************************************
 # Linux桌面发行版遇到的问题
 
@@ -104,6 +104,14 @@ categories:
 
 > [Serious Issue with NVIDIA Drivers: Compatibility Problems with Linux Kernel 6.10 | by Niemand | Aug, 2024 | Medium](https://medium.com/@TheNiemand/serious-issue-with-nvidia-drivers-compatibility-problems-with-linux-kernel-6-10-9cdb0791d204)`升级Manjaro到24.1后没注意到升级了内核和驱动，然后lightdm以及X都崩溃了`  
 - 依据启动的内核，将驱动从 linux510 升级到 linux610-nvidia 550.120-6 问题就解决了，没有那么多奇奇怪怪的问题了（/boot分区加载失败，X启动失败找不到屏幕（nvidia内核模块加载失败），某个分区加载失败无法识别 ext4 文件系统）
+
+> [nvidia-smi](https://docs.nvidia.com/deploy/nvidia-smi/index.html)  
+
+[官方驱动](https://www.nvidia.cn/Download/index.aspx?lang=cn)
+> [启用 Nvidia GPU 后颜色范围降低 : r/linuxquestions](https://www.reddit.com/r/linuxquestions/comments/1ds5wi7/color_range_lowered_after_enabling_nvidia_gpu/?tl=zh-hans)  
+> [你是N卡+HDMI受害者么。。。 NGA玩家社区](https://ngabbs.com/read.php?tid=20502243&rand=554)  
+> [笔记本Ubuntu24.04 下外接显示器颜色发白 - Ubuntu中文论坛](https://forum.ubuntu.org.cn/viewtopic.php?t=494644)  
+> [Full RGB vs. Limited RGB: Is There a Difference? | BenQ US](https://www.benq.com/en-us/knowledge-center/knowledge/full-rgb-vs-limited-rgb-is-there-a-difference.html)  
 
 ************************
 

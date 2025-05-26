@@ -22,7 +22,7 @@ categories:
 - 4. [使用](#使用)
 - 5. [安全](#安全)
 
-💠 2025-05-20 12:51:30
+💠 2025-05-26 20:49:09
 ****************************************
 
 # Kubernetes
@@ -106,7 +106,7 @@ CPU 属于可压缩资源，其中 CPU 资源的分配和管理是 Linux 内核�
 
 ### 内存资源
 
-> `Pod内应用使用的 buff/cache 也算到了容器使用量，而不是常见的RSS用量，导致应用超申请被kill`[1. 排查 K8S Pod 被 OOM 的思路及建议 — 图解K8S documentation](https://k8s.iswbm.com/extra/p01_k8s-pod-oom-analysis.html)  
+> `Pod内应用使用的 buff/cache 也算到了容器使用量，而不是常见的RSS用量，导致应用超申请被kill` [buffer/cach内存占用过高及k8s java后端pod容器超出内存限制被kill重启_pod内存占用过高-CSDN博客](https://blog.csdn.net/qq_26545503/article/details/121309744)  
 
 
 ************************

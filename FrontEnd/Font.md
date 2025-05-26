@@ -22,7 +22,7 @@ categories:
     - 3.3. [IDEA](#idea)
     - 3.4. [终端](#终端)
 
-💠 2024-05-09 14:32:49
+💠 2025-05-26 20:49:09
 ****************************************
 # 字体
 > [Deepin wiki 字体](https://wiki.deepin.org/wiki/%E5%AD%97%E4%BD%93)  
@@ -119,7 +119,7 @@ categories:
 - Cascadia Mono PL 
 - Source Code Pro for Powerline
     - 并且 + [Powerline](https://github.com/powerline/powerline) + Awesonme 的 Bold 最适合ZSH的 Bullet Train 主题
-- Droid Sans Mono for Powerline
+- Droid Sans Mono for Powerline Bold 13号 `更清晰`
 - Roboto Mono for Powerline Bold
 - JetBrainsMono Nerd Font Mono Regular
 
