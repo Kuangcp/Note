@@ -16,7 +16,7 @@ categories:
     - 3.3. [RagFlow](#ragflow)
         - 3.3.1. [Tips](#tips)
 
-💠 2025-04-30 11:30:56
+💠 2025-05-30 16:46:34
 ****************************************
 # 开发平台
 
@@ -43,6 +43,11 @@ categories:
 
 ## Dify
 > [Dify | Dify](https://docs.dify.ai/zh-hans)  
+
+
+> Api方式调用 实质是一个HTTP SSE请求，在response中推事件给客户端
+
+通常是 node_started text_chunk node_finished workflow_finished。 流式回复通过text_chunk实现，但是目前存在bug在复杂的if流程中 chunk可能会被合并输出，达不到流效果。
 
 ## RagFlow
 > [infiniflow/ragflow: RAGFlow is an open-source RAG (Retrieval-Augmented Generation) engine based on deep document understanding.](https://github.com/infiniflow/ragflow?tab=readme-ov-file)  

@@ -72,7 +72,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2025-05-26 20:49:09
+💠 2025-05-30 16:46:34
 ****************************************
 
 # Linux系统
@@ -166,6 +166,7 @@ categories:
 - chfn 注：更改用户信息工具
 - `visudo` 注：visodo 是编辑 /etc/sudoers 的命令;也可以不用这个命令，直接用vi 来编辑 /etc/sudoers 的效果是一样的;
 - `who /var/log/wtmp` 查看登录记录
+- `/etc/security/faillock.conf` deny 输错密码次数锁定，unlock_time 锁定的时长单位秒
 
 ### 用户组
 

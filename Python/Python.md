@@ -55,7 +55,7 @@ categories:
         - 3.7.2. [时间处理](#时间处理)
         - 3.7.3. [三方库](#三方库)
 
-💠 2025-05-26 20:49:09
+💠 2025-05-30 16:46:34
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -450,6 +450,8 @@ When importing the package, Python searches through the directories on `sys.path
         print(5/0)
     except ZeroDivisionError as err:
         print("0 不能做除数", err)
+    except Exception as e:
+        print("", e)
     else:
         print("成功")
     finally:

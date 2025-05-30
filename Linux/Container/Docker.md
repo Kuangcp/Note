@@ -58,7 +58,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2025-05-13 22:01:53
+💠 2025-05-30 16:46:34
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -278,7 +278,11 @@ _登录镜像仓库_
 - 登录hub.docker ：`docker login ` 或者 `docker login -u username -p password`
 - 登录时速云：`sudo docker login index.tenxcloud.com`
 
-- 清理全部未使用的资源 docker system prune -a
+- 清理全部未使用的资源 `docker system prune -a` 它会删除所有未使用的容器、网络、镜像（包括悬空的和未使用的镜像）以及存储卷。此操作不可逆，执行前需谨慎确认。
+    - 删除未使用的容器：docker container prune
+    - 删除未使用的镜像：docker image prune
+    - 删除未使用的卷：docker volume prune
+    - 删除构建缓存 docker builder prune **通常来说优先清理**
 
 ## 镜像
 > Docker 的镜像是采用分层文件系统， Dockerfile中每个RUN命令造成的修改或新增都是新的一层layer，旧文件不变
@@ -446,6 +450,7 @@ _登录镜像仓库_
 *********************
 
 # 数据存储
+
 ## 文件系统
 - AUFS (AnotherUnionFS)  `Ubuntu/Debian默认`
 - Device Mapper：`CentOS/RedHat默认`
