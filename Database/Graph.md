@@ -15,7 +15,7 @@ categories:
     - 3.2. [Gremlin](#gremlin)
     - 3.3. [SPARQL](#sparql)
 
-💠 2024-12-03 19:35:05
+💠 2025-06-03 11:29:27
 ****************************************
 # 图数据库
 
@@ -30,6 +30,8 @@ PG系列：Agentsgraph Age
 [surrealdb/surrealdb](https://github.com/surrealdb/surrealdb)Rust 分布式， 类SQL/GraphQL查询 `偏业务应用`  
 [dgraph-io/dgraph](https://github.com/dgraph-io/dgraph)Go 分布式，GraphQL查询 `偏业务应用`  
 [orientechnologies/orientdb](https://github.com/orientechnologies/orientdb)`多模数据库（图，文档，全文索引）`  
+
+> [HelixDB/helix-db: HelixDB is a powerful, open-source, graph-vector database built in Rust for intelligent data storage for RAG and AI.](https://github.com/HelixDB/helix-db)  
 
 [cayleygraph/cayley](https://github.com/cayleygraph/cayley)`Google开源`  
 

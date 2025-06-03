@@ -72,7 +72,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2025-05-30 16:46:34
+💠 2025-06-03 11:29:27
 ****************************************
 
 # Linux系统
@@ -296,7 +296,7 @@ categories:
 - [sixel](https://en.wikipedia.org/wiki/Sixel)  | [libsixel](https://saitoha.github.io/libsixel/) | [Are We Sixel Yet?](https://www.arewesixelyet.com/)
   - [Why Sixel? ](https://www.reddit.com/r/commandline/comments/zkg75e/why_sixel/)
 
-Manjaro Xfce 使用 sixel： mlterm 或者 konsole
+Manjaro Xfce 使用 sixel： 使用 mlterm 或者 konsole 终端模拟器，不支持 xfce4-terminal
 1. yay libsixel, yay mlterm， mlterm -b '#292B2E' 安装和启动mlterm
   1. 查看图片 img2sixel xx.jpg `ImageMagick`
   1. 渲染结果图 [jagger](https://github.com/rs/jaggr) **konsole不支持**

@@ -17,6 +17,8 @@ categories:
 ****************************************
 # 流程图绘制
 
+> [terrastruct/d2: D2 is a modern diagram scripting language that turns text to diagrams.](https://github.com/terrastruct/d2)`绘图DSL`  
+
 ## drawio
 一板一眼的设计，基础图标够用
 

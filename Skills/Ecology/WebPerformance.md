@@ -18,14 +18,13 @@ categories:
         - 3.3.1. [Apache BenchMark](#apache-benchmark)
         - 3.3.2. [Jmeter](#jmeter)
         - 3.3.3. [wrk](#wrk)
-        - 3.3.4. [ali](#ali)
-        - 3.3.5. [Httperf](#httperf)
-        - 3.3.6. [k6](#k6)
+        - 3.3.4. [Httperf](#httperf)
+        - 3.3.5. [k6](#k6)
 - 4. [数据库](#数据库)
     - 4.1. [MySQL](#mysql)
         - 4.1.1. [主从复制以及读写分离](#主从复制以及读写分离)
 
-💠 2024-12-25 22:33:48
+💠 2025-06-03 11:29:27
 ****************************************
 # Web应用性能优化
 
@@ -76,6 +75,9 @@ categories:
 > [Github: HTTP(S) Benchmark Tools](https://github.com/denji/awesome-http-benchmark)  
 > [load-testing](https://github.com/topics/load-testing)  
 > [dperf](https://github.com/baidu/dperf)  
+> [tsenart/vegeta: HTTP load testing tool and library. It's over 9000!](https://github.com/tsenart/vegeta)  
+
+> [ali](https://github.com/nakabonne/ali)`终端内图形化展示结果`
 
 可以通过压力测试工具或者流量重放，复制 等方式模拟高并发业务场景
 
@@ -102,9 +104,6 @@ categories:
 > [参考: 性能测试之－wrk(转)](http://www.cnblogs.com/rainy-shurun/p/5867946.html)  
 
 1. 需要手动编译安装 make
-
-### ali
-> [ali](https://github.com/nakabonne/ali)`终端内图形化展示结果`
 
 ### Httperf
 > [Github](https://github.com/httperf/httperf) `比 ab 更强大，能测试出 web 服务能承载的最大服务量及发现潜在问题；比如：内存使用、稳定性。最大优势：可以指定规律进行压力测试，模拟真实环境。`
