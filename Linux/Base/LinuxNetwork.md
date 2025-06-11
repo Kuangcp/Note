@@ -64,7 +64,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2025-05-09 14:24:14
+💠 2025-06-11 17:47:44
 ****************************************
 # Linux网络管理
 
@@ -487,6 +487,7 @@ Zmap `在千兆网卡状态下，45 分钟内扫描全网络 IPv4 地址`
 - [bat](https://github.com/astaxie/bat) `go`
 - [xh](https://github.com/ducaale/xh)`rust`
 - [hurl](https://github.com/Orange-OpenSource/hurl)`rust` IDEA中Http插件一样，按HTTP协议写脚本 hurl运行
+- [lwthiker/curl-impersonate: curl-impersonate: A special build of curl that can impersonate Chrome & Firefox](https://github.com/lwthiker/curl-impersonate)`绕开简单的WAF拦截`  
 
 ************************
 

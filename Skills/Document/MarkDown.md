@@ -19,11 +19,12 @@ categories:
         - 1.2.6. [头信息](#头信息)
         - 1.2.7. [代码块](#代码块)
     - 1.3. [流程图](#流程图)
-    - 1.4. [SVG](#svg)
-    - 1.5. [Github](#github)
+    - 1.4. [公式](#公式)
+    - 1.5. [SVG](#svg)
+    - 1.6. [Github](#github)
 - 2. [转换](#转换)
 
-💠 2025-05-09 14:24:14
+💠 2025-06-11 17:47:44
 ****************************************
 # Markdown
 > [Github: markdown](https://guides.github.com/features/mastering-markdown/) 
@@ -116,6 +117,9 @@ categories:
 
 ## 流程图
 - [plantUML](http://plantuml.com)
+
+## 公式
+> [mathjax/MathJax: Beautiful and accessible math in all browsers](https://github.com/mathjax/MathJax)  
 
 ## SVG 
 - 作为图片引入 `![]()`

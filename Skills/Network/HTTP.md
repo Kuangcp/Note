@@ -15,8 +15,9 @@ categories:
         - 1.2.1. [CONNECT](#connect)
         - 1.2.2. [GET](#get)
         - 1.2.3. [POST](#post)
-    - 1.3. [请求 Content-Type](#请求-content-type)
-        - 1.3.1. [Form](#form)
+    - 1.3. [请求Header](#请求header)
+        - 1.3.1. [请求 Content-Type](#请求-content-type)
+            - 1.3.1.1. [Form](#form)
     - 1.4. [Response响应](#response响应)
         - 1.4.1. [HTTP的响应状态码](#http的响应状态码)
         - 1.4.2. [Header](#header)
@@ -41,7 +42,7 @@ categories:
     - 5.1. [CORS 跨域](#cors-跨域)
     - 5.2. [相关工具](#相关工具)
 
-💠 2025-04-25 13:53:45
+💠 2025-06-11 17:47:44
 ****************************************
 # HTTP
 > HyperText Transfer Protocol (超文本传输协议) 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -102,10 +103,13 @@ get 方式下的http请求会限制URL长度，会有多方面不同的限制 �
     - https://api.com/getUserInfo?token=xxx body传输JSON格式的userId等参数
 
 ************************
-## 请求 Content-Type
+## 请求Header
+业务扩展header通常使用x-作为前缀，例如 x-ratelimit-limit-tokens， x-request-id
+
+### 请求 Content-Type
 [MDN: Content-Type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type)
 
-### Form
+#### Form
 [form-data vs -urlencoded](https://gist.github.com/joyrexus/524c7e811e4abf9afe56)  
 [application/x-www-form-urlencoded or multipart/form-data?](https://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data)  
 

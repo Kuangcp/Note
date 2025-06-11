@@ -42,7 +42,7 @@ categories:
     - 7.5. [nuster](#nuster)
 - 8. [Tips](#tips)
 
-💠 2025-03-25 13:48:54
+💠 2025-06-11 17:47:44
 ****************************************
 # Nginx
 
@@ -469,6 +469,19 @@ chunked_transfer_encoding off;
 
 proxy_buffering off;
 proxy_cache off;
+```
+
+```ini
+# 关闭代理缓冲。当设置为off时，Nginx会立即将客户端请求发送到后端服务器，并立即将从后端服务器接收到的响应发送回客户端。
+proxy_buffering off;
+# 启用分块传输编码。分块传输编码允许服务器为动态生成的内容分块发送数据，而不需要预先知道内容的大小。
+chunked_transfer_encoding on;
+# 开启TCP_NOPUSH，这告诉Nginx在数据包发送到客户端之前，尽可能地发送数据。这通常在sendfile使用时配合使用，可以提高网络效率。
+tcp_nopush on;
+# 开启TCP_NODELAY，这告诉Nginx不延迟发送数据，立即发送小数据包。在某些情况下，这可以减少网络的延迟。
+tcp_nodelay on;
+# 设置保持连接的超时时间，这里设置为120秒。如果在这段时间内，客户端和服务器之间没有进一步的通信，连接将被关闭。
+keepalive_timeout 120;
 ```
 
 ************************
