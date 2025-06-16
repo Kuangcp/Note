@@ -30,7 +30,7 @@ categories:
         - 1.7.2. [CRLF与LF](#crlf与lf)
         - 1.7.3. [仓库统计](#仓库统计)
 
-💠 2024-12-12 17:45:49
+💠 2025-06-16 21:50:06
 ****************************************
 # GitInAction
 > [try git](https://try.github.io/)
@@ -298,8 +298,7 @@ Git提供了一个“换行符自动转换”功能。这个功能默认处于�
 ### 仓库统计
 - [中文支持](https://github.com/Kuangcp/gitstats) [原始仓库](https://github.com/hoxu/gitstats)  
     - make install 
-    - 中文支持的问题： 替换生成关键图形的代码里的plot指令 手动添加中文字体
-        - set terminal png transparent size 640,480
-        - set term png transparent size 640,480 font "/usr/share/fonts/adobe-source-han-sans/SourceHanSansCN-Medium.otf"
+    - 中文展示为方块的问题： 修改生成关键图形的代码里的plot指令 手动添加中文字体
+        - set terminal png transparent 类型的指令后强制指定字体 font "/usr/share/fonts/adobe-source-han-sans/SourceHanSansCN-Medium.otf"
 
 - gogitstats  
