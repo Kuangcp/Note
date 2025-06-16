@@ -296,7 +296,7 @@ Git提供了一个“换行符自动转换”功能。这个功能默认处于�
 >1. CRLF -> LF `sed -i 's/\r//g' file` 配合git 就是 `git ls-files| sed -i 's/\r//g' `
 
 ### 仓库统计
-- [https://github.com/hoxu/gitstats](https://github.com/hoxu/gitstats)  
+- [中文支持](https://github.com/Kuangcp/gitstats) [原始仓库](https://github.com/hoxu/gitstats)  
     - make install 
     - 中文支持的问题： 替换生成关键图形的代码里的plot指令 手动添加中文字体
         - set terminal png transparent size 640,480
