@@ -49,7 +49,7 @@ categories:
             - 7.2.2.1. [Gradle](#gradle)
             - 7.2.2.2. [Maven](#maven)
 
-💠 2025-01-09 15:40:40
+💠 2025-06-26 23:55:01
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -481,6 +481,8 @@ A 项目 compile
 
 ## Exec Maven Plugin
 > [Introduction – Exec Maven Plugin](https://www.mojohaus.org/exec-maven-plugin/)  
+
+- 执行test包下指定类 `mvn exec:java -Dexec.mainClass="com.a.b.StreamOptimizedHighlightBenchmark" -Dexec.classpathScope=test`
 
 ****************************
 
