@@ -17,10 +17,11 @@ categories:
     - 1.3. [存算分离](#存算分离)
 - 2. [使用实践](#使用实践)
     - 2.1. [写入](#写入)
+        - 2.1.1. [同步写入](#同步写入)
     - 2.2. [查询](#查询)
     - 2.3. [监控](#监控)
 
-💠 2025-03-07 10:54:31
+💠 2025-07-01 20:46:45
 ****************************************
 # Clickhouse
 
@@ -92,6 +93,25 @@ Spark 解析HDFS数据生成CK file（单个分区做一个gz压缩包，解压�
 
 > [How to configure ClickHouse for INSERT performance? ](https://dev.to/shiviyer/how-to-configure-clickhouse-for-insert-performance-4cof)`大批量写入，异步写入，按需取消写入约束，表引擎调优，压缩算法替换，结合监控数据寻找出最合适业务数据的一套配置`  
 > [Essential Monitoring Queries - part 1 - INSERT Queries](https://clickhouse.com/blog/monitoring-troubleshooting-insert-queries-clickhouse)  
+
+### 同步写入
+注意CK是最终一致性，所以修改不具备事务性，但是在特定业务场景如果需要依赖数据的有限一致性，可以通过设置一些参数值来靠拢
+
+执行的insert SQL后追加 SETTINGS async_insert = 0;
+用户级设置 SETTINGS insert_quorum=2;
+会话设置：
+SET async_insert = 0;  -- 关闭异步写入
+SET wait_for_async_insert = 1;  -- 等待写入完成
+SET wait_for_insert_timeout = 10;  -- 设置等待超时时间（秒）
+
+缺点：
+写入延迟增加，因为需要等待数据落盘
+写入吞吐量下降，特别是在高并发场景
+可能影响查询性能，因为写入操作会占用更多系统资源
+
+更高的 CPU 使用率
+更多的内存占用
+更频繁的磁盘 I/O 操作
 
 ## 查询
 不适合查单行的点查询, 最小查询数据量是索引粒度(index_granularity)的行数, 即使查询一条数据，CK也会按索引粒度加载整块数据进缓存

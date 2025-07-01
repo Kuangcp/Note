@@ -29,7 +29,7 @@ categories:
 - 7. [Explain](#explain)
 - 8. [Tips](#tips)
 
-💠 2025-07-01 16:50:20
+💠 2025-07-01 20:46:45
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -207,6 +207,9 @@ categories:
 
 ![](./img/001-dis-send-query.webp)
 ![](./img/002-dis-merge-result.webp)
+
+- MergeTree + Distributed 普通引擎 组合 分布式表引擎
+- ReplicatedMergeTree + Distributed 复制表引擎 组合 分布式表引擎
 
 ************************
 # 表
