@@ -20,6 +20,7 @@ categories:
 - 3. [数据库引擎](#数据库引擎)
 - 4. [表引擎](#表引擎)
     - 4.1. [MergeTree 引擎家族](#mergetree-引擎家族)
+        - 4.1.1. [Data Replication](#data-replication)
     - 4.2. [分布式表引擎 Distributed](#分布式表引擎-distributed)
 - 5. [表](#表)
     - 5.1. [分区表](#分区表)
@@ -28,7 +29,7 @@ categories:
 - 7. [Explain](#explain)
 - 8. [Tips](#tips)
 
-💠 2024-11-27 13:50:46
+💠 2025-07-01 16:50:20
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -162,16 +163,11 @@ categories:
 - VersionedCollapsingMergeTree
 - GraphiteMergeTree
 
-## 分布式表引擎 Distributed
-> [doc: distributed](https://clickhouse.com/docs/en/engines/table-engines/special/distributed)  
 
-这种类型的表不会存储数据，可以当作关联表的一层代理，实现并行查询和数据写入的分发.
+### Data Replication
+复制表引擎能提升查询的性能，但是在写入时，无法保证insert的一致性，*需要等块合并完，才能保证查询的一致性*, 低版本CK会强依赖ZK的性能。
 
-查询Distributed表引擎的过程是： 先查接收请求节点本地的表（和当前节点同分片下的Replication副本节点**不会接收到查询的请求**），对剩余全部分片发送请求（分片中的一个随机副本），然后再聚合各个分片返回的数据，最后返回最终结果。  
-注意可通过设置不同的cluster来实现是否采用副本节点，如果是未设置副本的节点，每个分片不会有副本冗余。
-
-![](./img/001-dis-send-query.webp)
-![](./img/002-dis-merge-result.webp)
+> [SharedMergeTree | ClickHouse Docs](https://clickhouse.com/docs/cloud/reference/shared-merge-tree)`Cloud版本有这个引擎做替换，摆脱ZK依赖`
 
 ```sql
     -- 查看复制表数量
@@ -184,6 +180,15 @@ categories:
     select name ,engine, hostname(), metadata_modification_time, total_rows, total_bytes
     from clusterAllReplicas('default_cluster', 'system.tables')
     where database = 'db' and engine = 'ReplicatedMergeTree';
+
+    -- 查看块合并数量，判断表是否最终一致
+    select count(*) from system.replication_queue where table = 'xxx_local';
+
+    -- 查看块合并的情况, 注意shard表写入后的延迟 
+    select hostname() as host,* 
+    from clusterAllReplicas('default_cluster', system.parts) 
+    where database='db_name' and table='xxx_table_local'
+    order by modification_time desc
 ```
 ************************
 
@@ -191,6 +196,17 @@ categories:
 > 注意 在设置有副本的集群里，分布式表都需要关联副本表 Replicated MergeTree 作为数据表，如果使用普通的MT表引擎，会导致查询和写入都会遇到奇怪的问题。
 - 写入： 会有部分节点上没有数据，但是全部节点的数据总量是对的
 - 查询： 一条SQL每次查询的结果都不一样（各个分片内随机选择副本再合并查询结果而导致的）
+
+## 分布式表引擎 Distributed
+> [doc: distributed](https://clickhouse.com/docs/en/engines/table-engines/special/distributed)  
+
+这种类型的表不会存储数据，可以当作关联表的一层代理，实现并行查询和数据写入的分发.
+
+查询Distributed表引擎的过程是： 先查接收请求节点本地的表（和当前节点同分片下的Replication副本节点**不会接收到查询的请求**），对剩余全部分片发送请求（分片中的一个随机副本），然后再聚合各个分片返回的数据，最后返回最终结果。  
+注意可通过设置不同的cluster来实现是否采用副本节点，如果是未设置副本的节点，每个分片不会有副本冗余。
+
+![](./img/001-dis-send-query.webp)
+![](./img/002-dis-merge-result.webp)
 
 ************************
 # 表
