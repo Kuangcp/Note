@@ -26,6 +26,8 @@
 > [Conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html)`简单理解为 venv + pip`  
 > [Miniconda 安装](https://docs.anaconda.com/miniconda/)  
 
+- 查看安装的env： conda info --envs
+
 - 安装 conda create -n py39  python=3.9 
     - conda create -n py311 python=3.11
 - 激活指定环境 conda activate py39
