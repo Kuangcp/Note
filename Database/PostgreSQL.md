@@ -29,7 +29,7 @@ categories:
     - 9.1. [Java使用](#java使用)
     - 9.2. [导入导出](#导入导出)
 
-💠 2025-05-07 17:32:24
+💠 2025-07-21 20:20:05
 ****************************************
 # Postgresql
 
@@ -150,9 +150,7 @@ text varchar 最大1Gb
 
 - 创建 create sequence table_name_id_seq as integer;
 - 使用 select nextval('prompt_version_config_id_seq'::regclass);
-
-
-
+- 修改表字段关联到 已有序列 ALTER TABLE table  ALTER COLUMN id SET DEFAULT nextval('table_seq'::regclass);
 
 # DDL
 > 注意PG的查看表，函数，视图的定义(DCL)时很复杂，没有直观的语句类似`show create table`可以用，通常使用工具来查看表定义和函数定义视图定义等等。

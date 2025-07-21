@@ -26,7 +26,7 @@ categories:
     - 3.9. [Avro](#avro)
     - 3.10. [Kyro](#kyro)
 
-💠 2025-05-06 19:23:42
+💠 2025-07-21 20:20:05
 ****************************************
 # 序列化
 > [参考: 序列化和反序列化](https://tech.meituan.com/2015/02/26/serialization-vs-deserialization.html)  
@@ -106,6 +106,7 @@ SOAP是一种采用XML进行序列化和反序列化的协议，它的IDL是WSDL
 - [Amazon Ion](https://amazon-ion.github.io/ion-docs/index.html) 多语言实现  
 - [Smile](https://github.com/FasterXML/smile-format-specification)
 - jsonl 一行一个json对象
+- [JSON5 – JSON for Humans | JSON5](https://json5.org/)  
 
 ## MessagePack
 > [Github](https://github.com/msgpack) | [Site](https://msgpack.org/)  

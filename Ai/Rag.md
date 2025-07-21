@@ -10,8 +10,10 @@ categories:
 - 1. [RAG](#rag)
     - 1.1. [Rag 评测](#rag-评测)
     - 1.2. [实践](#实践)
+- 2. [难题](#难题)
+    - 2.1. [无信息输入](#无信息输入)
 
-💠 2025-06-03 11:29:27
+💠 2025-07-21 20:20:05
 ****************************************
 # RAG
 > [[Large Language Models with Semantic Search] - 引言與關鍵字搜尋Keyword/lexical Search - HackMD](https://hackmd.io/@YungHuiHsu/rku-vjhZT)  
@@ -31,6 +33,7 @@ categories:
 
 > [基于大语言模型知识问答应用落地实践 – 知识库构建（上） | 亚马逊AWS官方博客](https://aws.amazon.com/cn/blogs/china/practice-of-knowledge-question-answering-application-based-on-llm-knowledge-base-construction-part-1/)  
 
+> [检索增强生成：革命性技术还是过度承诺？_生成式 AI_InfoQ精选文章](https://www.infoq.cn/article/lvqs5lg7et17i3wxvtko)  
 
 ## Rag 评测
 > [RAG 评测调研：框架、指标和方法 | EvalScope](https://evalscope.readthedocs.io/zh-cn/latest/blog/RAG/RAG_Evaluation.html)  
@@ -58,3 +61,7 @@ categories:
 > [Searching for Best Practices in Retrieval-Augmented Generation](https://arxiv.org/pdf/2407.01219)  
 
 [RAG 全流程](https://waytoagi.feishu.cn/wiki/QBssw7z4oiGS40kDlltcjozBnxc)
+
+# 难题
+## 无信息输入
+> 例如：给定了体检报告，然后用户提问：解读下这个报告。这句话在R阶段找不到有效的信息 模糊性太大

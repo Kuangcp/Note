@@ -21,7 +21,7 @@ categories:
 - 5. [集群](#集群)
 - 6. [Explain](#explain)
 
-💠 2025-04-16 10:16:34
+💠 2025-07-21 20:20:05
 ****************************************
 # PostgreSQL Advance
 
@@ -33,28 +33,31 @@ categories:
 ## 元数据
 ```sql
     -- 查询表元数据（唯一性，必填，字段类型）
-    select a.attname                             as fieldName,
-        d.typname                             as type,
-        (case
-                when atttypmod - 4 > 0 then atttypmod - 4
-                else 0
-            end)                                 length,
+select a.attname                             as fieldName,
+       d.typname                             as type,
+       (case
+            when atttypmod - 4 > 0 then atttypmod - 4
+            else 0
+           end)                                 length,
 
-        (case
-                when (select count(*)
-                    from pg_constraint
-                    where conrelid = a.attrelid and conkey[1] = attnum and contype = 'u') > 0 then 'Y'
-                else 'N'
-            end)                              as un,
-        (case
-                when a.attnotnull = true then 'Y'
-                else 'N'
-            end)                              as nullable,
-        col_description(a.attrelid, a.attnum) as comment
-    from pg_attribute a
-            left join pg_class c on a.attrelid = c.oid
-            left join pg_type d on a.atttypid = d.oid
-    where attstattarget = -1 and c.relname = 'table_test'
+       (case
+            when (select count(*)
+                  from pg_constraint
+                  where conrelid = a.attrelid
+                    and conkey[1] = attnum
+                    and contype = 'u') > 0 then 'Y'
+            else 'N'
+           end)                              as un,
+       (case
+            when a.attnotnull = true then 'Y'
+            else 'N'
+           end)                              as nullable,
+       col_description(a.attrelid, a.attnum) as comment
+from pg_attribute a
+         left join pg_class c on a.attrelid = c.oid
+         left join pg_type d on a.atttypid = d.oid
+where attstattarget = -1
+  and c.relname = 'table_test'
 ```
 
 ## 硬解析和软解析

@@ -23,6 +23,7 @@ categories:
         - 1.6.3. [插件](#插件)
         - 1.6.4. [实践](#实践)
         - 1.6.5. [vscode server](#vscode-server)
+        - 1.6.6. [Java](#java)
     - 1.7. [Atom](#atom)
     - 1.8. [Gedit](#gedit)
     - 1.9. [notepadqq](#notepadqq)
@@ -39,7 +40,7 @@ categories:
 - 3. [十六进制 Hex](#十六进制-hex)
 - 4. [EditorConfig](#editorconfig)
 
-💠 2025-05-15 15:33:14
+💠 2025-07-21 20:20:05
 ****************************************
 # 文本编辑器
 
@@ -183,6 +184,11 @@ _个人配置_
 > [vscode-server](https://code.visualstudio.com/docs/remote/vscode-server)
 
 [Docker: vscode-server](https://hub.docker.com/r/ahmadnassri/vscode-server)
+
+### Java
+重点插件组： Extension Pack for Java
+
+命令 `java:Reload project` 
 
 ***********************************
 ## Atom
