@@ -16,7 +16,7 @@ categories:
 - 3. [Monitoring](#monitoring)
     - 3.1. [Prometheus](#prometheus)
 
-💠 2024-11-11 11:02:40
+💠 2025-07-23 19:52:57
 ****************************************
 # APM
 > Application performance Management `分布式链路追踪，技术或业务指标监控告警`
@@ -25,13 +25,12 @@ categories:
 
 > [Github: APM](https://github.com/topics/apm)
 
-[Glowroot](https://github.com/glowroot/glowroot)`技术指标 Web SQL JVM JMX监控，agent方式支持单机和集群（存储使用cassandra）`  
-
-Pinpoint
-[JavaMelody](https://github.com/javamelody/javamelody)
-[Scouter](https://github.com/scouter-project/scouter)
-[Stagemonitor](https://github.com/stagemonitor/stagemonitor)
-[MoSKito](https://github.com/anotheria/moskito)
+- [Glowroot](https://github.com/glowroot/glowroot)`技术指标 Web SQL JVM JMX监控，agent方式` 默认H2数据库，可支持Mongo，ES，Kafka等  
+- [pinpoint-apm/pinpoint](https://github.com/pinpoint-apm/pinpoint)  
+- [JavaMelody](https://github.com/javamelody/javamelody)
+- [Scouter](https://github.com/scouter-project/scouter)
+- [Stagemonitor](https://github.com/stagemonitor/stagemonitor)
+- [MoSKito](https://github.com/anotheria/moskito)
 
 ## OpenTelemetry 
 [Github: OpenTelemetry](https://github.com/open-telemetry)
