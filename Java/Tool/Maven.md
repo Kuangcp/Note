@@ -18,10 +18,13 @@ categories:
         - 1.4.1. [settings.xml](#settingsxml)
         - 1.4.2. [pom.xml](#pomxml)
 - 2. [构建](#构建)
-    - 2.1. [构建多模块的项目](#构建多模块的项目)
-    - 2.2. [打包部署](#打包部署)
-        - 2.2.1. [assembly](#assembly)
-        - 2.2.2. [shade](#shade)
+    - 2.1. [Extensions](#extensions)
+    - 2.2. [构建多模块的项目 build](#构建多模块的项目-build)
+    - 2.3. [打包部署 package](#打包部署-package)
+        - 2.3.1. [打包瘦Jar](#打包瘦jar)
+        - 2.3.2. [打包发布源码](#打包发布源码)
+        - 2.3.3. [assembly](#assembly)
+        - 2.3.4. [shade](#shade)
 - 3. [依赖管理](#依赖管理)
     - 3.1. [依赖类型](#依赖类型)
     - 3.2. [依赖的范围](#依赖的范围)
@@ -49,7 +52,7 @@ categories:
             - 7.2.2.1. [Gradle](#gradle)
             - 7.2.2.2. [Maven](#maven)
 
-💠 2025-06-26 23:55:01
+💠 2025-07-29 15:16:45
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -260,7 +263,14 @@ mvn install:install-file
 ************************
 
 # 构建
-## 构建多模块的项目
+通常配置在 build 标签内
+
+- 需要注意 不同插件的配置在父子项目间是`覆盖共存关系`，例如父项目配置了跳过单元测试，子项目如果没配置则也是跳过
+
+## Extensions
+> [Guide to using Extensions – Maven](https://maven.apache.org/guides/mini/guide-using-extensions.html)  
+
+## 构建多模块的项目 build
 `父项目pom文件`
 ``` xml
     <groupId>com.github.kuangcp</groupId>
@@ -290,10 +300,83 @@ mvn install:install-file
     </parent>
 ```
 
-## 打包部署
-获取项目版本 `mvn help:evaluate -Dexpression=project.version -q -DforceStdout`
+## 打包部署 package
+> 获取项目版本 ： `mvn help:evaluate -Dexpression=project.version -q -DforceStdout`  
 
+> [Maven实战（九）——打包的技巧](http://www.infoq.com/cn/news/2011/06/xxb-maven-9-package)
+> [Maven打包成可执行jar](https://blog.csdn.net/u013177446/article/details/53944424)
+> [参考: 使用MAVEN打包可执行的jar包](https://www.jianshu.com/p/afb79650b606)
+
+> war和jar一样使用
+- Springboot项目能够做到, 其实就是 Main 方法, 然后配置了一个Servlet的加载类就可以当war用了
+    - [通过Maven构建打包Spring boot，并将config配置文件提取到jar文件外](http://lib.csdn.net/article/java/65574)
+
+> [一个项目生成若干不同内容的Jar](https://stackoverflow.com/questions/2424015/maven-best-practice-for-generating-multiple-jars-with-different-filtered-classes)
+
+> [maven打包jar依赖到外部 - 易水风萧](https://yishuifengxiao.com/2021/01/24/maven%E6%89%93%E5%8C%85jar%E4%BE%9D%E8%B5%96%E5%88%B0%E5%A4%96%E9%83%A8/)  
+
+### 打包瘦Jar
+以 conf/ +  lib/ + xxx.jar 形式交付产物。
+
+```xml
+
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <configuration>
+
+        <archive>
+            <!-- 生成MANIFEST.MF的设置 -->
+            <manifest>
+                <!-- 为依赖包添加路径, 这些路径会写在MANIFEST文件的Class-Path下 -->
+                <addClasspath>true</addClasspath>
+                <classpathPrefix>lib/</classpathPrefix>
+                <!-- jar启动入口类 -->
+                <mainClass>com.xxxx.Application</mainClass>
+                <useUniqueVersions>false</useUniqueVersions>
+            </manifest>
+            <manifestEntries>
+                <!-- 在Class-Path下添加配置文件的路径 -->
+                <Class-Path>conf/</Class-Path>
+            </manifestEntries>
+        </archive>
+        <!--                    <outputDirectory>${app.outputdir}/${app.dir}</outputDirectory>-->
+        <outputDirectory>./app/</outputDirectory>
+        <includes>
+            <!-- 打jar包时，只打包class文件 -->
+            <include>**/*.class</include>
+            <include>aviator/**</include>
+            <include>META-INF/spring/*.*</include>
+            <include>META-INF/SPI/*.*</include>
+        </includes>
+    </configuration>
+</plugin>
+
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-dependency-plugin</artifactId>
+    <version>3.6.0</version>
+    <executions>
+        <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+                <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+                <skip>false</skip>
+                <!-- 拷贝项目依赖包到lib/目录下 -->
+                <outputDirectory>./lib</outputDirectory>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+
+```
+
+### 打包发布源码
 > [deploy with source](https://stackoverflow.com/questions/4725668/how-to-deploy-snapshot-with-sources-and-javadoc)
+
 ```xml
 <plugin>
     <artifactId>maven-source-plugin</artifactId>
@@ -312,9 +395,11 @@ mvn install:install-file
 **不依赖Jar的项目**
 > [Demo项目](https://gitee.com/gin9/codes/ri4x8cut3awgh0e271lfb54) 
 
-**依赖Jar的项目**
 ### assembly
-> [Maven Doc](http://maven.apache.org/plugins/maven-assembly-plugin/index.html)
+> [Maven Doc](http://maven.apache.org/plugins/maven-assembly-plugin/index.html)  
+> [Maven 引入 JDK 自带 tools.jar 注意事项](https://www.sunyongfei.cn/archives/305/)  
+
+> 打包fatjar
 
 ```xml
     <plugin>
@@ -342,9 +427,11 @@ mvn install:install-file
     </plugin>
 ```
 
-> [Maven 引入 JDK 自带 tools.jar 注意事项](https://www.sunyongfei.cn/archives/305/)  
+
 
 ### shade
+
+> 打包fatjar
 
 ```xml
     <plugin>
@@ -368,18 +455,6 @@ mvn install:install-file
         </executions>
     </plugin>
 ```
-
-************************
-
-> [Maven实战（九）——打包的技巧](http://www.infoq.com/cn/news/2011/06/xxb-maven-9-package)
-> [Maven打包成可执行jar](https://blog.csdn.net/u013177446/article/details/53944424)
-> [参考: 使用MAVEN打包可执行的jar包](https://www.jianshu.com/p/afb79650b606)
-
-> war和jar一样使用
-- Springboot项目能够做到, 其实就是 Main 方法, 然后配置了一个Servlet的加载类就可以当war用了
-    - [通过Maven构建打包Spring boot，并将config配置文件提取到jar文件外](http://lib.csdn.net/article/java/65574)
-
-> [一个项目生成若干不同内容的Jar](https://stackoverflow.com/questions/2424015/maven-best-practice-for-generating-multiple-jars-with-different-filtered-classes)
 
 ******************
 # 依赖管理
