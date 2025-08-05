@@ -18,13 +18,14 @@ categories:
         - 1.4.1. [settings.xml](#settingsxml)
         - 1.4.2. [pom.xml](#pomxml)
 - 2. [构建](#构建)
-    - 2.1. [Extensions](#extensions)
-    - 2.2. [构建多模块的项目 build](#构建多模块的项目-build)
-    - 2.3. [打包部署 package](#打包部署-package)
-        - 2.3.1. [打包瘦Jar](#打包瘦jar)
-        - 2.3.2. [打包发布源码](#打包发布源码)
-        - 2.3.3. [assembly](#assembly)
-        - 2.3.4. [shade](#shade)
+    - 2.1. [Plugins](#plugins)
+    - 2.2. [Extensions](#extensions)
+    - 2.3. [构建多模块的项目 build](#构建多模块的项目-build)
+    - 2.4. [打包部署 package](#打包部署-package)
+        - 2.4.1. [打包瘦Jar](#打包瘦jar)
+        - 2.4.2. [打包发布源码](#打包发布源码)
+        - 2.4.3. [assembly](#assembly)
+        - 2.4.4. [shade](#shade)
 - 3. [依赖管理](#依赖管理)
     - 3.1. [依赖类型](#依赖类型)
     - 3.2. [依赖的范围](#依赖的范围)
@@ -52,7 +53,7 @@ categories:
             - 7.2.2.1. [Gradle](#gradle)
             - 7.2.2.2. [Maven](#maven)
 
-💠 2025-07-29 15:16:45
+💠 2025-08-05 21:48:51
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -123,6 +124,8 @@ mvn install:install-file
 ## Profiles
 > [Official Doc](http://maven.apache.org/guides/introduction/introduction-to-profiles.html)
 > [参考: Guide to Maven Profiles](https://www.baeldung.com/maven-profiles)  
+
+- mvn help:active-profiles 可以用于查看profile都是从哪里激活的
 
 `简单配置`
 ```xml
@@ -267,8 +270,32 @@ mvn install:install-file
 
 - 需要注意 不同插件的配置在父子项目间是`覆盖共存关系`，例如父项目配置了跳过单元测试，子项目如果没配置则也是跳过
 
+## Plugins
+
+- 禁用父项目定义的插件
+```xml
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <!-- 版本、坐标必须和父里的一致 -->
+      <executions>
+        <execution>
+          <id>default-compile</id>
+          <!-- 关键：把 phase 设为 none -->
+          <phase>none</phase>
+        </execution>
+      </executions>
+
+      <!-- 或者是配置skip，但是不一定每个插件都有 -->
+      <configuration>
+        <skip>true</skip>
+      </configuration>
+    </plugin>
+```
+
 ## Extensions
 > [Guide to using Extensions – Maven](https://maven.apache.org/guides/mini/guide-using-extensions.html)  
+
 
 ## 构建多模块的项目 build
 `父项目pom文件`
