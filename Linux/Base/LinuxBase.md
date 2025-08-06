@@ -822,7 +822,7 @@ SWAP = VIRT - RES
 > 注意sync命令是为了将内存中buffer写入磁盘，避免这部分内存被直接释放导致数据不一致
 
 ## 内存管理
-glibc, musl, jemalloc, System Alloc 等等实现
+glibc, musl, jemalloc, System Alloc, mimalloc, tcmalloc, rpmalloc 等等实现
 
 > [Optimizing Rust Binaries: Observation of Musl versus Glibc and Jemalloc versus System Alloc](https://users.rust-lang.org/t/optimizing-rust-binaries-observation-of-musl-versus-glibc-and-jemalloc-versus-system-alloc/8499)  
 

@@ -106,6 +106,14 @@ categories:
 
 > [Github Topic: java-json](https://github.com/topics/java-json)
 
+Jackson在将Date对象序列化成时间时，默认使用的是UTC零时区，Fastjson是使用系统时区。
+
+```conf
+# 设置jackson序列化时区
+spring.jackson.time-zone=Asia/Shanghai
+spring.jackson.serialization.write-dates-as-timestamps=false
+```
+
 ## Protobuf
 > [Note](/Skills/Serialization/Protobuf.md)  
 > [Protocol Buffer Basics: Java](https://protobuf.dev/getting-started/javatutorial/)  
