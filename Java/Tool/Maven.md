@@ -125,8 +125,6 @@ mvn install:install-file
 > [Official Doc](http://maven.apache.org/guides/introduction/introduction-to-profiles.html)
 > [参考: Guide to Maven Profiles](https://www.baeldung.com/maven-profiles)  
 
-- mvn help:active-profiles 可以用于查看profile都是从哪里激活的
-
 `简单配置`
 ```xml
     <profiles>
@@ -144,11 +142,13 @@ mvn install:install-file
     </profiles>
 ```
 
-指定 profile 执行 `mvn clean package -P development`
+- 指定 profile `mvn clean package -P development`
+- 禁用profile `mvn compile -P '!profileId'` 多个时 `-P '!p1,!p2'`
+- mvn help:active-profiles 可以用于查看profile都是从哪里加载和激活的
 
-注意 profile 可配置的标签有 依赖，插件，配置项 等内容，因此可以分环境做区分设置：  
+注意 profile 内可配置的标签有 依赖，插件，配置项 等内容，因此可以用于区分环境设置：  
 
-![alt text](./img/image.png)
+![alt text](./img/image.webp)
 
 > [Maven 如何为不同的环境打包](https://www.zybuluo.com/haokuixi/note/25985) `开发、测试和生产`
 
