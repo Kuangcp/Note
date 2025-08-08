@@ -139,6 +139,7 @@ _例如修改为如下_
 - 设置字体
     1. Robot Mono Medium for Powershell 14 
     1. Cascadia Code
+    1. Noto Sans Medium 14 更清晰
 
 [IDEA 自定义配置](https://github.com/Kuangcp/Configs/tree/master/IDEA)
 - colors 代码配色方案

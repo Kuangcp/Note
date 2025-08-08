@@ -44,8 +44,8 @@ categories:
 
 > [如何提升RAG知识库文档的召回准确率？ - 53AI-AI知识库|大模型知识库|大模型训练|智能体开发](https://www.53ai.com/news/RAG/2025031330416.html)  
 
-1. 自然语言 -> embedding 入库
-2. 召回内容 -> 拆解，拓展，语义补全 -> 搜索 -> rerank
+1. 自然语言或文件 -> 解析 -> 拆分 -> embedding 入库
+2. 召回内容 -> 拆解，拓展，语义补全，多轮改写 -> 搜索/向量匹配 -> rerank
 
 ![alt text](./img/002-rag-map.png)
 
