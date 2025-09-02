@@ -34,6 +34,7 @@ categories:
 > [基于大语言模型知识问答应用落地实践 – 知识库构建（上） | 亚马逊AWS官方博客](https://aws.amazon.com/cn/blogs/china/practice-of-knowledge-question-answering-application-based-on-llm-knowledge-base-construction-part-1/)  
 
 > [检索增强生成：革命性技术还是过度承诺？_生成式 AI_InfoQ精选文章](https://www.infoq.cn/article/lvqs5lg7et17i3wxvtko)  
+> [检索增强生成RAG（Retrieval-Augmented Generation）-阿里云Spring AI Alibaba官网官网](https://java2ai.com/docs/1.0.0-M5.1/tutorials/rag/)  
 
 ## Rag 评测
 > [RAG 评测调研：框架、指标和方法 | EvalScope](https://evalscope.readthedocs.io/zh-cn/latest/blog/RAG/RAG_Evaluation.html)  

@@ -233,6 +233,8 @@ categories:
 > [Connecting ClickHouse to external data sources with JDBC](https://clickhouse.com/docs/en/integrations/jdbc/jdbc-with-clickhouse)  
 > JDBC的驱动实现是通过HTTP协议和Clickhouse通信 [Github: clickhouse-java](https://github.com/ClickHouse/clickhouse-java)`com.clickhouse.client.internal.apache.hc.client5.http.impl.io.DefaultManagedHttpClientConnection`  
 
+驱动配置参数定义 `com.clickhouse.client.config.ClickHouseClientOption`
+
 低版本驱动没有实现负载均衡，需要在数据节点前加一层 [chproxy](https://github.com/ContentSquare/chproxy), 但是实际上也可以自己实现负载均衡算法(例如：依据某个时间窗口内所有节点的负载，连接等情况来选择合适的节点)
 
 ```java
@@ -252,6 +254,7 @@ categories:
 ```
 
 > 实践：
+
 - 出现 `The target server failed to respond code: 1002` 报错 
     - [Validate stale connection to fix the bug: failed to respond](https://github.com/ClickHouse/clickhouse-java/pull/760)`增加活跃连接校验逻辑，降低客户端获取到关闭连接的概率`
     - [BatchUpdateException during inserts with jdbc driver](https://github.com/ClickHouse/clickhouse-java/issues/1444) `驱动作者认为： 关键点在于边界值，如果客户端设置的和服务端一样或者更大，就会出现客户端认为连接未超时可复用，但是服务端认为超时于是就关闭了连接`
@@ -261,6 +264,8 @@ categories:
 
 - [驱动内错误码定义](https://github.com/ClickHouse/ClickHouse/blob/master/src/Common/ErrorCodes.cpp)
     - 注意CK驱动从0.3左右开始，ClickHouseException不继承SQLException
+
+- 升级0.2.4到0.6.0驱动后 getSchema() 返回null，需要手动在jdbc参数上设置 `databaseTerm=schema`
 
 ************************
 
