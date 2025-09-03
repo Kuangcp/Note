@@ -10,13 +10,14 @@ categories:
 - 1. [网关](#网关)
     - 1.1. [功能](#功能)
 - 2. [对比](#对比)
-    - 2.1. [Spring Gateway](#spring-gateway)
-    - 2.2. [Zuul](#zuul)
-    - 2.3. [Kong](#kong)
-    - 2.4. [Nginx](#nginx)
-    - 2.5. [Traefik](#traefik)
+    - 2.1. [Nginx](#nginx)
+    - 2.2. [APISIX](#apisix)
+    - 2.3. [Spring Gateway](#spring-gateway)
+    - 2.4. [Zuul](#zuul)
+    - 2.5. [Kong](#kong)
+    - 2.6. [Traefik](#traefik)
 
-💠 2024-11-20 19:35:19
+💠 2025-09-03 14:52:41
 ****************************************
 # 网关
 
@@ -38,13 +39,18 @@ categories:
 
 > [apache/shenyu: Apache ShenYu is a Java native API Gateway for service proxy, protocol conversion and API governance.](https://github.com/apache/shenyu)  
 
+## Nginx
+
+## APISIX
+> [apache/apisix: The Cloud-Native API Gateway and AI Gateway](https://github.com/apache/apisix)  
+
+Nginx + Lua + Etcd 以及丰富的插件生态
+
 ## Spring Gateway 
 
 ## Zuul 
 
 ## Kong 
-
-## Nginx
 
 ## Traefik
 

@@ -23,7 +23,7 @@ categories:
 - 3. [Tips](#tips)
     - 3.1. [JSON字符串反序列化时泛型丢失问题](#json字符串反序列化时泛型丢失问题)
 
-💠 2025-05-06 19:23:42
+💠 2025-09-03 14:52:41
 ****************************************
 # Java中的序列化
 > [码农翻身:序列化： 一个老家伙的咸鱼翻身](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513589&idx=1&sn=d402d623d9121453f1e570395c7f99d7&chksm=80d67a36b7a1f32054d4c779dd26e8f97a075cf4d9ed1281f16d09f1df50a29319cd37520377&scene=21#wechat_redirect) `对象转化为二进制流`
@@ -35,9 +35,10 @@ categories:
 > [Note：序列化](/Skills/Serialization/Serialization.md)`语言无关`  
 > [jvm-serializers](https://github.com/eishay/jvm-serializers)`多种框架的基准测试`  
 
-> [Java 序列化10倍性能优化对比测试-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/2189625)  
+> 默认序列化, 显式序列化, 拷贝不变（trivially copyable） `和FlatBuffers思想类似`
 
-默认序列化, 显式序列化, 拷贝不变（trivially copyable） `和FlatBuffers思想类似`
+- [Java 序列化10倍性能优化对比测试-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/2189625)  
+- [OpenHFT/Chronicle-Queue: Micro second messaging that stores everything to disk](https://github.com/OpenHFT/Chronicle-Queue)  
 
 ## Serializable
 > 简单的说serialVersionUID就是类的版本控制, 标明类序列化时的版本, 版本一致表明这两个类定义一致  
@@ -79,6 +80,8 @@ categories:
             private List<Node> childes;
         }
     ```
+
+
 ******************************
 
 # 编解码框架

@@ -38,7 +38,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2025-05-15 21:25:20
+💠 2025-09-03 14:52:41
 ****************************************
 # GC
 > Java Garbage Collection
@@ -57,6 +57,9 @@ GC 的目的是识别出不再使用的内存，并将其变为可用内存。�
 列表： CMS(JDK14中被移除)，G1，Parallel，Serial，Epsilon，Shenandoah，ZGC
 > [Github: OpenJDK 12 GC 算法源码](https://github.com/openjdk/jdk/tree/jdk-12+33/src/hotspot/share/gc)  
 ************************
+
+
+> [看过无数Java GC文章，这5个问题你也未必知道！](https://mp.weixin.qq.com/s?__biz=MjM5OTMyNzQzMg==&mid=2257485503&idx=1&sn=87ac6a068e3c54d96c74bade2bac293b&chksm=a447fd189330740e52944d148ec838ac307ff7f05248b0a2223724b2fc6c335bc46d8d31da16&mpshare=1&scene=1&srcid=&sharer_sharetime=1584270847465&sharer_shareid=246c4b52c1cb45eaa580c985c95107f3#rd)  
 
 ## GC类型
 > [RednaxelaFX](https://www.zhihu.com/question/41922036/answer/93079526) | [Major GC和Full GC的区别是什么？触发条件呢？](https://www.zhihu.com/question/41922036/answer/93079526)
