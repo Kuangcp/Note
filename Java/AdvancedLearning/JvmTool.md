@@ -26,10 +26,11 @@ categories:
         - 3.7.1. [实现原理](#实现原理)
     - 3.8. [jcmd](#jcmd)
     - 3.9. [jhsdb](#jhsdb)
-- 4. [终端类工具](#终端类工具)
-    - 4.1. [Arthas](#arthas)
-    - 4.2. [async-profiler](#async-profiler)
-- 5. [jvm-sandbox](#jvm-sandbox)
+- 4. [集成库](#集成库)
+    - 4.1. [jvm-sandbox](#jvm-sandbox)
+- 5. [终端类工具](#终端类工具)
+    - 5.1. [Arthas](#arthas)
+    - 5.2. [async-profiler](#async-profiler)
 - 6. [图形化工具](#图形化工具)
     - 6.1. [JProfiler](#jprofiler)
     - 6.2. [YourKit](#yourkit)
@@ -40,7 +41,7 @@ categories:
     - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2025-04-19 19:25:00
+💠 2025-09-03 09:43:18
 ****************************************
 
 # JVM 监控&诊断
@@ -265,7 +266,17 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 
 ********************
 
+# 集成库
+> [aragozin/heaplib: JVM Heap dump processing utility](https://github.com/aragozin/heaplib/tree/master)  
+
+## jvm-sandbox
+> [jvm-sandbox](https://github.com/alibaba/jvm-sandbox)
+
+> [JVM SandBox 的技术原理与应用分析](https://www.infoq.cn/article/TSY4lGjvSfwEuXEBW*Gp)
+
 # 终端类工具
+> [vjtools](https://github.com/vipshop/vjtools)`唯品会`  
+> [github.com/dingjs/javaagent](https://github.com/dingjs/javaagent)  
 
 ## Arthas
 > [Github: Arthas](https://github.com/alibaba/arthas)`阿里巴巴`
@@ -274,16 +285,6 @@ jstack jmap jinfo jsnap 等命令功能的迁移和加强
 
 ## async-profiler
 > [async-profiler](https://github.com/jvm-profiling-tools/async-profiler)`CPU和内存采样 渲染火焰图`
-
-# jvm-sandbox
-> [jvm-sandbox](https://github.com/alibaba/jvm-sandbox)
-
-> [JVM SandBox 的技术原理与应用分析](https://www.infoq.cn/article/TSY4lGjvSfwEuXEBW*Gp)
-
-**********************
-
-> [vjtools](https://github.com/vipshop/vjtools)`唯品会`  
-> [github.com/dingjs/javaagent](https://github.com/dingjs/javaagent)  
 
 ************************
 
