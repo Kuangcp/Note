@@ -29,6 +29,7 @@ categories:
     - 2.5. [应用层](#应用层)
         - 2.5.1. [HTTP](#http)
         - 2.5.2. [Websocket](#websocket)
+            - 2.5.2.1. [建立和关闭流程](#建立和关闭流程)
         - 2.5.3. [FTP](#ftp)
         - 2.5.4. [WebDAV](#webdav)
         - 2.5.5. [TTFB](#ttfb)
@@ -73,7 +74,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2025-03-13 10:41:25
+💠 2025-09-03 15:11:27
 ****************************************
 # 网络
 > [Java 网络](/Java/AdvancedLearning/JavaNetwork.md)  
@@ -296,23 +297,29 @@ STCP协议混合了UDP和TCP的特性。
 
 ************************
 
-> 建立和断开流程
-- [理解websocket](https://zhuanlan.zhihu.com/p/149680021)
+#### 建立和关闭流程
+- [理解websocket的原理](https://zhuanlan.zhihu.com/p/149680021)
+
+> 建立流程
 - 三次握手建立 TCP 连接(如果是 wss 还需要建立 tls 连接), 并从HTTP协议协商升级到WS具体的子协议
-    - 客户端在HTTP请求Header中的`sec-websocket-version`设置协议版本
+    - 客户端在HTTP请求Header中的`sec-websocket-version`设置子协议版本
     - Netty中是 `io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory#newHandshaker` 中实现多版本
     - Spring-Websocket 中定义了接口： `org.springframework.web.socket.server.RequestUpgradeStrategy#getSupportedVersions` 在不同的Web容器实现中做声明支持
         - Spring5 有 Jetty Jetty10 Tomcat Undertow WebSphere
-- 正常关闭时 TCP 的四次挥手，异常关闭则是 TCP 协议 发送 rst 包
+- 注意浏览器Api中，WebSocket建立时只支持url和protocols参数， protocols 的值会成为 Sec-WebSocket-Protocol 的值
+    - 如果前端通过websocket连接时指定了Sec-WebSocket-Protocol，后端接收到连接后，必须原封不动的将Sec-WebSocket-Protocol头信息返回给前端，否则连接会抛出异常
+    - 如果需要传递业务性参数，例如 token，appId等，通常可以拼接在url后面，也可以借用这个字段来传递参数
+- 如果是语言级别的库或框架就不受这个限制了，可以在握手http请求追加任意的header参数值，相当于自行扩展了RFC定义
 
-> Tips
-- 客户端和服务端建立连接后 客户端网络发生变化(例如VPN关闭,服务端在VPN网络下才可访问)，此时客户端的定时ping会累积起来，等恢复后，一次发送多条数据，可以通过抓包观察到
+> 关闭流程
+- 正常关闭时 TCP 的四次挥手，异常关闭则是 TCP 协议 发送 rst 包
 - 关闭状态码
     1. [WebSocket RFC](https://tools.ietf.org/html/rfc6455#section-7.4)
     1. [WebSocket断开原因分析](https://wdd.js.org/websocket-close-reasons.html)
 
-
-> [websocat](https://github.com/vi/websocat)`终端连接websocket`  
+> Tips
+- 客户端和服务端建立连接后 客户端网络发生变化(例如VPN关闭,服务端在VPN网络下才可访问)，此时客户端的定时ping会累积起来，等恢复后，一次性发送多条数据，可以通过抓包观察到
+- [websocat](https://github.com/vi/websocat)`终端连接websocket`  
 
 ************************
 
@@ -320,6 +327,7 @@ STCP协议混合了UDP和TCP的特性。
 - [WebSocket 安全性：8 大漏洞及其解决方法](https://blog.p2hp.com/archives/11444) `DDOS， 未验证的握手，未加密的TCP，数据脱敏，隧道技术，嗅探攻击`
 
 ************************
+
 ### FTP
 
 ************************
