@@ -22,13 +22,14 @@ categories:
 - 3. [ThreadLocal](#threadlocal)
     - 3.1. [Hook](#hook)
     - 3.2. [优雅关机](#优雅关机)
-- 4. [CompletableFuture](#completablefuture)
+- 4. [Future](#future)
+    - 4.1. [CompletableFuture](#completablefuture)
 - 5. [线程池](#线程池)
 - 6. [协程](#协程)
     - 6.1. [Quasar](#quasar)
     - 6.2. [Virtual Threads](#virtual-threads)
 
-💠 2024-09-13 10:39:04
+💠 2025-09-03 11:19:19
 ****************************************
 # Java线程
 > [个人学习代码](https://github.com/Kuangcp/JavaBase/tree/master/concurrency/src/main/java/thread)
@@ -189,7 +190,10 @@ LockSupport.park
 [参考: JVM安全退出（如何优雅的关闭java服务）](https://www.cnblogs.com/yuandluck/p/9517700.html)  
 
 ************************
-# CompletableFuture
+# Future
+> [JAVA 拾遗--Future 模式与 Promise 模式-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/1110576)  
+
+## CompletableFuture
 > [CompletableFutureTest](https://github.com/Kuangcp/JavaBase/blob/master/java8/src/test/java/com/github/kuangcp/future/CompletableFutureTest.java)  
 
 ************************

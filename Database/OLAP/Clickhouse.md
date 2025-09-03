@@ -29,7 +29,7 @@ categories:
 - 7. [Explain](#explain)
 - 8. [Tips](#tips)
 
-💠 2025-07-01 20:46:45
+💠 2025-09-03 11:19:19
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -95,7 +95,9 @@ categories:
 ## 数据类型
 > [ClickHouse Data Types](https://clickhouse.com/docs/en/sql-reference/data-types)
 
-注意Ck中建表时字段类型默认是非Null的，和常见的业务数据库MySQL等相反，支持Null数据需要显式指定，例如： Nullable(Int)
+> Nullable
+- 注意Ck中建表时字段类型默认是非Null的，和常见的业务数据库MySQL等相反，支持Null数据需要显式指定，例如： Nullable(Int)
+- Nullable列存储需要额外创建一个文件，不能建索引，在查询返回二进制流时也是在字段前有一个二进制标识位(0或1)先解析读取
 
 ### bitmap
 > 并没有这个类型定义，只是在使用时由数据存储方式存在，类似于Redis的bitmap。

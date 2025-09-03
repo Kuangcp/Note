@@ -27,7 +27,7 @@ categories:
 - 6. [反编译](#反编译)
 - 7. [热部署](#热部署)
 
-💠 2025-05-06 19:23:42
+💠 2025-09-03 11:19:19
 ****************************************
 # 字节码以及类加载
 > [相关示例代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
@@ -84,6 +84,8 @@ categories:
 
 asm  
 javassist
+
+> [raphw/byte-buddy: Runtime code generation for the Java virtual machine.](https://github.com/raphw/byte-buddy)  
 ******************
 
 ## 常量池

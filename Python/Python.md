@@ -55,7 +55,7 @@ categories:
         - 3.7.2. [时间处理](#时间处理)
         - 3.7.3. [三方库](#三方库)
 
-💠 2025-06-11 17:47:44
+💠 2025-09-03 11:19:19
 ****************************************
 # Python
 > [Official Site](https://www.python.org/)  
@@ -603,7 +603,13 @@ pipx 安装到系统上，类似于 go install 替代 go get
     - 如果没有使用虚拟环境, 然后只想导出某项目的依赖 [Github pipreqs](https://github.com/bndr/pipreqs)
     - 安装 : `pip install pipreqs` 然后 `pipreqs /path/to/project`
 
-1. 使用 `pip install -r requirements.txt`
+1. 安装依赖 `pip install -r requirements.txt`
+
+```py
+fastapi==0.65.0
+# git仓库作为依赖
+git+ssh://git@x.x.x.x/group/logtrace.git@v0.1.1
+```
 
 #### 发布到pypi
 > [Official : about package](https://packaging.python.org/guides/distributing-packages-using-setuptools/?highlight=pypirc#id78)
