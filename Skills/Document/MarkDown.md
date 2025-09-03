@@ -19,12 +19,13 @@ categories:
         - 1.2.6. [头信息](#头信息)
         - 1.2.7. [代码块](#代码块)
     - 1.3. [流程图](#流程图)
+        - 1.3.1. [Mermaid](#mermaid)
     - 1.4. [公式](#公式)
     - 1.5. [SVG](#svg)
     - 1.6. [Github](#github)
 - 2. [转换](#转换)
 
-💠 2025-06-11 17:47:44
+💠 2025-09-03 16:55:08
 ****************************************
 # Markdown
 > [Github: markdown](https://guides.github.com/features/mastering-markdown/) 
@@ -117,6 +118,11 @@ categories:
 
 ## 流程图
 - [plantUML](http://plantuml.com)
+
+### Mermaid
+> [Mermaid | Diagramming and charting tool](https://mermaid.js.org/)  
+
+Cursor输出流程图格式，飞书也支持
 
 ## 公式
 > [mathjax/MathJax: Beautiful and accessible math in all browsers](https://github.com/mathjax/MathJax)  
