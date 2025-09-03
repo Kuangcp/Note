@@ -64,7 +64,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2025-06-11 17:47:44
+💠 2025-09-04 01:10:43
 ****************************************
 # Linux网络管理
 
@@ -845,6 +845,7 @@ _问题场景_
 1. 设置密码 `x11vnc -storepasswd`
 1. 使用密码启动 `x11vnc -auth guess -once -loop -noxdamage -repeat -rfbauth ~/.vnc/passwd -rfbport 5900 -shared`
     - 设置分辨率 `-geometry 1280×1024`
+1. x11vnc  -auth /home/xxxxxxxxxx/.Xauthority -display :0
 
 1. 客户端 vnc-viewer(任意) 输入 ip 即可连接 
 
