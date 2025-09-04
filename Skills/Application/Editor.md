@@ -40,7 +40,7 @@ categories:
 - 3. [十六进制 Hex](#十六进制-hex)
 - 4. [EditorConfig](#editorconfig)
 
-💠 2025-07-21 20:20:05
+💠 2025-09-04 20:00:09
 ****************************************
 # 文本编辑器
 
@@ -170,7 +170,7 @@ _个人配置_
 1. PlantUML
 1. Markdown PDF
 1. Draw.io Integration
-1. vscode-mindmap
+1. vscode-mindmap  `eightHundreds`
 1. rainbow csv 
 1. Office Viewer 类似 Typora
 1. Docker 微软推出
