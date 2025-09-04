@@ -29,6 +29,7 @@ categories:
     - 3.3. [搭建本地镜像仓库](#搭建本地镜像仓库)
         - 3.3.1. [Push over HTTP](#push-over-http)
     - 3.4. [基础命令](#基础命令)
+        - 3.4.1. [prune](#prune)
     - 3.5. [镜像](#镜像)
     - 3.6. [容器](#容器)
         - 3.6.1. [ps](#ps)
@@ -58,7 +59,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2025-05-30 16:46:34
+💠 2025-09-04 18:16:06
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -277,6 +278,8 @@ Environment="NO_PROXY=your-registry.com,10.10.10.10,*.example.com"
 _登录镜像仓库_
 - 登录hub.docker ：`docker login ` 或者 `docker login -u username -p password`
 - 登录时速云：`sudo docker login index.tenxcloud.com`
+
+### prune
 
 - 清理全部未使用的资源 `docker system prune -a` 它会删除所有未使用的容器、网络、镜像（包括悬空的和未使用的镜像）以及存储卷。此操作不可逆，执行前需谨慎确认。
     - 删除未使用的容器：docker container prune

@@ -41,7 +41,7 @@ categories:
         - 1.10.4. [热部署](#热部署)
         - 1.10.5. [运行性能优化](#运行性能优化)
 
-💠 2025-01-17 19:59:46
+💠 2025-09-04 18:16:06
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -139,6 +139,8 @@ JVM参数 -D 临时设置配置
         #  一系列配置
     ```
 - 多文件存放不同环境配置 `application-{profile}.yml`
+
+- jvm参数指定profile： -Dspring.profiles.active=dev
 
 #### yml和properties结合
 - 格式：`application-{profile}.properties`
