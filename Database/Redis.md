@@ -28,6 +28,9 @@ categories:
     - 3.6. [JSON](#json)
     - 3.7. [Stream](#stream)
     - 3.8. [GEO地理位置](#geo地理位置)
+    - 3.9. [时间序列](#时间序列)
+    - 3.10. [向量 预览版](#向量-预览版)
+    - 3.11. [概率性数据结构](#概率性数据结构)
 - 4. [Scan](#scan)
 - 5. [Pipelining](#pipelining)
 - 6. [Pub/Sub发布和订阅](#pubsub发布和订阅)
@@ -48,7 +51,7 @@ categories:
     - 10.2. [缓存击穿](#缓存击穿)
     - 10.3. [缓存穿透](#缓存穿透)
 
-💠 2025-05-09 14:24:14
+💠 2025-09-04 14:55:42
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -248,6 +251,12 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 - HSCAN
 - HSTRLEN
 
+7.4新增
+
+- HGETDEL – 获取哈希字段并删除它们
+- HGETEX – 获取哈希字段并可选设置它们的过期时间
+- HSETEX – 设置哈希字段并可选设置它们的过期时间
+
 ## JSON
 > [JSON | Docs](https://redis.io/docs/latest/develop/data-types/json/)`Redis6开始原生支持JSON操作`  
 
@@ -264,6 +273,20 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 - GEORADIUS
 - GEORADIUSBYMEMBER
 - GEOHASH
+
+
+## 时间序列
+> [Time series | Docs](https://redis.io/docs/latest/develop/data-types/timeseries/)  
+
+## 向量 预览版
+> [Redis vector sets | Docs](https://redis.io/docs/latest/develop/data-types/vector-sets/)  
+
+## 概率性数据结构
+
+- Bloom filter 和 Cuckoo filter——用于检查给定值是否已在数据流中出现过 
+- Count-min sketch——用于估计给定值在数据流中出现的次数
+- Top-k——用于查找数据流中最常见的值
+- t-digest——用于查询数据流中有多少比例的值小于/大于给定值。
 
 ************************
 # Scan 

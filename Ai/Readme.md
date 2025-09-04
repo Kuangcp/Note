@@ -8,3 +8,6 @@
 > [ollama/ollama](https://github.com/ollama/ollama/tree/main)  
 
 可以像Docker一样一层层自定义模型
+
+# Java生态
+LangChain4j 和 Spring AI 

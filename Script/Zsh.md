@@ -18,7 +18,7 @@ categories:
     - 4.2. [主题](#主题)
         - 4.2.1. [自己定制](#自己定制)
 
-💠 2024-11-14 23:33:08
+💠 2025-09-04 14:55:42
 ****************************************
 # Zsh
 > [arch zsh wiki](https://wiki.archlinux.org/index.php/Zsh)
@@ -75,11 +75,7 @@ categories:
 - `推荐` powerlevel10k **性能强劲，交互式配置**
     - [Github](https://github.com/romkatv/powerlevel10k)
     - install nerd-fonts-meslo-lg 
-
-- powerlevel9k
-    - [Github Doc](https://github.com/bhilburn/powerlevel9k/wiki/Install-Instructions#option-2-install-for-oh-my-zsh)
-    - `git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k`
-    - `powerlevel9k/powerlevel9k`
+    - 调整 分支展示长度 修改 ~/.p10k.zsh 
 
 - Bullet Train `桌面在用 bullet-train` 
     - [Github repo](https://github.com/caiogondim/bullet-train.zsh) |  [必需的符号字体](https://github.com/powerline/powerline)

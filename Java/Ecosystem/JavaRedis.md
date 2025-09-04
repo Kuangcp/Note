@@ -14,13 +14,13 @@ categories:
     - 1.3. [Lettuce](#lettuce)
     - 1.4. [vertx-redis-client](#vertx-redis-client)
 
-💠 2024-09-14 11:51:16
+💠 2025-09-04 14:55:42
 ****************************************
 # Java 使用 Redis
 > [Official List](https://redis.io/clients#java)
 
 ## Jedis
-> [Github: Jedis](https://github.com/xetorthio/jedis) 简单直接 
+> [Github: Jedis](https://github.com/xetorthio/jedis) 简单直接，同步式Api设计 
 
 [JedisUtilsTest.java](https://github.com/Kuangcp/Maven_SSM/blob/master/src/test/java/redis/JedisUtilTest.java)
 
@@ -57,7 +57,7 @@ categories:
 ## Lettuce
 > [Official](https://lettuce.io/) | [Github:](https://github.com/lettuce-io/lettuce-core)
 
-和 Spring 结合紧密，Spring Data Redis 的默认实现， 没有Jedis简洁
+和 Spring 结合紧密，Spring Data Redis 的默认实现， 没有Jedis简洁，异步式Api设计
 
 > 注意
 - 当Redis集群节点信息变更时，默认的策略不保证会使用最新的节点数据，需要设置为周期更新节点信息 [Refreshing the cluster topology view](https://github.com/redis/lettuce/wiki/Redis-Cluster#user-content-refreshing-the-cluster-topology-view)
