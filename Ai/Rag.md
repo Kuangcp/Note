@@ -82,9 +82,14 @@ categories:
 
 > [RAG最佳实践 - 知乎](https://zhuanlan.zhihu.com/p/5834624096)  
 > [Searching for Best Practices in Retrieval-Augmented Generation](https://arxiv.org/pdf/2407.01219)  
-
-[RAG 全流程](https://waytoagi.feishu.cn/wiki/QBssw7z4oiGS40kDlltcjozBnxc)
+> [RAG 全流程](https://waytoagi.feishu.cn/wiki/QBssw7z4oiGS40kDlltcjozBnxc)  
 
 # 难题
-## 无信息输入
-> 例如：给定了体检报告，然后用户提问：解读下这个报告。这句话在R阶段找不到有效的信息 模糊性太大
+## 用户无有效信息输入
+> 例如：没有对话前文时，给定了体检报告文件，然后用户提问：解读下这个报告。
+
+- 这句话在R阶段找不到任何有效的信息 模糊性太大，即使做改写也没有方向可以调整,导致G阶段出现幻觉
+    - 考虑：改写阶段 结合任何可以利用的特异信息（用户档案，地域，报告元数据：类别，疾病）
+    - 考虑：报告预处理精简为一段，R阶段无有用信息时，也能将精简信息给到G阶段
+
+## 专业性太强
