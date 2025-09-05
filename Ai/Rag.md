@@ -2,6 +2,7 @@
 title: Rag
 date: 2025-04-30 11:30:51
 tags: 
+    - RAG
 categories: 
 ---
 
@@ -13,7 +14,7 @@ categories:
 - 2. [难题](#难题)
     - 2.1. [无信息输入](#无信息输入)
 
-💠 2025-09-03 14:52:41
+💠 2025-09-05 11:00:47
 ****************************************
 # RAG
 > [[Large Language Models with Semantic Search] - 引言與關鍵字搜尋Keyword/lexical Search - HackMD](https://hackmd.io/@YungHuiHsu/rku-vjhZT)  
@@ -39,7 +40,26 @@ categories:
 ## Rag 评测
 > [RAG 评测调研：框架、指标和方法 | EvalScope](https://evalscope.readthedocs.io/zh-cn/latest/blog/RAG/RAG_Evaluation.html)  
 
-指标：召回率
+> “推荐”其实就是没有检索词输入时的搜索
+
+> [推荐策略中的“召回”](https://www.woshipm.com/pd/2051274.html)  
+> [精确率 召回](https://refusea.com/?p=1546)  
+
+如果有 1000 邮件需要检测，算法检测出有 800 垃圾邮件，实际这 800 里真正的垃圾邮件是 600，同时算法还遗漏了 50 垃圾邮件。那么召回率和精确率是多少？怎么计算的？
+
+在这个例子中，我们可以先定义以下几个概念：
+
+    真正例（True Positive，TP）：算法正确地预测为垃圾邮件的邮件数量，即600封。
+    假正例（False Positive，FP）：算法错误地预测为垃圾邮件的邮件数量，即800（算法预测为垃圾邮件的数量）- 600（真正的垃圾邮件数量）= 200封。
+    假反例（False Negative，FN）：算法错误地预测为非垃圾邮件的邮件数量，即遗漏的垃圾邮件数量，即50封。
+
+根据这些定义，我们可以计算召回率和精确率：
+
+    召回率（Recall）= 真正例 / (真正例 + 假反例) = 600 / (600 + 50) = 0.923，或者说92.3%。
+    精确率（Precision）= 真正例 / (真正例 + 假正例) = 600 / (600 + 200) = 0.75，或者说75%。
+
+所以，这个垃圾邮件检测算法的召回率是92.3%，精确率是75%。
+
 
 ## 实践
 
