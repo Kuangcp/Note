@@ -14,8 +14,8 @@
 
 |  |  |  |  |  |  |
 |:----|:----|:----|:----|:----|:----|
-| 基石 | [ 算法 ](/Algorithm/Algorithm.md) | [ 字符编码 ](/Skills/CS/CharacterEncoding.md) | [ 计算机基础 ](/Skills/CS/Computer.md) | [ 网络 ](/Skills/Network/) | 
-| 应用 | [ 正则表达式 ](/Skills/RegularExpression.md) | [ 日期与时间 ](/Skills/CS/Time.md) | [ 软考相关 ](/Skills/SoftwareDesignEngineer.md) | 
+| 基石 | [ 算法 ](/Algorithm/Algorithm.md)  | [ 计算机基础 ](/Skills/CS/Computer.md) | [ 网络 ](/Skills/Network/)  | 
+| 应用 | [ 字符编码 ](/Skills/CS/CharacterEncoding.md) | [ 日期与时间 ](/Skills/CS/Time.md) | [ 软考相关 ](/Skills/SoftwareDesignEngineer.md) | 
 | 版本控制 | [ Git实践细节 ](/Skills/Vcs/GitAction.md) | [ Git进阶 ](/Skills/Vcs/GitAdvance.md) | [ Git基础 ](/Skills/Vcs/GitBase.md) | [ Git协作 ](/Skills/Vcs/GitTeam.md) | [ Svn ](/Skills/Vcs/Svn.md) |
 | 对比 | [ 编辑器对比 ](/Skills/Application/Editor.md) | [ Web浏览器对比 ](/Skills/Application/WebBrowser.md) | 
 

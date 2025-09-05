@@ -11,10 +11,13 @@ categories:
 - 1. [RAG](#rag)
     - 1.1. [Rag 评测](#rag-评测)
     - 1.2. [实践](#实践)
+        - 1.2.1. [FastGPT](#fastgpt)
+        - 1.2.2. [Dify](#dify)
 - 2. [难题](#难题)
-    - 2.1. [无信息输入](#无信息输入)
+    - 2.1. [用户无有效信息输入](#用户无有效信息输入)
+    - 2.2. [专业性太强](#专业性太强)
 
-💠 2025-09-05 11:00:47
+💠 2025-09-05 11:32:24
 ****************************************
 # RAG
 > [[Large Language Models with Semantic Search] - 引言與關鍵字搜尋Keyword/lexical Search - HackMD](https://hackmd.io/@YungHuiHsu/rku-vjhZT)  
@@ -83,6 +86,21 @@ categories:
 > [RAG最佳实践 - 知乎](https://zhuanlan.zhihu.com/p/5834624096)  
 > [Searching for Best Practices in Retrieval-Augmented Generation](https://arxiv.org/pdf/2407.01219)  
 > [RAG 全流程](https://waytoagi.feishu.cn/wiki/QBssw7z4oiGS40kDlltcjozBnxc)  
+
+### FastGPT
+> [知识库基础原理介绍](https://doc.fastgpt.cn/docs/introduction/guide/knowledge_base/RAG)  
+
+使用PG实现向量存储，文档存储在MongoDB，可以二开增加全文检索（ES）
+
+- 入库：规则切分段落，大模型理解生成QA对，QA对
+- 向量化： 选择和更换对应模型，更换需要重新索引入向量库
+- 召回：向量，全文，混合检索（可以单独设置 全文和向量的阈值）
+
+### Dify
+
+混合检索时，只能调节全文和向量的占比权重，无法单独设置阈值，只能设置统一阈值
+
+************************
 
 # 难题
 ## 用户无有效信息输入

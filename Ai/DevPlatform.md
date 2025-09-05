@@ -16,7 +16,7 @@ categories:
     - 3.3. [RagFlow](#ragflow)
         - 3.3.1. [Tips](#tips)
 
-💠 2025-05-30 16:46:34
+💠 2025-09-05 11:32:24
 ****************************************
 # 开发平台
 
@@ -41,6 +41,8 @@ categories:
 > [一款纯 js 实现的大模型应用服务 FastGPT 解读 - 易迟的博客 | Bryan Blog](https://hustyichi.github.io/2024/07/04/fastgpt/)  
 > [FastGPT解密 - cumber的专栏 - 掘金](https://juejin.cn/column/7350107540326236169)  
 
+> [FastGPT Rag模块](/Ai/Rag.md#fastgpt)  
+
 ## Dify
 > [Dify | Dify](https://docs.dify.ai/zh-hans)  
 
@@ -49,6 +51,7 @@ categories:
 
 通常是 node_started text_chunk node_finished workflow_finished。 流式回复通过text_chunk实现，但是目前存在bug在复杂的if流程中 chunk可能会被合并输出，达不到流效果。
 
+> [Dify Rag模块](/Ai/Rag.md#dify)  
 ## RagFlow
 > [infiniflow/ragflow: RAGFlow is an open-source RAG (Retrieval-Augmented Generation) engine based on deep document understanding.](https://github.com/infiniflow/ragflow?tab=readme-ov-file)  
 
