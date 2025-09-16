@@ -78,7 +78,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2025-04-30 11:30:56
+💠 2025-09-16 17:08:17
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/) | [Source Code](https://download.java.net/openjdk/jdk8/)  
@@ -1189,6 +1189,8 @@ This class models a quantity or amount of time in terms of seconds and nanosecon
 It can be accessed using other duration-based units, such as minutes and hours.
 
 > [How to model java.time.duration in Mysql Database](https://stackoverflow.com/questions/28427525/how-to-model-java-time-duration-in-mysql-database)
+
+Duration.between(startTime, endTime);
 
 ## Period
 > 类似于Duration, 不同点是 date-based 

@@ -45,7 +45,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [常用代码片段](#常用代码片段)
 
-💠 2025-04-30 11:30:56
+💠 2025-09-16 17:08:17
 ****************************************
 # 学习Shell
 > [Shell 编程之语法基础](https://linuxtoy.org/archives/shell-programming-basic.html) | [Shell 编程之执行过程](https://linuxtoy.org/archives/shell-programming-execute.html)  
@@ -152,6 +152,19 @@ echo  printf
 
 *****************
 ## 数据类型
+
+
+> [shell产生随机数七种方法的实现 - 晴云孤魂 - 博客园](https://www.cnblogs.com/cnhack/articles/17164650.html)  
+
+- `awk 'BEGIN{srand();print rand()*100+1}'`
+- `echo $RANDOM`
+- 时间
+    ```
+        date +%s%N #生成19位数字，1287764807051101270
+        date +%s%N | cut -c6-13 #取八位数字，21793709
+        date +%s%N | md5sum | head -c 8 #八位字母和数字的组合，87022fda
+    ```
+
 ### 整型
 
 - 自增：
