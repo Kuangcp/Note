@@ -38,7 +38,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2025-09-03 14:52:41
+💠 2025-09-17 14:39:16
 ****************************************
 # GC
 > Java Garbage Collection
@@ -537,13 +537,14 @@ ConcGCThreads的默认值不同GC策略略有不同，CMS下是(ParallelGCThread
 ************************
 
 ## ShenandoahGC
-> JDK12  [wiki: ShenandoahGC](https://wiki.openjdk.java.net/display/shenandoah/Main)
+> JDK12引入  [wiki: ShenandoahGC](https://wiki.openjdk.java.net/display/shenandoah/Main)
 
 `-XX:+UnlockExperimentalVMOptions  -XX:+UseShenandoahGC`
 
 > [参考: JDK12 ShenandoahGC小试牛刀](https://juejin.im/post/5c934a5d5188252dad05d82a)  
 > [Has anyone given Shenandoah GC a try yet? How was your experience? : r/feedthebeast](https://www.reddit.com/r/feedthebeast/comments/euw3k2/has_anyone_given_shenandoah_gc_a_try_yet_how_was/)  
 
+> [JDK25支持分代 JEP 521: Generational Shenandoah](https://openjdk.org/jeps/521)   
 
 ************************
 

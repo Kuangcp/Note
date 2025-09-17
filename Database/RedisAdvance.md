@@ -44,7 +44,7 @@ categories:
 - 8. [命令实现原理](#命令实现原理)
     - 8.1. [Scan](#scan)
 
-💠 2025-05-09 14:24:14
+💠 2025-09-17 14:39:16
 ****************************************
 # Redis底层数据结构
 ## SDS
@@ -131,6 +131,12 @@ Redis 的跳跃表由 redis.h/zskiplistNode 和 redis.h/zskiplist 两个结构�
 
 ## ACL
 > [ACL | Docs](https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/)`Redis6开始支持用户权限控制`  
+
+- ACL LIST
+    - 新建的Redis能看到以下输出 `user default on nopass ~* +@all` 默认用户 无密码，操作所有key，拥有所有命令权限
+- ACL SETUSER 新建和修改用户
+    - 用户alice对cached前缀key只有get命令权限： ` ACL SETUSER alice on >p1pp0 ~cached:* +get `
+    - cached前缀的key拥有全部命令权限：` ACL SETUSER alice on >p1pp0 ~cached:* +@all `
 
 ## 服务器
 
