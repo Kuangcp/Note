@@ -137,6 +137,10 @@ Redis 的跳跃表由 redis.h/zskiplistNode 和 redis.h/zskiplist 两个结构�
 - ACL SETUSER 新建和修改用户
     - 用户alice对cached前缀key只有get命令权限： ` ACL SETUSER alice on >p1pp0 ~cached:* +get `
     - cached前缀的key拥有全部命令权限：` ACL SETUSER alice on >p1pp0 ~cached:* +@all `
+    - 注意在脚本使用方面 `+@all` 也不是全部权限，需要额外声明，例如Redisson中的锁使用到的命令 
+        - `ACL SETUSER <your_username> on >password +@all ~* &* +@scripting +@pubsub +EVAL +EVALSHA +PUBLISH +SUBSCRIBE +SCRIPT|EXISTS +SCRIPT|LOAD +SCRIPT|FLUSH`
+- ACL whoami 
+
 
 ## 服务器
 
