@@ -8,18 +8,18 @@ categories:
     - Java
 ---
 
-**目录 start**
+💠
 
-1. [AOP](#aop)
-    1. [动态代理](#动态代理)
-    1. [基本概念](#基本概念)
-    1. [基本配置](#基本配置)
-    1. [注意](#注意)
-        1. [1 Spring AOP还是完全用AspectJ？](#1-spring-aop还是完全用aspectj)
-        1. [2 Spring AOP中使用@AspectJ还是XML？](#2-spring-aop中使用@aspectj还是xml)
-        1. [3 混合切面类型](#3-混合切面类型)
+- 1. [AOP](#aop)
+    - 1.1. [动态代理](#动态代理)
+    - 1.2. [基本概念](#基本概念)
+    - 1.3. [基本配置](#基本配置)
+- 2. [注意](#注意)
+    - 2.1. [1 Spring AOP还是完全用AspectJ？](#1-spring-aop还是完全用aspectj)
+    - 2.2. [2 Spring AOP中使用@AspectJ还是XML？](#2-spring-aop中使用@aspectj还是xml)
+    - 2.3. [3 混合切面类型](#3-混合切面类型)
 
-**目录 end**|_2020-08-26 18:31_|
+💠 2025-09-26 19:39:25
 ****************************************
 # AOP
 > Aspect Oriented Programming  面向切面编程
@@ -81,7 +81,7 @@ categories:
 </aop:config>
 ```
 
-## 注意
+# 注意
 - 要注意环绕的写法 `public void around(ProceedingJoinPoint m)throws Throwable{`  
     - [Spring AOP中的around](https://www.oschina.net/code/snippet_246557_9205)  
 
@@ -93,7 +93,9 @@ categories:
 
 -  在Spring的配置文件中，所有的切面和通知器都必须定义在` <aop:config>` 元素内部。 一个`application context`可以包含多个 `<aop:config>`。 一个` <aop:config>` 可以包含 `pointcut`， `advisor` 和 `aspect` 元素（注意它们必须按照这样的顺序进行声明）。 
 
-### 1 Spring AOP还是完全用AspectJ？
+- 当需要调用当前类被AOP增强的方法时，可以通过 `(PaperSearchService) AopContext.currentProxy()`，注意AOP上下文要一致，跨线程需要处理传递问题。
+
+## 1 Spring AOP还是完全用AspectJ？
 做能起作用的最简单的事。Spring AOP比完全使用AspectJ更加简单，因为它不需要引入AspectJ的编译器／织入器到你开发和构建过程中。 
 如果你仅仅需要在Spring bean上通知执行操作，那么Spring AOP是合适的选择。如果你需要通知domain对象或其它没有在Spring容器中 
 管理的任意对象，那么你需要使用AspectJ。如果你想通知除了简单的方法执行之外的连接点（如：调用连接点、字段get或set的连接点等等）， 
@@ -104,7 +106,7 @@ categories:
 Eclipse，或者在你的应用中只有很少的切面并没有作为一个主要的角色，你或许应该考虑使用@AspectJ风格 
 并在你的IDE中附加一个普通的Java编辑器，并且在你的构建脚本中增加切面织入（链接）的段落。
 
-### 2 Spring AOP中使用@AspectJ还是XML？
+## 2 Spring AOP中使用@AspectJ还是XML？
 
 如果你选择使用Spring AOP，那么你可以选择@AspectJ或者XML风格。总的来说，如果你使用Java 5， 我们建议使用@AspectJ风格。
 显然如果你不是运行在Java 5上，XML风格是最佳选择。XML和@AspectJ 之间权衡的细节将在下面进行讨论。
@@ -134,7 +136,7 @@ XML风格有两个缺点。第一是它不能完全将需求实现的地方封�
 - @AspectJ风格支持其它的实例模型以及更丰富的连接点组合。它具有将将切面保持为一个模块单元的优点。 还有一个优点就是@AspectJ切面能被Spring AOP和AspectJ两者都理解 
 - 所以如果稍后你认为你需要AspectJ 的能力去实现附加的需求，那么你非常容易转移到基于AspectJ的途径。总而言之，我们更喜欢@AspectJ风格只要你有切面 去做超出简单的“配置”企业服务之外的事情。
 
-### 3 混合切面类型
+## 3 混合切面类型
 我们完全可以混合使用以下几种风格的切面定义：使用自动代理的@AspectJ 风格的切面，`schema-defined <aop:aspect>` 的切面，
 和用 `<aop:advisor>` 声明的advisor，甚至是使用Spring 1.2风格的代理和拦截器。
 由于以上几种风格的切面定义的都使用了相同的底层机制，因此可以很好的共存。
