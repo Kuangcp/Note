@@ -32,7 +32,7 @@ categories:
         - 1.5.2. [i386-pc not found](#i386-pc-not-found)
     - 1.6. [崩溃](#崩溃)
 
-💠 2025-05-26 20:49:09
+💠 2025-10-10 09:39:11
 ****************************************
 # Linux桌面发行版遇到的问题
 
@@ -90,7 +90,9 @@ categories:
 - 查看显卡列表  `lspci -vnn | grep '\''[030[02]\]'`
 - 测试显卡 FPS `glxgears`
 
-休眠后的唤起 vscode vivaldi chrome 均出现假死半分钟后才恢复的情况，禁用硬件加速可避免
+休眠后的唤醒
+- vscode vivaldi chrome 均出现假死半分钟后才恢复的情况，禁用硬件加速可避免
+- 系统重启了，通过last可以看到tty7 crash了，自动启动了新的tty7，所有软件都停了
 
 #### Nvidia
 > [NVIDIA](https://wiki.archlinux.org/index.php/NVIDIA_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E5.AE.89.E8.A3.85)
@@ -171,6 +173,11 @@ fc -R .zsh_history
 
 [gist](https://gist.github.com/AndersonIncorp/3acb1d657cb5eba285f4fb31f323d1c3?permalink_comment_id=3310958)
 
+```
+set prefix=(hd0,msdos7)/grub
+insmod normal 
+normal
+```
 
 ************************
 
