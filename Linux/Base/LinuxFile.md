@@ -68,7 +68,7 @@ categories:
     - 6.2. [善用alias](#善用alias)
     - 6.3. [desktop文件](#desktop文件)
 
-💠 2025-05-19 17:31:44
+💠 2025-10-10 14:48:14
 ****************************************
 
 # IO
@@ -409,8 +409,18 @@ export LANG="zh_CN.UTF-8"
 
 > [Btrfs - Manjaro](https://wiki.manjaro.org/index.php/Btrfs)`Manjaro25开始使用Btrfs替换ext4作为默认选项。`  
 
-TODO 补全使用
+- 查看分区实际容量情况 btrfs filesystem df / ， 会和 df / 差异很大，因为btrs自己做了压缩和元数据管理
+    - 快占用满时可以通过balance优化空间占用 btrfs balance start / 但是很耗时，可以加过滤条件只处理使用率低的块
+        - `-dusage=<percent>` ： 只处理使用率低于指定百分比的数据块组。
+        - `-musage=<percent>` ： 只处理使用率低于指定百分比的元数据块组。
+        - `-susage=<percent>` ： 只处理使用率低于指定百分比的系统块组（需要 -f 选项）。
+- btrfs check /dev/sda1 但是需要非挂载的分区，如果是系统分区，只能从U盘启动新系统用U盘内的btrfs工具来check 和 repair
 
+快照管理
+- btrfs subvolume list /
+- ls -l /path/to/snapshot
+- btrfs subvolume delete /path/to/snapshot
+- 以及使用 btrfs-snapshot，snapper  工具进行自动清理
 
 ### Tmpfs 
 > 虚拟内存文件系统 [wiki](https://wiki.archlinux.org/index.php/Tmpfs)
