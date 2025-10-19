@@ -18,7 +18,7 @@ categories:
     - 4.3. [Google拼音](#google拼音)
             - 4.3.0.1. [小小输入法](#小小输入法)
 
-💠 2025-05-14 11:55:13
+💠 2025-10-19 10:18:41
 ****************************************
 # IME
 > 输入法
@@ -30,21 +30,25 @@ categories:
 
 > [wiki: fcitx](https://wiki.archlinux.org/index.php/Fcitx_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
-`~/.xprofile`
+~/.xprofile
+
 ```sh
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
+export INPUT_METHOD=fcitx
+export SDL_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 ```
 
 - 设置里面 Global config -> Program -> Active 
+- fcitx5-diagnose 诊断配置是否有问题
 
 ## Tips 
 > fcitx + sogou 输入法经常出现 `单CPU 100%满载`
 - 在搜狗输入法 中打开 fcitx 设置, 插件中 关闭 搜狗云 插件, 即可解决问题
 
 > 特定软件 无法输入中文，无法使用剪切板， 意味着fcitx未激活
-需要看软件是否支持进程内加脚本执行，例如 IDEA的 idea.sh WPS的 /usr/bin/et , 都可以通过在脚本首行添加 source ~/.xprofile 解决问题
+需要看软件是否支持进程内加脚本执行，例如 IDEA的 idea.sh， WPS的 /usr/bin/et , 都可以通过在脚本首行添加 source ~/.xprofile 解决问题
 
 ************************
 
