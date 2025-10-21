@@ -31,7 +31,7 @@ categories:
     - 3.6. [SSE](#sse)
 - 4. [Tips](#tips)
 
-💠 2025-02-19 16:52:01
+💠 2025-10-21 21:22:16
 ****************************************
 
 # SpringMVC
@@ -358,6 +358,13 @@ org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnV
 org.springframework.http.converter.StringHttpMessageConverter#writeInternal
 sun.nio.cs.StreamEncoder#implWrite
 ```
+
+通常SSE对象都是先返回，然后异步推送消息，一定要避免先调用complete方法后 再执行send，而且SSE对象没有判断complete是否关闭的api，业务逻辑复杂后也会容易重复调用complete。
+- 排查问题可以设置 onCompletion 回调，把栈打出来，能找到调用点（但是不一定准确）
+
+- 常见的报错是 `ResponseBodyEmitter has already completed`
+- 还有概率出现NPE `send error java.lang.NullPointerException: Cannot invoke "org.apache.tomcat.util.net.SocketWrapperBase.flush(boolean)" because "this.this$0.socketWrapper" is null`
+    - 通过加回调输出栈日志后， 看到的调用栈是MVC的DeferredResult，但是实际上调用complete的是okhttp的线程（okhttp用于从模型端接收SSE事件，然后mvc再转发给前端） `原因待排查，说明不是同步调用通知，而是异步的信号通知实现`
 
 > [javascript - Is an EventSource (SSE) supposed to try to reconnect indefinitely? - Stack Overflow](https://stackoverflow.com/questions/24564030/is-an-eventsource-sse-supposed-to-try-to-reconnect-indefinitely)  
 

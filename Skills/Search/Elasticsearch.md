@@ -20,7 +20,7 @@ categories:
 - 6. [分词器](#分词器)
 - 7. [向量搜索](#向量搜索)
 
-💠 2025-04-30 11:30:56
+💠 2025-10-21 21:22:16
 ****************************************
 # Elasticsearch
 > [Official Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)  
@@ -55,7 +55,7 @@ categories:
     # kibana
     docker run --name kibana --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.13.2
 
-    # ES启动完成后会有如下输出 elastic的初始密码以及Kibana的Token
+    # ES启动完成后会有如下输出 elastic的初始密码以及Kibana的TokenElas
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━                                                                            
     ✅ Elasticsearch security features have been automatically configured!                                                                                                                                               
     ✅ Authentication is enabled and cluster connections are encrypted.    
