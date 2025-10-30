@@ -76,7 +76,7 @@ categories:
     - 8.2. [gitattributes](#gitattributes)
 - 9. [自定义插件](#自定义插件)
 
-💠 2024-12-05 18:21:22
+💠 2025-10-30 18:57:47
 ****************************************
 
 # Git基础
@@ -152,6 +152,9 @@ categories:
 > [工具 详细](/Linux/Base/LinuxFile.md#比较文件内容)
 
 > [delta](https://github.com/dandavison/delta) `diff和分页查看git差异` 但是搜索的历史有bug丢数据，配置后忘了这回事还找了半天的less配置问题。
+
+git config --global --get diff.tool
+git config --global diff.tool meld
 
 ************************
 

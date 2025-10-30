@@ -21,7 +21,7 @@ categories:
 - 3. [Java中的编码](#java中的编码)
 - 4. [乱码](#乱码)
 
-💠 2024-09-09 17:25:40
+💠 2025-10-30 18:57:47
 ****************************************
 # 字符编码
 > [字符编码笔记：ASCII，Unicode 和 UTF-8](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html) | [阮一峰的文章有哪些常见性错误](https://www.v2ex.com/t/343634)
@@ -74,7 +74,7 @@ Unicode 是一个囊括了世界上所有字符的字符集，其中每一个字
 
 > 问题: 直接看, 看不到的字符, 可能带来一些坑
 
-|  |  |
+| 描述 | UTF-8 |
 |:----|:----|
 | 零宽间隔  zero-width space          | `U+200B` |
 | NO-BREAK SPACE                     | `U+C2A0` |

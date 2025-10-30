@@ -74,7 +74,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2025-09-17 14:39:16
+💠 2025-10-30 18:57:47
 ****************************************
 # 网络
 > [Java 网络](/Java/AdvancedLearning/JavaNetwork.md)  
@@ -532,9 +532,10 @@ function FindProxyForURL(url, host) {
 路由: traceroute
 
 ## 代理工具 
-> [Alternatives to Charles for Linux](https://alternativeto.net/software/charles/?platform=linux)
-- [whistle](https://github.com/avwo/whistle) `nodejs 平台的抓包工具`
+> [Alternatives to Charles for Linux](https://alternativeto.net/software/charles/?platform=linux)  
+> [whistle](https://github.com/avwo/whistle) `nodejs 平台的抓包工具`  
 > [hengyoush/kyanos: Visualize the time packets spend in the kernel, watch & analyze in command line.](https://github.com/hengyoush/kyanos)  
+> [Intercept, debug & build with HTTP](https://httptoolkit.com/)  
 
 ### Clash
 [Clash Fork](https://github.com/Ieooo/clash) [DryPeng/clashT](https://github.com/DryPeng/clashT)  
