@@ -42,7 +42,7 @@ categories:
 - 7. [数据库中间件](#数据库中间件)
 - 8. [图形化工具](#图形化工具)
 
-💠 2025-09-03 14:52:41
+💠 2025-11-05 17:04:21
 ****************************************
 # 数据库
 > [码农翻身:爱炫耀的数据库老头儿](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665514001&idx=1&sn=17b72c3e69db6c4277e3045c699b7b6b&chksm=80d67c52b7a1f5446020826841869221873f4578524181384592839d19c4810dc68807117e13&scene=21#wechat_redirect) `事务,undo日志`
@@ -205,11 +205,11 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 > [LedisDB](https://github.com/ledisdb/ledisdb) 基于LevelDB构建Redis协议的数据库实例
 
 ## 向量数据库
-- PostgreSQL： 支持向量插件
+> [向量数据库｜一文全面了解向量数据库的基本概念、原理、算法、选型](https://cloud.tencent.com/developer/article/2312534)
+
+- 跨界选手： PostgreSQL，Doris，Clickhouse, Bytehouse
 - [milvus](https://milvus.io/)
 - [chroma](https://github.com/chroma-core/chroma)
-
-> [向量数据库｜一文全面了解向量数据库的基本概念、原理、算法、选型](https://cloud.tencent.com/developer/article/2312534)
 
 ## 图数据库
 > [Note: 图数据库](/Database/Graph.md)  
