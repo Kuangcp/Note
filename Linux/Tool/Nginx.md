@@ -42,7 +42,7 @@ categories:
     - 7.5. [nuster](#nuster)
 - 8. [Tips](#tips)
 
-💠 2025-06-11 17:47:44
+💠 2025-11-12 23:49:56
 ****************************************
 # Nginx
 
@@ -323,14 +323,19 @@ _SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL n
       proxy_set_header Upgrade $http_upgrade;
       proxy_set_header Connection $connection_upgrade;
 
-      proxy_pass http://back_end;
-      # 默认是 1.0 不支持 keepAlive
+      proxy_pass http://back_end; # 末尾不能加任何uri
+      # 不设置的话 默认是 1.0 就会不支持 keepAlive
       proxy_http_version 1.1; 
       proxy_redirect off;
-      proxy_read_timeout 300s;
+      proxy_read_timeout 300s; # 大于心跳时间即可
+      proxy_buffering off;     # 关闭缓冲，实时帧，否则会出现ws消息业务意义上的粘包
+      proxy_cache off;         # 禁用缓存
     }
   }
 ```
+
+- 如果没有按这里的配置，单纯做proxy_pass配置 会出现只有101状态码 只代表“握手”成功，但是没有建立 WS 帧隧道
+- 可以通过在服务端执行 sudo tcpdump -i any -nn port 8888 来看是否有完整的握手和后续消息的tcp包
 
 > 绕过Grafana，免密登录，需要预先生成key
 ```ini

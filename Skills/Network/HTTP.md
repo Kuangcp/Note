@@ -42,7 +42,7 @@ categories:
     - 5.1. [CORS 跨域](#cors-跨域)
     - 5.2. [相关工具](#相关工具)
 
-💠 2025-08-22 09:52:21
+💠 2025-11-12 23:49:56
 ****************************************
 # HTTP
 > HyperText Transfer Protocol (超文本传输协议) 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -161,6 +161,8 @@ get 方式下的http请求会限制URL长度，会有多方面不同的限制 �
     - [Listing the contents of a remote ZIP archive, without downloading the entire file](https://rhardih.io/2021/04/listing-the-contents-of-a-remote-zip-archive-without-downloading-the-entire-file/) 无需获取完整压缩包就得到文件列表以及压缩包内部分文件下载
         - 通过传输部分字节解析zip包元信息再多次依据偏移量读取文件，从而获得文件列表和对应字节偏移值实现特定文件的下载
         - 大文件时会有效率的改善，小zip包以及文件数过多时都不适合。 并且要为每种压缩算法定制实现解析逻辑，而且可行的只有zip和7z
+- Host
+    - Nginx等应用，同一个80端口配置映射不同域名转发到不同的路径就依赖这个来识别的
 
 ************************
 
