@@ -77,11 +77,13 @@ categories:
 
 - RAG之前先做query分类
 - chunking方法很重要
-- 选择支持混合检索的向量数据库(语义检索+关键词检索)
+- 选择支持混合检索的向量数据库(语义检索+全文检索)
 - 用文档检索文档能提升召回效果
 - 文档重排效果显著
+    - 重排的输入需要做截断。 RAG 系统优化的核心——“截断策略（Cut-off Strategy）”和“模型原理”。
 - 如果召回量很大，记得先摘要再生成
 - 微调时混合相关和无关文档可以提升生成效果
+
 
 > [RAG最佳实践 - 知乎](https://zhuanlan.zhihu.com/p/5834624096)  
 > [Searching for Best Practices in Retrieval-Augmented Generation](https://arxiv.org/pdf/2407.01219)  
@@ -99,6 +101,12 @@ categories:
 ### Dify
 
 混合检索时，只能调节全文和向量的占比权重，无法单独设置阈值，只能设置统一阈值
+
+
+************************
+
+# 业务领域
+在医疗/科研领域的 RAG 系统中，**语义相关性（Semantic Relevance）**只是基础，**时效性（Recency）和权威性（Authority）**对于答案的质量至关重要。
 
 ************************
 
