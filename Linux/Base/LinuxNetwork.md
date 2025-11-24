@@ -64,7 +64,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2025-11-13 00:07:18
+💠 2025-11-24 22:27:23
 ****************************************
 # Linux网络管理
 
@@ -477,6 +477,7 @@ Zmap `在千兆网卡状态下，45 分钟内扫描全网络 IPv4 地址`
 - 设置POST请求 body `-d '{"title":"1","content":"1"}'`
     - 本地文件 `-d '@data.json'`
 - 上传文件 `curl -X POST -H "Content-Type: multipart/form-data" -F "file=@index.html" URL` 
+- basic auth `curl -u name:pwd url`
 
 > [参考: curl返回常见错误码](http://www.cnblogs.com/wainiwann/p/3492939.html)
 - [56错误码](https://stackoverflow.com/questions/10285700/curl-error-recv-failure-connection-reset-by-peer-php-curl)

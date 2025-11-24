@@ -19,19 +19,20 @@ categories:
 - 3. [内置变量](#内置变量)
 - 4. [配置使用](#配置使用)
     - 4.1. [静态资源Web服务器](#静态资源web服务器)
-    - 4.2. [反向代理多个服务](#反向代理多个服务)
-        - 4.2.1. [静态资源+反代理后端](#静态资源+反代理后端)
-        - 4.2.2. [前后端分离时避免跨域](#前后端分离时避免跨域)
-    - 4.3. [配置https](#配置https)
-        - 4.3.1. [自签发证书](#自签发证书)
-        - 4.3.2. [通过 certbot 配置 HTTPS](#通过-certbot-配置-https)
-    - 4.4. [配置Websocket反向代理](#配置websocket反向代理)
-    - 4.5. [代理-HTTP转发](#代理-http转发)
-    - 4.6. [防盗链](#防盗链)
-    - 4.7. [gzip](#gzip)
-    - 4.8. [负载均衡](#负载均衡)
-        - 4.8.1. [负载均衡策略](#负载均衡策略)
-    - 4.9. [SSE](#sse)
+    - 4.2. [4层转发 TCP/UDP](#4层转发-tcpudp)
+    - 4.3. [反向代理多个服务](#反向代理多个服务)
+        - 4.3.1. [静态资源+反代理后端](#静态资源+反代理后端)
+        - 4.3.2. [前后端分离时避免跨域](#前后端分离时避免跨域)
+    - 4.4. [配置https](#配置https)
+        - 4.4.1. [自签发证书](#自签发证书)
+        - 4.4.2. [通过 certbot 配置 HTTPS](#通过-certbot-配置-https)
+    - 4.5. [配置Websocket反向代理](#配置websocket反向代理)
+    - 4.6. [代理-HTTP转发](#代理-http转发)
+    - 4.7. [防盗链](#防盗链)
+    - 4.8. [gzip](#gzip)
+    - 4.9. [负载均衡](#负载均衡)
+        - 4.9.1. [负载均衡策略](#负载均衡策略)
+    - 4.10. [SSE](#sse)
 - 5. [Nginx Plus](#nginx-plus)
 - 6. [Keepalived](#keepalived)
 - 7. [同类应用](#同类应用)
@@ -42,7 +43,7 @@ categories:
     - 7.5. [nuster](#nuster)
 - 8. [Tips](#tips)
 
-💠 2025-11-12 23:49:56
+💠 2025-11-24 22:27:23
 ****************************************
 # Nginx
 
@@ -154,6 +155,26 @@ nginx提供Http服务，但是反向代理了HTTPS地址时 需要注意证书�
   ```
 如果有编码问题可配置成 `add_header Content-Type 'text/plain;charset=UTF-8';`
 `location ~* /.*\.(py|md|sql)${}`
+
+## 4层转发 TCP/UDP
+
+```ini
+# 和 http 同级 
+stream {
+    upstream backend {
+        server 192.168.1.100:3306 weight=1;
+        server 192.168.1.101:3306 weight=1;
+    }
+
+    server {
+        listen 3306;                 # 对外暴露的 TCP 端口
+        proxy_pass backend;          # 4 层转发
+        proxy_timeout 60s;           # 下游连接超时
+        proxy_connect_timeout 10s;   # 上游建连超时
+        so_keepalive on;             # TCP 保活
+    }
+}
+```
 
 ## 反向代理多个服务
 `配置反向代理`
