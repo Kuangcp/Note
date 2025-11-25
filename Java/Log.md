@@ -17,6 +17,7 @@ categories:
     - 3.1. [安全](#安全)
     - 3.2. [配置](#配置)
         - 3.2.1. [自定义Plugin](#自定义plugin)
+        - 3.2.2. [异常告警](#异常告警)
 - 4. [Logback](#logback)
     - 4.1. [配置理解](#配置理解)
         - 4.1.1. [根节点 <configuration> 属性](#根节点-<configuration>-属性)
@@ -26,7 +27,7 @@ categories:
         - 4.1.5. [获取时间戳字符串：<timestamp>](#获取时间戳字符串<timestamp>)
         - 4.1.6. [设置loger](#设置loger)
         - 4.1.7. [详解 Appender](#详解-appender)
-            - 4.1.7.1. [自定义 Appender](#自定义-appender)
+            - 4.1.7.1. [异常告警](#异常告警)
     - 4.2. [Logback MDC](#logback-mdc)
 - 5. [实践经验](#实践经验)
 - 6. [分析日志](#分析日志)
@@ -36,7 +37,7 @@ categories:
     - 7.1. [Filebeat](#filebeat)
     - 7.2. [K8s](#k8s)
 
-💠 2025-02-11 11:26:37
+💠 2025-11-25 11:14:23
 ****************************************
 # 日志系统
 > [码农翻身: 一个著名的日志系统是怎么设计出来的？ ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45&chksm=80d67bacb7a1f2ba38aa37620d273dfd7d7227667df556d36c84d125cafd73fef16464288cf9&scene=21#wechat_redirect)`深刻的理解了日志系统的来源以及相关关系`  
@@ -59,7 +60,7 @@ categories:
         - LogBack可以拿到正确的值, 但是在闭包中, 方法是混乱的
 
 ## MDC 
-> 使用 ThreadLocal 存储一些信息, 然后能在xml的pattern中直接引用, 省去了重复手动写 log
+> org.slf4j.MDC 使用 ThreadLocal 存储自定义信息, 然后能在xml的pattern中直接引用，统一管理，通常用于traceId传递
 
 > [Improved Java Logging with Mapped Diagnostic Context (MDC)](https://www.baeldung.com/mdc-in-log4j-2-logback)
 
@@ -74,7 +75,6 @@ categories:
 ## 配置
 ### 自定义Plugin
 > [java - How to Create a Custom Appender in log4j2? - Stack Overflow](https://stackoverflow.com/questions/24205093/how-to-create-a-custom-appender-in-log4j2)  
-> [java - 基于log4j2简易实现日志告警](https://segmentfault.com/a/1190000022741931)  
 
 1. log4j2.xml
 ```xml
@@ -104,6 +104,39 @@ packages 需配置为 自定义Appender 所在的目录
     }
 ```
 
+### 异常告警
+[java - 基于log4j2简易实现日志告警](https://segmentfault.com/a/1190000022741931)  
+
+```java
+    @Override
+    public void append(LogEvent event) {
+        if (event.getLevel().isLessSpecificThan(Level.WARN)) {
+            return;
+        }
+
+        String loggerName = event.getLoggerName();
+        Optional<Throwable> exOp = Optional.of(event).map(LogEvent::getThrown);
+        if (!exOp.isPresent()) {
+            return;
+        }
+        String patt = event.getMessage().getFormattedMessage();
+        Function<String, String> handleLast = v -> {
+            String[] arr = v.split("\\.");
+            return arr[arr.length - 1];
+        };
+        String exClass = exOp.map(Throwable::getClass).map(Class::getName).map(handleLast).orElse("");
+        String actClass = Optional.ofNullable(loggerName).map(handleLast).orElse("");
+
+        String exMsg = exOp.map(Throwable::getMessage).orElse("");
+        String finalMsg = actClass + ": " + exClass + " " + patt + exMsg;
+        if (StringUtils.isBlank(finalMsg)) {
+            return;
+        }
+
+        FeishuAlert alert = SpringUtils.getBean(FeishuAlert.class);
+        alert.sendAlert(finalMsg);
+    }
+```
 ************************
 
 > [Plugins :: Apache Log4j](https://logging.apache.org/log4j/2.x/manual/plugins.html)  2.0等高版本，额外需要配置注解处理
@@ -408,12 +441,51 @@ _4.另外还有SocketAppender、SMTPAppender、DBAppender、SyslogAppender、Sif
 
 ![模式图](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/pattern_type.jpg)
 
-#### 自定义 Appender
+#### 异常告警
+
 ```java
     /**
      * 可以用来做异常告警等附加逻辑
     */
-    public class ExceptionAlertAppender extends AppenderBase<ILoggingEvent>{}
+    @Override
+    protected void append(ILoggingEvent event) {
+        try {
+            Level level = event.getLevel();
+            if (level.isGreaterOrEqual(Level.ERROR)) {
+                logError(event);
+            }
+        } catch (Exception ex) {
+            throw new LogbackException(event.getFormattedMessage(), ex);
+        }
+    }
+
+    private void logError(ILoggingEvent event) {
+        ThrowableProxy info = (ThrowableProxy) event.getThrowableProxy();
+        if (info != null) {
+            Optional<Throwable> exOp = Optional.ofNullable(info.getThrowable());
+            if (!exOp.isPresent()) {
+                return;
+            }
+
+            Object message = event.getFormattedMessage();
+            String loggerName = event.getLoggerName();
+            ThreadPoolTaskExecutor pool = SpringUtil.getBean(ThreadPoolType.ASYNC_TASK);
+            pool.execute(() -> {
+                String name = exOp.map(Throwable::getClass).map(Class::getName).map(v -> {
+                    String[] arr = v.split("\\.");
+                    return arr[arr.length - 1];
+                }).orElse("");
+                String exMsg = exOp.map(Throwable::getMessage).orElse("");
+                String finalMsg = loggerName + ": " + name + " " + exMsg;
+                if (StringUtils.isNoneBlank(finalMsg)) {
+                    WxAlert alert = SpringUtil.getBean(WxAlert.class);
+                    alert.sendAlert(finalMsg);
+                }
+
+                log.info("alert: {}", loggerName + " : " + message);
+            });
+        }
+    }
 ```
 
 ************************
