@@ -20,7 +20,7 @@ categories:
 - 2. [发行版](#发行版)
 - 3. [Tips](#tips)
 
-💠 2025-11-27 13:48:36
+💠 2025-11-28 00:53:03
 ****************************************
 
 # Arch
@@ -138,6 +138,9 @@ pacman yay 升级某些包时需要留意是否需要全系统升级，单独升
 
 > CachyOS
 > [Manjaro](./Manjaro.md)  
+
+
+> [参考: Why CachyOS?](https://wiki.cachyos.org/cachyos_basic/why_cachyos/)  
 
 ************************
 
