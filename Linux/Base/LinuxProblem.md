@@ -33,7 +33,7 @@ categories:
         - 1.5.2. [i386-pc not found](#i386-pc-not-found)
     - 1.6. [崩溃](#崩溃)
 
-💠 2025-10-10 14:48:14
+💠 2025-11-28 01:45:38
 ****************************************
 # Linux桌面发行版遇到的问题
 
@@ -179,10 +179,57 @@ btrfs ext4 都可能出现问题，检查和修复的处理方式不一样
 
 [gist](https://gist.github.com/AndersonIncorp/3acb1d657cb5eba285f4fb31f323d1c3?permalink_comment_id=3310958)
 
+Windows 自动更新后的故障，开机需要手动指定boot分区后才能启动Linux
+
 ```
 set prefix=(hd0,msdos7)/grub
 insmod normal 
 normal
+```
+
+> 修复流程
+
+执行 fdisk -l 查看分区分配
+
+```sh
+Device         Boot     Start       End   Sectors   Size Id Type
+/dev/nvme0n1p1           2048 203611773 203609726  97.1G  7 HPFS/NTFS/exFAT
+/dev/nvme0n1p2      203612160 204799999   1187840   580M 27 Hidden NTFS WinRE
+/dev/nvme0n1p3      204802048 976773119 771971072 368.1G  f W95 Ext'd (LBA)
+/dev/nvme0n1p5      204804096 259973119  55169024  26.3G  7 HPFS/NTFS/exFAT
+/dev/nvme0n1p6      259975168 259991551     16384     8M 83 Linux
+/dev/nvme0n1p7 *    259993600 261042175   1048576   512M ef EFI (FAT-12/16/32)
+/dev/nvme0n1p8      261044224 976773119 715728896 341.3G 83 Linux
+```
+
+步骤 1：挂载系统分区
+
+```sh
+sudo mount /dev/nvme0n1p8 /mnt
+sudo mount /dev/nvme0n1p7 /mnt/boot
+```
+
+步骤 2：创建挂载点并绑定系统目录
+```shell
+sudo mkdir -p /mnt/dev /mnt/proc /mnt/sys
+sudo mount --bind /dev /mnt/dev
+sudo mount --bind /proc /mnt/proc
+sudo mount --bind /sys /mnt/sys
+```
+
+步骤 3：进入 chroot 环境（用 bash）
+`sudo chroot /mnt /bin/bash`
+
+步骤 4：重新安装 GRUB 到硬盘（不是分区）
+```sh
+grub-install /dev/nvme0n1
+update-grub
+```
+
+步骤 5：退出并重启
+```sh
+exit
+sudo reboot
 ```
 
 ************************
