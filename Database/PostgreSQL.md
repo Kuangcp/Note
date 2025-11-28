@@ -108,6 +108,7 @@ categories:
 - `CREATE ROLE father login nosuperuser nocreatedb nocreaterole noinherit encrypted password 'abc123';` 
     - 在PostgreSQL中，首先需要创建一个代表组的角色，之后再将该角色的membership 权限赋给独立的角色即可。
 - `GRANT CONNECT ON DATABASE test to father;` 角色赋予数据库test 连接权限和相关表的查询权限。
+- `grant select on ALL TABLES IN SCHEMA public to u_reader`
 
 > 注意：如果一个库授权给了用户A，库里面新建了表C 需要再次单独授权给用户A 否则A没有C表的权限
 

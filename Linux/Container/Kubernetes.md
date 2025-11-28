@@ -118,6 +118,12 @@ CPU 属于可压缩资源，其中 CPU 资源的分配和管理是 Linux 内核�
 
 > [Java client for Kubernetes](https://github.com/fabric8io/kubernetes-client)
 
+> 复制测试环境yaml到生产
+
+- 命名空间一致性
+- template 里 的labels 需要删除 pod-template-hash
+
+
 ************************
 
 # 安全
