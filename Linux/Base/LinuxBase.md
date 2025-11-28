@@ -72,7 +72,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2025-11-18 17:48:03
+💠 2025-11-28 01:45:38
 ****************************************
 
 # Linux系统
@@ -106,13 +106,6 @@ categories:
 ### grub 
 > [GNU GRUB](https://www.gnu.org/software/grub/) *GRand Unified Bootloader*
 
-
-- [ ] Windows 自动更新后的故障，开机需要手动指定boot分区后启动
-```sh 
-  set prefix=(hd0,msdos7)/grub
-  insmod normal 
-  normal 
-```
 
 ************************
 
@@ -444,9 +437,8 @@ Manjaro Xfce 使用 sixel： 使用 mlterm 或者 konsole 终端模拟器，不�
 alpine 里的sh和ash 默认是不登录shell 需要使用 sh -l 或者 ash -l 才会加载对应的文件
 
 ```sh
-# 通常声明环境变量时, 注意=左右无空格，变量名不能包含.符号
-export host='127.0.0.1'
-
+    # 通常声明环境变量时, 注意=左右无空格，变量名不能包含.符号
+    export host='127.0.0.1'
 ```
 
 ************************
@@ -892,10 +884,10 @@ thread arena 的最大数量：32位系统是 2倍CPU，64位是8倍CPU。  即 
 
 
 ```sh
-# Java 应用替换 jemalloc
-export LD_PRELOAD=/usr/lib/libjemalloc.so
-export MALLOC_CONF="background_thread:true,metadata_thp:auto,dirty_decay_ms:30000,muzzy_decay_ms:30000"
-java -jar xxx.jar
+    # Java 应用替换 jemalloc
+    export LD_PRELOAD=/usr/lib/libjemalloc.so
+    export MALLOC_CONF="background_thread:true,metadata_thp:auto,dirty_decay_ms:30000,muzzy_decay_ms:30000"
+    java -jar xxx.jar
 ```
 
 ### tcmalloc

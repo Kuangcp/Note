@@ -17,9 +17,10 @@ categories:
         - 1.2.2. [Pacman](#pacman)
         - 1.2.3. [Yay](#yay)
         - 1.2.4. [Snap](#snap)
-- 2. [Tips](#tips)
+- 2. [发行版](#发行版)
+- 3. [Tips](#tips)
 
-💠 2025-05-15 15:33:14
+💠 2025-11-28 01:15:09
 ****************************************
 
 # Arch
@@ -91,7 +92,7 @@ Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的�
    - -Qi package  查询包的依赖关系（已安装） `可以通过shell得到按大小排列出已安装的包`
    - -Ql package  查询包的文件列表
    - pactree package 树查看依赖关系
-- -U 升级或添加软件包
+- -U 升级或添加软件包 `https://archive.archlinux.org/packages/` 
     - 降级安装curl历史版本 例如 `pacman -U https://archive.archlinux.org/packages/c/curl/curl-8.4.0-1-x86_64.pkg.tar.zst`
     - 当出现包的传递依赖时，只指定单个包时安装会失败，这时需要指定完整依赖的地址，例如： `pacman -U ruby ruby-irb ruby-reline rubygems`
 
@@ -131,6 +132,15 @@ pacman yay 升级某些包时需要留意是否需要全系统升级，单独升
 - 但是国内会很慢，此时可以手动下载安装 [参考: snapInstall](https://kuricat.com/gist/snap-install-too-slow-zmbjy)
     - curl -H 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/{{packageName}} 例如 `redis-desktop-manager`
     - sudo snap install xxx.snap --dangerous
+
+************************
+# 发行版
+
+> CachyOS
+> [Manjaro](./Manjaro.md)  
+
+
+> [参考: Why CachyOS?](https://wiki.cachyos.org/cachyos_basic/why_cachyos/)  
 
 ************************
 
@@ -177,3 +187,15 @@ pacman yay 升级某些包时需要留意是否需要全系统升级，单独升
 
 `yay -Sy archlinux-keyring`
 
+> 滚动升级无法启动X
+
+检查 linux616-nvidia 软件包，看当前启动内核版本是否和包版本一致，不一致则手动安装或者选择对应内核版本启动,并且关注以下软件包的 版本号要一致 例如 580
+
+```
+    lib32-nvidia-utils 580.82.09-1
+    libxnvctrl 580.82.09-1
+    linux616-nvidia 580.82.09-3
+    mhwd-nvidia 580.82.09-1
+    nvidia-utils 580.82.09-1
+    opencl-nvidia 580.82.09-1
+```

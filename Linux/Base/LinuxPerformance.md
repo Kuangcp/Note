@@ -58,7 +58,7 @@ categories:
     - 8.7. [chroot](#chroot)
 - 9. [关机/重启](#关机重启)
 
-💠 2025-06-03 11:29:27
+💠 2025-11-28 00:53:03
 ****************************************
 # Linux性能分析和管理
 
@@ -131,6 +131,10 @@ hardinfo
 - sysctl -n name 读取配置
 - sysctl -w name value 写入配置
 - sysctl -p 不重启的情况下reload配置
+
+内核CPU调度策略： EEVDF 和 BORE 
+- EEVDF Linux内核默认策略，强调绝对公平防止低优先级线程饿死，服务端常用
+- BORE 强调突发性任务更快响应，更适合桌面端，GUI延迟低
 
 ************************
 
@@ -719,23 +723,23 @@ Rust 编写的 现代 ps
 ![p265](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Book/Linux_DaPeng_mingling100/p265.jpg) -->
 
 ```sh 
-mkdir newroot
-mkdir -p newroot/bin/
-cp /bin/bash newroot/bin/
+    mkdir newroot
+    mkdir -p newroot/bin/
+    cp /bin/bash newroot/bin/
 
-chroot newroot # 会发现报错 bash不存在，是因为共享库没有复制过来
-ldd /bin/bash
-# 不同系统组织方式不一样 按ldd的输出，将so放置到 /lib64/ 或者 /usr/lib /usr/lib64 下
-# [lib]# ldd /bin/bash 例如Manjaro系统输出如下
-#        linux-vdso.so.1 (0x00007ffe4ade2000)
-#        libreadline.so.8 => /usr/lib/libreadline.so.8 (0x00007f6e88d62000)
-#        libc.so.6 => /usr/lib/libc.so.6 (0x00007f6e88b80000)
-#        libncursesw.so.6 => /usr/lib/libncursesw.so.6 (0x00007f6e88b09000)
-#        /lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f6e88f0b000)
-cp /usr/lib/libreadline.so.8 newroot/usr/lib/
+    chroot newroot # 会发现报错 bash不存在，是因为共享库没有复制过来
+    ldd /bin/bash
+    # 不同系统组织方式不一样 按ldd的输出，将so放置到 /lib64/ 或者 /usr/lib /usr/lib64 下
+    # [lib]# ldd /bin/bash 例如Manjaro系统输出如下
+    #        linux-vdso.so.1 (0x00007ffe4ade2000)
+    #        libreadline.so.8 => /usr/lib/libreadline.so.8 (0x00007f6e88d62000)
+    #        libc.so.6 => /usr/lib/libc.so.6 (0x00007f6e88b80000)
+    #        libncursesw.so.6 => /usr/lib/libncursesw.so.6 (0x00007f6e88b09000)
+    #        /lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f6e88f0b000)
+    cp /usr/lib/libreadline.so.8 newroot/usr/lib/
 
-chroot newroot # 能进入bash了
-ls # 保存不存在，同样的使用ldd，复制相应的so文件过来，就可以了
+    chroot newroot # 能进入bash了
+    ls # 保存不存在，同样的使用ldd，复制相应的so文件过来，就可以了
 ```
 
 > [Linux隔离技术-CHROOT - 知乎](https://zhuanlan.zhihu.com/p/435805234)  
