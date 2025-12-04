@@ -72,7 +72,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2025-11-28 01:45:38
+💠 2025-12-04 10:31:18
 ****************************************
 
 # Linux系统
@@ -265,7 +265,7 @@ categories:
 - vte 支持复制终端输出内容为HTML
 - st 不支持中文，unicode字符支持良好
 - black box 
-- Alacritty
+- [Alacritty - A cross-platform, OpenGL terminal emulator](https://alacritty.org/index.html)  
 
 > 备注 sakura xfce4-terminal 快捷键配置
 - `~/.config/xfce4/terminal/accels.scm`
@@ -716,6 +716,7 @@ Usage 和 Load 的区别， 使用率针对于Cpu 时间，负载针对于等待
 
 查看内存大页设置 `cat /sys/kernel/mm/transparent_hugepage/enabled`  
 关闭内存大页 `echo never > /sys/kernel/mm/transparent_hugepage/enabled`  
+通过glibc内置的 memusage 查看进程运行过程 malloc free 调用次数和资源情况  
 
 ### overcommit 
 > [参考: Linux Overcommit Modes](https://www.baeldung.com/linux/overcommit-modes)  
