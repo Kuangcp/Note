@@ -367,7 +367,7 @@ sun.nio.cs.StreamEncoder#implWrite
 - 常见的报错是 `ResponseBodyEmitter has already completed`
 - 还有概率出现NPE `send error java.lang.NullPointerException: Cannot invoke "org.apache.tomcat.util.net.SocketWrapperBase.flush(boolean)" because "this.this$0.socketWrapper" is null`
     - 通过加回调输出栈日志后， 看到的调用栈是MVC的DeferredResult，但是实际上调用complete的是okhttp的线程（okhttp用于从模型端接收SSE事件，然后mvc再转发给前端） `原因待排查，说明不是同步调用通知，而是异步的信号通知实现`
-- 数据库连接池泄漏，由于 spring.jpa.open-in-view 的特性，会导致sse对象存活未关闭期间一直持有数据库连接池，而且能看到借连接和换连接的是不同的Tomcat NIO线程。
+- 数据库连接池泄漏，由于 spring.jpa.open-in-view 的特性，会导致sse对象存活未关闭期间一直持有数据库连接池，而且能看到借连接和换连接的是不同的Tomcat NIO线程（通过对Datasource对象加JDK代理，把借和还连接的方法外套一层日志，打印出操作线程的 stacktrace出来）。
     - [设置详解](/Java/Spring/SpringBoot.md#springjpaopen-in-view)
 
 > [javascript - Is an EventSource (SSE) supposed to try to reconnect indefinitely? - Stack Overflow](https://stackoverflow.com/questions/24564030/is-an-eventsource-sse-supposed-to-try-to-reconnect-indefinitely)  
