@@ -14,14 +14,15 @@ categories:
     - 1.4. [ExecutorService 接口](#executorservice-接口)
     - 1.5. [Executors](#executors)
     - 1.6. [CompletionService 接口](#completionservice-接口)
-- 2. [Spring](#spring)
-    - 2.1. [ThreadPoolTaskExecutor](#threadpooltaskexecutor)
+- 2. [扩展](#扩展)
+    - 2.1. [Spring ThreadPoolTaskExecutor](#spring-threadpooltaskexecutor)
+    - 2.2. [Alibaba TransmittableThreadLocal](#alibaba-transmittablethreadlocal)
 - 3. [实践](#实践)
     - 3.1. [线程池 参数优化 监控](#线程池-参数优化-监控)
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2025-12-11 15:32:16
+💠 2025-12-11 21:13:25
 ****************************************
 # 线程池
 
@@ -155,12 +156,17 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 
 ************************
 
-# Spring 
-## ThreadPoolTaskExecutor
+# 扩展
+## Spring ThreadPoolTaskExecutor
 > Spring的线程池封装实现
 
 - setTaskDecorator: 线程池装饰器，通常用来ThreadLocal值的传递，例如 TraceId，授权对象
 - setWaitForTasksToCompleteOnShutdown 等待线程正常执行完才退出全部线程
+
+## Alibaba TransmittableThreadLocal
+> [alibaba/transmittable-thread-local: 📌 a missing Java std lib(simple & 0-dependency) for framework/middleware, provide an enhanced InheritableThreadLocal that transmits values between threads even using thread pooling components.](https://github.com/alibaba/transmittable-thread-local)  
+
+TTL 2.12.x 池内线程抛出 NoSuchMethodError时， log.error 看不到异常栈，只有message ，debug断点住 在IDE才看到栈
 
 ************************
 # 实践

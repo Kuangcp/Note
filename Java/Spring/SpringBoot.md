@@ -41,9 +41,10 @@ categories:
         - 1.11.3. [构建Docker镜像](#构建docker镜像)
             - 1.11.3.1. [手动方式](#手动方式)
         - 1.11.4. [热部署](#热部署)
-        - 1.11.5. [运行性能优化](#运行性能优化)
+        - 1.11.5. [优雅重启](#优雅重启)
+        - 1.11.6. [运行性能优化](#运行性能优化)
 
-💠 2025-12-09 21:01:03
+💠 2025-12-11 21:13:25
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -437,6 +438,38 @@ public class CorsConfig {
 [Spring Boot DevTools - RestartClassLoader problem](https://stackoverflow.com/questions/69990029/spring-boot-devtools-restartclassloader-problem)  
 spring boot dev tools 实现的 RestarterClassLoader类加载器 和 AppClassLoader 共存，会有一些Bean在Restart类加载器里  
 方法： `-Dspring.devtools.restart.enabled=false` 禁用或者移除依赖
+
+### 优雅重启
+> [Graceful Shutdown :: Spring Boot](https://docs.spring.io/spring-boot/reference/web/graceful-shutdown.html)  
+
+2.3.0+开始支持，配置时间后暂停接受请求
+
+```yaml
+# 开启优雅停机（默认 immediate）
+server:
+  shutdown: graceful
+
+# 给正在处理的请求留多少时间，默认 30 s
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+```
+
+可以注意到开启了graceful之后，会有SpringApplicationShutdownHook在处理资源清理，可以声明以下监听器用来停止业务线程
+
+```java
+public class ShutdownAlertService implements ApplicationListener<ContextClosedEvent> {
+    @Override
+    public void onApplicationEvent(ContextClosedEvent event) {
+        // shutdown 线程池
+    }
+}
+```
+
+运行在Docker或者K8S内时，还需要如下配置。 并且要确保Java进程能收到 15 信号，通过 tini 或者 exec 启动java （shell方式会导致无法收到kill信号）
+```yaml
+
+```
 
 ### 运行性能优化
 > [Runtime efficiency with Spring (today and tomorrow)](https://spring.io/blog/2023/10/16/runtime-efficiency-with-spring)
