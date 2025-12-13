@@ -44,22 +44,34 @@ categories:
     }
     public class BubbleSortImpl implements Sort {
         @Override
-        public void say() {
-            System.out.println("hello world");
+        public int[] sort(int[] data) {
+            // 冒泡排序实现
+            int[] result = data.clone();
+            for (int i = 0; i < result.length - 1; i++) {
+                for (int j = 0; j < result.length - 1 - i; j++) {
+                    if (result[j] > result[j + 1]) {
+                        int temp = result[j];
+                        result[j] = result[j + 1];
+                        result[j + 1] = temp;
+                    }
+                }
+            }
+            return result;
         }
     }
     
     // 代理类(同样实现目标接口), 并扩展了对应的方法
-    public class HelloSeriviceProxy implements HelloSerivice {
-        private HelloSerivice target;
-        public HelloSeriviceProxy(HelloSerivice target) {
+    public class SortProxy implements Sort {
+        private Sort target;
+        public SortProxy(Sort target) {
             this.target = target;
         }
         @Override
-        public void say() {
-            System.out.println("记录日志");
-            target.say();
-            System.out.println("回收资源");
+        public int[] sort(int[] data) {
+            System.out.println("记录日志：开始排序");
+            int[] result = target.sort(data);
+            System.out.println("记录日志：排序完成");
+            return result;
         }
     }
 
@@ -67,10 +79,12 @@ categories:
     @Test
     public void testProxy(){
         //目标对象
-        HelloSerivice target = new HelloSeriviceImpl();
+        Sort target = new BubbleSortImpl();
         //代理对象
-        HelloSeriviceProxy proxy = new HelloSeriviceProxy(target);
-        proxy.say();
+        SortProxy proxy = new SortProxy(target);
+        int[] data = {3, 1, 4, 1, 5, 9, 2, 6};
+        int[] result = proxy.sort(data);
+        System.out.println(Arrays.toString(result));
     }
 ```
 
