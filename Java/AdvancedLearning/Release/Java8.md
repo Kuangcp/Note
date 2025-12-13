@@ -312,7 +312,49 @@ An informative annotation type used to indicate that an interface type declarati
 
 ### Lambda 实现原理
 
-1. 初步分析 编译后生成匿名内部类替换lambda表达式
+编译时将每一处的Lambda生成匿名内部类字节码, 替换lambda表达式写法
+- 因为一处Lambda写法可以引用lambda表达式外部的变量 即捕获外部变量, 而且lambda运行处不在定义处, 运行处很可能会超出变量的作用域, 所以需要定义一个匿名类, 将引用的外部变量定义为这个类的成员属性, 用于传递
+
+```java
+// lambda定义: 
+Function<String,String> f1 = s -> userDao.find(s);          // 1 个捕获
+Function<String,String> f5 = s ->                         // 5 个捕获
+        userDao.find(s) + bookDao + a + b + c + d + e;
+System.out.println(f1.getClass() == f5.getClass());        // true
+
+// javap -p -c 反编译字节码
+final class $Lambda$23 implements Function<String,String> {
+    private final UserDao arg$1;
+    private final BookDao arg$2;
+    private final int       arg$3;
+    private final long      arg$4;
+    private final String    arg$5;
+    private final Object    arg$6;   // 再多变量继续加字段
+
+    private $Lambda$23(...全部字段...) {   // 构造器
+        this.arg$1 = arg$1;
+        ...                        // 全部赋值
+    }
+    public String apply(String s) {
+        return captured$lambda$s(arg$1, arg$2, arg$3, arg$4, arg$5, arg$6, s);
+    }
+    // 静态方法，真正逻辑
+    private static String captured$lambda$(UserDao,BookDao,int,long,String,Object,String){...}
+}
+```
+
+新建匿名内部类的情况: 
+-  函数式接口不同（Function → BiFunction）；
+-  方法签名不同（apply(String) → apply(Integer)）；
+-  目标方法所在类不同（方法引用 UserService::foo vs BookService::foo）。
+只要「接口 + 方法 + 目标方法」三元组相同，无论捕获多少局部变量，都复用同一合成类；变量再多也只是实例字段变长，类加载器仍然只加载一次。
+
+即使因为业务的复杂和为了抽象复用一些逻辑, 导致写了很多完全不一样的抽象函数签名 例如 ` User::getId, Function<User, AuthUser> 等等`, JVM编译期创建出的匿名内部类 运行时平均 600 – 900 Byte/类, 而 Spring Boot 中型项目自身 + 依赖的 普通类 常轻松达到 30 000 – 50 000 个，占元空间 100 – 200 MB 量级；所以不用担心Lambda写太多导致元空间出现性能问题. 
+
+只要能将业务抽象规范, 搭建良好的业务框架, Lambda表达式和函数式方法 越多越好, 业务的实现也可以更灵活
+
+***
+
 
 > [参考: Java Lambda表达式 实现原理分析](https://blog.csdn.net/jiankunking/article/details/79825928)
 
@@ -446,7 +488,7 @@ Lambda可以没有限制地捕获 对象的实例变量和静态变量， 但局
 用科学的说法来说，闭包就是一个函数的实例，且它可以无限制地访问那个函数的非本地变量。  
 
 例如，闭包可以作为参数传递给另一个函数，那这个闭包也可以访问和修改其作用域之外的变量。  
-现在，Java 8的Lambda和匿名类可以做类似于闭包的事情， 它们可以作为参数传递给方法，并且可以访问其作用域之外的变量。  
+现在，Java 8的Lambda加上匿名内部类可以做类似于闭包的事情， 它们可以作为参数传递给方法，并且可以访问其作用域之外的变量。  
 
 ## 复合 Lambda 表达式
 在实践中，这意味着你可以把多个简单的Lambda复合成复杂的表达式。  

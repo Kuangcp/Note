@@ -1,4 +1,5 @@
 # .NET
+> [学习中心| .NET](https://dotnet.microsoft.com/zh-cn/learn)  
 
 - [linux install script](https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install)
 
