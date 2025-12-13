@@ -17,7 +17,7 @@ categories:
     - 2.2. [Theme](#theme)
     - 2.3. [Icon](#icon)
 
-💠 2025-05-14 11:55:13
+💠 2025-12-04 10:31:18
 ****************************************
 
 # GUI
@@ -64,6 +64,7 @@ categories:
 
 - npm vue minikube 等命令行的工具输出的日志提示会包含emoji, 需要终端字体支持展示unicode
     - 终端内 Emoji 支持 [emoji](https://blog.sebastian-daschner.com/entries/linux-terminal-font-alacritty-jetbrains-mono-emoji) `noto-color-emoji 字体 支持颜色` 
+- gnome-font-viewer 字体查看器
 
 ### 字体渲染
 

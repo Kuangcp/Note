@@ -48,7 +48,7 @@ categories:
 - 6. [安卓手机](#安卓手机)
     - 6.1. [Google](#google)
 
-💠 2025-09-03 11:19:19
+💠 2025-12-12 22:10:48
 ****************************************
 # 常用的网站
 ## 国内镜像源站点
@@ -229,8 +229,7 @@ Podcast、Reddit 以及TechRadar
 ### 穿透工具
 - [lanproxy](https://github.com/ffay/lanproxy) `将局域网个人电脑、服务器代理到公网的内网穿透工具`
 - [ngrok](https://ngrok.com/)`随机域名穿透到内网 eg: ngrok http 8080`
-- [frp](https://diannaobos.com/frp/)`自己服务器外网到内网穿透`
-    - [下载地址](https://file.diannaobos.com/frp_releases/)[使用帮助](https://diannaobos.com/post/470.html)
+- [frp](https://github.com/fatedier/frp)`自己服务器外网到内网穿透`
 
 ### Web服务器
 - [tomcat](http://tomcat.apache.org/)`Apache基金会`

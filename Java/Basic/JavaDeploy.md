@@ -24,7 +24,7 @@ categories:
     - 4.1. [Java在Linux上的时区问题](#java在linux上的时区问题)
     - 4.2. [容器中Jvm信号及参数接收问题](#容器中jvm信号及参数接收问题)
 
-💠 2025-01-10 16:30:07
+💠 2025-12-11 22:17:21
 ****************************************
 # 部署运行
 > 传统的可执行jar, war 以及Docker镜像
@@ -73,7 +73,7 @@ _MANIFEST.MF示例_
 ## 打包Docker镜像
 > 以一个基础镜像,然后将war放进去构建成一个镜像, 然后推送到服务器上构建容器进行运行
 
-1. 简要概括: from jdk基础镜像, 将jar 复制进去, 设置好 CMD
+1. 简要概括: from jdk基础镜像, 将jar 复制进去, 设置好 ENTRYPOINT
 
 > [jib](https://github.com/GoogleContainerTools/jib)
 > - 结合 Maven Gradle 能更方便的构建 Docker镜像
@@ -191,3 +191,7 @@ _MANIFEST.MF示例_
 - Arthas无法注入
 - 无法合理管理派生出的进程生命周期
 - JDK中的工具有些也会无法正常使用例如 jstack
+
+所以可以通过 tini 来解决问题:
+
+` ENTRYPOINT ["/sbin/tini", "--", "sh", "-c", "exec java ${OPTS} -jar -Dspring.profiles.active=${SPRING_PROFILES_ACTIVE} /opt/app.jar"] `

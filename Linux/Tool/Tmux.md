@@ -23,7 +23,7 @@ categories:
 - 5. [Advanced](#advanced)
 - 6. [Tips](#tips)
 
-💠 2025-01-21 14:41:56
+💠 2025-12-04 10:31:18
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -114,11 +114,13 @@ categories:
 
 > action
 - send-keys
-    - 例如 `bind-key -T root F9 send-keys 'cola' Enter` F9即可在Tmux内的终端运行 git-cola
+    - 例如 `bind-key -T root F9 send-keys 'cola' Enter` F9即可在Tmux内的panel运行 git-cola
 - run-shell
 - source 和 source-file
-- select-pane
-- split-window
+- select-pane 切换panel
+- select-window 切换 window
+- switch-client 切换 session
+- split-window 拆分当前window出新的panel
 
 ## 切换
 - prefix w 切换 window 或者 Session

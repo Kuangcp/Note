@@ -39,6 +39,7 @@ categories:
         - 1.7.3. [service 方式管理](#service-方式管理)
             - 1.7.3.1. [自定义 service](#自定义-service)
         - 1.7.4. [update-rc.d 方式管理](#update-rcd-方式管理)
+    - 1.8. [内核](#内核)
 - 2. [系统资源管理](#系统资源管理)
     - 2.1. [ulimit](#ulimit)
     - 2.2. [CPU](#cpu)
@@ -72,7 +73,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2025-11-28 01:45:38
+💠 2025-12-11 21:13:25
 ****************************************
 
 # Linux系统
@@ -265,7 +266,7 @@ categories:
 - vte 支持复制终端输出内容为HTML
 - st 不支持中文，unicode字符支持良好
 - black box 
-- Alacritty
+- [Alacritty - A cross-platform, OpenGL terminal emulator](https://alacritty.org/index.html)  
 
 > 备注 sakura xfce4-terminal 快捷键配置
 - `~/.config/xfce4/terminal/accels.scm`
@@ -657,6 +658,10 @@ _系统运行级别_
     6        重新启动 
 ```
 
+## 内核
+
+> [Linux内核版本升级，性能到底提升多少？拿数据说话 | plantegg](https://plantegg.github.io/2019/12/24/Linux%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7%EF%BC%8C%E6%80%A7%E8%83%BD%E5%88%B0%E5%BA%95%E6%8F%90%E5%8D%87%E5%A4%9A%E5%B0%91%EF%BC%9F%E6%8B%BF%E6%95%B0%E6%8D%AE%E8%AF%B4%E8%AF%9D/#%E7%BB%A7%E7%BB%AD%E5%88%86%E6%9E%90%E4%B8%BA%E4%BB%80%E4%B9%884-19%E6%AF%944-9%E5%B7%AE%E4%BA%86%E8%BF%99%E4%B9%88%E5%A4%9A)  
+
 ************************
 
 # 系统资源管理
@@ -716,6 +721,7 @@ Usage 和 Load 的区别， 使用率针对于Cpu 时间，负载针对于等待
 
 查看内存大页设置 `cat /sys/kernel/mm/transparent_hugepage/enabled`  
 关闭内存大页 `echo never > /sys/kernel/mm/transparent_hugepage/enabled`  
+通过glibc内置的 memusage 查看进程运行过程 malloc free 调用次数和资源情况  
 
 ### overcommit 
 > [参考: Linux Overcommit Modes](https://www.baeldung.com/linux/overcommit-modes)  

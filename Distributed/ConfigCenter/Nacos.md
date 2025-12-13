@@ -11,7 +11,7 @@ categories:
     - 1.1. [Design](#design)
 - 2. [Tips](#tips)
 
-💠 2025-05-06 11:19:53
+💠 2025-12-04 10:31:18
 ****************************************
 # Nacos
 > [Nacos](https://nacos.io/en-us/)
@@ -20,11 +20,15 @@ categories:
 
 > 配置加载
 
-spring.cloud.config.override-none 默认false 设置true后,会优先使用本地配置（本地环境变量，本地properties文件等）覆盖远程配置（此配置需要配置在远程Nacos上）
-- org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration#insertPropertySources 处理逻辑
+- 通过请求 actuator/env 查看配置源 propertySources 加载顺序： 列表越靠前，优先级越高
 
-org.springframework.util.PropertyPlaceholderHelper#parseStringValue  
-org.springframework.core.env.PropertySourcesPropertyResolver#logKeyFound 按顺序从 source 列表加载到第一个配置值就return  
+配置在Nacos上 ： spring.cloud.config.override-none 默认false 设置true后,会优先使用本地配置（本地环境变量，本地properties文件等）覆盖远程配置
+- 默认值false时，Nacos配置优先级高于JVM参数，反之亦然
+
+源码逻辑
+- org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration#insertPropertySources 处理逻辑
+- org.springframework.util.PropertyPlaceholderHelper#parseStringValue  
+- org.springframework.core.env.PropertySourcesPropertyResolver#logKeyFound 按顺序从 source 列表加载到第一个配置值就return  
 - logging.level.org.springframework.core.env=DEBUG 开启日志查看加载情况
 
 

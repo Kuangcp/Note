@@ -74,7 +74,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2025-10-31 21:02:53
+💠 2025-12-12 22:10:48
 ****************************************
 # 网络
 > [Java 网络](/Java/AdvancedLearning/JavaNetwork.md)  
@@ -537,6 +537,36 @@ function FindProxyForURL(url, host) {
 
 - 应用: 保护和隐藏原始资源服务器, 负载均衡, 加密和SSL加速, 缓存静态内容, 安全(DDos的防护)
 - 安全: 对外是透明的，访问者并不知道自己访问的是代理。对访问者而言，他以为访问的就是原始服务器
+
+> [fatedier/frp: A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.](https://github.com/fatedier/frp)  
+
+```toml
+# frps.toml
+bindPort = 6011
+vhostHTTPPort = 9030
+
+# frpc.toml
+serverAddr = "公网ip"
+serverPort = 6011
+
+[[proxies]]
+name = "http-tunnel"
+type = "http"
+localPort = 8989
+customDomains = ["公网域名xxx"]
+```
+
+Nginx 配置
+```ini
+server {
+    listen 80;
+    server_name xxx;
+    location / {
+        proxy_pass http://127.0.0.1:9030;   # 本机就是 frp 服务端
+        proxy_set_header Host $host;
+    }
+}
+```
 
 ## 透明代理
 > 客户端根本不需要知道有代理服务器的存在，它改变你的 request fields（报文），并会传送客户端真实IP给服务端，多用于路由器的NAT转发中
