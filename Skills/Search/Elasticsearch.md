@@ -129,9 +129,202 @@ categories:
 - 扩展词库：低频词汇，远程加载或按需加载
 
 ************************
-
 # 向量搜索
-版本 8.5+
+> [Vector search](https://www.elastic.co/guide/en/elasticsearch/reference/current/knn-search.html)
+
+版本 8.5+ 开始支持向量搜索
+
+- 支持 kNN 搜索
+- 支持 dense_vector 字段类型
+- 支持 cosine similarity, dot_product, l2_norm 等相似度计算方式
+- 支持 HNSW 算法加速搜索
+- 支持与其他查询组合使用
+
+主要应用场景:
+- 图像相似度搜索
+- 语义文本搜索
+- 推荐系统
+- 异常检测
+
+示例:
+
+1. 创建索引并配置向量字段:
+
+```json
+PUT /image_search
+{
+  "mappings": {
+    "properties": {
+      "image_id": {
+        "type": "keyword"
+      },
+      "image_vector": {
+        "type": "dense_vector",
+        "dims": 512,
+        "index": true,
+        "similarity": "cosine"
+      },
+      "image_url": {
+        "type": "keyword"
+      },
+      "tags": {
+        "type": "keyword"
+      }
+    }
+  }
+}
+```
+
+2. 插入向量数据:
+
+```json
+POST /image_search/_doc
+{
+  "image_id": "img_001",
+  "image_vector": [0.1, 0.2, 0.3, ...],
+  "image_url": "https://example.com/img1.jpg",
+  "tags": ["cat", "pet"]
+}
+
+POST /image_search/_doc
+{
+  "image_id": "img_002", 
+  "image_vector": [0.2, 0.3, 0.4, ...],
+  "image_url": "https://example.com/img2.jpg",
+  "tags": ["dog", "pet"]
+}
+```
+
+3. 执行向量搜索:
+
+```json
+GET /image_search/_search
+{
+  "query": {
+    "knn": {
+      "field": "image_vector",
+      "query_vector": [0.15, 0.25, 0.35, ...],
+      "k": 10,
+      "num_candidates": 100
+    }
+  }
+}
+```
+
+4. 向量搜索与其他查询组合:
+
+```json
+GET /image_search/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "knn": {
+            "field": "image_vector",
+            "query_vector": [0.15, 0.25, 0.35, ...],
+            "k": 10,
+            "num_candidates": 100
+          }
+        }
+      ],
+      "filter": [
+        {
+          "term": {
+            "tags": "pet"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+5. 混合搜索 (向量 + 文本):
+
+```json
+GET /image_search/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "knn": {
+            "field": "image_vector",
+            "query_vector": [0.15, 0.25, 0.35, ...],
+            "k": 10,
+            "num_candidates": 100
+          }
+        },
+        {
+          "match": {
+            "tags": "cat"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+6. 语义文本搜索示例:
+
+```json
+PUT /semantic_search
+{
+  "mappings": {
+    "properties": {
+      "content": {
+        "type": "text",
+        "analyzer": "standard"
+      },
+      "content_vector": {
+        "type": "dense_vector",
+        "dims": 768,
+        "index": true,
+        "similarity": "cosine"
+      }
+    }
+  }
+}
+
+POST /semantic_search/_doc
+{
+  "content": "人工智能技术正在快速发展",
+  "content_vector": [0.1, 0.2, 0.3, ...]
+}
+
+GET /semantic_search/_search
+{
+  "query": {
+    "knn": {
+      "field": "content_vector",
+      "query_vector": [0.12, 0.22, 0.32, ...],
+      "k": 5
+    }
+  }
+}
+```
+
+重要参数说明:
+
+- `dims`: 向量维度，必须与插入的向量维度一致
+- `index`: 是否建立索引，true 启用 HNSW 算法加速
+- `similarity`: 相似度计算方式
+  - `cosine`: 余弦相似度
+  - `dot_product`: 点积相似度  
+  - `l2_norm`: L2 范数距离
+- `k`: 返回最相似的 k 个结果
+- `num_candidates`: 候选数量，影响搜索精度和性能
+
+性能优化建议:
+
+1. 合理设置 `num_candidates` 参数
+2. 使用 `filter` 减少搜索空间
+3. 选择合适的相似度计算方式
+4. 定期重建索引优化向量分布
+
+> [参考: Elasticsearch 向量搜索最佳实践](https://www.elastic.co/guide/en/elasticsearch/reference/current/knn-search.html#knn-search-best-practices)
 
 
 

@@ -35,14 +35,14 @@ categories:
 静态代理通常只代理一个类，动态代理是代理一个接口下的多个实现类。静态代理事先知道要代理的是什么，而动态代理不知道要代理什么东西，只有在运行时才知道。
 
 ## 静态代理
-> 静态代理类：由程序员创建或由特定工具自动生成源代码，再对其编译。在程序运行前，代理类的.class文件就已经存在了。
+> 静态代理类：由程序员创建或由特定工具自动生成源代码，再对其编译。在程序运行前，代理类的.class文件就已经存在了。或者简称为 硬编码代理
 
 ```java
     //  接口以及实现类 (目标接口和目标对象)
-    public interface HelloSerivice {
-        public void say();
+    public interface Sort {
+        public int[] sort(int[] data);
     }
-    public class HelloSeriviceImpl implements HelloSerivice{
+    public class BubbleSortImpl implements Sort {
         @Override
         public void say() {
             System.out.println("hello world");
@@ -50,7 +50,7 @@ categories:
     }
     
     // 代理类(同样实现目标接口), 并扩展了对应的方法
-    public class HelloSeriviceProxy implements HelloSerivice{
+    public class HelloSeriviceProxy implements HelloSerivice {
         private HelloSerivice target;
         public HelloSeriviceProxy(HelloSerivice target) {
             this.target = target;
@@ -98,7 +98,7 @@ categories:
 ### JDK动态代理
 > [Oracle api](https://docs.oracle.com/javase/8/docs/api/) 
 
-jdk动态代理是由java内部的反射机制来实现的
+jdk动态代理是由java内部的反射机制来实现的  
 JDK动态代理有一个限制，就是使用动态代理的对象必须实现一个或多个接口。因为JDK动态代理只能对接口产生代理，不能对类产生代理
 
 ### cglib

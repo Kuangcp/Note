@@ -346,7 +346,9 @@ true 和 false 也是缓存了的
 > [参考: 关于java枚举类型的疑问 ](https://segmentfault.com/q/1010000000306839)  
 > [compilation-error-switch-with-enum](https://stackoverflow.com/questions/5551568/compilation-error-switch-with-enum)  
 
-注意： 在强类型的RPC中，例如Dubbo 接口返回值不推荐定义枚举字段，作为接口参数可以，后续枚举扩充时容易出现序列化问题
+注意： 
+- 在强类型的RPC中，例如Dubbo 接口返回值不推荐定义枚举字段，后续枚举做扩充时容易出现序列化问题，但是作为接口的参数不会有这个问题
+- 保险起见则是 对外提供的接口 入参和返回值都不使用到枚举。 
 
 ***************************
 ## 内部类

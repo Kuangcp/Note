@@ -500,6 +500,9 @@ func walkfunc(path string, info os.FileInfo, err error) error {
 > [Github: assert](https://godoc.org/github.com/stretchr/testify/assert)
 > [quii/learn-go-with-tests: Learn Go with test-driven development](https://github.com/quii/learn-go-with-tests)  
 
+- go test 执行包下所有单元测试
+- go test -run TestAdd -v 执行指定的单元测试方法
+
 ************************
 
 ## Debug

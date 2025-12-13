@@ -31,7 +31,7 @@ categories:
 ![](img/skiplist.drawio.svg)
 
 优势: 
-- 结构简单，操作成本低, Redis中Zset有使用到
+- 结构简单，操作成本低, 实现案例: Redis中的Zset, Java中的ConcurrentSkipListMap
 
 劣势: 
 - 更新时,节点会随机成为多层索引节点, 指针修改成本高, 索引层是一个不稳定的数据结构

@@ -9,24 +9,24 @@ categories:
 
 💠
 
-- 1. [Java中的IO](#java中的io)
-    - 1.1. [IO 简史](#io-简史)
-        - 1.1.1. [BIO](#bio)
-        - 1.1.2. [NIO](#nio)
-        - 1.1.3. [AIO](#aio)
-    - 1.2. [字节流](#字节流)
-    - 1.3. [字符流](#字符流)
-    - 1.4. [应用](#应用)
-        - 1.4.1. [文件IO](#文件io)
-            - 1.4.1.1. [计算文件MD5](#计算文件md5)
-            - 1.4.1.2. [读取配置文件](#读取配置文件)
-                - 1.4.1.2.1. [可执行jar读取外部配置文件](#可执行jar读取外部配置文件)
-                - 1.4.1.2.2. [Maven项目](#maven项目)
-        - 1.4.2. [网络IO](#网络io)
-- 2. [NIO](#nio)
-    - 2.1. [Buffer](#buffer)
+1. [Java中的IO](#java中的io)
+    1. [IO 简史](#io-简史)
+    1. [BIO](#bio)
+    1. [NIO](#nio)
+        1. [Buffer](#buffer)
+    1. [AIO](#aio)
+1. [流](#流)
+    1. [字节流](#字节流)
+    1. [字符流](#字符流)
+1. [应用](#应用)
+    1. [文件IO](#文件io)
+        1. [计算文件MD5](#计算文件md5)
+        1. [读取配置文件](#读取配置文件)
+            1. [可执行jar读取外部配置文件](#可执行jar读取外部配置文件)
+            1. [Maven项目](#maven项目)
+    1. [网络IO](#网络io)
 
-💠 2025-04-10 21:20:56
+💠 2025-12-13 17:18
 ****************************************
 # Java中的IO
 > [Note：操作系统中的IO模型](/Skills/CS/IO.md)  
@@ -39,13 +39,15 @@ categories:
 ## IO 简史
 > [BIO NIO AIO演变](http://www.cnblogs.com/itdragon/p/8337234.html)
 
-### BIO
+## BIO
 > Java1.0 到 Java1.3
 
 同步阻塞式IO 但是能基于 BIO 手动实现 伪异步IO
 
-### NIO
+## NIO
 > Java1.4 引入; 同步非阻塞式IO, 虽然官方名称为 New IO, 民间称为 `No-blocking IO`
+
+> [Java NIO 系列教程](http://ifeve.com/java-nio-all/) 
 
 这个NIO和是基于操作系统NIO相关函数实现的, 所以称为`No-blocking IO`
 ```java
@@ -84,14 +86,34 @@ categories:
 - 简单: `Thread.sleep(10000);` 但是这种方式下, 定时器和任务是一一对应的  
 - 复用模式: 一个线程睡眠很短的时间, 不停去检查 方法的时间到了没有, 到了就执行, 这样就只要一个线程就能处理多个任务  
 
-### AIO
+### Buffer
+> [Java NIO系列教程（三） Buffer](http://ifeve.com/buffers/)
+
+- Buffer的基本用法: 使用Buffer读写数据一般遵循以下四个步骤：  
+    1. 写入数据到Buffer  
+    1. 调用flip()方法   
+    1. 从Buffer中读取数据
+    1. 调用clear()方法或者compact()方法
+
+- 当向buffer写入数据时，buffer会记录下写了多少数据。一旦要读取数据，需要通过flip()方法将Buffer从写模式切换到读模式。在读模式下，可以读取之前写入到buffer的所有数据。
+
+- 一旦读完了所有的数据，就需要清空缓冲区，让它可以再次被写入。有两种方式能清空缓冲区：
+    - 调用clear()或compact()方法。
+- clear()方法会清空整个缓冲区。compact()方法只会清除已经读过的数据。任何未读的数据都被移到缓冲区的起始处，新写入的数据将放到缓冲区未读数据的后面。
+
+
+## AIO
 > Java1.7 引入; 真正的异步非阻塞IO
 
 - 引入了新的异步通道的概念, 以及异步文件通道和异步套接字通道的实现
+- Asynchronous*的类 读写操作都被Future封装了，均交给操作系统异步完成，需要应用系统手动处理
 
-Asynchronous*的类 读写操作都被Future封装了，均交给操作系统异步完成，需要应用系统手动处理
+- Windows 实现成熟但是使用不广泛，Linux使用广泛但是AIO库实现不成熟，所以AIO在服务端领域始终不出名， Netty库也实现过AIO发现性能相较NIO实现差不多，复杂度还大一些，然后就废弃了。
 
-**************
+************************
+
+
+# 流
 ## 字节流 
 > OutputStream InputStream
 
@@ -103,7 +125,7 @@ ByteArrayOutputStream, FileOutputStream, FilterOutputStream, ObjectOutputStream,
     - DataInputStream
     - BufferedInputStream
 
-***************
+************************
 
 ## 字符流
 > Reader Writer
@@ -118,14 +140,19 @@ Reader类的核心就是read()这个方法，由于这里直接操作InputStream
         .lines()
         .collect(Collectors.joining("\n"));
 ```
-***************
 
-## 应用
-### 文件IO
+OutputStreamWriter：是Writer的子类，将输出的字符流变为字节流，即将一个字符流的输出对象变为字节流输出对象。
+
+InputStreamReader：是Reader的子类，将输入的字节流变为字符流，即将一个字节流的输入对象变为字符流的输入对象。
+
+************************
+
+# 应用
+## 文件IO
 > [参考: Read a text file from Java classpath](https://www.java-success.com/read-a-text-file-from-java-classpath/)  
 > [Java：利用I/O流读取文件内容](https://blog.csdn.net/xuehyunyu/article/details/77873420)
 
-#### 计算文件MD5
+### 计算文件MD5
 > [Generate the MD5 Checksum for a File in Java | Baeldung](https://www.baeldung.com/java-md5-checksum-file)  
 
 ```java
@@ -134,14 +161,14 @@ Reader类的核心就是read()这个方法，由于这里直接操作InputStream
     String checksum = new BigInteger(1, hash).toString(16);
 ```
 
-#### 读取配置文件
+### 读取配置文件
 - maven项目，从resources下获取文件 例如 /a.xml `InputStream is = this.getClass().getResourceAsStream("/a.xml");`
     1. 读取properties文件 ：`new Properties().load(is);`
     1. 按行读取文件 `BufferedReader bf = new BufferedReader(new InputStreamReader(is));`
 
 ************************
 
-##### 可执行jar读取外部配置文件
+#### 可执行jar读取外部配置文件
 ```java
     Properties properties = new Properties();
     File file = new File("something.properties");
@@ -152,7 +179,7 @@ Reader类的核心就是read()这个方法，由于这里直接操作InputStream
 ``` 
 - 只要配置文件和打包的jar同级即可
 
-##### Maven项目
+#### Maven项目
 _读取resource目录下配置文件_
 ```java
     ClassLoader classLoader = MainConfig.class.getClassLoader();
@@ -163,29 +190,13 @@ _读取resource目录下配置文件_
 ```
 - 这样也可以, 但是会有诡异的问题, 打包后运行是正常的, idea中运行就不正常, `new File("src/main/resources/excel.main.yml")` 
 
-### 网络IO
+## 网络IO
 > [参考博客:网络IO之阻塞、非阻塞、同步、异步总结 ](https://www.cnblogs.com/Anker/p/3254269.html)
 
 > [参考: Java IO: 网络](http://ifeve.com/java-io-network/)
 当两个进程之间建立了网络连接之后，他们通信的方式如同操作文件一样：利用InputStream读取数据，利用OutputStream写入数据。换句话来说，Java网络API用来在不同进程之间建立网络连接，而Java IO则用来在建立了连接之后的进程之间交换数据。
 
 **********************************
-# NIO
-> [Java NIO 系列教程](http://ifeve.com/java-nio-all/) 
 
-## Buffer
-> [Java NIO系列教程（三） Buffer](http://ifeve.com/buffers/)
-
-- Buffer的基本用法: 使用Buffer读写数据一般遵循以下四个步骤：  
-    1. 写入数据到Buffer  
-    1. 调用flip()方法   
-    1. 从Buffer中读取数据
-    1. 调用clear()方法或者compact()方法
-
-- 当向buffer写入数据时，buffer会记录下写了多少数据。一旦要读取数据，需要通过flip()方法将Buffer从写模式切换到读模式。在读模式下，可以读取之前写入到buffer的所有数据。
-
-- 一旦读完了所有的数据，就需要清空缓冲区，让它可以再次被写入。有两种方式能清空缓冲区：
-    - 调用clear()或compact()方法。
-- clear()方法会清空整个缓冲区。compact()方法只会清除已经读过的数据。任何未读的数据都被移到缓冲区的起始处，新写入的数据将放到缓冲区未读数据的后面。
 
 

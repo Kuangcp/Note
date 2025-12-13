@@ -46,11 +46,14 @@ HashMap的数据结构是 数组(称为bucket)加单链表 (数组是只放一�
 这种设计的好处是, 如果 hash 足够分散, get 时的时间复杂度为 O(1), 反之则是 链表 O(n) 红黑树 O(log n)
 
 ## 构造函数
-- 空构造函数: 采用默认初始容量 16 和 默认负载因子 0.75
-- 初始容量参数: 采用传入的初始容量, 默认负载因子
-- 初始容量, 负载因子参数: 采用传入的两个参数
+默认初始容量 16 和 默认负载因子 0.75
 
-其中初始容量会根据 tableSizeFor 方法计算得到 大于初始容量的最小的2的指数值 3->4 4->8 ...
+> [java - What is the significance of load factor in HashMap? - Stack Overflow](https://stackoverflow.com/questions/10901752/what-is-the-significance-of-load-factor-in-hashmap%EF%BC%89)数学依据应约等于0.7 设置0.75可以使得临界值threshold一直是整数,因为容量capacity始终是2的幂  
+
+- 其中如果手动指定了初始容量, 会根据 tableSizeFor 方法计算得到一个大于初始容量的最小的2的指数值. 例如: 3->4 4->8 . 
+    - 这么设计是为了 capacity 始终是2的幂, 扩容时也是如此.   
+    - 如果为了时间考虑, 初始容量并不是设置为实际业务容量, 需参考 putAll中的实现逻辑 `(int) ((float) expectedSize / 0.75F + 1.0F);`计算出应该要传入的初始容量, 或者使用Guava `Maps.newHashMapWithExpectedSize(7);` 本质是空间换时间
+    - 例如 需要放7个元素, 如果初始容量传入7 最终容量会设置为8, 当添加到第7个元素时就会触发一次扩容了. 
 
 ## put
 > 得到 key 的数组下标: `(n - 1) & key 的 hash 值`, 其中 n 为数组大小
@@ -77,7 +80,7 @@ HashMap的数据结构是 数组(称为bucket)加单链表 (数组是只放一�
 1. 可用于复制map内容
 
 ## resize
-1. 如果旧容量大于0，则新容量等于旧容量的2倍，但不超过最大容量2的30次方，新扩容阈值为旧扩容阈值的2倍；
+1. 如果旧容量capacity 大于0，则新容量等于旧容量的2倍，但不超过最大容量2的30次方，新扩容阈值为旧扩容阈值的*2倍*；
 1. 创建一个新容量的桶；
 1. 移动元素
     1. `if` 该下标只有一个节点, 就rehash下直接放过去 `newTab[e.hash & (newCap - 1)] = e;`
