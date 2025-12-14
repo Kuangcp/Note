@@ -48,7 +48,9 @@ HashMap的数据结构是 数组(称为bucket)加单链表 (数组是只放一�
 ## 构造函数
 默认初始容量 16 和 默认负载因子 0.75
 
-> [java - What is the significance of load factor in HashMap? - Stack Overflow](https://stackoverflow.com/questions/10901752/what-is-the-significance-of-load-factor-in-hashmap%EF%BC%89)数学依据应约等于0.7 设置0.75可以使得临界值threshold一直是整数,因为容量capacity始终是2的幂  
+> [java - What is the significance of load factor in HashMap? - Stack Overflow](https://stackoverflow.com/questions/10901752/what-is-the-significance-of-load-factor-in-hashmap%EF%BC%89)
+- 数学依据应约等于0.7 设置0.75可以使得临界值threshold一直是整数,因为容量capacity始终是2的幂
+- 这个时候 capacity*0.75 会被 JIT 优化成 2 条整数指令, 乘 0.7 只能走 浮点乘 + 转换，即使结果无小数也省不掉  
 
 - 其中如果手动指定了初始容量, 会根据 tableSizeFor 方法计算得到一个大于初始容量的最小的2的指数值. 例如: 3->4 4->8 . 
     - 这么设计是为了 capacity 始终是2的幂, 扩容时也是如此.   

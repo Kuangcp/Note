@@ -12,6 +12,12 @@ categories:
 - 1. [Java中的序列化](#java中的序列化)
     - 1.1. [Serializable](#serializable)
         - 1.1.1. [JDK序列化和反序列化](#jdk序列化和反序列化)
+    - 1.2. [Externalizable (基本不用到)](#externalizable-基本不用到)
+        - 1.2.1. [与 Serializable 的区别](#与-serializable-的区别)
+        - 1.2.2. [基本使用](#基本使用)
+        - 1.2.3. [序列化和反序列化示例](#序列化和反序列化示例)
+        - 1.2.4. [注意事项](#注意事项)
+        - 1.2.5. [使用场景](#使用场景)
 - 2. [编解码框架](#编解码框架)
     - 2.1. [LZ4](#lz4)
     - 2.2. [fast-serialization](#fast-serialization)
@@ -23,7 +29,7 @@ categories:
 - 3. [Tips](#tips)
     - 3.1. [JSON字符串反序列化时泛型丢失问题](#json字符串反序列化时泛型丢失问题)
 
-💠 2025-09-03 14:52:41
+💠 2025-12-14 19:15:49
 ****************************************
 # Java中的序列化
 > [码农翻身:序列化： 一个老家伙的咸鱼翻身](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513589&idx=1&sn=d402d623d9121453f1e570395c7f99d7&chksm=80d67a36b7a1f32054d4c779dd26e8f97a075cf4d9ed1281f16d09f1df50a29319cd37520377&scene=21#wechat_redirect) `对象转化为二进制流`
@@ -48,7 +54,7 @@ categories:
     - 一种是固定常量值，例如1L
     - 一种是根据类名、接口名、成员方法及属性等来生成一个64位的哈希字段
 
-> 当你一个类实现了Serializable接口，如果没有定义serialVersionUID，可通过IDE进行提醒显示定义。
+> 当你一个类实现了Serializable接口，如果没有定义serialVersionUID，可通过IDE进行提醒显示定义。如果要使用JDK的序列方式, 一定要显式定义, 且后续不能改, 除非业务上确认不兼容. 
 
 > 子接口 Externalizable， 实现writeExternal()和readExternal()⽅法可以指定序列化哪些属性
 
@@ -81,6 +87,94 @@ categories:
         }
     ```
 
+## Externalizable (基本不用到)
+> `Externalizable` 是 `Serializable` 的子接口，提供了更细粒度的序列化控制。通过实现 `writeExternal()` 和 `readExternal()` 方法，可以完全自定义序列化和反序列化的过程。
+
+### 与 Serializable 的区别
+
+| 特性 | Serializable | Externalizable |
+|------|-------------|----------------|
+| 序列化方式 | 自动序列化所有非 transient 字段 | 手动控制序列化哪些字段 |
+| 方法实现 | 无需实现方法（可选 writeObject/readObject） | 必须实现 writeExternal() 和 readExternal() |
+| 性能 | 相对较慢（反射机制） | 相对较快（直接控制） |
+| 灵活性 | 较低 | 较高 |
+| 构造器调用 | 反序列化时不调用构造器 | 反序列化时会先调用无参构造器 |
+
+### 基本使用
+
+```java
+import java.io.*;
+
+public class User implements Externalizable {
+    private String name;
+    private int age;
+    private transient String password; // transient 字段不会被自动序列化
+    
+    // Externalizable 要求必须有无参构造器
+    public User() {
+        System.out.println("无参构造器被调用");
+    }
+    
+    public User(String name, int age, String password) {
+        this.name = name;
+        this.age = age;
+        this.password = password;
+    }
+    
+    // 自定义序列化逻辑
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeObject(name);
+        out.writeInt(age);
+        // 可以选择不序列化 password，或者进行加密后序列化
+        // out.writeObject(password);
+    }
+    
+    // 自定义反序列化逻辑
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        name = (String) in.readObject();
+        age = in.readInt();
+        // 对应 writeExternal 中的读取顺序
+        // password = (String) in.readObject();
+    }
+    
+    // getter/setter 方法...
+}
+```
+
+### 序列化和反序列化示例
+
+```java
+// 序列化
+User user = new User("张三", 25, "secret123");
+ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
+ObjectOutputStream output = new ObjectOutputStream(byteOutput);
+output.writeObject(user);
+output.close();
+
+// 反序列化
+ByteArrayInputStream byteInput = new ByteArrayInputStream(byteOutput.toByteArray());
+ObjectInputStream input = new ObjectInputStream(byteInput);
+User deserializedUser = (User) input.readObject();
+input.close();
+
+// 注意：反序列化时会先调用无参构造器，然后调用 readExternal 方法
+```
+
+### 注意事项
+
+1. **必须有无参构造器**：`Externalizable` 要求类必须提供 public 无参构造器，因为反序列化时会先调用它
+2. **读写顺序一致**：`writeExternal()` 和 `readExternal()` 中的字段读写顺序必须完全一致
+3. **版本兼容性**：与 `Serializable` 一样，修改类结构时需要注意版本兼容性
+4. **性能考虑**：虽然性能更好，但需要手动维护序列化逻辑，代码复杂度更高
+
+### 使用场景
+
+- 需要精确控制序列化哪些字段
+- 需要对某些字段进行加密或特殊处理
+- 性能敏感的场景
+- 需要序列化 transient 字段（通过手动实现）
 
 ******************************
 
