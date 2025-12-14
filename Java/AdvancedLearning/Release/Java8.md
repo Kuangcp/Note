@@ -312,8 +312,20 @@ An informative annotation type used to indicate that an interface type declarati
 
 ### Lambda 实现原理
 
-编译时将每一处的Lambda生成匿名内部类字节码, 替换lambda表达式写法
-- 因为一处Lambda写法可以引用lambda表达式外部的变量 即捕获外部变量, 而且lambda运行处不在定义处, 运行处很可能会超出变量的作用域, 所以需要定义一个匿名类, 将引用的外部变量定义为这个类的成员属性, 用于传递
+编译时将每一处的Lambda生成合成类, 替换lambda表达式写法
+- 因为Lambda声明时可以引用lambda表达式外部的变量 即捕获外部变量, 而且lambda运行处不在定义处, 运行处很可能会超出变量的作用域, 所以需要定义一个匿名类, 将引用的外部变量定义为这个类的成员属性, 用于传递
+
+如果手写一个内部类实现一样的效果则是: 
+
+| 环节    | 手写内部类              | Lambda 真实实现                   |
+| ----- | ------------------ | ----------------------------- |
+| 编译产物  | 每个表达式一个 `.class`   | 0 个新 `.class`                 |
+| 运行时类数 | 与表达式数 1:1 增长       | 同一函数式接口共享 1 类                 |
+| 加载/验证 | 每次 `new` 都要加载      | 仅第一次 Bootstrap 加载             |
+| 字节码   | 提前写死               | 运行时动态拼出，再 JIT                 |
+| 调用方式  | 普通 `invokespecial` | `invokedynamic` + 缓存 CallSite |
+
+
 
 ```java
 // lambda定义: 
@@ -354,9 +366,6 @@ final class $Lambda$23 implements Function<String,String> {
 只要能将业务抽象规范, 搭建良好的业务框架, Lambda表达式和函数式方法 越多越好, 业务的实现也可以更灵活
 
 ***
-
-
-> [参考: Java Lambda表达式 实现原理分析](https://blog.csdn.net/jiankunking/article/details/79825928)
 
 > 为什么Lambda范围内的代码引用外部变量时得是final修饰的。
 
