@@ -44,7 +44,7 @@ categories:
         - 1.11.5. [优雅重启](#优雅重启)
         - 1.11.6. [运行性能优化](#运行性能优化)
 
-💠 2025-12-11 21:13:25
+💠 2025-12-15 17:28:06
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -468,7 +468,10 @@ public class ShutdownAlertService implements ApplicationListener<ContextClosedEv
 
 运行在Docker或者K8S内时，还需要如下配置。 并且要确保Java进程能收到 15 信号，通过 tini 或者 exec 启动java （shell方式会导致无法收到kill信号）
 ```yaml
-
+spec:
+  template:
+    spec:
+      terminationGracePeriodSeconds: 120
 ```
 
 ### 运行性能优化
