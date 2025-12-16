@@ -22,7 +22,7 @@ categories:
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2025-12-11 21:13:25
+💠 2025-12-16 11:09:48
 ****************************************
 # 线程池
 
@@ -63,8 +63,8 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 **注意**: 定时的这些API上有注释说明：当某次任务抛出异常时，后续的调度会挂起，所以异步任务需要大范围的 try catch，业务自己处理异常
 
 > 如何实现调度: [ScheduledThreadPoolExecutor实现原理](https://juejin.cn/post/7035415187783942152) | [验证单元测试](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/thread/schdule/SchedulerPoolTest.java)
-- 核心依赖 DelayedWorkQueue 实现延迟调度
-    - 全部线程繁忙时，调度会发生什么问题？ 
+- 核心依赖 DelayedWorkQueue 实现延迟调度，默认最大值为Integer.MAX_VALUE
+    - 当全部线程繁忙时，任务会依次延迟执行，也就是说如果有一个期望1S后执行的任务，由于前序任务的阻塞和耗时会不可控的延迟执行
 
 ************************
 ## 分支合并框架 Fork/Join
