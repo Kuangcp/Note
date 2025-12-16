@@ -5,7 +5,6 @@ tags:
 categories: 
 ---
 
-
 💠
 
 - 1. [ConcurrentHashMap](#concurrenthashmap)
@@ -14,11 +13,20 @@ categories:
     - 1.3. [put](#put)
     - 1.4. [get](#get)
     - 1.5. [remove](#remove)
-    - 1.6. [ConcurrentHashMap 与 HashMap](#concurrenthashmap-与-hashmap)
-    - 1.7. [线程安全机制（JDK 1.8）](#线程安全机制jdk-18)
-    - 1.8. [总结](#总结)
+    - 1.6. [Tips](#tips)
+    - 1.7. [ConcurrentHashMap 与 HashMap](#concurrenthashmap-与-hashmap)
+        - 1.7.1. [线程安全性](#线程安全性)
+        - 1.7.2. [实现机制](#实现机制)
+        - 1.7.3. [性能对比](#性能对比)
+        - 1.7.4. [其他区别](#其他区别)
+    - 1.8. [线程安全机制（JDK 1.8）](#线程安全机制jdk-18)
+        - 1.8.1. [CAS操作](#cas操作)
+        - 1.8.2. [synchronized锁](#synchronized锁)
+        - 1.8.3. [volatile关键字](#volatile关键字)
+        - 1.8.4. [扩容机制](#扩容机制)
+    - 1.9. [总结](#总结)
 
-💠 2025-01-07 09:56:23
+💠 2025-12-16 20:28:35
 ****************************************
 # ConcurrentHashMap
 > [API: ConcurrentHashMap](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentHashMap.html)
@@ -32,10 +40,35 @@ categories:
 ## 结构
 ConcurrentHashMap的数据结构与HashMap类似，都是数组 + 链表 + 红黑树的结构，但实现了线程安全。
 
+- 修改HashMap，并不需要将整个结构都锁住，只要锁住即将修改的桶（就是单个元素）
+    - 好的HashMap 实现，在读取时不需要锁，写入时只要锁住要修改的单个桶 Java能达到这个标准，但是需要程序员去操作底层的细节才能实现
+- `ConcurrentHashMap`类 还实现了ConcurrentMap接口，有些提供了还提供了原子操作的新方法
+    - `putIfAbsent()` 如果还没有对应键，就把键/值添加进去
+    - `remove()` 如果键存在而且值与当前状态相等，则用原子方式移除键值对
+    - `replace()` API 为HashMap中原子替换的操作方法提供了两种不同的形式
+- key value 均不允许为null
+
+> 1.7 到 1.8 改动
 - JDK 1.7: 采用分段锁（Segment）机制，将数据分成多个段，每个段独立加锁
-- JDK 1.8: 采用 CAS + synchronized 机制，锁的粒度更细，只锁住数组中的单个桶（Node）
+    - JDK 1.8: 采用 CAS + synchronized 机制，锁的粒度更细，只锁住数组中的单个桶（Node）
+    - 数据结构：取消了 Segment 分段锁的数据结构，取而代之的是数组+链表+红黑树的结构。
+- 保证线程安全机制：JDK1.7 采用Segment 的分段锁机制实现线程安全，其中 Segment 继承自 ReentrantLock 。JDK1.8采用CAS+synchronized保证线程安全。
+- 锁的粒度：JDK1.7 是对需要进行数据操作的 Segment 加锁，JDK1.8调整为对每个数组元素加锁（Node）。
+- 链表转化为红黑树：定位节点的 hash 算法简化会带来弊端，hash冲突加剧，因此在链表节点数量大于 8（且数据总量大于等于 64）时，会将链表转化为红黑树进行存储。
+- 查询时间复杂度：从JDK1.7的遍历链表O(n)， JDK1.8 变成遍历红黑树O(logN)。
+
 
 ![](https://raw.githubusercontent.com/Kuangcp/ImageRepos/master/Tech/Java/Collection/Map/ConcurrentHashMap.png)
+
+************************
+
+ConcurrentHashMap的迭代器是弱一致性(weakly-consistent)的，和 ConcurrentSkipListMap 一样，它不会抛出ConcurrentModificationException异常，但是无法保证迭代器遍历的元素是一个完整的快照。因此，在迭代器遍历时，可能会遗漏或重复遍历某些元素。
+
+> 源码层面怎么做到的
+不复制整个数组（不像 CopyOnWrite）；  
+不维护 modCount（所以检测不到并发修改）；  
+分段推进（Java 8+ 是数组+链表/树，迭代器按 slot 顺序读）；  
+遇到被并发搬走的桶 → 直接跳过或读到新值，不会重试。 
 
 ## 构造函数
 默认初始容量 16 和 默认负载因子 0.75，与HashMap相同。
@@ -128,13 +161,4 @@ ConcurrentHashMap的数据结构与HashMap类似，都是数组 + 链表 + 红�
 - 支持多线程协助扩容（helpTransfer）
 - 使用ForwardingNode标记正在扩容的桶
 - 扩容时不影响读操作
-
-## 总结
-1. ConcurrentHashMap是线程安全的HashMap实现；
-2. JDK 1.8采用CAS + synchronized实现，锁粒度更细，性能更好；
-3. 数据结构与HashMap相同：数组 + 链表 + 红黑树；
-4. key和value都不能为null；
-5. get操作无锁，put/remove操作使用synchronized锁住单个桶；
-6. 支持多线程协助扩容，提高扩容效率；
-7. size()方法返回的是近似值，实际大小可能略有偏差；
 
