@@ -54,6 +54,8 @@ categories:
         - 4.5.2. [分支问题排查](#分支问题排查)
     - 4.6. [merge](#merge)
     - 4.7. [rebase](#rebase)
+        - 4.7.1. [复杂操作](#复杂操作)
+            - 4.7.1.1. [强制删除部分提交记录但是保留文件变更](#强制删除部分提交记录但是保留文件变更)
     - 4.8. [cherry-pick](#cherry-pick)
     - 4.9. [bisect](#bisect)
     - 4.10. [worktree](#worktree)
@@ -76,7 +78,7 @@ categories:
     - 8.2. [gitattributes](#gitattributes)
 - 9. [自定义插件](#自定义插件)
 
-💠 2025-10-30 18:57:47
+💠 2025-12-16 22:34:41
 ****************************************
 
 # Git基础
@@ -795,6 +797,32 @@ master: a - b - c - d' - e'
 
 merge 会保留分支图, rebase 会保持提交记录为单分支
 
+### 复杂操作
+#### 强制删除部分提交记录但是保留文件变更
+例如 ： 有个仓库 ABCDEFG 的顺序提交，也已经推送到远程了，需要删除CDE的提交记录 ，但是CDE提交的文件内容变更要保留
+
+```shell
+    # 1. 备份
+    git branch backup-branch
+    # 2. 找到 B 和 F 的 commit hash
+    git log --oneline --graph --all
+    # 3. 创建一个临时分支指向 F（在 CDE 之后的第一个提交）
+    git branch temp-point F
+    # 4. 重置当前分支到 B
+    git reset --hard B
+    # 5. 使用 merge-base 和 read-tree 将 CDE 的所有变更合并为一次提交
+    git merge --squash temp-point
+    git commit -m "合并 C、D、E 的修改"
+    # 6. 现在将 F 之后的所有内容（包括分叉）rebase 到当前位置
+    git rebase --onto HEAD temp-point backup-branch
+    # 7. 清理临时分支
+    git branch -D temp-point
+    # 8. 强制推送
+    git push -f origin <branch-name>
+```
+
+操作完后，后续提交是准确的，但是改动后的那些提交的hash全变了，而且原先merge产生的分支合并图也会消失
+
 ************************
 
 ## cherry-pick
@@ -880,13 +908,14 @@ merge 会保留分支图, rebase 会保持提交记录为单分支
 ## push
 
 - _常用参数_
-  - `-q` 控制台不输出任何信息
-  - `-f` 强制推送提交 **使用这个参数时要再三考虑清楚**
-  - `--all` 推送所有分支
-  - `-u` upstream 设置 git pull/status 的上游
-    - `git push origin master`和 `git push -u origin master` 区别在于 前者是使用该远程和分支进行推送
-    - 后者也是推送, 并设置origin为默认推送的远程, 以后push就不用注明远程名了(多远程的情况下要注意)
-  - `-d --delete` 删除引用(分支或标签)
+    - `-q` 控制台不输出任何信息
+    - `-f` 强制推送提交 **使用这个参数时要再三考虑清楚**
+        - 受影响的端需要执行 git reset --hard origin/master 才能恢复绑定关系
+    - `--all` 推送所有分支
+    - `-u` upstream 设置 git pull/status 的上游
+        - `git push origin master`和 `git push -u origin master` 区别在于 前者是使用该远程和分支进行推送
+        - 后者也是推送, 并设置origin为默认推送的远程, 以后push就不用注明远程名了(多远程的情况下要注意)
+    - `-d --delete` 删除引用(分支或标签)
 
 - 删除远程分支
   - `git push origin -d 分支名称`
