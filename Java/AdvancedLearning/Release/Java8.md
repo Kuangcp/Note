@@ -78,7 +78,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2025-09-16 17:08:17
+💠 2025-12-16 20:51:42
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/) | [Source Code](https://download.java.net/openjdk/jdk8/)  
@@ -312,7 +312,7 @@ An informative annotation type used to indicate that an interface type declarati
 
 ### Lambda 实现原理
 
-编译时将每一处的Lambda生成合成类, 替换lambda表达式写法
+运行期第一次调用时将Lambda表达式利用ASM动态生成合成类， 编译期只放 invokedynamic
 - 因为Lambda声明时可以引用lambda表达式外部的变量 即捕获外部变量, 而且lambda运行处不在定义处, 运行处很可能会超出变量的作用域, 所以需要定义一个匿名类, 将引用的外部变量定义为这个类的成员属性, 用于传递
 
 如果手写一个内部类实现一样的效果则是: 
