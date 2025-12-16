@@ -40,7 +40,7 @@ categories:
         - 5.5.1. [BlockingQueue](#blockingqueue)
             - 5.5.1.1. [TransferQueue](#transferqueue)
 
-💠 2025-05-13 14:25:46
+💠 2025-12-16 20:19:27
 ****************************************
 # Java并发
 > [个人相关代码](https://github.com/Kuangcp/JavaBase/tree/concurrency)  
@@ -341,6 +341,10 @@ public int current(){
 ***********************
 # 结构化并发
 [Structured Concurrency](https://openjdk.org/jeps/453)  
+
+> [基于虚拟线程的结构化并发-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/2355578?policyId=1003)  
+
+虚拟线程+ScopedValue+结构化并发，能实现响应式编程级别的吞吐量，而且代码形态没有变化很大。
 
 ************************
 
