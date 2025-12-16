@@ -11,9 +11,9 @@ categories:
 
 - 1. [JVM](#jvm)
     - 1.1. [JVM参数](#jvm参数)
-    - 1.2. [JVM内存参数](#jvm内存参数)
+    - 1.2. [JVM 内存参数](#jvm-内存参数)
         - 1.2.1. [容器内的JVM](#容器内的jvm)
-        - 1.2.2. [内存参数实践](#内存参数实践)
+        - 1.2.2. [JVM 内存参数实践](#jvm-内存参数实践)
     - 1.3. [Unified JVM Logging](#unified-jvm-logging)
 - 2. [JVM 基本结构](#jvm-基本结构)
     - 2.1. [堆内存管理](#堆内存管理)
@@ -38,7 +38,7 @@ categories:
 - 5. [Extend](#extend)
     - 5.1. [CRaC](#crac)
 
-💠 2025-05-20 12:51:30
+💠 2025-12-16 19:53:20
 ****************************************
 # JVM
 > JVM结构及设计
@@ -93,7 +93,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 |:---|:---|:---|:---|:---|:---|
 | 推荐值 | 2 | 2 | 3 | 3 | 8 | 
 
-## JVM内存参数
+## JVM 内存参数
 > 堆(老年代 年轻代)，堆外，元空间，栈
 
 > 内存参数设置的考量： Xmx * 110% + MaxDirectMemorySize + 系统预留内存 <= 容器内存
@@ -101,19 +101,22 @@ Oracle JDK 默认采用的是 Hotspot JVM
 - 系统预留内存512M到1G，视容器规格而定
 - I/O较多的业务适当提高MaxDirectMemorySize比例（Netty和NIO使用到）
 
-快速确认进程内存配置 
+快速确认进程的内存配置 
+
 | 工具 | 命令 |
 |:----|:----|
 | Arthas    | `jvm`                   |
 | OpenJDK   | `jcmd pid GC.heap_info` |
 | OracleJDK | `jmap -heap pid`        |
 
+- `-Xms` 未显式设置时，采用“物理内存 / 64”作为初始值，最小 8 MB（32 位）或 16 MB（64 位），最大不超过 1 GB
+- `-Xmx` 未显式设置时，默认值是 物理内存/4
 - `-XX:CompressedClassSpaceSize=500m` 压缩的类元空间大小 默认是1g
 - `-XX:SurvivorRatio` 配置 Edgen 和 单个Survivor 的比例, 如果配置为2 则是 2:1:1。 **默认是8**
 - `-XX:NewRatio`old/new 内存的比值 **默认是2**
 - `-Xmn` MaxNewSize 默认值是`Xmx`的1/3 即最大堆内存 MaxHeapSize 的1/3
 - `-Xss` 设置 ThreadStackSize 线程的栈内存大小 默认值 1024k
-- `-XX:+AlwaysPreTouch` 堆内存分配时，直接分配物理内存而不是虚拟内存，分配的物理内存会做0值初始化（单线程执行），好处是后续申请内存时无须分配和初始化，缺点是启动更耗时。
+- `-XX:+AlwaysPreTouch` 堆内存分配时，直接分配物理内存而不是虚拟内存，分配的物理内存会做0值初始化（单线程执行），好处是后续申请内存时无须分配和初始化，缺点是启动和内存扩容更耗时。
     - 申请内存的场景（年轻代晋升，新对象分配）
 
 > java -XX:+PrintFlagsFinal -version
@@ -137,16 +140,18 @@ Oracle JDK 默认采用的是 Hotspot JVM
 
 ### 容器内的JVM
 
-容器无法感知资源限制， 8U191/10b34 及以上版本才支持
+低版本JVM在容器运行时，无法感知对容器设置的资源限制， 8U191/10b34 及以上版本才支持 `注意是 cgroups V1`。 8u372+ 11.0.16+ 17+ `才支持V2版本`
 
 - 快速实验某个Java版本的默认参数和限制 docker run -m 100MB openjdk:8 java -XX:MinRAMPercentage=80.0 -XshowSettings:VM -version
 - [参考: Java和Docker限制的那些事儿](http://www.techug.com/post/java-and-docker-memory-limits.html)`天坑： 低版本的Jvm无法感知到Docker的资源限制`
-- [ ] 但是有的Linux版本在后续的版本也无法感知，例如 1.8.0_342 10.0.2 仍取的主机内存, Linux 5.15内核 Manjaro23.1 
+
+但是有的Linux版本在后续的版本也无法感知，例如 1.8.0_342 10.0.2 仍取的主机内存, Linux 5.15内核 Manjaro23.1 
+- 原因：这个内核版本使用的是cgroups V2 ` stat -c %T /sys/fs/cgroup` 输出0代表V2， 但是342只兼容V1，所以无法识别
 
 1. [Java (prior to JDK8 update 131) applications running in docker container CPU / Memory issues?](https://stackoverflow.com/questions/64262912/java-prior-to-jdk8-update-131-applications-running-in-docker-container-cpu-m)  
 1. [Best Practices: Java Memory Arguments for Containers](https://dzone.com/articles/best-practices-java-memory-arguments-for-container)
 
-总结： **尽量使用 Xms Xmx**，而不是 RAMPercentage RAMFractionc参数（还要结合容器或宿主机计算实际值），降低维护和理解成本，控制更灵活精确，且支持所有版本JVM，不用考虑兼容性问题
+总结： **尽量使用 -Xms -Xmx**，而不是 RAMPercentage RAMFractionc参数（还要结合容器或宿主机计算实际值），降低维护和理解成本，控制更灵活精确，且支持所有版本JVM，不用考虑兼容性问题
 
 参数：
 - -XX:ActiveProcessorCount=$CONTAINER_CORE_LIMIT 强制设置CPU量 从downawrd_api获取
@@ -155,11 +160,17 @@ Oracle JDK 默认采用的是 Hotspot JVM
 
 ************************
 
-### 内存参数实践
+### JVM 内存参数实践
+`-Xms -Xmx 设置为一样的值`
+
 > [初始和最大堆内存设置为一样的好处](https://gceasy.ycrash.cn/gc-recommendations/benefits-of-setting-initial-and-maximum-memory-size.jsp) 
 > [Benefits of setting initial and maximum memory size to the same value](https://blog.ycrash.io/benefits-of-setting-initial-and-maximum-memory-size-to-the-same-value/)
-- 避免扩容的暂停事件，提前调度充足资源的容器防止运行期扩容而被Linux被OOMKiller杀掉
+- 避免扩容的STW事件, 单次扩容量为当前堆的 50%，不能超过 1 GB 上限。并且堆的总内存小于Xmx 逻辑位于源码 `collectorPolicy.cpp`
 
+************************
+
+
+************************
 
 > [参考: JVM实用参数（一）JVM类型以及编译器模式](http://ifeve.com/useful-jvm-flags-part-1-jvm-types-and-compiler-modes-2/)  
 > [xxfox](http://xxfox.perfma.com/)`Jvm参数辅助工具`  
