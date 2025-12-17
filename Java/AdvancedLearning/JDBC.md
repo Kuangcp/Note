@@ -11,6 +11,7 @@ categories:
 - 1. [JDBC](#jdbc)
     - 1.1. [Statement](#statement)
         - 1.1.1. [PrepareStatement](#preparestatement)
+            - 1.1.1.1. [批量写入优化](#批量写入优化)
     - 1.2. [ResultSet](#resultset)
         - 1.2.1. [长连接流式导出数据](#长连接流式导出数据)
     - 1.3. [SQLException](#sqlexception)
@@ -19,7 +20,7 @@ categories:
     - 2.2. [Clickhouse](#clickhouse)
 - 3. [Tips](#tips)
 
-💠 2024-10-08 11:23:38
+💠 2025-12-17 11:45:37
 ****************************************
 # JDBC
 Java DataBase Connectivity
@@ -58,6 +59,15 @@ Java DataBase Connectivity
 
 > 客户端参数调整
 - [Druid](https://github.com/alibaba/druid/blob/master/druid-spring-boot-starter/README_EN.md)`pool-prepared-statements` 连接池层面的缓存
+
+#### 批量写入优化
+
+场景：需要写入几十万 少量字段的数据入表
+- 单纯执行insert *很慢*， 因为每次insert都开了事务，但是如果在方法上加事务又会导致事务很大。
+- 改为 手动管理事务，拆分批量写入5000条后手动提交事务； *还是慢*
+- 继续改为 insert table(a,b,c) values(a1,b1,c1),(a2,b2,c2) 形式，同样拆分5000条为一条SQL，自动管理事务.
+    - JDBC连接上增加参数（MySQL） &rewriteBatchedStatements=true&useServerPrepStmts=true&cachePrepStmts=true&prepStmtCacheSize=250&prepStmtCacheSqlLimit=2048
+    - 但是需要注意SQL长度超长的问题，需要依据数据量调整批次大小
 
 ************************
 
