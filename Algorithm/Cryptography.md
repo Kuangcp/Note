@@ -46,7 +46,7 @@ categories:
     - 4.2. [SSL TLS](#ssl-tls)
 - 5. [扩展](#扩展)
 
-💠 2025-12-18 21:23:17
+💠 2025-12-18 21:26:01
 ****************************************
 # 密码学
 > [wikipedia](https://zh.wikipedia.org/wiki/%E5%AF%86%E7%A0%81%E5%AD%A6)
@@ -182,6 +182,15 @@ Advanced Encryption Standard。在全世界范围进行公开竞选， 有15个�
 密钥生成方式： Random生成16/32位字节数组，或者任意Ascii码16/32位字符串， 16位字节数组还可以MD5生成
 
 `python3 -c "import secrets; print(secrets.token_hex(16))"`
+
+```java
+    // 生成随机密钥
+    KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+    // 128 192 256
+    keyGenerator.init(128, new SecureRandom());
+    SecretKey secretKey = keyGenerator.generateKey();
+    byte[] key = secretKey.getEncoded();
+```
 
 #### 混合模式
 ##### AES-CCM
