@@ -27,7 +27,7 @@ categories:
 - 6. [反编译](#反编译)
 - 7. [热部署](#热部署)
 
-💠 2025-09-03 11:19:19
+💠 2025-12-16 20:51:42
 ****************************************
 # 字节码以及类加载
 > [相关示例代码](https://github.com/Kuangcp/JavaBase/tree/master/class) 
@@ -82,10 +82,26 @@ categories:
 ## 字节码相关框架
 > [Apache bcel](http://commons.apache.org/proper/commons-bcel/index.html)  
 
-asm  
+asm
+
+使用场景：
+- Java Lambda表达式
+- Arthas
+
 javassist
 
 > [raphw/byte-buddy: Runtime code generation for the Java virtual machine.](https://github.com/raphw/byte-buddy)  
+
+> [后端 - 打开java语言世界通往字节码世界的大门——ASM字节码操作类库 - 京东云技术新知 - SegmentFault 思否](https://segmentfault.com/a/1190000044621732)  
+
+使用场景：
+- Mockito 3+ 默认引擎已切到 Byte Buddy，百万级测试日运行。 @MockBean 底层就是 Byte Buddy 
+- 用 Byte Buddy Agent 在 JVM 启动时拦截 DAO/Service 关键方法； 方法入参里读取 userId → 取灰度配置 → 改写 SQL 表后缀（_v1/_v2）；
+- Agent 拦截 PreparedStatement.executeQuery()；对 SQL 做 FNV-1a 哈希 → 本地 Caffeine 计数； QPS > 阈值 → 直接抛 自定义异常 → 前端降级缓存； 熔断窗口 5s → 自动恢复。
+- Byte Buddy Agent 统一拦截 java.sql.PreparedStatement  org.springframework.web.method.HandlerMethod 美团 「Cat 无侵入监控」 基于 Byte Buddy，单机 5W+ QPS 采样
+- 订单价格 动态计算规则 Groovy 脚本维护在 配置中心； 用 ASM 在 运行时把脚本编译成 字节码类 → 注入 Spring 容器； 方法签名不变，内部逻辑已换； 灰度发布脚本即可，JVM 0 重启。 案例：拼多多 「动态定价引擎」 每周上线 200+ 规则
+-  API 返回值脱敏： Byte Buddy Agent 拦截 JSON 序列化前一刻；反射字段 → 正则脱敏 → 继续序列化
+
 ******************
 
 ## 常量池

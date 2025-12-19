@@ -46,7 +46,7 @@ categories:
     - 4.2. [SSL TLS](#ssl-tls)
 - 5. [扩展](#扩展)
 
-💠 2025-05-09 18:34:05
+💠 2025-12-18 21:26:01
 ****************************************
 # 密码学
 > [wikipedia](https://zh.wikipedia.org/wiki/%E5%AF%86%E7%A0%81%E5%AD%A6)
@@ -172,7 +172,25 @@ Advanced Encryption Standard。在全世界范围进行公开竞选， 有15个�
 同为分组加密算法，分组长度为128比特，密钥长度可选（128，192，256位），使用SPN结构进行多轮加密。 详细过程参考书籍《图解密码技术》  
 而且加密过程的步骤可以并行计算，性能较DES也更好。Rijndael算法背后是严谨的数学论证：明文到密文的计算过程全部可以用数学公式来表达。  
 
-例如128位密钥长度的生成方式：Random生成16位字节数组，或者任意Ascii码16位字符串（强度更弱）
+| 业务场景               | 推荐密钥长度    | 理由           |
+| ------------------ | --------- | ------------ |
+| **普通 Web/App/IoT** | **128 位** | 性能优先，安全足够    |
+| **金融支付/PCI-DSS**   | **128 位** | 标准允许且性能高     |
+| **政府/军事/医疗**       | **256 位** | 合规要求 + 长期机密  |
+| **密码管理器/区块链**      | **256 位** | 抗未来量子冗余      |
+
+密钥生成方式： Random生成16/32位字节数组，或者任意Ascii码16/32位字符串， 16位字节数组还可以MD5生成
+
+`python3 -c "import secrets; print(secrets.token_hex(16))"`
+
+```java
+    // 生成随机密钥
+    KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+    // 128 192 256
+    keyGenerator.init(128, new SecureRandom());
+    SecretKey secretKey = keyGenerator.generateKey();
+    byte[] key = secretKey.getEncoded();
+```
 
 #### 混合模式
 ##### AES-CCM

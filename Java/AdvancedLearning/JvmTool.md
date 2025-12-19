@@ -41,7 +41,7 @@ categories:
     - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2025-12-09 16:37:37
+💠 2025-12-18 21:23:17
 ****************************************
 
 # JVM 监控&诊断
@@ -113,6 +113,23 @@ categories:
 
 > Demo:
 - `jstat -gcutil -t -h5 7919 1000 50` 
+
+
+| 列名       | 含义（百分比，除次数/时间外）|
+| -------- | -------------------------- |
+| **S0**   | Survivor-0 区使用率            |
+| **S1**   | Survivor-1 区使用率            |
+| **E**    | Eden 区使用率                  |
+| **O**    | Old 区使用率                   |
+| **M**    | Metaspace 使用率              |
+| **CCS**  | Compressed Class Space 使用率 |
+| **YGC**  | Young GC 次数                | 
+| **YGCT** | Young GC 累计耗时             |
+| **FGC**  | Full GC 次数                 | 
+| **FGCT** | Full GC 累计耗时               |
+| **CGC**  | Concurrent GC 次数（G1/Z 垃圾回收器等）  |
+| **CGCT** | Concurrent GC 累计耗时         |
+| **GCT**  | 所有 GC 总耗时                 |
 
 ## jinfo 
 > 观察运行中的 java 进程的运行环境参数：参数包括 Java System 属性和 JVM 命令行参数

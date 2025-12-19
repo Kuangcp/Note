@@ -38,7 +38,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2025-09-17 14:39:16
+💠 2025-12-18 21:23:17
 ****************************************
 # GC
 > Java Garbage Collection
@@ -62,35 +62,41 @@ GC 的目的是识别出不再使用的内存，并将其变为可用内存。�
 > [看过无数Java GC文章，这5个问题你也未必知道！](https://mp.weixin.qq.com/s?__biz=MjM5OTMyNzQzMg==&mid=2257485503&idx=1&sn=87ac6a068e3c54d96c74bade2bac293b&chksm=a447fd189330740e52944d148ec838ac307ff7f05248b0a2223724b2fc6c335bc46d8d31da16&mpshare=1&scene=1&srcid=&sharer_sharetime=1584270847465&sharer_shareid=246c4b52c1cb45eaa580c985c95107f3#rd)  
 
 ## GC类型
-> [RednaxelaFX](https://www.zhihu.com/question/41922036/answer/93079526) | [Major GC和Full GC的区别是什么？触发条件呢？](https://www.zhihu.com/question/41922036/answer/93079526)
+> [RednaxelaFX](https://www.zhihu.com/question/41922036/answer/93079526)
 
+
+| 列名      | 含义                       | 收集范围                             | 触发时机                                  | **STW 时长**（典型）                             | **成本/影响**                  | 快速调优口诀                                              |
+| ------- | ------------------------ | -------------------------------- | ------------------------------------- | ------------------------------------------ | -------------------------- | --------------------------------------------------- |
+| **YGC** | Young GC（Minor GC）       | **新生代**（Eden + Survivor）         | Eden 满                                | **< 10 ms**（G1）<br>**20~100 ms**（Parallel） | **最低**；**频率高**但**停顿极短**    | **别让 Eden 过大**→**YGC 间隔 2~3 s 最舒服**                 |
+| **FGC** | Full GC                  | **整个堆**（Young + Old + Metaspace） | Old 满 / System.gc() / Meta 满          | **> 200 ms**<br>**可达几秒**（堆越大越长）            | **最高**；**停顿最长**→**直接卡死业务** | **目标：线上 FGC = 0**<br>**调大 Old / 换 G1 / 降晋升率**       |
+| **CGC** | Concurrent GC（G1/Z 并发阶段） | **部分 Old**（G1 Mixed）**或全部**（Z）   | **G1**：Old 占比 > 45%\*\*<br>**Z**：后台定时 | **≈ 0 ms**（并发）<br>**仅初始标记 < 10 ms**        | **中等**；**不阻塞业务**但**占 CPU** | **CPU 够用就让它跑**<br>**CPU 紧张时调大 `-XX:ConcGCThreads`** |
+
+
+- *Young GC*：当young gen 中的 eden gen 分配满的时候触发。注意young GC中有部分存活对象会晋升到old gen，所以young GC后old gen的占用量通常会有所升高。
+- *Full GC*：当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC
+    - 因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC
+    - `perm gen` / `MetaSpace` 内存空间不足时，也会触发一次 Full GC；
+    - System.gc()、heap dump、jcmd pid GC.run 等指定触发GC时，默认触发 Full GC。
+    - [What causes a Full GC to run?](https://stackoverflow.com/questions/42226785/what-causes-a-full-gc-to-run)
+- *Concurrent GC*:
+    - G1和Z 并发GC： CPU 够就让它工作
+
+************************
+
+> 以下为八股文区分，通常用于分类，实践上无意义，重点仅关注 Full GC 
+- `Full GC`：收集整个堆 **会引发STW**，包括young gen、old gen、perm gen（如果存在的话），metaspace等所有部分内存的模式。
+    - gc日志中会有明确的 `[Full GC]` 字样
 - `Partial GC`：收集部分堆
     - `Young GC`：只收集young gen的GC
     - `Old GC`：只收集old gen的GC。只有CMS的concurrent collection是这个模式
     - `Mixed GC`：收集整个young gen以及部分old gen的GC。只有G1有这个模式
-
-- `Full GC`：收集整个堆，包括young gen、old gen、perm gen（如果存在的话），metaspace等所有部分的模式。
-    - gc日志中会有明确的 `[Full GC]` 字样
-
-`新生代GC Minor GC`  
-也称 Young GC，会引发STW。发生在新生代的垃圾收集动作, 因为大多数对象都是存活时间很短, 所以 Minor GC 非常频繁, 一般回收速度也比较快.   
-扫描过后将 Eden 和 现在使用的 Survivor 两个区中的存活对象 全搬去空闲的 Survivor.   
-如果 存活的对象内存大小大于 Survivor 区大小, 则需要`分配担保机制`提前将对象转移到老年代中
-
-`老年代GC Major GC`  
-发生在老年代的GC, 出现了 Major GC, 往往会伴随至少一次 Minor GC. Major GC 的速度一般会比 Minor GC 慢10倍以上.
-
-> [What causes a Full GC to run?](https://stackoverflow.com/questions/42226785/what-causes-a-full-gc-to-run)
-
-> [参考: Major GC和Full GC的区别是什么？](https://www.zhihu.com/question/41922036)
-- HotSpot上的一次 Full GC: 针对 新生代 老生代 元空间 的全局范围的GC, 将会 STW(Stop The World)
-
-> 最简单的分代式GC策略，按HotSpot VM的serial GC的实现来看，触发条件是：
-- *Young GC*：当young gen 中的 eden gen 分配满的时候触发。注意young GC中有部分存活对象会晋升到old gen，所以young GC后old gen的占用量通常会有所升高。
-- *Full GC*：当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC
-    - 因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC
-- `perm gen` / `MetaSpace` 内存空间不足时，也会触发一次 Full GC；
-- System.gc()、heap dump、jcmd pid GC.run 等指定触发GC时，默认触发 Full GC。
+- `新生代GC Minor GC`
+    - 也称 Young GC，**会引发STW**。发生在新生代的垃圾收集动作, 因为大多数对象都是存活时间很短, 所以 Minor GC 非常频繁, 一般回收速度也比较快.   
+    - 扫描过后将 Eden 和 现在使用的 Survivor 两个区中的存活对象 全搬去空闲的 Survivor.   
+    - 如果 存活的对象内存大小大于 Survivor 区大小, 则需要`分配担保机制`提前将对象转移到老年代中
+- `老年代GC Major GC`
+    - 发生在老年代的GC不会单独触发, 出现了 Major GC, 往往会伴随至少一次 Minor GC. “Major” 只是 Full GC 的一个子阶段，并不存在“只收集 Old 而不收 Young”的独立 Major GC；
+    - [Major GC和Full GC的区别是什么？触发条件呢？](https://www.zhihu.com/question/41922036/answer/93079526)
 
 ************************
 

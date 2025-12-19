@@ -18,7 +18,6 @@ categories:
 - 4. [内核参数](#内核参数)
 - 5. [内存情况](#内存情况)
     - 5.1. [free](#free)
-    - 5.2. [smem](#smem)
 - 6. [性能监测](#性能监测)
     - 6.1. [perf](#perf)
     - 6.2. [top](#top)
@@ -58,7 +57,7 @@ categories:
     - 8.7. [chroot](#chroot)
 - 9. [关机/重启](#关机重启)
 
-💠 2025-11-28 00:53:03
+💠 2025-12-16 17:49:42
 ****************************************
 # Linux性能分析和管理
 
@@ -102,9 +101,11 @@ hardinfo
 > 系统实时状态信息
 
 - top
+- atop 更轻量
 - [htop](https://github.com/hishamhm/htop)`Htop更好用`
     - [你一定用過 htop，但你有看懂每個欄位嗎？](https://medium.com/starbugs/do-you-understand-htop-ffb72b3d5629)
     - CPU: Task 进程 thr 线程 kthr 内核线程 running 执行中的线程
+    - 其中 RES = RSS
 - gotop 
 - ytop
 - ctop 
@@ -155,9 +156,6 @@ hardinfo
     - `cached` 就是cache内存区域已经使用量
 
 >- 注意: 如果是新版的free, shared 那一栏总是为0, 因为shared本就是说明进程共享内存容量, free认为不能显示数有效信息, 就抛弃了这个指标,总是显示为0
-
-## smem
-较精准展示进程使用的内存和swap内存
 
 **************************
 
