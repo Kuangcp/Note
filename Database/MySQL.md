@@ -64,7 +64,7 @@ categories:
     - 10.3. [修改](#修改)
     - 10.4. [授权](#授权)
 
-💠 2025-12-17 17:04:16
+💠 2025-12-22 11:05:39
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -191,6 +191,31 @@ COLLATE 基于字符集，定义字符串比较、排序、匹配的规则（比
 
 > 注意ci的情况下 重读字符 ü 和 u会被视为等价字符，但是同样Java应用中认为是两个字符因为字节不一样，及时调用了String.toLower()方法，也是不同的字符
 
+如果需要Java代码和数据库保持一致的处理，需要引入依赖做特殊转换，不能直接 toLowerCase()
+
+```xml
+    <dependency>
+        <groupId>com.ibm.icu</groupId>
+        <artifactId>icu4j</artifactId>
+        <version>74.2</version>
+    </dependency>
+```
+
+```java
+   // 去重音 + 转小写 + 处理土耳其字符
+    // 1. NFD: Unicode 规范化分解
+    // 2. [:Nonspacing Mark:] Remove: 移除重音符号
+    // 3. NFC: Unicode 规范化组合
+    // 4. Latin-ASCII: 将拉丁字符转换为 ASCII（包括 ı→i, İ→I）
+    // 5. Lower: 转小写
+    private static final Transliterator FOLD_TRANSLITERATOR =
+            Transliterator.getInstance("NFD; [:Nonspacing Mark:] Remove; NFC; Latin-ASCII; Lower");
+
+    public static String fold(String src) {
+        if (src == null) return null;
+        return FOLD_TRANSLITERATOR.transform(src);
+    }
+```
 
 *****************************
 # 数据库
