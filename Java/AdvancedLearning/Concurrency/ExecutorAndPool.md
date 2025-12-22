@@ -143,7 +143,8 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
     - 它是线程池类`ForkJoinPool`的扩展
     - 该线程池能够合理的使用CPU进行对任务操作（并行操作），所以适合使用在很耗时的任务中
     - 创建方式：`ExecutorService executor = Executors.newWorkStealingPool();`
-- `unconfigurableExecutorService` 将线程池包装为不可修改参数，只能提交和停止的线程池对象
+- `unconfigurableExecutorService()` 将线程池包装为不可修改参数，只能提交和停止的线程池对象
+- `newVirtualThreadPerTaskExecutor()` JDK21 虚拟线程池
 
 ## CompletionService 接口
 > 实现类 ExecutorCompletionService JavaDoc上有使用示例
