@@ -64,7 +64,7 @@ categories:
     - 10.3. [修改](#修改)
     - 10.4. [授权](#授权)
 
-💠 2025-12-22 11:05:39
+💠 2025-12-26 12:56:58
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -189,9 +189,11 @@ COLLATE 基于字符集，定义字符串比较、排序、匹配的规则（比
     general：通用规则（简化的比较算法，性能高）；
     ci：Case Insensitive（大小写不敏感），对应 cs（大小写敏感）、bin（二进制比较）。
 
-> 注意ci的情况下 重读字符 ü 和 u会被视为等价字符，但是同样Java应用中认为是两个字符因为字节不一样，及时调用了String.toLower()方法，也是不同的字符
+************************
 
-如果需要Java代码和数据库保持一致的处理，需要引入依赖做特殊转换，不能直接 toLowerCase()
+> 注意 utf8mb4_general_ci 的情况下 重读字符 ü 和 u会被MySQL视为等价字符，但是在Java应用中认为是两个字符因为字节不一样
+
+- 如果需要Java代码和数据库保持一致的处理，需要引入依赖做特殊转换，不能直接 toLowerCase()
 
 ```xml
     <dependency>
