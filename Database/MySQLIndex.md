@@ -174,11 +174,8 @@ SHOW PROFILE FOR QUERY n，这里的n就是对应SHOW PROFILES输出中的Query_
 > 联合索引
 - 两个或更多个列上的索引被称作联合索引，联合索引又叫复合索引
 
-## 普通索引
-是最基本的索引，只在单列上建立索引，无特殊限制
-
 ## 唯一索引
-与前面的普通索引类似，不同的就是：索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一
+索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一
 
 ## 主键索引
 是一种特殊的唯一索引，一个表只能有一个主键，不允许有空值。
@@ -196,7 +193,7 @@ SHOW PROFILE FOR QUERY n，这里的n就是对应SHOW PROFILES输出中的Query_
 
 聚簇索引中的叶子节点记录了主键值、事务 id、用于事务和 MVCC 的回滚指针以及所有的剩余列。
 
-> 聚簇索引选择优先级排序：
+> 聚簇索引 选择优先级排序：
 
 | 场景            | 聚簇索引键                | 说明                           |
 | ------------- | -------------------- | ---------------------------- |
@@ -217,7 +214,7 @@ create table report_user_date(id bigint primary key auto_increment, user_id bigi
 
 alter table report_user_date add index idx_user(user_id,crea);
 
--- 如果只查询索引字段（user_id 或 crea），还能利用上联合索引，即使查询条件没有最左列
+-- 如果只查询索引字段（user_id 或 crea），还能利用上联合索引，即使查询条件没有最左列，这个时候会将索引当成瘦表做全量数据扫描（比全表扫描IO小）时间复杂度O(N)
 -- innodb 引擎时，由上述特性 查id 也能使用上联合索引，myisam 就不能了
 explain select id  from report_user_date where crea < '2021-12-26';
 
