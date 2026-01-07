@@ -18,12 +18,14 @@ categories:
         - 1.3.2. [TreeMap](#treemap)
     - 1.4. [List](#list)
     - 1.5. [Set](#set)
+    - 1.6. [Queue](#queue)
 - 2. [第三方开源集合框架](#第三方开源集合框架)
-    - 2.1. [fastutil](#fastutil)
-    - 2.2. [Koloboke](#koloboke)
-    - 2.3. [Trove](#trove)
+    - 2.1. [Apache Commons Collections](#apache-commons-collections)
+    - 2.2. [fastutil](#fastutil)
+    - 2.3. [Koloboke](#koloboke)
+    - 2.4. [Trove](#trove)
 
-💠 2024-07-13 00:44:21
+💠 2026-01-07 15:30:18
 ****************************************
 # JDK中的集合
 
@@ -99,6 +101,28 @@ List接口有众多实现, 最常用的 ArrayList LinkedList
     - 因为有一个类是SortSet，顾名思义，所以是有序的，要继续多学习和使用Java原生的集合对象了
 
 > [3分钟搞掂Set集合](https://segmentfault.com/a/1190000014391402?utm_source=channel-hottest)
+
+## Queue
+
+java.util.Queue
+├── Deque                          ← 双向队列
+│   ├── ArrayDeque                 ← 非阻塞、数组、最快
+│   └── LinkedBlockingDeque        ← 阻塞、链表、双端锁
+├── BlockingQueue                  ← 阻塞、线程安全
+│   ├── ArrayBlockingQueue         ← 有界、数组、单锁
+│   ├── LinkedBlockingQueue        ← 默认无界、链表、双锁
+│   ├── SynchronousQueue           ← 零容量、直接传递
+│   └── PriorityBlockingQueue      ← 无界、堆、优先级
+└── AbstractQueue
+    └── PriorityQueue              ← 无界、堆、非阻塞
+
+| 场景              | 一句话口诀                          | 实现                                        |
+| --------------- | ------------------------------ | ----------------------------------------- |
+| **单线程、最快**      | **“非阻塞 = ArrayDeque”**         | **ArrayDeque**                            |
+| **多线程、生产者-消费者** | **“阻塞 = LinkedBlockingQueue”** | **LinkedBlockingQueue**                   |
+| **优先级调度**       | **“优先级 = PriorityQueue”**      | **PriorityQueue / PriorityBlockingQueue** |
+| **直接传递（零容量）**   | **“Synchronous = 0 容量”**       | **SynchronousQueue**                      |
+
 
 ************************
 

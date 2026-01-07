@@ -44,7 +44,7 @@ categories:
         - 1.11.5. [优雅重启](#优雅重启)
         - 1.11.6. [运行性能优化](#运行性能优化)
 
-💠 2025-12-15 17:28:06
+💠 2026-01-07 15:30:18
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -198,7 +198,7 @@ graduate:
 
 优点
 
-    控制器/视图层里随意点 .getCollection() 不会抛 LazyInitializationException，对新手最友好。
+    控制器/视图层里 Entity对象可以随意点 .getCollection() 不会抛 LazyInitializationException，对新手最友好。
 
 缺点
 
