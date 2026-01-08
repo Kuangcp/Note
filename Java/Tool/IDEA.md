@@ -12,9 +12,9 @@ categories:
 
 - 1. [IDEA 使用笔记](#idea-使用笔记)
     - 1.1. [常用技巧](#常用技巧)
-        - 1.1.1. [Tomcat的使用](#tomcat的使用)
-        - 1.1.2. [导出为可运行JAR](#导出为可运行jar)
-        - 1.1.3. [Springboot热加载](#springboot热加载)
+        - 1.1.1. [导出为可运行JAR](#导出为可运行jar)
+        - 1.1.2. [Springboot热加载](#springboot热加载)
+        - 1.1.3. [多个独立项目关联加载](#多个独立项目关联加载)
         - 1.1.4. [Debug](#debug)
     - 1.2. [常用配置](#常用配置)
     - 1.3. [IDEA快捷键](#idea快捷键)
@@ -37,7 +37,7 @@ categories:
 - 4. [Datagrip](#datagrip)
     - 4.1. [Datagrip时区问题](#datagrip时区问题)
 
-💠 2024-10-02 22:33:00
+💠 2026-01-08 11:47:43
 ****************************************
 
 # IDEA 使用笔记
@@ -52,9 +52,6 @@ categories:
 1. 鼠标方法上悬停显示javadoc  勾选 General -> show quick documentation on mouse move 
 1. 自定义 TODO 等标签 Editor -> TODO, 照已有的 TODO FIXME 新建一个即可 
 
-### Tomcat的使用
-> 直接配置解压的即可, 然后Idea会在 用户目录下的Idea主目录中配置一个专门放Tomcat的配置和日志等文件, 和原Tomcat进行了隔离, 这样就不会影响到该Tomcat.
-
 ### 导出为可运行JAR
 - File -> project structure ->artifact 里面设置好 引入的库，设置Main类，引用的jar包的相对classpath
 - Build artifact -> Build
@@ -67,6 +64,15 @@ categories:
     -  (如果旁边有提示说不会在运行和debug执行, 那么就要勾选并行)  `Compile independent modules in parallel`
 - **Ctrl Shift A** 快捷搜索 Registry 进入后找到 compiler.automake.allow.when.app.running 勾选
 - 加入devtools依赖 | [DevTools的官方文档](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html#using-boot-devtools)
+
+### 多个独立项目关联加载
+
+在 2021.3 之前 的 IDEA 里，只要 A、B 两个 彼此独立的 Maven Project 同时打开，并且它们的 **groupId + artifactId + version 完全一致**，IDEA 就会把它们当成“源码依赖”——跨项目跳转、断点、实时改代码都能立即生效，不需要 install，也不需要 parent/module 声明。
+
+但从 2021.3 开始（官方 issue IDEA-266066 / IDEA-271068），JetBrains 为了加快索引、减少内存，把这条“隐式源码映射”规则砍掉了(在2024.x 分支里又把“跨项目源码映射”悄悄加回来了 2025.x 又去掉了)：
+
+现在 IDEA 只会把“外部坐标”解析成本地仓库里的 jar，不再自动把另一个 opened project 的源码当成同一坐标。于是出现了你看到的“改完必须 install 才生效”的倒退行为。
+
 
 ************************
 
