@@ -38,7 +38,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2025-12-18 21:23:17
+💠 2026-01-12 09:43:58
 ****************************************
 # GC
 > Java Garbage Collection
@@ -444,7 +444,9 @@ CMS进入 full GC 的情况是并发收集模式跟不上应用分配内存的�
 设计目的： 避免FullGC
 
 - 分代收集
-    - 虽然G1可以独立管理整个堆, 但同样具有分代的概念
+    - 虽然G1可以独立管理整个堆, 但同样具有分代的概念, 物理内存切分为等大小的Region块
+    - Region上的标签（会随时变化）： Eden Region， Survivor Region， Old Region， Humongous Region（>= Region ½ 的大对象，物理连续 1 或多个 Region）， Free/Unused Region（空白，等待下次分配）
+    - 没有固定 Young/Old 分代边界 —— 年轻代大小 = 当前 Eden + Survivor Region 数 × RegionSize，可动态伸缩。
 - 空间整合
     - 从整体上看是基于标记整理算法, 局部(两个Region之间)上基于标记复制算法, 相比于CMS不容易产生内存碎片
 - 可预测的停顿
@@ -464,7 +466,7 @@ CMS进入 full GC 的情况是并发收集模式跟不上应用分配内存的�
 > [参考: Java Hotspot G1 GC的一些关键技术](https://tech.meituan.com/2016/09/23/g1.html)  
 > [Welcome 20% less memory usage for G1 remembered sets](https://tschatzl.github.io/2021/02/26/early-prune.html)  
 
-G1提供了两种GC模式，Young GC和Mixed GC，两种都是完全Stop The World的
+G1提供了两种GC模式，Young GC和Mixed GC，两种都是完全**Stop The World**的
 - Young GC：选定所有年轻代里的Region。通过控制年轻代的 Region 个数，即年轻代内存大小，来控制young GC的时间开销。 
 - Mixed GC：选定所有年轻代里的Region，外加根据 global concurrent marking 统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
 
@@ -521,11 +523,10 @@ ConcGCThreads的默认值不同GC策略略有不同，CMS下是(ParallelGCThread
 
 **G1PeriodicGCSystemLoadThreshold**： 系统会调用 getloadavg()，默认一分钟内系统返回的平均负载值低于 G1PeriodicGCSystemLoadThreshold指定的阈值，则触发full GC或者concurrent GC( 如果开启 G1PeriodicGCInvokesConcurrent )
 
-> 周期GC内存返还
+> 周期GC
 - 自上次垃圾回收完成以来已超过 G1PeriodicGCInterval ( milliseconds )， 并且此时没有正在进行的垃圾回收任务。如果 G1PeriodicGCInterval 值为零表示禁用快速回收内存的定期垃圾收集。
 - 或者达到 G1PeriodicGCSystemLoadThreshold 阈值
 如果不满足上述条件中的任何一个，则取消当期的定期垃圾回收。等一个 G1PeriodicGCInterval 时间周期后，将重新考虑是否执行定期垃圾回收。
-[Java12新特性 -- 增强G1，自动返回未用堆内存给操作系统 - 西北野狼 - 博客园](https://www.cnblogs.com/androidsuperman/p/11743103.html)  
 
 ************************
 
