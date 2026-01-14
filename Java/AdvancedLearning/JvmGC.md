@@ -38,7 +38,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2026-01-12 09:43:58
+💠 2026-01-14 16:29:33
 ****************************************
 # GC
 > Java Garbage Collection
@@ -442,7 +442,6 @@ CMS进入 full GC 的情况是并发收集模式跟不上应用分配内存的�
 `-XX:+UseG1GC`
 
 设计目的： 避免FullGC
-
 - 分代收集
     - 虽然G1可以独立管理整个堆, 但同样具有分代的概念, 物理内存切分为等大小的Region块
     - Region上的标签（会随时变化）： Eden Region， Survivor Region， Old Region， Humongous Region（>= Region ½ 的大对象，物理连续 1 或多个 Region）， Free/Unused Region（空白，等待下次分配）
@@ -493,8 +492,8 @@ Young GC发生的时机大家都知道，那什么时候发生Mixed GC呢？其�
 
 | 参数 | 描述 |
 |:----|:----|
-| `-XX:MaxGCPauseMillis=200`  |  	设置最大停顿时间值。默认值为 200 毫秒。|
-| `-XX:G1HeapRegionSize=n`  |  	设置 G1 区域大小。值必须为 2 的 N 次幂，如：256、512、1024...范围是 1MB 至 32MB。|
+| `-XX:MaxGCPauseMillis=200`  |  单位ms，设置最大停顿时间值。默认值为 200 毫秒。|
+| `-XX:G1HeapRegionSize=n`  |  	单位字节，设置 G1 区域大小。值必须为 2 的 N 次幂 且 设置值范围是 1MB 至 32MB（JDK17之前，JDK18开始最大支持512M）。默认值：  JVM 在启动时按堆初始大小 ÷ 2048 计算得出，向下取整到 1 MB 的倍数： ≤ 2 GB 堆 → 1 MB 4 GB → 2 MB 8 GB → 4 MB|
 | `-XX:GCTimeRatio=12`  |  	    设置应用于 GC 的总目标时间与处理客户事务的总时间。|
 | `-XX:ParallelGCThreads=n`  |  	设置 Stop-the-world 工作线程的数量。|
 | `-XX:ConcGCThreads=n`  |  	    设置并行标记线程的数量。将 n 值设为并行垃圾回收线程（ParallelGCThreads）数的大约 1/4。|
@@ -527,6 +526,35 @@ ConcGCThreads的默认值不同GC策略略有不同，CMS下是(ParallelGCThread
 - 自上次垃圾回收完成以来已超过 G1PeriodicGCInterval ( milliseconds )， 并且此时没有正在进行的垃圾回收任务。如果 G1PeriodicGCInterval 值为零表示禁用快速回收内存的定期垃圾收集。
 - 或者达到 G1PeriodicGCSystemLoadThreshold 阈值
 如果不满足上述条件中的任何一个，则取消当期的定期垃圾回收。等一个 G1PeriodicGCInterval 时间周期后，将重新考虑是否执行定期垃圾回收。
+
+> GC cause
+
+真正需要调优的只有 3 个, 其余 cause 基本属于“正常节奏”，知道含义即可，不必专门“避免”。
+    - Allocation Failure（包括 Evacuation Failure）→ 会演变成 Full GC；
+    - Humongous Allocation → 频繁申请大对象容易踩 Full GC 红线；
+    - G1 Evacuation Pause 时间超长 → 说明 Region 大小或停顿目标设得不合理。
+
+
+| # | Cause 关键字                                 | 触发场景                                         | 严重程度   | 优化思路                                                                                   |
+| - | ----------------------------------------- | -------------------------------------------- | ------ | -------------------------------------------------------------------------------------- |
+| 1 | `G1 Evacuation Pause`                     | Young/Mixed GC 的正常 STW 复制阶段                  | ○ 例行   | 只关注暂停时间是否突破 `-XX:MaxGCPauseMillis`；超长就调大 Region 或降低 IHOP。                              |
+| 2 | `Allocation Failure (Evacuation Failure)` | 复制阶段找不到空闲 Region，被迫晋升或直接 Full GC             | ★★★ 极高 | ① 调大 `-XX:G1ReservePercent`（默认 10→20）留更多“逃生空间”；② 调大 Region 减少碎片；③ 降低 IHOP 提前 Mixed GC。 |
+| 3 | `Humongous Allocation`                    | 对象 ≥ Region×50% 直接进老年代，连续 Region 不够就 Full GC | ★★☆ 高  | ① 把 Region 调到 16/32 MB 减少“跨区大对象”；② 业务侧拆大数组/缓存块；③ 保证 ② 失败时有足够连续老年代。                     |
+| 4 | `G1 Compaction Pause`                     | 并发周期结束后做“部分压缩”                               | ○ 例行   | 正常 Mixed GC 的一部分，只要暂停不长就无需处理。                                                          |
+| 5 | `G1 Preventive Collection`                | 预测“再不动手就要 Full GC”提前 Mixed GC                | ○ 例行   | 说明 G1 自我保护生效，是好事，不必抑制。                                                                 |
+| 6 | `System.gc()`                             | 代码里显式调了 `System.gc()`                        | ☆ 低    | 加 `-XX:+DisableExplicitGC` 直接禁掉；或换成 `G1 Full GC` 看是否必要。                                |
+| 7 | `Full GC (Allocation Failure)`            | 晋升失败 & 连续空间申请失败，退化成 Serial Old 单线程 Full GC   | ★★★ 极高 | 同上 #2；出现一次就值得加监控告警，连续出现必须调参或扩容。                                                        |
+| 8 | `Full GC (System.gc())`                   | 同上，只是触发点是 `System.gc()`                      | ★★★ 极高 | 同上 #6。                                                                                 |
+
+把上面“红叉”三类 cause 压下去，G1 就能长期保持在 Young GC + Mixed GC 的节奏里，Full GC 基本销声匿迹
+
+```ini
+-XX:G1HeapRegionSize=16m          # 减少 Humongous 碎片
+-XX:G1ReservePercent=20           # 给 Evacuation 留逃生舱
+-XX:InitiatingHeapOccupancyPercent=30  # 更早 Mixed GC，别让老年代堆满
+-XX:MaxGCPauseMillis=150          # 控制单次停顿上限，避免业务超时
+```
+
 
 ************************
 
