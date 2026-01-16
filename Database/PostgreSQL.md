@@ -29,7 +29,7 @@ categories:
     - 9.1. [Java使用](#java使用)
     - 9.2. [导入导出](#导入导出)
 
-💠 2025-07-21 20:20:05
+💠 2026-01-16 15:35:48
 ****************************************
 # Postgresql
 
@@ -42,6 +42,8 @@ categories:
 `PostgreSQL和MySQL对比`
 > [PostgreSQL 与 MySQL 相比，优势何在？](https://www.zhihu.com/question/20010554)
 > [Converting MySQL to PostgreSQL](https://en.wikibooks.org/wiki/Converting_MySQL_to_PostgreSQL)
+
+一个连接一个进程，MySQL是一个连接一个线程，一般会在pg前置一个 pgbouncer 共享连接池
 
 # 安装
 安装客户端 `sudo apt install postgresql-client`  
