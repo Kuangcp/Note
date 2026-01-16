@@ -12,10 +12,11 @@ categories:
     - 1.2. [编解码相关](#编解码相关)
         - 1.2.1. [Protobuf](#protobuf)
 - 2. [Websocket](#websocket)
+    - 2.1. [WebSocket 拆包问题分析](#websocket-拆包问题分析)
 - 3. [衍生框架](#衍生框架)
 - 4. [Reactor Netty](#reactor-netty)
 
-💠 2024-07-24 17:28:31
+💠 2026-01-16 16:05:24
 ****************************************
 # Netty 使用
 > [NettyServer与SpringBoot集成](https://segmentfault.com/a/1190000004919133)  
@@ -87,7 +88,129 @@ categories:
 
 > [参考: Netty WebSocket 拆包浅析](https://www.jianshu.com/p/30c26a755a87)  
 - io.netty.handler.codec.http.websocketx.WebSocket08FrameDecoder#decode
-- [ ] 文本数据达到多大，会遇到拆包问题
+
+## WebSocket 拆包问题分析
+
+**文本数据达到多大，会遇到拆包问题？**
+
+WebSocket的拆包问题主要受以下因素影响：
+
+1. **WebSocket协议层面的分片（Fragmentation）**
+   - WebSocket协议本身支持分片传输，单个消息可以分成多个帧（Frame）
+   - 分片由FIN标志位控制：FIN=0表示还有后续帧，FIN=1表示最后一帧
+   - **理论上没有大小限制**，可以无限分片
+
+2. **Netty缓冲区大小限制**
+   - Netty使用`AdaptiveRecvByteBufAllocator`动态调整接收缓冲区大小
+   - 初始大小：`AdaptiveRecvByteBufAllocator.DEFAULT_INITIAL` = **64字节**
+   - 最大大小：`AdaptiveRecvByteBufAllocator.DEFAULT_MAXIMUM` = **65536字节（64KB）**
+   - 缓冲区大小会根据读取情况在`SIZE_TABLE`中动态调整
+
+3. **实际拆包触发条件**
+
+```java
+// WebSocket08FrameDecoder 解码逻辑
+// 当接收到的数据不足以构成完整帧时，会等待更多数据
+// 关键代码：io.netty.handler.codec.http.websocketx.WebSocket08FrameDecoder#decode
+
+// 拆包发生的场景：
+// 1. 单个WebSocket帧大小超过当前缓冲区大小
+// 2. 多个帧在同一个TCP包中（粘包）
+// 3. 单个帧被分割到多个TCP包中（拆包）
+```
+
+**具体数值分析：**
+
+- **小数据（< 64字节）**：通常不会拆包，单次读取即可完成
+- **中等数据（64字节 ~ 64KB）**：可能发生拆包，取决于：
+  - 当前缓冲区大小（AdaptiveRecvByteBufAllocator动态调整）
+  - TCP接收窗口大小
+  - 网络MTU（通常1500字节）
+- **大数据（> 64KB）**：**一定会发生拆包**，因为：
+  - Netty默认最大接收缓冲区为64KB
+  - 超过64KB的数据必须分多次读取
+  - WebSocket帧会被分割到多个ByteBuf中
+
+**WebSocket帧结构（RFC 6455）：**
+
+```
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-------+-+-------------+-------------------------------+
+|F|R|R|R| opcode|M| Payload len |    Extended payload length    |
+|I|S|S|S|  (4)  |A|     (7)     |             (16/64)           |
+|N|V|V|V|       |S|             |   (if payload len==126/127)   |
+| |1|2|3|       |K|             |                               |
++-+-+-+-+-------+-+-------------+-------------------------------+
+```
+
+- **Payload长度字段**：
+  - 0-125字节：直接编码在第二个字节的低7位
+  - 126字节：后续2字节表示长度（最大65535字节）
+  - 127字节：后续8字节表示长度（最大2^63-1字节）
+
+**实际测试建议：**
+
+```java
+// 测试不同大小的数据是否会拆包
+// 1. 小数据测试（< 1KB）
+String smallData = "a".repeat(100);  // 100字节，通常不拆包
+
+// 2. 中等数据测试（1KB ~ 64KB）
+String mediumData = "a".repeat(10 * 1024);  // 10KB，可能拆包
+
+// 3. 大数据测试（> 64KB）
+String largeData = "a".repeat(100 * 1024);  // 100KB，一定会拆包
+```
+
+**解决方案：**
+
+1. **调整缓冲区大小**（不推荐，影响内存）
+   ```java
+   // 在ChannelPipeline中设置
+   channel.config().setRecvByteBufAllocator(
+       new AdaptiveRecvByteBufAllocator(64, 1024, 65536 * 2)  // 增大最大缓冲区
+   );
+   ```
+
+2. **使用WebSocket协议的分片机制**（推荐）
+   - WebSocket08FrameDecoder已经支持分片
+   - 确保正确处理FIN标志位
+   - 在应用层组装完整消息
+
+3. **应用层处理**
+   ```java
+   // 在WebSocketFrameAggregator中聚合分片
+   pipeline.addLast(new WebSocketFrameAggregator(65536));  // 最大聚合64KB
+   
+   // 或自定义处理
+   public class WebSocketFrameHandler extends SimpleChannelInboundHandler<WebSocketFrame> {
+       private StringBuilder frameBuffer = new StringBuilder();
+       
+       @Override
+       protected void channelRead0(ChannelHandlerContext ctx, WebSocketFrame frame) {
+           if (frame instanceof TextWebSocketFrame) {
+               TextWebSocketFrame textFrame = (TextWebSocketFrame) frame;
+               frameBuffer.append(textFrame.text());
+               
+               // FIN=1表示最后一帧
+               if (frame.isFinalFragment()) {
+                   String completeMessage = frameBuffer.toString();
+                   // 处理完整消息
+                   processMessage(completeMessage);
+                   frameBuffer.setLength(0);  // 清空缓冲区
+               }
+           }
+       }
+   }
+   ```
+
+**总结：**
+
+- **理论上**：WebSocket协议支持无限大小的消息（通过分片）
+- **实际上**：当数据**超过64KB**时，Netty的接收缓冲区限制会导致拆包
+- **建议**：使用`WebSocketFrameAggregator`或自定义Handler处理分片，而不是增大缓冲区
+- **最佳实践**：单条消息控制在64KB以内，或使用分片机制传输大数据
 
 ************************
 
