@@ -74,7 +74,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2025-12-12 22:10:48
+💠 2026-01-27 19:13:38
 ****************************************
 # 网络
 > [Java 网络](/Java/AdvancedLearning/JavaNetwork.md)  
@@ -282,7 +282,7 @@ STCP协议混合了UDP和TCP的特性。
 
 ### Websocket
 > Websocket协议 本质就是TCP的简单封装, 不像HTTP的单次应答模式, 而是建立连接后就保持全双工模式  
-> [ietf websocket protocol](https://datatracker.ietf.org/doc/html/draft-ietf-hybi-thewebsocketprotocol-17)  
+> [ietf websocket protocol](https://datatracker.ietf.org/doc/html/draft-ietf-hybi-thewebsocketprotocol-17) 自从2011年定稿后2013年浏览器领域就已经100%适配  
 
 1. 单一封装TCP连接, 采用全双工模式通信
 1. 对代理, 防火墙和路由器透明

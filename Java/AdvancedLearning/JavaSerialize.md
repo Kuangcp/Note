@@ -25,11 +25,12 @@ categories:
     - 2.4. [Kryo](#kryo)
     - 2.5. [JSON](#json)
     - 2.6. [Protobuf](#protobuf)
-    - 2.7. [Marshalling](#marshalling)
+    - 2.7. [protostuff](#protostuff)
+    - 2.8. [Marshalling](#marshalling)
 - 3. [Tips](#tips)
     - 3.1. [JSON字符串反序列化时泛型丢失问题](#json字符串反序列化时泛型丢失问题)
 
-💠 2025-12-14 19:15:49
+💠 2026-01-27 19:13:38
 ****************************************
 # Java中的序列化
 > [码农翻身:序列化： 一个老家伙的咸鱼翻身](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513589&idx=1&sn=d402d623d9121453f1e570395c7f99d7&chksm=80d67a36b7a1f32054d4c779dd26e8f97a075cf4d9ed1281f16d09f1df50a29319cd37520377&scene=21#wechat_redirect) `对象转化为二进制流`
@@ -228,6 +229,12 @@ spring.jackson.serialization.write-dates-as-timestamps=false
 
 工程内使用流程简述: 通过插件将proto文件编译到指定目录(该目录设置为source并被git忽略)下的Java类, 项目编译和运行时就可以使用这些类，注意修改了协议文件就需要手动编译一次  
 插件： maven-protoc-plugin  或 protobuf-gradle-plugin
+
+## protostuff
+
+> [protostuff/protostuff: Java serialization library, proto compiler, code generator](https://github.com/protostuff/protostuff)`无需proto文件`  
+
+原理： 它在运行时动态生成了一份与 .proto 等价的 Schema——这份 Schema 完全由 Java 类元信息（类名、字段名、字段类型、顺序）推导出来，随后像 protobuf 一样按序号编码，因此序列化/反序列化时不再需要静态的 .proto IDL文件。
 
 *********************
 

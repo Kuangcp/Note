@@ -15,17 +15,18 @@ categories:
 - 3. [JDK自带工具](#jdk自带工具)
     - 3.1. [java](#java)
         - 3.1.1. [环境变量的使用](#环境变量的使用)
-    - 3.2. [jps](#jps)
-    - 3.3. [jstat](#jstat)
-    - 3.4. [jinfo](#jinfo)
-    - 3.5. [jmap](#jmap)
-    - 3.6. [jhat](#jhat)
-        - 3.6.1. [OQL](#oql)
-        - 3.6.2. [HPROF](#hprof)
-    - 3.7. [jstack](#jstack)
-        - 3.7.1. [实现原理](#实现原理)
-    - 3.8. [jcmd](#jcmd)
-    - 3.9. [jhsdb](#jhsdb)
+    - 3.2. [jar](#jar)
+    - 3.3. [jps](#jps)
+    - 3.4. [jstat](#jstat)
+    - 3.5. [jinfo](#jinfo)
+    - 3.6. [jmap](#jmap)
+    - 3.7. [jhat](#jhat)
+        - 3.7.1. [OQL](#oql)
+        - 3.7.2. [HPROF](#hprof)
+    - 3.8. [jstack](#jstack)
+        - 3.8.1. [实现原理](#实现原理)
+    - 3.9. [jcmd](#jcmd)
+    - 3.10. [jhsdb](#jhsdb)
 - 4. [集成库](#集成库)
     - 4.1. [jvm-sandbox](#jvm-sandbox)
 - 5. [终端类工具](#终端类工具)
@@ -41,7 +42,7 @@ categories:
     - 6.6. [IBM Heap Analyzer](#ibm-heap-analyzer)
     - 6.7. [IntelliJ IDEA](#intellij-idea)
 
-💠 2025-12-18 21:23:17
+💠 2026-01-27 19:13:38
 ****************************************
 
 # JVM 监控&诊断
@@ -78,6 +79,9 @@ categories:
 - 传入 `java -Dkey=true -jar xxx.jar`
     - -D 参数 要在 -jar **之前**
 - 获取 `System.getProperty("key", "defaultvalue");`
+
+## jar
+- `jar -tf xxx.jar | grep Driver` 查找jar包是否有对应的类
 
 ## jps
 > 主要用来输出JVM中运行的进程状态信息
