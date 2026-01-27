@@ -9,13 +9,14 @@ categories:
 
 - 1. [Elasticsearch](#elasticsearch)
     - 1.1. [设计](#设计)
+        - 1.1.1. [更新 update](#更新-update)
     - 1.2. [异常处理](#异常处理)
         - 1.2.1. [写入延迟](#写入延迟)
 - 2. [最佳实践](#最佳实践)
     - 2.1. [优化写入](#优化写入)
     - 2.2. [查询](#查询)
 
-💠 2026-01-21 10:54:11
+💠 2026-01-28 00:01:03
 ****************************************
 # Elasticsearch
 [Elasticsearch Best Practice Architecture](https://www.elastic.co/cn/pdf/architecture-best-practices.pdf)
@@ -27,6 +28,15 @@ categories:
 
 [Circuit breaker settings](https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings)
 
+
+### 更新 update
+
+ES 的 update 在底层就是 “先标记旧文档为已删除，再写入新文档”
+
+在 bulk 里做的是 update，相当于对同一条 doc 重新索引一次；ES 会：
+   把旧版本文档的 _id 标记为 逻辑删除（在 .del 文件里打标）
+   立即写入一条 新版本文档（_version + 1）
+   因此 doc.deleted 计数会增加，但 文档总数（total.docs.count）不会下降，因为你只是“换了一条新记录”，并没有真正减少数据
 
 ## 异常处理
 
