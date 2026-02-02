@@ -64,7 +64,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2025-11-24 22:27:23
+💠 2026-02-02 10:23:38
 ****************************************
 # Linux网络管理
 
@@ -323,7 +323,11 @@ iftop
 - 默认网关： 如果主机找不到转发规则， 就把数据包发给默认的网关(家用网络一般是路由器的ip)
 - 增加/删除一条路由规则 `ip route add/del 192.168.2.0/24 via 192.168.1.254`
     - 当使用 VPN 时，建立新的虚拟网卡 tun， 可以手动设置路由让指定ip走虚拟网卡 从而访问到VPN内局域网地址(网络号和真实网卡一样，默认会把数据包转发至本地局域网)
+
+- 查看mac地址 `ip link show`
 - 设置网卡 eno1 MAC 地址`ip link set eno1 address b4:xx:xx`
+
+- 查看本地ARP表 `ip neigh show`， 可以通过 `sudo nmap -sn 192.168.1.0/24 >/dev/null 2>&1` 刷新本地缓存
 
 - 关闭 启用 `ifconfig name down/up`
 - 修改IP `ifconfig eth0 192.168.1.200/24`
