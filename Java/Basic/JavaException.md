@@ -25,7 +25,7 @@ categories:
         - 2.3.1. [自定义异常的错误码](#自定义异常的错误码)
 - 3. [实现机制](#实现机制)
 
-💠 2026-02-02 10:23:38
+💠 2026-02-02 18:29:28
 ****************************************
 # 异常
 > 相关博客:[Java异常浅谈](http://www.cnblogs.com/focusj/archive/2011/12/26/2301524.html)  
@@ -67,6 +67,7 @@ Error一般是指与虚拟机相关的问题，如系统崩溃，虚拟机错误
 但是类似的Java日志框架能获取到日志所在的行号，这其实也是获取了线程的栈帧，从而得到行号的
 - 时机：只在打印日志那一刻现场采样，不抛异常，不填充整个调用链，成本 < 1 µs（HotSpot 实现为单条 VM 内部回溯）。
 - 实现：HotSpot 的 JVM_GetStackTrace → vframeStream::vframeStream → 只向上遍历 8–10 帧就拿到调用点，不会生成完整的 backtrace 数组（与 fillInStackTrace 路径不同）
+    - 但是获取栈帧的时候还是完整的栈，只能说在查询的时候针对性优化了，但是整体依然成本很高
 
 ```java
 StackTraceElement[] st = Thread.currentThread().getStackTrace();

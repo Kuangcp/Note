@@ -37,7 +37,7 @@ categories:
     - 7.1. [Filebeat](#filebeat)
     - 7.2. [K8s](#k8s)
 
-💠 2025-11-25 11:14:23
+💠 2026-02-02 18:29:28
 ****************************************
 # 日志系统
 > [码农翻身: 一个著名的日志系统是怎么设计出来的？ ](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45&chksm=80d67bacb7a1f2ba38aa37620d273dfd7d7227667df556d36c84d125cafd73fef16464288cf9&scene=21#wechat_redirect)`深刻的理解了日志系统的来源以及相关关系`  
@@ -506,6 +506,19 @@ _4.另外还有SocketAppender、SMTPAppender、DBAppender、SyslogAppender、Sif
 
 # 实践经验
 > [Java 调整格式日志输出](https://www.jb51.net/article/88937.htm)
+
+1. 日志配置 %l %L 可以方便IDEA内直接跳转到对应文件的对应行 例如 ` (App.java:142) ` ， 前后有空格，但是生产环境应禁用，高并发场景 QPS 下降 30-50%（官方基准测试）。
+    - 如果性能敏感的话，手动打印类和方法名会更好
+
+| 占位符      | 输出内容                                            | 性能                  |
+| -------- | ----------------------------------------------- | ------------------- |
+| `%l`     | `com.example.MyClass.myMethod(MyClass.java:42)` | **极差**（每次新建异常）      |
+| `%L`     | `42`（仅行号）                                       | **差**（需 StackTrace） |
+| `%M`     | `myMethod`（仅方法名）                                | **差**（需 StackTrace） |
+| `%class` | `com.example.MyClass`                           | **差**（需 StackTrace） |
+| `%C`     | 同 `%class`                                      | **差**（需 StackTrace） |
+| `%F`     | `MyClass.java`（仅文件名）                            | **差**（需 StackTrace） |
+
 
 1. 日志记录方式, 注意格式的正确, 否则, 错误会被隐藏
     - [Github: CorrectLog.java](https://github.com/Kuangcp/JavaBase/blob/class/src/test/java/log/CorrectLogTest.java)
