@@ -29,7 +29,7 @@ categories:
     - 9.1. [Java使用](#java使用)
     - 9.2. [导入导出](#导入导出)
 
-💠 2026-01-16 15:35:48
+💠 2026-02-11 21:29:42
 ****************************************
 # Postgresql
 
@@ -151,8 +151,9 @@ text varchar 最大1Gb
     SELECT setval(pg_get_serial_sequence('t_phone', 'id'), 1000); -- set 
 ```
 
-- 创建 create sequence table_name_id_seq as integer;
-- 使用 select nextval('prompt_version_config_id_seq'::regclass);
+- **创建** `create sequence table_name_id_seq as integer;`
+    - CREATE SEQUENCE IF NOT EXISTS model_config_id_seq INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
+- **使用** select nextval('prompt_version_config_id_seq'::regclass);
 - 修改表字段关联到 已有序列 ALTER TABLE table  ALTER COLUMN id SET DEFAULT nextval('table_seq'::regclass);
 
 # DDL
