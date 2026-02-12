@@ -16,8 +16,9 @@ categories:
     - 2.4. [Zuul](#zuul)
     - 2.5. [Kong](#kong)
     - 2.6. [Traefik](#traefik)
+    - 2.7. [Higress](#higress)
 
-💠 2025-09-03 14:52:41
+💠 2026-02-12 17:56:32
 ****************************************
 # 网关
 
@@ -54,4 +55,6 @@ Nginx + Lua + Etcd 以及丰富的插件生态
 
 ## Traefik
 
+## Higress
+> [alibaba/higress: 🤖 AI Gateway | AI Native API Gateway](https://github.com/alibaba/higress)  
 

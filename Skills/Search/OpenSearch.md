@@ -1,6 +1,24 @@
+---
+title: OpenSearch
+date: 2026-02-12 17:56:32
+tags: 
+categories: 
+---
+
+
+💠
+
+- 1. [OpenSearch](#opensearch)
+    - 1.1. [RAG选型](#rag选型)
+
+💠 2026-02-12 17:56:32
+****************************************
 # OpenSearch
 
 > [opensearch-project/OpenSearch: 🔎 Open source distributed and RESTful search engine.](https://github.com/opensearch-project/OpenSearch)  
+
+
+> [Docker - OpenSearch Documentation](https://docs.opensearch.org/latest/install-and-configure/install-dashboards/docker/)`单实例快速启动`  
 
 
 ## RAG选型
