@@ -13,7 +13,7 @@ categories:
     - 1.3. [二次开发项目](#二次开发项目)
         - 1.3.1. [Easy excel](#easy-excel)
 
-💠 2025-01-16 16:26:11
+💠 2026-02-26 14:45:09
 ****************************************
 
 # POI
@@ -32,4 +32,4 @@ categories:
 - [easypoi](https://gitee.com/lemur/easypoi) `虽然代码不是很规范但是开源精神要学习`
 
 ### Easy excel
-> [Github](https://github.com/alibaba/easyexcel)
+> [Github](https://github.com/alibaba/easyexcel) 停止更新，分叉出 [apache/fesod](https://github.com/apache/fesod)  
