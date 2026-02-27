@@ -29,7 +29,7 @@ categories:
     - 6.1. [Quasar](#quasar)
     - 6.2. [Virtual Threads](#virtual-threads)
 
-💠 2025-09-03 11:19:19
+💠 2026-02-27 22:03:01
 ****************************************
 # Java线程
 > [个人学习代码](https://github.com/Kuangcp/JavaBase/tree/master/concurrency/src/main/java/thread)
@@ -197,6 +197,12 @@ LockSupport.park
 ## CompletableFuture
 > [CompletableFutureTest](https://github.com/Kuangcp/JavaBase/blob/master/java8/src/test/java/com/github/kuangcp/future/CompletableFutureTest.java)  
 
+JDK21起如果要支持虚拟线程,需要手动指定线程池，目前的设计默认会使用JVM全局的 ForkJoinPool
+```java
+    CompletableFuture.supplyAsync(()->{}, new VirtualThreadTaskExecutor())
+```
+而且注意 new VirtualThreadTaskExecutor() 这个线程池尽量全局共用一个，避免管理成本。
+
 ************************
 
 # 线程池
@@ -224,4 +230,4 @@ R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1,
 > [Java19 正式 GA！看虚拟线程如何大幅提高系统吞吐量 ](https://mp.weixin.qq.com/s/yyApBXxpXxVwttr01Hld6Q)  
 > [虚拟线程 - VirtualThread源码透视 ](https://www.cnblogs.com/throwable/p/16758997.html)
 
-
+注意一些过渡时期的框架，会出现线程池的线程名字有VirtualThread的字样，但它又**不是虚拟线程**（虚晃一枪），只看 Thread.isVirtual 返回true 才是虚拟线程。
