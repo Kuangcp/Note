@@ -29,7 +29,7 @@ categories:
     - 6.1. [Quasar](#quasar)
     - 6.2. [Virtual Threads](#virtual-threads)
 
-💠 2026-02-27 22:03:01
+💠 2026-02-28 11:02:41
 ****************************************
 # Java线程
 > [个人学习代码](https://github.com/Kuangcp/JavaBase/tree/master/concurrency/src/main/java/thread)
@@ -230,4 +230,52 @@ R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1,
 > [Java19 正式 GA！看虚拟线程如何大幅提高系统吞吐量 ](https://mp.weixin.qq.com/s/yyApBXxpXxVwttr01Hld6Q)  
 > [虚拟线程 - VirtualThread源码透视 ](https://www.cnblogs.com/throwable/p/16758997.html)
 
-注意一些过渡时期的框架，会出现线程池的线程名字有VirtualThread的字样，但它又**不是虚拟线程**（虚晃一枪），只看 Thread.isVirtual 返回true 才是虚拟线程。
+>> 注意一些过渡时期的框架，会出现线程池的线程名字有VirtualThread的字样，但它又**不是虚拟线程**（虚晃一枪），只看 Thread.isVirtual 返回true 才是虚拟线程。
+
+常规的jstack visualvm只能看到普通的线程（虚拟线程的载体）
+
+- JDK Mission Control (JMC) & JFR (推荐)：
+    - 这是观测虚拟线程的唯一权威工具。通过 Java Flight Recorder (JFR)，你可以抓取 jdk.VirtualThreadStart 和 jdk.VirtualThreadPinned 事件。
+    - 监控点：查看 Pinned Virtual Thread 事件。如果这个事件频繁发生，说明你的代码在物理上阻塞了内核线程。
+
+- Java Management Extensions (JMX)：
+    - JDK 21 引入了新的 MBean。通过 java.lang:type=Threading，你可以获取虚拟线程的计数：
+    - ThreadCount: 平台线程数。
+    - VirtualThreadCount: 当前活跃的虚拟线程数（对于你的 1000 并发任务，这里应该显示 1000+）。
+
+- Micrometer & Prometheus：
+    - 如果你使用 Spring Boot 3.2+，只需引入 micrometer-registry-prometheus。
+    - 指标名：jvm.threads.virtual.started (已启动数) 和 jvm.threads.virtual.active (当前活跃数)。
+
+***
+
+虚拟线程宣传的“不阻塞”是指逻辑上的非阻塞（I/O 等待时释放 CPU），但在以下两种场景下，真实的物理阻塞（Pinning） 仍会发生：
+
+> A. 线程锚定 (Pinning) —— 最危险的阻塞
+- 当虚拟线程在执行以下操作时，它会“卡死”在底层的载体线程（Carrier Thread）上，导致载体线程无法去处理其他虚拟线程：
+    - 在 synchronized 块或方法中执行 I/O（如调用大模型 API、查询数据库）。
+    - 调用了本地方法 (JNI)。
+
+    后果：如果你有 1000 个虚拟线程，但载体线程池（通常等于 CPU 核心数）全部被 Pin 住了，你的整个应用会完全失去响应，即使内存还有很多。
+    对策：将所有的 synchronized 替换为 ReentrantLock。
+
+> B. 调度器耗尽 (Scheduler Exhaustion)
+- 虚拟线程默认运行在 ForkJoinPool 上。如果你的 Node 节点里执行了大量的 计算密集型任务（如复杂的 JSON 解析、加解密），而不是 I/O 等待，那么虚拟线程会长时间占用载体线程。
+
+    后果：吞吐量下降，因为载体线程没机会切换到其他任务。
+
+***
+
+性能观测实战：检测 Pinning
+
+你可以通过在启动参数中添加以下指令，在控制台直接打印出发生“物理阻塞”的代码位置：
+```bash
+    # 当虚拟线程固定在载体线程上时，打印堆栈轨迹
+    -Djdk.tracePinnedThreads=full
+```
+
+4. 观测指标检查清单
+
+    jvm.threads.live：观察平台线程是否保持稳定（不应随业务并发增加）。
+    jvm.gc.memory.allocated：虚拟线程在堆上分配栈，高并发下 Minor GC 频率会上升。
+    接口响应时间 (P99)：如果 P99 极高，检查是否因为虚拟线程过多导致了 OS 文件句柄 (ulimit) 竞争。
