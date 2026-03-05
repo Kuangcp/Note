@@ -28,18 +28,19 @@ categories:
     - 1.3. [基本语法](#基本语法)
         - 1.3.1. [标准输入输出](#标准输入输出)
         - 1.3.2. [时间处理](#时间处理)
-    - 1.4. [泛型](#泛型)
-        - 1.4.1. [丑陋设计](#丑陋设计)
-    - 1.5. [函数](#函数)
-        - 1.5.1. [参数](#参数)
-        - 1.5.2. [返回值](#返回值)
-        - 1.5.3. [defer](#defer)
-    - 1.6. [接口](#接口)
-    - 1.7. [Context](#context)
-    - 1.8. [Channel](#channel)
-    - 1.9. [协程](#协程)
-    - 1.10. [序列化](#序列化)
-        - 1.10.1. [JSON](#json)
+        - 1.3.3. [泛型](#泛型)
+            - 1.3.3.1. [丑陋设计](#丑陋设计)
+        - 1.3.4. [函数](#函数)
+            - 1.3.4.1. [参数](#参数)
+            - 1.3.4.2. [返回值](#返回值)
+            - 1.3.4.3. [defer](#defer)
+        - 1.3.5. [接口](#接口)
+    - 1.4. [Context](#context)
+    - 1.5. [Channel](#channel)
+    - 1.6. [协程 Goroutine](#协程-goroutine)
+        - 1.6.1. [协程池](#协程池)
+    - 1.7. [序列化](#序列化)
+        - 1.7.1. [JSON](#json)
 - 2. [应用](#应用)
     - 2.1. [文件操作](#文件操作)
     - 2.2. [http](#http)
@@ -53,7 +54,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2025-12-15 17:28:06
+💠 2026-03-05 09:50:06
 ****************************************
 # Go
 
@@ -261,7 +262,7 @@ strings 包 提供了常用字符串API
 
 ************************
 
-## 泛型
+### 泛型
 > 自1.18 开始支持
 
 > [Github: Lightweight anonymous function syntax](https://github.com/golang/go/issues/21498) `讨论可简写的Lambda表达式,类似Js`
@@ -273,7 +274,7 @@ type Integer interface{
 }
 ```
 
-### 丑陋设计
+#### 丑陋设计
 > [Crimes with Go Generics](https://xeiaso.net/blog/gonads-2022-04-24/)
 
 > 不支持成员方法泛型，只支持结构体附加泛型或函数泛型。
@@ -298,7 +299,7 @@ type Integer interface{
 
 ************************
 
-## 函数
+### 函数
 
 ```go
 // 函数名 (参数 ) 返回值{函数体}
@@ -307,15 +308,15 @@ func functionName (param int) int {
 }
 ```
 
-### 参数
+#### 参数
 
 > 函数作为参数传入函数 `func doAny(functionName func(string, string)){}`
 
-### 返回值
+#### 返回值
 
 > 可以多返回值 元组
 
-### defer
+#### defer
 
 > 类似于 Java 中的 finally 语句 例如 `defer openFile.Close()`
 
@@ -325,7 +326,7 @@ func functionName (param int) int {
 
 ************************
 
-## 接口
+### 接口
 
 > [参考:接口的定义和使用](http://www.cnblogs.com/yjf512/archive/2012/06/09/2543628.html)
 
@@ -342,7 +343,9 @@ func functionName (param int) int {
 
 ************************
 
-## 协程
+## 协程 Goroutine
+“不要通过共享内存来通信，而要通过通信来共享内存。” 
+
 > [Concurrency is not parallelism](https://go.dev/blog/waza-talk)
 
 > [刘丹冰Aceld 的博客 ](https://learnku.com/blog/Aceld)  
@@ -392,6 +395,19 @@ func functionName (param int) int {
 > [Go语言的跨协程异常处理](https://taoshu.in/go/goroutine-panic.html)  
 
 ************************
+
+### 协程池
+“不要过早引入协程池”
+
+使用场景：限制并发数，防止内存溢出，海量小任务的极致性能，任务的可控撤销与超时管理
+
+> [panjf2000/ants: 🐜🐜🐜 ants is the most powerful and reliable pooling solution for Go.](https://github.com/panjf2000/ants)  
+> [hileez/gohub: A high-performance goroutine pool for Go.](https://github.com/hileez/gohub)  
+> [GoBase/pkg/sizedpool](https://github.com/Kuangcp/GoBase/tree/master/pkg/sizedpool)  
+
+- ants 成熟项目：固定 Worker 队列模式
+- gohub 小众：Dispatcher + Worker 模型，基于 Channel 任务分发
+- sizedpool 玩具： Channel 信号量模式，实时创建销毁协程， 不复用go协程的设计只适合IO密集应用 不关心协程创建的几十微秒延迟
 
 ## 序列化
 > [Go json反序列化“null“结果为nil踩坑](https://blog.csdn.net/qq_39618369/article/details/125761089)  
