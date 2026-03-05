@@ -24,6 +24,7 @@ categories:
     - 1.5. [GC Callback](#gc-callback)
 - 2. [GC参数](#gc参数)
 - 3. [GC日志](#gc日志)
+    - 3.1. [Unified GC Logging](#unified-gc-logging)
 - 4. [垃圾收集器](#垃圾收集器)
     - 4.1. [默认垃圾收集器](#默认垃圾收集器)
     - 4.2. [Serial](#serial)
@@ -38,7 +39,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2026-01-14 16:29:33
+💠 2026-03-05 20:29:01
 ****************************************
 # GC
 > Java Garbage Collection
@@ -252,28 +253,60 @@ GC Roots 对象包含:
 
 ************************
 # GC参数
-- `-Xloggc:/app/logs/gc_%t_%p.log` 指定GC日志 并 设置文件格式 **注意目录要已存在**
-    - %t 日期时间
-    - %p 进程号
+
 - `-verbose:gc`
 - `-XX:+PrintGCDetails`
 - `-XX:+PrintGCDateStamps`
-- `-XX:+UseGCLogFileRotation `
-- `-XX:NumberOfGCLogFiles=< number of log files > `
-- `-XX:GCLogFileSize=< file size >[ unit ]`
 - `-XX:MaxTenuringThreshold=15` 年轻代对象晋升年龄阈值 默认值15
 
-JDK11及以上
-
-`-Xlog:gc*,classhisto*=trace:file=/opt/dremio/data/log/gc.log:uptime,time,tags,level:filecount=1,filesize=4M`
 
 ************************
 
 # GC日志
-1. 默认第一列是**JVM启动的秒数**，为了可读性一般会加配置 `-XX:+PrintGCDateStamps`, 
-1. 路径可追加进程id `-Xloggc:/apps/logs/gc-%p.log` 以及 `%t` JVM启动时间
+- `-XX:+UseGCLogFileRotation `
+- `-XX:NumberOfGCLogFiles=< number of log files > `
+- `-XX:GCLogFileSize=< file size >[ unit ]`
+- `-Xloggc:/app/logs/gc_%t_%p.log` 指定GC日志 并 设置文件格式 **注意目录要已存在**
+    - %t 日期时间
+    - %p 进程id
+
+1. 默认第一列是**JVM启动的相对秒数**，配置 `-XX:+PrintGCDateStamps` 就会显示真实时间 可读性更好
 1. 日志滚动策略 `-XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=14 -XX:GCLogFileSize=100M` **但是实际上不实用**
     - 并非按Logback等框架的思路滚动。重启后会重新从0计数覆盖掉最旧的gc日志 [Try to Avoid -XX:+UseGCLogFileRotation](https://dzone.com/articles/try-to-avoid-xxusegclogfilerotation)
+
+
+示例： ` -XX:+PrintGC -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:/opt/gc_%t_%p.log`
+
+## Unified GC Logging
+
+> [JEP 271: Unified GC Logging](https://openjdk.org/jeps/271)`从JDK9开始`  
+
+参数格式： `selector:output:decorators:output-options`
+
+
+Selector（选择器）由 Tag（标签） 和 Level（级别） 组成。 `java -Xlog:help` 查看可用的Tag
+
+| 标签 (Tag) | 推荐级别 Level | 场景 |
+|:---|:---|:---|
+| gc* |	Info |	必选。分析内存压力和 GC 停顿。
+| safepoint| 	Info |	必选。找出除了 GC 以外，还有谁让系统卡住了。
+| jit+compilation|	Debug|	进阶。排查代码运行几小时后突然响应变慢。
+| classhisto| 	Warning/Error|	慎选。仅在 OOM 边缘调试时开启，平时禁开。
+
+
+| JDK 8 参数                 |  JDK9+ 等价参数                  |
+| ------------------------ | ---------------------------------- |
+| `-XX:+PrintGC`           | `-Xlog:gc`                         |
+| `-XX:+PrintGCDetails`    | `-Xlog:gc*`                        |
+| `-XX:+PrintGCDateStamps` | 内置在 `gc*` 中，或显式 `tags,time,uptime` |
+| `-Xloggc:/path`          | `-Xlog:gc*:file=/path`             |
+
+示例： 
+
+`-Xlog:gc*,safepoint:file=/opt/gc_%t_pid%p.log:time,uptime,level,tags:filecount=10,filesize=20M`
+
+`-Xlog:gc*,safepoint,metaspace=info:file=/opt/log/gc_%t_pid%p.log:time,uptime,level,tags:filecount=10,filesize=50M`
+
 
 > [Github: GCViewer](https://github.com/chewiebug/GCViewer)  
 > [GCView线条图解](https://blog.csdn.net/chy2z/article/details/88651810)  

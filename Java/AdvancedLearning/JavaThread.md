@@ -19,17 +19,18 @@ categories:
         - 2.2.4. [Signal](#signal)
     - 2.3. [销毁](#销毁)
         - 2.3.1. [观测异常](#观测异常)
-- 3. [ThreadLocal](#threadlocal)
-    - 3.1. [Hook](#hook)
-    - 3.2. [优雅关机](#优雅关机)
-- 4. [Future](#future)
-    - 4.1. [CompletableFuture](#completablefuture)
-- 5. [线程池](#线程池)
-- 6. [协程](#协程)
-    - 6.1. [Quasar](#quasar)
-    - 6.2. [Virtual Threads](#virtual-threads)
+    - 2.4. [ThreadLocal](#threadlocal)
+    - 2.5. [Hook](#hook)
+    - 2.6. [优雅关机](#优雅关机)
+- 3. [Future](#future)
+    - 3.1. [CompletableFuture](#completablefuture)
+- 4. [线程池](#线程池)
+- 5. [协程](#协程)
+    - 5.1. [Quasar](#quasar)
+    - 5.2. [Virtual Threads](#virtual-threads)
+        - 5.2.1. [Pinning](#pinning)
 
-💠 2026-02-28 11:02:41
+💠 2026-03-05 20:29:01
 ****************************************
 # Java线程
 > [个人学习代码](https://github.com/Kuangcp/JavaBase/tree/master/concurrency/src/main/java/thread)
@@ -152,7 +153,7 @@ LockSupport.park
 
 ************************
 
-# ThreadLocal
+## ThreadLocal
 > [Oracle: ThreadLocal](https://docs.oracle.com/javase/8/docs/api/java/lang/ThreadLocal.html)  
 
 设计： ThreadLocalMap 线程对象做key的一个封装Map(但是未实现Map接口)，一个线程可以有多个ThreadLocal
@@ -218,6 +219,9 @@ R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1,
 
 ## Virtual Threads
 > [Virtual Threads](https://openjdk.org/jeps/444) 19预览 21Release | 来源于 [OpenJDK: Loom](https://wiki.openjdk.org/display/loom)`项目目标高吞吐量，轻量级并发模型，结构化并发&调度`  
+> [Virtual Threads](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html#GUID-DC4306FC-D6C1-4BCC-AECE-48C32C1A8DAA)  
+
+类似于GMP的模型，将 Virtual Threads 调度在 carrier Threads 上执行, 执行时先挂载到平台线程上，遇到IO阻塞时从平台线程上卸载 unmount
 
 试用总结：如果要引入生产，需要关注整个JEP的文档，调试确认细节后才能使用，不然就会陷入到各种诡异的问题上。
 
@@ -229,6 +233,11 @@ R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1,
 > [虚拟线程：Java的新利器？](https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247538915&idx=1&sn=b9b6a303a79cea5225e0d445e10eddc8&scene=58&subscene=0)
 > [Java19 正式 GA！看虚拟线程如何大幅提高系统吞吐量 ](https://mp.weixin.qq.com/s/yyApBXxpXxVwttr01Hld6Q)  
 > [虚拟线程 - VirtualThread源码透视 ](https://www.cnblogs.com/throwable/p/16758997.html)
+
+> ThreadLocal
+
+- JDK 21 的实现：虚拟线程（VirtualThread）在 JVM 内部依然是 java.lang.Thread 的子类。JDK 为每个虚拟线程都保留了独立的 ThreadLocal 存储。
+- 上下文拷贝：当虚拟线程在不同的平台线程（Carrier Thread）之间切换（Mount/Unmount）时，JVM 会自动装载和卸载该虚拟线程对应的 ThreadLocal 变量。
 
 >> 注意一些过渡时期的框架，会出现线程池的线程名字有VirtualThread的字样，但它又**不是虚拟线程**（虚晃一枪），只看 Thread.isVirtual 返回true 才是虚拟线程。
 
@@ -272,6 +281,8 @@ R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1,
 ```bash
     # 当虚拟线程固定在载体线程上时，打印堆栈轨迹
     -Djdk.tracePinnedThreads=full
+    # 或
+    -Djdk.tracePinnedThreads=short
 ```
 
 4. 观测指标检查清单
@@ -279,3 +290,8 @@ R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1,
     jvm.threads.live：观察平台线程是否保持稳定（不应随业务并发增加）。
     jvm.gc.memory.allocated：虚拟线程在堆上分配栈，高并发下 Minor GC 频率会上升。
     接口响应时间 (P99)：如果 P99 极高，检查是否因为虚拟线程过多导致了 OS 文件句柄 (ulimit) 竞争。
+
+
+### Pinning
+
+
