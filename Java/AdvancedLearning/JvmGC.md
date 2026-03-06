@@ -39,7 +39,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2026-03-05 20:29:01
+💠 2026-03-06 11:57:17
 ****************************************
 # GC
 > Java Garbage Collection
@@ -362,7 +362,7 @@ Selector（选择器）由 Tag（标签） 和 Level（级别） 组成。 `java
 ## 默认垃圾收集器
 JDK 7，默认是 Parallel Scavenge + Serial Old。
 JDK 8 及 JDK 7u40 之后的版本，默认是 Parallel Scavenge + Parallel Old。
-JDK 9 到 JDK 17，默认是 G1。
+JDK 9 到 JDK 25，默认是 G1。
 
 `-XX:+PrintCommandLineFlags` 查看默认参数 或者查看GC日志中代的名称 `-XX:+PrintGCDetails`
 - 例如： `java -XX:+PrintCommandLineFlags -version`
@@ -601,6 +601,12 @@ ConcGCThreads的默认值不同GC策略略有不同，CMS下是(ParallelGCThread
 
 - [JDK21 ZGC 支持内存分代](https://openjdk.org/jeps/439)
 - [JDK13 ZGC 支持内存返还](https://openjdk.org/jeps/351)
+
+JDK21 支持分代GC `-XX:+ZGenerational` JDK25默认启用
+
+
+2G 以下：ZGC 往往难以发挥优势，甚至可能因为频繁并发回收导致 CPU 占用过高，不如使用 G1。
+4G 及以上：Generational ZGC 拥有足够的“缓冲地带”来应对 AI 问答场景下的突发流量，确保在应用不感知的情况下完成并发回收。
 
 ************************
 
