@@ -37,7 +37,7 @@ categories:
 - 4. [Datagrip](#datagrip)
     - 4.1. [Datagrip时区问题](#datagrip时区问题)
 
-💠 2026-01-08 11:47:43
+💠 2026-03-11 11:00:43
 ****************************************
 
 # IDEA 使用笔记
@@ -402,7 +402,26 @@ _例如修改为如下_
 
 > [参考: 记一次idea性能调优](http://www.cnblogs.com/nevermorewang/p/10061377.html)  
 
-- 如果有 node_modules 等大量文件的目录， 可以右键该目录设置忽略这个目录的文件索引
+- 如果有 node_modules 等大量文件的目录， 可以右键该目录设置忽略这个目录,IDEA就不会建文件索引了
+
+- 如果使用G1作为垃圾回收器，可以通过设置较小的最小堆内存 和 FreeRatio 来控制内存返还操作系统
+```sh
+    # 1. 允许内存收缩（核心：不要锁定 Xms）
+    -Xms512m
+    -Xmx2048m
+
+    # 2. 强制 G1 尽早归还空闲内存给 Linux 操作系统
+    -XX:MinHeapFreeRatio=10
+    -XX:MaxHeapFreeRatio=30
+    -XX:G1PeriodicGCInterval=10000
+
+    # 3. 限制非堆内存（MetaSpace 和 CodeCache 是 4G 占用的隐形杀手）
+    -XX:MaxMetaspaceSize=384m
+    -XX:ReservedCodeCacheSize=240m
+
+    # 4. 减少 JIT 编译器的内存消耗
+    -CICompilerCount=2
+```
 
 ************************
 

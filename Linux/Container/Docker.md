@@ -60,7 +60,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2025-12-12 22:10:48
+💠 2026-03-11 11:00:43
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -437,7 +437,7 @@ ENTRYPOINT ["sh", "-c"]
     - `-i `，`--interactive=ture|false` 打开标准输入接受用户输入命令
     - `--privileged=true|false` 是否给以最高权限
     - `-t`，`--tty=true|false` 是否分配伪终端
-    - `-u`，`--user=""` 执行命令的用户或ID
+    - `-u`，`--user=""` 指定 执行命令的用户或ID
 
 - 使用 nsenter 连接到容器:
     - PID=${docker-pid 容器id}
