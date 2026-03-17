@@ -73,7 +73,7 @@ categories:
     - 4.4. [文件类型默认打开方式 MIME](#文件类型默认打开方式-mime)
     - 4.5. [熵池](#熵池)
 
-💠 2025-12-11 21:13:25
+💠 2026-03-17 21:18:55
 ****************************************
 
 # Linux系统
@@ -661,6 +661,38 @@ _系统运行级别_
 ## 内核
 
 > [Linux内核版本升级，性能到底提升多少？拿数据说话 | plantegg](https://plantegg.github.io/2019/12/24/Linux%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7%EF%BC%8C%E6%80%A7%E8%83%BD%E5%88%B0%E5%BA%95%E6%8F%90%E5%8D%87%E5%A4%9A%E5%B0%91%EF%BC%9F%E6%8B%BF%E6%95%B0%E6%8D%AE%E8%AF%B4%E8%AF%9D/#%E7%BB%A7%E7%BB%AD%E5%88%86%E6%9E%90%E4%B8%BA%E4%BB%80%E4%B9%884-19%E6%AF%944-9%E5%B7%AE%E4%BA%86%E8%BF%99%E4%B9%88%E5%A4%9A)  
+
+> Minio启动时有警告说内核低于4.0 
+
+这个警告是因为 MinIO 针对高性能存储进行了深度优化，而 Linux Kernel 4.0 之前（常见于 CentOS 7 的 3.10 内核）缺乏一些关键的现代文件系统和网络特性。
+以下是内核过旧对 MinIO 的具体影响：
+
+1. 文件系统性能限制 (XFS/ext4)
+
+* Direct I/O 效率低：旧内核在处理高并发、大文件的直接读写时，容易产生 CPU 软中断瓶颈。
+* 分配延迟：现代内核支持更高效的 fallocate（预分配空间），旧内核在高负载下可能会导致磁盘分配阻塞。
+
+2. 网络栈性能 (TCP/UDP)
+
+* TCP 吞吐限制：4.0+ 内核优化了 TCP 快恢复（Fast Recovery）和 TSO（分段偏移），旧内核在万兆网络环境下很难跑满带宽。
+* 缺乏 Reuseport 优化：旧内核在处理海量并发连接时，多线程监听同一个端口的效率远低于现代内核。
+
+3. 数据一致性风险 (O_DIRECT)
+
+* MinIO 强依赖 O_DIRECT 来确保数据直接落盘而不经过内核缓存。在 3.x 内核中，特定情况下 O_DIRECT 与文件系统索引（Metadata）的同步存在已知的边缘 Bug，可能导致极端断电情况下的数据损坏风险。
+
+4. 缺乏 OverlayFS 优化
+
+* 如果你是在 Docker 里跑 MinIO，旧内核的 Overlay 驱动性能非常差，且存在 inode 耗尽的风险，直接影响 MinIO 的小文件写入速度。
+
+```
+    # Higress Gateway 尝试优化内核网络参数，但宿主机 Linux 内核版本过低（低于 4.11）或者该内核特性未开启
+      securityContext:
+        # Safe since 1.22: https://github.com/kubernetes/kubernetes/pull/103326
+        sysctls:
+        - name: net.ipv4.ip_unprivileged_port_start
+          value: "0"
+```
 
 ************************
 

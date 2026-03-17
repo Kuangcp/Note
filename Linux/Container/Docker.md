@@ -60,7 +60,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2026-03-11 11:00:43
+💠 2026-03-17 21:18:55
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -515,6 +515,8 @@ ENTRYPOINT ["sh", "-c"]
 > [Demo: 开源电商平台](https://github.com/fecshop/yii2_fecshop_docker/blob/master/docker-compose.yml)
 > [Demo: 安装 Kafka](http://www.cnblogs.com/xuxinkun/p/5473952.html)
 
+> [kubernetes/kompose: Convert Compose to Kubernetes](https://github.com/kubernetes/kompose) Docker-compose 配置转为K8S配置  
+
 ### 配置文件
 > 一个配置文件就表示了一组容器, 以及相关的网络,文件等配置, docker-compose 都是基于该配置文件进行基本命令操作  
 > 语法上和 docker run 基本一致, 只不过以 yml 形式配置而已
@@ -571,7 +573,7 @@ services:
 - ps          # 列出项目中所有容器
 
 ### Tips
-> yml所在的目录名会作为容器名的前缀
+- yml所在的目录名会作为容器名的前缀
 
 
 ************************
