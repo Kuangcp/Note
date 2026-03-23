@@ -64,7 +64,7 @@ categories:
     - 10.3. [修改](#修改)
     - 10.4. [授权](#授权)
 
-💠 2026-01-19 10:13:52
+💠 2026-03-23 21:04:11
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -201,6 +201,11 @@ LONGTEXT 同理，只是“允许指针指向的链表”更长；
 > 注意: utf8 最大字节为3, 非标准意义上的 utf8 实现, utf8mb4 才是真正意义上的 utf8 `5.5.3才开始支持` utf8 一般情况不会出问题, 除非有 emoji 生僻字 等等
 
 ### COLLATE 字符串比较/排序规则 校验集
+> 先说结论，垃圾设计
+
+- MySQL 把 Collation（比较规则）和 Character Set（存储规则）强行解耦，但又允许它们在会话、数据库、表、字段、视图甚至连接（Connection）级别有不同的默认值。
+    - MySQL: 新建个视图，它可能偷偷用了你客户端连接的 utf8mb4_0900_ai_ci，而底层表是 utf8_general_ci。两个一碰就报 Illegal mix of collations。这种报错在 Pg 里几乎见不到。
+    - PostgreSQL: 更加原子化。字符集和校对规则通常在数据库创建时就定死了。虽然 Pg 也支持字段级 Collation，但它的逻辑是：如果你没显式改，大家默认都是一样的，不会像 MySQL 这样因为各种层级的“默认值覆盖”导致混乱。
 
 COLLATE 基于字符集，定义字符串比较、排序、匹配的规则（比如「a 和 A 是否相等」「中文按拼音还是笔画排序」「ä 是否等于 a」等），后缀拆解：
 
