@@ -39,7 +39,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2026-03-06 11:57:17
+💠 2026-03-24 19:27:46
 ****************************************
 # GC
 > Java Garbage Collection
@@ -611,7 +611,7 @@ JDK21 支持分代GC `-XX:+ZGenerational` JDK25默认启用
 ************************
 
 ## ShenandoahGC
-> JDK12引入  [wiki: ShenandoahGC](https://wiki.openjdk.java.net/display/shenandoah/Main)
+> JDK12引入OpenJDK  [wiki: ShenandoahGC](https://wiki.openjdk.java.net/display/shenandoah/Main) 但是RedHat有移植到JDK8和11的JDK发行版上
 
 `-XX:+UnlockExperimentalVMOptions  -XX:+UseShenandoahGC`
 
