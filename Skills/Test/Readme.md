@@ -10,6 +10,7 @@
 - [mountain-loop/yaak](https://github.com/mountain-loop/yaak)  
 - [warmuuh/milkman: An Extensible Request/Response Workbench](https://github.com/warmuuh/milkman)  
 > [Linux | Reqable · API抓包调试 + API测试一站式工具](https://reqable.com/zh-CN/linux/)  
+> [Bruno - The Git-Native API Client](https://www.usebruno.com/)  
 
 ## 自动化测试平台
 - [gauge](https://github.com/getgauge/gauge)

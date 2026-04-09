@@ -60,21 +60,22 @@ categories:
 - 6. [网络工具](#网络工具)
     - 6.1. [代理工具](#代理工具)
         - 6.1.1. [Clash](#clash)
-        - 6.1.2. [Fiddler](#fiddler)
-        - 6.1.3. [Charles](#charles)
-        - 6.1.4. [mitmproxy](#mitmproxy)
-        - 6.1.5. [tinyproxy](#tinyproxy)
-        - 6.1.6. [Mars](#mars)
-        - 6.1.7. [camilla](#camilla)
-        - 6.1.8. [dev-proxy](#dev-proxy)
-        - 6.1.9. [ProxyPin](#proxypin)
-        - 6.1.10. [eCapture](#ecapture)
-        - 6.1.11. [Wireshark](#wireshark)
+        - 6.1.2. [Sing-box](#sing-box)
+        - 6.1.3. [Fiddler](#fiddler)
+        - 6.1.4. [Charles](#charles)
+        - 6.1.5. [mitmproxy](#mitmproxy)
+        - 6.1.6. [tinyproxy](#tinyproxy)
+        - 6.1.7. [Mars](#mars)
+        - 6.1.8. [camilla](#camilla)
+        - 6.1.9. [dev-proxy](#dev-proxy)
+        - 6.1.10. [ProxyPin](#proxypin)
+        - 6.1.11. [eCapture](#ecapture)
+        - 6.1.12. [Wireshark](#wireshark)
 - 7. [Tips](#tips)
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2026-01-27 19:13:38
+💠 2026-04-09 21:00:24
 ****************************************
 # 网络
 > [Java 网络](/Java/AdvancedLearning/JavaNetwork.md)  
@@ -599,7 +600,15 @@ server {
 [Clash Fork](https://github.com/Ieooo/clash) [DryPeng/clashT](https://github.com/DryPeng/clashT)  
 [Clash Meta](https://wiki.metacubex.one/)  
 
+https://github.com/clash-verge-rev/clash-verge-rev
+
 > [haishanh/yacd: Yet Another Clash Dashboard](https://github.com/haishanh/yacd)  
+
+### Sing-box
+
+sing-box-glibc-bin
+
+https://github.com/xinggaoya/sing-box-windows/releases
 
 ### Fiddler 
 > [fiddler](https://www.telerik.com/fiddler)`由C#开发, 自定义脚本为C#`  
