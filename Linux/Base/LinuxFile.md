@@ -407,7 +407,7 @@ export LANG="zh_CN.UTF-8"
 ### Btrfs
 > [Btrfs - ArchWiki](https://wiki.archlinux.org/title/Btrfs)  
 
-> [Btrfs - Manjaro](https://wiki.manjaro.org/index.php/Btrfs)`Manjaro25开始使用Btrfs替换ext4作为默认选项。`  
+> [Btrfs - Manjaro](https://wiki.manjaro.org/index.php/Btrfs)`Manjaro25开始使用Btrfs替换ext4作为默认选项, 但是仍可以手动选择 ext4, xfs。`  
 
 - btrfs check /dev/sda1 但是需要非挂载的分区，如果是系统分区，只能从U盘启动新系统用U盘内的btrfs工具来check 和 repair
 
@@ -429,6 +429,10 @@ export LANG="zh_CN.UTF-8"
 - 当大量创建小文件时，会先出现报错空间不足 实际上还有空间的问题，因为 metadata区满了
     - 防备手段 把最后 2 GiB 留成 unallocated，专供 metadata 紧急扩展 ` sudo btrfs filesystem resize 1:-2G / `
 
+
+> 故障恢复
+- btrfs scrub start -B /mnt/repair
+- btrfs scrub status /mnt/repair
 
 ### Tmpfs 
 > 虚拟内存文件系统 [wiki](https://wiki.archlinux.org/index.php/Tmpfs)
