@@ -16,8 +16,9 @@ categories:
     - 2.4. [Zuul](#zuul)
     - 2.5. [Kong](#kong)
     - 2.6. [Traefik](#traefik)
+    - 2.7. [Higress](#higress)
 
-💠 2025-09-03 14:52:41
+💠 2026-03-05 20:29:01
 ****************************************
 # 网关
 
@@ -32,6 +33,7 @@ categories:
 灰度发布 蓝绿
 流量染色
 
+性能： 网关主功能是路由分发，内存拷贝是一个重要的关注的维度
 
 ************************
 
@@ -54,4 +56,6 @@ Nginx + Lua + Etcd 以及丰富的插件生态
 
 ## Traefik
 
+## Higress
+> [alibaba/higress: 🤖 AI Gateway | AI Native API Gateway](https://github.com/alibaba/higress)  
 

@@ -78,7 +78,7 @@ categories:
     - 7.8. [ZonedDateTime](#zoneddatetime)
     - 7.9. [Clock](#clock)
 
-💠 2025-12-16 20:51:42
+💠 2026-01-16 15:56:42
 ****************************************
 # Java8
 > [Doc](https://docs.oracle.com/javase/8/) | [API](https://docs.oracle.com/javase/8/docs/api/) | [Source Code](https://download.java.net/openjdk/jdk8/)  
@@ -944,7 +944,19 @@ Stream.collect 实现
 ```
 
 > 场景: 一个对象(含时间和整数两个属性)集合, 完成的操作是获取到最大时间以及数值平均值...等等多个值
-- [ ] 设计和实现
+
+**方案1：多次遍历（简单但不推荐）**
+**方案2：使用自定义结果类 + 自定义Collector（推荐，一次遍历）**
+**方案3：使用reducing（函数式风格）**
+**方案4：使用collectingAndThen组合多个收集器（推荐，简洁）**
+使用collectingAndThen组合多个收集器
+实现：虽然需要多次遍历，但代码简洁易读
+
+**最佳实践建议：**
+1. **小数据量**：使用方案4（collectingAndThen），代码简洁易读
+2. **大数据量且需要性能优化**：使用方案2（自定义Collector），一次遍历
+3. **需要并行处理**：确保自定义Collector的combiner正确实现
+4. **简单场景**：使用方案1（多次遍历），虽然效率低但代码简单
 
 ### 分组 groupingBy
 一个常见的数据库操作是根据一个或多个属性对集合中的项目进行分组。

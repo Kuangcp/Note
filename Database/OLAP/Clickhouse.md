@@ -29,7 +29,7 @@ categories:
 - 7. [Explain](#explain)
 - 8. [Tips](#tips)
 
-💠 2025-09-03 11:19:19
+💠 2026-04-09 21:18:53
 ****************************************
 # Clickhouse 
 > [Official Site](https://clickhouse.com)  
@@ -295,4 +295,22 @@ JSON格式查看 `EXPLAIN json = 1, indexes = 1 SQL`
 
 > BUG
 - [22.3.5.5](https://github.com/ClickHouse/ClickHouse/releases/tag/v22.3.5.5-lts)版本上 使用 UNION ALL 连接 A 和 B两段SQL时，CK偶现出现B段SQL没有正确的groupby聚合（有些数据没有聚合），导致整体执行结果条目数变多，非期望数据
+
+
+> Clickhouse 性能瓶颈
+
+[Zookeeper在Clickhouse中的应用](https://zhuanlan.zhihu.com/p/366421463)  
+[ReplicatedMergeTree 引擎](https://developer.aliyun.com/article/762917)  
+
+需要协调分布式 DDL 的执行(once语义)
+    - 单个节点A收到用户的分布式DDL指令
+    - 节点A校验 分布式DDL 请求合法性, 在ZK 任务队列中创建Znode 上传 DDL LogEntry,节点下创建 finish和 active节点
+    - 集群内所有节点消费 LogEntry队列, 将节点自身注册到active上,将处理结果写入finish节点
+    - 节点A 轮询ZK检查 finish是否全部节点都完成. 以及active节点是否有超时现象.
+
+ReplicatedMergeTree表主备节点之间的状态同步
+    - 重度依赖ZK
+
+CK架构是 每个节点都是平等的, 没有master worker的这种角色差异. 也导致了数据的协调和管理工作落在了CK上,
+用户发出的指令可以落在任意的节点上执行, 默认命令都是单机执行,需要加 on cluster才会触发集群内所有节点执行对应的指令. 
 

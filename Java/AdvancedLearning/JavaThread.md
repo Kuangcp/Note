@@ -19,17 +19,18 @@ categories:
         - 2.2.4. [Signal](#signal)
     - 2.3. [销毁](#销毁)
         - 2.3.1. [观测异常](#观测异常)
-- 3. [ThreadLocal](#threadlocal)
-    - 3.1. [Hook](#hook)
-    - 3.2. [优雅关机](#优雅关机)
-- 4. [Future](#future)
-    - 4.1. [CompletableFuture](#completablefuture)
-- 5. [线程池](#线程池)
-- 6. [协程](#协程)
-    - 6.1. [Quasar](#quasar)
-    - 6.2. [Virtual Threads](#virtual-threads)
+    - 2.4. [ThreadLocal](#threadlocal)
+    - 2.5. [ScopedValue](#scopedvalue)
+    - 2.6. [Hook](#hook)
+    - 2.7. [优雅关机](#优雅关机)
+- 3. [Future](#future)
+    - 3.1. [CompletableFuture](#completablefuture)
+- 4. [线程池](#线程池)
+- 5. [协程](#协程)
+    - 5.1. [Quasar](#quasar)
+    - 5.2. [Virtual Threads](#virtual-threads)
 
-💠 2025-09-03 11:19:19
+💠 2026-03-11 11:00:43
 ****************************************
 # Java线程
 > [个人学习代码](https://github.com/Kuangcp/JavaBase/tree/master/concurrency/src/main/java/thread)
@@ -152,7 +153,7 @@ LockSupport.park
 
 ************************
 
-# ThreadLocal
+## ThreadLocal
 > [Oracle: ThreadLocal](https://docs.oracle.com/javase/8/docs/api/java/lang/ThreadLocal.html)  
 
 设计： ThreadLocalMap 线程对象做key的一个封装Map(但是未实现Map接口)，一个线程可以有多个ThreadLocal
@@ -164,6 +165,24 @@ LockSupport.park
     - **注意**：因为只是处理了TransmittableThreadLocal，所以其他ThreadLocal值需要做传递时，需要通过装饰器去手动复制，例如SpringSecurity的SecurityContextHolder， slf4j的MDC
 
 > [一次「找回」TraceId的问题分析与过程思考](https://tech.meituan.com/2023/04/20/traceid-google-dapper-mtrace.html)
+
+## ScopedValue
+
+与ThreadLocal的区别在于以下三个维度：
+
+1. 内存模型：副本 vs 共享
+
+ThreadLocal：每个线程（即使是虚拟线程）都会持有一个独立的 ThreadLocalMap。如果你开了 10 万个虚拟线程，每个线程都存一个 User 对象，堆内存里就真的有 10 万个 User 对象副本。
+ScopedValue：它是不可变（Immutable）且可继承的。多个虚拟线程可以共享同一个 ScopedValue 实例引用的对象。它在内存中更像是一个“指向特定作用域的指针”，而不是给每个线程都发一套复印件。
+
+2. 生命周期管理（核心区别）
+
+ThreadLocal：它的生命周期和线程绑定。虚拟线程虽然轻量，但如果你从池里复用虚拟线程，或者线程执行完没有显式调用 .remove()，那个大数据对象会一直被引用，直到线程对象被 GC。由于虚拟线程太多，开发者极易忘记 remove，导致累积性 OOM。
+ScopedValue：它是隐式自动清理的。它必须配合 where(...).run(() -> { ... }) 使用。一旦代码块执行结束，该绑定关系自动失效。它不依赖 GC 来清理，而是通过作用域（Scope）在栈帧结束时逻辑上断开引用。
+
+3. 结构化并发的兼容性
+
+ThreadLocal 在虚拟线程分叉（Fork）出子线程时，需要昂贵的 Copy-on-Write 操作（InheritableThreadLocal）。而 ScopedValue 支持在父子线程间高效共享同一份引用，不需要拷贝内存。
 
 ************************
 ## Hook  
@@ -197,6 +216,12 @@ LockSupport.park
 ## CompletableFuture
 > [CompletableFutureTest](https://github.com/Kuangcp/JavaBase/blob/master/java8/src/test/java/com/github/kuangcp/future/CompletableFutureTest.java)  
 
+JDK21起如果要支持虚拟线程,需要手动指定线程池，目前的设计默认会使用JVM全局的 ForkJoinPool
+```java
+    CompletableFuture.supplyAsync(()->{}, new VirtualThreadTaskExecutor())
+```
+而且注意 new VirtualThreadTaskExecutor() 这个线程池尽量全局共用一个，避免管理成本。
+
 ************************
 
 # 线程池
@@ -211,17 +236,5 @@ R大: JVM虚拟机未明确定义JVM线程和OS线程的关系，即可以1：1,
 > [Github: Quasar](https://github.com/puniverse/quasar)
 
 ## Virtual Threads
-> [Virtual Threads](https://openjdk.org/jeps/444) 19预览 21Release | 来源于 [OpenJDK: Loom](https://wiki.openjdk.org/display/loom)`项目目标高吞吐量，轻量级并发模型，结构化并发&调度`  
-
-试用总结：如果要引入生产，需要关注整个JEP的文档，调试确认细节后才能使用，不然就会陷入到各种诡异的问题上。
-
-特性：
-- 依赖一个公用的ForkJoin线程池执行任务 即 不推荐执行CPU密集型任务，只建议用来执行io密集类任务（21对有可能阻塞cpu的api都加上了特定处理代码）从而提高吞吐量
-- 正常线程内代码无法感知 协程内代码的异常，反之也是一样，线程和协程间的局部变量也是隔离的
-- 协程的线程栈存储在堆内存中，为了规避大量协程导致的栈溢出
-
-> [虚拟线程：Java的新利器？](https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247538915&idx=1&sn=b9b6a303a79cea5225e0d445e10eddc8&scene=58&subscene=0)
-> [Java19 正式 GA！看虚拟线程如何大幅提高系统吞吐量 ](https://mp.weixin.qq.com/s/yyApBXxpXxVwttr01Hld6Q)  
-> [虚拟线程 - VirtualThread源码透视 ](https://www.cnblogs.com/throwable/p/16758997.html)
-
+> [Note: Java21 虚拟线程](/Java/AdvancedLearning/Release/Java21.md#虚拟线程-virtual-threads)
 

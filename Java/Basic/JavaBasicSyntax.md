@@ -571,9 +571,24 @@ java.lnag.Object中对hashCode的约定：
 
 > [参考:  java的(PO,VO,TO,BO,DAO,POJO)解释](http://www.cnblogs.com/yxnchinahlj/archive/2012/02/24/2366110.html) | [VO DAO BO 等缩写的意义](https://zhuanlan.zhihu.com/p/35762537?group_id=969493512006373376)
 
-- [ ] 原因? 场景是 类继承了一个实现了自定义接口的自定义抽象类
+> Warning:(18, 1) java: Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
 
-Warning:(18, 1) java: Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
+Lombok 发现“当前类 除了 java.lang.Object 之外还有其他父类（你的抽象类）”，
+而自动生成的 equals/hashCode 默认不调用 super.equals()/super.hashCode()，
+如果父类里也有字段，就会漏掉它们，导致逻辑错误。
+因此它发出提醒：
+
+    “我故意没调父类，你要是真不想调，就显式写 @EqualsAndHashCode(callSuper=false) 告诉我。”
+
+何时必须 callSuper=true
+
+    父类（抽象类）里声明了自己的字段，并且这些字段应参与相等判断；
+    或者父类已经手工重写了 equals/hashCode，子类需要复用那套逻辑。
+
+何时写 callSuper=false
+
+    父类里没有任何字段，或者它的字段与相等性无关；
+    你确定只比较子类自身字段就够。
 
 ## VO
 > view object 前端展示对象

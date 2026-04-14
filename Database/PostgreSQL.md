@@ -29,7 +29,7 @@ categories:
     - 9.1. [Java使用](#java使用)
     - 9.2. [导入导出](#导入导出)
 
-💠 2025-07-21 20:20:05
+💠 2026-02-11 21:29:42
 ****************************************
 # Postgresql
 
@@ -42,6 +42,8 @@ categories:
 `PostgreSQL和MySQL对比`
 > [PostgreSQL 与 MySQL 相比，优势何在？](https://www.zhihu.com/question/20010554)
 > [Converting MySQL to PostgreSQL](https://en.wikibooks.org/wiki/Converting_MySQL_to_PostgreSQL)
+
+一个连接一个进程，MySQL是一个连接一个线程，一般会在pg前置一个 pgbouncer 共享连接池
 
 # 安装
 安装客户端 `sudo apt install postgresql-client`  
@@ -149,8 +151,9 @@ text varchar 最大1Gb
     SELECT setval(pg_get_serial_sequence('t_phone', 'id'), 1000); -- set 
 ```
 
-- 创建 create sequence table_name_id_seq as integer;
-- 使用 select nextval('prompt_version_config_id_seq'::regclass);
+- **创建** `create sequence table_name_id_seq as integer;`
+    - CREATE SEQUENCE IF NOT EXISTS model_config_id_seq INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
+- **使用** select nextval('prompt_version_config_id_seq'::regclass);
 - 修改表字段关联到 已有序列 ALTER TABLE table  ALTER COLUMN id SET DEFAULT nextval('table_seq'::regclass);
 
 # DDL

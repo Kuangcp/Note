@@ -21,7 +21,7 @@ categories:
     - 6.1. [词库](#词库)
 - 7. [向量搜索](#向量搜索)
 
-💠 2025-10-30 18:57:47
+💠 2026-01-28 00:01:03
 ****************************************
 # Elasticsearch
 > [Official Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)  
@@ -89,6 +89,7 @@ categories:
 - `GET /{indexName}/_doc/doc_id` 查询指定文档id
 - `GET /{indexName}/_doc/doc_id` 新增或覆盖文档
 - `POST /{indexName}/_update/doc_id` 新增或更新文档
+- `POST /{indexName}/_bulk` 批量新增或更新
 
 - `GET _cat/indices?v` 获取所有索引信息
 
@@ -97,6 +98,18 @@ categories:
 # Mapping
 > [Mapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html)
 
+新增字段映射
+
+```json
+PUT /user_idx/_mapping
+{
+  "properties": {
+    "age": {
+      "type": "integer"
+    }
+  }
+}
+```
 ************************
 
 # DSL

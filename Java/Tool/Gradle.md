@@ -46,7 +46,7 @@ categories:
     - 6.1. [构建Docker镜像](#构建docker镜像)
         - 6.1.1. [插件方式构建Docker镜像](#插件方式构建docker镜像)
 
-💠 2024-05-02 00:46:30
+💠 2026-04-09 21:00:24
 ****************************************
 
 # Gradle
@@ -165,6 +165,17 @@ categories:
 
 # 配置
 ## 全局配置文件
+
+> 配置代理
+
+_~/.gradle/gradle.properties_
+```prop
+systemProp.http.proxyHost=127.0.0.1
+systemProp.http.proxyPort=你的代理端口
+systemProp.https.proxyHost=127.0.0.1
+systemProp.https.proxyPort=你的代理端口
+```
+
 
 > 配置镜像源
 

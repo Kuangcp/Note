@@ -46,7 +46,7 @@ categories:
     - 3.1. [优雅部署](#优雅部署)
 - 4. [Tips](#tips)
 
-💠 2025-05-06 11:19:53
+💠 2026-01-16 16:14:52
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -551,4 +551,23 @@ RestTemplate替代者
 - 不要对有 @Configuration 注解的配置类进行 Field 级的依赖注入 否则容易引发循环依赖 [Spring循环依赖问题分析](https://blog.mythsman.com/post/5d838c7c2db8a452e9b7082c/)
 
 如果有两个maven模块， A依赖B 假如 A和B中有相同 package 的同名类 a b，此时A模块是main入口模块，配置了对应package注解扫描
-- [ ] 此时会是a还是b，将注册到IOC容器内
+
+**答案：通常是A模块的类（a）会被注册到IOC容器**
+
+**原因：**
+1. **类路径优先级**：Maven打包后，主模块A的classes目录在classpath前面，B模块的jar在依赖路径中
+2. **类加载顺序**：JVM类加载器按classpath顺序查找，找到第一个匹配的类就停止（双亲委派模型）
+3. **Spring扫描机制**：Spring组件扫描基于已加载的Class对象，使用的是类加载器实际加载的类
+
+**验证方法：**
+```java
+// 查看实际加载的类来源
+Class<?> clazz = MyClass.class;
+String location = clazz.getProtectionDomain().getCodeSource().getLocation().toString();
+System.out.println("类来源: " + location);  // 输出jar路径或classes目录
+```
+
+**特殊情况：**
+- 如果B模块的jar在classpath中更靠前，可能加载B的类
+- 可以通过`mvn dependency:tree`查看依赖顺序
+- 建议：避免同名类，或使用不同的包名

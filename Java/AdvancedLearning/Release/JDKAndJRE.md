@@ -17,8 +17,9 @@ categories:
 - 4. [商业组织JDK](#商业组织jdk)
     - 4.1. [Corretto](#corretto)
 - 5. [JDK源码](#jdk源码)
+- 6. [JDK Project](#jdk-project)
 
-💠 2024-10-02 22:33:00
+💠 2026-03-23 21:04:11
 ****************************************
 # JDK And JRE
 
@@ -97,3 +98,8 @@ Java11 开始, JDK内去掉了JRE模块
 # JDK源码
 > [ 不瞒你说，我最近跟Java源码杠上了 ](https://mp.weixin.qq.com/s?__biz=MzU4ODI1MjA3NQ==&mid=2247485421&idx=1&sn=c4543020e3d347267dbd8491ee48d2d5&chksm=fdded129caa9583fefb160e091d741e40fa24da4f3f14aa46bd4fc9b0d77dee9b98583a6c68b&mpshare=1&scene=1&srcid=0411IUXF6tTOYRaj5I6ebZj8&sharer_sharetime=1586571385813&sharer_shareid=246c4b52c1cb45eaa580c985c95107f3#rd)  
 
+# JDK Project
+
+> [Project Leyden](https://openjdk.org/projects/leyden/)  
+
+> [Main - Loom - OpenJDK Wiki](https://wiki.openjdk.org/spaces/loom/overview)  

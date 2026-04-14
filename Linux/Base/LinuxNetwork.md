@@ -64,7 +64,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2025-11-24 22:27:23
+💠 2026-03-05 09:50:06
 ****************************************
 # Linux网络管理
 
@@ -323,7 +323,11 @@ iftop
 - 默认网关： 如果主机找不到转发规则， 就把数据包发给默认的网关(家用网络一般是路由器的ip)
 - 增加/删除一条路由规则 `ip route add/del 192.168.2.0/24 via 192.168.1.254`
     - 当使用 VPN 时，建立新的虚拟网卡 tun， 可以手动设置路由让指定ip走虚拟网卡 从而访问到VPN内局域网地址(网络号和真实网卡一样，默认会把数据包转发至本地局域网)
+
+- 查看mac地址 `ip link show`
 - 设置网卡 eno1 MAC 地址`ip link set eno1 address b4:xx:xx`
+
+- 查看本地ARP表 `ip neigh show`， 可以通过 `sudo nmap -sn 192.168.1.0/24 >/dev/null 2>&1` 刷新本地缓存
 
 - 关闭 启用 `ifconfig name down/up`
 - 修改IP `ifconfig eth0 192.168.1.200/24`
@@ -395,6 +399,7 @@ Zmap `在千兆网卡状态下，45 分钟内扫描全网络 IPv4 地址`
     - -w 设置连接超时时间 s
     - -u 使用UDP 默认缺省则是TCP
 - 连接开放的端口 `nc -v host port`
+- port端口收到的数据流内容打印到 stdout `nc -v -l -p port`
 
 - 传输文件 
     - 服务端发送文件 `nc -v -l -p port < temp_out.md`
@@ -467,10 +472,13 @@ Zmap `在千兆网卡状态下，45 分钟内扫描全网络 IPv4 地址`
 ### curl
 > [Official site](https://curl.haxx.se/)
 
-1. 不输出，重定向到*黑洞设备*  ` curl -s -o /dev/null URL`
-1. 使用基础认证 发送JSON数据 `curl -i -H "Content-Type:application/json" -u admin:secret -X POST --data '{"title":"1","content":"1"}' http://tomcat.kcp/email/content`
-    - 如果没有认证则会收到 401 返回码
-
+- -k (Insecure): 允许不安全的 SSL 连接。即使该网站的 SSL 证书已过期、是自签名的，或者域名不匹配，curl 也会忽略警告继续连接。这常用于内部测试环境。
+- -vvv (Triple Verbose): 极详细模式。它会打印出完整的“通信对话”，包括：
+    - DNS 解析：域名解析到了哪个 IP 地址。
+    - TCP 连接：三次握手是否成功。
+    - TLS/SSL 握手：使用了哪个版本的协议（如 TLS 1.3）和具体的加密套件。
+    - 请求头 (>)：你发给服务器的所有信息。
+    - 响应头 (<)：服务器回传的所有元数据。
 - 使用Cookie `curl -v --cookie "USER_TOKEN=Yes" http://127.0.0.1:5000/`
 - 使用代理  `-x, --proxy [protocol://]host[:port]`
 - 设置 Header `-H "xxx:xxx"` 例如 `-H "Content-Type:application/json" -H "token:xxx"`

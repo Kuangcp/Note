@@ -14,7 +14,7 @@ categories:
         - 1.1.1. [Plugin](#plugin)
 - 2. [Tips](#tips)
 
-💠 2025-05-14 11:55:13
+💠 2026-03-03 16:00:09
 ****************************************
 # Xfce 
 > [www.xfce-look.org](https://www.xfce-look.org)  
@@ -33,6 +33,7 @@ categories:
 
 [xfce4 install xrdp](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop?tabs=azure-cli)
 
+
 ## Panel 
 
 ### Plugin
@@ -46,3 +47,7 @@ categories:
 # Tips 
 1. Dock相关软件 出现阴影 `Window Manager Tweaks -> Compositor -> 关闭 Show shadow under dock windows`
 1. 键盘持续按键，延迟速度 Keyboard -> Behavior -> Repeat delay 调低延迟时间
+1. 重新加载配置重启 `xfwm4 --replace &`
+
+> 切换窗口卡顿
+- 

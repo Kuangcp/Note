@@ -22,7 +22,7 @@ categories:
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2025-12-16 11:09:48
+💠 2026-02-11 21:29:42
 ****************************************
 # 线程池
 
@@ -60,7 +60,28 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 - 定时 `scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit)`
     - 当上一个Runnable执行结束后+固定延迟 = 下一个Runnable执行的时间点
 
-**注意**: 定时的这些API上有注释说明：当某次任务抛出异常时，后续的调度会挂起，所以异步任务需要大范围的 try catch，业务自己处理异常
+**注意**: 
+- 定时的这些API上有注释说明：当某次任务抛出异常时，后续的调度会取消，所以异步任务需要完全 try catch，自行处理单次任务的异常
+- 如果想在某次任务时取消后续所有调度，可以通过直接抛出异常，或者通过 ScheduledFuture 来更优雅控制，例如
+    ```java
+        AtomicInteger cnt = new AtomicInteger();
+        // 需要在声明完之前就引用，所以需要借助AtomicReference来 逆时序传递 对象
+        AtomicReference<ScheduledFuture<?>> monitorFutureRef = new AtomicReference<>();
+        ScheduledFuture<?> monitorFuture = sche.scheduleAtFixedRate(() -> {
+            int i = cnt.incrementAndGet();
+            if (i > 5) {
+                // 取消定时任务
+                ScheduledFuture<?> future = monitorFutureRef.get();
+                if (future != null) {
+                    future.cancel(false);
+                }
+                // 关闭线程池
+                sche.shutdown();
+            }
+            System.out.println("run " + i);
+        }, 2, 1, TimeUnit.SECONDS);
+        monitorFutureRef.set(monitorFuture);
+    ```
 
 > 如何实现调度: [ScheduledThreadPoolExecutor实现原理](https://juejin.cn/post/7035415187783942152) | [验证单元测试](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/thread/schdule/SchedulerPoolTest.java)
 - 核心依赖 DelayedWorkQueue 实现延迟调度，默认最大值为Integer.MAX_VALUE

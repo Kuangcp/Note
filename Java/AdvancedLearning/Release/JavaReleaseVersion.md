@@ -31,7 +31,7 @@ categories:
     - 1.20. [Java24](#java24)
     - 1.21. [Java25 LTS](#java25-lts)
 
-💠 2025-12-16 20:19:27
+💠 2026-03-11 11:00:43
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)
@@ -228,7 +228,7 @@ JDBC4.0  JAX-WS 2.0
 1. Structured Concurrency (三次预览)
 1. Scoped Values (三次预览)
 1. Class-File API (预览)
-1. ZGC: 分代模式成为默认
+1. ZGC: 分代模式成为ZGC的默认策略
 
 ## Java24
 > [OpenJDK 24](https://openjdk.org/projects/jdk/24/)
@@ -240,6 +240,7 @@ JDBC4.0  JAX-WS 2.0
 1. Scoped Values (四次预览)
 1. Module Import Declarations (二次预览)
 1. Vector API (八次孵化)
+1. [JEP 491: Synchronize Virtual Threads without Pinning](https://openjdk.org/jeps/491)`修复了pinned问题`  
 
 ## Java25 LTS
 > [OpenJDK 25](https://openjdk.org/projects/jdk/25/) (LTS预期)
@@ -250,3 +251,19 @@ JDBC4.0  JAX-WS 2.0
 1. Loom 项目完善: 结构化并发预览
 1. JEP 506: Scoped Values： 线程间共享变量，用来替换的ThreadLocal。
 
+误解：新 JDK 能直接跑旧代码
+真相：旧代码按规范编写 + 不依赖已移除 API → 新 JDK 能跑
+
+JDK 25 可能破坏兼容的情况：
+1. 移除已弃用 API（如 finalize() 相关）
+2. 强化模块封装（更多内部 API 不可访问）
+3. 更改默认行为（如安全策略、反射限制）
+4. 第三方库未适配
+
+```sh
+    # 1. 扫描已弃用 API
+    jdeprscan --release 25 your-app.jar
+
+    # 2. 检查非法反射
+    java --illegal-access=warn -jar your-app.jar 2>&1 | grep "Illegal reflective access"
+```
