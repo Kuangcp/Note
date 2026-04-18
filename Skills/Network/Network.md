@@ -75,7 +75,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2026-04-09 21:00:24
+💠 2026-04-18 19:14:55
 ****************************************
 # 网络
 > [Java 网络](/Java/AdvancedLearning/JavaNetwork.md)  
@@ -598,7 +598,8 @@ server {
 
 ### Clash
 [Clash Fork](https://github.com/Ieooo/clash) [DryPeng/clashT](https://github.com/DryPeng/clashT)  
-[Clash Meta](https://wiki.metacubex.one/)  
+
+> [MetaCubeX/mihomo](https://github.com/MetaCubeX/mihomo) | [Clash Meta](https://wiki.metacubex.one/)  新版本内核
 
 https://github.com/clash-verge-rev/clash-verge-rev
 

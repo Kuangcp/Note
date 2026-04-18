@@ -10,7 +10,7 @@ categories:
 - 1. [etcd](#etcd)
     - 1.1. [部署](#部署)
 
-💠 2026-02-02 10:23:38
+💠 2026-04-18 19:14:55
 ****************************************
 # etcd
 > [etcd](https://etcd.io/)  
@@ -24,7 +24,8 @@ categories:
 ## 部署
 **单机部署**
 
-快速实验功能，但是由于单点问题，一旦etcd崩溃，apisix数据会不一致，无法修改，无法代理等问题
+只能用于体验功能，由于单点的原因，一旦etcd崩溃，apisix数据会不一致，无法修改，无法代理等问题
+或者 节点高IO负载时会导致数据不一致，陷入无法修改的只读状态
 
 > [cilium/examples/kubernetes/addons/etcd/standalone-etcd.yaml at main · cilium/cilium](https://github.com/cilium/cilium/blob/main/examples/kubernetes/addons/etcd/standalone-etcd.yaml)  
 > Copy：[DockerfileList/k8s/ectd-standalone.yaml at master · Kuangcp/DockerfileList](https://github.com/Kuangcp/DockerfileList/blob/master/k8s/ectd-standalone.yaml)  
