@@ -44,7 +44,7 @@ categories:
         - 1.11.5. [优雅重启](#优雅重启)
         - 1.11.6. [运行性能优化](#运行性能优化)
 
-💠 2026-01-07 15:30:18
+💠 2026-04-22 20:30:37
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -458,15 +458,83 @@ spring:
 可以注意到开启了graceful之后，会有SpringApplicationShutdownHook在处理资源清理，可以声明以下监听器用来停止业务线程
 
 ```java
-public class ShutdownAlertService implements ApplicationListener<ContextClosedEvent> {
+@Slf4j
+@Component
+public class GracefulPoolShutdown implements SmartLifecycle {
+    @Resource
+    @Qualifier(ThreadPoolType.CACHE_POOL)
+    private ThreadPoolTaskExecutor cachePool;
+    @Resource
+    @Qualifier(value = ThreadPoolType.ATTACH_POOL)
+    private ThreadPoolTaskExecutor attach;
+    @Resource
+    @Qualifier(ThreadPoolType.SSE_SCHEDULER)
+    private ScheduledExecutorService ssePool;
+
+    private volatile boolean running = true;
+
     @Override
-    public void onApplicationEvent(ContextClosedEvent event) {
-        // shutdown 线程池
+    public void stop() {
+        log.info("stop thread pool");
+        List<ThreadPoolTaskExecutor> pools = Arrays.asList(
+                cachePool, attach
+        );
+        // 容器关闭时会回调
+        running = false;
+        // 1. 并行触发 shutdown（不阻塞）
+        pools.forEach(ThreadPoolTaskExecutor::shutdown);
+        ssePool.shutdown();
+
+        // 2. 一起等，最长 N 秒
+        try {
+            long remain = Duration.ofSeconds(30).toMillis();
+            boolean isBreak = false;
+            for (ThreadPoolTaskExecutor pool : pools) {
+                long start = System.currentTimeMillis();
+                // await 返回 false 说明超时了，立即进入下一轮
+                if (!pool.getThreadPoolExecutor().awaitTermination(remain, TimeUnit.MILLISECONDS)) {
+                    isBreak = true;
+                    log.info("{} pool timeout", pool.getThreadNamePrefix());
+                    break;            // 已经总超时，不再等后面的池
+                }
+                remain -= (System.currentTimeMillis() - start);
+            }
+
+            if (!isBreak) {
+                boolean normal = ssePool.awaitTermination(remain, TimeUnit.MILLISECONDS);
+                if (!normal) {
+                    log.info("sse pool timeout");
+                }
+            }
+
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        // 3. 还有任务没跑完？强制 shutdownNow
+        pools.forEach(v -> v.getThreadPoolExecutor().shutdownNow());
+        ssePool.shutdownNow();
+        log.info("finish shutdown");
     }
+
+    /* 下面三个方法让 Spring 知道这是一个生命周期组件 */
+    @Override
+    public boolean isRunning() {
+        return running;
+    }
+
+    @Override
+    public int getPhase() {
+        return Integer.MAX_VALUE;
+    } // 最后关闭
 }
 ```
 
-运行在Docker或者K8S内时，还需要如下配置。 并且要确保Java进程能收到 15 信号，通过 tini 或者 exec 启动java （shell方式会导致无法收到kill信号）
+运行在Docker或者K8S内时，还需要如下配置。 并且要确保Java进程能收到 15 信号，通过 tini 或者 exec 启动java （shell方式会导致Java进程无法收到kill 15信号）
+```dockerfile
+ENTRYPOINT /sbin/tini java ${OPTS} -jar -Dspring.profiles.active=${SPRING_PROFILES_ACTIVE} /opt/app.jar
+```
+
 ```yaml
 spec:
   template:

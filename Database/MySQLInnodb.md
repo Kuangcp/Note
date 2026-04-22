@@ -24,8 +24,10 @@ categories:
 - 3. [MVCC机制](#mvcc机制)
 - 4. [行设计](#行设计)
 - 5. [Buffer Pool](#buffer-pool)
+- 6. [限制](#限制)
+    - 6.1. [索引长度限制](#索引长度限制)
 
-💠 2024-06-21 10:47:46
+💠 2026-04-22 20:30:37
 ****************************************
 # InnoDB
 > [Doc: InnoDB](https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html)
@@ -135,3 +137,19 @@ Innodb 内部在每行有隐藏列：
 
 Insert Buffer
 Double Write
+
+# 限制
+> [MySQL :: MySQL 8.0 Reference Manual :: 17.22 InnoDB Limits](https://dev.mysql.com/doc/refman/8.0/en/innodb-limits.html)  
+
+## 索引长度限制
+> Specified key was too long; max key length is 3072 bytes
+
+`keyword varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL`  
+InnoDB 引擎：单索引最大 3072 字节（依赖页大小）；  utf8mb4 编码：每个字符占 4 字节  
+
+所以最大只能设置VARCHAR(768)， 如果因为数据溢出了，一定要调大字段长度：  
+
+- 更改页大小（默认16K） innodb_page_size = 32K  **但是需要重启实例**
+- 使用前缀索引 `ALTER TABLE 表名 ADD INDEX idx_字段名 (字段名(191));` 只索引前 191 个字符, 但是前缀索引会带来更多问题。
+
+> MySQL 5.7版本单列索引支持的最大长度默认是768bytes，如需单列索引最大长度支持3072bytes，需配置参数innodb_large_prefix=ON. 8.x 默认3072

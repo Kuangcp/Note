@@ -29,9 +29,8 @@ categories:
         - 3.1.1. [统计报表](#统计报表)
     - 3.2. [未命中索引的场景](#未命中索引的场景)
 - 4. [实践](#实践)
-    - 4.1. [索引长度限制](#索引长度限制)
 
-💠 2026-04-21 09:56:34
+💠 2026-04-22 20:30:37
 ****************************************
 
 # 索引
@@ -243,7 +242,7 @@ select name  from report_user_date where crea < '2021-12-26';
 1. HASH冲突（链地址法）会对整体维护加大负担（查询，新增，删除）。
 
 > 优化
-1. 假如查询字段A较长，可用新列B存储字段A的hash值，再基于B列建立Hash索引，优化索引存储大小
+1. 假如查询字段A较长，建一个新字段B来存储字段A的hash值，再基于B字段建立Hash索引，优化索引存储大小
 
 ### AHI 自适应哈希索引
 > [Adaptive Hash Index](https://dev.mysql.com/doc/refman/8.0/en/innodb-adaptive-hash.html)
@@ -367,12 +366,3 @@ select user_id from report_user_date where crea < '2021-12-26';
 - 对索引列进行运算（加减乘除等）
 
 # 实践
-## 索引长度限制
-> Specified key was too long; max key length is 3072 bytes
-
-`keyword varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL`  
-InnoDB 引擎：单索引最大 3072 字节（依赖页大小）；  utf8mb4 编码：每个字符占 4 字节  
-所以最大只能设置VARCHAR(768)， 如果就是需要调大字段长度，数据溢出了
-
-- 更改页大小，默认16K  innodb_page_size = 32K ， 但是需要重启实例
-- 使用前缀索引 `ALTER TABLE 表名 ADD INDEX idx_字段名 (字段名(191));` 只索引前 191 个字符
