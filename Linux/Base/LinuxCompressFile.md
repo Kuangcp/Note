@@ -21,7 +21,7 @@ categories:
 - 2. [压缩文件内容预览搜索](#压缩文件内容预览搜索)
 - 3. [压缩文件密码](#压缩文件密码)
 
-💠 2024-09-11 14:55:54
+💠 2026-04-24 20:14:17
 ****************************************
 # Linux操作压缩文档
 > Linux默认自带ZIP压缩，最大支持4GB压缩，RAR的压缩比大于4GB.
@@ -111,9 +111,8 @@ categories:
 ********************
 ## zip
 > 压缩
-- `zip images.zip *.jpg` //zip格式的压缩
-- `zip -r file.zip code/*` 压缩code目录下所有文件
-    - `zip -r ./a.zip ./*` 压缩当前目录所有文件
+- 参数
+    - 压缩率 `-1` `-9`  9最高
     - `-q`安静模式, 终端不输出
     - `-o` 输出文件`
     - `-r` 表示递归
@@ -121,6 +120,10 @@ categories:
     - `-e` 加密
     - `-d filename` 在zip中删除某文件 删除某目录`dir/*`
         - _注意_: 所有的文件和目录都是相对于zip的根目录的完整路径
+- `zip images.zip *.jpg` //zip格式的压缩
+- `zip -r file.zip code/*` 压缩code目录下所有文件
+- `zip -r ./a.zip ./*` 压缩当前目录所有文件
+
 
 > 解压
 - `unzip file.zip `//解压zip
@@ -172,6 +175,8 @@ categories:
 > [Zstandard](https://facebook.github.io/zstd/#benchmarks)
 
 - `zstd` 压缩， 源文件压缩为源文件.zst
+    - 压缩率 `-1` `-19`
+    - tar --zstd -cf archive.tar.zst folder/
 - `unzstd` / `zstd -d` 解压
 
 ************************
