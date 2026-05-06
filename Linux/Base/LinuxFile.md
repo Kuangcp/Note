@@ -689,3 +689,12 @@ export LANG="zh_CN.UTF-8"
     - 注意：Exec和Icon的值，目录不能有空格 等特殊字符
     - Exec 如果路径错误，Start菜单不会出现这个desktop
 - 重点在于 Exec 和 Icon 的值，Exec 仅相当于当前用户执行 Exec的命令，如果发现应用启动异常只能去脚本或二进制文件调试，通常是环境变量差别
+
+> 排查环境变量和启动时的日志问题
+
+```sh
+# 收集运行输出
+Exec=sh -c '/home/kcp/Application/IDE/DataGrip-2026.1.2/bin/datagrip.sh 2>&1 | tee /tmp/idea_launch.log'
+# 检查环境变量
+Exec=sh -c 'env > /tmp/desktop_env.log; /home/kcp/Application/IDE/DataGrip-2026.1.2/bin/datagrip.sh'
+```

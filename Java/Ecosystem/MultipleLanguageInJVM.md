@@ -90,6 +90,9 @@ Kotlin有以下好处：
 ### Clojure
 > Rich Hickey设计的属于Lisp家族的语言，动态类型的函数式语言，编译型语言但是通常以源码发布
 
+### Kotlin
+[Kotlin](/Kotlin/Readme.md)
+
 ### 为什么非要用Java语言
 - Java 作为一种通用，静态类型的编译型语言，实现稳定层方便，但是放到金字塔上层就成为负担
     - 编译耗时
