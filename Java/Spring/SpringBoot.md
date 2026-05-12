@@ -44,7 +44,7 @@ categories:
         - 1.11.5. [优雅重启](#优雅重启)
         - 1.11.6. [运行性能优化](#运行性能优化)
 
-💠 2026-05-06 15:40:53
+💠 2026-05-12 20:15:10
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -550,6 +550,11 @@ spec:
     spec:
       terminationGracePeriodSeconds: 120
 ```
+
+完整流程： 
+1. K8s SIGTERM → Spring 开始关闭
+1. WebServer 停止接收新连接，等待 in-flight HTTP 请求完成（graceful 超时）
+1. 线程池 shutdown → awaitTermination → 完成
 
 ### 运行性能优化
 > [Runtime efficiency with Spring (today and tomorrow)](https://spring.io/blog/2023/10/16/runtime-efficiency-with-spring)
