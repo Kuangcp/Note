@@ -57,7 +57,7 @@ categories:
     - 8.7. [chroot](#chroot)
 - 9. [关机/重启](#关机重启)
 
-💠 2025-12-16 17:49:42
+💠 2026-05-15 17:37:38
 ****************************************
 # Linux性能分析和管理
 
@@ -125,6 +125,7 @@ hardinfo
 > [vector](https://github.com/Netflix/vector)
 > [CPU-X ](http://x0rg.github.io/CPU-X/) | [Github:repo](https://github.com/X0rg/CPU-X)`简洁而详细`    
 
+> [pranshuparmar/witr: Why is this running?](https://github.com/pranshuparmar/witr)`分析进程和端口占用的原因，调用链等`  
 
 ************************
 
