@@ -19,7 +19,7 @@ categories:
 - 5. [JDK源码](#jdk源码)
 - 6. [JDK Project](#jdk-project)
 
-💠 2026-03-23 21:04:11
+💠 2026-05-23 14:35:48
 ****************************************
 # JDK And JRE
 
@@ -100,6 +100,6 @@ Java11 开始, JDK内去掉了JRE模块
 
 # JDK Project
 
-> [Project Leyden](https://openjdk.org/projects/leyden/)  
+> [Project Leyden](https://openjdk.org/projects/leyden/) `AOT 加速启动时间`  
 
 > [Main - Loom - OpenJDK Wiki](https://wiki.openjdk.org/spaces/loom/overview)  
