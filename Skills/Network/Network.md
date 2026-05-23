@@ -54,6 +54,7 @@ categories:
     - 5.2. [PAC](#pac)
     - 5.3. [正向代理](#正向代理)
     - 5.4. [反向代理](#反向代理)
+        - 5.4.1. [Frp](#frp)
     - 5.5. [透明代理](#透明代理)
     - 5.6. [应用的代理设置](#应用的代理设置)
         - 5.6.1. [Java](#java)
@@ -75,7 +76,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2026-04-18 19:14:55
+💠 2026-05-23 14:49:17
 ****************************************
 # 网络
 > [Java 网络](/Java/AdvancedLearning/JavaNetwork.md)  
@@ -539,23 +540,43 @@ function FindProxyForURL(url, host) {
 - 应用: 保护和隐藏原始资源服务器, 负载均衡, 加密和SSL加速, 缓存静态内容, 安全(DDos的防护)
 - 安全: 对外是透明的，访问者并不知道自己访问的是代理。对访问者而言，他以为访问的就是原始服务器
 
+简单的用法是 [SSH 隧道](/Linux/Base/SSH.md#ssh-tunnel)
+
+### Frp
+
 > [fatedier/frp: A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.](https://github.com/fatedier/frp)  
+
+以下实现一个公网域名访问到内网环境的特定端口上，或者 公网IP端口访问到内网服务端口。
 
 ```toml
 # frps.toml
 bindPort = 6011
 vhostHTTPPort = 9030
+auth.token = "your_secret_token" # 必须设置密钥，防止别人盗用
+```
+- ./frps -c ./frps.toml 
 
+```
 # frpc.toml
-serverAddr = "公网ip"
+serverAddr = "服务器公网ip"
 serverPort = 6011
+auth.token = "your_secret_token"
 
 [[proxies]]
 name = "http-tunnel"
 type = "http"
 localPort = 8989
-customDomains = ["公网域名xxx"]
+customDomains = ["公网域名 xxx Nginx配置"]
+
+# 或者
+name = "java-service"
+type = "tcp"
+localIP = "192.168.1.10" # Java 服务的内网 IP
+localPort = 8080         # Java 服务的内网端口
+remotePort = 9000        # 映射到公网IP的端口
 ```
+- ./frpc -c ./frpc.toml
+
 
 Nginx 配置
 ```ini

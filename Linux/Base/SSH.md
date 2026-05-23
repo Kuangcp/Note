@@ -25,7 +25,7 @@ categories:
     - 2.1. [保持SSH连接稳定](#保持ssh连接稳定)
 - 3. [Mosh](#mosh)
 
-💠 2025-01-16 16:26:11
+💠 2026-05-23 14:49:17
 ****************************************
 # SSH
 > Secure Shell 
@@ -180,7 +180,7 @@ _config_
 ## SSH Tunnel 
 >  [Wiki: Tunneling protocol](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling)
 
-简单来说就是可以建立一个双工通道，实现内网穿透，正向代理
+简单来说就是可以建立一个双工通道，实现内网穿透，反向代理
 
 > [Is it normal to use an SSH tunnel to access a production database? ](https://www.reddit.com/r/learnrust/comments/11poo5h/is_it_normal_to_use_an_ssh_tunnel_to_access_a/)  
 > [How does reverse SSH tunneling work?](https://unix.stackexchange.com/questions/46235/how-does-reverse-ssh-tunneling-work/118650#118650)  
