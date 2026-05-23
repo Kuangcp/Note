@@ -23,7 +23,7 @@ categories:
 - 5. [Advanced](#advanced)
 - 6. [Tips](#tips)
 
-💠 2025-12-04 10:31:18
+💠 2026-05-23 16:38:12
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -122,9 +122,6 @@ categories:
 - switch-client 切换 session
 - split-window 拆分当前window出新的panel
 
-## 切换
-- prefix w 切换 window 或者 Session
-- Prefix () 切换 Session
 
 ************************
 
@@ -132,13 +129,14 @@ categories:
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) `查看Readme下载安装`
 > `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
+`prefix I` 安装新增的插件 
+
 - [tmux-plugins list 插件列表](https://github.com/tmux-plugins/list)
-
-> [参考: 保存和恢复 Tmux 会话 ](https://liam.page/2016/09/10/tmux-plugin-resurrect/)
-
-[tmux-modal](https://github.com/whame/tmux-modal) 快速操作切换和创建 window panel
-
-- `prefix I` 安装新增的插件 
+- [参考: 保存和恢复 Tmux 会话 ](https://liam.page/2016/09/10/tmux-plugin-resurrect/)
+- tmux-fingers (效率神器：快速复制)
+- extrakto (模糊搜索提取)
+- tmux-logging (记录会话)
+- [tmux-modal](https://github.com/whame/tmux-modal) 快速操作切换和创建 window panel
 
 ## tmux-resurrect
 
@@ -160,6 +158,8 @@ prefix c-r 加载历史会话
 
 # Advanced 
 [Github wiki: Advanced use](https://github.com/tmux/tmux/wiki/Advanced-Use)
+
+- `tmux display-popup -E "echo '任务已完成！按回车关闭'; read"` 发送通知弹窗
 
 ************************
 
