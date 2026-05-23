@@ -18,6 +18,7 @@ categories:
         - 2.1.2. [JWT](#jwt)
             - 2.1.2.1. [修改密码](#修改密码)
             - 2.1.2.2. [退出登录](#退出登录)
+        - 2.1.3. [PASETO](#paseto)
     - 2.2. [Verfication](#verfication)
     - 2.3. [盗链与防盗链](#盗链与防盗链)
     - 2.4. [工具或平台](#工具或平台)
@@ -32,7 +33,7 @@ categories:
     - 3.5. [XSS](#xss)
     - 3.6. [Java JNDI注入攻击](#java-jndi注入攻击)
 
-💠 2025-02-11 11:26:37
+💠 2026-05-23 16:01:06
 ****************************************
 
 # Web应用网络安全
@@ -105,6 +106,47 @@ categories:
 > token vs session
 1. [JWTs vs. sessions: which authentication approach is right for you?](https://stytch.com/blog/jwts-vs-sessions-which-is-right-for-you/)
 1. TODO CSRF 问题？ 浏览器跨源访问 读写策略 引起 cookie泄漏的问题，假如使用token，安装了恶意插件，一样获取到token，如何避免？
+
+************************
+
+### PASETO
+
+简单来说，PASETO 是 JWT 的进化版。JWT 给了开发者太多“自杀”的选择权，而 PASETO 通过强制使用现代加密标准，堵死了大部分安全漏洞。
+
+核心区别对比
+
+| 特性 | JWT (JSON Web Token) | PASETO (Platform-Agnostic SEcurity TOkens) |
+|---|---|---|
+| 安全性 | 高风险。允许“none”算法，支持弱加密。 | 极高。不允许弱算法，没有算法协商。 |
+| 加密设计 | 算法灵活性。开发者自己选算法（RSA, HS256等）。 | 版本化设计。每个版本绑定固定的强加密组合。 |
+| 易错性 | 容易配置错误（如 Header 伪造）。 | 几乎不会配错（“指哪打哪”）。 |
+| 解析开销 | 必须先解析 Header 才知道用什么算法（有风险）。 | 根据版本直接解析，更安全高效。 |
+
+
+为什么 PASETO 更好？  
+1. 彻底解决“算法下行攻击”
+
+* JWT：Header 里写着 alg: "none"，如果后端没校验，攻击者就能伪造任何数据。
+* PASETO：协议直接规定 v4.public 就是用 Ed25519，开发者没法选，黑客没法改。
+
+2. 只有两个模式，不纠结
+PASETO 只有两种简单的选择：
+
+* Local (加密)：对称加密，内容不可见（类似 JWT 加密版 JWE）。
+* Public (签名)：非对称加密，内容可见但不可篡改（类似普通 JWT）。
+
+3. 避免“密码学滥用”
+JWT 支持很多过时的算法（如 PKCS1 v1.5）。PASETO 强制使用现代算法（如 ChaCha20-Poly1305 和 Ed25519），这些算法不仅更快，而且对侧信道攻击的防护更好。
+
+虽然 PASETO 更先进，但 JWT 赢在生态：
+
+* 几乎所有 OAuth2/OIDC 框架默认都是 JWT。
+* 浏览器端、移动端库极其成熟。
+* 硬件设备（如 IoT）对 JWT 的集成支持更广泛。
+
+新项目 / 内部微服务：强烈建议用 PASETO。它从设计层面帮你避开了安全大坑，不用担心同事配错签名校验逻辑。
+对外开放平台 / 标准协议：如果你的服务需要对接第三方（如 Google 登录、Auth0），或者必须遵循 OIDC 协议，那就用 JWT。
+如果你在 Kotlin/Java 项目里选型：  JWT 推荐：jjwt 或 com.auth0:java-jwt。  PASETO 推荐：paseto4j。
 
 ************************
 
