@@ -76,7 +76,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2026-05-23 14:49:17
+💠 2026-05-26 10:49:40
 ****************************************
 # 网络
 > [Java 网络](/Java/AdvancedLearning/JavaNetwork.md)  
@@ -544,9 +544,11 @@ function FindProxyForURL(url, host) {
 
 ### Frp
 
-> [fatedier/frp: A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.](https://github.com/fatedier/frp)  
+> [fatedier/frp](https://github.com/fatedier/frp) `A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.`  
 
 以下实现一个公网域名访问到内网环境的特定端口上，或者 公网IP端口访问到内网服务端口。
+
+> 服务端
 
 ```toml
 # frps.toml
@@ -555,6 +557,20 @@ vhostHTTPPort = 9030
 auth.token = "your_secret_token" # 必须设置密钥，防止别人盗用
 ```
 - ./frps -c ./frps.toml 
+
+Nginx 配置
+```ini
+server {
+    listen 80;
+    server_name xxx;
+    location / {
+        proxy_pass http://127.0.0.1:9030;   # 本机就是 frp 服务端
+        proxy_set_header Host $host;
+    }
+}
+```
+
+> 客户端
 
 ```
 # frpc.toml
@@ -578,17 +594,7 @@ remotePort = 9000        # 映射到公网IP的端口
 - ./frpc -c ./frpc.toml
 
 
-Nginx 配置
-```ini
-server {
-    listen 80;
-    server_name xxx;
-    location / {
-        proxy_pass http://127.0.0.1:9030;   # 本机就是 frp 服务端
-        proxy_set_header Host $host;
-    }
-}
-```
+
 
 ## 透明代理
 > 客户端根本不需要知道有代理服务器的存在，它改变你的 request fields（报文），并会传送客户端真实IP给服务端，多用于路由器的NAT转发中
