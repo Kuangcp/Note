@@ -64,7 +64,7 @@ categories:
     - 10.3. [修改](#修改)
     - 10.4. [授权](#授权)
 
-💠 2026-05-12 20:15:10
+💠 2026-05-27 13:52:27
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -113,7 +113,7 @@ _重启_
 - 重启MySQL ：`sudo systemctl restart mysql`
 
 - 命令行连接
-> mysql -h host -P port -u username  -p'password' database
+> mysql -h host -P port -u username  -p 'password' database
 
 ## Docker安装
 > [Docker安装MySQL](/Linux/Container/DockerSoft.md#MySQL) | [博客：Mysql有没有必要Docker化](http://www.infoq.com/cn/articles/can-mysql-run-in-docker)

@@ -76,7 +76,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2026-05-26 10:49:40
+💠 2026-05-27 13:52:27
 ****************************************
 # 网络
 > [Java 网络](/Java/AdvancedLearning/JavaNetwork.md)  
@@ -572,12 +572,13 @@ server {
 
 > 客户端
 
-```
+```toml
 # frpc.toml
 serverAddr = "服务器公网ip"
 serverPort = 6011
 auth.token = "your_secret_token"
 
+# 有多个映射就配多个这个分段配置
 [[proxies]]
 name = "http-tunnel"
 type = "http"
@@ -585,6 +586,7 @@ localPort = 8989
 customDomains = ["公网域名 xxx Nginx配置"]
 
 # 或者
+[[proxies]]
 name = "java-service"
 type = "tcp"
 localIP = "192.168.1.10" # Java 服务的内网 IP
@@ -592,9 +594,6 @@ localPort = 8080         # Java 服务的内网端口
 remotePort = 9000        # 映射到公网IP的端口
 ```
 - ./frpc -c ./frpc.toml
-
-
-
 
 ## 透明代理
 > 客户端根本不需要知道有代理服务器的存在，它改变你的 request fields（报文），并会传送客户端真实IP给服务端，多用于路由器的NAT转发中
