@@ -76,7 +76,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2026-05-27 13:52:27
+💠 2026-05-29 15:13:52
 ****************************************
 # 网络
 > [Java 网络](/Java/AdvancedLearning/JavaNetwork.md)  
@@ -546,7 +546,7 @@ function FindProxyForURL(url, host) {
 
 > [fatedier/frp](https://github.com/fatedier/frp) `A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.`  
 
-以下实现一个公网域名访问到内网环境的特定端口上，或者 公网IP端口访问到内网服务端口。
+以下实现从公网域名访问到内网环境的特定端口上
 
 > 服务端
 
@@ -584,16 +584,13 @@ name = "http-tunnel"
 type = "http"
 localPort = 8989
 customDomains = ["公网域名 xxx Nginx配置"]
-
-# 或者
-[[proxies]]
-name = "java-service"
-type = "tcp"
-localIP = "192.168.1.10" # Java 服务的内网 IP
-localPort = 8080         # Java 服务的内网端口
-remotePort = 9000        # 映射到公网IP的端口
 ```
 - ./frpc -c ./frpc.toml
+
+
+如果想要实现安全的 通过公网中转内网的流量， 例如做私有化部署时，可以使用 stcp 隧道方式
+
+> [安全地暴露内网服务 | frp](https://gofrp.org/zh-cn/docs/examples/stcp/)  
 
 ## 透明代理
 > 客户端根本不需要知道有代理服务器的存在，它改变你的 request fields（报文），并会传送客户端真实IP给服务端，多用于路由器的NAT转发中
