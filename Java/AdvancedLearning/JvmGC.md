@@ -34,12 +34,13 @@ categories:
     - 4.6. [Parallel Old](#parallel-old)
     - 4.7. [CMS](#cms)
     - 4.8. [G1](#g1)
-    - 4.9. [ZGC](#zgc)
-    - 4.10. [ShenandoahGC](#shenandoahgc)
-    - 4.11. [Epsilon](#epsilon)
+    - 4.9. [JDK26 JEP 522 到底优化了什么？](#jdk26-jep-522-到底优化了什么)
+    - 4.10. [ZGC](#zgc)
+    - 4.11. [ShenandoahGC](#shenandoahgc)
+    - 4.12. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2026-03-24 19:27:46
+💠 2026-06-02 21:04:57
 ****************************************
 # GC
 > Java Garbage Collection
@@ -327,6 +328,8 @@ Selector（选择器）由 Tag（标签） 和 Level（级别） 组成。 `java
 
 现代化的GC实现，都分为增量和全量处理，通过各自的设计来实现增量式处理（随着应用运行，低或无STW的情况，做一部分一部分的回收），实在来不及处理的兜底策略才是全量，全量时的成本会很大阻塞很久。  
 
+垃圾回收器中存在着经典的“不可能三角”：吞吐量（Throughput）、延迟（Latency）和内存占用（Footprint）。
+
 *******************
 
 > JVM垃圾收集器种类
@@ -360,9 +363,9 @@ Selector（选择器）由 Tag（标签） 和 Level（级别） 组成。 `java
 ************************
 
 ## 默认垃圾收集器
-JDK 7，默认是 Parallel Scavenge + Serial Old。
-JDK 8 及 JDK 7u40 之后的版本，默认是 Parallel Scavenge + Parallel Old。
-JDK 9 到 JDK 25，默认是 G1。
+JDK 7，默认是 Parallel Scavenge + Serial Old。  
+JDK 8 及 JDK 7u40 之后的版本，默认是 Parallel Scavenge + Parallel Old。  
+JDK 9 到 JDK 25，默认是 G1。  
 
 `-XX:+PrintCommandLineFlags` 查看默认参数 或者查看GC日志中代的名称 `-XX:+PrintGCDetails`
 - 例如： `java -XX:+PrintCommandLineFlags -version`
@@ -588,6 +591,31 @@ ConcGCThreads的默认值不同GC策略略有不同，CMS下是(ParallelGCThread
 -XX:MaxGCPauseMillis=150          # 控制单次停顿上限，避免业务超时
 ```
 
+[Garbage-First Garbage Collector Tuning](https://docs.oracle.com/en/java/javase/25/gctuning/garbage-first-garbage-collector-tuning.html#GUID-90E30ACA-8040-432E-B3A0-1E0440AB556A)
+
+
+1. 工作机制的本质差异：Parallel GC 是一个“专注于吞吐量”的回收器。它采用 Stop-The-World (STW) 全并发模式，在回收时暂停所有应用线程，让所有 CPU 核心开足马力进行清理。这种“长痛不如短痛”的方式没有任何并发协调开销，因而吞吐量极高。
+2. 并发开销（Concurrency Overhead）：G1 则是为了“平衡延迟与吞吐量”而设计。它允许 GC 线程与应用线程并发运行。为了实现这一点，应用线程在修改对象引用时，必须执行写屏障（Write Barriers）并与 GC 线程进行内存同步。这种同步机制会天然地消耗 CPU 算力并降低纯应用吞吐量。
+
+| 特性维度 | Parallel GC | G1 (搭载 JEP 522 JDK26+) |
+|---|---|---|
+| 首要目标 | 极致的吞吐量（让应用运行得最快） | 可控的延迟（在保证高吞吐的同时限制暂停时间） |
+| STW 暂停时间 | 较长（随堆内存增大而线性变长） | 较短且可预测（默认目标 200ms 内） |
+| 写屏障开销 | 极低（仅老年代引用年轻代时触发） | 较低（JEP 522 将指令数压缩了 75%） |
+| 适用场景 | 离线批处理、大数据计算、无交互的后台任务 | Web 服务、微服务、对响应时间敏感的交互式系统 |
+
+## JDK26 JEP 522 到底优化了什么？
+> [https://nipafx.dev](https://nipafx.dev/inside-java-newscast-99/)  
+> [https://openjdk.org](https://openjdk.org/jeps/522)  
+
+虽然无法超越 Parallel，但 JEP 522（已正式合入 JDK 26）对 G1 而言是一次重大的吞吐量飞跃。它通过引入第二张卡表（Second Card Table），彻底改造了 G1 的写屏障和同步机制：
+
+* 减少线程冲突：旧版 G1 中，应用线程和 GC 优化线程（Optimizer Threads）需要频繁在同一张卡表上进行同步。JEP 522 让应用线程写入一张表，GC 线程处理另一张表，通过高效的交换机制避免了锁竞争。
+* 极大简化写屏障：由于消除了卡表同步，以 x64 架构为例，写屏障的底层指令数从之前的 约 50 条指令直接精简到了 12 条。 
+* 带来的实际性能提升：
+* 对于普通应用，吞吐量普遍提升 达 5%。
+   * 对于频繁修改对象引用（如大量进行复杂链表、树结构或频繁内存赋值）的密集型应用，吞吐量提升可达 5% – 15%。
+   * 根据后续 [JEP 523 提案的描述](https://openjdk.org/jeps/523)，JEP 522 的加入已经让 G1 的最大吞吐量非常接近单线程的 Serial GC，使得 OpenJDK 计划在未来的所有微型/资源受限环境中也默认用 G1 替代 Serial GC。
 
 ************************
 
@@ -605,8 +633,25 @@ ConcGCThreads的默认值不同GC策略略有不同，CMS下是(ParallelGCThread
 JDK21 支持分代GC `-XX:+ZGenerational` JDK25默认启用
 
 
-2G 以下：ZGC 往往难以发挥优势，甚至可能因为频繁并发回收导致 CPU 占用过高，不如使用 G1。
-4G 及以上：Generational ZGC 拥有足够的“缓冲地带”来应对 AI 问答场景下的突发流量，确保在应用不感知的情况下完成并发回收。
+| 评估维度 | G1 (搭載 JEP 522) | 分代 ZGC (Generational ZGC) |
+|---|---|---|
+| 屏障机制 | 精简版写屏障（JEP 522 大幅降低了开销） | 伴随染色指针的读屏障与自愈机制 |
+| STW 停顿 | 毫秒级到百毫秒级（转移阶段仍需暂停） | 小于 1 毫秒（所有核心阶段全部并发） |
+| 内存开销 | 较低 | 较高（额外消耗 10% – 20% 内存用于元数据） |
+| 最小/最大堆支持 | 数百 MB 到上百 GB | 几 GB 到 16 TB |
+
+1. 无脑选择 G1 的场景：
+   * 应用对延迟的要求没有那么严苛，能容忍几十到上百毫秒的偶发停顿。
+      * 硬件资源有限，部署在 1核2G、2核4G 等小型微服务/容器环境中（JDK 26 甚至计划让 G1 取代 Serial GC 成为小内存默认配置）。
+      * 追求最高的每秒查询率 (QPS) 或批处理速度，想要把 CPU 算力压榨给业务代码。
+2. 果断切换到分代 ZGC 的场景：
+   * 对延迟极度敏感。例如：量化交易、即时游戏、实时音视频、对 SLA 要求极高的核心金融网关。
+      * 管理超大堆内存。当你的 JVM 堆内存达到 32GB、64GB 甚至几百 GB 时，G1 的停顿时间会变得难以控制，而分代 ZGC 依旧能稳稳控在 1ms 内。
+      * 系统有充足的 CPU 核心数和内存结余，愿意用少量的吞吐量和硬件成本换取极致的平滑响应。
+
+- 2G 以下：ZGC 往往难以发挥优势，甚至可能因为频繁并发回收导致 CPU 占用过高，不如使用 G1。  
+- 4G 及以上：Generational ZGC 拥有足够的“缓冲地带”来应对 AI 问答场景下的突发流量，确保在应用不感知的情况下完成并发回收。  
+
 
 ************************
 

@@ -6,16 +6,16 @@ categories:
     - 虚拟化
 ---
 
-**目录 start**
+💠
 
-1. [虚拟化技术](#虚拟化技术)
-    1. [QEMU](#qemu)
-    1. [KVM](#kvm)
-    1. [XEN](#xen)
-    1. [HVM](#hvm)
-    1. [Proxmox](#proxmox)
+- 1. [虚拟化技术](#虚拟化技术)
+    - 1.1. [QEMU](#qemu)
+    - 1.2. [KVM](#kvm)
+    - 1.3. [XEN](#xen)
+    - 1.4. [HVM](#hvm)
+    - 1.5. [Proxmox VE](#proxmox-ve)
 
-**目录 end**|_2020-06-24 02:06_|
+💠 2026-06-02 21:04:57
 ****************************************
 # 虚拟化技术
 
@@ -23,6 +23,9 @@ categories:
 - vhd: VirtualPC, Hyper-V, Xen, VirtualBox
 - vmdk: VMWare
 - qcow2: Qemu, KVM
+
+Windows 运行 Linux: WSL
+Linux 运行 Windows: WinApps docker-windows
 
 ## QEMU
 
