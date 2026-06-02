@@ -38,7 +38,8 @@ categories:
     - 2.8. [HTTP RPC](#http-rpc)
         - 2.8.1. [Feign](#feign)
         - 2.8.2. [RestTemplate](#resttemplate)
-        - 2.8.3. [WebClient](#webclient)
+        - 2.8.3. [RestClient](#restclient)
+        - 2.8.4. [WebClient](#webclient)
     - 2.9. [Utils](#utils)
         - 2.9.1. [ReflectionUtils](#reflectionutils)
     - 2.10. [SpEL](#spel)
@@ -46,7 +47,7 @@ categories:
     - 3.1. [优雅部署](#优雅部署)
 - 4. [Tips](#tips)
 
-💠 2026-01-16 16:14:52
+💠 2026-06-02 17:05:32
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -494,10 +495,22 @@ Student
 
 > [RestTemplate throwing generic 400 Bad Request, but custom server sent message is not is lost - Stack Overflow](https://stackoverflow.com/questions/56336439/resttemplate-throwing-generic-400-bad-request-but-custom-server-sent-message-is)异常响应码时，信息被吞   
 
+### RestClient
+
+| 维度 | RestClient（Spring 6 / Boot 3.2+ 引入） | WebClient（Spring 5 / Boot 2.0+ 引入） |
+|---|---|---|
+| 底层核心架构 | 同步阻塞式（线程在等待响应时会挂起） [1] | 异步非阻塞式（基于反应式流驱动） [1] |
+| 推荐适用场景 | 传统的 Spring MVC 应用、微服务同步调用、结合 Java 21 虚拟线程 [1] | 响应式 WebFlux 应用、高并发长连接、大模型 SSE 流式输出（Stream） |
+| 数据传输模型 | 整个请求/响应体在内存中是一块完整的 byte[] | 请求/响应体被切分为一个个 DataBuffer 异步流 |
+| 拦截器接口 | ClientHttpRequestInterceptor [1] | ExchangeFilterFunction [1] |
+| 调试难度 | 极低。可以直接在拦截器里把 byte[] 转成字符串打印。 | 极高。因为是数据流，一旦在拦截器里强行读取（Consume）了 Body 文本，流就会失效，后续业务会报“流已被消耗”的错误。 |
+
+高版本里默认是HTTP2 也就是 h2c 
+
 ### WebClient
 > [WebClient :: Spring Framework](https://docs.spring.io/spring-framework/reference/web/webflux-webclient.html)  
 
-RestTemplate替代者
+默认是 HTTP1.1 ，然后 具备 “自动协商升级（ALPN / Protocol Negotiation）” 的能力
 
 ************************
 
