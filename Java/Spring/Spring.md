@@ -47,7 +47,7 @@ categories:
     - 3.1. [优雅部署](#优雅部署)
 - 4. [Tips](#tips)
 
-💠 2026-06-02 17:05:32
+💠 2026-06-02 19:42:20
 ****************************************
 # Spring
 > [Spring官网](https://spring.io/) | [spring4all社区](http://www.spring4all.com/)
@@ -505,7 +505,7 @@ Student
 | 拦截器接口 | ClientHttpRequestInterceptor [1] | ExchangeFilterFunction [1] |
 | 调试难度 | 极低。可以直接在拦截器里把 byte[] 转成字符串打印。 | 极高。因为是数据流，一旦在拦截器里强行读取（Consume）了 Body 文本，流就会失效，后续业务会报“流已被消耗”的错误。 |
 
-高版本里默认是HTTP2 也就是 h2c 
+高版本里默认是HTTP2 也就是 h2 
 
 ### WebClient
 > [WebClient :: Spring Framework](https://docs.spring.io/spring-framework/reference/web/webflux-webclient.html)  
