@@ -40,7 +40,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2026-06-03 13:52:25
+💠 2026-06-03 14:05:19
 ****************************************
 # GC
 > Java Garbage Collection
@@ -372,6 +372,7 @@ JDK 9 到 JDK 25，默认是 G1。
 
 `-XX:+PrintCommandLineFlags` 查看默认参数 或者查看GC日志中代的名称 `-XX:+PrintGCDetails`
 - 例如： `java -XX:+PrintCommandLineFlags -version`
+- `java -XX:+PrintFlagsFinal -version | grep "Use.*GC"` 查看默认GC 以及支持的GC
 
 ************************
 
@@ -670,8 +671,10 @@ JDK21 支持分代GC `-XX:+ZGenerational` JDK25默认启用
 
 > [JDK25支持分代 JEP 521: Generational Shenandoah](https://openjdk.org/jeps/521)   
 
-
 Shenandoah 因为在运行时加入了读写屏障，会额外消耗大约 5% ~ 15% 的 CPU 吞吐量。也就是说，软件的绝对计算速度可能会慢一点点，但换来的是极度丝滑、毫无卡顿的 UI 交互体验。对于桌面软件而言，这种交换完全是划算的。
+
+但是因为和Oracle利益冲突，没有ZGC流行，Oracle发行的JDK显式剔除了这个GC，OpenJDK才支持
+
 ************************
 
 ## Epsilon
