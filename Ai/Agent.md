@@ -5,13 +5,14 @@ tags:
 categories: 
 ---
 
-
 💠
 
 - 1. [Agent](#agent)
     - 1.1. [工程实践](#工程实践)
+    - 1.2. [落地框架](#落地框架)
+    - 1.3. [落地平台](#落地平台)
 
-💠 2026-06-07 23:26:55
+💠 2026-06-08 00:25:30
 ****************************************
 
 # Agent
@@ -76,5 +77,17 @@ categories:
 * 收集 Langfuse 中用户踩踩（Thumbs Down）或人工修正的 Bad Case。
    * 将 Bad Case 转化为 RAG 知识、微调（Fine-tuning）数据集或 Few-Shot 示例，形成反哺闭环。
 
+
+## 落地框架
+- LangChain 最主流，也有对应语言的移植版本 LangChain4j，
+- [SpringAi](/Ai/SpringAi.md)
+- ADK
+- Eino
+
+## 落地平台
+
+- Dify
+- Coze
+- n8n
 
 

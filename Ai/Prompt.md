@@ -11,7 +11,7 @@ categories:
     - 1.1. [最佳实践-原则](#最佳实践-原则)
     - 1.2. [自动优化](#自动优化)
 
-💠 2026-06-07 23:26:55
+💠 2026-06-08 00:25:30
 ****************************************
 # Prompt
 
@@ -124,12 +124,20 @@ categories:
 ```
 
 ## 自动优化
-> [MetaGPT/examples/spo at main · FoundationAgents/MetaGPT](https://github.com/FoundationAgents/MetaGPT/tree/main/examples/spo)  
-> [Self-Supervised Prompt Optimization](https://arxiv.org/pdf/2502.06855)  
+自动提示词工程优化 Automatic Prompt Engineering
 
+> [MetaGPT/examples/spo at main · FoundationAgents/MetaGPT](https://github.com/FoundationAgents/MetaGPT/tree/main/examples/spo)  
+
+> [如何让 AI 来自己优化提示词 - mdnice 墨滴](https://mdnice.com/writing/e68752daa49a48b7ac9e388a49d9b8bf)  
+> [Self-Supervised Prompt Optimization](https://arxiv.org/pdf/2502.06855)  
 
 大致流程是： 建立黄金测试集，结合生产监控的低分数据 自动化评测，模型自动优化 前后版本评估对比，选择最终提示词版本
 
-
+１.种子输入：仅需提供初始提示词和少量测试问题（无需标注答案）。
+２.优化阶段：AI根据当前最优提示生成改进版
+３.测试阶段：用新旧提示分别生成两版输出
+４.评估阶段：AI自动比较两版输出，选出更优结果对应的提示
+５.优选保留：获胜的提示成为下一轮优化的基准
+６.循环迭代：达到预设迭代次数或性能稳定时停止
 
 
