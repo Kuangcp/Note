@@ -5,7 +5,6 @@ tags:
 categories: 
 ---
 
-
 💠
 
 - 1. [Agent 观测](#agent-观测)
@@ -16,7 +15,7 @@ categories:
     - 1.5. [Laminar](#laminar)
     - 1.6. [Helicone](#helicone)
 
-💠 2026-06-08 00:25:30
+💠 2026-06-09 10:30:46
 ****************************************
 # Agent 观测
 
@@ -51,6 +50,9 @@ LangChain 生态最佳搭配， 但是只有商业版本
 
 - 功能： 
 - 架构： Python， Pg
+
+开源版架构简单， 开发调试时主打好部署、好上手，底层用 PG，但是生产使用时这个优点就成了缺点了，PG行存储在这种大文本的OLAP场景是不适合的  
+企业版的 Arize AX：专为海量高并发设计，底层完全不用 PG，而是跑在他们自研的 adb（一种基于对象存储、高性能、专门应对数万亿 AI 事件的分布式 OLAP 数据库）之上。也就是说，当你的企业规模大到 PG 撑不住时，官方的潜台词是：“请购买我们的企业版服务（或转向复杂的微服务集群）”。  
 
 ## Laminar 
 > [Laminar - Open-source observability for AI agents](https://laminar.sh/)  
