@@ -219,8 +219,11 @@ iftop
     - -F 指定过滤表达式所在的文件
     - -w 将流量保存到文件中
     - -r 读取raw packets 文件
+    - -s 0: 抓取完整数据包（不截断），这样才能看到完整的 HTTP 响应体
 
 - 列出可以选择的抓包对象 `tcpdump -D`（USB设备也能抓？）
+
+- 抓http： sudo tcpdump -i any -s 0 -w http_trace.pcap host 192.0.2.1 and port 80
 
 ************************
 
