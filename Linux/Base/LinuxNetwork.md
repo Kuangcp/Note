@@ -64,7 +64,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2026-04-18 19:14:55
+💠 2026-06-12 17:31:28
 ****************************************
 # Linux网络管理
 
@@ -860,6 +860,7 @@ _问题场景_
 1. x11vnc  -auth /home/xxxxxxxxxx/.Xauthority -display :0
 
 1. 客户端 vnc-viewer(任意) 输入 ip 即可连接 
+    - 通常安装 realvnc-vnc-viewer
 
 > [noVNC](https://github.com/novnc/noVNC) `VNC client web application`
 
