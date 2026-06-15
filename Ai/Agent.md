@@ -11,8 +11,12 @@ categories:
     - 1.1. [工程实践](#工程实践)
     - 1.2. [落地框架](#落地框架)
     - 1.3. [落地平台](#落地平台)
+    - 1.4. [通信](#通信)
+        - 1.4.1. [MCP](#mcp)
+        - 1.4.2. [A2A](#a2a)
+        - 1.4.3. [ACP](#acp)
 
-💠 2026-06-08 00:25:30
+💠 2026-06-15 00:25:35
 ****************************************
 
 # Agent
@@ -83,6 +87,7 @@ categories:
 - [SpringAi](/Ai/SpringAi.md)
 - ADK
 - Eino
+- [Koog](https://docs.koog.ai/)  
 
 ## 落地平台
 
@@ -91,3 +96,30 @@ categories:
 - n8n
 
 
+## 通信
+应用层：Agent 框架 (如 LangChain / AutoGen) —— 构建智能体大脑和逻辑
+      ↓
+通信层：A2A / ACP —— 负责 Agent 之间的协作（A2A管跨云，ACP管本地）
+      ↓
+工具层：MCP —— 负责 Agent 对下调用具体工具、读取文件和上下文
+      ↓
+模型层：LLM (如 Claude / GPT) —— 提供核心的推理与理解能力
+
+### MCP
+MCP (Model Context Protocol) —— “Agent ↔ 工具与数据”, 由 Anthropic 提出的通用上下文获取协议
+
+> [modelcontextprotocol/servers: Model Context Protocol Servers](https://github.com/modelcontextprotocol/servers)  
+
+> [supercorp-ai/supergateway: Run MCP stdio servers over SSE and SSE over stdio. AI gateway.](https://github.com/supercorp-ai/supergateway)  
+
+代理工具
+
+> [googleapis/genai-toolbox: MCP Toolbox for Databases is an open source MCP server for databases.](https://github.com/googleapis/genai-toolbox)  
+
+### A2A
+ACP (Agent Communication Protocol) —— “Agent ↔ Agent（本地/边缘）”, 由 IBM (BeeAI) 等大厂提出的智能体通信协议
+
+它是局域网内 Agent 通信协议
+
+### ACP
+A2A (Agent-to-Agent) —— “Agent ↔ Agent（跨平台/云端）”,  由谷歌等公司推动的跨平台智能体外交协议

@@ -9,9 +9,10 @@ categories:
 
 - 1. [Prompt](#prompt)
     - 1.1. [最佳实践-原则](#最佳实践-原则)
-    - 1.2. [自动优化](#自动优化)
+- 2. [工程化](#工程化)
+    - 2.1. [自动优化](#自动优化)
 
-💠 2026-06-08 00:25:30
+💠 2026-06-14 01:06:31
 ****************************************
 # Prompt
 
@@ -122,6 +123,9 @@ categories:
     Input: java.lang.NullPointerException at com.user.Service.getUser(Service.java:45)
     Output: {"category": "CODE_EXCEPTION", "reason": "Null pointer exception detected in application code.", "confidence": 1.00}
 ```
+
+# 工程化
+基础的需要版本管理（每个版本记录修改人，修改事件，评分，修改原因备注，状态流转（草稿，发布，废弃））
 
 ## 自动优化
 自动提示词工程优化 Automatic Prompt Engineering
