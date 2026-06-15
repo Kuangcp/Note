@@ -9,10 +9,11 @@ categories:
 
 - 1. [Prompt](#prompt)
     - 1.1. [最佳实践-原则](#最佳实践-原则)
+    - 1.2. [Tips](#tips)
 - 2. [工程化](#工程化)
     - 2.1. [自动优化](#自动优化)
 
-💠 2026-06-14 01:06:31
+💠 2026-06-15 21:18:09
 ****************************************
 # Prompt
 
@@ -123,6 +124,9 @@ categories:
     Input: java.lang.NullPointerException at com.user.Service.getUser(Service.java:45)
     Output: {"category": "CODE_EXCEPTION", "reason": "Null pointer exception detected in application code.", "confidence": 1.00}
 ```
+
+## Tips
+- 一些特别重要的提示词规则，可以在用户提示词末尾再强调一次。因为模型对提示词中端的约束容易先遗忘
 
 # 工程化
 基础的需要版本管理（每个版本记录修改人，修改事件，评分，修改原因备注，状态流转（草稿，发布，废弃））
