@@ -10,11 +10,12 @@ categories:
 - 1. [Spring Ai](#spring-ai)
     - 1.1. [Tips](#tips)
     - 1.2. [网络](#网络)
-    - 1.3. [Spring Ai Alibaba](#spring-ai-alibaba)
-        - 1.3.1. [Structured Output](#structured-output)
-        - 1.3.2. [Workflow](#workflow)
+- 2. [Spring Ai Alibaba](#spring-ai-alibaba)
+    - 2.1. [Structured Output](#structured-output)
+    - 2.2. [Workflow](#workflow)
+        - 2.2.1. [CheckPoint](#checkpoint)
 
-💠 2026-06-14 01:06:31
+💠 2026-06-17 19:58:18
 ****************************************
 # Spring Ai
 
@@ -65,12 +66,13 @@ server:
 
 并且前端到后端的所有中间链路都需要适配： Nginx 应用网关 等。
 
-## Spring Ai Alibaba
+# Spring Ai Alibaba
 > [Spring AI Alibaba](https://java2ai.com/)  
 
 Spring AI 是一个底层的“连接器”，而 Spring AI Alibaba 是一个高层的“操作系统”。 生命周期的Hook Interceptor，MCP，多Agent。
 
-### Structured Output
+
+## Structured Output
 
 > [Structured Output Converter :: Spring AI Reference](https://docs.spring.io/spring-ai/reference/api/structured-output-converter.html)  
 > [Structured Output 结构化输出 | Spring AI Alibaba](https://java2ai.com/docs/frameworks/agent-framework/tutorials/structured-output#%E9%87%8D%E8%AF%95%E6%A8%A1%E5%BC%8F)  
@@ -80,7 +82,11 @@ Spring AI 是一个底层的“连接器”，而 Spring AI Alibaba 是一个高
 
 但是不同的模型有不同的表现，最好是通过 自动化基准探测 来辅助替换模型的决策
 
-### Workflow
+## Workflow
 框架里的StateGraph与SpringAi原生的Graph类似但不是一个设计和实现，增加了监控和限流等功能。
+
+### CheckPoint
+在启动StateGraph时，传入的 RunnableConfig里的 threadId， 对应 com.alibaba.cloud.ai.graph.checkpoint.savers.MemorySaver#_checkpointsByThread的key。
+在业务意义上 threadId就是 sessionId，用于SpringAiAlibaba管理实现多轮问答的记忆实现。
 
 
