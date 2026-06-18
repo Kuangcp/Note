@@ -37,7 +37,7 @@ categories:
 - 4. [Datagrip](#datagrip)
     - 4.1. [Datagrip时区问题](#datagrip时区问题)
 
-💠 2026-06-14 01:06:31
+💠 2026-06-18 19:30:17
 ****************************************
 
 # IDEA 使用笔记
@@ -368,6 +368,7 @@ _例如修改为如下_
 1. POJO to JSON ： Class定义转JSON
 1. Sequence Diagram 查看代码时序图
 1. Reactive Streams **用于Debug RxJava Webflux**
+1. EasyApi 项目的接口导出postman openapi
 
 **************************
 > 内置插件
