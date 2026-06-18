@@ -68,7 +68,7 @@ categories:
     - 6.2. [善用alias](#善用alias)
     - 6.3. [desktop文件](#desktop文件)
 
-💠 2025-11-19 10:20:24
+💠 2026-06-18 16:32:09
 ****************************************
 
 # IO
@@ -420,7 +420,7 @@ export LANG="zh_CN.UTF-8"
 空间管理
 
 - 物理设备总大小 ` sudo btrfs filesystem usage -T / `
-- 文件系统层面剩余（用户可用） ` sudo btrfs filesystem usage -g / ` 
+- 文件系统层面剩余（用户可用） ` sudo btrfs filesystem usage -g / `  或者 `btrfs device usage /` 看 Unallocated
 - 查看分区实际容量情况 btrfs filesystem df / ， 会和 df / 差异很大，因为btrs自己做了压缩和元数据管理
     - 快占用满时可以通过balance优化空间占用 btrfs balance start / 但是很耗时，可以加过滤条件只处理使用率低的块
         - `-dusage=<percent>` ： 只处理使用率低于指定百分比的数据块组。
@@ -429,6 +429,8 @@ export LANG="zh_CN.UTF-8"
 - 当大量创建小文件时，会先出现报错空间不足 实际上还有空间的问题，因为 metadata区满了
     - 防备手段 把最后 2 GiB 留成 unallocated，专供 metadata 紧急扩展 ` sudo btrfs filesystem resize 1:-2G / `
 
+- sudo btrfs balance start -dusage=50 /  # 整理数据块：把那些使用率低于 50% 的数据块合并，多余的退还给未分配池
+- sudo btrfs balance start -musage=50 /  # 整理元数据块：确保元数据块紧凑
 
 > 故障恢复
 - btrfs scrub start -B /mnt/repair
