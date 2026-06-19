@@ -13,9 +13,6 @@ https://blog.csdn.net/qq_37700257/article/details/126284196#commentBox
 > 常用路径 
 1. Windows 所有字体 C盘Windows/Fonts 目录下
 
-- git-for-windows
-- [cygin](http://x.cygwin.com/)
-
 > tasklist 
 - 相当于 Linux的 ps 命令, 查看帮助为 `tasklist /?`
 - 按可执行文件查找运行的进程 `TASKLIST  /FI "IMAGENAME eq idea64.exe"`
@@ -26,6 +23,16 @@ https://blog.csdn.net/qq_37700257/article/details/126284196#commentBox
 ## 工具
 > Windows Terminal 
 - Alt Shift -/= 横向/竖向切分窗口
+
+### 终端 
+CMD
+PowerShell
+
+- git-for-windows
+- [cygin](http://x.cygwin.com/)
+- MSYS2
+
+
 
 ## 性能测试
 - Msi after burner 显卡超频 硬件监控
