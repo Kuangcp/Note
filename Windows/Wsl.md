@@ -36,6 +36,7 @@ categories:
 - 放在WSL2里 命令行的交互会和Linux一模一样,但是 Windows的 IDEA 浏览器等各种工具需要兼容文件协议才可以
 - 放在Windows, IO性能暴跌, Windows不支持文件级别权限, WSL2 内打开都是777的权限, git做代码管理会乱套.
 
+如果文件还是放在Windows上, 用MSYS2 当做更好的终端来调用Windows的所有工具(但是需要配置环境变量共享等一系列配置), 体验会更好, 然后WSL就可以用来跑Docker等强Linux的依赖. 
 
 ## GUI
 > [wslg](https://github.com/microsoft/wslg)  

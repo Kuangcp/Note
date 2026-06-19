@@ -31,7 +31,19 @@ PowerShell
 - git-for-windows
 - [cygin](http://x.cygwin.com/)
 - MSYS2
+    - 最佳Posix兼容层
 
+/etc/profile
+
+```sh
+# 把 Windows 的 PATH 合并进来
+export PATH="$PATH:/c/Windows/System32:/c/Windows:/c/Program Files:/c/Program Files (x86):/c/Program Files/Go/bin"
+
+# 如果你有特定的 Windows 环境变量需要导入
+export JAVA_HOME=$(cygpath -u "$JAVA_HOME") 2>/dev/null || true
+export MAVEN_HOME=$(cygpath -u "$MAVEN_HOME") 2>/dev/null || true
+```
+注意改配置需要重启MSYS2. 然后可以装tmux 多会话的持久化和窗口管理了
 
 
 ## 性能测试
