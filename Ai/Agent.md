@@ -108,16 +108,60 @@ categories:
 
 ### MCP
 > [Introduction - Model Context Protocol](https://modelcontextprotocol.io/introduction)
+> [modelcontextprotocol/servers: Model Context Protocol Servers](https://github.com/modelcontextprotocol/servers)  
+> [supercorp-ai/supergateway: Run MCP stdio servers over SSE and SSE over stdio. AI gateway.](https://github.com/supercorp-ai/supergateway)  
 
 MCP (Model Context Protocol) —— “Agent ↔ 工具与数据”, 由 Anthropic 提出的通用上下文获取协议
 
-> [modelcontextprotocol/servers: Model Context Protocol Servers](https://github.com/modelcontextprotocol/servers)  
+为什么要提出MCP呢, Function Call 不够用吗?
+- Function Call 确实能覆盖很多场景，但 MCP 把能力拆成 Tools、Resources、Prompts 三个正交概念，是为了让 AI 和外部系统的协作边界更清晰、更安全、更可维护。
+    - Resources 是 AI 的"眼睛"（只读感知），Prompts 是 AI 的"嘴型"（表达范式），Tools 是 AI 的"手"（改变世界）。
 
-> [supercorp-ai/supergateway: Run MCP stdio servers over SSE and SSE over stdio. AI gateway.](https://github.com/supercorp-ai/supergateway)  
 
-代理工具
+> Tools
 
-> [googleapis/genai-toolbox: MCP Toolbox for Databases is an open source MCP server for databases.](https://github.com/googleapis/genai-toolbox)  
+
+> Resources 
+
+- 引入了URI 标识 + 订阅/缓存机制，AI 可以只读一次，后续引用 URI 即可。
+- 只读承诺：服务器声明"我不会变"，客户端/AI 可以安全缓存
+- 订阅机制：资源变化时服务器主动推送，AI 不需要轮询
+- URI 即身份：同样的 URI 在不同会话中指向同一逻辑实体
+
+例如
+
+```
+URI 方案：
+  file:///project/src/main.java     ← 本地文件
+  user://profile/preferences          ← 用户配置
+  db://postgres/customers/123       ← 数据库记录（只读视图）
+  git://repo/HEAD:README.md         ← Git 对象
+```
+
+> Prompts
+
+可复用的领域指令模板
+
+- 没有 Prompts 概念时，系统提示词（system prompt）只能通过：客户端硬编码, 或某个 get_prompt_template 的 Tool
+- 这导致可复用的领域指令无法被服务端声明和版本化管理。MCP 的 Prompts 让服务器实现例如说："我提供了一套标准的代码审查模板，客户端可以直接用"。
+
+> 三者协作的完整流程
+
+用户：帮我审查这个 PR
+AI：
+
+    发现服务器声明了 Prompt: "code_review" → 决定使用
+    发现需要参数 {{diff}} → 检查 Resources
+    读取 Resource: git://repo/pulls/42.diff
+    填充 Prompt 模板，生成完整请求
+    审查过程中发现代码调用了外部 API
+    读取 Resource: api://service/v1/openapi.json 了解接口规范
+    最终建议：这里有个 SQL 注入风险
+    用户说：发邮件给作者
+    AI 调用 Tool: send_email（触发用户确认）
+
+> 开源工具
+- [googleapis/genai-toolbox: MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox)`MCP工具箱操作各种数据库`  
 
 ### A2A
 ACP (Agent Communication Protocol) —— “Agent ↔ Agent（本地/边缘）”, 由 IBM (BeeAI) 等大厂提出的智能体通信协议

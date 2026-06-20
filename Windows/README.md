@@ -48,10 +48,14 @@ export MAVEN_HOME=$(cygpath -u "$MAVEN_HOME") 2>/dev/null || true
 ```
 注意改配置需要重启MSYS2. 然后可以装tmux 多会话的持久化和窗口管理了
 
-注意默认 ln -s 时会直接降级为复制, 需要配置 `export MSYS="winsymlinks:nativestrict"` 才会建符号链接
+> Tips
 
-新建一个tab的卡顿原因是 Linux上是fork() 基于COW特性毫秒级别,但是windows没有, 所以需要 `fork() 模拟:  挂起父进程 → 复制地址空间 → 创建子进程 → 恢复`  
-这个"复制地址空间"在 Windows 上不是内核 COW，是用户态手动复制，如果父进程（tmux server）内存占用大，复制时间显著增加。
+- 注意默认 ln -s 时会直接降级为复制, 需要配置 `export MSYS="winsymlinks:nativestrict"` 才会建符号链接
+- 新建一个tab的卡顿原因是 Linux上是fork() 基于COW特性毫秒级别,但是windows没有, 所以需要 `fork() 模拟:  挂起父进程 → 复制地址空间 → 创建子进程 → 恢复`  
+    - 这个"复制地址空间"在 Windows 上不是内核 COW，是用户态手动复制，如果父进程（tmux server）内存占用大，复制时间显著增加。
+- 首次进入一个git仓库时, 会遇到刷新索引, 所有文件都会有修改记录, 但是没有修改内容, 还是因为文件权限的问题, 继续配置`export MSYS="winsymlinks:nativestrict noacl"`
+    - noacl: 告诉 cygwin 不要模拟 ACL，简化权限视图
+    - 也可以一次性的修改, 就做一次所有内容的stash, 然后drop掉, 索引就会刷新成MSYS2的格式后续就不会有问题了, 但是这时候索引会改为MSYS的格式, 在Windows端的git-bash里会认为git索引乱了 因为是两套格式, 互相会认为互相是错的格式
 
 ## 性能测试
 - Msi after burner 显卡超频 硬件监控
