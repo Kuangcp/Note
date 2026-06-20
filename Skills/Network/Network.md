@@ -54,6 +54,7 @@ categories:
     - 5.2. [PAC](#pac)
     - 5.3. [正向代理](#正向代理)
     - 5.4. [反向代理](#反向代理)
+        - 5.4.1. [Frp](#frp)
     - 5.5. [透明代理](#透明代理)
     - 5.6. [应用的代理设置](#应用的代理设置)
         - 5.6.1. [Java](#java)
@@ -75,7 +76,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2026-04-18 19:14:55
+💠 2026-05-29 15:13:52
 ****************************************
 # 网络
 > [Java 网络](/Java/AdvancedLearning/JavaNetwork.md)  
@@ -539,23 +540,23 @@ function FindProxyForURL(url, host) {
 - 应用: 保护和隐藏原始资源服务器, 负载均衡, 加密和SSL加速, 缓存静态内容, 安全(DDos的防护)
 - 安全: 对外是透明的，访问者并不知道自己访问的是代理。对访问者而言，他以为访问的就是原始服务器
 
-> [fatedier/frp: A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.](https://github.com/fatedier/frp)  
+简单的用法是 [SSH 隧道](/Linux/Base/SSH.md#ssh-tunnel)
+
+### Frp
+
+> [fatedier/frp](https://github.com/fatedier/frp) `A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.`  
+
+以下实现从公网域名访问到内网环境的特定端口上
+
+> 服务端
 
 ```toml
 # frps.toml
 bindPort = 6011
 vhostHTTPPort = 9030
-
-# frpc.toml
-serverAddr = "公网ip"
-serverPort = 6011
-
-[[proxies]]
-name = "http-tunnel"
-type = "http"
-localPort = 8989
-customDomains = ["公网域名xxx"]
+auth.token = "your_secret_token" # 必须设置密钥，防止别人盗用
 ```
+- ./frps -c ./frps.toml 
 
 Nginx 配置
 ```ini
@@ -568,6 +569,28 @@ server {
     }
 }
 ```
+
+> 客户端
+
+```toml
+# frpc.toml
+serverAddr = "服务器公网ip"
+serverPort = 6011
+auth.token = "your_secret_token"
+
+# 有多个映射就配多个这个分段配置
+[[proxies]]
+name = "http-tunnel"
+type = "http"
+localPort = 8989
+customDomains = ["公网域名 xxx Nginx配置"]
+```
+- ./frpc -c ./frpc.toml
+
+
+如果想要实现安全的 通过公网中转内网的流量， 例如做私有化部署时，可以使用 stcp 隧道方式
+
+> [安全地暴露内网服务 | frp](https://gofrp.org/zh-cn/docs/examples/stcp/)  
 
 ## 透明代理
 > 客户端根本不需要知道有代理服务器的存在，它改变你的 request fields（报文），并会传送客户端真实IP给服务端，多用于路由器的NAT转发中

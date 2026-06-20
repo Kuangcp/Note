@@ -17,17 +17,31 @@ categories:
     - 2.3. [PREPARE](#prepare)
     - 2.4. [JOIN](#join)
         - 2.4.1. [JOIN 顺序优化](#join-顺序优化)
-        - 2.4.2. [最佳实践](#最佳实践)
-        - 2.4.3. [JOIN 类型和策略](#join-类型和策略)
-        - 2.4.4. [优化建议](#优化建议)
+        - 2.4.2. [JOIN 类型和策略](#join-类型和策略)
+        - 2.4.3. [JOIN 最佳实践](#join-最佳实践)
 - 3. [索引](#索引)
 - 4. [事务](#事务)
+    - 4.1. [MVCC (Multi-Version Concurrency Control)](#mvcc-multi-version-concurrency-control)
+        - 4.1.1. [核心数据结构](#核心数据结构)
+        - 4.1.2. [实现原理](#实现原理)
+        - 4.1.3. [可见性判断规则](#可见性判断规则)
+        - 4.1.4. [事务隔离级别](#事务隔离级别)
+        - 4.1.5. [优缺点](#优缺点)
+        - 4.1.6. [关键配置](#关键配置)
+    - 4.2. [WAL (Write-Ahead Logging)](#wal-write-ahead-logging)
+        - 4.2.1. [核心原则](#核心原则)
+        - 4.2.2. [写入流程](#写入流程)
+        - 4.2.3. [WAL 记录结构](#wal-记录结构)
+        - 4.2.4. [LSN 与数据页的关系](#lsn-与数据页的关系)
+        - 4.2.5. [Checkpoint](#checkpoint)
+        - 4.2.6. [崩溃恢复流程](#崩溃恢复流程)
+        - 4.2.7. [WAL 的额外用途](#wal-的额外用途)
+        - 4.2.8. [关键配置](#关键配置)
+        - 4.2.9. [WAL Segment 文件](#wal-segment-文件)
 - 5. [集群](#集群)
 - 6. [Explain](#explain)
     - 6.1. [基本语法](#基本语法)
-        - 6.1.1. [常用选项](#常用选项)
-        - 6.1.2. [常用组合](#常用组合)
-    - 6.2. [需要关注的关键信息](#需要关注的关键信息)
+    - 6.2. [关键信息](#关键信息)
         - 6.2.1. [1. 成本估算（Cost）](#1-成本估算cost)
         - 6.2.2. [2. 实际执行时间（ANALYZE）](#2-实际执行时间analyze)
         - 6.2.3. [3. 缓冲区使用（BUFFERS）](#3-缓冲区使用buffers)
@@ -35,7 +49,7 @@ categories:
             - 6.2.4.1. [Seq Scan（顺序扫描）](#seq-scan顺序扫描)
             - 6.2.4.2. [Index Scan（索引扫描）](#index-scan索引扫描)
             - 6.2.4.3. [Index Only Scan（仅索引扫描）](#index-only-scan仅索引扫描)
-            - 6.2.4.4. [Bitmap Index Scan + Bitmap Heap Scan](#bitmap-index-scan-+-bitmap-heap-scan)
+            - 6.2.4.4. [Bitmap Index Scan + Bitmap Heap Scan](#bitmap-index-scan--bitmap-heap-scan)
         - 6.2.5. [5. JOIN类型](#5-join类型)
             - 6.2.5.1. [Nested Loop（嵌套循环）](#nested-loop嵌套循环)
             - 6.2.5.2. [Hash Join（哈希连接）](#hash-join哈希连接)
@@ -47,12 +61,12 @@ categories:
         - 6.2.7. [7. 过滤条件（Filter）](#7-过滤条件filter)
         - 6.2.8. [8. 并行执行（Parallel）](#8-并行执行parallel)
     - 6.3. [版本差异和新特性](#版本差异和新特性)
-        - 6.3.1. [PostgreSQL 9.6+](#postgresql-96+)
-        - 6.3.2. [PostgreSQL 10+](#postgresql-10+)
-        - 6.3.3. [PostgreSQL 12+](#postgresql-12+)
-        - 6.3.4. [PostgreSQL 13+](#postgresql-13+)
-        - 6.3.5. [PostgreSQL 14+](#postgresql-14+)
-        - 6.3.6. [PostgreSQL 15+](#postgresql-15+)
+        - 6.3.1. [PostgreSQL 9.6+](#postgresql-96)
+        - 6.3.2. [PostgreSQL 10+](#postgresql-10)
+        - 6.3.3. [PostgreSQL 12+](#postgresql-12)
+        - 6.3.4. [PostgreSQL 13+](#postgresql-13)
+        - 6.3.5. [PostgreSQL 14+](#postgresql-14)
+        - 6.3.6. [PostgreSQL 15+](#postgresql-15)
     - 6.4. [优化实践](#优化实践)
         - 6.4.1. [1. 识别慢查询](#1-识别慢查询)
         - 6.4.2. [2. 索引优化](#2-索引优化)
@@ -66,7 +80,7 @@ categories:
         - 6.5.4. [4. 并行查询未启用](#4-并行查询未启用)
     - 6.6. [最佳实践](#最佳实践)
 
-💠 2026-01-16 15:38:44
+💠 2026-05-13 20:11:57
 ****************************************
 # PostgreSQL Advance
 
@@ -145,20 +159,7 @@ where attstattarget = -1
    - 通常建议**小表在前，大表在后**（LEFT JOIN 时）
    - MySQL 8.0+ 引入了更好的优化器，但仍可能受 JOIN 顺序影响
 
-### 最佳实践
 
-```sql
--- PostgreSQL 通常不需要关心顺序，优化器会自动优化
-SELECT * FROM large_table l
-JOIN small_table s ON l.id = s.id;
-
--- 但如果优化器选择不当，可以通过子查询或 CTE 引导
-WITH filtered_large AS (
-    SELECT * FROM large_table WHERE condition
-)
-SELECT * FROM filtered_large l
-JOIN small_table s ON l.id = s.id;
-```
 
 ### JOIN 类型和策略
 
@@ -175,7 +176,23 @@ JOIN small_table s ON l.id = s.id;
    - 适用于：两个表都已排序（有索引或 ORDER BY）
    - 成本：O(n+m)
 
-### 优化建议
+
+### JOIN 最佳实践
+
+```sql
+-- PostgreSQL 通常不需要关心顺序，优化器会自动优化
+SELECT * FROM large_table l
+JOIN small_table s ON l.id = s.id;
+
+-- 但如果优化器选择不当，可以通过子查询或 CTE 引导
+WITH filtered_large AS (
+    SELECT * FROM large_table WHERE condition
+)
+SELECT * FROM filtered_large l
+JOIN small_table s ON l.id = s.id;
+```
+
+> 优化建议
 
 1. **确保统计信息最新**
    ```sql
@@ -219,7 +236,151 @@ JOIN small_table s ON l.id = s.id;
 CREATE INDEX test1_id_index ON test1 (id);
 
 # 事务
-MVCC WAL 
+
+## MVCC (Multi-Version Concurrency Control)
+
+PostgreSQL 通过 **MVCC** 实现事务隔离，核心机制是**每行数据保留多个版本**，读写互不阻塞。
+
+### 核心数据结构
+
+每一行（tuple）有两个隐藏字段：
+- `xmin`：创建该行版本的事务 ID
+- `xmax`：删除/锁定该行版本的事务 ID
+
+### 实现原理
+
+| 操作 | 行为 |
+|------|------|
+| **INSERT** | 新行的 `xmin` = 当前事务 ID，`xmax` = 0（无效） |
+| **DELETE** | 逻辑删除：将当前行的 `xmax` 设为当前事务 ID（标记为已删除），后续 `VACUUM` 会清理 |
+| **UPDATE** | 等效于 DELETE + INSERT：将旧行的 `xmax` = 当前事务 ID，同时插入新行（`xmin` = 当前事务 ID） |
+
+### 可见性判断规则
+
+事务在读取行时，根据 `xmin` / `xmax` 和当前快照判断是否可见：
+
+```
+当前事务快照包含：所有已提交事务的列表 + 正在运行的事务列表
+```
+
+- **行可见**条件：`xmin` 已提交且未过期，且 `xmax` 无效或为当前事务
+- **行不可见**条件：`xmin` 未提交，或 `xmax` 为已提交的其他事务
+
+### 事务隔离级别
+
+| 隔离级别 | 实现方式 |
+|----------|----------|
+| **Read Committed**（默认） | 每个 SQL 语句获取一次快照 |
+| **Repeatable Read** | 整个事务使用同一快照（第一次查询时） |
+| **Serializable** | 基于 SSI（Serializable Snapshot Isolation），检测序列化冲突 |
+
+### 优缺点
+
+- 优点：读从不阻塞写，写从不阻塞读
+- 缺点：需要 `VACUUM` 清理过期版本（死元组），可能导致表膨胀
+
+### 关键配置
+
+```sql
+-- 调整 VACUUM 触发阈值
+autovacuum_vacuum_scale_factor = 0.01   -- 触发比例（默认 0.2）
+autovacuum_vacuum_threshold = 50        -- 触发最小行数
+autovacuum_naptime = 1min               -- 调度间隔
+```
+
+---
+
+## WAL (Write-Ahead Logging)
+
+WAL 是 PostgreSQL 保证**事务持久性（Durability）**和**崩溃安全（Crash Safety）**的核心机制。
+
+### 核心原则
+
+> **日志先行**：在数据页写入磁盘之前，必须先确保对应的日志已安全落盘。
+
+### 写入流程
+
+```
+事务提交 → WAL 缓冲区 → WAL 文件（磁盘） → 返回 commit 成功 → 数据页（延迟写入）
+```
+
+1. 事务修改数据页时，先将变更记录写入 **WAL 缓冲区**
+2. 事务 `COMMIT` 时，WAL 缓冲区内容 **强制刷入 WAL 文件**（`fsync`）
+3. 确认 WAL 落盘后，返回客户端提交成功
+4. 数据页的写入由 **checkpoint 进程** 或 **脏页刷出** 在后台异步完成
+
+### WAL 记录结构
+
+每条 WAL 记录包含：
+
+| 字段 | 说明 |
+|------|------|
+| **LSN** (Log Sequence Number) | WAL 中位置，单调递增，数据页上会记录 `pd_lsn`（该页最后一次修改的 LSN） |
+| **Prev** | 上一条记录的 LSN，形成链 |
+| **XID** | 产生该记录的事务 ID |
+| **Resource Manager** | 资源管理器类型（Heap、Btree、Transaction 等） |
+| **Payload** | 具体变更数据（增量变更或全页镜像） |
+
+### LSN 与数据页的关系
+
+```
+数据页的 pd_lsn >= WAL 记录的 LSN  → 该页已应用此变更（无需恢复）
+数据页的 pd_lsn < WAL 记录的 LSN   → 该页尚未应用（需要 REDO）
+```
+
+### Checkpoint
+
+Checkpoint 是 WAL 和持久化之间的关键同步点：
+
+1. 将所有脏页刷入磁盘
+2. 保证 `redo` 起点前的 WAL 不再需要
+3. 更新控制文件中的 checkpoint 位置
+
+```sql
+-- 手动触发 checkpoint
+CHECKPOINT;
+
+-- 调整 checkpoint 间隔
+checkpoint_timeout = 5min             -- 最大间隔（默认 5min）
+max_wal_size = 1GB                     -- WAL 最大大小（默认 1GB）
+min_wal_size = 80MB                    -- WAL 最小大小
+```
+
+### 崩溃恢复流程
+
+```
+数据库启动 → 读取控制文件找到最后一个 checkpoint
+          → REDO 阶段：从 checkpoint LSN 开始重放 WAL
+          → 恢复到一致状态 → 数据库可用
+```
+
+### WAL 的额外用途
+
+| 用途 | 说明 |
+|------|------|
+| **PITR (Point-In-Time Recovery)** | 基础备份 + 连续 WAL 归档，可恢复到任意时间点 |
+| **Streaming Replication** | Standby 节点持续接收并重放主节点的 WAL |
+| **归档日志** | `archive_command` 将 WAL 段归档到远程存储 |
+
+### 关键配置
+
+```sql
+wal_level = replica                   -- WAL 记录级别（minimal / replica / logical）
+fsync = on                            -- 确保 WAL 写入的持久性
+synchronous_commit = on               -- 等待 WAL 落盘后才返回 commit 成功
+wal_buffers = 16MB                    -- WAL 缓冲区大小
+wal_sync_method = fdatasync           -- WAL 同步方法（fdatasync / fsync / open_sync）
+archive_mode = on                     -- 启用归档
+archive_command = 'cp %p /archive/%f' -- 归档命令
+```
+
+### WAL Segment 文件
+
+- 默认大小 **16MB**（可通过 `--wal-segsize` 在编译时指定）
+- 命名格式：`000000010000000000000001`（timeline + LSN）
+- 循环使用：已归档或已 checkpoint 的 WAL 段可被回收复用
+
+---
 
 ************************
 
@@ -242,7 +403,7 @@ EXPLAIN [ ( option [, ...] ) ] statement
 EXPLAIN [ ANALYZE ] [ VERBOSE ] statement
 ```
 
-### 常用选项
+> 常用选项
 
 - **ANALYZE**：实际执行查询并显示实际运行时间（默认不执行）
 - **VERBOSE**：显示详细的计划信息
@@ -252,7 +413,7 @@ EXPLAIN [ ANALYZE ] [ VERBOSE ] statement
 - **SUMMARY**：显示总时间和总行数（默认开启）
 - **FORMAT**：输出格式（TEXT/XML/JSON/YAML）
 
-### 常用组合
+> 常用组合
 
 ```sql
 -- 基础：查看执行计划（不执行）
@@ -267,7 +428,7 @@ EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON)
 SELECT * FROM table_name WHERE id = 1;
 ```
 
-## 需要关注的关键信息
+## 关键信息
 
 ### 1. 成本估算（Cost）
 

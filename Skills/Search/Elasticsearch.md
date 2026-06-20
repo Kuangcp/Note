@@ -21,7 +21,7 @@ categories:
     - 6.1. [词库](#词库)
 - 7. [向量搜索](#向量搜索)
 
-💠 2026-01-28 00:01:03
+💠 2026-05-23 14:35:48
 ****************************************
 # Elasticsearch
 > [Official Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)  
@@ -110,6 +110,28 @@ PUT /user_idx/_mapping
   }
 }
 ```
+
+子字段
+
+```json
+PUT /my_index/_mapping
+{
+    "properties": {
+      "content": {
+        "type": "keyword",
+        "fields": {
+          "tokenized": { 
+            "type": "text",
+            "analyzer": "ik_smart" 
+          }
+        }
+      }
+    }
+}
+```
+
+默认查询时不分词 `{"query": {"term": { "content": "北京大学" }}}` 指定子字段时 使用分词能力 `{"query": {"match": { "content.tokenized": "北京" }}}`
+
 ************************
 
 # DSL

@@ -44,7 +44,7 @@ categories:
         - 1.11.5. [优雅重启](#优雅重启)
         - 1.11.6. [运行性能优化](#运行性能优化)
 
-💠 2026-04-22 20:30:37
+💠 2026-05-12 20:15:10
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -473,6 +473,15 @@ public class GracefulPoolShutdown implements SmartLifecycle {
 
     private volatile boolean running = true;
 
+    /**
+     * Lower than {@code WebServerGracefulShutdownLifecycle} ({@link Integer#MAX_VALUE} in Spring Boot 2.7)
+     * so Tomcat finishes graceful HTTP shutdown before pools are stopped (DefaultLifecycleProcessor stops
+     * higher phases first).
+     * 
+     * 防止这里的逻辑早于Tomcat连接池拒绝新请求 会导致业务不可控
+     */
+    private static final int PHASE_AFTER_WEB_SERVER = Integer.MAX_VALUE - 2048;
+    
     @Override
     public void stop() {
         log.info("stop thread pool");
@@ -525,8 +534,8 @@ public class GracefulPoolShutdown implements SmartLifecycle {
 
     @Override
     public int getPhase() {
-        return Integer.MAX_VALUE;
-    } // 最后关闭
+        return PHASE_AFTER_WEB_SERVER;
+    }
 }
 ```
 
@@ -541,6 +550,11 @@ spec:
     spec:
       terminationGracePeriodSeconds: 120
 ```
+
+完整流程： 
+1. K8s SIGTERM → Spring 开始关闭
+1. WebServer 停止接收新连接，等待 in-flight HTTP 请求完成（graceful 超时）
+1. 线程池 shutdown → awaitTermination → 完成
 
 ### 运行性能优化
 > [Runtime efficiency with Spring (today and tomorrow)](https://spring.io/blog/2023/10/16/runtime-efficiency-with-spring)

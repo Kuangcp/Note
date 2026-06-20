@@ -30,8 +30,9 @@ categories:
     - 1.19. [Java23](#java23)
     - 1.20. [Java24](#java24)
     - 1.21. [Java25 LTS](#java25-lts)
+    - 1.22. [Java26](#java26)
 
-💠 2026-03-11 11:00:43
+💠 2026-06-02 21:04:57
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)
@@ -231,7 +232,8 @@ JDBC4.0  JAX-WS 2.0
 1. ZGC: 分代模式成为ZGC的默认策略
 
 ## Java24
-> [OpenJDK 24](https://openjdk.org/projects/jdk/24/)
+> [OpenJDK 24](https://openjdk.org/projects/jdk/24/)  
+> [Oracle 正式发布 Java 24 | Oracle 中国](https://www.oracle.com/cn/news/announcement/oracle-releases-java-24-2025-03-18/)  
 
 1. Late Barrier Expansion for G1 G1 延迟屏障扩展
 1. Stream Gatherers (三次预览)
@@ -243,7 +245,8 @@ JDBC4.0  JAX-WS 2.0
 1. [JEP 491: Synchronize Virtual Threads without Pinning](https://openjdk.org/jeps/491)`修复了pinned问题`  
 
 ## Java25 LTS
-> [OpenJDK 25](https://openjdk.org/projects/jdk/25/) (LTS预期)
+> [OpenJDK 25](https://openjdk.org/projects/jdk/25/)   
+> [Oracle 正式发布 Java 25 | Oracle 中国](https://www.oracle.com/cn/news/announcement/oracle-releases-java-25-2025-09-16/)  
 
 > [JDK25更新了哪些特性？一文全部掌握-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/2539734)  
 
@@ -267,3 +270,30 @@ JDK 25 可能破坏兼容的情况：
     # 2. 检查非法反射
     java --illegal-access=warn -jar your-app.jar 2>&1 | grep "Illegal reflective access"
 ```
+
+## Java26 
+> [OpenJDK 26](https://openjdk.org/projects/jdk/26/)
+> [Oracle 正式发布 Java 26 | Oracle 中国](https://www.oracle.com/cn/news/announcement/oracle-releases-java-26-2026-03-17/)  
+
+语言特性
+1. [JEP 530: Primitive Types in Patterns, instanceof, and switch (Fourth Preview)](https://openjdk.org/jeps/530) 模式、instanceof 和 switch 中的基元类型（第四预览版），消除基元类型在模式匹配中的限制，增强编译器错误检测
+
+性能更新
+1. [JEP 522: G1 GC — Improve Throughput by Reducing Synchronization](https://openjdk.org/jeps/522) 通过双卡表减少写屏障的同步开销，提高 G1 垃圾收集器的吞吐量
+
+Project Leyden 特性
+1. [JEP 516: Ahead-of-Time Object Cache for Any GC](https://openjdk.org/jeps/516) 支持任意 GC 的提前对象高速缓存，加快 Java 应用启动速度
+
+库
+1. [JEP 500: Prepare to Make `final` Meaningful](https://openjdk.org/jeps/500) 对通过深度反射修改 final 字段发出警告，强化 Java 的"默认完整性"原则
+1. [JEP 517: HTTP/3 Support for the HTTP Client API](https://openjdk.org/jeps/517) 为 HTTP 客户端 API 新增 HTTP/3 协议支持，降低延迟
+1. [JEP 526: Lazy Constants (Second Preview)](https://openjdk.org/jeps/526) 延迟常量 API，JVM 将其视为真正常量以实现 final 字段级别的性能
+1. [JEP 525: Structured Concurrency (Sixth Preview)](https://openjdk.org/jeps/525) 结构化并发，将多线程任务组视作整体工作单元，降低线程泄漏和取消延迟风险
+1. [JEP 529: Vector API (Eleventh Incubator)](https://openjdk.org/jeps/529) 向量 API，编译为 CPU 最优向量指令，加速数据分析、AI 推理
+
+安全库
+1. [JEP 524: PEM Encoding of Cryptographic Objects (Second Preview)](https://openjdk.org/jeps/524) 加密对象的 PEM 编码 API，简化加密设置和集成
+
+清理特性
+1. [JEP 504: Remove the Applet API](https://openjdk.org/jeps/504) 正式移除 Applet API（JDK 17 标记待移除）
+

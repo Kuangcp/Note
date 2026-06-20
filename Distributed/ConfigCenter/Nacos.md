@@ -11,7 +11,7 @@ categories:
     - 1.1. [Design](#design)
 - 2. [Tips](#tips)
 
-💠 2025-12-04 10:31:18
+💠 2026-05-27 13:52:27
 ****************************************
 # Nacos
 > [Nacos](https://nacos.io/en-us/)
@@ -31,6 +31,8 @@ categories:
 - org.springframework.core.env.PropertySourcesPropertyResolver#logKeyFound 按顺序从 source 列表加载到第一个配置值就return  
 - logging.level.org.springframework.core.env=DEBUG 开启日志查看加载情况
 
+
+注意 namespace， 配置项 的一致性，如果是Nacos3.x 还会强依赖 9848 做grpc获取配置（来自配置里的 8848+1000 ，本身不可配置）
 
 # Tips
 > 集群模式出现节点数据不一致的情况

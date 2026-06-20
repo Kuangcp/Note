@@ -54,7 +54,7 @@ categories:
             - 7.2.2.1. [Gradle](#gradle)
             - 7.2.2.2. [Maven](#maven)
 
-💠 2026-01-14 21:59:10
+💠 2026-06-09 10:30:46
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -83,6 +83,7 @@ categories:
 - `package` ： 依据项目生成 jar 文件
 - `install` ：在本地 Repository 中安装 jar
 - `deploy`：将jar包发布到远程仓库
+- `dependency:analyze` 分析依赖，找出未使用的依赖
 
 > 参数
 - 使用id为ChatServer的Profile `-PChatServer` 

@@ -26,7 +26,7 @@ categories:
     - 1.6. [绘图工具](#绘图工具)
         - 1.6.1. [思维导图](#思维导图)
 
-💠 2024-11-18 14:31:55
+💠 2026-06-15 21:18:09
 ****************************************
 # 软件使用记事
 ## 包管理
@@ -36,6 +36,7 @@ categories:
 - 安装sdkman `curl -s "https://get.sdkman.io?rcupdate=false" | bash` 依赖 zip unzip curl sed
 - 依据提示配置 sdkman-init.sh 或者重启终端就可以使用了
 - 查看sdkman版本 `sdk version`
+- 如果是Windows 可以安装 Git，就会有git-bash 了，也可以用，但是注意会报错找不到zip命令，实际上git-bash里有unzip，他也只是用到这个来解压，所以可以欺骗他 cp /usr/bin/unzip /usr/bin/zip 如果没权限就提权下。
 
 `使用`
 - [官网文档](http://sdkman.io/usage.html)

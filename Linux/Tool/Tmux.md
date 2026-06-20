@@ -10,12 +10,11 @@ categories:
 
 - 1. [Tmux](#tmux)
 - 2. [基本操作](#基本操作)
-    - 2.1. [快捷键](#快捷键)
+    - 2.1. [默认指令](#默认指令)
     - 2.2. [编译安装](#编译安装)
 - 3. [配置](#配置)
     - 3.1. [个人配置](#个人配置)
     - 3.2. [键绑定](#键绑定)
-    - 3.3. [切换](#切换)
 - 4. [TPM插件管理](#tpm插件管理)
     - 4.1. [tmux-resurrect](#tmux-resurrect)
     - 4.2. [maglev](#maglev)
@@ -23,7 +22,7 @@ categories:
 - 5. [Advanced](#advanced)
 - 6. [Tips](#tips)
 
-💠 2025-12-04 10:31:18
+💠 2026-05-26 11:01:50
 ****************************************
 # Tmux
 > [Arch wiki: tmux](https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -46,9 +45,7 @@ categories:
 - 显示所有 `tmux ls`
 - 重新加载配置文件 `tmux source ~/.tmux.conf`
 
-## 快捷键
-- Alt+方向键 跳转到对应方向的panel上
-
+## 默认指令
 > Prefix + 以下键 组合实现的功能
 
 | 键 | 功能 |
@@ -81,16 +78,17 @@ categories:
 > [Oh My Tmux!](https://github.com/gpakosz/.tmux)
 
 ## 个人配置
-> [Tmux配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf)  
-> [服务器简洁版配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/sim-tmux.conf)  
+> [Tmux配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/tmux.conf)`完全简化prefix的存在 Alt实现大部分功能 更直观`  
 
 步骤  
-1. `ln -s $(pwd)/tmux.conf ~/.tmux.conf` 
+1. 桌面端完整配置 `wget https://raw.giteeusercontent.com/gin9/Configs/raw/master/Linux/tmux/tmux.conf`
+1. `ln -s $(pwd)/tmux.conf ~/.tmux.conf` 方便做版本管理，或者直接cp过去
 1. `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 1. `tmux source ~/.tmux.conf`
 1. `Ctrl A, I` 等待插件安装完成
 
-> [.tmux](https://github.com/gpakosz/.tmux) tmux配置（和前文的配置效果基本一致）
+> [服务器简洁版配置文件](https://gitee.com/gin9/Configs/blob/master/Linux/tmux/sim-tmux.conf)  
+- 服务端简化配置 `wget https://raw.giteeusercontent.com/gin9/Configs/raw/master/Linux/tmux/sim-tmux.conf` 无插件依赖
 
 *******************
 
@@ -122,23 +120,20 @@ categories:
 - switch-client 切换 session
 - split-window 拆分当前window出新的panel
 
-## 切换
-- prefix w 切换 window 或者 Session
-- Prefix () 切换 Session
-
 ************************
 
 # TPM插件管理
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) `查看Readme下载安装`
 > `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
+`prefix I` 安装新增的插件 
+
 - [tmux-plugins list 插件列表](https://github.com/tmux-plugins/list)
-
-> [参考: 保存和恢复 Tmux 会话 ](https://liam.page/2016/09/10/tmux-plugin-resurrect/)
-
-[tmux-modal](https://github.com/whame/tmux-modal) 快速操作切换和创建 window panel
-
-- `prefix I` 安装新增的插件 
+- [参考: 保存和恢复 Tmux 会话 ](https://liam.page/2016/09/10/tmux-plugin-resurrect/)
+- tmux-fingers (效率神器：快速复制)
+- extrakto (模糊搜索提取)
+- tmux-logging (记录会话)
+- [tmux-modal](https://github.com/whame/tmux-modal) 快速操作切换和创建 window panel
 
 ## tmux-resurrect
 
@@ -160,6 +155,8 @@ prefix c-r 加载历史会话
 
 # Advanced 
 [Github wiki: Advanced use](https://github.com/tmux/tmux/wiki/Advanced-Use)
+
+- `tmux display-popup -E "echo '任务已完成！按回车关闭'; read"` 发送通知弹窗
 
 ************************
 

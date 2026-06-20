@@ -30,7 +30,7 @@ categories:
     - 5.1. [Quasar](#quasar)
     - 5.2. [Virtual Threads](#virtual-threads)
 
-💠 2026-03-11 11:00:43
+💠 2026-06-09 10:30:46
 ****************************************
 # Java线程
 > [个人学习代码](https://github.com/Kuangcp/JavaBase/tree/master/concurrency/src/main/java/thread)
@@ -216,11 +216,41 @@ ThreadLocal 在虚拟线程分叉（Fork）出子线程时，需要昂贵的 Cop
 ## CompletableFuture
 > [CompletableFutureTest](https://github.com/Kuangcp/JavaBase/blob/master/java8/src/test/java/com/github/kuangcp/future/CompletableFutureTest.java)  
 
-JDK21起如果要支持虚拟线程,需要手动指定线程池，目前的设计默认会使用JVM全局的 ForkJoinPool
+
+| 特性 | get() | join() |
+|---|---|---|
+| 异常类型 | 抛出受检异常 (Checked Exception) | 抛出非受检异常 (Unchecked Exception) |
+| 具体包装异常 | ExecutionException, InterruptedException | CompletionException |
+| 强制捕获/抛出 | 是（必须写 try-catch 或在方法签名声明） | 否（不需要强制显式处理） |
+| Stream / 函数式编程 | 不友好（内部需要写繁琐的异常处理代码） | 友好（代码更简洁，适合链式调用） |
+| 重载支持 | 支持设置超时时间（get(long timeout, TimeUnit unit)） | 不支持超时设置 |
+
+
+Java9+ 可以实现一批任务设公共超时控制，取出部分成功的结果
+```java
+// 使用 Java 9 的 completeOnTimeout，如果 6 秒内没完，该任务自动返回 null
+CompletableFuture<String> f1 = CompletableFuture.supplyAsync(() -> "A").completeOnTimeout(null, 6, TimeUnit.SECONDS);
+CompletableFuture<String> f2 = CompletableFuture.supplyAsync(() -> "B").completeOnTimeout(null, 6, TimeUnit.SECONDS);
+CompletableFuture<String> f3 = CompletableFuture.supplyAsync(() -> "C").completeOnTimeout(null, 6, TimeUnit.SECONDS);
+CompletableFuture<String> f4 = CompletableFuture.supplyAsync(() -> "D").completeOnTimeout(null, 6, TimeUnit.SECONDS);
+
+// 这里依然用 allOf 阻塞，但总体的阻塞时间绝对不会超过 6s，因为单个任务 6s 到了会自动 complete
+CompletableFuture.allOf(f1, f2, f3, f4).join();
+
+// 收集结果，过滤掉超时的 null 值
+List<String> finalResults = Stream.of(f1, f2, f3, f4)
+        .map(CompletableFuture::join)
+        .filter(Objects::nonNull) // 只保留成功获取到结果的任务
+        .collect(Collectors.toList());
+```
+
+
+JDK21起如果要让CompletableFuture支持虚拟线程,需要手动指定线程池，目前的设计默认会使用JVM全局的 非虚拟线程的ForkJoinPool
 ```java
     CompletableFuture.supplyAsync(()->{}, new VirtualThreadTaskExecutor())
 ```
-而且注意 new VirtualThreadTaskExecutor() 这个线程池尽量全局共用一个，避免管理成本。
+
+进阶替代： 结构化并发
 
 ************************
 

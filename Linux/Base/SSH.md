@@ -12,8 +12,9 @@ categories:
 - 1. [SSH](#ssh)
     - 1.1. [安装](#安装)
     - 1.2. [建立连接](#建立连接)
-        - 1.2.1. [复制粘贴建立密钥对](#复制粘贴建立密钥对)
-        - 1.2.2. [使用 ssh-copy-id 脚本](#使用-ssh-copy-id-脚本)
+        - 1.2.1. [客户端参数说明](#客户端参数说明)
+        - 1.2.2. [复制粘贴建立密钥对](#复制粘贴建立密钥对)
+        - 1.2.3. [使用 ssh-copy-id 脚本](#使用-ssh-copy-id-脚本)
     - 1.3. [SSH客户端配置](#ssh客户端配置)
         - 1.3.1. [多密钥对](#多密钥对)
     - 1.4. [服务端配置](#服务端配置)
@@ -25,7 +26,7 @@ categories:
     - 2.1. [保持SSH连接稳定](#保持ssh连接稳定)
 - 3. [Mosh](#mosh)
 
-💠 2025-01-16 16:26:11
+💠 2026-05-26 10:49:40
 ****************************************
 # SSH
 > Secure Shell 
@@ -34,20 +35,6 @@ categories:
 > [ssh和ssh2之间的免密码登陆详解](http://blog.chinaunix.net/uid-26517277-id-4055228.html)
 > [SSH原理与运用（一）：远程登录](http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html)
 > [SSH原理与运用（二）：远程操作与端口转发](http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html)
-
-- 默认22端口登录系统`ssh user@host` | 指定端口登录 `ssh -p port user@host`   
-- 测试能否登录上 `ssh -T user@host`     
-
-> `ssh -i 私钥绝对路径 user@host` 采用指定私钥登录(一般默认是`.ssh/id_rsa`)  
-- 私钥文件必须是 600 权限  
-- 去除私钥的口令 `openssl rsa -in ~/.ssh/id_rsa -out ~/.ssh/id_rsa_new` _在GitForWindows里面虽然有openssl,但是这个命令却执行不了_  
-- `ssh-add 私钥` 添加私钥到OpenSSH的认证代理  
-
-> 使用密码方式，一次性登录
-1. 安装sshpass [完整教程](https://linux.cn/article-8086-1.html)
-2. sshpass -p '密码' 后接正常的ssh命令 ssh user@host
-
-> ssh登录然后执行一系列命令, sudo会执行不了 需要加 -t 参数才行 
 
 ******************
 
@@ -70,6 +57,19 @@ _服务端_
 - chmod 600 /home/testA/.ssh/authorized_keys
 
 ## 建立连接
+### 客户端参数说明
+- 默认22端口登录系统`ssh user@host` | 指定端口登录 `ssh -p port user@host`   
+- 测试能否登录上 `ssh -T user@host`     
+
+> `ssh -i 私钥绝对路径 user@host` 采用指定私钥登录(一般默认是`.ssh/id_rsa`)  
+- 私钥文件必须是 600 权限  
+- 去除私钥的口令 `openssl rsa -in ~/.ssh/id_rsa -out ~/.ssh/id_rsa_new` _在GitForWindows里面虽然有openssl,但是这个命令却执行不了_  
+- `ssh-add 私钥` 添加私钥到OpenSSH的认证代理  
+
+> 非交互式密码登录
+1. 安装sshpass [完整教程](https://linux.cn/article-8086-1.html)
+2. sshpass -p '密码' 后接正常的ssh命令 ssh user@host `占用了ssh指定端口的参数，指定端口就需要改成 -P`
+
 ### 复制粘贴建立密钥对
 _客户端_
 - 进入.ssh文件夹下 `gedit id_rsa.pub` 然后复制该公钥内容
@@ -172,6 +172,8 @@ _config_
         && cmd \'
 ```
 
+ssh登录然后执行一系列命令, 命令里如果有sudo会执行不了 需要加 -t 参数才行 
+
 ### 通过SSH执行命令时的环境变量问题
 详细在于不同的shell中 Linux 环境变量加载的不同
 
@@ -180,7 +182,7 @@ _config_
 ## SSH Tunnel 
 >  [Wiki: Tunneling protocol](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling)
 
-简单来说就是可以建立一个双工通道，实现内网穿透，正向代理
+简单来说就是可以建立一个双工通道，实现内网穿透，反向代理
 
 > [Is it normal to use an SSH tunnel to access a production database? ](https://www.reddit.com/r/learnrust/comments/11poo5h/is_it_normal_to_use_an_ssh_tunnel_to_access_a/)  
 > [How does reverse SSH tunneling work?](https://unix.stackexchange.com/questions/46235/how-does-reverse-ssh-tunneling-work/118650#118650)  

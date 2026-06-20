@@ -21,7 +21,7 @@ categories:
     - 4.1. [静态资源Web服务器](#静态资源web服务器)
     - 4.2. [4层转发 TCP/UDP](#4层转发-tcpudp)
     - 4.3. [反向代理多个服务](#反向代理多个服务)
-        - 4.3.1. [静态资源+反代理后端](#静态资源+反代理后端)
+        - 4.3.1. [静态资源+反代理后端](#静态资源反代理后端)
         - 4.3.2. [前后端分离时避免跨域](#前后端分离时避免跨域)
     - 4.4. [配置https](#配置https)
         - 4.4.1. [自签发证书](#自签发证书)
@@ -43,7 +43,7 @@ categories:
     - 7.5. [nuster](#nuster)
 - 8. [Tips](#tips)
 
-💠 2025-11-24 22:27:23
+💠 2026-06-14 01:06:31
 ****************************************
 # Nginx
 
@@ -508,6 +508,29 @@ tcp_nopush on;
 tcp_nodelay on;
 # 设置保持连接的超时时间，这里设置为120秒。如果在这段时间内，客户端和服务器之间没有进一步的通信，连接将被关闭。
 keepalive_timeout 120;
+```
+
+以及如果开了 HTTP2 
+
+```ini
+server {
+    listen 443 ssl http2; # 👈 1. 确保外部访问支持 HTTP/2
+    server_name ://yourcompany.com;
+
+    location / {
+        proxy_pass http://llm_backend_cluster;
+        
+        # 👈 2. 核心：Nginx 1.25+ 已经支持 proxy_http_version 2; 
+        # 如果是老版本 Nginx，默认 proxy 只走 1.1，多路复用会失效。
+        proxy_http_version 1.1; 
+        
+        # 👈 3. 针对 SSE 流式特性的必备优化，防止 Nginx 缓存 Token
+        proxy_set_header Connection "";
+        proxy_buffering off;
+        proxy_cache off;
+    }
+}
+
 ```
 
 ************************

@@ -37,7 +37,7 @@ categories:
 - 4. [Datagrip](#datagrip)
     - 4.1. [Datagrip时区问题](#datagrip时区问题)
 
-💠 2026-03-11 11:00:43
+💠 2026-06-18 19:30:17
 ****************************************
 
 # IDEA 使用笔记
@@ -347,17 +347,13 @@ _例如修改为如下_
 
 *********************
 ## 常用插件
-1. Atom Material Icons
+1. Atom Material Icons 在2026.x版本里因为UI重绘的问题会导致明显的掉帧卡顿
 1. rainbow brackets 将括号变成彩色, 更方便查看
 1. Alibaba Java Code Guideline
-    - 阿里巴巴的代码规范插件
-    - [《阿里巴巴Java开发规约》IDEA插件与Eclipse插件使用指南](https://zhuanlan.zhihu.com/p/30191998)
+    - 阿里巴巴的代码规范插件 [《阿里巴巴Java开发规约》IDEA插件与Eclipse插件使用指南](https://zhuanlan.zhihu.com/p/30191998)
 1. TestMe 快速创建测试类
 1. TestNG 测试框架的集成
 1. Junit4 Parallel Runner 并行执行单元测试
-1. lombok
-    - 插件商店中搜索 lombok 安装重启idea即可
-    - 配置 Build,Execution > Compiler > Annotation Processors 勾选上即可使用lombok的注解
 1. Jrebel 热部署插件, 需要付费
 1. GoogleTranslation **Ctrl Alt 1** 快速翻译选中的单词和语句
 1. FindBugs
@@ -366,12 +362,13 @@ _例如修改为如下_
 1. Maven helper
 1. Maven Project Version 快速修改整个项目所有模块的版本号
 1. Grep console 控制台搜索工具
-1. Code with me 远程协作插件
 1. jclasslib Bytecode Viewer 字节码查看插件
 1. JarEditor Jar包编辑，无需解压
 1. GsonFormatPlus ： json转Class定义
 1. POJO to JSON ： Class定义转JSON
 1. Sequence Diagram 查看代码时序图
+1. Reactive Streams **用于Debug RxJava Webflux**
+1. EasyApi 项目的接口导出postman openapi
 
 **************************
 > 内置插件

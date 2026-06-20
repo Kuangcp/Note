@@ -64,7 +64,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2026-04-18 19:14:55
+💠 2026-06-12 17:31:28
 ****************************************
 # Linux网络管理
 
@@ -219,8 +219,11 @@ iftop
     - -F 指定过滤表达式所在的文件
     - -w 将流量保存到文件中
     - -r 读取raw packets 文件
+    - -s 0: 抓取完整数据包（不截断），这样才能看到完整的 HTTP 响应体
 
 - 列出可以选择的抓包对象 `tcpdump -D`（USB设备也能抓？）
+
+- 抓http： sudo tcpdump -i any -s 0 -w http_trace.pcap host 192.0.2.1 and port 80
 
 ************************
 
@@ -857,6 +860,7 @@ _问题场景_
 1. x11vnc  -auth /home/xxxxxxxxxx/.Xauthority -display :0
 
 1. 客户端 vnc-viewer(任意) 输入 ip 即可连接 
+    - 通常安装 realvnc-vnc-viewer
 
 > [noVNC](https://github.com/novnc/noVNC) `VNC client web application`
 

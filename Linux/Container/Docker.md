@@ -60,7 +60,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2026-03-17 21:18:55
+💠 2026-06-17 19:58:18
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -301,11 +301,12 @@ _登录镜像仓库_
 - 查看详细： `docker inspect [-f {{".Architesture"}}]`  -f 查看JSON格式的具体节点的数据值
 - 查看Layer历史：`docker history imagename` 每一层的Layer id 和 执行的操作
 - 添加标签（别名）： `docker tag originname newname`
-- 导出镜像文件：`docker save -o ubuntu.tar  ubuntu:14.04`
-    - 导入镜像文件： `docker load --input ubuntu.tar` 或 `docker load < ubuntu.tar`
 - 上传镜像： `docker push mythos/test:lastest`
 - 删除所有未使用的image `docker image prune --all`
 
+
+- 导出镜像文件：`docker save -o ubuntu.tar  ubuntu:14.04` *注意导出的是无压缩的，最好zip压缩下再传输*
+    - 导入镜像文件： `docker load --input ubuntu.tar` 或 `docker load < ubuntu.tar`
 
 ### 修改已有镜像
 ```ini
