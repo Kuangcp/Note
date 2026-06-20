@@ -107,6 +107,8 @@ categories:
 模型层：LLM (如 Claude / GPT) —— 提供核心的推理与理解能力
 
 ### MCP
+> [Introduction - Model Context Protocol](https://modelcontextprotocol.io/introduction)
+
 MCP (Model Context Protocol) —— “Agent ↔ 工具与数据”, 由 Anthropic 提出的通用上下文获取协议
 
 > [modelcontextprotocol/servers: Model Context Protocol Servers](https://github.com/modelcontextprotocol/servers)  

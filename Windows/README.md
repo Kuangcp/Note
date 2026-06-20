@@ -50,6 +50,9 @@ export MAVEN_HOME=$(cygpath -u "$MAVEN_HOME") 2>/dev/null || true
 
 注意默认 ln -s 时会直接降级为复制, 需要配置 `export MSYS="winsymlinks:nativestrict"` 才会建符号链接
 
+新建一个tab的卡顿原因是 Linux上是fork() 基于COW特性毫秒级别,但是windows没有, 所以需要 `fork() 模拟:  挂起父进程 → 复制地址空间 → 创建子进程 → 恢复`  
+这个"复制地址空间"在 Windows 上不是内核 COW，是用户态手动复制，如果父进程（tmux server）内存占用大，复制时间显著增加。
+
 ## 性能测试
 - Msi after burner 显卡超频 硬件监控
 - Aida64 电脑信息检测，稳定性测试

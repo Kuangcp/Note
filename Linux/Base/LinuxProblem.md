@@ -44,6 +44,8 @@ categories:
 
 > Linux上的报错, 提示说找不到共享库 | [参考解决方式 ](http://www.cnblogs.com/Anker/p/3209876.html)
 
+## 终端问题
+
 ### 终端响铃
 > [参考: Linux中关闭响铃](https://blog.csdn.net/u010691256/article/details/9048729)
 
@@ -56,6 +58,33 @@ categories:
     - `sudo echo "blacklist pcspkr" >> /etc/modprobe.d/blacklist`
 - 对于CentOS/Redhat/RHEL/Fedora系统，使用root身份执行：
     - `echo "alias pcspkr off" >> /etc/modprobe.conf `
+
+### 终端开启慢
+- 检查 .bashrc 文件 看是否有可疑脚本,
+    - 这次就是因为 sdkman 的原因(总是在检查自动更新, 虽然说关掉就好了)导致巨慢, 打开终端要一分钟
+
+### 鼠标移动导致输入乱码
+opencode（或它依赖的某个库，比如 crossterm、ncurses 或 tui-rs）在启动时启用了鼠标追踪模式，但退出时没有发送恢复指令，导致你的终端继续把鼠标移动解析成转义字符。
+执行 reset 或者 `echo -e '\e[?1000l\e[?1002l\e[?1003l\e[?1006l'`
+
+这会显式关闭所有鼠标追踪模式：
+
+    ?1000l：关闭鼠标点击追踪
+    ?1002l：关闭鼠标移动+点击追踪
+    ?1003l：关闭所有鼠标事件（包括无按键移动）
+    ?1006l：关闭 SGR 扩展鼠标格式
+
+
+```sh
+# 安全包装：任何可能搞乱终端的程序
+safe-tui() {
+    "$@"
+    echo -ne '\e[?1000l\e[?1002l\e[?1003l\e[?1006l'
+    stty sane
+}
+
+alias opencode='safe-tui opencode'
+```
 
 ### 输入法
 #### fcitx
@@ -128,10 +157,7 @@ categories:
 ### Ubuntu与Windows10时间相差8小时的解决
 - `timedatectl set-local-rtc true `
 
-### 终端开启慢
-- 检查 .bashrc 文件 看是否有可疑脚本,
-    - 这次就是因为 sdkman 的原因(总是在检查自动更新, 虽然说关掉就好了)导致巨慢, 打开终端要一分钟
-    - 那上次搞得我新建用户,重装系统是什么原因呢?
+
 
 *********************************************
 
