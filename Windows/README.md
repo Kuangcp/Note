@@ -33,6 +33,9 @@ PowerShell
 - MSYS2
     - 最佳Posix兼容层
 
+#### MSYS2
+> 完成兼容性的配置后, 配置上 zsh, tmux 就可以实现类似Linux上的体验了, 但是会卡顿一些, 使用习惯能保持一致
+
 /etc/profile
 
 ```sh
@@ -45,6 +48,7 @@ export MAVEN_HOME=$(cygpath -u "$MAVEN_HOME") 2>/dev/null || true
 ```
 注意改配置需要重启MSYS2. 然后可以装tmux 多会话的持久化和窗口管理了
 
+注意默认 ln -s 时会直接降级为复制, 需要配置 `export MSYS="winsymlinks:nativestrict"` 才会建符号链接
 
 ## 性能测试
 - Msi after burner 显卡超频 硬件监控
