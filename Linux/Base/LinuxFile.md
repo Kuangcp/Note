@@ -47,6 +47,7 @@ categories:
         - 3.1.1. [ext3 ext4](#ext3-ext4)
         - 3.1.2. [Btrfs](#btrfs)
         - 3.1.3. [Tmpfs](#tmpfs)
+        - 3.1.4. [NTFS](#ntfs)
     - 3.2. [安装系统时基本分区](#安装系统时基本分区)
     - 3.3. [设备列表](#设备列表)
     - 3.4. [常用命令](#常用命令)
@@ -68,7 +69,7 @@ categories:
     - 6.2. [善用alias](#善用alias)
     - 6.3. [desktop文件](#desktop文件)
 
-💠 2026-06-18 16:32:09
+💠 2026-06-22 10:55:26
 ****************************************
 
 # IO
@@ -440,6 +441,11 @@ export LANG="zh_CN.UTF-8"
 > 虚拟内存文件系统 [wiki](https://wiki.archlinux.org/index.php/Tmpfs)
 
 手动创建挂载tmp文件系统： `mount -t tmpfs -o size=100m tmpfs /mnt/tmp`
+
+### NTFS
+
+如果Linux系统突然断电， 文件系统可能损坏或者处于 脏状态 dirty state。
+- nftsix /dev/sdXn 如果还是不行就加 -d 参数 强制清除脏标记
 
 ************************
 
