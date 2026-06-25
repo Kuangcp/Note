@@ -10,14 +10,17 @@ categories:
 - 1. [Agent](#agent)
     - 1.1. [工程实践](#工程实践)
     - 1.2. [落地框架](#落地框架)
-    - 1.3. [落地平台](#落地平台)
-    - 1.4. [通信](#通信)
-        - 1.4.1. [MCP](#mcp)
-        - 1.4.2. [A2A](#a2a)
-        - 1.4.3. [ACP](#acp)
-    - 1.5. [渲染](#渲染)
+- 2. [方法论](#方法论)
+    - 2.1. [Prompt Engineering](#prompt-engineering)
+    - 2.2. [Harness Engineering](#harness-engineering)
+    - 2.3. [Loop Engineering](#loop-engineering)
+- 3. [通信](#通信)
+    - 3.1. [MCP](#mcp)
+    - 3.2. [A2A](#a2a)
+    - 3.3. [ACP](#acp)
+- 4. [渲染](#渲染)
 
-💠 2026-06-18 16:32:09
+💠 2026-06-25 16:47:42
 ****************************************
 
 # Agent
@@ -86,18 +89,33 @@ categories:
 ## 落地框架
 - LangChain 最主流，也有对应语言的移植版本 LangChain4j，
 - [SpringAi](/Ai/SpringAi.md)
+- AgentScope Java和Python版本
 - ADK
 - Eino
 - [Koog](https://docs.koog.ai/)  
 
-## 落地平台
+> 落地平台
 
 - Dify
 - Coze
 - n8n
 
+# 方法论
 
-## 通信
+## Prompt Engineering
+
+
+## Harness Engineering
+> 代表应用： OpenClaw 和 Hermes Agent 
+
+
+## Loop Engineering
+
+
+************************
+
+
+# 通信
 应用层：Agent 框架 (如 LangChain / AutoGen) —— 构建智能体大脑和逻辑
       ↓
 通信层：A2A / ACP —— 负责 Agent 之间的协作（A2A管跨云，ACP管本地）
@@ -106,7 +124,7 @@ categories:
       ↓
 模型层：LLM (如 Claude / GPT) —— 提供核心的推理与理解能力
 
-### MCP
+## MCP
 > [Introduction - Model Context Protocol](https://modelcontextprotocol.io/introduction)
 > [modelcontextprotocol/servers: Model Context Protocol Servers](https://github.com/modelcontextprotocol/servers)  
 > [supercorp-ai/supergateway: Run MCP stdio servers over SSE and SSE over stdio. AI gateway.](https://github.com/supercorp-ai/supergateway)  
@@ -163,16 +181,16 @@ AI：
 > 开源工具
 - [googleapis/genai-toolbox: MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox)`MCP工具箱操作各种数据库`  
 
-### A2A
+## A2A
 ACP (Agent Communication Protocol) —— “Agent ↔ Agent（本地/边缘）”, 由 IBM (BeeAI) 等大厂提出的智能体通信协议
 
 它是局域网内 Agent 通信协议
 
-### ACP
+## ACP
 A2A (Agent-to-Agent) —— “Agent ↔ Agent（跨平台/云端）”,  由谷歌等公司推动的跨平台智能体外交协议
 
 
-## 渲染
+# 渲染
 > [ag-ui-protocol/ag-ui: AG-UI](https://github.com/ag-ui-protocol/ag-ui)  
 
 智能体和前端渲染之间的协议

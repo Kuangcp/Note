@@ -18,7 +18,7 @@ categories:
     - 2.6. [Traefik](#traefik)
     - 2.7. [Higress](#higress)
 
-💠 2026-03-05 20:29:01
+💠 2026-06-25 16:47:42
 ****************************************
 # 网关
 
@@ -58,4 +58,3 @@ Nginx + Lua + Etcd 以及丰富的插件生态
 
 ## Higress
 > [alibaba/higress: 🤖 AI Gateway | AI Native API Gateway](https://github.com/alibaba/higress)  
-

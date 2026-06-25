@@ -25,7 +25,7 @@ categories:
     - 1.6. [Github](#github)
 - 2. [转换](#转换)
 
-💠 2025-09-03 16:55:08
+💠 2026-06-25 16:47:42
 ****************************************
 # Markdown
 > [Github: markdown](https://guides.github.com/features/mastering-markdown/) 
@@ -36,6 +36,7 @@ categories:
 
 > [Github: emoji character](https://www.webfx.com/tools/emoji-cheat-sheet/)
 
+> [Markdown 和 MDX | Next.js 中文网](https://next.nodejs.cn/docs/app/building-your-application/configuring/mdx)`扩展js 更多动态交互`  
 **************
 
 ## 基本格式
