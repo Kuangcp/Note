@@ -12,15 +12,16 @@ categories:
     - 1.2. [落地框架](#落地框架)
 - 2. [方法论](#方法论)
     - 2.1. [Prompt Engineering](#prompt-engineering)
-    - 2.2. [Harness Engineering](#harness-engineering)
-    - 2.3. [Loop Engineering](#loop-engineering)
+    - 2.2. [Context Engineering](#context-engineering)
+    - 2.3. [Harness Engineering](#harness-engineering)
+    - 2.4. [Loop Engineering](#loop-engineering)
 - 3. [通信](#通信)
     - 3.1. [MCP](#mcp)
     - 3.2. [A2A](#a2a)
     - 3.3. [ACP](#acp)
 - 4. [渲染](#渲染)
 
-💠 2026-06-25 16:47:42
+💠 2026-06-27 22:57:30
 ****************************************
 
 # Agent
@@ -104,6 +105,7 @@ categories:
 
 ## Prompt Engineering
 
+## Context Engineering
 
 ## Harness Engineering
 > 代表应用： OpenClaw 和 Hermes Agent 
