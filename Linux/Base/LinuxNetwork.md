@@ -12,29 +12,30 @@ categories:
 
 - 1. [Linux网络管理](#linux网络管理)
     - 1.1. [内核配置](#内核配置)
-    - 1.2. [DNS](#dns)
-        - 1.2.1. [nslookup](#nslookup)
-        - 1.2.2. [dig](#dig)
-        - 1.2.3. [修改DNS](#修改dns)
-    - 1.3. [Route](#route)
-        - 1.3.1. [traceroute](#traceroute)
-    - 1.4. [IPv4和IPv6](#ipv4和ipv6)
-    - 1.5. [Bridge](#bridge)
-    - 1.6. [Socket](#socket)
-    - 1.7. [TCP/UDP 工具](#tcpudp-工具)
-        - 1.7.1. [进程和端口互查](#进程和端口互查)
-        - 1.7.2. [tcpdump](#tcpdump)
-    - 1.8. [复合工具](#复合工具)
-        - 1.8.1. [ping](#ping)
-        - 1.8.2. [tc 流量控制](#tc-流量控制)
-        - 1.8.3. [netstat](#netstat)
-        - 1.8.4. [iproute2](#iproute2)
-        - 1.8.5. [nmap](#nmap)
-        - 1.8.6. [netcat](#netcat)
-        - 1.8.7. [scp](#scp)
-        - 1.8.8. [rsync](#rsync)
-        - 1.8.9. [curl](#curl)
-        - 1.8.10. [wget](#wget)
+    - 1.2. [网络管理软件](#网络管理软件)
+    - 1.3. [DNS](#dns)
+        - 1.3.1. [nslookup](#nslookup)
+        - 1.3.2. [dig](#dig)
+        - 1.3.3. [修改DNS](#修改dns)
+    - 1.4. [Route](#route)
+        - 1.4.1. [traceroute](#traceroute)
+    - 1.5. [IPv4和IPv6](#ipv4和ipv6)
+    - 1.6. [Bridge](#bridge)
+    - 1.7. [Socket](#socket)
+    - 1.8. [TCP/UDP 工具](#tcpudp-工具)
+        - 1.8.1. [进程和端口互查](#进程和端口互查)
+        - 1.8.2. [tcpdump](#tcpdump)
+    - 1.9. [复合工具](#复合工具)
+        - 1.9.1. [ping](#ping)
+        - 1.9.2. [tc 流量控制](#tc-流量控制)
+        - 1.9.3. [netstat](#netstat)
+        - 1.9.4. [iproute2](#iproute2)
+        - 1.9.5. [nmap](#nmap)
+        - 1.9.6. [netcat](#netcat)
+        - 1.9.7. [scp](#scp)
+        - 1.9.8. [rsync](#rsync)
+        - 1.9.9. [curl](#curl)
+        - 1.9.10. [wget](#wget)
 - 2. [证书](#证书)
     - 2.1. [自签发证书](#自签发证书)
 - 3. [常用服务](#常用服务)
@@ -64,11 +65,12 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2026-06-28 18:20:23
+💠 2026-06-28 19:33:03
 ****************************************
 # Linux网络管理
 
 > [计算机网络基础](/Skills/Network/Network.md)
+
 
 ## 内核配置
 > ip_local_port_range [Linux increase ip_local_port_range TCP port range](https://ma.ttias.be/linux-increase-ip_local_port_range-tcp-port-range/)
@@ -79,6 +81,22 @@ iftop
 
 - nethogs `流量监控`
 - slurm 网卡带宽监控
+
+## 网络管理软件
+> 现代桌面端霸主 NetworkManager 对应 nmcli nmtui 命令
+
+代表发行版：Manjaro、Ubuntu 桌面版、Fedora、CentOS/RHEL 8/9、Debian 桌面版。
+特点：功能极度强大，对无线网卡（Wi-Fi）、VPN 拨号、移动热点支持极好，完美适配图形化桌面。
+
+> systemd-networkd（轻量级/服务器流派）
+
+代表发行版：Arch Linux（纯净安装时）、Ubuntu Server 20.04+（作为 Netplan 后端）、各类轻量级容器系统。
+特点：它是 systemd 家族自己亲生的网络管理组件。它不需要安装额外的 NetworkManager 软件，直接通过配置 /etc/systemd/network/ 下的 .network 文件来管网卡。没有图形界面，极为轻量，最适合不需要插拔 Wi-Fi 的固定服务器或虚拟机。
+
+> 传统的纯文本脚本流派（经典老派）
+
+代表发行版：CentOS 7 (network 服务)、Debian/Ubuntu 早期版本 (/etc/network/interfaces)。
+特点：开机时直接通过 Shell 脚本去读取特定网卡配置文件，调用底层的 ifconfig 或 ip 命令给网卡塞 IP。这种方式不支持 Wi-Fi 自动切换，属于逐步被淘汰的方案。
 
 ************************
 
