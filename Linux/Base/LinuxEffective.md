@@ -49,7 +49,7 @@ categories:
     - 5.2. [显卡](#显卡)
 - 6. [Tips](#tips)
 
-💠 2026-01-16 15:35:48
+💠 2026-06-28 18:20:23
 ****************************************
 # 高效的Linux
 
@@ -220,15 +220,6 @@ Supervisor 进程监控管理
 ## 硬件检测工具
 > [Linux系统硬件信息检测工具hwinfo — Cloud Atlas beta 文档](https://cloud-atlas.readthedocs.io/zh-cn/latest/linux/server/hardware/hwinfo.html)  
 
-> 硬盘
-
-- CrystalDiskMark
-- [KDiskMark](https://github.com/JonMagon/KDiskMark)
-
-> smartmontools 
-- 检测健康状况 `smartctl -Hc /dev/sda9`
-- 查看全部信息 `smartctl -a /dev/sda`
-
 ************************
 
 ## 文本处理
@@ -243,7 +234,7 @@ Supervisor 进程监控管理
 - ag _The Silver Searcher_
   - ubuntu:silversearcher-ag  alpine:the_silver_searcher
   - [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
-- rg _ripgrep_
+- rg [GitHub - BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep)  
 - glow markdown renderer
 
 ************************
@@ -256,8 +247,6 @@ Supervisor 进程监控管理
 
 例如 将git仓库内所有Java文件 GBK 转 UTF8 `git ls-files | grep "\.java" | tee  | xargs -I {}  iconv -f GBK -t UTF-8 {} -o {}`
 
-`zssh`
-> [参考 zssh, rz, sz互相传输](http://blog.csdn.net/ygm_linux/article/details/32321729)
 
 ## 安全工具
 

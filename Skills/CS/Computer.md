@@ -14,6 +14,8 @@ categories:
 - 2. [硬件系统](#硬件系统)
     - 2.1. [内存](#内存)
     - 2.2. [硬盘](#硬盘)
+        - 2.2.1. [固态硬盘](#固态硬盘)
+        - 2.2.2. [机械硬盘](#机械硬盘)
     - 2.3. [CPU](#cpu)
         - 2.3.1. [中断](#中断)
         - 2.3.2. [MESI](#mesi)
@@ -26,7 +28,7 @@ categories:
 - 6. [Tips](#tips)
     - 6.1. [死机](#死机)
 
-💠 2024-09-30 00:05:08
+💠 2026-06-28 18:20:23
 ****************************************
 # 计算机历史
 
@@ -39,6 +41,12 @@ categories:
 
 ## 硬盘
 > 存储单位 kb kilobyte; kib kibibyte 的区别: [wikipedia](https://en.wikipedia.org/wiki/Kilobyte)
+
+### 固态硬盘
+Nvme vs SATA 协议
+
+### 机械硬盘
+
 
 ## CPU
 > [码农翻身:CPU阿甘](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513017&idx=1&sn=5550ee714abd36d0b580713f673e670b&scene=21#wechat_redirect) `梳理了CPU 内存 操作系统 BIOS 硬盘之间的关系和特性`

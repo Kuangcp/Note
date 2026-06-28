@@ -15,6 +15,7 @@ categories:
     - 3.1. [Inflation](#inflation)
 - 4. [基础类](#基础类)
     - 4.1. [AccessibleObject](#accessibleobject)
+        - 4.1.1. [现代 Java (Java 9+) 的重大变化：强封装与模块化](#现代-java-java-9-的重大变化强封装与模块化)
     - 4.2. [Annotation](#annotation)
     - 4.3. [Class](#class)
     - 4.4. [Field](#field)
@@ -30,7 +31,7 @@ categories:
         - 5.2.4. [操作注解](#操作注解)
 - 6. [反射的性能问题](#反射的性能问题)
 
-💠 2024-11-07 19:58:31
+💠 2026-06-28 18:20:23
 ****************************************
 # 反射
 > Reflection is powerful, but should not be used indiscriminately.  
@@ -89,7 +90,24 @@ categories:
 
 > 默认情况下，`内核API`和`扩展目录`的代码具有该权限，而`类路径`或`通过URLClassLoader加载`的应用程序不拥有此权限。
 
-- [ ] 仍然存疑, 什么情况下才是 默认可访问的。什么情况下 true 不能访问
+- 什么情况下才是 默认可访问的。什么情况下 true 也不能访问
+    - 在反射的语境下，“默认可访问”指的是：如果一个成员在普通编写 Java 代码时就能直接通过 . 操作符访问，那么反射时它就是默认可访问的，无需显式调用 setAccessible(true)。
+    - true 也不能访问： 
+        - 跨模块（Module）的非法反射（现代 Java 的最大限制）
+        - 操作 final 字段的特殊限制： final static 会内联反射修改不会生效，Java 14+ 引入的 record（记录类）不可修改其final字段值
+        - 开启了严苛的安全管理器（旧版本或特定企业环境） *安全管理器在 Java 17 中已被标记为废弃*
+
+### 现代 Java (Java 9+) 的重大变化：强封装与模块化
+
+自 Java 9 引入模块化（Project Jigsaw）以及 Java 16+ 默认开启**强封装（Strong Encapsulation）**后，`setAccessible(true)` 的行为发生了本质改变：
+
+1. **Jigsaw 模块隔离**：如果目标类属于一个未对外部显式开放（`opens`）的命名模块（如 JDK 内核模块 `java.base` 的内部私有 API），哪怕调用 `setAccessible(true)` 也会直接抛出 `InaccessibleObjectException` 强行拦截。
+2. **打破限制的后门（JVM 参数）**：如果在启动现代 Java 应用时，必须允许某些第三方库（如旧版 Spring/MyBatis）通过反射访问 JDK 内部类，必须在启动命令行中手动追加参数：
+   ```bash
+   --add-opens java.base/java.lang=ALL-UNNAMED
+   ```
+3. **SecurityManager 的终结**：笔记中提到的 `java.security.manager` 机制在现代 Java 中已被**正式废弃并逐步移除**，现代 Java 统一通过**模块路径（Module Path）**和**强封装**来替代传统的安全检查。
+
 
 ## Annotation
 ## Class

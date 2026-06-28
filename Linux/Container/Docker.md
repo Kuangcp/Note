@@ -60,7 +60,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2026-06-17 19:58:18
+💠 2026-06-28 18:20:23
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -77,7 +77,7 @@ categories:
 ## 学习资源
 - [PMD: player with docker](https://labs.play-with-docker.com/)`线上练习Docker环境`
 - [docker-slim](https://github.com/docker-slim/docker-slim)`镜像瘦身`
-- [ ] todo [Use multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/) `17.05+`
+- [Use multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/) `17.05+`
 
 - [dockerlabs](https://github.com/collabnix/dockerlabs)
 

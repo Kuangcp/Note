@@ -20,3 +20,6 @@ categories:
 > [install](https://www.rust-lang.org/zh-CN/tools/install)
 
 
+实用项目
+
+> [jeff141/meatshell: 一个轻量级、低内存占用的 SSH / 终端客户端（A lightweight, low-memory SSH / terminal client）](https://github.com/jeff141/meatshell)  

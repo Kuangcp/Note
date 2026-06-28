@@ -43,21 +43,22 @@ categories:
         - 2.4.9. [监控文件变更](#监控文件变更)
     - 2.5. [默认字符编码](#默认字符编码)
 - 3. [磁盘](#磁盘)
-    - 3.1. [文件系统](#文件系统)
-        - 3.1.1. [ext3 ext4](#ext3-ext4)
-        - 3.1.2. [Btrfs](#btrfs)
-        - 3.1.3. [Tmpfs](#tmpfs)
-        - 3.1.4. [NTFS](#ntfs)
-    - 3.2. [安装系统时基本分区](#安装系统时基本分区)
-    - 3.3. [设备列表](#设备列表)
-    - 3.4. [常用命令](#常用命令)
-        - 3.4.1. [dd](#dd)
-        - 3.4.2. [truncate](#truncate)
-        - 3.4.3. [mount](#mount)
-        - 3.4.4. [fdisk](#fdisk)
-        - 3.4.5. [fsck](#fsck)
-        - 3.4.6. [df](#df)
-        - 3.4.7. [du](#du)
+    - 3.1. [硬件管理](#硬件管理)
+    - 3.2. [文件系统](#文件系统)
+        - 3.2.1. [ext3 ext4](#ext3-ext4)
+        - 3.2.2. [Btrfs](#btrfs)
+        - 3.2.3. [Tmpfs](#tmpfs)
+        - 3.2.4. [NTFS](#ntfs)
+    - 3.3. [安装系统时基本分区](#安装系统时基本分区)
+    - 3.4. [设备列表](#设备列表)
+    - 3.5. [常用命令](#常用命令)
+        - 3.5.1. [dd](#dd)
+        - 3.5.2. [truncate](#truncate)
+        - 3.5.3. [mount](#mount)
+        - 3.5.4. [fdisk](#fdisk)
+        - 3.5.5. [fsck](#fsck)
+        - 3.5.6. [df](#df)
+        - 3.5.7. [du](#du)
 - 4. [日志](#日志)
     - 4.1. [Systemd](#systemd)
     - 4.2. [应用日志](#应用日志)
@@ -69,7 +70,7 @@ categories:
     - 6.2. [善用alias](#善用alias)
     - 6.3. [desktop文件](#desktop文件)
 
-💠 2026-06-22 10:55:26
+💠 2026-06-28 18:20:23
 ****************************************
 
 # IO
@@ -389,6 +390,14 @@ export LANG="zh_CN.UTF-8"
 
 - bleachbit 应用占用磁盘 清理
 
+## 硬件管理
+- CrystalDiskMark
+- [KDiskMark](https://github.com/JonMagon/KDiskMark)
+
+> smartmontools 
+- 检测健康状况 `smartctl -Hc /dev/sda9`
+- 查看全部信息 `smartctl -a /dev/sda`
+
 ## 文件系统
 > [参考: Linux 文件系统剖析](https://www.ibm.com/developerworks/cn/linux/l-linux-filesystem/index.htmlQ)
 > [参考: 详解NTFS文件系统](http://www.blogfshare.com/detail-ntfs-filesys.html)
@@ -644,7 +653,6 @@ export LANG="zh_CN.UTF-8"
 
 # Tips
 - 清空文件内容 `true > a.txt ` 
-- 安装上传下载文件的工具 `sudo apt install lrzsz`
 - `cat ~/.ssh/id_rsa.pub | xsel -b` 将文件复制到剪贴板
 
 ## 善用*shrc文件

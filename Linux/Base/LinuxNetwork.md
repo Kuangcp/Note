@@ -64,7 +64,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2026-06-12 17:31:28
+💠 2026-06-28 18:20:23
 ****************************************
 # Linux网络管理
 
@@ -166,15 +166,10 @@ iftop
 - 零压缩 ：如果FE04:0:0:0:0:0:0:DA 写成 FE::DA
 
 ## Bridge
-> 网桥, 通常使用 bridge-utils 的 brctl 进行管理
+> 网桥，一种在链路层（L2）将多个物理或虚拟网卡组合成一个逻辑网卡的虚拟设备。常用于虚拟机（KVM/QEMU）、容器网络以及软路由场景。
 
-- [ ]  Learn 
+现代 Linux（内核 3.0+ 及 Arch/Manjaro）推荐使用 `ip` 命令，无需安装额外工具。
 
-**增加**
-
-**删除**
-
-**配置开机启动**
 
 ## Socket 
 一个socket的五个必要元素： client_ip:client_port<----->server_ip:server_port + 协议
@@ -329,11 +324,37 @@ iftop
 
 - 查看mac地址 `ip link show`
 - 设置网卡 eno1 MAC 地址`ip link set eno1 address b4:xx:xx`
-
 - 查看本地ARP表 `ip neigh show`， 可以通过 `sudo nmap -sn 192.168.1.0/24 >/dev/null 2>&1` 刷新本地缓存
 
 - 关闭 启用 `ifconfig name down/up`
 - 修改IP `ifconfig eth0 192.168.1.200/24`
+
+
+************************
+
+> 网桥管理
+
+* **创建网桥：**
+```bash
+sudo ip link add name br0 type bridge
+```
+* **将物理网卡（如 eth0）绑定到网桥：**
+```bash
+sudo ip link set eth0 master br0
+```
+* **启用网桥和网卡：**
+```bash
+sudo ip link set dev br0 up
+sudo ip link set dev eth0 up
+```
+* **解除网卡绑定：**
+```bash
+sudo ip link set eth0 nomaster
+```
+* **删除网桥：**
+```bash
+sudo ip link delete br0 type bridge
+```
 
 ************************
 _iproute-ss_
