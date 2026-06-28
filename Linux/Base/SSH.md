@@ -28,7 +28,7 @@ categories:
     - 2.3. [登录并执行批量命令](#登录并执行批量命令)
 - 3. [Mosh](#mosh)
 
-💠 2026-06-28 18:50:59
+💠 2026-06-28 20:33:17
 ****************************************
 # SSH
 > Secure Shell 
@@ -267,7 +267,27 @@ ZModem（包括它的前身 XModem、YModem）诞生于 20 世纪 80 年代（19
 
 可以通过sshfs将服务端的文件系统挂载到本地，用文件管理器或者 cp mv 命令就可以实现快速文件操作了
 
-建立映射很简单，先建个空目录，然后将ssh命令改下 例如 `sshfs -p 8118 root@192.168.2.7:/root ~/fs/dol`
+建立映射很简单，先建个空目录，然后挂载到本地： `sshfs -p 8118 root@192.168.2.7:/root /mnt/fs1`  
+卸载挂载  fusermount3 -u /mnt/fs1  
+
+sshfs -f 前台执行 -o debug 显示日志信息 
+
+> 特殊情况
+
+如果没法直接连接到目标服务需要跳转，就参考 [跳板](#跳板) 配置好，例如通过ABC跳转入D，那最终sshfs挂载命令是 `sshfs D:/root /mnt/fs1`
+但是，如果跳转的路径上存在需要交互输入密码的情况，sshfs就会卡住了，因为sshfs没法像普通ssh那样会弹出tty输入密码，还可以通过sshpass自动输入然后自动进入。
+
+```
+Host D
+    ...
+    ProxyJump A,B,C
+    # 加这三个配置
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%r@%h:%p
+    ControlPersist 10m              # 保持通道在后台空闲存活10分钟
+```
+
+先执行 sshpass -p 'xxx' ssh D 建立连接后，再执行  sshfs D:/root /mnt/fs1 就能成功挂载了，这个时候sshfs会复用已有的隧道，就能绕开上述没法交互式输入密码的问题了
 
 ## 保持SSH连接稳定
 > man ssh_config
