@@ -16,19 +16,19 @@ categories:
         - 1.2.2. [复制粘贴建立密钥对](#复制粘贴建立密钥对)
         - 1.2.3. [使用 ssh-copy-id 脚本](#使用-ssh-copy-id-脚本)
     - 1.3. [SSH客户端配置](#ssh客户端配置)
-        - 1.3.1. [多密钥对](#多密钥对)
+        - 1.3.1. [跳板](#跳板)
+        - 1.3.2. [多密钥对](#多密钥对)
     - 1.4. [服务端配置](#服务端配置)
-    - 1.5. [访问图形化](#访问图形化)
-    - 1.6. [SSH登录并执行一系列命令](#ssh登录并执行一系列命令)
-        - 1.6.1. [通过SSH执行命令时的环境变量问题](#通过ssh执行命令时的环境变量问题)
-    - 1.7. [SSH Tunnel](#ssh-tunnel)
-        - 1.7.1. [ZModem](#zmodem)
+        - 1.4.1. [访问图形化](#访问图形化)
+    - 1.5. [SSH Tunnel](#ssh-tunnel)
+        - 1.5.1. [ZModem](#zmodem)
 - 2. [Tips](#tips)
     - 2.1. [传输文件](#传输文件)
     - 2.2. [保持SSH连接稳定](#保持ssh连接稳定)
+    - 2.3. [登录并执行批量命令](#登录并执行批量命令)
 - 3. [Mosh](#mosh)
 
-💠 2026-06-28 18:20:23
+💠 2026-06-28 18:50:59
 ****************************************
 # SSH
 > Secure Shell 
@@ -101,50 +101,96 @@ _服务器端_
 
 ## SSH客户端配置
 `~/.ssh/config`
+
 ```
-    Host aliyun
-        HostName www.ttlsa.com
-        Port 22
-        User root
-        IdentityFile  ~/.ssh/id_rsa.pub
-        IdentitiesOnly yes
+Host aliyun
+    HostName www.ttlsa.com
+    Port 22
+    User root
+    IdentityFile  ~/.ssh/id_rsa
+    IdentitiesOnly yes
 ```
 
 _参数解释_
-```
-    HostName 指定登录的主机名或IP地址
-    Port 指定登录的端口号
-    User 登录用户名
-    IdentityFile 登录的公/私钥文件 奇怪的是有时候用公有时候用私??
-    IdentitiesOnly 只接受SSH key 登录
-    PubkeyAuthentication
-```
-- `ssh aliyun` 即可登录 但是要输入生成公钥时的密码， _方便多公钥的情况_
-    - 如果生成公钥时_没有_设置密码就要错三次，然后输入用户密码，
+- HostName 指定登录的主机名或IP地址
+- Port 指定登录的端口号
+- User 登录用户名
+- IdentityFile 登录的私钥文件
+- IdentitiesOnly 指定只使用当前 `config` 文件中由 `IdentityFile` 明确列出的密钥，或者由 `ssh-agent` 注入的密钥进行认证。
+    - **作用**：防止客户端盲目地把本地 `~/.ssh/` 目录下所有的密钥挨个发给服务器去试（如果试的错误密钥超过服务器上限，服务器会直接拒绝连接并报 `Too many authentication failures` 错误）。
+- PubkeyAuthentication yes ：显式开启公钥认证模式。
+- PasswordAuthentication no ：（可选补充）如果想**彻底禁用密码登录**，只接受 SSH Key 登录，应该使用这个参数。
 
+`ssh aliyun` 即可登录
+
+### 跳板
+
+```conf
+# 1. 配置跳板机 A
+Host serverA
+    HostName 1.1.1.1          # A 的公网 IP
+    User root                 # A 的用户名
+
+# 2. 配置目标机 B（核心）
+Host serverB
+    HostName 10.0.0.2         # B 的内网 IP（在 A 看来能连通的 IP）
+    User root                 # B 的用户名
+    ProxyJump serverA         # 告诉 SSH：连 B 之前，自动通过 A 进行流量转发 
+
+```
+
+> 注意 ProxyJump 这里的配置支持逗号分隔多个，也就是支持任意多层级跳转 例如  ProxyJump A,B,C 就意为依次跳入ABC，最终进入当前服务端
 
 ### 多密钥对
 > [参考博客](http://blog.csdn.net/black_ox/article/details/17753943)   
 
 1. `ssh-keygen` 生成SSH密钥对 在询问中输入新的文件名
-2. `ssh-add 私钥文件绝对路径`
-    - 若执行ssh-add时出现Could not open a connection to your authentication agent
-    - 就先执行 `ssh-agent bash` 对应自己的解释器环境
-3. 如上 创建配置文件 config
-    - 在git项目中使用别名:正常的项目，我们clone下来之后，origin对应的URL假设为: `git@git.:Rusher/helloworld`
-    - 现在需要做个改动，将git, 要换成rusher_gitlab:
-        - `git remote set-url origin git@rusher_gitlab:Rusher/helloworld`
-    - 如果是root用户的项目:
-        - `git remote set-url origin git@root_gitlab:root/helloworld`
+1. `ssh-add 私钥文件绝对路径`
+    - 若执行ssh-add时出现 Could not open a connection to your authentication agent
+    - 就先执行 `ssh-agent bash` 对应自己的解释器环境切换 bash zsh
+1. 实现不同域名的不同私钥分流
 
-_config_
-```
-    Host default
+_~/.ssh/config_
+```conf
+# 只要连接的域名匹配 ://company.com，就自动应用此配置
+Host ://company.com
+    HostName ://company.com
+    User git                          # Git 托管平台的 SSH 用户名一律是 git
+    IdentityFile ~/.ssh/id_ed25519_company
+    IdentitiesOnly yes                # 关键：绝对不让个人的密钥去撞公司服务器的门
+
+# 只要连接的域名匹配 github.com，就自动应用此配置
+Host github.com
     HostName github.com
     User git
-    IdentityFile ~/.ssh/default_id_rsa.pub
+    IdentityFile ~/.ssh/id_ed25519_personal
+    IdentitiesOnly yes                # 关键：绝对不让公司的密钥去撞 GitHub 的门
 ```
-- 测试配置是否正确: `ssh -T git@default`
+
+1. 同一个域名的不同私钥分流
+
+```conf
+# 账户一：个人主力号（别名设为 github.com，克隆时直接用原 URL）
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_personal
+    IdentitiesOnly yes
+
+# 账户二：博客自动化部署号（使用别名 github-blog）
+Host github-blog
+    HostName github.com               # 真实的域名依然是 github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_blog_robot
+    IdentitiesOnly yes
+```
+
+当你想用“机器人账号”克隆代码时，你需要**手动将 URL 中的真实域名修改为你在 config 中定义的 `Host` 别名**：
+*   *原始 URL*：`git@github.com:blog-owner/my-blog.git`
+*   *修改后的命令*：git clone git@github-blog:blog-owner/my-blog.git
+（效果：SSH 看到 `github-blog` 别名后，会自动把真实地址解析成 `github.com`，并强制带上 `id_ed25519_blog_robot` 这把机器人私钥去登录。）
+
+************************
 
 ## 服务端配置
 > 修改登录后的欢迎信息 /etc/motd
@@ -158,7 +204,7 @@ _config_
     PubkeyAuthentication yes
 ```
 
-## 访问图形化
+### 访问图形化
 
 在`/etc/ssh/sshd_config`添加以下信息，然后重启ssh服务
 ```
@@ -168,18 +214,6 @@ _config_
 - `ssh -X -p port user@host` 登录即可
     - 使用过一次,发现了严重的内存泄露,也不知道是什么原因
 
-## SSH登录并执行一系列命令
-```sh
-    ssh user@host 'cmd \
-        && cmd \'
-```
-
-ssh登录然后执行一系列命令, 命令里如果有sudo会执行不了 需要加 -t 参数才行 
-
-### 通过SSH执行命令时的环境变量问题
-详细在于不同的shell中 Linux 环境变量加载的不同
-
-- 简单方式: 手动加载环境变量 `ssh name@host "source ~/.bashrc && java -version"`
 
 ## SSH Tunnel 
 >  [Wiki: Tunneling protocol](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling)
@@ -233,6 +267,8 @@ ZModem（包括它的前身 XModem、YModem）诞生于 20 世纪 80 年代（19
 
 可以通过sshfs将服务端的文件系统挂载到本地，用文件管理器或者 cp mv 命令就可以实现快速文件操作了
 
+建立映射很简单，先建个空目录，然后将ssh命令改下 例如 `sshfs -p 8118 root@192.168.2.7:/root ~/fs/dol`
+
 ## 保持SSH连接稳定
 > man ssh_config
 
@@ -241,6 +277,20 @@ ZModem（包括它的前身 XModem、YModem）诞生于 20 世纪 80 年代（19
     ServerAliveInterval 60
     ServerAliveCountMax 3
 ```
+
+## 登录并执行批量命令
+```sh
+    ssh user@host 'cmd \
+        && cmd \'
+```
+
+ssh登录然后执行一系列命令, 命令里如果有sudo会执行不了 需要加 -t 参数才行 
+
+> 这些命令执行时的环境变量问题
+
+详细在于不同的shell中 Linux 环境变量加载的不同
+
+- 简单方式: 手动加载环境变量 `ssh name@host "source ~/.bashrc && java -version"`
 
 ************************
 

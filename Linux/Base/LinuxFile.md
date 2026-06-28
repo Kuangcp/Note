@@ -49,6 +49,7 @@ categories:
         - 3.2.2. [Btrfs](#btrfs)
         - 3.2.3. [Tmpfs](#tmpfs)
         - 3.2.4. [NTFS](#ntfs)
+        - 3.2.5. [FUSE](#fuse)
     - 3.3. [安装系统时基本分区](#安装系统时基本分区)
     - 3.4. [设备列表](#设备列表)
     - 3.5. [常用命令](#常用命令)
@@ -70,7 +71,7 @@ categories:
     - 6.2. [善用alias](#善用alias)
     - 6.3. [desktop文件](#desktop文件)
 
-💠 2026-06-28 18:20:23
+💠 2026-06-28 18:50:59
 ****************************************
 
 # IO
@@ -456,6 +457,12 @@ export LANG="zh_CN.UTF-8"
 如果Linux系统突然断电， 文件系统可能损坏或者处于 脏状态 dirty state。
 - nftsix /dev/sdXn 如果还是不行就加 -d 参数 强制清除脏标记
 
+### FUSE
+Filesystem in Userspace
+
+FUSE（Filesystem in Userspace）是一个用户空间文件系统框架，允许开发者在用户态实现功能完备的文件系统。FUSE通过提供简化的API库，支持非特权用户安全创建和挂载文件系统，无需深入内核模块编程知识，显著降低了开发门槛。FUSE可将网络资源（如SSH）映射为本地文件系统，并支持Java等多种编程语言绑定。
+
+FUSE于Linux 2.6.14内核版本开始被官方支持，其设计理念源自LUFS、UserFS等早期用户空间文件系统，但通过可执行文件形式简化了调试流程。
 ************************
 
 > [/tmp临时目录定期清理机制](https://cloud-atlas.readthedocs.io/zh-cn/latest/linux/redhat_linux/systemd/tmp_directory_cleanup_periodically.html)
