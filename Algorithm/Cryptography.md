@@ -32,9 +32,10 @@ categories:
     - 3.5. [混合密码系统](#混合密码系统)
     - 3.6. [散列函数](#散列函数)
         - 3.6.1. [MD4 MD5](#md4-md5)
-        - 3.6.2. [SHA-1](#sha-1)
-        - 3.6.3. [RIPEMD-160](#ripemd-160)
+        - 3.6.2. [SHA](#sha)
+        - 3.6.3. [BLAKE2 / BLAKE3](#blake2--blake3)
         - 3.6.4. [BCrypt](#bcrypt)
+        - 3.6.5. [RIPEMD-160](#ripemd-160)
     - 3.7. [消息认证码](#消息认证码)
     - 3.8. [数字签名](#数字签名)
         - 3.8.1. [签名与验签](#签名与验签)
@@ -46,7 +47,7 @@ categories:
     - 4.2. [SSL TLS](#ssl-tls)
 - 5. [扩展](#扩展)
 
-💠 2025-12-18 21:26:01
+💠 2026-06-29 19:41:41
 ****************************************
 # 密码学
 > [wikipedia](https://zh.wikipedia.org/wiki/%E5%AF%86%E7%A0%81%E5%AD%A6)
@@ -345,18 +346,31 @@ MD5 是由Rivest于1991年设计，能产生128bit的散列值， 但是MD5的�
 
 所以对二进制流分块后迭代计算MD5值，避免了磁盘操作，性能更好（块大小是512的整数倍即可）。例如通过URL计算文件的MD5可以使用4K缓冲区来计算完整的MD5值
 
-### SHA-1
-SHA-1 SHA-256 SHA-384 SHA-512
+### SHA
+> SHA-1
 
 SHA-1 是由 NIST（National Institute of Standards and Technology）设计，能产生160bit的散列值，
 1993年发布的是SHA，1995年发布的SHA-1，SHA-1处理的消息长度存在上限，但该理论值接近于264bit，实际使用时不容易遇到问题。
 
+SHA-1 算法在 2017 年被谷歌成功演示了实际的碰撞攻击（SHAttered 攻击），目前在所有主流安全标准和浏览器中已被完全废弃。
 
-### RIPEMD-160
+> SHA-2: SHA-224 SHA-256 SHA-384 SHA-512 
 
+> SHA-3（基于 Keccak 算法）
+
+设计完全不同：SHA-3 采用了创新的“海绵结构”（Sponge Construction），这与 SHA-1 / SHA-2 的 Merkle-Damgård 结构有本质区别。  
+原生防御长度扩展攻击：无需像 SHA-2 那样额外包裹 HMAC 即可防范长度扩展攻击。  
+主要版本：SHA3-256、SHA3-512，以及支持可变长度输出的 SHAKE128 / SHAKE256。  
+
+### BLAKE2 / BLAKE3
+
+- BLAKE2：速度极快，安全性等同于 SHA-3，但纯软件运行速度比 SHA-1 还快。
+- BLAKE3：当前速度的“天花板”，内部采用高度并行化的默克尔树结构，能完美吃满现代 CPU 的多核与 SIMD（单指令多数据）指令集
 
 ### BCrypt
 - [Wikipedia](https://en.wikipedia.org/wiki/Bcrypt)
+
+### RIPEMD-160
 
 ************************
 
