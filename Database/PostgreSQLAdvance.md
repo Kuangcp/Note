@@ -79,8 +79,9 @@ categories:
         - 6.5.3. [3. 排序使用磁盘](#3-排序使用磁盘)
         - 6.5.4. [4. 并行查询未启用](#4-并行查询未启用)
     - 6.6. [最佳实践](#最佳实践)
+- 7. [Tips](#tips)
 
-💠 2026-05-13 20:11:57
+💠 2026-06-29 17:42:10
 ****************************************
 # PostgreSQL Advance
 
@@ -784,3 +785,18 @@ SET max_parallel_workers_per_gather = 4;
 > - [PostgreSQL EXPLAIN文档](https://www.postgresql.org/docs/current/sql-explain.html)
 > - [使用EXPLAIN](https://www.postgresql.org/docs/current/using-explain.html)
 > - [查询性能](https://www.postgresql.org/docs/current/performance-tips.html)
+
+# Tips
+
+```sql
+-- 查询所有表（包括索引、TOAST）的总大小，按大小降序
+SELECT
+    schemaname AS schema,
+    relname AS table_name,
+    pg_size_pretty(pg_total_relation_size(relid)) AS total_size,
+    pg_size_pretty(pg_relation_size(relid)) AS table_size,
+    pg_size_pretty(pg_indexes_size(relid)) AS index_size,
+    pg_size_pretty(pg_total_relation_size(relid) - pg_relation_size(relid)) AS external_size
+FROM pg_stat_user_tables
+ORDER BY pg_total_relation_size(relid) DESC;
+```

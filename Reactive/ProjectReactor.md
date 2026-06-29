@@ -12,7 +12,7 @@ categories:
     - 1.2. [Concept](#concept)
 - 2. [WebFlux](#webflux)
 
-💠 2023-10-12 11:48
+💠 2026-06-29 17:42:10
 ****************************************
 # Project Reactor
 > [Official Site](https://projectreactor.io)  
@@ -29,4 +29,4 @@ categories:
 ************************
 
 # WebFlux 
-- [Note: WebFlux](/Java/Spring/WebFlux.md)
+- [Note: WebFlux](/Java/Spring/Flux/WebFlux.md)
