@@ -8,7 +8,7 @@
 ## Java领域
 > [Blog: Reactive Systems in Java](https://www.baeldung.com/java-reactive-systems)
 
-[Project Reactor](http://projectreactor.io/) | [RxJava](https://github.com/ReactiveX/RxJava)
+[Project Reactor](http://projectreactor.io/) | [RxJava](https://github.com/ReactiveX/RxJava) | [reactive-streams-jvm](https://github.com/reactive-streams/reactive-streams-jvm)  
 
 
 Reactive框架 : RxJava, Reactor, Akka, Kotlin Coroutines & Flow  

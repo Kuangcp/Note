@@ -13,8 +13,9 @@ categories:
     - 2.2. [观测](#观测)
     - 2.3. [兼容性问题](#兼容性问题)
     - 2.4. [实践](#实践)
+- 3. [现实推进](#现实推进)
 
-💠 2026-03-11 11:00:43
+💠 2026-07-01 12:18:17
 ****************************************
 # Java21
 
@@ -25,7 +26,7 @@ categories:
 
 > [JEP 491: Synchronize Virtual Threads without Pinning](https://openjdk.org/jeps/491)`JDK24修复了pinned问题`  
 
-类似于GMP的模型，将 Virtual Threads 调度在 carrier Threads 上执行, 执行时先挂载到平台线程上，遇到IO阻塞时从平台线程上卸载 unmount
+类似于GMP的模型，将 Virtual Threads 调度在 carrier Threads 上执行, 执行时先挂载到平台线程(载体线程)上，遇到IO阻塞时从平台线程上卸载
 
 *试用总结：如果要引入生产，需要关注整个JEP的文档，调试确认细节后才能使用，不然就会陷入到各种诡异的问题上。*
 
@@ -201,3 +202,9 @@ Ehcache 2.x：内部并发控制大量依赖内置锁。相比之下，Caffeine 
         }
     }
 ```
+
+# 现实推进
+真实应用于生产得 JDK24+了，从响应式的API切换过来的好处和劣势都很突出
+
+[虚拟线程的引入讨论](https://github.com/modelcontextprotocol/java-sdk/discussions/321)
+[虚拟线程统一接口Api](https://github.com/modelcontextprotocol/java-sdk/issues/778)

@@ -21,7 +21,7 @@ categories:
     - 3.3. [ACP](#acp)
 - 4. [渲染](#渲染)
 
-💠 2026-06-27 22:57:30
+💠 2026-07-01 12:18:17
 ****************************************
 
 # Agent
@@ -182,6 +182,8 @@ AI：
 
 > 开源工具
 - [googleapis/genai-toolbox: MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox)`MCP工具箱操作各种数据库`  
+
+- [MCP java-sdk](https://github.com/modelcontextprotocol/java-sdk)
 
 ## A2A
 ACP (Agent Communication Protocol) —— “Agent ↔ Agent（本地/边缘）”, 由 IBM (BeeAI) 等大厂提出的智能体通信协议
