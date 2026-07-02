@@ -10,6 +10,7 @@ categories:
 - 1. [线程池](#线程池)
     - 1.1. [ThreadPoolExecutor](#threadpoolexecutor)
     - 1.2. [ScheduledThreadPoolExecutor STPE](#scheduledthreadpoolexecutor-stpe)
+        - 1.2.1. [STPE 实现原理](#stpe-实现原理)
     - 1.3. [分支合并框架 Fork/Join](#分支合并框架-forkjoin)
     - 1.4. [ExecutorService 接口](#executorservice-接口)
     - 1.5. [Executors](#executors)
@@ -22,7 +23,7 @@ categories:
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2026-02-11 21:29:42
+💠 2026-07-02 15:36:28
 ****************************************
 # 线程池
 
@@ -63,29 +64,60 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 **注意**: 
 - 定时的这些API上有注释说明：当某次任务抛出异常时，后续的调度会取消，所以异步任务需要完全 try catch，自行处理单次任务的异常
 - 如果想在某次任务时取消后续所有调度，可以通过直接抛出异常，或者通过 ScheduledFuture 来更优雅控制，例如
-    ```java
-        AtomicInteger cnt = new AtomicInteger();
-        // 需要在声明完之前就引用，所以需要借助AtomicReference来 逆时序传递 对象
-        AtomicReference<ScheduledFuture<?>> monitorFutureRef = new AtomicReference<>();
-        ScheduledFuture<?> monitorFuture = sche.scheduleAtFixedRate(() -> {
-            int i = cnt.incrementAndGet();
-            if (i > 5) {
-                // 取消定时任务
-                ScheduledFuture<?> future = monitorFutureRef.get();
-                if (future != null) {
-                    future.cancel(false);
-                }
-                // 关闭线程池
-                sche.shutdown();
+```java
+    AtomicInteger cnt = new AtomicInteger();
+    // 需要在声明完之前就引用，所以需要借助AtomicReference来 逆时序传递 对象
+    AtomicReference<ScheduledFuture<?>> monitorFutureRef = new AtomicReference<>();
+    ScheduledFuture<?> monitorFuture = sche.scheduleAtFixedRate(() -> {
+        int i = cnt.incrementAndGet();
+        if (i > 5) {
+            // 取消定时任务
+            ScheduledFuture<?> future = monitorFutureRef.get();
+            if (future != null) {
+                future.cancel(false);
             }
-            System.out.println("run " + i);
-        }, 2, 1, TimeUnit.SECONDS);
-        monitorFutureRef.set(monitorFuture);
-    ```
+            // 关闭线程池
+            sche.shutdown();
+        }
+        System.out.println("run " + i);
+    }, 2, 1, TimeUnit.SECONDS);
+    monitorFutureRef.set(monitorFuture);
+```
 
+### STPE 实现原理
 > 如何实现调度: [ScheduledThreadPoolExecutor实现原理](https://juejin.cn/post/7035415187783942152) | [验证单元测试](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/thread/schdule/SchedulerPoolTest.java)
-- 核心依赖 DelayedWorkQueue 实现延迟调度，默认最大值为Integer.MAX_VALUE
-    - 当全部线程繁忙时，任务会依次延迟执行，也就是说如果有一个期望1S后执行的任务，由于前序任务的阻塞和耗时会不可控的延迟执行
+- 核心依赖 DelayedWorkQueue （二叉堆（优先级队列）+ Leader-Follower 模式）实现延迟调度，默认容量的最大值为Integer.MAX_VALUE
+- JDK 没有用时间轮（如 Netty 的 HashedWheelTimer），因为时间轮适合海量细粒度定时任务（几十万级别），而二叉堆对于一般场景的插入/删除 O(log n)已经足够。
+
+```java
+    // 简化逻辑，实际在 java.util.concurrent.ScheduledThreadPoolExecutor 内部类                                                                                                               
+     public RunnableScheduledFuture<?> take() throws InterruptedException {                                                                                                                    
+         for (;;) {                                                                                                                                                                            
+             RunnableScheduledFuture<?> first = queue[0]; // 二叉堆堆顶，最近要执行的任务                                                                                                      
+             if (first == null)                                                                                                                                                                
+                 available.await();      // 队列空，所有线程都等                                                                                                                               
+             else {                                                                                                                                                                            
+                 long delay = first.getDelay(NANOSECONDS);                                                                                                                                     
+                 if (delay <= 0)                                                                                                                                                               
+                     return finishPoll(first);  // 到期了，出队执行                                                                                                                            
+                 if (leader != null)                                                                                                                                                           
+                     available.await();  // 已经有个 leader 在等，我是 follower，无限等                                                                                                        
+                 else {                                                                                                                                                                        
+                     thisThread = Thread.currentThread();                                                                                                                                      
+                     leader = thisThread;                                                                                                                                                      
+                     available.awaitNanos(delay);  // 我是 leader，精确等 delay 纳秒                                                                                                           
+                     leader = null;                                                                                                                                                            
+                 }                                                                                                                                                                             
+             }                                                                                                                                                                                 
+         }                                                                                                                                                                                     
+     } 
+```
+
+- 当全部线程都繁忙时，计划的周期任务会*依次延迟执行*，也就是说如果有一个期望1S后执行的任务，由于前序任务的阻塞和耗时会导致后续任务不可控的延迟执行
+- 所以这个线程池适合 调度周期间隔远大于 任务执行时间，相较于直接开线程池进行sleep做任务的周期执行可以节省大量的线程资源
+- 但是 如果有场景是高频又高IO耗时的任务执行，为了任务的调度执行不出现明显的延迟：
+    - 如果任务的特点是IO型的话可以调大核心线程数解决或者上虚拟线程
+    - 但是如果是CPU型就只能水平扩展节点了做分布式任务消费
 
 ************************
 ## 分支合并框架 Fork/Join
