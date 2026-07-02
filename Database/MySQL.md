@@ -64,7 +64,7 @@ categories:
     - 10.3. [修改](#修改)
     - 10.4. [授权](#授权)
 
-💠 2026-05-27 13:52:27
+💠 2026-07-02 09:46:42
 ****************************************
 # Mysql
 > [Official Download](https://dev.mysql.com/downloads/mysql/) | [Official Doc](https://dev.mysql.com/doc/)
@@ -256,9 +256,13 @@ COLLATE 基于字符集，定义字符串比较、排序、匹配的规则（比
 ## 导出和导入
 > 以下的 -p -h 参数依数据库的配置情况而定
 
-1. 只导出数据库的结构 `mysqldump -uroot -pmysql -d dbname > /data/backup/sql/dbname.sql`  
-    - 导出具体的表就在 数据库名 后加上 表名
+1. 导出
+    - 只导出结构 `mysqldump -uroot -pmysql -d dbname > /data/backup/sql/dbname.sql`  
+    - 导出单个表就在 数据库名 后加上 表名
     - 导出结构和数据 去掉-d参数
+    - 忽略特定的多个表 --ignore-table=db.ta1 --ignore-table=db.ta2
+    - 命令行传密码 `-ppassword`
+
 1. 导入
     - 执行SQL文件 `source /path/to/dbname.sql` 特别注意文件的路径问题， 是以MySQL客户端运行时的路径为根路径的
     - 或者 `mysql -uusername -ppassword database < /path/sqlfile.sql;`
