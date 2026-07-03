@@ -17,11 +17,12 @@ categories:
     - 2.4. [Loop Engineering](#loop-engineering)
 - 3. [通信](#通信)
     - 3.1. [MCP](#mcp)
+        - 3.1.1. [协议细节](#协议细节)
     - 3.2. [A2A](#a2a)
     - 3.3. [ACP](#acp)
 - 4. [渲染](#渲染)
 
-💠 2026-07-01 12:18:17
+💠 2026-07-03 14:32:41
 ****************************************
 
 # Agent
@@ -137,7 +138,6 @@ MCP (Model Context Protocol) —— “Agent ↔ 工具与数据”, 由 Anthrop
 - Function Call 确实能覆盖很多场景，但 MCP 把能力拆成 Tools、Resources、Prompts 三个正交概念，是为了让 AI 和外部系统的协作边界更清晰、更安全、更可维护。
     - Resources 是 AI 的"眼睛"（只读感知），Prompts 是 AI 的"嘴型"（表达范式），Tools 是 AI 的"手"（改变世界）。
 
-
 > Tools
 
 
@@ -184,6 +184,30 @@ AI：
 - [googleapis/genai-toolbox: MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox)`MCP工具箱操作各种数据库`  
 
 - [MCP java-sdk](https://github.com/modelcontextprotocol/java-sdk)
+
+### 协议细节
+服务端暴露端点例如 v1/sse ， 客户端建立SSE连接并保持，服务端会立马下发一个 endpoint 事件 
+
+```sse
+event: endpoint
+data: /mcp-servers/debug?sessionId=ffe85774-6933-48e7-90e7-989d427c6e47
+```
+
+客户端后续就对这个endpoint给的地址 发 POST JSON-RPC通信： 客户端->服务端 走endpoint，数据响应走 建立的SSE连接
+然后通常客户端会先发初始化消息
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "initialize",
+  "params": {
+    "protocolVersion": "2024-11-05",
+    "clientInfo": { "name": "my-ai-client", "version": "1.0" }
+  }
+}
+```
+
+服务端会响应MCP的三要素的列表：Prompts，Tools，Resources
 
 ## A2A
 ACP (Agent Communication Protocol) —— “Agent ↔ Agent（本地/边缘）”, 由 IBM (BeeAI) 等大厂提出的智能体通信协议
