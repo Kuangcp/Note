@@ -17,7 +17,7 @@ categories:
 - 2. [实践](#实践)
     - 2.1. [Ray](#ray)
 
-💠 2024-10-10 10:41:00
+💠 2026-07-04 15:49:45
 ****************************************
 # Concurrency
 
@@ -51,7 +51,16 @@ Python中的并发编程可大致分为： 协程，多线程，多进程
 而且Python有多种解释器实现，只有CPython中有GIL
 
 ## 协程 asyncio
+> Python 的协程可以说是“小而美”，但也是被历史包袱拖累得最厉害的。
 
+底层原理（从 Generator 进化而来）：
+- Python 早期的协程是用 yield 关键字实现的生成器（Generator）。后来 Python 引入了 async/await，但其底层依然是基于生成器。每次 await，就是把当前函数的执行权“让出”（yield）给事件循环（Event Loop）。
+
+致命死穴：GIL（全局解释器锁）：
+- 这是 Python 协程与 Go/Rust/Java/Kotlin 最大的区别。后四者的协程在遇到密集计算或配置了多线程调度器时，可以真正地利用多核 CPU 并行计算。
+- 而 Python 哪怕你用 asyncio 开了一百万个协程，因为 GIL 锁的存在，它们永远只能在同一个 CPU 核心上轮流执行。因此，Python 协程只适用于纯 I/O 密集型（如爬虫、高并发 Web 接口）场景，一旦代码里混入了一段耗时的 for 循环计算，整个程序的所有协程都会被直接卡死（阻塞）。
+
+- [协程以及Python实现](http://www.cnblogs.com/zingp/p/5911537.html)
 
 ## 多线程 threading
 创建并绑定操作系统的内核线程，但是无法像Java，Go那样并行执行，每个线程在执行前都需要获取GIL锁，即至多只有一个线程能使用CPU计算。
