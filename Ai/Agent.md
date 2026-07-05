@@ -22,7 +22,7 @@ categories:
     - 3.3. [ACP](#acp)
 - 4. [渲染](#渲染)
 
-💠 2026-07-05 17:38:32
+💠 2026-07-05 17:51:48
 ****************************************
 
 # Agent
@@ -90,7 +90,7 @@ categories:
 
 ## 落地框架
 - LangChain 最主流，也有对应语言的移植版本 LangChain4j，
-- [SpringAi](/Ai/SpringAi.md)
+- [SpringAi](/Ai/FrameWork/SpringAi.md)
 - AgentScope Java和Python版本
 - ADK
 - Eino

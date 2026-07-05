@@ -10,12 +10,13 @@ categories:
 - 1. [Spring Ai](#spring-ai)
     - 1.1. [Tips](#tips)
     - 1.2. [网络](#网络)
+        - 1.2.1. [HTTP/2 Streamable](#http2-streamable)
 - 2. [Spring Ai Alibaba](#spring-ai-alibaba)
     - 2.1. [Structured Output](#structured-output)
     - 2.2. [Workflow](#workflow)
         - 2.2.1. [CheckPoint](#checkpoint)
 
-💠 2026-06-17 19:58:18
+💠 2026-07-05 17:51:48
 ****************************************
 # Spring Ai
 
@@ -23,20 +24,16 @@ categories:
 
 
 ## Tips
-- 提示词模板渲染上，SpringAi提供了 PromptTemplate 按 {var} 格式很容易遇到JSON结构而报错，简单平替是 MustachePromptTemplate 使用{{var}}来渲染降低错误概率。
+- 提示词模板渲染 方面，SpringAi提供了 PromptTemplate 按 {var} 格式很容易遇到JSON结构而报错，简单平替是 MustachePromptTemplate 使用{{var}}来渲染降低错误概率。
     - 进阶使用 后端模板引擎  Thymeleaf / Freemarker， 或者Jinja2 打通Java和Python。 
         - 例如 医疗问诊工作流的分支极多（多轮、单轮、重症、轻症、科室路由）。强逻辑模板引擎可以在数据库中写出具备“微型编程能力”的超级提示词，将提示词的组装放在提示词自身，能更灵活。
     - 但是！ 当你需要用Ai模型来自动优化提示词时，强大的模板引擎会大大提高对 优化提示词的模型的基准能力： 元认知，代码理解能力，因为模型一旦改错格式渲染就出问题了
     - 所以 Mustache 反而是最适合工程上自动优化的模板。简单直接
+- 
 
 ## 网络
-常见的Agent提供的接口是SSE协议，但是 HTTP/2 Streamable 是 SSE 底层传输协议的“终极增强版”。
 
-好处是兼容性好，但是缺点是 HTTP1.1 的时候浏览器会有默认6TCP连接的限制，一个用户如果开 6 个大模型对话标签页，浏览器就报错或者无响应。
-HTTP2 Streamable 能实现TCP连接的多路复用， 支持头部压缩 HPACK， TCP双向全双工（可以做客户端的主动触发）
-
-
-> 开启 HTTP/2 Streamable
+### HTTP/2 Streamable
 
 ```yaml
 server:
@@ -59,12 +56,13 @@ server:
     }
 ```
 
-与之对应的就是前端也需要做适配
-
+前端也需要做适配
 - 必须全量普及 HTTPS： 所有的主流浏览器（Chrome、Edge、Safari）都遵循一个死规定：只支持基于 TLS（HTTPS）的 HTTP/2。
 - 传统 EventSource API 的替换： 浏览器的原生 new EventSource() API 是不支持自定义 Header（如 Authorization: Bearer token）的。适配代价：为了在安全鉴权下使用 HTTP/2 流，前端需要抛弃 EventSource，改用微软开源的 @microsoft/fetch-event-source 库，或者直接使用现代的 fetch 结合 ReadableStream 接收数据。
 
 并且前端到后端的所有中间链路都需要适配： Nginx 应用网关 等。
+
+************************
 
 # Spring Ai Alibaba
 > [Spring AI Alibaba](https://java2ai.com/)  
@@ -86,7 +84,8 @@ Spring AI 是一个底层的“连接器”，而 Spring AI Alibaba 是一个高
 框架里的StateGraph与SpringAi原生的Graph类似但不是一个设计和实现，增加了监控和限流等功能。
 
 ### CheckPoint
-在启动StateGraph时，传入的 RunnableConfig里的 threadId， 对应 com.alibaba.cloud.ai.graph.checkpoint.savers.MemorySaver#_checkpointsByThread的key。
-在业务意义上 threadId就是 sessionId，用于SpringAiAlibaba管理实现多轮问答的记忆实现。
+在启动StateGraph时，传入的 RunnableConfig里的 threadId， 对应 com.alibaba.cloud.ai.graph.checkpoint.savers.MemorySaver#_checkpointsByThread的key。  
+在业务意义上 threadId就是 sessionId，用于SpringAiAlibaba管理实现多轮问答的记忆实现。注意默认实现会一直存放在内存里**会有OOM风险，需要自定义**
+
 
 
