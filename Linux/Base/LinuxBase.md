@@ -75,7 +75,7 @@ categories:
         - 4.5.1. [rng-tools 的实现原理](#rng-tools-的实现原理)
         - 4.5.2. [现代 Linux 内核（Kernel 5.6+）的重要机制演变](#现代-linux-内核kernel-56的重要机制演变)
 
-💠 2026-06-28 18:20:23
+💠 2026-07-06 19:42:58
 ****************************************
 
 # Linux系统
@@ -861,6 +861,11 @@ SWAP = VIRT - RES
 | 3 | 表示清除 page cache 和 slab 分配器中的缓存对象 |
 
 > 注意sync命令是为了将内存中buffer写入磁盘，避免这部分内存被直接释放导致数据不一致
+
+************************
+> 应用如果一直持有一个超大日志文件，也会导致该项居高不下
+
+持续驻留 Page Cache：Linux 内核在写入这个 150M 的大文件时，会把文件内容大量缓存在内存中。因为文件是连续追加写入的，这部分 Page Cache 会变成活跃页（Active File Cache），很难被系统自动释放。
 
 ## 内存管理
 glibc, musl, jemalloc, System Alloc, mimalloc, tcmalloc, rpmalloc 等等实现

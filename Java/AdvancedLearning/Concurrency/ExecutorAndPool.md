@@ -23,7 +23,7 @@ categories:
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2026-07-02 15:36:28
+💠 2026-07-06 19:42:58
 ****************************************
 # 线程池
 
@@ -218,9 +218,10 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 - setWaitForTasksToCompleteOnShutdown 等待线程正常执行完才退出全部线程
 
 ## Alibaba TransmittableThreadLocal
-> [alibaba/transmittable-thread-local: 📌 a missing Java std lib(simple & 0-dependency) for framework/middleware, provide an enhanced InheritableThreadLocal that transmits values between threads even using thread pooling components.](https://github.com/alibaba/transmittable-thread-local)  
+> [alibaba/transmittable-thread-local](https://github.com/alibaba/transmittable-thread-local)  
 
-TTL 2.12.x 池内线程抛出 NoSuchMethodError时， log.error 看不到异常栈，只有message ，debug断点住 在IDE才看到栈
+> Tips
+- TTL 2.12.x 池内线程抛出 NoSuchMethodError时， log.error 看不到异常栈，只有message ，debug断点住 在IDE才看到栈
 
 ************************
 # 实践
@@ -284,11 +285,18 @@ TTL 2.12.x 池内线程抛出 NoSuchMethodError时， log.error 看不到异常�
     - 异步交错问题： 例如一个业务方法需要做ABC先后完成，但是三件事在不同的线程池中，由于不同线程池的执行效率不同导致未能按期望顺序执行
         - 方案： 1. 通过 CompletableFuture 实现异步之间的依赖和组合
     - 上下文传递问题： 可以使用TTL线程池，或者在线程池使用装饰器，手动复制需要的上下文
-    - 事务传递问题： TODO
+    - 事务传递问题： 线程池跨线程时，Spring 的 `TransactionSynchronizationManager` 默认以 ThreadLocal 存储事务上下文，切换线程后事务状态丢失。
+        - 方案： 
+            1. 通过 `TransactionTemplate` 在提交任务前解绑事务上下文，进入线程后重新绑定；或将事务边界收缩到单线程内，跨线程部分采用最终一致性方案（本地消息表、事务消息、Saga 等）。
+            2. Spring 的 `DelegatingTransactionRunnable` 模式：自定义 Runnable 在构造时捕获当前事务的 `TransactionSynchronization` 并在 `run()` 中恢复回调。
+            3. 结合 TTL 包装 `TransactionSynchronizationManager` 的资源对象，在跨线程时自动复制，但需注意隔离级别和回滚行为的语义差异。
 
 1. 随着业务需求的变化，线程池边界会模糊，导致吞吐量大的服务被低并发参数的线程池产生短板效应，吞吐量低的服务被高并发参数的线程池任务失败量突增甚至被打垮。 
     - 例如HTTP请求任务被提交到了缓存同步线程池，大量的HTTP请求任务占用了很多资源导致系统缓存的实时性大大降低。
-    - 方案： TODO
+    - 方案：
+        1. **编码规范约束**：在线程池 Bean 上标注 `@Qualifier`（如 `@Qualifier("httpPool")`、`@Qualifier("cachePool")`），注入时强制按业务名选择，禁止用 `@Autowired` + 类型匹配注入；通过 ArchUnit 单元测试在 CI 阶段校验依赖规则。
+        2. **运行时熔断隔离**：结合 Sentinel / Resilience4j 对每个线程池设置信号量熔断，当某业务大量超出线程池容量时快速失败，避免饥饿扩散。
+        3. **定期 review 线程池职责矩阵**：建立一张「线程池 → 业务模块 → 核心参数 → 所属服务」的映射表，在需求变更时同步审视是否有跨池混用的风险。
 
 ************************
 
