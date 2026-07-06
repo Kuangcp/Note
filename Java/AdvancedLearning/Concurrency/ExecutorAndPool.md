@@ -255,27 +255,27 @@ terminated()                          // 线程池完全终止后回调，适合
 - JDK 没有用时间轮（如 Netty 的 HashedWheelTimer），因为时间轮适合海量细粒度定时任务（几十万级别），而二叉堆对于一般场景的插入/删除 O(log n)已经足够。
 
 ```java
-    // 简化逻辑，实际在 java.util.concurrent.ScheduledThreadPoolExecutor 内部类                                                                                                               
-     public RunnableScheduledFuture<?> take() throws InterruptedException {                                                                                                                    
-         for (;;) {                                                                                                                                                                            
-             RunnableScheduledFuture<?> first = queue[0]; // 二叉堆堆顶，最近要执行的任务                                                                                                      
-             if (first == null)                                                                                                                                                                
-                 available.await();      // 队列空，所有线程都等                                                                                                                               
-             else {                                                                                                                                                                            
-                 long delay = first.getDelay(NANOSECONDS);                                                                                                                                     
-                 if (delay <= 0)                                                                                                                                                               
-                     return finishPoll(first);  // 到期了，出队执行                                                                                                                            
-                 if (leader != null)                                                                                                                                                           
-                     available.await();  // 已经有个 leader 在等，我是 follower，无限等                                                                                                        
-                 else {                                                                                                                                                                        
-                     thisThread = Thread.currentThread();                                                                                                                                      
-                     leader = thisThread;                                                                                                                                                      
-                     available.awaitNanos(delay);  // 我是 leader，精确等 delay 纳秒                                                                                                           
-                     leader = null;                                                                                                                                                            
-                 }                                                                                                                                                                             
-             }                                                                                                                                                                                 
-         }                                                                                                                                                                                     
-     } 
+    // 简化逻辑，实际在 java.util.concurrent.ScheduledThreadPoolExecutor 内部
+    public RunnableScheduledFuture<?> take() throws InterruptedException {
+        for (;;) {
+            RunnableScheduledFuture<?> first = queue[0]; // 二叉堆堆顶，最近要执行的任
+            if (first == null)
+                available.await();      // 队列空，所有线程都
+            else {
+                long delay = first.getDelay(NANOSECONDS)
+                if (delay <= 0)
+                    return finishPoll(first);  // 到期了，出队执
+                if (leader != null)
+                    available.await();  // 已经有个 leader 在等，我是 follower，无限
+                else {
+                    thisThread = Thread.currentThread()
+                    leader = thisThread;
+                    available.awaitNanos(delay);  // 我是 leader，精确等 delay 纳
+                    leader = null;
+                }
+            }
+        }
+    }
 ```
 
 - 当全部线程都繁忙时，计划的周期任务会*依次延迟执行*，也就是说如果有一个期望1S后执行的任务，由于前序任务的阻塞和耗时会导致后续任务不可控的延迟执行
