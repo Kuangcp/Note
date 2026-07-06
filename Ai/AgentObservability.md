@@ -10,12 +10,13 @@ categories:
 - 1. [Agent 观测](#agent-观测)
     - 1.1. [Langsmith](#langsmith)
     - 1.2. [Langfuse](#langfuse)
+        - 1.2.1. [评测](#评测)
     - 1.3. [Opik](#opik)
     - 1.4. [Phoenix](#phoenix)
     - 1.5. [Laminar](#laminar)
     - 1.6. [Helicone](#helicone)
 
-💠 2026-06-15 21:18:09
+💠 2026-07-06 20:26:37
 ****************************************
 # Agent 观测
 
@@ -36,6 +37,13 @@ LangChain 生态最佳搭配， 但是只有商业版本
 - 架构： TypeScript Next.js， ZK+CK，MinIO，PG，Redis, Langfuse Worker和Web
 
 支撑每天数百万级 Trace 的高并发场景
+
+### 评测
+Langfuse 已经不仅仅是一个监控（Tracing）平台，它在 LLM 评测（Evaluation） 领域的功能闭环度非常高。
+
+- 提示词实时微调与对比（Playground）
+- 离线黄金数据集评测（Datasets）
+- 全自动线上裁判（LLM-as-a-Judge / Scores）
 
 ## Opik
 > [Quickstart | Opik Documentation | Opik Documentation](https://www.comet.com/docs/opik/quickstart/?from=llm&utm_source=opik&utm_medium=github&utm_content=quickstart_link&utm_campaign=opik)  
