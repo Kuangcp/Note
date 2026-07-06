@@ -8,13 +8,23 @@ categories:
 💠
 
 - 1. [线程池](#线程池)
-    - 1.1. [ThreadPoolExecutor](#threadpoolexecutor)
-    - 1.2. [ScheduledThreadPoolExecutor STPE](#scheduledthreadpoolexecutor-stpe)
-        - 1.2.1. [STPE 实现原理](#stpe-实现原理)
-    - 1.3. [分支合并框架 Fork/Join](#分支合并框架-forkjoin)
-    - 1.4. [ExecutorService 接口](#executorservice-接口)
-    - 1.5. [Executors](#executors)
-    - 1.6. [CompletionService 接口](#completionservice-接口)
+    - 1.1. [基础概念](#基础概念)
+        - 1.1.1. [Executor 框架层级](#executor-框架层级)
+        - 1.1.2. [核心参数](#核心参数)
+        - 1.1.3. [队列选型](#队列选型)
+        - 1.1.4. [拒绝策略](#拒绝策略)
+        - 1.1.5. [线程池状态与 ctl 设计](#线程池状态与-ctl-设计)
+    - 1.2. [ThreadPoolExecutor 源码分析](#threadpoolexecutor-源码分析)
+        - 1.2.1. [execute() 主流程](#execute-主流程)
+        - 1.2.2. [Worker 内部类](#worker-内部类)
+        - 1.2.3. [钩子方法](#钩子方法)
+        - 1.2.4. [其他方法](#其他方法)
+    - 1.3. [ScheduledThreadPoolExecutor](#scheduledthreadpoolexecutor)
+        - 1.3.1. [STPE 实现原理](#stpe-实现原理)
+    - 1.4. [ForkJoinPool](#forkjoinpool)
+    - 1.5. [Executors 工厂方法](#executors-工厂方法)
+    - 1.6. [CompletionService](#completionservice)
+    - 1.7. [虚拟线程](#虚拟线程)
 - 2. [扩展](#扩展)
     - 2.1. [Spring ThreadPoolTaskExecutor](#spring-threadpooltaskexecutor)
     - 2.2. [Alibaba TransmittableThreadLocal](#alibaba-transmittablethreadlocal)
@@ -23,7 +33,7 @@ categories:
     - 3.2. [业务线程池](#业务线程池)
     - 3.3. [停止线程池](#停止线程池)
 
-💠 2026-07-06 19:42:58
+💠 2026-07-06 19:57:28
 ****************************************
 # 线程池
 
@@ -40,13 +50,168 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
         new LinkedBlockingQueue<>(), new BasicThreadFactory.Builder().namingPattern("test-%d").build());
 ```
 
-## ThreadPoolExecutor
+## 基础概念
+
+
+
+### Executor 框架层级
+
+> 是对以上线程池类型的一个基础封装，但是通常不会直接用ExecutorService 仅在单元测试类场景用起来方便，业务上还是用原始的线程池对象，精细的控制线程池的参数，因为业务是复杂多变的。
+
+顶层接口与核心方法：
+
+- `execute`：用于将任务提交给执行器执行
+    - 参数为Runable
+    - 无返回，对于调用方来说无法感知异常，但是异常栈会被输出到 System.err ，依然有迹可查
+- `submit`：功能同`execute`，但该方法可以返回值或抛出异常 Future 对象
+    - 参数为Callable
+    - 返回的Future对象如果不调用get方法，任务的异常栈在系统中**没有任何痕迹**
+
+- `shutdown()`：用于关闭执行器资源，执行器会拒绝后面的任务提交，并等待线程池中的任务结束后关闭资源
+    - 应用关闭前尽量显式调用该方法关闭所有的线程池，避免资源泄漏
+- `shutdownNow()`：立即关闭执行器，返回等待队列的任务，正在执行的线程将收到interupt但是不一定会停止
+- `isShutdown()`：是否调用过`shutdown()`
+- `awaitTermination(long timeout, TimeUnit unit)`：该方法会阻塞调用线程，等待执行器内任务完成直到超时
+
+- `invokeAny(Collection<? extends Callable<T>> tasks)`：返回 任意的第一个完成任务的返回值
+- `invokeAll(Collection<? extends Callable<T>> tasks)`：返回所有任务对应的Future对象
+
+> 注意
+
+上述的 execute 和 submit 行为只针对 `ThreadPoolExecutor`. 对于 ScheduledThreadPoolExecutor 来说，execute行为不一样， execute提交的任务 抛出异常时也是**没有任何痕迹**
+
+### 核心参数
+
+```java
+new ThreadPoolExecutor(
+    int corePoolSize,           // 核心线程数，即使空闲也不会回收（allowCoreThreadTimeOut=true 除外）
+    int maximumPoolSize,        // 最大线程数，超出 core 的线程在 keepAliveTime 内空闲则回收
+    long keepAliveTime,         // 非核心线程的空闲存活时间
+    TimeUnit unit,              // 时间单位
+    BlockingQueue<Runnable> workQueue,   // 任务队列（核心线程忙时任务先入队）
+    ThreadFactory threadFactory,         // 线程工厂，务必自定义命名，方便排查
+    RejectedExecutionHandler handler     // 队列满且线程数达 maximumPoolSize 时触发
+)
+```
+
+- **任务提交流程**：新任务到来 → 线程数 < corePoolSize ? 创建核心线程 : 尝试入队 → 入队成功 ? 等待执行 : 线程数 < maximumPoolSize ? 创建非核心线程 : 执行拒绝策略
+- **核心线程 vs 非核心线程**：本质没有区别，只是核心线程在空闲时默认不回收。`prestartAllCoreThreads()` 可提前预热全部核心线程
+- **keepAliveTime 作用边界**：只对非核心线程生效；若开启 `allowCoreThreadTimeOut(true)`，核心线程空闲超时后同样回收
+
+### 队列选型
+
+| 队列 | 有界 | 容量行为 | 适用场景 |
+|------|------|----------|----------|
+| `ArrayBlockingQueue` | 是 | 必须指定 capacity，满后阻塞 | 资源有限、需背压控制的固定负载 |
+| `LinkedBlockingQueue` | 可选 | 不指定则为 `Integer.MAX_VALUE`（近似无界） | 量大但能自控速率，JDK Executors 默认选用 |
+| `SynchronousQueue` | 是 | 容量为 0，没有缓存，生产必须等待消费 | `newCachedThreadPool` 所用，任务瞬时配对执行 |
+| `PriorityBlockingQueue` | 无界 | 按优先级出队（任务需实现 Comparable） | 任务有优先顺序的场景 |
+| `DelayedWorkQueue` | 无界 | 二叉堆实现，按延迟时间出队 | `ScheduledThreadPoolExecutor` 专用 |
+
+- **选型核心原则**：队列越有界越安全（快速失败），队列越无界越危险（OOM）
+- **搭配规律**：
+  - 无界队列 + corePoolSize = maximumPoolSize → 等效固定线程数，队列无限堆积
+  - 有界队列 + maximumPoolSize > corePoolSize → 队列满后扩容线程，兼顾吞吐和资源
+  - SynchronousQueue + large maximumPoolSize → 来一个任务立刻创建/借用线程，即时响应但消耗大
+
+### 拒绝策略
+
+当 队列满 + 线程数达到 maximumPoolSize 时触发：
+
+| 策略 | 行为 | 适用场景 |
+|------|------|----------|
+| `AbortPolicy`（默认） | 抛出 `RejectedExecutionException` | 必须感知失败，上游可重试或告警 |
+| `CallerRunsPolicy` | 由提交任务的线程（调用方）直接执行 | 自然削峰，降低提交速率（注意调用方线程阻塞风险） |
+| `DiscardPolicy` | 静默丢弃新任务，无异常 | 不重要的非关键任务（日志、统计） |
+| `DiscardOldestPolicy` | 丢弃队列中最旧的任务，重试提交新任务 | 偏向新任务的场景（如实时数据刷新） |
+
+- **自定义策略**：实现 `RejectedExecutionHandler` 接口，可结合监控打点、告警通知、降级到备用线程池
+- **常见思路**：`CallerRunsPolicy` + 有界队列 是实现背压的最轻量方案，配合监控可在系统过载时自然降速
+
+### 线程池状态与 ctl 设计
+
+`ThreadPoolExecutor` 用 `AtomicInteger ctl` 打包两个量——**高 3 位存线程池状态，低 29 位存 worker 数量**，通过 CAS 保证原子性，避免额外锁。
+
+| 状态 | 值(高3位) | 含义 |
+|------|-----------|------|
+| RUNNING | 111 | 接收新任务 + 处理队列任务 |
+| SHUTDOWN | 000 | 不接收新任务，但处理队列中剩余任务 |
+| STOP | 001 | 不接收新任务，不处理队列，中断正在执行的任务 |
+| TIDYING | 010 | 过渡态，worker 为 0，即将调用 `terminated()` |
+| TERMINATED | 011 | `terminated()` 执行完毕，线程池彻底终止 |
+
+- **状态流转**：`RUNNING → SHUTDOWN (shutdown())` / `RUNNING → STOP (shutdownNow())` → `TIDYING → TERMINATED`
+- **设计意图**：将状态和计数压缩到一个 int，用 CAS 一次操作即可同时判断状态和增减线程数，避免多变量竞争
+
+## ThreadPoolExecutor 源码分析
 > 最常用的线程池对象
+
+### execute() 主流程
+
+三步判断，源码精简如下：
+
+```java
+int c = ctl.get();
+// 1. 工作线程 < corePoolSize → 创建核心线程
+if (workerCountOf(c) < corePoolSize) {
+    if (addWorker(command, true)) return;
+    c = ctl.get();
+}
+// 2. 线程池 RUNNING 且入队成功
+if (isRunning(c) && workQueue.offer(command)) {
+    int recheck = ctl.get();
+    // 二次检查：防止入队期间线程池被 shutdown，此时拒绝任务
+    if (!isRunning(recheck) && remove(command))
+        reject(command);
+    // 线程池可能刚好线程数为 0，需要兜底补一个线程
+    else if (workerCountOf(recheck) == 0)
+        addWorker(null, false);
+}
+// 3. 入队失败（队列满）→ 尝试创建非核心线程，失败则拒绝
+else if (!addWorker(command, false))
+    reject(command);
+```
+
+关键 ctl 位运算常量：`CAPACITY = (1<<29)-1`, `COUNT_BITS=29`, `workerCountOf(c) = c & CAPACITY`, `runStateOf(c) = c & ~CAPACITY`。
+
+### Worker 内部类
+
+```java
+private final class Worker extends AbstractQueuedSynchronizer implements Runnable {
+    final Thread thread;       // Worker 绑定的线程
+    Runnable firstTask;        // 初始任务，可 null（从队列取）
+    volatile long completedTasks; // 已完成任务计数
+}
+```
+
+- **AQS 的作用**：不是控制任务互斥，而是标记 Worker 线程自身的运行状态（`lock()` = 正在执行任务，`unlock()` = 空闲）。`interruptIdleWorkers()` 只中断未持有锁的空闲线程。
+- **生命周期**：
+  1. `addWorker()` 创建 Worker 并 `thread.start()`
+  2. 线程调用 `runWorker(this)`：先执行 `firstTask`，再循环 `getTask()` 从队列取任务
+  3. `getTask()` 返回 null 或任务执行异常 → `processWorkerExit()` 退出，后续根据条件决定是否补新线程
+- `getTask()` 的核心逻辑：根据 `allowCoreThreadTimeOut` 和当前 worker 数量，决定用 `poll(keepAliveTime)` 还是 `take()` 取任务，返回 null 则触发线程回收
+
+### 钩子方法
+
+`ThreadPoolExecutor` 提供了三个 protected 钩子，继承后覆盖即可无侵入注入逻辑：
+
+```java
+beforeExecute(Thread t, Runnable r)  // 任务执行前，可注入 TraceId、记录开始时间
+afterExecute(Runnable r, Throwable t) // 任务执行后（即使任务抛异常也会调用，t 可能为 null）
+terminated()                          // 线程池完全终止后回调，适合资源清理、告警通知
+```
+
+- `afterExecute` 的 `Throwable t` 参数在任务正常返回时为 null，任务被中断时也可能为 null，要获取原始异常需从 `submit` 返回的 Future 中手动捕获
+- 典型用法：`beforeExecute` 设上下文 + 开始计时；`afterExecute` 算耗时、清上下文、记录慢任务或异常
+
+### 其他方法
 
 - allowCoreThreadTimeOut() 允许idle的核心线程回收（依赖 keepAliveTime 值 ），默认false
 - prestartAllCoreThreads 和 prestartAllCoreThreads 创建线程池对象时预热创建出所有core线程，默认是收到任务才逐步创建
 
-## ScheduledThreadPoolExecutor STPE
+****************************************
+
+## ScheduledThreadPoolExecutor
 - 线程池的大小可以预定义， 也可自适应
 - 所安排的任务可以定期执行，也可只运行一次
 - STPE 扩展了 ThreadPoolExecutor 类，很相似但不具备定期调度能力
@@ -119,36 +284,15 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
     - 如果任务的特点是IO型的话可以调大核心线程数解决或者上虚拟线程
     - 但是如果是CPU型就只能水平扩展节点了做分布式任务消费
 
-************************
-## 分支合并框架 Fork/Join
-> [Note： Fork Join](/Java/AdvancedLearning/Concurrency/ForkAndJoin.md)
+****************************************
 
-## ExecutorService 接口
-> [Github Demo](https://github.com/Kuangcp/JavaBase/tree/master/concurrency/src/main/java/thread/pool)
+## ForkJoinPool
+> 分支合并框架
+> [详情: Fork Join](/Java/AdvancedLearning/Concurrency/ForkAndJoin.md)
 
-> 是对以上线程池类型的一个基础封装，但是通常不会直接用ExecutorService 仅在单元测试类场景用起来方便，业务上还是用原始的线程池对象，精细的控制线程池的参数，因为业务是复杂多变的。
+****************************************
 
-- `execute`：用于将任务提交给执行器执行
-    - 参数为Runable
-    - 无返回，对于调用方来说无法感知异常，但是异常栈会被输出到 System.err ，依然有迹可查
-- `submit`：功能同`execute`，但该方法可以返回值或抛出异常 Future 对象
-    - 参数为Callable
-    - 返回的Future对象如果不调用get方法，任务的异常栈在系统中**没有任何痕迹**
-
-- `shutdown()`：用于关闭执行器资源，执行器会拒绝后面的任务提交，并等待线程池中的任务结束后关闭资源
-    - 应用关闭前尽量显式调用该方法关闭所有的线程池，避免资源泄漏
-- `shutdownNow()`：立即关闭执行器，返回等待队列的任务，正在执行的线程将收到interupt但是不一定会停止
-- `isShutdown()`：是否调用过`shutdown()`
-- `awaitTermination(long timeout, TimeUnit unit)`：该方法会阻塞调用线程，等待执行器内任务完成直到超时
-
-- `invokeAny(Collection<? extends Callable<T>> tasks)`：返回 任意的第一个完成任务的返回值
-- `invokeAll(Collection<? extends Callable<T>> tasks)`：返回所有任务对应的Future对象
-
-> 注意
-
-上述的 execute 和 submit 行为只针对 `ThreadPoolExecutor`. 对于 ScheduledThreadPoolExecutor 来说，execute行为不一样， execute提交的任务 抛出异常时也是**没有任何痕迹**  
-
-## Executors
+## Executors 工厂方法
 > 该处讲述的方法都为`java.util.concurrent.Executors`的方法 (静态工厂模式)
 
 - `newFixedThreadPool(int nThreads)`：用于创建固定大小的线程池
@@ -196,21 +340,35 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
     - 它是线程池类`ForkJoinPool`的扩展
     - 该线程池能够合理的使用CPU进行对任务操作（并行操作），所以适合使用在很耗时的任务中
     - 创建方式：`ExecutorService executor = Executors.newWorkStealingPool();`
-- `unconfigurableExecutorService()` 将线程池包装为不可修改参数，只能提交和停止的线程池对象
-- `newVirtualThreadPerTaskExecutor()` JDK21 虚拟线程池
 
-## CompletionService 接口
+- `unconfigurableExecutorService()` 将线程池包装为不可修改参数，只能提交和停止的线程池对象
+
+> ⚠️ 安全陷阱：`newFixedThreadPool` / `newSingleThreadExecutor` 内部使用无界 `LinkedBlockingQueue`，任务堆积可能导致 OOM；`newCachedThreadPool` 线程数无上限，高并发下可能创建大量线程导致 OOM。**生产环境建议直接使用 `ThreadPoolExecutor` 构造器显式指定有界队列和拒绝策略。**
+
+****************************************
+
+## CompletionService
 > 实现类 ExecutorCompletionService JavaDoc上有使用示例
 
-- submit
-- take
-- poll
+- submit：提交任务
+- take：阻塞获取下一个完成的任务结果
+- poll：非阻塞获取下一个完成的任务结果
 
-> [TimeoutExecPoolTest](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/situation/timoutpool/TimeoutExecPoolTest.java)`限时并行消费任务获取结果，时间到期则丢弃所有未完成的任务`  
+> [TimeoutExecPoolTest](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/situation/timoutpool/TimeoutExecPoolTest.java)`限时并行消费任务获取结果，时间到期则丢弃所有未完成的任务`
 
-************************
+****************************************
+
+## 虚拟线程
+> JDK21 `Executors.newVirtualThreadPerTaskExecutor()`
+
+- 每个任务创建一个轻量级虚拟线程，适合 IO 密集型高并发场景
+- 与平台线程池的本质差异：虚拟线程由 JVM 调度而非 OS，阻塞不占据平台线程
+- TODO 展开：适用场景对比、与 ThreadPoolExecutor 的选型决策
+
+****************************************
 
 # 扩展
+
 ## Spring ThreadPoolTaskExecutor
 > Spring的线程池封装实现
 
@@ -218,21 +376,22 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 - setWaitForTasksToCompleteOnShutdown 等待线程正常执行完才退出全部线程
 
 ## Alibaba TransmittableThreadLocal
-> [alibaba/transmittable-thread-local](https://github.com/alibaba/transmittable-thread-local)  
+> [alibaba/transmittable-thread-local](https://github.com/alibaba/transmittable-thread-local)
 
 > Tips
 - TTL 2.12.x 池内线程抛出 NoSuchMethodError时， log.error 看不到异常栈，只有message ，debug断点住 在IDE才看到栈
 
-************************
+****************************************
+
 # 实践
 目标： 合理利用资源，让线程池安全可控的消费任务
 
-> [About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing) | [About Pool Sizing in distributed environments / microservices](https://github.com/brettwooldridge/HikariCP/issues/1023)`如何设置数据库连接池线程数`  
+> [About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing) | [About Pool Sizing in distributed environments / microservices](https://github.com/brettwooldridge/HikariCP/issues/1023)`如何设置数据库连接池线程数`
 
-> [ 合理使用线程池以及线程变量 ](https://mp.weixin.qq.com/s/BdVqvm2wLNv05vMTieevMg)  
-> [ExecutorService - 10 tips and tricks](https://nurkiewicz.com/2014/11/executorservice-10-tips-and-tricks.html)  
+> [ 合理使用线程池以及线程变量 ](https://mp.weixin.qq.com/s/BdVqvm2wLNv05vMTieevMg)
+> [ExecutorService - 10 tips and tricks](https://nurkiewicz.com/2014/11/executorservice-10-tips-and-tricks.html)
 
-[Tomcat 线程池](/Java/Ecosystem/Servlet/TomcatDesign.md#线程池)  
+[Tomcat 线程池](/Java/Ecosystem/Servlet/TomcatDesign.md#线程池)
 
 - 增加全局异常处理 `Thread.setUncaughtExceptionHandler()`, 或手动catch任务块全部代码 避免异常被吞 [测试代码](https://github.com/Kuangcp/JavaBase/blob/master/concurrency/src/test/java/thread/pool/PoolExceptionTest.java)
 - 避免局部线程池，容易遗忘线程资源回收，注意线程是GCRoot对象
@@ -260,23 +419,23 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
 > 公式3：coreSize = tps * C , maxSize = tps * C * (1.7~2)
 - 依据tps和耗时来计算时刻内需要占用多少线程，这种适合资源充足时为了尽量降低等待时间
 
-************************
+****************************************
 
 - [Java线程池实现原理及其在美团业务中的实践](https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html)
     - 场景设计具有一定的开拓性，将无法预估的业务负载通过监控和动态伸缩来及时发现和应对异常。
     - [线程池动态监控](https://github.com/dromara/dynamic-tp)`支持动态修改和监控告警`
 
-[根据CPU核心数确定线程池并发线程数](https://www.cnblogs.com/dennyzhangdd/p/6909771.html)  
+[根据CPU核心数确定线程池并发线程数](https://www.cnblogs.com/dennyzhangdd/p/6909771.html)
 [如何设置线程池参数？](https://www.cnblogs.com/thisiswhy/p/12690630.html)
 [线程池实时管理与监控工具的实现与思考](https://www.jianshu.com/p/6f6e2bcb8128)
 
-[线程池如何监控，才能帮助开发者快速定位线上错误？](https://heapdump.cn/article/4012121)`将基准数据采集到数据库表里`  
+[线程池如何监控，才能帮助开发者快速定位线上错误？](https://heapdump.cn/article/4012121)`将基准数据采集到数据库表里`
 
-************************
+****************************************
 
 ## 业务线程池
-在实际业务系统中，出于不同业务的吞吐量能力，故障影响，保障优先级 等方面的考虑，通常会对不同的业务模块划分不同的线程池，并依据对应的需求设置不同的参数和策略。  
-例如： HTTP客户端线程池，WEB服务器NIO线程池，缓存同步线程池，Websocket消息推送线程池 等等。  
+在实际业务系统中，出于不同业务的吞吐量能力，故障影响，保障优先级 等方面的考虑，通常会对不同的业务模块划分不同的线程池，并依据对应的需求设置不同的参数和策略。
+例如： HTTP客户端线程池，WEB服务器NIO线程池，缓存同步线程池，Websocket消息推送线程池 等等。
 
 基于以上的设计考量，会遇到一些问题
 1. 固定的线程参数无法应对动态的业务变化。 
@@ -298,7 +457,7 @@ new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS,
         2. **运行时熔断隔离**：结合 Sentinel / Resilience4j 对每个线程池设置信号量熔断，当某业务大量超出线程池容量时快速失败，避免饥饿扩散。
         3. **定期 review 线程池职责矩阵**：建立一张「线程池 → 业务模块 → 核心参数 → 所属服务」的映射表，在需求变更时同步审视是否有跨池混用的风险。
 
-************************
+****************************************
 
 ## 停止线程池
 > 如何实现JVM停止时等待线程池中任务执行完成 即 优雅停机

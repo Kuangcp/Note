@@ -30,7 +30,7 @@ categories:
     - 5.1. [Quasar](#quasar)
     - 5.2. [Virtual Threads](#virtual-threads)
 
-💠 2026-06-09 10:30:46
+💠 2026-07-06 19:57:28
 ****************************************
 # Java线程
 > [个人学习代码](https://github.com/Kuangcp/JavaBase/tree/master/concurrency/src/main/java/thread)
@@ -216,6 +216,7 @@ ThreadLocal 在虚拟线程分叉（Fork）出子线程时，需要昂贵的 Cop
 ## CompletableFuture
 > [CompletableFutureTest](https://github.com/Kuangcp/JavaBase/blob/master/java8/src/test/java/com/github/kuangcp/future/CompletableFutureTest.java)  
 
+> 异步编排与组合，解决跨线程池的依赖和顺序问题, 但是最终解决方案是 结构化并发
 
 | 特性 | get() | join() |
 |---|---|---|
