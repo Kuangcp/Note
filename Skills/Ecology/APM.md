@@ -14,6 +14,7 @@ categories:
     - 2.3. [日志管理 (Logging)](#日志管理-logging)
 - 3. [技术标准与协议](#技术标准与协议)
     - 3.1. [OpenTelemetry](#opentelemetry)
+        - 3.1.1. [基数](#基数)
     - 3.2. [OpenMetrics](#openmetrics)
 - 4. [全栈 APM 平台](#全栈-apm-平台)
     - 4.1. [SkyWalking](#skywalking)
@@ -28,7 +29,7 @@ categories:
     - 7.3. [Prometheus Exporter](#prometheus-exporter)
     - 7.4. [OpenTelemetry Collector](#opentelemetry-collector)
 
-💠 2026-03-11 14:17:09
+💠 2026-07-07 14:28:06
 ****************************************
 
 # 可观测性基础概念
@@ -66,6 +67,8 @@ categories:
 
 # 技术标准与协议
 
+
+
 ## OpenTelemetry
 > [Github: OpenTelemetry](https://github.com/open-telemetry)
 
@@ -80,6 +83,49 @@ categories:
 - **API/SDK**：应用埋点库
 - **Collector**：采集网关（接收/处理/导出）
 - **Protocol**：OTLP 传输协议（gRPC/HTTP）
+
+### 基数
+在时序数据库（Prometheus、VictoriaMetrics、ClickHouse 等）中，每个唯一的指标组合（metric + label set）都会生成一个时间序列（Time Series）
+在 Prometheus 中，一个指标的 cardinality = 该指标所有 label 组合的唯一值数量。当这个值超过 10万-100万，大多数 TSDB 都会开始"窒息"。
+
+OTel 明确将 Span.name 定义为操作名称（Operation Name），要求：
+- 语义稳定：不随请求参数变化
+- 范围有限：整个系统的 Span name 数量应控制在数百个以内
+- 技术导向：描述"做了什么"，而非"为谁做的"或"结果是什么"
+
+例如
+
+    "llm.chat"              # 调用大模型聊天接口
+    "llm.embedding"         # 生成向量嵌入
+    "db.query"              # 数据库查询
+    "http.get"              # HTTP GET 请求
+    "redis.set"             # Redis 写入
+
+> 为什么 Span Name 不能放业务语义？
+
+| 问题       | 说明                                              |
+| -------- | ----------------------------------------------- |
+| **指标爆炸** | "意图识别"、"药品分类"、"处方审核"... 每新增一个业务场景就多一个 Span name |
+| **无法聚合** | 你想看"所有 LLM 调用的平均延迟"，但名字各不相同，无法 `group by`       |
+| **告警困难** | 无法设置"LLM 调用 P99 > 2s 告警"，因为每个业务场景是独立的指标         |
+| **采样失效** | 基于 Span name 的尾采样策略会失效（如只采样错误率高的操作）             |
+
+Span.name     →  技术操作类型（低基数，用于聚合、告警、拓扑）
+Span.attributes → 业务上下文（高基数，用于查询、过滤、下钻）
+
+> 但是如果完全不放语义，在监控系统里看到的就只有抽象的，模型调用，工具调用 非常不直观。
+
+所以需要取舍，可以保持少量的工具都是独立的span name，数量不要太多就不会影响监控系统的查询性能
+
+| 维度       | 低基数（用于索引/聚合）                  | 高基数（用于查询过滤）               |
+| -------- | ----------------------------- | ------------------------- |
+| **典型字段** | Span name, HTTP method, 状态码分类 | 用户ID, 订单号, 具体错误信息, 业务场景描述 |
+| **存储位置** | 时间序列索引、聚合预计算                  | 原始日志、Span attributes、日志正文 |
+| **查询性能** | 毫秒级聚合                         | 需要扫描原始数据，较慢               |
+| **数据量**  | 可控（通常 < 1万）                   | 可能无限增长                    |
+| **成本**   | 低（内存索引）                       | 高（原始存储）                   |
+| **最佳实践** | 用于 Dashboard、告警、SLO           | 用于故障排查、业务分析、审计            |
+
 
 ## OpenMetrics
 Prometheus 指标格式的开放标准，云原生监控的事实标准
