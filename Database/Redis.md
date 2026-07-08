@@ -15,7 +15,7 @@ categories:
     - 2.1. [Windows](#windows)
     - 2.2. [Linux](#linux)
         - 2.2.1. [Docker 方式](#docker-方式)
-        - 2.2.2. [解压即用](#解压即用)
+        - 2.2.2. [编译安装](#编译安装)
     - 2.3. [Redis配置文件](#redis配置文件)
 - 3. [数据类型](#数据类型)
     - 3.1. [String](#string)
@@ -51,7 +51,7 @@ categories:
     - 10.2. [缓存击穿](#缓存击穿)
     - 10.3. [缓存穿透](#缓存穿透)
 
-💠 2025-09-04 14:55:42
+💠 2026-07-08 16:02:50
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -83,10 +83,7 @@ categories:
 ### Docker 方式
 > [docker-install-redis](/Linux/Container/DockerSoft.md#redis)
 
-### 解压即用
-> [下载我打包好的(仅适用于Linux平台)](https://github.com/Kuangcp/Configs/tree/master/Database/redis)  
-> [4.0.2](http://cloud.kuangcp.top/redis-4.0.2.zip) | [3.2.8](http://cloud.kuangcp.top/redis-3.2.8.zip)
-
+### 编译安装
 `个人配置步骤:`
 1. 从源码编译: [官网下载源码](https://redis.io/)
     - src下执行`make`进行编译，编译完成后，复制src目录中的`redis-cli redis-server`就可以用了

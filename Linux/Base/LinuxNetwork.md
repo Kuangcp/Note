@@ -67,7 +67,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2026-07-08 14:28:11
+💠 2026-07-08 16:02:50
 ****************************************
 # Linux网络管理
 
@@ -781,6 +781,8 @@ _客户端_
 ```
 - `sslocal -c /etc/ss/json`
 - 设置代理是1080端口即可
+
+> [shadowsocks/shadowsocks-rust: A Rust port of shadowsocks](https://github.com/shadowsocks/shadowsocks-rust)  
 
 ### OpenVPN
 > [arch wiki](https://wiki.archlinux.org/index.php/OpenVPN)

@@ -43,7 +43,7 @@ categories:
     - 7.5. [nuster](#nuster)
 - 8. [Tips](#tips)
 
-💠 2026-06-14 01:06:31
+💠 2026-07-08 16:02:50
 ****************************************
 # Nginx
 
@@ -268,7 +268,7 @@ _配置统一出口_
         server_name web.me;
 
         # 主要就是添加了这一块
-        ssl on;
+        ssl on; # 1.15.0 起弃用  仅使用 listen 443 ssl;
         ssl_certificate  /data/https/server.crt;
         ssl_certificate_key  /data/https/server.key;
         

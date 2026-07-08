@@ -12,7 +12,7 @@ categories:
 - 2. [案例实践项目](#案例实践项目)
     - 2.1. [医疗领域](#医疗领域)
 
-💠 2025-05-09 14:24:14
+💠 2026-07-08 16:02:50
 ****************************************
 # 知识图谱
 KnowledgeGraph 简称 KG
@@ -29,6 +29,8 @@ KnowledgeGraph 简称 KG
 
 > [知识图谱入门](https://klose911.github.io/html/ml/knowledge-graph/knowledge-graph.html)  
 
+GraphRAG 2024 年中 Microsoft 发布，KG+LLM 最重要的整合
+
 ## 存储实现
 > [Note: 图数据库](/Database/Graph.md)  
 
@@ -40,6 +42,8 @@ KnowledgeGraph 简称 KG
 
 > [RomanGao/QAonMilitaryKG](https://github.com/RomanGao/QAonMilitaryKG)`MongoDB存储`  
 > [liuhuanyong/ChainKnowledgeGraph: 上市公司图谱](https://github.com/liuhuanyong/ChainKnowledgeGraph?tab=readme-ov-file)  
+
+
 
 ## 医疗领域
 > [Case Study: Turning Doctor Transcripts into Temporal Medical Record Knowledge Graphs](https://medium.com/enterprise-rag/case-study-turning-doctor-transcripts-into-temporal-medical-record-knowledge-graphs-cf624d4927eb)`解析病历数据入图数据库，自然语言提问，LLM+RAG回答`  

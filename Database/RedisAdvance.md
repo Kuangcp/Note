@@ -71,7 +71,7 @@ categories:
 - 8. [命令实现原理](#命令实现原理)
     - 8.1. [Scan](#scan)
 
-💠 2026-01-16 15:35:48
+💠 2026-07-08 16:02:50
 ****************************************
 # Redis底层数据结构
 ## SDS
@@ -444,6 +444,8 @@ typedef struct redisObject {
 - **REDIS_HASH**：哈希对象
 
 ### 编码方式（encoding）
+
+Redis 7.0+ 已用 listpack 替代 ziplist
 
 不同对象类型可以使用不同的编码方式：
 

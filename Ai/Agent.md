@@ -22,7 +22,7 @@ categories:
     - 3.3. [ACP](#acp)
 - 4. [渲染](#渲染)
 
-💠 2026-07-05 17:51:48
+💠 2026-07-08 16:02:50
 ****************************************
 
 # Agent
@@ -273,12 +273,13 @@ data: /mcp-servers/debug?sessionId=ffe85774-6933-48e7-90e7-989d427c6e47
 服务端会响应MCP的三要素的列表：Prompts，Tools，Resources
 
 ## A2A
+A2A (Agent-to-Agent) —— “Agent ↔ Agent（跨平台/云端）”,  由谷歌等公司推动的跨平台智能体外交协议
+
+
+## ACP
 ACP (Agent Communication Protocol) —— “Agent ↔ Agent（本地/边缘）”, 由 IBM (BeeAI) 等大厂提出的智能体通信协议
 
 它是局域网内 Agent 通信协议
-
-## ACP
-A2A (Agent-to-Agent) —— “Agent ↔ Agent（跨平台/云端）”,  由谷歌等公司推动的跨平台智能体外交协议
 
 
 # 渲染
