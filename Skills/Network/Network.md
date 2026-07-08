@@ -60,23 +60,21 @@ categories:
         - 5.6.1. [Java](#java)
 - 6. [网络工具](#网络工具)
     - 6.1. [代理工具](#代理工具)
-        - 6.1.1. [Clash](#clash)
-        - 6.1.2. [Sing-box](#sing-box)
-        - 6.1.3. [Fiddler](#fiddler)
-        - 6.1.4. [Charles](#charles)
-        - 6.1.5. [mitmproxy](#mitmproxy)
-        - 6.1.6. [tinyproxy](#tinyproxy)
-        - 6.1.7. [Mars](#mars)
-        - 6.1.8. [camilla](#camilla)
-        - 6.1.9. [dev-proxy](#dev-proxy)
-        - 6.1.10. [ProxyPin](#proxypin)
-        - 6.1.11. [eCapture](#ecapture)
-        - 6.1.12. [Wireshark](#wireshark)
+        - 6.1.1. [Fiddler](#fiddler)
+        - 6.1.2. [Charles](#charles)
+        - 6.1.3. [mitmproxy](#mitmproxy)
+        - 6.1.4. [tinyproxy](#tinyproxy)
+        - 6.1.5. [Mars](#mars)
+        - 6.1.6. [camilla](#camilla)
+        - 6.1.7. [dev-proxy](#dev-proxy)
+        - 6.1.8. [ProxyPin](#proxypin)
+        - 6.1.9. [eCapture](#ecapture)
+        - 6.1.10. [Wireshark](#wireshark)
 - 7. [Tips](#tips)
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2026-07-02 15:36:28
+💠 2026-07-08 14:28:11
 ****************************************
 # 网络
 > [Java 网络](/Java/AdvancedLearning/JavaNetwork.md)  
@@ -619,21 +617,6 @@ customDomains = ["公网域名 xxx Nginx配置"]
 > [whistle](https://github.com/avwo/whistle) `nodejs 平台的抓包工具`  
 > [hengyoush/kyanos: Visualize the time packets spend in the kernel, watch & analyze in command line.](https://github.com/hengyoush/kyanos)  
 > [Intercept, debug & build with HTTP](https://httptoolkit.com/)  
-
-### Clash
-[Clash Fork](https://github.com/Ieooo/clash) [DryPeng/clashT](https://github.com/DryPeng/clashT)  
-
-> [MetaCubeX/mihomo](https://github.com/MetaCubeX/mihomo) | [Clash Meta](https://wiki.metacubex.one/)  新版本内核
-
-https://github.com/clash-verge-rev/clash-verge-rev
-
-> [haishanh/yacd: Yet Another Clash Dashboard](https://github.com/haishanh/yacd)  
-
-### Sing-box
-
-sing-box-glibc-bin
-
-https://github.com/xinggaoya/sing-box-windows/releases
 
 ### Fiddler 
 > [fiddler](https://www.telerik.com/fiddler)`由C#开发, 自定义脚本为C#`  

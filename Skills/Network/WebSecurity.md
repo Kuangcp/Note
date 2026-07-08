@@ -33,7 +33,7 @@ categories:
     - 3.5. [XSS](#xss)
     - 3.6. [Java JNDI注入攻击](#java-jndi注入攻击)
 
-💠 2026-05-23 16:01:06
+💠 2026-07-08 14:28:11
 ****************************************
 
 # Web应用网络安全
@@ -205,20 +205,28 @@ CC攻击是攻击者借助代理服务器生成指向受害主机的合法请求
 > [SYN Flooding](https://github.com/Samsar4/Ethical-Hacking-Labs/blob/master/9-Denial-of-Service/1-SYN-Flooding.md)
 
 - hping： Sync攻击 `hping -S -p 80 --flood 192.168.1.234` 
-- 修改文件 `sudo vim /etc/sysctl.conf `
-    - 将注释取消 修改值: `net.ipv4.tcp_syncookies = 0` 就能提高并发总量,但是并发量还是不能提高
 
 ```conf
-    net.ipv4.tcp_syncookies = 0  
-    #此参数是为了防止洪水攻击的，但对于大并发系统，要禁用此设置
-    net.ipv4.tcp_max_syn_backlog=1024
-    #参数决定了SYN_RECV状态队列的数量，一般默认值为512或者1024，即超过这个数量，系统将不再接受新的TCP连接请求，一定程度上可以防止系统资源耗尽。可根据情况增加该值以接受更多的连接请求。
-    net.ipv4.tcp_tw_recycle=0
-    #参数决定是否加速TIME_WAIT的sockets的回收，默认为0。
-    net.ipv4.tcp_tw_reuse=0
-    #参数决定是否可将TIME_WAIT状态的sockets用于新的TCP连接，默认为0。
-    net.ipv4.tcp_max_tw_buckets
-    #参数决定TIME_WAIT状态的sockets总数量，可根据连接数和系统资源需要进行设置。 
+    # === SYN 队列相关 ===
+    net.ipv4.tcp_syncookies = 1              # 必须启用，防 SYN Flood
+    net.ipv4.tcp_max_syn_backlog = 65536     # SYN 队列长度
+    net.core.somaxconn = 65536               # 全连接队列长度（listen backlog）
+    net.core.netdev_max_backlog = 65536      # 网卡队列包处理上限
+
+    # === TIME_WAIT 相关 ===
+    net.ipv4.tcp_tw_reuse = 1                # 允许客户端复用 TIME_WAIT（需 timestamps）
+    net.ipv4.tcp_timestamps = 1              # 必须开启，tw_reuse 依赖此
+    # net.ipv4.tcp_tw_recycle = 0           # ❌ 已废弃，4.12+ 内核直接删除这行
+
+    # === 连接保活与超时 ===
+    net.ipv4.tcp_keepalive_time = 1200       # TCP 保活探测间隔（秒）
+    net.ipv4.tcp_keepalive_probes = 5        # 保活探测次数
+    net.ipv4.tcp_keepalive_intvl = 15        # 保活探测间隔（秒）
+
+    # === 性能优化 ===
+    net.ipv4.tcp_fin_timeout = 30            # FIN_WAIT_2 超时时间
+    net.ipv4.tcp_max_orphans = 262144        # 孤儿连接上限
+    # net.ipv4.tcp_max_tw_buckets = ...     # 一般不改，用默认值
 ```
 
 ************************

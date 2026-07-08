@@ -54,6 +54,8 @@ categories:
         - 3.5.2. [shadowsocks](#shadowsocks)
         - 3.5.3. [OpenVPN](#openvpn)
         - 3.5.4. [Fortivpn](#fortivpn)
+        - 3.5.5. [Clash](#clash)
+        - 3.5.6. [Sing-box](#sing-box)
     - 3.6. [代理](#代理)
         - 3.6.1. [端口转发](#端口转发)
         - 3.6.2. [proxychains](#proxychains)
@@ -65,7 +67,7 @@ categories:
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2026-06-28 19:33:03
+💠 2026-07-08 14:28:11
 ****************************************
 # Linux网络管理
 
@@ -732,16 +734,30 @@ Manjaro 中 ftp 命令来自 inetutils 包
     - netcat 具有同样效果 `nc -v -z -n ip port`
 
 ## VPN
+
+即使开了VPN也可能会有以下情况泄漏真实ip
+
+- DNS泄漏 检查： [DNS leak test](https://www.dnsleaktest.com/) 或者 `curl -s https://ipinfo.io/json`
+- 代理不支持 UDP QUIC：现代的HTTP3 底层走的是UDP，如果不走vpn一样暴露真实ip
+- WebRTC 泄露： 浏览器为了视频通话，会直接获取你的本地 IP，绕过代理。*最简单就是禁用这个功能*
+- 代理规则配置问题： 如果是规则模式，然后一个站点可能主域名规则命中了，但是边缘的子域名走了直连，一样暴露了真实ip
+- 本地缓存问题：如果开VPN前访问了主站点，缓存可能记录了地理位置，需要清缓存重连
+
+TUN模式可以解决前两种情况
+
 ### tun/tap
 > [参考: linux下TUN/TAP虚拟网卡的使用](https://blog.csdn.net/bytxl/article/details/26586109)  
 
-`TUN TAP 区别`
+> TUN TAP 区别
+1. TUN  工作在IP层 第三层 
+1. TAP 工作在数据链路层，第二层 
 
-> TUN 
-1. 工作在IP层 第三层 
+不开启TUN
+- 能影响的网络： 只有那些听从电脑/手机系统代理设置的软件。比如浏览器、微信桌面版、Steam 等。
 
-> TAP
-1. 工作在数据链路层，第二层 
+开启TUN
+- 建立虚拟网卡，拦截所有底层流量，整台设备甚至整个局域网（配合网关）的所有网络流量
+- 接管 DNS： 通常会配合 Fake-IP（虚拟 IP）模式工作
 
 ### shadowsocks
 _服务端_
@@ -811,6 +827,22 @@ _客户端_
         - 相比于官方的包 `forticlient-vpn` GUI配置完，不像Windows平台会提示导入证书，只有无尽的连接中。。
 1. sudo openfortivpn -c some_company.conf
 1. 手动追加dns `sudo sed -i '1 i\nameserver x.x.x.x' /etc/resolv.conf` 注意 dns的ip会从运行中的输出 ns 部分
+
+### Clash
+[Clash Fork](https://github.com/Ieooo/clash) [DryPeng/clashT](https://github.com/DryPeng/clashT)  
+
+> [MetaCubeX/mihomo](https://github.com/MetaCubeX/mihomo) | [Clash Meta](https://wiki.metacubex.one/)  新版本内核
+
+https://github.com/clash-verge-rev/clash-verge-rev
+
+> [haishanh/yacd: Yet Another Clash Dashboard](https://github.com/haishanh/yacd)  
+
+### Sing-box
+
+sing-box-glibc-bin
+
+https://github.com/xinggaoya/sing-box-windows/releases
+
 
 ************************
 
