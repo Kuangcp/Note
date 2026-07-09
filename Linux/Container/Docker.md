@@ -60,7 +60,7 @@ categories:
         - 6.5.1. [overlay](#overlay)
 - 7. [Dockerfile](#dockerfile)
 
-💠 2026-07-09 10:46:22
+💠 2026-07-09 20:10:35
 ****************************************
 # Docker
 > [Official Doc](https://docs.docker.com/) | [docker-cn](www.docker-cn.com)`Docker中国`
@@ -194,8 +194,9 @@ _Debian系_
 > [Official Site](https://www.portainer.io/)  | [installation](https://www.portainer.io/installation/)
 
 1. `docker volume create portainer_data`
-1. `docker run --name portainer -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce`
+1. `docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:sts`
 
+访问 https://localhost:9443/
 
 # 基础管理
 > docker 所有的数据默认存储在 `/var/lib/docker`
