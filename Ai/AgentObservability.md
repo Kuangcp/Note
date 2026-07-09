@@ -16,7 +16,7 @@ categories:
     - 1.5. [Laminar](#laminar)
     - 1.6. [Helicone](#helicone)
 
-💠 2026-07-06 20:26:37
+💠 2026-07-09 10:46:22
 ****************************************
 # Agent 观测
 
@@ -62,7 +62,10 @@ Langfuse 已经不仅仅是一个监控（Tracing）平台，它在 LLM 评测�
 开源版架构简单， 开发调试时主打好部署、好上手，底层用 PG，但是生产使用时这个优点就成了缺点了，PG行存储在这种大文本的OLAP场景是不适合的  
 企业版的 Arize AX：专为海量高并发设计，底层完全不用 PG，而是跑在他们自研的 adb（一种基于对象存储、高性能、专门应对数万亿 AI 事件的分布式 OLAP 数据库）之上。也就是说，当你的企业规模大到 PG 撑不住时，*官方的潜台词是：“请购买我们的企业版服务（或转向复杂的微服务集群）”。*  
 
-> [Spring AI Tracing - Phoenix](https://arize.com/docs/phoenix/integrations/java/springai/springai-tracing)  
+> Tips
+- 镜像tag中有 debug 的才有基础的shell环境，普通版本号的是基于 scratch。
+- 采集端配置 otel Endpoint时，注意是 `http://127.0.0.1:6006/v1/traces` 不要被 [Spring AI Tracing - Phoenix](https://arize.com/docs/phoenix/integrations/java/springai/springai-tracing) 误导
+
 
 ## Laminar 
 > [Laminar - Open-source observability for AI agents](https://laminar.sh/)  
