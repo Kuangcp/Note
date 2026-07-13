@@ -40,12 +40,10 @@ categories:
     - 3.2. [SSL 握手](#ssl-握手)
     - 3.3. [HSTS](#hsts)
 - 4. [SSE](#sse)
-    - 4.1. [MCP](#mcp)
 - 5. [Tips](#tips)
     - 5.1. [CORS 跨域](#cors-跨域)
-    - 5.2. [相关工具](#相关工具)
 
-💠 2026-06-02 19:42:20
+💠 2026-07-13 13:58:05
 ****************************************
 # HTTP
 > HyperText Transfer Protocol (超文本传输协议) 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -68,7 +66,7 @@ categories:
 - HTTP/1.1协议中共定义了八种方法（有时也叫“动作”）来表明Request-URI指定的资源的不同操作方式：
     - `OPTIONS` 返回服务器针对特定资源所支持的HTTP请求方法。也可以利用向Web服务器发送'*'的请求来测试服务器的功能性。　
     - `GET` 向特定的资源发出请求。注意：GET方法不应当被用于产生“副作用”的操作中，例如在web app.中。其中一个原因是GET可能会被网络蜘蛛等随意访问。　
-    - `HEAD` 向服务器索要与GET请求相一致的响应，只不过响应体将不会被返回。这一方法可以**获取响应消息头中的元信息**而不传输内容。
+    - `HEAD` 向服务器索要与GET请求相一致的响应，只不过响应体将不会被返回。这一方法可以**获取响应消息头中的元信息**而不传输内容。`curl -I` 
     - `POST` 向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。　
     - `PUT` 向指定资源位置上传其最新内容。　
     - `DELETE` 请求服务器删除Request-URI所标识的资源。　
@@ -401,4 +399,8 @@ SSE的客户端自动重连机制 实现原理 为建立新sse连接时，前端
 > [阮一峰 跨域资源共享 CORS 详解](http://www.ruanyifeng.com/blog/2016/04/cors.html)
 > [CORS详解.md](https://github.com/hstarorg/HstarDoc/blob/master/%E5%89%8D%E7%AB%AF%E7%9B%B8%E5%85%B3/CORS%E8%AF%A6%E8%A7%A3.md)
 
-## 相关工具
+浏览器的安全策略：当使用 JS（如 fetch/XMLHttpRequest）异步请求跨域资源时，浏览器为了安全，会先检查响应头。 如果是img iframe直接加载 图片或者pdf没有这个跨域检查。
+
+如果用到云厂商的对象存储和CDN，就需要考虑两层了，对象存储自身需要放开 Origin，Method，Allow Header， 然后CDN需要开启Vary Origin。  
+因为CDN是缓存，如果有一次直接命令行或者浏览器直接打开地址触发下载，这个时候请求的Header不会带 Origin，响应也不会带上 Access-Control-Allow-Origin ，但是内容被缓存在了CDN上，等到业务网站要渲染那这个地址，就会出现跨域报错了，得强制刷新这个地址的cdn缓存或者开启Vary Origin。
+
