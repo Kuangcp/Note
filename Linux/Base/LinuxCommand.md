@@ -24,7 +24,7 @@ categories:
         - 1.8.1. [crontab](#crontab)
         - 1.8.2. [Systemd](#systemd)
 
-💠 2025-09-04 20:00:09
+💠 2026-07-14 12:48:21
 ****************************************
 # Linux 基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -71,6 +71,7 @@ categories:
 - 输出所有的md文件的内容 `find . -name "*.md" | xargs cat | less`
 - 定义替换符 `xargs -I {} echo {}`
     - `xargs -I XX sh -c 'echo XX;touch XX'`
+- `-r` --no-run-if-empty 如果接受到参数为空就不执行嵌套的命令
 
 ***************************
 

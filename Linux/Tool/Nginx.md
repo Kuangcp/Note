@@ -25,7 +25,7 @@ categories:
         - 4.3.2. [前后端分离时避免跨域](#前后端分离时避免跨域)
     - 4.4. [配置https](#配置https)
         - 4.4.1. [自签发证书](#自签发证书)
-        - 4.4.2. [通过 certbot 配置 HTTPS](#通过-certbot-配置-https)
+        - 4.4.2. [配置 HTTPS](#配置-https)
     - 4.5. [配置Websocket反向代理](#配置websocket反向代理)
     - 4.6. [代理-HTTP转发](#代理-http转发)
     - 4.7. [防盗链](#防盗链)
@@ -43,7 +43,7 @@ categories:
     - 7.5. [nuster](#nuster)
 - 8. [Tips](#tips)
 
-💠 2026-07-08 16:02:50
+💠 2026-07-14 12:48:21
 ****************************************
 # Nginx
 
@@ -286,39 +286,9 @@ _配置统一出口_
     }
 ```
 
-### 通过 certbot 配置 HTTPS
-> 免费的网站, 并且现在支持泛域名了[参考博客](http://www.cnblogs.com/lidong94/p/7156839.html) | [参考博客](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04)  
-> [Nginx反向代理https](http://linux.it.net.cn/e/server/nginx/2015/0131/12745.html)
-
-```sh
-  wget https://dl.eff.org/certbot-auto
-  chmod a+x certbot-auto
-  ./certbot-auto #进行安装 但是过程中会有一些设置，
-  ./certbot-auto certonly --email xxx@xxx --nginx -d xxx.domain # 生成 xxx.domain 证书
-```
-_SSL 接收到一个超出最大准许长度的记录 要在端口后加上SSL nginx_
-```ini
-  upstream one {
-    server 127.0.0.1:8080;
-  }
-
-  server{
-    listen 443 ssl;
-    server_name xxx.domain
-    access_log /data/log/https.log;
-    
-    # ssl配置
-    ssl on;
-    ssl_certificate  /etc/letsencrypt/live/xxx.domain/fullchain.pem;
-    ssl_certificate_key  /etc/letsencrypt/live/xxx.domain/privkey.pem;
-    ssl_trusted_certificate /etc/letsencrypt/live/xxx.domain/chain.pem;
-    ssl_dhparam /etc/nginx/ssl/dhparam.pem;
-
-    location / {
-        proxy_pass https://one;
-    }
-  }
-```
+### 配置 HTTPS
+- lego
+- certbot
 
 ## 配置Websocket反向代理
 ```ini
