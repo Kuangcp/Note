@@ -41,7 +41,7 @@ categories:
         - 2.3.1. [背压机制 (Backpressure)](#背压机制-backpressure)
         - 2.3.2. [利用消息队列 (MQ) 进行缓冲隔离](#利用消息队列-mq-进行缓冲隔离)
 
-💠 2026-07-15 11:01:26
+💠 2026-07-15 11:03:08
 ****************************************
 # 并发核心概念与理论
 > 并发编程的理论基础 无关语言 
@@ -791,6 +791,50 @@ net.core.wmem_max = 16777216    # 写缓冲
 4. **缓存挡在数据库前面**：Redis / LocalCache 挡住 90%+ 读请求。
 5. **异步化**：非核心写操作走 MQ，削峰填谷。
 
+**PostgreSQL 的差异与考量：**
+
+| 维度 | MySQL | PostgreSQL |
+|------|-------|------------|
+| 连接模型 | 线程 (thread-per-connection) | **进程** (process-per-connection) |
+| 每连接开销 | ~2~4MB（线程栈 + 连接缓冲） | ~5~10MB（独立进程，含私有共享内存） |
+| 实例最大连接数 | 1000~3000（可调） | **500** 左右即为高水位（再高进程 fork 成本暴涨） |
+| 默认连接池 | MySQL 原生无内置池 | PgBouncer / Pgpool-II 几乎是标配 |
+
+**PG 连接数限制更严格的原因：**  
+PG 每个连接 fork 一个独立进程，共享内存 `shared_buffers` 被所有进程共享，但每个进程自己的上下文占用更多。连接数超过 500 后，进程调度 + 上下文切换成本显著高于 MySQL 线程模型。`postgresql.conf` 中的 `max_connections` 建议不超过 500，且需要同步调大 `kernel.shmmax` 等内核参数。
+
+**PG 的专用连接池方案：**
+
+```mermaid
+graph LR
+    A[应用实例<br>1000个] --> B(PgBouncer<br>模式: Session/Transaction/Statement)
+    B --> C[PostgreSQL<br>主从流复制]
+```
+
+- **Session Pooling**：连接在客户端断开后归还池（与普通连接池相同）。
+- **Transaction Pooling**：**事务结束后立即归还连接**，回话级状态（如 `SET LOCAL` / 临时表）不能跨事务保留。这是 PG 高并发最推荐的模式——1000 应用连接复用 50 个后端连接。
+- **Statement Pooling**：最激进，每个语句执行完后归还，仅用于无状态的 prep 语句。
+
+**PG 的读写分离：**
+- 使用 **Streaming Replication**（流复制）：主库写 WAL，备库实时回放。延迟通常在毫秒级。
+- Pgpool-II 或内置的 `libpq` 连接字符串可配置 `target_session_attrs=read-write` 自动路由读写到主/备。
+- **逻辑复制**（PG 10+）：发布/订阅模式，支持异构同步和版本升级。
+
+**PG 高并发关键调优参数：**
+
+```
+# postgresql.conf
+max_connections = 200              # 不要超过 500
+shared_buffers = RAM * 25%         # 共享缓存，不宜过大（>8GB 需 huge pages）
+work_mem = 4MB                     # 排序/哈希操作每连接限额
+maintenance_work_mem = 64MB        # VACUUM/索引维护
+effective_cache_size = RAM * 75%   # 帮助优化器估算
+
+# 连接风暴保护
+max_worker_processes = 8           # 并行查询worker
+max_parallel_workers_per_gather = 2
+```
+
 ### 分布式状态中心过载
 
 > 微服务体系中，注册中心 (Nacos / Eureka / Zookeeper) 和调度中心 (XXL-Job / Elastic-Job) 成为新的单点瓶颈。
@@ -884,9 +928,9 @@ Closed (正常)  ── 失败阈值达到 ──▶  Open (熔断)
 ```
 请求洪峰 ──▶ MQ (缓冲) ──▶ 消费者 (匀速处理)
     │                        │
-    │                    ┌───┴───┐
-    │                    │   处理速率 100/s  │
-    │                    └───┬───┘
+    │                 ┌───┴────┐
+    │                 │处理速率 100/s │
+    │                 └───┬────┘
     │                        │
   流量 5000/s             即使洪峰 5000/s，后端只接收 100/s
   (突发 10s)              MQ 堆积 49000 条，洪峰过后慢慢消化
