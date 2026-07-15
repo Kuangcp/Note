@@ -25,7 +25,7 @@ categories:
     - 4.2. [SubAgent](#subagent)
     - 4.3. [Plan Mode](#plan-mode)
 
-💠 2026-07-06 00:54:21
+💠 2026-07-15 11:35:41
 ****************************************
 # AgentScope
 
@@ -33,59 +33,47 @@ categories:
 
 ReAct + Context + Middleware + State
 
+```mermaid
+graph TB
+    subgraph Core[ReAct 推理循环 不变的内核]
+        direction LR
+        PreCall[PreCall] --> PreReasoning[PreReasoning] --> ModelCall[模型调用] --> PostReasoning[PostReasoning]
+        PreCall --> M1[Middleware]
+        PreReasoning --> M2[Middleware]
+        PostReasoning --> M3[Middleware]
+        M1 --> Input[组装输入]
+        M2 --> Ctx[注入上下文]
+        M3 --> Output[处理输出]
+        Input --> MC[模型调用] --> TE[工具执行] --> WB[结果回写] --> Ret[返回]
+    end
+```
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    ReActAgent（根基）                        │
-│                                                             │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │              ReAct 推理循环（不变的内核）              │   │
-│  │                                                     │   │
-│  │  PreCall → PreReasoning → [模型调用] → PostReasoning │   │
-│  │      ↓          ↓                      ↓            │   │
-│  │  [Middleware] [Middleware]          [Middleware]    │   │
-│  │      ↓          ↓                      ↓            │   │
-│  │  组装输入   注入上下文               处理输出        │   │
-│  │      ↓          ↓                      ↓            │   │
-│  │  [模型调用] → [工具执行] → [结果回写] → 返回         │   │
-│  │                                                     │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                           ↑                                 │
-│  ┌────────────────────────┴────────────────────────────┐    │
-│  │              Middleware 链（可插拔能力层）             │    │
-│  │                                                     │    │
-│  │  WorkspaceContextMiddleware  ──→ 注入 AGENTS.md     │    │
-│  │  DynamicSkillMiddleware      ──→ 注入 skill 列表     │    │
-│  │  CompactionMiddleware        ──→ 上下文压缩          │    │
-│  │  PlanModeMiddleware          ──→ Plan Mode 权限控制  │    │
-│  │  MemoryFlushMiddleware       ──→ 长期记忆沉淀          │    │
-│  │  ToolResultEvictionMiddleware ──→ 大工具结果卸载      │    │
-│  │  SubagentMiddleware          ──→ 子 Agent 声明注入   │    │
-│  │  TaskReminderMiddleware      ──→ todo 列表提醒        │    │
-│  │  ...（你可以自己写）                                │    │
-│  └─────────────────────────────────────────────────────┘    │
-│                                                             │
-│  ┌─────────────────────────────────────────────────────┐    │
-│  │              AgentState（状态管理层）                  │    │
-│  │                                                     │    │
-│  │  contextMutable()      ──→ 对话历史                 │    │
-│  │  summary               ──→ 压缩摘要                 │    │
-│  │  planModeContext       ──→ Plan Mode 状态           │    │
-│  │  permissionContext     ──→ 权限规则                 │    │
-│  │  tasksContext          ──→ 任务清单                 │    │
-│  │  toolContext           ──→ 工具组激活状态             │    │
-│  └─────────────────────────────────────────────────────┘    │
-│                                                             │
-│  ┌─────────────────────────────────────────────────────┐    │
-│  │              AgentStateStore（持久化层）               │    │
-│  │                                                     │    │
-│  │  JsonFileAgentStateStore  ──→ 单机开发              │    │
-│  │  RedisAgentStateStore     ──→ 生产多副本            │    │
-│  │  MysqlAgentStateStore     ──→ 审计报表              │    │
-│  └─────────────────────────────────────────────────────┘    │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
+> Middleware 链（可插拔能力层）
+
+WorkspaceContextMiddleware  → 注入 AGENTS.md  
+DynamicSkillMiddleware      → 注入 skill 列表  
+CompactionMiddleware        → 上下文压缩  
+PlanModeMiddleware          → Plan Mode 权限控制  
+MemoryFlushMiddleware       → 长期记忆沉淀  
+ToolResultEvictionMiddleware → 大工具结果卸载  
+SubagentMiddleware          → 子 Agent 声明注入  
+TaskReminderMiddleware      → todo 列表提醒  
+... 自行扩展  
+
+> AgentState（状态管理层）
+
+contextMutable()      → 对话历史  
+summary               → 压缩摘要  
+planModeContext       → Plan Mode 状态  
+permissionContext     → 权限规则  
+tasksContext          → 任务清单  
+toolContext           → 工具组激活状态  
+
+> AgentStateStore（持久化层）
+
+JsonFileAgentStateStore  → 单机开发  
+RedisAgentStateStore     → 生产多副本  
+MysqlAgentStateStore     → 审计报表  
 
 # 基础组件
 ## 消息 事件
@@ -131,44 +119,23 @@ ReAct + Context + Middleware + State
 
 > 一次 `call(msg, RuntimeContext)` 的上下文经历了**7个阶段**：
 
-```
-call(msgs, RuntimeContext(userId, sessionId))
-  │
-  ├─ ① per-session 门: 相同 (uid, sid) 串行, 不同会话并行
-  │
-  ▼
-  ② 从缓存或 AgentStateStore 加载 AgentState
-  │   注入到 RuntimeContext: rc.setAgentState(state)
-  │
-  ▼
-  ③ PreReasoningEvent → Middleware 链执行
-  │   ├── WorkspaceContextMiddleware: 读取 AGENTS.md / MEMORY.md / knowledge/ 拼入 system prompt
-  │   ├── DynamicSkillMiddleware: 扫描 skillRepository，生成 skill 列表拼入 system prompt
-  │   ├── CompactionMiddleware: 消息数超限？压缩历史
-  │   ├── SubagentMiddleware: 注入子 agent 声明
-  │   └── TaskReminderMiddleware: 注入 todo 列表提醒
-  │
-  ▼
-  ④ 组装最终 messages 发给模型
-  │   = [system prompt with workspace injection] 
-  │     + [compressed/summary history] 
-  │     + [current user msg]
-  │     + [tool results from previous turns]
-  │
-  ▼
-  ⑤ 模型返回 → 如果是 tool_call → 执行工具 → ToolResultMessage 加入 contextMutable()
-  │   回到 ③-④ 循环，直到模型不再调用工具
-  │
-  ▼
-  ⑥ PostCallEvent → Middleware 收尾
-  │   ├── MemoryFlushMiddleware: 提炼新事实写入 memory/YYYY-MM-DD.md
-  │   └── SessionPersistence: AgentState 整体落盘
-  │
-  ▼
-  ⑦ 保存 AgentState → stateStore.save(userId, sessionId, "agent_state", state)
-  │
-  ▼
-  返回结果
+```mermaid
+graph TD
+    CALL[call msgs, RuntimeContext userId, sessionId] --> S1[① per-session 门<br>相同 uid,sid 串行, 不同会话并行]
+    S1 --> S2[② 从缓存或 AgentStateStore 加载 AgentState<br>注入到 RuntimeContext]
+    S2 --> S3[③ PreReasoningEvent → Middleware 链执行]
+    S3 --> S3a[WorkspaceContextMiddleware<br>读取 AGENTS.md / MEMORY.md / knowledge/]
+    S3 --> S3b[DynamicSkillMiddleware<br>扫描 skillRepository 生成 skill 列表]
+    S3 --> S3c[CompactionMiddleware<br>消息数超限压缩历史]
+    S3 --> S3d[SubagentMiddleware<br>注入子 agent 声明]
+    S3 --> S3e[TaskReminderMiddleware<br>注入 todo 列表提醒]
+    S3 --> S4[④ 组装最终 messages 发给模型<br>system + history + user msg + tool results]
+    S4 --> S5{⑤ 模型返回}
+    S5 -->|tool_call| TE[执行工具<br>ToolResultMessage 加入 contextMutable]
+    TE --> S3
+    S5 -->|文本| S6[⑥ PostCallEvent → Middleware 收尾<br>MemoryFlush + SessionPersistence]
+    S6 --> S7[⑦ 保存 AgentState → stateStore.save]
+    S7 --> RET[返回结果]
 ```
 
 **关键协议约定**：
@@ -241,57 +208,60 @@ HarnessAgent（以及底层的 ReActAgent）采用**无状态引擎**设计。Ag
 **状态完全内部化**——调用方不需要直接管理 state 对象 
 
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                        调用方                                │
-│              agent.call(msg, RuntimeContext)                 │
-└──────────────────────────┬──────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│  ① 无状态引擎入口                                            │
-│     - 按 (userId, sessionId) 路由到对应 AgentState 槽位      │
-│     - 同槽位串行，不同槽位并行                               │
-└──────────────────────────┬──────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│  ② 状态恢复                                                  │
-│     - 从 AgentStateStore 加载 AgentState（或新建）           │
-│     - 注入到 RuntimeContext: rc.setAgentState(state)         │
-└──────────────────────────┬──────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│  ③ Middleware 链（PreReasoning）                            │
-│     - WorkspaceContext: 注入 AGENTS.md + MEMORY.md + knowledge│
-│     - DynamicSkill: 注入 skill 元数据列表                     │
-│     - Compaction: 压缩超长历史                               │
-│     - Subagent: 注入子 agent 声明                            │
-│     - TaskReminder: 注入 todo 列表                           │
-│     → 所有修改都写回 state.contextMutable()                  │
-└──────────────────────────┬──────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│  ④ 模型调用                                                  │
-│     - 组装 messages: system + history + user + tool results  │
-│     - 模型返回: 文本 或 tool_calls                            │
-│     - 如 tool_calls → 执行工具 → ToolResultMessage → 回到 ③ │
-└──────────────────────────┬──────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│  ⑤ Middleware 链（PostCall）                                │
-│     - MemoryFlush: 提炼事实写入 memory/YYYY-MM-DD.md         │
-│     - SessionPersistence: AgentState 整体落盘                │
-└──────────────────────────┬──────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│  ⑥ 返回结果给调用方                                          │
-│     - AgentState 已保存，下次 call 自动恢复                  │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    caller["调用方
+agent.call(msg, RuntimeContext)"]
+
+    subgraph engine ["① 无状态引擎入口"]
+        route["按 (userId, sessionId) 路由到对应 AgentState 槽位
+同槽位串行，不同槽位并行"]
+    end
+
+    subgraph restore ["② 状态恢复"]
+        load["从 AgentStateStore 加载 AgentState（或新建）
+注入到 RuntimeContext: rc.setAgentState(state)"]
+    end
+
+    subgraph pre_mw ["③ Middleware 链（PreReasoning）"]
+        direction TB
+        wc["WorkspaceContext: 注入 AGENTS.md + MEMORY.md + knowledge"]
+        ds["DynamicSkill: 注入 skill 元数据列表"]
+        comp["Compaction: 压缩超长历史"]
+        sa["Subagent: 注入子 agent 声明"]
+        tr["TaskReminder: 注入 todo 列表"]
+        wc --> ds --> comp --> sa --> tr
+        note_pre["→ 所有修改都写回 state.contextMutable()"]
+    end
+
+    subgraph model ["④ 模型调用"]
+        assemble["组装 messages: system + history + user + tool results"]
+        decide{"模型返回"}
+        text["文本"]
+        tool["tool_calls → 执行工具 → ToolResultMessage"]
+    end
+
+    subgraph post_mw ["⑤ Middleware 链（PostCall）"]
+        mf["MemoryFlush: 提炼事实写入 memory/YYYY-MM-DD.md"]
+        sp["SessionPersistence: AgentState 整体落盘"]
+    end
+
+    subgraph output ["⑥ 返回结果给调用方"]
+        done["AgentState 已保存，下次 call 自动恢复"]
+    end
+
+    caller --> engine
+    engine --> restore
+    restore --> pre_mw
+    pre_mw --> model
+    model --> assemble
+    assemble --> decide
+    decide --> text
+    decide --> tool
+    tool --> pre_mw
+    text --> post_mw
+    post_mw --> mf --> sp
+    sp --> output
 ```
 
 ## Skill
