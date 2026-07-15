@@ -25,7 +25,7 @@ categories:
     - 4.2. [SubAgent](#subagent)
     - 4.3. [Plan Mode](#plan-mode)
 
-💠 2026-07-15 11:35:41
+💠 2026-07-15 11:52:56
 ****************************************
 # AgentScope
 
@@ -238,7 +238,7 @@ agent.call(msg, RuntimeContext)"]
         assemble["组装 messages: system + history + user + tool results"]
         decide{"模型返回"}
         text["文本"]
-        tool["tool_calls → 执行工具 → ToolResultMessage"]
+        tool["tool_calls"] --> tool_exe["执行工具"] --> tool_result["工具执行结果"]
     end
 
     subgraph post_mw ["⑤ Middleware 链（PostCall）"]
@@ -258,7 +258,7 @@ agent.call(msg, RuntimeContext)"]
     assemble --> decide
     decide --> text
     decide --> tool
-    tool --> pre_mw
+    tool_result --> pre_mw
     text --> post_mw
     post_mw --> mf --> sp
     sp --> output

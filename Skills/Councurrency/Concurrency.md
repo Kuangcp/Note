@@ -41,7 +41,7 @@ categories:
         - 2.3.1. [背压机制 (Backpressure)](#背压机制-backpressure)
         - 2.3.2. [利用消息队列 (MQ) 进行缓冲隔离](#利用消息队列-mq-进行缓冲隔离)
 
-💠 2026-07-15 11:15:23
+💠 2026-07-15 11:52:56
 ****************************************
 # 并发核心概念与理论
 > 并发编程的理论基础 无关语言 
@@ -695,8 +695,8 @@ graph TD
     Supervisor --> W1[Worker Actor 1]
     Supervisor --> W2[Worker Actor 2]
     Supervisor --> W3[Worker Actor 3]
-    W1 -. 崩溃 .->|Exit 信号| Supervisor
-    Supervisor -.->|重启 / 忽略 / 升级| W1
+    W1 -->| 崩溃 Exit 信号| Supervisor
+    Supervisor -->|重启 / 忽略 / 升级| W1
 ```
 
 Erlang/Elixir 的 Actor 实现中，每个 Actor 运行在独立的 BEAM 进程中（轻量级），拥有自己的 GC。一个 Actor 崩溃不会影响其他 Actor，Supervisor 树提供了层级化的容错机制。
