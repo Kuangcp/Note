@@ -17,12 +17,12 @@ categories:
     - 2.4. [Loop Engineering](#loop-engineering)
 - 3. [通信](#通信)
     - 3.1. [MCP](#mcp)
-        - 3.1.1. [协议细节](#协议细节)
+        - 3.1.1. [通信协议细节](#通信协议细节)
     - 3.2. [A2A](#a2a)
     - 3.3. [ACP](#acp)
 - 4. [渲染](#渲染)
 
-💠 2026-07-08 16:02:50
+💠 2026-07-15 16:55:28
 ****************************************
 
 # Agent
@@ -156,6 +156,7 @@ categories:
 
 **关键洞察**：OpenClaw 是「**你给 AI 造缰绳**」（手动配置 Harness），Hermes 是「**AI 自己给自己造缰绳**」（自动闭环）。两者都是 Harness Engineering 的落地，只是实现路径不同。
 
+> [netease-youdao/LobsterAI](https://github.com/netease-youdao/LobsterAI)  
 
 ## Loop Engineering
 > **一句话定义**：对「Agent 如何跨时间、跨任务持续自主运转」的工程化——从「一次对话」到「一个永动的自动化系统」。
@@ -248,16 +249,30 @@ AI：
 
 - [MCP java-sdk](https://github.com/modelcontextprotocol/java-sdk)
 
-### 协议细节
-服务端暴露端点例如 v1/sse ， 客户端建立SSE连接并保持，服务端会立马下发一个 endpoint 事件 
+### 通信协议细节
+> 本地IO
+
+| 特性        | stdio           | 说明                                     |
+| --------- | --------------- | -------------------------------------- |
+| **全双工**   | ✅ 天然支持          | 进程间通过 stdin/stdout 双向读写，没有 HTTP 的半双工限制 |
+| **零网络延迟** | ✅ 无 TCP/HTTP 开销 | 本地进程间通信，没有序列化、握手、路由等开销                 |
+| **无连接管理** | ✅ 无状态问题         | 一个进程一条管道，不存在集群、负载均衡、会话保持               |
+| **简单可靠**  | ✅ 实现极简          | 子进程启动即连，退出即断，心智负担最低                    |
+
+> 网络
+
+通过JSON-RPC交互，对二进制（图片，PDF）不友好有编码成本。
+
+SSE方式： 服务端暴露端点例如 v1/sse ， 客户端建立SSE连接并保持，服务端会立马下发一个 endpoint 事件 
 
 ```sse
 event: endpoint
 data: /mcp-servers/debug?sessionId=ffe85774-6933-48e7-90e7-989d427c6e47
 ```
 
-客户端后续就对这个endpoint给的地址 发 POST JSON-RPC通信： 客户端->服务端 走endpoint，数据响应走 建立的SSE连接
-然后通常客户端会先发初始化消息
+客户端后续就对这个endpoint给的地址 发 POST JSON-RPC通信： 客户端->服务端 走endpoint接口，服务端的数据响应走 建立的SSE连接  
+建立连接后通常客户端会先发初始化消息
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -271,6 +286,28 @@ data: /mcp-servers/debug?sessionId=ffe85774-6933-48e7-90e7-989d427c6e47
 ```
 
 服务端会响应MCP的三要素的列表：Prompts，Tools，Resources
+
+> 但是这个SSE方式存在很大的问题，服务端有状态
+
+SSE 方式解决分布式状态的问题
+- Sticky Session（会话粘滞）：LB 根据 sessionId 参数或 Cookie 将同一客户端的请求路由到同一节点
+- 共享 Session 存储：将 SSE 连接状态存入 Redis，各节点共享
+
+| 旧版 HTTP+SSE                   | 新版 Streamable HTTP      |
+| ----------------------------- | ----------------------- |
+| 两个独立端点 (`/sse` + `/messages`) | **单一端点** (`/mcp`)       |
+| SSE 必须长期保持                    | SSE 变为**可选**，按需升级       |
+| 服务器必须有状态                      | **支持无状态服务器**            |
+| 集群部署困难                        | 与 CDN、LB、API Gateway 兼容 |
+
+如果使用 Streamable HTTP 方式，通常需要HTTP/2
+
+| 能力        | HTTP/1.1                     | HTTP/2            |
+| --------- | ---------------------------- | ----------------- |
+| 服务器→客户端流式 | ✅ 支持（chunked transfer / SSE） | ✅ 支持              |
+| 客户端→服务器流式 | ❌ **不支持**（请求体必须一次性发完）        | ✅ 支持（Stream 多路复用） |
+| 双向同时流式    | ❌ **不可能**                    | ✅ 支持              |
+
 
 ## A2A
 A2A (Agent-to-Agent) —— “Agent ↔ Agent（跨平台/云端）”,  由谷歌等公司推动的跨平台智能体外交协议
