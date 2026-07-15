@@ -30,7 +30,7 @@ categories:
     - 5.1. [Quasar](#quasar)
     - 5.2. [Virtual Threads](#virtual-threads)
 
-💠 2026-07-06 19:57:28
+💠 2026-07-15 11:01:26
 ****************************************
 # Java线程
 > [个人学习代码](https://github.com/Kuangcp/JavaBase/tree/master/concurrency/src/main/java/thread)
@@ -251,7 +251,7 @@ JDK21起如果要让CompletableFuture支持虚拟线程,需要手动指定线程
     CompletableFuture.supplyAsync(()->{}, new VirtualThreadTaskExecutor())
 ```
 
-进阶替代： 结构化并发
+进阶替代： [结构化并发](/Java/AdvancedLearning/JavaConcurrency.md#结构化并发)
 
 ************************
 
