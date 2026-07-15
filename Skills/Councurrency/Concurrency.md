@@ -41,7 +41,7 @@ categories:
         - 2.3.1. [背压机制 (Backpressure)](#背压机制-backpressure)
         - 2.3.2. [利用消息队列 (MQ) 进行缓冲隔离](#利用消息队列-mq-进行缓冲隔离)
 
-💠 2026-07-15 11:03:08
+💠 2026-07-15 11:15:23
 ****************************************
 # 并发核心概念与理论
 > 并发编程的理论基础 无关语言 
@@ -90,10 +90,22 @@ readSocketAsync(callback)   // 立即返回，线程继续做其他事
 | 关注点 | 如何处理多个任务（正确性、同步） | 如何加速计算（吞吐量、延迟） |
 | 典型例子 | 一个 CPU 交替运行浏览器 + IDE | 8 核 CPU 同时编译 8 个文件 |
 
-```
-并发（单核）：  A─┐ B─┐ A─┐ C─┐ B─┐   ← 交替执行
-并行（多核）：  A───────┐               ← 同时执行
-               B───────┐    (时间轴)
+```mermaid
+gantt
+    title 并发 vs 并行
+    dateFormat  HH:mm
+    axisFormat  %H:%M
+
+    section 并发(单核交替)
+    A           :a1, 00:00, 2m
+    B           :a2, after a1, 2m
+    A           :a3, after a2, 2m
+    C           :a4, after a3, 2m
+    B           :a5, after a4, 2m
+
+    section 并行(多核同时)
+    A           :b1, 00:00, 10m
+    B           :b2, 00:00, 10m
 ```
 
 > 并发属于问题域 (Problem Domain)，并行属于求解域 (Solution Domain)。  
@@ -133,26 +145,14 @@ pthread_create(&tid, NULL, func, arg)  // 仅分配一个新的栈 + 线程上�
 
 **完整切换路径（线程 A → 线程 B）：**
 
-```
-线程 A 运行
-  │
-  ▼
-中断 / 系统调用 / 时间片耗尽
-  │
-  ▼
-保存线程 A 的寄存器 (PC, SP, 通用寄存器等)  → A 的内核栈
-  │
-  ▼
-切换内核栈 (SP 指向 B 的内核栈)
-  │
-  ▼
-刷新 TLB (如果地址空间不同)  →  进程切换的核心成本
-  │
-  ▼
-恢复线程 B 的寄存器
-  │
-  ▼
-线程 B 运行
+```mermaid
+graph TD
+    A[线程 A 运行] --> B[中断 / 系统调用 / 时间片耗尽]
+    B --> C[保存线程 A 的寄存器<br>PC, SP, 通用寄存器等 → A 的内核栈]
+    C --> D[切换内核栈<br>SP 指向 B 的内核栈]
+    D --> E[刷新 TLB<br>如果地址空间不同 → 进程切换核心成本]
+    E --> F[恢复线程 B 的寄存器]
+    F --> G[线程 B 运行]
 ```
 
 **切换开销在哪里：**
@@ -185,16 +185,39 @@ pthread_create(&tid, NULL, func, arg)  // 仅分配一个新的栈 + 线程上�
 
 **缓存层次结构：**
 
-```
-CPU Core 0    CPU Core 1    CPU Core 2    CPU Core 3
-   │              │              │              │
- L1d/L1i         L1d/L1i        L1d/L1i        L1d/L1i    ← 每个核私有 (32KB, ~1ns)
-   │              │              │              │
-   └────── L2 ────┘              └────── L2 ────┘          ← 每核私有或共享 (256KB, ~4ns)
-          │                             │
-          └────────── L3 ───────────────┘                   ← 所有核共享 (8~32MB, ~15ns)
-                         │
-                      主存 (RAM, ~100ns)
+```mermaid
+graph TB
+    subgraph RAM[主存 RAM ~100ns]
+        MEM[主存]
+    end
+    subgraph L3_Cache[L3 所有核共享 8~32MB ~15ns]
+        L3[L3 Cache]
+    end
+    subgraph C0[Core 0]
+        L1_0[L1d/L1i<br>32KB ~1ns]
+        L2_0[L2<br>256KB ~4ns]
+        L1_0 --> L2_0
+    end
+    subgraph C1[Core 1]
+        L1_1[L1d/L1i<br>32KB ~1ns]
+        L2_1[L2<br>256KB ~4ns]
+        L1_1 --> L2_1
+    end
+    subgraph C2[Core 2]
+        L1_2[L1d/L1i<br>32KB ~1ns]
+        L2_2[L2<br>256KB ~4ns]
+        L1_2 --> L2_2
+    end
+    subgraph C3[Core 3]
+        L1_3[L1d/L1i<br>32KB ~1ns]
+        L2_3[L2<br>256KB ~4ns]
+        L1_3 --> L2_3
+    end
+    L2_0 --> L3
+    L2_1 --> L3
+    L2_2 --> L3
+    L2_3 --> L3
+    L3 --> MEM
 ```
 
 > 核心问题：Core 0 改了变量 x，Core 1 读到的 x 必须是新值 —— 这就引出了**缓存一致性协议**。
@@ -210,19 +233,15 @@ CPU Core 0    CPU Core 1    CPU Core 2    CPU Core 3
 
 **MESI 状态转换（核心操作）：**
 
-```
-         读命中
-    ┌───────┐
-    │       ▼
- ┌──┴──┐  ┌────┐  其他核读  ┌───────┐
- │ E   │─▶│ S  │───────────▶│   I    │
- └──┬──┘  └────┘           └───────┘
-    │                         ▲
-    │ 写                     │ 其他核写
-    ▼                         │
- ┌──────┐─────────────────────┘
- │  M   │
- └──────┘
+```mermaid
+stateDiagram-v2
+    [*] --> Exclusive : 读命中 (仅当前核)
+    Exclusive --> Shared : 其他核读
+    Shared --> Invalid : 其他核写 (缓存行失效)
+    Shared --> Modified : 当前核写
+    Exclusive --> Modified : 当前核写
+    Modified --> Invalid : 其他核写
+    Modified --> [*]
 ```
 
 **伪共享 (False Sharing)：** 当两个线程操作的是**不同变量但位于同一缓存行**时，Core 0 修改变量 A → 缓存行变 M → Core 1 的相同缓存行变 I → 即使 Core 1 只操作变量 B，也必须重新加载。这导致本无竞争的变量因缓存行共享而频繁失效，造成性能大幅下降。
@@ -671,14 +690,13 @@ Actor Counter:
 
 **Actor 模型的容错哲学 —— "任其崩溃" (Let It Crash)：**
 
-```
-Supervisor
-├── Worker Actor 1
-├── Worker Actor 2
-└── Worker Actor 3
-
-Worker 崩溃 → Supervisor 收到 Exit 信号
-    → 按策略: 重启 | 忽略 | 升级崩溃
+```mermaid
+graph TD
+    Supervisor --> W1[Worker Actor 1]
+    Supervisor --> W2[Worker Actor 2]
+    Supervisor --> W3[Worker Actor 3]
+    W1 -. 崩溃 .->|Exit 信号| Supervisor
+    Supervisor -.->|重启 / 忽略 / 升级| W1
 ```
 
 Erlang/Elixir 的 Actor 实现中，每个 Actor 运行在独立的 BEAM 进程中（轻量级），拥有自己的 GC。一个 Actor 崩溃不会影响其他 Actor，Supervisor 树提供了层级化的容错机制。
@@ -777,12 +795,10 @@ net.core.wmem_max = 16777216    # 写缓冲
 
 **保护策略：**
 
-```
-┌─────────────┐     ┌──────────────┐     ┌─────────────┐
-│  应用实例    │────▶│  连接池/代理  │────▶│   MySQL     │
-│  (1000 个)   │     │ (ProxySQL    │     │  (主从集群)  │
-│              │     │ /MyCat)      │     │             │
-└─────────────┘     └──────────────┘     └─────────────┘
+```mermaid
+graph LR
+    A[应用实例<br>1000 个] --> B[连接池/代理<br>ProxySQL / MyCat]
+    B --> C[MySQL<br>主从集群]
 ```
 
 1. **连接池 (HikariCP / Druid)**：应用侧池化连接，避免每次请求新建/销毁连接。
@@ -871,16 +887,17 @@ max_parallel_workers_per_gather = 2
 | 流式框架 | 响应式背压 | Reactive Streams (Java), RSocket |
 
 **响应式背压 (Reactive Streams)：**
-```
-Publisher (数据源)           Subscriber (消费者)
-     │                            │
-     │──── request(100)  ────────▶│  // 订阅者告诉发布者：我能处理 100 个
-     │◀──── onNext(data) ─────────│
-     │◀──── onNext(data) ─────────│
-     │◀──── onNext(data) ─────────│
-     │                            │
-     │◀──── request(50)  ─────────│  // 处理完再要 50 个
-     │◀──── onNext(data) ─────────│
+```mermaid
+sequenceDiagram
+    participant Pub as Publisher (数据源)
+    participant Sub as Subscriber (消费者)
+    Sub->>Pub: request(100) — 我能处理 100 个
+    Pub->>Sub: onNext(data)
+    Pub->>Sub: onNext(data)
+    Pub->>Sub: onNext(data)
+    Sub->>Pub: request(50) — 处理完再要 50 个
+    Pub->>Sub: onNext(data)
+    Pub->>Sub: onNext(data)
 ```
 
 ```java
@@ -910,30 +927,31 @@ limiter.Wait(ctx)  // 阻塞等待
 
 > 当调用下游失败率达到阈值，直接熔断（快速失败），不再发送请求 —— 避免下游被压垮 + 调用方阻塞。
 
-```
-Closed (正常)  ── 失败阈值达到 ──▶  Open (熔断)
-      ▲                                  │
-      │                                  │ 超时等待 (sleepWindow)
-      │                                  ▼
-      │◀────────── Half-Open ────────────┘
-                   (尝试放行一个请求)
-                  成功 → Closed
-                  失败 → Open
+```mermaid
+stateDiagram-v2
+    [*] --> Closed : 正常
+    Closed --> Open : 失败阈值达到
+    Open --> HalfOpen : 超时等待 (sleepWindow)
+    HalfOpen --> Closed : 请求成功
+    HalfOpen --> Open : 请求失败
 ```
 
 ### 利用消息队列 (MQ) 进行缓冲隔离
 
 > MQ 是最有效的削峰工具：将突发的请求峰值压平，保护后端系统不被瞬间流量冲垮。
 
-```
-请求洪峰 ──▶ MQ (缓冲) ──▶ 消费者 (匀速处理)
-    │                        │
-    │                 ┌───┴────┐
-    │                 │处理速率 100/s │
-    │                 └───┬────┘
-    │                        │
-  流量 5000/s             即使洪峰 5000/s，后端只接收 100/s
-  (突发 10s)              MQ 堆积 49000 条，洪峰过后慢慢消化
+```mermaid
+graph LR
+    subgraph 请求端
+        A[请求洪峰<br>5000/s x 10s]
+    end
+    subgraph 缓冲
+        B[MQ 缓冲<br>堆积 49000 条]
+    end
+    subgraph 消费端
+        C[消费者<br>匀速 100/s]
+    end
+    A --> B --> C
 ```
 
 **MQ 在高并发系统中的关键作用：**
@@ -943,12 +961,14 @@ Closed (正常)  ── 失败阈值达到 ──▶  Open (熔断)
 3. **流量控制**：`consumer 限速`（如 RocketMQ 的 `pull` 模式按需拉取）。
 4. **死信 + 重试**：消费失败的消息进入死信队列，异步补偿，不影响正常流量。
 
-```
-// 典型架构：MQ 作为流量缓冲层
-客户端 → Nginx/LB → 应用层(无状态) → MQ → 异步Worker(写DB/调用下游)
-                                    │
-                                    ├─ 消息积压告警 (阈值)
-                                    └─ 自动扩容 (积压量 → 增加 Consumer)
+```mermaid
+graph LR
+    Client[客户端] --> LB[Nginx / LB]
+    LB --> App[应用层<br>无状态]
+    App --> MQ[MQ]
+    MQ --> Worker[异步 Worker<br>写 DB / 调用下游]
+    MQ -.->|积压告警| Alert[告警系统]
+    MQ -.->|积压量| Scale[自动扩容<br>增加 Consumer]
 ```
 
 **选型对比：**
