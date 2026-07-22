@@ -6,19 +6,20 @@ categories:
     - 前端
 ---
 
-**目录 start**
+💠
 
-1. [HTML5](#html5)
-    1. [参考资料](#参考资料)
-    1. [特殊字符](#特殊字符)
-    1. [数据存储](#数据存储)
-        1. [Cookie](#cookie)
-        1. [LocalStorage和SessionStorage](#localstorage和sessionstorage)
-            1. [清除](#清除)
-        1. [IndexDB](#indexdb)
-1. [Notification](#notification)
+- 1. [HTML5](#html5)
+    - 1.1. [参考资料](#参考资料)
+    - 1.2. [特殊字符](#特殊字符)
+    - 1.3. [数据存储](#数据存储)
+        - 1.3.1. [Cookie](#cookie)
+        - 1.3.2. [LocalStorage和SessionStorage](#localstorage和sessionstorage)
+            - 1.3.2.1. [清除](#清除)
+        - 1.3.3. [IndexDB](#indexdb)
+- 2. [Notification](#notification)
+- 3. [PWA](#pwa)
 
-**目录 end**|_2020-11-09 22:52_|
+💠 2026-07-22 14:05:33
 ****************************************
 # HTML5
 ## 参考资料
@@ -56,3 +57,28 @@ categories:
 
 # Notification 
 > [MDN](https://developer.mozilla.org/en-US/docs/Web/API/notification)
+
+# PWA
+> [Progressive web apps | MDN](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)  
+> [pwa builder](https://www.pwabuilder.com/)  
+
+| 技术                              | 作用                | 标准来源        |
+| ------------------------------- | ----------------- | ----------- |
+| **Service Worker**              | 后台代理、离线缓存、推送通知    | HTML5 / W3C |
+| **Web App Manifest**            | 定义 App 名称、图标、启动方式 | W3C         |
+| **Cache API**                   | 程序化控制资源缓存         | HTML5       |
+| **Fetch API**                   | 网络请求拦截            | HTML5       |
+| **Push API / Notification API** | 消息推送、本地通知         | W3C         |
+| **Background Sync**             | 后台同步              | W3C         |
+
+
+| 特性        | PWA（HTML5）          | WebView 壳子（Android）  |
+| --------- | ------------------- | -------------------- |
+| **技术栈**   | 纯 Web（JS/HTML/CSS）  | Android Kotlin + Web |
+| **打包**    | 不需要，浏览器直接安装         | 需要 APK               |
+| **离线能力**  | ✅ Service Worker 缓存 | ✅ 本地文件缓存             |
+| **推送通知**  | ✅ Push API          | ✅ 原生 + Web           |
+| **后台运行**  | ⚠️ 受限               | ✅ 更稳定                |
+| **应用商店**  | ❌ 不能上架（国内）          | ✅ 可以                 |
+| **系统级功能** | ❌ 有限（相机、蓝牙等）        | ✅ 完整原生能力             |
+| **缓存控制**  | JS 代码控制             | Android 代码控制         |

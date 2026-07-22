@@ -22,7 +22,7 @@ categories:
     - 3.3. [ACP](#acp)
 - 4. [渲染](#渲染)
 
-💠 2026-07-15 16:55:28
+💠 2026-07-22 14:05:33
 ****************************************
 
 # Agent
@@ -156,7 +156,9 @@ categories:
 
 **关键洞察**：OpenClaw 是「**你给 AI 造缰绳**」（手动配置 Harness），Hermes 是「**AI 自己给自己造缰绳**」（自动闭环）。两者都是 Harness Engineering 的落地，只是实现路径不同。
 
+> [AgentScope](/Ai/FrameWork/AgentScope.md#harness-agent)  
 > [netease-youdao/LobsterAI](https://github.com/netease-youdao/LobsterAI)  
+> [langchain-ai/deepagents: The batteries-included agent harness.](https://github.com/langchain-ai/deepagents)  
 
 ## Loop Engineering
 > **一句话定义**：对「Agent 如何跨时间、跨任务持续自主运转」的工程化——从「一次对话」到「一个永动的自动化系统」。

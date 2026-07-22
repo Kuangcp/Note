@@ -35,6 +35,7 @@ categories:
             - 1.3.4.2. [返回值](#返回值)
             - 1.3.4.3. [defer](#defer)
         - 1.3.5. [接口](#接口)
+        - 1.3.6. [Error处理](#error处理)
     - 1.4. [Context](#context)
     - 1.5. [Channel](#channel)
     - 1.6. [协程 Goroutine](#协程-goroutine)
@@ -55,7 +56,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2026-07-15 11:01:26
+💠 2026-07-22 14:05:33
 ****************************************
 # Go
 
@@ -358,8 +359,15 @@ func functionName (param int) int {
 
 > [参考:接口的定义和使用](http://www.cnblogs.com/yjf512/archive/2012/06/09/2543628.html)
 
+
+### Error处理
+error 接口，Go1.13引入了 Unwrap Go1.20引入了Join 。
+
+
 ## Context
 > [context package - context - Go Packages](https://pkg.go.dev/context)  
+
+TODO
 
 
 ************************
