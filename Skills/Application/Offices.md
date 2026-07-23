@@ -10,7 +10,7 @@ categories:
 - 1. [Excel](#excel)
 - 2. [CSV](#csv)
 
-💠 2026-07-22 17:36:31
+💠 2026-07-23 09:45:02
 ****************************************
 
 # Excel 
@@ -23,7 +23,7 @@ categories:
 - xlsb zip包+二进制 (Binary Interchange File Format 12)
 
 |  | xls | xlsx | xlsb |
-|:---|:---|:---|:---|:---|
+|:---|:---|:---|:---|
 | 年份 | 2003之前 | 2007及以后 | 2007及以后 |
 | 格式 | 专有二进制CBF格式 | zip+xml | zip+二进制(BIFF12) |
 | 兼容性 | 只能Office，其他软件有兼容问题 | 开放性格式，兼容更好 | 仅Excel/WPS，第三方库支持有限 |
@@ -36,7 +36,7 @@ categories:
 
 由于Excel工作表最大行数为104w行(xls，xlsx，xlsb都受此限制)，导出超量数据时，通常会拆分Sheet，或者退而使用csv格式。
 
-**Power Pivot 数据模型**（VertiPaq 引擎）可突破此限制——它不在工作表中存数据，而是用内存列式压缩引擎（xVelocity），支持上亿行，仅受物理内存约束，查询使用 DAX 公式而非 Excel 公式。
+xlsb 还独有 **Power Pivot 数据模型**（VertiPaq 引擎）可突破此限制——它不在工作表中存数据，而是用内存列式压缩引擎（xVelocity），支持上亿行，仅受物理内存约束，查询使用 DAX 公式而非 Excel 公式。
 - 但是无论是 Java 的 Apache POI、EasyExcel，还是 Go 语言的 Excelize，全网没有任何一个开源的第三方轻量级库，支持直接在 Linux 服务器上通过代码把数据直接写进 Excel 的 Power Pivot 数据模型中。因为这属于微软底层高度加密的 SQL Server Analysis Services 内核技术。
 - 曲线方式可以将数据导出到csv，创建一个空的 xlsb 文件（读取同目录的csv，配置 Excel 属性为“打开时自动刷新数据”），zip交付给用户
 
