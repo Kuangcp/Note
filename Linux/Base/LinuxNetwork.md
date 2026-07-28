@@ -62,12 +62,13 @@ categories:
     - 3.7. [防火墙](#防火墙)
         - 3.7.1. [iptables](#iptables)
             - 3.7.1.1. [四层协议端口转发](#四层协议端口转发)
+        - 3.7.2. [nftables](#nftables)
     - 3.8. [远程桌面](#远程桌面)
         - 3.8.1. [VNC](#vnc)
         - 3.8.2. [Xrdp](#xrdp)
 - 4. [Tips](#tips)
 
-💠 2026-07-08 16:02:50
+💠 2026-07-28 20:58:48
 ****************************************
 # Linux网络管理
 
@@ -915,6 +916,91 @@ _问题场景_
 
 可实现场景：公网内服务器访问内网A域名（Nginx配置）。  
 实现方案为公网服务器追加A域名的DNS到内网出口机的公网ip，出口机配置任意端口转发并修改上层应用层的请求头从而实现Nginx无感差异的访问（Nginx能正常匹配路由）  
+
+### nftables
+> iptables 继任者，内核 3.13+ 内置，统一 iptables/ip6tables/arptables/ebtables
+
+- 查看规则 `nft list ruleset`
+- 查看指定表 `nft list table ip filter`
+
+_表/链/规则 层级结构_
+- `family`： ip（IPv4）、ip6（IPv6）、inet（双栈）、arp、bridge、netdev
+- table 和 chain 需要用户自行创建，不像 iptables 有预设
+
+_常用操作_
+
+```bash
+# 创建表
+nft add table ip filter
+
+# 创建链（input链，默认策略 accept）
+nft add chain ip filter input { type filter hook input priority 0\; policy accept\; }
+
+# 添加规则
+nft add rule ip filter input tcp dport 22 accept          # 放行 SSH
+nft add rule ip filter input tcp dport {80,443} accept    # 放行 HTTP/HTTPS
+nft add rule ip filter input ct state established,related accept  # 允许已有连接的回包
+nft add rule ip filter input iif lo accept                # 放行回环接口
+nft add rule ip filter input ip saddr 192.168.1.0/24 drop # 拒绝某网段
+
+# 插入规则到指定位置（handle 查看后 insert）
+nft insert rule ip filter input position 3 tcp dport 3306 accept
+
+# 查看规则及 handle
+nft -a list chain ip filter input
+
+# 按 handle 删除单条规则
+nft delete rule ip filter input handle 5
+
+# 清空链上所有规则
+nft flush chain ip filter input
+```
+
+_NAT（inet 表 同时处理 IPv4/IPv6）_
+
+```bash
+nft add table inet nat
+nft add chain inet nat prerouting { type nat hook prerouting priority dstnat\; policy accept\; }
+nft add chain inet nat postrouting { type nat hook postrouting priority srcnat\; policy accept\; }
+
+# 端口转发（将本机 8080 转发到内网 192.168.1.100:80）
+nft add rule inet nat prerouting iif eth0 tcp dport 8080 dnat to 192.168.1.100:80
+
+# 源地址伪装（MASQUERADE，如出口 NAT）
+nft add rule inet nat postrouting oif eth0 masquerade
+```
+
+_限速与连接限制_
+
+```bash
+# 限制每秒最多 10 个 SSH 新连接
+nft add rule ip filter input tcp dport 22 ct state new limit rate 10/second accept
+
+# 限制单 IP 并发连接数
+nft add rule ip filter input tcp dport 80 ct state new meter per-ip-conn { ip saddr ct count over 50 } drop
+```
+
+_集合（set）批量管理 IP/端口_
+
+```bash
+# 创建集合
+nft add set ip filter blacklist { type ipv4_addr\; }
+nft add element ip filter blacklist { 10.0.0.1, 10.0.0.2 }
+
+# 用集合匹配
+nft add rule ip filter input ip saddr @blacklist drop
+```
+
+_持久化_
+- `nft list ruleset > /etc/nftables.conf` 导出配置
+- `nft -f /etc/nftables.conf` 导入配置
+- systemd 服务 `systemctl enable --now nftables`
+
+_iptables 迁移_
+- `iptables-translate` 将 iptables 命令翻译为 nftables 语法
+- `iptables-restore-translate` 批量翻译
+
+> [nftables wiki](https://wiki.nftables.org/)
 
 ************************
 ## 远程桌面
