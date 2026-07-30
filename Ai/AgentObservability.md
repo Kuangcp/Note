@@ -16,7 +16,7 @@ categories:
     - 1.5. [Laminar](#laminar)
     - 1.6. [Helicone](#helicone)
 
-💠 2026-07-09 10:46:22
+💠 2026-07-30 17:56:08
 ****************************************
 # Agent 观测
 
@@ -24,6 +24,10 @@ categories:
 
 如果想要完善的更高的数据量的分析系统，采用Langfuse，如果早期阶段，使用 Phoenix 会更轻量。  
 但是，即使都是基于OTel协议接入，但是为了适配对应的监控系统的UI数据展示，会需要一些特定的tag做适配（点名Langfuse），所以可能是有对接成本的，并不是无缝切换观测系统
+
+> 为什么不用 传统APM？
+- 只能看到一段纯文本 Span 耗时，无法优雅地展示大模型多轮对话 以及模型参数。
+- 没有 User Session 数据聚合
 
 ## Langsmith
 > [LangSmith: AI Agent & LLM Observability and Evals Platform](https://www.langchain.com/langsmith-platform)  
