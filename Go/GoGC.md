@@ -24,9 +24,14 @@ categories:
     - 2.5. [Go 1.19：软内存限制 (Soft Memory Limit)](#go-119软内存限制-soft-memory-limit)
     - 2.6. [Go 1.26：GreenTea GC (Span-based Scanning)](#go-126greentea-gc-span-based-scanning)
 - 3. [GC 参数与调优](#gc-参数与调优)
-- 4. [最佳实践](#最佳实践)
+- 4. [内存归还：MADV_FREE 与 MADV_DONTNEED](#内存归还madv_free-与-madv_dontneed)
+    - 4.1. [MADV_DONTNEED](#madv_dontneed)
+    - 4.2. [MADV_FREE](#madv_free)
+    - 4.3. [版本演进](#版本演进)
+    - 4.4. [控制方式](#控制方式)
+- 5. [最佳实践](#最佳实践)
 
-💠 2026-03-24 19:27:46
+💠 2026-07-31 18:55:08
 ****************************************
 # GC 核心概念
 > Go Garbage Collection
@@ -119,11 +124,54 @@ Pacer 负责决定何时启动 GC。
 ****************************************
 # GC 参数与调优
 
-- `GOGC`：默认 100。表示当新分配内存达到上一次 GC 后存活内存的 100% 时触发 GC。
+- `GOGC`：默认 100。表示当新分配内存达到上一次 GC 后存活内存的 100% 时触发 GC。 例如GC后占用200M内存，那么直到再申请200M内存才会触发GC
     - 设置为 `off` 可彻底禁用 GC。
 - `GOMEMLIMIT`：Go 1.19 引入。设置运行时的软内存上限。
 - `debug.SetGCPercent()`：动态修改 `GOGC`。
 - `runtime.GC()`：手动触发一次 GC。
+
+****************************************
+# 内存归还：MADV_FREE 与 MADV_DONTNEED
+
+GC 只负责回收堆内对象，真正把空闲内存归还给操作系统的是 **Scavenger（清道夫）**。Scavenger 在后台持续通过 `madvise()` 将不再使用的内存归还内核，不同平台/版本的策略不同：
+
+## MADV_DONTNEED
+- **行为**：立即丢弃页面，RSS 立刻下降；之后再次访问会触发缺页（Page Fault），需重新分配。
+- **代价**：调用开销较高，频繁归还与再分配的成本大。
+
+## MADV_FREE
+- **行为**：懒释放。页面先标记为可回收，只有在内核内存紧张时才真正回收，RSS 不会立即下降。
+- **优点**：归还开销小，且页面可被复用，性能更好。
+- **缺点**：`top` 等监控工具中的 RSS 不下降，容易被误判为"内存泄漏"，与依赖内存指标做弹性伸缩/管理的系统配合不佳。
+
+例如MinIO这类本身还有对象池，就容易导致如果有大批量的文件写入，会让内存居高不下不归还系统
+
+> 假如同一个主机上还部署了Java应用，然后MinIO已经占用了很高内存没归还的前提下，Java应用也开始大额申请内存时，会有以下风险
+
+场景 1：MinIO 被部署在有硬性限制（Limit）的 Docker/K8s 容器中
+
+* 致命点：Docker 的内存限制（如 resources.limits.memory: 15G）是通过 Linux 的 Cgroups 机制实现的。
+* 结果：Cgroups 在很多旧版本 Linux 内核中，并不屑于去识别 MADV_FREE 的标记。当 MinIO 容器内的 Go 内存积压到 15G 时，Cgroups 误以为这 15G 全是活的数据，从而直接触发 OOM，把 MinIO 容器一枪干掉（Exit Code 137）。
+
+场景 2：Java 的 -Xms 和 -Xmx 设得太大
+
+* 致命点：如果 Java 进程启动时设置了 -Xms15G -Xmx15G（启动即锁定 15G 物理内存），或者并发流量极高，导致 Java 申请内存的速度快过了 Linux 内核回收 MADV_FREE 页面的速度。
+* 结果：内核来不及回收，就会瞬间触发操作系统的保护机制（OOM-Killer），它会根据 OOM Score 算出一个最耗内存的“倒霉蛋”（通常不是 MinIO 就是 Java），然后随机杀掉其中一个进程。
+
+## 版本演进
+| 版本 | 默认行为 |
+| :--- | :--- |
+| **Go 1.12** | Linux 上默认改用 MADV_FREE（内核不支持时回退 MADV_DONTNEED），见 issue #23687 |
+| **Go 1.16** | 回退为默认使用 MADV_DONTNEED，因 MADV_FREE 导致 RSS 统计不直观，见 commit 05e6d28 / issue #42330 |
+
+## 控制方式
+- `GODEBUG=madvdontneed=1`：Linux 默认，使用 MADV_DONTNEED。
+- `GODEBUG=madvdontneed=0`：Linux 改用 MADV_FREE（效率更高，但 RSS 只在内存压力下才下降）。
+- **BSD 系 / Illumos / Solaris** 默认使用 MADV_FREE，设置 `GODEBUG=madvdontneed=1` 可切回 MADV_DONTNEED。
+- **macOS** 使用 `MADV_FREE_REUSABLE` / `MADV_FREE_REUSE`。
+- `debug.FreeOSMemory()`：强制触发一次 GC 并尽量将内存归还给操作系统。
+- `GODEBUG=scavtrace=1`：输出 Scavenger 的归还统计，用于排查内存问题。
+- 设置 `GOMEMLIMIT` 后，Scavenger 会采取更积极的归还（Eager Scavenging）以遵守内存上限。
 
 ****************************************
 # 最佳实践
