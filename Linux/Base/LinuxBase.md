@@ -75,7 +75,7 @@ categories:
         - 4.5.1. [rng-tools 的实现原理](#rng-tools-的实现原理)
         - 4.5.2. [现代 Linux 内核（Kernel 5.6+）的重要机制演变](#现代-linux-内核kernel-56的重要机制演变)
 
-💠 2026-07-06 19:42:58
+💠 2026-08-04 11:57:30
 ****************************************
 
 # Linux系统
@@ -843,12 +843,15 @@ SWAP = VIRT - RES
     - 前提是交换分区已在 `/etc/fstab` 中配置
 
 ### 缓存 cache buffer
-注意： 读 cache 写 buffer， 设计是为了提高读写效率，如果内存不足时可以考虑释放这部分内存，但是也会带来读写缓存失效重新读磁盘的性能问题，需慎重考虑。
-
 > [参考: 如何在 Linux 中清除缓存（Cache）？](https://linux.cn/article-5627-1.html) `注意要切换到root再运行命令`  
 > [参考: Linux 内存中的Cache，真的能被回收么？](https://www.cnblogs.com/276815076/p/5478966.html)  
 
 > [silenceshell/hcache: showing top X biggest cache files global](https://github.com/silenceshell/hcache)`按进程查看cache和buff使用量`  
+
+在现代 Linux 中，Cached 缓存的是文件内容（File-backed），而 Buffers 缓存的是裸磁盘块的元数据、索引和目录结构（Raw Disk Blocks）。  
+现代 Linux 中，无论你是读文件还是写文件，数据的具体内容 100% 都是流向 Cached（Page Cache）的  
+
+在几十年前的旧 Linux 内核里，确实把读文件的缓存叫 Cache，把写磁盘的缓冲叫 Buffer ： **读 cache 写 buffer**
 
 ************************
 
