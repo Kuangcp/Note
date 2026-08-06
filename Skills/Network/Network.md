@@ -55,6 +55,7 @@ categories:
     - 5.3. [正向代理](#正向代理)
     - 5.4. [反向代理](#反向代理)
         - 5.4.1. [Frp](#frp)
+            - 5.4.1.1. [stcp](#stcp)
     - 5.5. [透明代理](#透明代理)
     - 5.6. [应用的代理设置](#应用的代理设置)
         - 5.6.1. [Java](#java)
@@ -74,7 +75,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2026-07-08 14:28:11
+💠 2026-08-06 09:29:26
 ****************************************
 # 网络
 > [Java 网络](/Java/AdvancedLearning/JavaNetwork.md)  
@@ -585,11 +586,14 @@ customDomains = ["公网域名 xxx Nginx配置"]
 ```
 - ./frpc -c ./frpc.toml
 
-如果想要实现安全的 通过公网中转内网的流量， 例如做私有化部署时，可以使用 stcp 隧道方式: 拓扑结构是 frpc 内网 <-> frps 公网 <-> frpc (访问内网的一方)  
-如果访问方没法运行frpc搭建起stcp隧道，就在frps端 起一个 ttyd 或 tty2web 暴露出公网地址 注意加上帐号密码
-
+#### stcp
 > [安全地暴露内网服务 | frp](https://gofrp.org/zh-cn/docs/examples/stcp/)  
+- 如果想要实现安全的 通过公网中转内网的流量， 例如做私有化部署时，可以使用 stcp 隧道方式: 拓扑结构是 frpc 内网 <-> frps 公网 <-> frpc (访问内网的一方)  
+    - 如果访问方没法运行frpc搭建起stcp隧道，就在frps端 起一个 ttyd 或 tty2web 暴露出公网地址 注意加上帐号密码
 
+> [XTCP | frp](https://gofrp.org/zh-cn/docs/features/xtcp/)`相较于stcp，xtcp是udp的P2P协议，不收服务端带宽限制，但是受限两端的网络环境`  
+
+frp支持配置 xtcp 并 fallback 到 stcp。
 
 ## 透明代理
 > 客户端根本不需要知道有代理服务器的存在，它改变你的 request fields（报文），并会传送客户端真实IP给服务端，多用于路由器的NAT转发中
