@@ -56,6 +56,7 @@ categories:
     - 5.4. [反向代理](#反向代理)
         - 5.4.1. [Frp](#frp)
             - 5.4.1.1. [stcp](#stcp)
+            - 5.4.1.2. [xtcp](#xtcp)
     - 5.5. [透明代理](#透明代理)
     - 5.6. [应用的代理设置](#应用的代理设置)
         - 5.6.1. [Java](#java)
@@ -75,7 +76,7 @@ categories:
     - 7.1. [移动通信技术规格](#移动通信技术规格)
     - 7.2. [网络延迟](#网络延迟)
 
-💠 2026-08-06 09:29:26
+💠 2026-08-06 09:43:20
 ****************************************
 # 网络
 > [Java 网络](/Java/AdvancedLearning/JavaNetwork.md)  
@@ -593,7 +594,54 @@ customDomains = ["公网域名 xxx Nginx配置"]
 
 > [XTCP | frp](https://gofrp.org/zh-cn/docs/features/xtcp/)`相较于stcp，xtcp是udp的P2P协议，不收服务端带宽限制，但是受限两端的网络环境`  
 
+#### xtcp
 frp支持配置 xtcp 并 fallback 到 stcp。
+
+```toml
+# ==================== 被访问端 (内网 Server) ====================
+# 1. 优先执行的 P2P 直连代理 (xtcp)
+[[proxies]]
+name = "ssh_xtcp"
+type = "xtcp"
+secretKey = "sssssssssssssssssssssss"
+localIP = "127.0.0.1"
+localPort = 22
+# 关键点：如果 xtcp 打洞失败或连接断开，自动将流量回退到下方的 stcp 代理
+fallbackTo = "ssh_stcp"
+
+# 2. 备用的中转代理 (stcp)
+[[proxies]]
+name = "ssh_stcp"
+type = "stcp"
+secretKey = "sssssssssssssssssssssss"
+localIP = "127.0.0.1"
+localPort = 22
+
+# ==================== 访问端 (Visitor) ====================
+# 1. 优先尝试的 P2P 访客通道 (xtcp)
+[[visitors]]
+name = "secret_ssh_xtcp_visitor"
+type = "xtcp"
+serverName = "ssh_xtcp"       # 指向服务端的 xtcp 代理名
+secretKey = "sssssssssssssssssssssss"
+bindAddr = "127.0.0.1"
+bindPort = 10022
+# 关键点：如果此访客通道连接对方失败，本地端口（10022）无缝切换至下方的 stcp 访客通道
+fallbackTo = "secret_ssh_stcp_visitor"
+
+# 2. 备用的中转访客通道 (stcp)
+[[visitors]]
+name = "secret_ssh_stcp_visitor"
+type = "stcp"
+serverName = "ssh_stcp"       # 指向服务端的 stcp 代理名
+secretKey = "sssssssssssssssssssssss"
+bindAddr = "127.0.0.1"
+bindPort = 10022
+
+```
+
+当你在访问端执行 ssh -p 10022 user@127.0.0.1 时，frp 会启动内置的 STUN 模块，疯狂尝试 UDP 打洞。一旦成功，两端直接接通，大流量开始在两端家庭宽带间狂飙，完全不吃你服务器的带宽。  
+遇到极端网络（如对称 NAT）时：如果两端的路由器都是对称型 NAT，UDP 探测包会被强行挡住导致打洞超时。此时本地的 frpc 会在几百毫秒内无感触发 fallbackTo 规则，自动将 10022 端口绑定到 secret_ssh_stcp_visitor 上，数据立刻改走你的公网服务器做安全中转。  
 
 ## 透明代理
 > 客户端根本不需要知道有代理服务器的存在，它改变你的 request fields（报文），并会传送客户端真实IP给服务端，多用于路由器的NAT转发中
