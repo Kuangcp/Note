@@ -109,7 +109,8 @@ MysqlAgentStateStore     → 审计报表
 
 ************************
 
-# ReAct
+# ReAct Agent
+> [智能体 - AgentScope Java](https://java.agentscope.io/v2/zh/docs/building-blocks/agent.html)  
 
 ## Context
 
@@ -182,9 +183,13 @@ graph TD
 
 这意味着**多轮对话的连续性由框架自动保证**，你只需要传相同的 `RuntimeContext.sessionId` 
 
-## 声明周期管理
+## 生命周期管理
 中断，恢复
 
+## 人机交互
+工具执行时抛出 RequireExternalExecutionEvent ，然后人工介入 确认 拒绝或通过。
+
+拒绝则输入修改意见还可以直接修改工具结果，让主Agent感知并重新调用工具
 
 ## 结构化输出
 
@@ -195,7 +200,9 @@ graph TD
 
 # Harness Agent
 
-HarnessAgent（以及底层的 ReActAgent）采用**无状态引擎**设计。Agent 实例本身只持有**不可变配置**（system prompt、model、toolkit、middleware 链）。
+HarnessAgent（基于ReActAgent）采用**无状态引擎**设计。Agent 实例本身只持有**不可变配置**（system prompt、model、toolkit、middleware 链）。
+
+HarnessAgent 不是另一个 Agent，而是「用一个 Build 流水线把 20+ 个 Middleware 按顺序装到一个裸 ReActAgent 上」的工程化装配层。
 
 > 无状态组件的 三个共享状态对象
 - 所有 per-session 的可变数据都放在 `AgentState` 里，以 `(userId, sessionId)` 为索引key，持久化对应 AgentStateStore

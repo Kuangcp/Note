@@ -1275,7 +1275,7 @@ Duration.between(startTime, endTime);
     // Date -> LocalDateTime 
     LocalDateTime.ofInstant(date.toInstant(), ZoneOffset.systemDefault());
 
-    // 格式化
+    // 格式化 线程安全
     DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     fmt.format(LocalDateTime.now());
     // 解析
