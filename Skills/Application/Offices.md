@@ -7,11 +7,39 @@ categories:
 
 💠
 
-- 1. [Excel](#excel)
-- 2. [CSV](#csv)
+- 1. [Offices](#offices)
+- 2. [Excel](#excel)
+- 3. [CSV](#csv)
 
-💠 2026-07-23 09:45:02
+💠 2026-08-17 17:46:17
 ****************************************
+# Offices
+Ai领域将办公附件的解析成Markdown的需求更高频了
+
+> [firecrawl/anydoc: Convert Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV, and PDF to clean Markdown](https://github.com/firecrawl/anydoc)  
+
+| 项目                                                                  | Stars | 支持格式                                   | 核心特点                                                                  | 最佳场景                       |
+| ------------------------------------------------------------------- | ----- | -------------------------------------- | --------------------------------------------------------------------- | -------------------------- |
+| **[MarkItDown](https://github.com/microsoft/markitdown)**           | ~172k | PDF/DOCX/PPTX/XLSX/图片/音频/EPUB/HTML/ZIP | 微软出品，万能转换，插件扩展，一行命令搞定                                                 | 快速批量处理、多格式统一入口             |
+| **[MinerU](https://github.com/opendatalab/MinerU)**                 | ~77k  | PDF/DOCX/PPTX/XLSX/图片                  | 高精度结构恢复，公式→LaTeX，表格→HTML，84种语言OCR                                     | 学术论文、复杂报告、扫描件              |
+| **[Docling](https://github.com/DS4SD/docling)**                     | ~64k  | PDF/DOCX/PPTX/XLSX/HTML/图片/音频          | IBM 出品，统一 `DoclingDocument` 中间表示，MCP Server，LangChain/LlamaIndex 原生集成 | 自托管 RAG Pipeline、Agent 工具链 |
+| **[Marker](https://github.com/VikParuchuri/marker)**                | ~38k  | PDF/PPTX/DOCX/XLSX/EPUB/图片             | 速度快，布局保真，可选 LLM 二次清洗表格                                                | 批量转换、多语言文档、GPU 环境          |
+| **[Unstructured](https://github.com/Unstructured-IO/unstructured)** | ~15k  | PDF/DOCX/PPTX/图片/HTML/邮件               | 输出语义元素类型（Title/Table/ListItem），适合精细 Chunking                          | 需要按元素类型做 Chunking 策略的 RAG  |
+| **[Zerox](https://github.com/getomni-ai/zerox)**                    | ~12k  | PDF/图片                                 | 纯 VLM 方案，把每页当图片丢给视觉模型出 Markdown                                       | 排版极复杂的扫描件、手写体              |
+| **[Dolphin](https://github.com/bytedance/dolphin)** (字节)            | 较新    | PDF/图片                                 | Vision Transformer 驱动，本地运行，布局还原好                                      | 本地部署、隐私要求高                 |
+| **[PyMuPDF](https://github.com/pymupdf/PyMuPDF)**                   | ~6k   | PDF                                    | 底层 C 引擎，极快，支持坐标/字体/颜色级提取                                              | 大规模数字 PDF 预处理、PDF 操作       |
+| [firecrawl/anydoc](https://github.com/firecrawl/anydoc)| ~15k+ |  Word/PPT/Excel/OpenDocument/RTF/EPUB/CSV/PDF（文本型）| Rust 引擎，中位数 4.4ms；14 种格式全覆盖；统一文档模型 + 单一序列化器，输出一致性最高；内容检测不依赖扩展名；Node.js/Python/CLI/WebAssembly 多绑定；零外部依赖；Agent Skill 一键接入  | 追求极致速度、格式全覆盖、零部署成本的本地转换；Agent 工具链直接集成| 
+
+| 你的需求                         | 推荐工具              |
+| ---------------------------- | ----------------- |
+| 格式最全、安装最简单                   | **MarkItDown**    |
+| 学术/技术 PDF，公式+表格要准            | **MinerU**        |
+| 要接入 LangChain/LlamaIndex，自托管 | **Docling**       |
+| 需要语义标签做精细 Chunking           | **Unstructured**  |
+| 扫描件/手写/复杂排版                  | **Zerox**（VLM 方案） |
+| 追求极致速度，数字 PDF 为主             | **PyMuPDF** + 后处理 |
+| 想直接当 RAG 系统用                 | **RAGFlow**       |
+
 
 # Excel 
 > [Microsoft Excel - Wikipedia](https://en.wikipedia.org/wiki/Microsoft_Excel)  
