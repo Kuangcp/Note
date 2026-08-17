@@ -41,7 +41,7 @@ categories:
         - 2.2.1. [打包最新版git](#打包最新版git)
         - 2.2.2. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-💠 2025-04-18 09:37:55
+💠 2026-08-17 17:33:32
 ****************************************
 # Dockerfile
 
@@ -66,6 +66,8 @@ categories:
     - 否则就是 `docker build -t image:tag- < 文件名` 或者使用-f参数:
     - `-f` 指向任意位置的文件进行配置 `docker build -f /path/to/a/Dockerfile .`
 - `-t`如果构建成功 可以指定保存新镜像的image和tag (多个的话就多个 -t就行了，例如 `docker build -t shykes/myapp:1.0.2 -t shykes/myapp:latest .`)
+
+> [moby/buildkit: concurrent, cache-efficient, and Dockerfile-agnostic builder toolkit](https://github.com/moby/buildkit)  
 
 ### docker buildx
 - [docker buildx](https://github.com/docker/buildx)

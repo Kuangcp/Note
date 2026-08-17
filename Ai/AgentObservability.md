@@ -10,15 +10,18 @@ categories:
 - 1. [Agent 观测](#agent-观测)
     - 1.1. [Langsmith](#langsmith)
     - 1.2. [Langfuse](#langfuse)
-        - 1.2.1. [评测](#评测)
+        - 1.2.1. [Langfuse-评测](#langfuse-评测)
     - 1.3. [Opik](#opik)
     - 1.4. [Phoenix](#phoenix)
     - 1.5. [Laminar](#laminar)
     - 1.6. [Helicone](#helicone)
+    - 1.7. [Coze](#coze)
 
-💠 2026-07-30 17:56:08
+💠 2026-08-17 17:33:32
 ****************************************
 # Agent 观测
+
+> [open-telemetry/semantic-conventions-genai](https://github.com/open-telemetry/semantic-conventions-genai)  
 
 开源选择： Langfuse，Opik， Phoenix
 
@@ -42,7 +45,7 @@ LangChain 生态最佳搭配， 但是只有商业版本
 
 支撑每天数百万级 Trace 的高并发场景
 
-### 评测
+### Langfuse-评测
 Langfuse 已经不仅仅是一个监控（Tracing）平台，它在 LLM 评测（Evaluation） 领域的功能闭环度非常高。
 
 - 提示词实时微调与对比（Playground）
@@ -78,4 +81,10 @@ Langfuse 已经不仅仅是一个监控（Tracing）平台，它在 LLM 评测�
 
 ## Helicone
 > [Helicone / AI Gateway & LLM Observability](https://www.helicone.ai/)  
+
+## Coze
+> [数据上报概述 - 文档 - 扣子罗盘](https://loop.coze.cn/open/docs/cozeloop/trace_integrate)  
+
+从DockerCompose可以推测出这个开源版本是基于 Redis+MySQL+ClickHouse+MinIO+RocketMQ 实现的， 同样的CK是单节点。  
+但是开源版不支持OTel上报。
 
