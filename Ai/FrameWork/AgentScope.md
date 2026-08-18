@@ -15,17 +15,19 @@ categories:
     - 2.4. [Middleware](#middleware)
     - 2.5. [Tool](#tool)
     - 2.6. [AgentState](#agentstate)
-- 3. [ReAct](#react)
+- 3. [ReAct Agent](#react-agent)
     - 3.1. [Context](#context)
-    - 3.2. [声明周期管理](#声明周期管理)
-    - 3.3. [结构化输出](#结构化输出)
-    - 3.4. [模型容错](#模型容错)
+    - 3.2. [生命周期管理](#生命周期管理)
+    - 3.3. [人机交互](#人机交互)
+    - 3.4. [结构化输出](#结构化输出)
+    - 3.5. [模型容错](#模型容错)
 - 4. [Harness Agent](#harness-agent)
     - 4.1. [Skill](#skill)
     - 4.2. [SubAgent](#subagent)
     - 4.3. [Plan Mode](#plan-mode)
+    - 4.4. [调试](#调试)
 
-💠 2026-07-15 11:52:56
+💠 2026-08-18 19:24:49
 ****************************************
 # AgentScope
 
@@ -320,3 +322,8 @@ Plan Mode 依附于 ReAct 循环运行，但不改变循环结构。它用 Agent
 | **持久化**      | 计划文件在 `workspace/plans/`                | 子 Agent 有自己的 session 状态                  |
 | **适用场景**     | "先想后做"的**阶段控制**                         | "专人专事"的**任务委派**                          |
 | **设计哲学**     | 同一个厨师，先读菜谱再开火                           | 主厨 vs 配菜师，各自独立工作                         |
+
+
+## 调试
+> [agentscope-runtime webui](https://github.com/agentscope-ai/agentscope-runtime/blob/main/cookbook/zh/webui.md)  
+
