@@ -19,6 +19,8 @@ categories:
     - 3.1. [Context](#context)
     - 3.2. [生命周期管理](#生命周期管理)
     - 3.3. [人机交互](#人机交互)
+        - 3.3.1. [权限控制机制](#权限控制机制)
+        - 3.3.2. [外部工具机制](#外部工具机制)
     - 3.4. [结构化输出](#结构化输出)
     - 3.5. [模型容错](#模型容错)
 - 4. [Harness Agent](#harness-agent)
@@ -27,7 +29,7 @@ categories:
     - 4.3. [Plan Mode](#plan-mode)
     - 4.4. [调试](#调试)
 
-💠 2026-08-18 19:24:49
+💠 2026-08-19 15:10:28
 ****************************************
 # AgentScope
 
@@ -90,6 +92,8 @@ MysqlAgentStateStore     → 审计报表
 
 ## 权限系统
 对工具行为拦截
+
+通过在工具执行前 发送 RequireUserConfirmEvent 事件让用户确认后再执行工具， HITL的一种。
 
 ## Middleware
 中间件 扩展点
@@ -189,9 +193,31 @@ graph TD
 中断，恢复
 
 ## 人机交互
-工具执行时抛出 RequireExternalExecutionEvent ，然后人工介入 确认 拒绝或通过。
 
-拒绝则输入修改意见还可以直接修改工具结果，让主Agent感知并重新调用工具
+| 机制 | 触发 | 结果标志 | resume 方式 |
+|---|---|---|---|
+| ToolSuspendException<br>外部执行挂起 | 工具代码 throw | TOOL_SUSPENDED | 回填 tool result |
+| 权限引擎 Permission HITL | addAskRule(...) 规则 或 ToolBase.<br>checkPermissions() 返回 PermissionDecision.<br>ask()（工具自检） | PERMISSION_ASKING，发<br>RequireUserConfirmEvent | 二次 agent.call 带<br>List<ConfirmResult> |
+| Hook stopAgent | PostReasoningEvent / PostActingEvent /<br>PostSummaryEvent 里 stopAgent() | REASONING_STOP_REQUESTED /<br>ACTING_STOP_REQUESTED | 再次 agent.call |
+| Middleware RequestStopEvent | MiddlewareBase.onReasoning/onActing 里发<br>RequestStopEvent | MIDDLEWARE_STOP_REQUESTED | 再次 agent.call（无参，自动续跑<br>pending 工具） |
+| Plan mode 批准 | plan_exit 工具（PlanModeTools.PlanExitTool.<br>checkPermissions 强制 ASK） | 复用 PERMISSION_ASKING | ConfirmResult |
+| Skill 提升审批闸门 | LocalApprovalGate（SkillPromotionGate，<br>prompter 函数） | harness 层专用 | approve/reject 回填 |
+
+### 权限控制机制
+权限引擎（permission engine）执行前请求授权， 发出RequireUserConfirmEvent 事件，用户输入 
+
+### 外部工具机制
+工具执行时 主动抛出 ToolSuspendException 异常，Agent运行就挂起了提前走到 RUN_FINISHED，然后人工介入 编辑，拒绝或通过， 这个时候人的操作就是这个工具真正的执行结果，所以叫外部工具。
+
+
+| | ToolSuspendException（你现在用的） | RequireUserConfirmEvent |
+|---|---|---|
+| **机制** | 工具「挂起 / 交给外部执行」 | 权限引擎（permission engine）「执行前请求授权」 |
+| **触发方式** | 命令式：工具代码里自己 throw | 声明式：`PermissionContextState.addAskRule(...)` 配 ASK 规则，框架在工具执行前拦截 |
+| **触发点** | ToolExecutor/ToolMethodInvoker 捕获 → `ToolResultBlock.suspended(...)` | ReActAgent 的 `evaluatePermissions` → `pendingAsk()` 命中 → 发事件 |
+| **结果标志** | `GenerateReason.TOOL_SUSPENDED` | `GenerateReason.PERMISSION_ASKING`（tool call state 变 ASKING） |
+| **工具是否执行了** | 工具方法已跑、主动挂起 | 工具还没执行，等授权 |
+| **resume 契约** | 调用方回填 tool result（外部提供执行结果） | 调用方发第二次 `agent.call`，带 `List<ConfirmResult>`（`Msg.METADATA_CONFIRM_RESULTS`），布尔 approve/deny |
 
 ## 结构化输出
 

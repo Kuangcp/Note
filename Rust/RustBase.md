@@ -11,10 +11,12 @@ categories:
     - 1.1. [异步](#异步)
         - 1.1.1. [协程](#协程)
 
-💠 2026-07-05 17:38:32
+💠 2026-08-19 15:10:28
 ****************************************
 # Rust 
 > [get started](https://www.rust-lang.org/zh-CN/learn/get-started)
+
+> [安装 Rust - Rust 程序设计语言](https://rust-lang.org/zh-CN/tools/install/)  
 
 1. 安装 rustup
 1. rustup default stable/nightly 安装发行版或开发版
