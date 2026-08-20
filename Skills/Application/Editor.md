@@ -40,7 +40,7 @@ categories:
 - 3. [十六进制 Hex](#十六进制-hex)
 - 4. [EditorConfig](#editorconfig)
 
-💠 2025-09-04 20:00:09
+💠 2026-08-20 19:01:58
 ****************************************
 # 文本编辑器
 
@@ -115,13 +115,15 @@ _个人配置_
 
 ## VSCode
 
-> [Official Site](https://code.visualstudio.com/) | [中文手册](https://jeasonstudio.gitbooks.io/vscode-cn-doc/) | [code-server](https://github.com/cdr/code-server) 
+> [Official Site](https://code.visualstudio.com/) | [中文手册](https://jeasonstudio.gitbooks.io/vscode-cn-doc/) | [code-server](https://github.com/cdr/code-server)  
 > 用户自定义配置目录 `~/.config/Code/User/`
 
 1. vscode 书写 markdown [官方文档](https://code.visualstudio.com/Docs/languages/markdown)
 1. 禁用GPU加速 ctrp+shift+p 中的 Preferences: Configure Runtime Arguments 命令
     - 加上 "disable-hardware-acceleration": true
 1. 设置tab多行展示 `workbench.editor.wrapTabs`
+
+> [VSCodium/vscodium: binary releases of VS Code without MS branding/telemetry/licensing](https://github.com/VSCodium/vscodium)开源版本  
 
 ### 快捷键
 > [快捷键官方PDF说明](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)

@@ -30,7 +30,7 @@ categories:
 - 3. [Tips](#tips)
     - 3.1. [JSON字符串反序列化时泛型丢失问题](#json字符串反序列化时泛型丢失问题)
 
-💠 2026-01-27 19:13:38
+💠 2026-08-20 19:01:58
 ****************************************
 # Java中的序列化
 > [码农翻身:序列化： 一个老家伙的咸鱼翻身](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513589&idx=1&sn=d402d623d9121453f1e570395c7f99d7&chksm=80d67a36b7a1f32054d4c779dd26e8f97a075cf4d9ed1281f16d09f1df50a29319cd37520377&scene=21#wechat_redirect) `对象转化为二进制流`
@@ -201,6 +201,7 @@ input.close();
 - [Jackson](https://github.com/FasterXML/jackson)
 - [Gson](https://github.com/google/gson)
 - [fastjson](https://github.com/alibaba/fastjson) [FASTJSON2](https://github.com/alibaba/fastjson2)
+- [Apache Fory™](https://fory.apache.org/zh-CN/docs/json/)`26年新发布高性能框架`  
 
 > [Github Topic: java-json](https://github.com/topics/java-json)
 
