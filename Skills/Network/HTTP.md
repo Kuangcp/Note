@@ -43,7 +43,7 @@ categories:
 - 5. [Tips](#tips)
     - 5.1. [CORS 跨域](#cors-跨域)
 
-💠 2026-07-13 13:58:05
+💠 2026-08-25 18:04:55
 ****************************************
 # HTTP
 > HyperText Transfer Protocol (超文本传输协议) 他是一种用于分布式、协作式和超媒体信息系统的应用层协议
@@ -204,6 +204,10 @@ get 方式下的http请求会限制URL长度，会有多方面不同的限制 �
 
 ## Auth
 ### Basic-Auth
+用户名:密码 base64编码后 设置到 Authorization 
+
+例如 admin/admin 对应 `Authorization: Basic YWRtaW46YWRtaW4=`
+
 
 ************************
 

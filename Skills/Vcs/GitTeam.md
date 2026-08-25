@@ -15,7 +15,8 @@ categories:
         - 1.1.2. [Github Flow](#github-flow)
         - 1.1.3. [Trunk-Based](#trunk-based)
     - 1.2. [提交准则](#提交准则)
-        - 1.2.1. [commit template](#commit-template)
+        - 1.2.1. [Conventional Commits](#conventional-commits)
+        - 1.2.2. [commit template](#commit-template)
     - 1.3. [自建Git服务](#自建git服务)
     - 1.4. [Tips](#tips)
         - 1.4.1. [master作为线上分支时，误提交功能并推送怎么处理](#master作为线上分支时误提交功能并推送怎么处理)
@@ -29,7 +30,7 @@ categories:
     - 2.7. [SourceTree](#sourcetree)
 - 3. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
 
-💠 2024-12-02 15:31:53
+💠 2026-08-25 18:04:55
 ****************************************
 # 使用Git进行团队协作
 
@@ -97,13 +98,36 @@ categories:
    - 提交之后, 你的代码将被项目成员所分享。如果提交了你不明白的代码，你看不懂，别人也看不懂，如果在以后出现了问题将会成为项目质量的隐患。因此在引入任何第三方代码之前，确保你对这个代码有一个很清晰的了解。
 6. 提前协调好项目组成员的工作计划
    - 在自己准备开始进行某项功能的修改之前，先给工作小组的成员谈谈自己的修改计划，让大家都能了解你的思想，了解你即将对软件作出的修改，这样能尽可能的减少在开发过程中可能出现的冲突，提高开发效率。同时你也能够在和成员的交流中发现自己之前设计的不足，完善你的设计。
-7. 对提交的信息采用明晰的标注
-   - `+)` 表示增加了功能
-   - `*)` 表示对某些功能进行了更改
-   - `-)` 表示删除了文件，或者对某些功能进行了裁剪，删除，屏蔽。
-   - `b)` 表示修正了具体的某个bug
 
 > [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)
+
+### Conventional Commits
+
+> [Conventional Commits 1.0.0](https://www.conventionalcommits.org/zh-hans/v1.0.0/) `提交信息的规范约定`
+> 是一套建立在 commit message 之上的轻量规范，核心目标是让提交历史具备"机器可读"的语义，与 [SemVer](https://semver.org/lang/zh-CN/) 直接挂钩：
+
+- `fix` 对应 `PATCH`（修复 bug）
+- `feat` 对应 `MINOR`（新增功能）
+- `BREAKING CHANGE` 对应 `MAJOR`（破坏性 API 变更）
+
+- 结构（与 [commit template](#commit-template) 的 header/body/footer 一致，但强调语义约定）
+
+```
+<type>[optional scope][!]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+- 与 `commit template` 的差异：本规范只强制 `type`、`feat`/`fix` 的语义、`BREAKING CHANGE` 的表达，其余 `type`（`docs`/`style`/`refactor`/`perf`/`test`/`build`/`ci`/`chore` 等）由团队自定义，不影响语义化版本（除非包含 BREAKING CHANGE）
+- `scope` 用名词描述代码库中的一个区块，如 `feat(parser): add ability to parse arrays`
+- `BREAKING CHANGE` 两种表达方式
+  - type/scope 后紧跟 `!`：`feat(api)!: send an email to the customer`
+  - footer 中写 `BREAKING CHANGE: <描述>`（必须全大写，内容说明变更理由与迁移方式）
+- footer 遵循 git trailer 约定，形如 `Reviewed-by: Z`、`Refs: #123`
+- 典型用途：自动生成 CHANGELOG、自动判定版本号、触发构建发布、方便他人理解结构化历史
+- 一条 commit 只应做一件事：若同时涉及 `feat` 与 `refactor`（或 `fix` 与 `feat`），应拆成多条 commit
 
 ### commit template
 
