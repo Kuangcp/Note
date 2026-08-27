@@ -42,9 +42,10 @@ categories:
             - 1.11.3.1. [手动方式](#手动方式)
         - 1.11.4. [热部署](#热部署)
         - 1.11.5. [优雅重启](#优雅重启)
+            - 1.11.5.1. [HTTP+WS](#httpws)
         - 1.11.6. [运行性能优化](#运行性能优化)
 
-💠 2026-05-12 20:15:10
+💠 2026-08-27 17:55:21
 ****************************************
 # SpringBoot
 > [Doc](https://spring.io/projects/spring-boot#learn)
@@ -555,6 +556,9 @@ spec:
 1. K8s SIGTERM → Spring 开始关闭
 1. WebServer 停止接收新连接，等待 in-flight HTTP 请求完成（graceful 超时）
 1. 线程池 shutdown → awaitTermination → 完成
+
+#### HTTP+WS
+如果http和ws服务在一起。那么需要考虑 http和ws 停止接收请求的顺序
 
 ### 运行性能优化
 > [Runtime efficiency with Spring (today and tomorrow)](https://spring.io/blog/2023/10/16/runtime-efficiency-with-spring)

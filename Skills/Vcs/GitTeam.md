@@ -13,7 +13,8 @@ categories:
     - 1.1. [基础思想](#基础思想)
         - 1.1.1. [Git Flow](#git-flow)
         - 1.1.2. [Github Flow](#github-flow)
-        - 1.1.3. [Trunk-Based](#trunk-based)
+        - 1.1.3. [Github Flow 演进版](#github-flow-演进版)
+        - 1.1.4. [Trunk-Based](#trunk-based)
     - 1.2. [提交准则](#提交准则)
         - 1.2.1. [Conventional Commits](#conventional-commits)
         - 1.2.2. [commit template](#commit-template)
@@ -30,7 +31,7 @@ categories:
     - 2.7. [SourceTree](#sourcetree)
 - 3. [小规模团队使用码云组织的总结](#小规模团队使用码云组织的总结)
 
-💠 2026-08-25 18:04:55
+💠 2026-08-27 17:55:21
 ****************************************
 # 使用Git进行团队协作
 
@@ -76,6 +77,48 @@ categories:
 > [Understanding the GitHub flow](https://guides.github.com/introduction/flow/?from=singlemessage)
 
 - [分支图复杂的一个项目](https://github.com/Netflix/eureka/network) `只是演示分支的复杂度`
+
+### Github Flow 演进版
+
+```
+                  (小步快跑, 频繁 Commit)
+                  o---o---o---o---o  [feature/发卡功能]
+                 /                 \
+                /     直接 Merge     \  --squash (唯一合并点)
+               /       (不压缩)       \ 
+--------------+------------------------v-----------------> [master (主干/生产)]
+               \                      /
+                \                    / 
+                 v                  v
+-----------------o------------------o--------------------> [release/test (测试环境)]
+                                     (Bug 修复后再次合入)
+```
+
+系统内固定长存的分支只有 master 和 release/test，其余功能分支皆是“随用随建，用完即删”。
+
+> 1. 主干分支：master（或 main）
+
+- 定位：生产环境代码。它代表了线上最稳定的运行版本。
+- 原则：
+- 绝对禁止任何开发者直接在 master 上修改或提交代码。
+   - 只能由测试通过的 feature/* 分支通过 --squash 方式合并进来。
+   - 保持 commit 历史的高保真与极简，每一次提交都对应一个完整的业务特性（Feature）或紧急修复（Hotfix）。
+
+> 2. 环境发布分支：release/test（测试环境分支）
+
+- 定位：对应测试服务器/预发服务器。
+- 原则：
+- 绝对不要在这个分支上直接改代码。
+   - 当某个功能需要提测时，将该功能的 feature/* 分支直接 Merge（不加 --squash）到 release/test。
+   - 测试发现 Bug 后，开发者在自己的 feature/* 分支修复，修复完再次普通 Merge 到 release/test，直到测试完全通过。
+
+
+> 3. 动态分支：feature/xxx（功能分支）与 hotfix/xxx（紧急修复分支）
+
+- 定位：开发者的私人战场。
+- 原则：
+- 小步快跑：遵循“原子提交”原则。每写完一个接口或解决一个局部逻辑，立刻 Commit。
+    - 不要有心理压力：本地 Commit 哪怕写成 fix: 拼写错误、test: 瞎测一把 都没关系，因为它们最终上线前都会被压缩。
 
 ### Trunk-Based
 > [Trunk-Based Development](https://trunkbaseddevelopment.com/)`基于主干的单分支模型，不使用多分支`  
