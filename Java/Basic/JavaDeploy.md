@@ -14,6 +14,7 @@ categories:
     - 1.2. [打包可执行Jar](#打包可执行jar)
     - 1.3. [打包War](#打包war)
     - 1.4. [打包Docker镜像](#打包docker镜像)
+        - 1.4.1. [基础镜像的选择](#基础镜像的选择)
 - 2. [配置文件](#配置文件)
     - 2.1. [命令行参数](#命令行参数)
 - 3. [安全加固](#安全加固)
@@ -24,7 +25,7 @@ categories:
     - 4.1. [Java在Linux上的时区问题](#java在linux上的时区问题)
     - 4.2. [容器中Jvm信号及参数接收问题](#容器中jvm信号及参数接收问题)
 
-💠 2025-12-11 22:17:21
+💠 2026-08-28 22:14:04
 ****************************************
 # 部署运行
 > 传统的可执行jar, war 以及Docker镜像
@@ -77,6 +78,35 @@ _MANIFEST.MF示例_
 
 > [jib](https://github.com/GoogleContainerTools/jib)
 > - 结合 Maven Gradle 能更方便的构建 Docker镜像
+
+### 基础镜像的选择
+首先是 musl libc(alpine) 和 glibc 两大阵营。
+
+早年间（Docker 刚流行时），大家都*迷恋 Alpine 那只有 5MB 的极致体积*。但随着微服务进入深水区，Java 开发者发现 Alpine 带来了三个难以忍受的“隐形成本”
+
+1. musl-libc 的性能天花板：
+   Java 虚拟机（JVM）本身是一个极度依赖底层 C 库（尤其是线程調度、内存分配 malloc/free）的复杂软件。标准 JDK 都是基于 glibc 开发和优化的。Alpine 的 musl-libc 为了追求代码极简，在高并发的锁竞争、高频的堆内存碎片整理、以及底层加密算法（JCE）的实现一致性（PKCS5Padding问题）和寻址性能，明显弱于 glibc。
+2. 隐藏的 1.8S/2.8S 崩溃大坑（DNS 解析缺陷）：
+   这是 Alpine 最著名的生产事故来源。musl-libc 的 DNS 解析不支持 search 域的并发查询，在高并发调用内网 Java 接口（比如你调用内网的 Java 服务的接口）时，有概率触发 DNS 超时假死，导致服务莫名其妙卡顿。
+3. 排查工具极其匮乏（可以通过二次构建镜像解决）：
+   当你想线上排查问题时，Alpine 默认连 bash、curl、top都没有，你必须进去现装。
+
+如果不用 Alpine，直接用传统的 ubuntu:latest 镜像又太胖了（动辄 100M+，包含大量无用的音视频驱动、帮助文档），会拉低 CI/CD 部署抽取的效率。
+目前一线大厂和开源社区最推荐以下两种平衡了「性能（glibc）」与「体积（精简）」的黄金发行版：
+
+> 1. Debian-slim 系列（目前行业绝对的主流 ⭐⭐⭐⭐⭐）
+像官方的 OpenJDK 镜像、或者 Spring 官方推荐的 eclipse-temurin 镜像 [eclipse-temurin](https://hub.docker.com/_/eclipse-temurin/tags?name=8-jdk-focal)，现在默认的后缀都是 -debian-slim。
+
+* 核心优势：它是 Debian（Ubuntu 的母体）的官方极简版，去掉了所有不必要的包，但保留了最纯正、高性能的 glibc 库。
+* 体积与性能：镜像大小只有 30MB ~ 40MB 左右。在具备 Alpine 级小体积的同时，拥有 100% 完整的标准 JDK 密码学和垃圾回收性能。
+
+> 2. Google Distroless 镜像（极致安全与性能）
+谷歌开源的专为运行程序设计的镜像。
+
+* 核心优势：里面只有你的运行环境（如 Java 8 或 Java 17）和最基础的 glibc 库，甚至连 Shell（/bin/sh）都直接干掉了，从根本上杜绝了黑客入侵和安全漏洞。
+* 体积：体积同样极小，但运行的是纯正的 glibc，性能拉满。
+
+- [内存管理区别](/Linux/Base/LinuxBase.md#内存管理)
 
 ************************
 

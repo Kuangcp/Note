@@ -41,7 +41,7 @@ categories:
         - 2.2.1. [打包最新版git](#打包最新版git)
         - 2.2.2. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-💠 2026-08-17 17:33:32
+💠 2026-08-28 22:14:04
 ****************************************
 # Dockerfile
 
@@ -62,8 +62,8 @@ categories:
 ************************
 ## docker build 
 
-- 如果文件名是默认的`Dockerfile` 就使用 `.` 
-    - 否则就是 `docker build -t image:tag- < 文件名` 或者使用-f参数:
+- 如果文件名是默认的 `Dockerfile` 就使用 `.`。 自定义文件名可以：
+    - `docker build -t image:tag- < 文件名`
     - `-f` 指向任意位置的文件进行配置 `docker build -f /path/to/a/Dockerfile .`
 - `-t`如果构建成功 可以指定保存新镜像的image和tag (多个的话就多个 -t就行了，例如 `docker build -t shykes/myapp:1.0.2 -t shykes/myapp:latest .`)
 
