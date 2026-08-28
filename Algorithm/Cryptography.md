@@ -17,13 +17,15 @@ categories:
     - 3.1. [编码](#编码)
     - 3.2. [伪随机数生成器](#伪随机数生成器)
     - 3.3. [对称密码](#对称密码)
-        - 3.3.1. [DES](#des)
-        - 3.3.2. [AES](#aes)
-            - 3.3.2.1. [混合模式](#混合模式)
-                - 3.3.2.1.1. [AES-CCM](#aes-ccm)
-                - 3.3.2.1.2. [AES-GCM](#aes-gcm)
-        - 3.3.3. [分组密码和流密码](#分组密码和流密码)
-        - 3.3.4. [分组密码的模式](#分组密码的模式)
+        - 3.3.1. [分组密码和流密码](#分组密码和流密码)
+        - 3.3.2. [分组密码的模式](#分组密码的模式)
+        - 3.3.3. [DES](#des)
+        - 3.3.4. [AES](#aes)
+            - 3.3.4.1. [混合模式](#混合模式)
+                - 3.3.4.1.1. [AES-CCM](#aes-ccm)
+                - 3.3.4.1.2. [AES-GCM](#aes-gcm)
+            - 3.3.4.1.2.1. [填充：PKCS5 与 PKCS7](#填充pkcs5-与-pkcs7)
+            - 3.3.4.2. [微信消息加解密（AES-CBC）](#微信消息加解密aes-cbc)
     - 3.4. [公钥密码](#公钥密码)
         - 3.4.1. [RSA](#rsa)
             - 3.4.1.1. [生成密钥对](#生成密钥对)
@@ -47,7 +49,7 @@ categories:
     - 4.2. [SSL TLS](#ssl-tls)
 - 5. [扩展](#扩展)
 
-💠 2026-06-29 19:41:41
+💠 2026-08-28 15:47:06
 ****************************************
 # 密码学
 > [wikipedia](https://zh.wikipedia.org/wiki/%E5%AF%86%E7%A0%81%E5%AD%A6)
@@ -153,6 +155,37 @@ categories:
 
 ## 对称密码
 
+
+### 分组密码和流密码
+分组密码(block cipher)是指每次只能处理固定长度数据的一类密码算法。例如 DES，AES等
+流密码(stream cipher)是对数据流连续处理的一类密码算法。
+
+分组密码处理完一个分组就结束了，因此不需要内部状态来记录维护加密的进度，反之流密码是对一串数据流进行连续处理，是有状态的。
+
+> 由于明文不可能总是密钥的整数倍长，因此需要对最后一个明文分组进行数据填充(padding)达到对齐
+
+### 分组密码的模式
+> 分组密码算法需要对分段的明文进行迭代加密，迭代的方法称为模式。
+
+《实用密码学》中指出，推荐使用CBC模式和CTR模式。
+
+- ECB：Electronic CodeBook mode 电子密码本模式
+- CBC：Cipher Block Chaining mode 密码分组链接模式
+- CFB：Cipher FeekBack mode 密文反馈模式
+- OFB：Output FeedBack mode 输出反馈模式
+- CTR：CounTeR mode 计数器模式
+
+ECB模式是按序迭代，也是最容易有安全漏洞的算法，通常不被实际使用。
+- 因为ECB模式下，明文分组和密文分组是按序一一对应的，那理论上可以通过对密文分组的 复制，调序，剪切 等操作，从而达到篡改明文的目的。
+- 但是如果使用消息认证码，则可以发现密文被篡改
+
+IV： 初始化向量(initialization vector)。 *iv长度为固定的16字节*
+
+CBC模式在每个明文分组加密为密文分组前，都需要拿前一个明文分组得到的密文分组对当前明文分组做异或（XOR）运算，第一个分组则依赖IV做XOR。每个分组都依赖前一个分组像一个链条。  
+CFB，OFB和CBC类似都需要IV，只是当前明文分组的处理方式不同。  
+
+************************
+
 ### DES
 Data Encryption Standard 是 1977年美国联邦信息处理标准中所采用的对称密码。 
 
@@ -200,35 +233,69 @@ Advanced Encryption Standard。在全世界范围进行公开竞选， 有15个�
 ##### AES-GCM 
 - AES算法采用CTR模式，并带有GMAC消息认证码。能防篡改（认证码实现） [wiki: GCM](https://en.wikipedia.org/wiki/Galois/Counter_Mode)
 
-************************
+#### 填充：PKCS#5 与 PKCS#7
+> 分组加密要求明文长度是分组长度的整数倍，否则需要对最后一个分组进行填充(padding)。AES 分组长度为 16 字节（128 位）。
 
-### 分组密码和流密码
-分组密码(block cipher)是指每次只能处理固定长度数据的一类密码算法。例如 DES，AES等
-流密码(stream cipher)是对数据流连续处理的一类密码算法。
+- PKCS#5：RFC 2898 定义，最初只针对 8 字节分组（DES）设计，填充值 = 需要填充的字节数。
+- PKCS#7：RFC 5652 定义，将 PKCS#5 推广到任意分组长度（1~255 字节），规则相同：末尾填充 n 个值为 n 的字节，其中 n = 分组长度 - 明文长度 % 分组长度。
+- 当明文长度恰好是分组长度的整数倍时，会追加一整块（16 字节）值为 0x10 的填充，否则无法区分"末尾恰好是 0x01"的情形。
 
-分组密码处理完一个分组就结束了，因此不需要内部状态来记录维护加密的进度，反之流密码是对一串数据流进行连续处理，是有状态的。
+`Java 中的区别`：
+- SunJCE 的 `PKCS5Padding` 实际按 Cipher 的分组长度（AES 为 16）填充，即它就是 PKCS#7。因此对 AES 而言 `AES/CBC/PKCS5Padding` 与 `AES/CBC/PKCS7Padding` 结果**逐字节完全相同**。
+- 历史差异：JDK 8u161 / JDK 9 之前 SunJCE 不支持 `PKCS7Padding`（会抛 `NoSuchAlgorithmException`），只能用 `PKCS5Padding`；8u161 之后两者都可用且等价。
+    - 但是！ OpenJDK / Alpine (IcedTea) ，RedHat 等发行版是会有可能 不存在 PKCS7Padding 实现，而且 PKCS5Padding 也没有做32字节对齐。 因为 *致命的「美国加密出口管制」（JCE 限制政策）*  然后就会出现行为不一致的情况
 
-> 由于明文不可能总是密钥的整数倍长，因此需要对最后一个明文分组进行数据填充(padding)达到对齐
+`结论`：AES 场景下两者可互换。但个别实现会自定义对齐基准（如下文微信按 32 字节对齐而非 16），此时标准 PKCS5/PKCS7 的自动去填充会校验失败，需改用 `NoPadding` 手动去填充。
 
-### 分组密码的模式
-> 分组密码算法需要对分段的明文进行迭代加密，迭代的方法称为模式。
+#### 微信消息加解密（AES-CBC）
+> 微信公众号/小程序/企业微信 消息推送的 `Encrypt` 密文解密。文档要求 AES-256-CBC + PKCS#7，但官方示例有一个特殊坑：**填充是按 32 字节对齐**（`PKCS7Encoder.BLOCK_SIZE = 32`），并非标准的 16 字节。
 
-《实用密码学》中指出，推荐使用CBC模式和CTR模式。
+流程：
+1. `AESKey = Base64_Decode(EncodingAESKey + "=")`，得到 32 字节密钥（256 位）。
+2. `TmpMsg = Base64_Decode(Encrypt)`。
+3. 用 AES-CBC 解密得到 `FullStr`。
+4. `FullStr = random(16B) + msg_len(4B) + msg + appid`：
+   - random 为 16 字节随机串，解密后直接丢弃；
+   - msg_len 为 msg 的**字节长度**，占 4 字节，**网络字节序（大端）**；
+   - msg 为明文；appid 需校验与自身一致。
 
-- ECB：Electronic CodeBook mode 电子密码本模式
-- CBC：Cipher Block Chaining mode 密码分组链接模式
-- CFB：Cipher FeekBack mode 密文反馈模式
-- OFB：Output FeedBack mode 输出反馈模式
-- CTR：CounTeR mode 计数器模式
+`填充的特殊性（偶现报错的根因）`：
+- 官方示例的填充目标不是 16 而是 **32 字节整数倍**，填充字节值 = 需填充字节数，取值范围 **1~32**。
+- 例：`FullStr` 205 字节，16 字节对齐会补到 208，而微信补到 224（=7×32），即填充 19 个 `0x13` —— 密文 224 字节恰好说明按 32 对齐。
+- Java 的 `PKCS5Padding`/`PKCS7Padding` 按 16 字节分组校验：末尾填充值必须在 1~16。
+- 因此：当某次填充值为 1~16 时 `PKCS5Padding` 恰好能解开；填充值为 17~32 时校验失败抛 `BadPaddingException`。**"偶现报错、有时又成功"正是由此而来（约一半概率）**。
+- 所以这里不能依赖 JCE 自动去填充，必须用 `NoPadding` 解密后按末尾字节值手动去填充。
 
-ECB模式是按序迭代，也是最容易有安全漏洞的算法，通常不被实际使用。
-- 因为ECB模式下，明文分组和密文分组是按序一一对应的，那理论上可以通过对密文分组的 复制，调序，剪切 等操作，从而达到篡改明文的目的。
-- 但是如果使用消息认证码，则可以发现密文被篡改
+`正确做法（Alpine JDK8 无 PKCS7Padding）`：
+- `Cipher.getInstance("AES/CBC/NoPadding")`，IV = AESKey 前 16 字节（`new IvParameterSpec(aesKey, 0, 16)`）。
+- 解密后：`pad = fullStr[fullStr.length - 1] & 0xff`，`1 <= pad <= 32` 时去掉末尾 `pad` 字节，再按 `random(16) + msg_len(4) + msg + appid` 解析。
 
-IV： 初始化向量(initialization vector)。 *iv长度为固定的16字节*
+其他易踩坑点：
+- **msg_len 按大端读取，msg 按字节长度截取**：若用 String 字符长度（`.length()`）替代字节长度，msg 含中文等多字节 UTF-8 字符时偏移会算错，表现为"纯 ASCII 正常、含中文偶现失败"。
+- **Cipher 实例非线程安全**：并发复用同一 `Cipher` 会偶现乱码或 `BadPaddingException`，每次都要 `new`（或用 ThreadLocal）。
 
-CBC模式在每个明文分组加密为密文分组前，都需要拿前一个明文分组得到的密文分组对当前明文分组做异或（XOR）运算，第一个分组则依赖IV做XOR。每个分组都依赖前一个分组像一个链条。  
-CFB，OFB和CBC类似都需要IV，只是当前明文分组的处理方式不同。  
+```java
+byte[] aesKey = Base64.getDecoder().decode(encodingAesKey + "=");
+byte[] encrypted = Base64.getDecoder().decode(encrypt);
+Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding"); // 微信按 32 字节对齐，必须手动去填充
+cipher.init(Cipher.DECRYPT_MODE,
+        new SecretKeySpec(aesKey, "AES"),
+        new IvParameterSpec(aesKey, 0, 16));
+byte[] fullStr = cipher.doFinal(encrypted);
+
+// 手动去填充：末尾字节值即填充字节数（微信 blockSize=32，取值 1~32）
+int pad = fullStr[fullStr.length - 1] & 0xff;
+if (pad < 1 || pad > 32) {
+    throw new IllegalStateException("invalid padding: " + pad);
+}
+int contentLen = fullStr.length - pad;
+
+// random(16) + msg_len(4, big-endian) + msg + appid
+int msgLen = ((fullStr[16] & 0xff) << 24) | ((fullStr[17] & 0xff) << 16)
+        | ((fullStr[18] & 0xff) << 8) | (fullStr[19] & 0xff);
+String msg = new String(fullStr, 20, msgLen, StandardCharsets.UTF_8);
+String appid = new String(fullStr, 20 + msgLen, contentLen - 20 - msgLen, StandardCharsets.UTF_8);
+```
 
 ************************
 
