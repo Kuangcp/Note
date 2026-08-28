@@ -17,7 +17,7 @@ categories:
     - 1.6. [Helicone](#helicone)
     - 1.7. [Coze](#coze)
 
-💠 2026-08-17 17:33:32
+💠 2026-08-28 21:21:28
 ****************************************
 # Agent 观测
 
@@ -44,6 +44,8 @@ LangChain 生态最佳搭配， 但是只有商业版本
 - 架构： TypeScript Next.js， ZK+CK，MinIO，PG，Redis, Langfuse Worker和Web
 
 支撑每天数百万级 Trace 的高并发场景
+
+> [Migrate Langfuse v3 to v4 (self-hosted) - Langfuse](https://langfuse.com/self-hosting/upgrade/upgrade-guides/upgrade-v3-to-v4#evaluations)  
 
 ### Langfuse-评测
 Langfuse 已经不仅仅是一个监控（Tracing）平台，它在 LLM 评测（Evaluation） 领域的功能闭环度非常高。

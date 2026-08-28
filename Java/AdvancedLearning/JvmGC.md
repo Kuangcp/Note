@@ -40,7 +40,7 @@ categories:
     - 4.11. [Epsilon](#epsilon)
 - 5. [最佳实践](#最佳实践)
 
-💠 2026-06-03 14:05:19
+💠 2026-08-28 21:21:28
 ****************************************
 # GC
 > Java Garbage Collection
@@ -535,7 +535,7 @@ Young GC发生的时机大家都知道，那什么时候发生Mixed GC呢？其�
 | 参数 | 描述 |
 |:----|:----|
 | `-XX:MaxGCPauseMillis=200`  |  单位ms，设置最大停顿时间值。默认值为 200 毫秒。|
-| `-XX:G1HeapRegionSize=n`  |  	单位字节，设置 G1 区域大小。值必须为 2 的 N 次幂 且 设置值范围是 1MB 至 32MB（JDK17之前，JDK18开始最大支持512M）。默认值：  JVM 在启动时按堆初始大小 ÷ 2048 计算得出，向下取整到 1 MB 的倍数： ≤ 2 GB 堆 → 1 MB 4 GB → 2 MB 8 GB → 4 MB|
+| `-XX:G1HeapRegionSize=n`  |  	单位字节，设置 G1 区域大小。值必须为 2 的 N 次幂 且 设置值范围是 1MB 至 32MB（JDK18+ 最大512M）。默认值：  JVM 在启动时按堆初始大小 ÷ 2048 计算得出，向下取整到 1 MB 的倍数： ≤ 2 GB 堆 → 1 MB 4 GB → 2 MB 8 GB → 4 MB|
 | `-XX:GCTimeRatio=12`  |  	    设置应用于 GC 的总目标时间与处理客户事务的总时间。|
 | `-XX:ParallelGCThreads=n`  |  	设置 Stop-the-world 工作线程的数量。|
 | `-XX:ConcGCThreads=n`  |  	    设置并行标记线程的数量。将 n 值设为并行垃圾回收线程（ParallelGCThreads）数的大约 1/4。|
@@ -565,8 +565,8 @@ ConcGCThreads的默认值不同GC策略略有不同，CMS下是(ParallelGCThread
 **G1PeriodicGCSystemLoadThreshold**： 系统会调用 getloadavg()，默认一分钟内系统返回的平均负载值低于 G1PeriodicGCSystemLoadThreshold指定的阈值，则触发full GC或者concurrent GC( 如果开启 G1PeriodicGCInvokesConcurrent )
 
 > 周期GC
-- 自上次垃圾回收完成以来已超过 G1PeriodicGCInterval ( milliseconds )， 并且此时没有正在进行的垃圾回收任务。如果 G1PeriodicGCInterval 值为零表示禁用快速回收内存的定期垃圾收集。
-- 或者达到 G1PeriodicGCSystemLoadThreshold 阈值
+1. 自上次垃圾回收完成以来已超过 G1PeriodicGCInterval ( milliseconds )， 并且此时没有正在进行的垃圾回收任务。如果 G1PeriodicGCInterval 值为零表示禁用快速回收内存的定期垃圾收集。
+2. 达到 G1PeriodicGCSystemLoadThreshold 阈值
 如果不满足上述条件中的任何一个，则取消当期的定期垃圾回收。等一个 G1PeriodicGCInterval 时间周期后，将重新考虑是否执行定期垃圾回收。
 
 > GC cause

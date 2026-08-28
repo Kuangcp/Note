@@ -75,7 +75,7 @@ categories:
         - 4.5.1. [rng-tools 的实现原理](#rng-tools-的实现原理)
         - 4.5.2. [现代 Linux 内核（Kernel 5.6+）的重要机制演变](#现代-linux-内核kernel-56的重要机制演变)
 
-💠 2026-08-04 11:57:30
+💠 2026-08-28 21:21:28
 ****************************************
 
 # Linux系统
@@ -269,6 +269,7 @@ categories:
 - st 不支持中文，unicode字符支持良好
 - black box 
 - [Alacritty - A cross-platform, OpenGL terminal emulator](https://alacritty.org/index.html)  
+- [ghostty-org/ghostty](https://github.com/ghostty-org/ghostty)`GPU渲染`  
 
 > 备注 sakura xfce4-terminal 快捷键配置
 - `~/.config/xfce4/terminal/accels.scm`
