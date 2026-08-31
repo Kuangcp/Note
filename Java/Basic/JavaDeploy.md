@@ -25,7 +25,7 @@ categories:
     - 4.1. [Java在Linux上的时区问题](#java在linux上的时区问题)
     - 4.2. [容器中Jvm信号及参数接收问题](#容器中jvm信号及参数接收问题)
 
-💠 2026-08-28 22:14:04
+💠 2026-08-31 11:13:45
 ****************************************
 # 部署运行
 > 传统的可执行jar, war 以及Docker镜像
@@ -217,11 +217,22 @@ _MANIFEST.MF示例_
 
 ## 容器中Jvm信号及参数接收问题
 需要避免Java进程为容器中的1号进程，因为会带来很多问题，包括但不限：
-- 无法正常接收Linux信号量
+- 无法正常接收Linux信号量，也就无法做Graceful Shutdown。
 - Arthas无法注入
-- 无法合理管理派生出的进程生命周期
+- 无法正常管理派生出的进程生命周期
 - JDK中的工具有些也会无法正常使用例如 jstack
 
-所以可以通过 tini 来解决问题:
+可以通过 tini 来解决问题， 但是需要注意使用不同基础镜像时 各个shell的默认行为差异。
+> alpine 系列 默认ash
 
-` ENTRYPOINT ["/sbin/tini", "--", "sh", "-c", "exec java ${OPTS} -jar -Dspring.profiles.active=${SPRING_PROFILES_ACTIVE} /opt/app.jar"] `
+`ENTRYPOINT /sbin/tini java ${OPTS} -jar -Dspring.profiles.active=${SPRING_PROFILES_ACTIVE} /opt/app.jar`
+
+可以发现ash很简洁，因为exec自动优化（单命令，无管道无分号无逻辑与）会自动追加 exec。如果继续按这个写法，在换了dash作为默认shell的镜像时会报错：  
+dash对参数扩展的解析极其严苛（JVM参数 报 invalid option -- 'X'）：dash 在宏展开替换 ${OPTS} 的时候，如果外面没有硬性的中括号 [] 数组保护，它在切分字符串空格时，由于它不支持 ash 的某些非标准语法扩展，会产生错误的参数边界划分，从而导致 -Xms 被当成 tini 自己的参数传了过去，引发报错。
+
+**最佳实践**: 使用 focal的声明方式 方括号参数+exec顶替sh进程。 避免系统方言带来的差异
+
+> eclipse-temurin debian-focal 系列镜像 默认dash。
+
+`ENTRYPOINT ["/usr/bin/tini", "--", "sh", "-c", "exec java ${OPTS} -jar -Dspring.profiles.active=${SPRING_PROFILES_ACTIVE} /opt/app.jar"]`
+

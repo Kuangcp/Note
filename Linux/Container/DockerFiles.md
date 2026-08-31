@@ -41,7 +41,7 @@ categories:
         - 2.2.1. [打包最新版git](#打包最新版git)
         - 2.2.2. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-💠 2026-08-28 22:14:04
+💠 2026-08-31 11:13:45
 ****************************************
 # Dockerfile
 
@@ -194,9 +194,12 @@ CMD ["java", "-jar", "demo.jar"]
 ### ENTRYPOINT
 > `容器入口点` 命令设置在容器启动时执行命令 一般用来做初始化容器，或者运行持久软件  
 
-- `ENTRYPOINT echo "Welcome!"` 那么每次启动容器都有这个输出
-- `ENTRYPOINT java param1 param2 ...` 注意这种写法会使用默认shell去解释执行这个命令，即sh进程下才是java进程
-- `ENTRYPOINT ["java", "param1", "param2"...]` 这种写法则会直接调用java命令 
+一个 Dockerfile 内可以有 多个 ENTRYPOINT， 但是最后的才会生效
+
+- `ENTRYPOINT java param1 param2 ...` 注意这种写法会使用系统默认shell（ash,bash,dash,sh 等等）去解释执行这个命令。sh是1号进程，java是sh的子进程
+- `ENTRYPOINT ["java", "param1", "param2"...]` 非最佳实践，java是1号进程
+
+- [Java 应用最佳实践](/Java/Basic/JavaDeploy.md#容器中jvm信号及参数接收问题)
 
 ### USER
 - 切换用户，其后的命令都将以该用户执行
