@@ -13,7 +13,7 @@ categories:
     - 1.3. [二次开发项目](#二次开发项目)
         - 1.3.1. [Easy excel](#easy-excel)
 
-💠 2026-02-26 14:45:09
+💠 2026-09-02 19:19:18
 ****************************************
 
 # POI
@@ -33,3 +33,6 @@ categories:
 
 ### Easy excel
 > [Github](https://github.com/alibaba/easyexcel) 停止更新，分叉出 [apache/fesod](https://github.com/apache/fesod)  
+
+超大数据量的最佳实践 做法是 数据库游标查 然后用 SXSSFWorkbook 创建Book后流式写入 落盘。
+

@@ -17,11 +17,12 @@ categories:
         - 1.2.2. [用户组](#用户组)
         - 1.2.3. [sudo](#sudo)
     - 1.3. [Terminal 终端](#terminal-终端)
-        - 1.3.1. [终端对比](#终端对比)
-        - 1.3.2. [终端中渲染图片](#终端中渲染图片)
-        - 1.3.3. [终端的彩色输出](#终端的彩色输出)
-            - 1.3.3.1. [ls配置彩色输出](#ls配置彩色输出)
-        - 1.3.4. [终端快捷键](#终端快捷键)
+        - 1.3.1. [Terminfo](#terminfo)
+        - 1.3.2. [终端对比](#终端对比)
+        - 1.3.3. [终端中渲染图片](#终端中渲染图片)
+        - 1.3.4. [终端的彩色输出](#终端的彩色输出)
+            - 1.3.4.1. [ls配置彩色输出](#ls配置彩色输出)
+        - 1.3.5. [终端快捷键](#终端快捷键)
     - 1.4. [环境变量](#环境变量)
     - 1.5. [进程](#进程)
         - 1.5.1. [信号 Signal](#信号-signal)
@@ -75,7 +76,7 @@ categories:
         - 4.5.1. [rng-tools 的实现原理](#rng-tools-的实现原理)
         - 4.5.2. [现代 Linux 内核（Kernel 5.6+）的重要机制演变](#现代-linux-内核kernel-56的重要机制演变)
 
-💠 2026-08-28 21:21:28
+💠 2026-09-02 19:19:18
 ****************************************
 
 # Linux系统
@@ -241,6 +242,65 @@ categories:
 - [ttyd](https://github.com/tsl0922/ttyd)  
 - [sshx](https://github.com/ekzhang/sshx)  
 
+### Terminfo
+> 终端定义/终端标识 或 TERM 环境变量值
+
+例如： screen、xterm-ghostty、xterm-256color
+
+> 为什么需要这东西？
+
+世界上有无数种终端工具，有 40 年前的物理大头显示器（如 VT100），有现代带 GPU 加速的 Ghostty。不同终端支持的能力完全不同：
+
+* 老终端只支持 8 种颜色，新终端支持 256 色甚至 24 位真彩色（True Color）。
+* 不同的终端，实现“清屏”、“光标向上移动一行”、“加粗字体”所需要的底层字节转义序列（Escape Sequence）是不一样的。
+
+> 它是怎么工作的？
+为了让同一个程序（比如 tmux、vim、htop）在所有终端上都能正常显示，Linux 设计了 Terminfo 数据库（通常在 /usr/share/terminfo/）。
+
+* xterm-256color 就是一个“身份证/协议标准”，它告诉里面的程序：“我是一个兼容标准 xterm 且支持 256 色的现代终端，请用标准的 SGR 鼠标协议和 xterm 颜色转义链和我说话”。
+* xterm-ghostty 是 Ghostty 专属的身份证，宣告自己不仅支持 256 色，还支持 Ghostty 特有的高级渲染能力。
+* screen 则是一个旧时代的标准，宣告自己只支持最基础的、落后的老式控制序列。 screen-256color 是为了兼容极其古老的 GNU Screen 工具而设计的。
+    - 在古老的 screen 协议中，鼠标事件的报告采用的是非常原始的 X11 鼠标协议（Normal Mouse Tracking）。这种协议有一个致命的硬伤：它能支持的屏幕横纵坐标最大只有 223。
+    - 如果你在现代的高分屏、大显示器上把 Ghostty 窗口拉得比较大，或者点击的面板（Panel）位置超出了这个低像素范围，发给 tmux 的坐标数据就会发生溢出和错位。tmux 收到一堆乱码坐标，自然就无法精准判断你到底点的是哪一个 Panel，从而表现为“偶尔失灵/点击没反应”。
+
+> tty/pty 和 term 差别
+
+* tty/pty 是底层的河道（传输管道），负责把字节完好无损地从一端运到另一端。
+* TERM（xterm-256color等）是河道里流淌的语言规范（通讯协议），决定了这些字节被打包成什么格式，以及对端怎么解码渲染。
+
+
+> 经典实战：当你在 Ghostty 里运行 Tmux 时，它们是如何串联起来的？
+
+整个链路的架构是这样的：
+
+【用户操作】
+    │
+    ▼
+[本地 Ghostty 软件]  <--- 声明 TERM = xterm-ghostty
+    │
+    ▼ (通过 PTY 管道 /dev/pts/0 传输字节)
+[本地 SSH 客户端]
+    │
+    ▼ (通过网络公网隧道)
+[远程服务器 SSH 服务端]
+    │
+    ▼ (内核创建第二层 PTY 管道 /dev/pts/1)
+[远程服务器 Shell (zsh)]
+    │
+    ▼ (启动了终端复用器)
+[ Tmux 进程 ]       <--- 内部维护第三层虚拟 PTY (/dev/pts/2)
+    │
+    ▼
+[运行中的 vim / t ls 命令]
+
+
+1. 内核分配 PTY：你打开 Ghostty 时，本地 Linux 内核给了它一个 pty（管道）。Ghostty 进程在管道的主端（Master）监听。
+2. 设置协议（Terminfo）：Ghostty 启动后，在当前的会话环境中注入环境变量：export TERM=xterm-ghostty。
+3. SSH 传递：当你输入 ssh 1.2.3.5 时，SSH 客户端非常忠实，它顺着 pty 管道把你的 TERM=xterm-ghostty 这个环境变量也一起打包，带到了远程服务器。
+4. 远程 Tmux 的灾难：远程服务器的 tmux 启动。tmux 是一个运行在 PTY 上的 TUI 程序，它必须要知道外层的终端懂什么语言。它一查环境变量，发现外层叫 xterm-ghostty。
+* 报错时：tmux 去远程服务器的 Terminfo 数据库 翻字典，发现没有 xterm-ghostty 的条目。tmux 直接在 PTY 管道里抛出错误：missing or unsuitable terminal 并挂掉。
+    * 修复后：我们把 xterm-ghostty 的定义放进了远程系统的 Terminfo 目录。tmux 查到了字典，知道了如何通过 PTY 管道向 Ghostty 发送正确的高级清屏（Ctrl+L）和 256 色彩控制符。
+
 ### 终端对比
 
 > 列举出系统可安装终端  
@@ -269,7 +329,15 @@ categories:
 - st 不支持中文，unicode字符支持良好
 - black box 
 - [Alacritty - A cross-platform, OpenGL terminal emulator](https://alacritty.org/index.html)  
-- [ghostty-org/ghostty](https://github.com/ghostty-org/ghostty)`GPU渲染`  
+- [ghostty-org/ghostty](https://github.com/ghostty-org/ghostty)`GPU渲染`
+    - `infocmp -x | ssh root@1.2.3.5 "tic -x -"` 将 xterm-ghostty 这个term类型注册进服务器注意有用户差别
+    ```
+    # 创建全局的 xterm 终端定义目录（如果不存在）
+    mkdir -p /usr/share/terminfo/x/
+
+    # 从你之前配置好的普通用户（这里以 who 为例，请替换为你的实际普通用户名）的目录下拷贝过去
+    cp /home/who/.terminfo/x/xterm-ghostty /usr/share/terminfo/x/
+    ```
 
 > 备注 sakura xfce4-terminal 快捷键配置
 - `~/.config/xfce4/terminal/accels.scm`
