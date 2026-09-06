@@ -76,7 +76,7 @@ categories:
         - 4.5.1. [rng-tools 的实现原理](#rng-tools-的实现原理)
         - 4.5.2. [现代 Linux 内核（Kernel 5.6+）的重要机制演变](#现代-linux-内核kernel-56的重要机制演变)
 
-💠 2026-09-02 19:19:18
+💠 2026-09-07 00:48:07
 ****************************************
 
 # Linux系统
@@ -126,6 +126,8 @@ categories:
 - _修改密码_ `passwd`
   - `passwd user`
   - `echo "root:caishi" | chpasswd` 如果是普通用户就是 sudo chpasswd
+  - 但是如果遇到了修改密码后还是没法sudo 但是可以su 可能失败太多次是被锁定了 `faillock --user kcp --reset`
+
 - _修改相关信息_ `usermod`
 
 | verb | long verb                | comment                                                      |
@@ -245,7 +247,7 @@ categories:
 ### Terminfo
 > 终端定义/终端标识 或 TERM 环境变量值
 
-例如： screen、xterm-ghostty、xterm-256color
+例如： screen、xterm-ghostty、xterm-256color xterm-kitty
 
 > 为什么需要这东西？
 
@@ -330,7 +332,7 @@ categories:
 - black box 
 - [Alacritty - A cross-platform, OpenGL terminal emulator](https://alacritty.org/index.html)  
 - [ghostty-org/ghostty](https://github.com/ghostty-org/ghostty)`GPU渲染`
-    - `infocmp -x | ssh root@1.2.3.5 "tic -x -"` 将 xterm-ghostty 这个term类型注册进服务器注意有用户差别
+    - `infocmp -x | ssh root@1.2.3.5 "tic -x -"` 将 xterm-ghostty 这个term类型注册进服务器（kitty同理），注意有用户差别
     ```
     # 创建全局的 xterm 终端定义目录（如果不存在）
     mkdir -p /usr/share/terminfo/x/
