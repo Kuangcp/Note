@@ -17,7 +17,7 @@ categories:
     - 2.2. [Theme](#theme)
     - 2.3. [Icon](#icon)
 
-💠 2025-12-04 10:31:18
+💠 2026-09-07 15:01:07
 ****************************************
 
 # GUI
@@ -74,6 +74,7 @@ categories:
 
 > 字体库
 - [nerd fonts](https://www.nerdfonts.com/)
+- yay -S ttf-adobe-kaiti ttf-lxgw-wenkai-screen
 
 ************************
 

@@ -20,8 +20,10 @@ categories:
         - 2.1.1. [同步写入](#同步写入)
     - 2.2. [查询](#查询)
     - 2.3. [监控](#监控)
+- 3. [运维实践](#运维实践)
+    - 3.1. [system 库](#system-库)
 
-💠 2026-07-08 16:02:50
+💠 2026-09-07 15:01:07
 ****************************************
 # Clickhouse
 
@@ -97,21 +99,23 @@ Spark 解析HDFS数据生成CK file（单个分区做一个gz压缩包，解压�
 ### 同步写入
 注意CK是最终一致性，所以修改不具备事务性，但是在特定业务场景如果需要依赖数据的有限一致性，可以通过设置一些参数值来靠拢
 
-执行的insert SQL后追加 SETTINGS async_insert = 0;
-用户级设置 SETTINGS insert_quorum=2;
-会话设置：
+执行的insert SQL后追加 SETTINGS async_insert = 0;  
+用户级设置 SETTINGS insert_quorum=2;  
+会话设置：  
+
+```sql
 SET async_insert = 0;  -- 关闭异步写入
 SET wait_for_async_insert = 1;  -- 等待写入完成
 SET wait_for_insert_timeout = 10;  -- 设置等待超时时间（秒）
+```
 
 缺点：
-写入延迟增加，因为需要等待数据落盘
-写入吞吐量下降，特别是在高并发场景
-可能影响查询性能，因为写入操作会占用更多系统资源
-
-更高的 CPU 使用率
-更多的内存占用
-更频繁的磁盘 I/O 操作
+- 写入延迟增加，因为需要等待数据落盘
+- 写入吞吐量下降，特别是在高并发场景
+- 可能影响查询性能，因为写入操作会占用更多系统资源
+- 更高的 CPU 使用率
+- 更多的内存占用
+- 更频繁的磁盘 I/O 操作
 
 ## 查询
 不适合查单行的点查询, 最小查询数据量是索引粒度(index_granularity)的行数, 即使查询一条数据，CK也会按索引粒度加载整块数据进缓存
@@ -143,3 +147,56 @@ where event_date = toDate(now()) and event_time > (now() - toIntervalMinute(300)
 order by event_date ,event_time desc
 limit 1009
 ```
+
+# 运维实践
+## system 库
+```sql
+-- 按数据库汇总（确认 system 有多大）
+
+SELECT
+    database,
+    formatReadableSize(sum(bytes_on_disk)) AS size,
+    sum(rows) AS rows,
+    count() AS parts
+FROM system.parts
+WHERE active
+GROUP BY database
+ORDER BY sum(bytes_on_disk) DESC;
+
+-- system 库内各表占用（找出具体是哪个日志表）
+
+SELECT
+    table,
+    formatReadableSize(sum(bytes_on_disk)) AS size,
+    formatReadableQuantity(sum(rows)) AS rows,
+    count() AS parts
+FROM system.parts
+WHERE active AND database = 'system'
+GROUP BY table
+ORDER BY sum(bytes_on_disk) DESC;
+
+
+-- 设置的TTL是对后续的数据 merge的时候慢慢删除，所以如果是第一次设置，最好先 truncate 这些表 立马清理出磁盘空间
+-- 如果是CK集群注意加上 on cluster cluster_name 
+ALTER TABLE system.text_log MODIFY TTL event_date + INTERVAL 7 DAY DELETE;
+ALTER TABLE system.trace_log MODIFY TTL event_date + INTERVAL 7 DAY DELETE;
+ALTER TABLE system.opentelemetry_span_log MODIFY TTL event_date + INTERVAL 7 DAY DELETE;
+ALTER TABLE system.processors_profile_log MODIFY TTL event_date + INTERVAL 7 DAY DELETE;
+
+ALTER TABLE system.query_log MODIFY TTL event_date + INTERVAL 15 DAY DELETE;
+ALTER TABLE system.part_log MODIFY TTL event_date + INTERVAL 15 DAY DELETE;
+ALTER TABLE system.metric_log MODIFY TTL event_date + INTERVAL 15 DAY DELETE;
+ALTER TABLE system.asynchronous_metric_log MODIFY TTL event_date + INTERVAL 15 DAY DELETE;
+
+```
+
+| 表名 | 主要用途 | 是否常用于审计 |
+|------|----------|----------------|
+| **query_log** | 记录每条执行过的 SQL（谁、什么时候、跑了多久、读了多少数据、内存用了多少等） | 可以（查谁执行了什么语句） |
+| **trace_log** | 查询分析器采样数据，用来做 CPU 热点分析、慢查询火焰图 | 几乎不 |
+| **text_log** | 把服务器日志以结构化方式写进表里，方便用 SQL 查日志 | 较少 |
+| **part_log** | 记录 part 的产生、合并、移动、删除等事件，排查合并慢、磁盘涨得快很有用 | 否 |
+| **metric_log** / **asynchronous_metric_log** | 服务器各项指标的历史时序数据（CPU、内存、查询数、磁盘等） | 否 |
+| **opentelemetry_span_log** | OpenTelemetry 链路追踪数据 | 否 |
+| **processors_profile_log** | 查询执行流水线各处理器的耗时分析 | 否 |
+
