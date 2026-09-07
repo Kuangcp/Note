@@ -23,7 +23,7 @@ categories:
 - 3. [运维实践](#运维实践)
     - 3.1. [system 库](#system-库)
 
-💠 2026-09-07 15:01:07
+💠 2026-09-07 20:43:30
 ****************************************
 # Clickhouse
 
@@ -178,9 +178,10 @@ ORDER BY sum(bytes_on_disk) DESC;
 
 -- 设置的TTL是对后续的数据 merge的时候慢慢删除，所以如果是第一次设置，最好先 truncate 这些表 立马清理出磁盘空间
 -- 如果是CK集群注意加上 on cluster cluster_name 
+-- 设置的字段是 Date类型的，按实际的表DDL，选择一个字段做TTL逻辑
 ALTER TABLE system.text_log MODIFY TTL event_date + INTERVAL 7 DAY DELETE;
 ALTER TABLE system.trace_log MODIFY TTL event_date + INTERVAL 7 DAY DELETE;
-ALTER TABLE system.opentelemetry_span_log MODIFY TTL event_date + INTERVAL 7 DAY DELETE;
+ALTER TABLE system.opentelemetry_span_log MODIFY TTL finish_date + INTERVAL 7 DAY DELETE;
 ALTER TABLE system.processors_profile_log MODIFY TTL event_date + INTERVAL 7 DAY DELETE;
 
 ALTER TABLE system.query_log MODIFY TTL event_date + INTERVAL 15 DAY DELETE;
