@@ -41,7 +41,7 @@ categories:
         - 2.2.1. [打包最新版git](#打包最新版git)
         - 2.2.2. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-💠 2026-08-31 11:13:45
+💠 2026-09-08 15:26:24
 ****************************************
 # Dockerfile
 
@@ -202,16 +202,45 @@ CMD ["java", "-jar", "demo.jar"]
 - [Java 应用最佳实践](/Java/Basic/JavaDeploy.md#容器中jvm信号及参数接收问题)
 
 ### USER
+USER 指令会设置后续所有 RUN、CMD、ENTRYPOINT（以及运行时容器主进程）的默认用户（和可选的组）。如果没有指定，默认就是 root（UID 0）
+
 - 切换用户，其后的命令都将以该用户执行
-    - 如果在这个镜像上的容器需要安装软件就会需要提权，就要至少创建额外的两个层，层限制是42,
-        - 所以，所有其他的操作在root用户执行 减少层数
+    - 如果在这个镜像上的容器需要安装软件就会需要提权，就要至少创建额外的两个层，(层限制是42, 所有其他的操作在root用户执行 减少层数, 但是overlay2之后不限制了)
     - 更好的方法是在基础镜像中创建用户和用户组，然后在完成构建时再设置默认的用户
-- 指定 mysql 的运行用户 `ENTRYPOINT ["mysql", "-u", "daemon"]`
-- 更好的方式是：
+
+最佳实践
+
 ```
-    ENTRYPOINT ["memcached"]
-    USER daemon
+FROM some-base
+# 创建用户和组（建议固定 UID/GID，避免不确定性）
+# 统一约定
+ARG APP_UID=1001
+ARG APP_GID=1001
+ARG SHARED_GID=2000        # 公共共享组（可选，用于读写挂载卷）
+RUN groupadd -r -g ${APP_GID} appgroup && \
+    useradd --no-log-init -r -u ${APP_UID} -g appgroup -G ${SHARED_GID}  -m -s /usr/sbin/nologin appuser
+
+# 所有安装、复制、权限设置都用 root 做
+RUN apt-get update && apt-get install -y ... && rm -rf /var/lib/apt/lists/*
+COPY --chown=appuser:appgroup . /app
+# 或单独 chown
+
+# 最后才切换（推荐放在靠后位置）
+USER ${APP_UID}:${APP_GID} 
+WORKDIR /app
+ENTRYPOINT ["your-app"]
 ```
+
+>- 永远不要让最终运行进程是 root（除非绝对必要）。这是安全红线之一，K8S可以 加约束 runAsNonRoot: true 避免团队不一致
+    - 容器逃逸，提权到宿主机root
+>- 所有需要 root 的操作（安装包、创建用户、改权限）在 USER 之前完成。
+>- 尽量避免在 Dockerfile 里来回切换 USER（增加复杂度和层）。
+>- 用数字 UID:GID 比用户名更稳妥。
+>- 配合 multi-stage build：构建阶段可以随便用 root，最终运行阶段只复制必要文件并切到非 root。
+>- 对于需要写挂载卷的场景，注意权限匹配（可在 entrypoint 里临时处理，或用 fixed UID）。
+    - 最佳实践是声明存储卷时限定 公共 GID 
+>- 运行时还可用 docker run -u 或 Kubernetes securityContext.runAsNonRoot / runAsUser 强制覆盖。
+
 
 ### EXPOSE
 - 对外开放端口 例如 EXPOSE 22
