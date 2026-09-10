@@ -38,7 +38,7 @@ categories:
 - 5. [Extend](#extend)
     - 5.1. [CRaC](#crac)
 
-💠 2026-01-27 19:13:38
+💠 2026-09-10 17:32:27
 ****************************************
 # JVM
 > JVM结构及设计
@@ -142,6 +142,8 @@ Oracle JDK 默认采用的是 Hotspot JVM
 ### 容器内的JVM
 
 低版本JVM在容器运行时，无法感知对容器设置的资源限制， 8U191/10b34 及以上版本才支持 `注意是 cgroups V1`。 8u372+ 11.0.16+ 17+ `才支持V2版本`
+- V1读取 /sys/fs/cgroup/cpu/cpu.shares  /sys/fs/cgroup/memory/memory.limit_in_bytes
+- V2读取 /sys/fs/cgroup/cpu.weight  /sys/fs/cgroup/memory.max
 
 - 快速实验某个Java版本的默认参数和限制 docker run -m 100MB openjdk:8 java -XX:MinRAMPercentage=80.0 -XshowSettings:VM -version
 - [参考: Java和Docker限制的那些事儿](http://www.techug.com/post/java-and-docker-memory-limits.html)`天坑： 低版本的Jvm无法感知到Docker的资源限制`
@@ -156,6 +158,7 @@ Oracle JDK 默认采用的是 Hotspot JVM
 
 参数：
 - -XX:ActiveProcessorCount=$CONTAINER_CORE_LIMIT 强制设置CPU量 从downawrd_api获取
+    - 由于CPU感知问题 可能会导致读到份额小于1缺省为1 就会导致GC FJ Netty 都会有性能问题
 - -Xlog:os+container=logLevel JVM报告容器信息
 - -XX:-UseContainerSupport 关闭容器支持，默认开启
 

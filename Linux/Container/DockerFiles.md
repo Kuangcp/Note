@@ -41,7 +41,7 @@ categories:
         - 2.2.1. [打包最新版git](#打包最新版git)
         - 2.2.2. [Dockerfile中新建用户](#dockerfile中新建用户)
 
-💠 2026-09-08 15:26:24
+💠 2026-09-10 17:32:27
 ****************************************
 # Dockerfile
 
@@ -210,7 +210,7 @@ USER 指令会设置后续所有 RUN、CMD、ENTRYPOINT（以及运行时容器�
 
 最佳实践
 
-```
+```dockerfile
 FROM some-base
 # 创建用户和组（建议固定 UID/GID，避免不确定性）
 # 统一约定
