@@ -24,6 +24,8 @@ https://blog.csdn.net/qq_37700257/article/details/126284196#commentBox
 > Windows Terminal 
 - Alt Shift -/= 横向/竖向切分窗口
 
+> [microsoft/PowerToys: Microsoft PowerToys is a collection of utilities that supercharge productivity and customization on Windows](https://github.com/microsoft/powertoys)  
+
 ### 终端 
 CMD
 PowerShell
