@@ -20,7 +20,7 @@ categories:
 - 2. [发行版](#发行版)
 - 3. [Tips](#tips)
 
-💠 2025-11-28 01:15:09
+💠 2026-09-16 21:12:57
 ****************************************
 
 # Arch
@@ -100,11 +100,11 @@ Arch User Repository （常被称作 AUR），是一个为 Arch 用户而生的�
 
 pacman yay 升级某些包时需要留意是否需要全系统升级，单独升级某个包容易造成**依赖库版本不匹配**
 - 比如 当前手动curl 8.4.0-2 升级到 8.6.0-3，发现安装失败, 报错 `pacman: /usr/lib/libssl.so.3: version 'OPENSSL_3.2.0' not found (required by /usr/lib/libcurl.so.4)`
-- 由于yay pacman也是依赖的curl，这里就有点死锁了，没法降级了
-- 从curl官网下载源码编译安装，安装路径默认 `/usr/local/bin/curl` 不是pacman默认的`/bin/curl`
-    - 只好手动复制lib过去 `sudo cp /usr/local/lib/libcurl.so.4.8.0 /usr/lib/libcurl.so.4.8.0` 新的报错 `curl: /usr/lib/libcurl.so.4: no version information available (required by curl)`
-- 搜索后添加参数 重新编译 `./configure --enable-versioned-symbols  --with-openssl` 重新复制lib过去 还是一样报错信息
-- 但是发现这个报错好像是警告级别不影响实际功能，然后用上述的 pacman -U 安装指定的版本，才恢复了正常使用
+    - 由于yay pacman也是依赖的curl，这里就有点死锁了，没法降级了
+    - 从curl官网下载源码编译安装，安装路径默认 `/usr/local/bin/curl` 不是pacman默认的`/bin/curl`
+        - 只好手动复制lib过去 `sudo cp /usr/local/lib/libcurl.so.4.8.0 /usr/lib/libcurl.so.4.8.0` 新的报错 `curl: /usr/lib/libcurl.so.4: no version information available (required by curl)`
+    - 搜索后添加参数 重新编译 `./configure --enable-versioned-symbols  --with-openssl` 重新复制lib过去 还是一样报错信息
+- 但是发现这个报错好像是警告级别不影响实际功能，然后用上述的 pacman -U 安装指定的版本, 也就是说 -U 参数是不依赖cURL的lib去下载包的，才恢复了正常使用
 
 > 安装deb包 [How to Install a .deb Package on Arch Linux](https://www.baeldung.com/linux/arch-install-deb-package)
 1. 安装工具 yaourt -S debtap  或者  yay debtap
