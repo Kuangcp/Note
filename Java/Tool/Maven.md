@@ -54,7 +54,7 @@ categories:
             - 7.2.2.1. [Gradle](#gradle)
             - 7.2.2.2. [Maven](#maven)
 
-💠 2026-06-09 10:30:46
+💠 2026-09-16 20:52:46
 ****************************************
 # Maven
 > [官网](https://maven.apache.org/) | [官网手册](https://maven.apache.org/guides/) | [http://takari.io/ 在线练习网](http://takari.io/)
@@ -590,11 +590,11 @@ A 项目 compile
 ```
 
 ## 依赖冲突
-- 依赖路径短优先
+- 优先使用 依赖路径最短的 版本
    - 1 A->B->C->X(jar文件)
    - 2 A->C->X(jar文件)
-   - 会选择 2 中的X的jar版本
-- 先声明的优先
+   - 会选择 2 链路里的X的jar版本
+- 优先使用先声明的版本
 
 ### 排除依赖
 `对应的<dependency>标签中添加`

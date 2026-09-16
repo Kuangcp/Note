@@ -33,7 +33,7 @@ categories:
     - 1.22. [Java26](#java26)
     - 1.23. [Java27](#java27)
 
-💠 2026-09-16 20:35:56
+💠 2026-09-16 20:52:46
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)
@@ -246,6 +246,8 @@ JDBC4.0  JAX-WS 2.0
 1. [JEP 491: Synchronize Virtual Threads without Pinning](https://openjdk.org/jeps/491)`修复了pinned问题`  
 
 ## Java25 LTS
+> [详情](/Java/AdvancedLearning/Release/Java25.md)
+
 > [OpenJDK 25](https://openjdk.org/projects/jdk/25/)   
 > [Oracle 正式发布 Java 25 | Oracle 中国](https://www.oracle.com/cn/news/announcement/oracle-releases-java-25-2025-09-16/)  
 
@@ -282,28 +284,6 @@ Project Leyden 特性
 
 清理特性
 1. [JEP 503: Remove the 32-bit x86 Port](https://openjdk.org/jeps/503) 移除 32 位 x86 端口的源码和构建支持（JDK 24 已标记弃用）
-
-手动整理
-1. 虚拟线程和并发模型的进一步优化
-1. Loom 项目完善: 结构化并发预览
-1. JEP 506: Scoped Values： 线程间共享变量，用来替换的ThreadLocal。
-
-误解：新 JDK 能直接跑旧代码
-真相：旧代码按规范编写 + 不依赖已移除 API → 新 JDK 能跑
-
-JDK 25 可能破坏兼容的情况：
-1. 移除已弃用 API（如 finalize() 相关）
-2. 强化模块封装（更多内部 API 不可访问）
-3. 更改默认行为（如安全策略、反射限制）
-4. 第三方库未适配
-
-```sh
-    # 1. 扫描已弃用 API
-    jdeprscan --release 25 your-app.jar
-
-    # 2. 检查非法反射
-    java --illegal-access=warn -jar your-app.jar 2>&1 | grep "Illegal reflective access"
-```
 
 ## Java26 
 > [OpenJDK 26](https://openjdk.org/projects/jdk/26/)
