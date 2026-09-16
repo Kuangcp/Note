@@ -31,8 +31,9 @@ categories:
     - 1.20. [Java24](#java24)
     - 1.21. [Java25 LTS](#java25-lts)
     - 1.22. [Java26](#java26)
+    - 1.23. [Java27](#java27)
 
-💠 2026-06-02 21:04:57
+💠 2026-09-16 20:35:56
 ****************************************
 # Java主要发行版本
 > [官网 Release Note](http://www.oracle.com/technetwork/java/javase/jdk-relnotes-index-2162236.html)
@@ -250,6 +251,39 @@ JDBC4.0  JAX-WS 2.0
 
 > [JDK25更新了哪些特性？一文全部掌握-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/2539734)  
 
+语言特性
+1. [JEP 511: Module Import Declarations](https://openjdk.org/jeps/511) 模块导入声明，用一条 import 语句简洁地导入模块导出的所有包
+1. [JEP 512: Compact Source Files and Instance Main Methods](https://openjdk.org/jeps/512) 紧凑源文件与实例 main 方法，让初学者无需理解 public/static 等复杂修饰符即可编写第一个程序
+1. [JEP 513: Flexible Constructor Bodies](https://openjdk.org/jeps/513) 灵活的构造函数体，允许在构造器中显式 super() 调用之前出现语句
+1. [JEP 507: Primitive Types in Patterns, instanceof, and switch (Third Preview)](https://openjdk.org/jeps/507) 模式、instanceof 和 switch 中的基元类型（第三次预览）
+
+库
+1. [JEP 506: Scoped Values](https://openjdk.org/jeps/506) 作用域值（正式版），在线程及其子线程间共享不可变数据，比 ThreadLocal 更易理解、开销更低
+1. [JEP 505: Structured Concurrency (Fifth Preview)](https://openjdk.org/jeps/505) 结构化并发（第五次预览），把相关多线程任务组视作整体工作单元，简化错误处理与取消
+1. [JEP 502: Stable Values (Preview)](https://openjdk.org/jeps/502) 稳定值（预览），持有不可变数据并被 JVM 视为常量，初始化时机比 final 字段更灵活
+1. [JEP 508: Vector API (Tenth Incubator)](https://openjdk.org/jeps/508) 向量 API（第十次孵化），在支持的 CPU 上编译为最优向量指令
+1. [JEP 510: Key Derivation Function API](https://openjdk.org/jeps/510) 密钥派生函数（KDF）API，从密钥和其他数据派生新密钥
+
+安全库
+1. [JEP 470: PEM Encodings of Cryptographic Objects (Preview)](https://openjdk.org/jeps/470) 加密对象的 PEM 编码 API（预览），简化密钥、证书和证书吊销列表的编码与解码
+
+性能更新
+1. [JEP 521: Generational Shenandoah](https://openjdk.org/jeps/521) 分代 Shenandoah GC 从实验性转为产品特性
+1. [JEP 519: Compact Object Headers](https://openjdk.org/jeps/519) 紧凑对象头从实验性转为产品特性，减少堆内存占用、提升数据局部性
+
+诊断与观测（JFR）
+1. [JEP 509: JFR CPU-Time Profiling (Experimental)](https://openjdk.org/jeps/509) JFR CPU 时间剖析（实验性），在 Linux 上捕获更精确的 CPU 时间分析信息
+1. [JEP 518: JFR Cooperative Sampling](https://openjdk.org/jeps/518) JFR 协作式采样，仅在安全点遍历调用栈，提升异步采样 Java 线程栈的稳定性
+1. [JEP 520: JFR Method Timing & Tracing](https://openjdk.org/jeps/520) JFR 方法计时与跟踪，借助字节码插桩实现方法级计时和跟踪
+
+Project Leyden 特性
+1. [JEP 514: Ahead-of-Time Command-Line Ergonomics](https://openjdk.org/jeps/514) AOT 命令行易用性，简化常用场景下创建提前缓存以加速启动的命令
+1. [JEP 515: Ahead-of-Time Method Profiling](https://openjdk.org/jeps/515) AOT 方法剖析，让上一次运行的方法执行档案在 JVM 启动时立即可用，加快预热
+
+清理特性
+1. [JEP 503: Remove the 32-bit x86 Port](https://openjdk.org/jeps/503) 移除 32 位 x86 端口的源码和构建支持（JDK 24 已标记弃用）
+
+手动整理
 1. 虚拟线程和并发模型的进一步优化
 1. Loom 项目完善: 结构化并发预览
 1. JEP 506: Scoped Values： 线程间共享变量，用来替换的ThreadLocal。
@@ -296,4 +330,27 @@ Project Leyden 特性
 
 清理特性
 1. [JEP 504: Remove the Applet API](https://openjdk.org/jeps/504) 正式移除 Applet API（JDK 17 标记待移除）
+
+## Java27
+> [OpenJDK 27](https://openjdk.org/projects/jdk/27/)  
+> [Oracle 正式发布 Java 27 | Oracle](https://www.oracle.com/news/announcement/oracle-releases-java-27-and-strengthens-post-quantum-cryptography-support-2026-09-15/)  
+
+语言特性
+1. [JEP 532: Primitive Types in Patterns, instanceof, and switch (Fifth Preview)](https://openjdk.org/jeps/532) 模式、instanceof 和 switch 中的基元类型（第五预览版），允许基元类型出现在所有模式上下文，并扩展 instanceof 与 switch 支持全部基元类型
+
+性能更新
+1. [JEP 523: Make G1 the Default Garbage Collector in All Environments](https://openjdk.org/jeps/523) 让 G1 在所有环境（而不只是服务器环境）中成为默认垃圾收集器
+1. [JEP 534: Compact Object Headers by Default](https://openjdk.org/jeps/534) 默认启用紧凑对象头，在 64 位架构上将对象头从 96 位降至 64 位，减少堆占用、提升部署密度和数据局部性
+
+诊断与观测（JFR）
+1. [JEP 536: JFR In-Process Data Redaction](https://openjdk.org/jeps/536) JFR 进程内数据脱敏，在数据离开进程前对命令行参数、环境变量和系统属性的初始值进行脱敏，避免敏感信息泄露
+
+库
+1. [JEP 531: Lazy Constants (Third Preview)](https://openjdk.org/jeps/531) 延迟常量（第三次预览），JVM 将其视为真正常量以获得 final 字段级别的性能，同时初始化时机更灵活
+1. [JEP 533: Structured Concurrency (Seventh Preview)](https://openjdk.org/jeps/533) 结构化并发（第七次预览），将多线程任务组视作整体工作单元，简化错误处理与取消，提高可靠性与可观测性
+1. [JEP 537: Vector API (Twelfth Incubator)](https://openjdk.org/jeps/537) 向量 API（第十二次孵化），在支持的 CPU 上编译为最优向量指令，加速数值计算
+
+安全库
+1. [JEP 527: Post-Quantum Hybrid Key Exchange for TLS 1.3](https://openjdk.org/jeps/527) TLS 1.3 后量子混合密钥交换，将抗量子算法与传统算法结合，默认抵御未来量子计算攻击
+1. [JEP 538: PEM Encodings of Cryptographic Objects (Third Preview)](https://openjdk.org/jeps/538) 加密对象的 PEM 编码 API（第三次预览），简化密钥、证书和证书吊销列表的编码与解码
 
