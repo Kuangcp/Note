@@ -51,7 +51,7 @@ categories:
     - 10.2. [缓存击穿](#缓存击穿)
     - 10.3. [缓存穿透](#缓存穿透)
 
-💠 2026-07-08 16:02:50
+💠 2026-09-18 16:29:36
 ****************************************
 # Redis
 > [Official Site](https://redis.io/) | [Redis中文社区](http://www.redis.cn/) | [Redis教程](http://www.runoob.com/redis/redis-tutorial.html) 
@@ -315,7 +315,6 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 ************************
 
 # Pub/Sub发布和订阅
-> 基于 阻塞 list 实现
 
 - `PSUBSCRIBE pattern [pattern ...]`
     - 订阅一个或多个符合给定模式的频道。每个模式以 * 作为匹配符，比如 it* 匹配所有以 it 开头的频道( it.news 、 it.blog 、 it.tweets 等等)，
@@ -335,6 +334,12 @@ HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大�
 - `UNSUBSCRIBE [channel [channel ...]]`
     - 指示客户端退订给定的频道。如果没有频道被指定，也即是，一个无参数的 UNSUBSCRIBE 调用被执行，
     - 那么客户端使用 SUBSCRIBE 命令订阅的所有频道都会被退订。在这种情况下，命令会返回一个信息，告知客户端所有被退订的频道。
+
+
+在 Redis 集群模式下，传统的 Pub/Sub（即 PUBLISH / SUBSCRIBE 命令）确实存在一个核心限制：消息会被广播到集群中的所有节点，而不是仅发送给订阅者所在的节点。  
+在 Redis 集群中，频道（channel）并不参与数据分片（hash slot 的计算）。因此，当你向任意节点发布消息时，该节点无法预知哪些其他节点上有订阅者。为了保证消息可达，集群会通过一种“集群总线”（cluster bus）将消息广播（fan-out）到所有节点  
+
+Redis 7.0 的解决方案：Sharded Pub/Sub。它引入了 SSUBSCRIBE、SPUBLISH 等新命令。与传统的 Pub/Sub 不同，Sharded Pub/Sub 的频道会像普通 key 一样，通过相同的算法映射到特定的哈希槽（slot）。消息只会发送给负责该槽位的主节点及其从节点，不再跨分片广播
 
 ************************
 
