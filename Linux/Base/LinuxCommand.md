@@ -24,7 +24,7 @@ categories:
         - 1.8.1. [crontab](#crontab)
         - 1.8.2. [Systemd](#systemd)
 
-💠 2026-07-14 12:48:21
+💠 2026-09-23 20:07:20
 ****************************************
 # Linux 基础命令
 > [Linux 命令大全](http://man.linuxde.net/)
@@ -34,6 +34,7 @@ categories:
 ## 系统内置命令
 > /bin/* 系统自带命令
 
+- cp  -a 保留权限信息复制文件 -r 递归复制
 - false 以失败码退出程序
 - `stty -a` 查看快捷键映射
 - for `for i in $(seq 1 10); do echo $i; done` 语法和Shell差不多, 但是需要在循环体内的每一句命令都加上`;`
