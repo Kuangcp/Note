@@ -13,7 +13,7 @@ categories:
 - 2. [业务场景](#业务场景)
     - 2.1. [PPT生成](#ppt生成)
 
-💠 2026-08-25 18:04:55
+💠 2026-10-26 17:08:27
 ****************************************
 # Agent 应用实践
 
@@ -40,3 +40,4 @@ Handler处理重连，心跳保持，断点续传，甚至TPOT的优化（因为
 ## PPT生成
 > [免费AI演示文稿制作器与幻灯片制作器 | ChatSlide](https://www.chatslide.ai/zh)  
 > [hugohe3/ppt-master](https://github.com/hugohe3/ppt-master)  
+> 直接找 workbuddy 生成一份ppt，看到脚本路径拿到他的Skill  
