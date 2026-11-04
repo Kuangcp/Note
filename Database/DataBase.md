@@ -210,6 +210,9 @@ Boyce-Codd Normal Form（巴斯-科德范式）
 - 跨界选手： PostgreSQL，Doris，Clickhouse, Bytehouse
 - [milvus](https://milvus.io/)
 - [chroma](https://github.com/chroma-core/chroma)
+- [myscale/MyScaleDB: A @ClickHouse fork that supports high-performance vector search and full-text search.](https://github.com/myscale/myscaledb)  
+- [oceanbase/seekdb: The AI-Native Search Database. Best for agent storage, it unifies vector, text, structured, and semi-structured data into a single engine. This all-in-one database makes agents smarter, easier to run, and more stable.](https://github.com/oceanbase/seekdb)  
+- [qdrant/qdrant: Qdrant - High-performance, massive-scale Vector Database and Vector Search Engine for the next generation of AI. Also available in the cloud https://cloud.qdrant.io/](https://github.com/qdrant/qdrant)  
 
 ## 图数据库
 > [Note: 图数据库](/Database/Graph.md)  
