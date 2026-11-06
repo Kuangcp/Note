@@ -9,9 +9,10 @@ categories:
 
 - 1. [TCP](#tcp)
     - 1.1. [TCP UDP 对比](#tcp-udp-对比)
-    - 1.2. [Tuning](#tuning)
+    - 1.2. [MPTCP](#mptcp)
+    - 1.3. [Tuning](#tuning)
 
-💠 2025-03-13 10:41:25
+💠 2026-11-06 19:45:57
 ****************************************
 # TCP
 
@@ -88,6 +89,11 @@ TCP状态 [详解TCP的11种状态](https://cloud.tencent.com/developer/article/
 
 > Tips
 - TCP和UDP可以共用一个接口，由于TCP和UDP对于IP层来说是不同的协议，因此五元组不冲突
+
+## MPTCP
+CVE-2026-98432  对应禁用 sudo sysctl -w net.mptcp.enabled=0
+
+Go 1.24+ 的web服务默认会启用该特性
 
 ## Tuning
 - 异常状态多时可以查看Linux内核参数以及 连接队列和半连接队列
