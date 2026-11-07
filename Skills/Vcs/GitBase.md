@@ -79,7 +79,7 @@ categories:
     - 8.2. [gitattributes](#gitattributes)
 - 9. [自定义插件](#自定义插件)
 
-💠 2026-09-02 19:19:18
+💠 2026-11-07 22:51:07
 ****************************************
 
 # Git基础
@@ -872,8 +872,15 @@ merge 会保留分支图, rebase 会保持提交记录为单分支。rebase操�
 ```
 
 ## worktree
+同一个分支，在同一时间绝对不能被两个不同的工作树同时签出（Locked）。
 
 > Manage multiple working trees [doc](https://git-scm.com/docs/git-worktree)
+
+- 新建关联到已有分支 git worktree add ../my-app-hotfix hotfix
+- 新建且新建分支 git worktree add ../my-app-ui -b feat-ui
+- git worktree list
+- 删除 git worktree remove ../my-app-hotfix
+- 清理 git worktree prune
 
 ************************
 

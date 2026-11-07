@@ -56,7 +56,7 @@ categories:
 - 4. [Tips](#tips)
     - 4.1. [通过字符串调用指定函数](#通过字符串调用指定函数)
 
-💠 2026-07-22 14:05:33
+💠 2026-11-07 22:51:07
 ****************************************
 # Go
 
@@ -140,9 +140,10 @@ export GOSUMDB=sum.golang.google.cn
 - replace	替换依赖项模块
 - exclude	忽略依赖项模块
 
-注意依赖项后 有 // indirect 标记的意味着是传递依赖项
-
-当有依赖包更换了路径后，可以此方式统一更换: `gofmt -w -r '"github.com/dgrijalva/jwt-go" -> "github.com/golang-jwt/jwt"' .`
+注意 
+- require 内的 依赖项 末尾 有 // indirect 标记的意味着是传递依赖项
+- 升级某个特定依赖和添加依赖都是 go get xxx@v1.0.5 
+- 当有依赖包更换了路径后，可以此方式统一更换: `gofmt -w -r '"github.com/dgrijalva/jwt-go" -> "github.com/golang-jwt/jwt"' .`
 
 #### 单个Git仓库发布多个包
 
