@@ -5,7 +5,6 @@ tags:
 categories: 
 ---
 
-
 💠
 
 - 1. [Go GUI](#go-gui)
@@ -27,7 +26,7 @@ categories:
         - 8.1.1. [快速开始](#快速开始)
     - 8.2. [7.2 Flutter+Go](#72-fluttergo)
 
-💠 2026-11-05 16:46:13
+💠 2026-11-09 00:13:24
 ****************************************
 # Go GUI
 
@@ -62,6 +61,7 @@ Go 生态中有多种 GUI 开发方式，按渲染方式分为三类：
 - [The Complete Guide to Building Cross-Platform Desktop Apps with Go and Fyne](https://dev.to/jordan_d_burton/the-complete-guide-to-building-cross-platform-desktop-apps-with-go-and-fyne-2394)
 - [Building Desktop Applications with Go - by @ebitengine](https://ebiten.org/)
 
+> [oneo-me/nsgo: A cross-platform native UI engine with a Go backend: write apps in Go with signals, memos and flexbox layout, and each platform draws with its own native views — iOS, macOS, Windows, Android, Linux and the web](https://github.com/oneo-me/nsgo)  
 
 ---
 

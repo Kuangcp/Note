@@ -79,7 +79,7 @@ categories:
     - 8.2. [gitattributes](#gitattributes)
 - 9. [自定义插件](#自定义插件)
 
-💠 2026-11-07 22:51:07
+💠 2026-11-09 00:13:24
 ****************************************
 
 # Git基础
@@ -873,6 +873,8 @@ merge 会保留分支图, rebase 会保持提交记录为单分支。rebase操�
 
 ## worktree
 同一个分支，在同一时间绝对不能被两个不同的工作树同时签出（Locked）。
+
+因为实际上还在一个Git仓库里，在主仓库里merge签出分支的时候和merge普通分支没区别,所以不允许一个分支能对应两套文件系统状态。
 
 > Manage multiple working trees [doc](https://git-scm.com/docs/git-worktree)
 

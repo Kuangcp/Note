@@ -71,7 +71,7 @@ categories:
     - 6.2. [善用alias](#善用alias)
     - 6.3. [desktop文件](#desktop文件)
 
-💠 2026-06-28 20:33:17
+💠 2026-11-09 00:13:24
 ****************************************
 
 # IO
@@ -279,6 +279,8 @@ splice
 
 ## 比较文件内容
 > [阮一峰: 读懂diff](http://www.ruanyifeng.com/blog/2012/08/how_to_read_diff.html)
+
+> [egoist/godiff: Fast native diff viewer](https://github.com/egoist/godiff)  
 
 ### diff
 > [参考博客 linux下比较两个文本文件的不同](http://www.cnblogs.com/chenjianhong/archive/2012/09/26/4144940.html)
